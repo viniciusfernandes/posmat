@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 1 para Entregar}
+	\author{Vinicius Fernades}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		\item Sejam $I = (0,1), \; c \in I$ e $(f_n)_{n \in \mathbb{N}} \subseteq (C^0(\overline{I}), p), $ definida por:
+		
+		$$f_n(t) := \left\{
+		\begin{array}{cc}
+			0, & 0 \leq t \leq c - \frac{1}{n} \\
+			n(t-c) + 1, & c - \frac{1}{n} < t < c \\
+			1, & c \leq t \leq 1,
+		\end{array}
+		\right.
+		$$ 
+		onde 
+		$$
+			p(f) := \int_{0}^{1} |f(t)|dt.
+		$$
+		Considere ainda em $C^{0}(\overline{I})$ a função $||f||_{\infty} := sup\{|f(x)|: x \in \overline{I}\}.$
+		
+		\begin{enumerate}
+			\item Mostre que $C^{0}(I)$ e $C^{0}(\overline{I})$ são espaços vetoriais
+			
+			\textbf{Solução:} Seja $X$ um espaço topológico e tome $\forall \;f, g, h \in C^{0}(X)$ e $\lambda, \delta \in \mathbb{R}$, então:
+			\begin{enumerate}
+				\item (\textit{Comutatividade}) $(f+g)(t) = f(t) + g(t) = g(t) + f(t) = (g+t)(t) \Rightarrow f+g = g+f \in  C^{0}(X)$, pois a adição de funções contínuas é uma função contínua.
+				
+				\item (\textit{Associatividade}) $(f+(g+h))(t) =  f(t)+(g+h)(t) =    f(t)+ g(t)+h(t) = (f(t)+g(t))+h(t) = ((f+g)+h)(t) \Rightarrow f+(g+h)=(f+g)+h \in C^{0}(X)$
+				
+				\item (\textit{Elemento neutro}) $ 0 \in C^{0}(X)$ pois $0(t) = 0$ é constante e identicamente nula, além disso $\forall f \in C^{0}(X) $, temos $0(t) + f(t) = f(t) \Rightarrow 0 +f = f \therefore 0 \in C^{0}(X)$ é o elemento neutro.
+				
+				\item (\textit{Elemento inverso}) $\forall f \in C^{0}(X)$ temos um elemento $(-f) \in C^{0}(X)$ tal que $f + (-f) = 0$, pois $(f +(-f))(t) = f(t) +(-f(t)) = f(t)-f(t)= 0 \Rightarrow f +(-f) = 0$
+				
+				\item $\lambda(\delta f) = (\lambda\delta) f \in C^{0}(X)$ pois $\lambda(\delta f(t)) = (\lambda\delta)f(t)$ e uma função constínua multiplicada por uma constante também pe contínua
+				
+				\item (\textit{Disbrutividade}) $(\lambda(f+g))(t) = \lambda (f + g)(t) =  \lambda (f(t) + g(t)) = \lambda f(t) + \lambda g(t) = (\lambda f + \lambda g)(t)   \Rightarrow \lambda(f+g) = \lambda f+ \lambda g \in C^{0}(X)$
+			\end{enumerate}
+			Portanto $C^0(X)$ é um espaço vetorial, e fazendo $X=I$ ou $X=\overline{I}$ teremos demonstrado a questão. 
+			
+			\item Mostre que $(f_n)$ é uma sequência de Cauchy.
+			
+			\textbf{Solução:} Sabemos que uma sequência é de Cauchy se, e somente se, tomando $\epsilon >0$ existe um $n_0 \in \mathbb{N}; \forall m, n>n_0$ temos $p(f_m - f_n)<\epsilon$. Pois bem, sem perdade de generalidade, podemos tomar $m>n$ e escrevamos o intervalo $[0,1] = [0,c-\frac{1}{m}] \cup [c-\frac{1}{m}, c] \cup [c, 1]$, agora podemos calcular a norma:
+			
+			$$
+			p(f_m - f_n) = \int_{0}^{1} |f_m(t) - f_n(t)| dt =  
+			$$
+			
+			$$
+			=\int_{0}^{c-1/m} |0 - 0| dt + |m-n|\int_{c-1/m}^{c}|t-c|dt + \int_{c}^{1} |1 - 1| dt 
+			$$ 
+			
+			$$
+			=|m-n|\int_{c-1/m}^{c}(c-t)dt = \frac{|m-n|}{2m^2}.
+			$$
+			
+			Tomando um $\epsilon >0$  e escolhendo um $n_0 \in \mathbb{N}$ como sendo o menor natural tal que $n_0 > \frac{1}{\epsilon}$, com isso $p(f_m - f_n) = \frac{|m-n|}{2m^2} < \frac{1}{2m}< \frac{1}{n_0} = \epsilon$. Como $m,n \in \mathbb{N}$ são arbitrários, a sequência é de Cauchy. O caso em que $m < n$ é análogo.
+			
+			\item Mostre que $(f_n)$ pode não covergir para uma função $C^{0}(\overline{I})$ e, portanto $(C^{0}(\overline{I}), p)$ não é completo.
+			
+			\textbf{Solução:} Definindo 
+			$$
+			f(t) := \left\{
+			\begin{array}{cc}
+			0, & 0 \leq t < c  \\
+			1, & c \leq t \leq 1
+			\end{array}
+			\right.,
+			$$
+			vamos mostrar que $f_n \to f \notin C^{0}(\overline{I})$, que é descontínua. Pois bem:
+			$$
+			p(f_n - f) = \int_{0}^{1} |f_n(t) - f(t)| dt = 
+			$$
+			
+			$$
+			= \int_{0}^{c-1/n}|0 - 0|dt + \int_{c-1/n}^{c}|n(t-c)+1|dt + \int_{c}^{1}|1-1|dt=  
+			$$ 
+			
+			$$
+			= \int_{c-1/n}^{c}n(c-t)+1 dt =  n(ct - \frac{t^2}{2}) + t\Big|_{c-1/n}^{c} =  c - \frac{n}{2}\Big(c^2 - (c-1/n)^2 \Big) + 1/n=
+			$$
+			
+			$$
+			=  c - \frac{n}{2}\Big(c^2 - c^2+2c/n - 1/n^2  \Big)+ 1/n= 1/2n + 1/n = 3/2n.
+			$$
+			Assim, tomando o limite $\lim_{n \to \infty}p(f_m - f) = 0$, assim temos uma sequência de Cauchy tal que $f_n \to f \notin C^0(\overline{I})$, portanto $C^0(\overline{I})$ não é completo.
+			
+			\item Mostre que $||.||_{\infty}$ é uma norma.
+			
+			\textbf{Solução:} Sejam $f, g \in C^0(\overline{I})$, então:
+			\begin{enumerate}
+				\item $||f||_{\infty} =  sup\{|f(x)|: x \in \overline{I}\} \geq 0$, pois é o supremo de um conjunto de números positivos incluindo o zero.
+				
+				\item $||f||_{\infty} =  0 \iff f = 0$. $(\Rightarrow)$ suponha que $||f||_{\infty} =  0$ e que exista um $x \in \overline{I}$ tal que $f(x) \neq 0$, então $|f(x)| \neq 0$ é um candidato a cota superior, o que contradiz $||f||_{\infty} =  0$, então $f=0$. $(\Leftarrow)$ supondo que $f=0$, então é imediato que $||f||_{\infty} =  0$.
+				
+				\item $||f + g||_{\infty} \leq ||f||_{\infty} + ||g||_{\infty}$, é verdade pois 
+				$$
+				|f(x) +g(x)|\leq |f(x)| +|g(x)| \leq  sup\{|f(x)|+|g(x)|: x \in \overline{I}\} \leq 
+				$$
+				
+				$$
+				\leq sup\{|f(x)|: x \in \overline{I}\} + sup\{|g(x)|: x \in \overline{I}\},
+				$$
+				como essa penultima desilgualdade é uma cota superior, então qualquer outra estimativa deve ser inferior, consequementemente 
+				
+				$$
+				||f+g||_{\infty} := sup\{|f(x)+g(x)|: x \in \overline{I}\}  \leq 
+				$$
+				
+				$$ 
+				\leq sup\{|f(x)|: x \in \overline{I}\} + sup\{|g(x)|: x \in \overline{I}\} = 
+				$$ 
+				
+				$$=||f||_{\infty} + ||g||_{\infty},$$
+				como desejávamos.
+			\end{enumerate}
+			
+			\item Mostre que $||f||_{\infty} = sup\{|f(x)|: x \in \overline{I}\} = max\{|f(x)|: x \in \overline{I}\}$. O mesmo valeria se fosse $I$ em vez de $\overline{I}$?
+			
+			\textbf{Solução:} Sabemos que $\overline{I} \subset \mathbb{R}$ é um compacto, e que funções contínuas em compactos assumem valores máximos e mínimos, então $\forall f \in C^0(\overline{I}) \; \exists \; x_0 \in \overline{I}; f(x) \leq f(x_0) \; \forall x \in \overline{I}$, portanto $sup\{|f(x)|: x \in \overline{I}\} = |f(x_0)|$, como desejávamos. Contudo, não teríamos a garantia dessa igualdade no caso em que tivéssemos trabalhando com o intervalo aberto, pois nada garante que $f$ seja limitada nele, por exemplo $f: (0,1) \to \mathbb{R}$, tal que $f(x) = 1/x$.
+			
+			\item Mostre que $(C^0(\overline{I}), ||.||_{\infty})$ é um espaço de Banach
+			
+			\textbf{Solução:} Já sabemos que $C^0(\overline{I})$ é um espaço vetorial e que $||.||_{\infty}$ é uma norma. Vamos mostrar que qualquer para sequência convergente $(f_n) \subset C^0(\overline{I})$ teremos $f_n \to f \in C^0(\overline{I})$. Pois bem, notemos que a convergência nessa norma é equivalente a convergência uniforme, então:
+			
+			$(\Rightarrow)$ Suponha que $(f_n)$ seja sequência de Cauchy nessa norma, então dado $\epsilon > 0$ existe $n_0 \in \mathbb{N}; \; \forall n,m >n_0$ teremos $||f_m-f_n||_{\infty} < \epsilon$. Com isso:
+			
+			$$
+			|f_m(t)-f_n(t)| \leq sup\{|f_m(t)-f_n(t)|: t \in \mathbb{\overline{I}}\}  = ||f_m-f_n||_{\infty} < \epsilon
+			$$
+			
+			como a desigualdade vale para qualquer ponto do intervalo, então $(f_n)$ é uma sequência de funções que converge uniformemente. 
+			
+			$(\Leftarrow)$ Suponha que $(f_n) \subset C^0(\overline{I})$ seja uma sequência uniformemente convergente, assim $f_n -f_m$ é uma função constante $\forall n, m \in \mathbb{N}$, portanto existe $t_0 \in \overline{I}$ é um ponto de máximo dessa diferença, com isso:
+			
+			$$
+			\lim \limits_{n,m \to \infty} ||f_n  - f_m ||_{\infty} =  \lim \limits_{n,m \to \infty} \sup \{|f_n(t) - f_m(t)|: t\in \overline{I}\} = \lim \limits_{n,m \to \infty} |f_n(t_0) - f_m(t_0)| = 0,
+			$$
+			pois a sequência é uniformemente convergente. Portanto, temos a convergencia nessa norma. Assim, esta demonstrada a equivalência. 
+			
+			Sabemos agora que toda sequência convergente nesse espaço é uniformemente convergente, e como qualquer sequência uniformemente convergente de funções contínuas tem como limite uma sequência contínua, então $f_n \to f \in C^0(\overline{I})$, como desejávamos.
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+		
+\end{document}

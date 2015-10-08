@@ -1,0 +1,551 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[a4paper, margin=0.5in]{geometry}
+
+\begin{document}
+
+\title{Introduction to \LaTeX{}}
+\author{Author's Name}
+
+\maketitle
+
+
+\section{Prova 2012}
+
+\subsection{Parte I}
+\textbf{Questao 1:} Seja $f: \mathbb R^2 \to \mathbb R$ contínua. Suponha que
+exista $c \in \mathbb R$ tal que $f^{-1}(c)$ seja um compacto não-vazio.
+
+\begin{enumerate}[label=(\alph*)]
+  \item Mostre que exite $R > 0$ tal que $f(x)>c$ ou $f(x)<c$ para todo $x \in
+  \mathbb R^2$ com $|x|>R$:
+  
+  Como $f^{-1}(c)$ é compacto, então exite uma bola
+  aberta tal que $f^{-1}(c) \subset B(x_0, R)$, para algum $x_0 \in f^{-1}(c) $
+\end{enumerate}
+
+
+\textbf{Questao 2:} Considere a sequência recorrente dada por
+$$
+A_0 = 2, \; A_1 = 4 \; e \; A_{n+2} = 4A_{n+1} - A_n \;(n\geq 0),
+$$
+de modo que seus primeiros termos são 2, 4, 14, 52, 194, ...
+
+\begin{enumerate}[label=(\alph*)]
+	\item Prove que para todo $n \geq 0$ temos $A_n = (2+\sqrt{3})^n + (2-\sqrt{3})^n $.
+	
+	\textbf{Solução:} Faremos uma demonstração por indução infinita. Pois bem, sabemos que:
+	$$
+	A_0 = (2+\sqrt{3})^0 + (2-\sqrt{3})^0 = 2 \; , \;  A_1 = (2+\sqrt{3}) + (2-\sqrt{3}) = 4 \; e \; A_2 = (2+\sqrt{3})^2 + (2-\sqrt{3})^2 = 14
+	$$
+	concordando com os valores iniciais dados, sendo que a partir de $n=2$ os valores coincidem com os termos da sequência $A_{n+2} = 4A_{n+1} - A_n$. Então, basta mostrar que $A_{n+2} = 4A_{n+1} - A_n = (2+\sqrt{3})^{n+2} + (2-\sqrt{3})^{n+2}$. Supondo que vale para um determinado $k \in \mathbb{N}$, vamos demonstrar que vale para $k+1$. Com efeito, ?????????
+	
+	\item Considere o subanel $\mathbb{Z}[\sqrt{3}] = \{a+b\sqrt{3}: a,b \in \mathbb{Z}\}$. Mostre que, no subanel quociente $\mathbb{Z}[\sqrt{3}]/(17)$, temos
+	$$
+		\overline{(2+\sqrt{3})}^{17} = \overline{(2-\sqrt{3})},
+	$$
+	e analogamente que
+	$$
+	\overline{(2-\sqrt{3})}^{17} = \overline{(2+\sqrt{3})}.
+	$$
+	Aqui $(17) \subset \mathbb{Z}[\sqrt{3}]$ é o ideal principal gerado por 17 e $\overline{x} \in \mathbb{Z}[\sqrt{3}]/(17)$.
+	
+	\textbf{Solução:} Tomando $\overline{a +b\sqrt{3}}\in \mathbb{Z}[\sqrt{3}]/(17) \Rightarrow \exists \; \overline{c +d\sqrt{3}}\in \mathbb{Z}[\sqrt{3}]$ tal que:
+	
+	$$
+	(a + b\sqrt{3}) = m17 + (c + d\sqrt{3}) \Rightarrow  a \equiv_{17} c \; e \; b = d,
+	$$
+	o que nos leva a escrever os elementos do grupo quociente como sendo 
+	$$
+	\mathbb{Z}[\sqrt{3}]/(17) = \{\overline{a+ b\sqrt{3}}: a, b \in \mathbb{Z}\} \cong \{(\overline{a}, b): a\in \mathbb{Z}_{17}, b \in \mathbb{Z}\} = \mathbb{Z}_{17} \times \mathbb{Z},
+	$$
+	pela construção anterior. Definindo $g : \mathbb{Z}[\sqrt{3}]/(17) \to \mathbb{Z}_{17} \times \mathbb{Z}$, como sendo o isomorfismo anterior, e $f : \mathbb{Z}_{17} \times \mathbb{Z} \to \mathbb{Z}_{17}$, tal que $f((\overline{a}, b)) = \overline{a}$ é naturalmente uma sobrejeção, e consequentemente, $Ker(f) = \{(\overline{0}, b): b \in \mathbb{Z}\}$. Vejamos que é um homomorfismo pois $\forall (\overline{a}, b), (\overline{b}, c) \in \mathbb{Z}_{17} \times \mathbb{Z} $ temos:
+	$$
+	f((\overline{a}, b)+ (\overline{b}, c)) = f((\overline{a}+\overline{b}, c+d)) = f((\overline{a+b}, c+d)) = \overline{a+b} = \overline{a}+\overline{b} = f((\overline{a}, g)) + f((\overline{b}, h)),
+	$$
+	e
+	$$
+	f((\overline{a}, b).(\overline{b}, c)) = f((\overline{a}.\overline{b}, c.d)) = f((\overline{a.b}, c.d)) = \overline{a.b} = \overline{a}.\overline{b} = f((\overline{a}, g)) . f((\overline{b}, h)),
+	$$
+	
+	para algum $g, h \in \mathbb{Z}$, portanto é um epimorfismo. Então aplicando o teorema do isomorfismo de grupos teremos 
+	$$
+	(\mathbb{Z}_{17} \times \mathbb{Z})/Ker(f) \cong \mathbb{Z}_{17}.
+	$$
+	
+	Seja agora, $\overline{2} \in \mathbb{Z}_{17}$, então $\overline{2}^{17} = \overline{2} \Rightarrow f^{-1}(\overline{2}^{17}) =f^{-1}(\overline{2}) = \overline{(\overline{2}, b)}$, para algum $b \in \mathbb{Z}$.
+	
+\end{enumerate}	
+\subsection{Parte II}
+
+\textbf{Questao 1 (b):}Seja $a_n = \frac{(-1)^{n}}{\sqrt{n}}$. Assinale a
+alternativa falsa:
+
+\begin{enumerate}[label=(\alph*)]
+	\item (VERDADE) $\sum_{n=1}^{\infty} a_n$ é convergente: pois
+temos que $b_n := \frac{1}{\sqrt{n}} $ e lim $b_n = 0$ é uma sequência não
+crescente, com isso, pelo critério de Leibnitz temos $\sum_{n=1}^{\infty} a_n
+= \sum_{n=1}^{\infty} (-1)^n b_n$, portanto é convergente.
+
+	\item (FALSO) $\sum_{n=1}^{\infty} a_n^2$ é convergente: pois $a_n^2 =
+\frac{1}{n}$ que é o termo geral de da série divergente $\sum_{n=1}^{\infty} \frac{1}{n} =
+\infty$.
+
+	\item (VERDADE) $\lim \limits_{n \to \infty} a_n^2 \frac{log(n)}{n} = 0$: pois sabemos
+	que para um determinado $n \in N$ suficientemente grande temos $n > log(n)
+\Rightarrow \lim \limits_{n \to \infty} \frac{log(n)}{n^2} = 0$.
+
+	\item (VERDADE) $\lim \limits_{n \to \infty} na_n$ é divergente: pois pelo teste da
+raiz temos $\lim \limits_{n \to \infty} |na_n|^{1/n} = \lim \limits_{n \to \infty}
+n^{1/2n} = \infty$.
+
+\end{enumerate}	
+
+\textbf{Questao 3 (c):} Qual dos anéis não é um corpo?
+\begin{enumerate}[label=(\alph*)]
+	\item (FALSO) $\mathbb{Q}[x]/(x^2+1)$: pois $x^2+1$ não é redutível em $\mathbb{R}$ e também não o será em $\mathbb{Q}$, portanto  $\mathbb{Q}[x]/(x^2+1)$ é um corpo.
+	
+	\item (FALSO) $\mathbb{R}[x]/(x^2+1)$: pelo mesmo motivo do primeio item.
+	
+	\item (VERDADE) $\mathbb{C}[x]/(x^2+1)$: é um corpo se, e somente se, $x^2+1$ for irredutível em $\mathbb{C}$, o que é falso.
+	
+	\item (FALSO) $\mathbb{Z}/(5)$: pois sabemos que os ideias maximais dos inteiros são aqueles gerados pelos números primos, portanto $\mathbb{Z}/(5)$ é um corpo.
+	
+	\item (FALSO) $\mathbb{Z}/(101)$: pelo mesmo motivo do item anterior.
+	
+\end{enumerate}
+	
+	
+	
+\textbf{Questao 4 (c):} Seja 
+$A = 
+\left(
+\begin{array}{cc}
+      1 & 2\\
+      1 & 1 
+\end{array}
+\right)
+$. É correto afirmar que:
+
+\begin{enumerate}[label=(\alph{*})]
+  \item (FALSO) A imagem de qualquer círculo em $\mathbb R^2$ pela matriz $A$ é
+  também um círculo: pois supondo $x \in \mathbb S^1$ tal que $x=(1, 0)$ e
+  $y=(0, 1)$, então $||A(x)|| = \sqrt{5}$ e $||A(y)|| = \sqrt{2}$, portanto a
+  imagem não é um círculo.
+  
+  \item (FALSO) Para qualquer quadrado $Q \subset \mathbb R^2$, as áreas $Q$ e
+  $A(Q)$ coincidem: basta tomar $Q=\{(x, y): 0 \leq x, y \leq 1\}$, veremos
+  $||Q|| = 1$ e $||A(Q)|| = \sqrt{10}$ 
+  
+  \item (VERDADE) A imagem do conjunto $\mathbb Z^2 \subset \mathbb R^2$ pela
+  matriz A esta estritamente contida em $\mathbb Z^2$: pois tomando $x = (x_1,
+  x_2) \in \mathbb Z^2 \Rightarrow A(x) = (2x_1 + x_2, x_1+x_2) \in \mathbb
+  Z^2$.
+  
+  \item (FALSO) Existem um círculo em $\mathbb R^2$ cuja imagem pela matriz $A$
+  ainda é um círculo: pelo mesmo motivo do primeiro item
+  
+  \item (FALSO) Existe uma reta em $\mathbb R^2$ que não passa pela origem cuja
+  imagem pela matriz $A$ não é uma reta: pois tomando a reta $x(x_1,
+  x_2=ax_1+b)$ teremos $A(x) = ((2+a)x_1 + b, (1+a)x_1 + b)$ e fazendo $z_1 =
+  (2+a)x_1 + b \Rightarrow A(x) = (z_1, Az_1+B)$, que é uma reta.
+\end{enumerate}
+
+
+\textbf{Questao 7 (d):} Considere as seguintes afirmações:
+\begin{enumerate}
+  \item (VERDADE) Se a transformação linear $A : \mathbb R^5 \to \mathbb R^2$
+  for sobrejetiva, então $dim(Nuc(A)) = 3$: pois pelo teorema de
+  dimesão e imagem de uma aplicação linear em espações finitos
+  teremos 
+  $$dim(\mathbb R^5 ) = dim(Nuc(A)) + dim(Im(A)),$$
+  $$5 = dim(Nuc(A)) + 2 \Rightarrow dim(Nuc(A)) = 3.$$
+  
+  \item (VERDADE) Uma transformação linear $A : \mathbb R^5 \to \mathbb R^2$
+  nunca pode ser injetiva: pois uma aplicação linear é injetiva se, e somente
+  se, $Nuc(A) = \emptyset$, e consequentemente, pelo teorema de
+  dimensão e imagem $dim(\mathbb R^5 ) = dim(Nuc(A)) + dim(Im(A)) \Rightarrow
+  dim(\mathbb R^5 ) = dim(Im(A))$, o que é um absurdo.
+  
+  \item (FALSO) O posto da matriz 
+$A = 
+\left(
+\begin{array}{cc}
+      1 & 2\\
+      3 & x 
+\end{array}
+\right)
+$ é independente de $x$: pois se tomarmos $x=6$ o posto será 1, mas se $x=0$, o
+posto será 2.
+
+  \item \textcolor{red}{(FALSO)} Se $A$ é uma matriz real, então $A^2$ possui
+  algum autovalor $\geq 0$
+  
+  \item (FALSO) Sejam $A, B$ duas matrizes $n \times n$. Suponha que $A$ possua
+  n autovaloes distintos, que $B$ possua n
+  autovaloes distintos e que $AB = BA$. Então o conjunto de autovetores de $A$
+  necessariamente coincide com o conjunto de autovetores de $B$: pois supondo
+  que $v \in Aut(A)$, então teremos $BA(v)= B(\lambda v) = \lambda B(v) = AB(v)
+  \Rightarrow B(v) \in Aut(A)$, portanto, não necessariamente devemos ter os
+  mesmo autovetores.
+
+\end{enumerate}
+
+
+
+\textbf{Questao 8 (d):} Sobre o limite de $\lim \limits_{h \to -1/2}
+\frac{\int_{0}^{1+2h}  sen(x^2) dx}{(1+2h)^3} $, podemos afirmar que:
+
+Para valor de $|x| \ll 1$ podemos aproximar $sen(x) \approx x$, o que nos
+permite escrever $\lim \limits_{h \to -1/2}
+\frac{\int_{0}^{1+2h}  sen(x^2) dx}{(1+2h)^3} \approx \lim \limits_{h \to -1/2}
+\frac{\int_{0}^{1+2h}  x^2 dx}{(1+2h)^3} = \lim \limits_{h \to -1/2}
+\frac{1}{3(1+2h)^2} = +\infty$
+
+
+\textbf{Questao 10 (e):} Seja 
+$A = 
+\begin{array}{cc}
+      \frac{\sqrt{3}}{2} & \frac{-1}{2} \\
+      \frac{1}{2} & \frac{\sqrt{3}}{2} 
+\end{array}$. Então $A^{2012}$:
+
+Note que 
+$$A = 
+\left(
+\begin{array}{cc}
+      \frac{\sqrt{3}}{2} & \frac{-1}{2} \\
+      \frac{1}{2} & \frac{\sqrt{3}}{2} 
+\end{array} 
+\right) =
+\left(
+\begin{array}{cc}
+      cos(\pi/6) & -sen(\pi/6) \\
+      sen(\pi/6) & cos(\pi/6) 
+\end{array} 
+\right)
+$$
+
+Portanto $A^{2012}$ é uma rotação de um ângulo $\pi/6$ efetuada $2012$ vezes,
+consequentemente, teremos $2012\pi/6 = 334\pi + 4\pi/3 \Rightarrow cos(334\pi +
+4\pi/3) = cos(4\pi/3) \Rightarrow 4\pi/3 = 120^{\circ}$. Portanto:
+
+$$A^{2012} = 
+\left(
+\begin{array}{cc}
+      cos(120^{\circ}) & -sen(120^{\circ}) \\
+      sen(120^{\circ}) & cos(120^{\circ}) 
+\end{array} 
+\right) =
+\left(
+\begin{array}{cc}
+      -\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+      -\frac{\sqrt{3}}{2} & -\frac{1}{2} 
+\end{array} 
+\right) 
+$$
+
+\textbf{Questao 16 (c):} Seja  $A$ um conjunto e $f: A \to A$ uma função. Um
+ponto fixo de $f$ é um qualquer $x \in A; f(x)=x$. Considere as funções abaixo:
+\begin{enumerate}
+  \item (VERDADE) $f: [a,b] \to [a,b]$, uma função contínua: pois toda função
+  contínua em um compacto tem um ponto fixo.
+  
+  \item (VERDADE) $f: \mathbb R \to \mathbb R$ uma contração estrita, isto é,
+  existe $\lambda \in [0,1); \; |f(x)-f(y)| \leq |x-y| \; \forall x, y \in
+  \mathbb R$: pois toda contração em um espaço métrico possui um ponto fixo, e é
+  único.
+  
+  \item (VERDADE) $f: \mathbb R \to \mathbb R$ diferenciável com $|f'(x)| \leq
+  \lambda \; \forall x \in \mathbb R; \; \lambda \in [0,1)$: note que vale
+  $\frac{f(x)-f(y)}{x-y} \leq \lambda \Rightarrow |f(x)-f(y)| \leq |x-y|$, o que
+  caracteriza $f$ como uma contração, portanto, possui um ponto fixo.
+  
+  \item (VERDADE) $f: \mathbb R \to \mathbb R$ uma função polinomial de grau
+  ímpar $\geq 3$: pois é equivalente da encontrarmos um dos zeros da função
+  $g(x) := f(x) - x$. Como o grau é ímpar, então podemos assumir que $\lim_{x
+  \to \infty} g(x) = +\infty$, consequentemente, $\lim_{x
+  \to -\infty} g(x) = -\infty$, como é contínua, o gráfico da curva
+  intersecta o eixo das coordenadas, portanto existe um ponto $(x_0,
+  0)$ tal que $ g(x_0) = 0$, caracterizando o ponto fixo.
+  
+  \item (VERDADE) $f: \mathbb R \to \mathbb R$ dada por $f(x) = x^4-1$: note que
+  a função $g(x) := f(x) - x$ possui o limite $\lim_{x
+  \to \infty} g(x) = +\infty$ e que $g(0) < 0$, então o gráfico da curva
+  intersecta o eixo das coordendas em algum ponto $(x_0,
+  0)$, o que caracteriza o ponto fixo.
+  
+  \item (FALSO) $f: \mathbb R \to \mathbb R$ dada por $f(x) = x^4+1$: pois a
+  função $g(x) := f(x) - x = 0$ não possui solução na reta real, portanto $f$
+  não possui ponto fixo.
+\end{enumerate}
+
+Dentre as funções acima, as únicas que necessariamente possuem pontos fixos
+são aquelas dos itens:
+
+\begin{enumerate}[label=(\alph*)]
+  \item 2, 4
+  \item 2, 4, 5
+  \item 1, 2, 3, 4, 5
+  \item 1, 2, 4, 5, 6
+  \item Todas as funções acima necessariamente possuem pontos fixos
+\end{enumerate}
+
+\section{Prova 2013}
+\subsection{Parte I}
+\textbf{Questao 1:} Seja $f: [0,1] \to \mathbb R$ contínua, e seja $a>0$ e
+$L = \lim \limits_{\epsilon \to 0} \int_{\epsilon b}^{\epsilon a} \frac{f(x)}{x}
+dx$. Prove que $L = f(0)ln(b/a)$:
+
+Como $f$ é contínua, então a restrição de $f$ a $[a\epsilon, b\epsilon]$ terá
+máximo e um mínimo, então tomando $x_m, x_M \in [a\epsilon,
+b\epsilon]$ como sendo esses valores, teremos:
+
+$$\lim \limits_{\epsilon
+\to 0} f(x_m) \int_{\epsilon b}^{\epsilon a} \frac{1}{x} dx \leq L \leq \lim
+\limits_{\epsilon \to 0} f(x_M) \int_{\epsilon b}^{\epsilon a} \frac{1}{x} dx$$ 
+
+
+$$\lim \limits_{\epsilon
+\to 0} f(x_m) ln(\frac{b}{a}) \leq L \leq \lim \limits_{\epsilon \to 0} f(x_M)
+ln(\frac{b}{a}).$$
+
+Como $\epsilon \to 0$, consequentemente $x_m \to 0$ e $x_M \to 0$, portanto:
+
+$$L =  f(0) ln(\frac{b}{a}).$$
+
+\subsection{Parte II}
+\textbf{Questão 7 (d):} Seja $p$ um primo. Quantos subgrupos de ordem $p$ possui o grupo aditivo $\mathbb{Z}/p\mathbb{Z} \times \mathbb{Z}/p\mathbb{Z}$?
+
+Sabemos que $\mathbb{Z}/p\mathbb{Z} \times \mathbb{Z}/p\mathbb{Z} \cong \mathbb{Z}_{p} \times \mathbb{Z}_{p}$,
+então $|\mathbb{Z}_{p} \times \mathbb{Z}_{p}| = p^2$. Pelo teorema de Lagrange, em um grupo finito, a ordem de um subgrupo divide a prdem do grupo, assim, qualquer subgrupo tem ordem $p$, consequentemente teremos $p^2 / p = p$ subgrupos.
+
+\textbf{Questão 8 (a):} Qual dos seguintes itens contém um par de grupos isomorfos?
+
+\begin{enumerate}[label=(\alph*)]
+	\item $(\mathbb{R}, +)$ e $(\mathbb{R}_{>0}, .)$: definindo $ f: (\mathbb{R}, +) \to (\mathbb{R}_{>0}, .)$ tal que $f(a) = e^{-a}$. Note que é um homomorfismo, pois $f(a+b) = e^{-(a+b)} = e^{-a}e^{-b} = f(a)f(b)$, além disso é injetora pois $Ker(f)=\{0\}$, e é sobrejetora por construção. Portanto, é um homomorfismo bijetor, isto é, um isomorfismo.
+\end{enumerate}
+
+\textbf{Questão 18 (4):}
+\begin{enumerate}
+	\item (VERDADE) É sempre abeliano
+	
+	\item (VERDADE) Possui subgrupos normais não-triviais 
+	
+	\item (VERDADE) Possui subgrupos de índice primo
+	
+	\item (FALSO) Tem sempre ordem inifinita: pois tomando $(\mathbb{Z}_p, .) = <1>; \; \forall \; p \in \mathbb{N}$
+	
+	\item (VERDADE) Possui subgrupo de ordem prima
+\end{enumerate}
+
+\section{Prova 2014}
+\subsection{Parte I}
+\textcolor{red}{\textbf{Questão 1:}} Seja $f: [0,\infty) \to \mathbb R$ uma
+função uniformemente contínua. Mostre que existem constantes c, k tais que $|f(x)| \leq cx+k$.
+
+Dado $\epsilon >0 \; \exists \; \delta>0$ tal que $|x-y| < \delta \Rightarrow
+|f(x)-f(y)| < \epsilon, \forall \; x, y \in [0,\infty) $. Definindo $m =
+min\{\epsilon, \delta\}$, teremos 
+
+$$\frac{|f(x)-f(y)|}{|x-y|} < \frac{\epsilon}{|x-y|} < \frac{\epsilon}{m}
+\Rightarrow |f(x)-f(y)| < \lambda |x-y|$$
+
+onde $\lambda(\epsilon) = \frac{\epsilon}{m}$. Por fim, temos a
+desigualdade 
+
+
+$$|f(x)|-|f(y)| \leq |f(x)-f(y)| < \lambda |x-y|\Rightarrow |f(x)| <
+\lambda |x-y| + |f(y)|$$
+
+Como esta desigualdade é geral, vamos aplicá-la para $y=0$ e $x$ satisfazendo
+a construção anterior, assim teremos $|f(x)| < \lambda(\epsilon) x + k$, onde
+$k=|f(0)|>0$. Note que aplicamos a construção para o intervalo $|x - 0| <
+\epsilon$. Realizaremos a mesma construção expandindo o intervalo para $x_1 > x$
+e mantendo $y=0$. Note que para cada $x$ teremos um $\epsilon_x$ diferente, e
+vamos iteradamente colecionando esses valores no conjunto $E$,
+consequentemten esse conjunto tem um valor mínimo, que vamos chamar de
+$\epsilon_m$. Portanto a desigualdade $|f(x)| < \lambda(\epsilon) x +
+k$.
+
+\textbf{Questão 2:} Seja $E$ um $\mathbb K$-espaço vetorial e $f \in L(E)$. Para todo $x \in E$ denotamos $P_x$ o polinômio mônico em $\mathbb K[X]$ com menor
+grau tal que $P_x(f)(x)=0$ e definimos $E_x := \{P(f)(x): P \in \mathbb
+K[X]\}$. Mostre que:
+
+\begin{enumerate}[label=(\alph*)]
+  \item Para todo $x \in E$, $P_x$ existe e é único. Além disso, se $P(f)(x)=0$
+  com $P \in \mathbb K[X]$, então $P_x|P$: Note que $E_x$ é um espaço vetorial,
+  pois $0 \in E_x$, e $\forall \; \lambda \in \mathbb K$ temos $\lambda P + Q
+  \in \mathbb K[X] \Rightarrow \lambda P(f)(x) + Q(f)(x)
+  \in E_x$. Com isso podemos escrever $P_x(f)(x) = 0 = \sum_{i = 0}^{n}
+  a_if^i(x) \Rightarrow f^n(x) =a_{n-1}f^{n-1}(x) + \dots +a_0$, indicando que $f^j$ com $j\geq n$
+  será escrito como combinção linear dos elementos do conjunto $\{1, f(x),
+  \dots, f^{n-1}(x)\}$, consequentemente $E_x = [1, f(x), \dots, f^{n-1}(x)]$.
+  Supondo que existam dois mônicos $P_x, Q_x$, então $P_x(f) = Q_x(f) = 0
+  \Rightarrow P_x(f) - Q_x(f) = \sum_i p_i(f)(x) - q_i(f)(x) = 0 \iff p_i =
+  q_i$, pois os coeficientes dos polinômios não são todos nulos, então devem
+  ser iguais. Portanto $P_x = Q_x$. Finalmente, seja $P(X) \in \mathbb K[X]$ tal
+  que $P(f)(x)=0 $, então podemos escrever 
+  
+	$$P(f)(x) = (f - \lambda_n)^{m_n}\dots(f - \lambda_0)^{n_0}(x),$$ 
+  e analogamente, 
+  
+  $$P_x(f)(x) = (f - \lambda_n)^{k_n}\dots(f - \lambda_0)^{k_0}(x).$$
+  
+  Como $P_x$ é mônico, então $deg(P) > deg(P_x)$, portanto $P(f)(x) =
+  q(f)(x)P_x(f)(x) + r(f)(x)$ com $deg(r) < deg(P_x)$, pelo algoritmo de divisão
+  de polinômios. Como $P(f)(x) =0 \Rightarrow r(x) = 0$, mas o $P_x$ é o
+  polinômio de menor grau tal que anula $f$, então $r=0$, portanto $P(X) =
+  q(X)P_x(X)$.
+  
+  \item Veja a construção do primeiro item.
+  
+  \item 
+\end{enumerate}
+
+\subsection{Parte II}
+
+\textbf{Questão 1 (d):} Sejam $(a_n), (b_n)$ sequências de reais positivos, tais 
+que $\lim \limits_{n \to \infty} \frac{a_n}{b_n} =  c \in \mathbb{R}^{+\infty}$
+\begin{enumerate}[label=(\alph*)]
+  	\item (FALSO) Se $\sum b_n$ converge então $c \leq 1$ é condição necessário
+  para a convergência de $\sum b_n$:
+pois tomando $b_n = \frac{1}{n^3}$ e $a_n = \frac{1}{n^2}$, são termos gerais de duas series convergentes, mas $\lim \frac{a_n}{b_n} = \infty$
+
+  	\item (FALSO) Se $\sum a_n$ converge e $c = 0$, então $\sum b_n$ diverge:
+  pois tomando agora $a_n = \frac{1}{n^3}$ e $b_n = \frac{1}{n^2}$, são termos gerais de duas series convergentes, mas $\lim \frac{a_n}{b_n} = 0$ e ambas convergem
+
+	\item (FALSO) Se $c = +\infty$, então $\sum a_n$ diverge: analogamente ao
+  primeiro item
+
+\end{enumerate}
+
+
+\textcolor{red}{\textbf{Questão 3 (c):}} Considere a função 
+
+$$ f_p(x)= 
+\left\{
+\begin{array}{cc}
+      x^p sen(\frac{1}{x}) & , x\neq 0 \\
+      0 & , x =0
+\end{array} 
+\right.
+onde \; p \in \mathbb{R}
+$$
+
+Sejam $A = \{p \in \mathbb{R}: f \in C^0\}$ e $B = \{p \in \mathbb{R}: f \in
+C^1\}$. Indique qual das alternativas é verdadeira.
+
+Vejamos que:
+$$f'(x) = px^{p-1}sen(1/x) + x^{p-2}cos(1/x),$$
+
+o que implica que para termos a diferenciabilidade, devemos ter $p-1 \geq 0
+\Rightarrow B = [1, \infty)$. E para que $f$ seja contínua, devemos ter $ p > 0
+\Rightarrow A = (0, \infty)$.
+
+\begin{enumerate}[label=(\alph*)]
+  \item (FALSO) $A \backslash B = \emptyset $: pois $A \backslash B = (0,1)$
+  
+  \item (FALSO) $\frac{1}{\pi} \notin A \backslash B$: vide item anterior
+  
+  \item (VERDADE) $A \cap B$ não é aberto nem fechado: pois $A \cap B = (0,1]$
+  
+  \item (FALSO) $\sqrt{2} \in A \backslash B$: pois $A \backslash B = (0,1)$.
+\end{enumerate}
+
+
+\textbf{Questão 4 (d):} Considere a sequência de funções $(f_n), \; f_n: [0,2]
+\to \mathbb R$ dadas por $f_n(x) = \frac{x^n}{1+x^n}$. Defina $f(x) := \lim_{n
+\to \infty} = f_n(x)$ quando esse limite existir. Considere as funções:
+
+\begin{enumerate}
+  	\item (VERDADEIRO) $f$ está bem-definido em $[0,2]$ e é descontínua: pois
+  $\lim f_n(x) = f(x)$ onde $f(x) = 0, x \in [0,2)$ e $f(x) = 1, x = 2$
+  
+	\item (FALSO) $(f_n) \to f$ uniformemente: note que tomando $x=2$, $\epsilon =
+  1/2^n$ e $|f_n(x) - f(x)| = |\frac{2^n}{1+2^n} - 1| = |\frac{1}{1+2^n} | < \frac{1}{2^n} = \epsilon$. Agora,
+fazendo $x=1$ temos $|f_n(x) - f(x)| = |\frac{1^n}{1+1^n} - 0| = 1 > \epsilon$.
+Portando, temos um $\epsilon> 0$ que não vale para todos os pontos do intervalo,
+consequentemente, não é uniformemente convergente.
+
+	\item (VERDADE) $\lim \limits_{n \to \infty} \int_{[0,2]} f_n(x) = \int_{[0,2]}
+	f(x)$: todas $f_n$ são contínua e integráveis, então as restrições das funções
+	ao intervalo $[0,2)$ também o serão, o que nos permite escrever $\int_{[0,2)}
+	f(x) = \int_{[0,2]}f(x) $, e podemos notar que essas restrições convergem
+	uniformemente para $F(x) = 0$, então vale o teorema de integração de sequencias
+	de funções uniformemente convergentes. Assim, $\lim \limits_{n \to \infty}
+\int_{[0,2)} f_n(x) = \int_{[0,2)} \lim \limits_{n \to \infty} f_n(x) =
+\int_{[0,2)} f(x) = \int_{[0,2]} f(x)$, como desejávamos.
+
+\end{enumerate}
+
+Indique a opção correta:
+
+\begin{enumerate}[label=(\alph*)]
+  \item Apenas a afirmação (1) é verdadeira
+  \item Apenas a afirmação (2) é verdadeira
+  \item Apenas a afirmação (1) é falsa
+  \item Apenas a afirmação (2) é falsa
+\end{enumerate}
+
+
+\textbf{Questão 7 (a)}: Seja $a_n \neq 0$ uma sequência crescente e limitada de
+números reais, então:
+\begin{enumerate}
+  	\item (VERDADE) A sequência Se $(a_n)$ é convergente: sabemos que toda 
+  	sequência monótona limitada é convergente, portanto $(a_n)$ converge.
+  	
+  	\item \textcolor{red}{(VERDADE)} $\lim \sup a_n = \lim \inf
+  	a_n$: pois os limites superiores e inferios devem coindidir no caso de sequências convergentes.
+  	
+	\item (FALSO) A série $\sum 1/a_n$ diverge: pois fazendo $b_n = 1/a_n$ é uma
+	série limitada decrescente, portanto convergente.
+	
+	\item (VERDADE) Para qualquer $n \in \mathbb{N}$ e qualquer $\epsilon >0 $
+	existe $n \leq m \leq 2n$ tal que $a_m-a_n \leq \epsilon$: pois se a sequência
+	é de convergente, então ela é de Cauchy.
+
+\end{enumerate}
+
+Quantas delas são falsas?
+
+\begin{enumerate}[label=(\alph*)]
+  \item Uma
+  \item Duas
+  \item Três
+  \item Nenhuma
+  \item Todas são falsas
+\end{enumerate}
+
+\textbf{Questão 14 (e)}: $\sum \limits_{n \geq 1} \frac{1}{n^2} =
+\frac{\pi^2}{6}$, então $\sum \limits_{n \geq 0} \frac{1}{(3n+1)^2} +
+\frac{1}{(3n+2)^2}$:
+
+Note que 
+
+$$\sum \limits_{n \geq 0} \frac{1}{(3n+1)^2} = 1 + 1/4 + 1/7 + 1/10 + + 1/13 +
+\dots$$
+
+$$\sum \limits_{n \geq 0} \frac{1}{(3n+2)^2} = 1/2 + 1/5 + 1/8 + 1/11 + + 1/14 +
+\dots$$
+
+e que nessa soma restam apenas os termos gerais que são multiplos de 3, então:
+
+$$\sum \limits_{n \geq 1} \frac{1}{n^2} = \sum \limits_{n \geq 0}
+\frac{1}{(3n+1)^2} + \sum \limits_{n \geq 0} \frac{1}{(3n+2)^2} + \sum \limits_{n \geq 1}
+\frac{1}{(3n)^2} $$
+
+portanto: 
+$$\sum \limits_{n \geq 0}
+\frac{1}{(3n+1)^2} + \sum \limits_{n \geq 0} \frac{1}{(3n+2)^2}  = \sum \limits_{n \geq 1} \frac{1}{n^2} - \sum \limits_{n \geq 1}
+\frac{1}{(3n)^2} = \frac{8}{9}\sum \limits_{n \geq 1} \frac{1}{n^2} =
+\frac{4\pi^2}{27}$$
+
+
+
+\end{document}
