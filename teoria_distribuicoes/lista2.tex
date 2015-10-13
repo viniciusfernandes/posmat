@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 2 para Entregar}
+	\author{Vinicius Fernades}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		\item Seja $X$ um subconjunto da reta, $\mathcal{L}(X)$ o conjunto das funções $f:X \to \mathbb{R}$ integráveis, $\sim$ a relação $f \sim g$ se, e somente se, o conjunto em que $f$ difere de $g$ possui medida nula, e $\ell^{p}$ o espaço formado pelas sequências $(x_n)_{n \in \mathbb{N}}$ tais que
+		
+		$$
+		\sum \limits_{j=1}^{\infty} |x_j|^{p} < \infty.
+		$$
+		
+		\begin{enumerate}
+			\item Mostre que $\sim$ é uma relação de equivalência.
+			
+			\textbf{Solução:} Sejam $f, g, h \in \mathcal{L}(X)$, então devemos mostrar a reflexividade, comutatividade e transitividade:
+			\begin{enumerate}
+				\item (\textit{Reflexividade}) Como $f$ é integrável, então o conjunto em $f(t) \neq f(t)$ é vazio, que tem medida nula, portanto $f \sim f$.
+				
+				\item (\textit{Comutatividade}) Supondo $f \sim g$, então $f(t) \neq g(t)$ em um conjunto de medida nula, mas $g(t) \neq f(t)$ nesse mesmo conjunto, portanto $g \sim f$. 
+				
+				\item (\textit{Transitividade}) Supondo $f \sim g$ e $g \sim h$, então sejam os conjuntos de medida nula $A=\{t \in X: f(t) \neq g(t)\}$ e $B=\{t \in X: g(t) \neq h(t)\}$, então: se $f = g \Rightarrow A=B$ e teremos que $f \sim h$. Caso exista um $t_0 \in X; f(t_0) = g(t_0)$ e $f(t_0) \neq h(t_0) \Rightarrow t_0 \in B$, mas caso  $f(t_0) \neq g(t_0)$ e $f(t_0) \neq h(t_0) \Rightarrow t_0 \in A$, assim, os ponto em que $f$ difere de $h$ estão em $A$ ou $B$, ou seja, $A\cup B=\{ t \in X: f(t) \neq h(t) \}$ é de medida nula e portanto $f \sim h$.  
+			\end{enumerate}
+			Portanto $\sim$ é uma relação de equivalência, como desejávamos. 
+			
+			
+			\item Mostre que $L_{p}(X) := \mathcal{L}(X)/\sim$ é um espaço vetorial
+			
+			\textbf{Solução:} Seja $f, g, h \in L_{p}(X)$ e $\lambda, \delta \in \mathbb{R}$. Sabemos que $\int_{X}f  + \int_{X} g = \int_{X}(f+g)$ pois a soma de funções integráveis é uma função integrável, portanto $f+g \in L_{p}(X)$. Então:
+				\begin{enumerate}
+					\item (\textit{Comutatividade}) Já vimos que $L_{p}(X)$ é fechado pela operação de adição, assim podemos supor que $f +g \in L_{p}(X)$, então 
+					$$
+					\int_{X}(f+g) = \int_{X}f+ \int_{X}g =  \int_{X}g+ \int_{X}f =
+					$$
+					$$
+					= \int_{X}(g+ f)  \Rightarrow f+g = g+f \in L_{p}(X)
+					$$
+					
+					\item (\textit{Associatividade}) Supondo $g+h \in L_{p}$
+					$$
+					\int_{X} (f+(g+h)) = \int_{X} f+ \int_{X}(g+h) = \int_{X} f+ \int_{X} g + \int_{X}h = 
+					$$
+					$$
+					=\int_{X} (f+g) +\int_{X} h = \int_{X}((f+g)+h) \Rightarrow f+(g+h)=(f+g)+h \in L_{p}(X)
+					$$
+					
+					\item (\textit{Elemento neutro}) Claro que a função identicamente nula $0 \in L_{p}(X) $, pois é integrável. Além disso $\int_{X}(0 + f) = \int_{X} f(t) \Rightarrow 0 + f = f$.
+					 
+					\item (\textit{Elemento inverso}) Sabemos que se $f \in L_{p}(X)$, então 
+					$$
+					\int_{X}(f + (-f)) = \int_{X} f +\int_{X}(-f)  = 0 \Rightarrow \int_{X}(-f) = - \int_{X}f, 
+					$$
+					portanto $-f \in L_{p}(X)$.
+					
+					\item $\lambda(\delta f) = (\lambda \delta) f \in L_{p}(X) $ pois  $\int_{X} \lambda(\delta f) = \int_{X} (\lambda\delta)f$ que é uma função integrável.
+					
+					\item (\textit{Distributividade}) Supondo $\lambda (f+g) \in L_{p}(X) $, então
+					$$
+					\int_{X} \lambda (f+g) = \int_{X} \lambda f+ \lambda g \Rightarrow \lambda (f+g)  = \lambda f + \lambda g \in L_{p}(X)
+					$$
+				\end{enumerate}
+				Conclusão: $L_{p}(X)$ é um espaço vetorial, como desejávamos.
+				
+				\item Mostre também que $(L_{p}(X), ||.||_{p}); p \geq 1$ é um espaço normado, onde
+					$$
+					||f||_{p} := \Big (\int_{X} |f(x)|^{p} \Big )^{1/p}
+					$$
+					\begin{enumerate}
+						\item $||f||_{p} \geq 0$, pois $|f(x)|^{p} \geq 0; \forall x \in X \Rightarrow \int_{X} |f(x)|^{p} \geq 0$, e $\forall p \geq 1$. Agora, $||f||_{p} = 0 \iff f \sim 0$. $(\Leftarrow)$ Suponha que $f \sim 0$, então $\int_{X} |f(x)|^{p} = \int_{X} 0 = 0 \Rightarrow ||f||_{p} = 0$. $(\Rightarrow)$ Supondo que $||f||_{p} = 0$, então por definição 
+						$$
+						\Big (\int_{X} |f(x)|^{p} \Big )^{1/p} = 0 \Rightarrow |f|^{p} =0 \in  L_{p}(X), 
+						$$
+						ou seja, $f$ difere da função nula apenas em um um conjunto de medida nula, isto é, $f = 0 \in  L_{p}(X)$.
+						
+						\item $||\lambda f||_{p} = \Big ( \int_{X} |\lambda f(x)|^{p} \Big )^{1/p} = \Big ( \int_{X} |\lambda|^{p}| f(x)|^{p} \Big )^{1/p} = |\lambda|||\lambda f||_{p}$.
+						
+						\item Vamos demonstrar a desigualdade de Minkowski, que é uma generalização da desiguldade triangular. Suponha a desigualdade de Holder $\int_{X} |f(x) g(x)| \leq ||f||_{p} ||g||_{q}$, onde $1/p + 1/q = 1$, então:
+						$$
+						||f+g||_{p}^{p} =\int_{X} |f(x) + g(x)|^{p} = \int_{X} |f(x) + g(x)||f(x) + g(x)|^{p-1} \leq \int_{X} (|f(x)| + |g(x)|)|f(x) + g(x)|^{p-1}
+						$$
+						$$
+						 = \int_{X} |f(x)||f(x) + g(x)|^{p-1} + \int_{X}|g(x)||f(x) + g(x)|^{p-1} \leq (||f||_{p} + ||g||_{p})\Big( \int_{X} |f(x) + g(x)|^{(p-1)q} \Big)^{1/q} = 
+						$$
+						$$
+						=(||f||_{p} + ||g||_{p})\Big( \int_{X} |f(x) + g(x)|^{p} \Big)^{-1+1/p} = (||f||_{p} + ||g||_{p})||f + g||_{p}^{p-1} \Rightarrow
+						$$
+						$$
+						\Rightarrow ||f+g||_{p} \leq ||f||_{p} + ||g||_{p}. 
+						$$
+						Que é a desigualdade triangular, portanto $||.||_{p}$ é uma norma, e como $L_{p}(X)$ é um espaço vetorial, como foi provado anteriormente, então $(L_{p}(X), ||.||_{p})$ é um espaço vetorial normado, como desejávamos.
+					\end{enumerate}
+					
+				\item (Desigualdade de Holder para sequências) Prove que se $1/p + 1/q = 1$ e $x, y \in \ell^{p}$, então:
+				$$
+				\sum \limits_{i=1}^{\infty} |x_{i}y_{i}| \leq \Big(\sum \limits_{i=1}^{\infty} |x_{i}|^{p}\Big)^{1/p} \Big(\sum \limits_{i=1}^{\infty}|y_{i}|^{q}\Big)^{1/q}.
+				$$
+				
+				\textbf{Solução:}
+				
+				\item Prove que $(\ell^{p}, ||.||_p)$ é um espaço normado, onde
+				$$
+				||x||_{p} := \Big(\sum \limits_{i=1}^{\infty} |x_{i}|^{p}\Big)^{1/p}
+				$$
+				
+				\textbf{Solução:} Seja a função $f: \ell^{p} \times \mathbb{R} \to \mathbb{R}$, tal que fixando $f_{x} := \mathbb{R} \to \mathbb{R}$ onde $f_{x}(t) := f(x, t)$. Então, definindo:
+				$$
+				f_{x}(t) := \left\{
+				\begin{array}{cc}
+				0, & t \notin [i, i+1)\\
+				x_{i}, & t \in [i, i+1) \\
+				\end{array}
+				\right.
+				$$
+				Note que $\forall x \in \ell^{p}$ temos que $f_{x}$ esta bem-definida. Afirmo que $f_{x} \in L_{p}(X)$. Com efeito, vejamos que pela definição da função degrau, a integral será reduzida a uma somatória nos intervalos $t \in [i, i+1)$: 
+				$$
+				||f||_{p} = \Big(\int_{X}|f_x(t)|^{p}\Big)^{1/p} = \Big(\sum \limits_{i=1}^{\infty}|x_i|^{p}\Big)^{1/p} = ||x||_{p} < \infty, 
+				$$
+				portanto $f_{x}$ é integrável (a menos de um conjunto de medida nula), com isso $f_{x} \in L_{p}(X)$, como desejávamos. Note que a função $||.||_{p}: \ell^{p} \to \mathbb{R}$ coincide com a norma $||.||_{p}: L^{p}(X) \to \mathbb{R}$ pelas equações anteriores, e como essa ultima é uma norma, então temos que $||.||_{p}: \ell^{p} \to \mathbb{R}$ também é uma norma. Vamos demonstrar agora que $\ell^{p}$ é um espaço vetorial. Pois bem, suponha que $x + \lambda y \in \ell^{p}$ com $\lambda \in \mathbb{R}$ temos
+				$$
+				f_{x + \lambda y }(t) := \left\{
+				\begin{array}{cc}
+				0, & t \notin [i, i+1)\\
+				x_{i} +\lambda y_{i} = f_{x}(t) + \lambda f_{y}(t), & t \in [i, i+1) \\
+				\end{array}
+				\right.,				
+				$$
+				ou seja, $f_{x + \lambda y } = f_{x} + \lambda f_{y } \in L_{p}(X)$ é um operador linear. Vejamos que é injetivo pois tomando sequências distintas $x, y \in \ell^{p}$ teremos $f_{x} = f_{y} \Rightarrow f_{x}(t) = f_{y}(t) \iff x_{i} = y_{i} \forall i \in \mathbb{N}, t \in \mathbb{R}$. Enfim, $f: \ell^{p} \to f(\ell^{p}) \subset L_{p}(X)$ é sobrejetora. Conclusão: $f$ é linear, injetora e sobrejetora sobre a imagem $f(\ell^{p})$, portanto um isomorfismo. Consequentemente, $\ell^{p}$ é isomorfo a um espaço vetorial, assim, é um espaço vetorial também.
+				
+				
+				
+				
+		\end{enumerate}
+		
+	\end{enumerate}
+		
+\end{document}
