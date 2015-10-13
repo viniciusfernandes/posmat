@@ -15,11 +15,9 @@
 	
 	\begin{enumerate}
 		\item Seja $X$ um subconjunto da reta, $\mathcal{L}(X)$ o conjunto das funções $f:X \to \mathbb{R}$ integráveis, $\sim$ a relação $f \sim g$ se, e somente se, o conjunto em que $f$ difere de $g$ possui medida nula, e $\ell^{p}$ o espaço formado pelas sequências $(x_n)_{n \in \mathbb{N}}$ tais que
-		
 		$$
 		\sum \limits_{j=1}^{\infty} |x_j|^{p} < \infty.
 		$$
-		
 		\begin{enumerate}
 			\item Mostre que $\sim$ é uma relação de equivalência.
 			
@@ -153,7 +151,7 @@
 		
 		\item A função $f:\mathbb{R} \to \mathbb{C}$ é dita ser periódica com período $T \neq 0$ se $f(x+T) = f(x), \forall x \in \mathbb{R} $. O conjunto de todas as funções periódicas de período $2\ell$ e de classe $C^{k}$ é denotado por $\mathcal{C}^{k}_{l}:=C^{k}([-\ell, \ell]; \mathbb{C})$. Para cada $k \in \mathbb{Z}$ e $f \in C^{0}([-\pi, \pi]; \mathbb{C})$, defina
 		$$
-		\mathcal{F}(k) = \frac{1}{2\pi}\int_{\pi}^{-\pi} f(x)e^{-ikx}dx
+		\hat{f}(k) = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x)e^{-ikx}dx
 		$$
 		
 		\begin{enumerate}
@@ -169,24 +167,46 @@
 			
 			\item Mostre que
 			$$
-			||\mathcal{F}|| \leq \frac{1}{2\pi}||f||_{L^{1}}\leq ||f||_{L^{\infty}},
+			||\hat{f}|| \leq \frac{1}{2\pi}||f||_{L^{1}}\leq ||f||_{L^{\infty}},
 			$$
-			e conclua que a sequência $\mathcal{F} := (f(k))_{k \in \mathbb{Z}}$ é um elemento de $\ell^{\infty}(\mathbb{Z})$.
+			e conclua que a sequência $\hat{f} := (\hat{f}(k))_{k \in \mathbb{Z}}$ é um elemento de $\ell^{\infty}(\mathbb{Z})$.
 			
-			\textbf{Solução:} Vamos definir $||\mathcal{F}||:= \sup_{k \in \mathbb{Z}}|\mathcal{F}(k)|$, então:
+			\textbf{Solução:} Vamos definir $||\hat{f}||:= \sup_{k \in \mathbb{Z}}|\hat{f}(k)|$, então:
 			
 			$$
-			|\mathcal{F}(k)| = \frac{1}{2\pi} \Big |\int_{\pi}^{-\pi} f(x)e^{-ikx}dx \Big | \leq \frac{1}{2\pi} \int_{\pi}^{-\pi} |f(x)|dx = \frac{1}{2\pi}||f||_{L^{1}} \Rightarrow  
+			|\hat{f}(k)| = \frac{1}{2\pi} \Big |\int_{-\pi}^{\pi} f(x)e^{-ikx}dx \Big | \leq \frac{1}{2\pi} \int_{-\pi}^{\pi} |f(x)|dx = \frac{1}{2\pi}||f||_{L^{1}} \Rightarrow  
 			$$
 			$$
-			\Rightarrow ||\mathcal{F}||:= \sup_{k \in \mathbb{Z}}|\mathcal{F}(k)| \leq \frac{1}{2\pi}||f||_{L^{1}}.
+			\Rightarrow ||\hat{f}||:= \sup_{k \in \mathbb{Z}}|\hat{f}(k)| \leq \frac{1}{2\pi}||f||_{L^{1}}.
 			$$
 			Contudo, temos uma segunda majoração
 			
 			$$
-			\frac{1}{2\pi}||f||_{L^{1}}= \frac{1}{2\pi} \int_{\pi}^{-\pi} |f(x)|dx \leq \frac{1}{2\pi} \int_{\pi}^{-\pi} \sup_{y \in \mathbb{R}}|f(y)|dx = 
+			\frac{1}{2\pi}||f||_{L^{1}}= \frac{1}{2\pi} \int_{-\pi}^{\pi} |f(x)|dx \leq \frac{1}{2\pi} \int_{-\pi}^{\pi} \sup_{y \in \mathbb{R}}|f(y)|dx = 
 			$$
+			$$
+			= \frac{\sup_{y \in \mathbb{R}}|f(y)|}{2\pi} \int_{-\pi}^{\pi} dx = ||f||_{L^{\infty}}.
+			$$
+			Por fim, temos a sequência de desigualdes desejada
 			
+			$$
+			||\hat{f}|| \leq \frac{1}{2\pi}||f||_{L^{1}}\leq ||f||_{L^{\infty}} < \infty.
+			$$
+			Sabemos que $\ell^{\infty}(\mathbb{Z})$ é o espaço das sequências indexadas pelos inteiros tais que, se $x = (x_{k})_{k \in \mathbb{Z}} \in \ell^{\infty}(\mathbb{Z})$ então $||x|| = \sup_{k \in \mathbb{Z}}|x_{k}| < \infty$. Mas observe que por definição $\hat{f} = (\hat{f}(k))_{k \in \mathbb{Z}}$ é uma sequência indexada por inteiros tal que $||\hat{f}|| <\infty$, portanto $\hat{f} \in \ell^{\infty}(\mathbb{Z})$, como desejávamos.
+			
+			\item Mostre que $\mathcal{F}: \mathcal{C}^{0}_{\pi} \to \ell^{\infty}(\mathbb{Z})$ definida por $\mathcal{F}(f) := \hat{f}$ é um operador linear limitado, chamado \textit{transformada de Fourier} da função $f$.
+			
+			\textbf{Solução:} Primeiramente, vamos mostrar a linearidade. Sejam $\lambda \in \mathbb{R}$ e $f, g \in \mathcal{C}^{0}_{\pi}$, então:
+			$$
+			\mathcal{F}(f+\lambda g)(k) = \widehat{f+\lambda g}(k) =  \frac{1}{2\pi}\int_{-\pi}^{\pi} (f(x)+\lambda g(x))e^{-ikx}dx = 
+			$$
+			$$
+			= \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x)e^{-ikx}dx + \lambda \frac{1}{2\pi}\int_{-\pi}^{\pi} g(x)e^{-ikx}dx = 
+			$$
+			$$
+			= \hat{f}(k) +\lambda \hat{g}(k) = \mathcal{F}(f)(k) + \lambda \mathcal{F}(g)(k),
+			$$
+			então $\mathcal{F}(f+\lambda g) = \mathcal{F}(f) + \lambda \mathcal{F}(g)$ e $\mathcal{F}$ é um operador linear.
 		\end{enumerate}
 		
 	\end{enumerate}
