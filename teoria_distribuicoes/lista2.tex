@@ -150,6 +150,45 @@
 				
 		\end{enumerate}
 		
+		
+		\item A função $f:\mathbb{R} \to \mathbb{C}$ é dita ser periódica com período $T \neq 0$ se $f(x+T) = f(x), \forall x \in \mathbb{R} $. O conjunto de todas as funções periódicas de período $2\ell$ e de classe $C^{k}$ é denotado por $\mathcal{C}^{k}_{l}:=C^{k}([-\ell, \ell]; \mathbb{C})$. Para cada $k \in \mathbb{Z}$ e $f \in C^{0}([-\pi, \pi]; \mathbb{C})$, defina
+		$$
+		\mathcal{F}(k) = \frac{1}{2\pi}\int_{\pi}^{-\pi} f(x)e^{-ikx}dx
+		$$
+		
+		\begin{enumerate}
+			\item Mostre que $(\mathcal{C}^{k}_{l}; ||.||_{\infty})$ (definido no enunciado) é um espaço de Banach, onde $||f||_{\infty} = \sup_{x \in \mathbb{R}}|f(x)|$.
+			
+			\textbf{Solução:} Primeiro vamos mostrar que é um espaço vetorial. Sabemos que o espaço da funções contínuas $C^{0}(\mathbb{R})$ é um espaço vetorial e como $\mathcal{C}^{k}_{l} \subset C^{0}(\mathbb{R})$, então resta-nos mostrar que é um subespaço vetorial, portanto, será um espaço vetorial.
+			
+			Note que o elemento neutro, que é a função identicamente nula, é sempre periódica, portanto $0 \in \mathcal{C}^{k}_{l}$. Sejam $f, g \in \mathcal{C}^{k}_{l}$ e $\lambda \in \mathbb{R}$, então $(f+\lambda g)(x +\ell) = f(x +\ell)+\lambda g(x +\ell) = f(x)+\lambda g(x)=(f+\lambda g)(x) \Rightarrow f+\lambda g \in  \mathcal{C}^{k}_{l}$. Portanto, $\mathcal{C}^{k}_{l}$ é um subespaço vetorial, isto é, um espaço vetorial. Já sabemos que $||.||_{\infty}:\mathcal{C}^{k}_{l} \to \mathbb{R}$ é uma norma, portanto $(\mathcal{C}^{k}_{l}; ||.||_{\infty})$ é um espaço normado. Resta-nos mostrar que é completo nessa norma, isto é, toda sequência de convergente tem seu limite contido nele. Primeiramente, mostramos na lista 1 que a convergencia na norma infinita é equivalente a convergencia uniforme, isto é, se uma sequência converge, então essa convergência é uniforme. Tome $(f_{n})_{n \in \mathbb{N}} \subset \mathcal{C}^{k}_{l}$ uma sequência convergente tal que $f_{n} \to f$. Sabemos que essa convergência é uniforme, e como é uma sequência de funções contínuas, então o limite é uma função contínua. Vamos mostrar que esse limite é uma função periódica. Pelos argumentos anteriores vale o limite 
+			$$
+			f(x + \ell) = \lim\limits_{n\to \infty} f_{n}(x + \ell) = \lim\limits_{n\to \infty} f_{n}(x ) = f(x),   
+			$$
+			portanto $f \in \mathcal{C}^{k}_{l}$, o que mostra que esse espaço é completo, como desejávamos.
+			
+			\item Mostre que
+			$$
+			||\mathcal{F}|| \leq \frac{1}{2\pi}||f||_{L^{1}}\leq ||f||_{L^{\infty}},
+			$$
+			e conclua que a sequência $\mathcal{F} := (f(k))_{k \in \mathbb{Z}}$ é um elemento de $\ell^{\infty}(\mathbb{Z})$.
+			
+			\textbf{Solução:} Vamos definir $||\mathcal{F}||:= \sup_{k \in \mathbb{Z}}|\mathcal{F}(k)|$, então:
+			
+			$$
+			|\mathcal{F}(k)| = \frac{1}{2\pi} \Big |\int_{\pi}^{-\pi} f(x)e^{-ikx}dx \Big | \leq \frac{1}{2\pi} \int_{\pi}^{-\pi} |f(x)|dx = \frac{1}{2\pi}||f||_{L^{1}} \Rightarrow  
+			$$
+			$$
+			\Rightarrow ||\mathcal{F}||:= \sup_{k \in \mathbb{Z}}|\mathcal{F}(k)| \leq \frac{1}{2\pi}||f||_{L^{1}}.
+			$$
+			Contudo, temos uma segunda majoração
+			
+			$$
+			\frac{1}{2\pi}||f||_{L^{1}}= \frac{1}{2\pi} \int_{\pi}^{-\pi} |f(x)|dx \leq \frac{1}{2\pi} \int_{\pi}^{-\pi} \sup_{y \in \mathbb{R}}|f(y)|dx = 
+			$$
+			
+		\end{enumerate}
+		
 	\end{enumerate}
 		
 \end{document}
