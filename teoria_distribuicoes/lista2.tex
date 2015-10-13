@@ -82,7 +82,7 @@
 						$$
 						ou seja, $f$ difere da função nula apenas em um um conjunto de medida nula, isto é, $f = 0 \in  L_{p}(X)$.
 						
-						\item $||\lambda f||_{p} = \Big ( \int_{X} |\lambda f(x)|^{p} \Big )^{1/p} = \Big ( \int_{X} |\lambda|^{p}| f(x)|^{p} \Big )^{1/p} = |\lambda|||\lambda f||_{p}$.
+						\item $||\lambda f||_{p} = \Big ( \int_{X} |\lambda f(x)|^{p} \Big )^{1/p} = \Big ( \int_{X} |\lambda|^{p}| f(x)|^{p} \Big )^{1/p} = |\lambda|||f||_{p}$.
 						
 						\item Vamos demonstrar a desigualdade de Minkowski, que é uma generalização da desiguldade triangular. Suponha a desigualdade de Holder $\int_{X} |f(x) g(x)| \leq ||f||_{p} ||g||_{q}$, onde $1/p + 1/q = 1$, então:
 						$$
@@ -121,20 +121,29 @@
 				\end{array}
 				\right.
 				$$
-				Note que $\forall x \in \ell^{p}$ temos que $f_{x}$ esta bem-definida. Afirmo que $f_{x} \in L_{p}(X)$. Com efeito, vejamos que pela definição da função degrau, a integral será reduzida a uma somatória nos intervalos $t \in [i, i+1)$: 
+				Note que $\forall x \in \ell^{p}$ temos que $x \mapsto f_{x}$ esta bem-definida. Afirmo que $f_{x} \in L_{p}(X)$. Com efeito, vejamos que pela definição da função degrau, a integral será reduzida a uma somatória nos intervalos $t \in [i, i+1)$: 
 				$$
-				||f||_{p} = \Big(\int_{X}|f_x(t)|^{p}\Big)^{1/p} = \Big(\sum \limits_{i=1}^{\infty}|x_i|^{p}\Big)^{1/p} = ||x||_{p} < \infty, 
+				||f_{x}||_{p} = \Big(\int_{X}|f_x(t)|^{p}\Big)^{1/p} = \Big(\sum \limits_{i=1}^{\infty}|x_i|^{p}\Big)^{1/p} = ||x||_{p} < \infty, 
 				$$
-				portanto $f_{x}$ é integrável (a menos de um conjunto de medida nula), com isso $f_{x} \in L_{p}(X)$, como desejávamos. Note que a função $||.||_{p}: \ell^{p} \to \mathbb{R}$ coincide com a norma $||.||_{p}: L^{p}(X) \to \mathbb{R}$ pelas equações anteriores, e como essa ultima é uma norma, então temos que $||.||_{p}: \ell^{p} \to \mathbb{R}$ também é uma norma. Vamos demonstrar agora que $\ell^{p}$ é um espaço vetorial. Pois bem, suponha que $x + \lambda y \in \ell^{p}$ com $\lambda \in \mathbb{R}$ temos
+				portanto $f_{x}$ é integrável (a menos de um conjunto de medida nula), com isso $f_{x} \in L_{p}(X)$, como desejávamos. Além disso, vejamos que $\forall x \in \ell^{p}$ temos $||x||_{p} = ||f_{x}||_{p}$ pelas equações anteriores, e como essa ultima é uma norma, então temos que $||.||_{p}: \ell^{p} \to \mathbb{R}$ também é uma norma. Vamos demonstrar agora que dado $\lambda \in \mathbb{R}$ e $x, y \in \ell^{p}$ então $x+\lambda y \in \ell^{p}$. Assim, como é uma norma:
+				$$
+				||x+\lambda y||_{p} \leq ||x||_{p} + |\lambda |||y||_{p} < \infty,
+				$$
+				pois $||x||_{p} < \infty$ e $||y||_{p} < \infty$, portanto $x+\lambda y \in \ell^{p}$.
+				
+				Vejamos que $x \mapsto f_{x}$ é um operador linear. Seja $x + \lambda y \in \ell^{p}$ com $\lambda \in \mathbb{R}$ temos
 				$$
 				f_{x + \lambda y }(t) := \left\{
 				\begin{array}{cc}
 				0, & t \notin [i, i+1)\\
 				x_{i} +\lambda y_{i} = f_{x}(t) + \lambda f_{y}(t), & t \in [i, i+1) \\
 				\end{array}
-				\right.,				
+				\right. \Rightarrow				
 				$$
-				ou seja, $f_{x + \lambda y } = f_{x} + \lambda f_{y } \in L_{p}(X)$ é um operador linear. Vejamos que é injetivo pois tomando sequências distintas $x, y \in \ell^{p}$ teremos $f_{x} = f_{y} \Rightarrow f_{x}(t) = f_{y}(t) \iff x_{i} = y_{i} \forall i \in \mathbb{N}, t \in \mathbb{R}$. Enfim, $f: \ell^{p} \to f(\ell^{p}) \subset L_{p}(X)$ é sobrejetora. Conclusão: $f$ é linear, injetora e sobrejetora sobre a imagem $f(\ell^{p})$, portanto um isomorfismo. Consequentemente, $\ell^{p}$ é isomorfo a um espaço vetorial, assim, é um espaço vetorial também.
+				$$
+				\Rightarrow f_{x + \lambda y }(t) := f_{x}(t) + \lambda f_{y}(t),
+				$$
+				ou seja, $f_{x + \lambda y } = f_{x} + \lambda f_{y } \in f(\ell^{p}) \subset L_{p}(X)$ que mostra que é um operador linear, além do mais $f(\ell^{p})$ é um subespaço vetorial de $L_{p}(X)$ pois $0 \in f(\ell^{p})$ e $\forall \lambda \in \mathbb{R}$ e $f_{x}, f_{y} \in \ell^{p}$ temos $f_{x} + \lambda f_{y } \in f(\ell^{p})$, como vimos anteriormente. É um operador injetivo pois tomando duas sequências $x, y \in \ell^{p}$ teremos $f_{x} = f_{y} \Rightarrow f_{x}(t) = f_{y}(t) \iff x_{i} = y_{i} \forall i \in \mathbb{N}, t \in \mathbb{R}$, isto é, $x=y$. Por fim, $f: \ell^{p} \to f(\ell^{p}) \subset L_{p}(X)$ é sobrejetora. Conclusão: $f$ é linear, injetora e sobrejetora sobre a imagem $f(\ell^{p})$, portanto um isomorfismo. Como, $\ell^{p}$ é isomorfo a um espaço vetorial, então é um espaço vetorial também, como desejávamos.
 				
 				
 				
