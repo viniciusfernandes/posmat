@@ -137,16 +137,32 @@
 				$$
 				com isso, calculando a integral do módulo dessa função:
 				$$
-				\int_{X} |s_{x}(t)| = \sum \limits_{i=1}^{\infty} |x_{i}|,
+				\int_{\mathbb{R}} |s_{x}(t)| = \sum \limits_{i=1}^{\infty} |x_{i}|,
 				$$
 				e voltando na desigualdade de Holder na forma integral,
 				$$
-				\int_{X}|s_{x}(t)||s_{y}(t)| \leq \Big (\int_{X}|s_{x}(t)|^{p} \Big )^{1/p}\Big (\int_{X}|s_{y}(t)|^{q} \Big )^{1/q}
+				\int_{\mathbb{R}}|s_{x}(t)||s_{y}(t)| \leq \Big (\int_{\mathbb{R}}|s_{x}(t)|^{p} \Big )^{1/p}\Big (\int_{\mathbb{R}}|s_{y}(t)|^{q} \Big )^{1/q}
 				$$
 				$$
 				\sum \limits_{i=1}^{\infty} |x_{i}||y_{i}| \leq \Big ( \sum \limits_{i=1}^{\infty} |x_{i}|^{p}\Big)^{1/p} \Big ( \sum \limits_{i=1}^{\infty} |y_{i}|^{q}\Big)^{1/q},
 				$$
 				como desejávamos. Essa desigualdade para séries é válida pois podemos representar por uma função degrau integrável qualquer que seja a série.
+				
+				\item (Desigualdade de Minkowski para sequências) Prove que se $x, y \in \ell^{p}$, então
+				$$
+				\Big( \sum \limits_{i=1}^{\infty}|x_{i}+y_{i}|^{p} \Big)^{1/p} \leq \Big( \sum \limits_{i=1}^{\infty}|x_{i}|^{p} \Big)^{1/p} + \Big( \sum \limits_{i=1}^{\infty}|y_{i}|^{p} \Big)^{1/p}.
+				$$
+				\textbf{Solução:} Em um dos itens anteriores provamos a desigualdade de Minkowski para funções integráveis na norma $||.||_{p}$, e agora vamos utilizar a construção anterior da função $s: \ell^{p} \to \mathbb{R}$ que associa uma sequência a um função degrau integrável nessa norma, e por fim, aplicaremos a desigualdade de Minkowski nessa função. Com efeito:
+				$$
+				||s_{x} + s_{y}||_{p} \leq 	||s_{x} ||_{p} + ||s_{y}||_{p} 
+				$$
+				$$
+				\Big( \int_{\mathbb{R}}|s_{x}(t)+s_{y}(t)|^{p} \Big)^{1/p} \leq \Big( \int_{\mathbb{R}}|s_{x}(t)|^{p} \Big)^{1/p}+\Big( \int_{\mathbb{R}}|s_{y}(t)|^{p} \Big)^{1/p}  
+				$$
+				$$
+				\Big( \sum \limits_{i=1}^{\infty}|x_{i}+y_{i}|^{p} \Big)^{1/p} \leq \Big( \sum \limits_{i=1}^{\infty}|x_{i}|^{p} \Big)^{1/p} + \Big( \sum \limits_{i=1}^{\infty}|y_{i}|^{p} \Big)^{1/p}.
+				$$
+				Onde a passagem da expressão integral para a somatória se deve ao fato de que cada $s_{x}, s_{y}$ é uma função degrau, do mesmo modo que fizemos no item anterior para a desigualdade de Holder. Portanto, temos a desigualdade de Minkowski para sequências.
 				
 				\item Prove que $(\ell^{p}, ||.||_p)$ é um espaço normado, onde
 				$$
@@ -185,9 +201,6 @@
 				\Rightarrow f_{x + \lambda y }(t) := f_{x}(t) + \lambda f_{y}(t),
 				$$
 				ou seja, $f_{x + \lambda y } = f_{x} + \lambda f_{y } \in f(\ell^{p}) \subset L_{p}(X)$ que mostra que é um operador linear, além do mais $f(\ell^{p})$ é um subespaço vetorial de $L_{p}(X)$ pois $0 \in f(\ell^{p})$ e $\forall \lambda \in \mathbb{R}$ e $f_{x}, f_{y} \in \ell^{p}$ temos $f_{x} + \lambda f_{y } \in f(\ell^{p})$, como vimos anteriormente. É um operador injetivo pois tomando duas sequências $x, y \in \ell^{p}$ teremos $f_{x} = f_{y} \Rightarrow f_{x}(t) = f_{y}(t) \iff x_{i} = y_{i} \forall i \in \mathbb{N}, t \in \mathbb{R}$, isto é, $x=y$. Por fim, $f: \ell^{p} \to f(\ell^{p}) \subset L_{p}(X)$ é sobrejetora. Conclusão: $f$ é linear, injetora e sobrejetora sobre a imagem $f(\ell^{p})$, portanto um isomorfismo. Como, $\ell^{p}$ é isomorfo a um espaço vetorial, então é um espaço vetorial também, como desejávamos.
-				
-				
-				
 				
 		\end{enumerate}
 		
