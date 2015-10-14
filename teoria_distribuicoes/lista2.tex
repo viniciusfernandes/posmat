@@ -88,7 +88,6 @@
 						
 						\item Vamos demonstrar a desigualdade de Minkowski, que é uma generalização da desiguldade triangular. Suponha a desigualdade de Holder $\int_{X} |f(x) g(x)| \leq ||f||_{p} ||g||_{q}$, onde $1/p + 1/q = 1$, então:
 						$$
-						\align 
 						||f+g||_{p}^{p} =\int_{X} |f(x) + g(x)|^{p} = \int_{X} |f(x) + g(x)||f(x) + g(x)|^{p-1} \leq \int_{X} (|f(x)| + |g(x)|)|f(x) + g(x)|^{p-1}
 						$$
 						$$
@@ -110,7 +109,44 @@
 				\sum \limits_{i=1}^{\infty} |x_{i}y_{i}| \leq \Big(\sum \limits_{i=1}^{\infty} |x_{i}|^{p}\Big)^{1/p} \Big(\sum \limits_{i=1}^{\infty}|y_{i}|^{q}\Big)^{1/q}.
 				$$
 				
-				\textbf{Solução:}
+				\textbf{Solução:} Vamos mostrar o caso em que temos a desigualde de Holder para o caso integral e particulizaremos esse resultado para as sequências. Definindo a função $f:\mathbb{R} \to  \mathbb{R}$ dada por $f(t) = t^{p}/p -t$, onde $p \in (1, \infty)$ e $1/p+1/q=1$, então encontremos um ponto de máximo de $f$. Derivando $f'(t) = t^{p-1} - 1 =0 \Rightarrow t=1$, e $f''(t) = (p-1)t^{p-2} >0, \;\forall t \in (0, \infty)$, isto é, $t=1$ é um ponto de mínimo de $f$. Note que $\forall t \geq 1 \; f(t) \geq 0 $ e $f'(t) >0$, então $f: [1, \infty) \to \mathbb{R}$ é não-decrescente, portanto $\forall t \in [1, \infty)$ teremos $f(1) \leq f(t)$ que substituindo as expressões, temos $1/p - 1\leq  t^{p}/p -t \Rightarrow t \leq t^{p}/p + 1/q$. Fazendo a seguinte mudança de variáveis $t = r/s^{q/p}$, e voltando na desiguldade anterior teremos a expressão $rs \leq r^{p}/p + s^{q}/q$ que é válida para quaisquer $r, s \geq 0$ e é denominada de \textit{desigualdade de Young}. Observemos que $\forall h, g : \mathbb{R} \to \mathbb{R}$ podemos definir $r=|h(x)|, s=|g(x)| \geq 0$, que inserindo na desigualdade de Young, é satisfeita imediatamente no caso em que $|h(x)|=|g(x)| = 0$, mas caso em que $|h(x)|, |g(x)| > 0$ definiremos 
+				$$
+				r=\frac{|h(x)|}{ \Big (\int_{X}|h(x)|^{p} \Big )^{1/p}}, \; 				s=\frac{|g(x)|}{ \Big (\int_{X}|g(x)|^{q} \Big )^{1/q}}
+				$$
+				
+				$$
+				\frac{|h(x)|}{ \Big (\int_{X}|h(x)|^{p} \Big )^{1/p}}. \frac{|g(x)|}{ \Big (\int_{X}|g(x)|^{q} \Big )^{1/q}} \leq \frac{|h(x)|^{p}}{p\Big (\int_{X}|h(x)|^{p} \Big )} + \frac{|g(x)|^{q}}{q\Big (\int_{X}|g(x)|^{q} \Big )},
+				$$
+				que integrando ambos os lados da desigualdade, teremos
+				$$
+				\frac{\int_{X}|h(x)||g(x)|}{ \Big (\int_{X}|h(x)|^{p} \Big )^{1/p} \Big (\int_{X}|g(x)|^{q} \Big )^{1/q}} \leq \frac{1}{p} + \frac{1}{q} = 1,
+				$$
+				portanto temos a desigualdade de Holder, como desejávamos:
+				$$
+				\int_{X}|h(x)||g(x)|\leq \Big (\int_{X}|h(x)|^{p} \Big )^{1/p}\Big (\int_{X}|g(x)|^{q} \Big )^{1/q} = ||h||_{p}||g||_{q}.
+				$$
+				
+				Agora temos condições de demonstrar a desigualdade de Holder para séries. Definindo a função $s: \ell^{p} \to \mathbb{R}$ dada por:
+				$$
+				s_{x}(t) := \left\{
+				\begin{array}{cc}
+				0, & t \notin [i, i+1)\\
+				x_{i}, & t \in [i, i+1) \\
+				\end{array}
+				\right.,
+				$$
+				com isso, calculando a integral do módulo dessa função:
+				$$
+				\int_{X} |s_{x}(t)| = \sum \limits_{i=1}^{\infty} |x_{i}|,
+				$$
+				e voltando na desigualdade de Holder na forma integral,
+				$$
+				\int_{X}|s_{x}(t)||s_{y}(t)| \leq \Big (\int_{X}|s_{x}(t)|^{p} \Big )^{1/p}\Big (\int_{X}|s_{y}(t)|^{q} \Big )^{1/q}
+				$$
+				$$
+				\sum \limits_{i=1}^{\infty} |x_{i}||y_{i}| \leq \Big ( \sum \limits_{i=1}^{\infty} |x_{i}|^{p}\Big)^{1/p} \Big ( \sum \limits_{i=1}^{\infty} |y_{i}|^{q}\Big)^{1/q},
+				$$
+				como desejávamos. Essa desigualdade para séries é válida pois podemos representar por uma função degrau integrável qualquer que seja a série.
 				
 				\item Prove que $(\ell^{p}, ||.||_p)$ é um espaço normado, onde
 				$$
