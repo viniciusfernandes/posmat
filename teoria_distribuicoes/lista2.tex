@@ -27,7 +27,7 @@
 				
 				\item (\textit{Comutatividade}) Supondo $f \sim g$, então $f(t) \neq g(t)$ em um conjunto de medida nula, mas $g(t) \neq f(t)$ nesse mesmo conjunto, portanto $g \sim f$. 
 				
-				\item (\textit{Transitividade}) Supondo $f \sim g$ e $g \sim h$, então sejam os conjuntos de medida nula $A=\{t \in X: f(t) \neq g(t)\}$ e $B=\{t \in X: g(t) \neq h(t)\}$, então: se $f = g \Rightarrow A=B$ e teremos que $f \sim h$. Caso exista um $t_0 \in X; f(t_0) = g(t_0)$ e $f(t_0) \neq h(t_0) \Rightarrow t_0 \in B$, mas caso  $f(t_0) \neq g(t_0)$ e $f(t_0) \neq h(t_0) \Rightarrow t_0 \in A$, assim, os ponto em que $f$ difere de $h$ estão em $A$ ou $B$, ou seja, $A\cup B=\{ t \in X: f(t) \neq h(t) \}$ é de medida nula e portanto $f \sim h$.  
+				\item (\textit{Transitividade}) Supondo $f \sim g$ e $g \sim h$, então sejam os conjuntos de medida nula $A=\{t \in X: f(t) \neq g(t)\}$ e $B=\{t \in X: g(t) \neq h(t)\}$. Vamos analisar os ponto em que $f$ difere de $h$, então suponhamos que exista $t_0 \in X; f(t_0) = g(t_0)$ e $f(t_0) \neq h(t_0) \Rightarrow t_0 \in B$, mas caso  $f(t_0) \neq g(t_0)$ e $f(t_0) \neq h(t_0) \Rightarrow t_0 \in A$, assim, os ponto em que $f$ difere de $h$ estão em $A$ ou $B$, ou seja, $A\cup B=\{ t \in X: f(t) \neq h(t) \}$ é de medida nula pois é a união finita de conjuntos com medida nula, e consequentemente $f \sim h$.  
 			\end{enumerate}
 			Portanto $\sim$ é uma relação de equivalência, como desejávamos. 
 			
@@ -52,7 +52,10 @@
 					=\int_{X} (f+g) +\int_{X} h = \int_{X}((f+g)+h) \Rightarrow f+(g+h)=(f+g)+h \in L_{p}(X)
 					$$
 					
-					\item (\textit{Elemento neutro}) Claro que a função identicamente nula $0 \in L_{p}(X) $, pois é integrável. Além disso $\int_{X}(0 + f) = \int_{X} f(t) \Rightarrow 0 + f = f$.
+					\item (\textit{Elemento neutro}) Claro que a função identicamente nula $0 \in L_{p}(X) $, pois é integrável. Além disso 
+					$$
+					\int_{X}(0 + f) = \int_{X} f = \int_{X}(f + 0) \Rightarrow 0 + f = f +0 = f.
+					$$
 					 
 					\item (\textit{Elemento inverso}) Sabemos que se $f \in L_{p}(X)$, então 
 					$$
@@ -73,21 +76,25 @@
 					$$
 					||f||_{p} := \Big (\int_{X} |f(x)|^{p} \Big )^{1/p}
 					$$
+				Sabemos que $L_{p}(X)$ é um espço vetorial, vamos mostrar que $||.||_{p}$ é uma função que satisfaz os axiomas de norma:
 					\begin{enumerate}
-						\item $||f||_{p} \geq 0$, pois $|f(x)|^{p} \geq 0; \forall x \in X \Rightarrow \int_{X} |f(x)|^{p} \geq 0$, e $\forall p \geq 1$. Agora, $||f||_{p} = 0 \iff f \sim 0$. $(\Leftarrow)$ Suponha que $f \sim 0$, então $\int_{X} |f(x)|^{p} = \int_{X} 0 = 0 \Rightarrow ||f||_{p} = 0$. $(\Rightarrow)$ Supondo que $||f||_{p} = 0$, então por definição 
+						\item $||f||_{p} \geq 0$, pois $|f(x)|^{p} \geq 0; \forall x \in X \Rightarrow \int_{X} |f(x)|^{p} \geq 0$, e $\forall p \geq 1$. Afirmo que, $||f||_{p} = 0 \iff f \sim 0$. Vejamos: $(\Leftarrow)$ Suponha que $f \sim 0$, então $\int_{X} |f(x)|^{p} = \int_{X} 0 = 0 \Rightarrow ||f||_{p} = 0$. $(\Rightarrow)$ Supondo que $||f||_{p} = 0$, então por definição 
 						$$
 						\Big (\int_{X} |f(x)|^{p} \Big )^{1/p} = 0 \Rightarrow |f|^{p} =0 \in  L_{p}(X), 
 						$$
-						ou seja, $f$ difere da função nula apenas em um um conjunto de medida nula, isto é, $f = 0 \in  L_{p}(X)$.
+						ou seja, $|f|^{p}$ difere da função nula apenas em um um conjunto de medida nula, isto é, $|f|=0 \Rightarrow f \sim 0 \in  L_{p}(X)$.
 						
 						\item $||\lambda f||_{p} = \Big ( \int_{X} |\lambda f(x)|^{p} \Big )^{1/p} = \Big ( \int_{X} |\lambda|^{p}| f(x)|^{p} \Big )^{1/p} = |\lambda|||f||_{p}$.
 						
 						\item Vamos demonstrar a desigualdade de Minkowski, que é uma generalização da desiguldade triangular. Suponha a desigualdade de Holder $\int_{X} |f(x) g(x)| \leq ||f||_{p} ||g||_{q}$, onde $1/p + 1/q = 1$, então:
 						$$
+						\align 
 						||f+g||_{p}^{p} =\int_{X} |f(x) + g(x)|^{p} = \int_{X} |f(x) + g(x)||f(x) + g(x)|^{p-1} \leq \int_{X} (|f(x)| + |g(x)|)|f(x) + g(x)|^{p-1}
 						$$
 						$$
-						 = \int_{X} |f(x)||f(x) + g(x)|^{p-1} + \int_{X}|g(x)||f(x) + g(x)|^{p-1} \leq (||f||_{p} + ||g||_{p})\Big( \int_{X} |f(x) + g(x)|^{(p-1)q} \Big)^{1/q} = 
+						 = \int_{X} |f(x)||f(x) + g(x)|^{p-1} + \int_{X}|g(x)||f(x) + g(x)|^{p-1} \leq
+						$$
+						$$ \leq \underbrace{||f||_{p} \Big( \int_{X} |f(x) + g(x)|^{(p-1)q} \Big)^{1/q}}_{Holder} + ||g||_{p} \Big( \int_{X} |f(x) + g(x)|^{(p-1)q} \Big)^{1/q}= 
 						$$
 						$$
 						=(||f||_{p} + ||g||_{p})\Big( \int_{X} |f(x) + g(x)|^{p} \Big)^{-1+1/p} = (||f||_{p} + ||g||_{p})||f + g||_{p}^{p-1} \Rightarrow
@@ -172,12 +179,11 @@
 			 
 			Já sabemos que $||.||_{\infty}:\mathcal{C}^{0} \to \mathbb{R}$ é uma norma, então sua restrição ao espaço $\mathcal{C}^{k}_{l} \subset \mathcal{C}^{0}$, também será uma norma, consequentemente, $(\mathcal{C}^{k}_{l}; ||.||_{\infty})$ é um espaço normado.
 			
-			Resta-nos mostrar que é completo nessa norma, isto é, toda sequência de Cauchy é convergente. 
+			Resta-nos mostrar que é completo nessa norma, isto é, toda sequência de Cauchy é convergente. Sabemos da lista 1 que $(C^{0}; ||.||_{\infty})$ é um espaço de Banach, então tome uma sequência convergente $(f_{n})_{n \in \mathbb{N}} \subset \mathcal{C}^{k}_{l} \cap C^{0}$, e como é Banach temos $f_{n} \to f \in C^{0}$. Se mostrarmos que $f$ é periódica, então $f \in \mathcal{C}^{k}_{l}$, e esse espaço será completo.
 			
-			
-			Primeiramente, mostramos na lista 1 que a convergencia na norma infinita é equivalente a convergencia uniforme, isto é, se uma sequência converge, então essa convergência é uniforme. Tome $(f_{n})_{n \in \mathbb{N}} \subset \mathcal{C}^{k}_{l}$ uma sequência convergente tal que $f_{n} \to f$. Sabemos que essa convergência é uniforme, e como é uma sequência de funções contínuas, então o limite é uma função contínua. Vamos mostrar que esse limite é uma função periódica. Pelos argumentos anteriores vale o limite 
+			Mostramos na lista 1 que a convergência na norma infinita é equivalente a convergencia uniforme, isto é, se uma sequência converge, então essa convergência é uniforme. Tome $(f_{n})_{n \in \mathbb{N}} \subset \mathcal{C}^{k}_{l} \cap C^{0}$ uma sequência convergente tal que $f_{n} \to f$. Sabemos que essa convergência é uniforme, e como é uma sequência de funções contínuas, então o limite é uma função contínua. Vamos mostrar que esse limite é uma função periódica. Pelos argumentos anteriores vale o limite $\forall x \in \mathbb{R}$ 
 			$$
-			f(x + \ell) = \lim\limits_{n\to \infty} f_{n}(x + \ell) = \lim\limits_{n\to \infty} f_{n}(x ) = f(x),   
+			f(x + 2\ell) = \lim\limits_{n\to \infty} f_{n}(x + 2\ell) = \lim\limits_{n\to \infty} f_{n}(x ) = f(x),
 			$$
 			portanto $f \in \mathcal{C}^{k}_{l}$, o que mostra que esse espaço é completo, como desejávamos.
 			
@@ -224,9 +230,17 @@
 			$$
 			então $\mathcal{F}(f+\lambda g) = \mathcal{F}(f) + \lambda \mathcal{F}(g)$ e $\mathcal{F}$ é um operador linear. Mostremos agora que $\mathcal{F}$ é limitado, assim
 			$$
-			||\mathcal{F}|| := \sup_{||f||_{\infty}=1} ||\mathcal{F}(f)|| = \sup_{||f||_{\infty}=1} ||\hat{f}|| \leq \sup_{||f||_{\infty}=1} ||f||_{L^{\infty}} < \infty,
+			||\mathcal{F}|| := \sup_{||f||_{\infty}=1} ||\mathcal{F}(f)|| = \sup_{||f||_{\infty}=1} ||\hat{f}|| \leq \sup_{||f||_{\infty}=1} ||f||_{L^{\infty}},
 			$$
-			sendo que a ultima desigualdade foi mostrada anteriormente, portanto $\mathcal{F}$ é limitado.
+			sendo que a ultima desigualdade foi mostrada anteriormente como sendo válida para qualquer $f \in \mathcal{C}^{k}_{l}$, então o conjunto $\{||f||_{L^{\infty}}: f \in \mathcal{C}^{k}_{l} \} \subset \mathbb{R} $ é limitado, portanto existe uma cota superior que chamaremos de $M \in \mathbb{R}$, assim:
+			$$
+			\sup\limits_{||f||_{\infty}=1} \{||f||_{L^{\infty}}: f \in \mathcal{C}^{k}_{l} \} \leq M,
+			$$
+			portanto,
+			$$
+			||\mathcal{F}|| \leq \sup_{||f||_{\infty}=1} ||f||_{L^{\infty}} \leq M.
+			$$
+			Assim, $\mathcal{F}$ é limitado, como desejávamos.
 			
 		\end{enumerate}
 		
