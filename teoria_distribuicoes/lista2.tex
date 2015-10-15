@@ -213,7 +213,7 @@
 		\begin{enumerate}
 			\item Mostre que $(\mathcal{C}^{k}_{l}; ||.||_{\infty})$ (definido no enunciado) é um espaço de Banach, onde $||f||_{\infty} = \sup_{x \in \mathbb{R}}|f(x)|$.
 			
-			\textbf{Solução:} Primeiro vamos mostrar que é um espaço vetorial. Sabemos que o espaço da funções contínuas $C^{0}(\mathbb{C})$ é um espaço vetorial e que $\mathcal{C}^{k}_{l} \subset C^{0}(\mathbb{C})$, então resta-nos mostrar que é um subespaço vetorial, portanto um espaço vetorial.
+			\textbf{Solução:} Primeiro vamos mostrar que é um espaço vetorial. Sabemos que o espaço da funções contínuas $C^{0}$ é um espaço vetorial e que $\mathcal{C}^{k}_{l} \subset C^{0}$, então resta-nos mostrar que é um subespaço vetorial, portanto um espaço vetorial.
 			
 			\begin{enumerate}
 				\item $0 \in \mathcal{C}^{k}_{l}$ pois o elemento neutro, que é a função identicamente nula, é sempre periódica.
@@ -228,13 +228,20 @@
 			 
 			Já sabemos que $||.||_{\infty}:\mathcal{C}^{0} \to \mathbb{R}$ é uma norma, então sua restrição ao espaço $\mathcal{C}^{k}_{l} \subset \mathcal{C}^{0}$, também será uma norma, consequentemente, $(\mathcal{C}^{k}_{l}; ||.||_{\infty})$ é um espaço normado.
 			
-			Resta-nos mostrar que é completo nessa norma, isto é, toda sequência de Cauchy é convergente. Sabemos da lista 1 que $(C^{0}; ||.||_{\infty})$ é um espaço de Banach, então tome uma sequência convergente $(f_{n})_{n \in \mathbb{N}} \subset \mathcal{C}^{k}_{l} \cap C^{0}$, e como é Banach temos $f_{n} \to f \in C^{0}$. Se mostrarmos que $f$ é periódica, então $f \in \mathcal{C}^{k}_{l}$, e esse espaço será completo.
+			Resta-nos mostrar que é completo nessa norma, isto é, toda sequência de Cauchy é convergente. Sabemos que $(C^{0}; ||.||_{\infty})$ é um espaço de Banach, então tome uma sequência de Cauchy $(f_{n})_{n \in \mathbb{N}} \subset \mathcal{C}^{k}_{l} \cap C^{0}$, e como $C^{0}$ é Banach, portanto é completo, temos $f_{n} \to f \in C^{0}$. Se mostrarmos que $f$ é periódica, então $f \in \mathcal{C}^{k}_{l}$, e esse espaço será completo.
 			
 			Mostramos na lista 1 que a convergência na norma infinita é equivalente a convergencia uniforme, isto é, se uma sequência converge, então essa convergência é uniforme. Tome $(f_{n})_{n \in \mathbb{N}} \subset \mathcal{C}^{k}_{l} \cap C^{0}$ uma sequência convergente tal que $f_{n} \to f$. Sabemos que essa convergência é uniforme, e como é uma sequência de funções contínuas, então o limite é uma função contínua. Vamos mostrar que esse limite é uma função periódica. Pelos argumentos anteriores vale o limite $\forall x \in \mathbb{R}$ 
 			$$
 			f(x + 2\ell) = \lim\limits_{n\to \infty} f_{n}(x + 2\ell) = \lim\limits_{n\to \infty} f_{n}(x ) = f(x),
 			$$
-			portanto $f \in \mathcal{C}^{k}_{l}$, o que mostra que esse espaço é completo, como desejávamos.
+			isto é, $f$ é uma função contínua e periódica, portanto $f \in \mathcal{C}^{0}_{l}$ . Para finalizar, devemos mostrar que $f$ é de $C^{k}$. Primeiro, notemos que ela é derivável, pois
+			$$
+			f'(x) := \lim_{\delta \to 0}\frac{f(x+\delta)- f(x)}{\delta} = \lim_{\delta \to 0}\lim_{n \to \infty} \frac{f_{n}(x+\delta)- f_{n}(x)}{\delta} =
+			$$
+			$$
+			= \lim_{n \to \infty} \lim_{\delta \to 0}\frac{f_{n}(x+\delta)- f_{n}(x)}{\delta} = \lim_{n \to \infty}f'_{n}(x) < \infty,
+			$$
+			onde comutamos os limites pois a sequência é uniformemente convergente, com isso a derivada de $f$ existe pois a sequência das derivadas é convergente. Como a sequência $(f'_{n})$ é uma sequência de funções contínuas e uniformemente convergente, então tem como limite $f'_{n} \to f'$ uma função contínua, isto é $f' \in C^{0}$. Repetindo esse procedimento para a sequência $(f^{(j)}_{n})$ de funções contínuas, concluiremos que $f^{(j)}_{n} \to f^{(j)} \in C^{0}$ para $1 \leq j \leq k$, portanto $f \in C^{k}$, como desejávamos.
 			
 			\item Mostre que
 			$$
