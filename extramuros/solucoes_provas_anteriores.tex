@@ -202,18 +202,25 @@ posto será 2.
 \frac{\int_{0}^{1+2h}  sen(x^2) dx}{(1+2h)^3} $, podemos afirmar que:
 
 Para valor de $|x| \ll 1$ podemos aproximar $sen(x) \approx x$, o que nos
-permite escrever $\lim \limits_{h \to -1/2}
-\frac{\int_{0}^{1+2h}  sen(x^2) dx}{(1+2h)^3} \approx \lim \limits_{h \to -1/2}
-\frac{\int_{0}^{1+2h}  x^2 dx}{(1+2h)^3} = \lim \limits_{h \to -1/2}
-\frac{1}{3(1+2h)^2} = +\infty$
+permite escrever 
+$$
+\lim \limits_{h \to -1/2}
+\frac{\int_{0}^{1+2h}  sen(x^2) dx}{(1+2h)^3} = \lim \limits_{h \to -1/2} 
+\frac{\int_{0}^{1+2h}  x^2 dx}{(1+2h)^3} + r(h) = \lim \limits_{h \to -1/2}
+\frac{x^{3}}{3(1+2h)^2} \Big|^{1+2h}_{0} = 1/3
+$$
 
 
 \textbf{Questao 10 (e):} Seja 
-$A = 
+$
+A = 
+\left(
 \begin{array}{cc}
       \frac{\sqrt{3}}{2} & \frac{-1}{2} \\
       \frac{1}{2} & \frac{\sqrt{3}}{2} 
-\end{array}$. Então $A^{2012}$:
+\end{array}
+\right)
+$. Então $A^{2012}$:
 
 Note que 
 $$A = 
@@ -344,7 +351,7 @@ então $|\mathbb{Z}_{p} \times \mathbb{Z}_{p}| = p^2$. Pelo teorema de Lagrange,
 	\item (VERDADE) Possui subgrupo de ordem prima
 \end{enumerate}
 
-\section{Prova 2014}
+\section{Prova 2013}
 \subsection{Parte I}
 \textcolor{red}{\textbf{Questão 1:}} Seja $f: [0,\infty) \to \mathbb R$ uma
 função uniformemente contínua. Mostre que existem constantes c, k tais que $|f(x)| \leq cx+k$.
@@ -414,7 +421,7 @@ K[X]\}$. Mostre que:
 que $\lim \limits_{n \to \infty} \frac{a_n}{b_n} =  c \in \mathbb{R}^{+\infty}$
 \begin{enumerate}[label=(\alph*)]
   	\item (FALSO) Se $\sum b_n$ converge então $c \leq 1$ é condição necessário
-  para a convergência de $\sum b_n$:
+  para a convergência de $\sum a_n$:
 pois tomando $b_n = \frac{1}{n^3}$ e $a_n = \frac{1}{n^2}$, são termos gerais de duas series convergentes, mas $\lim \frac{a_n}{b_n} = \infty$
 
   	\item (FALSO) Se $\sum a_n$ converge e $c = 0$, então $\sum b_n$ diverge:
@@ -461,11 +468,11 @@ o que implica que para termos a diferenciabilidade, devemos ter $p-1 \geq 0
 
 \textbf{Questão 4 (d):} Considere a sequência de funções $(f_n), \; f_n: [0,2]
 \to \mathbb R$ dadas por $f_n(x) = \frac{x^n}{1+x^n}$. Defina $f(x) := \lim_{n
-\to \infty} = f_n(x)$ quando esse limite existir. Considere as funções:
+\to \infty} f_n(x)$ quando esse limite existir. Considere as funções:
 
 \begin{enumerate}
   	\item (VERDADEIRO) $f$ está bem-definido em $[0,2]$ e é descontínua: pois
-  $\lim f_n(x) = f(x)$ onde $f(x) = 0, x \in [0,2)$ e $f(x) = 1, x = 2$
+  $\lim f_n(x) = f(x)$ onde $f(x) = 0, x \in [0,1), f(x) = 1/2, x= 1$ e $f(x) = \infty, x \in (1, 2]$
   
 	\item (FALSO) $(f_n) \to f$ uniformemente: note que tomando $x=2$, $\epsilon =
   1/2^n$ e $|f_n(x) - f(x)| = |\frac{2^n}{1+2^n} - 1| = |\frac{1}{1+2^n} | < \frac{1}{2^n} = \epsilon$. Agora,
@@ -473,7 +480,7 @@ fazendo $x=1$ temos $|f_n(x) - f(x)| = |\frac{1^n}{1+1^n} - 0| = 1 > \epsilon$.
 Portando, temos um $\epsilon> 0$ que não vale para todos os pontos do intervalo,
 consequentemente, não é uniformemente convergente.
 
-	\item (VERDADE) $\lim \limits_{n \to \infty} \int_{[0,2]} f_n(x) = \int_{[0,2]}
+	\item (FALSO) $\lim \limits_{n \to \infty} \int_{[0,2]} f_n(x) = \int_{[0,2]}
 	f(x)$: todas $f_n$ são contínua e integráveis, então as restrições das funções
 	ao intervalo $[0,2)$ também o serão, o que nos permite escrever $\int_{[0,2)}
 	f(x) = \int_{[0,2]}f(x) $, e podemos notar que essas restrições convergem
