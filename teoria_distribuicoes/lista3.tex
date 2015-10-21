@@ -16,29 +16,41 @@
 	\begin{enumerate}
 		\item[3.] \textbf{Solução:}
 		\begin{enumerate}
-			\item Devemos mostrar que $D\circ I = Id$, assim, pelo teorema fundamental do cálculo, temos que $\exists F \in C^{\infty}; \; F(x) = \int_{[0,x]}f(t)$ chamada de primitiva de $f \in C^{\infty}$ de modo que $\forall x \in \mathbb{R}; \; F'(x) = f(x)$. Note que $I(f)(x) = F(x)$, então $(D\circ I)(f)(x) = D(I(f))(x) = D(F)(x) = F'(x) = f(x) \Rightarrow D\circ I = Id$.
+			\item Devemos mostrar que $D\circ I = Id$. Pois bem: segundo o teorema fundamental do cálculo, para toda função $f  \in C^{0}$ temos que $\exists F \in C^{0}; $ tal que $ F(x) = \int_{[0,x]}f(t)$ além disso $F'(x) = f(x) \; \forall x \in \mathbb{R}$ e $F$ é chamada de primitiva de $f$. Assim podemos escrever $I(f)(x) = F(x)$, com isso $(D\circ I)(f)(x) = D(I(f))(x) = D(F)(x) = F'(x) = f(x) \Rightarrow D\circ I = Id$.
 			
-			\item Devemos mostrar que $I \circ D \neq Id$, pois bem, tomando $f \in C^{\infty}$ e pela definição temos $(I \circ D) (f)(x) = I(f')(x) := \int_{[0,x]}f'(t) = f(x)-f(0) \neq Id(f)(x)$.
+			\item Devemos mostrar que $I \circ D \neq Id$. Pois bem, tomando $f \in C^{\infty}$ e pela definição temos $(I \circ D) (f)(x) = I(f')(x) = \int_{[0,x]}f'(t) = f(x)-f(0) \neq Id(f)(x)$.
 			
 			\item Determinando agora:
 				\begin{enumerate}
-					\item O núcleo $N(D)=\{f \in C^{\infty}: D(f)=0 \}$, assim $\forall x  \in \mathbb{R}; D(f)(x) := f'(x) =0 \Rightarrow f = f_{0} \in \mathbb{R}$, pois isso indica que, independente do ponto em que esteja sendo avaliada, a função não pode variar.
+					\item O núcleo do operador $D$ é dado por $N(D)=\{f \in C^{\infty}: D(f)=0 \}$, assim $\forall x  \in \mathbb{R}$ temos que $D(f)(x) = f'(x) =0 \Rightarrow f = f_{0} \in C^{\infty}$, pois essa é uma caracterização de função constante. Portanto $N(D)$ é o conjunto das funções constantes.
 					
-					\item O núcleo $N(I)=\{f \in C^{\infty}: I(f)=0 \}$, assim $\forall x  \in \mathbb{R}; I(f)(x) := \int_{[0,x]}f(t) =0 \Rightarrow f = 0 \in \mathbb{R}$, pois isso indica que a área sob o gráfico da função deve ser nula para todos os intervalos em que a função esteja sendo avaliada, e como ela é contínua, ela deve ser identicamente nula.
+					\item O núcleo do operador $I$ é dado por $N(I)=\{f \in C^{\infty}: I(f)=0 \}$, assim $\forall x  \in \mathbb{R}$ temos que $I(f)(x) = \int_{[0,x]}f(t) =0$ e como essa condição deve valer para todos $x \in \mathbb{R}$, então $f = 0 \in C^{\infty}$. Portanto $N(I) = \{0\}$.
 					
-					\item O núcleo $N(I\circ D)=\{f \in C^{\infty}: (I\circ D)(f)=0 \}$, assim $\forall x  \in \mathbb{R}; (I\circ D)(f)(x) = \int_{[0,x]}f'(t) = f(x) - f(0) = 0 \Rightarrow f(x) = f(0) \in \mathbb{R}$, é novamente uma função constante.
+					\item O núcleo do operador $I$ é dado por $N(I\circ D)=\{f \in C^{\infty}: (I\circ D)(f)=0 \}$, assim $\forall x  \in \mathbb{R}$ temos que $ (I\circ D)(f)(x) = \int_{[0,x]}f'(t) = f(x) - f(0) = 0 \Rightarrow f(x) = f(0) \in \mathbb{R}$. Como essa condição deve valer para todos $x \in \mathbb{R}$, então $f$ função constante. Portanto $N(D)$ é o conjunto das funções constantes.
 				\end{enumerate}
 		\end{enumerate}
 		
 		\item[4.] \textbf{Solução:}
 			\begin{enumerate}
-				\item Devemos mostrar que $||.||_{W^{1,p}(\Omega)}$ satisfaz os axiomas de norma. Tomando $f, g \in W^{1,p}(\Omega)$, por simplicidade omitiremos a notação do domínio $\Omega$ das normas:
+				\item Devemos mostrar que $||.||_{W^{1,p}(\Omega)}$ satisfaz os axiomas de norma. Por simplicidade omitiremos a notação do domínio $\Omega$ que ficará subentendida. Sejam $f, g \in W^{1,p}$, então:
 				\begin{enumerate}
-					\item $||f||_{W^{1,p}} := ||f||_{L^{p}} + ||f'||_{L^{p}} \geq 0$, pelo fato de que $||f||_{L^{p}}, ||f'||_{L^{p}} \geq 0$ pois $||.||_{L^{p}}$ é uma norma, com já foi demonstrado em exercícios anteiores.
+					\item Sabemos que  $||f||_{L^{p}}, ||f'||_{L^{p}} \geq 0$ pois $||.||_{L^{p}}$ é uma norma, com já foi demonstrado em exercícios anteiores, então $||f||_{W^{1,p}} = ||f||_{L^{p}} + ||f'||_{L^{p}} \geq 0$.
 					
-					\item $||f||_{W^{1,p}} = 0 \iff f = 0$, pelo fato de que $||f||_{L^{p}}, ||f'||_{L^{p}} = 0 \iff f=0 \;\ e \; f'=0$, portanto $f=0$.
+					\item Sabemos que $||f||_{L^{p}}, ||f'||_{L^{p}} = 0 \iff f=0 \;\ e \; f'=0$, pois $||.||_{L^{p}}$ é positiva definida, como já foi demonstrado em exercícios anteiores ,então $||f||_{W^{1,p}} = 0 \iff f = 0 e f' =0$, consequentemente $f$ deve ser constante e identicamente nula.
 					
-					\item $||f + g||_{W^{1,p}} =  ||f+g||_{L^{p}} + ||(f + g)'||_{L^{p}} \leq ||f||_{L^{p}}+||g||_{L^{p}}+||f'||_{L^{p}}+||g'||_{L^{p}} = ||f ||_{W^{1,p}}+|| g||_{W^{1,p}}$. Assim, $||f + g||_{W^{1,p}} \leq ||f ||_{W^{1,p}}+|| g||_{W^{1,p}}$.
+					\item Verificando a desigualdade triangular: 
+					$$
+					||f + g||_{W^{1,p}} =  ||f+g||_{L^{p}} + ||(f + g)'||_{L^{p}} \leq
+					$$
+					$$ \leq ||f||_{L^{p}}+||g||_{L^{p}}+||f'||_{L^{p}}+||g'||_{L^{p}} =  
+					$$
+					$$
+					=\underbrace{||f||_{L^{p}}+||f'||_{L^{p}}} + \underbrace{||g||_{L^{p}}+||g'||_{L^{p}}}
+					$$
+					$$
+					||f ||_{W^{1,p}}+|| g||_{W^{1,p}}.
+					$$ 
+					Assim, $||f + g||_{W^{1,p}} \leq ||f ||_{W^{1,p}}+|| g||_{W^{1,p}}$
 					
 				\end{enumerate}
 				Portanto, $||. ||_{W^{1,p}}: W^{1,p} \to \mathbb{R}$ é uma norma.
