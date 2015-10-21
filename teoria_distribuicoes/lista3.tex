@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 2 para Entregar}
+	\author{Vinicius Fernades}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		\item[3.] \textbf{Solução:}
+		\begin{enumerate}
+			\item Devemos mostrar que $D\circ I = Id$, assim, pelo teorema fundamental do cálculo, temos que $\exists F \in C^{\infty}; \; F(x) = \int_{[0,x]}f(t)$ chamada de primitiva de $f \in C^{\infty}$ de modo que $\forall x \in \mathbb{R}; \; F'(x) = f(x)$. Note que $I(f)(x) = F(x)$, então $(D\circ I)(f)(x) = D(I(f))(x) = D(F)(x) = F'(x) = f(x) \Rightarrow D\circ I = Id$.
+			
+			\item Devemos mostrar que $I \circ D \neq Id$, pois bem, tomando $f \in C^{\infty}$ e pela definição temos $(I \circ D) (f)(x) = I(f')(x) := \int_{[0,x]}f'(t) = f(x)-f(0) \neq Id(f)(x)$.
+			
+			\item Determinando agora:
+				\begin{enumerate}
+					\item O núcleo $N(D)=\{f \in C^{\infty}: D(f)=0 \}$, assim $\forall x  \in \mathbb{R}; D(f)(x) := f'(x) =0 \Rightarrow f = f_{0} \in \mathbb{R}$, pois isso indica que, independente do ponto em que esteja sendo avaliada, a função não pode variar.
+					
+					\item O núcleo $N(I)=\{f \in C^{\infty}: I(f)=0 \}$, assim $\forall x  \in \mathbb{R}; I(f)(x) := \int_{[0,x]}f(t) =0 \Rightarrow f = 0 \in \mathbb{R}$, pois isso indica que a área sob o gráfico da função deve ser nula para todos os intervalos em que a função esteja sendo avaliada, e como ela é contínua, ela deve ser identicamente nula.
+					
+					\item O núcleo $N(I\circ D)=\{f \in C^{\infty}: (I\circ D)(f)=0 \}$, assim $\forall x  \in \mathbb{R}; (I\circ D)(f)(x) = \int_{[0,x]}f'(t) = f(x) - f(0) = 0 \Rightarrow f(x) = f(0) \in \mathbb{R}$, é novamente uma função constante.
+				\end{enumerate}
+		\end{enumerate}
+		
+		\item[4.] \textbf{Solução:}
+		
+		\item[5.] \textbf{Solução:}
+			\begin{enumerate}
+				\item Devemos mostrar que vale os axiomas de produto interno para $T: \mathcal{P}_{2}(\mathbb{R}) \times \mathcal{P}_{2}(\mathbb{R}) \to \mathbb{R}$, para isso tomemos em diante $f,g,h \in \mathcal{P}_{2}(\mathbb{R}), \lambda \in \mathbb{R}$:
+					\begin{enumerate}
+						\item \textit{(Comutatividade)} Assim: 
+						$$
+						T(f, g):= f(-1)g(-1) + f(0)g(0) + f(1)g(1) = g(-1)f(-1) + g(0)f(0) + g(1)f(1) = T(g, f).
+						$$
+						
+						\item \textit{(Bilinearidade)} Assim, temos a linearidade no primeiro parametro: 
+						$$
+						T(f+g, h) := (f+g)(-1)h(-1) +(f+g)(0)h(0)+(f+g)(1)h(1) =  
+						$$
+						$$
+						= f(-1)h(-1)+g(-1)h(-1) +f(0)h(0)+g(0)h(0)+f(1)h(1)+g(1)h(1)=
+						$$ 
+						$$
+						= \underbrace{f(-1)h(-1)f(0)h(0)+f(1)h(1)}+\underbrace{g(-1)h(-1) +g(0)h(0)+g(1)h(1)}=
+						$$
+						$$
+						= T(f, h) + T(g,h).
+						$$
+						Analogamente, temos a linearidade no segundo parametro 
+						$$
+						T(f, h+g) = T(h+g, f) = T(h, f) + T(g, f) = T(h, f) + T(g, f).
+						$$
+						
+						E por fim:
+						$$
+						T(f, \lambda g):= f(-1)(\lambda g)(-1) + f(0)(\lambda g)(0) + (\lambda g)(1)(\lambda g)(1) =
+						$$
+						$$
+						=\lambda (f(-1)g(-1) + f(0)g(0) + g(1)g(1)) = \lambda T(f, g).
+						$$
+						E analogamente, 
+						$$
+						T(\lambda f, g) = T(g, \lambda f) = \lambda T(g,f) = \lambda T(f,g).
+						$$
+						
+						\item \textit{(Positividade)} Assim:
+						$$
+						T(f,f) := (f(-1))^{2} + (f(0))^{2}+ (f(1))^{2}>0.
+						$$
+						Portanto $T: \mathcal{P}_{2}(\mathbb{R}) \times \mathcal{P}_{2}(\mathbb{R}) \to \mathbb{R}$ é um produto interno.
+					\end{enumerate}
+					
+					\item Assumindo que $M = Span\{x^{2}+a\}$ com $a \in \mathbb{R}$, vamos determinar os elementos de $\mathcal{P}_{2}(\mathbb{R})$ ortogonais a $M$, assim, tomando $p \in \mathcal{P}_{2}(\mathbb{R})$, devemos ter $T(p, x^{2}+a)=0$. Note que temos $\mathcal{P}_{2}(\mathbb{R}) = Span\{1, x, x^{2}\}$, assim vamos determinar quais desses elementos da base são ortogonais a $M$:
+					$$
+					T(1, x^{2}+a) = (1+a)+(a)+(1+a)= 3a+2 \neq 0,
+					$$
+					$$
+					T(x, x^{2}+a) = -(1+a)+0+(1+a)=0,
+					$$
+					$$
+					T(x^{2}, x^{2}+a) = (1+a)+0+(1+a) \neq 0,
+					$$
+					então temos que o espaço gerado pelo elemento $x$ da base é ortogonal a $M$, isto é, $Span\{x\}\perp M$. Portanto, se $T(p, x^{2}+a)$, teremos $p(x)=\lambda x, \lambda \in \mathbb{R}$.
+				
+					
+			\end{enumerate}
+		
+		
+	\end{enumerate}
+		
+\end{document}
