@@ -16,11 +16,11 @@
 \begin{enumerate}
 	\item \textbf{Solução:} Sejam $K, H \subseteq G \neq \emptyset$. Como $K,H$ são subgrupos, então o elemento neutro $e \in K, e\in H \Rightarrow e \in K \cap H$. Tomando $a, b \in K \cap H$, assim $ab^{-1} \in K$ e $ab^{-1} \in H$ pois ambos são subgrupos, portanto $ab^{-1} \in K \cap H$ e $K \cap H$ é um subgrupo, como desejávamos.
 	
-	\item \textbf{Solução:} Claro que $0 \in a\mathbb{Z}$, pois $0 = a.0 \in a\mathbb{Z}$. Tomando $x,y \in a\mathbb{Z}$, assim $\exists p,q \in \mathbb{Z}; \; x=ap, y=aq$, consequentemente, $x-y = ap - aq = a(p-q) \in a \mathbb{Z}$, portanto $a \mathbb{Z} \subset \mathbb{Z}$ é um subgrupo.
+	\item \textbf{Solução:} O elemento neutro $0 \in a\mathbb{Z}$, pois $0 = a.0 \in a\mathbb{Z}$. Tomando $x,y \in a\mathbb{Z}$, veremos que $x-y \in a\mathbb{Z}$. Com efeito: $\exists p,q \in \mathbb{Z}; \; x=ap, y=aq$, consequentemente, $x-y = ap - aq = a(p-q) \in a \mathbb{Z}$, portanto $a \mathbb{Z} \subset \mathbb{Z}$ é um subgrupo.
 	
-	Novamente, $0 \in a\mathbb{Z} + b\mathbb{Z}$, pois $0 = a.0 +b.0 \in a\mathbb{Z} + b\mathbb{Z}$. Tomando $x,y \in a\mathbb{Z} + b\mathbb{Z}$, assim $\exists p,q,r,s \in \mathbb{Z}; \; x=ap +bq, y=ar+bs$, então $x-y = ap +bq - (ar+bs) = a(p-r) + b(q-s) \in a\mathbb{Z} + b\mathbb{Z}$, portanto $a\mathbb{Z} + b\mathbb{Z} \subset \mathbb{Z}$ é um subgrupo. 
+	O elemento neutro $0 \in a\mathbb{Z} + b\mathbb{Z}$, pois $0 = a.0 +b.0 \in a\mathbb{Z} + b\mathbb{Z}$. Tomando $x,y \in a\mathbb{Z} + b\mathbb{Z}$, veremos que  $x-y \in a\mathbb{Z} + b\mathbb{Z}$. Com efeito: $\exists p,q,r,s \in \mathbb{Z}; \; x=ap +bq, y=ar+bs$, então $x-y = ap +bq - (ar+bs) = a(p-r) + b(q-s) \in a\mathbb{Z} + b\mathbb{Z}$, portanto $a\mathbb{Z} + b\mathbb{Z} \subset \mathbb{Z}$ é um subgrupo. 
 	
-	Para exibir o gerador de $a\mathbb{Z} + b\mathbb{Z}$ tome $d = mdc(a, b)$, isto é, $\exists \delta, \lambda \in \mathbb{Z}; \; a = \delta d, b = \lambda d$, então $\forall x \in a\mathbb{Z} + b\mathbb{Z}$ teremos $x= ap+bq = \delta dp +\lambda dq = d(\delta p +\lambda q) \Rightarrow a\mathbb{Z} + b\mathbb{Z} = <d>$ e $d$ é um gerador desse conjunto.
+	Para exibir o gerador de $a\mathbb{Z} + b\mathbb{Z}$ tome $d = mdc(a, b)$, isto é, $\exists \delta, \lambda \in \mathbb{Z}; \; a = \delta d, b = \lambda d$, então $\forall x \in a\mathbb{Z} + b\mathbb{Z}$ teremos $x= ap+bq = \delta dp +\lambda dq = d(\delta p +\lambda q)$, portanto $x = dn$, para algum $n \in \mathbb{Z}$, consequentemente, $a\mathbb{Z} + b\mathbb{Z} = <d>$ e $d$ é um gerador desse conjunto.
 	
 	\item \textbf{Solução:} Devemos verificar os axiomas de grupos para $(G^{\circ},*)$, isto é:
 		\begin{enumerate}
@@ -34,15 +34,15 @@
 		\end{enumerate}
 		Portanto $(G^{\circ}, *)$ é um grupo.
 		
-		Definindo $*_{g}:G\to G^{\circ}$ tal que $*_{g}(a) = g*a*g^{-1} = g^{-1}ag$. Vejamos que é um homomorfismo, pois 
+		Definindo $*_{g}:G\to G^{\circ}$ tal que $*_{g}(a) = g*a*g^{-1} = g^{-1}.a.g$, e vejamos que $*_{g}$ é um homomorfismo, pois 
 		$$
-		*_{g}(ab) = g*(ab)*g^{-1} = ((ab)g)*g^{-1} = g^{-1}(ab)g = g^{-1}agg^{-1}bg=
+		*_{g}(a.b) = g*(a.b)*g^{-1} = ((a.b).g)*g^{-1} = g^{-1}.(a.b).g = g^{-1}.a.g.g^{-1}.b.g=
 		$$ 
 		$$
-		= (g^{-1}ag)(g^{-1}bg) = *_{g}(a)*_{g}(b).
+		= (g^{-1}.a.g).(g^{-1}.b.g) = *_{g}(a)*_{g}(b).
 		$$
 		
-		Também é uma bijeção, pois tomando $a, b \in G$ temos $*_{g}(a) = g*(b) \Rightarrow g^{-1}.a.g = g^{-1}.b.g \Rightarrow a=b$ pela regra do cancelamento, portanto é injetora. Além disso, é sobrejetora pois a imagem $*_{g}(G) = G= G^{\circ}$, com isso temos uma bijeção. Conclusão: $*_{g}:G\to G^{\circ}$ é um isomomorfismo, como desejávamos.
+		Além disso, $*_{g}$ é uma bijeção, pois tomando $a, b \in G$ temos $*_{g}(a) = g*(b) \Rightarrow g^{-1}.a.g = g^{-1}.b.g \Rightarrow a=b$ pela regra do cancelamento, portanto é injetora. É uma sobrejeção pois a imagem $*_{g}(G) = G= G^{\circ}$, com isso temos uma bijeção. Conclusão: $*_{g}:G\to G^{\circ}$ é um isomomorfismo, como desejávamos.
 		
 		\item \textbf{Solução:} Devemos verificar os axiomas de grupos para $(G,*)$, isto é, $\forall a, b, d \in G; $ temos:
 		\begin{enumerate}
@@ -56,7 +56,7 @@
 			= (a.c^{-1}.b).c^{-1}.d = (a*b).c^{-1}.d = (a*b)*d.
 			$$
 			
-			\item Determinando o elemento $e' \in (G,*)$, devemos a equação $a*e' = a = a.c^{-1}.e'$ que pela regra do cancelamento teremos $e = c^{-1}.e' \iff e'=c$, onde utilizamos a hipótese de que $e \in (G,.)$ é o elemento neutro desse grupo. De fato, $\forall a \in (G,*)$ teremos $a*c = a.c^{-1}.c = a = c.c^{-1}.a = c*a$.
+			\item Uma condição para que o elementro neutro $e' \in (G,*)$, devemos a equação $a*e' = a = a.e = a.c^{-1}.e'$ que pela regra do cancelamento teremos $e = c^{-1}.e'$, e portanto $ e'=c$, onde utilizamos a hipótese de que $e \in (G,.)$ é o elemento neutro desse grupo. De fato, $\forall a \in (G,*)$ teremos $a*c = a.c^{-1}.c = a = c.c^{-1}.a = c*a$.
 			
 			\item Afirmo que $\forall a \in (G,*) \; \exists y \in (G,*); \; a*y = y*a = c$ (elemento neutro nesse grupo). Pois bem, temos a equação $a.c^{-1}.y = y.c^{-1}.a = c \Rightarrow y = c.a^{-1}.c$. De fato: 
 			$$
@@ -68,11 +68,11 @@
 			Portanto $(G,*)$ é um grupo, como desejávamos.
 		\end{enumerate}
 		
-		\item \textbf{Solução:} Sejam $G \neq \emptyset$ um grupo e $K,H \subseteq G$ subgrupos normais. Sabemos de um exercício anterior que $H \cap K \neq \emptyset$ é um subgrupo, então resta-nos mostrar que é normal, isto é, $\forall g \in G; g(H \cap K)g^{-1} = H \cap K$. Com efeito, a inclusão $H \cap K \subseteq g.(H \cap K ).g^{-1}$ é imediata pois basta tomar $g = e$, agora vamos mostrar $g.(H \cap K ).g^{-1}\subseteq H \cap K$.  Sejam $g.a.g^{-1} \in g.(H \cap K ).g^{-1}$ e $a \in H \cap K$, então temos $g.a.g^{-1} \in H, K$ pois ambos são normais, então $g.a.g^{-1} \in H \cap K \Rightarrow g.(H \cap K ).g^{-1} \subseteq H \cap K $. Portanto $g.(H \cap K ).g^{-1}= H \cap K$ e esse subgrupo é normal.
+		\item \textbf{Solução:} Sejam $G \neq \emptyset$ um grupo e $K,H \subseteq G$ subgrupos normais. Sabemos de um exercício anterior que $H \cap K \neq \emptyset$ é um subgrupo, então resta-nos mostrar que $H \cap K$ é normal, isto é, $\forall g \in G$ devemos ter $g(H \cap K)g^{-1} = H \cap K$. Com efeito: a inclusão $H \cap K \subseteq g.(H \cap K ).g^{-1}$ é imediata pois basta tomar $g = e$, agora vamos mostrar $g.(H \cap K ).g^{-1}\subseteq H \cap K$.  Sejam $g.a.g^{-1} \in g.(H \cap K ).g^{-1}$ e $a \in H \cap K$, então temos $g.a.g^{-1} \in H, K$ pois ambos são normais, então $g.a.g^{-1} \in H \cap K \Rightarrow g.(H \cap K ).g^{-1} \subseteq H \cap K $. Portanto $g.(H \cap K ).g^{-1}= H \cap K$ e esse subgrupo é normal.
 		
 		\item \textbf{Solução:} Fazendo $ab = aba^{7} = a(ba^{3})a^{4} = a(a^{3}b)a^{4} = a^{4}ba^{4} = a^{4}(ba^{3})a = a^{4}(a^{3}b)a = a^{7}ba = ba$, como desejávamos.
 		
-		\item \textbf{Solução:} Como foi definido, temos que $\varphi: U \to \mathbb{R}$ tal que $\varphi(A) = A_{11}^{2}$ e $A_{11} \neq 0$, então tomando $A, B \in U$ temos $\varphi(A.B) = (A_{11}B_{11})^{2} = A_{11}^{2}B_{11}^{2} = \varphi(A)\varphi(B)$, portanto é um homomorfismo. Note que se $\varphi(A)=1 \Rightarrow A \in Ker(\varphi)$, portanto $Ker(\varphi) =\{A \in U: A_{11} = 1\}$. Além disso, $\varphi(A)>0 \Rightarrow Im(\varphi) = \mathbb{R^{+}}$.
+		\item \textbf{Solução:} Como foi definido, temos que $\varphi: U \to \mathbb{R}$ tal que $\varphi(A) = A_{11}^{2}$ onde $A_{11} \neq 0$, então tomando $A, B \in U$ temos $\varphi(A.B) = (A_{11}B_{11})^{2} = A_{11}^{2}B_{11}^{2} = \varphi(A)\varphi(B)$, portanto é um homomorfismo. Note que se $\varphi(A)=1 \Rightarrow A \in Ker(\varphi)$, portanto $Ker(\varphi) =\{A \in U: A_{11} = 1\}$. Além disso, $\varphi(A)>0 \Rightarrow Im(\varphi) = \mathbb{R^{+}}$.
 		
 		\item \textbf{Solução:} Sabemos que $\mathbb{Z} = <1>$, então suponha que $f:\mathbb{Z} \to \mathbb{Z}$ seja um homomorfismo, tal que $f(1)=m$. Então,
 		$$
@@ -80,9 +80,9 @@
 		$$
 		Assim, para cada $m \in \mathbb{Z}$ temos um homomorfismo, portanto existe uma bijeção entre o conjunto de homomorfismos de $G$ e $\mathbb{Z}$.
 		
-		\item \textbf{Solução:} Supondo que $G_{1}, G_{2}$ e $Z_{1}, Z_{2}$ seus respectivos centros. Então $(G_{1}\times G_{2}, *)$ é um grupo tal que $(a, b), (c, d) \in G_{1}\times G_{2}$ temos $(a,b)*(c,d) := (a.c, b.d)$, assim $Z(G_{1}\times G_{2}) = \{(a, b) \in G_{1}\times G_{2}: (a, b)*(c, d) = (c, d)*(a, b), \forall (c, d) \in G_{1}\times G_{2}\}$, isto é, $(a, b)*(c,d)=(c,d)*(a, b) \iff (a.c, b.d) =(c.a, d.b)$, então $a \in Z_{1}, b \in Z_{2}$, portanto $(a,b) \in Z_{1} \times Z_{2}$, ou seja, $Z(G_{1}\times G_{2}) = Z_{1} \times Z_{2}$, como desejávamos.
+		\item \textbf{Solução:} Supondo que $G_{1}, G_{2}$ sejam grupos não-vazios e $Z_{1}, Z_{2}$ seus respectivos centros. Então $(G_{1}\times G_{2}, *)$ é um grupo tal que $(a, b), (c, d) \in G_{1}\times G_{2}$ temos $(a,b)*(c,d) := (a.c, b.d)$, assim $Z(G_{1}\times G_{2}) = \{(a, b) \in G_{1}\times G_{2}: (a, b)*(c, d) = (c, d)*(a, b), \forall (c, d) \in G_{1}\times G_{2}\}$, isto é, $(a, b)*(c,d)=(c,d)*(a, b) \iff (a.c, b.d) =(c.a, d.b)$, então $a \in Z_{1}, b \in Z_{2}$, portanto $(a,b) \in Z_{1} \times Z_{2}$, ou seja, $Z(G_{1}\times G_{2}) = Z_{1} \times Z_{2}$, como desejávamos.
 		
-		\item \textbf{Solução:} As classes laterais de $H$ são dadas por $g+H, \; g\in G$, assim: se $k \in g+H$ temos $\exists (0, [b]) \in H, \; g =(c, [d]) \in G$ tal que $k = (c, [d])+(0,[b]) = (c, [d]+[b]) = (c,[d+b]) \in \mathbb{Z} \times \mathbb{Z}_{2}$, portanto $g+H \cong \mathbb{Z} \times \mathbb{Z}_{2} = G$.
+		\item \textbf{Solução:} As classes laterais de $H = 0 \times \mathbb{Z}_{2}$ são dadas por $g+H, \; g\in G =\mathbb{Z} \times \mathbb{Z}_{2}$, então tomando $g=(a, [b])$ teremos: $g+H = \{(a,[c+b]): (0,[c]) \in H\} = \{a\} \times \mathbb{Z}_{2}$. Como $G$ é abeliano pois $\mathbb{Z}$ é abeliano, consequentemente $H$ também é abeliano, portanto suas classes laterias são identicas, isto é, $g+H = H+g$.  
 		
 		\item \textbf{Solução:} Sejam $h_{1}, h_{2} \in H$, devemos mostrar que $h_{1}h_{2}^{-1} \in H$, assim:
 		$$
@@ -265,7 +265,7 @@
 		$$
 		Como essa relação entre $b_{1}, d_{1}$ deve valer para todos os $b_{2}, d_{2}$, então $b_{1}= d_{1}=0$, ou seja, $Z(H) \cong K$.
 		
-		\item \textbf{Solução:} Por hipótese $H \vartriangleleft G$, então o quociente $G/H$ é um grupo quociente. Sabemos que $G$ é cíclico, então $\exists x \in G; \; G=<x>$. Por definição $G/H = \{[x^{p}]: p\in \mathbb{Z}\}$, onde $[x^{p}]:=x^{p}H$ são as classes lateriais. Vamos mostrar que $G/H = <[x]>$. Com efeito, seja $[x^{p}] \in G/H$, e como o quociente é um grupo e $G$ é cíclico, vale a regra $[x^{p}] = [x]^{p}$, então $G/H$ é gerado por $[x]$, portanto é cíclico, como desejávamos.
+		\item \textbf{Solução:} Por hipótese $H \vartriangleleft G$, então o quociente $G/H$ é um grupo quociente. Sabemos que $G$ é cíclico, então $\exists x \in G; \; G=<x>$. Como todos os elementos de $G$ podem ser escritos como uma potência de $x$, então as classes lateriais serão da forma $[x^{p}]:=x^{p}H$ e $G/H = \{[x^{p}]: p\in \mathbb{Z}\}$. Vamos mostrar que $G/H = <[x]>$. Com efeito, seja $[x^{p}] \in G/H$, e como o quociente é um grupo e $G$ é cíclico, vale a regra $[x^{p}] = [x]^{p}$, então $G/H$ é gerado por $[x]$, portanto é cíclico, como desejávamos.
 		
 \end{enumerate}
 		
