@@ -55,29 +55,41 @@
 				\end{enumerate}
 				Portanto, $||. ||_{W^{1,p}}: W^{1,p} \to \mathbb{R}$ é uma norma.
 				
-				\item Sabemos que uma norma é proveniente de um produto interno se, e somente se, satisfaz a lei do paralelogramo, consequentemente, a fórmula de polarização definirá produto interno nesse espaço. Com efeito: como a lei do paralelogramo deve valer para quaisquer classes $f, g \in W^{1,p}$, então deve valer para o caso particular em que $f = \chi_{[a,b]}$ e $g = \chi_{[c,d]}$ como sendo as classes das funções características com suporte nos intervalos definidos, e tomemos $[a,b] \cap [c,d] = \emptyset$. Calculando os seguintes valores para serem aplicados na lei do paralelogramo: 
+				\item Sabemos que uma norma é proveniente de um produto interno se, e somente se, satisfaz a lei do paralelogramo, e no caso em que temos essa condição satisfeita, a fórmula de polarização definirá produto interno nesse espaço. Note a função característica $\chi_{[a,b]}$ é integrável e sua derivada é identicamente nula a menos do extremos do intervalo, consequentemente $\chi_{[a,b]} \in W^{1,p}$, assim, como a lei do paralelogramo deve valer para quaisquer classes $f, g \in W^{1,p}$, então deve valer para o caso particular em que $f = \chi_{[a,b]}$ e $g = \chi_{[c,d]}$. Além disso, tomemos $[a,b] \cap [c,d] = \emptyset$. Calculando os seguintes valores para serem aplicados na lei do paralelogramo e utilizando o fato de que:
 				$$
-				||f||_{L^{p}}^{2} = \Big( \int_{\mathbb{R}} |\chi_{[a,b]}(x)|^{p} \Big)^{2/p} = (b-a)^{2},
+				||f'||_{ L^{p}}=||\chi'_{[a,b]}||_{L^{p}} = \Big( \int_{\mathbb{R}} |\chi'_{[a,b]}(x)|^{p} \Big)^{1/p} = 0,
+				$$
+				com esse fato teremos as normas de $f, g$ simplificadas para:
+				$$
+				||f||_{ W^{1,p}} = ||f||_{L^{p}}+||f'||_{L^{p}} = ||f||_{L^{p}},
+				$$
+				sendo que o mesmo vale para $g$. Seguindo com os cálculos das normas:
+				$$
+				||f||_{ W^{1,p}}^{2} = \Big( \int_{\mathbb{R}} |\chi_{[a,b]}(x)|^{p} \Big)^{2/p} = (b-a)^{2},
 				$$
 				$$  
-				||g||_{L^{p}}^{2} = \Big( \int_{\mathbb{R}} |\chi_{[c,d]}(x)|^{p} \Big)^{2/p} = (d-c)^{2},
+				||g||_{ W^{1,p}}^{2} = \Big( \int_{\mathbb{R}} |\chi_{[c,d]}(x)|^{p} \Big)^{2/p} = (d-c)^{2},
 				$$
 				$$
-				||f +g||_{L^{p}}^{2} = \Big (\int_{\mathbb{R}}|f(x)+g(x)|^{p} \Big)^{2/p} =((b-a)^{p}+(d-c)^{p})^{2/p},
+				||f+g||_{ W^{1,p}}^{2} = \Big (\int_{\mathbb{R}}|f(x)+g(x)|^{p} \Big)^{2/p} =((b-a)^{p}+(d-c)^{p})^{2/p},
 				$$
 				$$
-				||f -g||_{L^{p}}^{2} = \Big (\int_{\mathbb{R}}|f(x)-g(x)|^{p} \Big)^{2/p} =((b-a)^{p}-(d-c)^{p})^{2/p},
+				||f-g||_{ W^{1,p}}^{2} = \Big (\int_{\mathbb{R}}|f(x)-g(x)|^{p} \Big)^{2/p} =((b-a)^{p}-(d-c)^{p})^{2/p},
 				$$
 				
-				que aplicadas na lei do paralelogramo, teremos
+				que aplicadas na lei do paralelogramo, 
 				$$
-				||f +g||_{L^{p}}^{2}+||f -g||_{L^{p}}^{2} =2(||f||_{L^{p}}^{2}+||g||_{L^{p}}^{2}),
+				||f +g||_{W^{1,p}}^{2}+||f -g||_{W^{1,p}}^{2} =2(||f||_{W^{1,p}}^{2}+||g||_{W^{1,p}}^{2}),
 				$$
-				o que se segue
+				teremos
 				$$
-				((b-a)^{p}+(d-c)^{p})^{2/p}+((b-a)^{p}-(d-c)^{p})^{2/p} = 2((b-a)^{2}+(d-c)^{2}).
+				((b-a)^{p}+(d-c)^{p})^{2/p}+((b-a)^{p}+(d-c)^{p})^{2/p} = 2((b-a)^{2}+(d-c)^{2}).
 				$$
-				Note que no caso em que $p=2$, teremos a condição de igualdade satisfeita, ou seja, realizaremos a lei do paralelogramo. Portanto, $||. ||_{W^{1,2}} : W^{1,2} \to \mathbb{R}$ é uma norma proveniente de um produto interno quando $p=2$. Por fim, poderíamos ter outros valores para $p$, mas como essa última igualdade deve valer para quaisquer intervalos suporte $[a, b]$ e $[c,d]$ da função característica, então teremos que $p=2$ é o único valor realizando essa condição.
+				Logo, se $p=2$, teremos:
+				$$
+				(b-a)^{2}+(d-c)^{2}+(b-a)^{2}+(d-c)^{2} = 2((b-a)^{2}+(d-c)^{2}),
+				$$
+				realizando a lei do paralelogramo. Portanto, $||. ||_{W^{1,2}} : W^{1,2} \to \mathbb{R}$ é uma norma proveniente de um produto interno quando $p=2$. Por fim, poderíamos ter outros valores para $p$, mas como essa última igualdade deve valer para quaisquer intervalos suporte $[a, b]$ e $[c,d]$ da função característica, então teremos que $p=2$ é o único valor realizando essa condição.
 				
 				Finalmente, o resultado anterior nos permite afirmar que a fómula da polaridade define um produto interno em $W^{1,2}$, assim teremos o espaço com produto interno $(W^{1,2}, <.,.>)$, onde:
 				$$
