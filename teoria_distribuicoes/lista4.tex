@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 4 para Entregar}
+	\author{Vinicius Fernandes}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		
+		\item[3.] \textbf{Solução:} Por brevidade, vamos omitir a notação do conjunto suporte $\Omega$, então escreveresmo $C^{\infty} := C^{\infty}(\Omega)$
+		\begin{enumerate}
+			\item Devemos mostrar que $(C^{\infty}, m)$ é uma álgebra comutativa e associativa, para isso deve satisfazer os axiomas de uma álgebra. Para isso, definamos $f, g, h \in C^{\infty}$ e $\lambda \in \mathbb{R}$:
+			
+			\begin{enumerate}
+				\item \textit{(Comutatividade)} $m(f, g)(x) = (f.g)(x) = f(x)g(x) = g(x)f(x) = m(g,f)(x)$, portanto $m(f,g) = m(g,f)$ mostrando que é uma operação comutativa. 
+				
+				\item \textit{(Associatividade)} $m(m(f,g), h)(x) = (m(f, g).h)(x) = (f.g)(x)h(x) = f(x)g(x)h(x) = f(x).m(g,h)(x) = m(f, m(g,h))(x)$, portanto $m(m(f,g), h)=m(f, m(g,h))$, o que mostra a associatividade.
+				
+				\item \textit{(Bilinearidade)} $m(f, \lambda(g + h))(x) = (f.( \lambda(g + h)))(x)  = f(x).( \lambda(g + h)))(x) = f(x) \lambda(g(x) + h(x)) = \lambda f(x) g(x) + \lambda  f(x)h(x) = \lambda m(f, g)(x) + \lambda m(f,h)(x)$, assim $m(f, \lambda(g + h)) = \lambda m(f,g) + \lambda m(f,h)$, portanto é linear na segunda entrada. Como é comutativa, então $m(\lambda(g + h), f) = m(f, \lambda(g + h)) = \lambda m(f,g) + \lambda m(f,h) = \lambda m(g,f) + \lambda m(h,f)$, portanto também é linear no primeiro parâmetro e assim mostramos a bilinearidade.
+				
+			\end{enumerate}
+			Portanto, $(C^{\infty}, m)$ é uma álgebra comutativa e associativa. 
+		
+			\item Sabemos que $C^{\infty}$ é um espaço vetorial, e como $C^{\infty}_{0} \subset C^{\infty}$, vamos mostrar que $C^{\infty}_{0}$ é um subespaço vetorial, portanto é um espaço vetorial. Devemos mostrar os axiomas de subespaço:
+			
+			\begin{enumerate}
+				\item $0 \in C^{\infty}_{0} ??????????$
+				
+				\item Seja $g \in C^{\infty}_{0}$ temos $supp(\lambda g) = \overline{\{x \in \Omega: \lambda g(x) \neq 0\}} = \overline{\{x \in \Omega: g(x) \neq 0\}} = supp(g)$, portanto $\lambda g \in C^{\infty}_{0}$
+				
+				\item 
+				$\forall f, g \in C^{\infty}_{0}$ teremos $f + \lambda g \in C^{\infty}_{0}$.
+				
+				Definindo $I := \{x \in \Omega: f(x) = - \lambda g(x)\}$, veremos que:
+				$$
+				supp(f + \lambda g ) =\overline{\{x \in \Omega: f(x) \neq -\lambda g(x)\} }= \overline{\{x \in \Omega: f(x) \neq 0 \} \cup \{x \in \Omega: \lambda g(x) \neq 0\}\backslash I } = 
+				$$
+				$$
+				= \underbrace{\overline{\{x \in \Omega: f(x) \neq 0 \}\backslash I}}_{\subseteq suppf(f)} \cup \underbrace{\overline{\{x \in \Omega: \lambda g(x) \neq 0\}\backslash I }}_{\subseteq supp(g)},
+				$$
+				que é a união finita de dois conjuntos fechados, portanto é fechado. Como são subconjuntos de conjuntos limitados, então é limitado, portanto, é fechado e limitado em $\mathbb{R}^{n}$ (ou $\mathbb{C}^{n}$), então é um compacto.
+			\end{enumerate}
+			Conclusão, $C^{\infty}_{0}$ é um subespaço vetorial de $C^{\infty}$, portanto é um espaço vetorial.
+			
+			\item Devemos mostrar que $\forall f \in C^{\infty}$ e $g \in C^{\infty}_{0}$ teremos $m(g,f) \in C^{\infty}_{0}$. Por definição $m(g, f) = g.f$, assim vejamos que 
+			$$
+			supp(g.f) = \overline{ \{x \in \Omega: f(x) \neq 0 \; e \; g(x) \neq 0 \} } = \underbrace{supp(f) \cap supp(g)}_{\subseteq supp(g)},
+			$$
+			mostrando que é um subconjunto de um conjunto limitado, além disso, é a intersecção finita de dois conjuntos fechados, portanto é fechado e limitado, então é um compacto. Conclusão, o produto $m(g, f) = g.f \in C^{\infty}_{0}$. Mostramos então que $C^{\infty}_{0}$ é um ideal à direita, mas como $m$ é comutativa, então $C^{\infty}_{0}$ é um ideal à esquerda.
+		\end{enumerate}
+	\end{enumerate}
+		
+\end{document}
