@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{color}
+\usepackage[fleqn]{amsmath}
 \usepackage[a4paper, margin=0.5in]{geometry}
 \begin{document}
 	
@@ -41,10 +42,12 @@
 				
 				Definindo $I := \{x \in \Omega: f(x) = - \lambda g(x)\}$, veremos que:
 				$$
-				supp(f + \lambda g ) =\overline{\{x \in \Omega: f(x) \neq -\lambda g(x)\} }= \overline{\{x \in \Omega: f(x) \neq 0 \} \cup \{x \in \Omega: \lambda g(x) \neq 0\}\backslash I } = 
-				$$
-				$$
-				= \underbrace{\overline{\{x \in \Omega: f(x) \neq 0 \}\backslash I}}_{\subseteq suppf(f)} \cup \underbrace{\overline{\{x \in \Omega: \lambda g(x) \neq 0\}\backslash I }}_{\subseteq supp(g)},
+				\begin{aligned}
+				supp(f + \lambda g ) 
+				= & \overline{\{x \in \Omega: f(x) \neq -\lambda g(x)\} } \\
+				= & \overline{( \{x \in \Omega: f(x) \neq 0 \} \cup \{x \in \Omega: \lambda g(x) \neq 0\}) \backslash I } \\
+				= & \underbrace{\overline{\{x \in \Omega: f(x) \neq 0 \}\backslash I}}_{\subseteq suppf(f)} \cup \underbrace{\overline{\{x \in \Omega: \lambda g(x) \neq 0\}\backslash I }}_{\subseteq supp(g)}, 
+				\end{aligned}
 				$$
 				que é a união finita de dois conjuntos fechados, portanto é fechado. Como são subconjuntos de conjuntos limitados, então é limitado, portanto, é fechado e limitado em $\mathbb{R}^{n}$ (ou $\mathbb{C}^{n}$), então é um compacto.
 			\end{enumerate}
@@ -52,10 +55,89 @@
 			
 			\item Devemos mostrar que $\forall f \in C^{\infty}$ e $g \in C^{\infty}_{0}$ teremos $m(g,f) \in C^{\infty}_{0}$. Por definição $m(g, f) = g.f$, assim vejamos que 
 			$$
-			supp(g.f) = \overline{ \{x \in \Omega: f(x) \neq 0 \; e \; g(x) \neq 0 \} } = \underbrace{supp(f) \cap supp(g)}_{\subseteq supp(g)},
+			\begin{aligned}
+			supp(g.f) 
+			= & \overline{ \{x \in \Omega: f(x) \neq 0 \; e \; g(x) \neq 0 \} } \\
+			= & \underbrace{supp(f) \cap supp(g)}_{\subseteq supp(g)},
+			\end{aligned}
 			$$
 			mostrando que é um subconjunto de um conjunto limitado, além disso, é a intersecção finita de dois conjuntos fechados, portanto é fechado e limitado, então é um compacto. Conclusão, o produto $m(g, f) = g.f \in C^{\infty}_{0}$. Mostramos então que $C^{\infty}_{0}$ é um ideal à direita, mas como $m$ é comutativa, então $C^{\infty}_{0}$ é um ideal à esquerda.
 		\end{enumerate}
+		
+		\item[6.] \textbf{Solução:} Novamente vamos adotar uma notação compactada, por simplicidade, onde convencionaremos $L^{p} := L^{p}(\mathbb{R})$, onde $1 \leq p \leq \infty$
+			\begin{enumerate}
+				\item Sejam $f, g \in L^{1}$, então temos:
+				$$
+				\Big| \int_{\mathbb{R}}f(x)g(x) \Big| \leq  \int_{\mathbb{R}}|f(x)||g(x)| = ||fg||_{1},
+				$$
+				como ambas são funções integráveis, então o produto de funções integráveis, também é integrável, ou seja, $fg \in L^{1}$, o que deve valer para o caso em que $f=g$, e voltando na equação anterior teremos:
+				$$
+				\int_{\mathbb{R}}|f(x)|^{2} = ||f^{2}||_{1} < \infty,
+				$$
+				logo
+				$$
+				\Big( \int_{\mathbb{R}}|f(x)|^{2} \Big)^{1/2}  < \infty.
+				$$
+				Portanto, se $f \in L^{1}$ então $f \in L^{2}$.
+				
+				\item Definindo $f, g:\mathbb{R} \to \mathbb{R} $ tal que 
+				$$
+				f(x) = (1+x^{2})^{-1/2} \; e \;
+				g(x) := \left\{
+				\begin{array}{cc}
+				2, & |x| \leq 1 \\
+				1/|x|, & |x| > 1 \\
+				\end{array}
+				\right.
+				$$
+				E consequentemente, temos a estimativa $g(x) > f(x) \; \forall x \in \mathbb{R}$. Agora, mostrando que se a integral $\int_{\mathbb{R}}g(x)$ divergir, então a integral $\int_{\mathbb{R}}f(x)$ também divergirá, pois
+				$$
+				\int_{\mathbb{R}}g(x) > \int_{\mathbb{R}}f(x),
+				$$
+				portanto $f \notin L^{1}$. Com efeito:
+				$$
+				\begin{aligned}
+				\int_{\mathbb{R}}g(x) 
+				= & \int_{|x| \leq 1} 2 dx + \int_{|x| > 1} \frac{1}{|x|} dx \\
+				= & \int_{[0,1]} 2 dx + \int_{[-1,0]} 2 dx + \int_{(-\infty, 1]}\frac{-1}{x}dx + \int_{[1, \infty)}\frac{1}{x}dx \\
+				= & 2\int_{[0,1]} 2 dx +  2\int_{[1, \infty)}\frac{1}{x}dx \\
+				= & 4 + 2 \lim_{x \to \infty} \ln(x) = +\infty,  
+				\end{aligned}
+				$$
+				logo 
+				$\int_{\mathbb{R}}g(x)$ não existe, e como $\int_{\mathbb{R}}g(x)> \int_{\mathbb{R}}f(x)$, consequentemente $f$ não é integrável, ou seja, $f \notin L^{1}$.
+				
+				Agora, resta-nos mostrar que $f \in L^{2}$, isto é $\int_{\mathbb{R}}f(x)^{2} <\infty$. Com efeito, definindo $y^{2} = 1+x^{2}$ teremos:
+				$$
+				\int_{\mathbb{R}}f(x) 
+				= \int_{\mathbb{R}}\frac{1}{1+x^{2}}dx = \int_{\mathbb{R}}\frac{1}{y^{2}}dy = \frac{ -1}{y} \Big|^{\infty}_{-\infty} = 0,
+				$$
+				portanto $f^{2}$ é integrável e é de quadrado integrável, ou seja, $f^{2} \in L^{2}$.
+				
+				\item No item anterior mostramos que se $f \in L^{1}$, então $f \in L^{2}$, portanto $L^{1} \subset L^{2}$, e consequentemente, $L^{1} \cap L^{2} = L^{1}$, que é um subespaço vetorial, como já foi demonstrado em um exercício anterior, portanto $V= L^{1} \cap L^{2}$ é um espaço vetorial.
+				
+				\item Seja $\mathcal{F}:V \to V$, e já vimos que $V = L^{1} \subset L^{2}$, e como $L^{2}$ é um espaço de Hilbert, então vamos definir um produto interno em $L^{1}$ como sendo $<.,.>_{1} := <.,.>_{2}|_{L^{1}}$. Sabemos que para todo operador linear limitado de um espaço de Hilbert em outro possui um único operador adjunto, assim, devemos mostrar que $\mathcal{F}:V \to V$ é limitado. Pois bem:
+				$$
+				\begin{aligned}
+				||\mathcal{F}|| 
+				:= & \sup_{\theta \in \mathbb{R}}||\mathcal{F}(f)(\theta)||\\
+				= & \frac{1}{\sqrt{2}}\sup_{\theta \in \mathbb{R}} \Big| \int_{\mathbb{R}}f(x)e^{-ix\theta} \Big| \leq \frac{1}{\sqrt{2}} \int_{\mathbb{R}}|f(x)| < \infty, 
+				\end{aligned}
+				$$
+				pois a função $f$ é integrável, consequentemente o seu módulo também o será, portanto $\mathcal{F}$ é limitado. Determinando agora o adjunto $\mathcal{F}^{*} :  V \to V$ de modo que devemos satisfazer a relação $<\mathcal{F}(f), g>_{1} = <f, \mathcal{F}^{*}(g)>_{1}\; \forall f, g \in V$. Então:
+				
+				$$
+				\begin{aligned}
+				<\mathcal{F}(f), g>_{1} 
+				= & \int_{\mathbb{R}} \mathcal{F}(f)(y)g(y)dy = \int_{\mathbb{R}} \int_{\mathbb{R}} f(x)e^{-iyx} dx g(y) dy = \\
+				= & \int_{\mathbb{R}} \int_{\mathbb{R}}g(y)e^{-iyx}  dy f(x) dx = \int_{\mathbb{R}} \mathcal{F}(g)(x) f(x) dx = \\
+				= & <\mathcal{F}(g), f>_{1} = <f, \mathcal{F}(g)>_{1} = \\
+				= & <f, \mathcal{F}^{*}(g)>_{1},
+				\end{aligned}
+				$$
+				logo, fazendo $f=g$ na ultima igualdade veremos que $\mathcal{F}^{*}(f) = \mathcal{F}(f), \; \forall f \in V$, portanto $\mathcal{F}^{*} = \mathcal{F}$ e $\mathcal{F}$ é um operador auto-adjunto.
+				\end{enumerate}
+		
 	\end{enumerate}
 		
 \end{document}
