@@ -33,7 +33,7 @@
 			\item Sabemos que $C^{\infty}$ é um espaço vetorial, e como $C^{\infty}_{0} \subset C^{\infty}$, vamos mostrar que $C^{\infty}_{0}$ é um subespaço vetorial, portanto é um espaço vetorial. Devemos mostrar os axiomas de subespaço:
 			
 			\begin{enumerate}
-				\item $0 \in C^{\infty}_{0} ??????????$
+				\item Note que $supp (0) = \emptyset$, e como o conjunto vazio é um fechado e compacto, então $0 \in C^{\infty}_{0}$.
 				
 				\item Seja $g \in C^{\infty}_{0}$ temos $supp(\lambda g) = \overline{\{x \in \Omega: \lambda g(x) \neq 0\}} = \overline{\{x \in \Omega: g(x) \neq 0\}} = supp(g)$, portanto $\lambda g \in C^{\infty}_{0}$
 				
@@ -64,7 +64,7 @@
 			mostrando que é um subconjunto de um conjunto limitado, além disso, é a intersecção finita de dois conjuntos fechados, portanto é fechado e limitado, então é um compacto. Conclusão, o produto $m(g, f) = g.f \in C^{\infty}_{0}$. Mostramos então que $C^{\infty}_{0}$ é um ideal à direita, mas como $m$ é comutativa, então $C^{\infty}_{0}$ é um ideal à esquerda.
 		\end{enumerate}
 		
-		\item[6.] \textbf{Solução:} Novamente vamos adotar uma notação compactada, por simplicidade, onde convencionaremos $L^{p} := L^{p}(\mathbb{R})$, onde $1 \leq p \leq \infty$
+		\item[6.] \textbf{Solução:} Novamente vamos adotar uma notação compactada, por simplicidade, onde convencionaremos $L^{p} := L^{p}(\mathbb{R})$, onde $1 \leq p \leq \infty$ e também a identificação $f = [f] \in L^{p}$.
 			\begin{enumerate}
 				\item Sejam $f, g \in L^{1}$, então temos:
 				$$
@@ -138,6 +138,41 @@
 				logo, fazendo $f=g$ na ultima igualdade veremos que $\mathcal{F}^{*}(f) = \mathcal{F}(f), \; \forall f \in V$, portanto $\mathcal{F}^{*} = \mathcal{F}$ e $\mathcal{F}$ é um operador auto-adjunto.
 				\end{enumerate}
 		
+		\item[7.] \textbf{Solução:} 
+			\begin{enumerate}
+				\item 
+				\begin{enumerate}
+					\item Caculando os suportes:
+					$$
+					\begin{aligned}
+					supp(f_{1}) = & \overline{ \{x \in \mathbb{R}: e^{-|x|} \neq 0\} } = \mathbb{R} \\ 
+					supp(f_{2}) = & \overline{ \{x \in \mathbb{R}: \sin{|x|} \neq 0\} } = \pi \mathbb{Z} \\ 
+					supp(f_{3}) = & \overline{ \{x \in \mathbb{R}: x \neq 0\} } = \overline{ \mathbb{R}\backslash \{0\} } = \mathbb{R} \\
+					supp(k) = & \overline{ \{(x,y) \in \mathbb{R}^{2}: e^{-|x-y|} \neq 0\} } = \mathbb{R}^{2}
+					\end{aligned}
+					$$
+					
+					\item Caculando as integrais:
+					$$
+					\begin{aligned}
+						I_{1}(x) 
+						= & \int_{\mathbb{R}}e^{-|y|}e^{-|x-y|} dy = \int_{y < 0 }e^{y}e^{-(x-y)} dy + \int_{y \geq 0 }e^{-y}e^{-(x+y)} dy \\
+						= & e^{-x}\int_{y < 0 }e^{2y} dy + e^{-x}\int_{y \geq 0 }e^{-2y} dy = 2e^{-x}\int_{y \geq 0 }e^{-2y} dy \\
+						= & -e^{-x}e^{-2y}\Big|^{\infty}_{0} = e^{-x} \\
+						I_{2}(x) 
+						= & \int_{\mathbb{R}}\sin(|y|)e^{-|x-y|} dy = \int_{y < 0 }\sin(-y)e^{-(x-y)} dy + \int_{y \geq 0 }\sin(y)e^{-(x+y)} dy \\
+						= & 2 \int_{y \geq 0 }\sin(y)e^{-(x+y)} dy = 2 \int_{y \geq 0 } \underbrace{\frac{e^{iy} - e^{-iy}}{2i}}_{\sin(y)} e^{-(x+y)} dy \\
+						= & -i\int_{y \geq 0 }(e^{iy} - e^{-iy})e^{-(x+y)} dy = -ie^{-x}\int_{y \geq 0 }(e^{(i-1)y} - e^{-(i+1)y})dy \\
+						=  & -ie^{-x}\Big( \frac{e^{(i-1)y}}{(i-1)} - \frac{e^{-(i+1)y}}{-(i+1)} \Big) \Big|^{\infty}_{0} = -ie^{-x}\Big( \frac{1}{(i-1)} + \frac{1}{(i+1)} \Big) \\
+						= & -ie^{-x} \frac{2i}{i^{2} - 1} = e^{-x} \\
+						I_{3}(x)
+						= & \int_{\mathbb{R}} y e^{-|x-y|} dy = \int_{y < 0 }ye^{-(x-y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
+						= & \int_{y > 0 }-ye^{-(x+y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
+						= & 0.
+					\end{aligned}
+					$$
+				\end{enumerate}
+			\end{enumerate}
 	\end{enumerate}
 		
 \end{document}
