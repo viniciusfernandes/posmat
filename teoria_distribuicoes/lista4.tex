@@ -30,15 +30,14 @@
 			\end{enumerate}
 			Portanto, $(C^{\infty}, m)$ é uma álgebra comutativa e associativa. 
 		
-			\item Sabemos que $C^{\infty}$ é um espaço vetorial, e como $C^{\infty}_{0} \subset C^{\infty}$, vamos mostrar que $C^{\infty}_{0}$ é um subespaço vetorial, portanto é um espaço vetorial. Devemos mostrar os axiomas de subespaço:
+			\item Sabemos da lista 1 que $C^{0}$ é um espaço vetorial, e como $C^{\infty}_{0} \subset C^{0}$, vamos mostrar que $C^{\infty}_{0}$ é um subespaço vetorial, portanto é um espaço vetorial. Devemos mostrar os axiomas de subespaço:
 			
 			\begin{enumerate}
-				\item Note que $supp (0) = \emptyset$, e como o conjunto vazio é um fechado e compacto, então $0 \in C^{\infty}_{0}$.
+				\item Claro que a função identicamente nula é diferenciável, portanto $0 \in C^{\infty}$. Agora, note que $supp (0) = \emptyset$, e como o conjunto vazio é um fechado e compacto, então $0 \in C^{\infty}_{0}$.
 				
-				\item Seja $g \in C^{\infty}_{0}$ temos $supp(\lambda g) = \overline{\{x \in \Omega: \lambda g(x) \neq 0\}} = \overline{\{x \in \Omega: g(x) \neq 0\}} = supp(g)$, portanto $\lambda g \in C^{\infty}_{0}$
+				\item Sabemos que o produto de uma função diferenciável por uma constante resulta em uma função diferenciável, isto é, $\forall g \in C^{\infty}$ temos que $\lambda g \in C^{\infty}_{0}$, além disso, temos que $supp(\lambda g) = \overline{\{x \in \Omega: \lambda g(x) \neq 0\}} = \overline{\{x \in \Omega: g(x) \neq 0\}} = supp(g)$, portanto $\lambda g \in C^{\infty}_{0}$
 				
-				\item 
-				$\forall f, g \in C^{\infty}_{0}$ teremos $f + \lambda g \in C^{\infty}_{0}$.
+				\item Sabemos que a soma de duas funções diferenciáveis também é uma função diferenciável, isto é, $\forall f, g \in C^{\infty}$ temos $f + \lambda g \in C^{\infty}$. Agora vamos mostrar que $f + \lambda g \in C^{\infty}_{0}$.
 				
 				Definindo $I := \{x \in \Omega: f(x) = - \lambda g(x)\}$, veremos que:
 				$$
@@ -49,9 +48,9 @@
 				= & \underbrace{\overline{\{x \in \Omega: f(x) \neq 0 \}\backslash I}}_{\subseteq suppf(f)} \cup \underbrace{\overline{\{x \in \Omega: \lambda g(x) \neq 0\}\backslash I }}_{\subseteq supp(g)}, 
 				\end{aligned}
 				$$
-				que é a união finita de dois conjuntos fechados, portanto é fechado. Como são subconjuntos de conjuntos limitados, então é limitado, portanto, é fechado e limitado em $\mathbb{R}^{n}$ (ou $\mathbb{C}^{n}$), então é um compacto.
+				que é a união finita de conjuntos fechados, portanto é fechado. Como são subconjuntos de conjuntos limitados, então é limitado, portanto, é fechado e limitado em $\mathbb{R}^{n}$ (ou $\mathbb{C}^{n}$), então é um compacto.
 			\end{enumerate}
-			Conclusão, $C^{\infty}_{0}$ é um subespaço vetorial de $C^{\infty}$, portanto é um espaço vetorial.
+			Conclusão, $C^{\infty}_{0}$ é um subespaço vetorial de $C^{0}$, portanto é um espaço vetorial.
 			
 			\item Devemos mostrar que $\forall f \in C^{\infty}$ e $g \in C^{\infty}_{0}$ teremos $m(g,f) \in C^{\infty}_{0}$. Por definição $m(g, f) = g.f$, assim vejamos que 
 			$$
@@ -66,20 +65,7 @@
 		
 		\item[6.] \textbf{Solução:} Novamente vamos adotar uma notação compactada, por simplicidade, onde convencionaremos $L^{p} := L^{p}(\mathbb{R})$, onde $1 \leq p \leq \infty$ e também a identificação $f = [f] \in L^{p}$.
 			\begin{enumerate}
-				\item Sejam $f, g \in L^{1}$, então temos:
-				$$
-				\Big| \int_{\mathbb{R}}f(x)g(x) \Big| \leq  \int_{\mathbb{R}}|f(x)||g(x)| = ||fg||_{1},
-				$$
-				como ambas são funções integráveis, então o produto de funções integráveis, também é integrável, ou seja, $fg \in L^{1}$, o que deve valer para o caso em que $f=g$, e voltando na equação anterior teremos:
-				$$
-				\int_{\mathbb{R}}|f(x)|^{2} = ||f^{2}||_{1} < \infty,
-				$$
-				logo
-				$$
-				\Big( \int_{\mathbb{R}}|f(x)|^{2} \Big)^{1/2}  < \infty.
-				$$
-				Portanto, se $f \in L^{1}$ então $f \in L^{2}$.
-				
+				\item CANCELADO
 				\item Definindo $f, g:\mathbb{R} \to \mathbb{R} $ tal que 
 				$$
 				f(x) = (1+x^{2})^{-1/2} \; e \;
@@ -90,11 +76,11 @@
 				\end{array}
 				\right.
 				$$
-				E consequentemente, temos a estimativa $g(x) > f(x) \; \forall x \in \mathbb{R}$. Agora, mostrando que se a integral $\int_{\mathbb{R}}g(x)$ divergir, então a integral $\int_{\mathbb{R}}f(x)$ também divergirá, pois
+				E consequentemente, temos a estimativa $g(x) > f(x) \; \forall x \in \mathbb{R}$. Agora, mostrando que se a integral $\int_{\mathbb{R}}g(x)$ não existir, então a integral $\int_{\mathbb{R}}f(x)$ também não existirá, pois
 				$$
 				\int_{\mathbb{R}}g(x) > \int_{\mathbb{R}}f(x),
 				$$
-				portanto $f \notin L^{1}$. Com efeito:
+				com isso $f \notin L^{1}$. Com efeito:
 				$$
 				\begin{aligned}
 				\int_{\mathbb{R}}g(x) 
@@ -114,28 +100,30 @@
 				$$
 				portanto $f^{2}$ é integrável e é de quadrado integrável, ou seja, $f^{2} \in L^{2}$.
 				
-				\item No item anterior mostramos que se $f \in L^{1}$, então $f \in L^{2}$, portanto $L^{1} \subset L^{2}$, e consequentemente, $L^{1} \cap L^{2} = L^{1}$, que é um subespaço vetorial, como já foi demonstrado em um exercício anterior, portanto $V= L^{1} \cap L^{2}$ é um espaço vetorial.
+				\item Utilizando o fato do primeiro item que se $f \in L^{1}$, então $f \in L^{2}$, o que implica que $L^{1} \subset L^{2}$, e portanto $L^{1} \cap L^{2} = L^{1}$, que é um espaço vetorial (o que já foi demonstrado em um exercício anterior da lista 2), assim $V= L^{1} \cap L^{2}$ é um espaço vetorial.
 				
-				\item Seja $\mathcal{F}:V \to V$, e já vimos que $V = L^{1} \subset L^{2}$, e como $L^{2}$ é um espaço de Hilbert, então vamos definir um produto interno em $L^{1}$ como sendo $<.,.>_{1} := <.,.>_{2}|_{L^{1}}$. Sabemos que para todo operador linear limitado de um espaço de Hilbert em outro possui um único operador adjunto, assim, devemos mostrar que $\mathcal{F}:V \to V$ é limitado. Pois bem:
+				\item Seja $\mathcal{F}:V \to V$, e já vimos que $V = L^{1} \subset L^{2}$, e como $L^{2}$ é um espaço de Hilbert, então vamos definir um produto interno em $L^{1}$ como sendo $<.,.>_{1} := <.,.>_{2}|_{L^{1}}$. Sabemos que para todo operador linear limitado de um espaço de Hilbert em outro possui um único operador adjunto, mas primeiro devemos mostrar que $\mathcal{F}:V \to V$ é limitado. Pois bem, $\forall f \in V = L^{1}$ temos:
 				$$
-				\begin{aligned}
+				\sup_{\theta \in \mathbb{R}} |\hat{f}(\theta)|
+				= \frac{1}{\sqrt{2}}\sup_{\theta \in \mathbb{R}} \Big| \int_{\mathbb{R}}f(x)e^{-ix\theta} \Big| \leq \frac{1}{\sqrt{2}} \int_{\mathbb{R}}|f(x)| <\infty, 
+				$$
+				pois a função $f$ é integrável logo,
+				$$
 				||\mathcal{F}|| 
-				:= & \sup_{\theta \in \mathbb{R}}||\mathcal{F}(f)(\theta)||\\
-				= & \frac{1}{\sqrt{2}}\sup_{\theta \in \mathbb{R}} \Big| \int_{\mathbb{R}}f(x)e^{-ix\theta} \Big| \leq \frac{1}{\sqrt{2}} \int_{\mathbb{R}}|f(x)| < \infty, 
-				\end{aligned}
+				:= \sup_{||f||=1}||\mathcal{F}(f)|| = \sup_{||f||=1} \Big \{ \sup_{\theta \in \mathbb{R}} |\hat{f}(\theta)|: f \in V \Big \} < \infty,
 				$$
-				pois a função $f$ é integrável, consequentemente o seu módulo também o será, portanto $\mathcal{F}$ é limitado. Determinando agora o adjunto $\mathcal{F}^{*} :  V \to V$ de modo que devemos satisfazer a relação $<\mathcal{F}(f), g>_{1} = <f, \mathcal{F}^{*}(g)>_{1}\; \forall f, g \in V$. Então:
+				pela primeira desigualdade, a ultima igualdade tem uma cota superior, portanto $\mathcal{F}$ é limitado. Determinando agora o adjunto $\mathcal{F}^{*} :  V \to V$ de modo que devemos satisfazer a relação $<\mathcal{F}(f), g>_{1} = <f, \mathcal{F}^{*}(g)>_{1}\; \forall f, g \in V$. Então:
 				
 				$$
 				\begin{aligned}
 				<\mathcal{F}(f), g>_{1} 
-				= & \int_{\mathbb{R}} \mathcal{F}(f)(y)g(y)dy = \int_{\mathbb{R}} \int_{\mathbb{R}} f(x)e^{-iyx} dx g(y) dy = \\
-				= & \int_{\mathbb{R}} \int_{\mathbb{R}}g(y)e^{-iyx}  dy f(x) dx = \int_{\mathbb{R}} \mathcal{F}(g)(x) f(x) dx = \\
-				= & <\mathcal{F}(g), f>_{1} = <f, \mathcal{F}(g)>_{1} = \\
-				= & <f, \mathcal{F}^{*}(g)>_{1},
+				= & \int_{\mathbb{R}} \mathcal{F}(f)(y)g(y)dy = \int_{\mathbb{R}} \int_{\mathbb{R}} f(x)e^{-iyx} dx g(y) dy  \\
+				= & \int_{\mathbb{R}} \int_{\mathbb{R}}g(y)e^{-iyx}  dy f(x) dx = \int_{\mathbb{R}} \mathcal{F}(g)(x) f(x) dx \\
+				= & <\mathcal{F}(g), f>_{1} \\
+				= & <f, \mathcal{F}(g)>_{1},
 				\end{aligned}
 				$$
-				logo, fazendo $f=g$ na ultima igualdade veremos que $\mathcal{F}^{*}(f) = \mathcal{F}(f), \; \forall f \in V$, portanto $\mathcal{F}^{*} = \mathcal{F}$ e $\mathcal{F}$ é um operador auto-adjunto.
+				portanto $\mathcal{F}^{*} = \mathcal{F}$ e $\mathcal{F}$ é um operador auto-adjunto.
 				\end{enumerate}
 		
 		\item[7.] \textbf{Solução:} 
@@ -146,7 +134,7 @@
 					$$
 					\begin{aligned}
 					supp(f_{1}) = & \overline{ \{x \in \mathbb{R}: e^{-|x|} \neq 0\} } = \mathbb{R} \\ 
-					supp(f_{2}) = & \overline{ \{x \in \mathbb{R}: \sin{|x|} \neq 0\} } = \pi \mathbb{Z} \\ 
+					supp(f_{2}) = & \overline{ \{x \in \mathbb{R}: \sin{|x|} \neq 0\} } = \overline{\mathbb{R} \backslash \pi \mathbb{Z} } = \mathbb{R}\\ 
 					supp(f_{3}) = & \overline{ \{x \in \mathbb{R}: x \neq 0\} } = \overline{ \mathbb{R}\backslash \{0\} } = \mathbb{R} \\
 					supp(k) = & \overline{ \{(x,y) \in \mathbb{R}^{2}: e^{-|x-y|} \neq 0\} } = \mathbb{R}^{2}
 					\end{aligned}
