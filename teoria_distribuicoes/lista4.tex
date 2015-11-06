@@ -35,7 +35,7 @@
 			\begin{enumerate}
 				\item Claro que a função identicamente nula é diferenciável, portanto $0 \in C^{\infty}$. Agora, note que $supp (0) = \emptyset$, e como o conjunto vazio é um fechado e compacto, então $0 \in C^{\infty}_{0}$.
 				
-				\item Sabemos que o produto de uma função diferenciável por uma constante resulta em uma função diferenciável, isto é, $\forall g \in C^{\infty}$ temos que $\lambda g \in C^{\infty}_{0}$, além disso, temos que $supp(\lambda g) = \overline{\{x \in \Omega: \lambda g(x) \neq 0\}} = \overline{\{x \in \Omega: g(x) \neq 0\}} = supp(g)$, portanto $\lambda g \in C^{\infty}_{0}$
+				\item Sabemos que o produto de uma função diferenciável por uma constante resulta em uma função diferenciável, isto é, $\forall g \in C^{\infty}$ temos que $\lambda g \in C^{\infty}$, além disso, temos que $supp(\lambda g) = \overline{\{x \in \Omega: \lambda g(x) \neq 0\}} = \overline{\{x \in \Omega: g(x) \neq 0\}} = supp(g)$, portanto $\lambda g \in C^{\infty}_{0}$
 				
 				\item Sabemos que a soma de duas funções diferenciáveis também é uma função diferenciável, isto é, $\forall f, g \in C^{\infty}$ temos $f + \lambda g \in C^{\infty}$. Agora vamos mostrar que $f + \lambda g \in C^{\infty}_{0}$.
 				
@@ -100,19 +100,28 @@
 				$$
 				portanto $f^{2}$ é integrável e é de quadrado integrável, ou seja, $f^{2} \in L^{2}$.
 				
-				\item Utilizando o fato do primeiro item que se $f \in L^{1}$, então $f \in L^{2}$, o que implica que $L^{1} \subset L^{2}$, e portanto $L^{1} \cap L^{2} = L^{1}$, que é um espaço vetorial (o que já foi demonstrado em um exercício anterior da lista 2), assim $V= L^{1} \cap L^{2}$ é um espaço vetorial.
+				\item Primeiro devemos mostrar que $V= L^{1} \cap L^{2} \neq \emptyset$. De fato, tomando $\chi_{[a, b]}$ é claro que $\int_{\mathbb{R}} \chi_{[a,b]}(x) = 1 < \infty$, portanto $\chi_{[a, b]} \in L^{1}$. Por outro lado, fazendo $\int_{\mathbb{R}} (\chi_{[a,b]}(x))^{2} = \int_{\mathbb{R}} \chi_{[a,b]}(x) = 1 < \infty$, portanto $\chi_{[a, b]} \in L^{2}$, e consequentemente $f \in L^{1} \cap L^{2} = V$ e $V \neq \emptyset$.
 				
-				\item Seja $\mathcal{F}:V \to V$, e já vimos que $V = L^{1} \subset L^{2}$, e como $L^{2}$ é um espaço de Hilbert, então vamos definir um produto interno em $L^{1}$ como sendo $<.,.>_{1} := <.,.>_{2}|_{L^{1}}$. Sabemos que para todo operador linear limitado de um espaço de Hilbert em outro possui um único operador adjunto, mas primeiro devemos mostrar que $\mathcal{F}:V \to V$ é limitado. Pois bem, $\forall f \in V = L^{1}$ temos:
+				Já foi demonstrado em um exercício anterior da lista 2 que os espaços $L^{p}$ são espaços vetoriais para $1 \leq p \leq \infty$, assim vamos mostrar que $V \subset L^{2}$ é um subespaço vetorial, para isso basta mostrar os axiomas de subespaço:
+					\begin{enumerate}
+						\item Claro que $0 \in L^{1}$ e $0 \in L^{2}$, pois a classe da função identicamente nula é integrável e tem quadrado integrável, portanto $0 \in L^{1} \cap L^{2}$.
+						
+						\item Sejam as classes $f, g \in L^{1} \cap L^{2}$ e $\lambda \in \mathbb{R}$, então $f+\lambda g \in L^{1}$ e também $f+\lambda g \in L^{2}$ pois ambos são espaços vetoriais, portanto $f+\lambda g \in L^{1} \cap L^{2} = V$.
+					\end{enumerate}
+				Logo, $V = L^{1} \cap L^{2} \subset L^{2}$ é um subespaço vetorial, portanto é um espaço vetorial.
+				
+				\item Seja $\mathcal{F}:V \to V$, e vimos no item anterior que $V \subset L^{2}$, e como $L^{2}$ é um espaço de Hilbert, então vamos definir um produto interno em $L^{1}$ como sendo $<.,.>_{1} := <.,.>_{2}|_{L^{1}}$, portanto $(V, <.,.>_{1})$ é um espaço vetorial com produto interno, consequentemente, é um espaço normado. Para que o operador $\mathcal{F}:V \to V$ tenha um adjunto é necessário que ele seja limitado. Agora vamos mostrar isso, pois bem 
+				$\forall f \in V$ temos:
 				$$
-				\sup_{\theta \in \mathbb{R}} |\hat{f}(\theta)|
-				= \frac{1}{\sqrt{2}}\sup_{\theta \in \mathbb{R}} \Big| \int_{\mathbb{R}}f(x)e^{-ix\theta} \Big| \leq \frac{1}{\sqrt{2}} \int_{\mathbb{R}}|f(x)| <\infty, 
+				\sup_{\theta \in \mathbb{R}} |\mathcal{F}(f)(\theta)|
+				= \frac{1}{\sqrt{2 \pi}}\sup_{\theta \in \mathbb{R}} \Big| \int_{\mathbb{R}}f(x)e^{-ix\theta} dx \Big| \leq \frac{1}{\sqrt{2 \pi}} \int_{\mathbb{R}}|f(x)| dx <\infty, 
 				$$
-				pois a função $f$ é integrável logo,
+				pois a função $f$ é integrável, logo,
 				$$
 				||\mathcal{F}|| 
-				:= \sup_{||f||=1}||\mathcal{F}(f)|| = \sup_{||f||=1} \Big \{ \sup_{\theta \in \mathbb{R}} |\hat{f}(\theta)|: f \in V \Big \} < \infty,
+				:= \sup_{||f||=1}||\mathcal{F}(f)|| = \sup_{||f||=1} \Big( \sup_{\theta \in \mathbb{R}} |\mathcal{F}(f)(\theta)| \Big) < \infty,
 				$$
-				pela primeira desigualdade, a ultima igualdade tem uma cota superior, portanto $\mathcal{F}$ é limitado. Determinando agora o adjunto $\mathcal{F}^{*} :  V \to V$ de modo que devemos satisfazer a relação $<\mathcal{F}(f), g>_{1} = <f, \mathcal{F}^{*}(g)>_{1}\; \forall f, g \in V$. Então:
+				pois já tinhamos a limitação pela primeira equação, portanto $\mathcal{F}$ é limitado. Determinando agora o adjunto $\mathcal{F}^{*} :  V \to V$ de modo que devemos satisfazer a relação $<\mathcal{F}(f), g>_{1} = <f, \mathcal{F}^{*}(g)>_{1}\; \forall f, g \in V$. Então:
 				
 				$$
 				\begin{aligned}
@@ -123,14 +132,17 @@
 				= & <f, \mathcal{F}(g)>_{1},
 				\end{aligned}
 				$$
-				portanto $\mathcal{F}^{*} = \mathcal{F}$ e $\mathcal{F}$ é um operador auto-adjunto.
+				portanto $\mathcal{F}^{*} = \mathcal{F}$ e $\mathcal{F}$ é um operador auto-adjunto dado por:
+				$$
+				\mathcal{F}^{*}(f)(\theta) = \frac{1}{\sqrt{2 \pi}} \int_{\mathbb{R}}f(x)e^{-ix\theta} dx
+				$$
 				\end{enumerate}
 		
 		\item[7.] \textbf{Solução:} 
 			\begin{enumerate}
 				\item 
 				\begin{enumerate}
-					\item Caculando os suportes:
+					\item Calculando os suportes:
 					$$
 					\begin{aligned}
 					supp(f_{1}) = & \overline{ \{x \in \mathbb{R}: e^{-|x|} \neq 0\} } = \mathbb{R} \\ 
@@ -140,22 +152,22 @@
 					\end{aligned}
 					$$
 					
-					\item Caculando as integrais:
+					\item Calculando as integrais:
 					$$
 					\begin{aligned}
 						I_{1}(x) 
-						= & \int_{\mathbb{R}}e^{-|y|}e^{-|x-y|} dy = \int_{y < 0 }e^{y}e^{-(x-y)} dy + \int_{y \geq 0 }e^{-y}e^{-(x+y)} dy \\
-						= & e^{-x}\int_{y < 0 }e^{2y} dy + e^{-x}\int_{y \geq 0 }e^{-2y} dy = 2e^{-x}\int_{y \geq 0 }e^{-2y} dy \\
+						= & \int_{\mathbb{R}}e^{-|y|}e^{-|x-y|} dy = \int_{y \leq 0 }e^{y}e^{-(x-y)} dy + \int_{y \geq 0 }e^{-y}e^{-(x+y)} dy \\
+						= & e^{-x}\int_{y \leq 0 }e^{2y} dy + e^{-x}\int_{y \geq 0 }e^{-2y} dy = 2e^{-x}\int_{y \geq 0 }e^{-2y} dy \\
 						= & -e^{-x}e^{-2y}\Big|^{\infty}_{0} = e^{-x} \\
 						I_{2}(x) 
-						= & \int_{\mathbb{R}}\sin(|y|)e^{-|x-y|} dy = \int_{y < 0 }\sin(-y)e^{-(x-y)} dy + \int_{y \geq 0 }\sin(y)e^{-(x+y)} dy \\
+						= & \int_{\mathbb{R}}\sin(|y|)e^{-|x-y|} dy = \int_{y \leq 0 }\sin(-y)e^{-(x-y)} dy + \int_{y \geq 0 }\sin(y)e^{-(x+y)} dy \\
 						= & 2 \int_{y \geq 0 }\sin(y)e^{-(x+y)} dy = 2 \int_{y \geq 0 } \underbrace{\frac{e^{iy} - e^{-iy}}{2i}}_{\sin(y)} e^{-(x+y)} dy \\
 						= & -i\int_{y \geq 0 }(e^{iy} - e^{-iy})e^{-(x+y)} dy = -ie^{-x}\int_{y \geq 0 }(e^{(i-1)y} - e^{-(i+1)y})dy \\
 						=  & -ie^{-x}\Big( \frac{e^{(i-1)y}}{(i-1)} - \frac{e^{-(i+1)y}}{-(i+1)} \Big) \Big|^{\infty}_{0} = -ie^{-x}\Big( \frac{1}{(i-1)} + \frac{1}{(i+1)} \Big) \\
 						= & -ie^{-x} \frac{2i}{i^{2} - 1} = e^{-x} \\
 						I_{3}(x)
-						= & \int_{\mathbb{R}} y e^{-|x-y|} dy = \int_{y < 0 }ye^{-(x-y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
-						= & \int_{y > 0 }-ye^{-(x+y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
+						= & \int_{\mathbb{R}} y e^{-|x-y|} dy = \int_{y \leq 0 }ye^{-(x-y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
+						= & \int_{y \geq 0 }-ye^{-(x+y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
 						= & 0.
 					\end{aligned}
 					$$
