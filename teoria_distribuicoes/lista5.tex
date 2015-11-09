@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[fleqn]{amsmath}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 5 para Entregar}
+	\author{Vinicius Fernandes}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		
+		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade. Definamos $\psi(x) := \frac{\phi(x) - \phi(0)}{x}$. Note que $x=0$ é o único ponto em que $\psi$ apresenta problemas, então $\psi:\Omega\backslash\{0\} \to \mathbb{R}$ esta bem-definida. Avaliando $\psi$ em $x=0$ teremos $\psi(0) = \lim_{x \to 0} \frac{\phi(x) - \phi(0)}{x} = \phi'(0)$, pois $\phi$ é infinitamente diferenciável em $\Omega$ e, particularmente, sua derivada existe em $x=0$, portanto $\psi:\Omega \to \mathbb{R}$ esta bem-definida. Com isso, podemos escrever $\phi(x) = \phi(0) + x \psi(x)$.
+		
+		
+		Pela própria definição de $\psi$ temos que $\psi$ ela é o produto de $f(x)$ e $1/x$ que são funções infinitamente diferenciáveis em $\Omega \backslash\{0\}$, portanto $\psi$ é infinitamente diferenciável em $\Omega \backslash\{0\}$. Já sabemos que $\psi(0) = \phi'(0)$, e aplicando a definição de derivação 
+		$$
+		\psi'(0) = \lim_{x \to 0}\frac{\psi(x) - \psi(0)}{x} = \lim_{x \to 0}\frac{f(x) - \psi(0)}{x} = 
+		$$ 
+		
+		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade.
+		\begin{enumerate}
+			\item Devemos mostrar que $L^{P} \subsetneq L^{p}_{loc}$ para $1 \leq p \leq \infty$, ou seja, $\exists f \in L^{p}_{loc}; f \notin L^{p}$. 
+			
+			Primeiro para $1 \leq p < \infty$, tomemos $f \in L^{p}$ e com isso $||f||_{p} < \infty$, o que implica que para qualquer compacto $K \subseteq \Omega$ temos 
+			$$
+			||f\chi_{K}||_{p} = \Big( \int_{\Omega}|f(x)\chi_{K} (x)|^{p} \Big)^{1/p}= \Big( \int_{K}|f(x)|^{p} \Big)^{1/p} \leq \Big( \int_{\Omega}|f(x)|^{p} \Big)^{1/p} \ = ||f||_{p} < \infty,
+			$$
+			logo $f \in L^{p}_{loc} \Rightarrow L^{p} \subseteq L^{p}_{loc}$. Por outro lado, fazendo $\Omega = \mathbb{R}$ e definindo a função constante $f(x) = 1$. Tomando um compacto qualquer $K \subset \Omega$ teremos que 
+			$$
+			||f \chi_{K}||_{p} = \Big( \int_{\Omega} |f(x)\chi_{K}(x)|^{p} \Big)^{1/p} = \Big( \int_{K} 1 \Big)^{1/p} < \infty,
+			$$
+			contudo, 
+			$||f||_{p} = \infty$, portanto $f \notin L^{p} \Rightarrow L^{p} \subsetneq L^{p}_{loc}$.
+			
+			Resta-nos mostrar o caso em que $p=\infty$. Tomemos $f \in L^{\infty}$ e com isso $||f||_{\infty} < \infty$, o que implica que para qualquer compacto $K \subseteq \Omega$ temos 
+			$$
+			||f\chi_{K}||_{\infty} = \sup_{x \in \Omega}|f(x)\chi_{K} (x)|= \sup_{x \in K}|f(x)| \leq \sup_{x \in \Omega}|f(x)| = ||f||_{\infty} < \infty,
+			$$
+			logo $f \in L^{\infty}_{loc} \Rightarrow L^{\infty} \subseteq L^{\infty}_{loc}$. Por outro lado, fazendo $\Omega = \mathbb{R}$ e definindo a função constante $f(x) = 1$. Tomando um compacto qualquer $K \subset \Omega$ teremos que 
+			$$
+			||f \chi_{K}||_{\infty} = \sup_{x \in \Omega}|f(x)\chi_{K} (x)| = \sup_{x \in K}|1| = 1 < \infty,
+			$$
+			contudo, 
+			$||f||_{\infty} = \infty$, portanto $f \notin L^{p} \Rightarrow L^{p} \subsetneq L^{p}_{loc}$.
+			
+			Conclusão, $L^{p}$ esta contido propriamente em $L^{p}_{loc}$ para $1 \leq p \leq \infty$.
+			
+			\item Supondo $\Omega$ limitado, então vamos definir $\omega := \int_{\Omega} 1 < \infty$ como sendo a soma de todos os intervalos que constituem $\Omega$. Note que para $1 \leq p \leq \infty$ temos:
+			$$
+			||f||_{p} = \Big( \int_{\Omega} |f(x)|^{p} \Big)^{1/p} \leq \Big( \int_{\Omega} (\sup_{y \in \Omega}|f(y)|)^{p} \Big)^{1/p} = \sup_{y \in \Omega}|f(y)|\int_{\Omega} 1 = ||f||_{\infty}\omega.
+			$$
+			Com isso, caso $||f||_{\infty} < \infty$ então teremos pela desigualdade anterior $||f||_{p} \leq ||f||_{\infty}\omega < \infty \Rightarrow L^{\infty} \subseteq L^{p}$. No item atenrior vimos que $L^{p} \subset L^{p}_{loc}$, então $L^{\infty } \subseteq L^{p} \subset L^{p}_{loc}$. Agora resta-nos mostrar que $L^{p}_{loc} \subseteq L^{1}_{loc}$.
+		\end{enumerate}
+	\end{enumerate}
+	
+\end{document}
