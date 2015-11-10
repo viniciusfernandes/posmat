@@ -61,11 +61,24 @@
 			
 			Conclusão, $L^{p}$ esta contido propriamente em $L^{p}_{loc}$ para $1 \leq p \leq \infty$.
 			
-			\item Supondo $\Omega$ limitado, então existe uma bola fechada centrada em algum ponto $x_{0} \in \Omega$ tal que $\Omega \subset B(x_{0}, r)$, assim podemos definir $\omega := \int_{\Omega} 1 < \int_{B(x_0, r)} 1 < \infty$. Note que para $1 \leq p \leq \infty$ temos:
+			\item Supondo $\Omega$ limitado, então existe uma bola fechada centrada em algum ponto $x_{0} \in \Omega$ tal que $\Omega \subset B(x_{0}, r)$, assim podemos definir $\omega := \int_{\Omega} 1 < \int_{B(x_0, r)} 1 < \infty$. Note que para $1 \leq p \leq q \leq \infty$ temos:
 			$$
-			||f||_{p} = \Big( \int_{\Omega} |f(x)|^{p} \Big)^{1/p} \leq \Big( \int_{\Omega} (\sup_{y \in \Omega}|f(y)|)^{p} \Big)^{1/p} = \sup_{y \in \Omega}|f(y)|\int_{\Omega} 1 = ||f||_{\infty}\omega,
+			||f||_{q} = \Big( \int_{\Omega} |f(x)|^{q} \Big)^{1/q} \leq \Big( \int_{\Omega} (\sup_{y \in \Omega}|f(y)|)^{q} \Big)^{1/q} = \sup_{y \in \Omega}|f(y)|\int_{\Omega} 1 = ||f||_{\infty}\omega,
 			$$
-			lembrando que pela limitação de $\Omega$ temos $\omega < \infty$. Com isso, caso $||f||_{\infty} < \infty$ então teremos pela desigualdade anterior $||f||_{p} \leq ||f||_{\infty}\omega < \infty \Rightarrow L^{\infty} \subseteq L^{p}$. No item anterior vimos que $L^{p} \subseteq L^{p}_{loc}$, então $L^{\infty } \subseteq L^{p} \subseteq L^{p}_{loc}$. Agora resta-nos mostrar que $L^{p}_{loc} \subseteq L^{1}_{loc}$ para $1 < p < \infty$. Novamente tomando $f \in L^{p}_{loc}$ e $K \subset \Omega$ um compacto qualquer, então pela desigualdade de Holder $||f\chi_{K}||_{1} \leq ||f\chi_{K}||_{p}||f\chi_{K}||_{q}$, e supondo que $f \in L^{p}_{loc}$ teremos que $||f\chi_{K}||_{p} < \infty$ e como já vimos que $L^{q} \subseteq L^{p}$ então podemos afirmar que $||f\chi_{K}||_{q} < \infty$ para $1 < p < \infty$. Voltando com essas condições na desigualdade de Holder teremos $||f\chi_{K}||_{1} < \infty \Rightarrow f \in L^{1}_{loc}$, portanto $L^{p}_{loc} \subseteq L^{1}_{loc}$. 
+			lembrando que pela limitação de $\Omega$ temos $\omega < \infty$. Com isso, caso $||f||_{\infty} < \infty$ então teremos pela desigualdade anterior $||f||_{q} \leq ||f||_{\infty}\omega < \infty \Rightarrow L^{\infty} \subseteq L^{q}$. Vamos mostrar agora que se $p \leq q$ então $L^{q} \subseteq L^{p}$. Com efeito, seja $f \in L^{q}$ e definamos $\Omega_{1} := \{ |f(x)| \leq 1: x \in \Omega \}$,  $\Omega_{2} := \Omega\backslash\Omega_{1}$ assim $\Omega = \Omega_{1} \cup \Omega_{2}$. Integrando:
+			$$
+			\begin{aligned}
+			\int_{\Omega}|f(x)|^{p}
+			= & \int_{\Omega_{1}}|f(x)|^{p} + \int_{\Omega_{2}}|f(x)|^{p} \\
+			\leq & \int_{\Omega_{1}} 1 + \int_{\Omega_{2}}|f(x)|^{p} \\
+			= & \omega^{p}_{1} + \int_{\Omega_{2}}|f(x)|^{p} \\
+			\leq & \omega^{p}_{1} + \int_{\Omega_{2}}|f(x)|^{q} = \underbrace{ \omega^{p}_{1} }_{< \infty }+ \underbrace{ ||f||_{q}^{q} }_{< \infty} < \infty \\
+			\therefore & \; ||f||_{p}^{p} = \int_{\Omega}|f(x)|^{p} < \infty.
+			\end{aligned}
+			$$
+			logo, $||f||_{p} <\infty \Rightarrow f \in L^{p}$, portanto $L^{q} \subseteq L^{p}$. Temos assim o encadeamento $L^{\infty} \subseteq L^{q} \subseteq L^{p}$. 
+			
+			No item anterior vimos que se $1 \leq p \leq \infty$ temos $L^{p} \subseteq L^{p}_{loc}$, então $L^{\infty} \subseteq L^{q} \subseteq L^{p} \subseteq L^{p}_{loc}$. Agora resta-nos mostrar que $L^{p}_{loc} \subseteq L^{1}_{loc}$ para $1 < p < \infty$. Pelo encadeamento, sabemos que $L^{q}\subseteq L^{p}_{loc}$, então tomemos $f \in L^{q}$, $K \subset \Omega$ um compacto qualquer e $\chi_{K}$ a função característica em $K$. Pela desigualdade de Holder $||f\chi_{K}||_{1} \leq ||f\chi_{K}||_{p}||f\chi_{K}||_{q}$, e pela escolha de $f$ teremos que $||f\chi_{K}||_{p} < \infty$ e $||f\chi_{K}||_{q} \leq ||f||_{q} < \infty$, que voltando na desigualdade teremos $||f\chi_{K}||_{1} < \infty \Rightarrow f \in L^{1}_{loc}$, logo $L^{p}_{loc} \subseteq L^{1}_{loc}$. 
 			
 			Conclusão: $L^{\infty} \subseteq L^{q} \subseteq L^{p} \subseteq L^{p}_{loc} \subseteq L^{1}_{loc}$, como desejávamos.
 		\end{enumerate}
