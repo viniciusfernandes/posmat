@@ -30,8 +30,21 @@
 		= & \lim_{x \to 0}\frac{\psi^{(n-1)}(x) - \psi^{(n-1)}(0)}{x} = \lim_{x \to 0}\frac{\frac{\phi^{(n)}(x) - \phi^{(n)}(0)}{x} - \phi^{(n)}(0)}{x} = \phi^{(n+1)}(0) \\
 		\end{aligned}
 		$$
-		portanto, $\psi^{(n)}(0)$ existe e é dado por $\psi^{(n)}(0) = \phi^{(n+1)}(0)$. Com isso podemos afirmar que $\psi:\Omega \to \mathbb{R}$ é diferenciável e podemos escrever $\phi(x) = \phi(0) + x \psi(x)$.
+		portanto, $\psi^{(n)}(0)$ existe e é dado por $\psi^{(n)}(0) = \phi^{(n+1)}(0)$. Com isso podemos afirmar que $\psi:\Omega \to \mathbb{R}$ é tal que $\psi \in C^{0}$. 
 		
+		Necessitamos mostrar que $\psi \in C^{\infty}_{0}$. Pela definição $\psi(x) = \frac{\phi(x) - \phi(o)}{x}$, consequentemente $\psi(x) \neq 0 \iff \phi(x) \neq \phi(0)$, isto é, $supp(\psi) = \overline{ \{x \in \Omega: \phi(x) \neq \phi(0)\} }$. Vejamos os casos:
+		\begin{enumerate}
+			\item Caso $\phi$ constante e $\phi \neq 0$, então $\psi = 0$ e $supp(f) = \emptyset$ que é um compacto, portanto $\psi \in C^{\infty}_{0}$.
+			
+			\item Caso $\phi$ não-constante, então teremos os subcasos:
+				\begin{enumerate}
+					\item Supondo $\phi(0) = 0$ teremos $supp(\psi) = \overline{ \{x \in \Omega: \phi(x) \neq 0\} } = supp(\phi)$ que é um compacto, portanto $\psi \in C^{\infty}_{0}$.
+					
+					\item Supondo $\phi(0) \neq 0$ vamos mostrar que $supp(\psi) \neq \emptyset$. Usando o fato de que $\phi$ é contínua podemos afirmar que existem $\epsilon > 0$, uma bola $B(0, \epsilon)$ e um $y \in B(0, \epsilon)$ tal que $\phi(y) \neq \phi(0)$ (pois $\phi$ é não-constante), portanto $y \in supp(\psi)$, logo $supp(\psi) \neq \emptyset$. Tome agora $x \in supp(\psi)$, então $\phi(x) \neq \phi(0)$, mas como $\phi(0) \neq 0$ então $\phi(x) \neq 0$ , assim temos que $x \in supp(\phi)$, portanto $supp(\psi) \subseteq supp(\phi)$ e consequentemente $supp(\psi)$ é limitado pois é um subconjunto de um compacto da reta, além disso, como $supp(\psi)$ é um conjunto fechado, então é fechado e limitado, portanto é um compacto e $\psi \in C^{\infty}_{0}$.
+				\end{enumerate}
+		\end{enumerate}
+		
+		Conclusão: $\psi \in C^{\infty}_{0}$ e pela definição dessa função podemos escrever $\phi(x) = \phi(0) + x \psi(x)$.
 		
 		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade.
 		\begin{enumerate}
@@ -69,10 +82,10 @@
 			$$
 			\begin{aligned}
 			\int_{\Omega}|f(x)|^{p}
-			= & \int_{\Omega_{1}}|f(x)|^{p} + \int_{\Omega_{2}}|f(x)|^{p} \\
-			\leq & \int_{\Omega_{1}} 1 + \int_{\Omega_{2}}|f(x)|^{p} \\
-			= & \omega^{p}_{1} + \int_{\Omega_{2}}|f(x)|^{p} \\
-			\leq & \omega^{p}_{1} + \int_{\Omega_{2}}|f(x)|^{q} = \underbrace{ \omega^{p}_{1} }_{< \infty }+ \underbrace{ ||f||_{q}^{q} }_{< \infty} < \infty \\
+			= & \int_{\Omega_{1}} \underbrace{|f(x)|^{p}}_{\leq 1} + \int_{\Omega_{2}}|f(x)|^{p} \\
+			\leq & \underbrace{ \int_{\Omega_{1}} 1 }_{< \infty}  + \int_{\Omega_{2}}|f(x)|^{p} \\
+			= & \omega_{1} + \int_{\Omega_{2}} |f(x)|^{p}, \; \text{como} \; |f(x)|>1 \; e \; p\leq q \; \text{teremos}\\ 
+			\leq & \omega_{1} + \int_{\Omega_{2}}|f(x)|^{q} = \underbrace{ \omega_{1} }_{< \infty }+ \underbrace{ ||f||_{q}^{q} }_{< \infty} < \infty \\
 			\therefore & \; ||f||_{p}^{p} = \int_{\Omega}|f(x)|^{p} < \infty.
 			\end{aligned}
 			$$
@@ -87,6 +100,14 @@
 		||\delta_{x_0}(f) - \delta_{x_0}(g)|| = ||f(x_{0}) - g(x_{0})|| \leq \sup_{x \in \Omega}|f(x) -g(x)| = ||f-g||_{\infty} < \delta = \epsilon/2 < \epsilon,
 		$$ 
 		portanto $||\delta_{x_0}(f) - \delta_{x_0}(g)||<\epsilon$ e como $f$ é arbitrária, então $\delta_{x_{0}} : \mathcal{S}(\Omega) \to \mathbb{R}$ é contínuo. Resta-nos mostrar a linearidade. Sejam $f, g \in \mathcal{S}(\Omega)$ e $\lambda \in \mathbb{R}$, e já sabemos da lista anterior que $f+\lambda g \in \mathcal{S}(\Omega)$, então $\delta_{x_{0}}(f+\lambda g) = (f+\lambda g)(x_{0}) = f(x_{0})+\lambda g(x_{0}) = \delta_{x_{0}}(f) + \lambda \delta_{x_{0}}(g)$, portanto é um operador linear. Conclusão: $\delta_{x_{0}}$ é um operador contínuo e linear, como desejávamos.
+		
+		\item \textbf{Solução:} Verifiquemos o resultado para o caso em que $n =1$ e tomemos $k \in \mathbb{N}_{0}$ como um multiíndice e $f, g \in C^{\infty}$. Vamos convencionar a derivada parcial $\partial/\partial {x_{j}} = \partial_{j}$ e nessas condições temos que $D^{|k|} = \partial^{k}_{1}$ o que nos leva a fórmula de Leibnitz para derivação:
+		$$
+		\begin{aligned}
+		D^{|k|} (fg)
+		= & \partial^{k}_{1} (fg) = \sum_{j=0}^{k} \frac{k!}{j!(k-j)!}\partial_{1}^{j}f \partial_{1}^{k-j}g
+		\end{aligned}
+		$$
 	\end{enumerate}
 	
 \end{document}
