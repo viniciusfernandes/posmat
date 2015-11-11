@@ -101,13 +101,41 @@
 		$$ 
 		portanto $||\delta_{x_0}(f) - \delta_{x_0}(g)||<\epsilon$ e como $f$ é arbitrária, então $\delta_{x_{0}} : \mathcal{S}(\Omega) \to \mathbb{R}$ é contínuo. Resta-nos mostrar a linearidade. Sejam $f, g \in \mathcal{S}(\Omega)$ e $\lambda \in \mathbb{R}$, e já sabemos da lista anterior que $f+\lambda g \in \mathcal{S}(\Omega)$, então $\delta_{x_{0}}(f+\lambda g) = (f+\lambda g)(x_{0}) = f(x_{0})+\lambda g(x_{0}) = \delta_{x_{0}}(f) + \lambda \delta_{x_{0}}(g)$, portanto é um operador linear. Conclusão: $\delta_{x_{0}}$ é um operador contínuo e linear, como desejávamos.
 		
-		\item \textbf{Solução:} Verifiquemos o resultado para o caso em que $n =1$ e tomemos $k \in \mathbb{N}_{0}$ como um multiíndice e $f, g \in C^{\infty}$. Vamos convencionar a derivada parcial $\partial/\partial {x_{j}} = \partial_{j}$ e nessas condições temos que $D^{|k|} = \partial^{k}_{1}$ o que nos leva a fórmula de Leibnitz para derivação:
+		\item \textbf{Solução:} Verifiquemos o resultado para o caso em que $n =1$, tomemos $k \in \mathbb{N}_{0}$ como um multi-índice e $f, g \in C^{\infty}$. Vamos convencionar a notação para derivada parcial $\partial/\partial {x_{j}} = \partial_{j}$, definiremos $(k \; j) = k!/j!(k-j)!$ para $k, i \in \mathbb{N}$ com $j \leq k$  e nessas condições temos que $D^{|k|} = \partial^{k}_{1}$. Escrevamos a fórmula de Leibnitz para derivação do produto de funções:
+		$$
+		D^{|k|} (fg)
+		= \partial^{k}_{1} (fg) = \sum_{j=0}^{k} (k \; j)\partial_{1}^{j}f \partial_{1}^{k-j}g.
+		$$
+		Supondo agora $n = 2$ e $k \in \mathbb{N}^{2}_{0}$ tal que $k = (k_{1}, k_{2})$ e aplicando 2 vezes a regra de Leibnitz para o produto de funções, teremos:
 		$$
 		\begin{aligned}
 		D^{|k|} (fg)
-		= & \partial^{k}_{1} (fg) = \sum_{j=0}^{k} \frac{k!}{j!(k-j)!}\partial_{1}^{j}f \partial_{1}^{k-j}g
+		= & \partial^{k_1}_{1} \underbrace{ \partial^{k_2}_{2} (fg) }_{Leibnitz}  \\
+		= & \partial^{k_1}_{1} \sum_{j_{2}=0}^{k_{2}} (k_{2} \; j_{2}) \underbrace{ \partial_{2}^{j_{2}}f }_{F} \underbrace{ \partial_{2}^{k_{2}-j_{2}}g }_{G} \\
+		= & \sum_{j_{2}=0}^{k_{2}} (k_{2} \; j_{2}) \underbrace{ \partial^{k_1}_{1} (F G) }_{Leibnitz} \\
+		= & \partial^{k_1}_{1} \sum_{j_{2}=0}^{k_{2}} (k_{2} \; j_{2}) \partial_{2}^{j_{2}}F \partial_{2}^{k_{2}-j_{2}}G  \\
+		= & \sum_{j_{1}=0}^{k_{1}} \sum_{j_{2}=0}^{k_{2}} (k_{1} \; j_{1})(k_{2} \; j_{2}) \partial_{1}^{j_{1}} \partial_{2}^{j_{2}}f \partial_{1}^{k_{1}-j_{1}} \partial_{2}^{k_{2}-j_{2}}g,
 		\end{aligned}
 		$$
+		que definindo $j \in \mathbb{N}^{2}_{0}$ tal que $j = (j_{1}, j_{2})$, podemos escrever $D^{|j|} f = \partial_{1}^{j_{1}} \partial_{2}^{j_{2}}f$, $D^{|k - j|} g = \partial_{1}^{k_{1}-j_{1}} \partial_{2}^{k_{2}-j_{2}}g$ e $(k_{1} \; j_{1})(k_{2} \; j_{2}) = (k \; j)$, e voltando na equação anterior reescreveremos:
+		$$
+		\begin{aligned}
+		D^{|k|} (fg)
+		= & \sum_{j_{1}=0}^{k_{1}} \sum_{j_{2}=0}^{k_{2}} (k_{1} \; j_{1})(k_{2} \; j_{2}) \partial_{1}^{j_{1}} \partial_{2}^{j_{2}}f \partial_{1}^{k_{1}-j_{1}} \partial_{2}^{k_{2}-j_{2}}g \\
+		= & \sum_{j \leq k} (k \; j) D^{|j|}f D^{|k-j|}g.
+		\end{aligned}
+		$$
+		Note que essa ultima expressão não depende de quantas dimensões estamos trabalhando, mesmo apesar de termos escolhido $n=2$ para esse caso. De qualquer modo, tomemos agora uma dimensão arbitrária $\mathbb{R}^{n}$ e o multi-índice $k \in \mathbb{N}^{n}_{0}$, então aplicando a regra de Leibnitz $n$ vezes do mesmo modo que procedemos para $n=2$:
+		$$
+		\begin{aligned}
+		D^{|k|} (fg)
+		= & \sum_{j_{1}=0}^{k_{1}} \dots \sum_{j_{n}=0}^{k_{n}} \underbrace{ (k_{1} \; j_{1}) \dots (k_{n} \; j_{n}) }_{(k \; j)} \underbrace{ \partial_{1}^{j_{1}} \dots \partial_{n}^{j_{n}}f }_{D^{|j|}f} \underbrace{ \partial_{1}^{k_{1}-j_{1}} \dots \partial_{n}^{k_{n}-j_{n}}g }_{D^{|k-j|}g} \\
+		= & \sum_{j \leq k} (k \; j) D^{|j|}f D^{|k-j|}g,
+		\end{aligned}
+		$$
+		como a dimensão e o multi-índice são arbitrários, então temos o resultado que desejávamos.
+		
 	\end{enumerate}
+	
 	
 \end{document}
