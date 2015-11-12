@@ -105,40 +105,52 @@
 		$$ 
 		portanto $||\delta_{x_0}(f) - \delta_{x_0}(g)||<\epsilon$ então $\delta_{x_0}$ é contínuo em $f$, mas como $f$ é arbitrária, então $\delta_{x_{0}} : \mathcal{S}(\Omega) \to \mathbb{R}$ é contínuo. Resta-nos mostrar a linearidade. Sejam $f, g \in \mathcal{S}(\Omega)$ e $\lambda \in \mathbb{R}$, e já sabemos da lista anterior que $f+\lambda g \in \mathcal{S}(\Omega)$, então $\delta_{x_{0}}(f+\lambda g) = (f+\lambda g)(x_{0}) = f(x_{0})+\lambda g(x_{0}) = \delta_{x_{0}}(f) + \lambda \delta_{x_{0}}(g)$, portanto é um operador linear. Conclusão: $\delta_{x_{0}}$ é um operador contínuo e linear, como desejávamos.
 		
-		\item \textbf{Solução:} Verifiquemos o resultado para o caso em que $n =1$, tomemos $k \in \mathbb{N}_{0}$ como um multi-índice e $f, g \in C^{\infty}$. Vamos convencionar a notação para derivada parcial $\partial/\partial {x_{j}} = \partial_{j}$, definiremos $(k \; j) = k!/j!(k-j)!$ para $k, i \in \mathbb{N}$ com $j \leq k$  e nessas condições temos que $D^{|k|} = \partial^{k}_{1}$. Escrevamos a fórmula de Leibnitz para derivação do produto de funções:
-		$$
-		D^{|k|} (fg)
-		= \partial^{k}_{1} (fg) = \sum_{j=0}^{k} (k \; j)\partial_{1}^{j}f \partial_{1}^{k-j}g.
-		$$
-		Supondo agora $n = 2$ e $k \in \mathbb{N}^{2}_{0}$ tal que $k = (k_{1}, k_{2})$ e aplicando 2 vezes a regra de Leibnitz para o produto de funções, teremos:
+		\item \textbf{Solução:} Verifiquemos o resultado para o caso em que $n =1$, tomemos $k \in \mathbb{N}_{0}$ como um multi-índice e $f, g \in C^{\infty}$. Vamos convencionar a notação para derivada parcial $\partial/\partial {x_{j}} = \partial_{j}$, definiremos $(k \; j) = k!/j!(k-j)!$ para $k, i \in \mathbb{N}$ com $j \leq k$. Faremos a demonstração da regra de Leibnitz para produto de funções no caso unidimensional e por um abuso de notação faremos $d/dx = \partial/\partial {x_{1}}$ apena para mantermos a convenção no caso multidimensional. Escrevamos a fórmula de Leibnitz para derivação do produto de funções:
 		$$
 		\begin{aligned}
-		D^{|k|} (fg)
-		= & \partial^{k_1}_{1} \underbrace{ \partial^{k_2}_{2} (fg) }_{Leibnitz}  \\
-		= & \partial^{k_1}_{1} \sum_{j_{2}=0}^{k_{2}} (k_{2} \; j_{2}) \underbrace{ \partial_{2}^{j_{2}}f }_{F} \underbrace{ \partial_{2}^{k_{2}-j_{2}}g }_{G} \\
-		= & \sum_{j_{2}=0}^{k_{2}} (k_{2} \; j_{2}) \underbrace{ \partial^{k_1}_{1} (F G) }_{Leibnitz} \\
-		= & \sum_{j_{2}=0}^{k_{2}} (k_{2} \; j_{2}) \sum_{j_{1}=0}^{k_{1}} (k_{1} \; j_{1}) \partial_{1}^{j_{1}}F \partial_{1}^{k_{1}-j_{1}}G  \\
-		= & \sum_{j_{1}=0}^{k_{1}} \sum_{j_{2}=0}^{k_{2}} (k_{1} \; j_{1})(k_{2} \; j_{2}) \partial_{1}^{j_{1}} \partial_{2}^{j_{2}}f \partial_{1}^{k_{1}-j_{1}} \partial_{2}^{k_{2}-j_{2}}g,
+		D^{1} (fg)
+		= & \partial_{1} (fg) = f^{(1)}g + fg^{(1)} = \sum_{j=0}^{1} (1 \; j)f^{(j)}g^{(1-j)} \\
+		D^{2} (fg)
+		= & \partial^{2}_{1} (fg) = \partial_{1} \sum_{j=0}^{1} (1 \; j) \underbrace{f^{(j)}}_{F} \underbrace{g^{(1-j)}}_{G} = \sum_{j=0}^{1} (1 \; j)\sum_{k=0}^{1} (1 \; k)F^{(k)}g^{(1-k)} \\
+		= & \sum_{j=0}^{1} \sum_{k=0}^{1} (1 \; j) (1 \; k)f^{(j+k)}g^{(2-(j+k))} \; \text{fazendo} \; i = j+k \; \text{teremos} \; 0 \leq i \leq 2 \\
+		= & \sum_{i=0}^{2} (2 \; i) f^{(i)} g^{(2-i)} \\
+		D^{3} (fg)
+		= & \partial^{3}_{1} (fg) = \partial_{1} \sum_{i=0}^{2} (2 \; i) \underbrace{f^{(i)}}_{F} \underbrace{g^{(2-i)}}_{G} = \sum_{i=0}^{2} (2 \; i) \sum_{k=0}^{1} (1 \; k)F^{(k)} G^{(1-k)} \\
+		= & \sum_{i=0}^{2} \sum_{k=0}^{1} (2 \; i)  (1 \; k) f^{(i+k)}g^{(3-(i+k))} \; \text{fazendo} \; p = i+k \; \text{teremos} \; 0 \leq p \leq 3 \\
+		= & \sum_{p=0}^{3} (3 \; i) f^{(p)} g^{(3-p)} \\
+		\vdots & \\
+		D^{n} (fg) 
+		= & \sum_{p=0}^{n} (n \; p) f^{(p)} g^{(n-p)} = \sum_{p=0}^{n} (n \; p) \partial^{p}_{1} f \partial^{n-p}_{1} g \\
+		= &  \sum_{p + k = n}^{n} \frac{n!}{p!k!} \partial^{p}_{1} f \partial^{k}_{1} g,
 		\end{aligned}
 		$$
-		que definindo $j \in \mathbb{N}^{2}_{0}$ tal que $j = (j_{1}, j_{2})$, podemos escrever $D^{|j|} f = \partial_{1}^{j_{1}} \partial_{2}^{j_{2}}f$, $D^{|k - j|} g = \partial_{1}^{k_{1}-j_{1}} \partial_{2}^{k_{2}-j_{2}}g$ e $(k_{1} \; j_{1})(k_{2} \; j_{2}) = (k \; j)$, e voltando na equação anterior reescreveremos:
+		onde definimos $k = n-p$, portanto temos uma expressão para $D^{n} (fg)$. Vejamos que, dado $n \in \mathbb{N}$, a expressão valerá para $n+1$, então:
 		$$
 		\begin{aligned}
-		D^{|k|} (fg)
-		= & \sum_{j_{1}=0}^{k_{1}} \sum_{j_{2}=0}^{k_{2}} (k_{1} \; j_{1})(k_{2} \; j_{2}) \partial_{1}^{j_{1}} \partial_{2}^{j_{2}}f \partial_{1}^{k_{1}-j_{1}} \partial_{2}^{k_{2}-j_{2}}g \\
-		= & \sum_{j \leq k} (k \; j) D^{|j|}f D^{|k-j|}g.
+		D^{n+1} (fg) 
+		= & \partial^{n+1}_{1} (fg) = \partial^{1}_{1} \underbrace{\partial^{n}_{1}(fg)}_{D^{n} (fg)}
+		\\
+		= & \partial^{1}_{1} \sum_{p=0}^{n} (n \; p) \underbrace{\partial^{p}_{1} f}_{F}  \underbrace{\partial^{n-p}_{1} g}_{G} = \sum_{p=0}^{n} (n \; p) \sum_{k=0}^{1} (1 \; k)\partial^{k}_{1} F  \partial^{1-k}_{1} G \\
+		= & \sum_{p=0}^{n} \sum_{k=0}^{1} (n \; p) (1 \; k)\partial^{p+k}_{1} f  \partial^{n+1-(p+k)}_{1} g \; \text{fazendo} \; p = i+k \; \text{teremos} \; 0 \leq i \leq n+1 \\
+		= & \sum_{i=0}^{n+1} (n+1 \; i) \partial^{i}_{1} f  \partial^{n+1-i}_{1} g,
 		\end{aligned}
 		$$
-		Note que essa ultima expressão não depende de quantas dimensões estamos trabalhando, mesmo apesar de termos escolhido $n=2$ para esse caso. De qualquer modo, tomemos agora uma dimensão arbitrária $\mathbb{R}^{n}$ e o multi-índice $k \in \mathbb{N}^{n}_{0}$, então aplicando a regra de Leibnitz $n$ vezes do mesmo modo que procedemos para $n=2$:
-		$$
-		\begin{aligned}
-		D^{|k|} (fg)
-		= & \sum_{j_{1}=0}^{k_{1}} \dots \sum_{j_{n}=0}^{k_{n}} \underbrace{ (k_{1} \; j_{1}) \dots (k_{n} \; j_{n}) }_{(k \; j)} \underbrace{ \partial_{1}^{j_{1}} \dots \partial_{n}^{j_{n}}f }_{D^{|j|}f} \underbrace{ \partial_{1}^{k_{1}-j_{1}} \dots \partial_{n}^{k_{n}-j_{n}}g }_{D^{|k-j|}g} \\
-		= & \sum_{j \leq k} (k \; j) D^{|j|}f D^{|k-j|}g,
-		\end{aligned}
-		$$
-		como a dimensão e o multi-índice são arbitrários, então temos o resultado que desejávamos.
+		e assim concluimos a demosntração da regra de Leibnitz indutivamente.
 		
+		Devemos agora analisar o comportamento para dimensões superiores, tomando $n \in \mathbb{N}$ arbitrário e $k \in \mathbb{N}^{n}_{0}$ tal que $k = (k_{1}, k_{2}, \dots, k_{n})$ nos resta aplicar a regra de Leibnitz para cada uma das $n$ derivadas:
+		$$
+		\begin{aligned}
+		D^{|k|} (fg) 
+		= & \partial^{k_1}_{1} \dots \underbrace{\partial^{k_n}_{n}(fg)}_{Leibnitz} \\
+		= & \partial^{k_1}_{1} \dots \underbrace{ \partial^{k_{n-1}}_{n-1} \sum_{j_{n}=0}^{k_{n}} (k_{n} \; j_{n}) \partial^{j_{n}}_{1} f  \partial^{k_{n}-j_{n}}_{1} g }_{Leibnitz}\\
+		\vdots & \\
+		D^{|k|} (fg) 
+		= & \sum_{j_{1}=0}^{k_{1}} \dots \sum_{j_{n}=0}^{k_{n}} \underbrace{ (k_{1} \; j_{1}) \dots (k_{n} \; j_{n}) }_{(k \; j)} \underbrace{ \partial_{1}^{j_{1}} \dots \partial_{n}^{j_{n}}f }_{D^{|j|}f} \underbrace{ \partial_{1}^{k_{1}-j_{1}} \dots \partial_{n}^{k_{n}-j_{n}}g }_{D^{|k-j|}g} \\
+		= & \sum_{j \leq k} (k \; j) D^{|j|}f D^{|k-j|}g] \\
+		= & \sum_{|j| + |p| = |k|} \frac{k!}{j!p!} D^{|j|}f D^{|p|}g
+		\end{aligned}
+		$$
+		onde definimos $p = k-j \in \mathbb{N}^{n}_{0}$ e $k! = k_{1}!...k_{n}!$ e os analogamente para os outros fatoriais.
 	\end{enumerate}
 	
 	
