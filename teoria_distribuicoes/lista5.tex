@@ -16,9 +16,11 @@
 	
 	\begin{enumerate}
 		
-		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade. Definamos $\psi(x) := \frac{\phi(x) - \phi(0)}{x}$ e assim $\psi:\Omega\backslash\{0\} \to \mathbb{R}$ esta bem-definida. Contudo, tomando o limite $\lim_{x \to 0} \psi(x) = \lim_{x \to 0} \frac{\phi(x) - \phi(0)}{x} = \phi'(0)$ que existe pois $\phi$ é infinitamente diferenciável em $\Omega$, portanto $\psi(0) = \phi'(0)$, consequentemente $\psi$ pode ser avaliada em $x=0$ e $\psi:\Omega \to \mathbb{R}$ esta bem-definida. 
+		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade.
 		
-		Pela própria definição temos que $\psi$ é o produto de $f(x)$ e $1/x$ que são funções infinitamente diferenciáveis em $\Omega \backslash\{0\}$, portanto $\psi$ é infinitamente diferenciável em $\Omega \backslash\{0\}$. Vejamos agora o comportamento das derivadas de $\psi$ em $x=0$. Aplicando a definição de derivação e utilizando a hipótese de que $\phi^{(n)}(0)$ existe para qualquer $n \in \mathbb{N}$, teremos:
+		Definamos $\psi(x) := \frac{\phi(x) - \phi(0)}{x}$ e podemos ver que $\psi:\Omega\backslash\{0\} \to \mathbb{R}$ esta bem-definida. Além disso, veremos que $\psi$ pode ser avaliada na origem pois tomando o limite $\lim_{x \to 0} \psi(x) = \lim_{x \to 0} \frac{\phi(x) - \phi(0)}{x} = \phi'(0)$ e como $\phi'$  esta definida na origem pois é infinitamente diferenciável em $\Omega$, então $\psi(0) = \phi'(0)$, consequentemente $\psi$ pode ser avaliada em $x=0$ e $\psi:\Omega \to \mathbb{R}$ esta bem-definida. 
+		
+		Pela própria definição temos que $\psi$ é o produto de $\phi(x)$ e $1/x$ que são funções infinitamente diferenciáveis em $\Omega \backslash\{0\}$, portanto $\psi$ é infinitamente diferenciável em $\Omega \backslash\{0\}$. Vejamos agora o comportamento das derivadas de $\psi$ em $x=0$. Aplicando a definição de derivação e utilizando a hipótese de que $\phi^{(n)}(0)$ existe para qualquer $n \in \mathbb{N}$, teremos:
 		$$
 		\begin{aligned}
 		\psi^{(0)}(0) 
@@ -30,17 +32,20 @@
 		= & \lim_{x \to 0}\frac{\psi^{(n-1)}(x) - \psi^{(n-1)}(0)}{x} = \lim_{x \to 0}\frac{\frac{\phi^{(n)}(x) - \phi^{(n)}(0)}{x} - \phi^{(n)}(0)}{x} = \phi^{(n+1)}(0) \\
 		\end{aligned}
 		$$
-		portanto, $\psi^{(n)}(0)$ existe e é dado por $\psi^{(n)}(0) = \phi^{(n+1)}(0)$. Com isso podemos afirmar que $\psi:\Omega \to \mathbb{R}$ é tal que $\psi \in C^{0}$. 
+		portanto, $\psi^{(n)}(0)$ existe e é dado por $\psi^{(n)}(0) = \phi^{(n+1)}(0)$. Como essa relação vale para qualquer $n \in \mathbb{N}$ podemos afirmar que $\psi:\Omega \to \mathbb{R}$ é tal que $\psi \in C^{\infty}$. 
 		
 		Necessitamos mostrar que $\psi \in C^{\infty}_{0}$. Pela definição $\psi(x) = \frac{\phi(x) - \phi(o)}{x}$, consequentemente $\psi(x) \neq 0 \iff \phi(x) \neq \phi(0)$, isto é, $supp(\psi) = \overline{ \{x \in \Omega: \phi(x) \neq \phi(0)\} }$. Vejamos os casos:
 		\begin{enumerate}
-			\item Caso $\phi$ constante e $\phi \neq 0$, então $\psi = 0$ e $supp(f) = \emptyset$ que é um compacto, portanto $\psi \in C^{\infty}_{0}$.
+			\item Caso $\phi$ seja uma função constante, então pela definição $\psi = 0$ e $supp(f) = \emptyset$ que é um compacto, portanto $\psi \in C^{\infty}_{0}$.
 			
 			\item Caso $\phi$ não-constante, então teremos os subcasos:
 				\begin{enumerate}
 					\item Supondo $\phi(0) = 0$ teremos $supp(\psi) = \overline{ \{x \in \Omega: \phi(x) \neq 0\} } = supp(\phi)$ que é um compacto, portanto $\psi \in C^{\infty}_{0}$.
 					
-					\item Supondo $\phi(0) \neq 0$ vamos mostrar que $supp(\psi) \neq \emptyset$. Usando o fato de que $\phi$ é contínua podemos afirmar que existem $\epsilon > 0$, uma bola $B(0, \epsilon)$ e um $y \in B(0, \epsilon)$ tal que $\phi(y) \neq \phi(0)$ (pois $\phi$ é não-constante), portanto $y \in supp(\psi)$, logo $supp(\psi) \neq \emptyset$. Tome agora $x \in supp(\psi)$, então $\phi(x) \neq \phi(0)$, mas como $\phi(0) \neq 0$ então $\phi(x) \neq 0$ , assim temos que $x \in supp(\phi)$, portanto $supp(\psi) \subseteq supp(\phi)$ e consequentemente $supp(\psi)$ é limitado pois é um subconjunto de um compacto da reta, além disso, como $supp(\psi)$ é um conjunto fechado, então é fechado e limitado, portanto é um compacto e $\psi \in C^{\infty}_{0}$.
+					\item Supondo $\phi(0) \neq 0$ vamos mostrar que $supp(\psi) \neq \emptyset$. Usando o fato de que $\phi$ é contínua e não-constante, então podemos afirmar que existe $y \in \Omega$ tal que $\phi(y) \neq \phi(0)$, portanto $y \in supp(\psi)$, logo $supp(\psi) \neq \emptyset$. Tome agora $x \in supp(\psi)$, então $\phi(x) \neq \phi(0)$, mas como $\phi(0) \neq 0$ podemos ter $\phi(x) = 0$ e nesse caso teremos $x \notin supp(\phi)$, por outro lado, se $\phi(x) \neq 0$ teremos $x \in supp(\phi)$, portanto $supp(\psi)$ não é um subconjunto de $supp(\phi)$, contudo 
+					
+					
+					 e consequentemente $supp(\psi)$ é limitado pois é um subconjunto de um compacto da reta, além disso, como $supp(\psi)$ é um conjunto fechado, então é fechado e limitado, portanto é um compacto e $\psi \in C^{\infty}_{0}$.
 				\end{enumerate}
 		\end{enumerate}
 		
@@ -65,12 +70,11 @@
 			$$
 			||f\chi_{K}||_{\infty} = \sup_{x \in \Omega}|f(x)\chi_{K} (x)|= \sup_{x \in K}|f(x)| \leq \sup_{x \in \Omega}|f(x)| = ||f||_{\infty} < \infty,
 			$$
-			logo $f \in L^{\infty}_{loc} \Rightarrow L^{\infty} \subseteq L^{\infty}_{loc}$. Por outro lado, fazendo $\Omega = \mathbb{R}$ e definindo a função constante $f(x) = 1$. Tomando um compacto qualquer $K \subset \Omega$ teremos que 
+			logo $f \in L^{\infty}_{loc} \Rightarrow L^{\infty} \subseteq L^{\infty}_{loc}$. Por outro lado, fazendo $\Omega = \mathbb{R}$ e definindo a função linear $f(x) = x$. Tomando um compacto qualquer $K \subset \Omega$ teremos que 
 			$$
-			||f \chi_{K}||_{\infty} = \sup_{x \in \Omega}|f(x)\chi_{K} (x)| = \sup_{x \in K}|1| = 1 < \infty,
+			||f \chi_{K}||_{\infty} = \sup_{x \in \Omega}|f(x)\chi_{K} (x)| = \sup_{x \in K}|x| = \max_{x \in K}|x| < \infty,
 			$$
-			contudo, 
-			$||f||_{\infty} = \infty$, portanto $f \notin L^{p} \Rightarrow L^{p} \subsetneq L^{p}_{loc}$.
+			porém $||f||_{\infty} = \infty$, portanto $f \notin L^{p} \Rightarrow L^{p} \subsetneq L^{p}_{loc}$.
 			
 			Conclusão, $L^{p}$ esta contido propriamente em $L^{p}_{loc}$ para $1 \leq p \leq \infty$.
 			
@@ -86,20 +90,20 @@
 			\leq & \underbrace{ \int_{\Omega_{1}} 1 }_{< \infty}  + \int_{\Omega_{2}}|f(x)|^{p} \\
 			= & \omega_{1} + \int_{\Omega_{2}} |f(x)|^{p}, \; \text{como} \; |f(x)|>1 \; e \; p\leq q \; \text{teremos}\\ 
 			\leq & \omega_{1} + \int_{\Omega_{2}}|f(x)|^{q} = \underbrace{ \omega_{1} }_{< \infty }+ \underbrace{ ||f||_{q}^{q} }_{< \infty} < \infty \\
-			\therefore & \; ||f||_{p}^{p} = \int_{\Omega}|f(x)|^{p} < \infty.
+			\therefore & \; ||f||_{p}^{p} = \int_{\Omega}|f(x)|^{p} < \infty,
 			\end{aligned}
 			$$
-			logo, $||f||_{p} <\infty \Rightarrow f \in L^{p}$, portanto $L^{q} \subseteq L^{p}$. Temos assim o encadeamento $L^{\infty} \subseteq L^{q} \subseteq L^{p}$. 
+			logo $||f||_{p} <\infty \Rightarrow f \in L^{p}$, portanto $L^{q} \subseteq L^{p}$. Temos assim o encadeamento $L^{\infty} \subseteq L^{q} \subseteq L^{p}$. 
 			
-			No item anterior vimos que se $1 \leq p \leq \infty$ temos $L^{p} \subseteq L^{p}_{loc}$, então $L^{\infty} \subseteq L^{q} \subseteq L^{p} \subseteq L^{p}_{loc}$. Agora resta-nos mostrar que $L^{p}_{loc} \subseteq L^{1}_{loc}$ para $1 < p < \infty$. Pelo encadeamento, sabemos que $L^{q}\subseteq L^{p}_{loc}$, então tomemos $f \in L^{q}$, $K \subset \Omega$ um compacto qualquer e $\chi_{K}$ a função característica em $K$. Pela desigualdade de Holder $||f\chi_{K}||_{1} \leq ||f\chi_{K}||_{p}||f\chi_{K}||_{q}$, e pela escolha de $f$ teremos que $||f\chi_{K}||_{p} < \infty$ e $||f\chi_{K}||_{q} \leq ||f||_{q} < \infty$, que voltando na desigualdade teremos $||f\chi_{K}||_{1} < \infty \Rightarrow f \in L^{1}_{loc}$, logo $L^{p}_{loc} \subseteq L^{1}_{loc}$. 
+			No item anterior vimos que se $1 \leq p \leq \infty$ temos $L^{p} \subseteq L^{p}_{loc}$, então $L^{\infty} \subseteq L^{q} \subseteq L^{p} \subseteq L^{p}_{loc}$. Agora resta-nos mostrar que $L^{p}_{loc} \subseteq L^{1}_{loc}$ para $1 < p < \infty$. Pelo encadeamento, sabemos que $L^{q}\subseteq L^{p}_{loc}$, então tomemos $f \in L^{q} \cap L^{p}_{loc} \neq \emptyset$, $K \subset \Omega$ um compacto qualquer e $\chi_{K}$ a função característica em $K$. Pela desigualdade de Holder $||f\chi_{K}||_{1} \leq ||f\chi_{K}||_{p}||f\chi_{K}||_{q}$, e pela escolha de $f$ teremos que $||f\chi_{K}||_{p} < \infty$ (pois $f \in L^{p}_{loc}$) e $||f\chi_{K}||_{q} \leq ||f||_{q} < \infty$ (pois $f \in L^{q}$), que voltando na desigualdade teremos $||f\chi_{K}||_{1} < \infty \Rightarrow f \in L^{1}_{loc}$, logo $L^{p}_{loc} \subseteq L^{1}_{loc}$. 
 			
 			Conclusão: $L^{\infty} \subseteq L^{q} \subseteq L^{p} \subseteq L^{p}_{loc} \subseteq L^{1}_{loc}$, como desejávamos.
 		\end{enumerate}
 		
-		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\Omega)$ e aplicando a definição de continuidade em $f$, temos que dado $\epsilon >0 \; \exists \; \delta >0$ tal que $||f - g||_{\infty} < \delta, \forall g \in \mathcal{S}(\Omega) \Rightarrow ||\delta_{x_0}(f) - \delta_{x_0}(g)|| < \epsilon$. Tomando $\delta = \epsilon/2$ teremos $$
+		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\Omega)$ e aplicando a definição de continuidade em $f$, temos que dado $\epsilon >0 \; \exists \; \delta >0$ tal que $||f - g||_{\infty} < \delta\Rightarrow ||\delta_{x_0}(f) - \delta_{x_0}(g)|| < \epsilon$. Tomando $\delta = \epsilon/2$ teremos $$
 		||\delta_{x_0}(f) - \delta_{x_0}(g)|| = ||f(x_{0}) - g(x_{0})|| \leq \sup_{x \in \Omega}|f(x) -g(x)| = ||f-g||_{\infty} < \delta = \epsilon/2 < \epsilon,
 		$$ 
-		portanto $||\delta_{x_0}(f) - \delta_{x_0}(g)||<\epsilon$ e como $f$ é arbitrária, então $\delta_{x_{0}} : \mathcal{S}(\Omega) \to \mathbb{R}$ é contínuo. Resta-nos mostrar a linearidade. Sejam $f, g \in \mathcal{S}(\Omega)$ e $\lambda \in \mathbb{R}$, e já sabemos da lista anterior que $f+\lambda g \in \mathcal{S}(\Omega)$, então $\delta_{x_{0}}(f+\lambda g) = (f+\lambda g)(x_{0}) = f(x_{0})+\lambda g(x_{0}) = \delta_{x_{0}}(f) + \lambda \delta_{x_{0}}(g)$, portanto é um operador linear. Conclusão: $\delta_{x_{0}}$ é um operador contínuo e linear, como desejávamos.
+		portanto $||\delta_{x_0}(f) - \delta_{x_0}(g)||<\epsilon$ então $\delta_{x_0}$ é contínuo em $f$, mas como $f$ é arbitrária, então $\delta_{x_{0}} : \mathcal{S}(\Omega) \to \mathbb{R}$ é contínuo. Resta-nos mostrar a linearidade. Sejam $f, g \in \mathcal{S}(\Omega)$ e $\lambda \in \mathbb{R}$, e já sabemos da lista anterior que $f+\lambda g \in \mathcal{S}(\Omega)$, então $\delta_{x_{0}}(f+\lambda g) = (f+\lambda g)(x_{0}) = f(x_{0})+\lambda g(x_{0}) = \delta_{x_{0}}(f) + \lambda \delta_{x_{0}}(g)$, portanto é um operador linear. Conclusão: $\delta_{x_{0}}$ é um operador contínuo e linear, como desejávamos.
 		
 		\item \textbf{Solução:} Verifiquemos o resultado para o caso em que $n =1$, tomemos $k \in \mathbb{N}_{0}$ como um multi-índice e $f, g \in C^{\infty}$. Vamos convencionar a notação para derivada parcial $\partial/\partial {x_{j}} = \partial_{j}$, definiremos $(k \; j) = k!/j!(k-j)!$ para $k, i \in \mathbb{N}$ com $j \leq k$  e nessas condições temos que $D^{|k|} = \partial^{k}_{1}$. Escrevamos a fórmula de Leibnitz para derivação do produto de funções:
 		$$
