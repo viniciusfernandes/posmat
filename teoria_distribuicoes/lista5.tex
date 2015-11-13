@@ -18,38 +18,47 @@
 		
 		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade.
 		
-		Definamos $\psi(x) := \frac{\phi(x) - \phi(0)}{x}$ e podemos ver que $\psi:\Omega\backslash\{0\} \to \mathbb{R}$ esta bem-definida. Além disso, veremos que $\psi$ pode ser avaliada na origem pois tomando o limite $\lim_{x \to 0} \psi(x) = \lim_{x \to 0} \frac{\phi(x) - \phi(0)}{x} = \phi'(0)$ e como $\phi'$  esta definida na origem pois é infinitamente diferenciável em $\Omega$, então $\psi(0) = \phi'(0)$, consequentemente $\psi$ pode ser avaliada em $x=0$ e $\psi:\Omega \to \mathbb{R}$ esta bem-definida. 
-		
-		Pela própria definição temos que $\psi$ é o produto de $\phi(x)$ e $1/x$ que são funções infinitamente diferenciáveis em $\Omega \backslash\{0\}$, portanto $\psi$ é infinitamente diferenciável em $\Omega \backslash\{0\}$. Vejamos agora o comportamento das derivadas de $\psi$ em $x=0$. Aplicando a definição de derivação e utilizando a hipótese de que $\phi^{(n)}(0)$ existe para qualquer $n \in \mathbb{N}$, teremos:
+		Vamos aplicar a fórmula de Taylor infinitesimal para $\phi$ que afirma que se $\phi : I \to \mathbb{R}$ é de classe $C^{n}$ no ponto $a \in I$, então a função $r:J \to \mathbb{R}$ definida no intervalo $J=\{x \in \mathbb{R}: a+x \in I\}$ é dada pela igualdade:
+		$$
+		\phi(a+x) = \sum_{i=0}^{n}\frac{\phi^{(i)}(a)}{i!}x^{i} + r(x),
+		$$
+		tal que $\lim_{x \to 0} r(x)/x^{n} = 0$ e $r^{(i)}(0) = 0$ para $0 \leq i \leq n$.
+		Aplicando a fórmula para $I \subseteq \Omega$ pois $\phi$ é infinitamente diferenciável em $\Omega$ e estudando o caso em que $a=0$. Teremos: 
+		$$
+		\phi(x) = \sum_{i=0}^{n}\frac{\phi^{(i)}(0)}{i!}x^{i} + r(x)
+		$$
+		que definindo
+		$$
+		\psi(x) = \sum_{i=1}^{n}\frac{\phi^{(i)}(0)}{i!}x^{i-1} + r(x),
+		$$
+		e voltando na fórmula de Taylor anterior	
+		$$
+		\phi(x) = \phi^{(0)}(0) + x \psi(x).
+		$$
+		Como a função $\psi$ é um polinômio então ela é infinitamente diferenciável, ou seja, $\psi \in C^{\infty}(I)$. Pelo fato de que $\phi$ tem suporte compacto em $\Omega$, então $\phi$ é limitada, consequentemente, $\psi$ também deve ser limitada no suporte de $\phi$. Assim, resta-no mostrar $\psi^{(k)}$ para todo $k \in \mathbb{N}$. Pela definição dessa função, temos:
 		$$
 		\begin{aligned}
-		\psi^{(0)}(0) 
-		= & \lim_{x \to 0}\frac{\phi^{(0)}(x) - \phi^{(0)}(0)}{x} = \phi^{(1)}(0) \\
-		\psi^{(1)}(0) 
-		= & \lim_{x \to 0}\frac{\psi^{(0)}(x) - \psi^{(0)}(0)}{x} = \lim_{x \to 0}\frac{\frac{\phi^{(1)}(x) - \phi^{(1)}(0)}{x} - \phi^{(1)}(0)}{x} = \phi^{(2)}(0) \\
+		\phi(x) = &\phi(0) + x \psi(x) \\
+		\phi^{(1)}(x) =  &\psi(x) + x\psi^{(1)}(x) \\
+		\phi^{(2)}(x) =  & 2\psi^{(1)}(x) + x\psi^{(2)}(x) \\
+		\phi^{(3)}(x) =  & 3\psi^{(2)}(x) + x\psi^{(3)}(x) \\
 		\vdots & \\
-		\psi^{(n)}(0) 
-		= & \lim_{x \to 0}\frac{\psi^{(n-1)}(x) - \psi^{(n-1)}(0)}{x} = \lim_{x \to 0}\frac{\frac{\phi^{(n)}(x) - \phi^{(n)}(0)}{x} - \phi^{(n)}(0)}{x} = \phi^{(n+1)}(0) \\
+		\phi^{(k)}(x) =  & k\psi^{(k-1)}(x) + x\psi^{(k)}(x).
 		\end{aligned}
 		$$
-		portanto, $\psi^{(n)}(0)$ existe e é dado por $\psi^{(n)}(0) = \phi^{(n+1)}(0)$. Como essa relação vale para qualquer $n \in \mathbb{N}$ podemos afirmar que $\psi:\Omega \to \mathbb{R}$ é tal que $\psi \in C^{\infty}$. 
-		
-		Necessitamos mostrar que $\psi \in C^{\infty}_{0}$. Pela definição $\psi(x) = \frac{\phi(x) - \phi(o)}{x}$, consequentemente $\psi(x) \neq 0 \iff \phi(x) \neq \phi(0)$, isto é, $supp(\psi) = \overline{ \{x \in \Omega: \phi(x) \neq \phi(0)\} }$. Vejamos os casos:
-		\begin{enumerate}
-			\item Caso $\phi$ seja uma função constante, então pela definição $\psi = 0$ e $supp(f) = \emptyset$ que é um compacto, portanto $\psi \in C^{\infty}_{0}$.
-			
-			\item Caso $\phi$ não-constante, então teremos os subcasos:
-				\begin{enumerate}
-					\item Supondo $\phi(0) = 0$ teremos $supp(\psi) = \overline{ \{x \in \Omega: \phi(x) \neq 0\} } = supp(\phi)$ que é um compacto, portanto $\psi \in C^{\infty}_{0}$.
-					
-					\item Supondo $\phi(0) \neq 0$ vamos mostrar que $supp(\psi) \neq \emptyset$. Usando o fato de que $\phi$ é contínua e não-constante, então podemos afirmar que existe $y \in \Omega$ tal que $\phi(y) \neq \phi(0)$, portanto $y \in supp(\psi)$, logo $supp(\psi) \neq \emptyset$. Tome agora $x \in supp(\psi)$, então $\phi(x) \neq \phi(0)$, mas como $\phi(0) \neq 0$ podemos ter $\phi(x) = 0$ e nesse caso teremos $x \notin supp(\phi)$, por outro lado, se $\phi(x) \neq 0$ teremos $x \in supp(\phi)$, portanto $supp(\psi)$ não é um subconjunto de $supp(\phi)$, contudo 
-					
-					
-					 e consequentemente $supp(\psi)$ é limitado pois é um subconjunto de um compacto da reta, além disso, como $supp(\psi)$ é um conjunto fechado, então é fechado e limitado, portanto é um compacto e $\psi \in C^{\infty}_{0}$.
-				\end{enumerate}
-		\end{enumerate}
-		
-		Conclusão: $\psi \in C^{\infty}_{0}$ e pela definição dessa função podemos escrever $\phi(x) = \phi(0) + x \psi(x)$.
+		Vejamos que essa expressão vale para $k+1$, assim:
+		$$
+		\begin{aligned}
+		\phi^{(k+1)}(x) =  & (k\psi^{(k-1)} + x\psi^{(k)})'(x) \\
+		= & k\psi^{(k-1 + 1)}(x) + \psi^{(k)}(x) + x\psi^{(k+1)}(x) \\
+		= & (k+1)\psi^{(k)}(x) + x\psi^{(k+1)}(x),
+		\end{aligned}
+		$$
+		como desejávamos. Que avaliada em $x=0$, teremos:
+		$$
+		\phi^{(k+1)}(0) = (k+1)\psi^{(k)}(0) + 0\psi^{(k+1)}(0),
+		$$
+		logo, $\psi^{(k)}(0) = \phi^{(k+1)}(0)/(k+1)$.
 		
 		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade.
 		\begin{enumerate}
@@ -100,7 +109,7 @@
 			Conclusão: $L^{\infty} \subseteq L^{q} \subseteq L^{p} \subseteq L^{p}_{loc} \subseteq L^{1}_{loc}$, como desejávamos.
 		\end{enumerate}
 		
-		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\Omega)$ e aplicando a definição de continuidade em $f$, temos que dado $\epsilon >0 \; \exists \; \delta >0$ tal que $||f - g||_{\infty} < \delta\Rightarrow ||\delta_{x_0}(f) - \delta_{x_0}(g)|| < \epsilon$. Tomando $\delta = \epsilon/2$ teremos $$
+		\item \textbf{Solução:} Vejamos se $\delta_{x_{0}} : \mathcal{S}(\Omega) \to \mathbb{R}$ é contínuo em $f \in \mathcal{S}(\Omega)$ então dado $\epsilon >0 \; \exists \; \delta >0$ tal que se $g \in \mathcal{S}(\Omega)$ com $||f - g||_{\infty} < \delta \Rightarrow ||\delta_{x_0}(f) - \delta_{x_0}(g)|| < \epsilon$. Tomando $\delta = \epsilon/2$ teremos $$
 		||\delta_{x_0}(f) - \delta_{x_0}(g)|| = ||f(x_{0}) - g(x_{0})|| \leq \sup_{x \in \Omega}|f(x) -g(x)| = ||f-g||_{\infty} < \delta = \epsilon/2 < \epsilon,
 		$$ 
 		portanto $||\delta_{x_0}(f) - \delta_{x_0}(g)||<\epsilon$ então $\delta_{x_0}$ é contínuo em $f$, mas como $f$ é arbitrária, então $\delta_{x_{0}} : \mathcal{S}(\Omega) \to \mathbb{R}$ é contínuo. Resta-nos mostrar a linearidade. Sejam $f, g \in \mathcal{S}(\Omega)$ e $\lambda \in \mathbb{R}$, e já sabemos da lista anterior que $f+\lambda g \in \mathcal{S}(\Omega)$, então $\delta_{x_{0}}(f+\lambda g) = (f+\lambda g)(x_{0}) = f(x_{0})+\lambda g(x_{0}) = \delta_{x_{0}}(f) + \lambda \delta_{x_{0}}(g)$, portanto é um operador linear. Conclusão: $\delta_{x_{0}}$ é um operador contínuo e linear, como desejávamos.
