@@ -16,14 +16,14 @@
 	
 	\begin{enumerate}
 		
-		\item \textbf{Solução:} Vamos omitir o aberto $\Omega$ das notações, por simplicidade.
+		\item \textbf{Solução:} Omitiremos o aberto $\Omega$ das notações, por simplicidade.
 		
-		Vamos aplicar a fórmula de Taylor infinitesimal para $\phi$ que afirma que se $\phi : I \to \mathbb{R}$ é de classe $C^{n}$ no ponto $a \in I$, então a função $r:J \to \mathbb{R}$ definida no intervalo $J=\{x \in \mathbb{R}: a+x \in I\}$ é dada pela igualdade:
+		Vamos aplicar a fórmula de Taylor infinitesimal para $\phi$ que afirma que se $I$ é um intervalo e $\phi : I \to \mathbb{R}$ é de classe $C^{n}$ no ponto $a \in I$, então a função $r:J \to \mathbb{R}$ definida no intervalo $J=\{x \in \mathbb{R}: a+x \in I\}$ é dada pela igualdade:
 		$$
 		\phi(a+x) = \sum_{i=0}^{n}\frac{\phi^{(i)}(a)}{i!}x^{i} + r(x),
 		$$
 		tal que $\lim_{x \to 0} r(x)/x^{n} = 0$ e $r^{(i)}(0) = 0$ para $0 \leq i \leq n$.
-		Aplicando a fórmula para $I \subseteq \Omega$ pois $\phi$ é infinitamente diferenciável em $\Omega$ e estudando o caso em que $a=0$. Teremos: 
+		Aplicando a fórmula para $I \subseteq \Omega$ pois $\phi$ é infinitamente diferenciável em $\Omega$, portanto o é em $I$, e estudando o caso em que $a=0$. Teremos: 
 		$$
 		\phi(x) = \sum_{i=0}^{n}\frac{\phi^{(i)}(0)}{i!}x^{i} + r(x)
 		$$
@@ -141,7 +141,8 @@
 		\\
 		= & \partial^{1}_{1} \sum_{p=0}^{n} (n \; p) \underbrace{\partial^{p}_{1} f}_{F}  \underbrace{\partial^{n-p}_{1} g}_{G} = \sum_{p=0}^{n} (n \; p) \sum_{k=0}^{1} (1 \; k)\partial^{k}_{1} F  \partial^{1-k}_{1} G \\
 		= & \sum_{p=0}^{n} \sum_{k=0}^{1} (n \; p) (1 \; k)\partial^{p+k}_{1} f  \partial^{n+1-(p+k)}_{1} g \; \text{fazendo} \; p = i+k \; \text{teremos} \; 0 \leq i \leq n+1 \\
-		= & \sum_{i=0}^{n+1} (n+1 \; i) \partial^{i}_{1} f  \partial^{n+1-i}_{1} g,
+		= & \sum_{i=0}^{n+1} (n+1 \; i) \partial^{i}_{1} f  \partial^{n+1-i}_{1} g \\
+		= & \sum_{i+k=n+1} \frac{(n+1)!}{i!k!}\partial^{i}_{1} f  \partial^{k}_{1} g,
 		\end{aligned}
 		$$
 		e assim concluimos a demosntração da regra de Leibnitz indutivamente.
