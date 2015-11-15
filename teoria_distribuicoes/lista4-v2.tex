@@ -154,18 +154,20 @@
 					
 					\item Calculando as integrais:
 					\begin{enumerate}
-						\item Calculando $I_{1}(x)$ caso $x \geq 0$ teremos:
+						\item Calculando $I_{1}(x).$ 
+						
+						Caso $x \geq 0$ teremos:
 						$$
 						\begin{aligned}
 						I_{1}(x) 
 						= & \int_{\mathbb{R}}e^{-|y|}e^{-|x-y|} dy \\
-						= & \int_{y \leq x }e^{-|y|}e^{-(x-y)} dy + \int_{y \geq x }e^{-|y|}e^{-(y - x)} dy \\
-						= & e^{-x}\int_{y \leq x }e^{-|y|}e^{y} dy + e^{x}\int_{y \geq x }e^{-|y|}e^{-y} dy \\
-						= & e^{-x} \Big\{ \int_{y \leq 0 }e^{-|y|}e^{y} dy + \int_{0 \leq y \leq x }e^{-|y|}e^{y} dy \Big\}+ e^{x}\int_{y \geq x }e^{-|y|}e^{-y} dy \\
-						= & e^{-x} \Big\{ \int_{y \leq 0 }e^{2y} dy + \int_{0 \leq y \leq x } 1 dy \Big\}+ e^{x}\int_{y \geq x }e^{-2y} dy \\
-						= & e^{-x} \Big\{ \frac{e^{2y}}{2} \Big|^{0}_{-\infty} + y \Big|^{x}_{0}\Big\}+ e^{x} \frac{e^{-2y}}{-2}\Big|^{\infty}_{x}\\
-						= & e^{-x} \Big\{ \frac{1}{2} + x \Big\} + \frac{e^{-x}}{2}\\
-						= & e^{-x} \Big\{ x + 1\Big\}.
+						= & \int_{y \leq x }e^{-|y|}e^{-|x-y|} dy + \int_{y \geq x }e^{-|y|}e^{-|x-y|} dy \\
+						= & \underbrace{ \int_{y \leq 0 }e^{-|y|}e^{(y-x)} dy + \int_{0 \leq y \leq x }e^{-|y|}e^{(y-x)} dy }_{ y \leq x} + \int_{y \geq x }e^{-|y|}e^{-(y-x)} dy \\
+						= & e^{-x} \int_{y \leq 0 }e^{-|y|}e^{y} dy + e^{-x} \int_{0 \leq y \leq x }e^{-|y|}e^{y} dy + e^{x} \int_{y \geq x }e^{-|y|}e^{-y} dy \\
+						= & e^{-x}\int_{y \leq 0}e^{2y} dy + e^{-x} \int_{0 \leq y \leq x } 1 dy  + e^{x} \int_{y \geq x}e^{-2y} dy \\
+						= & e^{-x} \frac{e^{2y}}{2} \Big|^{0}_{-\infty} + e^{-x} y \Big|^{x}_{0} + e^{x} \frac{e^{-2y}}{-2} \Big|^{\infty}_{x} \\
+						= & e^{-x} \Big(\frac{1}{2} + x \Big) + \frac{e^{-x}}{2} \\
+						= & e^{-x} \Big( x + 1\Big) 
 						\end{aligned}
 						$$
 						Caso $x < 0$ teremos:
@@ -173,29 +175,97 @@
 						\begin{aligned}
 						I_{1}(x) 
 						= & \int_{\mathbb{R}}e^{-|y|}e^{-|x-y|} dy \\
-						= & \int_{y \leq x }e^{-|y|}e^{(y+x)} dy + \int_{y \geq x }e^{-|y|}e^{-(y - x)} dy \\
-						= & e^{x} \Big\{ \int_{y \leq x }e^{-|y|}e^{y} dy + \int_{x \leq y \leq 0 }e^{-|y|}e^{y} dy \Big\}+ e^{x}\int_{y \geq 0 }e^{-|y|}e^{-y} dy \\
-						= & e^{x} \Big\{ \int_{y \leq x}e^{2y} dy + \int_{0 \leq y \leq x } 1 dy \Big\}+ e^{-x}\int_{y \geq x }e^{-2y} dy \\
-						= & e^{-x} \Big\{ \frac{e^{2y}}{2} \Big|^{0}_{-\infty} + y \Big|^{x}_{0}\Big\}+ e^{-x} \frac{e^{-2y}}{-2}\Big|^{\infty}_{x}\\
-						= & e^{-x} \Big\{ \frac{1}{2} + x \Big\} + e^{-x} \frac{e^{-2x}}{2}\\
-						= & e^{-x} \Big\{ \frac{e^{-2x}}{2} + x + \frac{1}{2} \Big\}.
+						= & \int_{y \leq x }e^{-|y|}e^{-|x-y|} dy + \int_{y \geq x }e^{-|y|}e^{-|x-y|} dy \\
+						= & \int_{y \leq x }e^{-|y|}e^{(y+x)} dy + \int_{x \leq y \leq 0 }e^{-|y|}e^{(y+x)} dy  + \int_{y \geq 0 }e^{-|y|}e^{-y + x} dy \\
+						= & \int_{y \leq 0 }e^{-|y|}e^{(y+x)} dy + \int_{y \geq 0 }e^{-|y|}e^{-y +x} dy \\
+						= & e^{x} \int_{y \leq 0 }e^{-|y|}e^{y} dy + e^{x}\int_{y \geq 0 }e^{-|y|}e^{-y} dy \\
+						= & e^{x} \int_{y \leq 0 }e^{2y} dy + e^{x}\int_{y \geq 0 }e^{-2y} dy \\
+						= & e^{x} \; 2 \int_{y \geq 0 }e^{-2y} dy \\
+						= & e^{x} \; 2 \frac{e^{-2y}}{-2} \Big|^{\infty}_{0} \\
+						= & e^{x}.
 						\end{aligned}
 						$$
+						Portanto:
+						$$
+						I_{1}(x) = \left\{
+						\begin{array}{cc}
+						e^{-x} \Big( x + 1\Big) &, x \geq 0 \\
+						e^{x}  &, x < 0
+						\end{array}
+						\right.
+						$$
 						
-					\end{enumerate}
+					\item Calculando $I_{2}(x).$
+							
+					Caso $x \geq 0:$
 					$$
 					\begin{aligned}
-						I_{1}(x) 
-						= & \int_{\mathbb{R}}e^{-|y|}e^{-|x-y|} dy = \int_{y \leq 0 }e^{y}e^{-(x-y)} dy + \int_{y \geq 0 }e^{-y}e^{-(x+y)} dy \\
-						= & e^{-x}\int_{y \leq 0 }e^{2y} dy + e^{-x}\int_{y \geq 0 }e^{-2y} dy = 2e^{-x}\int_{y \geq 0 }e^{-2y} dy \\
-						= & -e^{-x}e^{-2y}\Big|^{\infty}_{0} = e^{-x} \\
-						I_{2}(x) 
-						= & \int_{\mathbb{R}}\sin(|y|)e^{-|x-y|} dy = \int_{y \leq 0 }\sin(-y)e^{-(x-y)} dy + \int_{y \geq 0 }\sin(y)e^{-(x+y)} dy \\
-						= & 2 \int_{y \geq 0 }\sin(y)e^{-(x+y)} dy = 2 \int_{y \geq 0 } \underbrace{\frac{e^{iy} - e^{-iy}}{2i}}_{\sin(y)} e^{-(x+y)} dy \\
-						= & -i\int_{y \geq 0 }(e^{iy} - e^{-iy})e^{-(x+y)} dy = -ie^{-x}\int_{y \geq 0 }(e^{(i-1)y} - e^{-(i+1)y})dy \\
-						=  & -ie^{-x}\Big( \frac{e^{(i-1)y}}{(i-1)} - \frac{e^{-(i+1)y}}{-(i+1)} \Big) \Big|^{\infty}_{0} = -ie^{-x}\Big( \frac{1}{(i-1)} + \frac{1}{(i+1)} \Big) \\
-						= & -ie^{-x} \frac{2i}{i^{2} - 1} = e^{-x} \\
-						I_{3}(x)
+					I_{2}(x) 
+					= & \int_{\mathbb{R}}\sin(|y|)e^{-|x-y|} dy \\
+					= & \int_{y \leq x}\sin(|y|)e^{-|x-y|} dy + \int_{y \geq x}\sin(|y|)e^{-|x-y|} dy\\
+					= & \underbrace{ \int_{y \leq 0 }\sin(|y|)e^{(y-x)} dy + \int_{0 \leq y \leq x }\sin(|y|)e^{(y-x)} dy }_{ y \leq x} + \int_{y \geq x }\sin(|y|)e^{-(y-x)} dy \\
+					= & \int_{y \leq 0 } -\sin(y)e^{(y-x)} dy + \int_{0 \leq y \leq x }\sin(y)e^{(y-x)} dy + \int_{y \geq x }\sin(y)e^{-(y-x)} dy \\
+					= & \Re \Big( \int_{y \leq 0 } \underbrace{ -\frac{e^{iy} - e^{-iy}}{2i} }_{-\sin(y)} e^{(y-x)}  dy + \int_{0 \leq y \leq x } \underbrace{ \frac{e^{iy} - e^{-iy}}{2i} }_{\sin(y)}e^{(y-x)} dy + \int_{y \geq x } \frac{e^{iy} - e^{-iy}}{2i} e^{-(y-x)} dy \Big)\\
+					= & \Re \Big( \frac{e^{-x}}{2i} \Big( \int_{y \leq 0 } -e^{(1+i)y} + e^{(1-i)y}dy + \int_{0 \leq y \leq x } e^{(1+i)y} - e^{(1-i)y} dy \Big) + \frac{e^{x}}{2i} \int_{y \geq x } e^{(i- 1)y} - e^{-(i+1)y} dy \Big)\\
+					= & \Re \Big( \frac{e^{-x}}{2i} \Big(  -\frac{e^{(1+i)y}}{1+i}\Big|^{0}_{-\infty} + \frac{e^{(1-i)y}}{1-i} \Big|^{0}_{-\infty} + \frac{e^{(1+i)y}}{1+i}\Big|^{x}_{0}  - \frac{e^{(1-i)y}}{1-i} \Big|^{x}_{0}  \Big) + \frac{e^{x}}{2i} \Big(  \frac{e^{(i-1)y}}{i-1}\Big|^{\infty}_{x}  - \frac{e^{-(1+i)y}}{-(1+i)} \Big|^{\infty}_{x} \Big) \Big)\\
+					= & \Re \Big( \frac{e^{-x}}{2i} \Big( -\frac{2}{1+i} + \frac{2}{1-i} + \frac{e^{(1+i)x}}{1+i} - \frac{e^{(1-i)x}}{1-i} \Big) + \frac{e^{x}}{2i} \Big(  -\frac{e^{(i-1)x}}{i-1} - \frac{e^{-(1+i)x}}{(1+i)} \Big) \Big)\\
+					= & \Re \Big( \frac{e^{-x}}{2i} \Big( 2i + i e^{x}(\sin(x) - \cos(x)) \Big) + \frac{e^{x}}{2i} \Big( -ie^{-x} (\sin(x)+\cos(x))
+					\Big) \Big)\\
+					= & \Re \Big( e^{-x} + \frac{1}{2}(\sin(x) - \cos(x)) - \frac{1}{2} (\sin(x)+\cos(x)) \Big)\\
+					= & e^{-x} - \cos(x).
+					\end{aligned}
+					$$
+					
+					Caso $x <0:$
+					$$
+					\begin{aligned}
+					I_{2}(x) 
+					= & \int_{\mathbb{R}}\sin(|y|)e^{-|x-y|} dy \\
+					= & \int_{y \leq x}\sin(|y|)e^{-|x-y|} dy + \int_{y \geq x}\sin(|y|)e^{-|x-y|} dy\\
+					= & \int_{y \leq x}\sin(|y|)e^{(y+x)} dy + \int_{x \leq y \leq 0}\sin(|y|)e^{(y+x)} dy + \int_{y \geq 0 }\sin(|y|)e^{-y+x} dy \\
+					= & \int_{y \leq 0}\sin(|y|)e^{(y+x)} dy + \int_{y \geq 0 }\sin(|y|)e^{-y+x} dy \\
+					= & \int_{y \leq 0} -\sin(y) e^{(y+x)} dy + \int_{y \geq 0 }\sin(y)e^{-y+x} dy \\
+					= & \Re \Big( \int_{y \leq 0} -\frac{e^{iy} - e^{-iy}}{2i} e^{(y+x)} dy + \int_{y \geq 0 } \frac{e^{iy} - e^{-iy}}{2i} e^{-y+x} dy \Big)\\
+					= & \Re \Big( \frac{e^{x}}{2i}\int_{y \leq 0} -e^{(1+i)y} + e^{(1-i)y} dy + \frac{e^{x}}{2i}\int_{y \geq 0 } e^{(i-1)y} - e^{-(1+i)y} dy \Big) \\
+					= & \Re \Big( \frac{e^{x}}{2i} \Big( \frac{-e^{(1+i)y}}{1+i} + \frac{e^{(1-i)y}}{1-i} \Big) \Big|^{0}_{-\infty} + \frac{e^{x}}{2i} \Big( \frac{e^{(i-1)y}}{i-1} + \frac{e^{-(1+i)y}}{1+i} \Big) \Big|^{\infty}_{0} \Big) \\
+					= & \Re \Big( \frac{e^{x}}{2i} \Big( \frac{-1}{1+i} + \frac{1}{1-i} \Big) + \frac{e^{x}}{2i} \Big( \frac{-1}{i-1} + \frac{-1}{1+i} \Big) \Big) \\
+					= & \Re \Big( \frac{e^{x}}{2i} \Big( \frac{-2}{1+i} \Big) \Big) \\
+					= & \Re \Big( -\frac{e^{x}}{2} \Big( \frac{2}{i-1} \frac{i+1}{i+1}  \Big) = -\frac{e^{x}}{2} \Big( \frac{2(i+1)}{-2} \Big) \Big) \\
+					 = & \Re \Big( \frac{e^{x}}{2} (i+1) \Big) \\
+					 = & \frac{e^{x}}{2}. \\
+					\end{aligned}
+					$$
+					
+					Portanto:
+					$$
+					I_{2}(x) = \left\{
+					\begin{array}{cc}
+					e^{-x} -\cos(x) &, x \geq 0 \\
+					e^{x}/2  &, x < 0
+					\end{array}
+					\right.
+					$$
+					\item Calculando $I_{3}(x).$
+					
+					Caso $x \geq 0:$
+					$$
+					\begin{aligned}
+					I_{3}(x) 
+					= & \int_{\mathbb{R}} y e^{-|x-y|} dy \\
+					= & \int_{y \leq x} y e^{-|x-y|} dy + \int_{y \geq x} y e^{-|x-y|} dy \\
+					= & \int_{y \leq 0} y e^{-x+y} dy + \int_{0 \leq y \leq x} y e^{-x+y} dy + \int_{y \geq x} y e^{-y + x} dy \\
+					= & \int_{y \leq x} y e^{-x+y} dy + \int_{y \geq x} y e^{-y + x} dy \\		
+					= & e^{-x}\int_{y \leq x} y e^{y} dy + e^{x}\int_{y \geq x} y e^{-y } dy \\	
+					= & e^{-x}\int_{y \leq x} y e^{y} dy + e^{x}\int_{y \geq x} y e^{-y } dy \\	
+					= & e^{-x} \frac{ye^{y}}{ln(ye)} \Big|^{x}_{-\infty}+ e^{x} \frac{-ye^{-y}}{ln(ye)} \Big|^{\infty}_{x} \\
+					= & e^{-x} \frac{ye^{y}}{ln(ye)} \Big|^{x}_{-\infty}+ e^{x} \frac{-ye^{-y}}{ln(ye)} \Big|^{\infty}_{x} \\
+					\end{aligned}
+					$$
+					\end{enumerate}
+				
+					$$
+					\begin{aligned}
+				I_{3}(x)
 						= & \int_{\mathbb{R}} y e^{-|x-y|} dy = \int_{y \leq 0 }ye^{-(x-y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
 						= & \int_{y \geq 0 }-ye^{-(x+y)} dy + \int_{y \geq 0 }ye^{-(x+y)} dy \\
 						= & 0.
