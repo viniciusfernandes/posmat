@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[fleqn]{amsmath}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 6 para Entregar}
+	\author{Vinicius Fernandes}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		
+		\item \textbf{Solução:} 
+			\begin{enumerate}
+				\item Sabemos que $\int_{\mathbb{R}} e^{-x^{2}} = \sqrt{\pi}$, então definindo $\phi_{n}(x) = \frac{ne^{-(nx)^{2}}}{\sqrt{\pi}}$:
+				$$
+				\int_{\mathbb{R}}\phi_{n}(x)dx= 				\int_{\mathbb{R}} \frac{ne^{-(nx)^{2}}}{\sqrt{\pi}} dx = \int_{\mathbb{R}} \frac{ne^{-y^{2}}}{\sqrt{\pi}} \frac{1}{n} dy = \frac{1}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-y^{2}} dy = \frac{1}{\sqrt{\pi}}  \sqrt{\pi} = 1,
+				$$
+				portanto $\int_{\mathbb{R}}\phi_{n}(x) = 1$ para qualquer $n \in \mathbb{N}$.
+				
+				\item Por definição, se $f \in \mathcal{S}^{'}(\mathbb{R})$ e $(f_{n}) \subset \mathcal{S}^{'}(\mathbb{R})$ é uma sequência de sitribuições, então dizemos que $f_{n} \rightharpoonup$ f se $\lim_{n \to \infty} \int_{\mathbb{R}}f_{n}(x)g(x) = \int_{\mathbb{R}}f(x)g(x)$ para qualquer $g \in \mathcal{S}(\mathbb{R})$. Lembremos que por definição temos a distribuição delta $\delta_{x_{0}} \in \mathcal{S}^{'}(\mathbb{R})$ tal que $\int_{\mathbb{R}}\delta_{x_0}(x)g(x) = g(x_{0})$, e no caso em que $g(x) = 1$ isso implica que $\int_{\mathbb{R}}\delta_{x_0}(x)g(x) = \int_{\mathbb{R}}\delta_{x_0}(x) = 1, \forall x_{0} \in \mathbb{R}$.
+				
+				Tomando $\varphi \in \mathcal{S}(\mathbb{R})$, consequentemente tem suporte compacto, e pela definição $\phi_{n}$ também tem suporte compacto pois $supp(\phi_{n}) = \emptyset$, que é um compacto, portanto o produto $\phi_{n}\varphi$ tem suporte compacto, pois espaço $C^{\infty}_{0}(\mathbb{R})$ é fechado pela operação de produto de funções. Com isso, podemos afirmar que $\phi_{n}\varphi: \mathbb{R} \to \mathbb{R}$ é limitada, e definindo $K= supp(\phi_{n}\varphi)$ podemos escrever 
+				$$
+				\int_{\mathbb{R}} \phi_{n}(x)\varphi(x) = \int_{K} \phi_{n}(x)\varphi(x) \leq \int_{K} ||\phi_{n}\varphi||_{\infty} = ||\phi_{n}\varphi||_{\infty} \int_{K} 1 < \infty,
+				$$
+				logo, $\phi_{n}\varphi$ é integrável para qualquer $n \in \mathbb{N}$, portanto $(\phi_{n}\varphi) \subset \mathcal{S}(\mathbb{R})$ forma uma sequência de funções integráveis. Vamos mostrar que essa sequência é uniformemente convergente. Com efeito:
+				$$
+				\begin{aligned}
+					|(\phi_{n}\varphi)(x) - (\phi_{m}\varphi)(x)|
+					= & |\phi_{n}(x)\varphi(x) - \phi_{m}(x)\varphi(x)|\\
+					=& |\varphi(x)||\phi_{n}(x) - \phi_{m}(x)| \\
+					\leq & ||\varphi||_{\infty}|\phi_{n}(x) - \phi_{m}(x)| \\
+					\leq & ||\varphi||_{\infty}(|\phi_{n}(x)| + |\phi_{m}(x)|)
+				\end{aligned}
+				$$
+				sabemos que $e^{-(xn)^{2}} \leq 1, \forall x \in \mathbb{R}$, então existe um $k_{n} \in \mathbb{N}$ tal que $e^{-(xn)^{2}} \leq 1/k_{n} \leq 1$. Consequentemente, $ne^{-(xn)^{2}} \leq n/k_{n}$, e voltando na ultima desigualdade
+				$$
+				\begin{aligned}
+				|(\phi_{n}\varphi)(x) - (\phi_{m}\varphi)(x)|
+				\leq & \frac{||\varphi||_{\infty}}{\sqrt{\pi}}(|ne^{-(xn)^{2}}| + |me^{-(xm)^{2}}|) \\
+				\leq & \frac{||\varphi||_{\infty}}{\sqrt{\pi}}(n/k_{n} +m/k_{m})
+				\end{aligned}
+				$$
+				 
+			\end{enumerate}	
+		
+		\item \textbf{Solução:}
+			\begin{enumerate}
+				\item Efetuando a integração:
+				$$
+				\begin{aligned}
+				\int_{\mathbb{R}}\phi_{n}(x) 
+				= & \int_{|x| < 1/n}\phi_{n}(x) + \int_{|x| \geq 1/n}\phi_{n}(x) \\
+				= & \int_{|x| < 1/n}\frac{n}{2} = \frac{n}{2} \Big|^{1/n}_{-1/n} = \frac{n}{2} (1/n + 1/n) = 1\\
+				\int_{\mathbb{R}}\psi_{n}(x)
+				= & \int_{\mathbb{R}}\frac{n}{\pi} \frac{1}{1+ (nx)^{2}} \\
+				= & \int_{\mathbb{R}}\frac{n}{\pi} \frac{dx}{1+ (nx)^{2}} = \int_{\mathbb{R}}\frac{1}{\pi} \frac{dy}{1+ y^{2}} \\
+				= & \frac{1}{\pi} \arctan(x) \Big|^{\infty}_{-\infty} = \frac{1}{\pi} (\frac{\pi}{2}+ \frac{\pi}{2}) = 1.
+				\end{aligned}
+				$$
+				
+				\item Tomando $g \in \mathcal{S}(\mathbb{R})$, portanto $g$ é contínua, então $g$ restrita ao intervalo $I_{n}= [-1/n, 1/n]$ possui um mínimo e um máximo $a_{n}, b_{n} \in I_{n}$, respectivamente. Assim temos a estimativa:
+				$$
+				\int_{I_{n}} \phi_{n}(x) g(a_{n}) \leq \int_{I_{n}}\phi_{n}(x)g(x) \leq \int_{I_{n}} \phi_{n}(x) g(b_{n}),
+				$$
+				tomando o limite de ambos os lados da desigualdade
+				$$
+				\lim_{n\to \infty} g(a_{n}) \int_{I_{n}} \phi_{n}(x) \leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq  \lim_{n\to \infty}  g(b_{n}) \int_{I_{n}} \phi_{n}(x),
+				$$
+				$$
+				\lim_{n\to \infty} g(a_{n}) \leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq  \lim_{n\to \infty}  g(b_{n}) ,
+				$$
+				$$
+				\underbrace{ g(\lim_{n\to \infty} a_{n}}_{continuidade}) \leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq \underbrace{ g(\lim_{n\to \infty} b_{n}) }_{continuidade} ,
+				$$
+				$$
+				g(0) \leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq  g(0) ,
+				$$
+				pois temos que $\lim_{n \to \infty} I_{n} = \{0\}$ e como $a_{n}, b_{n} \in I_{n}, \forall n \in \mathbb{N}$, então $\lim_{n \to \infty} a_{n} = \lim_{n \to \infty} b_{n} = 0$, com isso
+				$$
+				 \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) = g(0) = \int_{I_{n}}\delta(x)g(x),
+				$$
+				portanto $\phi_{n} \rightharpoonup \delta$.
+				 
+			\end{enumerate}
+	\end{enumerate}
+	
+	
+\end{document}
