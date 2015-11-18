@@ -26,29 +26,66 @@
 				
 				\item Por definição, se $f \in \mathcal{S}^{'}(\mathbb{R})$ e $(f_{n}) \subset \mathcal{S}^{'}(\mathbb{R})$ é uma sequência de sitribuições, então dizemos que $f_{n} \rightharpoonup$ f se $\lim_{n \to \infty} \int_{\mathbb{R}}f_{n}(x)g(x) = \int_{\mathbb{R}}f(x)g(x)$ para qualquer $g \in \mathcal{S}(\mathbb{R})$. Lembremos que por definição temos a distribuição delta $\delta_{x_{0}} \in \mathcal{S}^{'}(\mathbb{R})$ tal que $\int_{\mathbb{R}}\delta_{x_0}(x)g(x) = g(x_{0})$, e no caso em que $g(x) = 1$ isso implica que $\int_{\mathbb{R}}\delta_{x_0}(x)g(x) = \int_{\mathbb{R}}\delta_{x_0}(x) = 1, \forall x_{0} \in \mathbb{R}$.
 				
-				Tomando $\varphi \in \mathcal{S}(\mathbb{R})$, consequentemente tem suporte compacto, e pela definição $\phi_{n}$ também tem suporte compacto pois $supp(\phi_{n}) = \emptyset$, que é um compacto, portanto o produto $\phi_{n}\varphi$ tem suporte compacto, pois espaço $C^{\infty}_{0}(\mathbb{R})$ é fechado pela operação de produto de funções. Com isso, podemos afirmar que $\phi_{n}\varphi: \mathbb{R} \to \mathbb{R}$ é limitada, e definindo $K= supp(\phi_{n}\varphi)$ podemos escrever 
+				
+				Vamos construir duas sequências $(f_{n}), (g_{n}) \in L^{1}$ tal que $g_{n}(x) \leq \phi_{n}(x) \leq f_{n}(x), \forall n \in \mathbb{N}$ de modo que
 				$$
-				\int_{\mathbb{R}} \phi_{n}(x)\varphi(x) = \int_{K} \phi_{n}(x)\varphi(x) \leq \int_{K} ||\phi_{n}\varphi||_{\infty} = ||\phi_{n}\varphi||_{\infty} \int_{K} 1 < \infty,
+				\underbrace{ \lim_{n \to \infty} \int_{\mathbb{R}} g_{n}(x)\varphi(x) }_{= \varphi(0)}\leq \lim_{n \to \infty} \int_{\mathbb{R}} \phi_{n}(x)\varphi(x) \leq \underbrace{ \lim_{n \to \infty} \int_{\mathbb{R}} f_{n}(x)\varphi(x) }_{= \varphi(0)}.
 				$$
-				logo, $\phi_{n}\varphi$ é integrável para qualquer $n \in \mathbb{N}$, portanto $(\phi_{n}\varphi) \subset \mathcal{S}(\mathbb{R})$ forma uma sequência de funções integráveis. Vamos mostrar que essa sequência é uniformemente convergente. Com efeito:
+				Pois bem, definindo
+				$$
+				f_{n}(x) = 
+				\left\{
+				\begin{array}{cc}
+				\phi_{n}(0) &, |x| \leq 1/n \\
+				\phi_{n}(x) &, |x| > 1/n \\
+				\end{array}
+				\right.
+				,
+				g_{n}(x) = 
+				\left\{
+				\begin{array}{cc}
+				\phi_{n}(1/n) &, |x| \leq 1/n \\
+				\phi_{n}(x) &, |x| > 1/n \\
+				\end{array}
+				\right.
+				.
+				$$
+				Notemos agora que se $|x| > 1/n$ então seque da definição da sequência de funções que $g_{n}(x) = \phi_{n}(x) = f_{n}(x)$, o que nos permite escrever $g_{n}(x) \leq \phi_{n}(x) \leq f_{n}(x)$. Por outro lado, se $|x| \leq 1/n$ teremos $\phi_{n}(x) \leq f_{n}(0) = \phi_{n}(0)$ pois $x =0 $ é um ponto de máximo de $\phi_{n}$, além disso, $\phi_{n}$ é monótona crescente para $x \in [-1/n, 0]$, portanto $\phi_{n}(1/n) \leq \phi_{n}(x)$, e como ela atinge o máximo em $x=0$ e é monótona decrescente para $x \in [0, 1/n]$, então $\phi_{n}(1/n) \leq \phi_{n}(x)$, portanto vale $\phi_{n}(1/n) \leq \phi_{n}(x)$ para $|x| \leq -1/n$, consequentemente temos $g_{n}(x) = \phi_{n}(1/n) \leq \phi_{n}(x) \leq \phi_{n}(0) = f_{n}(x), \forall |x| \leq 1/n$. Conclusão, $g_{n}(x) \leq \phi_{n}(x) \leq f_{n}(x), \forall n \in \mathbb{N}$ e $x \in \mathbb{R}$.
+				
+				Definindo $I_n = \{|x| \leq 1: x \in \mathbb{R} \}$ e $J_n = \{|x| > 1: x \in \mathbb{R} \}$, assim podemos escrever $\mathbb{R} = I_{n} \cup J_{n}$, e vejamos agora o resultado da estimativa:
 				$$
 				\begin{aligned}
-					|(\phi_{n}\varphi)(x) - (\phi_{m}\varphi)(x)|
-					= & |\phi_{n}(x)\varphi(x) - \phi_{m}(x)\varphi(x)|\\
-					=& |\varphi(x)||\phi_{n}(x) - \phi_{m}(x)| \\
-					\leq & ||\varphi||_{\infty}|\phi_{n}(x) - \phi_{m}(x)| \\
-					\leq & ||\varphi||_{\infty}(|\phi_{n}(x)| + |\phi_{m}(x)|)
+				\int_{\mathbb{R}} g_{n}(x)\varphi(x) 
+				\leq & \int_{\mathbb{R}} \phi_{n}(x)\varphi(x) \leq \int_{\mathbb{R}} f_{n}(x)\varphi(x) \\
+				\int_{I_{n}} + \int_{J_{n}} g_{n}(x)\varphi(x) 
+				\leq & \int_{I_{n}} + \int_{J_{n}} \phi_{n}(x)\varphi(x) \leq \int_{I_{n}} + \int_{J_{n}} f_{n}(x)\varphi(x),\\
+				\int_{I_{n}} g_{n}(x)\varphi(x) + \int_{J_{n}} \phi_{n}(x)\varphi(x) 
+				\leq & \int_{I_{n}} \phi_{n}(x)\varphi(x) + \int_{J_{n}} \phi_{n}(x)\varphi(x) \leq \int_{I_{n}} f_{n}(x)\varphi(x) + \int_{J_{n}} \phi_{n}(x)\varphi(x),\\
+				\int_{I_{n}} g_{n}(x)\varphi(x) 
+				\leq & \int_{I_{n}} \phi_{n}(x)\varphi(x) \leq \int_{I_{n}} f_{n}(x)\varphi(x), \\
 				\end{aligned}
 				$$
-				sabemos que $e^{-(xn)^{2}} \leq 1, \forall x \in \mathbb{R}$, então existe um $k_{n} \in \mathbb{N}$ tal que $e^{-(xn)^{2}} \leq 1/k_{n} \leq 1$. Consequentemente, $ne^{-(xn)^{2}} \leq n/k_{n}$, e voltando na ultima desigualdade
+				note que as integrais no intervalo $J_{n}$ são identicas em todos os lados da desigualdade, por isso foram eliminadas da estimativa. 
+				
+				Sabemos que $\phi$ é infinitamente diferenciável na reta, então é contínua, e como o intervalo $I_{n}$ é um compacto, então $\phi$ restrita a esse intervalo possui um mínimo é um máximo, sendo assim, definimos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $\phi$, respectivamente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset I_{n}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$ pois isso decorre do fato de que $I_{n} \to \{0\}$. Agora vamos estudar o comportamento do limite das extremidades da estimativa.
 				$$
 				\begin{aligned}
-				|(\phi_{n}\varphi)(x) - (\phi_{m}\varphi)(x)|
-				\leq & \frac{||\varphi||_{\infty}}{\sqrt{\pi}}(|ne^{-(xn)^{2}}| + |me^{-(xm)^{2}}|) \\
-				\leq & \frac{||\varphi||_{\infty}}{\sqrt{\pi}}(n/k_{n} +m/k_{m})
+				\varphi(a_{n}) \int_{I_{n}} f_{n}(x) 
+				\leq & \int_{I_{n}} f_{n}(x)\varphi(x) \leq \varphi(b_{n}) \int_{I_{n}} f_{n}(x), \\
+				\lim_{n \to \infty} \varphi(a_{n}) \int_{I_{n}} f_{n}(x) 
+				\leq & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \int_{I_{n}} f_{n}(x) \\
+				\lim_{n \to \infty} \varphi(a_{n}) \int_{I_{n}} \phi_{n}(0)
+				\leq & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \int_{I_{n}} \phi_{n}(0), \\
+				\lim_{n \to \infty} \varphi(a_{n}) \phi_{n}(0) \frac{2}{n}
+				\leq & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \phi_{n}(0) \frac{2}{n}, \\
+				\lim_{n \to \infty} \varphi(a_{n}) \frac{n}{\sqrt{\pi}} \frac{2}{n}
+				\leq & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \frac{n}{\sqrt{\pi}} \frac{2}{n}, \\
+				\frac{2}{\sqrt{\pi}} \varphi(0)
+				\leq & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) \leq  \frac{2}{\sqrt{\pi}} \varphi(0), \\
+				\therefore & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) = \frac{2}{\sqrt{\pi}} \varphi(0).
 				\end{aligned}
 				$$
-				 
+				
 			\end{enumerate}	
 		
 		\item \textbf{Solução:}
