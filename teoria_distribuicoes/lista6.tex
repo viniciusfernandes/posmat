@@ -67,7 +67,7 @@
 				$$
 				note que as integrais no intervalo $J_{n}$ são identicas em todos os lados da desigualdade, por isso foram eliminadas da estimativa. 
 				
-				Sabemos que $\phi$ é infinitamente diferenciável na reta, então é contínua, e como o intervalo $I_{n}$ é um compacto, então $\phi$ restrita a esse intervalo possui um mínimo é um máximo, sendo assim, definimos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $\phi$, respectivamente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset I_{n}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$ pois isso decorre do fato de que $I_{n} \to \{0\}$. Agora vamos estudar o comportamento do limite das extremidades da estimativa.
+				Sabemos que $\phi$ é infinitamente diferenciável na reta, então é contínua. Como o intervalo $I_{n}$ é um compacto, então $\phi$ restrita a esse intervalo possui um mínimo é um máximo, sendo assim, definimos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $\phi$, respectivamente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset I_{n}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$ pois isso decorre do fato de que $I_{n} \to \{0\}$. Agora vamos estudar o comportamento do limite das extremidades da estimativa.
 				$$
 				\begin{aligned}
 				\varphi(a_{n}) \int_{I_{n}} f_{n}(x) 
@@ -83,6 +83,24 @@
 				\frac{2}{\sqrt{\pi}} \varphi(0)
 				\leq & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) \leq  \frac{2}{\sqrt{\pi}} \varphi(0), \\
 				\therefore & \lim_{n \to \infty}\int_{I_{n}} f_{n}(x)\varphi(x) = \frac{2}{\sqrt{\pi}} \varphi(0).
+				\end{aligned}
+				$$
+				Analogamente para a outra extremidade:
+				$$
+				\begin{aligned}
+				\varphi(a_{n}) \int_{I_{n}} g_{n}(x) 
+				\leq & \int_{I_{n}} g_{n}(x)\varphi(x) \leq \varphi(b_{n}) \int_{I_{n}} g_{n}(x), \\
+				\lim_{n \to \infty} \varphi(a_{n}) \int_{I_{n}} g_{n}(x) 
+				\leq & \lim_{n \to \infty}\int_{I_{n}} g_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \int_{I_{n}} g_{n}(x) \\
+				\lim_{n \to \infty} \varphi(a_{n}) \int_{I_{n}} \phi_{n}(1/n)
+				\leq & \lim_{n \to \infty}\int_{I_{n}} g_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \int_{I_{n}} \phi_{n}(1/n), \\
+				\lim_{n \to \infty} \varphi(a_{n}) \phi_{n}(1/n) \frac{2}{n}
+				\leq & \lim_{n \to \infty}\int_{I_{n}} g_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \phi_{n}(1/n) \frac{2}{n}, \\
+				\lim_{n \to \infty} \varphi(a_{n}) \frac{ne^{-1}}{\sqrt{\pi}} \frac{2}{n}
+				\leq & \lim_{n \to \infty}\int_{I_{n}} g_{n}(x)\varphi(x) \leq  \lim_{n \to \infty} \varphi(b_{n}) \frac{ne^{-1}}{\sqrt{\pi}} \frac{2}{n}, \\
+				\frac{2e^{-1}}{\sqrt{\pi}} \varphi(0)
+				\leq & \lim_{n \to \infty}\int_{I_{n}} g_{n}(x)\varphi(x) \leq  \frac{2e^{-1}}{\sqrt{\pi}} \varphi(0), \\
+				\therefore & \lim_{n \to \infty}\int_{I_{n}} g_{n}(x)\varphi(x) = \frac{2e^{-1}}{\sqrt{\pi}} \varphi(0).
 				\end{aligned}
 				$$
 				
@@ -103,13 +121,21 @@
 				\end{aligned}
 				$$
 				
-				\item Tomando $g \in \mathcal{S}(\mathbb{R})$, portanto $g$ é contínua, então $g$ restrita ao intervalo $I_{n}= [-1/n, 1/n]$ possui um mínimo e um máximo $a_{n}, b_{n} \in I_{n}$, respectivamente. Assim temos a estimativa:
+					
+				\item Seja $g \in \mathcal{S}(\mathbb{R})$, e desse modo 
+				podemos afirmar que $g$ é contínua pois é infinitamente diferenciável na reta. Como o intervalo $I_{n} = \{|x| \leq 1/n: x \in \mathbb{R} \}$ é um compacto, então $\phi$ restrita a esse intervalo possui um mínimo é um máximo, sendo assim, definimos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $\phi$, respectivamente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset \mathbb{R}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$ pois isso decorre do fato de que $I_{n} \to \{0\}$. Agora vamos estudar o comportamento do limite das extremidades da estimativa. Definindo $J_{n} = \mathbb{R}\backslash I_{n}$ podemos escrever $\mathbb{R} = I_{n} \cup J_{n}$, então teremos a desigualdade $g(a_{n}) \leq g(x) \leq g(b_{n}), \forall n \in \mathbb{N} \; e \; x \in I_{n}$, além disso, podemos reduzir a seguinte integração $\int_{\mathbb{R}} \phi_{n}(x)g(x) = \int_{I_{n}} \phi_{n}(x)g(x)$ pois $\phi_{n}(x)$ quando $x \in J_{n}$, portanto:
 				$$
-				\int_{I_{n}} \phi_{n}(x) g(a_{n}) \leq \int_{I_{n}}\phi_{n}(x)g(x) \leq \int_{I_{n}} \phi_{n}(x) g(b_{n}),
+				\int_{I_{n}} \phi_{n}(x) g(x) \leq \int_{I_{n}} \phi_{n}(x) g(b_{n}) \; \text{e} \;
+				\int_{I_{n}} \phi_{n}(x) g(a_{n}) \leq \int_{I_{n}} \phi_{n}(x)g(x),
+				$$
+				logo
+				$$
+				\int_{I_{n}} \phi_{n}(x) g(a_{n}) 
+				\leq \int_{I_{n}} \phi_{n}(x)g(x) \leq \int_{I_{n}} \phi_{n}(x) g(b_{n}),
 				$$
 				tomando o limite de ambos os lados da desigualdade
 				$$
-				\lim_{n\to \infty} g(a_{n}) \int_{I_{n}} \phi_{n}(x) \leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq  \lim_{n\to \infty}  g(b_{n}) \int_{I_{n}} \phi_{n}(x),
+				\lim_{n\to \infty} g(a_{n}) \underbrace{ \int_{I_{n}} \phi_{n}(x) }_{=1}\leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq  \lim_{n\to \infty}  g(b_{n}) \underbrace{ \int_{I_{n}} \phi_{n}(x) }_{=1},
 				$$
 				$$
 				\lim_{n\to \infty} g(a_{n}) \leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq  \lim_{n\to \infty}  g(b_{n}) ,
@@ -120,12 +146,49 @@
 				$$
 				g(0) \leq \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) \leq  g(0) ,
 				$$
-				pois temos que $\lim_{n \to \infty} I_{n} = \{0\}$ e como $a_{n}, b_{n} \in I_{n}, \forall n \in \mathbb{N}$, então $\lim_{n \to \infty} a_{n} = \lim_{n \to \infty} b_{n} = 0$, com isso
+				portanto
 				$$
-				 \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) = g(0) = \int_{I_{n}}\delta(x)g(x),
+				 \lim_{n\to \infty} \int_{\mathbb{R}} \phi_{n}(x)g(x) = \lim_{n\to \infty} \int_{I_{n}}\phi_{n}(x)g(x) = g(0) \; \text{e} \; \int_{I_{n}}\delta(x)g(x) = g(0),
 				$$
-				portanto $\phi_{n} \rightharpoonup \delta$.
-				 
+				o que implica que $\phi_{n} \rightharpoonup \delta$.
+				
+				Adotando novamente as definições acima para a função $g \in \mathcal{S}(\mathbb{R})$, os intervalos $I_{n}, J_{n}$ e as sequências $(a_{n}), (b_{n})$ como sendo os pontos de mínimo e máximo de $g$ restrita a $I_{n}$, respectivamente. Definindo agora as funções
+				$$
+				f_{n}(x) = 
+				\left\{
+				\begin{array}{cc}
+				2\psi_{n}(0) &, x \in I_{n}\\
+				\psi_{n}(x) &, x \notin I_{n} \\
+				\end{array}
+				\right.
+				,
+				g_{n}(x) = 
+				\left\{
+				\begin{array}{cc}
+				\psi_{n}(1/n) &, x \in I_{n} \\
+				\psi_{n}(x) &, x \notin I_{n}\\
+				\end{array}
+				\right.
+				.
+				$$
+				Podemos ver que $\forall x \notin I_{n}$ então $g_{n}(x) = \psi_{n}(x) = f_{n}(x)$, logo podemos escrever $g_{n}(x) \leq  \psi_{n}(x) \leq f_{n}(x)$. Analogamente, se $x \in I_{n}$ temos que $\phi_{n}(x) \leq \phi_{n}(0) \leq 2\phi_{n}(0) = f_{n}(x)$ pois $x=0$ é um ponto de máximo de $\phi_{n}$, e também temos $g_{n}(x) = \phi_{n}(1/n) \leq \phi_{n}(x)$,  pois para $x \in [-1/n, 0]$ é monótona crescente, atinge o máximo na origem e para $x \in [0, 1/n]$ é monótona decrescente, portanto vale a desigualdade $g_{n}(x) \leq \psi_{n}(x) \leq f_{n}(x), \forall x \in I_{n}$. Podemos escrever a estimativa:
+				$$
+				\begin{aligned}
+				\int_{\mathbb{R}} g_{n}(x)g(x) 
+				\leq & \int_{\mathbb{R}} \phi_{n}(x)g(x) \leq \int_{\mathbb{R}} f_{n}(x)g(x), \\
+				\int_{I_{n}} + \int_{J_{n}}g_{n}(x)g(x) 
+				\leq & \int_{\mathbb{R}} \phi_{n}(x)g(x) \leq \int_{I_{n}} + \int_{J_{n}} f_{n}(x)g(x). \\
+				\end{aligned}
+				$$
+				Vamos analisar o comportamento das extremidades da desigualdade anterior. Primeiramente, vamos definir $K = \overline{supp(g) \cap J_{n}} \subseteq supp(g)$ que é um compacto pois é subconjunto fechado de um compacto. Agora notemos que:
+				$$
+				\begin{aligned}
+				\int_{J_{n}} f_{n}(x)g(x) = & \int_{J_{n}} \phi_{n}(x) g(x)=  \int_{K} \phi_{n}(x) \underbrace{g(x)}_{limitada} \\
+				\leq & ||g||_{\infty} \int_{K} \phi_{n}(x) = ||g||_{\infty} \int_{[1/n, x]} \frac{ndy}{\pi(1+(ny)^{2})} \\
+				= & ||g||_{\infty} \int_{[1, nx]} \frac{dz}{\pi(1+z^{2})} = \frac{||g||_{\infty} }{\pi} \arctan(z)\Big|^{nx}_{1} \\
+				= & \frac{||g||_{\infty} }{\pi}
+				\end{aligned}
+				$$
 			\end{enumerate}
 	\end{enumerate}
 	
