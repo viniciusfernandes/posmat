@@ -113,15 +113,17 @@
 				
 					
 				\item Seja $g \in \mathcal{S}(\mathbb{R})$, e desse modo 
-				podemos afirmar que $g$ é contínua pois é infinitamente diferenciável na reta. Como o intervalo $I_{n} = \{|x| \leq 1/n: x \in \mathbb{R} \}$ é um compacto, então $\phi$ restrita a esse intervalo possui um mínimo e um máximo, sendo assim, definimos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $\phi$, respectivamente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset \mathbb{R}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$ pois isso decorre do fato de que $I_{n} \to \{0\}$. Agora vamos estudar o comportamento do limite das extremidades da estimativa. Definindo $J_{n} = \mathbb{R}\backslash I_{n}$ podemos escrever $\mathbb{R} = I_{n} \cup J_{n}$, então teremos a desigualdade $g(a_{n}) \leq g(x) \leq g(b_{n}), \forall n \in \mathbb{N} \; e \; x \in I_{n}$, além disso, podemos reduzir a seguinte integração $\int_{\mathbb{R}} \phi_{n}(x)g(x) = \int_{I_{n}} \phi_{n}(x)g(x)$ pois $\phi_{n}(x)$ quando $x \in J_{n}$, portanto:
+				podemos afirmar que $g$ é contínua pois é infinitamente diferenciável na reta. Como o intervalo $I_{n} = \{|x| \leq 1/n: x \in \mathbb{R} \}$ é um compacto, então $\phi$ restrita a esse intervalo possui um mínimo e um máximo, sendo assim, definimos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $\phi$, respectivamente. Note que para cada $n \in \mathbb{N}$ temos $I_{n+1} \subset I_{n}$ e suponha agora que $b_{n}$ é o ponto de máximo de $\phi$ em $I_{n}$, então se $b_{n+1}$ é um ponto de máximo de $\phi$ em $I_{n+1}$ teremos $\phi(b_{n+1}) \leq \phi(a_{n})$, portanto a sequência $(\phi(b_{n})) \subset \mathbb{R}$ é monótona não-crescente. A mesma construção pode ser feita para os pontos de mínimo de $\phi$ quando restrita a esse intervalos, contudo nesse caso teremos $\phi(a_{n}) \leq \phi(a_{n+1})$ resultando em uma sequência $(\phi(a_{n})) \subset \mathbb{R}$ monótona não-decrescente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset \mathbb{R}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$. Com efeito: seja $n_{0} \in \mathbb{N}$, então $\forall n > n_0$ teremos $a_{n}, b_{n}  \in (-1/n_{0}, 1/n_{0})$, o que caracteriza $x=0$ com um ponto de aderência das sequências $(a_{n}), (b_{n})$, portanto $a_{n} \to 0$ e $b_{n} \to 0$.
+				
+				Agora vamos estudar o comportamento do limite das extremidades da estimativa. Definindo $J_{n} = \mathbb{R}\backslash I_{n}$ podemos escrever $\mathbb{R} = I_{n} \cup J_{n}$, então teremos a desigualdade $g(a_{n}) \leq g(x) \leq g(b_{n}), \forall n \in \mathbb{N} \; e \; x \in I_{n}$, além disso, podemos reduzir a seguinte integração $\int_{\mathbb{R}} \phi_{n}(x)g(x) = \int_{I_{n}} \phi_{n}(x)g(x)$ pois $\phi_{n}(x)$ quando $x \in J_{n}$, portanto:
 				$$
 				\int_{I_{n}} \phi_{n}(x) g(x) \leq \int_{I_{n}} \phi_{n}(x) g(b_{n}) \; \text{e} \;
 				\int_{I_{n}} \phi_{n}(x) g(a_{n}) \leq \int_{I_{n}} \phi_{n}(x)g(x),
 				$$
 				logo
 				$$
-				\int_{I_{n}} \phi_{n}(x) g(a_{n}) 
-				\leq \int_{I_{n}} \phi_{n}(x)g(x) \leq \int_{I_{n}} \phi_{n}(x) g(b_{n}),
+				\underbrace{ \int_{I_{n}} \phi_{n}(x) g(a_{n}) }_{nao-descrescente} 
+				\leq \int_{I_{n}} \phi_{n}(x)g(x) \leq \underbrace{\int_{I_{n}} \phi_{n}(x) g(b_{n})}_{nao-crescente},
 				$$
 				tomando o limite de ambos os lados da desigualdade
 				$$
@@ -147,32 +149,34 @@
 				Seja $\varphi \in \mathcal{S}(\mathbb{R})$ e a escrevamos de acordo com as condições do FATO-1, então $\varphi(x) = \varphi(0) + x\psi(x)$. Realizando a seguinte integração onde definiremos $K = supp(\varphi)$:
 				$$
 				\begin{aligned}
-				\int_{\mathbb{R}} \psi_{n}(x)\varphi(x) 
-				= &\int_{\mathbb{R}} \psi_{n}(x)(\varphi(0) + x\psi(x)) \\
-				= &\int_{K} \psi_{n}(x)(\varphi(0) + x\psi(x)) \\
-				= & \varphi(0) \underbrace{ \int_{K} \psi_{n}(x) } _{=1}  +  \int_{\mathbb{R}} \psi_{n}(x) x\psi(x) \\
-				= & \varphi(0)  +  \int_{\mathbb{R}} \frac{n}{\pi(1+(nx)^{2})} \underbrace{ x\psi(x) }_{supp \; compact} \\
-				= & \varphi(0)  +  \int_{supp(x\psi)} \underbrace{ \frac{y}{n\pi(1+y^{2})} \psi(y/n). }_{I_{n}(y)}
+				\int_{\mathbb{R}} \psi_{n}(x)\varphi(x) = &\int_{\mathbb{R}} \psi_{n}(x)(\varphi(0) + x\psi(x)) 
+				\\
+				= &\int_{K} \psi_{n}(x)(\varphi(0) + x\psi(x)) 
+				\\
+				= & \varphi(0) \underbrace{ \int_{\mathbb{R}} \psi_{n}(x) } _{=1}  +  \int_{\mathbb{R}} \psi_{n}(x) x\psi(x) 
+				\\
+				= & \varphi(0)  +  \underbrace{ \int_{\mathbb{R}} \frac{n}{\pi(1+(nx)^{2})}  x\psi(x) }_{I_{n}} .
 				\end{aligned}
 				$$
-				Realizando uma integração por partes:
+				Sabemos que $\varphi(x) = \varphi(0) + x\psi(x)$ é limitada, portanto a função $\psi(x)$ deve ser limitada. Além disso, o termo do integrando $x/(1+(nx)^{2})$ também é limitado na reta, então teremos a seguinte estimativa:
 				$$
-				\Big( \frac{1}{n\pi}\arctan(y^{2}) \psi(y/n) \Big)' = \underbrace{ \frac{2y}{n\pi(1+y^{2})} \psi(y/n) }_{2I_{n}(y)} + \frac{1}{n^{2}\pi}\arctan(y^{2}) \psi'(x),
+				\begin{gathered}
+				\int_{\mathbb{R}}  \frac{-n x ||\psi||_{\infty}}{\pi(1+(nx)^{2})} \leq  I_{n}	\leq \int_{\mathbb{R}} \frac{n x ||\psi||_{\infty}}{\pi(1+(nx)^{2})} 
+				\\
+				\frac{-n||\psi||_{\infty}}{\pi}\int_{\mathbb{R}}  \frac{x}{1+(nx)^{2}} \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \int_{\mathbb{R}} \frac{x}{1+(nx)^{2}} 
+				\\
+				\frac{-n||\psi||_{\infty}}{\pi} \Big( \int_{x \leq 0} \frac{x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} \Big) \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \Big( \int_{x \leq 0} \frac{x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} \Big) 
+				\\
+				\frac{-n||\psi||_{\infty}}{\pi} \Big( \underbrace{ \int_{x \geq 0} \frac{-x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} }_{=0} \Big) \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \Big( \underbrace{ \int_{x \geq 0} \frac{-x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} }_{=0} \Big)
+				\\
+				0 \leq  I_{n}	\leq 0,
+				\end{gathered} 
 				$$
-				logo
+				logo $I_{n} = 0, \forall n \in \mathbb{N}$. Voltando na integração principal:
 				$$
-				2I_{n}(y) = \Big( \frac{1}{n\pi}\arctan(y^{2}) \psi(y/n) \Big)' - \frac{1}{n^{2}\pi}\arctan(y^{2}) \psi'(x)
+				\lim_{n \to \infty} \int_{\mathbb{R}} \psi_{n}(x)\varphi(x) = \lim_{n \to \infty} (\varphi(0) + I_{n}) = \varphi(0).
 				$$
-				e integrando ambos os lados da igualdade
-				$$
-				\begin{aligned}
-				\int_{\mathbb{R}} 2I_{n}(y) = & \int_{\mathbb{R}} \Big( \frac{1}{n\pi}\arctan(y^{2}) \psi(y/n) \Big)' - \int_{\mathbb{R}} \frac{1}{n^{2}\pi}\arctan(y^{2}) \psi'(x) \\
-				= &  \frac{1}{n\pi} \underbrace{ \arctan(y^{2}) \psi(y/n) \Big|^{\infty}_{-\infty} }_{A < \infty}- \int_{\mathbb{R}} \frac{1}{n^{2}\pi}\arctan(y^{2}) \underbrace{ \psi'(x) }_{FATO-1}\\
-				\leq &  \frac{A}{n\pi} - \int_{\mathbb{R}} \frac{1}{n^{2}\pi}\arctan(y^{2}) ||\psi'||_{\infty} \\
-				= &  \frac{A}{n\pi} - ||\psi'||_{\infty} \int_{\mathbb{R}} \frac{1}{n^{2}\pi}\arctan(y^{2}) \\
-				\end{aligned}
-				$$
-				
+				Pelo FATO-2 temos que $\int_{\mathbb{R}} \delta(x) \varphi(x) = \varphi(0)$, portanto $\psi_{n} \rightharpoonup \delta$, como desejávamos.
 			\end{enumerate}
 	\end{enumerate}
 	
