@@ -21,7 +21,21 @@
 			
 		\item \textbf{Solução:} 
 			\begin{enumerate}
-				\item Sabemos que $\int_{\mathbb{R}} e^{-x^{2}} = \sqrt{\pi}$, então definindo $\phi_{n}(x) = \frac{ne^{-(nx)^{2}}}{\sqrt{\pi}}$:
+				\item Primeiro vamos demosntrar que $\int_{\mathbb{R}} e^{-x^{2}} = \sqrt{\pi}$. Definindo $I= \int_{\mathbb{R}} e^{-x^{2}}$ teremos:
+				$$
+				\begin{aligned}
+				I^{2} 
+				= & \int_{\mathbb{R}} e^{-x^{2}} dx \int_{\mathbb{R}} e^{-y^{2}} dy \\
+				= & \int_{\mathbb{R}} \int_{\mathbb{R}} e^{-(x^{2}+x^{2})} dxdy
+				= \underbrace{ \int_{0}^{2\pi} \int_{0}^{\infty} e^{-r^{2}} rdr d\theta }_{coord. \; polares}\\
+				= & \int_{0}^{2\pi} d\theta \int_{0}^{\infty} e^{-r^{2}} rdr = 2\pi \frac{-e^{-r^{2}}}{2} \Big|_{0}^{\infty} \\
+				= & \pi, \\
+				\end{aligned}
+				$$
+				portanto $I = \sqrt{\pi}$.
+				
+				
+				Utilizando o resultado anterior e definindo $\phi_{n}(x) = \frac{ne^{-(nx)^{2}}}{\sqrt{\pi}}$:
 				$$
 				\int_{\mathbb{R}}\phi_{n}(x)dx= 				\int_{\mathbb{R}} \frac{ne^{-(nx)^{2}}}{\sqrt{\pi}} dx = \int_{\mathbb{R}} \frac{ne^{-y^{2}}}{\sqrt{\pi}} \frac{1}{n} dy = \frac{1}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-y^{2}} dy = \frac{1}{\sqrt{\pi}}  \sqrt{\pi} = 1,
 				$$
@@ -60,7 +74,26 @@
 				= \varphi(0) + \underbrace{ \lim_{n \to \infty} \int_{\mathbb{R}} I_{n}(x) }_{=0}= \varphi(0),
 				$$
 				e pelo FATO-2 temos $\int_{\mathbb{R}} \delta(x)\varphi(x) = \varphi(0)$, isso implica que $\phi_{n} \rightharpoonup \delta$, como desejávamos.
-				
+				Por fim, façamos a seguinte mudança de coordenadas $y=x-a$, onde $a \in \mathbb{R}$, e voltando no limite anterior:
+				$$
+				\begin{aligned}
+				\lim_{n \to \infty} \int_{\mathbb{R}} \phi_{n}(x -a)\varphi(x) 
+				= & \lim_{n \to \infty} \int_{\mathbb{R}} \phi_{n}(y) \underbrace{ \varphi(y+a) }_{g(y)}\\ 
+				= & \lim_{n \to \infty} \int_{\mathbb{R}} \phi_{n}(y)g(y) = g(0) \\
+				= & \varphi(a).
+				\end{aligned}
+				$$
+				Por outro lado, temos 
+				$$
+				\begin{aligned}
+				\lim_{n \to \infty} \int_{\mathbb{R}} \phi_{n}(x -a)\varphi(x) 
+				= & \lim_{n \to \infty} \int_{\mathbb{R}} \phi_{n}(y)g(y) \\
+				= & \int_{\mathbb{R}} \delta (y) \varphi(y+a) \\
+				= & \int_{\mathbb{R}} \delta (x-a) \varphi(x) \\
+				=& \varphi(a).
+				\end{aligned}
+				$$
+				Conclusão, $\phi_{n}(x-a) \rightharpoonup \delta(x-a)$, como desejávamos.
 			\end{enumerate}	
 		
 		\item \textbf{Solução:}
