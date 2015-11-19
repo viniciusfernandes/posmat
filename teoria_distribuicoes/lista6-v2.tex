@@ -113,7 +113,7 @@
 				
 					
 				\item Seja $g \in \mathcal{S}(\mathbb{R})$, e desse modo 
-				podemos afirmar que $g$ é contínua pois é infinitamente diferenciável na reta. Como o intervalo $I_{n} = \{|x| \leq 1/n: x \in \mathbb{R} \}$ é um compacto, então $\phi$ restrita a esse intervalo possui um mínimo e um máximo, sendo assim, definimos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $\phi$, respectivamente. Note que para cada $n \in \mathbb{N}$ temos $I_{n+1} \subset I_{n}$ e suponha agora que $b_{n}$ é o ponto de máximo de $\phi$ em $I_{n}$, então se $b_{n+1}$ é um ponto de máximo de $\phi$ em $I_{n+1}$ teremos $\phi(b_{n+1}) \leq \phi(a_{n})$, portanto a sequência $(\phi(b_{n})) \subset \mathbb{R}$ é monótona não-crescente. A mesma construção pode ser feita para os pontos de mínimo de $\phi$ quando restrita a esse intervalos, contudo nesse caso teremos $\phi(a_{n}) \leq \phi(a_{n+1})$ resultando em uma sequência $(\phi(a_{n})) \subset \mathbb{R}$ monótona não-decrescente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset \mathbb{R}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$. Com efeito: seja $n_{0} \in \mathbb{N}$, então $\forall n > n_0$ teremos $a_{n}, b_{n}  \in (-1/n_{0}, 1/n_{0})$, o que caracteriza $x=0$ com um ponto de aderência das sequências $(a_{n}), (b_{n})$, portanto $a_{n} \to 0$ e $b_{n} \to 0$.
+				podemos afirmar que $g$ é contínua pois é infinitamente diferenciável na reta. Como o intervalo $I_{n} = \{|x| \leq 1/n: x \in \mathbb{R} \}$ é um compacto, então $g$ restrita a esse intervalo possui um mínimo e um máximo, sendo assim, definamos $a_{n}, b_{n}$ como sendo esses pontos de mínimo e máximo de $g$, respectivamente. Note que para cada $n \in \mathbb{N}$ temos $I_{n+1} \subset I_{n}$ e suponha agora que $b_{n}$ é o ponto de máximo de $g$ em $I_{n}$, então se $b_{n+1}$ é um ponto de máximo de $g$ em $I_{n+1}$ teremos $g(b_{n+1}) \leq g(b_{n})$, portanto a sequência $(g(b_{n})) \subset \mathbb{R}$ é monótona não-crescente. A mesma construção pode ser feita para os pontos de mínimo de $g$ quando restrita a esse intervalos, contudo nesse caso teremos $g(a_{n}) \leq g(a_{n+1})$ resultando em uma sequência $(g(a_{n})) \subset \mathbb{R}$ monótona não-decrescente. Com isso, temos duas sequências $(a_{n}), (b_{n}) \subset \mathbb{R}$ tal que $a_{n} \to 0$ e $b_{n} \to 0$. Com efeito: seja $n_{0} \in \mathbb{N}$, então $\forall n > n_0$ teremos $a_{n}, b_{n}  \in (-1/n_{0}, 1/n_{0})$, o que caracteriza $x=0$ com um ponto de aderência das sequências $(a_{n}), (b_{n})$, portanto $a_{n} \to 0$ e $b_{n} \to 0$.
 				
 				Agora vamos estudar o comportamento do limite das extremidades da estimativa. Definindo $J_{n} = \mathbb{R}\backslash I_{n}$ podemos escrever $\mathbb{R} = I_{n} \cup J_{n}$, então teremos a desigualdade $g(a_{n}) \leq g(x) \leq g(b_{n}), \forall n \in \mathbb{N} \; e \; x \in I_{n}$, além disso, podemos reduzir a seguinte integração $\int_{\mathbb{R}} \phi_{n}(x)g(x) = \int_{I_{n}} \phi_{n}(x)g(x)$ pois $\phi_{n}(x)$ quando $x \in J_{n}$, portanto:
 				$$
@@ -161,13 +161,13 @@
 				Sabemos que $\varphi(x) = \varphi(0) + x\psi(x)$ é limitada, portanto a função $\psi(x)$ deve ser limitada. Além disso, o termo do integrando $x/(1+(nx)^{2})$ também é limitado na reta, então teremos a seguinte estimativa:
 				$$
 				\begin{gathered}
-				\int_{\mathbb{R}}  \frac{-n x ||\psi||_{\infty}}{\pi(1+(nx)^{2})} \leq  I_{n}	\leq \int_{\mathbb{R}} \frac{n x ||\psi||_{\infty}}{\pi(1+(nx)^{2})} 
+				-\Big| \int_{\mathbb{R}}  \frac{n x ||\psi||_{\infty}}{\pi(1+(nx)^{2})} \Big| \leq  I_{n}	\leq \Big| \int_{\mathbb{R}} \frac{n x ||\psi||_{\infty}}{\pi(1+(nx)^{2})} \Big|
 				\\
-				\frac{-n||\psi||_{\infty}}{\pi}\int_{\mathbb{R}}  \frac{x}{1+(nx)^{2}} \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \int_{\mathbb{R}} \frac{x}{1+(nx)^{2}} 
+				\frac{-n||\psi||_{\infty}}{\pi} \Big| \int_{\mathbb{R}}  \frac{x}{1+(nx)^{2}} \Big| \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \Big| \int_{\mathbb{R}} \frac{x}{1+(nx)^{2}} \Big| 
 				\\
-				\frac{-n||\psi||_{\infty}}{\pi} \Big( \int_{x \leq 0} \frac{x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} \Big) \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \Big( \int_{x \leq 0} \frac{x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} \Big) 
+				\frac{-n||\psi||_{\infty}}{\pi} \Big| \int_{x \leq 0} \frac{x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} \Big| \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \Big| \int_{x \leq 0} \frac{x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} \Big|
 				\\
-				\frac{-n||\psi||_{\infty}}{\pi} \Big( \underbrace{ \int_{x \geq 0} \frac{-x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} }_{=0} \Big) \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \Big( \underbrace{ \int_{x \geq 0} \frac{-x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} }_{=0} \Big)
+				\frac{-n||\psi||_{\infty}}{\pi} \Big| \underbrace{ \int_{x \geq 0} \frac{-x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} }_{=0} \Big| \leq  I_{n}	\leq  \frac{n||\psi||_{\infty}}{\pi} \Big| \underbrace{ \int_{x \geq 0} \frac{-x}{1+(nx)^{2}} + \int_{x \geq 0} \frac{x}{1+(nx)^{2}} }_{=0} \Big| 
 				\\
 				0 \leq  I_{n}	\leq 0,
 				\end{gathered} 
