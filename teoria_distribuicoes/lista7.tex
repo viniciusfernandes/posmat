@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[fleqn]{amsmath}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 7 para Entregar}
+	\author{Vinicius Fernandes}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		
+		\item \textbf{Solução:}
+		 
+		\item \textbf{Solução:} Por simplicidade, vamos definir a notação $C^{0} = C^{0}(\mathbb{R}^{n})$, e tomaremos $f, g \in C^{0}$ e $\lambda \in \mathbb{R}$.
+			\begin{enumerate}
+				\item Sabemos que $C^{0}$ é um espaço vetorial, portanto $f + \lambda g \in C^{0}$. Vamos mostrar que a linearidade do operador $\tau_{a}$.
+				$$
+				\begin{aligned}
+				(\tau_{a}(f+\lambda g))(x) = &  (f+\lambda g)(x+a) \\
+				= & f(x+a) +(\lambda g)(x+a)
+				\\
+				= & f(x+a) +\lambda g(x+a)
+				\\
+				= & (\tau_{a}f)(x) +\lambda (\tau_{a}g)(x)
+				\\
+				\therefore & \tau_{a}(f+\lambda g) = \tau_{a}(f)+\lambda \tau_{a}(g),
+				\end{aligned}
+				$$
+				ou seja, $\tau_{a}$ é um operador linear.
+				
+				\item Notemos que $(\tau_{a} \circ \tau_{-a})(f)(x) = (\tau_{a})f(x-a) = f(x- a+a) = f(x)$, e também $(\tau_{-a} \circ \tau_{a})(f)(x) = (\tau_{a})f(x+a) = f(x+a-a) = f(x)$, portanto $\tau_{a} \circ \tau_{-a} = \tau_{-a} \circ \tau_{a} = Id \Rightarrow \tau_{-a} = \tau^{-1}_{a}$.
+				
+				\item Seja $\varphi \in \mathcal{S}(\mathbb{R}^{n})$, então:
+				$$
+				\begin{aligned}
+				\langle \tau_{a}f, \varphi \rangle = & \int_{\mathbb{R}} (\tau_{a}f)(x)\varphi(x)
+				= \int_{\mathbb{R}} f(\underbrace{ x+a }_{y = x+a}) \varphi(x)
+				\\
+				= & \int_{\mathbb{R}} f(y)\varphi(y-a)
+				=  \int_{\mathbb{R}} f(y) (\tau_{-a}\varphi)(y) 
+				\\
+				= & \langle f, \tau_{-a}\varphi \rangle.
+				\end{aligned}
+				$$
+				
+				\item Primeiro, vejamos que e o operador $T$ é invertível. É injetor pois tomando $a, b \in \mathbb{R}^{n}$ teremos $Ta- Tb = Aa - Ab = A(a-b) = 0 \iff a=b$, pois $A$ é injetora. Além disso, para qualquer $y \in \mathbb{R}^{n}$ existe $x \in \mathbb{R}^{n}$ tal que tomando $x = A^{-1}(y -b)$ teremos $Tx = AA^{-1}(y -b) + b = y$, portanto é sobrejetora. Fazendo que $T^{-1}(x) = A^{-1}(x - b)$ teremos $TT^{-1}(x) = AA^{-1}(x - b) + b = x$, e também $T^{-1}T(x) = T^{-1}(Ax + b) = A^{-1}(Ax+b - b) = x$, portanto $TT^{-1} = T^{-1}T = Id$ e $T^{-1}$ é a inversa de $T$.
+				$$
+				\begin{aligned}
+				\langle f \circ T, \varphi \rangle = & \int_{\mathbb{R}} (f \circ T)(x)\varphi(x)
+				= \int_{\mathbb{R}} f(\underbrace{ Ax+b }_{y = Ax+b})\varphi(x)
+				\\
+				= & \int_{\mathbb{R}} f(y)\varphi(\underbrace{ A^{-1}(y - b)}_{T^{-1}y} ) \underbrace{ \Big| J_{T}(x) \Big|}_{Det. Jacob.}
+				\\
+				= & \int_{\mathbb{R}} f(y)\varphi(T^{-1}y) \Big| \frac{\partial T_{i}}{\partial x_{j}}(x) \Big|
+				\\
+				= & \int_{\mathbb{R}} f(y)\varphi(T^{-1}y) |det(A)|
+				\\
+				= & |det(A)| \int_{\mathbb{R}} f(y)\varphi(T^{-1}y)
+				\\
+				= & |det(A)| \langle f, \varphi \circ T^{-1}\rangle.
+				\end{aligned}
+				$$
+				
+				Supondo que $\varphi = \delta$ teremos
+				$$
+				\begin{aligned}
+				\langle f \circ T, \delta \rangle = & \int_{\mathbb{R}} (f \circ T)(x)\delta(x)
+				= (f \circ T)(0) = f(b).
+				\\
+				\end{aligned}
+				$$
+				
+			\end{enumerate}
+		
+		\item \textbf{Solução:}
+		
+		\item \textbf{Solução:}
+		
+	\end{enumerate}
+	
+	
+\end{document}
