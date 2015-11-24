@@ -51,16 +51,16 @@
 				$$
 				
 				\item Primeiro, vejamos que e o operador $T$ é invertível. É injetor pois tomando $a, b \in \mathbb{R}^{n}$ teremos $Ta- Tb = Aa - Ab = A(a-b) = 0 \iff a=b$, pois $A$ é injetora. Além disso, para qualquer $y \in \mathbb{R}^{n}$ existe $x \in \mathbb{R}^{n}$ tal que tomando $x = A^{-1}(y -b)$ teremos $Tx = AA^{-1}(y -b) + b = y$, portanto é sobrejetora. Fazendo que $T^{-1}(x) = A^{-1}(x - b)$ teremos $TT^{-1}(x) = AA^{-1}(x - b) + b = x$, e também $T^{-1}T(x) = T^{-1}(Ax + b) = A^{-1}(Ax+b - b) = x$, portanto $TT^{-1} = T^{-1}T = Id$ e $T^{-1}$ é a inversa de $T$.
+				
+				Usaremos o seguinte resultado: tomando o diferencial do operator $T$ teremos $D_{x}(T): \mathbb{R}^{n} \to \mathbb{R}^{n}$ tal que $D_{x}(T)(v) = D_{x}(Ax+b)(v) = Av$, portanto $D_{x}(T) = A$ e $det(D_{x}(T)) = det(A)$.
 				$$
 				\begin{aligned}
 				\langle f \circ T, \varphi \rangle = & \int_{\mathbb{R}} (f \circ T)(x)\varphi(x)
 				= \int_{\mathbb{R}} f(\underbrace{ Ax+b }_{y = Ax+b})\varphi(x)
 				\\
-				= & \int_{\mathbb{R}} f(y)\varphi(\underbrace{ A^{-1}(y - b)}_{T^{-1}y} ) \underbrace{ \Big| J_{T}(x) \Big|}_{Det. Jacob.}
+				= & \int_{\mathbb{R}} f(y)\varphi(\underbrace{ A^{-1}(y - b)}_{T^{-1}y} ) \Big| det(D_{x}(T)) \Big|
 				\\
-				= & \int_{\mathbb{R}} f(y)\varphi(T^{-1}y) \Big| \frac{\partial T_{i}}{\partial x_{j}}(x) \Big|
-				\\
-				= & \int_{\mathbb{R}} f(y)\varphi(T^{-1}y) |det(A)|
+				= & \int_{\mathbb{R}} f(y)\varphi(T^{-1}y)  |det(A)|
 				\\
 				= & |det(A)| \int_{\mathbb{R}} f(y)\varphi(T^{-1}y)
 				\\
