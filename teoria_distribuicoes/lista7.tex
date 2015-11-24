@@ -52,19 +52,19 @@
 				
 				\item Primeiro, vejamos que e o operador $T$ é invertível. É injetor pois tomando $a, b \in \mathbb{R}^{n}$ teremos $Ta- Tb = Aa - Ab = A(a-b) = 0 \iff a=b$, pois $A$ é injetora. Além disso, para qualquer $y \in \mathbb{R}^{n}$ existe $x \in \mathbb{R}^{n}$ tal que tomando $x = A^{-1}(y -b)$ teremos $Tx = AA^{-1}(y -b) + b = y$, portanto é sobrejetora. Fazendo que $T^{-1}(x) = A^{-1}(x - b)$ teremos $TT^{-1}(x) = AA^{-1}(x - b) + b = x$, e também $T^{-1}T(x) = T^{-1}(Ax + b) = A^{-1}(Ax+b - b) = x$, portanto $TT^{-1} = T^{-1}T = Id$ e $T^{-1}$ é a inversa de $T$.
 				
-				Usaremos o seguinte resultado: tomando o diferencial do operator $T$ teremos $D_{x}(T): \mathbb{R}^{n} \to \mathbb{R}^{n}$ tal que $D_{x}(T)(v) = D_{x}(Ax+b)(v) = Av$, portanto $D_{x}(T) = A$ e $det(D_{x}(T)) = det(A)$.
+				Usaremos o seguinte resultado: tomando o diferencial do operator $T$ teremos $D_{x}(T): \mathbb{R}^{n} \to \mathbb{R}^{n}$ tal que $D_{x}(T)(v) = D_{x}(Ax+b)(v) = Av$, portanto $D_{x}(T) = A$ e $det(D_{x}(T)) = det(A) \neq 0 \; \forall x \in \mathbb{R}^{n}$. Além disso, realizando a mudança de coordenadas $y = Ax+b$ teremos $dy(x) = |det(D_{x}(T))|dx$ ou ainda $|det(D_{x}(T))|^{-1} dy(x) = dx$. Calculando:
 				$$
 				\begin{aligned}
 				\langle f \circ T, \varphi \rangle = & \int_{\mathbb{R}} (f \circ T)(x)\varphi(x)
 				= \int_{\mathbb{R}} f(\underbrace{ Ax+b }_{y = Ax+b})\varphi(x)
 				\\
-				= & \int_{\mathbb{R}} f(y)\varphi(\underbrace{ A^{-1}(y - b)}_{T^{-1}y} ) \Big| det(D_{x}(T)) \Big|
+				= & \int_{\mathbb{R}} f(y)\varphi(\underbrace{ A^{-1}(y - b)}_{T^{-1}y} ) \Big| det(D_{x}(T)) \Big|^{-1}
 				\\
-				= & \int_{\mathbb{R}} f(y)\varphi(T^{-1}y)  |det(A)|
+				= & \int_{\mathbb{R}} f(y)\varphi(T^{-1}y)  |det(A)|^{-1}
 				\\
-				= & |det(A)| \int_{\mathbb{R}} f(y)\varphi(T^{-1}y)
+				= & \frac{1}{|det(A)|} \int_{\mathbb{R}} f(y)\varphi(T^{-1}y)
 				\\
-				= & |det(A)| \langle f, \varphi \circ T^{-1}\rangle.
+				= & \frac{1}{|det(A)|} \langle f, \varphi \circ T^{-1}\rangle.
 				\end{aligned}
 				$$
 				
@@ -80,7 +80,20 @@
 			\end{enumerate}
 		
 		\item \textbf{Solução:}
-		
+			\begin{enumerate}
+				\item Supondo que $\varphi \in \mathcal{S}(\mathbb{R}^{n})$, então para mostrar que $\varphi \in L^{2}(\mathbb{R}^{n})$ basta mostrarmos que $\int_{\mathbb{R}^{n}} |\varphi(x)|^{2} < \infty$. Com efeito: note que $\varphi^{2}(x) \neq 0 \iff \varphi(x) \neq 0 $, o que implica em $supp(\varphi^{2}) = supp(\varphi)$, como esse último é um compacto então $supp(\varphi^{2})$ é um compacto, consequentemente:
+				$$
+				\int_{\mathbb{R}^{n}} |\varphi(x)|^{2} = \int_{\mathbb{R}^{n}} \varphi(x)^{2} = \int_{\underbrace{ supp(\varphi^{2}) }_{compacto}} \varphi(x)^{2} < \infty,
+				$$
+				logo $(\int_{\mathbb{R}^{n}} |\varphi(x)|^{2})^{1/2} < \infty$, portanto $\varphi \in L^{2}(\mathbb{R}^{n})$.
+				
+				\item Efetuando o calculo:	
+				$$
+				\begin{aligned}
+				\langle Tf, \varphi \rangle = & \int_{\mathbb{R}^{n}} |\varphi(x)|^{2}
+				\end{aligned}
+				$$
+			\end{enumerate}		
 		\item \textbf{Solução:}
 		
 	\end{enumerate}
