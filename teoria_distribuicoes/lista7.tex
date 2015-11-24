@@ -79,20 +79,47 @@
 				
 			\end{enumerate}
 		
-		\item \textbf{Solução:}
+		\item \textbf{Solução:} Definiremos $K = supp(\varphi)$ para todos os itens.
 			\begin{enumerate}
-				\item Supondo que $\varphi \in \mathcal{S}(\mathbb{R}^{n})$, então para mostrar que $\varphi \in L^{2}(\mathbb{R}^{n})$ basta mostrarmos que $\int_{\mathbb{R}^{n}} |\varphi(x)|^{2} < \infty$. Com efeito: note que $\varphi^{2}(x) \neq 0 \iff \varphi(x) \neq 0 $, o que implica em $supp(\varphi^{2}) = supp(\varphi)$, como esse último é um compacto então $supp(\varphi^{2})$ é um compacto, consequentemente:
+				\item Supondo que $\varphi \in \mathcal{S}(\mathbb{R}^{n})$, então para mostrar que $\varphi \in L^{2}(\mathbb{R}^{n})$ basta mostrarmos que $\int_{\mathbb{R}^{n}} |\varphi(x)|^{2} < \infty$. Com efeito: note que $\varphi(x)^{2} \neq 0 \iff \varphi(x) \neq 0 $, o que implica em $supp(\varphi^{2}) = supp(\varphi)$, como esse último é um compacto então $supp(\varphi^{2})$ é um compacto, consequentemente:
 				$$
-				\int_{\mathbb{R}^{n}} |\varphi(x)|^{2} = \int_{\mathbb{R}^{n}} \varphi(x)^{2} = \int_{\underbrace{ supp(\varphi^{2}) }_{compacto}} \varphi(x)^{2} < \infty,
+				\int_{\mathbb{R}^{n}} |\varphi(x)|^{2} = \int_{\mathbb{R}^{n}} \varphi(x)^{2} = \int_{ K} \underbrace{ \varphi(x)^{2} }_{<\infty} < \infty,
 				$$
-				logo $(\int_{\mathbb{R}^{n}} |\varphi(x)|^{2})^{1/2} < \infty$, portanto $\varphi \in L^{2}(\mathbb{R}^{n})$.
+				sendo que a limitação vem do fato que de $\varphi^{2}$ é limitada no suporte compacto $K$, logo $(\int_{\mathbb{R}^{n}} |\varphi(x)|^{2})^{1/2} < \infty$. Portanto $\varphi \in L^{2}(\mathbb{R}^{n})$.
 				
-				\item Efetuando o calculo:	
+				\item Vamos demonstrar que, em certas condições a distribuição $Tf: \mathcal{S}(\mathbb{R}^{n}) \to \mathbb{R}$ dada por $\langle Tf, \varphi \rangle$ conicidirá com o produto interno em $L^{2}(\mathbb{R}^{n})$ dado por $\langle .,.\rangle_{2} : L^{2}(\mathbb{R}^{n}) \to L^{2}(\mathbb{R}^{n})$ dado por $\langle f, g \rangle_{2} = \int_{\mathbb{R}^{n}} f(x)g(x)$. Por definição temos:
 				$$
 				\begin{aligned}
-				\langle Tf, \varphi \rangle = & \int_{\mathbb{R}^{n}} |\varphi(x)|^{2}
+				\langle Tf, \varphi \rangle = & \int_{\mathbb{R}^{n}} (Tf)(x)\varphi(x) = \int_{K} (Tf)(x)\varphi(x)
+				\\
+				= & \int_{\mathbb{R}^{n}} \underbrace{ (Tf)(x) }_{\in L^{2}} \underbrace{ \varphi(x) }_{<\infty} \leq ||\varphi||_{\infty} \int_{\mathbb{R}^{n}} \underbrace{ (Tf)(x) }_{\infty}
+				\\
+				< & \infty,
 				\end{aligned}
 				$$
+				portanto  a distribuição $\langle Tf, \varphi \rangle < \infty$ esta bem-definida. Com isso, pela própria construção anterior, podemos escrever:
+				$$
+				\langle Tf, \varphi \rangle = \int_{K} (Tf)(x)\varphi(x) = \int_{\mathbb{R}^{n}} (Tf)(x)\varphi(x)  = \langle Tf, \varphi \rangle_{2}.
+				$$
+				Vejamos agora que o operador $T$ definido anteriormente é limitado, pois 
+				$$
+				||T|| = \sup_{f \in L^{2}}||Tf||_{2} < \infty,
+				$$
+				já que $Tf \in L^{2}(\mathbb{R}^{n})$, isto é $Tf$ é de quadrado integrável para qualquer $f \in L^{2}(\mathbb{R}^{n})$, portanto $T$ é limitado.  Como $T$ é um operador linear (pela hipótese) e limitado, então existe um único operador $T^{*} : L^{2}(\mathbb{R}^{n}) \to L^{2}(\mathbb{R}^{n})$ linear e limitado tal que $\langle Tf, \varphi \rangle_{2} = \langle f, T^{*}\varphi \rangle_{2}$. Por fim, vejamos que:
+				$$
+				\begin{aligned}
+				\langle f, T^{*}\varphi \rangle = & \int_{\mathbb{R}^{n}} f(x)(T^{*}\varphi)(x) = \int_{K} \underbrace{ f(x) }_{\in L^{2}_{loc}} (T^{*}\varphi)(x)
+				\\
+				\leq & \sup_{x \in K}|f(x)| \int_{K} (T^{*}\varphi)(x) 	\leq \sup_{x \in K}|f(x)| \int_{K} \sup_{\varphi \in L^{2}} ||T^{*}\varphi||
+				\\
+				\leq & \sup_{x \in K}|f(x)| \sup_{\varphi \in L^{2}} ||T^{*}\varphi|| \int_{K} 1 
+				\\
+				= & \underbrace{ ||f||_{\infty} }_{<\infty} \underbrace{ ||T^{*}|| }_{< \infty} \int_{K} 1 
+				\\
+				< & \infty,
+				\end{aligned}
+				$$
+				portanto o operador $T^{*}$ esta bem-definido e podemos escrever $\langle Tf, \varphi \rangle = \langle f, T^{*}\varphi \rangle $, como desejávamos.
 			\end{enumerate}		
 		\item \textbf{Solução:}
 		
