@@ -16,32 +16,64 @@
 	
 	\begin{enumerate}
 		
-		\item \textbf{Solução:} Vamos usar os seguintes fatos: se $g \in \mathcal{S}(\mathbb{R}^{n})$ teremos que $x^{\alpha} D^{|\beta|}g \in \mathcal{S}(\mathbb{R}^{n})$, de modo que valem os seguintes limites $\lim_{|x| \to \infty} g(x) = 0$ e $\lim_{|x| \to \infty} x^{\alpha} D^{|\beta|}g(x) = 0$.
+		\item \textbf{Solução:} Vamos usar os seguintes fatos: se $g \in \mathcal{S}(\mathbb{R}^{n})$ teremos que $x^{\alpha} D^{|\beta|}g \in \mathcal{S}(\mathbb{R}^{n})$, de modo que valem os seguintes limites $\lim_{|x| \to \infty} g(x) = 0$ e $\lim_{|x| \to \infty} x^{\alpha} D^{|\beta|}g(x) = 0$ pois ambas as funções possuem suporte compacto. Esse fato será usado no caso particular abaixo em que teremos $\alpha = 0$, isto é, $\lim_{|x| \to \infty} D^{|\beta|}g(x) = 0$.
 		
-		Estudemos o caso em que $n = 1$, ou seja, a reta real, então sejam $f, g \in \mathcal{S}(\mathbb{R})$:
+		Estudemos o caso em que $n = 1$, ou seja, a reta real. Sejam $f, g \in \mathcal{S}(\mathbb{R})$ e tomemos $k \in \mathbb{N}$:
 		$$
 		\begin{aligned}
-		(fg)'(x) = & f'(x)g(x) + f'(x)g'(x) 
+		\int_{\mathbb{R}} f^{(k)}(x)g(x) = & \int_{\mathbb{R}} (f^{(k-1)}(x)g(x))' - f^{(k-1)}(x)g'(x)
 		\\ 
-		\int_{\mathbb{R}} (fg)'(x) = & \int_{\mathbb{R}} f'(x)g(x) + \int_{\mathbb{R}} f(x)g'(x) 
+		= & \underbrace{ f^{(k-1)}(x)g(x)'\Big|^{\infty}_{-\infty} }_{\to 0}- \int_{\mathbb{R}}  f^{(k-1)}(x)g'(x)
 		\\ 
-		\underbrace{ (fg)(y)\Big|^{\infty}_{-\infty} }_{\to 0} = & \underbrace{ \int_{\mathbb{R}} f'(x)g(x) }_{\langle f',g \rangle} + \underbrace{ \int_{\mathbb{R}} f(x)g'(x) }_{\langle f,g' \rangle}
+		= & -\int_{\mathbb{R}}  f^{(k-1)}(x)g'(x) \;
 		\\
-		\langle f',g \rangle = & - \langle f,g' \rangle.
+		 \therefore &
+		 \\
+		\langle f^{(k)},g \rangle = & - \langle f^{(k-1)},g^{(1)} \rangle
 		\end{aligned}
 		$$
-		Realizando novamente esse procedimento:
+		Realizando novamente esse procedimento para o termo $\langle f^{(k-1)},g^{(1)} \rangle$:
 		$$
 		\begin{aligned}
-		(fg')'(x) = & f'(x)g'(x) + f(x)g''(x) 
+		\int_{\mathbb{R}} f^{(k-1)}(x)g^{(1)}(x) = & \int_{\mathbb{R}} (f^{(k-2)}(x)g^{(1)}(x))' - f^{(k-2)}(x)g^{(2)}(x)
 		\\ 
-		\int_{\mathbb{R}} (fg')'(x) = & \int_{\mathbb{R}} f'(x)g'(x) + \int_{\mathbb{R}} f(x)g''(x) 
+		= & \underbrace{ f^{(k-2)}(x)g^{(1)}(x)'\Big|^{\infty}_{-\infty} }_{\to 0}- \int_{\mathbb{R}}  f^{(k-2)}(x)g^{(2)} (x)
 		\\ 
-		\underbrace{ (fg')(y)\Big|^{\infty}_{-\infty} }_{\to 0} = & \underbrace{ \int_{\mathbb{R}} f'(x)g'(x) }_{\langle f',g' \rangle} + \underbrace{ \int_{\mathbb{R}} f(x)g''(x) }_{\langle f,g'' \rangle}
+		= & -\int_{\mathbb{R}}  f^{(k-2)}(x)g^{(2)} (x) \;  
 		\\
-		\langle f',g \rangle = & - \langle f,g' \rangle.
+		\therefore &
+		\\
+		\langle f^{(k-1)},g^{(1)} \rangle = & - \langle f^{(k-2)},g^{(2)} \rangle.
 		\end{aligned}
 		$$
+		E substituindo esse resultado na relação anterior $\langle f^{(k)},g \rangle = - \langle f^{(k-1)},g^{(1)} \rangle = (-1)^{2} \langle f^{(k-2)},g^{(2)} \rangle$. Vamos aplicar a hipótese de indução para a demonstração final. Suponha que valha $\langle f^{(k)},g \rangle = (-1)^{j} \langle f^{(k-j)},g^{(j)} \rangle$ para $0 \leq j \leq k$, vamos mostrar que vale para $j+1$. Com efeito, ja vimos anteriormente que vale para $j=0$ e $j=1$, então:
+		$$
+		\begin{aligned}
+		\int_{\mathbb{R}} f^{(k-(j))}(x)g^{(j)}(x) = & \int_{\mathbb{R}} (f^{(k-(j+1))}(x)g^{(j)}(x))' - f^{(k-(j+1))}(x)g^{(j+1)}(x)
+		\\ 
+		= & \underbrace{ f^{(k-(j+1))}(x)g^{(j)}(x)\Big|^{\infty}_{-\infty} }_{\to 0}- \int_{\mathbb{R}}  f^{(k-(j+1))}(x)g^{(j+1)}(x)
+		\\ 
+		= & -\int_{\mathbb{R}}  f^{(k-(j+1))}(x)g^{(j+1)}(x) \; 
+		\\
+		\therefore &
+		\\
+		\langle f^{(k-j)},g^{(j)} \rangle = & - \langle f^{(k-(j+1))},g^{(j+1)} \rangle.
+		\end{aligned}
+		$$
+		E pela hipótese de indução temos $\langle f^{(k)},g \rangle = (-1)^{j} \langle f^{(k-j)},g^{(j)} \rangle = (-1)^{j+1}\langle f^{(k-(j+1))},g^{(j+1)} \rangle$, portanto $\langle f^{(k)},g \rangle = (-1)^{j+1}\langle f^{(k-(j+1))},g^{(j+1)}$ o que completa a demostração por indução. 
+		
+		Temos a relação: 
+		$$
+		\langle f^{(k)},g \rangle = (-1)^{j}\langle f^{(k-j)},g^{(j)} \rangle \; \text{onde} \; 0 \leq j \leq k.
+		$$
+		e aplicando para o caso particular em que $j = k$ teremos $\langle f^{(k)},g \rangle = (-1)^{k}\langle f,g^{(k)} \rangle$.
+		
+		Façamos agora o caso em que $f, g \in \mathcal{S}(\mathbb{R}^{n})$ e tomando um multi-índice $a \in \mathbb{N}^{n}$. Verifiquemos que para $|a| = 1$ temos:
+		
+		
+		
+		
+		$\langle D^{a}f, g \rangle = (-1)^{|a|}\langle f,D^{a}g \rangle$
 		
 		\item \textbf{Solução:} Por simplicidade, vamos definir a notação $C^{0} = C^{0}(\mathbb{R}^{n})$, e tomaremos $f, g \in C^{0}$ e $\lambda \in \mathbb{R}$.
 			\begin{enumerate}
@@ -55,7 +87,9 @@
 				\\
 				= & (\tau_{a}f)(x) +\lambda (\tau_{a}g)(x)
 				\\
-				\therefore & \tau_{a}(f+\lambda g) = \tau_{a}(f)+\lambda \tau_{a}(g),
+				\therefore &
+				\\
+				\tau_{a}(f+\lambda g) = & \tau_{a}(f)+\lambda \tau_{a}(g),
 				\end{aligned}
 				$$
 				ou seja, $\tau_{a}$ é um operador linear.
