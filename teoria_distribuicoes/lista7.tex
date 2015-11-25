@@ -16,8 +16,33 @@
 	
 	\begin{enumerate}
 		
-		\item \textbf{Solução:}
-		 
+		\item \textbf{Solução:} Vamos usar os seguintes fatos: se $g \in \mathcal{S}(\mathbb{R}^{n})$ teremos que $x^{\alpha} D^{|\beta|}g \in \mathcal{S}(\mathbb{R}^{n})$, de modo que valem os seguintes limites $\lim_{|x| \to \infty} g(x) = 0$ e $\lim_{|x| \to \infty} x^{\alpha} D^{|\beta|}g(x) = 0$.
+		
+		Estudemos o caso em que $n = 1$, ou seja, a reta real, então sejam $f, g \in \mathcal{S}(\mathbb{R})$:
+		$$
+		\begin{aligned}
+		(fg)'(x) = & f'(x)g(x) + f'(x)g'(x) 
+		\\ 
+		\int_{\mathbb{R}} (fg)'(x) = & \int_{\mathbb{R}} f'(x)g(x) + \int_{\mathbb{R}} f(x)g'(x) 
+		\\ 
+		\underbrace{ (fg)(y)\Big|^{\infty}_{-\infty} }_{\to 0} = & \underbrace{ \int_{\mathbb{R}} f'(x)g(x) }_{\langle f',g \rangle} + \underbrace{ \int_{\mathbb{R}} f(x)g'(x) }_{\langle f,g' \rangle}
+		\\
+		\langle f',g \rangle = & - \langle f,g' \rangle.
+		\end{aligned}
+		$$
+		Realizando novamente esse procedimento:
+		$$
+		\begin{aligned}
+		(fg')'(x) = & f'(x)g'(x) + f(x)g''(x) 
+		\\ 
+		\int_{\mathbb{R}} (fg')'(x) = & \int_{\mathbb{R}} f'(x)g'(x) + \int_{\mathbb{R}} f(x)g''(x) 
+		\\ 
+		\underbrace{ (fg')(y)\Big|^{\infty}_{-\infty} }_{\to 0} = & \underbrace{ \int_{\mathbb{R}} f'(x)g'(x) }_{\langle f',g' \rangle} + \underbrace{ \int_{\mathbb{R}} f(x)g''(x) }_{\langle f,g'' \rangle}
+		\\
+		\langle f',g \rangle = & - \langle f,g' \rangle.
+		\end{aligned}
+		$$
+		
 		\item \textbf{Solução:} Por simplicidade, vamos definir a notação $C^{0} = C^{0}(\mathbb{R}^{n})$, e tomaremos $f, g \in C^{0}$ e $\lambda \in \mathbb{R}$.
 			\begin{enumerate}
 				\item Sabemos que $C^{0}$ é um espaço vetorial, portanto $f + \lambda g \in C^{0}$. Vamos mostrar que a linearidade do operador $\tau_{a}$.
@@ -121,7 +146,29 @@
 				$$
 				portanto o operador $T^{*}$ esta bem-definido e podemos escrever $\langle Tf, \varphi \rangle = \langle f, T^{*}\varphi \rangle $, como desejávamos.
 			\end{enumerate}		
-		\item \textbf{Solução:}
+		\item \textbf{Solução:} Definamos a distribuição $f \in \mathcal{S}'(\mathbb{R})$ por:
+		$$
+		f(x) = 
+		\left\{
+			\begin{array}{cc}
+			1/|x| & , x\neq 0 \\
+			0 & , x =0.
+			\end{array}		
+		\right.
+		$$
+		Dados duas distribuições $f, g \in \mathcal{S}'(\mathbb{R})$, dizemos que $f = g$ se $\forall \phi \in \mathcal{S}(\mathbb{R})$ tem-se $\int_{\mathbb{R}}f(x)\phi(x) = \int_{\mathbb{R}}g(x)\phi(x)$. Vamos mostrar que $f = VP(\frac{1}{x})$. Sejam $f$ definida anteriormente e $\phi \in \mathcal{S}(\mathbb{R})$, então calculando:
+		$$
+		\begin{aligned}
+		\int_{\mathbb{R}} f(x)\phi(x) = \int_{\mathbb{R}} \frac{1}{|x|}\phi(x) = \int_{\mathbb{R}} VP\Big( \frac{1}{x} \Big)\phi(x), 
+		\end{aligned}
+		$$
+		como $\phi$ é arbitrária, então temos que $f = VP(\frac{1}{x})$. Contudo, podemos ver que, no sentido clássico, temos a relação $f(x) = \frac{d}{dx}\ln|x| \; \forall x \in \mathbb{R}\backslash\{0\}$, assim 
+		$$
+		\begin{aligned}
+			\int_{\mathbb{R}} f(x)\phi(x) = \int_{\mathbb{R}} \frac{1}{|x|}\phi(x) = \int_{\mathbb{R}\backslash\{0\}} \frac{1}{|x|}\phi(x) = \int_{\mathbb{R}\backslash\{0\}} \frac{d}{dx}\ln|x|\phi(x) , 
+		\end{aligned}
+		$$
+		note que podemos escrever $f = \frac{d}{dx}\ln|x|$ pois a ultima igualdade difere apenas um ponto de medida nula $x=0$ e $f(0)$, o que implica $\frac{d}{dx}\ln|x| = VP(\frac{1}{x})$.
 		
 	\end{enumerate}
 	
