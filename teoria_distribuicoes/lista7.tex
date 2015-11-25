@@ -101,7 +101,7 @@
 				\\
 				\end{aligned}
 				$$
-				
+			
 			\end{enumerate}
 		
 		\item \textbf{Solução:} Definiremos $K = supp(\varphi)$ para todos os itens.
@@ -170,6 +170,22 @@
 		$$
 		note que podemos escrever $f = \frac{d}{dx}\ln|x|$ pois a ultima igualdade difere apenas um ponto de medida nula $x=0$ e $f(0)$, o que implica $\frac{d}{dx}\ln|x| = VP(\frac{1}{x})$.
 		
+		Vamos agora mostrar que $u \in \mathcal{S}'(\mathbb{R})$ tal que $u(x) = c_{1} + c_{2}\theta(x) + \ln|x|$ é uma solução fraca para $xu'(x) = 1$. Com efeito, tomando $\phi \in \mathcal{S}(\mathbb{R})$ então:
+		$$
+		\begin{aligned}
+		\int_{\mathbb{R}^{n}} xu'(x)\phi(x) = & \int_{\mathbb{R}^{n}} x(c_{1} + c_{2}\theta(x) + \ln|x|)'\phi(x)
+		\\
+		= & \int_{\mathbb{R}^{n}} x(0 + c_{2} \underbrace{ \theta'(x) }_{\delta(x)} + \underbrace{ (\ln|x|)' }_{VP(\frac{1}{x}))} ) \phi(x)
+		\\
+		= & \int_{\mathbb{R}^{n}} x \delta(x)\phi(x) + \int_{\mathbb{R}^{n}}  xVP(\frac{1}{x}))\phi(x)
+		\\
+		= & \underbrace{ x \phi(x)\Big|_{x=0} }_{=0} + \int_{\mathbb{R}^{n}}  x\frac{1}{x}\phi(x)
+		\\
+		= & \int_{\mathbb{R}^{n}} \phi(x),
+		\end{aligned}
+		$$
+		logo, $xu'(x) = 1$ (no sentido distibucional), como desejávamos.
+			
 	\end{enumerate}
 	
 	
