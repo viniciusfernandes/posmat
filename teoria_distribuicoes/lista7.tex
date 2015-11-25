@@ -146,31 +146,61 @@
 				$$
 				portanto o operador $T^{*}$ esta bem-definido e podemos escrever $\langle Tf, \varphi \rangle = \langle f, T^{*}\varphi \rangle $, como desejávamos.
 			\end{enumerate}		
-		\item \textbf{Solução:} Definamos a distribuição $f \in \mathcal{S}'(\mathbb{R})$ por:
+		\item \textbf{Solução:} Definamos a distribuição $\ln|x| \in \mathcal{S}'(\mathbb{R})$ por:
 		$$
 		f(x) = 
 		\left\{
 			\begin{array}{cc}
-			1/|x| & , x\neq 0 \\
+			\ln x & , x\neq 0 \\
 			0 & , x =0.
 			\end{array}		
 		\right.
 		$$
-		Dados duas distribuições $f, g \in \mathcal{S}'(\mathbb{R})$, dizemos que $f = g$ se $\forall \phi \in \mathcal{S}(\mathbb{R})$ tem-se $\int_{\mathbb{R}}f(x)\phi(x) = \int_{\mathbb{R}}g(x)\phi(x)$. Vamos mostrar que $f = VP(\frac{1}{x})$. Sejam $f$ definida anteriormente e $\phi \in \mathcal{S}(\mathbb{R})$, então calculando:
+		Dados duas distribuições $h, g \in \mathcal{S}'(\mathbb{R})$, dizemos que $h = g$ se $\forall \phi \in \mathcal{S}(\mathbb{R})$ tem-se $\int_{\mathbb{R}}h(x)\phi(x) = \int_{\mathbb{R}}g(x)\phi(x)$. Vamos mostrar que $f = VP(\frac{1}{x})$. Primeiramente, podemos reescrever o valor principal como:
 		$$
 		\begin{aligned}
-		\int_{\mathbb{R}} f(x)\phi(x) = \int_{\mathbb{R}} \frac{1}{|x|}\phi(x) = \int_{\mathbb{R}} VP\Big( \frac{1}{x} \Big)\phi(x), 
+			VP(\frac{1}{x})(\phi) = & \lim_{\epsilon \to 0^{+}} \int_{|x|>\epsilon} \frac{1}{x}\phi(x) = \lim_{\epsilon \to 0} \Big( \int_{(-\infty, \epsilon)} \frac{1}{x}\phi(x) + \int_{(\epsilon, \infty)}  \frac{1}{x}\phi(x) \Big)
+			\\
+			= & \lim_{\epsilon \to 0} \Big( \int_{(\epsilon, \infty)} \underbrace{ \frac{1}{-y}\phi(-y) }_{x = -y} + \int_{(\epsilon, \infty)} \frac{1}{x}\phi(x) \Big)
+			\\
+			= & \lim_{\epsilon \to 0} \int_{(\epsilon, \infty)}  \frac{\phi(y)-\phi(-y)}{y}
 		\end{aligned}
-		$$
-		como $\phi$ é arbitrária, então temos que $f = VP(\frac{1}{x})$. Contudo, podemos ver que, no sentido clássico, temos a relação $f(x) = \frac{d}{dx}\ln|x| \; \forall x \in \mathbb{R}\backslash\{0\}$, assim 
+	 	$$
+	 	Analogamente, definindo $Dln(x) \in \mathcal{S}'(\mathbb{R})$ tal que $Dln(x) = \frac{d}{dx}ln|x|$:
 		$$
 		\begin{aligned}
-			\int_{\mathbb{R}} f(x)\phi(x) = \int_{\mathbb{R}} \frac{1}{|x|}\phi(x) = \int_{\mathbb{R}\backslash\{0\}} \frac{1}{|x|}\phi(x) = \int_{\mathbb{R}\backslash\{0\}} \frac{d}{dx}\ln|x|\phi(x) , 
+			Dln(x)(\phi) = & \lim_{\epsilon \to 0^{+}} \int_{|x|>\epsilon} \frac{d}{dx}\ln|x| \phi(x) = \lim_{\epsilon \to 0} \Big( \int_{(-\infty, \epsilon)} \frac{d}{dx}\ln|x| \phi(x) + \int_{(\epsilon, \infty)} \frac{d}{dx}\ln|x| \phi(x) \Big)
+			\\
+			= & \lim_{\epsilon \to 0} \Big( \int_{(-\infty, \epsilon)} \frac{d}{dx}\ln(-x) \phi(x) + \int_{(\epsilon, \infty)} \frac{d}{dx}\ln (x) \phi(x) \Big)
+			\\
+			= & \lim_{\epsilon \to 0} \Big( \int_{(-\infty, \epsilon)} \frac{1}{x} \phi(x) + \int_{(\epsilon, \infty)} \frac{1}{x} \phi(x) \Big)
+			\\
+			= & \lim_{\epsilon \to 0} \Big( \int_{(\epsilon, \infty)} \underbrace{ \frac{1}{-y} \phi(-y) }_{x=-y} + \int_{(\epsilon, \infty)} \frac{1}{x} \phi(x) \Big)
+			\\
+			= & \lim_{\epsilon \to 0} \int_{(\epsilon, \infty)}  \frac{\phi(y)-\phi(-y)}{y}
+			\\
+			= & VP(\frac{1}{x})(\phi),
 		\end{aligned}
 		$$
-		note que podemos escrever $f = \frac{d}{dx}\ln|x|$ pois a ultima igualdade difere apenas um ponto de medida nula $x=0$ e $f(0)$, o que implica $\frac{d}{dx}\ln|x| = VP(\frac{1}{x})$.
+		logo, como $\phi$ é arbitrária temos $Dln(x) = VP(\frac{1}{x})$ (no sentido distribucional).  
 		
-		Vamos agora mostrar que $u \in \mathcal{S}'(\mathbb{R})$ tal que $u(x) = c_{1} + c_{2}\theta(x) + \ln|x|$ é uma solução fraca para $xu'(x) = 1$. Com efeito, tomando $\phi \in \mathcal{S}(\mathbb{R})$ então:
+		Vamos agora mostrar que $u \in \mathcal{S}'(\mathbb{R})$ tal que $u(x) = c_{1} + c_{2}\theta(x) + \ln|x|$ é uma solução fraca para $xu'(x) = 1$. Com efeito, tomando $\phi \in \mathcal{S}(\mathbb{R})$, mas antes provemos que $\theta' = \delta \in \mathcal{S}'(\mathbb{R})$. Pois bem, sabemos do primeiro exercício que $\langle \theta',g \rangle = - \langle \theta,g' \rangle, \forall g \in \mathcal{S}(\mathbb{R})$, então:
+		$$
+		\begin{aligned}
+		\langle \theta',g \rangle = & - \langle \theta,g' \rangle = -\int_{\mathbb{R}} \theta(x)g'(x)
+		\\
+		= & -\int_{x \geq 0} \underbrace{ \theta(x) }_{=1} g'(x)= -\int_{x \geq 0} g'(x)
+		\\
+		= & -g(x) \Big|^{\infty}_{0} = \underbrace{ \lim_{x \to \infty}-g(x) }_{supp. compac.} + g(0)
+		\\
+		= & g(0)
+		\\
+		= & \int_{\mathbb{R}} \delta(x)g(x),
+		\end{aligned}
+		$$
+		logo, $\langle \theta',g \rangle = \int_{\mathbb{R}} \theta'(x)g(x) = \int_{\mathbb{R}} \delta(x)g(x)$, portanto $\theta' = \delta$ (no sentido distribucional).
+		
+		Partindo para a demostração de que $xu'(x) = 1$:
 		$$
 		\begin{aligned}
 		\int_{\mathbb{R}^{n}} xu'(x)\phi(x) = & \int_{\mathbb{R}^{n}} x(c_{1} + c_{2}\theta(x) + \ln|x|)'\phi(x)
@@ -184,7 +214,7 @@
 		= & \int_{\mathbb{R}^{n}} \phi(x),
 		\end{aligned}
 		$$
-		logo, $xu'(x) = 1$ (no sentido distibucional), como desejávamos.
+		logo, $xu'(x) = 1$ (no sentido distribucional), como desejávamos.
 			
 	\end{enumerate}
 	
