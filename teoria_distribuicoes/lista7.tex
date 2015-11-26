@@ -62,7 +62,7 @@
 		$$
 		que aplicando-a para o caso particular em que $j = k$ teremos $\langle f^{(k)},g \rangle = (-1)^{k}\langle f,g^{(k)} \rangle$.
 		
-		Façamos agora o caso em que $f, g \in \mathcal{S}(\mathbb{R}^{n})$ e tomando um multi-índice $a \in \mathbb{N}^{n}$. Sabemos que $D^{|a|}f = \partial^{a_{1}}_{1} \dots \partial^{a_{n}}_{n} f$, onde $\partial^{a_{i}}_{i}  = \partial^{a_{i}}/\partial x^{a_{i}}_{i}$ com $0\leq i \leq n$. Definindo $F = \partial^{a_{1}}_{1}...\partial^{a_{i-1}}_{i-1}\partial^{a_{i+1}}_{i+1}...\partial^{a_{n}}_{n}f = D^{|a|-a_{i}}f$ então $\partial^{a_{i}}_{i}F = D^{|a|}f$, consequentemente teremos $\langle D^{|a|}f, g \rangle =\langle \partial^{a_{i}}_{i}F, g \rangle$. Como no caso unidimensional, faremos a demonstração por indução. Afirmo que $\langle \partial^{a_{i}}_{i}F, g \rangle = (-1)^{j} \langle \partial^{a_{i}-j}_{i}F, \partial^{j}_{i}g \rangle$ para $0 \leq j \leq a_{i}$
+		Façamos agora o caso em que $f, g \in \mathcal{S}(\mathbb{R}^{n})$ e tomando um multi-índice $a \in \mathbb{N}^{n}$. Sabemos que $D^{|a|}f = \partial^{a_{1}}_{1} \dots \partial^{a_{n}}_{n} f$, onde $\partial^{a_{i}}_{i}  = \partial^{a_{i}}/\partial x^{a_{i}}_{i}$ com $0\leq i \leq n$. Definindo $F = \partial^{a_{1}}_{1}... \hat{\partial}^{a_{i}}_{i}...\partial^{a_{n}}_{n}f = D^{|a|-a_{i}}f$, onde a notação $\hat{\partial}^{a_{i}}_{i}$ indica a ausência da derivada parcial, isto é, $\partial^{a_{1}}_{1}... \hat{\partial}^{a_{i}}_{i}...\partial^{a_{n}}_{n}f = \partial^{a_{1}}_{1}... \partial^{a_{i-1}}_{i-1}\partial^{a_{i+1}}_{i+1}...\partial^{a_{n}}_{n}f$ $\partial^{a_{i}}_{i}$. Com essas definiçãoes podemos ver que $\partial^{a_{i}}_{i}F = D^{|a|}f$, e consequentemente teremos $\langle D^{|a|}f, g \rangle =\langle \partial^{a_{i}}_{i}F, g \rangle$. Como no caso unidimensional, faremos a demonstração por indução. Afirmo que $\langle \partial^{a_{i}}_{i}F, g \rangle = (-1)^{j} \langle \partial^{a_{i}-j}_{i}F, \partial^{j}_{i}g \rangle$ para $0 \leq j \leq a_{i}$
 		$$
 		\begin{aligned}
 		\int_{\mathbb{R}^{n}}\partial^{a_{i}}_{i}F(x)g(x) = & \int_{\mathbb{R}^{n}} \partial_{i}(\partial^{a_{i}-1}_{i}F(x)g(x)) -  \partial^{a_{i}-1}_{i}F(x) \partial_{i}g(x)
@@ -100,7 +100,14 @@
 		\langle D^{|a|}f, g \rangle = & (-1)^{a_{i}}\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle.
 		\end{aligned}
 		$$
-		Note que realizamos esse procedimento para a i-ésima coordenada $x_{i}$, contudo, devemos repetir o procedimento para o termo  $\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle$ em todas as variáveis de modo a concluir a demonstração.
+		Note que realizamos esse procedimento para a i-ésima coordenada $x_{i}$, contudo, devemos repetir o procedimento para o termo  $\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle$ em todas as variáveis de modo a concluir a demonstração. Definindo $F_{1} = \partial^{a_{1}}_{1}...\hat{\partial}^{a_{i}}_{i} \hat{\partial}^{a_{i+1}}_{i+1}...\partial^{a_{n}}_{n}f = D^{|a|-a_{i}-a_{i+1}}f$, e em analogia ao caso da i-ésima variável temos $\partial^{a_{i+1}}_{i+1}F_{1} = D^{|a|-a_{i}}f$. Utilizando o resultado anterior, temos o resultado: 
+		$$
+		\begin{aligned}
+		\langle \partial^{a_{i+1}}_{i+1}F_{1}, g \rangle = & (-1)^{a_{i+1}}\langle F_{1}, \partial^{a_{i+1}}_{i+1}g \rangle
+		\\
+		= & (-1)^{a_{i+1}}\langle F_{1}, \partial^{a_{i+1}}_{i+1}g \rangle
+		\end{aligned}$$
+		
 		
 		\item \textbf{Solução:} Por simplicidade, vamos definir a notação $C^{0} = C^{0}(\mathbb{R}^{n})$, e tomaremos $f, g \in C^{0}$ e $\lambda \in \mathbb{R}$.
 			\begin{enumerate}
