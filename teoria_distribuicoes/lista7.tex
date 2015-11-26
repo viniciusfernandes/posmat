@@ -100,15 +100,38 @@
 		\langle D^{|a|}f, g \rangle = & (-1)^{a_{i}}\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle.
 		\end{aligned}
 		$$
-		Note que realizamos esse procedimento para a i-ésima coordenada $x_{i}$, contudo, devemos repetir o procedimento para o termo  $\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle$ em todas as variáveis de modo a concluir a demonstração. Definindo $F_{1} = \partial^{a_{1}}_{1}...\hat{\partial}^{a_{i}}_{i} \hat{\partial}^{a_{i+1}}_{i+1}...\partial^{a_{n}}_{n}f = D^{|a|-a_{i}-a_{i+1}}f$, e em analogia ao caso da i-ésima variável temos $\partial^{a_{i+1}}_{i+1}F_{1} = D^{|a|-a_{i}}f$. Utilizando o resultado anterior, temos o resultado: 
+		Note que realizamos esse procedimento para a i-ésima coordenada $x_{i}$, contudo, devemos repetir o procedimento para o termo  $\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle$ em todas as variáveis de modo a concluir a demonstração. Notemos que 
+		$$
+		D^{|a|-a_{i}}f = \partial^{a_{i+1}}_{i+1}(\underbrace{ \partial^{a_{1}}_{1}...\hat{\partial}^{a_{i}}_{i}\hat{\partial}^{a_{i+1}}_{i+1}...\partial^{a_{n}}_{n} }_{D^{|a|-a_{i}-a_{i+1}} } )f = \partial^{a_{i+1}}_{i+1}	D^{|a|-a_{i}-a_{i+1}}f
+		$$
+		e vamos utilizar essa identidade no resultado anterior, assim: 
 		$$
 		\begin{aligned}
-		\langle \partial^{a_{i+1}}_{i+1}F_{1}, g \rangle = & (-1)^{a_{i+1}}\langle F_{1}, \partial^{a_{i+1}}_{i+1}g \rangle
+		\langle D^{|a|}f, g \rangle = & (-1)^{a_{i}}\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle
 		\\
-		= & (-1)^{a_{i+1}}\langle F_{1}, \partial^{a_{i+1}}_{i+1}g \rangle
-		\end{aligned}$$
-		
-		
+		= & (-1)^{a_{i}}\langle \partial^{a_{i+1}}_{i+1} D^{|a|-a_{i}-a_{i+1}}f, \partial^{a_{i}}_{i}g \rangle
+		\\
+		= & (-1)^{a_{i}} \underbrace{ (-1)^{a_{i+1}}\langle D^{|a|-a_{i}-a_{i+1}}f, \partial^{a_{i+1}}_{i+1}\partial^{a_{i}}_{i}g \rangle }_{resultado \; anterior}
+		\\
+		= & (-1)^{a_{i}+a_{i+1}}\langle D^{|a|-a_{i}-a_{i+1}}f, \partial^{a_{i+1}}_{i+1}\partial^{a_{i}}_{i}g \rangle.
+		\end{aligned}
+		$$
+		Iniciamos o procedimento pela a i-ésima variável definindo o termo $F = D^{|a|- a_{i}}$ e vimos que ele vale para a i+1-ésima variável definindo $F = D^{|a|- a_{i} - a_{i+1}}$. Com isso, podemos definir iterar k-vezes o procedimento defindo $F = D^{|a|- a_{i} - ... -a_{i+k}}$, resultando em:
+		$$
+		\langle D^{|a|}f, g \rangle = (-1)^{a_{i}+...+a_{i+k}}\langle D^{|a|-a_{i}-...-a_{i+k}}f, \partial^{a_{i+k}}_{i+k}...\partial^{a_{i}}_{i}g \rangle,
+		$$
+		e como temos os índices $i,k$ arbitrários tais que $1\leq i < k \leq n$ e $i+k \leq n$, então podemos fazer $i=1$ e $k=n-1$, resultando em:
+		$$
+		\begin{aligned}
+		\langle D^{|a|}f, g \rangle = & (-1)^{a_{1}+...+a_{n}}\langle D^{|a|-a_{i}-...-a_{n}}f, \partial^{a_{n}}_{n}...\partial^{a_{1}}_{1}g \rangle
+		\\
+		= & (-1)^{|a|}\langle D^{|a|-|a|}f, D^{|a|}g \rangle
+		\\
+		= & (-1)^{|a|}\langle f, D^{|a|}g \rangle,
+		\end{aligned}
+		$$
+		onde usamos a convenção de que $|a| = a_{i}+...+a_{n}$ e  $D^{|a|-|a|} = D^{0} = Id$.
+			
 		\item \textbf{Solução:} Por simplicidade, vamos definir a notação $C^{0} = C^{0}(\mathbb{R}^{n})$, e tomaremos $f, g \in C^{0}$ e $\lambda \in \mathbb{R}$.
 			\begin{enumerate}
 				\item Sabemos que $C^{0}$ é um espaço vetorial, portanto $f + \lambda g \in C^{0}$. Vamos mostrar que a linearidade do operador $\tau_{a}$.
