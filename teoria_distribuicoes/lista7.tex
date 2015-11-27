@@ -62,7 +62,7 @@
 		$$
 		que aplicando-a para o caso particular em que $j = k$ teremos $\langle f^{(k)},g \rangle = (-1)^{k}\langle f,g^{(k)} \rangle$.
 		
-		Façamos agora o caso em que $f, g \in \mathcal{S}(\mathbb{R}^{n})$ e tomando um multi-índice $a \in \mathbb{N}^{n}$. Sabemos que $D^{|a|}f = \partial^{a_{1}}_{1} \dots \partial^{a_{n}}_{n} f$, onde $\partial^{a_{i}}_{i}  = \partial^{a_{i}}/\partial x^{a_{i}}_{i}$ com $0\leq i \leq n$. Definindo $F = \partial^{a_{1}}_{1}... \hat{\partial}^{a_{i}}_{i}...\partial^{a_{n}}_{n}f = D^{|a|-a_{i}}f$, onde a notação $\hat{\partial}^{a_{i}}_{i}$ indica a ausência da derivada parcial, isto é, $\partial^{a_{1}}_{1}... \hat{\partial}^{a_{i}}_{i}...\partial^{a_{n}}_{n}f = \partial^{a_{1}}_{1}... \partial^{a_{i-1}}_{i-1}\partial^{a_{i+1}}_{i+1}...\partial^{a_{n}}_{n}f$ $\partial^{a_{i}}_{i}$. Com essas definiçãoes podemos ver que $\partial^{a_{i}}_{i}F = D^{|a|}f$, e consequentemente teremos $\langle D^{|a|}f, g \rangle =\langle \partial^{a_{i}}_{i}F, g \rangle$. Como no caso unidimensional, faremos a demonstração por indução. Afirmo que $\langle \partial^{a_{i}}_{i}F, g \rangle = (-1)^{j} \langle \partial^{a_{i}-j}_{i}F, \partial^{j}_{i}g \rangle$ para $0 \leq j \leq a_{i}$
+		Façamos agora o caso em que $f, g \in \mathcal{S}(\mathbb{R}^{n})$ e tomando um multi-índice $a \in \mathbb{N}^{n}$. Sabemos que $D^{|a|}f = \partial^{a_{1}}_{1} \dots \partial^{a_{n}}_{n} f$, onde $\partial^{a_{i}}_{i}  = \partial^{a_{i}}/\partial x^{a_{i}}_{i}$ com $0\leq i \leq n$. Definindo $F = \partial^{a_{1}}_{1}... \hat{\partial}^{a_{i}}_{i}...\partial^{a_{n}}_{n}f = D^{|a|-a_{i}}f$, onde a notação $\hat{\partial}^{a_{i}}_{i}$ indica a ausência da derivada parcial $\partial^{a_{i}}_{i}$, isto é, $\partial^{a_{1}}_{1}... \hat{\partial}^{a_{i}}_{i}...\partial^{a_{n}}_{n}f = \partial^{a_{1}}_{1}... \partial^{a_{i-1}}_{i-1}\partial^{a_{i+1}}_{i+1}...\partial^{a_{n}}_{n}f$. Com essas definições podemos ver que $\partial^{a_{i}}_{i}F = D^{|a|}f$, e consequentemente teremos $\langle D^{|a|}f, g \rangle =\langle \partial^{a_{i}}_{i}F, g \rangle$. Como no caso unidimensional, faremos a demonstração por indução. Afirmo que $\langle \partial^{a_{i}}_{i}F, g \rangle = (-1)^{j} \langle \partial^{a_{i}-j}_{i}F, \partial^{j}_{i}g \rangle$ para $0 \leq j \leq a_{i}$
 		$$
 		\begin{aligned}
 		\int_{\mathbb{R}^{n}}\partial^{a_{i}}_{i}F(x)g(x) = & \int_{\mathbb{R}^{n}} \partial_{i}(\partial^{a_{i}-1}_{i}F(x)g(x)) -  \partial^{a_{i}-1}_{i}F(x) \partial_{i}g(x)
@@ -95,7 +95,7 @@
 		que aplicando-a para o caso particular em que $j = a_{i}$ teremos: 
 		$$
 		\begin{aligned}
-		\langle \partial^{a_{i}}_{i}F, g \rangle = & (-1)^{a_{i}}\langle F, \partial^{a_{i}}_{i}g \rangle
+		\langle \underbrace{ \partial^{a_{i}}_{i}F }_{D^{|a|}f}, g \rangle = & (-1)^{a_{i}}\langle \underbrace{F}_{D^{|a|-a_{i}}f}, \partial^{a_{i}}_{i}g \rangle
 		\\
 		\langle D^{|a|}f, g \rangle = & (-1)^{a_{i}}\langle  D^{|a|-a_{i}}f, \partial^{a_{i}}_{i}g \rangle.
 		\end{aligned}
@@ -116,7 +116,7 @@
 		= & (-1)^{a_{i}+a_{i+1}}\langle D^{|a|-a_{i}-a_{i+1}}f, \partial^{a_{i+1}}_{i+1}\partial^{a_{i}}_{i}g \rangle.
 		\end{aligned}
 		$$
-		Iniciamos o procedimento pela a i-ésima variável definindo o termo $F = D^{|a|- a_{i}}$ e vimos que ele vale para a i+1-ésima variável definindo $F = D^{|a|- a_{i} - a_{i+1}}$. Com isso, podemos definir iterar k-vezes o procedimento defindo $F = D^{|a|- a_{i} - ... -a_{i+k}}$, resultando em:
+		Iniciamos o procedimento pela a i-ésima variável definindo o termo $F = D^{|a|- a_{i}}f$ e vimos que ele vale para a i+1-ésima variável definindo $F = D^{|a|- a_{i} - a_{i+1}} f$. Com isso, podemos definir iterar k-vezes o procedimento defindo $F = D^{|a|- a_{i} - ... -a_{i+k}}f$, resultando em:
 		$$
 		\langle D^{|a|}f, g \rangle = (-1)^{a_{i}+...+a_{i+k}}\langle D^{|a|-a_{i}-...-a_{i+k}}f, \partial^{a_{i+k}}_{i+k}...\partial^{a_{i}}_{i}g \rangle,
 		$$
@@ -201,12 +201,14 @@
 				$$
 				sendo que a limitação vem do fato que de $\varphi^{2}$ é limitada no suporte compacto $K$, logo $(\int_{\mathbb{R}^{n}} |\varphi(x)|^{2})^{1/2} < \infty$. Portanto $\varphi \in L^{2}(\mathbb{R}^{n})$.
 				
-				\item Vamos demonstrar que, em certas condições a distribuição $Tf: \mathcal{S}(\mathbb{R}^{n}) \to \mathbb{R}$ dada por $\langle Tf, \varphi \rangle$ conicidirá com o produto interno em $L^{2}(\mathbb{R}^{n})$ dado por $\langle .,.\rangle_{2} : L^{2}(\mathbb{R}^{n}) \to L^{2}(\mathbb{R}^{n})$ dado por $\langle f, g \rangle_{2} = \int_{\mathbb{R}^{n}} f(x)g(x)$. Por definição temos:
+				\item Vamos demonstrar que, em certas condições, a distribuição $Tf: \mathcal{S}(\mathbb{R}^{n}) \to \mathbb{R}$ dada por $\langle Tf, \varphi \rangle$ conicidirá com o produto interno em $L^{2}(\mathbb{R}^{n})$ dado por $\langle .,.\rangle_{2} : L^{2}(\mathbb{R}^{n}) \to L^{2}(\mathbb{R}^{n})$ tal que $\langle f, g \rangle_{2} = \int_{\mathbb{R}^{n}} f(x)g(x)$. Por definição temos:
 				$$
 				\begin{aligned}
 				\langle Tf, \varphi \rangle = & \int_{\mathbb{R}^{n}} (Tf)(x)\varphi(x) = \int_{K} (Tf)(x)\varphi(x)
 				\\
-				= & \int_{\mathbb{R}^{n}} \underbrace{ (Tf)(x) }_{\in L^{2}} \underbrace{ \varphi(x) }_{<\infty} \leq ||\varphi||_{\infty} \int_{\mathbb{R}^{n}} \underbrace{ (Tf)(x) }_{\infty}
+				= & \int_{\mathbb{R}^{n}} \underbrace{ (Tf)(x) }_{\in L^{2}} \underbrace{ \varphi(x) }_{<\infty} 
+				\\
+				\leq & ||\varphi||_{\infty} \int_{\mathbb{R}^{n}} \underbrace{ (Tf)(x) }_{\in L^{2}}
 				\\
 				< & \infty,
 				\end{aligned}
