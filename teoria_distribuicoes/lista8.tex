@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[fleqn]{amsmath}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Lista 8 para Entregar}
+	\author{Vinicius Fernandes}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		
+		
+		\item \textbf{Solução:}
+		
+		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\mathbb{R}^{n})$, e por definição temos $\mathcal{F}(f)(k) = \int_{\mathbb{R}^{n}} f(x)e^{-ik.x}$, então:
+			\begin{enumerate}
+				\item 
+				$$
+				\begin{aligned}
+				-i\mathcal{F}(\partial_{i}f)(k) = & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}} \partial_{i}f(x)e^{-ik.x}
+				\\
+				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}} \partial_{i}( f(x)e^{-ik.x} ) - f(x)\partial_{i}(e^{-ik.x})
+				\\
+				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n-1}} \lim_{x_{i} \to \infty} f(x)e^{-ik.x} \Big|^{x_{i}}_{-x_{i}} - \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) (-ik_{j}e^{-ik.x})
+				\\
+				= & \frac{-i^{2}k_{j}}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) e^{-ik.x}
+				\\
+				= & k_{j}\hat{f}(k).	
+				\end{aligned}
+				$$
+				
+				\item
+				$$
+				\begin{aligned}
+				-i\mathcal{F}(x_{i}f)(k) = & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}} x_{i}f(x)e^{-ik.x}
+				\\
+				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}} i\frac{\partial}{\partial k_{i}}( f(x)e^{-ik.x} )
+				\\
+				= & \frac{-i^{2}}{(2\pi)^{n/2}} \frac{\partial}{\partial k_{i}}\int_{\mathbb{R}^{n}} f(x)e^{-ik.x}
+				\\
+				= & \frac{\partial}{\partial k_{i}}\hat{f}(k)
+				\end{aligned}
+				$$
+			\end{enumerate}
+		
+		\item \textbf{Solução:}
+	\end{enumerate}
+	
+	
+\end{document}
