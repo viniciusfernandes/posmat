@@ -67,7 +67,7 @@
 				\item
 					$$
 					\begin{aligned}
-					(\phi_{n}*f)(x) = &\int_{\mathbb{R}} \phi_{n}(x)f(x-y)
+					(\phi_{n}*f)(y) = &\int_{\mathbb{R}} \phi_{n}(x)f(x-y)
 					\\
 					= &\int_{\mathbb{R}} \frac{n}{\sqrt{\pi}}e^{-(nx)^{2}} e^{-|x-y|}
 					\\
@@ -77,27 +77,25 @@
 					\\
 					= & \frac{ne^{-y}}{\sqrt{\pi}}\int_{x \leq y} e^{-((nx)^{2} -x)}  + \frac{ne^{y}}{\sqrt{\pi}}\int_{x \geq y} e^{-((nx)^{2}+x)}
 					\\
-					= & \frac{ne^{-y}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx - 1/2n)^{2} - (1/2n)^{2}} + \frac{ne^{y}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx + 1/2n)^{2} - (1/2n)^{2}}
+					= & \frac{ne^{-y}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx - 1/2n)^{2} + (1/2n)^{2}} + \frac{ne^{y}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx + 1/2n)^{2} + (1/2n)^{2}}
 					\\
-					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx - 1/2n)^{2}} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx + 1/2n)^{2}}
+					= & \frac{ne^{-y}e^{ (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx - 1/2n)^{2}} + \frac{ne^{y}e^{ (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx + 1/2n)^{2}}
 					\\
-					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}} \int_{-\infty}^{ny-1/2n} e^{-z^{2}}\frac{1}{n} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\int_{ny+1/2n}^{\infty} e^{-z^{2}}\frac{1}{n}
+					= & \frac{ne^{-y}e^{(1/2n)^{2}}}{\sqrt{\pi}} \int_{-\infty}^{ny-1/2n} e^{-z^{2}}\frac{1}{n} + \frac{ne^{y}e^{ (1/2n)^{2}}}{\sqrt{\pi}}\int_{ny+1/2n}^{\infty} e^{-z^{2}}\frac{1}{n}
 					\\
-					= & \frac{e^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}} \sqrt{\pi e^{-r_{1}^{2}}} + \frac{e^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\sqrt{\pi e^{-r_{2}^{2}}}
+					= & \frac{e^{-y}e^{(1/2n)^{2}}}{\sqrt{\pi}} \sqrt{\pi e^{-r_{1}^{2}}} + \frac{e^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\sqrt{\pi e^{-r_{2}^{2}}}
 					\\
-					= & e^{-y}e^{- (1/2n)^{2}} e^{-r_{1}^{2}/2}+ e^{y}e^{ - (1/2n)^{2}} e^{-r_{2}^{2}/2}
+					= & e^{-y}e^{(1/2n)^{2}} e^{-r_{1}^{2}/2}+ e^{y}e^{(1/2n)^{2}} e^{-r_{2}^{2}/2}
 					\\
-					= & e^{-y}e^{- (1/2n)^{2}} e^{-(ny-1/2n)^{2}}+ e^{y}e^{ - (1/2n)^{2}} e^{-(ny+1/2n)^{2}}
+					= & e^{-y}e^{(1/2n)^{2}} e^{-(ny-1/2n)^{2}}+ e^{y}e^{ (1/2n)^{2}} e^{-(ny+1/2n)^{2}}
 					\\
-					= & e^{-y}e^{- (1/2n)^{2}} e^{-(ny)^{2}+y - (1/2n)^{2}}+ e^{y}e^{ - (1/2n)^{2}}e^{-(ny)^{2}-y - (1/2n)^{2}}
+					= & e^{-y}e^{(1/2n)^{2}} e^{-(ny)^{2}+y - (1/2n)^{2}}+ e^{y}e^{ (1/2n)^{2}}e^{-(ny)^{2}-y - (1/2n)^{2}}
 					\\
-					= & e^{- 2(1/2n)^{2}} e^{-(ny)^{2}}+ e^{ -2 (1/2n)^{2}}e^{-(ny)^{2}}
+					= &  e^{-(ny)^{2}}+ e^{-(ny)^{2}}
 					\\
-					= & 2e^{- 2(1/2n)^{2}} e^{-(ny)^{2}}
+					= & 2e^{-(ny)^{2}}
 					\\
-					= & 2 e^{-(ny)^{2}+  1/2n^{2}}
-					\\
-					= & \psi_{n}(x),
+					= & \psi_{n}(y),
 					\end{aligned}
 					$$
 					logo $\lim_{n \to \infty} \psi_{n}(x) = 0$.
@@ -109,19 +107,41 @@
 						\\
 						 = & \frac{1}{(2\pi)^{1/2}}\int_{\mathbb{R}} \frac{n}{\sqrt{\pi}}e^{-(nx)^{2}} e^{-ikx}
 						 \\
-						 = & \frac{1}{(2\pi)^{1/2}}\int_{\mathbb{R}} \frac{n}{\sqrt{\pi}}e^{-(nx + ik/2n)^{2} - (ik/2n)^{2}}
+						 = & \frac{1}{(2\pi)^{1/2}}\int_{\mathbb{R}} \frac{n}{\sqrt{\pi}}e^{-(nx + ik/2n)^{2} + (ik/2n)^{2}}
 						 \\
 						 = & \frac{e^{-(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{n}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-(nx + ik/2n)^{2}}
 						 \\
-						 = & \frac{e^{-(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{n}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-z^{2}} \frac{1}{n}
+						 = & \frac{e^{(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{n}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-z^{2}} \frac{1}{n}
 						 \\
-						 = & \frac{e^{-(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{1}{\sqrt{\pi}} \sqrt{\pi}
+						 = & \frac{e^{-(k/2n)^{2}}}{(2\pi)^{1/2}} \frac{1}{\sqrt{\pi}} \sqrt{\pi}
 						 \\
-						 = & \frac{e^{-(ik/2n)^{2}}}{(2\pi)^{1/2}}
+						 = & \frac{e^{-(k/2n)^{2}}}{(2\pi)^{1/2}}
 						 \\
 						 = & \hat{\phi}_{n}(k).
 						\end{aligned}
 						$$
+					\item 
+					$$
+					\begin{aligned}
+					\mathcal{F}(\psi_{n})(k) = & \frac{1}{(2\pi)^{1/2}}\int_{\mathbb{R}} \psi_{n}(x)e^{-ikx}
+					\\
+					= & \frac{1}{(2\pi)^{1/2}}\int_{\mathbb{R}}  2 e^{-(nx)^{2}}e^{-ikx}
+					\\
+					= & \frac{2}{(2\pi)^{1/2}}\int_{\mathbb{R}} e^{-(nx)^{2} -ikx }
+					\\
+					= & \frac{2}{(2\pi)^{1/2}}\int_{\mathbb{R}} e^{-(nx + ik/2n)^{2} + (ik/2n)^{2}}
+					\\
+					= & \frac{2e^{(ik/2n)^{2}} }{(2\pi)^{1/2}}\int_{\mathbb{R}} e^{-(nx + ik/2n)^{2} }
+					\\
+					= & \frac{2e^{-(k/2n)^{2}} }{(2\pi)^{1/2}}\int_{\mathbb{R}} e^{-z^{2} }
+					\\
+					= & \frac{2 e^{-(k/2n)^{2}} }{(2\pi)^{1/2}} \sqrt{\pi}
+					\\
+					= & \sqrt{2} e^{-(k/2n)^{2}}
+					\\
+					= & \hat{\psi}_{n}(k). 
+					\end{aligned}
+					$$
 			\end{enumerate}
 	\end{enumerate}
 	
