@@ -50,7 +50,43 @@
 				$$
 			\end{enumerate}
 		
-		\item \textbf{Solução:}
+		\item \textbf{Solução:} Primeiro, vejamos o resultado da integral $I = \int_{a}^{b} e^{-x^{2}}$, e fazendo 
+		$$
+		\begin{aligned}
+		I^{2} = & \int_{a}^{b} e^{-x^{2}}\int_{a}^{b} e^{-y^{2}} = \int_{a}^{b} \int_{a}^{b} e^{-(x^{2}+y^{2})} 
+		\\
+		= & \int_{r_{a}}^{r_{b}} \int_{0}^{\pi} \underbrace{ e^{-r^{2}}r dr d\theta }_{coord. polar} = 2\pi \int_{r_{a}}^{r_{b}} e^{-r^{2}}r dr
+		\\
+		= & \pi (e^{-r_{a}^{2}} - e^{-r_{b}^{2}}),
+		\\
+		\therefore I(r_{a}, r_{b}) = & \sqrt{\pi (e^{-r_{a}^{2}} - e^{-r_{b}^{2}})}.
+		\end{aligned}
+		$$
+		Vamos utilizar esse resultado nos cáculos adiante.
+			\begin{enumerate}
+				\item
+					$$
+					\begin{aligned}
+					(\phi_{n}*f)(x) = &\int_{\mathbb{R}} \phi_{n}(x)f(x-y)
+					\\
+					= &\int_{\mathbb{R}} \frac{n}{\sqrt{\pi}}e^{-(nx)^{2}} e^{-|x-y|}
+					\\
+					= & \frac{n}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx)^{2}} e^{-(y-x)} + \frac{n}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx)^{2}} e^{-(x-y)}
+					\\
+					= & \frac{ne^{-y}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx)^{2}} e^{x} + \frac{ne^{y}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx)^{2}} e^{-x}
+					\\
+					= & \frac{ne^{-y}}{\sqrt{\pi}}\int_{x \leq y} e^{-((nx)^{2} -x)}  + \frac{ne^{y}}{\sqrt{\pi}}\int_{x \geq y} e^{-((nx)^{2}+x)}
+					\\
+					= & \frac{ne^{-y}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx - 1/2n)^{2} - (1/2n)^{2}} + \frac{ne^{y}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx + 1/2n)^{2} - (1/2n)^{2}}
+					\\
+					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx - 1/2n)^{2}} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx + 1/2n)^{2}}
+					\\
+					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}} \int_{-\infty}^{ny-1/2n} e^{-z^{2}} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\int_{ny+1/2n}^{\infty} e^{-z^{2}}
+					\\
+					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}} \sqrt{\pi e^{-r_{a}^{2}}} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\int_{ny+1/2n}^{\infty} e^{-z^{2}}	
+					\end{aligned}
+					$$
+			\end{enumerate}
 	\end{enumerate}
 	
 	
