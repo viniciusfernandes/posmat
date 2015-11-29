@@ -59,10 +59,10 @@
 		\\
 		= & \pi (e^{-r_{a}^{2}} - e^{-r_{b}^{2}}),
 		\\
-		\therefore I(r_{a}, r_{b}) = & \sqrt{\pi (e^{-r_{a}^{2}} - e^{-r_{b}^{2}})}.
+		\therefore I(r_{a}, r_{b}) = & \sqrt{\pi (e^{-r_{a}^{2}} - e^{-r_{b}^{2}})},
 		\end{aligned}
 		$$
-		Vamos utilizar esse resultado nos cáculos adiante.
+		onde $r_{a}$ e $r_{b}$ serão dados quando $x=y=a$ e $x=y=b$ em  $r^{2} = x^{2}+y^{2}$, respectivamente, isto é, $r_{a} = \sqrt{2}a, r_{b} = \sqrt{2}b$. Vamos utilizar esse resultado nos cáculos adiante.
 			\begin{enumerate}
 				\item
 					$$
@@ -83,9 +83,24 @@
 					\\
 					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}} \int_{-\infty}^{ny-1/2n} e^{-z^{2}} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\int_{ny+1/2n}^{\infty} e^{-z^{2}}
 					\\
-					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}} \sqrt{\pi e^{-r_{a}^{2}}} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\int_{ny+1/2n}^{\infty} e^{-z^{2}}	
+					= & \frac{ne^{-y}e^{- (1/2n)^{2}}}{\sqrt{\pi}} \sqrt{\pi e^{-r_{1}^{2}}} + \frac{ne^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\sqrt{\pi e^{-r_{2}^{2}}}
+					\\
+					= & ne^{-y}e^{- (1/2n)^{2}} e^{-r_{1}^{2}/2}+ ne^{y}e^{ - (1/2n)^{2}} e^{-r_{2}^{2}/2}
+					\\
+					= & ne^{-y}e^{- (1/2n)^{2}} e^{-(ny-1/2n)^{2}}+ ne^{y}e^{ - (1/2n)^{2}} e^{-(ny+1/2n)^{2}}
+					\\
+					= & ne^{-y}e^{- (1/2n)^{2}} e^{-(ny)^{2}+y - (1/2n)^{2}}+ ne^{y}e^{ - (1/2n)^{2}}e^{-(ny)^{2}-y - (1/2n)^{2}}
+					\\
+					= & ne^{- 2(1/2n)^{2}} e^{-(ny)^{2}}+ ne^{ -2 (1/2n)^{2}}e^{-(ny)^{2}}
+					\\
+					= & 2ne^{- 2(1/2n)^{2}} e^{-(ny)^{2}}
+					\\
+					= & 2n e^{-(ny)^{2}+  1/2n^{2}}
+					\\
+					= & \psi_{n}(x),
 					\end{aligned}
 					$$
+					logo $\lim_{n \to \infty} \psi_{n}(x) = 0$
 			\end{enumerate}
 	\end{enumerate}
 	
