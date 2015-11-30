@@ -157,7 +157,7 @@
 				\end{aligned}
 				$$
 			\end{enumerate}
-		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\mathbb{R}^{n})$, e por definição temos $\mathcal{F}(f)(k) = \int_{\mathbb{R}^{n}} f(x)e^{-ik.x}$, então:
+		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\mathbb{R}^{n})$ e por definição temos $\mathcal{F}(f)(k) = \int_{\mathbb{R}^{n}} f(x)e^{-ik.x}$, então escrevendo $\partial_{i} = \partial/\partial x_{i}$ teremos:
 			\begin{enumerate}
 				\item 
 				$$
@@ -166,7 +166,7 @@
 				\\
 				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}} \partial_{i}( f(x)e^{-ik.x} ) - f(x)\partial_{i}(e^{-ik.x})
 				\\
-				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n-1}} \lim_{x_{i} \to \infty} f(x)e^{-ik.x} \Big|^{x_{i}}_{-x_{i}} - \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) (-ik_{j}e^{-ik.x})
+				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n-1}} \underbrace{ \lim_{x_{i} \to \infty} f(x)e^{-ik.x} \Big|^{x_{i}}_{-x_{i}} }_{Fato-2} - \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) (-ik_{j}e^{-ik.x})
 				\\
 				= & \frac{-i^{2}k_{j}}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) e^{-ik.x}
 				\\
@@ -198,9 +198,11 @@
 		= & \pi (e^{-r_{a}^{2}} - e^{-r_{b}^{2}}),
 		\\
 		\therefore I(r_{a}, r_{b}) = & \sqrt{\pi (e^{-r_{a}^{2}} - e^{-r_{b}^{2}})},
+		\\
+		I(r_{a}) = & \lim_{r_{b} \to \infty} I(r_{a}, r_{b}) = \sqrt{\pi} e^{-r_{a}^{2}/2}
 		\end{aligned}
 		$$
-		onde $r_{a}$ e $r_{b}$ serão dados quando $x=y=a$ e $x=y=b$ em  $r^{2} = x^{2}+y^{2}$, respectivamente, isto é, $r_{a} = \sqrt{2}a, r_{b} = \sqrt{2}b$. Vamos utilizar esse resultado nos cáculos adiante.
+		onde $r_{a}$ e $r_{b}$ serão dados quando $x=y=a$ e $x=y=b$ em  $r^{2} = x^{2}+y^{2}$, respectivamente, isto é, $r_{a} = \sqrt{2}a, r_{b} = \sqrt{2}b$, portanto $I(r_{a}) = \sqrt{\pi}e^{-a^{2}}$. Vamos utilizar esse resultado nos cáculos adiante.
 			\begin{enumerate}
 				\item
 					$$
@@ -219,11 +221,12 @@
 					\\
 					= & \frac{ne^{-y}e^{ (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \leq y} e^{-(nx - 1/2n)^{2}} + \frac{ne^{y}e^{ (1/2n)^{2}}}{\sqrt{\pi}}\int_{x \geq y} e^{-(nx + 1/2n)^{2}}
 					\\
-					= & \frac{ne^{-y}e^{(1/2n)^{2}}}{\sqrt{\pi}} \int_{-\infty}^{ny-1/2n} e^{-z^{2}}\frac{1}{n} + \frac{ne^{y}e^{ (1/2n)^{2}}}{\sqrt{\pi}}\int_{ny+1/2n}^{\infty} e^{-z^{2}}\frac{1}{n}
+					= & \frac{ne^{-y}e^{(1/2n)^{2}}}{\sqrt{\pi}} \underbrace{ \int_{-\infty}^{ny-1/2n} e^{-z^{2}} }_{I(r_{1})} \frac{1}{n} + \frac{ne^{y}e^{ (1/2n)^{2}}}{\sqrt{\pi}}
+					\underbrace{ \int_{ny+1/2n}^{\infty} e^{-z^{2}} }_{I(r_{2})} \frac{1}{n}
 					\\
-					= & \frac{e^{-y}e^{(1/2n)^{2}}}{\sqrt{\pi}} \sqrt{\pi e^{-r_{1}^{2}}} + \frac{e^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}\sqrt{\pi e^{-r_{2}^{2}}}
+					\text{onde} \;& r_{1}=\sqrt{2}(ny-1/2n) \; \text{e} \; r_{2}=\sqrt{2}(ny+1/2n)
 					\\
-					= & e^{-y}e^{(1/2n)^{2}} e^{-r_{1}^{2}/2}+ e^{y}e^{(1/2n)^{2}} e^{-r_{2}^{2}/2}
+					= & \frac{e^{-y}e^{(1/2n)^{2}}}{\sqrt{\pi}} I(\sqrt{2}(ny-1/2n)) + \frac{e^{y}e^{ - (1/2n)^{2}}}{\sqrt{\pi}}I( \sqrt{2}(ny+1/2n))
 					\\
 					= & e^{-y}e^{(1/2n)^{2}} e^{-(ny-1/2n)^{2}}+ e^{y}e^{ (1/2n)^{2}} e^{-(ny+1/2n)^{2}}
 					\\
@@ -247,9 +250,9 @@
 						 \\
 						 = & \frac{1}{(2\pi)^{1/2}}\int_{\mathbb{R}} \frac{n}{\sqrt{\pi}}e^{-(nx + ik/2n)^{2} + (ik/2n)^{2}}
 						 \\
-						 = & \frac{e^{-(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{n}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-(nx + ik/2n)^{2}}
+						 = & \frac{e^{(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{n}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-(nx + ik/2n)^{2}}
 						 \\
-						 = & \frac{e^{(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{n}{\sqrt{\pi}} \int_{\mathbb{R}} e^{-z^{2}} \frac{1}{n}
+						 = & \frac{e^{(ik/2n)^{2}}}{(2\pi)^{1/2}} \frac{n}{\sqrt{\pi}} \underbrace{ \int_{\mathbb{R}} e^{-z^{2}} }_{\sqrt{\pi}} \frac{1}{n}
 						 \\
 						 = & \frac{e^{-(k/2n)^{2}}}{(2\pi)^{1/2}} \frac{1}{\sqrt{\pi}} \sqrt{\pi}
 						 \\
@@ -271,7 +274,7 @@
 					\\
 					= & \frac{2e^{(ik/2n)^{2}} }{(2\pi)^{1/2}}\int_{\mathbb{R}} e^{-(nx + ik/2n)^{2} }
 					\\
-					= & \frac{2e^{-(k/2n)^{2}} }{(2\pi)^{1/2}}\int_{\mathbb{R}} e^{-z^{2} }
+					= & \frac{2e^{-(k/2n)^{2}} }{(2\pi)^{1/2}} \underbrace{ \int_{\mathbb{R}} e^{-z^{2} } }_{\sqrt{\pi}}
 					\\
 					= & \frac{2 e^{-(k/2n)^{2}} }{(2\pi)^{1/2}} \sqrt{\pi}
 					\\
