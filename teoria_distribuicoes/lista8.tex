@@ -17,8 +17,92 @@
 	\begin{enumerate}
 		
 		
-		\item \textbf{Solução:}
-		
+		\item \textbf{Solução:} Definindo a operação $*: $ 
+			\begin{enumerate}
+				\item 
+					\begin{enumerate}
+						\item 
+						$$
+						\begin{aligned}
+						(f*g)(y) = & \int_{-\infty}^{\infty}f(x)g(y-x)dx =  \int_{\infty}^{-\infty}f(x-z)g(z)(-1)dz
+						\\
+						=& -\int_{-\infty}^{\infty}f(x-z)g(z)(-1)dz = \int_{-\infty}^{\infty}g(z)f(x-z)dz
+						\\
+						= & (g*f)(y)
+						\\
+						\therefore f*g = & f*g
+						\end{aligned}
+						$$
+						
+						\item
+						$$
+						\begin{aligned}
+						\lambda(\varphi*\psi)(y) = & \lambda \int_{-\infty}^{\infty}\varphi(x)\psi(y-x)dx = \int_{-\infty}^{\infty}\lambda\varphi(x)\psi(y-x)dx
+						\\
+						=& \int_{-\infty}^{\infty}(\lambda\varphi)(x)\psi(y-x)dx
+						\\
+						= & ((\lambda \varphi)*\psi)(y)
+						\\
+						\therefore \lambda( \varphi*\psi) = & (\lambda \varphi)*\psi
+						\end{aligned}
+						$$
+						E também
+						$$
+						\begin{aligned}
+						\lambda(\varphi*\psi)(y) = & \lambda \int_{-\infty}^{\infty}\varphi(x)\psi(y-x)dx = \int_{-\infty}^{\infty}\varphi(x)\lambda\psi(y-x)dx
+						\\
+						=& \int_{-\infty}^{\infty}\varphi(x)(\lambda\psi)(y-x)dx
+						\\
+						= & (\varphi*(\lambda\psi))(y)
+						\\
+						\therefore \lambda( \varphi*\psi) = & \varphi*(\lambda \psi),
+						\end{aligned}
+						$$
+						portanto $\lambda( \varphi*\psi)=(\lambda \varphi)*\psi=\varphi*(\lambda \psi)$.
+						
+						\item 
+							$$
+							\begin{aligned}
+							((f*g)*h)(y) = & \int_{-\infty}^{\infty}(f*g)(x)h(y-x)dx =  \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(z)g(x-z)dzh(y-x)dx
+							\\
+							= & \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(z)g(x-z)h(y-x)dzdx
+							\\
+							= & \int_{-\infty}^{\infty}f(z)\int_{-\infty}^{\infty}g(u)h(y-z-u)dudz
+							\\
+							= & \int_{-\infty}^{\infty}f(z)(g*h)(y-z)dz
+							\\
+							= & 
+							(f*(g*h))(y)
+							\\
+							\therefore ((f*g)*h) = & (f*(g*h)).
+							\end{aligned}
+							$$
+							
+							\item
+							$$
+							\begin{aligned}
+							((f+g)*h)(y) = & \int_{-\infty}^{\infty}(f+g)(x)h(y-x)dx 
+							\\
+							= & \int_{-\infty}^{\infty}(f(x)+g(x))h(y-x)dx
+							\\
+							= & \int_{-\infty}^{\infty}f(x)h(y-x) + g(x)h(y-x)dx
+							\\
+							= & \int_{-\infty}^{\infty}f(x)h(y-x) + \int_{-\infty}^{\infty}g(x)h(y-x)dx
+							\\
+							= & (f*h)(y) + (g*h)(y)
+							\\
+							\therefore (f+g)*h = & f*h + g*h.
+							\end{aligned}
+							$$
+							
+					\end{enumerate}
+				\item 
+				$$
+				\begin{aligned}
+				\tau_{a}(\varphi*\psi)(x)= (\varphi*\psi)(x+a) = \varphi(x+a)\psi(x+a)
+				\end{aligned}
+				$$
+			\end{enumerate}
 		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\mathbb{R}^{n})$, e por definição temos $\mathcal{F}(f)(k) = \int_{\mathbb{R}^{n}} f(x)e^{-ik.x}$, então:
 			\begin{enumerate}
 				\item 
@@ -50,7 +134,7 @@
 				$$
 			\end{enumerate}
 		
-		\item \textbf{Solução:} Primeiro, vejamos o resultado da integral $I = \int_{a}^{b} e^{-x^{2}}$, e fazendo 
+		\item \textbf{Solução:} Vejamos o resultado da integral $I = \int_{a}^{b} e^{-x^{2}}$ calculando primeiro:
 		$$
 		\begin{aligned}
 		I^{2} = & \int_{a}^{b} e^{-x^{2}}\int_{a}^{b} e^{-y^{2}} = \int_{a}^{b} \int_{a}^{b} e^{-(x^{2}+y^{2})} 
