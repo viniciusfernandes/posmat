@@ -24,9 +24,9 @@
 						\item 
 						$$
 						\begin{aligned}
-						(f*g)(y) = & \int_{-\infty}^{\infty}f(x)g(y-x)dx =  \int_{\infty}^{-\infty}f(x-z)g(z)(-1)dz
+						(f*g)(y) = & \int_{\mathbb{R}^{n}}f(x)g(y-x)dx =  \int_{\infty}^{-\infty}f(x-z)g(z)(-1)dz
 						\\
-						=& -\int_{-\infty}^{\infty}f(x-z)g(z)(-1)dz = \int_{-\infty}^{\infty}g(z)f(x-z)dz
+						=& -\int_{\mathbb{R}^{n}}f(x-z)g(z)(-1)dz = \int_{\mathbb{R}^{n}}g(z)f(x-z)dz
 						\\
 						= & (g*f)(y)
 						\\
@@ -37,9 +37,9 @@
 						\item
 						$$
 						\begin{aligned}
-						\lambda(\varphi*\psi)(y) = & \lambda \int_{-\infty}^{\infty}\varphi(x)\psi(y-x)dx = \int_{-\infty}^{\infty}\lambda\varphi(x)\psi(y-x)dx
+						\lambda(\varphi*\psi)(y) = & \lambda \int_{\mathbb{R}^{n}}\varphi(x)\psi(y-x)dx = \int_{\mathbb{R}^{n}}\lambda\varphi(x)\psi(y-x)dx
 						\\
-						=& \int_{-\infty}^{\infty}(\lambda\varphi)(x)\psi(y-x)dx
+						=& \int_{\mathbb{R}^{n}}(\lambda\varphi)(x)\psi(y-x)dx
 						\\
 						= & ((\lambda \varphi)*\psi)(y)
 						\\
@@ -49,9 +49,9 @@
 						E também
 						$$
 						\begin{aligned}
-						\lambda(\varphi*\psi)(y) = & \lambda \int_{-\infty}^{\infty}\varphi(x)\psi(y-x)dx = \int_{-\infty}^{\infty}\varphi(x)\lambda\psi(y-x)dx
+						\lambda(\varphi*\psi)(y) = & \lambda \int_{\mathbb{R}^{n}}\varphi(x)\psi(y-x)dx = \int_{\mathbb{R}^{n}}\varphi(x)\lambda\psi(y-x)dx
 						\\
-						=& \int_{-\infty}^{\infty}\varphi(x)(\lambda\psi)(y-x)dx
+						=& \int_{\mathbb{R}^{n}}\varphi(x)(\lambda\psi)(y-x)dx
 						\\
 						= & (\varphi*(\lambda\psi))(y)
 						\\
@@ -63,13 +63,13 @@
 						\item 
 							$$
 							\begin{aligned}
-							((f*g)*h)(y) = & \int_{-\infty}^{\infty}(f*g)(x)h(y-x)dx =  \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(z)g(x-z)dzh(y-x)dx
+							((f*g)*h)(y) = & \int_{\mathbb{R}^{n}}(f*g)(x)h(y-x)dx =  \int_{\mathbb{R}^{n}}\int_{\mathbb{R}^{n}}f(z)g(x-z)dzh(y-x)dx
 							\\
-							= & \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(z)g(x-z)h(y-x)dzdx
+							= & \int_{\mathbb{R}^{n}}\int_{\mathbb{R}^{n}}f(z)g(x-z)h(y-x)dzdx
 							\\
-							= & \int_{-\infty}^{\infty}f(z)\int_{-\infty}^{\infty}g(u)h(y-z-u)dudz
+							= & \int_{\mathbb{R}^{n}}f(z)\int_{\mathbb{R}^{n}}g(u)h(y-z-u)dudz
 							\\
-							= & \int_{-\infty}^{\infty}f(z)(g*h)(y-z)dz
+							= & \int_{\mathbb{R}^{n}}f(z)(g*h)(y-z)dz
 							\\
 							= & 
 							(f*(g*h))(y)
@@ -81,13 +81,13 @@
 							\item
 							$$
 							\begin{aligned}
-							((f+g)*h)(y) = & \int_{-\infty}^{\infty}(f+g)(x)h(y-x)dx 
+							((f+g)*h)(y) = & \int_{\mathbb{R}^{n}}(f+g)(x)h(y-x)dx 
 							\\
-							= & \int_{-\infty}^{\infty}(f(x)+g(x))h(y-x)dx
+							= & \int_{\mathbb{R}^{n}}(f(x)+g(x))h(y-x)dx
 							\\
-							= & \int_{-\infty}^{\infty}f(x)h(y-x) + g(x)h(y-x)dx
+							= & \int_{\mathbb{R}^{n}}f(x)h(y-x) + g(x)h(y-x)dx
 							\\
-							= & \int_{-\infty}^{\infty}f(x)h(y-x) + \int_{-\infty}^{\infty}g(x)h(y-x)dx
+							= & \int_{\mathbb{R}^{n}}f(x)h(y-x) + \int_{\mathbb{R}^{n}}g(x)h(y-x)dx
 							\\
 							= & (f*h)(y) + (g*h)(y)
 							\\
@@ -101,9 +101,9 @@
 				\begin{aligned}
 				\tau_{a}(\varphi*\psi)(y)= & (\varphi*\psi)(y+a) 
 				\\
-				= & \int_{-\infty}^{\infty}\varphi(x)\psi(y+a-x)dx
+				= & \int_{\mathbb{R}^{n}}\varphi(x)\psi(y+a-x)dx
 				\\
-				= & \int_{-\infty}^{\infty}\varphi(x)(\tau_{a}\psi)(y-x)dx
+				= & \int_{\mathbb{R}^{n}}\varphi(x)(\tau_{a}\psi)(y-x)dx
 				\\
 				= & (\varphi*(\tau_{a}\psi))(y)
 				\\
@@ -115,13 +115,13 @@
 				\begin{aligned}
 				\tau_{a}(\varphi*\psi)(y)= & (\varphi*\psi)(y+a) 
 				\\
-				= & \int_{-\infty}^{\infty}\varphi(x)\psi(y+a-x)dx
+				= & \int_{\mathbb{R}^{n}}\varphi(x)\psi(y+a-x)dx
 				\\
-				= & \int_{-\infty}^{\infty}\varphi(x)\psi(y-(x-a))dx
+				= & \int_{\mathbb{R}^{n}}\varphi(x)\psi(y-(x-a))dx
 				\\
-				= & \int_{-\infty}^{\infty}\varphi(a+z)\psi(y-z)dz
+				= & \int_{\mathbb{R}^{n}}\varphi(a+z)\psi(y-z)dz
 				\\
-				= & \int_{-\infty}^{\infty} (\tau_{a}\varphi)(z)\psi(y-z)dz
+				= & \int_{\mathbb{R}^{n}} (\tau_{a}\varphi)(z)\psi(y-z)dz
 				\\
 				= & ((\tau_{a}\varphi)*\psi))(y)
 				\\
@@ -129,6 +129,17 @@
 				\end{aligned}
 				$$
 				logo $\tau_{a}(\varphi*\psi) = (\tau_{a}\varphi)*\psi = \varphi*(\tau_{a}\psi)$.
+				
+				\item
+				$$
+				\begin{aligned}
+				\int_{\mathbb{R}^{n}} (R\tau_{x}f)(y)g(y)dy = & \int_{\mathbb{R}^{n}} (Rf)(y+x)g(y)dy
+				\\ = & \int_{\mathbb{R}^{n}} f(-(y+x))g(y)dy
+				\\ = & \int_{\mathbb{R}^{n}} f(z)g(x-z)(-1)dz
+				\\ = & \int_{\mathbb{R}^{n}} f(z)g(x-z)dz
+				\\ = & (f*g)(x).
+				\end{aligned}
+				$$
 			\end{enumerate}
 		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\mathbb{R}^{n})$, e por definição temos $\mathcal{F}(f)(k) = \int_{\mathbb{R}^{n}} f(x)e^{-ik.x}$, então:
 			\begin{enumerate}
