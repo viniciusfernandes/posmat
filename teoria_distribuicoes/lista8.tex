@@ -15,18 +15,34 @@
 	\maketitle
 	
 	\begin{enumerate}
+		\item[\textbf{Fato-1}] Nas integrações do tipo $\int_{\mathbb{R}^{n}}f(y-x)dx$ realizaremos a mudança de variável $z: \mathbb{R}^{n} \to \mathbb{R}^{n}$ tal que $z(x) = y-x$, $dz(x) = (-1)^{n}dx$ e as integrações: 
+		$$
+		\begin{aligned}
+		\int_{\mathbb{R}^{n}}f(y-x)dx = & \int_{-\infty}^{\infty} ...\int_{-\infty}^{\infty} f(y-x)dx
+		\\
+		= & \int_{\infty}^{-\infty} ...\int_{\infty}^{-\infty} f(z)(-1)^{n}dz
+		\\
+		= & (-1)^{n}\int_{-\infty}^{\infty} ...\int_{-\infty}^{\infty} f(z)(-1)^{n}dz
+		\\
+		= & (-1)^{2n}\int_{-\infty}^{\infty} ...\int_{-\infty}^{\infty} f(z)dz
+		\\
+		= & \int_{\mathbb{R}^{n}} f(z)dz.
+		\end{aligned}$$
 		
+		\item[\textbf{Fato-2}] Sabemos que se $f \in \mathcal{S}(\mathbb{R}^{n})$ então também teremos $x^{\alpha}D^{|\beta|}f \in \mathcal{S}(\mathbb{R}^{n})$, logo ambas são de suporte compacto e consequentemente $\lim_{x \to \infty}f(x)=0$ e $\lim_{x \to \infty}x^{\alpha}D^{|\beta|}f(x)=0$.
 		
-		\item \textbf{Solução:} Definindo a operação $*: $ 
+		\item \textbf{Solução:}
 			\begin{enumerate}
 				\item 
 					\begin{enumerate}
 						\item 
 						$$
 						\begin{aligned}
-						(f*g)(y) = & \int_{\mathbb{R}^{n}}f(x)g(y-x)dx =  \int_{\infty}^{-\infty}f(x-z)g(z)(-1)dz
+						(f*g)(y) = & \int_{\mathbb{R}^{n}}f(x)g(\underbrace{ y-x }_{z=y-x})dx
 						\\
-						=& -\int_{\mathbb{R}^{n}}f(x-z)g(z)(-1)dz = \int_{\mathbb{R}^{n}}g(z)f(x-z)dz
+						=& \underbrace{ \int_{\mathbb{R}^{n}}f(x-z)g(z)dz }_{Fato-1}
+						\\
+						= & \int_{\mathbb{R}^{n}}g(z)f(x-z)dz
 						\\
 						= & (g*f)(y)
 						\\
