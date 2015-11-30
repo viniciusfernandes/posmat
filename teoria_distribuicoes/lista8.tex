@@ -58,7 +58,7 @@
 						\therefore \lambda( \varphi*\psi) = & \varphi*(\lambda \psi),
 						\end{aligned}
 						$$
-						portanto $\lambda( \varphi*\psi)=(\lambda \varphi)*\psi=\varphi*(\lambda \psi)$.
+						logo $\lambda( \varphi*\psi)=(\lambda \varphi)*\psi=\varphi*(\lambda \psi)$.
 						
 						\item 
 							$$
@@ -99,9 +99,36 @@
 				\item 
 				$$
 				\begin{aligned}
-				\tau_{a}(\varphi*\psi)(x)= (\varphi*\psi)(x+a) = \varphi(x+a)\psi(x+a)
+				\tau_{a}(\varphi*\psi)(y)= & (\varphi*\psi)(y+a) 
+				\\
+				= & \int_{-\infty}^{\infty}\varphi(x)\psi(y+a-x)dx
+				\\
+				= & \int_{-\infty}^{\infty}\varphi(x)(\tau_{a}\psi)(y-x)dx
+				\\
+				= & (\varphi*(\tau_{a}\psi))(y)
+				\\
+				\therefore \tau_{a}(\varphi*\psi) = & \varphi*(\tau_{a}\psi).
 				\end{aligned}
 				$$
+				E também
+				$$
+				\begin{aligned}
+				\tau_{a}(\varphi*\psi)(y)= & (\varphi*\psi)(y+a) 
+				\\
+				= & \int_{-\infty}^{\infty}\varphi(x)\psi(y+a-x)dx
+				\\
+				= & \int_{-\infty}^{\infty}\varphi(x)\psi(y-(x-a))dx
+				\\
+				= & \int_{-\infty}^{\infty}\varphi(a+z)\psi(y-z)dz
+				\\
+				= & \int_{-\infty}^{\infty} (\tau_{a}\varphi)(z)\psi(y-z)dz
+				\\
+				= & ((\tau_{a}\varphi)*\psi))(y)
+				\\
+				\therefore \tau_{a}(\varphi*\psi) = & (\tau_{a}\varphi)*\psi,
+				\end{aligned}
+				$$
+				logo $\tau_{a}(\varphi*\psi) = (\tau_{a}\varphi)*\psi = \varphi*(\tau_{a}\psi)$.
 			\end{enumerate}
 		\item \textbf{Solução:} Seja $f \in \mathcal{S}(\mathbb{R}^{n})$, e por definição temos $\mathcal{F}(f)(k) = \int_{\mathbb{R}^{n}} f(x)e^{-ik.x}$, então:
 			\begin{enumerate}
