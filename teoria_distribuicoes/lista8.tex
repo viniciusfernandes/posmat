@@ -15,23 +15,6 @@
 	\maketitle
 	
 	\begin{enumerate}
-		\item[\textbf{Fato-1}] Nas integrações do tipo $\int_{\mathbb{R}^{n}}f(y-x)dx$ realizaremos a mudança de variável $z: \mathbb{R}^{n} \to \mathbb{R}^{n}$ tal que $z(x) = y-x$, $dz(x) = (-1)^{n}dx$, os limites $\lim_{x \to \infty} z(x) = -\infty$ e $\lim_{x \to -\infty} z(x) = \infty$, assim teremos as integrações: 
-		$$
-		\begin{aligned}
-		\int_{\mathbb{R}^{n}}f(y-x)dx = & \int_{-\infty}^{\infty} ...\int_{-\infty}^{\infty} f(y-x)dx
-		\\
-		= & \int_{\infty}^{-\infty} ...\int_{\infty}^{-\infty} f(z)(-1)^{n}dz
-		\\
-		= & (-1)^{n}\int_{-\infty}^{\infty} ...\int_{-\infty}^{\infty} f(z)(-1)^{n}dz
-		\\
-		= & (-1)^{2n}\int_{-\infty}^{\infty} ...\int_{-\infty}^{\infty} f(z)dz
-		\\
-		= & \int_{\mathbb{R}^{n}} f(z)dz.
-		\end{aligned}$$
-		
-		\item[\textbf{Fato-2}] Sabemos que se $f \in \mathcal{S}(\mathbb{R}^{n})$ então também teremos $x^{\alpha}D^{|\beta|}f \in \mathcal{S}(\mathbb{R}^{n})$, logo ambas são de suporte compacto e consequentemente $\lim_{x \to \infty}f(x)=0$ e $\lim_{x \to \infty}x^{\alpha}D^{|\beta|}f(x)=0$.
-		
-		\item[\textbf{Fato-3}] Sabemos que se $f \in L^{1}(\mathbb{R}^{n})$ então $f$ é limitada, isto é, $||f||_{\infty} = \sup_{y \in \mathbb{R}^{n}}|f(y)| < \infty$.
 		
 		\item \textbf{Solução:}
 			\begin{enumerate}
@@ -45,9 +28,9 @@
 				\\
 				\leq & \sup_{y \in \mathbb{R}^{n}}\int_{\mathbb{R}^{n} }|f(x)||g(y-x)|
 				\\
-				\leq & \int_{\mathbb{R}^{n} }|f(x)|\sup_{y \in \mathbb{R}^{n}}|g(y-x)|
+				\leq & \int_{\mathbb{R}^{n} }|f(x)| \underbrace{ \sup_{y \in \mathbb{R}^{n}}|g(y-x)| }_{g \; limitada}
 				\\
-				= & \int_{\mathbb{R}^{n} }|f(x)|||g||_{\infty}
+				= & \underbrace{ \int_{\mathbb{R}^{n} }|f(x)| }_{f \in L^{1}}||g||_{\infty}
 				\\
 				= & ||f||_{1}||g||_{\infty}
 				\\
@@ -64,11 +47,16 @@
 						
 						$$
 						\begin{aligned}
-						(f*g)(y) = & \int_{\mathbb{R}^{n}}f(x)g(\underbrace{ y-x }_{z=y-x})dx
+						(f*g)(y)
+						= & \int_{\mathbb{R}^{n}}f(x)f(y-x)dx
 						\\
-						=& \underbrace{ \int_{\mathbb{R}^{n}}f(x-z)g(z)dz }_{Fato-1}
+						= & \underbrace{ \int_{-\infty}^{\infty}...\int_{-\infty}^{\infty} }_{n-vezes} f(x)g(\underbrace{ y-x }_{z=y-x})dx, \; \text{onde} \; \lim_{x \to \pm \infty} z(x) = \mp \infty
 						\\
-						= & \int_{\mathbb{R}^{n}}g(z)f(x-z)dz
+						=&  \int_{\infty}^{-\infty}...\int_{\infty}^{-\infty} f(x-z)g(z) \underbrace{ (-1)^{n}dz }_{dx}
+						\\
+						=&  \underbrace{(-1)^{n}  \int_{-\infty}^{\infty}...\int_{-\infty}^{\infty} }_{invert. \; integr.}f(x-z)g(z) (-1)^{n}dz
+						\\
+						= & \underbrace{ (-1)^{2n} }_{=1} \int_{\mathbb{R}^{n}}g(z)f(x-z)dz
 						\\
 						= & (g*f)(y)
 						\\
@@ -193,7 +181,7 @@
 				\\
 				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}} \partial_{i}( f(x)e^{-ik.x} ) - f(x)\partial_{i}(e^{-ik.x})
 				\\
-				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n-1}} \underbrace{ \lim_{x_{i} \to \infty} f(x)e^{-ik.x} \Big|^{x_{i}}_{-x_{i}} }_{Fato-2} - \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) (-ik_{j}e^{-ik.x})
+				= & \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n-1}} \underbrace{ \lim_{x_{i} \to \infty} f(x)e^{-ik.x} \Big|^{x_{i}}_{-x_{i}} }_{f \; supp. \; compact.} - \frac{-i}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) (-ik_{j}e^{-ik.x})
 				\\
 				= & \frac{-i^{2}k_{j}}{(2\pi)^{n/2}}\int_{\mathbb{R}^{n}}  f(x) e^{-ik.x}
 				\\
