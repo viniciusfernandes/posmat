@@ -124,8 +124,17 @@
 							\therefore (f+g)*h = & f*h + g*h.
 							\end{aligned}
 							$$
-							
-					Enfim, vimos que a operação de convolução $* : L^{1}(\mathbb{R}^{n}) \times L^{1}(\mathbb{R}^{n}) \to L^{1}(\mathbb{R}^{n})$ esta bem-definida, é comutativa e associativa, portanto $(L^{1}(\mathbb{R}^{n}), *)$ forma uma álgebra comutativa e associativa. Além disso, $||f*g||_{1} \leq ||f||_{1}||g||_{1}$, o que implica que $(L^{1}(\mathbb{R}^{n}), *)$ é uma álgebra de Banach.
+					Com essas propriedades podemos ver que a convolução é uma operações bilinear pois:
+					$$
+					\begin{aligned}
+					h*(f + \lambda g ) = & \underbrace{ h*f + h *(\lambda g) }_{distrib.} = h*f + \lambda h*g
+					\\
+					(f + \lambda g ) * h = & \underbrace{ h*(f + \lambda g ) }_{comut.} =h*f + h *(\lambda g) 
+					\\
+					= & h*f + \lambda h*g,
+					\end{aligned}
+					$$
+					portanto é linear nas duas entradas. Enfim, vimos que a operação de convolução $* : L^{1}(\mathbb{R}^{n}) \times L^{1}(\mathbb{R}^{n}) \to L^{1}(\mathbb{R}^{n})$ esta bem-definida, é bilinear, comutativa e associativa, portanto $(L^{1}(\mathbb{R}^{n}), *)$ forma uma álgebra comutativa e associativa. Como $L^{1}(\mathbb{R}^{n})$  é um espaço de Banach e vale $||f*g||_{1} \leq ||f||_{1}||g||_{1}$, o temos que $(L^{1}(\mathbb{R}^{n}), *)$ é uma álgebra de Banach.
 					\end{enumerate}
 				\item 
 				$$
