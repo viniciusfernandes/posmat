@@ -198,14 +198,80 @@
 		Notemos que $g^{2} = (12)(34)(12)(34) = e$, então $g^{n} = e$ se $n$ form par e $g^{n} = g$ se $n$ ímpar, portanto $H = \{e, g\}$. Por definição $ N_{S_{5}}(H)= \{a \in S_{5}: aHa^{-1} = H\}$, isto é, devemos satisfazer a equação $aga^{-1} \in H$ para $g=e$ e $g = (12)(34)$, então fazendo $a = (a(1) \dots a(5))$ teremos:
 		$$
 		\begin{aligned}
-		(a(1) \dots a(5))(12)(34)(a(1) \dots a(5))^{-1} = & (12)(34) = (a(1)a(2))(a(3)a(4)) \\
-		\text{ou}
+		(a(1) \dots a(5))(12)(34)(a(1) \dots a(5))^{-1} = & (12)(34) = (a(1)a(2))(a(3)a(4)) 
 		\\
-		(a(1) \dots a(5))(12)(34)(a(1) \dots a(5))^{-1} = & e =(a(1)a(2))(a(3)a(4))
+		(a(1) \dots a(5))e(a(1) \dots a(5))^{-1} = & e
 		\end{aligned}
 		$$
-		no primeiro caso temos o sistema $a(1)=2, \; a(2)=1, \; a(3)=4, \; a(4)=3$, já no segundo caso temos 
+		consequentemente temos o sistema $a(1)=2, \; a(2)=1, \; a(3)=4, \; a(4)=3$, portanto $a = (12)(34)$ e temos $N_{S_{5}}(H) = \{e, a\}$, logo $|N_{S_{5}}(H)| = 2$ e $|cl(H)| = |S_{5}|/|N_{S_{5}}(H)| = 120/2 = 60$.
 		
+		\item Determine o centralizador e a ordem da classe de conjugação de $A \in GL_{2}(\mathbb{F}_{3})$ onde 
+		$
+		A = 
+		\left[
+		\begin{array}{cc}
+		1 & 1 \\
+		0 & 1
+		\end{array}
+		\right].
+		$
+		
+		Sejam $B \in GL_{2}(\mathbb{F}_{3})$ tal que 
+		$
+		B = 
+		\left[
+		\begin{array}{cc}
+		a & b \\
+		c & d
+		\end{array}
+		\right]
+		$
+		e $\det(B) \neq 0$, ou seja, $ad-bc \neq 0$. Para que $B$ esteja no centralizador devemos satisfazer a equação $BA= AB$, resultando em:
+		$$
+		\left\{
+		\begin{aligned}
+		a =& a+c 
+		\\
+		a+b =& b + d
+		\\
+		c =& c
+		\\
+		c+d = d
+		\end{aligned}
+		\right.
+		\Rightarrow
+		a = d, \; c = 0 \; 
+		\therefore Z(A) = 
+		\left\{
+		\left[
+		\begin{array}{cc}
+		a & b \\
+		0 & a
+		\end{array}
+		\right]
+		: 0 \neq a \in \mathbb{F}_{3}\right\}.
+		$$
+		Logo $a \in \{1,2\}$ e $b \in \{0,1,2\}$, portanto $|Z(A)| = 6$. Determinemos agora $|GL_{2}(\mathbb{F}_{3})|$. Seja $B \in GL_{2}(\mathbb{F}_{3})$, então podemos escrevê-la como
+		$
+		B = 
+		\left[
+		\begin{array}{cc}
+		a & b \\
+		c & d
+		\end{array}
+		\right]
+		$
+		onde $\det(B) = ad-cb \neq 0$. Suponha $a =0$, então $c$ não pode ser nulo pois $\det(B) \neq 0$, assim $c \in \{1,2\}$. Também não podemos ter $b=0$ pois do contrário teríamos a primeira columa como sendo linearmente independente da segunda, então $b \in \{1,2\}$, isso nos restringe as possibilidades
+		$
+		B = 
+		\left[
+		\begin{array}{cc}
+		a=0 & b \in \{1,2\} \\
+		c \in \{1,2\} & d \in \{0,1,2\}
+		\end{array}
+		\right],
+		$
+		portanto temos 12 possibilidades para escrevermos $B$. Aplicando o mesmo argumento para as entradas $a, b, c, d$ teremos 12.4 = 48 possibilidades para escrevermos $B$, sendo que essas são todas combinações possíveis, consequentemente $|GL_{2}(\mathbb{F}_{3})| = 48$. Por fim, podemos calcular a ordem da classe de conjugação $|cl(A)| = |GL_{2}(\mathbb{F}_{3})|/[GL_{2}(\mathbb{F}_{3}):Z(A)] = 48/6 = 8$.
 	\end{enumerate}
 	
 	
