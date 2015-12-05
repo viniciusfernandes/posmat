@@ -9,7 +9,7 @@
 \usepackage[a4paper, margin=0.5in]{geometry}
 \begin{document}
 	
-	\title{Lista 8 para Entregar}
+	\title{Lista Final para Entregar}
 	\author{Vinicius Fernandes}
 	
 	\maketitle
@@ -29,7 +29,7 @@
 				&(1234), (1243), (1324), (1342), (1423), (1432), (12)(34), (13)(24), (14)(23)\}
 				\\\\				
 				cl(e) =& \{e\} 
-				\\
+				\\\\
 				cl((12)) 
 				= & \{e(12)e^{-1}, (12)(12)(12)^{-1}, (13)(12)(13)^{-1}, (14)(12)(14)^{-1}, (23)(12)(23)^{-1}, (24)(12)(24)^{-1}, (34)(12)(34)^{-1}, 
 				\\ 
@@ -99,9 +99,73 @@
 				&(34)(21), (31)(42), (43)(12), (41)(23), (12)(34), (34)(12), (43)(21)\}
 				\\
 				= & \{(12)(34), (13)(24), (14)(23)\}
-			\end{aligned}
+				\end{aligned}
 				$$
+				Note que $cl((12))$ contém todos as transposições, $cl((123))$ contém todos os 3-ciclos, $cl((1234))$ contém todos os 4-ciclos e por fim $cl((12)(34))$ contém todos os produtos de 2-ciclos de $S_{4}$, com isso podemos concluir que para qualquer $g \in S_{4}$ teremos que $cl(g) = cl((12))$ ou $cl(g) = cl((123))$ ou $cl(g) = cl((1234))$ ou $cl(g) = cl((12)(34))$ pois as classes lateriais são disjuntos duas a duas ou são identicas.
+				
+				Já calculamos em exercícios anteriores que $Z(S_{4}) = \{e\}$, portanto temos a equação de conjugação:
+				$$
+				\begin{aligned}
+				|S_{4}| = & |Z(S_{4})| + \sum_{x \notin Z(S_{4})} |S_{4}:Z(x)|
+				\\
+				=& |Z(S_{4})| + \sum_{x \notin Z(S_{4})} |cl(x)|
+				\\
+				=& |Z(S_{4})| + |cl((12))| + |cl((123))| + |cl((1234))| + |cl((12)(23))|
+				\\
+				=& 1 + 6 +8 +6+3
+				\\
+				=& 24.    
+				\end{aligned}
+				$$
+			
+			\item 
+			$$
+			\begin{aligned}
+			A_{4} = & \{e, (123), (124), (132), (134), (142), (143), (234), (243), (12)(34), (13)(24), (14)(23)\}
+			\\\\
+			cl(e) = & \{e\}
+			\\\\
+			cl((123)) 
+			= & \{e(123)e^{-1}, (123)(123)(123)^{-1}, (124)(123)(124)^{-1}, (132)(123)(132)^{-1}, (134)(123)(134)^{-1}, 
+			\\
+			&(142)(123)(142)^{-1}, (143)(123)(143)^{-1}, (234)(123)(234)^{-1}, (243)(123)(243)^{-1}, (12)(34)(123)(12)(34)^{-1}, 
+			\\
+			&(13)(24)(123)(13)(24)^{-1}, (14)(23)(123)(14)(23)^{-1} \}
+			\\
+			= & \{(123), (123), (243), (312), (324), (413), 
+			(421), (124), (142), (214), (341), (432) \}
+			\\
+			= & \{(123), (124), (134), (142), (243) \}
+			\\\\
+			cl((234)) 
+			= & \{e(234)e^{-1}, (123)(234)(123)^{-1}, (124)(234)(124)^{-1}, (132)(234)(132)^{-1}, (134)(234)(134)^{-1},  
+			\\
+			&(142)(234)(142)^{-1}, (143)(234)(143)^{-1}, (234)(234)(234)^{-1}, (243)(234)(243)^{-1}, (12)(34)(234)(12)(34)^{-1}, 
+			\\
+			&(13)(24)(234)(13)(24)^{-1}, (14)(23)(234)(14)(23)^{-1} \}
+			\\	
+			= & \{(234), (314), (231), (124), (241), (132), 
+			(213), (234), (423), (143), (412), (321) \}
+			\\
+			= & \{(123), (124), (132), (143), (234)\}
+			\\
+			\end{aligned}
+			$$
 			\end{enumerate}
+		
+		\item Seja $g \in S_{5}$ tal que $g=(12)(34)$ e $H=<g>$. Encontre a ordem de $N_{S_{5}}(H)$.
+		
+		Notemos que $g^{2} = (12)(34)(12)(34) = e$, então $g^{n} = e$ se $n$ form par e $g^{n} = g$ se $n$ ímpar, portanto $H = \{e, g\}$. Por definição $ N_{S_{5}}(H)= \{a \in S_{5}: aHa^{-1} = H\}$, isto é, devemos satisfazer a equação $aga^{-1} \in H$ para $g=e$ e $g = (12)(34)$, então fazendo $a = (a(1) \dots a(5))$ teremos:
+		$$
+		\begin{aligned}
+		(a(1) \dots a(5))(12)(34)(a(1) \dots a(5))^{-1} = & (12)(34) = (a(1)a(2))(a(3)a(4)) \\
+		\text{ou}
+		\\
+		(a(1) \dots a(5))(12)(34)(a(1) \dots a(5))^{-1} = & e =(a(1)a(2))(a(3)a(4))
+		\end{aligned}
+		$$
+		no primeiro caso temos o sistema $a(1)=2, \; a(2)=1, \; a(3)=4, \; a(4)=3$, já no segundo caso temos 
+		
 	\end{enumerate}
 	
 	
