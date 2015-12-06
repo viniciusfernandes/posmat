@@ -67,7 +67,7 @@
 				\\
 				&(234), (241), (341), (314), (431), (412), (214), (341), (432)\} 
 				\\
-				= & \{(123), (132), (143), (124), (243), (134), (142), (234)\} 
+				= & \{(123), (132), (143), (124), (243), (134), (142), (234)\}
 				\\\\
 				cl((1234)) 
 				= & \{e(1234)e^{-1}, (12)(1234)(12)^{-1}, (13)(1234)(13)^{-1}, (14)(1234)(14)^{-1}, (23)(1234)(23)^{-1}, (24)(1234)(24)^{-1}, (34)(1234)(34)^{-1}, 
@@ -77,10 +77,10 @@
 				& (143)(1234)(143)^{-1}, (234)(1234)(234)^{-1}, (243)(1234)(243)^{-1}, (1234)(1234)(1234)^{-1}, 
 				\\
 				&(1243)(1234)(1243)^{-1}, 
-				 (1324)(1234)(1324)^{-1}, (1342)(1234)(1342)^{-1}, (1423)(1234)(1423)^{-1}, 
-				 \\
+				(1324)(1234)(1324)^{-1}, (1342)(1234)(1342)^{-1}, (1423)(1234)(1423)^{-1}, 
+				\\
 				&(1432)(1234)(1432)^{-1},
-				 (12)(34)(1234)((12)(34))^{-1},
+				(12)(34)(1234)((12)(34))^{-1},
 				\\
 				&(13)(24)(1234)((13)(24))^{-1}, (14)(23)(1234)((14)(23))^{-1}\} 
 				\\
@@ -90,7 +90,10 @@
 				(2143), (3412), (4321)\} 
 				\\
 				= & \{(1234), (1324), (1432), (1243), (1342), (1423)\} 
-				\\\\
+				\end{aligned}
+			$$
+			$$
+				\begin{aligned}
 				cl((12)(34)) 
 				= & \{e(12)(34)e^{-1}, (12)(12)(34)(12)^{-1}, (13)(12)(34)(13)^{-1}, (14)(12)(34)(14)^{-1}, (23)(12)(34)(23)^{-1}, 
 				\\ 
@@ -276,6 +279,12 @@
 		\item Um grupo $G$ de ordem 12 contém uma das classes de conjugação de ordem 4. Prove que a ordem do centro de $G$ é trivial.
 		
 		Seja $g \in G$ tal que $|cl(g)| = 4$, então temos $|G| = 12 = |cl(g)||Z(g)| \Rightarrow |Z(g)| = 3$. Sabemos que $Z(G) \subseteq Z(g)$ o que implica que $|Z(g)| = n|Z(G)|$ para algum $n \in \mathbb{N}$, isto é, $|Z(g)| = 3 = n|Z(G)| \Rightarrow |Z(G)| \in \{1,3\}$. Suponhamos que $|Z(G)|=3$, , isto é, $Z(G) = Z(g)$, então isso implicaria que $g \in Z(G)$ e teriamos que $Z(g) = \{h \in G: hgh^{-1}=g \} = \{h \in G: hh^{-1}g=g \} = \{g\}$, que é uma contradição pois por hipótese temos que $|Z(g)| = 3$, portanto devemos ter $|Z(G)| = 1$ (trivial).
+		
+		\item ss
+		
+		\item Mostre que um grupo $G$ com 105 elementos tem ou um 5-Sylow subgrupo normal ou um 7-Sylow subgrupo normal. Deduza que  $G$ tem um subgrupo normal cíclico $N$ tal que $[G:N] = 3$.
+		
+		Podemos escrever $|G| = 105 = 3.5.7$ então pelo primeiro teorema de Sylow temos ao menos um 5-Sylow subgrupo e ao menos um 7-Sylow subgrupo. Pelo terceiro teorema de Sylow, temos que o número de 5-Sylow subgrupo deve satisfazer $n_{5} \equiv_{5} 1$ e $n_{5} | 21$, portanto o único natural satisfazendo essas condições é $n_{5} = 1$. Analogamente, temos que o número de 7-Sylow subgrupo deve satisfazer $n_{7} \equiv_{7} 1$ e $n_{7} | 15$, portanto o único natural satisfazendo essas condições é $n_{7} = 1$. Pelo segundo teorema de Sylow podemos afirmar que ambos os 5-Sylow e 7-Sylow subgrupos, $A$ e $B$, respectivamente, são subgrupos normais de $G$, isto é, $A, B \vartriangleleft G$ e $A \cap B = \{e\}$. Nessas condições, já vimos que o produto $AB < G$, além disso $|AB| = |A||B|/|A\cap B| = 5.7/1 = 35$. Definindo $N = AB$ teremos $[G:N] = |G|/|N| = 105/35 = 3$, como desejávamos.
 	\end{enumerate}
 	
 	
