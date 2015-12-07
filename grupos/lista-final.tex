@@ -280,7 +280,18 @@
 		
 		Seja $g \in G$ tal que $|cl(g)| = 4$, então temos $|G| = 12 = |cl(g)||Z(g)| \Rightarrow |Z(g)| = 3$. Sabemos que $Z(G) \subseteq Z(g)$ o que implica que $|Z(g)| = n|Z(G)|$ para algum $n \in \mathbb{N}$, isto é, $|Z(g)| = 3 = n|Z(G)| \Rightarrow |Z(G)| \in \{1,3\}$. Suponhamos que $|Z(G)|=3$, , isto é, $Z(G) = Z(g)$, então isso implicaria que $g \in Z(G)$ e teriamos que $Z(g) = \{h \in G: hgh^{-1}=g \} = \{h \in G: hh^{-1}g=g \} = \{g\}$, que é uma contradição pois por hipótese temos que $|Z(g)| = 3$, portanto devemos ter $|Z(G)| = 1$ (trivial).
 		
-		\item ss
+		\item Seja $G$ um grupo de ordem ímpar e $N\triangleleft G$ tal que $|N| = 5$. Mostre que $N \subseteq Z(G)$.
+		
+		Como $N$ é normal em $G$ então temos que $\forall g \in G$ e $x \in N$ teremos $gxg^{-1} \in N$, portanto $cl(x) = \{gxg^{-1}: g \in G \} \subseteq N$, consequentemente podemos escrever $N = \bigcup_{x \in N} cl(x)$. Como $N$ é normal, então $\forall x \neq y \in N$ temos $cl(x) \cap cl(y) = \{e\}$, o que implica que
+		$$
+		|N| = \sum_{x \in N} |cl(x)| = 1+\sum_{x \neq e}|cl(x)|,
+		$$
+		onde removemos da somatória $|cl(e)| = 1$. Teremos as possibilidades $|cl(x)| \in \{1, 2 , 3 , 4\}$, porém, como a ordem de $cl(x)$ deve dividir a ordem de $G$, que é ímpar, então podemos descartar os valores pares, com isso teremos $|cl(x)| \in \{1, 3\}$. Caso exista um elemento tal que $|cl(x)| = 3$, então existe um $x \neq y \in N$ tal que $|cl(y)| = 1$, portanto $y \in Z(G) \neq \emptyset$, além disso, como $N$ tem ordem prima então pode ser gerado por qualquer um de seus elementos, isto é, $N = <y>$. Sejam $y^{k} \in N$ e $g \in G$, então
+		$$
+		gy^{k}g^{-1} = g \underbrace{y...y}_{k-vezes}g^{-1} = \underbrace{ yg }_{y \in Z(G)} y...y g^{-1} = \underbrace{y...y}_{k-vezes}gg^{-1} = y^{k},
+		$$
+		logo $y^{k} \in Z(G)$, e como é um elemento arbitrário, então $N \subseteq Z(G)$.
+		Por outro lado, se não existe elemento $x \in N$ tal que $|cl(x)| = 3$, então teremos $|cl(x)| = 1 \; \forall x \in N$, o que implica que $cl(x) = \{x\}$, portanto os elementos de $N$ comutam com todos os elementos de $G$, com isso $N \subseteq Z(G)$.
 		
 		\item Mostre que um grupo $G$ com 105 elementos tem ou um 5-Sylow subgrupo normal ou um 7-Sylow subgrupo normal. Deduza que  $G$ tem um subgrupo normal cíclico $N$ tal que $[G:N] = 3$.
 		
