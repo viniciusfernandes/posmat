@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[fleqn]{amsmath}
+\usepackage[a4paper, margin=0.5in]{geometry}
+\begin{document}
+	
+	\title{Cohomologia - Algumas demostrações}
+	\author{Vinicius Fernades}
+	
+	\maketitle
+	Seja $V$ um espaço vetorial, dizemos que uma função p-linear é $\omega : V \times \dots \times V \to \mathbb{R}$, tal que $a_{i}, b_{i} \in V$ onde $1\leq i \leq p$ e $\lambda \in \mathbb{R}$ teremos $\omega(a_{1} + \lambda b_{1}, ..., a_{p} + \lambda b_{p}) = \omega(a_{1} , ..., a_{p} )+ \lambda \omega(b_{1}, ..., b_{p})$. Afirmamos que $\Lambda^{p}(V)$ como sendo o conjunto das funções p-lineares forma um espço vetorial. Tomemos $\Lambda^{1}(V)$ e $\{e_{1}, ..., e_{n}\}$ com sendo uma base de $V$, então $\Lambda^{1}(V) = V^{*}$ (espaço dual de V), consequentemente, escreveremos $\{dx_{1}, ..., dx_{n}\}$ como sendo uma base de $\Lambda^{1}(V)$, isto é, $dx_{j}(e_{i}) = \delta_{ij}$, desse modo, uma função 1-linear pode ser escrita como $\omega = \sum w_{i}dx_{i}$. Definindo o produto tensorial $\otimes: \Lambda^{1}(V) \times \Lambda^{1}(V) \to \Lambda^{2}(V)$ tal que $\otimes(dx_{i}, dx_{j})(e_{k}, e_{l}) = dx_{i}(e_{k}) \otimes dx_{j}(e_{l}) = \delta_{ik}\delta_{jl}$. Afirmamos que uma função 2-linear pode ser escrita como sendo $\omega = \sum \omega_{ij}dx_{i} \otimes dx_{j}$. Analogamente, teremos uma função p-linear como sendo  $\omega = \sum \omega_{i_{1}...i_{p}}dx_{i_{1}} \otimes ... \otimes dx_{i_{p}}$.
+	
+	Seja $\omega$ uma função p-linear tal que $\omega(a_{1}, ..., a_{p}) = 0 $ sempre que $a_{i} = a_{j}$, para algum $i, j$. Diremos então que $\omega$ é uma função alternada p-linear. Notemos que a seguinte função 2-linear dada por $\omega = dx_{i} \otimes dx_{j} - dx_{j} \otimes dx_{i}$, então $\omega(e_{k},e_{l}) = dx_{i}(e_{k}) \otimes dx_{j}(e_{l}) - dx_{j}(e_{k}) \otimes dx_{i}(e_{l}) = \delta_{ik}\delta_{jl} - \delta_{jk}\delta_{il} =  -\delta_{il}\delta_{jk} + \delta_{jl}\delta_{ik}= -(\delta_{il}\delta_{jk} - \delta_{jl}\delta_{ik}) = dx_{i}(e_{l}) \otimes dx_{j}(e_{k}) - dx_{j}(e_{l}) \otimes dx_{i}(e_{k}) = -\omega(e_{l}, e_{k})$, que é uma função alternada 2-linear. Definiremos o produto exterior como sendo $\wedge: \Lambda^{1}(V) \times \Lambda^{1}(V) \to \Lambda^{2}(V)$ por $ dx_{i} \wedge dx_{j}(a, b) = dx_{i}(a) \otimes dx_{j}(b) - dx_{j}(a) \otimes dx_{i}(b) = \sum_{\sigma} sgn(\sigma) dx_{\sigma(i)}(a) \otimes dx_{\sigma(j)}(b)$. Analogamente, o produto $\wedge: \Lambda^{p}(V) \times \Lambda^{q}(V) \to \Lambda^{p+q}(V)$ será definido como $dx_{i_{1}} \wedge ... \wedge dx_{i_{p}} = \sum_{\sigma}  sgn(\sigma) dx_{\sigma (i_{1})} \otimes ... \otimes dx_{\sigma (i_{p})}$. Afirmamos que qualquer função alternada p-linear poderá ser escrita como a combinação linear do produto exterior $\omega = \sum \omega_{i_{1}...i_{p}} dx_{i_{1}} \wedge... \wedge dx_{i_{p}}$.
+	
+	\textbf{Lema de Poincaré:} seja $U \subseteq \mathbb{R}^{n}$ um conjunto estrelado, então $H^{p}(U) = 0$ se $p>0$ e $H^{0}(U) = \mathbb{R}^{n}$.
+	
+	$\square$ Sem perda de generalidade, podemos assumir que $U$ é estrelado com relação a origem (pois a operaçao de translação de um conjunto estrelado gera um comjunto estrelado). Seja o mapa $S^{p}: \Omega^{p}(U \times \mathbb{R}) \to \Omega^{p-1}(U)$, e podemos escrever $\omega \in \Omega^{p}(U \times \mathbb{R}) $ como sendo $\omega = \sum g_{J}(x,t)dt \wedge dx_{J} + \sum f_{I}(x,t)dx_{I}$, onde $I=(i_{1}, \dots ,i_{p})$ e $J=(i_{1}, \dots ,i_{p-1})$. Agora definindo
+	$$
+	S^{p}(\omega) = \sum \Big( \int_{0}^{1} g_{J}(x,t)dt \Big) dx_{J},
+	$$
+	podemos ver que
+	$$
+	\begin{aligned}
+	dS^{p}(\omega) =& \sum_{J,i} \Big( \int_{0}^{1} \partial_{i} g_{J}(x,t)dt \Big) dx_{i} \wedge dx_{J},
+	\\
+	d(\omega) =& \sum_{J,k} \partial_{k} g_{J}(x,t) dx_{k} \wedge dt \wedge dx_{J} + \sum_{I,k} \partial_{k} f_{I}(x,t) dx_{k} \wedge dx_{I}
+	\\
+	 =& \sum_{J,k} -\partial_{k} g_{J}(x,t) dt \wedge dx_{k} \wedge dx_{J} + \sum_{I,k} \partial_{k} f_{I}(x,t) dx_{k} \wedge dx_{I},
+	 \\
+	 S^{p+1}d(\omega) =&  -\sum_{J,k} \Big( \int_{0}^{1}  \partial_{k} g_{J}(x,t)dt \Big) dx_{k} \wedge dx_{J} + \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J},
+	 \\
+	  d S^{p}(\omega) + S^{p+1}d(\omega) =& \sum_{J,i} \Big( \int_{0}^{1} \partial_{i} g_{J}(x,t)dt \Big) dx_{i} \wedge dx_{J} -\sum_{J,k} \Big( \int_{0}^{1}  \partial_{k} g_{J}(x,t)dt \Big) dx_{k} \wedge dx_{J} 
+	  \\
+	  +& \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J}
+	  \\
+	  =& \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J} = \sum_{I} \Big( f_{I}(x,1)  - f_{I}(x,0)\Big) dx_{I}
+	  \\
+	  =& \sum_{I} f_{I}(x,1) dx_{I} - \sum_{I} f_{I}(x,0) dx_{I}.
+	\end{aligned}
+	$$
+	Seja $\psi:\mathbb{R} \to \mathbb{R}$ uma função tal que $\psi(t) = 0$ para $ t \leq 0$, $\psi(t) = 1$ para $ t \geq 1$ e $\psi \in C^{\infty}$ para $0 < t < 1$. Seja $\phi: U \times \mathbb{R} \to U$ tal que $\phi(x,t) = \psi(t)x$. Vejamos então que $\phi^{*} : \Omega(U) \to \Omega(U \times \mathbb{R})$ será dado por $\phi^{*}(\alpha)_{x}(a_{1},\dots,a_{p}) = \alpha_{\psi(t)x}(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p}))$, consequentemente, se tivermos $\alpha_{x} = \sum \alpha_{I}(x)dx_{I}$, então 
+	$$
+	\begin{aligned}
+	d\phi_{i}(x) =& d(\psi(t)x_{i}) = d\psi(t)x_{i} + \psi(t)dx_{i} 
+	\\
+	(\phi^{*}\alpha_{x})(a_{1},\dots,a_{p}) =& \sum \alpha_{I}(\phi(x))d\phi_{I}(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p}))
+	\\
+	=& \sum \alpha_{I}(\psi(t)x)(d\psi(t)x_{I} + \psi(t)dx_{I})(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p})).
+	\end{aligned}
+	$$
+	Notemos que podemos simplificar os seguintes termos: 
+	$$
+	\begin{aligned}
+	(d\psi(t)x_{i} + \psi(t)dx_{i}) \wedge (d\psi(t)x_{j} + \psi(t)dx_{j}) =& x_{i}x_{j} \overbrace{ d\psi(t) \wedge d\psi(t)}^{=0} + \psi(t)d\psi(t) \wedge dx_{j} 
+	\\
+	+& \psi(t)x_{j}dx_{i}\wedge d\psi(t) + \psi^{2}(t) dx_{i} \wedge dx_{j}
+	\\
+	=& \underbrace{ \psi(t)d\psi(t) \wedge dx_{j} - \psi(t)x_{j} d\psi(t) \wedge dx_{i} }_{cancela}+ \psi^{2}(t) dx_{i} \wedge dx_{j},
+	\end{aligned}
+	$$
+	sendo que o penultimo termo se cancelará sob o sinal da somatória, com isso, podemos escrever: 
+	$$
+	\phi^{*}\alpha_{x} = \sum \alpha_{I}(\psi(t)x) \psi^{p}(t) dx_{I}.
+	$$
+	Fazendo $\omega_{x} = \phi^{*}\alpha_{x}$ e voltando na relação:
+	$$
+	\begin{aligned}
+	 d S^{p}(\omega) + S^{p+1}d(\omega) =&   dS^{p}(\phi^{*}\alpha_{x}) + S^{p+1}d(\phi^{*}\alpha_{x}) 
+	 \\
+	 =& \sum_{I} \alpha_{I}(\psi(1)x) \underbrace{\psi^{p}(1)}_{=1} dx_{I} - \sum_{I} \alpha_{I}(\psi(0)x) \underbrace{ \psi^{p}(0) }_{=0}dx_{I}
+	 \\
+	 =& \sum_{I} \alpha_{I}(x) dx_{I}
+	 \\
+	 =& \alpha_{x}.
+	\end{aligned}$$
+	
+\end{document}
