@@ -115,5 +115,14 @@
 	=& g^{*}([a']) \in  Im(g^{*}).
 	\end{aligned}
 	$$
-	Como temos $[c] \in Ker(\partial^{*})$ e $[c] = g^{*}[a'] \in Im(g^{*})$, o que implica que $Ker(\partial^{*}) \subset Im(g^{*})$, consequentemente, $Ker(\partial^{*}) = Im(g^{*})$, e temos uma sequência exata, com odesejávamos. $\blacksquare$
+	Como temos $[c] \in Ker(\partial^{*})$ e $[c] = g^{*}[a'] \in Im(g^{*})$, o que implica que $Ker(\partial^{*}) \subset Im(g^{*})$, consequentemente, $Ker(\partial^{*}) = Im(g^{*})$, e temos uma sequência exata, como desejávamos. $\blacksquare$
+	
+	\textbf{Lemma 2 (sequência exata):} A sequência $H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}}  H^{p}(B^{*})$ é exata.
+	
+	$\square$ Vamos mostrar a inclusão  $Im(\partial^{*}) \subset Ker(f^{*})$. Seja $c \in H^{p}(C^{*})$, então $f^{*}\partial^{*}([c]) = f^{*}([(f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(c))]) = [f^{p+1}((f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(c)))] = [d^{p}(g^{p})^{-1}(c)] = [0]$, logo $\partial^{*}([c]) \in Ker(f^{*})$. Vamos mostrar a inclusão inversa $Ker(f^{*}) \subset Im(\partial^{*}) $. Tomando $[a] \in Ker(f^{*})$ teremos $f^{*}([a]) = [f^{p+1}(a)] = [0]$, assim podemos afirmar que $f^{p+1}(a) = d^{p}b$, para algum $b \in B^{p}$, e como por hipótese $f^{p}$ é injetor, então podemos escrever $a = (f^{p+1})^{-1}d^{p}b \Rightarrow [a] = [(f^{p+1})^{-1}d^{p}(g^{p})^{-1}g^{p}(b)] = \partial^{*}[g^{p}(b)] \in Im(\partial^{*})$, portanto temos $Ker(f^{*}) \subset Im(\partial^{*})$, logo, $Ker(f^{*}) = Im(\partial^{*})$, e temos uma sequência exata, como desejávamos. $\blacksquare$
+	
+	\textbf{Teorema (sequência longa exata da homologia):} Seja $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ uma sequência curta exata de complexos de cadeias, então a sequência $$\dots \to H^{p}(A^{*}) \xrightarrow{f^{*}} H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}} H^{p+1}(B^{*}) \to \dots$$
+	é exata.
+	
+	$\square$ É uma aplicação dos dois lemas anteriores. $\blacksquare$
 \end{document}
