@@ -43,35 +43,35 @@
 	  =& \sum_{I} f_{I}(x,1) dx_{I} - \sum_{I} f_{I}(x,0) dx_{I}.
 	\end{aligned}
 	$$
-	Seja $\psi:\mathbb{R} \to \mathbb{R}$ uma função tal que $\psi(t) = 0$ para $ t \leq 0$, $\psi(t) = 1$ para $ t \geq 1$ e $\psi \in C^{\infty}$ para $0 < t < 1$. Seja $\phi: U \times \mathbb{R} \to U$ tal que $\phi(x,t) = \psi(t)x$. Vejamos então que $\phi^{*} : \Omega(U) \to \Omega(U \times \mathbb{R})$ será dado por $\phi^{*}(\alpha)_{x}(a_{1},\dots,a_{p}) = \alpha_{\psi(t)x}(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p}))$, consequentemente, se tivermos $\alpha_{x} = \sum \alpha_{I}(x)dx_{I}$, então 
+	Como $U$ é um conjunto estrelado, podemos conectar todo ponto com a origem através de uma reta, assim, a função $\phi: U \times [0,1] \to U$ tal que $\phi(x,t) = tx$ esta bem definida. Vejamos então que $\phi^{*} : \Omega(U) \to \Omega(U \times \mathbb{R})$ será dado por $\phi^{*}(\alpha)_{x}(a_{1},\dots,a_{p}) = \alpha_{tx}(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p}))$, consequentemente, se tivermos $\alpha_{x} = \sum \alpha_{I}(x)dx_{I}$, então 
 	$$
 	\begin{aligned}
-	d\phi_{i}(x) =& d(\psi(t)x_{i}) = d\psi(t)x_{i} + \psi(t)dx_{i} 
+	d\phi_{i}(x) =& d(tx_{i}) = dtx_{i} + tdx_{i} 
 	\\
 	(\phi^{*}\alpha_{x})(a_{1},\dots,a_{p}) =& \sum \alpha_{I}(\phi(x))d\phi_{I}(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p}))
 	\\
-	=& \sum \alpha_{I}(\psi(t)x)(d\psi(t)x_{I} + \psi(t)dx_{I})(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p})).
+	=& \sum \alpha_{I}(tx)(dtx_{I} + tdx_{I})(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p})).
 	\end{aligned}
 	$$
 	Notemos que podemos simplificar os seguintes termos: 
 	$$
 	\begin{aligned}
-	(d\psi(t)x_{i} + \psi(t)dx_{i}) \wedge (d\psi(t)x_{j} + \psi(t)dx_{j}) =& x_{i}x_{j} \overbrace{ d\psi(t) \wedge d\psi(t)}^{=0} + \psi(t)d\psi(t) \wedge dx_{j} 
+	(dtx_{i} + tdx_{i}) \wedge (dtx_{j} + tdx_{j}) =& x_{i}x_{j} \overbrace{ dt \wedge dt}^{=0} + tdt \wedge dx_{j} 
 	\\
-	+& \psi(t)x_{j}dx_{i}\wedge d\psi(t) + \psi^{2}(t) dx_{i} \wedge dx_{j}
+	+& tx_{j}dx_{i}\wedge dt + t^{2} dx_{i} \wedge dx_{j}
 	\\
-	=& \underbrace{ \psi(t)d\psi(t) \wedge dx_{j} - \psi(t)x_{j} d\psi(t) \wedge dx_{i} }_{cancela}+ \psi^{2}(t) dx_{i} \wedge dx_{j},
+	=& \underbrace{ tdt \wedge dx_{j} - tx_{j} dt \wedge dx_{i} }_{cancela}+ t^{2} dx_{i} \wedge dx_{j},
 	\end{aligned}
 	$$
 	sendo que o penultimo termo se cancelará sob o sinal da somatória, com isso, podemos escrever: 
 	$$
-	\phi^{*}\alpha_{x} = \sum \alpha_{I}(\psi(t)x) \psi^{p}(t) dx_{I}.
+	\phi^{*}\alpha_{x} = \sum \alpha_{I}(tx) t^{p} dx_{I}.
 	$$
 	Fazendo $\omega_{x} = \phi^{*}\alpha_{x}$ e voltando na relação:
 	$$
 	\begin{aligned}
    	dS^{p}(\phi^{*}\alpha_{x}) + S^{p+1}d(\phi^{*}\alpha_{x}) 
-	 =& \sum_{I} \alpha_{I}(\psi(1)x) \underbrace{\psi^{p}(1)}_{=1} dx_{I} - \sum_{I} \alpha_{I}(\psi(0)x) \underbrace{ \psi^{p}(0) }_{=0}dx_{I}
+	 =& \sum_{I} \alpha_{I}(1.x) 1^{p} dx_{I} - \sum_{I} \alpha_{I}(0.x) 0^{p} dx_{I}
 	 \\
 	 =& \sum_{I} \alpha_{I}(x) dx_{I}
 	 \\
@@ -81,6 +81,14 @@
 	$$
 	dS^{p}\phi^{*} + S^{p+1}d\phi^{*} = dS^{p}\phi^{*} + S^{p+1}\phi^{*}d = dB^{p} + B^{p+1}d = Id.
 	$$
-	Tomemos agora $[\omega] \in H^{p}(U)$, então do resultado anterior, sabemos que $[\omega] = [dB^{p}\omega + B^{p+1}d\omega] = [dB^{p}\omega] +[B^{p+1}d\omega] = [0] + [B^{p+1}d\omega] \Rightarrow
-	 [\omega - B^{p+1}d\omega] = [0]$
+	Sabemos que um p-forma pode ser fechada ou exata, suponhamos que $\omega \in \Omega^{p}(U)$ seja fechada, então teremos $d\omega = 0$ o que implica que $\omega = dB^{p}\omega + B^{p+1}d\omega = dB^{p}\omega \Rightarrow [\omega] = [dB^{p}\omega] = [0]$. Já no caso em que $\omega$ seja exata, isto é, $\omega = d\alpha$ para algum $\alpha \in \Omega^{p}(U)$, teremos imediatamente $[\omega] =[d\alpha] = [0]$, portanto $H^{p}(U) = 0$ para $p>0$. Para o caso em que $p=0$ teremos..........
+
+	\textbf{Lema:} Sejam $A^{*}, B^{*}, C^{*}$ complexos de cadeia e $f:A^{*} \to B^{*}$, $g:B^{*} \to C^{*}$ mapa de cadeias, além disso, se a sequência $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ for uma sequência exata curta, então a sequência $H^{p}(A^{*}) \xrightarrow{f} H^{p}(B^{*}) \xrightarrow{g} H^{p}(C^{*}) $ é exata.
+	
+	$\square$ Por hipótese temos $Im(f^{p}) = Ker(g^{p})$, isto é, dado $a \in A^{p}$ teremos $(g^{p}\circ f^{p})(a) = 0$, consequentemente, $(g\circ f)^{*}([a]) = g^{*}(f^{*}([a])) = [(g^{p}\circ f^{p})(a)] = [0]$, portanto $Im(f^{*}) \subset Ker(g^{*})$. Vamos mostrar a inclusão $Ker(g^{*}) \subset Im(f^{*})$. Tomemos $[b] \in Ker(g^{*})$, assim $g^{*}([b]) = [0] \Rightarrow [g^{p}(b)] = [0]$, isto é, $g^{p}(b) = d^{p-1}c$, para algum $c \in H^{p}(C)$. Como $g^{p-1}$ é sobrejtor, então existe $b' \in H^{p}(B)$ tal que $g^{p-1}(b') = c$, assim podemos afirmar que $g^{p}(b) = d^{p-1}g^{p-1}(b') = g^{p}d^{p}(b')$, portanto $g^{p}(b - d^{p}(b')) = 0$, isto é, $b - d^{p}(b') \in Ker(g^{p})$. Como temos uma sequência exata curta, isto é $Im(f^{p}) = Ker(g^{p})$, podemos afirmar que existe $a \in A^{p}$ tal que $f^{p}(a) = b - d^{p-1}(b') \in Ker(g^{p})$ e como $f^{p}$ é injetora (por hipótese) e também sobrejetora (pois $Im(f^{p}) = Ker(g^{p})$) , então podemos escrever $f^{*}[a] = [f^{p}(a)] = [b - d^{p-1}(b')] =  [b] - [d^{p-1}(b')] = [b]$, portanto $[b] = f^{*}[a] \in Im(f^{*})$, o que nos permite afirmar $Ker(g^{*}) \subset Im(f^{*})$. Conclusão, $Ker(g^{*}) = Im(f^{*})$, e temos uma sequência exata. $\blacksquare$
+
+	\textbf{Proposição:} O mapa $\partial^{*}: H^{p}(C^{*}) \to H^{p+1}(A^{*})$ dado por $\partial^{*}([c]) = [(f^{p+1})^{-1}(d^{p}((g^{p})^{-1}(c)))] $ esta bem definido.
+	
+	$\square$ Como $g^{p}$ é sobrejetora, então existe $b \in B^{p}$ tal que $g^{p}(b) = c$ e $d^{p}g^{p}(b) = d^{p}c$. Como $f^{p}$ é injetora, então existe um único $a \in A^{p}$ tal que $f^{p}(a) = d^{p}g^{p}(b)$
+
 \end{document}
