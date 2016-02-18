@@ -125,4 +125,63 @@
 	é exata.
 	
 	$\square$ É uma aplicação dos dois lemas anteriores. $\blacksquare$
+	
+	\textbf{Definição (mapas homotopicos entre cadeias):} Dois mapas de cadeiras $f,g : A^{*} \to B^{*}$ são ditos mapas homotopicos de cadeias se existe um mapa linear $s^{p}: A^{p} \to B^{p-1}$ tal que
+	$$
+	s^{p}d^{p} + d^{p}s^{p} = f-g : A^{p} \to B^{p}
+	$$
+	para todo $p$.
+	
+	\textbf{Lema (invariância homotópica):} Sejam $f,g : A^{*} \to B^{*}$ mapas homotópicos de cadeias, então $f^{*} = g^{*}: H^{p}(A^{*}) \to H^{p}(B^{*})$.
+	
+	$\square$ Por hipótese temos $s^{p}: A^{p} \to B^{p-1}$, então tomanto $[a] \in H^{p}(A^{*})$:
+	$$
+	\begin{aligned}
+	(f-g)^{*}([a]) =& [(f-g)(a)]
+	\\
+	=& [(s^{p}d^{p} + d^{p}s^{p})(a)]
+	\\
+	=& [(s^{p}d^{p})(a)] + [(d^{p}s^{p})(a)]
+	\\
+	=& [(s^{p} \underbrace{d^{p})(a))}_{
+		=0}] +[0]
+	\\
+	=& [0]+[0] = [0],
+	\end{aligned}
+	$$ 
+	onde utilizamos o fato de que $a\in Z^{p}(A^{*})$, logo $d^{p}a = 0$. Portanto, $f^{*} = g^{*}$, como desejávamos $\blacksquare$
+	
+	Vamos demonstrar agora um teorema suja aplicação terá como um dos resultados mais importântes desse capítulo. O teorema de sequências de Mayer-vietoris. Ferramentas muito importante utilizada na determinação dos grupos de cohomologia.
+	
+	\textbf{Teorema:} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ subconjuntos abertos e defina $U=U_{1} \cup U_{2}$ e as seguintes inclusões $i_{k}: U_{k} \to U$ e $j_{k}: U{1}\cap U{2} \to U_{k}$, onde $k \in \{1,2\}$. Então a sequência
+	$$
+	0 \to \Omega(U) \xrightarrow{I^{p}} \Omega^{p}(U_{1}) \oplus \Omega^{p}(U_{2}) \xrightarrow{J^{p}} \Omega^{p}(U_{1} \cap U_{2}) \to 0 
+	$$
+	é exata, onde $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega))$ e $J^{p}(\omega_{1}, \omega_{2}) = j^{*}_{1}(\omega_{1})- j^{*}_{2}(\omega_{2})$.
+	
+	$\square$ Vamos mostrar a inclusão $Im(I^{p}) \subset Ker(J^{p})$. Tomando $\omega = \sum f_{I}dx_{I} \in \Omega^{p}(U)$ e avaliando $J^{p}(I^{p}(\omega)) = J^{p}(i^{*}_{1}(\omega), i^{*}_{2}(\omega)) = j^{*}_{1}(i^{*}_{1}(\omega))- j^{*}_{2}(i^{*}_{2}(\omega)) = \omega|_{U_{1} \cap U_{2}} - \omega|_{U_{1} \cap U_{2}} = 0$, logo $I^{p}(\omega) \in Ker(J^{p})$. Além disso $I^{p}$ é injetora pois $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega)) = 0 \iff i^{*}_{1}(\omega)=\sum f_{I}\circ i_{1}(x) dx_{I} = 0$ e $i^{*}_{2}(\omega) = \sum f_{I}\circ i_{2}(x) dx_{I} = 0$, implicando em $f_{I}(x) = 0$ para $x \in U$.  Agora vamos demonstrar a inclusão inversa $Ker(J^{p})\subset Im(I^{p})$. Tomemos as p-formas $\omega_{k} = \sum f_{k,I} dx_{I} \in \Omega^{p}(U_{k})$ e considere $\omega_{k} \in Ker(J^{p})$, então $J^{p}(\omega_{1}, \omega_{2}) = 0 \Rightarrow j^{*}_{1}(\omega_{1}) = j^{*}_{2}(\omega_{2})$, isto é, $\sum (f_{1,I}\circ j_{1}) dx_{I} = \sum (f_{2,I}\circ j_{2}) dx_{I}$, o que nos leva a duas condições: $f_{1,I}\circ j_{1}(x) = f_{2,I}\circ j_{2}(x)$ caso $x \notin U_{1} \cap U_{2}$ ou $f_{1,I}(x) = f_{2,I}(x)$ caso $x \in U_{1} \cap U_{2}$, assim, com essas condições podemos definir a função 
+	$$
+	h_{I}(x) = \left\{
+	\begin{array}{cc}
+	f_{1,I}(x), & x \in U_{1} \\
+	f_{2,I}(x), & x \in U_{2} \\
+	\end{array},
+	\right.
+	$$
+	consequentemente, $I^{p}(\sum h_{I}dx_{I}) = (\sum h_{I}\circ i_{1}(x)dx_{I}, \sum h_{I}\circ i_{2}(x)dx_{I}) = (\sum f_{1,I}(x)dx_{I}, \sum f_{2,I}(x)dx_{I}) = (\omega_{1}, \omega_{2}) \in Im(I^{p})$. Resta-nos mostrar que $J^{p}$ é sobrejetora. Sejam $k \in \{1,2\}$ e $p_{k}: U \to [0,1]$ uma partição da unidade de $U$ tal que $supp(p_{k}) \subset U_{k}$. Seja $F: U_{1} \cap U_{2} \to \mathbb{R}$ uma função suave, e definamos as funções
+	$$
+	F_{1}(x) = \left\{
+	\begin{array}{cc}
+	-F(x)p_{1}(x), &, x \in U_{1} \cap U_{2} \\
+	0, & x \in U_{2}\backslash supp(p_{1})\\
+	\end{array}
+	\right.
+	\; ,F_{2}(x) = \left\{
+	\begin{array}{cc}
+	F(x)p_{2}(x), & x \in U_{1} \cap U_{2} \\
+	0, & x \in U_{1}\backslash supp(p_{2}) \\
+	\end{array}.
+	\right.
+	$$ 
+	Através da construção anterior, podemos afirmar que qualquer p-forma $\omega = \sum F_{I}dx_{I} \in \Omega^{p}( U_{1} \cap U_{2})$ pode ser escrita aplicando as tais condições para $F_{I}$, e assim teremos $\omega(x) = \omega_{k}(x)$ para $x \in U_{k}$, portanto, dada a p-forma $\omega \in \Omega^{p}( U_{1} \cap U_{2})$, existem $\omega_{k} \in \Omega^{p}(U)$ tal que $J^{p}(\omega_{1}, \omega_{2}) = \omega$, indicando a sobrejeção do mapa $J^{p}$, como desejávamos. $\blacksquare$
 \end{document}
