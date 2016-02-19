@@ -121,7 +121,9 @@
 	
 	$\square$ Vamos mostrar a inclusão  $Im(\partial^{*}) \subset Ker(f^{*})$. Seja $c \in H^{p}(C^{*})$, então $f^{*}\partial^{*}([c]) = f^{*}([(f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(c))]) = [f^{p+1}((f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(c)))] = [d^{p}(g^{p})^{-1}(c)] = [0]$, logo $\partial^{*}([c]) \in Ker(f^{*})$. Vamos mostrar a inclusão inversa $Ker(f^{*}) \subset Im(\partial^{*}) $. Tomando $[a] \in Ker(f^{*})$ teremos $f^{*}([a]) = [f^{p+1}(a)] = [0]$, assim podemos afirmar que $f^{p+1}(a) = d^{p}b$, para algum $b \in B^{p}$, e como por hipótese $f^{p}$ é injetor, então podemos escrever $a = (f^{p+1})^{-1}d^{p}b \Rightarrow [a] = [(f^{p+1})^{-1}d^{p}(g^{p})^{-1}g^{p}(b)] = \partial^{*}[g^{p}(b)] \in Im(\partial^{*})$, portanto temos $Ker(f^{*}) \subset Im(\partial^{*})$, logo, $Ker(f^{*}) = Im(\partial^{*})$, e temos uma sequência exata, como desejávamos. $\blacksquare$
 	
-	\textbf{Teorema (sequência longa exata da homologia):} Seja $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ uma sequência curta exata de complexos de cadeias, então a sequência $$\dots \to H^{p}(A^{*}) \xrightarrow{f^{*}} H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}} H^{p+1}(B^{*}) \to \dots$$
+	\textbf{Teorema (sequência longa exata da homologia):} Seja $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ uma sequência curta exata de complexos de cadeias, então a sequência $$
+	\dots \to H^{p}(A^{*}) \xrightarrow{f^{*}} H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}} H^{p+1}(B^{*}) \to \dots
+	$$
 	é exata.
 	
 	$\square$ É uma aplicação dos dois lemas anteriores. $\blacksquare$
@@ -184,4 +186,32 @@
 	\right.
 	$$ 
 	Através da construção anterior, podemos afirmar que qualquer p-forma $\omega = \sum F_{I}dx_{I} \in \Omega^{p}( U_{1} \cap U_{2})$ pode ser escrita aplicando as tais condições para $F_{I}$, e assim teremos $\omega(x) = \omega_{k}(x)$ para $x \in U_{k}$, portanto, dada a p-forma $\omega \in \Omega^{p}( U_{1} \cap U_{2})$, existem $\omega_{k} \in \Omega^{p}(U)$ tal que $J^{p}(\omega_{1}, \omega_{2}) = \omega$, indicando a sobrejeção do mapa $J^{p}$, como desejávamos. $\blacksquare$
+	
+	\textbf{Lema:} Os mapas $I: \Omega^{*}(U) \to \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2})$ e $J: \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2}) \to \Omega^{*}(U_{1} \cap U_{2})$, definidos anteriormente, são mapas de cadeias.
+	
+	$\square$ Tomando $\omega \in \Omega^{p}(U)$, então 
+	$$
+	I^{p+1}(d^{p}\omega) = (i^{*}_{1}(d^{p}\omega), i^{*}_{2}(d^{p}\omega)) = (d^{p}i^{*}_{1}(\omega_{1}), d^{p}i^{*}_{2}(\omega_{2})) = d^{p}(i^{*}_{1}(\omega_{1}), i^{*}_{2}(\omega_{2})) = d^{p}I^{p}(\omega),$$
+	logo $I^{p+1}d^{p} =  d^{p}I^{p}$. Analogamente:
+	$$
+	J^{p+1}(d^{p}\omega_{1}, d^{p}\omega_{2}) = j^{*}_{1}(d^{p}\omega_{1}) - j^{*}_{2}(d^{p}\omega_{2}) = d^{p}j^{*}_{1}(\omega_{1}) - d^{p}j^{*}_{2}(\omega_{2}) = d^{p}(j^{*}_{1}(\omega_{1}) - j^{*}_{2}(\omega_{2})) = d^{p}J^{p+1}(\omega_{1}, \omega_{2}),
+	$$
+	logo $J^{p+1}d^{p} =  d^{p}J^{p}$, como desejávamos. $\blacksquare$
+	
+	\textbf{Teorema (Sequência de Mayer-Vietoris):} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ conjuntos abertos e $U = U_{1} \cup U_{2}$, então a sequência
+	$$
+	\dots \to H^{p}(U) \xrightarrow{I^{*}} H^{p}(U_{1}) \oplus H^{p}(U_{2}) \xrightarrow{J^{*}} H^{p}(U_{1} \cap U_{2}) \xrightarrow{\partial^{*}} H^{p+1}(U) \to \dots
+	$$
+	é exata.
+	
+	$\square$ Sabemos que os mapas $I: \Omega^{*}(U) \to \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2})$ e $J: \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2}) \to \Omega^{*}(U_{1} \cap U_{2})$ são mapas de cadeias, além disso, a sequência 
+	$$
+	0 \to \Omega^{p}(U) \xrightarrow{I^{p}} \Omega^{p}(U_{1}) \oplus \Omega^{p}(U_{2}) \xrightarrow{J^{p}} \Omega^{p}(U_{1} \cap U_{2}) \to 0 
+	$$
+	é exata curta, consequentemente, a sequência de homologia
+	$$
+	\dots \to H^{p}(U) \xrightarrow{I^{*}} H^{p}(U_{1}) \oplus H^{p}(U_{2}) \xrightarrow{J^{*}} H^{p}(U_{1} \cap U_{2}) \xrightarrow{\partial^{*}} H^{p+1}(U) \to \dots
+	$$
+	é exata. $\blacksquare$
+	
 \end{document}
