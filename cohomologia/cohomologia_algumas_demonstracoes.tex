@@ -234,4 +234,58 @@
 	Continuando, temos a sequência $\mathbb{R} \oplus \mathbb{R} \cong H^{0}(U_{1}) \oplus H^{0}(U_{2}) \xrightarrow{J^{0}} H^{0}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-}) \xrightarrow{\partial^{*}} H^{1}(\mathbb{R}^{2} \backslash \{0\})$, como temos uma sequência exata, ou seja, $Im(I^{0}) = Ker(J^{0})$, logo, $1 = dim(Im(I^{0})) = dim(Ker(J^{0}))$, e pelo teorema de dimensão e imagem temos que $dim(Im(J^{0})) = 1$. Novamente, como temos uma sequência exata, $Im(J^{0}) = Ker(\partial^{*})$, consequentemente, $dim(Im(\partial^{*})) = 1$, e como $\partial^{*}$ é sobrejetor, temos que $ H^{1}(\mathbb{R}^{2} \backslash \{0\}) \cong \mathbb{R}$. Prosseguindo com a sequência $\mathbb{R} \cong H^{1}(\mathbb{R}^{2} \backslash \{0\} ) \xrightarrow{I^{1}} H^{1}(U_{1}) \oplus H^{1}(U_{2}) \cong 0 \oplus 0 \xrightarrow{J^{1}} H^{1}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-})$, e como $J^{1}$ é sobrejetor, então $H^{1}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-}) \cong 0 \oplus 0$. Finalmente calculando a ultima sequência, $0 \oplus 0 \cong H^{1}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-}) \xrightarrow{\partial^{*}} H^{2}(\mathbb{R}^{2} \backslash \{0\} ) \xrightarrow{I^{2}} H^{2}(U_{1}) \oplus H^{2}(U_{2}) \cong 0 \oplus 0$, temos que, pela exatidão, $Im(\partial^{*}) = Ker(I^{2}) = H^{2}(\mathbb{R}^{2} \backslash \{0\} )$, e como $Im(\partial^{*}) = 0$, logo, $H^{2}(\mathbb{R}^{2} \backslash \{0\} ) \cong 0$.
 	
 	Conclusão, $H^{0}(\mathbb{R}^{2} \backslash \{0\}) \cong \mathbb{R}$, $H^{1}(\mathbb{R}^{2} \backslash \{0\}) \cong \mathbb{R}$ e  $H^{p}(\mathbb{R}^{2} \backslash \{0\}) \cong 0$ para $p \geq 2$.
+	
+	\textbf{Definição (variedades topologicas):} Uma variedade topologica $M$ de dimensão $n$ é um espaço topológico não-trivial de Hausdorff contendo uma base enumerável e localmente homeomorfo a $\mathbb{R}^{n}$. Além disso, podemos construir uma estrutura diferenciável, como se segue:
+	
+	\begin{enumerate}
+		\item Uma carta $(h, U)$ na variedade n-dimensional é o homeomorfismo $h: U \subset \mathbb{R}^{n} \to M$ é um homeomorfismo entre os abertos $h(U) \subset M$ e $U \subset \mathbb{R}^{n}$,
+		
+		\item Um atlas é o conjunto de cartas $A=\{(h_{i}, U_{i})\}_{i \in I}$ tal que $M = \bigcup_{i \in I} U_{i}$, onde $I \subset \mathbb{N}$,
+		
+		\item Um atlas é dito suável quando $\forall i, j \in I$ exite uma função $h_{ij} \in C^{\infty}(\mathbb{R}^{n}, \mathbb{R}^{n})$ tal que $h_{ij} := h_{i}^{-1} \circ h_{j} : U_{i} \cap U_{j} \to U_{i} \cap U_{j}$. A essas funções damos o nome de \textit{funções de transição} e ao  atlas $A$ o nome de \textit{estrutura diferenciável}.
+	\end{enumerate}
+	
+	\textbf{Definição:} Uma variedade diferenciável é o par $(M, A)$ onde $M$ é uma variedade topológico e $A$ uma estrutura diferenciável. 
+	
+	\textbf{Exemplo:} Seja $M = S^{1} \subset \mathbb{R}^{2}$ e o atlas $A = \{(h_{i}, U_{i})\}_{i \in \{1,2\}}$, onde $U_{1} = \{(x, \sqrt{1-x^{2}}): x \neq 1 \}$ e  $U_{2} = \{(x, \sqrt{1-x^{2}}): x \neq -1 \}$.
+	
+	\textbf{Definição (espaço tangente):} Seja $M$ uma variedade diferenciável não-trivial, e tome um ponto $p \in M$. Seja $(h, U)$ uma carta de $A$ e $\alpha : [0,1] \to U$ uma curva, então $\gamma := h \circ \alpha : [0,1] \to M$ é uma curva na variedade. Chamamos de \textit{vetor tangent a $M$ em $p \in M$} o vetor dado por $v_{p} = \gamma'(0)$ onde $\gamma(0) =p$. Ao conjunto de todos os vetores tangentes a $M$ no ponto $p \in M$ chamamos de \textit{espaço tangente de $M$ em $p \in M$} e o denotamos por $T_{p}M$.
+	
+	
+	\textbf{Definição (formas em variedades diferenciáveis):} Sejam $M$ uma variedade diferenciável e $p \in M$, então uma q-forma diferencial é a aplicação $\omega : M \to \Omega^{q}(T_{p}M)$, tal que $(\omega(q))(v_{1}, \dots, v_{q}) = \omega_{p}(v_{1}, \dots, v_{q}) = \sum \omega_{I}(p)dx_{I}(v_{1}, \dots, v_{q})$ onde $\omega_{I} \in C^{\infty}(U, \mathbb{R})$ e $U$ uma vizinhança de $p \in M$.
+	
+	\textbf{Definição (pullback):} Sejam $M,N$ variedades diferenciáveis e $f: M \to N$ uma aplicação diferenciável, então definimos $f_{*} := D_{p}f:T_{p}M \to T_{f(p)}N$, além disso, relacionamos as $q$-formas de ambas variedades através do \textit{pullback} $f^{*} : \Omega^{q}(T_{f(p)}N) \to \Omega^{q}(T_{p}M)$ tal que $
+	f^{*}(\omega)_{p}(v_{1}, \dots, v_{n}) = \omega_{f(p)}(f_{*}(v_{1}), \dots, f_{*}(v_{n}))$.
+	
+	\textbf{Exemplo:} Seja $f: \mathbb{R}^{n} \to \mathbb{R}^{n}$ uma aplicação diferenciável. Tomando $dx_{i} \in \Omega^{1}(\mathbb{R}^{n})$ um elemento da base desse espaço, então teremos:
+	$$
+	\begin{aligned}
+		f^{*}(dx_{i})(v) =& dx_{i}(f_{*}(v)) = dx_{i}(D_{x}f(v))
+		\\
+		=& dx_{i} \Big(\sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) e_{j}\Big) = \sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) dx_{i}(e_{j}) 
+		\\
+		=& \sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) \delta_{ij}  = \sum_{k} \partial_{k} f_{i}v_{k} 
+		\\
+		=& \sum_{k} \partial_{k} f_{i}dx_{k}(v) = df_{i}(v). 
+	\end{aligned}
+	$$
+	
+	\textbf{Definição (integração de formas em variedades diferenciáveis):} Seja $\omega^{n}_{v}(M)$ o espaço vetorial das n-formas de suporte compacto em $M$, então definimos a integral como sendo $\int_{M} : \omega^{n}_{c}(M) \to \mathbb{R}$ tal que 
+	$$
+	\int_{M} \omega = \int_{\mathbb{R}^{n}} \omega(x)dx_{1} \wedge \dots \wedge dx_{n} = \int_{\mathbb{R}^{n}} \omega(x)d\mu_{n}.
+	$$
+	
+	\textbf{Lema (integração é invariante por difeomorfismos):} Sejam $U,V \subset M$ dois abertos e $\phi : U \to V $ um difeomorfismo, então dada $\omega \in \omega^{n}_{c}(V)$ teremos:
+	
+	$\square$ Definindo $\omega_{p} = \omega(p) dx_{1} \wedge \dots \wedge dx_{n}$, então por definição temos $\phi^{*}(\omega_{p}) = \omega(f(p))det(D_{p}\phi) dx_{1} \wedge \dots \wedge dx_{n}$, consequentemente
+	
+	$$
+	\int_{U} \phi^{*}(\omega) = \int_{U} \omega(f(p))det(D_{p}\phi) dx_{1} \wedge \dots \wedge dx_{n} = \int_{\phi(U)}\omega(p) d\phi_{1} \wedge \dots \wedge d\phi_{n} = \int_{V} \omega.
+	$$
+	
+	$\blacksquare$
+	
+	
+	\textbf{Lema (integração é invariante parametrização):} Sejam $(U_{i}, h_{i}),(U_{j}, h_{j})$ duas cartas em $M$ tais que $U_{i} \cap U_{j} \neq \emptyset$, então a função de transição $h_{ij} : U_{i} \cap U_{j} \to U_{i} \cap U_{j}$ é um difeomorfismo, então dada $\omega \in \omega^{n}_{c}(V)$ teremos:	
+	
 \end{document}
