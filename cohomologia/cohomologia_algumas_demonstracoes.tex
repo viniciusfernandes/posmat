@@ -269,6 +269,30 @@
 		=& \sum_{k} \partial_{k} f_{i}dx_{k}(v) = df_{i}(v). 
 	\end{aligned}
 	$$
+	Façamos agora $dx_{1} \wedge \dots  dx_{n} \in \Omega^{n}(\mathbb{R}^{n})$, então:
+	$$
+	\begin{aligned}
+	f^{*}(dx_{1} \wedge \dots  \wedge dx_{n})(v_{1}, \dots, v_{n}) 
+	=& (f^{*}(dx_{1}) \wedge \dots  \wedge f^{*}(dx_{n})) (v_{1}, \dots, v_{n}) 
+	\\
+	=& (df_{1} \wedge \dots  \wedge df_{n}) (v_{1}, \dots, v_{n}) 
+	\\
+	 =& \sum_{\sigma} sgn(\sigma) \underbrace{df_{\sigma(1)}(v_{1})}_{A_{1\sigma(1)}} \dots \underbrace{ df_{\sigma(n)}(v_{n}) }_{A_{n\sigma(n)}}
+	\\
+	=& \sum_{\sigma} sgn(\sigma) A_{1\sigma(1)}1 \dots  A_{n\sigma(n)}
+	\\
+	=& det(A)
+	\\
+	f^{*}(dx_{1} \wedge \dots  \wedge dx_{n})(e_{1}, \dots, e_{n}) 
+	=&  (dx_{1} \wedge \dots  \wedge dx_{n})(Df(e_{1}), \dots, Df(e_{n}))
+	\\
+	=& \sum_{\sigma} sgn(\sigma) \underbrace{dx_{\sigma(1)}(Df(e_{1}))}_{Df_{1\sigma(1)}} \dots \underbrace{ dx_{\sigma(n)}(Df(e_{n})) }_{Df_{n\sigma(n)}}
+	\\
+	=& \sum_{\sigma} sgn(\sigma) Df_{1\sigma(1)} \dots  Df_{n\sigma(n)}
+	\\
+	=& det(Df)
+	\end{aligned}
+	$$
 	
 	\textbf{Definição (integração de formas em variedades diferenciáveis):} Seja $\omega^{n}_{v}(M)$ o espaço vetorial das n-formas de suporte compacto em $M$, então definimos a integral como sendo $\int_{M} : \omega^{n}_{c}(M) \to \mathbb{R}$ tal que 
 	$$
@@ -285,7 +309,14 @@
 	
 	$\blacksquare$
 	
+	\textbf{Teorema:} Sejam $M^{n}$ uma variedade diferenciável, conexa e orientável, então a sequinte sequência é exata:
+	$$
+	\Omega^{n-1}_{c}(M) \xrightarrow{d} \Omega^{n}_{c}(M) \xrightarrow{\int_{M}} \mathbb{R}
+	$$
 	
-	\textbf{Lema (integração é invariante parametrização):} Sejam $(U_{i}, h_{i}),(U_{j}, h_{j})$ duas cartas em $M$ tais que $U_{i} \cap U_{j} \neq \emptyset$, então a função de transição $h_{ij} : U_{i} \cap U_{j} \to U_{i} \cap U_{j}$ é um difeomorfismo, então dada $\omega \in \omega^{n}_{c}(V)$ teremos:	
+	$\square$ Seja $\omega \neq 0 \in Im(d)$, então $\omega = d\alpha $ e pelo teorema de Stokes temos que $\int_{M} d\alpha = \int_{\partial M} i^{*}(\alpha) = 0$(???), logo, $Im(d) \subset Ker(\int_{M})$. Por outro lado, tomando $\omega \neq 0 \in Ker(\int_{M})$, isto é, $\int_{M} \omega = 0$, e como os coeficientes dessa $n$-forma são suáveis, então $\omega = 0$
 	
+	$\int_{M} : \Omega^{n}_{c}(M) \to \mathbb{R}$ é um 
+	
+	\textbf{Definição (grau de aplicação):} Sejam $M,N$ variedades diferenciáveis e $f: M \to N$ uma aplicação diferenciável, então podemos afirmar que $H^{n}(M) \cong H^{n}(N)$ e que ambos $H^{n}(M), H^{n}(N) \cong \mathbb{R}$
 \end{document}
