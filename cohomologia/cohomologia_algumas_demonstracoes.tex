@@ -309,14 +309,88 @@
 	
 	$\blacksquare$
 	
-	\textbf{Teorema:} Sejam $M^{n}$ uma variedade diferenciável, conexa e orientável, então a sequinte sequência é exata:
+	\textbf{Teorema:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então a seguinte sequência é exata:
 	$$
 	\Omega^{n-1}_{c}(M) \xrightarrow{d} \Omega^{n}_{c}(M) \xrightarrow{\int_{M}} \mathbb{R}
 	$$
 	
-	$\square$ Seja $\omega \neq 0 \in Im(d)$, então $\omega = d\alpha $ e pelo teorema de Stokes temos que $\int_{M} d\alpha = \int_{\partial M} i^{*}(\alpha) = 0$(???), logo, $Im(d) \subset Ker(\int_{M})$. Por outro lado, tomando $\omega \neq 0 \in Ker(\int_{M})$, isto é, $\int_{M} \omega = 0$, e como os coeficientes dessa $n$-forma são suáveis, então $\omega = 0$
+	$\square$ Seja $\omega \neq 0 \in Im(d)$, então $\omega = d\alpha $ e pelo teorema de Stokes temos que $\int_{M} d\alpha = \int_{\partial M} i^{*}(\alpha) = 0$ pois o bordo é vazio, logo, $Im(d) \subset Ker(\int_{M})$. Por outro lado, tomando $\omega \neq 0 \in Ker(\int_{M})$, isto é, $\int_{M} \omega = 0$, então basta mostrar que existe $\alpha \in \Omega^{n-1}(M)$ tal que $\omega = d\alpha$. Seja $\alpha \in \Omega_{c}^{n-1}(M)$ tal que
+	$$
+	\alpha = \sum_{j} (-1)^{j-1}f_{j}(x) dx_{1} \wedge \dots \wedge \hat{dx_{j}} \wedge \dots \wedge dx_{n}
+	$$	
+	e tomanda o diferencial
+	$$
+	d\alpha = \sum_{j} (-1)^{2(j-1)}\partial_{j}f_{j}(x) dx_{1} \wedge \dots \wedge dx_{n}\in \Omega^{n-1}(M)
+	\\
+	= \sum_{j} \partial_{j}f_{j}(x) dx_{1} \wedge \dots \wedge dx_{n}.
+	$$
+	Vamos mostrar que dada $f \in C^{\infty}_{c}(\mathbb{R}^{n})$ com $\int_{\mathbb{R}^{n}} f(x)d\mu_{n} = 0$, então existam funções $f_{1}, \dots, f_{n} \in C^{\infty}_{c}(\mathbb{R}^{n})$ tal que 
+	$$
+	\sum_{j=1}^{n} \partial_{j}f_{j}(x) = f(x).
+	$$
+	Por indução, Seja $n=1$, então definindo $f_{j}(x) = \int_{-\infty}^{x}f(t)$ teremos $f(x) = f^{'}_{j}(x)$ e a afirmação vale para $n=1$. Assumindo que a afirmação valha para $n \geq 2$. Seja $f \in C^{\infty}_{c}(\mathbb{R}^{n})$ tal que $supp(f) \subseteq [-C, C]^{n}$ para algum $C \in \mathbb{R}_{+}$, pois o suporte é compacto. Definindo 
 	
-	$\int_{M} : \Omega^{n}_{c}(M) \to \mathbb{R}$ é um 
+	$$
+	\begin{aligned}
+	g_{1}(x_{1}, \dots, x_{n-1}) 
+	=& \int_{\mathbb{R}} f(x_{1}, \dots, x_{n-1}, x_{n})dx_{n}
+	\\
+	g_{2}(x_{1}, \dots, x_{n-1}) 
+	=& \int_{\mathbb{R}} g_{1}(x_{1}, \dots, x_{n-1})dx_{n-1}
+	\\
+	\vdots &
+	\\
+	g_{n-1}(x_{1}, \dots, x_{n-1})
+	=& \int_{\mathbb{R}} g_{n-2}(x_{1}, x_{2})dx_{2}.
+	\end{aligned}
+	$$
 	
+	Tome agora $\rho \in C^{\infty}_{c}(\mathbb{R})$ tal que $\int_{\mathbb{R}} \rho(x)dx = 1$, e agora façamos 
+	$$
+	\begin{aligned}
+	f_{j}(x_{1}, \dots, x_{n}) =& g_{j}(x_{1}, \dots, x_{n-1})\rho(x_{n}), \; 1 \leq j \leq n-1,
+	\\
+	h(x_{1}, \dots, x_{n}) =& f(x_{1}, \dots, x_{n}) - \sum_{j=1}^{n-1} \partial_{j}f_{j}(x_{1}, \dots, x_{n})
+	\end{aligned}
+	$$
+	e por construção temos imediatamente que $h, f_{j} \in C^{\infty}_{c}(\mathbb{R}^{n})$ com $1 \leq j \leq n-1$. Por fim, definindo
+	$$
+	f_{n}(x_{1}, \dots, x_{n}) = \int_{-\infty}^{x_{n}}h(x_{1}, \dots, x_{n-1}, t)dt.
+	$$
+	Evidentemente $f_{n} \in C^{\infty}(\mathbb{R}^{n})$, agora vamos mostrar que possui suporte compacto, e para isso basta mostrar que $\lim_{x_{n} \to \infty} f_{n}(x_{1}, \dots, x_{n}) = 0$. Vejamos então que:
+	$$
+	\begin{aligned}
+	h(x_{1}, \dots, x_{n-1}, t) =& f(x_{1}, \dots, t) - \sum_{j=1}^{n-1} \partial_{j} \Big(g_{j}(x_{1}, \dots, x_{n-1})\rho(t) \Big)
+	\\
+	=& f(x_{1}, \dots, t) - \underbrace{ \sum_{j=1}^{n-1} \partial_{j} g_{j}(x_{1}, \dots, x_{n-1}) }_{ =g(x_{1}, \dots, x_{n-1})}\rho(t)
+	\\
+	=& f(x_{1}, \dots, t) - g(x_{1}, \dots, x_{n-1})\rho(x_{n}).
+	\end{aligned}
+	$$
+	Voltando na definição de $f_{n}$:
+	$$
+	\begin{aligned}
+	\lim_{x_{n} \to \infty} f_{n}(x_{1}, \dots, x_{n}) 
+	=& \lim_{x_{n} \to \infty} \int_{-\infty}^{x_{n}}h(x_{1}, \dots, x_{n-1}, t)dt
+	\\
+	=& \int_{-\infty}^{\infty}f(x_{1}, \dots, t) - g(x_{1}, \dots, x_{n-1})\rho(t)dt
+	\\
+	=& \underbrace{ \int_{-\infty}^{\infty}f(x_{1}, \dots, t)dt }_{= g(x_{1}, \dots, x_{n-1})} - g(x_{1}, \dots, x_{n-1}) \underbrace{ \int_{-\infty}^{\infty}\rho(t)dt }_{=1}
+	\\
+	=& g(x_{1}, \dots, x_{n-1}) - g(x_{1}, \dots, x_{n-1})
+	\\
+	=&0.
+	\end{aligned}
+	$$	
+	Portanto $f_{n} \in C_{c}^{\infty}(\mathbb{R}^{n})$ e exibimos uma função $f \in C_{c}^{\infty}(\mathbb{R}^{n})$ tal que $f(x) = \sum \partial_{j}f_{j}(x)$, desse modo, temos que dado $\omega = f(x) dx_{1} \wedge \dots \wedge dx_{n} \in \Omega_{c}^{n}(M)$ existe $\alpha = \sum_{j} (-1)^{j-1}f_{j}(x) dx_{1} \wedge \dots \wedge \hat{dx_{j}} \wedge \dots \wedge dx_{n} \in \Omega_{c}^{n-1}(M)$ de modo que podemos escrever $\omega = d\alpha \in Im(d)$. Assim, $\int_{M} \omega = 0 \Rightarrow \omega = d\alpha$, portanto $Ker(\int_{M}) \subset Im(d)$. Temos então as duas inclusões, portanto $Im(d) = Ker(\int_{M})$, e a sequência é exata, como desejávamos. $\blacksquare$
+	
+	\textbf{Corolário:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então temos o seguinte isomorfismo:
+ 	$$
+ 	\int_{M} : H^{n}_{c}(M) \to \mathbb{R}.
+ 	$$
+ 	
+ 	$\square$ Tomando $[\omega] \in H^{n}_{c}(M)$ e definindo $\int_{M} ([\omega]) := \int_{M} \omega$, afimo que essa aplicação é sobrejetora pois tomando $\lambda \in \mathbb{R}$ temos a forma $\omega = \lambda/Vol(K) dx_{1} \wedge \dots \wedge dx_{n}$, onde $K = supp(\omega)$, com isso $\int_{M} ([\omega]) = \int_{M} \omega = \int_{M} \lambda/Vol(K)d\mu_{n} = \lambda/Vol(K)\int_{K} d\mu_{n} = \lambda Vol(K)/Vol(K) = \lambda$. Logo, é sobrejetora. Tomando $[\omega] \neq [\alpha] \in H^{n}_{c}(M)$, então suponha que $\int_{M} ([\omega]) - \int_{M}([\alpha])  = \int_{M} \omega - \int_{M} \alpha = \int_{M} (\omega - \alpha)= 0 \Rightarrow \omega - \alpha = d\beta$, com $\beta \in \Omega^{n-1}(M)$, ou seja, $[\omega] = [\alpha]$, contradizendo a hipótese que $[\omega] \neq [\alpha]$, portanto é uma aplicação injetora. Conclusão: $\int_{M} : H^{n}(M) \to \mathbb{R}$ é um isomorfismo. $\blacksquare$
+ 	
+ 	
 	\textbf{Definição (grau de aplicação):} Sejam $M,N$ variedades diferenciáveis e $f: M \to N$ uma aplicação diferenciável, então podemos afirmar que $H^{n}(M) \cong H^{n}(N)$ e que ambos $H^{n}(M), H^{n}(N) \cong \mathbb{R}$
 \end{document}
