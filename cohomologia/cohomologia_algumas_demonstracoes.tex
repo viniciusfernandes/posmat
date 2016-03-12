@@ -392,5 +392,27 @@
  	$\square$ Tomando $[\omega] \in H^{n}_{c}(M)$ e definindo $\int_{M} ([\omega]) := \int_{M} \omega$, afimo que essa aplicação é sobrejetora pois tomando $\lambda \in \mathbb{R}$ temos a forma $\omega = \lambda/Vol(K) dx_{1} \wedge \dots \wedge dx_{n}$, onde $K = supp(\omega)$, com isso $\int_{M} ([\omega]) = \int_{M} \omega = \int_{M} \lambda/Vol(K)d\mu_{n} = \lambda/Vol(K)\int_{K} d\mu_{n} = \lambda Vol(K)/Vol(K) = \lambda$. Logo, é sobrejetora. Tomando $[\omega] \neq [\alpha] \in H^{n}_{c}(M)$, então suponha que $\int_{M} ([\omega]) - \int_{M}([\alpha])  = \int_{M} \omega - \int_{M} \alpha = \int_{M} (\omega - \alpha)= 0 \Rightarrow \omega - \alpha = d\beta$, com $\beta \in \Omega^{n-1}(M)$, ou seja, $[\omega] = [\alpha]$, contradizendo a hipótese que $[\omega] \neq [\alpha]$, portanto é uma aplicação injetora. Conclusão: $\int_{M} : H^{n}(M) \to \mathbb{R}$ é um isomorfismo. $\blacksquare$
  	
  	
-	\textbf{Definição (grau de aplicação):} Sejam $M,N$ variedades diferenciáveis e $f: M \to N$ uma aplicação diferenciável, então podemos afirmar que $H^{n}(M) \cong H^{n}(N)$ e que ambos $H^{n}(M), H^{n}(N) \cong \mathbb{R}$
+	\textbf{Definição (grau de aplicação):} Sejam $M,N$ variedades diferenciáveis, conexas, compactas e orientadas. Seja $f: M \to N$ uma aplicação suave, então podemos afirmar que ose seguintes mapas $f^{*}: H^{n}(M) \to H^{n}(N)$, $\int_{M}: H^{n}(M) \to \mathbb{R}$ e $\int_{N}: H^{n}(N) \to \mathbb{R}$ são isomorfismos. Vamos definir um mapa de modo que esse diagrama comute, isto é, $\int_{M} \circ f^{*} = deg(f) \circ \int_{N} :  H^{n}(N) \to \mathbb{R}$ de modo que
+	$$
+	\int_{M} f^{*}(\omega) = deg(f) \int_{N} \omega,
+	$$
+	onde $deg(f) \in \mathbb{R}$ chamado de \textit{grau da aplicação f}.
+	
+	Note que essa identidade vale para quaisquer $n$-formas a variedade $N$. Além disso, mostraremos um resultado afirmando que, em verdade, $deg(f) \in \mathbb{Z}$, o que é mais impressionante.
+	
+	\textbf{Definição (valor regular e ponto crítico):} Seja $f: M \to N$ uma aplicação suave entre variedades diferenciaveis, dizemos que $p \in M$ é um \textit{ponto crítico} se se $D_{p}f : T_{p}M \to T_{f(p)}N$ for identicamente nula, isto é se $D_{p}f = 0$, caso contrário, diremos que esse ponto é um \textit{ponto regular}. Dzemos que $f(p) \in N$ é um \textit{valor regular} $\forall q \in f^{-1}(\{p\})$ forem pontos regulares.
+	
+	Enunciaremos agora alguns teoremas cuja demonstração esta fora do escopo dessa escrita.
+	
+	\textbf{Teorema (Brower-Sard):} Seja $f: M \to N$ uma aplicação suave entre variedades diferenciaveis, então o conjunto dos valores regulares é um conjunto denso em $N$.
+	
+	\textbf{Teorema (Sard):} Seja $f: U \subset \mathbb{R}^{n} \to \mathbb{R}^{m}$ uma aplicação suave, então o conjunto $S = \{x \in U: posto(D_{x}f) < m\}$ é um conjunto de medida (Lebesgue) nula em $\mathbb{R}^{m}$.
+	
+	\textbf{Lema (caracacterística dos pontos críticos em variedades compactas):} $f: M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciaveis, com mesma dimensão e $M$ compacta. Suponha que $f(p) = q \in N$ seja um valor regular, então $f^{-1}(\{q\}) \subset M$ é um conjunto finito de pontos isolados. Além disso, existe uma vizinhança aberta $V$ de $q$ e abertos disjuntos $V_{i} \ni p_{i}$, onde $p_{i} \in f^{-1}(\{q\})$ tal que 
+	\begin{enumerate}
+		\item $f^{-1}(V) = \bigcup \limits_{i=1}^{k} V_{i}$
+		
+		\item $f_{i}:V_{i} \to V$ é um difeomorfismo para $1 \leq i \leq k$
+	\end{enumerate}
+	$\square$ Como para todo $p \in f^{-1}(\{q\})$ temos que $D_{p}f : T_{p}M \to T_{f(p)}N$ é sobrejetor, e como $dim(M) = dim(N)$, também será uma aplicação injetora, portanto, é um isomorfismo. Sendo assim, pelo teorema da função inversa, existe uma vizinhança aberta $U \ni p$ difeomorfa a uma vizinhança aberta $V \ni q$. Consequentemente, tomando $p_{i} \neq p_{j} \in f^{-1}(\{q\})$, teremos $U_{i} \ni p_{i}$ e $U_{j} \ni p_{j}$ difeomorfas as vizinhanças $V_{i} \ni q$ e $V_{j} \ni q$, respectivamente, e de modo que ainda tenhamos $U_{i} \cap U_{j} = \emptyset$, isto é, vizinhanças disjuntas. Suponha $f^{-1}(\{q\})$ seja infinito, então definindo os fechados $\overline{W_{i}} \subset U_{i}$ tal que $p_{i} \in \overline{W_{i}}$, onde $U_{i}$ são os abertos disjuntos construidos anteriormente, assim $A = \{M \backslash \overline{W_{i}} \} \cup \{U_{i}\}$ é uma cobertura por abertos de $M$, e como $M$ é compacta, então podemos escolher uma subcobertura finita $A' \subset A$, então existirá um $p_{s} \in f^{-1}(\{p\})$ tal que $p_{s} \notin A'$, o que é uma contradição, portanto $f^{-1}(\{p\})$ é finito. Definindo $f^{-1}(\{q\}) = \{p_{1}, \dots, p_{k}\}$ para algum $k \in \mathbb{N}$, definamos $U = \bigcap f(U_{i})$ e note que $q \in U$
 \end{document}
