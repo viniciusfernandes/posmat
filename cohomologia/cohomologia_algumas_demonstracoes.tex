@@ -408,11 +408,40 @@
 	
 	\textbf{Teorema (Sard):} Seja $f: U \subset \mathbb{R}^{n} \to \mathbb{R}^{m}$ uma aplicação suave, então o conjunto $S = \{x \in U: posto(D_{x}f) < m\}$ é um conjunto de medida (Lebesgue) nula em $\mathbb{R}^{m}$.
 	
-	\textbf{Lema (caracacterística dos pontos críticos em variedades compactas):} $f: M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciaveis, com mesma dimensão e $M$ compacta. Suponha que $f(p) = q \in N$ seja um valor regular, então $f^{-1}(\{q\}) \subset M$ é um conjunto finito de pontos isolados. Além disso, existe uma vizinhança aberta $V$ de $q$ e abertos disjuntos $V_{i} \ni p_{i}$, onde $p_{i} \in f^{-1}(\{q\})$ tal que 
+	\textbf{Lema (caracacterística dos pontos críticos em variedades compactas):} $f: M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciaveis, com mesma dimensão e $M$ compacta. Suponha que $f(p) = q \in N$ seja um valor regular, então $f^{-1}(\{q\}) \subset M$ é um conjunto finito de pontos isolados. Além disso, existe uma vizinhança aberta $U$ de $q$ e abertos disjuntos $V_{i} \ni p_{i}$, onde $p_{i} \in f^{-1}(\{q\})$ onde $1 \leq i \leq k$ tal que 
 	\begin{enumerate}
-		\item $f^{-1}(V) = \bigcup \limits_{i=1}^{k} V_{i}$
+		\item $f^{-1}(U) = \bigcup \limits_{i=1}^{k} V_{i}$
 		
 		\item $f_{i}:V_{i} \to V$ é um difeomorfismo para $1 \leq i \leq k$
 	\end{enumerate}
-	$\square$ Como para todo $p \in f^{-1}(\{q\})$ temos que $D_{p}f : T_{p}M \to T_{f(p)}N$ é sobrejetor, e como $dim(M) = dim(N)$, também será uma aplicação injetora, portanto, é um isomorfismo. Sendo assim, pelo teorema da função inversa, existe uma vizinhança aberta $U \ni p$ difeomorfa a uma vizinhança aberta $V \ni q$. Consequentemente, tomando $p_{i} \neq p_{j} \in f^{-1}(\{q\})$, teremos $U_{i} \ni p_{i}$ e $U_{j} \ni p_{j}$ difeomorfas as vizinhanças $V_{i} \ni q$ e $V_{j} \ni q$, respectivamente, e de modo que ainda tenhamos $U_{i} \cap U_{j} = \emptyset$, isto é, vizinhanças disjuntas. Suponha $f^{-1}(\{q\})$ seja infinito, então definindo os fechados $\overline{W_{i}} \subset U_{i}$ tal que $p_{i} \in \overline{W_{i}}$, onde $U_{i}$ são os abertos disjuntos construidos anteriormente, assim $A = \{M \backslash \overline{W_{i}} \} \cup \{U_{i}\}$ é uma cobertura por abertos de $M$, e como $M$ é compacta, então podemos escolher uma subcobertura finita $A' \subset A$, então existirá um $p_{s} \in f^{-1}(\{p\})$ tal que $p_{s} \notin A'$, o que é uma contradição, portanto $f^{-1}(\{p\})$ é finito. Definindo $f^{-1}(\{q\}) = \{p_{1}, \dots, p_{k}\}$ para algum $k \in \mathbb{N}$, definamos $U = \bigcap f(U_{i})$ e note que $q \in U$
+	$\square$ Como para todo $p \in f^{-1}(\{q\})$ temos que $D_{p}f : T_{p}M \to T_{f(p)}N$ é sobrejetor, e como $dim(M) = dim(N)$, também será uma aplicação injetora, portanto, é um isomorfismo. Sendo assim, pelo teorema da função inversa, existe uma vizinhança aberta $U \ni p$ difeomorfa a uma vizinhança aberta $V \ni q$. Consequentemente, tomando $p_{i} \neq p_{j} \in f^{-1}(\{q\})$, teremos $U_{i} \ni p_{i}$ e $U_{j} \ni p_{j}$ difeomorfas as vizinhanças $V_{i} \ni q$ e $V_{j} \ni q$, respectivamente, e de modo que ainda tenhamos $U_{i} \cap U_{j} = \emptyset$, isto é, vizinhanças disjuntas. Suponha $f^{-1}(\{q\})$ seja infinito, então definindo os fechados $\overline{W_{i}} \subset U_{i}$ tal que $p_{i} \in \overline{W_{i}}$, onde $U_{i}$ são os abertos disjuntos construidos anteriormente, assim $A = \{M \backslash \overline{W_{i}} \} \cup \{U_{i}\}$ é uma cobertura por abertos de $M$, e como $M$ é compacta, então podemos escolher uma subcobertura finita $A' \subset A$, então existirá um $p_{s} \in f^{-1}(\{p\})$ tal que $p_{s} \notin A'$, o que é uma contradição, portanto $f^{-1}(\{p\})$ é finito. Definindo $f^{-1}(\{q\}) = \{p_{1}, \dots, p_{k}\}$ para algum $k \in \mathbb{N}$, definamos os complementares $U_{i}^{c} = M \backslash \bigcup U_{i}$ e $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$. Note que $q \in \bigcap f(U_{i})$ e $q \notin \bigcap f(U_{i}^{c})$, logo  $q \in U \neq \emptyset$, além disso, $\bigcap f(U_{i})$ é uma intersecção finita de abertos, portanto é um aberto, e como $U_{i}^{c}$ são fechados em $M$, que é um compacto, então $f(U_{i}^{c})$ são compactos, logo $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$ é um aberto. Por fim, definindo $V_{i} = U_{i} \cap f^{-1}(U)$ teremos $f^{-1}(U) = \bigcup V_{i}$, como desejávamos. $\blacksquare$
+	
+	\textbf{Definição (índice local):} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, conexas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, definimos por \textit{índice local}
+	$$
+	Ind(f; p) := \left\{
+	\begin{array}{cc}
+	1, & D_{p}f : T_{p}M \to T_{q}N \text{ preserva orient.} \\
+	-1, & \text{caso contrario}.\\
+	\end{array}.
+	\right.
+	$$
+	
+	\textbf{Teorema (grau de aplicação é um inteiro)} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, conexas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, então
+	$$
+	deg(f) = \sum \limits_{p \in f^{-1}(q)} Ind(f;p) \in \mathbb{Z}.
+	$$
+	$\square$ Sejam os pontos regulares e suas vizinhanças abertas $p_{i} \in f^{-1}(\{q\})$ e $p_{i} \in V_{i}$, respectivamente, com $1\leq i \leq k$, como no Lema anterior. Seja $\omega \in \Omega^{n}(N)$ tal que $supp(\omega) \subseteq U$ e $\int_{N} \omega = 1$, então teremos $supp(f^{*}(\omega)) \subseteq f^{-1}(U) = \bigcup V_{i}$, pelo lema anterior, o que nos permite escrever $f^{*}(\omega) = \sum \omega_{i}$, onde $\omega_{i} \in \Omega^{n}(M)$ e $supp(\omega_{i}) \subseteq V_{i}$. Note que teremos $\omega_{i}|_{V_{i}}  = (f|_{V_{i}})^{*}(\omega|_{U})$. Assim:
+	$$
+	\begin{aligned}
+	def(f) =& deg(f)\int_{N} \omega = \int_{M} f^{*}(\omega)
+	\\
+	=& \sum \int_{M}\omega_{i} = \sum \int_{V_{i}}\omega_{i}|_{V_{i}}
+	\\
+	=& \sum \int_{V_{i}} (f|_{V_{i}})^{*}(\omega|_{U}) = \sum Ind(f, p_{i}) \int_{f(V_{i})} \omega|_{U}
+	\\
+	=& \sum Ind(f, p_{i}) \int_{U} \omega|_{U} = \sum Ind(f, p_{i}) \int_{N} \omega
+	\\
+	=& \sum Ind(f, p_{i}) \in \mathbb{Z}.
+	\end{aligned}$$
+	$\blacksquare$
 \end{document}
