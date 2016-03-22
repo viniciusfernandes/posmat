@@ -333,16 +333,21 @@
 	$$
 	\begin{aligned}
 	g_{1}(x_{1}, \dots, x_{n-1}) 
-	=& \int_{\mathbb{R}} f(x_{1}, \dots, x_{n-1}, x_{n})dx_{n}
+	=& \int_{\mathbb{R}} f(x_{1}, \dots, x_{n})dx_{n}
 	\\
 	g_{2}(x_{1}, \dots, x_{n-1}) 
-	=& \int_{\mathbb{R}} g_{1}(x_{1}, \dots, x_{n-1})dx_{n-1}
+	=& \int_{\mathbb{R}} g_{1}(x_{1}, \dots, x_{n})dx_{n-1}
 	\\
 	\vdots &
 	\\
 	g_{n-1}(x_{1}, \dots, x_{n-1})
-	=& \int_{\mathbb{R}} g_{n-2}(x_{1}, x_{2})dx_{2}.
+	=& \int_{\mathbb{R}} g_{n-2}(x_{1}, \dots, x_{n})dx_{2}.
 	\end{aligned}
+	$$
+	
+	e pela hipótese de indução, afirmemos que existe $g, g_{1}, \dots, g_{n-1} \in C^{\infty}_{c}(\mathbb{R}^{n})$, tal que
+	$$
+	g(x_{1}, \dots, x_{n-1}) = \sum_{j=1}^{n-1} \partial_{j}g_{j}(x_{1}, \dots, x_{n-1}).
 	$$
 	
 	Tome agora $\rho \in C^{\infty}_{c}(\mathbb{R})$ tal que $\int_{\mathbb{R}} \rho(x)dx = 1$, e agora façamos 
@@ -357,7 +362,7 @@
 	$$
 	f_{n}(x_{1}, \dots, x_{n}) = \int_{-\infty}^{x_{n}}h(x_{1}, \dots, x_{n-1}, t)dt.
 	$$
-	Evidentemente $f_{n} \in C^{\infty}(\mathbb{R}^{n})$, agora vamos mostrar que possui suporte compacto, e para isso basta mostrar que $\lim_{x_{n} \to \infty} f_{n}(x_{1}, \dots, x_{n}) = 0$. Vejamos então que:
+	Evidentemente $f_{n} \in C^{\infty}(\mathbb{R}^{n})$, agora vamos mostrar que possui suporte compacto, e para isso basta mostrar que $||x_{n}|| \to \infty$ implica em $f_{n}(x_{1}, \dots, x_{n}) \to 0$ . Vejamos então que:
 	$$
 	\begin{aligned}
 	h(x_{1}, \dots, x_{n-1}, t) =& f(x_{1}, \dots, t) - \sum_{j=1}^{n-1} \partial_{j} \Big(g_{j}(x_{1}, \dots, x_{n-1})\rho(t) \Big)
@@ -370,8 +375,8 @@
 	Voltando na definição de $f_{n}$:
 	$$
 	\begin{aligned}
-	\lim_{x_{n} \to \infty} f_{n}(x_{1}, \dots, x_{n}) 
-	=& \lim_{x_{n} \to \infty} \int_{-\infty}^{x_{n}}h(x_{1}, \dots, x_{n-1}, t)dt
+	\lim_{||x_{n}|| \to \infty} f_{n}(x_{1}, \dots, x_{n}) 
+	=& \lim_{||x_{n}|| \to \infty} \int_{-\infty}^{x_{n}}h(x_{1}, \dots, x_{n-1}, t)dt
 	\\
 	=& \int_{-\infty}^{\infty}f(x_{1}, \dots, t) - g(x_{1}, \dots, x_{n-1})\rho(t)dt
 	\\
