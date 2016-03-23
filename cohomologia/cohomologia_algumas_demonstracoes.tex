@@ -35,17 +35,17 @@
 	\\
 	d(\omega) =& \sum_{J,k} \partial_{k} g_{J}(x,t) dx_{k} \wedge dt \wedge dx_{J} + \sum_{I,k} \partial_{k} f_{I}(x,t) dx_{k} \wedge dx_{I}
 	\\
-	 =& \sum_{J,k} -\partial_{k} g_{J}(x,t) dt \wedge dx_{k} \wedge dx_{J} + \sum_{I,k} \partial_{k} f_{I}(x,t) dx_{k} \wedge dx_{I},
-	 \\
-	 S^{p+1}d(\omega) =&  -\sum_{J,k} \Big( \int_{0}^{1}  \partial_{k} g_{J}(x,t)dt \Big) dx_{k} \wedge dx_{J} + \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J},
-	 \\
-	  d S^{p}(\omega) + S^{p+1}d(\omega) =& \sum_{J,i} \Big( \int_{0}^{1} \partial_{i} g_{J}(x,t)dt \Big) dx_{i} \wedge dx_{J} -\sum_{J,k} \Big( \int_{0}^{1}  \partial_{k} g_{J}(x,t)dt \Big) dx_{k} \wedge dx_{J} 
-	  \\
-	  +& \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J}
-	  \\
-	  =& \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J} = \sum_{I} \Big( f_{I}(x,1)  - f_{I}(x,0)\Big) dx_{I}
-	  \\
-	  =& \sum_{I} f_{I}(x,1) dx_{I} - \sum_{I} f_{I}(x,0) dx_{I}.
+	=& \sum_{J,k} -\partial_{k} g_{J}(x,t) dt \wedge dx_{k} \wedge dx_{J} + \sum_{I,k} \partial_{k} f_{I}(x,t) dx_{k} \wedge dx_{I},
+	\\
+	S^{p+1}d(\omega) =&  -\sum_{J,k} \Big( \int_{0}^{1}  \partial_{k} g_{J}(x,t)dt \Big) dx_{k} \wedge dx_{J} + \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J},
+	\\
+	d S^{p}(\omega) + S^{p+1}d(\omega) =& \sum_{J,i} \Big( \int_{0}^{1} \partial_{i} g_{J}(x,t)dt \Big) dx_{i} \wedge dx_{J} -\sum_{J,k} \Big( \int_{0}^{1}  \partial_{k} g_{J}(x,t)dt \Big) dx_{k} \wedge dx_{J} 
+	\\
+	+& \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J}
+	\\
+	=& \sum_{I} \Big( \int_{0}^{1}  \partial_{t} f_{I}(x,t)dt \Big) dx_{J} = \sum_{I} \Big( f_{I}(x,1)  - f_{I}(x,0)\Big) dx_{I}
+	\\
+	=& \sum_{I} f_{I}(x,1) dx_{I} - \sum_{I} f_{I}(x,0) dx_{I}.
 	\end{aligned}
 	$$
 	Como $U$ é um conjunto estrelado, podemos conectar todo ponto com a origem através de uma reta, assim, a função $\phi: U \times [0,1] \to U$ tal que $\phi(x,t) = tx$ esta bem definida. Vejamos então que $\phi^{*} : \Omega(U) \to \Omega(U \times \mathbb{R})$ será dado por $\phi^{*}(\alpha)_{x}(a_{1},\dots,a_{p}) = \alpha_{tx}(D_{x}\phi(a_{1}),\dots, D_{x}\phi(a_{p}))$, consequentemente, se tivermos $\alpha_{x} = \sum \alpha_{I}(x)dx_{I}$, então 
@@ -75,12 +75,12 @@
 	Fazendo $\omega_{x} = \phi^{*}\alpha_{x}$ e voltando na relação:
 	$$
 	\begin{aligned}
-   	dS^{p}(\phi^{*}\alpha_{x}) + S^{p+1}d(\phi^{*}\alpha_{x}) 
-	 =& \sum_{I} \alpha_{I}(1.x) 1^{p} dx_{I} - \sum_{I} \alpha_{I}(0.x) 0^{p} dx_{I}
-	 \\
-	 =& \sum_{I} \alpha_{I}(x) dx_{I}
-	 \\
-	 (dS^{p}\phi^{*} + S^{p+1}d\phi^{*})(\alpha_{x}) =& \alpha_{x},
+	dS^{p}(\phi^{*}\alpha_{x}) + S^{p+1}d(\phi^{*}\alpha_{x}) 
+	=& \sum_{I} \alpha_{I}(1.x) 1^{p} dx_{I} - \sum_{I} \alpha_{I}(0.x) 0^{p} dx_{I}
+	\\
+	=& \sum_{I} \alpha_{I}(x) dx_{I}
+	\\
+	(dS^{p}\phi^{*} + S^{p+1}d\phi^{*})(\alpha_{x}) =& \alpha_{x},
 	\end{aligned}$$
 	portanto, $dS^{p}\phi^{*} + S^{p+1}d\phi^{*} = Id$. Como $d\phi^{*} = \phi^{*}d$, podemos definir $B^{p} = S^{p}\circ\phi^{*}$, assim vamos reescrever
 	$$
@@ -96,7 +96,7 @@
 	$\square$ Por hipótese temos $Im(f^{p}) = Ker(g^{p})$, isto é, dado $a \in A^{p}$ teremos $(g^{p}\circ f^{p})(a) = 0$, consequentemente, $(g\circ f)^{*}([a]) = g^{*}(f^{*}([a])) = [(g^{p}\circ f^{p})(a)] = [0]$, portanto $Im(f^{*}) \subset Ker(g^{*})$. Vamos mostrar a inclusão $Ker(g^{*}) \subset Im(f^{*})$. Tomemos $[b] \in Ker(g^{*})$, assim $g^{*}([b]) = [0] \Rightarrow [g^{p}(b)] = [0]$, isto é, $g^{p}(b) = d^{p-1}c$, para algum $c \in H^{p}(C)$. Como $g^{p-1}$ é sobrejtor, então existe $b' \in H^{p}(B)$ tal que $g^{p-1}(b') = c$, assim podemos afirmar que $g^{p}(b) = d^{p-1}g^{p-1}(b') = g^{p}d^{p}(b')$, portanto $g^{p}(b - d^{p}(b')) = 0$, isto é, $b - d^{p}(b') \in Ker(g^{p})$. Como temos uma sequência exata curta, isto é $Im(f^{p}) = Ker(g^{p})$, podemos afirmar que existe $a \in A^{p}$ tal que $f^{p}(a) = b - d^{p-1}(b') \in Ker(g^{p})$ e como $f^{p}$ é injetora (por hipótese) e também sobrejetora (pois $Im(f^{p}) = Ker(g^{p})$) , então podemos escrever $f^{*}[a] = [f^{p}(a)] = [b - d^{p-1}(b')] =  [b] - [d^{p-1}(b')] = [b]$, portanto $[b] = f^{*}[a] \in Im(f^{*})$, o que nos permite afirmar $Ker(g^{*}) \subset Im(f^{*})$. Conclusão, $Ker(g^{*}) = Im(f^{*})$, e temos uma sequência exata. 
 	
 	$\blacksquare$
-
+	
 	\vspace{2mm}
 	\textbf{Proposição:} O mapa $\partial^{*}: H^{p}(C^{*}) \to H^{p+1}(A^{*})$ dado por $\partial^{*}([c]) = [(f^{p+1})^{-1}(d^{p}((g^{p})^{-1}(c)))] $ esta bem definido.
 	
@@ -302,13 +302,13 @@
 	\textbf{Exemplo:} Seja $f: \mathbb{R}^{n} \to \mathbb{R}^{n}$ uma aplicação diferenciável. Tomando $dx_{i} \in \Omega^{1}(\mathbb{R}^{n})$ um elemento da base desse espaço, então teremos:
 	$$
 	\begin{aligned}
-		f^{*}(dx_{i})(v) =& dx_{i}(f_{*}(v)) = dx_{i}(D_{x}f(v))
-		\\
-		=& dx_{i} \Big(\sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) e_{j}\Big) = \sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) dx_{i}(e_{j}) 
-		\\
-		=& \sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) \delta_{ij}  = \sum_{k} \partial_{k} f_{i}v_{k} 
-		\\
-		=& \sum_{k} \partial_{k} f_{i}dx_{k}(v) = df_{i}(v). 
+	f^{*}(dx_{i})(v) =& dx_{i}(f_{*}(v)) = dx_{i}(D_{x}f(v))
+	\\
+	=& dx_{i} \Big(\sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) e_{j}\Big) = \sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) dx_{i}(e_{j}) 
+	\\
+	=& \sum_{j} \Big( \sum_{k} \partial_{k} f_{j}v_{k} \Big) \delta_{ij}  = \sum_{k} \partial_{k} f_{i}v_{k} 
+	\\
+	=& \sum_{k} \partial_{k} f_{i}dx_{k}(v) = df_{i}(v). 
 	\end{aligned}
 	$$
 	Façamos agora $dx_{1} \wedge \dots  dx_{n} \in \Omega^{n}(\mathbb{R}^{n})$, então:
@@ -319,7 +319,7 @@
 	\\
 	=& (df_{1} \wedge \dots  \wedge df_{n}) (v_{1}, \dots, v_{n}) 
 	\\
-	 =& \sum_{\sigma} sgn(\sigma) \underbrace{df_{\sigma(1)}(v_{1})}_{A_{1\sigma(1)}} \dots \underbrace{ df_{\sigma(n)}(v_{n}) }_{A_{n\sigma(n)}}
+	=& \sum_{\sigma} sgn(\sigma) \underbrace{df_{\sigma(1)}(v_{1})}_{A_{1\sigma(1)}} \dots \underbrace{ df_{\sigma(n)}(v_{n}) }_{A_{n\sigma(n)}}
 	\\
 	=& \sum_{\sigma} sgn(\sigma) A_{1\sigma(1)}1 \dots  A_{n\sigma(n)}
 	\\
@@ -439,16 +439,16 @@
 	
 	\vspace{2mm}
 	\textbf{Corolário:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então temos o seguinte isomorfismo:
- 	$$
- 	\int_{M} : H^{n}_{c}(M) \to \mathbb{R}.
- 	$$
- 	
- 	$\square$ Tomando $[\omega] \in H^{n}_{c}(M)$ e definindo $\int_{M} ([\omega]) := \int_{M} \omega$, afimo que essa aplicação é sobrejetora pois tomando $\lambda \in \mathbb{R}$ temos a forma $\omega = \lambda/Vol(K) dx_{1} \wedge \dots \wedge dx_{n}$, onde $K = supp(\omega)$, com isso $\int_{M} ([\omega]) = \int_{M} \omega = \int_{M} \lambda/Vol(K)d\mu_{n} = \lambda/Vol(K)\int_{K} d\mu_{n} = \lambda Vol(K)/Vol(K) = \lambda$. Logo, é sobrejetora. Tomando $[\omega] \neq [\alpha] \in H^{n}_{c}(M)$, então suponha que $\int_{M} ([\omega]) - \int_{M}([\alpha])  = \int_{M} \omega - \int_{M} \alpha = \int_{M} (\omega - \alpha)= 0 \Rightarrow \omega - \alpha = d\beta$, com $\beta \in \Omega^{n-1}(M)$, ou seja, $[\omega] = [\alpha]$, contradizendo a hipótese que $[\omega] \neq [\alpha]$, portanto é uma aplicação injetora. Conclusão: $\int_{M} : H^{n}(M) \to \mathbb{R}$ é um isomorfismo. 
- 	
- 	$\blacksquare$
- 	
- 	\section{Grau de Aplicação}
- 	
+	$$
+	\int_{M} : H^{n}_{c}(M) \to \mathbb{R}.
+	$$
+	
+	$\square$ Tomando $[\omega] \in H^{n}_{c}(M)$ e definindo $\int_{M} ([\omega]) := \int_{M} \omega$, afimo que essa aplicação é sobrejetora pois tomando $\lambda \in \mathbb{R}$ temos a forma $\omega = \lambda/Vol(K) dx_{1} \wedge \dots \wedge dx_{n}$, onde $K = supp(\omega)$, com isso $\int_{M} ([\omega]) = \int_{M} \omega = \int_{M} \lambda/Vol(K)d\mu_{n} = \lambda/Vol(K)\int_{K} d\mu_{n} = \lambda Vol(K)/Vol(K) = \lambda$. Logo, é sobrejetora. Tomando $[\omega] \neq [\alpha] \in H^{n}_{c}(M)$, então suponha que $\int_{M} ([\omega]) - \int_{M}([\alpha])  = \int_{M} \omega - \int_{M} \alpha = \int_{M} (\omega - \alpha)= 0 \Rightarrow \omega - \alpha = d\beta$, com $\beta \in \Omega^{n-1}(M)$, ou seja, $[\omega] = [\alpha]$, contradizendo a hipótese que $[\omega] \neq [\alpha]$, portanto é uma aplicação injetora. Conclusão: $\int_{M} : H^{n}(M) \to \mathbb{R}$ é um isomorfismo. 
+	
+	$\blacksquare$
+	
+	\section{Grau de Aplicação}
+	
 	\textbf{Definição (grau de aplicação):} Sejam $M,N$ variedades diferenciáveis, conexas, compactas e orientadas. Seja $f: M \to N$ uma aplicação suave, então podemos afirmar que ose seguintes mapas $f^{*}: H^{n}(M) \to H^{n}(N)$, $\int_{M}: H^{n}(M) \to \mathbb{R}$ e $\int_{N}: H^{n}(N) \to \mathbb{R}$ são isomorfismos. Vamos definir um mapa de modo que esse diagrama comute, isto é, $\int_{M} \circ f^{*} = deg(f) \circ \int_{N} :  H^{n}(N) \to \mathbb{R}$ de modo que
 	$$
 	\int_{M} f^{*}(\omega) = deg(f) \int_{N} \omega,
@@ -548,4 +548,57 @@
 	\end{aligned}
 	$$
 	Mostramos que a matriz hessiana de $k$ não é identicamente nula. Agora resta-nos mostrar que ela é invertível.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textbf{Teorema (aproximação quadráticas de funções em variedades):} Seja $p \in M^{n}$ um ponto crítico não-degenerado de $f \in C^{\infty}(M, \mathbb{R})$, então existe uma carta $(U, h)$ de $M$ contendo a origem tal que $p = h(0)$ e 
+	$$
+	(f \circ h) (q) = f(p) + \sum_{i=1}^{n}\delta_{i}x_{i}^{2}, \; q \in U
+	$$
+	onde $\delta_{i} \in \{-1,1\}, \; 1\leq j \leq n$.
+	
+	$\square$ A demonstração está fora do escopo.	
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textbf{Definição (campo vetorial tipo gradiente e índices de Morse ddo ponto crítico):} Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse, um campo vetorial $X : M \to T_{p}M$ é dito \textit{tipo gradiente de f} se:
+	\begin{enumerate}
+		\item Para todo ponto não-crítico $p \in M$ tem-se 	
+		$D_{p}f(X(p)) > 0$,
+		
+		\item Se $p \in M^{n}$ é um ponto crítico não-degenerado de $f$, então existe uma carta $(U, h)$ de $M$ contendo a origem tal que $p = h(0)$ tal que
+		$$
+		(f \circ h) (q) = f(p) - x_{1}^{2} - \dots - x_{\lambda}^{2} + x_{\lambda + 1}^{2} + \dots + x_{n}^{2}, \; q \in U.
+		$$ 
+		
+		\item O índice $\lambda$ damos o nome de \textit{índice de Morse do ponto crítico $p \in M$}
+	\end{enumerate}
+	
+	\vspace{2mm}
+	\textbf{Lema (campos do tipo gradiente para funçoes de Morse):} Toda função de Morse em $M$ admite um campo do tipo gradiente.
+	
+	$\square$ Seja $f : M \to \mathbb{R}$ uma função de Morse. Como $M$ é compacta, todo atlas terá um subatlas finito, além disso, vimos em um teorema anterior que todos os pontos críticos de $f$ são isolados, assim podemos construir um atlas $\{U_{i}, h_{i}\}_{i \in K}$, onde $K \subset \mathbb{N}$ é um conjunto finito, tal que, cada ponto crítico não-degenerado $p_{i} \in h_{i}(U_{i})$ e não pertença a outra carta. Seja $\{\phi_{i}\}_{i \in K}$ uma partição da unidade subordinada ao atlas $\{U_{i}, h_{i}\}_{i \in K}$ e tomemos os campos vetoriais $X_{i} = Dh_{i}(grad(f \circ h_{i}))$ e definindo o campo suave em $M$ por $X = \sum \phi_{i} X_{i}$. Suponha que $p \in M$ e $p \notin \{p_{i}\}_{i \in K}$, claro que existe $U_{s}$ tal que $p \in U_{s}$, então 
+	$$
+	\begin{aligned}
+	D_{p}f(X(p)) =& D_{p}f \Big(\underbrace{ \sum \phi_{i}(p) X_{i}(p) }_{p \in U_{s}}\Big) 
+	\\
+	=& D_{p}f(X_{s}(p)) 
+	\\
+	=& (D_{p}f \circ Dh_{i})(grad(f \circ h_{i}))
+	\\
+	=& D(f \circ h_{i})(grad(f \circ h_{i})) 
+	\\
+	=& \langle grad(f \circ h_{i}), grad(f \circ h_{i}) \rangle 
+	\\
+	>&0.
+	\end{aligned}
+	$$
+	Portanto, temos o campo $X$ satisfazendo a primeidas das condições. Por fim, supondo agora $p = p_{s} \in \{p_{i}\}$, então teremos, pelo teorema de aproximação quadrática de funções, que existe uma carta $(U, h)$ contendo a origem de modo que $p_{s} = h(0)$ e $(f \circ h) (q) = f(p) + \sum_{i=1}^{n}\delta_{i}x_{i}^{2}, \; x_{i} \in h^{-1}(U), q \in h(U)$. Podemos realizar uma nova parametrização do aberto $W_{s}$ de modo que as coordenada contendo os índices $\delta_{i} = -1$ fiquem ordenadas, isto é, uma nova carta contendo a origem $(W, g)$ que realiza a permuta das componentes, assim:
+	$$
+	(f \circ g) (q) = f(p) - y_{1}^{2} - \dots - y_{\lambda}^{2} + y_{\lambda+1}^{2} + \dots + y_{n}^{2}, \; q \in W.
+	$$
+	
+	$\blacksquare$
 \end{document}
