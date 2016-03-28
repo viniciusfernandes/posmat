@@ -22,7 +22,7 @@
 	
 	\section{Cohomologia}
 	
-	\textbf{Lema de Poincaré:} seja $U \subseteq \mathbb{R}^{n}$ um conjunto estrelado, então $H^{p}(U) = \{0\}$ se $p>0$ e $H^{0}(U) \cong \mathbb{R}$.
+	\textit{\textbf{Lema (de Poincaré):} seja $U \subseteq \mathbb{R}^{n}$ um conjunto estrelado, então $H^{p}(U) = \{0\}$ se $p>0$ e $H^{0}(U) \cong \mathbb{R}$.}
 	
 	$\square$ Sem perda de generalidade, podemos assumir que $U$ é estrelado com relação a origem (pois a operaçao de translação de um conjunto estrelado gera um comjunto estrelado). Seja o mapa $S^{p}: \Omega^{p}(U \times \mathbb{R}) \to \Omega^{p-1}(U)$, e podemos escrever $\omega \in \Omega^{p}(U \times \mathbb{R}) $ como sendo $\omega = \sum g_{J}(x,t)dt \wedge dx_{J} + \sum f_{I}(x,t)dx_{I}$, onde $I=(i_{1}, \dots ,i_{p})$ e $J=(i_{1}, \dots ,i_{p-1})$. Agora definindo
 	$$
@@ -91,21 +91,21 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Lema:} Sejam $A^{*}, B^{*}, C^{*}$ complexos de cadeia e $f:A^{*} \to B^{*}$, $g:B^{*} \to C^{*}$ mapa de cadeias, além disso, se a sequência $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ for uma sequência exata curta, então a sequência $H^{p}(A^{*}) \xrightarrow{f} H^{p}(B^{*}) \xrightarrow{g} H^{p}(C^{*}) $ é exata.
+	\textit{\textbf{Lema:} Sejam $A^{*}, B^{*}, C^{*}$ complexos de cadeia e $f:A^{*} \to B^{*}$, $g:B^{*} \to C^{*}$ mapa de cadeias, além disso, se a sequência $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ for uma sequência exata curta, então a sequência $H^{p}(A^{*}) \xrightarrow{f} H^{p}(B^{*}) \xrightarrow{g} H^{p}(C^{*}) $ é exata.}
 	
 	$\square$ Por hipótese temos $Im(f^{p}) = Ker(g^{p})$, isto é, dado $a \in A^{p}$ teremos $(g^{p}\circ f^{p})(a) = 0$, consequentemente, $(g\circ f)^{*}([a]) = g^{*}(f^{*}([a])) = [(g^{p}\circ f^{p})(a)] = [0]$, portanto $Im(f^{*}) \subset Ker(g^{*})$. Vamos mostrar a inclusão $Ker(g^{*}) \subset Im(f^{*})$. Tomemos $[b] \in Ker(g^{*})$, assim $g^{*}([b]) = [0] \Rightarrow [g^{p}(b)] = [0]$, isto é, $g^{p}(b) = d^{p-1}c$, para algum $c \in H^{p}(C)$. Como $g^{p-1}$ é sobrejtor, então existe $b' \in H^{p}(B)$ tal que $g^{p-1}(b') = c$, assim podemos afirmar que $g^{p}(b) = d^{p-1}g^{p-1}(b') = g^{p}d^{p}(b')$, portanto $g^{p}(b - d^{p}(b')) = 0$, isto é, $b - d^{p}(b') \in Ker(g^{p})$. Como temos uma sequência exata curta, isto é $Im(f^{p}) = Ker(g^{p})$, podemos afirmar que existe $a \in A^{p}$ tal que $f^{p}(a) = b - d^{p-1}(b') \in Ker(g^{p})$ e como $f^{p}$ é injetora (por hipótese) e também sobrejetora (pois $Im(f^{p}) = Ker(g^{p})$) , então podemos escrever $f^{*}[a] = [f^{p}(a)] = [b - d^{p-1}(b')] =  [b] - [d^{p-1}(b')] = [b]$, portanto $[b] = f^{*}[a] \in Im(f^{*})$, o que nos permite afirmar $Ker(g^{*}) \subset Im(f^{*})$. Conclusão, $Ker(g^{*}) = Im(f^{*})$, e temos uma sequência exata. 
 	
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Proposição:} O mapa $\partial^{*}: H^{p}(C^{*}) \to H^{p+1}(A^{*})$ dado por $\partial^{*}([c]) = [(f^{p+1})^{-1}(d^{p}((g^{p})^{-1}(c)))] $ esta bem definido.
+	\textit{\textbf{Proposição:} O mapa $\partial^{*}: H^{p}(C^{*}) \to H^{p+1}(A^{*})$ dado por $\partial^{*}([c]) = [(f^{p+1})^{-1}(d^{p}((g^{p})^{-1}(c)))] $ esta bem definido.}
 	
 	$\square$ Seja $c \in C^{p}$ tal que $d^{p}c=0$, e como $g^{p}$ é sobrejetora, então existe $b \in B^{p}$ tal que $g^{p}(b) = c$ e $d^{p}g^{p}(b) = d^{p}c = 0$, portanto $g^{p+1}(d^{p}b) = d^{p}g^{p}(b) = 0 \Rightarrow d^{p}b \in Ker(g^{p+1}) = Im(f^{p+1})$, pois temos uma sequência exata curta, além disso, $f^{p}$ é injetora, então existe um único $a \in A^{p+1}$ tal que $f^{p+1}(a) = d^{p}b$, consequentemente, $d^{p+1}f^{p+1}(a) = f^{p+2}(d^{p+1}(a))=d^{p+1}d^{p}b=0 \Rightarrow f^{p+2}(d^{p+1}(a)) =0$ e como $f^{p+2}$ é injetora, então devemos ter $d^{p+1}(a)=0$. Novamente, como $g^{p}$ é sobrejetora, então existem $b_{1} \neq b_{2} \in B^{p}$ tais que $g^{p}(b_{1}) = g^{p}(b_{2}) = c$, ou ainda, $g^{p}(b_{1}) - g^{p}(b_{2}) = g^{p}(b_{1}-b_{2}) = 0 \Rightarrow b_{1}-b_{2} \in Ker(g^{p}) = Im(f^{p})$, então existe $a' \in Im(f^{p+1})$ tal que $f^{p}(a') = b_{1}-b_{2}$, consequentemente, $d^{p}b_{1} - d^{p}b_{2} = d^{p}f^{p}(a') = f^{p+1}(d^{p}a')$, e pela injetividade de $f^{p+1}$ podemos definir $a_{1} = (f^{p+1})^{-1}(d^{p}b_{1})$, $ a_{2} = (f^{p+1})^{-1}(d^{p}b_{2}) \in A^{p+1}$, então $(f^{p+1})^{-1}(d^{p}b_{1} - d^{p}b_{2}) =(f^{p+1})^{-1}(d^{p}b_{1}) - (f^{p+1})^{-1}(d^{p}b_{2})  = (f^{p+1})^{-1}f^{p+1}(d^{p}a')$, ou seja, $a_{1} - a_{2} = d^{p}a'$, portanto, $[a_{1}] - [a_{2}] = [d^{p}a'] = [0] \Rightarrow [a_{1}] = [a_{2}] \in H^{p}(A^{*})$. Conclusão: o mapa $\partial^{*}: H^{p}(C^{*}) \to H^{p+1}(A^{*})$, dado por $\partial^{*}[c] = [a_{1}]$, leva uma classe de equivalência em apenas uma classe de equivalência, como desejávamos. 
 	
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Lema 1 (sequência exata):} A sequência $H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*})$ é exata.
+	\textit{\textbf{Lema 1 (sequência exata):} A sequência $H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*})$ é exata.}
 	
 	$\square$ Vamos mostrar a inclusão $Im(g^{*}) \subset Ker(\partial^{*})$. Seja $b \in H^{p}(B^{*})$, então $\partial^{*}g^{*}([b]) = \partial^{*}([g^{p}(b)]) = [(f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(g^{p}(b)))] = [(f^{p+1})^{-1}(d^{p}(b))] = [d^{p}(f^{p})^{-1}(b)] = [0]$, portanto $g^{*}([b]) \in Ker(\partial^{*})$. Agora vamos mostrar a inclusão inversa $Ker(\partial^{*}) \subset Im(g^{*})$, para isso tomemos $[c] \in Ker(\partial^{*})$, isto é, $\partial^{*}([c]) = [(f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(c))] = [0]$, e como $g^{p}$ é sobrejetor, existe $b \in B^{p}$ tal que $g^{p}(b) = c$. Tomando $a \in A^{p}$, onde $b = f^{p}(a)$, teremos 
 	$$
@@ -134,17 +134,18 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Lema 2 (sequência exata):} A sequência $H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}}  H^{p}(B^{*})$ é exata.
+	\textit{\textbf{Lema 2 (sequência exata):} A sequência $H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}}  H^{p}(B^{*})$ é exata.}
 	
 	$\square$ Vamos mostrar a inclusão  $Im(\partial^{*}) \subset Ker(f^{*})$. Seja $c \in H^{p}(C^{*})$, então $f^{*}\partial^{*}([c]) = f^{*}([(f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(c))]) = [f^{p+1}((f^{p+1})^{-1}(d^{p}(g^{p})^{-1}(c)))] = [d^{p}(g^{p})^{-1}(c)] = [0]$, logo $\partial^{*}([c]) \in Ker(f^{*})$. Vamos mostrar a inclusão inversa $Ker(f^{*}) \subset Im(\partial^{*}) $. Tomando $[a] \in Ker(f^{*})$ teremos $f^{*}([a]) = [f^{p+1}(a)] = [0]$, assim podemos afirmar que $f^{p+1}(a) = d^{p}b$, para algum $b \in B^{p}$, e como por hipótese $f^{p}$ é injetor, então podemos escrever $a = (f^{p+1})^{-1}d^{p}b \Rightarrow [a] = [(f^{p+1})^{-1}d^{p}(g^{p})^{-1}g^{p}(b)] = \partial^{*}[g^{p}(b)] \in Im(\partial^{*})$, portanto temos $Ker(f^{*}) \subset Im(\partial^{*})$, logo, $Ker(f^{*}) = Im(\partial^{*})$, e temos uma sequência exata, como desejávamos. 
 	
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Teorema (sequência longa exata da homologia):} Seja $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ uma sequência curta exata de complexos de cadeias, então a sequência $$
+	\textit{\textbf{Teorema (sequência longa exata da homologia):} Seja $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ uma sequência curta exata de complexos de cadeias, então a sequência
+	$$
 	\dots \to H^{p}(A^{*}) \xrightarrow{f^{*}} H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}} H^{p+1}(B^{*}) \to \dots
 	$$
-	é exata.
+	é exata.}
 	
 	$\square$ É uma aplicação dos dois lemas anteriores. 
 	
@@ -158,7 +159,7 @@
 	para todo $p$.
 	
 	\vspace{2mm}
-	\textbf{Lema (invariância homotópica):} Sejam $f,g : A^{*} \to B^{*}$ mapas homotópicos de cadeias, então $f^{*} = g^{*}: H^{p}(A^{*}) \to H^{p}(B^{*})$.
+	\textit{\textbf{Lema (invariância homotópica):} Sejam $f,g : A^{*} \to B^{*}$ mapas homotópicos de cadeias, então $f^{*} = g^{*}: H^{p}(A^{*}) \to H^{p}(B^{*})$.}
 	
 	$\square$ Por hipótese temos $s^{p}: A^{p} \to B^{p-1}$, então tomanto $[a] \in H^{p}(A^{*})$:
 	$$
@@ -182,11 +183,11 @@
 	Vamos demonstrar agora um teorema suja aplicação terá como um dos resultados mais importântes desse capítulo. O teorema de sequências de Mayer-vietoris. Ferramentas muito importante utilizada na determinação dos grupos de cohomologia.
 	
 	\vspace{2mm}
-	\textbf{Teorema:} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ subconjuntos abertos e defina $U=U_{1} \cup U_{2}$ e as seguintes inclusões $i_{k}: U_{k} \to U$ e $j_{k}: U{1}\cap U{2} \to U_{k}$, onde $k \in \{1,2\}$. Então a sequência
+	\textit{\textbf{Teorema:} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ subconjuntos abertos e defina $U=U_{1} \cup U_{2}$ e as seguintes inclusões $i_{k}: U_{k} \to U$ e $j_{k}: U{1}\cap U{2} \to U_{k}$, onde $k \in \{1,2\}$. Então a sequência
 	$$
 	0 \to \Omega(U) \xrightarrow{I^{p}} \Omega^{p}(U_{1}) \oplus \Omega^{p}(U_{2}) \xrightarrow{J^{p}} \Omega^{p}(U_{1} \cap U_{2}) \to 0 
 	$$
-	é exata, onde $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega))$ e $J^{p}(\omega_{1}, \omega_{2}) = j^{*}_{1}(\omega_{1})- j^{*}_{2}(\omega_{2})$.
+	é exata, onde $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega))$ e $J^{p}(\omega_{1}, \omega_{2}) = j^{*}_{1}(\omega_{1})- j^{*}_{2}(\omega_{2})$.}
 	
 	$\square$ Vamos mostrar a inclusão $Im(I^{p}) \subset Ker(J^{p})$. Tomando $\omega = \sum f_{I}dx_{I} \in \Omega^{p}(U)$ e avaliando $J^{p}(I^{p}(\omega)) = J^{p}(i^{*}_{1}(\omega), i^{*}_{2}(\omega)) = j^{*}_{1}(i^{*}_{1}(\omega))- j^{*}_{2}(i^{*}_{2}(\omega)) = \omega|_{U_{1} \cap U_{2}} - \omega|_{U_{1} \cap U_{2}} = 0$, logo $I^{p}(\omega) \in Ker(J^{p})$. Além disso $I^{p}$ é injetora pois $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega)) = 0 \iff i^{*}_{1}(\omega)=\sum f_{I}\circ i_{1}(x) dx_{I} = 0$ e $i^{*}_{2}(\omega) = \sum f_{I}\circ i_{2}(x) dx_{I} = 0$, implicando em $f_{I}(x) = 0$ para $x \in U$.  Agora vamos demonstrar a inclusão inversa $Ker(J^{p})\subset Im(I^{p})$. Tomemos as p-formas $\omega_{k} = \sum f_{k,I} dx_{I} \in \Omega^{p}(U_{k})$ e considere $\omega_{k} \in Ker(J^{p})$, então $J^{p}(\omega_{1}, \omega_{2}) = 0 \Rightarrow j^{*}_{1}(\omega_{1}) = j^{*}_{2}(\omega_{2})$, isto é, $\sum (f_{1,I}\circ j_{1}) dx_{I} = \sum (f_{2,I}\circ j_{2}) dx_{I}$, o que nos leva a duas condições: $f_{1,I}\circ j_{1}(x) = f_{2,I}\circ j_{2}(x)$ caso $x \notin U_{1} \cap U_{2}$ ou $f_{1,I}(x) = f_{2,I}(x)$ caso $x \in U_{1} \cap U_{2}$, assim, com essas condições podemos definir a função 
 	$$
@@ -217,7 +218,7 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Lema:} Os mapas $I: \Omega^{*}(U) \to \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2})$ e $J: \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2}) \to \Omega^{*}(U_{1} \cap U_{2})$, definidos anteriormente, são mapas de cadeias.
+	\textit{\textbf{Lema:} Os mapas $I: \Omega^{*}(U) \to \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2})$ e $J: \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2}) \to \Omega^{*}(U_{1} \cap U_{2})$, definidos anteriormente, são mapas de cadeias.}
 	
 	$\square$ Tomando $\omega \in \Omega^{p}(U)$, então 
 	$$
@@ -231,11 +232,11 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Teorema (Sequência de Mayer-Vietoris):} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ conjuntos abertos e $U = U_{1} \cup U_{2}$, então a sequência
+	\textit{\textbf{Teorema (Sequência de Mayer-Vietoris):} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ conjuntos abertos e $U = U_{1} \cup U_{2}$, então a sequência
 	$$
 	\dots \to H^{p}(U) \xrightarrow{I^{*}} H^{p}(U_{1}) \oplus H^{p}(U_{2}) \xrightarrow{J^{*}} H^{p}(U_{1} \cap U_{2}) \xrightarrow{\partial^{*}} H^{p+1}(U) \to \dots
 	$$
-	é exata.
+	é exata.}
 	
 	$\square$ Sabemos que os mapas $I: \Omega^{*}(U) \to \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2})$ e $J: \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2}) \to \Omega^{*}(U_{1} \cap U_{2})$ são mapas de cadeias, além disso, a sequência 
 	$$
@@ -344,7 +345,7 @@
 	$$
 	
 	\vspace{2mm}
-	\textbf{Lema (integração é invariante por difeomorfismos):} Sejam $U,V \subset M$ dois abertos e $\phi : U \to V $ um difeomorfismo, então dada $\omega \in \omega^{n}_{c}(V)$ teremos:
+	\textit{\textbf{Lema (integração é invariante por difeomorfismos):} Sejam $U,V \subset M$ dois abertos e $\phi : U \to V $ um difeomorfismo, então dada $\omega \in \omega^{n}_{c}(V)$ teremos:}
 	
 	$\square$ Definindo $\omega_{p} = \omega(p) dx_{1} \wedge \dots \wedge dx_{n}$, então por definição temos $\phi^{*}(\omega_{p}) = \omega(f(p))det(D_{p}\phi) dx_{1} \wedge \dots \wedge dx_{n}$, consequentemente
 	
@@ -355,7 +356,7 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Teorema:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então a seguinte sequência é exata:
+	\textit{\textbf{Teorema:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então a seguinte sequência é exata:}
 	$$
 	\Omega^{n-1}_{c}(M) \xrightarrow{d} \Omega^{n}_{c}(M) \xrightarrow{\int_{M}} \mathbb{R}
 	$$
@@ -438,7 +439,7 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Corolário:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então temos o seguinte isomorfismo:
+	\textit{\textbf{Corolário:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então temos o seguinte isomorfismo:}
 	$$
 	\int_{M} : H^{n}_{c}(M) \to \mathbb{R}.
 	$$
@@ -464,19 +465,22 @@
 	Enunciaremos agora alguns teoremas cuja demonstração esta fora do escopo dessa escrita.
 	
 	\vspace{2mm}
-	\textbf{Teorema (Brower-Sard):} Seja $f: M \to N$ uma aplicação suave entre variedades diferenciaveis, então o conjunto dos valores regulares é um conjunto denso em $N$.
+	\textit{\textbf{Teorema (Brower-Sard):} Seja $f: M \to N$ uma aplicação suave entre variedades diferenciaveis, então o conjunto dos valores regulares é um conjunto denso em $N$.}
 	
 	\vspace{2mm}
-	\textbf{Teorema (Sard):} Seja $f: U \subset \mathbb{R}^{n} \to \mathbb{R}^{m}$ uma aplicação suave, então o conjunto $S = \{x \in U: posto(D_{x}f) < m\}$ é um conjunto de medida (Lebesgue) nula em $\mathbb{R}^{m}$.
+	\textit{\textbf{Teorema (Sard):} Seja $f: U \subset \mathbb{R}^{n} \to \mathbb{R}^{m}$ uma aplicação suave, então o conjunto $S = \{x \in U: posto(D_{x}f) < m\}$ é um conjunto de medida (Lebesgue) nula em $\mathbb{R}^{m}$.}
 	
 	\vspace{2mm}
-	\textbf{Lema (caracacterística dos pontos críticos em variedades compactas):} $f: M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciaveis, com mesma dimensão e $M$ compacta. Suponha que $f(p) = q \in N$ seja um valor regular, então $f^{-1}(\{q\}) \subset M$ é um conjunto finito de pontos isolados. Além disso, existe uma vizinhança aberta $U$ de $q$ e abertos disjuntos $V_{i} \ni p_{i}$, onde $p_{i} \in f^{-1}(\{q\})$ onde $1 \leq i \leq k$ tal que 
+	\textit{\textbf{Lema (caracacterística dos pontos críticos em variedades compactas):} $f: M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciaveis, com mesma dimensão e $M$ compacta. Suponha que $f(p) = q \in N$ seja um valor regular, então $f^{-1}(\{q\}) \subset M$ é um conjunto finito de pontos isolados. Além disso, existe uma vizinhança aberta $U$ de $q$ e abertos disjuntos $V_{i} \ni p_{i}$, onde $p_{i} \in f^{-1}(\{q\})$ onde $1 \leq i \leq k$ tal que}
 	\begin{enumerate}
 		\item $f^{-1}(U) = \bigcup \limits_{i=1}^{k} V_{i}$
 		
-		\item $f_{i}:V_{i} \to V$ é um difeomorfismo para $1 \leq i \leq k$
+		\item $f_{i}:V_{i} \to V$ \textit{é um difeomorfismo para} $1 \leq i \leq k$
 	\end{enumerate}
-	$\square$ Como para todo $p \in f^{-1}(\{q\})$ temos que $D_{p}f : T_{p}M \to T_{f(p)}N$ é sobrejetor, e como $dim(M) = dim(N)$, também será uma aplicação injetora, portanto, é um isomorfismo. Sendo assim, pelo teorema da função inversa, existe uma vizinhança aberta $U \ni p$ difeomorfa a uma vizinhança aberta $V \ni q$. Consequentemente, tomando $p_{i} \neq p_{j} \in f^{-1}(\{q\})$, teremos $U_{i} \ni p_{i}$ e $U_{j} \ni p_{j}$ difeomorfas as vizinhanças $V_{i} \ni q$ e $V_{j} \ni q$, respectivamente, e de modo que ainda tenhamos $U_{i} \cap U_{j} = \emptyset$, isto é, vizinhanças disjuntas. Suponha $f^{-1}(\{q\})$ seja infinito, então definindo os fechados $\overline{W_{i}} \subset U_{i}$ tal que $p_{i} \in \overline{W_{i}}$, onde $U_{i}$ são os abertos disjuntos construidos anteriormente, assim $A = \{M \backslash \overline{W_{i}} \} \cup \{U_{i}\}$ é uma cobertura por abertos de $M$, e como $M$ é compacta, então podemos escolher uma subcobertura finita $A' \subset A$, então existirá um $p_{s} \in f^{-1}(\{p\})$ tal que $p_{s} \notin A'$, o que é uma contradição, portanto $f^{-1}(\{p\})$ é finito. Definindo $f^{-1}(\{q\}) = \{p_{1}, \dots, p_{k}\}$ para algum $k \in \mathbb{N}$, definamos os complementares $U_{i}^{c} = M \backslash \bigcup U_{i}$ e $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$. Note que $q \in \bigcap f(U_{i})$ e $q \notin \bigcap f(U_{i}^{c})$, logo  $q \in U \neq \emptyset$, além disso, $\bigcap f(U_{i})$ é uma intersecção finita de abertos, portanto é um aberto, e como $U_{i}^{c}$ são fechados em $M$, que é um compacto, então $f(U_{i}^{c})$ são compactos, logo $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$ é um aberto. Por fim, definindo $V_{i} = U_{i} \cap f^{-1}(U)$ teremos $f^{-1}(U) = \bigcup V_{i}$, como desejávamos. $\blacksquare$
+	
+	$\square$ Como para todo $p \in f^{-1}(\{q\})$ temos que $D_{p}f : T_{p}M \to T_{f(p)}N$ é sobrejetor, e como $dim(M) = dim(N)$, também será uma aplicação injetora, portanto, é um isomorfismo. Sendo assim, pelo teorema da função inversa, existe uma vizinhança aberta $U \ni p$ difeomorfa a uma vizinhança aberta $V \ni q$. Consequentemente, tomando $p_{i} \neq p_{j} \in f^{-1}(\{q\})$, teremos $U_{i} \ni p_{i}$ e $U_{j} \ni p_{j}$ difeomorfas as vizinhanças $V_{i} \ni q$ e $V_{j} \ni q$, respectivamente, e de modo que ainda tenhamos $U_{i} \cap U_{j} = \emptyset$, isto é, vizinhanças disjuntas. Suponha $f^{-1}(\{q\})$ seja infinito, então definindo os fechados $\overline{W_{i}} \subset U_{i}$ tal que $p_{i} \in \overline{W_{i}}$, onde $U_{i}$ são os abertos disjuntos construidos anteriormente, assim $A = \{M \backslash \overline{W_{i}} \} \cup \{U_{i}\}$ é uma cobertura por abertos de $M$, e como $M$ é compacta, então podemos escolher uma subcobertura finita $A' \subset A$, então existirá um $p_{s} \in f^{-1}(\{p\})$ tal que $p_{s} \notin A'$, o que é uma contradição, portanto $f^{-1}(\{p\})$ é finito. Definindo $f^{-1}(\{q\}) = \{p_{1}, \dots, p_{k}\}$ para algum $k \in \mathbb{N}$, definamos os complementares $U_{i}^{c} = M \backslash \bigcup U_{i}$ e $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$. Note que $q \in \bigcap f(U_{i})$ e $q \notin \bigcap f(U_{i}^{c})$, logo  $q \in U \neq \emptyset$, além disso, $\bigcap f(U_{i})$ é uma intersecção finita de abertos, portanto é um aberto, e como $U_{i}^{c}$ são fechados em $M$, que é um compacto, então $f(U_{i}^{c})$ são compactos, logo $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$ é um aberto. Por fim, definindo $V_{i} = U_{i} \cap f^{-1}(U)$ teremos $f^{-1}(U) = \bigcup V_{i}$, como desejávamos. 
+	
+	$\blacksquare$
 	
 	\vspace{2mm}
 	\textbf{Definição (índice local):} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, conexas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, definimos por \textit{índice local}
@@ -490,7 +494,7 @@
 	$$
 	
 	\vspace{2mm}
-	\textbf{Teorema (grau de aplicação é um inteiro)} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, conexas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, então
+	\textit{\textbf{Teorema (grau de aplicação é um inteiro)} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, conexas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, então}
 	$$
 	deg(f) = \sum \limits_{p \in f^{-1}(q)} Ind(f;p) \in \mathbb{Z}.
 	$$
@@ -517,7 +521,7 @@
 	for não-singular, isto é, $det(	(D_{p}^{2}f)) \neq 0$. No caso em que $f: M \to \mathbb{R}$, diremos que é uma \textit{função de Morse} se não contém pontos críticos não-degenerados. Além disso, a matriz das derivadas de segunda ordem definidas anteriormente é chamada \textit{matriz hessiana de f}.
 	
 	\vspace{2mm}
-	\textbf{Teorema (existência de funções de Morse):} Seja $M \subseteq \mathbb{R}^{n+k}$ uma n-variedade diferenciável compacta, e defina $f:M \to \mathbb{R}$ tal que $f(p) = 1/2||p-q||$, para um dado $q \in \mathbb{R}^{n+k}$, então $f$ é uma função de Morse.
+	\textit{\textbf{Teorema (existência de funções de Morse):} Seja $M \subseteq \mathbb{R}^{n+k}$ uma n-variedade diferenciável compacta, e defina $f:M \to \mathbb{R}$ tal que $f(p) = 1/2||p-q||$, para um dado $q \in \mathbb{R}^{n+k}$, então $f$ é uma função de Morse.}
 	
 	$\square$ Seja $(U,h)$ uma carta de $M$ e $Y_{j}:\mathbb{R}^{n} \to \mathbb{R}^{n+k}$ com $1 \leq j \leq k$ tais que $[Y_{1}(x), \dots, Y_{k}(x)] = T_{h(x)}M^{\perp}$. Como $M$ é compacta, teremos um número finito de cartas, portanto, basta demonstrarmos que a afirmação vale para uma carta arbitrária, e como temos um número finito, a afirmação será aplicaca em um número de cartas que cobrem $M$. Evidentemente teremos $T_{h(x)}\mathbb{R}^{n+k} = T_{h(x)}M^{\perp} \oplus T_{h(x)}M \cong \mathbb{R}^{n+k}$. Definindo $g:\mathbb{R}^{n+k} \to \mathbb{R}^{n+k}$ tal que
 	$$
@@ -552,11 +556,11 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Teorema (aproximação quadráticas de funções em variedades):} Seja $p \in M^{n}$ um ponto crítico não-degenerado de $f \in C^{\infty}(M, \mathbb{R})$, então existe uma carta $(U, h)$ de $M$ contendo a origem tal que $p = h(0)$ e 
+	\textit{\textbf{Teorema (aproximação quadráticas de funções em variedades):} Seja $p \in M^{n}$ um ponto crítico não-degenerado de $f \in C^{\infty}(M, \mathbb{R})$, então existe uma carta $(U, h)$ de $M$ contendo a origem tal que $p = h(0)$ e 
 	$$
 	(f \circ h) (q) = f(p) + \sum_{i=1}^{n}\delta_{i}x_{i}^{2}, \; q \in U
 	$$
-	onde $\delta_{i} \in \{-1,1\}, \; 1\leq j \leq n$.
+	onde $\delta_{i} \in \{-1,1\}, \; 1\leq j \leq n$.}
 	
 	$\square$ A demonstração está fora do escopo.	
 	
@@ -577,7 +581,7 @@
 	\end{enumerate}
 	
 	\vspace{2mm}
-	\textbf{Lema (campos do tipo gradiente para funçoes de Morse):} Toda função de Morse em $M$ admite um campo do tipo gradiente.
+	\textit{\textbf{Lema (campos do tipo gradiente para funçoes de Morse):} Toda função de Morse em $M$ admite um campo do tipo gradiente.}
 	
 	$\square$ Seja $f : M \to \mathbb{R}$ uma função de Morse. Como $M$ é compacta, todo atlas terá um subatlas finito, além disso, vimos em um teorema anterior que todos os pontos críticos de $f$ são isolados, assim podemos construir um atlas $\{U_{i}, h_{i}\}_{i \in K}$, onde $K \subset \mathbb{N}$ é um conjunto finito, tal que, cada ponto crítico não-degenerado $p_{i} \in h_{i}(U_{i})$ e não pertença a outra carta. Seja $\{\phi_{i}\}_{i \in K}$ uma partição da unidade subordinada ao atlas $\{U_{i}, h_{i}\}_{i \in K}$ e tomemos os campos vetoriais $X_{i} = Dh_{i}(grad(f \circ h_{i}))$ e definindo o campo suave em $M$ por $X = \sum \phi_{i} X_{i}$. Suponha que $p \in M$ e $p \notin \{p_{i}\}_{i \in K}$, claro que existe $U_{s}$ tal que $p \in U_{s}$, então 
 	$$
@@ -603,7 +607,7 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Lema:} Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e $X \in \mathfrak{X}(M)$ um campo vetorial suave tal que $D_{p}f(X(p)) > 0$ para todo $p \in M$ que não é um ponto crítico de $f$. Seja $p_{0}$ um ponto crítico de $f$ com índice $\lambda$, e se $X(p_{0}) = 0$, então 
+	\textit{\textbf{Lema:} Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e $X \in \mathfrak{X}(M)$ um campo vetorial suave tal que $D_{p}f(X(p)) > 0$ para todo $p \in M$ que não é um ponto crítico de $f$. Seja $p_{0}$ um ponto crítico de $f$ com índice $\lambda$, e se $X(p_{0}) = 0$, então}
 	$$
 	i(X, p_{0}) = (-1)^{\lambda}.
 	$$
@@ -617,12 +621,16 @@
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Teorema (índice total de campos):} Seja $M^{n}$ uma variedade diferenciável compacta e $X \in \mathfrak{X}(M)$ com singularidades isoladas. Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e $c_{\lambda}$ o número de pontos críticos com índice $\lambda$, então temos:
+	\textit{\textbf{Teorema (índice total de campos):} Seja $M^{n}$ uma variedade diferenciável compacta e $X \in \mathfrak{X}(M)$ com singularidades isoladas. Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e $c_{\lambda}$ o número de pontos críticos com índice $\lambda$, então temos:}
 	$$
 	Index(X) = \sum_{\lambda = 0}^{n}(-1)^{\lambda}c_{\lambda}.
 	$$
 	
-	$\square$ Seja $X \in \mathfrak{X}(M)$ um campo vetorial com pontos críticos isolados, e como $M$ é compacta, então o campo $X$ terá um número fínito de pontos críticos isolados, logo, pela definição de índice total temos $Index(X) = \sum_{i=1}^{k} i(X;p_{i})$, onde $p_{i} \in M$ são os pontos críticos. Pelo resultado do lema anterior, temos $\sum_{i=1}^{k} i(X;p_{i}) = \sum_{i=1}^{k} (-1)^{\lambda_{i}} = \sum_{\lambda}(-1)^{\lambda}c_{\lambda}$, como desejávamos.
+	$\square$ Seja $X \in \mathfrak{X}(M)$ um campo vetorial com pontos críticos isolados, e como $M$ é compacta, então o campo $X$ terá um número fínito de pontos críticos isolados, logo, pela definição de índice total temos $Index(X) = \sum_{i=1}^{k} i(X;p_{i})$, onde $p_{i} \in M$ são os pontos críticos. Pelo resultado do lema anterior, temos
+	$$
+	Index(X) = \sum_{i=1}^{k} i(X;p_{i}) = \sum_{i=1}^{k} (-1)^{\lambda_{i}} = \sum_{\lambda}(-1)^{\lambda}c_{\lambda},
+	$$
+	como desejávamos.
 	
 	$\blacksquare$
 \end{document}
