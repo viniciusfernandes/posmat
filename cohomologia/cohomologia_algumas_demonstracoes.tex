@@ -601,4 +601,28 @@
 	$$
 	
 	$\blacksquare$
+	
+	\vspace{2mm}
+	\textbf{Lema:} Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e $X \in \mathfrak{X}(M)$ um campo vetorial suave tal que $D_{p}f(X(p)) > 0$ para todo $p \in M$ que não é um ponto crítico de $f$. Seja $p_{0}$ um ponto crítico de $f$ com índice $\lambda$, e se $X(p_{0}) = 0$, então 
+	$$
+	i(X, p_{0}) = (-1)^{\lambda}.
+	$$
+	
+	$\square$ Sabemos que toda variedade diferenciável admite um campo vetorial do tipo gradiente, então seja $Y =  grad(f)/2 \in \mathfrak{X}(M)$ e tomemos $(U, h)$ como sendo uma carta de $M$ tal que podemos escrever $(f \circ h) (q) = f(p) - y_{1}^{2} - \dots - y_{\lambda}^{2} + y_{\lambda+1}^{2} + \dots + y_{n}^{2}, \; q \in U$. Teremos $(Y \circ h)(q) = grad(f\circ h)(q)/2 = (-y_{1}, \dots, -y_{\lambda}, y_{\lambda+1}, \dots, y_{n})$. Por definição temos $i(Y, p_{0}) = deg(G(Y))$, onde $G(Y) = Y/||Y||$ é o mapa de Gauss associado ao campo $Y$, assim, temos que $G(Y):M \to \mathbb{R}^n$, logo, tomando $\omega  = dx_{1} \wedge \dots \wedge dx_{n} \in \Omega^{n}(\mathbb{R}^{n})$ teremos 
+	$$
+	\int_{M} G(Y)^{*}(\omega) = \int_{\mathbb{R}^{n}} det(D(G(Y))) \omega = \int_{\mathbb{R}^{n}} (-1)^{\lambda} \omega =    deg(G(Y))\int_{\mathbb{R}^{n}} \omega, 
+	$$
+	logo $i(Y, p_{0}) = deg(G(Y)) = (-1)^{\lambda}$. Por hipótese temos que existe um campo vetorial $X \in \mathfrak{X}(M)$ do tipo gradiente, isto é, $grad(X(p)) > 0$ e já vimos que $D_{p}f(Y(p)) = D_{p}f(grad(f \circ h)/2) = 1/4\langle grad(f\circ h), grad(f\circ h) \rangle>0$, onde $p \in h(U)\backslash\{p_{0}\}$. Com essas duas ultimas desigualdades podemos afirmar que ambos $X, Y \in \mathbb{R}_{+}$, que é um subconjunto simplesmente conexo, logo podemos definir a homotopia $g: h(U)\backslash\{p_{0}\} \times [0,1] \to \mathbb{R}^{n}\backslash \{0\}$ tal que $g(p, t) = (1-t)X(p) - tY(p)$, e como os índices locais dos campos vetoriais são invariantes por homotopias, temos $i(X, p_{0}) = i(Y, p_{0}) = (-1)^{\lambda}$, como desejávamos.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textbf{Teorema (índice total de campos):} Seja $M^{n}$ uma variedade diferenciável compacta e $X \in \mathfrak{X}(M)$ com singularidades isoladas. Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e $c_{\lambda}$ o número de pontos críticos com índice $\lambda$, então temos:
+	$$
+	Index(X) = \sum_{\lambda = 0}^{n}(-1)^{\lambda}c_{\lambda}.
+	$$
+	
+	$\square$ Sabemos que toda variedade admite um campo gradiente $X \in \mathfrak{X}(M)$, e como $M$ é compacta, então o campo $X$ terá um número fínito de pontos críticos isolados, logo, pela definição de índice total temos $Index(X) = \sum_{i=1}^{k} i(X;p_{i})$, onde $p_{i} \in M$ são os pontos críticos. Pelo resultado do lema anterior, temos $\sum_{i=1}^{k} i(X;p_{i}) = \sum_{i=1}^{k} (-1)^{\lambda_{i}} = \sum_{\lambda}c_{\lambda}$, como desejávamos.
+	
+	$\blacksquare$
 \end{document}
