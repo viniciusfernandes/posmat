@@ -708,4 +708,41 @@
 	$$
 	
 	$\blacksquare$
+	
+	\vspace{2mm}
+	\textit{\textbf{Teorema (Característica de Euler-Poincaré):} Seja $f \in C^{M, \mathbb{R}}$ uma função de Morse e $M$ uma variedade diferenciável compacta, então:
+	$$
+	\chi(M^{n}) = \sum_{\lambda}(-1)^{\lambda}c_{\lambda},
+	$$
+	onde $c_{\lambda}$ é o número de pontos críticos com índice $\lambda$.}
+	
+	$\square$ Como $M$ é compacta e como $f$ é contínua, logo $f(M) = [a,b] \subset \mathbb{R}$ é um compacto e $f$ possui um número finito de pontos críticos. Sejam  os valores críticos não-degenerados $\{f(p_{i})\}_{1\leq i \leq k}$ e, sem perda de generalidade, podemos supor que $a_{1} = f(p_{1}) < \dots < a_{k}=f(p_{k})$. Tomemos $b_{0} < a_{1}$, $a_{k} < b_{k}$ e $b_{i} \in (a_{i}, a_{i+1})$ onde $1\leq i \leq k-1$. Note que $(a_{i}, a_{i+1})$ não possui valores críticos, então pelo lema dos níveis difeomorfos temos $M(b_{i}) \simeq M(c_{i}), \; \forall b_{i}, c_{i} \in (a_{i}, a_{i+1})$. Tomemos $\{b_{i}\}_{0\leq i \leq k}$ arbitrários, mas fixos, assim, pela proposição anterior para cada valor regular não-degenerados $a_{i} \in [b_{i}, b_{i+1}]$, existe um $\epsilon_{j} > \mathbb{R}$ tal que
+	$$
+	\chi(M(a_{i} + \epsilon_{i})) = \chi(M(a_{i}-\epsilon_{i})) + \sum_{\lambda}(-1)^{\lambda}c_{\lambda}.
+	$$
+	Como $a_{i} \in [b_{i}, b_{i+1}]$ é o unico valor regular nesse intervalo, podemos tomar $\epsilon_{i} = b_{i} - a_{i}$, de modo que teremos $\chi(M(a_{i} + \epsilon_{i})) = \chi(M(a_{i} + b_{i} - a_{i})) = \chi(M(b_{i}))$, por outro lado, temos que $M(a_{i} - \epsilon_{i}) \simeq M(b_{i-1})$ pois o intervalo $[b_{i-1}, a_{i} - \epsilon_{i})$ não contém valores regulares, portanto temos
+	$$
+	\chi(M(b_{i})) = \chi(M(b_{i-1})) + \sum_{\lambda_{i}}(-1)^{\lambda_{i}}c_{\lambda_{i}}.
+	$$
+	Por definição temos que $M(b_{0}) = \emptyset$ e $M(b_{k}) = M$, consequentemente, $\chi(M(b_{0}))=0$ e $\chi(M(b_{k}))=\chi(M)$. Reescrevendo a relação anterior como
+	$$
+	\sum_{p \in f^{-1}(\{a_{i}\})}(-1)^{\lambda_{p}} = 	\chi(M(b_{i})) - \chi(M(b_{i-1})),
+	$$
+	devemos percorrer todos os valores regulares, isto é, somando todas suas contribuições para a característica de Euler-Poincaré, assim:
+	$$
+	\begin{aligned}
+	\sum_{i=1}^{k} \Big(\sum_{p \in f^{-1}(\{a_{i}\})}(-1)^{\lambda_{p}}\Big) =& 		\sum_{i=1}^{k} \Big(\chi(M(b_{i})) - \chi(M(b_{i-1}))\Big)
+	\\ 
+	=&  \chi(M(b_{1})) - \chi(M(b_{0}) + \chi(M(b_{2})) - \chi(M(b_{1}) + \dots + \chi(M(b_{k}))
+	\\
+	=& \chi(M(b_{k})) 
+	\\
+	=& \chi(M),
+	\end{aligned}$$
+	pois tivemos cancelamentos alternados nas somas das características. Por fim, reescrevendo
+	$$
+	\chi(M)	= \sum_{i=1}^{k} \Big(\sum_{p \in f^{-1}(\{a_{i}\})}(-1)^{\lambda_{p}}\Big) = \sum_{i=1}^{m}(-1)^{\lambda_{i}} = \sum_{\lambda}(-1)^{\lambda}c_{\lambda}.
+	$$
+	
+	$\blacksquare$
 \end{document}
