@@ -633,4 +633,79 @@
 	como desejávamos.
 	
 	$\blacksquare$
+	
+	\section{Teoria de Morse - Alguns Resultados}
+	
+	\textit{\textbf{Lema (particionamento da característica de Euler-Poincaré):} Sejam $M$ uma variedade diferenciável e $U, V \subset M$ abertos tais que $M = U \cup V$ e $U \cap V$ tenha cohomologia com dimensão finita, então:}
+	$$
+	\chi(U \cup V) = \chi(U) + \chi(V) - \chi(U \cap V).
+	$$
+	
+	$\square$ Aplicando a sequência de Mayer-Vietoris, teremos
+	$$
+	\dots \to H^{p}(U \cup V) \to H^{p}(U) \oplus H^{p}(V) \to H^{p}(U  \cap V) \to H^{p+1}(U \cup V) \to \dots
+	$$
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textbf{Definição (nível de variedade segundo função de Morse):} Sejam $M^{n}$ uma variedade diferenciável, $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e tome $a \in \mathbb{R}$, então definimos o conjunto
+	$$
+	M(a) = \{p \in M: f(p) <a \}.
+	$$
+	
+	\textit{\textbf{Lema (níveis difeomorfos):} Se não existirem pontos críticos no intervalo $[a, b]$, então os conjuntos $M(a)$ e $M(b)$ são difeomorfos.}
+	
+	$\square$ Demonstração esta fora do escopo.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textit{\textbf{Lema (níveis difeomorfos):} Seja $a \in \mathbb{R}$ um valor crítico de $f:M \to \mathbb{R}$, e suponha que $\{p_{i}\} \subset f^{-1}(\{a\})$, $1\leq i \leq k$ o conjunto de pontos críticos com índices $\lambda_{i}$, então existe $\epsilon > 0 \in \mathbb{R}$ e uma união disjunta de abertos $U_{i} \ni p_{i}$ tais que:}
+	\begin{enumerate}
+	\item  \textit{os pontos $\{p_{i}\}$ são os únicos pontos críticos no conjunto $f^{-1}([a - \epsilon, a + \epsilon])$.}
+	
+	\item \textit{cada $U_{i}$ é difeomorfo a um aberto contrátil de $\mathbb{R}^{n}$.}
+	
+	\item \textit{$W_{i} := U_{i} \cap M(a-\epsilon)$ é difeomorfo a $S^{\lambda_{i} - 1} \times V_{i}$, onde $V_{i} \subset \mathbb{R}^{n - (\lambda_{i} - 1)}$ é um aberto contrátil.}
+	
+	\item \textit{$M(a+\epsilon)$ é difeomorfo a $U_{1} \cup \dots \cup U_{k} \cup M(a-\epsilon)$.}
+	\end{enumerate}
+	
+	$\square$ Demonstração esta fora do escopo.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textit{\textbf{Proposição (característica de Euler-Poincaré e índices de Morse):} Assumindo as hipóteses do lema anterior, e supondo que a variedade $M^{n}$ possua toa a sua cohomologia com dimensão finita, então:}
+	$$
+	\chi(M(a+\epsilon)) = \chi(M(a-\epsilon)) + \sum_{\lambda}(-1)^{\lambda}c_{\lambda}.
+	$$
+	
+	$\square$ Como cada aberto $U_{i}$ é contrátil, então seus grupos de cohomologia são isomorfos aos grupos de cohomologia do ponto, isto é, $H^{p}(U_{i})  = \{[0]\}$ se $p > 0$ e $H^{0}(U_{i}) \cong \mathbb{R}$, logo, $U = U_{1} \cup \dots \cup U_{k}$, que é uma união disjunta de abertos, tem como grupo de cohomologia a seguinte soma direta $H^{0}(U) = H^{0}(U_{1}) \oplus \dots \oplus H^{0}(U_{k}) \cong \mathbb{R} \oplus \dots \oplus \mathbb{R} \cong \mathbb{R}^{k}$, por fim, $H^{p}(U) = \{[0]\}$. Sabemos que $U_{i} \cap M(a-\epsilon) \cong S^{\lambda_{i} - 1} \times V_{i}$, e que $V_{i}$ é contrátil, logo, possui a mesma homotopia de um ponto, portanto $S^{\lambda_{i} - 1} \times V_{i}$ possui a mesma homotopia de $S^{\lambda_{i} - 1} \times \{q\}$, para algum $q \in V_{i}$, consequentemente, $H^{p}(W_{i}) = H^{p}(S^{\lambda_{i} - 1} \times V_{i}) \cong H^{p}(S^{\lambda_{i} - 1} \times \{q\}) \cong H^{p}(S^{\lambda_{i} - 1})$, onde já vimos que $H^{p}(S^{\lambda_{i} - 1}) \cong \mathbb{R}$ para $p \in \{0, \lambda_{i} - 1\}$ e $H^{p}(S^{\lambda_{i} - 1}) = \{[0]\}$ para $p \notin \{0, \lambda_{i} - 1\}$. Como $U_{i}$ são disjuntos, então $W_{i} = U_{i}\cap M(a-\epsilon)$ são dois a dois disjuntos, logo $U \cap M(a-\epsilon) = W_{1} \cup \dots \cup W_{k}$ é uma união disjunta, consequentemente, $H^{p}(U \cap M(a-\epsilon)) = H^{p}(W_{1}) \oplus \dots \oplus H^{p}(W_{k}) \cong \mathbb{R}^{k}$, para $p \in \{0, \lambda_{i} - 1\}$ e $H^{p}(U \cap M(a-\epsilon)) \cong \{[0]\}$ para $p \notin \{0, \lambda_{i} - 1\}$. Aplicando o lema anterior que escreve a característica de Euler em uma sequência de Mayer-Vietoris para o particionamento do conjunto $M(a+\epsilon) = U \cup M(a-\epsilon)$, teremos $\chi(M(a+\epsilon)) = \chi(U) + \chi(M(a-\epsilon)) - \chi(U \cap M(a-\epsilon))$, mas vimos que 
+	$$
+	\begin{aligned}
+	\chi(U) =& \sum (-1)^{i}dim(H^{i}(U)) = dim(H^{0}(U)) = k
+	\\
+	\chi(U \cap M(a-\epsilon)) =& \sum (-1)^{i}dim(H^{i}(U \cap M(a-\epsilon))) 
+	\\
+	=& dim(H^{0}(U \cap M(a-\epsilon))) + \sum_{i}(-1)^{\lambda_{i} - 1} 
+	\\
+	=& k + \sum_{\lambda}(-1)^{\lambda - 1}c_{\lambda} 
+	\\
+	=& k - \sum_{\lambda}(-1)^{\lambda}c_{\lambda},
+	\end{aligned}
+	$$
+	logo, voltando na igualdade 
+	$$
+	\begin{aligned}
+	\chi(M(a+\epsilon)) =& \chi(U) + \chi(M(a-\epsilon)) - \chi(U \cap M(a-\epsilon))
+	\\
+	=& k +\chi(M(a-\epsilon)) - k + \sum_{\lambda}(-1)^{\lambda}c_{\lambda}
+	\\
+	=& \chi(M(a-\epsilon)) + \sum_{\lambda}(-1)^{\lambda}c_{\lambda}.
+	\end{aligned}
+	$$
+	
+	$\blacksquare$
 \end{document}
