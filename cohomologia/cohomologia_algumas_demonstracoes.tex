@@ -754,16 +754,46 @@
 	\int_{S} K vol_{S} = 2\pi \chi(S).
 	$$
 	
-	$\square$ Seja $N : S \to S^{2}$ o mapa de Gauss da superfície $S$, logo $D_{p}N :T_{p}S \to T_{N(p)}S^{2} $, e utilizando o resultado já conhecido de teoria das súperfícies regulares, podemos afirmar que $K(p) = det(D_{p}N)$. Vamos rotacionar a superfície $S$ de modo a garantir que os pólos da esféra sejam valores regulares de $N$, isto é, existem $p_{\pm} \in S$ é tal que $N(p_{\pm}) = (0,0,\pm 1) \in S^{2}$ e $D_{p_{\pm}}N \neq 0$. Seja $f : S \to \mathbb{R}$ tal que $f(x,y,z) = z$, como sendo a função que mensura a distancia dos pontos de $S$ para o plano $P = \{(x,y,0) \in \mathbb{R}^{3} \}$. É evidente que essa funções é contínua, e como $S$ é compacta, então $f(S) \subset \mathbb{R}$ é um compacto, portanto e um intervalo fechado, assim $f$ possui um máximo e um mínimo. Note que esses pontos são todos aqueles em que o mapa de gauss tem sua direção verticalizada, ou seja, se $p \in S$ é um ponto de máximo/mínimo, então $N(p) = (0,0,\pm 1)$ e também $D_{p}f = 0$, pois são pontos de extremo, ou seja, pontos críticos. Seja $p \in S$ tal que $N(p) = (0,0,\pm 1)$, e como construído, $D_{p}N \neq 0$, logo é um isomorfismo, portanto $K(p) = det(D_{p}N) \neq 0$. Seja $(U, h)$ uma carta de $S$ tal que $p \in h(U)$ e temos a parametrização $h(U) = \{(x(u,v), y(u,v), z(u,v)): (u,v ) \in U \}$, e pelo teorema da função implícita, toda superfície é localmente o gráfico de uma função, o que nos permite escrever escolher uma vizinhança de $p$ tal que, para algum $W \subset U$ temos $V \subset h(U)$ e $V=\{(u, v , z(u,v)): (u,v) \in W\} = \{(u, v , f(u,v)): (u,v) \in W\}$. Temos que a curvatura gaussiana restrita a essa carta poderá ser escrita como:
+	$\square$ Seja $N : S \to S^{2}$ o mapa de Gauss da superfície $S$, logo $D_{p}N :T_{p}S \to T_{N(p)}S^{2} $, e utilizando o resultado já conhecido de teoria das súperfícies regulares, podemos afirmar que $K(p) = det(D_{p}N)$. Vamos rotacionar a superfície $S$ de modo a garantir que os pólos da esféra sejam valores regulares de $N$, isto é, existem $p_{\pm} \in S$ é tal que $N(p_{\pm}) = (0,0,\pm 1) \in S^{2}$ e $D_{p_{\pm}}N \neq 0$. Seja $f : S \to \mathbb{R}$ tal que $f(x,y,z) = z$, como sendo a função que mensura a distancia dos pontos de $S$ para o plano $P = \{(x,y,0) \in \mathbb{R}^{3} \}$. É evidente que essa funções é contínua, e como $S$ é compacta, então $f(S) \subset \mathbb{R}$ é um compacto, portanto e um intervalo fechado, assim $f$ possui um máximo e um mínimo. Calculando o diferencila nesses pontos de extremos teremos:
+	$$
+	D_{p}f(v) = \langle grad(f), v\rangle = \langle (0,0,1), v\rangle = v_{3}, 
+	$$
+	logo, $Ker(D_{p}f) = \{(v_{1}(p), v_{2}(p), 0) \in \mathbb{R}^{3} \} = T_{p}S$, pela construção anterior, portanto $D_{p}f(T_{p}S)  = \{0\}$, como afirmado, consequentemente, os pontos críticos são todos aqueles em que o mapa de gauss tem sua imagem em um dos pólos da esféra, ou seja, se $p \in S$ é um ponto de máximo/mínimo, então $N(p) = (0,0,\pm 1)$. Seja $p \in S$ tal que $N(p) = (0,0,\pm 1)$, e como construído, $D_{p}N \neq 0$, logo é um isomorfismo, portanto $K(p) = det(D_{p}N) \neq 0$. Seja $(U, h)$ uma carta de $S$ tal que $p \in h(U)$ e temos a parametrização $h(U) = \{(x(u,v), y(u,v), z(u,v)): (u,v ) \in U \}$, e pelo teorema da função implícita, toda superfície é localmente o gráfico de uma função, o que nos permite escrever escolher uma vizinhança de $p$ tal que, para algum $W \subset U$ temos $V \subset h(U)$ e $V=\{(u, v , z(u,v)): (u,v) \in W\} = \{(u, v , f(u,v)): (u,v) \in W\}$. Temos que a curvatura gaussiana restrita a essa carta poderá ser escrita como:
 	$$
 	K(p) = \Big\{1+ \Big(\frac{\partial f}{\partial u}(p)\Big)^{2} + \Big(\frac{\partial f}{\partial v}(p)\Big)^{2} \Big\}^{-1} det(D_{p}^{2}f), \; p \in V.
 	$$
-	E como sabemos que $K(p) = det(D_{p}N) \neq 0 \Rightarrow  det(D_{p}f) \neq 0$, logo, $p \in V$ é um ponto crítico não-degenerado, portanto $f: S \to \mathbb{R}$ é uma função de Morse, e podemos escrever
+	E como sabemos que $K(p) = det(D_{p}N) \neq 0 \Rightarrow  det(D_{p}f) \neq 0$, logo, $p \in V$ é um ponto crítico não-degenerado, portanto $f: S \to \mathbb{R}$ é uma função de Morse, e podemos escrever:
 	$$
-	(f\circ h)(q) = (f\circ h)(p) - ax^{2} - by^{2} - cz^{2}, \; a,b,c \in \{1,-1\}.
+	f \circ h (q) = f (p) + au^{2} + b v^{2}, \; q \in W,  
 	$$
-	Calculando o determimante nesses pontos acima, teremos 
+	assim, nesse aberto $W$ teremos $\partial^{2}(f\circ h)(q)/\partial u \partial v = 0$, com isso teremos  determinante 
 	$$
-	det(D_{q}^{2}f) = \frac{\partial^{2} f}{\partial u^{2}}(q)\frac{\partial^{2} f}{\partial v^{2}}(q) - \underbrace{ \Big(\frac{\partial^{2} f}{\partial u \partial v}(q)\Big)^{2} }_{=0}
+	det \Big(D_{q}^{2}(f\circ h) \Big) = \frac{\partial^{2}(f\circ h)}{\partial^{2}u}\frac{\partial^{2}(f\circ h)}{\partial^{2}v} = 4ab,
 	$$
+	logo se $K(q) > 0 \Rightarrow det(D_{q}^{2}f) > 0$, portanto deveremos ter $a = b \in \{1, -1\}$. Caso $a = b = 1$ então teremos um ponto crítico não-degenerado com índice $0$, já no caso em que $a=b=-1$, teremos um ponto crítico não degenerado com índice $2$. Por outro lado, se $K(q) < 0$, teremos $a \neq b $ e $a, b \in \{1, -1\}$, sendo que em quaisquer um dos casos teremos um ponto crítico com índice $1$, apenas. Calculando a caracterísica de Euler-Poicaré $\chi(S) = \sum_{\lambda}(-1)^{\lambda}c_{\lambda}$ para ambos os casos, veremos que no caso $K(q) > 0$
+	$$
+	\chi(S) = \#\{p \in S: K(p)>0, \; N(p) = (0,0,\pm 1)\},
+	$$
+	por outro lado, sabemos que $p_{\pm} \in S^{2}$ são valores regulares de $N$, consequentemente, sabemos pelo teorema do índice de campos que
+	$$
+	deg(N) = \#\{p \in N^{-1}(p_{+} ): K(p)>0 \}
+	$$
+	e também 
+	$$
+	deg(N) = \#\{p \in N^{-1}(p_{-} ): K(p)>0 \},
+	$$
+	logo temos a relação $\chi(S) = 2 deg(N)$. Por fim, sabemos relacionar os $2-$volumes de ambas as superfícies, e é realizada por $N^{*} : \Omega^{2}(S^{2}) \to \Omega^{2}(S)$, tal que $N^{*}(vol_{S^{2}}) = det(D_{p}N)vol_{S} = K(p)vol_{S}$. Integrando ambos os volumes, teremos:
+	$$
+	\begin{aligned}
+	\int_{S}Kvol_{S} =& \int_{S^{2}}N^{*}(vol_{S^{2}}) 
+	\\
+	=& deg(N) \underbrace{\int_{S^{2}}vol_{S^{2}} }_{= 4\pi}
+	\\
+	=& 4\pi deg(N)
+	\\
+	=& 2\pi \chi(S).
+	\end{aligned}
+	$$
+	
+	$\blacksquare$
 \end{document}
