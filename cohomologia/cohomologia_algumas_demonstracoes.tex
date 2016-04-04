@@ -838,6 +838,9 @@ execute at end node=$]
 	portanto é linear.
 	
 	$\blacksquare$
+	
+	\vspace{2mm}
+	\textit{\textbf{Lema:} Sejam $M^{n}$ uma variedade e  $U,V \subset M$ dois abertos tais que $M=U \cup V$, então o diagrama abaixo é comutativo.}
 	\begin{tikzpicture}
 	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
 	{  
@@ -876,4 +879,23 @@ execute at end node=$]
 		\chainin (m-2-5) [join={node[above,labeled] {I^{T}}}];
 	}
 	\end{tikzpicture}
+	
+	
+	$\square$ Vejamos que cada um dos diagramas comutam, isto é: 
+	$$
+	\begin{aligned}
+	(I_{U \cap V} \circ J^{*})([\gamma],[\beta]) 
+	=& \int_{U \cap V} \alpha \wedge (\gamma - \beta)
+	\\
+	=& \int_{U \cap V} \alpha \wedge \gamma - \int_{U \cap V} \alpha \wedge \beta
+	\\
+	=& 	I_{U}[\gamma]  -I_{V}([\beta])
+	\\
+	=& 	(I_{U} \oplus -I_{V})([\gamma],[\beta])
+	\\
+	=& 	(I^{T} \circ I_{U} \oplus -I_{V})([\gamma],[\beta]).
+	\\
+	(I_{M} \circ \partial^{*})(\beta) =& sssss
+	\end{aligned}
+	$$
 \end{document}
