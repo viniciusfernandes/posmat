@@ -840,23 +840,40 @@ execute at end node=$]
 	$\blacksquare$
 	\begin{tikzpicture}
 	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
-	{ \dots & H^{r-1}(U) \oplus H^{r-1}(V) & H^{r-1}(U \cap V) & H^{r}(M)  & H^{r}(U) \oplus H^{r}(V) \\
-		\dots & H^{n - r+1}(U)^{*} \oplus H^{n-r+1}(U)^{*} & H^{n - r+1}(U \cap V)^{*} & H^{n - r}(M)^{*} & H^{n - r}(U)^{*} \oplus H^{n - r}(V)^{*}\\ };
-	{ [start chain] \chainin (m-1-1);
-		\chainin (m-1-2);
+	{  
+		H^{r-1}(U) \oplus H^{r-1}(V) & H^{r-1}(U \cap V) & H^{r}(M)  & H^{r}(U) \oplus H^{r}(V) & H^{r}(U \cap V)
+		\\
+		H^{n - r+1}(U)^{*} \oplus H^{n-r+1}(U)^{*} & H^{n - r+1}(U \cap V)^{*} & H^{n - r}(M)^{*} & H^{n - r}(U)^{*} \oplus H^{n - r}(V)^{*} & H^{r}(U \cap V)^{*}
+		\\
+	};
+	{ [start chain] 
+		\chainin (m-1-1);
+		{ [start branch=A] \chainin (m-2-1)
+			[join={node[right,labeled] {I_{U} \oplus -I_{V}}}];
+		}
+		\chainin (m-1-2) [join={node[above,labeled] {J^{*}} }];
 		{ [start branch=A] \chainin (m-2-2)
-			[join={node[right,labeled] {\eta_1}}];}
-		\chainin (m-1-3) [join={node[above,labeled] {\varphi}}];
+			[join={node[right,labeled] {I_{U \cap V}}}];
+		}
+		\chainin (m-1-3) [join={node[above,labeled] {\partial^{*} }}];
 		{ [start branch=B] \chainin (m-2-3)
-			[join={node[right,labeled] {\eta_2}}];}
-		\chainin (m-1-4) [join={node[above,labeled] {\psi}}];
+			[join={node[right,labeled] { I_{M} }}];
+		}
+		\chainin (m-1-4) [join={node[above,labeled] {I^{*}}}];
 		{ [start branch=C] \chainin (m-2-4)
-			[join={node[right,labeled] {\eta_3}}];}
-		\chainin (m-1-5); }
-	{ [start chain] \chainin (m-2-1);
-		\chainin (m-2-2);
-		\chainin (m-2-3) [join={node[above,labeled] {\varphi'}}];
-		\chainin (m-2-4) [join={node[above,labeled] {\psi'}}];
-		\chainin (m-2-5); }
+			[join={node[right,labeled] { I_{U} \oplus -I_{V} }}];
+		}
+		\chainin (m-1-5) [join={node[above,labeled] {J^{*}}}];
+		{ [start branch=C] \chainin (m-2-5)
+			[join={node[right,labeled] { I_{U \cap V} }}];
+		}
+	}
+	{ [start chain] 
+		\chainin (m-2-1);
+		\chainin (m-2-2) [join={node[above,labeled] {I^{T}}}];
+		\chainin (m-2-3) [join={node[above,labeled] {\partial^{T} }}];
+		\chainin (m-2-4) [join={node[above,labeled] {J^{T}}}];
+		\chainin (m-2-5) [join={node[above,labeled] {I^{T}}}];
+	}
 	\end{tikzpicture}
 \end{document}
