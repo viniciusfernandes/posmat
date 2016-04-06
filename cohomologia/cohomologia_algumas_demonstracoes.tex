@@ -155,10 +155,10 @@ execute at end node=$]
 	
 	\vspace{2mm}
 	\textit{\textbf{Teorema (sequência longa exata da homologia):} Seja $0 \to A^{*} \xrightarrow{f} B^{*} \xrightarrow{g} C^{*} \to 0$ uma sequência curta exata de complexos de cadeias, então a sequência
-	$$
-	\dots \to H^{p}(A^{*}) \xrightarrow{f^{*}} H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}} H^{p+1}(B^{*}) \to \dots
-	$$
-	é exata.}
+		$$
+		\dots \to H^{p}(A^{*}) \xrightarrow{f^{*}} H^{p}(B^{*}) \xrightarrow{g^{*}} H^{p}(C^{*}) \xrightarrow{\partial^{*}} H^{p+1}(A^{*}) \xrightarrow{f^{*}} H^{p+1}(B^{*}) \to \dots
+		$$
+		é exata.}
 	
 	$\square$ É uma aplicação dos dois lemas anteriores. 
 	
@@ -197,10 +197,10 @@ execute at end node=$]
 	
 	\vspace{2mm}
 	\textit{\textbf{Teorema:} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ subconjuntos abertos e defina $U=U_{1} \cup U_{2}$ e as seguintes inclusões $i_{k}: U_{k} \to U$ e $j_{k}: U{1}\cap U{2} \to U_{k}$, onde $k \in \{1,2\}$. Então a sequência
-	$$
-	0 \to \Omega(U) \xrightarrow{I^{p}} \Omega^{p}(U_{1}) \oplus \Omega^{p}(U_{2}) \xrightarrow{J^{p}} \Omega^{p}(U_{1} \cap U_{2}) \to 0 
-	$$
-	é exata, onde $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega))$ e $J^{p}(\omega_{1}, \omega_{2}) = j^{*}_{1}(\omega_{1})- j^{*}_{2}(\omega_{2})$.}
+		$$
+		0 \to \Omega(U) \xrightarrow{I^{p}} \Omega^{p}(U_{1}) \oplus \Omega^{p}(U_{2}) \xrightarrow{J^{p}} \Omega^{p}(U_{1} \cap U_{2}) \to 0 
+		$$
+		é exata, onde $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega))$ e $J^{p}(\omega_{1}, \omega_{2}) = j^{*}_{1}(\omega_{1})- j^{*}_{2}(\omega_{2})$.}
 	
 	$\square$ Vamos mostrar a inclusão $Im(I^{p}) \subset Ker(J^{p})$. Tomando $\omega = \sum f_{I}dx_{I} \in \Omega^{p}(U)$ e avaliando $J^{p}(I^{p}(\omega)) = J^{p}(i^{*}_{1}(\omega), i^{*}_{2}(\omega)) = j^{*}_{1}(i^{*}_{1}(\omega))- j^{*}_{2}(i^{*}_{2}(\omega)) = \omega|_{U_{1} \cap U_{2}} - \omega|_{U_{1} \cap U_{2}} = 0$, logo $I^{p}(\omega) \in Ker(J^{p})$. Além disso $I^{p}$ é injetora pois $I^{p}(\omega) = (i^{*}_{1}(\omega), i^{*}_{2}(\omega)) = 0 \iff i^{*}_{1}(\omega)=\sum f_{I}\circ i_{1}(x) dx_{I} = 0$ e $i^{*}_{2}(\omega) = \sum f_{I}\circ i_{2}(x) dx_{I} = 0$, implicando em $f_{I}(x) = 0$ para $x \in U$.  Agora vamos demonstrar a inclusão inversa $Ker(J^{p})\subset Im(I^{p})$. Tomemos as p-formas $\omega_{k} = \sum f_{k,I} dx_{I} \in \Omega^{p}(U_{k})$ e considere $\omega_{k} \in Ker(J^{p})$, então $J^{p}(\omega_{1}, \omega_{2}) = 0 \Rightarrow j^{*}_{1}(\omega_{1}) = j^{*}_{2}(\omega_{2})$, isto é, $\sum (f_{1,I}\circ j_{1}) dx_{I} = \sum (f_{2,I}\circ j_{2}) dx_{I}$, o que nos leva a duas condições: $f_{1,I}\circ j_{1}(x) = f_{2,I}\circ j_{2}(x)$ caso $x \notin U_{1} \cap U_{2}$ ou $f_{1,I}(x) = f_{2,I}(x)$ caso $x \in U_{1} \cap U_{2}$, assim, com essas condições podemos definir a função 
 	$$
@@ -246,10 +246,10 @@ execute at end node=$]
 	
 	\vspace{2mm}
 	\textit{\textbf{Teorema (Sequência de Mayer-Vietoris):} Sejam $U_{1}, U_{2} \subseteq \mathbb{R}^{n}$ conjuntos abertos e $U = U_{1} \cup U_{2}$, então a sequência
-	$$
-	\dots \to H^{p}(U) \xrightarrow{I^{*}} H^{p}(U_{1}) \oplus H^{p}(U_{2}) \xrightarrow{J^{*}} H^{p}(U_{1} \cap U_{2}) \xrightarrow{\partial^{*}} H^{p+1}(U) \to \dots
-	$$
-	é exata.}
+		$$
+		\dots \to H^{p}(U) \xrightarrow{I^{*}} H^{p}(U_{1}) \oplus H^{p}(U_{2}) \xrightarrow{J^{*}} H^{p}(U_{1} \cap U_{2}) \xrightarrow{\partial^{*}} H^{p+1}(U) \to \dots
+		$$
+		é exata.}
 	
 	$\square$ Sabemos que os mapas $I: \Omega^{*}(U) \to \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2})$ e $J: \Omega^{*}(U_{1}) \oplus \Omega^{*}(U_{2}) \to \Omega^{*}(U_{1} \cap U_{2})$ são mapas de cadeias, além disso, a sequência 
 	$$
@@ -570,10 +570,10 @@ execute at end node=$]
 	
 	\vspace{2mm}
 	\textit{\textbf{Teorema (aproximação quadráticas de funções em variedades):} Seja $p \in M^{n}$ um ponto crítico não-degenerado de $f \in C^{\infty}(M, \mathbb{R})$, então existe uma carta $(U, h)$ de $M$ contendo a origem tal que $p = h(0)$ e 
-	$$
-	(f \circ h) (q) = f(p) + \sum_{i=1}^{n}\delta_{i}x_{i}^{2}, \; q \in U
-	$$
-	onde $\delta_{i} \in \{-1,1\}, \; 1\leq j \leq n$.}
+		$$
+		(f \circ h) (q) = f(p) + \sum_{i=1}^{n}\delta_{i}x_{i}^{2}, \; q \in U
+		$$
+		onde $\delta_{i} \in \{-1,1\}, \; 1\leq j \leq n$.}
 	
 	$\square$ A demonstração está fora do escopo.	
 	
@@ -676,13 +676,13 @@ execute at end node=$]
 	\vspace{2mm}
 	\textit{\textbf{Lema (níveis difeomorfos):} Seja $a \in \mathbb{R}$ um valor crítico de $f:M \to \mathbb{R}$, e suponha que $\{p_{i}\} \subset f^{-1}(\{a\})$, $1\leq i \leq k$ o conjunto de pontos críticos com índices $\lambda_{i}$, então existe $\epsilon > 0 \in \mathbb{R}$ e uma união disjunta de abertos $U_{i} \ni p_{i}$ tais que:}
 	\begin{enumerate}
-	\item  \textit{os pontos $\{p_{i}\}$ são os únicos pontos críticos no conjunto $f^{-1}([a - \epsilon, a + \epsilon])$.}
-	
-	\item \textit{cada $U_{i}$ é difeomorfo a um aberto contrátil de $\mathbb{R}^{n}$.}
-	
-	\item \textit{$W_{i} := U_{i} \cap M(a-\epsilon)$ é difeomorfo a $S^{\lambda_{i} - 1} \times V_{i}$, onde $V_{i} \subset \mathbb{R}^{n - (\lambda_{i} - 1)}$ é um aberto contrátil.}
-	
-	\item \textit{$M(a+\epsilon)$ é difeomorfo a $U_{1} \cup \dots \cup U_{k} \cup M(a-\epsilon)$.}
+		\item  \textit{os pontos $\{p_{i}\}$ são os únicos pontos críticos no conjunto $f^{-1}([a - \epsilon, a + \epsilon])$.}
+		
+		\item \textit{cada $U_{i}$ é difeomorfo a um aberto contrátil de $\mathbb{R}^{n}$.}
+		
+		\item \textit{$W_{i} := U_{i} \cap M(a-\epsilon)$ é difeomorfo a $S^{\lambda_{i} - 1} \times V_{i}$, onde $V_{i} \subset \mathbb{R}^{n - (\lambda_{i} - 1)}$ é um aberto contrátil.}
+		
+		\item \textit{$M(a+\epsilon)$ é difeomorfo a $U_{1} \cup \dots \cup U_{k} \cup M(a-\epsilon)$.}
 	\end{enumerate}
 	
 	$\square$ Demonstração esta fora do escopo.
@@ -726,10 +726,10 @@ execute at end node=$]
 	
 	\vspace{2mm}
 	\textit{\textbf{Teorema (Característica de Euler-Poincaré):} Seja $f \in C^{M, \mathbb{R}}$ uma função de Morse e $M$ uma variedade diferenciável compacta, então:
-	$$
-	\chi(M^{n}) = \sum_{\lambda}(-1)^{\lambda}c_{\lambda},
-	$$
-	onde $c_{\lambda}$ é o número de pontos críticos com índice $\lambda$.}
+		$$
+		\chi(M^{n}) = \sum_{\lambda}(-1)^{\lambda}c_{\lambda},
+		$$
+		onde $c_{\lambda}$ é o número de pontos críticos com índice $\lambda$.}
 	
 	$\square$ Como $M$ é compacta e como $f$ é contínua, logo $f(M) = [a,b] \subset \mathbb{R}$ é um compacto e $f$ possui um número finito de pontos críticos. Sejam  os valores críticos não-degenerados $\{f(p_{i})\}_{1\leq i \leq k}$ e, sem perda de generalidade, podemos supor que $a_{1} = f(p_{1}) < \dots < a_{k}=f(p_{k})$. Tomemos $b_{0} < a_{1}$, $a_{k} < b_{k}$ e $b_{i} \in (a_{i}, a_{i+1})$ onde $1\leq i \leq k-1$. Note que $(a_{i}, a_{i+1})$ não possui valores críticos, então pelo lema dos níveis difeomorfos temos $M(b_{i}) \simeq M(c_{i}), \; \forall b_{i}, c_{i} \in (a_{i}, a_{i+1})$. Tomemos $\{b_{i}\}_{0\leq i \leq k}$ arbitrários, mas fixos, assim, pela proposição anterior para cada valor regular não-degenerados $a_{i} \in [b_{i}, b_{i+1}]$, existe um $\epsilon_{j} > \mathbb{R}$ tal que
 	$$
@@ -846,7 +846,7 @@ execute at end node=$]
 	{  
 		H^{r-1}(U) \oplus H^{r-1}(V) & H^{r-1}(U \cap V) & H^{r}(M)  & H^{r}(U) \oplus H^{r}(V) & H^{r}(U \cap V)
 		\\
-		H^{n - r+1}(U)^{*} \oplus H^{n-r+1}(U)^{*} & H^{n - r+1}(U \cap V)^{*} & H^{n - r}(M)^{*} & H^{n - r}(U)^{*} \oplus H^{n - r}(V)^{*} & H^{r}(U \cap V)^{*}
+		H^{n - r+1}(U)^{*} \oplus H^{n-r+1}(V)^{*} & H^{n - r+1}(U \cap V)^{*} & H^{n - r}(M)^{*} & H^{n - r}(U)^{*} \oplus H^{n - r}(V)^{*} & H^{r}(U \cap V)^{*}
 		\\
 	};
 	{ [start chain] 
@@ -881,21 +881,37 @@ execute at end node=$]
 	\end{tikzpicture}
 	
 	
-	$\square$ Vejamos que cada um dos diagramas comutam, isto é: 
+	$\square$ Primeiramente, vamos definir as seguintes operações indicadas no diagrama: $J^{T}$ e $I^{T}$ tais que $J^{T}(I_{M}) = I_{U} \oplus -I_{V}$ e $I^{T}(I_{U} \oplus I_{V}) = I_{U \cap V}$. Vejamos agora que cada um dos diagramas comutam, isto é: 
 	$$
 	\begin{aligned}
 	(I_{U \cap V} \circ J^{*})([\gamma],[\beta]) 
-	=& \int_{U \cap V} \alpha \wedge (\gamma - \beta)
+	=& I_{U \cap V} ([\gamma] - [\beta])
+	= I_{U \cap V}([\gamma])  -I_{U \cap V}([\beta])
+	=I_{U \cap V}([\gamma]) \oplus -I_{U \cap V}([\beta]),
 	\\
-	=& \int_{U \cap V} \alpha \wedge \gamma - \int_{U \cap V} \alpha \wedge \beta
-	\\
-	=& 	I_{U}[\gamma]  -I_{V}([\beta])
-	\\
-	=& 	(I_{U} \oplus -I_{V})([\gamma],[\beta])
-	\\
-	=& 	(I^{T} \circ I_{U} \oplus -I_{V})([\gamma],[\beta]).
-	\\
-	(I_{M} \circ \partial^{*})(\beta) =& sssss
+	(I^{T} \circ I_{U} \oplus -I_{V} )([\gamma],[\beta]) =& I^{T}( I_{U}([\gamma]) \oplus -I_{V}([\beta])) = I_{U \cap V}([\gamma]) \oplus -I_{U \cap V}([\beta]),
 	\end{aligned}
 	$$
+	como $([\gamma],[\beta]) \in H^{r-1}(U) \oplus H^{r-1}(V)$ é arbitrário, então $I_{U \cap V} \circ J^{*} = I^{T} \circ I_{U} \oplus -I_{V}$. Analogamente, temos:
+	$$
+	\begin{aligned}
+	(I_{U} \oplus -I_{V} \circ I^{*} )([\gamma]) =& I_{U} \oplus -I_{V} ([\gamma|_{U}], [\gamma|_{V}]) = I_{U}([\gamma]) \oplus -I_{V} ([\gamma]),
+	\\
+	(J^{T} \circ I_{M} )([\gamma]) 
+	=& J^{T}(I_{M} ([\gamma]))
+	= I_{U}([\gamma])  \oplus -I_{V}([\gamma]),	\end{aligned}
+	$$
+	como $[\gamma] \in H^{r}(M)$ é arbitrário, então $(I_{U} \oplus -I_{V} \circ I^{*} ) = (J^{T} \circ I_{M} )$. Por fim, temos também que:
+	$$
+	\begin{aligned}
+	(I_{M} \circ \partial^{*} )([\gamma]) =& I_{M}(\partial^{*} [\gamma]),
+	\\
+	(\partial^{T} \circ I_{U \cap V} )([\gamma]) 
+	=& \partial^{T}(I_{U \cap V} ([\gamma]))
+	= I_{M}(\partial^{*} [\gamma]),
+	\end{aligned}
+	$$
+	novamente, como $[\gamma] \in H^{r-1}(U \cap V)$ é arbitrário, então $I_{M} \circ \partial^{*} = \partial^{T} \circ I_{U \cap V}$, como desejávamos. Assim, o diagrama acima é comutativo.
+	
+	$\blacksquare$
 \end{document}
