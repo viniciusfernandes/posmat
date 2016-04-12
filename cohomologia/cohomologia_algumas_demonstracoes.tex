@@ -812,15 +812,21 @@ execute at end node=$]
 	
 	\section{Dualidade de Poincaré}
 	
-	Quando trabalhamos com integração em variedades não-compactas operacionamos sobre formas com suporte compacto, caso as variedades sejam compactas, então esse caso cobre o anterior. Assim, tomemos $M^{n}$ uma variedade diferenciável e $\omega \in \Omega_{c}^{n}(M)$, e por definição, $\int_{M}\omega \in \mathbb{R}$, isto é, $\int_{M} \in \Omega_{c}^{n}(M)^{*}$ pois é um operador linear, por construção. Como, a partir da operação de integração, construir um funcional linear em $\Omega_{c}^{p}(M)^{*}$ onde $1 \leq p \leq n-1$. Seja $0\leq k \leq n$ e reescreveremos $p = n-k$, sendo que $k=0$ é o caso conhecido. Para cada $k$ tome $\alpha \in \Omega^{k}(M)$ e definindo $I : \Omega^{k}(M) \to \Omega_{c}^{n-k}(M)^{*}$ tal que $I(\alpha)(\omega) = \int_{M}\alpha \wedge \omega \in \mathbb{R}$. Note que através do produto exterior conseguimos um funcional para cada $p = n-k$, podendo integrar na variedade, como desejávamos. Note que, temos $supp(\alpha\wedge \omega) = supp(\alpha) \cap supp(\omega) \subset supp(\omega)$, logo a integração $\int_{supp(\alpha \wedge \omega  )}\alpha \wedge \omega  \leq \int_{supp(\omega)}\alpha \wedge \omega < \infty $, e o funcional $I(\alpha)$ esta bem-definido. 
+	Quando trabalhamos com integração em variedades não-compactas operacionamos sobre formas com suporte compacto, caso as variedades sejam compactas, então esse caso cobre o anterior. Assim, tomemos $M^{n}$ uma variedade diferenciável e $\omega \in \Omega_{c}^{n}(M)$, e por definição, $\int_{M}\omega \in \mathbb{R}$, isto é, $\int_{M} \in \Omega_{c}^{n}(M)^{*}$ pois é um operador linear, por construção. Como, a partir da operação de integração, construir um funcional linear em $\Omega_{c}^{p}(M)^{*}$ onde $1 \leq p \leq n-1$. Seja $0\leq k \leq n$ e reescreveremos $p = n-k$, sendo que $k=0$ é o caso conhecido. Para cada $k$ tome $\alpha \in \Omega^{k}(M)$ e definindo $D : \Omega^{k}(M) \to \Omega_{c}^{n-k}(M)^{*}$ tal que $D(\alpha)(\omega) = \int_{M}\alpha \wedge \omega \in \mathbb{R}$. Note que através do produto exterior conseguimos um funcional para cada $p = n-k$, podendo integrar na variedade, como desejávamos. Além disso, essa integração essa aplicação bem-definida pois temos $supp(\alpha\wedge \omega) = supp(\alpha) \cap supp(\omega) \subset supp(\omega)$, logo
+	$$
+	D(\alpha)(\omega) = \int_{M}\alpha \wedge \omega  = \int_{supp(\alpha \wedge \omega  )}\alpha \wedge \omega  \leq \int_{supp(\omega)}\alpha \wedge \omega < \infty,$$
+	e como o $supp(\omega)$ é compacto, então o funcional $D(\alpha) \in H^{n-k}_{c}(M)$ esta bem-definido. 
 	
 	\vspace{2mm}
-	\textit{\textbf{Proposição (funcional linear da homologia):} Seja $M^{n}$ uma variedade diferenciável e orientável, então o mapa $I: H^{k}(M) \to H^{n-k}(M)^{*}$ dado por $I([\alpha])([\omega]) = \int_{M} \alpha \wedge \omega$ resulta em um funcional linear e esta bem definido, e por simplicidade o denotaremos por $I_{M}$, logo, $I_{M}([\omega]) = \int_{M} \alpha \wedge \omega$.}
+	\textit{\textbf{Proposição (funcional linear da homologia):} Seja $M^{n}$ uma variedade diferenciável e orientável, então o mapa $D_{M}: H^{k}(M) \to H^{n-k}_{c}(M)^{*}$ dado por $D_{M}([\alpha]) = \int_{M} \alpha \wedge$ esta bem definido e resulta em um funcional linear, sendo que sua operação esta definida como}
+	$$
+	D_{M}([\alpha])([\omega]) = \Big( \int_{M} \alpha \wedge \Big)([\omega]) = \int_{M} \alpha \wedge \omega.
+	$$
 	
 	$\square$ Tomemos $[\alpha] = [\beta] \in H^{k}(M)$ e um $[\omega] \in H^{n-k}(M)^{*}$, então
 	$$
 	\begin{aligned}
-	I([\alpha])([\omega]) =& \int_{M} \alpha \wedge \omega = \int_{M} (\beta + d\lambda)\wedge \omega
+	D_{M}([\alpha])([\omega]) =& \int_{M} \alpha \wedge \omega = \int_{M} (\beta + d\lambda)\wedge \omega
 	\\
 	=& \int_{M} \beta \wedge \omega + \int_{M}d\lambda \wedge \omega
 	\\
@@ -828,14 +834,62 @@ execute at end node=$]
 	\\
 	=&\int_{M} \beta \wedge \omega + \underbrace{ \int_{\partial M}\lambda \wedge \omega }_{=0} + \underbrace{ \int_{M} (-1)^{k+1}\lambda \wedge d\omega }_{=0}
 	\\
-	=& I([\beta])([\omega]),
+	=& \Big( \int_{M} \beta \wedge \Big)([\omega])
+	\\
+	=& D_{M}([\beta])([\omega]),
 	\end{aligned}
 	$$ 
 	onde nas duas passagens anteriores aplicamos o teorema de Stokes e utilizamos o fato de que a variedade não contém bordo, e também o fato de que $\omega$ é fechada pois $[\omega] \in H^{n-k}_{c}(M) \Rightarrow \omega \in Z^{n-k}_{c}(M)$, logo $d\omega=0$. Portanto, esta bem-definido. Sejam $a \in \mathbb{R}$ e $[\beta], [\omega] \in  H^{n-k}_{c}(M)$, então é claro que $a[\beta]+[\omega] \in  H^{n-k}_{c}(M)$ e assim
 	$$
-	I_{M}(a[\beta]+[\omega] ) = I_{M}[a\beta+\omega] = \int_{M}\alpha \wedge (a\beta+\omega) = a\int_{M}\alpha \wedge \beta + \int_{M}\alpha \wedge \omega = aI_{M}([\beta]) + I_{M}([\omega] ),
+	D_{M}([\alpha])(a[\beta]+[\omega] ) = D_{M}([\alpha])([a\beta+\omega]) = \int_{M}\alpha \wedge (a\beta+\omega) = a\int_{M}\alpha \wedge \beta + \int_{M}\alpha \wedge \omega = aD_{M}([\alpha])([\beta]) + D_{M}([\alpha])([\omega] ),
 	$$ 
 	portanto é linear.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textit{\textbf{Lema:} Sejam $M^{n}$ uma variedade e  $V \subseteq U \subset M$ dois abertos, então o diagrama abaixo é comutativo.}
+	\\
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
+	{  
+		H^{p}(U) & H^{p}(V)
+		\\
+		H^{n - p}(U)^{*} & H^{n - p}(V)^{*}
+		\\
+	};
+	{ [start chain] 
+		\chainin (m-1-1);
+		{ [start branch=A] \chainin (m-2-1)
+			[join={node[right,labeled] {D_{U}}}];
+		}
+		\chainin (m-1-2) [join={node[above,labeled] {i^{*}} }];
+		{ [start branch=A] \chainin (m-2-2)
+			[join={node[right,labeled] {D_{V}}}];
+		}
+	}
+	{ [start chain] 
+		\chainin (m-2-1);
+		\chainin (m-2-2) [join={node[above,labeled] {i^{T}}}];
+	}
+	\end{tikzpicture}
+	
+	$\square$ Primeiramente, observemos que dado um cíclo $\omega \in \Omega^{p}(U)$, então teremos que $\omega \in \Omega^{p}(V)$, isto é, $Z^{p}(U) \subseteq Z^{p}(V)$, logo, $H^{p}(U) \subseteq H^{p}(V)$, portanto a aplicação de inclusão do diagrama esta bem-definida.
+		
+	$$
+	\begin{aligned}
+	(D_{V}\circ i^{*} )([\beta])([\omega])
+	=& D_{V} ([i^{*}(\beta)]) = \Big( \int_{V} i^{*}(\beta) \wedge \Big)([\omega]) = \int_{V} i^{*}(\beta) \wedge \omega = \int_{V} \beta \wedge \omega 
+	\\
+	(i^{T} \circ D_{U})([\beta])([\omega]) =& i^{T}(D_{U}([\beta]))([\omega]) = i^{T}\Big( \int_{U} \beta \wedge \Big)([\omega]) = \int_{U} \beta|_{V} \wedge i^{*}(\omega),
+	\end{aligned}
+	$$	
+	como $supp_{U}(\beta|_{V} \wedge i^{*}(\omega)) = supp_{V}(\beta|_{V} \wedge \omega) \subseteq  supp_{V}(\beta \wedge \omega) = supp_{V}(\omega)$, logo a ultima integral será
+	$$
+	(i^{T} \circ D_{U})([\beta])([\omega]) =\int_{U} \beta|_{V} \wedge i^{*}(\omega) = \int_{V} \beta \wedge \omega.
+	$$
+	
+	Como $[\beta] \in H^{p}(U)$ e $[\omega] \in H^{p}_{c}(V)^{*}$ são arbitrários, então $D_{U}\circ i^{*}  = i^{T} \circ D_{U}$, e portanto o diagrama comuta.
 	
 	$\blacksquare$
 	
@@ -852,23 +906,23 @@ execute at end node=$]
 	{ [start chain] 
 		\chainin (m-1-1);
 		{ [start branch=A] \chainin (m-2-1)
-			[join={node[right,labeled] {I_{U} \oplus -I_{V}}}];
+			[join={node[right,labeled] {D_{U} \oplus -D_{V}}}];
 		}
 		\chainin (m-1-2) [join={node[above,labeled] {J^{*}} }];
 		{ [start branch=A] \chainin (m-2-2)
-			[join={node[right,labeled] {I_{U \cap V}}}];
+			[join={node[right,labeled] {D_{U \cap V}}}];
 		}
 		\chainin (m-1-3) [join={node[above,labeled] {\partial^{*} }}];
 		{ [start branch=B] \chainin (m-2-3)
-			[join={node[right,labeled] { I_{M} }}];
+			[join={node[right,labeled] { D_{M} }}];
 		}
 		\chainin (m-1-4) [join={node[above,labeled] {I^{*}}}];
 		{ [start branch=C] \chainin (m-2-4)
-			[join={node[right,labeled] { I_{U} \oplus -I_{V} }}];
+			[join={node[right,labeled] { D_{U} \oplus -D_{V} }}];
 		}
 		\chainin (m-1-5) [join={node[above,labeled] {J^{*}}}];
 		{ [start branch=C] \chainin (m-2-5)
-			[join={node[right,labeled] { I_{U \cap V} }}];
+			[join={node[right,labeled] { D_{U \cap V} }}];
 		}
 	}
 	{ [start chain] 
@@ -881,37 +935,37 @@ execute at end node=$]
 	\end{tikzpicture}
 	
 	
-	$\square$ Primeiramente, vamos definir as seguintes operações indicadas no diagrama: $J^{T}$ e $I^{T}$ tais que $J^{T}(I_{M}) = I_{U} \oplus -I_{V}$ e $I^{T}(I_{U} \oplus I_{V}) = I_{U \cap V}$. Vejamos agora que cada um dos diagramas comutam, isto é: 
+	$\square$ Primeiramente, vamos definir as seguintes operações indicadas no diagrama: $J^{T}$ e $I^{T}$ tais que $J^{T}(D_{M}) = D_{U} \oplus -D_{V}$ e $I^{T}(D_{U} \oplus D_{V}) = D_{U \cap V}$. Vejamos agora que cada um dos diagramas comutam, isto é: 
 	$$
 	\begin{aligned}
-	(I_{U \cap V} \circ J^{*})([\gamma],[\beta]) 
-	=& I_{U \cap V} ([\gamma] - [\beta])
-	= I_{U \cap V}([\gamma])  -I_{U \cap V}([\beta])
-	=I_{U \cap V}([\gamma]) \oplus -I_{U \cap V}([\beta]),
+	(D_{U \cap V} \circ J^{*})([\gamma],[\beta]) 
+	=& D_{U \cap V} ([\gamma] - [\beta])
+	= D_{U \cap V}([\gamma])  -D_{U \cap V}([\beta])
+	=D_{U \cap V}([\gamma]) \oplus -D_{U \cap V}([\beta]),
 	\\
-	(I^{T} \circ I_{U} \oplus -I_{V} )([\gamma],[\beta]) =& I^{T}( I_{U}([\gamma]) \oplus -I_{V}([\beta])) = I_{U \cap V}([\gamma]) \oplus -I_{U \cap V}([\beta]),
+	(I^{T} \circ D_{U} \oplus -D_{V} )([\gamma],[\beta]) =& I^{T}( D_{U}([\gamma]) \oplus -D_{V}([\beta])) = D_{U \cap V}([\gamma]) \oplus -D_{U \cap V}([\beta]),
 	\end{aligned}
 	$$
-	como $([\gamma],[\beta]) \in H^{r-1}(U) \oplus H^{r-1}(V)$ é arbitrário, então $I_{U \cap V} \circ J^{*} = I^{T} \circ I_{U} \oplus -I_{V}$. Analogamente, temos:
+	como $([\gamma],[\beta]) \in H^{r-1}(U) \oplus H^{r-1}(V)$ é arbitrário, então $D_{U \cap V} \circ J^{*} = I^{T} \circ D_{U} \oplus -D_{V}$. Analogamente, temos:
 	$$
 	\begin{aligned}
-	(I_{U} \oplus -I_{V} \circ I^{*} )([\gamma]) =& I_{U} \oplus -I_{V} ([\gamma|_{U}], [\gamma|_{V}]) = I_{U}([\gamma]) \oplus -I_{V} ([\gamma]),
+	(D_{U} \oplus -D_{V} \circ I^{*} )([\gamma]) =& D_{U} \oplus -D_{V} ([\gamma|_{U}], [\gamma|_{V}]) = D_{U}([\gamma]) \oplus -D_{V} ([\gamma]),
 	\\
-	(J^{T} \circ I_{M} )([\gamma]) 
-	=& J^{T}(I_{M} ([\gamma]))
-	= I_{U}([\gamma])  \oplus -I_{V}([\gamma]),	\end{aligned}
+	(J^{T} \circ D_{M} )([\gamma]) 
+	=& J^{T}(D_{M} ([\gamma]))
+	= D_{U}([\gamma])  \oplus -D_{V}([\gamma]),	\end{aligned}
 	$$
-	como $[\gamma] \in H^{r}(M)$ é arbitrário, então $(I_{U} \oplus -I_{V} \circ I^{*} ) = (J^{T} \circ I_{M} )$. Por fim, temos também que:
+	como $[\gamma] \in H^{r}(M)$ é arbitrário, então $(D_{U} \oplus -D_{V} \circ I^{*} ) = (J^{T} \circ D_{M} )$. Por fim, temos também que:
 	$$
 	\begin{aligned}
-	(I_{M} \circ \partial^{*} )([\gamma]) =& I_{M}(\partial^{*} [\gamma]),
+	(D_{M} \circ \partial^{*} )([\gamma]) =& D_{M}(\partial^{*} [\gamma]),
 	\\
-	(\partial^{T} \circ I_{U \cap V} )([\gamma]) 
-	=& \partial^{T}(I_{U \cap V} ([\gamma]))
-	= I_{M}(\partial^{*} [\gamma]),
+	(\partial^{T} \circ D_{U \cap V} )([\gamma]) 
+	=& \partial^{T}(D_{U \cap V} ([\gamma]))
+	= D_{M}(\partial^{*} [\gamma]),
 	\end{aligned}
 	$$
-	novamente, como $[\gamma] \in H^{r-1}(U \cap V)$ é arbitrário, então $I_{M} \circ \partial^{*} = \partial^{T} \circ I_{U \cap V}$, como desejávamos. Assim, o diagrama acima é comutativo.
+	novamente, como $[\gamma] \in H^{r-1}(U \cap V)$ é arbitrário, então $D_{M} \circ \partial^{*} = \partial^{T} \circ D_{U \cap V}$, como desejávamos. Assim, o diagrama acima é comutativo.
 	
 	$\blacksquare$
 \end{document}
