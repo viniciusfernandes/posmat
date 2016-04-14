@@ -894,6 +894,36 @@ execute at end node=$]
 	$\blacksquare$
 	
 	\vspace{2mm}
+	\textbf{Definição (aplicação transposta):} Sejam $A, B$ dois espaços vetoriais com dimensão finita, e tome $f:A \to B$, $*_{A} : A \to A^{*}$ e $*_{B} : B \to B^{*}$ aplicações lineares, sendo os ultimos isomorfismos. Podemos definir a aplicação transposta de $f$ como sendo $f^{T}: B^{*} \to A^{*}$ tal que dado $v \in A$ teremos $f^{T}(g)(v) := g(f(v))$. Isto é, teremos o diagrama abaixo:
+	\\
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
+	{  
+		A & B
+		\\
+		A^{*} & B^{*}
+		\\
+	};
+	{ [start chain] 
+		\chainin (m-1-1);
+		{ [start branch=A] \chainin (m-2-1)
+			[join={node[left,labeled] {*_{A}}}];
+		}
+		\chainin (m-1-2) [join={node[above,labeled] {f} }];
+		{ [start branch=A] \chainin (m-2-2)
+			[join={node[right,labeled] {*_{B}}}];
+		}
+	}
+	{ [start chain] 
+		\chainin (m-2-2);
+		\chainin (m-2-1)[join={node[above,labeled] {f^{T}}}];
+	}
+	\end{tikzpicture}
+	
+	\vspace{2mm}
+	\textbf{Definição:} Sejam $U, V \subseteq M^{n}$ dois aberto de uma n-variedade diferenciável tais que $M = U \cup V$. Tome a aplicação $\partial^{*}: H^{p}(U\cap V) \to H^{p+1}(M)$, então a aplicação transposta será $\partial^{T} : H^{n-p}(U\cap V) \to H^{n-p-1}(M)^{*}$ tal que, dado $[\omega] \in H^{n-p}(U \cap V)$, teremos $\partial^{T}(g)([\omega]) := g(\partial^{*}([\omega]))$
+	
+	\vspace{2mm}
 	\textit{\textbf{Lema:} Sejam $M^{n}$ uma variedade e  $U,V \subset M$ dois abertos tais que $M=U \cup V$, então o diagrama abaixo é comutativo.}
 	\begin{tikzpicture}
 	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
