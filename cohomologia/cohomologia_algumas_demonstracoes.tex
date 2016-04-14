@@ -894,43 +894,28 @@ execute at end node=$]
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Definição (aplicação transposta):} Sejam $A, B$ dois espaços vetoriais com dimensão finita, e tome $f:A \to B$, $*_{A} : A \to A^{*}$ e $*_{B} : B \to B^{*}$ aplicações lineares, sendo os ultimos isomorfismos. Podemos definir a aplicação transposta de $f$ como sendo $f^{T}: B^{*} \to A^{*}$ tal que dado $v \in A$ teremos $f^{T}(g)(v) := g(f(v))$. Isto é, teremos o diagrama abaixo:
-	\\
-	\begin{tikzpicture}
-	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
-	{  
-		A & B
-		\\
-		A^{*} & B^{*}
-		\\
-	};
-	{ [start chain] 
-		\chainin (m-1-1);
-		{ [start branch=A] \chainin (m-2-1)
-			[join={node[left,labeled] {*_{A}}}];
-		}
-		\chainin (m-1-2) [join={node[above,labeled] {f} }];
-		{ [start branch=A] \chainin (m-2-2)
-			[join={node[right,labeled] {*_{B}}}];
-		}
-	}
-	{ [start chain] 
-		\chainin (m-2-2);
-		\chainin (m-2-1)[join={node[above,labeled] {f^{T}}}];
-	}
-	\end{tikzpicture}
+	\textit{\textbf{Proposição (aplicação bordo)}:} Sejam $U, V \subseteq M^{n}$ dois aberto de uma n-variedade diferenciável tais que $M = U \cup V$. Tome a aplicação $\partial^{*}: H^{p}(U\cap V) \to H^{p+1}(M)$, então a aplicação transposta será $\partial^{T} : H^{n-p}(U\cap V)^{*} \to H^{n-p-1}(M)^{*}$ tal que, dado $[\omega] \in H^{p}(U \cap V)$, teremos $\partial^{T}(D_{U\cap V}([\omega])) := D_{M}(\partial^{*}([\omega]))$. Essa aplicação esta bem-definida.
 	
-	\vspace{2mm}
-	\textbf{Definição:} Sejam $U, V \subseteq M^{n}$ dois aberto de uma n-variedade diferenciável tais que $M = U \cup V$. Tome a aplicação $\partial^{*}: H^{p}(U\cap V) \to H^{p+1}(M)$, então a aplicação transposta será $\partial^{T} : H^{n-p}(U\cap V) \to H^{n-p-1}(M)^{*}$ tal que, dado $[\omega] \in H^{n-p}(U \cap V)$, teremos $\partial^{T}(g)([\omega]) := g(\partial^{*}([\omega]))$
+	$\square$ Sejam $[\omega] \in H^{p}(U \cap V)$ e $[\gamma] \in H^{n-p-1}_{c}(M)$, teremos:
+	$$
+	\partial^{T}(D_{U\cap V}([\omega]))([\gamma]) = D_{M}(\partial^{*}[\omega])([\gamma]) = D_{M}([\alpha])([\gamma]) = \int_{M} \alpha \wedge \gamma,
+	$$
+	onde definimos $[\alpha] = \partial^{*}[\omega] \in H^{p+1}(M)$. Assim, podemos ver que $\alpha \wedge \gamma$ é uma $n$-forma e também a integral existe pois $supp(\alpha \wedge \gamma) \subseteq supp(\alpha) \cap supp(\gamma) \subseteq supp(\gamma)$, logo, 
+	$$
+	\partial^{T}(D_{U\cap V}([\omega]))([\gamma]) = \int_{M} \alpha \wedge \gamma = \int_{supp(\alpha \wedge \gamma)} \alpha \wedge \gamma \leq \int_{supp(\gamma)} \alpha \wedge \gamma < \infty,
+	$$
+	logo a aplicação esta bem-definida.
+	
+	$\blacksquare$
 	
 	\vspace{2mm}
 	\textit{\textbf{Lema:} Sejam $M^{n}$ uma variedade e  $U,V \subset M$ dois abertos tais que $M=U \cup V$, então o diagrama abaixo é comutativo.}
 	\begin{tikzpicture}
 	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
 	{  
-		H^{r-1}(U) \oplus H^{r-1}(V) & H^{r-1}(U \cap V) & H^{r}(M)  & H^{r}(U) \oplus H^{r}(V) & H^{r}(U \cap V)
+		H^{p}(U) \oplus H^{p}(V) & H^{p}(U \cap V) & H^{p+1}(M)  & H^{p+1}(U) \oplus H^{p+1}(V) & \dots
 		\\
-		H^{n - r+1}(U)^{*} \oplus H^{n-r+1}(V)^{*} & H^{n - r+1}(U \cap V)^{*} & H^{n - r}(M)^{*} & H^{n - r}(U)^{*} \oplus H^{n - r}(V)^{*} & H^{r}(U \cap V)^{*}
+		H^{n - p}_{c}(U)^{*} \oplus H^{n- p}_{c}(V)^{*} & H^{n - p}_{c}(U \cap V)^{*} & H^{n - p-1}_{c}(M)^{*} & H^{n - p-1}_{c}(U)^{*} \oplus H^{n - p-1}_{c}(V)^{*} & \dots
 		\\
 	};
 	{ [start chain] 
@@ -951,51 +936,75 @@ execute at end node=$]
 			[join={node[right,labeled] { D_{U} \oplus -D_{V} }}];
 		}
 		\chainin (m-1-5) [join={node[above,labeled] {J^{*}}}];
-		{ [start branch=C] \chainin (m-2-5)
-			[join={node[right,labeled] { D_{U \cap V} }}];
-		}
 	}
 	{ [start chain] 
 		\chainin (m-2-1);
-		\chainin (m-2-2) [join={node[above,labeled] {I^{T}}}];
+		\chainin (m-2-2) [join={node[above,labeled] {J^{T}}}];
 		\chainin (m-2-3) [join={node[above,labeled] {\partial^{T} }}];
-		\chainin (m-2-4) [join={node[above,labeled] {J^{T}}}];
-		\chainin (m-2-5) [join={node[above,labeled] {I^{T}}}];
+		\chainin (m-2-4) [join={node[above,labeled] {I^{T}}}];
+		\chainin (m-2-5) [join={node[above,labeled] {J^{T}}}];
 	}
 	\end{tikzpicture}
 	
 	
 	$\square$ Primeiramente, vamos definir as seguintes operações indicadas no diagrama: $J^{T}$ e $I^{T}$ tais que $J^{T}(D_{M}) = D_{U} \oplus -D_{V}$ e $I^{T}(D_{U} \oplus D_{V}) = D_{U \cap V}$. Vejamos agora que cada um dos diagramas comutam, isto é: 
-	$$
-	\begin{aligned}
-	(D_{U \cap V} \circ J^{*})([\gamma],[\beta]) 
-	=& D_{U \cap V} ([\gamma] - [\beta])
-	= D_{U \cap V}([\gamma])  -D_{U \cap V}([\beta])
-	=D_{U \cap V}([\gamma]) \oplus -D_{U \cap V}([\beta]),
-	\\
-	(I^{T} \circ D_{U} \oplus -D_{V} )([\gamma],[\beta]) =& I^{T}( D_{U}([\gamma]) \oplus -D_{V}([\beta])) = D_{U \cap V}([\gamma]) \oplus -D_{U \cap V}([\beta]),
-	\end{aligned}
-	$$
-	como $([\gamma],[\beta]) \in H^{r-1}(U) \oplus H^{r-1}(V)$ é arbitrário, então $D_{U \cap V} \circ J^{*} = I^{T} \circ D_{U} \oplus -D_{V}$. Analogamente, temos:
-	$$
-	\begin{aligned}
-	(D_{U} \oplus -D_{V} \circ I^{*} )([\gamma]) =& D_{U} \oplus -D_{V} ([\gamma|_{U}], [\gamma|_{V}]) = D_{U}([\gamma]) \oplus -D_{V} ([\gamma]),
-	\\
-	(J^{T} \circ D_{M} )([\gamma]) 
-	=& J^{T}(D_{M} ([\gamma]))
-	= D_{U}([\gamma])  \oplus -D_{V}([\gamma]),	\end{aligned}
-	$$
-	como $[\gamma] \in H^{r}(M)$ é arbitrário, então $(D_{U} \oplus -D_{V} \circ I^{*} ) = (J^{T} \circ D_{M} )$. Por fim, temos também que:
-	$$
-	\begin{aligned}
-	(D_{M} \circ \partial^{*} )([\gamma]) =& D_{M}(\partial^{*} [\gamma]),
-	\\
-	(\partial^{T} \circ D_{U \cap V} )([\gamma]) 
-	=& \partial^{T}(D_{U \cap V} ([\gamma]))
-	= D_{M}(\partial^{*} [\gamma]),
-	\end{aligned}
-	$$
-	novamente, como $[\gamma] \in H^{r-1}(U \cap V)$ é arbitrário, então $D_{M} \circ \partial^{*} = \partial^{T} \circ D_{U \cap V}$, como desejávamos. Assim, o diagrama acima é comutativo.
+	\begin{enumerate}
+	\item Caso em que $D_{U \cap V} \circ J^{*} = J^{T} \circ D_{U} \oplus -D_{V}$. Seja $[\omega] \in H^{n-p}_{c}(U \cap V)$, então:
+		$$
+		\begin{aligned}
+		(D_{U \cap V} \circ J^{*})([\gamma],[\beta])([\omega])
+		=& D_{U \cap V} ([\gamma|_{U\cap V}] - [\beta|_{U\cap V}])([\omega])
+		\\
+		=& \int_{U \cap V} (\gamma|_{U\cap V}  - \beta|_{U\cap V}) \wedge \omega
+		\\
+		=& \int_{U \cap V} \gamma \wedge \omega  - \int_{U \cap V} \beta \wedge \omega
+		\\
+		=& D_{U \cap V}([\gamma])([\omega]) -D_{U \cap V}([\beta])([\omega])
+		\\
+		=& (D_{U \cap V}([\gamma]) \oplus -D_{U \cap V}([\beta]))([\omega]),
+		\\
+		(I^{T} \circ D_{U} \oplus -D_{V} )([\gamma],[\beta])([\omega]) =& I^{T}( D_{U}([\gamma]) \oplus -D_{V}([\beta]))([\omega]) = D_{U \cap V}([\gamma]) \oplus -D_{U \cap V}([\beta]),
+		\end{aligned}
+		$$
+		como $([\gamma],[\beta]) \in H^{p}(U) \oplus H^{p}(V)$ é arbitrário, então $D_{U \cap V} \circ J^{*} = J^{T} \circ D_{U} \oplus -D_{V}$.
+	
+	\item Caso em que $D_{U} \oplus -D_{V} \circ I^{*}  = I^{T} \circ D_{M}$. Seja $[\omega] = ([\alpha], [\beta]) \in H^{n-p-1}_{c}(U) \oplus H^{n-p-1}_{c}(V)$, então:
+		$$
+		\begin{aligned}
+		(D_{U} \oplus -D_{V} \circ I^{*} )([\gamma])([\omega]) =& (D_{U} \oplus -D_{V}) ([\gamma|_{U}], [\gamma|_{V}])([\alpha], [\beta]) 
+		\\
+		=& (D_{U}([\gamma|_{U}]) \oplus -D_{V} ([\gamma|_{V}]))([\alpha], [\beta])
+		\\
+		=& D_{U}([\gamma])([\alpha])  -D_{V} ([\gamma])([\beta])
+		\\
+		(I^{T} \circ D_{M} )([\gamma])([\omega]) 
+		=& I^{T}(D_{M} ([\gamma]))([\omega])
+		\\
+		=& D_{U} \oplus -D_{V}([\gamma|_{U}], [\gamma|_{V}])([\omega])
+		\\
+		=& D_{U}([\gamma|_{U}])([\alpha])  -D_{V}([\gamma|_{V}])([\beta])
+		\\
+		=& D_{U}([\gamma])([\alpha])  -D_{V}([\gamma])([\beta]),
+		\end{aligned}
+		$$
+		como $[\gamma] \in H^{p+1}(M)$ é arbitrário, então $D_{U} \oplus -D_{V} \circ I^{*} = I^{T} \circ D_{M}$.
+		
+	\item Caso em que $D_{M} \circ \partial^{*} = \partial^{T} \circ D_{U \cap V}$. Seja $[\omega] \in H^{n-p-1}_{c}(M)$, então:
+		$$
+		\begin{aligned}
+		(D_{M} \circ \partial^{*} )([\gamma])([\omega]) =& D_{M}(\partial^{*} [\gamma])([\omega]),
+		\\
+		(\partial^{T} \circ D_{U \cap V} )([\gamma])([\omega])
+		=& \partial^{T}(D_{U \cap V} ([\gamma]))([\omega])
+		\\
+		=& D_{M}(\partial^{*} [\gamma])([\omega]),
+		\end{aligned}
+		$$
+		novamente, como $[\gamma] \in H^{p}(U \cap V)$ é arbitrário, então $D_{M} \circ \partial^{*} = \partial^{T} \circ D_{U \cap V}$, como desejávamos. Assim, o diagrama acima é comutativo.
+	\end{enumerate}
+	
+	
+
 	
 	$\blacksquare$
 \end{document}
