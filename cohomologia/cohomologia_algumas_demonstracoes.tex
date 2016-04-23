@@ -1030,11 +1030,11 @@ execute at end node=$]
 	\vspace{2mm}
 	\textit{\textbf{Corolário (dualidades locais de Poincaré):}}
 	\begin{enumerate}
-		\item Sejam $U_{1}, U_{2} \subset M$ e $U = U_{1} \cup U_{2}$ subconjuntos abertos de uma n-variedade diferenciável, e se $D_{U_{1}\cap U_{2}}: \cohomologia{p}{U_{1}\cap U_{2}} \to \cohomologiacompac{n-p}{U_{1}\cap U_{2}}$ for um isomorfismo, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$ é um isomorfismo.
+		\item \textit{Sejam $U_{1}, U_{2} \subset M$ e $U = U_{1} \cup U_{2}$ subconjuntos abertos de uma n-variedade diferenciável, e se $D_{U_{1}\cap U_{2}}: \cohomologia{p}{U_{1}\cap U_{2}} \to \cohomologiacompac{n-p}{U_{1}\cap U_{2}}$ for um isomorfismo, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$ é um isomorfismo.}
 		
-		\item Seja $\{U_{\alpha} \subset M^{n}: \alpha \in J \}$ uma família de subconjuntos de uma n-variedade diferenciável e $U = \bigcup_{\alpha \in J} U_{\alpha}$. Se $D_{U_{\alpha}}: \cohomologia{p}{U_{\alpha}} \to \cohomologiacompac{n-p}{U_{\alpha}}$, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$  é um isomorfismo.
+		\item \textit{Seja $\{U_{\alpha} \subset M^{n}: \alpha \in J \}$ uma família de subconjuntos de uma n-variedade diferenciável e $U = \bigcup_{\alpha \in J} U_{\alpha}$. Se $D_{U_{\alpha}}: \cohomologia{p}{U_{\alpha}} \to \cohomologiacompac{n-p}{U_{\alpha}}$, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$  é um isomorfismo.}
 		
-		\item Seja $U \subseteq M^{n}$ um subconjunto de uma n-variedade diferenciável difeomorfo a $\real{n}$, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$  é um isomorfismo.
+		\item \textit{Seja $U \subseteq M^{n}$ um subconjunto de uma n-variedade diferenciável difeomorfo a $\real{n}$, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$  é um isomorfismo.}
 	\end{enumerate}
 	
 	$\square$ Para 1) construindo o diagrama entre os functores das sequências de Mayer-Vietoris para os abertos $U_{1}, U_{2}$ e $U = U_{1} \cap U_{2}$, e como por hipótese temos $D_{U_{1}\cap U_{2}} : \cohomologia{p}{U_{1}\cap U_{2}} \to \cohomologiacompacdual{n-p}{U_{1}\cap U_{2}}$ e $D_{U_{1}} \oplus -D_{U_{2}} : \cohomologia{p}{U_{1}}\oplus \cohomologia{p}{U_{2}} \to \cohomologiacompacdual{n-p}{U_{1}}\oplus \cohomologiacompacdual{n-p}{U_{2}}$, são isomorfismos, então pelo \textit{lema dos 5} temos que $D_{U} : \cohomologia{p}{U} \to \cohomologiacompacdual{n-p}{U}$ é um isomorfismo.
@@ -1042,6 +1042,36 @@ execute at end node=$]
 	Para 2) como os subconjuntos abertos de $M$ são dois a dois disjuntos, então, pelo \textit{lema} anterior, temos os isomorfismos $\cohomologia{p}{U} \cong \bigoplus_{\alpha} \cohomologia{p}{U_{\alpha}}$ e $\cohomologiacompacdual{n-p}{U} \cong \bigoplus_{\alpha} \cohomologiacompacdual{n-p}{U_{\alpha}}$. Definindo $\bigoplus_{\alpha}D_{U_{\alpha}} : \bigoplus_{\alpha} \cohomologia{p}{U_{\alpha}} \to \bigoplus_{\alpha} \cohomologiacompacdual{n-p}{U_{\alpha}}$ tal que $\bigoplus_{\alpha}D_{U_{\alpha}} [\omega_{\alpha}]$, e como $D_{U_{\alpha}}$ é um isomorfismo para para $\alpha \in J$, então $\bigoplus_{\alpha}D_{U_{\alpha}}$ é um isomorfismo. Pelo lema anterior, vimos que $\phi : \cohomologia{p}{U} \to \bigoplus_{\alpha} \cohomologia{p}{U_{\alpha}}$ e $\psi : \cohomologiacompacdual{n-p}{U} \to \bigoplus_{\alpha} \cohomologiacompacdual{n-p}{U_{\alpha}}$ são isomorfismos, e pela sequência de Mayer-Vietoris temos a comutatividade do diagrama expressa pela comutação dos seguintes morfismos $(\bigoplus_{\alpha}D_{U_{\alpha}}) \circ \phi = \psi \circ D_{U}$, e como $(\bigoplus_{\alpha}D_{U_{\alpha}}) \circ \phi$ é um isomorfismo pois é a composição de isomorfismos, então $\psi \circ D_{U}$ também é um isomorfismo. Sabemos que, por construção, $D_{U}$ é linear e sobrejetor. Tomando $[\omega] \in \cohomologia{p}{U}$ temos $(\psi \circ D_{U})([\omega]) = \bigoplus_{\alpha}D_{U_{\alpha}}([\omega_{\alpha}]) =: D$, e como é um isomorfismos, podemos inverter a operação $[\omega] = (\psi \circ D_{U})^{-1}(D)$ o que implica que $D_{U}$ deve ser injetor, pois do contrário não poderemos inverter a operação, logo é um isomorfismo.
 	
 	Para 3) por hipótese $U \subseteq M$ é difeomorfo a $\real{n}$, logo $\cohomologia{p}{U} \cong \cohomologia{p}{\real{n}}$ e $\cohomologiacompac{p}{U} \cong \cohomologiacompac{p}{\real{n}}$, e temos que $\cohomologia{0}{\real{n}} \cong \real{}$ e $\cohomologia{p}{\real{n}} = 0$ caso $p >0$, e como $\cohomologiacompac{p}{U} \subseteq \cohomologia{p}{U}$ teremos $\cohomologiacompac{0}{U} = \cohomologia{0}{U} \cong \real{}$ e $\cohomologiacompac{p}{U} = \cohomologia{p}{U} = 0$ caso $p>0$. Temos as dualidades entre os grupos de hologogia de ordem $p$, mas temos apenas um caso não-trivial que é $p=0$, como já vimos, logo $D_{U}: \cohomologia{0}{U} \to \cohomologiacompacdual{n}{U}$. Tomando uma função constante $[a] \in \cohomologia{0}{U}$ teremos $D_{U}([a]) = \int_{U} a : \cohomologiacompac{n}{U} \to \real{}$, e já vimos em caso de suportes compactos, esse funcional linear é um isomorfismo com a reta real, logo $\cohomologiacompacdual{n}{U} \cong \real{}$, pois tomando $[\omega] \in \cohomologiacompac{n}{U}$ com $\int_{U}\omega = 1$, teremos $D_{U}([a])([\omega]) = \int_{U} a \omega = a\int_{U}  \omega = a \in \real{}$, logo, $D_{U}([a])$ é uma aplicação linear injetiva (pois $Ker(D_{U}) = 0$) e sobrejetiva (pois dado $b \in \real{}$ teremos $D_{U}([b])([\omega]) = b$), portanto um isomorfismo.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	O próximos teorema é demasiadamente técnico e suas demonstrações estão fora do escopo pois não acrescentarão ao entendimento do conteúdo aqui exposto.
+	
+	\vspace{2mm}
+	\textit{\textbf{Teorema (indução em conjuntos abertos): Seja $M^{n}$ uma n-variedade diferenciável e $\mathcal{V} = (V_{i})_{i \in I}$} uma cobertura de abertos de $M$. Suponha que $\mathcal{U}$ seja uma coleção de subconjuntos abertos de $M$ tais que:}
+	\begin{enumerate}
+		
+		\item $\emptyset \in \mathcal{U}$,
+		
+		\item \textit{Qualquer aberto $U \subseteq V_{i}$ difeomorfo a $\real{n}$ esta em $\mathcal{U}$,}
+		
+		\item \textit{Se $U_{1}, U_{2}, U_{1}\cap U_{2} \subset \mathcal{U}$, então $U_{1} \cup U_{2} \subset \mathcal{U}$,}
+		
+		\item \textit{Se $(U_{k})_{k \in \mathbb{N}}$ é uma sequência de subconjuntos abertos de $\mathcal{U}$ dois a dois disjuntos, então $\bigcup_{k \in \mathbb{N}}U_{k} \subset \mathcal{U}$.}
+	\end{enumerate}
+	\textit{Nessa condições teremos que $M \subset \mathcal{U}$}.
+	
+	$\square$ A demonstração esta fora do escopo.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textit{\textbf{Teorema (dualidade de Poincaré):} Seja $M^{n}$ uma n-variedade diferenciável e orientável, então temos o isomorfismo}
+	$$
+	D_{M}:\cohomologia{p}{M} \to \cohomologiacompacdual{n-p}{M}, \; 0\leq p \leq n.
+	$$
+	$\square$ Seja $\mathcal{U} = \{U \subseteq M: D_{U}\; \textit{é isomorfismo} \} \cup \{\emptyset\}$ uma coleção de abertos, e $\mathcal{V} = (V_{i})_{i \in I} = (M)$ uma cobertura trivial consistindo apenas de $M$. Vejamos que a família $\mathcal{U}$ cumpre as condições do \textit{teorema de indução de conjuntos abertos} pois: 1) $\emptyset \in \mathcal{U}$ trivialmente; 2) pelo \textit{corolário das dualidades locais} se $U \subseteq V_{i} = M$ for difeomorfo a $\real{n}$, então $D_{U}$ é um isomorfismo, logo $U \in \mathcal{U}$; 3) dados $U_{1}, U_{2}, U_{1}\cap U_{2} \in \mathcal{U}$, então $D_{U_{1}}, D_{U_{2}}, D_{U_{1} \cap U_{2}}$ são isomorfismo, logo pelo \textit{corolário das dualidades locais} $D_{U_{1} \cup U_{2}}$ é um isomorfismo, e como $U_{1} \cup U_{2}$ é uma união finita de abertos, portanto aberto, então $U_{1} \cup U_{2} \in \mathcal{U}$; 4) seja $(U_{k})_{k \in \mathbb{N}}$ uma família de elementos de $\mathcal{U}$ dois a dois disjuntos, consequementemente $D_{k}$ é um isomorfismo para cada $k \in \mathbb{N}$, então pelo \textit{corolário das dualidades locais} temos que $D_{U}$ é um isomorfismo para $U = \bigcup_{k}U_{k}$, e como $U$ é uma união arbitrária de abertos, logo aberto, então $U = \bigcup_{k}U_{k} \in \mathcal{U}$. Cumpridas todas as condições, temos que, pelo \textit{teorema de indução em conjuntos abertos} que $M \in \mathcal{U}$, o que implica que $D_{M}$ é um isomorfismo, como desejávamos.
 	
 	$\blacksquare$
 \end{document}
