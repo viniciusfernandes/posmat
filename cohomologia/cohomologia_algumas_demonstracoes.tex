@@ -24,6 +24,7 @@ execute at end node=$]
 
 \newcommand{\cohomologia}[2]{H^{#1}(#2)}
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
+\newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \begin{document}
 	
@@ -913,7 +914,8 @@ execute at end node=$]
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textit{\textbf{Lema:} Sejam $M^{n}$ uma variedade e  $U,V \subset M$ dois abertos tais que $M=U \cup V$, então o diagrama abaixo é comutativo.}
+	\textit{\textbf{Lema (functores entre sequências Mayer-Vietories):} Sejam $M^{n}$ uma variedade e  $U,V \subset M$ dois abertos tais que $M=U \cup V$, então o diagrama abaixo é comutativo.}
+	\\
 	\begin{tikzpicture}
 	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
 	{  
@@ -1010,11 +1012,11 @@ execute at end node=$]
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textit{\textbf{Lema:} Sejam $M^{n}$ uma n-variedade diferenciável e  $\{U_{\alpha} \subset M: \alpha \in J, \; U_{\alpha} \cap U_{\beta} \neq \emptyset \}$ uma família de subconjuntos abertos de M tais que $U = \bigcup_{\alpha \in J}U_{\alpha} \subset M$, então, definindo as inclusões $i_{\alpha}:U_{\alpha} \to U$, teremos os isomorfismos}
+	\textit{\textbf{Lema:} Sejam $M^{n}$ uma n-variedade diferenciável e  $\{U_{\alpha} \subset M: \alpha \in J, \; U_{\alpha} \cap U_{\beta} \neq \emptyset \}$ uma família de subconjuntos abertos de M dois a dois disjuntos tais que $U = \bigcup_{\alpha \in J}U_{\alpha} \subset M$, então, definindo as inclusões $i_{\alpha}:U_{\alpha} \to U$, teremos os isomorfismos}
 	\begin{enumerate}
-		\item $\cohomologia{p}{U} \to \prod_{\alpha \in J} \cohomologia{p}{U_{\alpha}}$, definido por $[\omega] \mapsto ([i^{*}_{\alpha}(\omega)])_{\alpha \in J}$
+		\item $\cohomologia{p}{U} \to \prod_{\alpha \in J} \cohomologia{p}{U_{\alpha}}$, dado por $[\omega] \mapsto ([i^{*}_{\alpha}(\omega)])_{\alpha \in J}$
 		
-		\item $\bigoplus_{\alpha \in J} \cohomologiacompac{p}{U_{\alpha}} \mapsto \cohomologiacompac{p}{U}$ definido por $\bigoplus_{\alpha \in J}[\omega_{\alpha}] \mapsto \sum_{\alpha \in J} i^{*}_{\alpha}([\omega_{\alpha}])$.
+		\item $\bigoplus_{\alpha \in J} \cohomologiacompac{p}{U_{\alpha}} \mapsto \cohomologiacompac{p}{U}$, dado por $\bigoplus_{\alpha \in J}[\omega_{\alpha}] \mapsto \sum_{\alpha \in J} i^{*}_{\alpha}([\omega_{\alpha}])$.
 	\end{enumerate}
 	
 	$\square$ Definamos $\phi: \Omega^{p}(U) \to \prod_{\alpha \in J} \Omega^{p}({U_{\alpha}})$ tal que $\phi(\omega) = (i^{*}_{\alpha}(\omega))_{\alpha \in J}$. Sejam $\omega \neq \beta \in \Omega^{p}(U) $, suponha que $\phi(\omega) =\phi(\beta) \Rightarrow (i^{*}_{\alpha}(\omega))_{\alpha \in J}=(i^{*}_{\alpha}(\beta))_{\alpha \in J}$, logo $i^{*}_{\alpha}(\omega)=i^{*}_{\alpha}(\beta) \Rightarrow i^{*}_{\alpha}(\omega -\beta) = 0$, portanto $\omega = \beta$, e $\phi$ é injetiva. Tome $(\omega_{\alpha})_{\alpha \in J} \in  \prod_{\alpha \in J} \Omega^{p}({U_{\alpha}})$, o que implica que $supp(\omega_{\alpha}) \subset U_{\alpha}$, logo podemos afirmar que $i^{*}_{\alpha}(\omega_{\alpha}) \in \Omega^{p}(U)$. Definindo a partição da unidade $\{\phi_{\alpha} \}_{\alpha \in J}$ subordinada a família de abertos $\{U_{\alpha}\}_{\alpha \in J}$ e $\omega = \sum_{\alpha \in J}\phi_{\alpha}\omega_{\alpha} \in \Omega^{p}(U)$. Vejamos que dado $ q \in U_{\lambda} $, e como por hipótese os abertos são dois a dois disjuntos, teremos que $\omega(q) = \sum_{\alpha \in J}\phi_{\alpha}(q)\omega_{\alpha}(q) = \omega_{\lambda}(q) < \infty$, logo $\omega \in \Omega^{p}(U)$ esta bem-definida. Além disso, $\phi(\omega) = (i^{*}_{\alpha}(\omega))_{\alpha \in J} = (\omega_{\alpha})_{\alpha \in J} \in \prod_{\alpha \in J} \Omega^{p}({U_{\alpha}})$, portanto, $\phi$ é sobrejetora. Por fim, $\phi$ é uma aplicação linear pois $\phi(a\omega + \beta) = (i^{*}_{\alpha}(a\omega+\beta))_{\alpha \in J}=(ai^{*}_{\alpha}(\omega)+i^{*}_{\alpha}(\beta))_{\alpha \in J} = a(i^{*}_{\alpha}(\omega))_{\alpha \in J} + (i^{*}_{\alpha}(\beta))_{\alpha \in J} = a\phi(\omega)+\phi(\beta)$, portanto é um isomorfismo.
@@ -1022,6 +1024,24 @@ execute at end node=$]
 	Analogamente, definimos $\psi: \bigoplus_{\alpha \in J} \Omega^{p}_{c}(U_{\alpha}) \to \Omega^{p}_{c}(U)$ tal que $\psi(\bigoplus_{\alpha \in J}\omega_{\alpha}) = \sum_{\alpha \in J}\omega_{\alpha}$. Tomando $q \in U_{\lambda}$, e como por hipótese os abertos são dois a dois disjuntos, então $\psi(\bigoplus_{\alpha \in J}\omega_{\alpha})(q) = \sum_{\alpha \in J}\omega_{\alpha}(q) = \omega_{\lambda}(q) < \infty$, portanto $\psi$ esta bem-definida, além disso, $\psi$ é linear por definição. Sejam $\omega \neq \beta \in \bigoplus_{\alpha \in J} \Omega^{p}(U_{\alpha})$, e supondo que $\psi(\omega) = \psi(\beta)$ então tomando $q \in U$, e como os abertos são dois a dois disjuntos, $q \in U_{\lambda}$ para algum $\lambda \in J$, assim, $\psi(\omega - \beta)(q) = 0 \Rightarrow \sum_{\alpha \in J}(\omega - \beta)_{\alpha} = \sum_{\alpha \in J}(\omega_{\alpha} - \beta_{\alpha})(q) = \omega_{\lambda}(q) - \beta_{\lambda}(q)$, e como $U_{\lambda}$ é $q \in U$ então $\omega_{\lambda} - \beta_{\lambda} = 0 \Rightarrow \omega = \beta$, o que é uma contradição, pois supomos $\omega \neq \beta$, portanto $\psi$ é injetora. A aplicação $\psi$ é sobrejetora por construção, portanto é um isomorfismo.
 	
 	Definindo o diferencial $d(\omega_{\alpha})_{\alpha \in J} = (d\omega_{\alpha})_{\alpha \in J} \in \prod_{\alpha \in J}\Omega^{p+1}(U_{\alpha})$ e $d(\bigoplus_{\alpha \in J} \omega_{\alpha}) = \bigoplus_{\alpha \in J}d\omega_{\alpha} \in \bigoplus_{\alpha \in J}\Omega^{p+1}(U_{\alpha})$, então teremos os isomorfismos induzidos nos grupos de homologia $\phi^{p}:\cohomologia{p}{M} \to \prod_{\alpha \in J} \cohomologia{p}{U_{\alpha}}$ e $\psi^{p}: \bigoplus_{\alpha \in J} \cohomologiacompac{p}{U_{\alpha}} \mapsto \cohomologiacompac{p}{U}$, como desejávamos.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
+	\textit{\textbf{Corolário (dualidades locais de Poincaré):}}
+	\begin{enumerate}
+		\item Sejam $U_{1}, U_{2} \subset M$ e $U = U_{1} \cup U_{2}$ subconjuntos abertos de uma n-variedade diferenciável, e se $D_{U_{1}\cap U_{2}}: \cohomologia{p}{U_{1}\cap U_{2}} \to \cohomologiacompac{n-p}{U_{1}\cap U_{2}}$ for um isomorfismo, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$ é um isomorfismo.
+		
+		\item Seja $\{U_{\alpha} \subset M^{n}: \alpha \in J \}$ uma família de subconjuntos de uma n-variedade diferenciável e $U = \bigcup_{\alpha \in J} U_{\alpha}$. Se $D_{U_{\alpha}}: \cohomologia{p}{U_{\alpha}} \to \cohomologiacompac{n-p}{U_{\alpha}}$, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$  é um isomorfismo.
+		
+		\item Seja $U \subseteq M^{n}$ um subconjunto de uma n-variedade diferenciável difeomorfo a $\real{n}$, então $D_{U}: \cohomologia{p}{U} \to \cohomologiacompac{n-p}{U}$  é um isomorfismo.
+	\end{enumerate}
+	
+	$\square$ Para 1) construindo o diagrama entre os functores das sequências de Mayer-Vietoris para os abertos $U_{1}, U_{2}$ e $U = U_{1} \cap U_{2}$, e como por hipótese temos $D_{U_{1}\cap U_{2}} : \cohomologia{p}{U_{1}\cap U_{2}} \to \cohomologiacompacdual{n-p}{U_{1}\cap U_{2}}$ e $D_{U_{1}} \oplus -D_{U_{2}} : \cohomologia{p}{U_{1}}\oplus \cohomologia{p}{U_{2}} \to \cohomologiacompacdual{n-p}{U_{1}}\oplus \cohomologiacompacdual{n-p}{U_{2}}$, são isomorfismos, então pelo \textit{lema dos 5} temos que $D_{U} : \cohomologia{p}{U} \to \cohomologiacompacdual{n-p}{U}$ é um isomorfismo.
+	
+	Para 2) como os subconjuntos abertos de $M$ são dois a dois disjuntos, então, pelo \textit{lema} anterior, temos os isomorfismos $\cohomologia{p}{U} \cong \bigoplus_{\alpha} \cohomologia{p}{U_{\alpha}}$ e $\cohomologiacompacdual{n-p}{U} \cong \bigoplus_{\alpha} \cohomologiacompacdual{n-p}{U_{\alpha}}$. Definindo $\bigoplus_{\alpha}D_{U_{\alpha}} : \bigoplus_{\alpha} \cohomologia{p}{U_{\alpha}} \to \bigoplus_{\alpha} \cohomologiacompacdual{n-p}{U_{\alpha}}$ tal que $\bigoplus_{\alpha}D_{U_{\alpha}} [\omega_{\alpha}]$, e como $D_{U_{\alpha}}$ é um isomorfismo para para $\alpha \in J$, então $\bigoplus_{\alpha}D_{U_{\alpha}}$ é um isomorfismo. Pelo lema anterior, vimos que $\phi : \cohomologia{p}{U} \to \bigoplus_{\alpha} \cohomologia{p}{U_{\alpha}}$ e $\psi : \cohomologiacompacdual{n-p}{U} \to \bigoplus_{\alpha} \cohomologiacompacdual{n-p}{U_{\alpha}}$ são isomorfismos, e pela sequência de Mayer-Vietoris temos a comutatividade do diagrama expressa pela comutação dos seguintes morfismos $(\bigoplus_{\alpha}D_{U_{\alpha}}) \circ \phi = \psi \circ D_{U}$, e como $(\bigoplus_{\alpha}D_{U_{\alpha}}) \circ \phi$ é um isomorfismo pois é a composição de isomorfismos, então $\psi \circ D_{U}$ também é um isomorfismo. Sabemos que, por construção, $D_{U}$ é linear e sobrejetor. Tomando $[\omega] \in \cohomologia{p}{U}$ temos $(\psi \circ D_{U})([\omega]) = \bigoplus_{\alpha}D_{U_{\alpha}}([\omega_{\alpha}]) =: D$, e como é um isomorfismos, podemos inverter a operação $[\omega] = (\psi \circ D_{U})^{-1}(D)$ o que implica que $D_{U}$ deve ser injetor, pois do contrário não poderemos inverter a operação, logo é um isomorfismo.
+	
+	Para 3) por hipótese $U \subseteq M$ é difeomorfo a $\real{n}$, logo $\cohomologia{p}{U} \cong \cohomologia{p}{\real{n}}$ e $\cohomologiacompac{p}{U} \cong \cohomologiacompac{p}{\real{n}}$, e temos que $\cohomologia{0}{\real{n}} \cong \real{}$ e $\cohomologia{p}{\real{n}} = 0$ caso $p >0$, e como $\cohomologiacompac{p}{U} \subseteq \cohomologia{p}{U}$ teremos $\cohomologiacompac{0}{U} = \cohomologia{0}{U} \cong \real{}$ e $\cohomologiacompac{p}{U} = \cohomologia{p}{U} = 0$ caso $p>0$. Temos as dualidades entre os grupos de hologogia de ordem $p$, mas temos apenas um caso não-trivial que é $p=0$, como já vimos, logo $D_{U}: \cohomologia{0}{U} \to \cohomologiacompacdual{n}{U}$. Tomando uma função constante $[a] \in \cohomologia{0}{U}$ teremos $D_{U}([a]) = \int_{U} a : \cohomologiacompac{n}{U} \to \real{}$, e já vimos em caso de suportes compactos, esse funcional linear é um isomorfismo com a reta real, logo $\cohomologiacompacdual{n}{U} \cong \real{}$, pois tomando $[\omega] \in \cohomologiacompac{n}{U}$ com $\int_{U}\omega = 1$, teremos $D_{U}([a])([\omega]) = \int_{U} a \omega = a\int_{U}  \omega = a \in \real{}$, logo, $D_{U}([a])$ é uma aplicação linear injetiva e sobrejetiva, portanto um isomorfismo.
 	
 	$\blacksquare$
 \end{document}
