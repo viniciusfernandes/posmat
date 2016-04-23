@@ -20,6 +20,11 @@
 	every join/.style={->}}
 \tikzstyle{labeled}=[execute at begin node=$\scriptstyle,
 execute at end node=$]
+
+
+\newcommand{\cohomologia}[2]{H^{#1}(#2)}
+\newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
+\newcommand{\real}[1]{\mathbb{R}^{#1}}
 \begin{document}
 	
 	\title{Cohomologia - Algumas demostrações}
@@ -28,7 +33,6 @@ execute at end node=$]
 	\maketitle
 	
 	\section{Formas diferenciáveis}
-	
 	Seja $V$ um espaço vetorial, dizemos que uma função p-linear é $\omega : V \times \dots \times V \to \mathbb{R}$, tal que $a_{i}, b_{i} \in V$ onde $1\leq i \leq p$ e $\lambda \in \mathbb{R}$ teremos $\omega(a_{1} + \lambda b_{1}, ..., a_{p} + \lambda b_{p}) = \omega(a_{1} , ..., a_{p} )+ \lambda \omega(b_{1}, ..., b_{p})$. Afirmamos que $\Lambda^{p}(V)$ como sendo o conjunto das funções p-lineares forma um espço vetorial. Tomemos $\Lambda^{1}(V)$ e $\{e_{1}, ..., e_{n}\}$ com sendo uma base de $V$, então $\Lambda^{1}(V) = V^{*}$ (espaço dual de V), consequentemente, escreveremos $\{dx_{1}, ..., dx_{n}\}$ como sendo uma base de $\Lambda^{1}(V)$, isto é, $dx_{j}(e_{i}) = \delta_{ij}$, desse modo, uma função 1-linear pode ser escrita como $\omega = \sum w_{i}dx_{i}$. Definindo o produto tensorial $\otimes: \Lambda^{1}(V) \times \Lambda^{1}(V) \to \Lambda^{2}(V)$ tal que $\otimes(dx_{i}, dx_{j})(e_{k}, e_{l}) = dx_{i}(e_{k}) \otimes dx_{j}(e_{l}) = \delta_{ik}\delta_{jl}$. Afirmamos que uma função 2-linear pode ser escrita como sendo $\omega = \sum \omega_{ij}dx_{i} \otimes dx_{j}$. Analogamente, teremos uma função p-linear como sendo  $\omega = \sum \omega_{i_{1}...i_{p}}dx_{i_{1}} \otimes ... \otimes dx_{i_{p}}$.
 	
 	Seja $\omega$ uma função p-linear tal que $\omega(a_{1}, ..., a_{p}) = 0 $ sempre que $a_{i} = a_{j}$, para algum $i, j$. Diremos então que $\omega$ é uma função alternada p-linear. Notemos que a seguinte função 2-linear dada por $\omega = dx_{i} \otimes dx_{j} - dx_{j} \otimes dx_{i}$, então $\omega(e_{k},e_{l}) = dx_{i}(e_{k}) \otimes dx_{j}(e_{l}) - dx_{j}(e_{k}) \otimes dx_{i}(e_{l}) = \delta_{ik}\delta_{jl} - \delta_{jk}\delta_{il} =  -\delta_{il}\delta_{jk} + \delta_{jl}\delta_{ik}= -(\delta_{il}\delta_{jk} - \delta_{jl}\delta_{ik}) = dx_{i}(e_{l}) \otimes dx_{j}(e_{k}) - dx_{j}(e_{l}) \otimes dx_{i}(e_{k}) = -\omega(e_{l}, e_{k})$, que é uma função alternada 2-linear. Definiremos o produto exterior como sendo $\wedge: \Lambda^{1}(V) \times \Lambda^{1}(V) \to \Lambda^{2}(V)$ por $ dx_{i} \wedge dx_{j}(a, b) = dx_{i}(a) \otimes dx_{j}(b) - dx_{j}(a) \otimes dx_{i}(b) = \sum_{\sigma} sgn(\sigma) dx_{\sigma(i)}(a) \otimes dx_{\sigma(j)}(b)$. Analogamente, o produto $\wedge: \Lambda^{p}(V) \times \Lambda^{q}(V) \to \Lambda^{p+q}(V)$ será definido como $dx_{i_{1}} \wedge ... \wedge dx_{i_{p}} = \sum_{\sigma}  sgn(\sigma) dx_{\sigma (i_{1})} \otimes ... \otimes dx_{\sigma (i_{p})}$. Afirmamos que qualquer função alternada p-linear poderá ser escrita como a combinação linear do produto exterior $\omega = \sum \omega_{i_{1}...i_{p}} dx_{i_{1}} \wedge... \wedge dx_{i_{p}}$.
@@ -1003,8 +1007,21 @@ execute at end node=$]
 		novamente, como $[\gamma] \in H^{p}(U \cap V)$ é arbitrário, então $D_{M} \circ \partial^{*} = \partial^{T} \circ D_{U \cap V}$, como desejávamos. Assim, o diagrama acima é comutativo.
 	\end{enumerate}
 	
+	$\blacksquare$
 	
-
+	\vspace{2mm}
+	\textit{\textbf{Lema:} Sejam $M^{n}$ uma n-variedade diferenciável e  $\{U_{\alpha} \subset M: \alpha \in J, \; U_{\alpha} \cap U_{\beta} \neq \emptyset \}$ uma família de subconjuntos abertos de M tais que $U = \bigcup_{\alpha \in J}U_{\alpha} \subset M$, então, definindo as inclusões $i_{\alpha}:U_{\alpha} \to U$, teremos os isomorfismos}
+	\begin{enumerate}
+		\item $\cohomologia{p}{U} \to \prod_{\alpha \in J} \cohomologia{p}{U_{\alpha}}$, definido por $[\omega] \mapsto ([i^{*}_{\alpha}(\omega)])_{\alpha \in J}$
+		
+		\item $\bigoplus_{\alpha \in J} \cohomologiacompac{p}{U_{\alpha}} \mapsto \cohomologiacompac{p}{U}$ definido por $\bigoplus_{\alpha \in J}[\omega_{\alpha}] \mapsto \sum_{\alpha \in J} i^{*}_{\alpha}([\omega_{\alpha}])$.
+	\end{enumerate}
+	
+	$\square$ Definamos $\phi: \Omega^{p}(U) \to \prod_{\alpha \in J} \Omega^{p}({U_{\alpha}})$ tal que $\phi(\omega) = (i^{*}_{\alpha}(\omega))_{\alpha \in J}$. Sejam $\omega \neq \beta \in \Omega^{p}(U) $, suponha que $\phi(\omega) =\phi(\beta) \Rightarrow (i^{*}_{\alpha}(\omega))_{\alpha \in J}=(i^{*}_{\alpha}(\beta))_{\alpha \in J}$, logo $i^{*}_{\alpha}(\omega)=i^{*}_{\alpha}(\beta) \Rightarrow i^{*}_{\alpha}(\omega -\beta) = 0$, portanto $\omega = \beta$, e $\phi$ é injetiva. Tome $(\omega_{\alpha})_{\alpha \in J} \in  \prod_{\alpha \in J} \Omega^{p}({U_{\alpha}})$, o que implica que $supp(\omega_{\alpha}) \subset U_{\alpha}$, logo podemos afirmar que $i^{*}_{\alpha}(\omega_{\alpha}) \in \Omega^{p}(U)$. Definindo a partição da unidade $\{\phi_{\alpha} \}_{\alpha \in J}$ subordinada a família de abertos $\{U_{\alpha}\}_{\alpha \in J}$ e $\omega = \sum_{\alpha \in J}\phi_{\alpha}\omega_{\alpha} \in \Omega^{p}(U)$. Vejamos que dado $ q \in U_{\lambda} $, e como por hipótese os abertos são dois a dois disjuntos, teremos que $\omega(q) = \sum_{\alpha \in J}\phi_{\alpha}(q)\omega_{\alpha}(q) = \omega_{\lambda}(q) < \infty$, logo $\omega \in \Omega^{p}(U)$ esta bem-definida. Além disso, $\phi(\omega) = (i^{*}_{\alpha}(\omega))_{\alpha \in J} = (\omega_{\alpha})_{\alpha \in J} \in \prod_{\alpha \in J} \Omega^{p}({U_{\alpha}})$, portanto, $\phi$ é sobrejetora. Por fim, $\phi$ é uma aplicação linear pois $\phi(a\omega + \beta) = (i^{*}_{\alpha}(a\omega+\beta))_{\alpha \in J}=(ai^{*}_{\alpha}(\omega)+i^{*}_{\alpha}(\beta))_{\alpha \in J} = a(i^{*}_{\alpha}(\omega))_{\alpha \in J} + (i^{*}_{\alpha}(\beta))_{\alpha \in J} = a\phi(\omega)+\phi(\beta)$, portanto é um isomorfismo.
+	
+	Analogamente, definimos $\psi: \bigoplus_{\alpha \in J} \Omega^{p}_{c}(U_{\alpha}) \to \Omega^{p}_{c}(U)$ tal que $\psi(\bigoplus_{\alpha \in J}\omega_{\alpha}) = \sum_{\alpha \in J}\omega_{\alpha}$. Tomando $q \in U_{\lambda}$, e como por hipótese os abertos são dois a dois disjuntos, então $\psi(\bigoplus_{\alpha \in J}\omega_{\alpha})(q) = \sum_{\alpha \in J}\omega_{\alpha}(q) = \omega_{\lambda}(q) < \infty$, portanto $\psi$ esta bem-definida, além disso, $\psi$ é linear por definição. Sejam $\omega \neq \beta \in \bigoplus_{\alpha \in J} \Omega^{p}(U_{\alpha})$, e supondo que $\psi(\omega) = \psi(\beta)$ então tomando $q \in U$, e como os abertos são dois a dois disjuntos, $q \in U_{\lambda}$ para algum $\lambda \in J$, assim, $\psi(\omega - \beta)(q) = 0 \Rightarrow \sum_{\alpha \in J}(\omega - \beta)_{\alpha} = \sum_{\alpha \in J}(\omega_{\alpha} - \beta_{\alpha})(q) = \omega_{\lambda}(q) - \beta_{\lambda}(q)$, e como $U_{\lambda}$ é $q \in U$ então $\omega_{\lambda} - \beta_{\lambda} = 0 \Rightarrow \omega = \beta$, o que é uma contradição, pois supomos $\omega \neq \beta$, portanto $\psi$ é injetora. A aplicação $\psi$ é sobrejetora por construção, portanto é um isomorfismo.
+	
+	Definindo o diferencial $d(\omega_{\alpha})_{\alpha \in J} = (d\omega_{\alpha})_{\alpha \in J} \in \prod_{\alpha \in J}\Omega^{p+1}(U_{\alpha})$ e $d(\bigoplus_{\alpha \in J} \omega_{\alpha}) = \bigoplus_{\alpha \in J}d\omega_{\alpha} \in \bigoplus_{\alpha \in J}\Omega^{p+1}(U_{\alpha})$, então teremos os isomorfismos induzidos nos grupos de homologia $\phi^{p}:\cohomologia{p}{M} \to \prod_{\alpha \in J} \cohomologia{p}{U_{\alpha}}$ e $\psi^{p}: \bigoplus_{\alpha \in J} \cohomologiacompac{p}{U_{\alpha}} \mapsto \cohomologiacompac{p}{U}$, como desejávamos.
 	
 	$\blacksquare$
 \end{document}
