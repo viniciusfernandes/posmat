@@ -853,6 +853,13 @@ execute at end node=$]
 	$\blacksquare$
 	
 	\vspace{2mm}
+	\textit{\textbf{Teorema (existência da Dualidade de Poincaré):} Seja $M^{n}$ uma n-variedade diferenciável orientável, então existe $U \subseteq M$ tal que $D_{U} : \cohomologia{p}{U} \to \cohomologiacompacdual{n-p}{U}$ onde $0 \leq p \leq n$.}
+	
+	$\square$ Seja $(V, h)$ uma carta de $M$, e por definição, $U = h(V) \subseteq M$ é homeomorfo a bola aberta $B_{r}(x) \subseteq \real{n}$, consequentemente, $\cohomologia{p}{U} \cong \cohomologia{p}{V}$. Contudo, toda bola aberta $B_{r}(x)$ é homeomorfa a $\real{n}$, logo $\cohomologia{p}{U} \cong \cohomologia{p}{\real{n}}$, e tal cohomologia é dada por $\cohomologia{0}{\real{n}} \cong \real{}$ e $\cohomologia{p}{\real{n}} = 0$ para $p>0$. Assim, temos apenas o caso em que $D_{U}: \cohomologia{0}{U} \to \cohomologiacompacdual{n}{U}$ para examinar. Tomando as classes das funções constantes $[a] \in \cohomologia{0}{U}$ e $[\omega] \in \cohomologiacompac{n}{U}$ tal que $\int_{U}\omega = 1$, então $D_{U}([a])([\omega]) = \int_{U} a\omega = a\int_{U} \omega = a \in \real{}$. Podemos ver que é injetora pois $D_{U}([a])([\omega]) = a = 0 \Rightarrow [a] = [0]$, portanto $Ker(D_{U}) = \{0\}$, e é sobrejetora pois, dado $b \in \real{}$, podemos tomar um $[b] \in \cohomologia{0}{U}$ tal que $D_{U}([b])([\omega]) = b \in \real{}$. Por construção $D_{U}$ é uma aplicação linear, logo é um isomorfismo. Para todo $0\leq p \leq n$ temos a relação de continência $\cohomologiacompac{p}{U} \subseteq \cohomologia{p}{U}$, e nos casos em que $p>0$ temos $\cohomologia{p}{U} = 0 \Rightarrow \cohomologiacompac{n-p}{U} \subseteq \cohomologia{n-p}{U} = 0$, logo $\cohomologiacompac{n-p}{U}=0$ e $D_{U}$ é o isomorfismo trivial. Portanto $D_{U}$ é um isomorfismo para $0\leq p \leq n$, como desejávamos.
+	
+	$\blacksquare$
+	
+	\vspace{2mm}
 	\textit{\textbf{Lema:} Sejam $M^{n}$ uma variedade e  $V \subseteq U \subset M$ dois abertos, então o diagrama abaixo é comutativo.}
 	\\
 	\begin{tikzpicture}
@@ -1071,6 +1078,7 @@ execute at end node=$]
 	$$
 	D_{M}:\cohomologia{p}{M} \to \cohomologiacompacdual{n-p}{M}, \; 0\leq p \leq n.
 	$$
+	
 	$\square$ Seja $\mathcal{U} = \{U \subseteq M: D_{U}\; \textit{é isomorfismo} \} \cup \{\emptyset\}$ uma coleção de abertos, e $\mathcal{V} = (V_{i})_{i \in I} = (M)$ uma cobertura trivial consistindo apenas de $M$. Vejamos que a família $\mathcal{U}$ cumpre as condições do \textit{teorema de indução de conjuntos abertos} pois: 1) $\emptyset \in \mathcal{U}$ trivialmente; 2) pelo \textit{corolário das dualidades locais} se $U \subseteq V_{i} = M$ for difeomorfo a $\real{n}$, então $D_{U}$ é um isomorfismo, logo $U \in \mathcal{U}$; 3) dados $U_{1}, U_{2}, U_{1}\cap U_{2} \in \mathcal{U}$, então $D_{U_{1}}, D_{U_{2}}, D_{U_{1} \cap U_{2}}$ são isomorfismo, logo pelo \textit{corolário das dualidades locais} $D_{U_{1} \cup U_{2}}$ é um isomorfismo, e como $U_{1} \cup U_{2}$ é uma união finita de abertos, portanto aberto, então $U_{1} \cup U_{2} \in \mathcal{U}$; 4) seja $(U_{k})_{k \in \mathbb{N}}$ uma família de elementos de $\mathcal{U}$ dois a dois disjuntos, consequementemente $D_{k}$ é um isomorfismo para cada $k \in \mathbb{N}$, então pelo \textit{corolário das dualidades locais} temos que $D_{U}$ é um isomorfismo para $U = \bigcup_{k}U_{k}$, e como $U$ é uma união arbitrária de abertos, logo aberto, então $U = \bigcup_{k}U_{k} \in \mathcal{U}$. Cumpridas todas as condições, temos que, pelo \textit{teorema de indução em conjuntos abertos} que $M \in \mathcal{U}$, o que implica que $D_{M}$ é um isomorfismo, como desejávamos.
 	
 	$\blacksquare$
