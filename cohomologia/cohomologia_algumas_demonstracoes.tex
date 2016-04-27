@@ -463,13 +463,53 @@ execute at end node=$]
 	\int_{M} : H^{n}_{c}(M) \to \mathbb{R}.
 	$$
 	
-	$\square$ Tomando $[\omega] \in H^{n}_{c}(M)$ e definindo $\int_{M} ([\omega]) := \int_{M} \omega$, afimo que essa aplicação é sobrejetora pois tomando $\lambda \in \mathbb{R}$ temos a forma $\omega = \lambda/Vol(K) dx_{1} \wedge \dots \wedge dx_{n}$, onde $K = supp(\omega)$, com isso $\int_{M} ([\omega]) = \int_{M} \omega = \int_{M} \lambda/Vol(K)d\mu_{n} = \lambda/Vol(K)\int_{K} d\mu_{n} = \lambda Vol(K)/Vol(K) = \lambda$. Logo, é sobrejetora. Tomando $[\omega] \neq [\alpha] \in H^{n}_{c}(M)$, então suponha que $\int_{M} ([\omega]) - \int_{M}([\alpha])  = \int_{M} \omega - \int_{M} \alpha = \int_{M} (\omega - \alpha)= 0 \Rightarrow \omega - \alpha = d\beta$, com $\beta \in \Omega^{n-1}(M)$, ou seja, $[\omega] = [\alpha]$, contradizendo a hipótese que $[\omega] \neq [\alpha]$, portanto é uma aplicação injetora. Conclusão: $\int_{M} : H^{n}(M) \to \mathbb{R}$ é um isomorfismo. 
+	$\square$ Primeiro, afirmo que essa aplicação esta bem-definida, pois tomando $[\omega] \in H^{n}_{c}(M)$, e como $\omega$ é contínua $M$, logo também o no suporte compacto definido $K:=supp(\omega)$, então existe $p_{0} \in K$ tal que $\omega(p) \leq \omega(p_{0})$ (aqui estamos cometendo um abuso de notação, pois essa majoração deve ser feita nas componentes das formas, que são funções em $\mathbb{R}$), então 
+	$$
+	\int_{M}([\omega]) = \int_{M}\omega(p) = \int_{K}\omega(p) \leq \int_{K}\omega(p_{0}) \leq \omega(p_{0})Vol(K) < \infty.  
+	$$
+	Além disso, temos que a imagem da aplicação não depende do representante da cohomologia, pois tomando  $[\omega]= [\alpha] \in H^{n}_{c}(M)$ teremos
+	$$
+	\int_{M}([\omega]) = \int_{M}\omega = \int_{M}\alpha + d\beta = \int_{M}\alpha + \underbrace{ \int_{M} d\beta }_{Stokes}= \int_{M}\alpha + \underbrace{ \int_{\partial M} \beta }_{=0} = \int_{M}\alpha = \int_{M}([\alpha]),
+	$$
+	onde usamos o fato de que a variedade não tem bordo. 
+	
+	Afirmo que essa aplicação é sobrejetora, pois tomando $\lambda_{0} \in \mathbb{R}$ e $\lambda : K \subset M \to \mathbb{R}$ uma função suavel com domímio $K$ compacto tal que $\lambda(p) = \lambda_{0}$. Sejam a forma $\omega(p) = \lambda(p)/Vol(K) dx_{1} \wedge \dots \wedge dx_{n}$, onde $K = supp(\omega)$, com isso 
+	$$
+	\int_{M} ([\omega]) = \int_{M} \omega = \int_{M} \frac{\lambda(x)}{Vol(K)} dx_{1} \wedge \dots \wedge dx_{n}= \frac{\lambda_{0}}{Vol(K)}\int_{K} dx_{1} \wedge \dots \wedge dx_{n} = \frac{\lambda_{0}}{Vol(K)}Vol(K) = \lambda_{0} \in \mathbb{R}^{n},
+	$$
+	logo é sobrejetora. Tomando $[\omega] \neq [\alpha] \in H^{n}_{c}(M)$, então suponha que $\int_{M} ([\omega]) - \int_{M}([\alpha])  = \int_{M} \omega - \int_{M} \alpha = \int_{M} (\omega - \alpha)= 0 \Rightarrow \omega - \alpha = d\beta$, com $\beta \in \Omega^{n-1}(M)$, ou seja, $[\omega] = [\alpha]$, contradizendo a hipótese que $[\omega] \neq [\alpha]$, portanto é uma aplicação injetora. Conclusão: $\int_{M} : H^{n}(M) \to \mathbb{R}$ é um isomorfismo. 
 	
 	$\blacksquare$
 	
 	\section{Grau de Aplicação}
 	
-	\textbf{Definição (grau de aplicação):} Sejam $M,N$ variedades diferenciáveis, conexas, compactas e orientadas. Seja $f: M \to N$ uma aplicação suave, então podemos afirmar que ose seguintes mapas $f^{*}: H^{n}(M) \to H^{n}(N)$, $\int_{M}: H^{n}(M) \to \mathbb{R}$ e $\int_{N}: H^{n}(N) \to \mathbb{R}$ são isomorfismos. Vamos definir um mapa de modo que esse diagrama comute, isto é, $\int_{M} \circ f^{*} = deg(f) \circ \int_{N} :  H^{n}(N) \to \mathbb{R}$ de modo que
+	\textbf{Definição (grau de aplicação):} Sejam $M^{n}, N^{n}$ n-variedades diferenciáveis, conexas, compactas e orientadas. Seja $f: M \to N$ uma aplicação suave, então podemos afirmar que ose seguintes mapas $f^{*}: H^{n}(M) \to H^{n}(N)$, $\int_{M}: H^{n}(M) \to \mathbb{R}$ e $\int_{N}: H^{n}(N) \to \mathbb{R}$ são isomorfismos. Vamos definir uma aplicação de modo que o diagrama abaixo seja comutativo.
+	\\
+	\begin{tikzpicture}
+	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
+	{  
+		\cohomologiacompac{n}{N} & \cohomologiacompac{n}{M}
+		\\
+		\mathbb{R} & \mathbb{R}
+		\\
+	};
+	{ [start chain] 
+		\chainin (m-1-1);
+		{ [start branch=A] \chainin (m-2-1)
+			[join={node[right,labeled] { \int_{N} }}];
+		}
+		\chainin (m-1-2) [join={node[above,labeled] {f^{*}} }];
+		{ [start branch=A] \chainin (m-2-2)
+			[join={node[right,labeled] { \int_{M} }}];
+		}
+	}
+	{ [start chain] 
+		\chainin (m-2-1);
+		\chainin (m-2-2) [join={node[above,labeled] {deg(f)}}];
+	}
+	\end{tikzpicture}
+	
+	Ou seja, $deg(f) \circ \int_{N} = \int_{M} \circ  f^{*} : \cohomologiacompac{n}{N} \to \mathbb{R}$ de modo que
 	$$
 	\int_{M} f^{*}(\omega) = deg(f) \int_{N} \omega,
 	$$
