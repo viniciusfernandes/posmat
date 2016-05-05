@@ -29,10 +29,14 @@ execute at end node=$]
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \begin{document}
 	
-	\title{Cohomologia - Algumas demostrações}
-	\author{Vinicius Fernades}
+	\title{Cohomologia - Algumas demostrações
+	}
 	
+	\author{Vinicius Fernades}
+
 	\maketitle
+	
+	\textit{Observação: Essas notas tiveram como base o livro - From Calculus to Cohomology, Lars Bojer Madsen and Jorgen Tornehave.}
 	
 	\section{Formas diferenciáveis}
 	Seja $V$ um espaço vetorial, dizemos que uma função p-linear é $\omega : V \times \dots \times V \to \mathbb{R}$, tal que $a_{i}, b_{i} \in V$ onde $1\leq i \leq p$ e $\lambda \in \mathbb{R}$ teremos $\omega(a_{1} + \lambda b_{1}, ..., a_{p} + \lambda b_{p}) = \omega(a_{1} , ..., a_{p} )+ \lambda \omega(b_{1}, ..., b_{p})$. Afirmamos que $\Lambda^{p}(V)$ como sendo o conjunto das funções p-lineares forma um espço vetorial. Tomemos $\Lambda^{1}(V)$ e $\{e_{1}, ..., e_{n}\}$ com sendo uma base de $V$, então $\Lambda^{1}(V) = V^{*}$ (espaço dual de V), consequentemente, escreveremos $\{dx_{1}, ..., dx_{n}\}$ como sendo uma base de $\Lambda^{1}(V)$, isto é, $dx_{j}(e_{i}) = \delta_{ij}$, desse modo, uma função 1-linear pode ser escrita como $\omega = \sum w_{i}dx_{i}$. Definindo o produto tensorial $\otimes: \Lambda^{1}(V) \times \Lambda^{1}(V) \to \Lambda^{2}(V)$ tal que $\otimes(dx_{i}, dx_{j})(e_{k}, e_{l}) = dx_{i}(e_{k}) \otimes dx_{j}(e_{l}) = \delta_{ik}\delta_{jl}$. Afirmamos que uma função 2-linear pode ser escrita como sendo $\omega = \sum \omega_{ij}dx_{i} \otimes dx_{j}$. Analogamente, teremos uma função p-linear como sendo  $\omega = \sum \omega_{i_{1}...i_{p}}dx_{i_{1}} \otimes ... \otimes dx_{i_{p}}$.
@@ -483,7 +487,7 @@ execute at end node=$]
 	
 	\section{Grau de Aplicação}
 	
-	\textbf{Definição (grau de aplicação):} Sejam $M^{n}, N^{n}$ n-variedades diferenciáveis, conexas, compactas e orientadas. Seja $f: M \to N$ uma aplicação suave, então podemos afirmar que ose seguintes mapas $f^{*}: H^{n}(M) \to H^{n}(N)$, $\int_{M}: H^{n}(M) \to \mathbb{R}$ e $\int_{N}: H^{n}(N) \to \mathbb{R}$ são isomorfismos. Vamos definir uma aplicação de modo que o diagrama abaixo seja comutativo.
+	\textbf{Definição (grau de aplicação):} Sejam $M^{n}, N^{n}$ n-variedades diferenciáveis, conexas, compactas e orientadas. Seja $f: M \to N$ uma aplicação suave. Sabemos que os seguintes mapas $\int_{M}: H^{n}(M) \to \mathbb{R}$ e $\int_{N}: H^{n}(N) \to \mathbb{R}$ são isomorfismos. Vamos definir uma aplicação de modo que o diagrama abaixo seja comutativo.
 	\\
 	\begin{tikzpicture}
 	\matrix (m) [matrix of math nodes, row sep=3em, column sep=3em]
@@ -519,7 +523,7 @@ execute at end node=$]
 	
 	\vspace{2mm}
 	\textbf{Definição (valor regular e ponto crítico):} Seja $f: M \to N$ uma aplicação suave entre variedades diferenciaveis, dizemos que $p \in M$ é um 
-	\textit{ponto crítico} se se $D_{p}f : T_{p}M \to T_{f(p)}N$ for identicamente nula, isto é se $D_{p}f = 0$, caso contrário, diremos que esse ponto é um \textit{ponto regular}. Dzemos que $f(p) \in N$ é um \textit{valor regular} $\forall q \in f^{-1}(\{p\})$ forem pontos regulares.
+	\textit{ponto crítico} se se $D_{p}f : T_{p}M \to T_{f(p)}N$ for identicamente nula, isto é se $D_{p}f = 0$. Caso o diferencial $D_{p}f : T_{p}M \to T_{f(p)}N$ seja sobrejetor, diremos que esse ponto é um \textit{ponto regular}. Diremos que $f(p) \in N$ é um \textit{valor regular} $\forall q \in f^{-1}(\{p\})$ forem pontos regulares.
 	
 	Enunciaremos agora alguns teoremas cuja demonstração esta fora do escopo dessa escrita.
 	
@@ -527,22 +531,22 @@ execute at end node=$]
 	\textit{\textbf{Teorema (Brower-Sard):} Seja $f: M \to N$ uma aplicação suave entre variedades diferenciaveis, então o conjunto dos valores regulares é um conjunto denso em $N$.}
 	
 	\vspace{2mm}
-	\textit{\textbf{Teorema (Sard):} Seja $f: U \subset \mathbb{R}^{n} \to \mathbb{R}^{m}$ uma aplicação suave e definindo $S = \{x \in U: posto(D_{x}f) < m\}$, então o conjunto $f(S)$ é um conjunto de medida (Lebesgue) nula em $\mathbb{R}^{m}$.}
+	\textit{\textbf{Teorema (Sard) (conjunto de pontos crítico possuem medida nula):} Seja $f: U \subset \mathbb{R}^{n} \to \mathbb{R}^{m}$ uma aplicação suave e definindo $S = \{x \in U: posto(D_{x}f) < m\}$, então o conjunto $f(S)$ é um conjunto de medida (Lebesgue) nula em $\mathbb{R}^{m}$. (Notem que nas condição em que $p \in M$ seja um ponto crítico, teremos $D_{p}f = 0$, logo $posto (D_{p}f) = 0$)}
 	
 	\vspace{2mm}
-	\textit{\textbf{Lema (caracacterística dos pontos críticos em variedades compactas):} $f: M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciaveis, com mesma dimensão e $M$ compacta. Suponha que $f(p) = q \in N$ seja um valor regular, então $f^{-1}(\{q\}) \subset M$ é um conjunto finito de pontos isolados. Além disso, existe uma vizinhança aberta $U$ de $q$ e abertos disjuntos $V_{i} \ni p_{i}$, onde $p_{i} \in f^{-1}(\{q\})$ onde $1 \leq i \leq k$ tal que}
+	\textit{\textbf{Lema (característica dos pontos regulares em variedades compactas):} $f: M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciaveis, com mesma dimensão e $M$ compacta. Suponha que $f(p) = q \in N$ seja um valor regular, então $f^{-1}(\{q\}) \subset M$ é um conjunto finito de pontos isolados. Além disso, existe uma vizinhança aberta $U$ de $q$ e abertos disjuntos $V_{i} \ni p_{i}$, onde $p_{i} \in f^{-1}(\{q\})$ são pontos regulares e $1 \leq i \leq k$ tal que}
 	\begin{enumerate}
 		\item $f^{-1}(U) = \bigcup \limits_{i=1}^{k} V_{i}$
 		
 		\item $f_{i}:V_{i} \to V$ \textit{é um difeomorfismo para} $1 \leq i \leq k$
 	\end{enumerate}
 	
-	$\square$ Como para todo $p \in f^{-1}(\{q\})$ temos que $D_{p}f : T_{p}M \to T_{f(p)}N$ é sobrejetor, e como $dim(M) = dim(N)$, também será uma aplicação injetora, portanto, é um isomorfismo. Sendo assim, pelo teorema da função inversa, existe uma vizinhança aberta $U \ni p$ difeomorfa a uma vizinhança aberta $V \ni q$. Consequentemente, tomando $p_{i} \neq p_{j} \in f^{-1}(\{q\})$, teremos $U_{i} \ni p_{i}$ e $U_{j} \ni p_{j}$ difeomorfas as vizinhanças $V_{i} \ni q$ e $V_{j} \ni q$, respectivamente, e de modo que ainda tenhamos $U_{i} \cap U_{j} = \emptyset$, isto é, vizinhanças disjuntas. Suponha $f^{-1}(\{q\})$ seja infinito, então definindo os fechados $\overline{W_{i}} \subset U_{i}$ tal que $p_{i} \in \overline{W_{i}}$, onde $U_{i}$ são os abertos disjuntos construidos anteriormente, assim $A = \{M \backslash \overline{W_{i}} \} \cup \{U_{i}\}$ é uma cobertura por abertos de $M$, e como $M$ é compacta, então podemos escolher uma subcobertura finita $A' \subset A$, então existirá um $p_{s} \in f^{-1}(\{p\})$ tal que $p_{s} \notin A'$, o que é uma contradição, portanto $f^{-1}(\{p\})$ é finito. Definindo $f^{-1}(\{q\}) = \{p_{1}, \dots, p_{k}\}$ para algum $k \in \mathbb{N}$, definamos os complementares $U_{i}^{c} = M \backslash \bigcup U_{i}$ e $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$. Note que $q \in \bigcap f(U_{i})$ e $q \notin \bigcap f(U_{i}^{c})$, logo  $q \in U \neq \emptyset$, além disso, $\bigcap f(U_{i})$ é uma intersecção finita de abertos, portanto é um aberto, e como $U_{i}^{c}$ são fechados em $M$, que é um compacto, então $f(U_{i}^{c})$ são compactos, logo $U = \bigcap f(U_{i}) \backslash f(U_{i}^{c})$ é um aberto. Por fim, definindo $V_{i} = U_{i} \cap f^{-1}(U)$ teremos $f^{-1}(U) = \bigcup V_{i}$, como desejávamos. 
+	$\square$ Como para todo $p \in f^{-1}(\{q\})$ temos que $D_{p}f : T_{p}M \to T_{f(p)}N$ é sobrejetor, isto é  $posto(D_{p}f) = n$. Sejam $\{\alpha_{j}\}_{j=i}^{n}$ e $\{\beta_{j}\}_{j=i}^{n}$ bases de $T_{p}M$ e $T_{f(p)}N$, respectivamente. Pela sobrejeção do diferencial podemos afirmar que existe ao menos um $\alpha_{j}$ tal que $\beta_{k} = D_{p}f(\alpha_{j})$. Supondo existam $\alpha_{j} \neq \alpha_{k} \in \{\alpha_{j}\}_{j=i}^{n}$ tal que $D_{p}f(\alpha_{j})= D_{p}f(\alpha_{k})$, consequentemente teríamos no máximo $n-1$ elementos para a base de $T_{f(p)}N$, ou seja $posto(D_{p}f) \leq n-1$, o que é uma contradição, pois $posto(D_{p}f) = n$, logo o diferencial é uma aplicação injetora, portanto, é um isomorfismo. Sendo assim, pelo teorema da função inversa, existe uma vizinhança aberta $U \ni p$ difeomorfa a uma vizinhança aberta $Z \ni q$. Consequentemente, tomando $p_{i} \neq p_{j} \in f^{-1}(\{q\})$, teremos $U_{i} \ni p_{i}$ e $U_{j} \ni p_{j}$ difeomorfas as vizinhanças $Z_{i} \ni q$ e $Z_{j} \ni q$, respectivamente, e de modo que ainda tenhamos $U_{i} \cap U_{j} = \emptyset$, pois uma variedade diferenciável é uma espaço topológico de Haussdorf. Suponha $f^{-1}(\{q\})$ seja infinito, então definindo os fechados $\overline{W_{i}} \subset U_{i}$ tal que $p_{i} \in \overline{W_{i}}$, onde $U_{i}$ são os abertos disjuntos construidos anteriormente. Note que o conjunto $A = \{M \backslash \overline{W_{i}} \} \cup \{U_{i}\}$ definie uma cobertura por abertos de $M$, e como $M$ é compacta, então podemos escolher uma subcobertura finita $A' \subset A$, como $f^{-1}(\{q\})$ é infinito, existirá um $U_{s} \in A'$ contendo infinitos pontos de $f^{-1}(\{q\})$, o que é uma contradição, pois cada aberto $U_{j}$ contém apenas um ponto $p_{j} \in f^{-1}(\{q\})$, portanto $f^{-1}(\{q\})$ é finito. Seja $f^{-1}(\{q\}) = \{p_{1}, \dots, p_{k}\}$ para algum $k \in \mathbb{N}$. Tomemos os abertos $U_{i} \in A'$ da subcobertura finita, e mostramos anteriormente que $f|_{U_{i}} : U_{i} \to f(U_{i}) \subseteq V_{i}$ são difeomorfismos, então $f(U_{i})$ são abertos e $\bigcap(f(U_{i})) \subset N$ é um aberto pois é a intersecção finita de abertos, consequentemente, o conjunto $U^{c} = M \backslash \bigcup U_{i}$ é compacto pois é um subconjunto fechado do compacto $M$, logo $f(U^{c}) \subset N$ é um compacto. Enfim, vamos definir $U = \bigcap f(U_{i}) \backslash f(U^{c})$, e notemos que o conjunto $\bigcap f(U_{i})$ sendo um aberto, todos os seus pontos são interiores, assim, ao se retirar os pontos da intersecção de $f(U^{c})$ com $\bigcap f(U_{i})$ teremos que todos os pontos restantes ainda serão pontos interiores, logo $U =f(U_{i}) \backslash f(U^{c})$ será um conjunto onde todos os pontos são interiores, portanto $U$ é um aberto contendo $q$ o valor regular. Por fim, definindo $V_{i} = U_{i} \cap f^{-1}(U)$ teremos $f^{-1}(U) = \bigcup V_{i}$, como desejávamos. 
 	
 	$\blacksquare$
 	
 	\vspace{2mm}
-	\textbf{Definição (índice local):} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, conexas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, definimos por \textit{índice local}
+	\textbf{Definição (índice local):} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, compactas  e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, definimos por \textit{índice local}
 	$$
 	Ind(f; p) := \left\{
 	\begin{array}{cc}
@@ -553,11 +557,11 @@ execute at end node=$]
 	$$
 	
 	\vspace{2mm}
-	\textit{\textbf{Teorema (grau de aplicação é um inteiro)} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, conexas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(q)$, então}
+	\textit{\textbf{Teorema (grau de aplicação é um inteiro)} Seja $f : M^{n} \to N^{n}$ uma aplicação suave entre variedades diferenciáveis, compactas e orientáveis, onde $N$ é conexa. Seja $f(p) = q \in N$ uma valor regular e $p \in f^{-1}(\{q\})$, então}
 	$$
 	deg(f) = \sum \limits_{p \in f^{-1}(q)} Ind(f;p) \in \mathbb{Z}.
 	$$
-	$\square$ Sejam os pontos regulares e suas vizinhanças abertas $p_{i} \in f^{-1}(\{q\})$ e $p_{i} \in V_{i}$, respectivamente, com $1\leq i \leq k$, como no Lema anterior. Seja $\omega \in \Omega^{n}(N)$ tal que $supp(\omega) \subseteq U$ e $\int_{N} \omega = 1$, então teremos $supp(f^{*}(\omega)) \subseteq f^{-1}(U) = \bigcup V_{i}$, pelo lema anterior, o que nos permite escrever $f^{*}(\omega) = \sum \omega_{i}$, onde $\omega_{i} \in \Omega^{n}(M)$ e $supp(\omega_{i}) \subseteq V_{i}$. Note que teremos $\omega_{i}|_{V_{i}}  = (f|_{V_{i}})^{*}(\omega|_{U})$. Assim:
+	$\square$ Sejam os pontos regulares $p_{i} \in f^{-1}(\{q\})$ e suas vizinhanças abertas $U_{i} \ni p_{i}$ para $1\leq i \leq k$, sendo $U_{i}$ e o aberto $U \ni q$ definidos como no lema anterior. Seja $\omega \in \Omega^{n}(N)$ tal que $supp(\omega) \subseteq U$, e como $N$ é orientável, podemos supor que $\int_{N} \omega = 1$, então teremos $supp(f^{*}(\omega)) \subseteq f^{-1}(U) = \bigcup V_{i}$, o que nos permite escrever $f^{*}(\omega) = \sum \omega_{i}$, onde $\omega_{i} \in \Omega^{n}(M)$ e $supp(\omega_{i}) \subseteq V_{i}$. Note que teremos $\omega_{i}|_{V_{i}}  = (f|_{V_{i}})^{*}(\omega|_{U})$. Assim:
 	$$
 	\begin{aligned}
 	deg(f) =& deg(f)\int_{N} \omega = \int_{M} f^{*}(\omega)
