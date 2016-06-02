@@ -33,17 +33,21 @@ execute at end node=$]
 	}
 	
 	\author{Vinicius Fernades}
-
+	
 	\maketitle
 	
-	\textit{Observação: Essas notas tiveram como base o livro - From Calculus to Cohomology, Lars Bojer Madsen and Jorgen Tornehave.}
+	\tableofcontents
+	\vspace{8mm}
+	\textit{\textbf{Observação:} Essas notas tiveram como base o livro - From Calculus to Cohomology, Lars Bojer Madsen and Jorgen Tornehave.}
+		
+	\chapter{Cohomologia}
 	
 	\section{Formas diferenciáveis}
 	Seja $V$ um espaço vetorial, dizemos que uma função p-linear é $\omega : V \times \dots \times V \to \mathbb{R}$, tal que $a_{i}, b_{i} \in V$ onde $1\leq i \leq p$ e $\lambda \in \mathbb{R}$ teremos $\omega(a_{1} + \lambda b_{1}, ..., a_{p} + \lambda b_{p}) = \omega(a_{1} , ..., a_{p} )+ \lambda \omega(b_{1}, ..., b_{p})$. Afirmamos que $\Lambda^{p}(V)$ como sendo o conjunto das funções p-lineares forma um espço vetorial. Tomemos $\Lambda^{1}(V)$ e $\{e_{1}, ..., e_{n}\}$ com sendo uma base de $V$, então $\Lambda^{1}(V) = V^{*}$ (espaço dual de V), consequentemente, escreveremos $\{dx_{1}, ..., dx_{n}\}$ como sendo uma base de $\Lambda^{1}(V)$, isto é, $dx_{j}(e_{i}) = \delta_{ij}$, desse modo, uma função 1-linear pode ser escrita como $\omega = \sum w_{i}dx_{i}$. Definindo o produto tensorial $\otimes: \Lambda^{1}(V) \times \Lambda^{1}(V) \to \Lambda^{2}(V)$ tal que $\otimes(dx_{i}, dx_{j})(e_{k}, e_{l}) = dx_{i}(e_{k}) \otimes dx_{j}(e_{l}) = \delta_{ik}\delta_{jl}$. Afirmamos que uma função 2-linear pode ser escrita como sendo $\omega = \sum \omega_{ij}dx_{i} \otimes dx_{j}$. Analogamente, teremos uma função p-linear como sendo  $\omega = \sum \omega_{i_{1}...i_{p}}dx_{i_{1}} \otimes ... \otimes dx_{i_{p}}$.
 	
 	Seja $\omega$ uma função p-linear tal que $\omega(a_{1}, ..., a_{p}) = 0 $ sempre que $a_{i} = a_{j}$, para algum $i, j$. Diremos então que $\omega$ é uma função alternada p-linear. Notemos que a seguinte função 2-linear dada por $\omega = dx_{i} \otimes dx_{j} - dx_{j} \otimes dx_{i}$, então $\omega(e_{k},e_{l}) = dx_{i}(e_{k}) \otimes dx_{j}(e_{l}) - dx_{j}(e_{k}) \otimes dx_{i}(e_{l}) = \delta_{ik}\delta_{jl} - \delta_{jk}\delta_{il} =  -\delta_{il}\delta_{jk} + \delta_{jl}\delta_{ik}= -(\delta_{il}\delta_{jk} - \delta_{jl}\delta_{ik}) = dx_{i}(e_{l}) \otimes dx_{j}(e_{k}) - dx_{j}(e_{l}) \otimes dx_{i}(e_{k}) = -\omega(e_{l}, e_{k})$, que é uma função alternada 2-linear. Definiremos o produto exterior como sendo $\wedge: \Lambda^{1}(V) \times \Lambda^{1}(V) \to \Lambda^{2}(V)$ por $ dx_{i} \wedge dx_{j}(a, b) = dx_{i}(a) \otimes dx_{j}(b) - dx_{j}(a) \otimes dx_{i}(b) = \sum_{\sigma} sgn(\sigma) dx_{\sigma(i)}(a) \otimes dx_{\sigma(j)}(b)$. Analogamente, o produto $\wedge: \Lambda^{p}(V) \times \Lambda^{q}(V) \to \Lambda^{p+q}(V)$ será definido como $dx_{i_{1}} \wedge ... \wedge dx_{i_{p}} = \sum_{\sigma}  sgn(\sigma) dx_{\sigma (i_{1})} \otimes ... \otimes dx_{\sigma (i_{p})}$. Afirmamos que qualquer função alternada p-linear poderá ser escrita como a combinação linear do produto exterior $\omega = \sum \omega_{i_{1}...i_{p}} dx_{i_{1}} \wedge... \wedge dx_{i_{p}}$.
 	
-	\section{Cohomologia}
+	\section{Sequência de Mayer-Vietoris}
 	
 	\textit{\textbf{Lema (de Poincaré):} seja $U \subseteq \mathbb{R}^{n}$ um conjunto estrelado, então $H^{p}(U) = \{0\}$ se $p>0$ e $H^{0}(U) \cong \mathbb{R}$.}
 	
@@ -274,7 +278,7 @@ execute at end node=$]
 	
 	$\blacksquare$
 	
-	\section{Exemplos}
+	\section{Exemplos de cohomologias}
 	\textbf{Definições (homotopia):} Dizemos que $f, g : A \to B$ são homotópicamente equivalentes se existe uma função contínua $h: A \times [0,1] \to B$ tal que $h(x,0) = f(x)$ e $h(x,1) = g(x)$, além disso, escrevemos $f \sim g$. Dizemos que $A, B$ são homotópicamente equivalentes se existem mapas contínuos $f: A \to B$ e $g: B \to A$ tais que $f\circ g \sim Id_{B}$ e $g\circ f \sim Id_{A}$.
 	
 	\vspace{2mm}
@@ -295,6 +299,8 @@ execute at end node=$]
 	Continuando, temos a sequência $\mathbb{R} \oplus \mathbb{R} \cong H^{0}(U_{1}) \oplus H^{0}(U_{2}) \xrightarrow{J^{0}} H^{0}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-}) \xrightarrow{\partial^{*}} H^{1}(\mathbb{R}^{2} \backslash \{0\})$, como temos uma sequência exata, ou seja, $Im(I^{0}) = Ker(J^{0})$, logo, $1 = dim(Im(I^{0})) = dim(Ker(J^{0}))$, e pelo teorema de dimensão e imagem temos que $dim(Im(J^{0})) = 1$. Novamente, como temos uma sequência exata, $Im(J^{0}) = Ker(\partial^{*})$, consequentemente, $dim(Im(\partial^{*})) = 1$, e como $\partial^{*}$ é sobrejetor, temos que $ H^{1}(\mathbb{R}^{2} \backslash \{0\}) \cong \mathbb{R}$. Prosseguindo com a sequência $\mathbb{R} \cong H^{1}(\mathbb{R}^{2} \backslash \{0\} ) \xrightarrow{I^{1}} H^{1}(U_{1}) \oplus H^{1}(U_{2}) \cong 0 \oplus 0 \xrightarrow{J^{1}} H^{1}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-})$, e como $J^{1}$ é sobrejetor, então $H^{1}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-}) \cong 0 \oplus 0$. Finalmente calculando a ultima sequência, $0 \oplus 0 \cong H^{1}(\mathbb{R}^{2}_{+} \cap \mathbb{R}^{2}_{-}) \xrightarrow{\partial^{*}} H^{2}(\mathbb{R}^{2} \backslash \{0\} ) \xrightarrow{I^{2}} H^{2}(U_{1}) \oplus H^{2}(U_{2}) \cong 0 \oplus 0$, temos que, pela exatidão, $Im(\partial^{*}) = Ker(I^{2}) = H^{2}(\mathbb{R}^{2} \backslash \{0\} )$, e como $Im(\partial^{*}) = 0$, logo, $H^{2}(\mathbb{R}^{2} \backslash \{0\} ) \cong 0$.
 	
 	Conclusão, $H^{0}(\mathbb{R}^{2} \backslash \{0\}) \cong \mathbb{R}$, $H^{1}(\mathbb{R}^{2} \backslash \{0\}) \cong \mathbb{R}$ e  $H^{p}(\mathbb{R}^{2} \backslash \{0\}) \cong 0$ para $p \geq 2$.
+	
+	\chapter{Isomorfismo entre $\cohomologiacompac{n}{M}$ e $\real{}$}
 	
 	\section{Formas em Variedades Diferenciáveis}
 	\textbf{Definição (variedades topologicas):} Uma variedade topologica $M$ de dimensão $n$ é um espaço topológico não-trivial de Hausdorff contendo uma base enumerável e localmente homeomorfo a $\mathbb{R}^{n}$. Além disso, podemos construir uma estrutura diferenciável, como se segue:
@@ -361,7 +367,7 @@ execute at end node=$]
 	\end{aligned}
 	$$
 	
-	\section{Integração em Variedades Diferenciáveis}
+	\section{Integração de formas diferenciáveis}
 	
 	\textbf{Definição (integração de formas em variedades diferenciáveis):} Seja $\omega^{n}_{v}(M)$ o espaço vetorial das n-formas de suporte compacto em $M$, então definimos a integral como sendo $\int_{M} : \omega^{n}_{c}(M) \to \mathbb{R}$ tal que 
 	$$
@@ -378,6 +384,8 @@ execute at end node=$]
 	$$
 	
 	$\blacksquare$
+	
+	\section{$\cohomologiacompac{n}{M}$ e $\real{}$ são isomorfos}
 	
 	\vspace{2mm}
 	\textit{\textbf{Teorema:} Sejam $M^{n}$ uma variedade diferenciável sem bordo, conexa e orientável, então a seguinte sequência é exata:}
@@ -483,10 +491,11 @@ execute at end node=$]
 	\int_{M} ([\omega]) = \int_{M} \omega = \int_{M} \frac{\lambda(x)}{Vol(K)} dx_{1} \wedge \dots \wedge dx_{n}= \frac{\lambda_{0}}{Vol(K)}\int_{K} dx_{1} \wedge \dots \wedge dx_{n} = \frac{\lambda_{0}}{Vol(K)}Vol(K) = \lambda_{0} \in \mathbb{R}^{n},
 	$$
 	logo é sobrejetora. Tomando $[\omega] \neq [\alpha] \in H^{n}_{c}(M)$, então suponha que $\int_{M} ([\omega]) - \int_{M}([\alpha])  = \int_{M} \omega - \int_{M} \alpha = \int_{M} (\omega - \alpha)= 0 \Rightarrow \omega - \alpha = d\beta$, com $\beta \in \Omega^{n-1}(M)$, ou seja, $[\omega] = [\alpha]$, contradizendo a hipótese que $[\omega] \neq [\alpha]$, portanto é uma aplicação injetora. Conclusão: $\int_{M} : H^{n}(M) \to \mathbb{R}$ é um isomorfismo. 
-	
 	$\blacksquare$
 	
-	\section{Grau de Aplicação}
+	\chapter{Grau de Aplicação}
+	
+	\section{O grau de uma aplicação é um inteiro}
 	
 	\textbf{Definição (grau de aplicação):} Sejam $M^{n}, N^{n}$ n-variedades diferenciáveis, conexas, compactas e orientadas. Seja $f: M \to N$ uma aplicação suave. Sabemos que os seguintes mapas $\int_{M}: H^{n}(M) \to \mathbb{R}$ e $\int_{N}: H^{n}(N) \to \mathbb{R}$ são isomorfismos. Vamos definir uma aplicação de modo que o diagrama abaixo seja comutativo.
 	\\
@@ -576,6 +585,8 @@ execute at end node=$]
 	=& \sum Ind(f, p_{i}) \in \mathbb{Z}.
 	\end{aligned}$$
 	$\blacksquare$
+	
+	\chapter{Teoria de Morse}
 	
 	\section{Funções de Morse}
 	
@@ -670,6 +681,7 @@ execute at end node=$]
 	
 	$\blacksquare$
 	
+	\section{Teorema de índices para campos}
 	\vspace{2mm}
 	\textit{\textbf{Lema:} Seja $f \in C^{\infty}(M, \mathbb{R})$ uma função de Morse e $X \in \mathfrak{X}(M)$ um campo vetorial suave tal que $D_{p}f(X(p)) > 0$ para todo $p \in M$ que não é um ponto crítico de $f$. Seja $p_{0}$ um ponto crítico de $f$ com índice $\lambda$, e se $X(p_{0}) = 0$, então}
 	$$
@@ -698,7 +710,9 @@ execute at end node=$]
 	
 	$\blacksquare$
 	
-	\section{Teoria de Morse - Alguns Resultados}
+	\chapter{Característica de Euler e o Teorema de Hopf-Poincaré}
+	
+	\section{Propriedades da característica de Euler}
 	
 	\textit{\textbf{Lema (particionamento da característica de Euler-Poincaré):} Sejam $M$ uma variedade diferenciável e $U, V \subset M$ abertos tais que $M = U \cup V$ e $U \cap V$ tenha cohomologia com dimensão finita, então:}
 	$$
@@ -812,6 +826,8 @@ execute at end node=$]
 	
 	$\blacksquare$
 	
+	\section{Teorema de Gauss-Bonnet em $\real{3}$}
+	
 	\vspace{2mm}
 	\textit{\textbf{Teorema de Gauss-Bonnet (para superfícies em $\mathbb{R}^{3}$)}: Seja $S^{2} \subset \mathbb{R}^{3}$ uma variedade compacta, orientável de dimensão 2, (isto é, uma superfície regular e compacta e orientável). Definindo $K:S \to \mathbb{R}$ como a curvatura Gaussiana de $S$, então:}
 	$$
@@ -861,7 +877,7 @@ execute at end node=$]
 	
 	$\blacksquare$
 	
-	\section{Dualidade de Poincaré}
+	\chapter{Dualidade de Poincaré}
 	
 	Quando trabalhamos com integração em variedades não-compactas operacionamos sobre formas com suporte compacto, caso as variedades sejam compactas, então esse caso cobre o anterior. Assim, tomemos $M^{n}$ uma variedade diferenciável e $\omega \in \Omega_{c}^{n}(M)$, e por definição, $\int_{M}\omega \in \mathbb{R}$, isto é, $\int_{M} \in \Omega_{c}^{n}(M)^{*}$ pois é um operador linear, por construção. Como, a partir da operação de integração, construir um funcional linear em $\Omega_{c}^{p}(M)^{*}$ onde $1 \leq p \leq n-1$. Seja $0\leq k \leq n$ e reescreveremos $p = n-k$, sendo que $k=0$ é o caso conhecido. Para cada $k$ tome $\alpha \in \Omega^{k}(M)$ e definindo $D : \Omega^{k}(M) \to \Omega_{c}^{n-k}(M)^{*}$ tal que $D(\alpha)(\omega) = \int_{M}\alpha \wedge \omega \in \mathbb{R}$. Note que através do produto exterior conseguimos um funcional para cada $p = n-k$, podendo integrar na variedade, como desejávamos. Além disso, essa integração essa aplicação bem-definida pois temos $supp(\alpha\wedge \omega) = supp(\alpha) \cap supp(\omega) \subset supp(\omega)$, logo
 	$$
