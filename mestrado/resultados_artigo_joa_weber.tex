@@ -1,0 +1,33 @@
+\documentclass[12pt]{book}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[fleqn]{amsmath}
+\usepackage[a4paper, margin=1.0in]{geometry}
+
+\newcommand{\cohomologia}[2]{H^{#1}(#2)}
+\newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
+\newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
+\newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
+\newcommand{\real}[1]{\mathbb{R}^{#1}}
+\newcommand{\tese}[3]{\vspace{2mm} \textit{\textbf{#1}}: \textit{#2} \par $\square$ #3 \par $\blacksquare$}
+\begin{document}
+	
+	\title{Demonstrações Artigo Joa Weber}
+	
+	\author{Vinicius Fernades}
+	
+	\maketitle
+	
+	
+	\vspace{8mm}
+	\chapter{Teoria de Morse}
+	
+	\section{Pontos Críticos}
+	
+	\tese{Lema}{Seja M uma variedade fechada, $f$ uma função de Morse e $X = -\nabla f$, então $\alpha(p), \omega(p)$ consistem de um único ponto crítico de $f$ para qualquer $p \in M$.}
+	{Seja $\phi: \real{} \times M \to M$ o fluxo gerado pelo campo vetorial $X$, e por definição temos que $\omega(q) = \{p \in M: \lim_{t \to \infty}\phi_{t}(q) = p \}$. Seja $p \in Crit(f)$, então $Df(p)(-\nabla f(p)) = -g(\nabla f(p), \nabla f(p)) = 0 \iff \nabla f(p) = 0$, logo $p$ é uma singuaridade do campo gradiente, o que nos permite afirmar que $\exists q \in M; p \in  \omega(q)$ ou $p \in  \alpha(q)$ pois as singularidades estão em um dos conjuntos limites, por definição. Sabemos que $Crit(f)$ é um conjunto finito de pontos isolados, então podemos supor que $Crit(f) = \{p_{i} \in M : 1\leq i \leq k \}$, e que para cada $p_{i}$ exista um ponto $q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$, portanto $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que tanto $\omega(q_{i})$ (ou $\alpha(q_{i})$) consiste de singularidades das órbitas do ponto $q_{i}$, isto é, $\forall r \in \omega(q_{i})$ teremos $\nabla f(r) = 0$, portanto, $\omega(q_{i}), \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Seja $p \in Crit(f)$ e $\mathcal{O}(p)$ a órbita desse ponto, e sabendo que essa é não-fechada, então $p$ é o único ponto crítico nesse conjunto, assim, $\forall q \in \mathcal{O}(p) \Rightarrow \omega(q) = \{p\}$ ou $\alpha(q) = \{p\}$. Conclusão, $\forall p \in M$ teremos $\omega(p) \subseteq Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$, além disso, $\omega(p)$ contém apenas um ponto crítico da função de Morse $f:M \to \real{}$.}
+\end{document}
