@@ -1,0 +1,58 @@
+\documentclass[12pt]{book}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[fleqn]{amsmath}
+\usepackage[a4paper, margin=1.0in]{geometry}
+
+\newcommand{\cohomologia}[2]{H^{#1}(#2)}
+\newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
+\newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
+\newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
+\newcommand{\real}[1]{\mathbb{R}^{#1}}
+\newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
+\newcommand{\definicao}[1]{\vspace{2mm} \textbf{Definição:}{ #1}}
+\newcommand{\definicaonomeada}[2]{\vspace{2mm} \textbf{Definição (#1):}{ #2}}
+\newcommand{\tese}[3]{\vspace{2mm} \textit{\textbf{#1}}: \textit{#2} \par $\square$ #3 \par $\blacksquare$}
+\newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
+\newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
+\newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
+\newcommand{\suavefunc}[1]{C^{\infty}(#1, \real{})}
+\begin{document}
+	
+	\title{Homologia de Morse}
+	
+	\author{Vinicius Fernades}
+	
+	\maketitle
+	
+	\chapter{CW-Complexos}
+	\section{Exemplos}
+	\tese{Proposição}{Seja $n \in \mathbb{N}$ e $\realprojetivo{n}$ o n-plano projetivo, então existe um aplicação de anexamento $f: \partial{D^{n}} \to \realprojetivo{n-1}$ tal que $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f} D^{n}$}{Podemos definir $S^{n-1} =\{\frac{p}{||p||}: p  \in \real{n}\backslash\{0\}\}$, e tomando $[q] \in \realprojetivo{n-1}$ podemos escrever $q \in \real{n}\backslash\{0\} \Rightarrow q/||q|| = \lambda q \therefore q/||q|| \in [q]$, logo temos a aplicação  $f:S^{n-1} \to \realprojetivo{n-1}; \; f(p/||p||) = [p]$ que é contínua, portanto temos a célula anexada ao (n-1)-plano projetivo $\realprojetivo{n-1}\cup_{g}D^{n}$. Por definição $S^{n} = \{p \in \real{n+1}: ||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1\}$, assim, realizando o quociente $S^{n}/\sim = \{p \in S^{n}: p \sim -p\}$ e seja $A^{n} = \{[p] \in S^{n}/\sim:  p = (x_{1},x_{2},...,x_{n}, 0)\}$, isto é, $||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1$ o que implica em $[p] \in S^{n}/\sim$, e como temos $\realprojetivo{n-1} \approx S^{n}/\sim $ então podemos definir a identificação $g:A^{n} \to \realprojetivo{n-1}$, que por abuso diremos $[p] \longmapsto [p] \in \realprojetivo{n-1}$. essa identificação é injetora pois dados $[p] \neq [q] \in A^{n}$ e supondo que $g([p]) = g([q])$ implica que $[p] = [q] \in \realprojetivo{n-1}$, desse modo teremos $p = \lambda q$ com $\lambda \in \real{}\backslash\{0\}$, isto é, $[p]=[q] \in A^{n}$, contradizendo a hipótese de que $[p]\neq[q] \in A^{n}$. Por construção, a sobrejeção é imediata, portanto é uma bijeção. Além disso, ambas $g$ e $g^{-1}$ são contínuas, logo temos um homeomorfismo. Seja $B^{n} = \{[p] \in S^{n}/\sim:  p = (x_{1},x_{2},..., x_{n+1}), x^{n+1} \neq 0\}$, logo dado $[p] \in B^{n}$ teremos $x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2}+x_{n+1}^{2}=1 \Rightarrow x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2} < 1$, isto é, $p \in D^{n}$, definindo assim a $h : B^{n} \to D^{n}$ tal que $h([p]) = (|x_{1}|,\dots, |x_{n}|)$, esta bem-definida, assim teremos que $Im(h) = \{(x_{1},\dots, x_{n}) \in D^{n}: 0 \leq x_{j} < 1 \} \subset D^{1}$, que é homeomorfo ao inteior de $D^{n}$, isto é, $Im(h) \approx Int(D^{n})$. }
+	
+	
+	\chapter{Teoria de Morse}
+	\section{Pontos Críticos}
+	
+	\tese{Proposição}{Seja M uma variedade fechada e $f$ uma função de Morse, então se $p \in Crit(f)$ teremos $\nabla f(p)=0$ e $\exists q \in M$ tal que $p \in \omega(q)$ ou $p \in \alpha(q)$ , isto é, $p$ é uma singularidade e é um ponto limite.}{Tomando $p \in Crit(f)$, então $\forall v \in T_{p}M \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0$, portanto, para $v = -\nabla f(p)$ teremos $-\innerprod{\nabla f(p)}{\nabla f(p)} = 0 \iff \nabla f(p) = 0$, logo, $p$ é uma singularidade do campo gradiente. Com isso, podemos afirmar que existe um ponto $q \in M$ tal que a órbita $\mathcal{O}(q)$ tenha como um dos pontos limites o dado $p \in Crit(f)$ pois caso contrário, o ponto $p$ não será uma singularidade. Como $p \in Crit(f)$ é um ponto limite, então $p \in \omega(q)$ ou $p \in \alpha(q)$, como desejávamos.}
+	
+	\tese{Lema}{Seja M uma variedade fechada, $f$ uma função de Morse e $X =-\nabla f$, então $\alpha(p), \omega(p)$ consistem de um único ponto crítico de $f$ para qualquer $p \in M$.}
+	{Como $M$ é uma variedade fechada e $f$ é uma função de Morse, então $Crit(f) = \{p_{i} \in M: 1\leq i \leq k \}$ é um conjunto finito de pontos isolados. Pela proposição anterior, dado $p_{i} \in Crit(f), \exists q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$. Com isso, podemos afirmar que $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que os conjuntos limite $\omega(q_{i})$ e $\alpha(q_{i})$ consistem de singularidades do campo gradiente $-\nabla f$, logo $\forall p \in \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$ teremos $\nabla f(p) = 0 \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0 \therefore p \in Crit(f)$, e como $p$ é arbitrário, então $\bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Com esse resultado fica evidente que $\omega(q_{i}), \alpha(q_{i}) \subset Crit(f)$. Como os conjuntos limites são conjuntos finitos de pontos isolados vamos supor que $\omega(q_{i}) = \{r_{j} \in Crit(f): 0\leq j \leq m\}$, logo pela topologia induzinda, os abertos de cada um deles serão os conjuntos unitários e teremos $\omega(q_{i}) = \bigcup_{j=1}^{k} \{r_{j}\} $, e como os conjuntos limite são conexos (vide resultado do Palis), essa união disjunta contradiz a conexidade, portanto $\omega(q_{i}) = \{r_{i}\}$. Os mesmos argumentos valem para o conjunto $\alpha(q_{j})$. Portanto, ambos os conjuntos limite devem conter apenas um ponto crítico, como desejávamos.}
+	
+	\definicaonomeada{funções de Morse}{$\morsefunc{M} \subset \suavefunc{M}$ é o conjunto de todas as funções de Morse definidas na variedade $M$.}
+	
+	\definicaonomeada{norma $C^{r}$}{Sabemos o que espaço das fuções infinitamente diferenciáveis $\suavefunc{M}$ forma um espaço vetorial, além disso, como temos uma variedade compacta, dada uma cobertura, podemos escolher uma subconvertura finita por abertos $\{V_{i}\}_{i=1}^{k}$e um atlas finito $\{(U_{i}, \phi_{i})\}_{i=1}^{k}$ tal que $V_{i} \subset \phi_{i}(U_{i})$ com $\phi_{i}^{-1}(\phi_{i}(U_{i})) = B(0,2)$ e $\phi_{i}^{-1}(V_{i}) = B(0,1)$. Dado $f \in \suavefunc{M}$ definimos $f_{i} := f|_{\phi_{i}(U_{i})}$ e a \textit{r-norma} como sendo 
+	$$
+	||f||_{r} := \max_{i} \sup\{||f_{i}(p)||, ||D^{1}f_{i}(p)||, \dots, ||D^{r}f_{i}(p)||: p \in B(1)\}.
+	$$
+	Pode-se verificar que $||.||_{1}: \suavefunc{M} \to \real{}$ é uma norma, além disso, esse espaço é completo nessa norma, portanto é um \textit{espaço de Banach}.}
+
+	\definicao{Dados $f, g \in \suavefunc{M}$, dizemos que $f$ é uma $C^{1}$-aproximação de $g$ quando existe um $\epsilon \in \real{+}$ tal que $||f-g||_{1} < \epsilon$.}
+	
+	\tese{Teorema (transversalidade de Morse-Smale)}{Seja M uma variedade fechada e $f \in \morsefunc{M}$, então existe uma $h \neq f \in \morsefunc{M}$ tal que $\nabla f$ pode ser $C^{1}$-aproximado por $\nabla h$ e que satisfaz as condições de Morse-Smale.}{
+		
+	Seja $p \in \pontocritico{f}$ e tomemos uma vizinhança aberta $U \ni p$ tal que esse ponto seja o único ponto crítico pertencente a ela. Como o espaço das funções de Morse $\morsefunc{M} \subset C^{\infty}(M, \real{})$ é um conjunto denso na topologia $C^{1}$, então dado $\epsilon > 0 \in \real{}$ existe uma $h \neq f \in \morsefunc{M}$ tal que $||f-h||_{1} < \epsilon$. Sejam $\gamma, \alpha : \real{} \to M$ as curvas integrais dos campos $-\nabla f$ e $-\nabla h$, respectivamente, de modo que $\gamma'(p) = -\nabla f(p), \alpha'(p) = -\nabla h(p)$ com $\gamma(p) = \alpha(p)$, então }
+\end{document}
