@@ -25,11 +25,21 @@
 \newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
+\newcommand{\funcaocond}[5]{
+	#1 = 
+	\left\{
+	\begin{array}{cc}
+	#2, & #3\\
+	#4, & #5\\
+	\end{array}
+	\right.
+	}
 \newcommand{\skeleton}[1]{X^{(#1)}}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
 \newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
-\newcommand{\homologiarelskel}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
+\newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
+\newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
@@ -52,7 +62,7 @@
 	\section{CW-Homologia}
 	\tese{Lema}{Seja $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo e $A \subseteq X$, então 
 	$$
-	\homologiarelskel{k}{n} \cong 
+	\homologiarelskelesimpl{k}{n} \cong 
 	\left\{
 		\begin{array}{cc}
 		C_{n}(X, A;\Lambda) , & k = n\\
@@ -64,9 +74,9 @@
 	$$
 	C_{n}(X, A;\Lambda) \cong \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} \Lambda
 	$$
-	é um $\Lambda-$módulo gerado por $n-$células de $X$ que não estão em $A$, além disso:
+	é um $\Lambda-$módulo livre gerado por $n-$células de $X$ que não estão em $A$, além disso:
 	$$
-	\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskel{n}{n}
+	\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
 	$$
 	é um isomorfismo.}{Por definição, temos  $\skeleton{n} = \skeleton{n-1} \bigcup_{f_{\partial \sigma} } \celula{n}{\sigma}$ e também $\celula{n}{\sigma} \subset \skeleton{n}$ pelo aplicação característica $f_{\sigma} : \celula{n}{\sigma} \to \skeleton{n}$, e sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, do hemisfério norte de cada $f_{\sigma}(\celula{n}{\sigma})$, e definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ com $\overline{N_{\sigma}} \subset M_{\sigma}$. $U = \skeleton{n} - \bigcup C_{\sigma}$ e $Y = \skeleton{n} - \bigcup A_{\sigma}$, consequentemente, $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato por deformação de $Y$, logo, pela invariância homotópica temos $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Vejamos que $\skeleton{n} - U = \bigcup C_{\sigma}$ e que $Y - U $ é homotópico a $\bigcup S^{n}_{\sigma}$, assim, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$, e pela homotopia citada anteriormente, $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \homologiarel{k}{\bigcup C_{\sigma}}{\bigcup S^{n}_{\sigma}} \cong \homologia{k}{\bigcup (\celula{n}{\sigma}, \celulafront{n}{\sigma})} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$, pois $C_{\sigma} \simeq \celula{n}{\sigma}$ e $S^{n}_{\sigma} = \celulafront{n}{\sigma}$. Enfim, temos sequência:
 	\[
@@ -76,14 +86,117 @@
 		\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[d]^{\somadir{\sigma}f_{\sigma*}} 
 		\\
 		\homologiarel{k}{\skeleton{n} - U}{Y- U} \ar[r]^{\cong} & \homologiarel{k}{\skeleton{n}}{Y} \ar[r]^{\cong} & 
-		\homologiarelskel{k}{n}.
+		\homologiarelskelesimpl{k}{n}.
 	}
 	\]
-	Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong \Lambda$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskel{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} \Lambda$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.}
+	Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong \Lambda$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} \Lambda$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.}
+
+	\definicaonomeada{aplicação de pares}{Seja $X = \skeleton{n}$ um CW-complexo e fixando um ponto $p \in \skeleton{n-1}$, realizamos o quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ tal que 	
+	$$
+		\pi(q) = 
+		\left\{
+		\begin{array}{cc}
+		p, & q \in \skeleton{n-1}\\
+		q, & q \notin \skeleton{n-1}\\
+		\end{array}
+		\right..
+	$$
+	Seja $\bigvee_{\sigma} S^{n}_{\sigma}$ o buquet de $n-$esfperas, então $\skeleton{n}/\skeleton{n-1} \simeq \bigvee_{\sigma} S^{n}_{\sigma}$. Agora, definindo $s_{\sigma} : \skeleton{n}/\skeleton{n-1} \to S^{n}_{\sigma}$ tal que 
+	$$
+	\funcaocond{s_{\sigma}(q)}{q}{q \in \celula{n}{\sigma}}{p}{q \notin \celula{n}{\sigma}}
+	$$
+	chamamos de $\sigma-$aplicação de pares $p_{\sigma} = s_{\sigma} \circ \pi : (\skeleton{n}, \skeleton{n-1}) \to (S^{n}_{\sigma}, \{p\})$.}
 	
+	\definicao{Denotaremos $\Psi_{n}:\homologiarelskelesimpl{k}{n} \to C_{k}(X,A)$ como o isomorfismo anterior dado por 
+	$$
+	\Psi(\sum_{\sigma} n_{\sigma} \sigma) = \sum_{\sigma} n_{\sigma} f_{\sigma *}[D^{n}],
+	$$
+	onde $[D^{n}]$ é um gerador do grupo $\homologiarelcel{n}{n}{}$.}
+
+	\tese{Proposição (inversa do isomorfimo)}{A aplicação inversa $\Phi_{n} : \homologiarelskelesimpl{n}{n} \to C_{n}(X,A)$ do isomorfismo definido anteriormente é dada por
+	$$
+	\Phi_{n}(\alpha) = \sum_{\sigma} \phi_{n}(p_{\sigma *}\alpha)\sigma,
+	$$
+	onde $\phi_{n}: \homologiarel{n}{S^{n}}{\{p\}} \to \Lambda$ é o único homomorfismo tal que $\phi_{n}([S^{n}])=1$ e $[S^{n}]$ é a classe fundamental do par $(S^{n}, \{p\})$.}{O grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabemos o que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$, com isso, tomemos $\sigma$ uma $n-$célula geradora de $C_{n}(X,A)$, então
+	$$
+	\begin{aligned}
+	\Phi_{n}(\Psi_{n}(\sigma)) 
+	&= \sum_{\beta}\phi_{n}(p_{\beta *}\Psi_{n}(\sigma))\beta
+	\\
+	&= \sum_{\beta}\phi_{n}(p_{\beta *}f_{\sigma *}[D^{n}])\beta
+	\\
+	&= \sum_{\beta}\phi_{n}((p_{\beta}\circ f_{\sigma})_{*}[D^{n}])\beta
+	\\
+	&= \phi_{n}((p_{\sigma}\circ f_{\sigma})_{*}[D^{n}])\sigma
+	\\
+	&= \phi_{n}([S^{n}])\sigma
+	\\
+	&= \sigma	
+	\end{aligned},
+	$$
+	e como $\sigma \in C_{n}(X,A)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$, como desejávamos.
+	}
 	
+	\definicaonomeada{operador CW-bordo}{Tome a composição abaixo
+	\[
+	\xymatrix{
+		C_{n}(X,A) \ar[r]^{\Psi_{n}\qquad} &
+		\homologiarelskelesimpl{n}{n} \ar[r]^{\delta_{*}} & 
+		\homologiarelskele{n-1}{n-1}{n-2} \ar[r]^{\qquad \Phi_{n-1}}&
+		C_{n-1}(X,A)
+		}
+	\]
+	então $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$ tal que $\partial_{n}: C_{n}(X,A) \to C_{n-1}(X,A)$ é denomidado de operador CW-bordo.}
+
+	\tese{Teorema (CW-bordo)}{O operador  CW-bordo é um homomorfismo, $\partial_{n-1}\circ\partial_{n} = 0$ e é dado por:
+	$$
+	\partial_{n}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
+	$$
+	onde $[\beta:\sigma]$ é o grau da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulafront{n}{\sigma} \to S^{n-1}_{\sigma}$.}{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, e sejam $\alpha,\beta \in C_{n}(X,A; \Lambda)$ e $\lambda \in \Lambda$, então
+	$$ 
+	\begin{aligned}
+	\partial_{n}(\lambda \alpha+\beta) &= (\Phi_{n-1} \circ \delta_{*} \circ \Psi_{n})(\lambda \alpha+\beta)
+	\\
+	&= (\Phi_{n-1} \circ \delta_{*}) (\lambda\Psi_{n}(\alpha) + \Psi_{n}(\beta))
+	\\
+	&= \Phi_{n-1}(\lambda\delta_{*}(\Psi_{n}(\alpha)) + \delta_{*}(\Psi_{n}(\beta)))
+	\\
+	&= \lambda \Phi_{n-1}(\delta_{*}(\Psi_{n}(\alpha))) + \Phi_{n-1}(\delta_{*}(\Psi_{n}(\beta)))
+	\\
+	&=\lambda (\Phi_{n-1}\circ\delta_{*} \circ\Psi_{n})(\alpha) + (\Phi_{n-1}\circ\delta_{*} \circ\Psi_{n})(\beta)
+	\\
+	&= \lambda\partial_{n}\alpha +\partial_{n}\beta
+	\end{aligned},
+	$$
+	logo é um homomorfismo.
+	
+	 Temos a sequência exata longa de pares
+	\[
+	\xymatrix{
+		\dots \ar[r]^{i_{*}} &
+		\homologia{n-1}{\skeleton{n-1}}\ar[r]^{j_{*}\qquad} &
+		\homologiarel{n-1}{\skeleton{n-1}}{\skeleton{n-2}} \ar[r]^{\qquad \delta_{n-1}}&
+		\homologia{n-1}{\skeleton{n-2}} \ar[r] & \dots
+	}
+	\]	
+	e como é uma sequência exata temos $Im(j_{*})=ker(\delta_{n-1})$ e $\delta_{*} = j_{*}\circ \delta_{n-1}$, logo dado $\sigma \in \homologiarelskelesimpl{n}{n}$ então $\delta_{*}^{2}\sigma = (j_{*}\circ \delta_{n-1})\circ(j_{*}\circ \delta_{n-1})\sigma = j_{*}( \delta_{n-1}\beta) = 0$, pois $\beta = j_{*}(\delta_{n-1}\sigma) \in Im(j_{*})$, portanto $\delta_{*}^{2} = 0$. Por definição, temos que 
+	$$
+	\begin{aligned}
+		\partial_{n-1}\circ \partial_{n} 
+		&= \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}
+		\\
+		&=\Phi_{n-2} \circ \delta_{*} \circ  \delta_{*} \circ \Psi_{n}
+		\\
+		&=0.
+	\end{aligned}
+	$$
+	}
+	
+	\tese{Teorema (CW-Homologia)}{Existe uma identificação natural entre a homologia do complexo $C_{*}(X,A; \Lambda)$ e a homologia singular $\homologiarel{*}{X}{A}$, isto é, $\homologia{k}{C_{*}(X,A; \Lambda)} \cong \homologiarel{k}{X}{A}\; \forall k \in \mathbb{Z}$}{arg3}
 	\section{Exemplos}
 	\tese{Proposição}{Seja $n \in \mathbb{N}$ e $\realprojetivo{n}$ o n-plano projetivo, então existe um aplicação de anexamento $f: \partial{D^{n}} \to \realprojetivo{n-1}$ tal que $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f} D^{n}$}{Podemos definir $S^{n-1} =\{\frac{p}{||p||}: p  \in \real{n}\backslash\{0\}\}$, e tomando $[q] \in \realprojetivo{n-1}$ podemos escrever $q \in \real{n}\backslash\{0\} \Rightarrow q/||q|| = \lambda q \therefore q/||q|| \in [q]$, logo temos a aplicação  $f:S^{n-1} \to \realprojetivo{n-1}; \; f(p/||p||) = [p]$ que é contínua, portanto temos a célula anexada ao (n-1)-plano projetivo $\realprojetivo{n-1}\cup_{g}D^{n}$. Por definição $S^{n} = \{p \in \real{n+1}: ||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1\}$, assim, realizando o quociente $S^{n}/\sim = \{p \in S^{n}: p \sim -p\}$ e seja $A^{n} = \{[p] \in S^{n}/\sim:  p = (x_{1},x_{2},...,x_{n}, 0)\}$, isto é, $||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1$ o que implica em $[p] \in S^{n}/\sim$, e como temos $\realprojetivo{n-1} \approx S^{n}/\sim $ então podemos definir a identificação $g:A^{n} \to \realprojetivo{n-1}$, que por abuso diremos $[p] \longmapsto [p] \in \realprojetivo{n-1}$. essa identificação é injetora pois dados $[p] \neq [q] \in A^{n}$ e supondo que $g([p]) = g([q])$ implica que $[p] = [q] \in \realprojetivo{n-1}$, desse modo teremos $p = \lambda q$ com $\lambda \in \real{}\backslash\{0\}$, isto é, $[p]=[q] \in A^{n}$, contradizendo a hipótese de que $[p]\neq[q] \in A^{n}$. Por construção, a sobrejeção é imediata, portanto é uma bijeção. Além disso, ambas $g$ e $g^{-1}$ são contínuas, logo temos um homeomorfismo. Seja $B^{n} = \{[p] \in S^{n}/\sim:  p = (x_{1},x_{2},..., x_{n+1}), x^{n+1} \neq 0\}$, logo dado $[p] \in B^{n}$ teremos $x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2}+x_{n+1}^{2}=1 \Rightarrow x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2} < 1$, isto é, $p \in D^{n}$, definindo assim a $h : B^{n} \to D^{n}$ tal que $h([p]) = (|x_{1}|,\dots, |x_{n}|)$, esta bem-definida, assim teremos que $Im(h) = \{(x_{1},\dots, x_{n}) \in D^{n}: 0 \leq x_{j} < 1 \} \subset D^{1}$, que é homeomorfo ao inteior de $D^{n}$, isto é, $Im(h) \approx Int(D^{n})$. }
+	
+
 	
 	
 	\chapter{Teoria de Morse}
