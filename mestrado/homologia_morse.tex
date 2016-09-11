@@ -190,7 +190,31 @@
 		&=0.
 	\end{aligned}
 	$$
-	}
+	Por definição temos $f_{\partial\sigma}: \celulafront{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulafront{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$, analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulafront{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas como os geradores são únicos, então $\lambda = 1 \in \Lambda$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
+	$$
+	\begin{aligned}
+	\partial_{n}(\sigma) &= \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}(\sigma)
+	\\
+	&= \Phi_{n-1}\circ\delta_{*}\circ f_{\sigma*}([\celula{n}{\sigma}])
+	\\
+	&= \Phi_{n-1}\circ f_{\sigma*}\circ\delta_{*}([\celula{n}{\sigma}])
+	\\
+	&= \Phi_{n-1}\circ f_{\sigma*}\circ (j_{*}\circ \delta_{n}) ([\celula{n}{\sigma}])
+	\\
+	&= \Phi_{n-1} \circ f_{\sigma*}([\celulafront{n}{\sigma}])
+	\\
+	&= \sum_{\beta} \phi_{n-1}(p_{\beta*}\circ f_{\sigma*}[\celulafront{n}{\sigma}])\beta
+	\\
+	&= \sum_{\beta} \phi_{n-1}((p_{\beta}\circ f_{\sigma})_{*}[\celulafront{n}{\sigma}])\beta
+	\\
+	&= \sum_{\beta} \phi_{n-1}(deg(p_{\beta}\circ f_{\sigma})[S^{n-1}])\beta
+	\\
+	&= \sum_{\beta} deg(p_{\beta}\circ f_{\sigma})\phi_{n-1}([S^{n-1}])\beta
+	\\
+	&= \sum_{\beta} deg(p_{\beta}\circ f_{\sigma})\beta,
+	\end{aligned}
+	$$
+	como desejávamos.}
 	
 	\tese{Teorema (CW-Homologia)}{Existe uma identificação natural entre a homologia do complexo $C_{*}(X,A; \Lambda)$ e a homologia singular $\homologiarel{*}{X}{A}$, isto é, $\homologia{k}{C_{*}(X,A; \Lambda)} \cong \homologiarel{k}{X}{A}\; \forall k \in \mathbb{Z}$}{arg3}
 	\section{Exemplos}
