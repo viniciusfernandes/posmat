@@ -60,7 +60,7 @@
 	
 	\chapter{CW-Complexos}
 	\section{CW-Homologia}
-	\tese{Lema}{Seja $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo e $A \subseteq X$, então 
+	\tese{Lema (isomorfismo dos grupos de homologia)}{Seja $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo e $A \subseteq X$, então 
 	$$
 	\homologiarelskelesimpl{k}{n} \cong 
 	\left\{
@@ -148,6 +148,8 @@
 	\]
 	então $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$ tal que $\partial_{n}: C_{n}(X,A) \to C_{n-1}(X,A)$ é denomidado de operador CW-bordo.}
 
+	\definicaonomeada{grau homologico}{Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{k}{S^{n} \to \homologia{k}{S^{n}}}$ o homomorfismo induzindo. Como $[1] \in \homologia{k}{S^{n}}$ é o elemento gerador, então $f_{*}[1] \in \homologia{k}{S^{n}}$ é um elemento gerador, logo $f_{*}[1] = deg(f)[1]$ para algum $deg(f) \in \Lambda$. Denominamos por grau da aplicação o elemento $deg(f) \in \Lambda$.}
+
 	\tese{Teorema (CW-bordo)}{O operador  CW-bordo é um homomorfismo, $\partial_{n-1}\circ\partial_{n} = 0$ e é dado por:
 	$$
 	\partial_{n}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
@@ -205,7 +207,7 @@
 	\\
 	&= \sum_{\beta} \phi_{n-1}(p_{\beta*}\circ f_{\sigma*}[\celulafront{n}{\sigma}])\beta
 	\\
-	&= \sum_{\beta} \phi_{n-1}((p_{\beta}\circ f_{\sigma})_{*}[\celulafront{n}{\sigma}])\beta
+	&= \sum_{\beta} \phi_{n-1}((p_{\beta}\circ f_{\sigma})_{*}[S^{n-1}])\beta
 	\\
 	&= \sum_{\beta} \phi_{n-1}(deg(p_{\beta}\circ f_{\sigma})[S^{n-1}])\beta
 	\\
@@ -216,9 +218,36 @@
 	$$
 	como desejávamos.}
 	
-	\tese{Teorema (CW-Homologia)}{Existe uma identificação natural entre a homologia do complexo $C_{*}(X,A; \Lambda)$ e a homologia singular $\homologiarel{*}{X}{A}$, isto é, $\homologia{k}{C_{*}(X,A; \Lambda)} \cong \homologiarel{k}{X}{A}\; \forall k \in \mathbb{Z}$}{arg3}
+	\vspace{2mm} Antes de enunciarmos o teorema mais importante desse capítulo, afirmaremos o seguinte lema técnico, utilizado no teorema da CW-homologia.
+	
+	\tese{Lema}{
+	\begin{enumerate}
+		\item $i_{*}:\homologiarel{k}{\skeleton{n}}{A} \to \homologiarel{k}{X}{A}$ é um isomorfismo para $k<n$.
+		\item $H_{k}(\skeleton{n},A) = 0$ para $k>n$
+		\item $\homologiarel{n}{\skeleton{n}}{A} \cong \homologiarelskele{n}{n}{n-2} $
+	\end{enumerate}
+	}{Fora do escopo dessas notas}
+	
+	
+	\tese{Teorema (CW-Homologia)}{Existe uma identificação natural entre a homologia do complexo $C_{*}(X,A; \Lambda)$ e a homologia singular $\homologiarel{*}{X}{A}$, isto é, $\homologia{k}{C_{*}(X,A; \Lambda)} \cong \homologiarel{k}{X}{A}\; \forall k \in \mathbb{Z}$}{Por definição de CW-complexo temos que $\skeleton{k} \subseteq \skeleton{k+1}$, logo podemos considerar a sequência exata loga da tripla $\skeleton{n-2} \subseteq \skeleton{n-1} \subseteq \skeleton{n}$ com as respectivas setas horizontais indicando as inclusões, e as verticais os isomorfismos garantidos pelos resultados anteriores:
+	\[
+	\xymatrix{
+		\homologiarelskele{n}{n-1}{n-2} \ar[r] \ar[d]^{\cong} & 
+		\homologiarelskele{n}{n}{n-2} \ar[r]^{i_{*}} \ar[d]^{h} & 
+		\homologiarelskele{n}{n}{n-1} \ar[r]^{\delta_{*}} \ar[d]^{\Psi_{n}} & 
+		\homologiarelskele{n-1}{n-1}{n-2}\ar[d]^{\Psi_{n-1}} 
+		\\
+		0 \ar[r] & 
+		\homologiarel{n}{\skeleton{n}}{A} \ar[r]^{I} & 
+		C_{n}(X,A) \ar[r]^{\partial_{n}} & 
+		C_{n-1}(X,A)
+	}
+	\]	
+	onde temos as setas verticais dadas pelo teorema do isomorfismo
+	dos grupos de homologia ou pelo lema anterior. Temos a aplicação $\Psi\circ i_{*}:\homologiarelskele{n}{n}{n-2} \to C_{n}(X,A)$, e como $h$ é também um isomorfismo, podemos definir $I$ como sendo $I\circ h:\homologiarelskele{n}{n}{n-2} \to C_{n}(X,A)$ tal que $\Psi\circ i_{*}=I\circ h$. Como temos uma sequência exata, temos $Im(i_{*}) = Ker(\delta_{*})$, e como $\Psi_{n}$ é um isomorfismo, então 
+	}
 	\section{Exemplos}
-	\tese{Proposição}{Seja $n \in \mathbb{N}$ e $\realprojetivo{n}$ o n-plano projetivo, então existe um aplicação de anexamento $f: \partial{D^{n}} \to \realprojetivo{n-1}$ tal que $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f} D^{n}$}{Podemos definir $S^{n-1} =\{\frac{p}{||p||}: p  \in \real{n}\backslash\{0\}\}$, e tomando $[q] \in \realprojetivo{n-1}$ podemos escrever $q \in \real{n}\backslash\{0\} \Rightarrow q/||q|| = \lambda q \therefore q/||q|| \in [q]$, logo temos a aplicação  $f:S^{n-1} \to \realprojetivo{n-1}; \; f(p/||p||) = [p]$ que é contínua, portanto temos a célula anexada ao (n-1)-plano projetivo $\realprojetivo{n-1}\cup_{g}D^{n}$. Por definição $S^{n} = \{p \in \real{n+1}: ||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1\}$, assim, realizando o quociente $S^{n}/\sim = \{p \in S^{n}: p \sim -p\}$ e seja $A^{n} = \{[p] \in S^{n}/\sim:  p = (x_{1},x_{2},...,x_{n}, 0)\}$, isto é, $||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1$ o que implica em $[p] \in S^{n}/\sim$, e como temos $\realprojetivo{n-1} \approx S^{n}/\sim $ então podemos definir a identificação $g:A^{n} \to \realprojetivo{n-1}$, que por abuso diremos $[p] \longmapsto [p] \in \realprojetivo{n-1}$. essa identificação é injetora pois dados $[p] \neq [q] \in A^{n}$ e supondo que $g([p]) = g([q])$ implica que $[p] = [q] \in \realprojetivo{n-1}$, desse modo teremos $p = \lambda q$ com $\lambda \in \real{}\backslash\{0\}$, isto é, $[p]=[q] \in A^{n}$, contradizendo a hipótese de que $[p]\neq[q] \in A^{n}$. Por construção, a sobrejeção é imediata, portanto é uma bijeção. Além disso, ambas $g$ e $g^{-1}$ são contínuas, logo temos um homeomorfismo. Seja $B^{n} = \{[p] \in S^{n}/\sim:  p = (x_{1},x_{2},..., x_{n+1}), x^{n+1} \neq 0\}$, logo dado $[p] \in B^{n}$ teremos $x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2}+x_{n+1}^{2}=1 \Rightarrow x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2} < 1$, isto é, $p \in D^{n}$, definindo assim a $h : B^{n} \to D^{n}$ tal que $h([p]) = (|x_{1}|,\dots, |x_{n}|)$, esta bem-definida, assim teremos que $Im(h) = \{(x_{1},\dots, x_{n}) \in D^{n}: 0 \leq x_{j} < 1 \} \subset D^{1}$, que é homeomorfo ao inteior de $D^{n}$, isto é, $Im(h) \approx Int(D^{n})$. }
+	\tese{Proposição}{Seja $n \in \mathbb{N}$ e $\realprojetivo{n}$ o n-plano projetivo, então existe um aplicação de anexamento $f: \partial{D^{n}} \to \realprojetivo{n-1}$ tal que $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f} D^{n}$}{Podemos definir $S^{n-1} =\{\frac{p}{||p||}: p  \in \real{n}\backslash\{0\}\}$, e tomando $[q] \in \realprojetivo{n-1}$ podemos escrever $q \in \real{n}\backslash\{0\} \Rightarrow q/||q|| = \lambda q \therefore q/||q|| \in [q]$, logo temos a aplicação  $f:S^{n-1} \to \realprojetivo{n-1}; \; f(p/||p||) = [p]$ que é contínua, portanto temos a célula anexada ao (n-1)-plano projetivo $\realprojetivo{n-1}\cup_{g}D^{n}$. Por definição $S^{n} = \{p \in \real{n+1}: ||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1\}$, assim, realizando o quociente $S^{n}/\sim = \{p \in S^{n}: p \sim -p\}$ e seja $A^{n-1} \subset S^{n}/\sim$ tal que, dado $[p] \in A^{n-1}$ teremos $p = (x_{1},x_{2},...,x_{n}, 0)$, que por definição $||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2}=1$ o que implica em $p \in S^{n-1}$, logo temos $A^{n-1} \simeq S^{n-1}/\sim$. Sabemos que $\realprojetivo{n-1} \simeq S^{n-1}/\sim$, que $A^{n-1} \simeq \realprojetivo{n-1}$, então $A^{n-1} \simeq \realprojetivo{n-1}$. Seja $B^{n} \{[p] \in S^{n}/\sim: p =(x_{1},\dots,x_{n}, x_{n+1}), \; x_{n+1} = x_{0}\neq 0 \;\text{fixo} \}$, então dado $[p] \in B^{n}$ teremos por definição $||p||^{2} = x_{1}^{2}+...+x_{n}^{2}+x_{0}^{2}=1 \Rightarrow x_{1}^{2}+...+x_{n}^{2}<1$, logo }
 	
 
 	
