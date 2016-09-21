@@ -242,7 +242,7 @@
 	}{Fora do escopo dessas notas}
 	
 	
-	\tese{Teorema (CW-homologia)}{Existe uma identificação natural entre a homologia do complexo $C_{*}(X,A; \Lambda)$ e a homologia singular $\homologiarel{*}{X}{A}$, isto é, $\homologia{k}{C_{*}(X,A; \Lambda)} \cong \homologiarel{k}{X}{A}\; \forall k \in \mathbb{Z}$}
+	\tese{Teorema (CW-homologia)}{Existe uma identificação natural entre a homologia do complexo $C_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é, $\homologia{k}{X} \cong \homologia{k}{C_{*}(X)}\; \forall k \in \mathbb{Z}$}
 	{
 	Definimos que $C_{k}(X) = \homologiarelskelesimpl{k}{k}$, e observando a sequência
 	\[
@@ -299,13 +299,31 @@
 		\homologiarel{k}{\skeleton{j}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{j}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{j}}{\skeleton{k-2}}
 	}
 	\]
-	e concluiremos que para $j = k+1$ teremos $\homologiarel{k}{\skeleton{n}}{\skeleton{-1}} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}}$.
+	e concluiremos que para $j = k+1$ teremos $\homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}}$, logo teremos o isomorfismo $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}}$. Por fim, temos isomorfismo entre as homologias 
+	$$
+	\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*}) = \homologia{k}{C_{*}(X)}.
+	$$
 	}
 	
 	\section{Exemplos}
-	\tese{Proposição}{Seja $n \in \mathbb{N}$ e $\realprojetivo{n}$ o n-plano projetivo, então existe um aplicação de anexamento $f: \partial{D^{n}} \to \realprojetivo{n-1}$ tal que $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f} D^{n}$}{Podemos definir $S^{n-1} =\{\frac{p}{||p||}: p  \in \real{n}\backslash\{0\}\}$, e tomando $[q] \in \realprojetivo{n-1}$ podemos escrever $q \in \real{n}\backslash\{0\} \Rightarrow q/||q|| = \lambda q \therefore q/||q|| \in [q]$, logo temos a aplicação  $f:S^{n-1} \to \realprojetivo{n-1}; \; f(p/||p||) = [p]$ que é contínua, portanto temos a célula anexada ao (n-1)-plano projetivo $\realprojetivo{n-1}\cup_{g}D^{n}$. Por definição $S^{n} = \{p \in \real{n+1}: ||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n+1}^{2}=1\}$, assim, realizando o quociente $S^{n}/\sim = \{p \in S^{n}: p \sim -p\}$ e seja $A^{n-1} \subset S^{n}/\sim$ tal que, dado $[p] \in A^{n-1}$ teremos $p = (x_{1},x_{2},...,x_{n}, 0)$, que por definição $||p||^{2} = x_{1}^{2}+x_{2}^{2}+...+x_{n}^{2}=1$ o que implica em $p \in S^{n-1}$, logo temos $A^{n-1} \simeq S^{n-1}/\sim$. Sabemos que $\realprojetivo{n-1} \simeq S^{n-1}/\sim$, que $A^{n-1} \simeq \realprojetivo{n-1}$, então $A^{n-1} \simeq \realprojetivo{n-1}$. Seja $B^{n} \{[p] \in S^{n}/\sim: p =(x_{1},\dots,x_{n}, x_{n+1}), \; x_{n+1} = x_{0}\neq 0 \;\text{fixo} \}$, então dado $[p] \in B^{n}$ teremos por definição $||p||^{2} = x_{1}^{2}+...+x_{n}^{2}+x_{0}^{2}=1 \Rightarrow x_{1}^{2}+...+x_{n}^{2}<1$, logo }
+	\tese{Homologia da n-esféra}{$\homologia{*}{S^{n}}$}{Vamos exibir uma estrutura de CW-complexo para $S^{n}$, para isso tomemos um ponto $p \in S^{n}$ e definindo o $0-$skeleton $\skeleton{0}=\{p\}$, agora anexando uma $n-$célula a $\skeleton{0}$ onde $f_{\partial}: \celulabordo{n}{} \to \skeleton{0}$, isto é, $\skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$. Pelo teorema da CW-homologia temos que $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{k}$, de onde temos apenas $k \in \{0,n\}$, logo $\homologia{0}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \cong \Lambda$, e analogamente, $\homologia{n}{S^{n}} \cong \homologiarelskelesimpl{n}{n} \cong \Lambda$ e $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{j} =0$ caso $k \neq j$, como desejávamos.}
 	
-
+	\tese{Homologia do 2-toro}{$\homologia{*}{T^{2}}$}{
+	Vamos exibir uma estrutura de CW-complexo para $T^{2}$, para isso tomemos a identificação do toro com o quadrado cujo os lados opostos serão identificados, assim os vertices do quadrado serão um ponto $p \in T^{2}$ e definindo o $0-$skeleton $\skeleton{0} = \{p\}$, agora vamos anexar às faces do quadrado duas $1-$células, isto é, $\skeleton{1} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$, e por fim, cobrir o centro do quandrado anexando um $2-$célula, com isso, $\skeleton{2} = \skeleton{1}\cup_{f_{3\partial}}\celula{2}{3}$, então
+	$$
+	T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}.
+	$$
+	Teremos os grupos de homologia não-triviais:
+	$$
+	\begin{aligned}
+	\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
+	\\
+	\homologia{1}{T^{2}} &\cong \homologiarelskele{1}{1}{0} \cong \somadir{i=1,2}\homologiarelcel{1}{1}{i} \cong \somadir{i=1,2}\Lambda
+	\\
+	\homologia{2}{T^{2}} &\cong \homologiarelskele{2}{2}{1} \cong \Lambda.
+	\end{aligned}
+	$$
+	}
 	
 	
 	\chapter{Teoria de Morse}
