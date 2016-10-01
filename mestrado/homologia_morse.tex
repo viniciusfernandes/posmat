@@ -18,6 +18,9 @@
 \usepackage{tikz-cd}
 \usepackage[all,cmtip]{xy}
 
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{definition}[theorem]{Definição}
 
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
@@ -50,6 +53,7 @@
 \newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
+\newcommand{\prova}[1]{\vspace{2mm}$\square$ #1 \par$\blacksquare$}
 \newcommand{\suavefunc}[1]{C^{\infty}(#1, \real{})}
 \begin{document}
 	
@@ -61,46 +65,62 @@
 	
 	\chapter{CW-Complexos}
 	\section{Definições Gerais}
-	\definicaonomeada{Sequência de triplas}{Seja $X$ um espaço topológico e $X \supseteq Y \supseteq Z$, então a sequência da tripla $(X,Y,Z)$ é dada por:
-	\[
-	\xymatrix{
-	\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]^{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\partial} & \homologiarel{k-1}{Y}{Z} \ar[r] & \dots
-	}
-	\]
-	onde $i_{*},\;j_{*}$ são inclusões e $\partial$ o homomorfismo conectante.
-	}
+	\begin{theorem} \label{bbb} ... \end{theorem}
+	\begin{lemma} \label{zz} ... \end{lemma}
+	
+	\begin{theorem}
+		\emph{(Lagrange's Theorem)}
+		\label{Lagrange}
+		Let $G$ be a finite group, and let $H$ be a subgroup
+		of $G$.  Then the order of $H$ divides the order of $G$.
+	\end{theorem}
+	
+		\begin{lemma} \label{dd} ... \end{lemma}
+	
+	\begin{definition}
+		(Sequência da triplas) Sejam $X, Y, Z$ espaços topológicos tais que $Z \subseteq Y \subseteq X$. Então a sequência da tripla $(X,Y,Z)$ é dada por:
+			\[
+			\xymatrix{
+				\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]^{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\delta_{*}} & \homologiarel{k-1}{Y}{Z} \ar[r] & \dots
+			}
+			\]
+			onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo conectante.
+	\end{definition}
 	
 	\section{CW-Homologia}
-	\tese{Lema (isomorfismo dos grupos de homologia)}{Seja $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo, então $\homologiarelskelesimpl{k}{n} $ é um $\Lambda-$módulo livre e finitamente gerado tal que
-	$$
-	\homologiarelskelesimpl{k}{n} \cong 
-	\left\{
+	\begin{lemma}
+		(isomorfismo dos grupos de homologia) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo,  então $\homologiarelskelesimpl{k}{n} $ é um $\Lambda-$módulo livre e finitamente gerado pelas $n-$cpelulas de $X$ tal que
+		$$
+		\homologiarelskelesimpl{k}{n} \cong 
+		\left\{
 		\begin{array}{cc}
 		\somadir{\sigma} \homologiarelcel{n}{n}{\sigma} , & k = n\\
 		0, & k\neq n\\
 		\end{array}
-	\right.,
-	$$
-	onde 
-	$$
-	\somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} \Lambda
-	$$
-	e
-	$$
-	\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
-	$$
-	denota o isomorfismo descrito.}{Por definição, temos  $\skeleton{n} = \skeleton{n-1} \bigcup_{f_{\partial \sigma} } \celula{n}{\sigma}$ e também $\celula{n}{\sigma} \subset \skeleton{n}$ pelo aplicação característica $f_{\sigma} : \celula{n}{\sigma} \to \skeleton{n}$, e sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, do hemisfério norte de cada $f_{\sigma}(\celula{n}{\sigma})$, e definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ com $\overline{N_{\sigma}} \subset M_{\sigma}$. $U = \skeleton{n} - \bigcup C_{\sigma}$ e $Y = \skeleton{n} - \bigcup A_{\sigma}$, consequentemente, $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato por deformação de $Y$, logo, pela invariância homotópica temos $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Vejamos que $\skeleton{n} - U = \bigcup C_{\sigma}$ e que $Y - U $ é homotópico a $\bigcup S^{n}_{\sigma}$, assim, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$, e pela homotopia citada anteriormente, $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \homologiarel{k}{\bigcup C_{\sigma}}{\bigcup S^{n}_{\sigma}} \cong \homologia{k}{\bigcup (\celula{n}{\sigma}, \celulabordo{n}{\sigma})} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$, pois $C_{\sigma} \approx \celula{n}{\sigma}$ e $S^{n}_{\sigma} = \celulabordo{n}{\sigma}$. Enfim, temos sequência:
-	\[
-	\xymatrix{
-		\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[r]^{id_{*}} \ar[d]^{\cong} & 
-		\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[r]^{id_{*}} \ar[d]^{\somadir{\sigma}f_{\sigma*}} & 
-		\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[d]^{\somadir{\sigma}f_{\sigma*}} 
-		\\
-		\homologiarel{k}{\skeleton{n} - U}{Y- U} \ar[r]^{\cong} & \homologiarel{k}{\skeleton{n}}{Y} \ar[r]^{\cong} & 
-		\homologiarelskelesimpl{k}{n}.
-	}
-	\]
-	Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong \Lambda$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} \Lambda$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.}
+		\right.,
+		$$
+		onde 
+		$$
+		\somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} \Lambda
+		$$
+		e
+		$$
+		\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
+		$$
+		denota o isomorfismo descrito.
+	\end{lemma}
+	\prova{Por definição, temos  $\skeleton{n} = \skeleton{n-1} \bigcup_{f_{\partial \sigma} } \celula{n}{\sigma}$ e também $\celula{n}{\sigma} \subset \skeleton{n}$, onde $f_{\sigma}:\celula{n}{\sigma} \to \skeleton{n}$ é a aplicação característica. Sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, contendo o hemisfério norte de $f_{\sigma}(\celula{n}{\sigma})$. Definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ tal que $\overline{N_{\sigma}} \subset M_{\sigma}$, e considerando $U = \skeleton{n} - \bigcup C_{\sigma}$ $Y = \skeleton{n} - \bigcup A_{\sigma}$ temos $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato de deformação de $Y$, logo, pela invariância homotópica temos $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Como $\skeleton{n} - U = \bigcup C_{\sigma}$ e $Y - U $ é homotópico a $\bigcup S^{n}_{\sigma}$, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$, portanto $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \homologiarel{k}{\bigcup C_{\sigma}}{\bigcup S^{n}_{\sigma}} \cong \homologia{k}{\bigcup (\celula{n}{\sigma}, \celulabordo{n}{\sigma})} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$, pois $C_{\sigma} \approx \celula{n}{\sigma}$ e $S^{n}_{\sigma} = \celulabordo{n}{\sigma}$. Enfim, temos o diagrama:
+		\[
+		\xymatrix{
+			\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[r]^{id_{*}} \ar[d]^{\cong} & 
+			\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[r]^{id_{*}} \ar[d]^{\somadir{\sigma}f_{\sigma*}} & 
+			\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[d]^{\somadir{\sigma}f_{\sigma*}} 
+			\\
+			\homologiarel{k}{\skeleton{n} - U}{Y- U} \ar[r]^{\cong} & \homologiarel{k}{\skeleton{n}}{Y} \ar[r]^{\cong} & 
+			\homologiarelskelesimpl{k}{n}.
+		}
+		\]
+		Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong \Lambda$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} \Lambda$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.}
 
 	\definicaonomeada{CW $k-$geradores}{Nas condições do lema dos isomorfismos de grupos de homologia denotaremos $C_{k}(X)=\homologiarelskelesimpl{k}{k}$ como sendo o $\Lambda-$módulo da $k-$ésima CW-homologia, mais ainda, $C_{*}(X) = \somadir{k}C_{k}(X)$ é um $\Lambda-$módulo graduado e finitamente gerado em cada um de suas dimensões.}
 
@@ -360,4 +380,38 @@
 	\tese{Teorema (transversalidade de Morse-Smale)}{Seja M uma variedade fechada e $f \in \morsefunc{M}$, então existe uma $h \neq f \in \morsefunc{M}$ tal que $\nabla f$ pode ser $C^{1}$-aproximado por $\nabla h$ e que satisfaz as condições de Morse-Smale.}{
 		
 	Seja $p \in \pontocritico{f}$ e tomemos uma vizinhança aberta $U \ni p$ tal que esse ponto seja o único ponto crítico pertencente a ela. Como o espaço das funções de Morse $\morsefunc{M} \subset C^{\infty}(M, \real{})$ é um conjunto denso na topologia $C^{1}$, então dado $\epsilon > 0 \in \real{}$ existe uma $h \neq f \in \morsefunc{M}$ tal que $||f-h||_{1} < \epsilon$. Sejam $\gamma, \alpha : \real{} \to M$ as curvas integrais dos campos $-\nabla f$ e $-\nabla h$, respectivamente, de modo que $\gamma'(p) = -\nabla f(p), \alpha'(p) = -\nabla h(p)$ com $\gamma(p) = \alpha(p)$, então }
+
+	\section{Desigualdades de Morse}
+	\tese{Teorema de Euler-Poincaré}{Seja $(C_{*}, \partial_{*})$ um complexo de cadeia finitamente gerado com $C_{k} = 0$ para $k>m>0$ e algum $m \in \mathbb{Z}$. Definindo $c_{k} = dim(C_{k})$ e $b_{k} = dim(\homologia{k}{C_{*}})$ para $0 \leq k \leq m$, então
+	$$
+	\sum_{k=0}^{m}(-1)^{k}c_{k} = \sum_{k=0}^{m}(-1)^{k}b_{k}.
+	$$}{Temos que $Ker(\partial_{k}) \subseteq C_{k}(X)$ e $Im(\partial_{k}) \subseteq C_{k-1}(X)$ são submódulos, então podemos construir a sequência exata
+	\[
+	\xymatrix{
+		0 \ar[r] & Ker(\partial_{k}) \ar[r]^{i_{*}} &  C_{k}(X)  \ar[r]^{\partial_{k}} & Im(\partial_{k}) \ar[r] & 0,
+	}
+	\]
+	onde $i_{*}$ é a inclusão e $\partial_{k}$ é um epimorfismo, logo pelo teorema fundamental de isomorfismo de grupos, temos que $ C_{k}(X)/Ker(\partial_{k}) \cong Im(\partial_{k})$, portanto $dim(C_{k}(X)/Ker(\partial_{k})) = dim(C_{k}(X)) - dim(Ker(\partial_{k})) = dim(Im(\partial_{k})) \Rightarrow c_{k} = dim(Ker(\partial_{k})) + dim(Im(\partial_{k}))$. Análogamente, temos a sequência exata
+	\[
+	\xymatrix{
+		0 \ar[r] & Im(\partial_{k+1}) \ar[r] &  Ker(\partial_{k})  \ar[r]^{j_{*}} & \homologia{k}{X}\ar[r] & 0,
+	}
+	\]
+	onde $j_{*}$ é um epimorfismo pois dado $\classe{\alpha} \in \homologia{k}{X} = Ker(\partial_{k})/Im(\partial_{k+1})$ podemos tomar $\alpha \in Ker(\partial_{k})$ tal que $j_{*}(\alpha) = \classe{\alpha}$, consequentemente, pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\partial_{k})/Ker(j_{*}) \cong \homologia{k}{X}$, mas $Ker(j_{*}) = Im(\partial_{k+1})$, pela definição de homologia, então $dim(Ker(\partial_{k})/Ker(j_{*})) = dim(Ker(\partial_{k})) - dim(Ker(j_{*})) = dim(\homologia{k}{X}) \Rightarrow dim(Ker(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k}$. Igualando as expressões para $dim(Ker(\partial_{k}))$:
+	$$
+	dim(Ker(\partial_{k})) = c_{k} - dim(Im(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k} = dim(Ker(\partial_{k})).
+	$$
+	Como vale para $0 \leq k \leq m$, então:
+	$$
+	\begin{aligned}
+		\sum_{k=0}^{m}	(-1)^{k}(c_{k} - dim(Im(\partial_{k}))) &= \sum_{k=0}^{m}	(-1)^{k}( dim(Im(\partial_{k+1}))+ b_{k})
+		\\
+		\sum_{k=0}^{m}	(-1)^{k}c_{k} - \sum_{k=0}^{m}(-1)^{k} b_{k} &= \sum_{k=0}^{m}	(-1)^{k} (dim(Im(\partial_{k+1})) -  dim(Im(\partial_{k})))
+		\\
+		&= 0,
+	\end{aligned}
+	$$
+	onde teremos somas alternadas no ultimo termo que se cancelarão, restando apenas $dim(Im(\partial_{m+1})) - dim(Im(\partial_{0}))$, mas ambos são identicamente nulos, pois $\partial_{m+1} = 0$ e $\partial_{0} = 0$.
+	}
+	
 \end{document}
