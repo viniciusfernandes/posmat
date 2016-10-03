@@ -18,9 +18,12 @@
 \usepackage{tikz-cd}
 \usepackage[all,cmtip]{xy}
 
-\newtheorem{theorem}{Teorema}[section]
-\newtheorem{lemma}[theorem]{Lema}
-\newtheorem{definition}[theorem]{Definição}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{definicao}[teorema]{Definição}
+\newtheorem{exemplo}[teorema]{Exemplo}
+
+\newenvironment{prova}{$\square$}{\hfill$\blacksquare$}
 
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
@@ -47,13 +50,11 @@
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
-\newcommand{\definicao}[1]{\vspace{2mm} \textbf{Definição:}{ #1}}
-\newcommand{\definicaonomeada}[2]{\vspace{2mm} \textbf{Definição (#1):}{ #2}}
+
 \newcommand{\tese}[3]{\vspace{2mm} \textit{\textbf{#1}}: \textit{#2} \par $\square$ #3 \par $\blacksquare$}
 \newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
-\newcommand{\prova}[1]{\vspace{2mm}$\square$ #1 \par$\blacksquare$}
 \newcommand{\suavefunc}[1]{C^{\infty}(#1, \real{})}
 \begin{document}
 	
@@ -65,19 +66,8 @@
 	
 	\chapter{CW-Complexos}
 	\section{Definições Gerais}
-	\begin{theorem} \label{bbb} ... \end{theorem}
-	\begin{lemma} \label{zz} ... \end{lemma}
-	
-	\begin{theorem}
-		\emph{(Lagrange's Theorem)}
-		\label{Lagrange}
-		Let $G$ be a finite group, and let $H$ be a subgroup
-		of $G$.  Then the order of $H$ divides the order of $G$.
-	\end{theorem}
-	
-		\begin{lemma} \label{dd} ... \end{lemma}
-	
-	\begin{definition}
+
+	\begin{definicao}
 		(Sequência da triplas) Sejam $X, Y, Z$ espaços topológicos tais que $Z \subseteq Y \subseteq X$. Então a sequência da tripla $(X,Y,Z)$ é dada por:
 			\[
 			\xymatrix{
@@ -85,10 +75,45 @@
 			}
 			\]
 			onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
-	\end{definition}
+	\end{definicao}
 	
 	\section{CW-Homologia}
-	\begin{lemma}\label{homologiacelular}
+	
+	\begin{definicao}
+		(Célula anexada) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ anexando uma $n-$célula e $f_{\partial}$ é chamado de mapa de anexação.
+ 	\end{definicao}
+	
+	\begin{definicao}
+		Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem $\skeleton{n}$ espaços tais com 
+		$$
+		\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
+		$$
+		tal que:
+		\begin{enumerate}
+			\item $\skeleton{0}$ é um conjunto discreto de pontos
+			\item $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$
+			\item $X$ tem uma topologia fraca, no sentido de que, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$
+		\end{enumerate}
+	\end{definicao}
+	
+	\vspace{2mm} Um espaço $X$ com uma CW-estrutura é chamado de CW-complexo e os subespaços $\skeleton{n}$ são chamado $n-$esqueleto do CW-complexo $X$. Um mapa de anexação $f_{\partial}:S^{n-1} \to \skeleton{n-1}$ extende a um mapa $f:D^{n} \to \skeleton{n}$ chamado mapa caraterístico. Chamaremos a imagem de $D^{n}$ pelo mapa $f$ por célula fechada em $X$, e a imagem de $D^{n} - \partial D^{n}$ por célula aberta em $X$.
+	
+	\subsection{Exemplos de CW-complexos}
+	\begin{exemplo}
+		(n-esféra) Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $(n+1)-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} = \skeleton{n+1} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+	\end{exemplo}
+	
+	\begin{exemplo}
+		(2-toro) Vamos exibir uma estrutura de CW-complexo para $T^{2}$. Identificando toro com o quadrado cujo os lados opostos serão identificados preservando a orientação, então todos os vertices do quadrado serão identificados com um único ponto um ponto $p \in T^{2}$. Definamos o $0-$esqueleto como sendo $\skeleton{0} = \{p\}$. Cada uma das faces horizontais representam o mesmo um $S^{1}$ no toro, isso é o mesmo que anexarmos uma 1-célula ao 0-esqueleto, ou seja, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}$. Analogamente, as faces verticais também representam o mesmo $S^{1}$ no toro, o que indica que devemos anexar uma outra 1-célula a espaço anexado anteriormente, isto é, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$. Por fim, temos que anexar um 2-célula para cobrir o interior do quadrado, então $T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}$.
+	\end{exemplo}
+	
+	\begin{exemplo}
+		(n-plano projetivo) Vamos exibir uma estrutura de CW-complexo para $\realprojetivo{n}$. Para $n=0$ temos que $\realprojetivo{0} = \{\classe{p}\}$, para um determinado $p \in \real{}$. Já para $n=1$, sabemos que existe um homeomorfismo $\realprojetivo{1} \approx S^{1}_{\sim}$ onde $S^{1}_{\sim} = \{\classe{p}: p \in S^{1},\; p \sim -p\}$. Note esse espqço quociente já possui, naturalmente, uma CW-estrutura pois, na passagem ao quociente, identificamos todos os pontos do equador com um único ponto desse conjunto, e digamos que seja o ponto $p_{0} = (1,0)$, sem perda de generalidade. Isso quer dizer que ao anexarmos um 1-célula ao ponto $p_{0}$ teremos $S^{1}_{\sim} \approx \{[p_{0}]\} \cup_{f}D^{1} \approx \realprojetivo{0}\cup_{f}D^{1} $ pois $\realprojetivo{0} \approx \{[p_{0}]\}$, portanto $ \realprojetivo{1} \approx \realprojetivo{0}\cup_{f}D^{1}$. Repetindo o procedimento anterior para $\realprojetivo{n} \approx S^{n}_{\sim} $ onde $p_{0} = (1,0,\dots, 0)$, teremos $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f_{\partial}}D^{n}$. Assim, temos a CW-estrutura $\realprojetivo{j-1} \subseteq \realprojetivo{j}$ e $\realprojetivo{j} = \skeleton{j} \approx \skeleton{j-1}\cup_{f_{j\partial}}D^{j}$ para $1\leq j \leq n$.
+	\end{exemplo}
+	
+	\subsection{Homologia Celular}
+	
+	\begin{lema}\label{homologiacelular}
 		(Homologia celular relativa) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo,  então $\homologiarelskelesimpl{k}{n} $ é um $\Lambda-$módulo livre e finitamente gerado pelas $n-$cpelulas de $X$ tal que
 		$$
 		\homologiarelskelesimpl{k}{n} \cong 
@@ -108,7 +133,7 @@
 		\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
 		$$
 		denota o isomorfismo descrito.
-	\end{lemma}
+	\end{lema}
 	\prova{Por definição, temos  $\skeleton{n} = \skeleton{n-1} \bigcup_{f_{\partial \sigma} } \celula{n}{\sigma}$ e também $\celula{n}{\sigma} \subset \skeleton{n}$, onde $f_{\sigma}:\celula{n}{\sigma} \to \skeleton{n}$ é a aplicação característica. Sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, contendo o hemisfério norte de $f_{\sigma}(\celula{n}{\sigma})$. Definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ tal que $\overline{N_{\sigma}} \subset M_{\sigma}$, e considerando $U = \skeleton{n} - \bigcup C_{\sigma}$ $Y = \skeleton{n} - \bigcup A_{\sigma}$ temos $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato de deformação de $Y$, logo, pela invariância homotópica temos $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Como $\skeleton{n} - U = \bigcup C_{\sigma}$ e $Y - U $ é homotópico a $\bigcup S^{n}_{\sigma}$, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$, portanto $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \homologiarel{k}{\bigcup C_{\sigma}}{\bigcup S^{n}_{\sigma}} \cong \homologia{k}{\bigcup (\celula{n}{\sigma}, \celulabordo{n}{\sigma})} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$, pois $C_{\sigma} \approx \celula{n}{\sigma}$ e $S^{n}_{\sigma} = \celulabordo{n}{\sigma}$. Enfim, temos o diagrama:
 		\[
 		\xymatrix{
@@ -124,7 +149,7 @@
 
 		\vspace{2mm} Nas condições do Lema \ref{homologiacelular} denotaremos $C_{k}(X)=\homologiarelskelesimpl{k}{k}$ como sendo o $\Lambda-$módulo da $k-$ésima CW-homologia, mais ainda, $C_{*}(X) = \somadir{k}C_{k}(X)$ é um $\Lambda-$módulo graduado e finitamente gerado em cada um de suas dimensões.
 
-	\begin{definition}
+	\begin{definicao}
 		(Aplicação de Pares) Seja $X = \skeleton{n}$ um CW-complexo e tome $p \in \skeleton{n-1}$ como um ponto-base. Identificaremos um dado $q \in \skeleton{n}$ com o ponto-base se $q \in \skeleton{n-1}$, e diremos que $q \sim p$. Definimos $\skeleton{n}/\skeleton{n-1} = \{[q]: q \in \skeleton{n}, \; q \sim p\}$ e a aplicação quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ por:
 		$$
 		\pi(q) = 
@@ -140,23 +165,23 @@
 		\funcaocond{s_{\sigma}([q])}{q}{q \in \celula{n}{\sigma}}{p}{q \notin \celula{n}{\sigma}}
 		$$
 		chamamos de $\sigma-$aplicação de pares $p_{\sigma} = s_{\sigma} \circ \pi : (\skeleton{n}, \skeleton{n-1}) \to (S^{n}_{\sigma}, \{p\})$.
-	\end{definition}
+	\end{definicao}
 	
-	\begin{definition}
+	\begin{definicao}
 		Denotaremos $\Psi_{n}:C_{k}(X) \to \homologiarelskelesimpl{k}{n}$ como sendo o isomorfismo anterior dado por 
 		$$
 		\Psi(\sum_{\sigma} n_{\sigma} \sigma) = \sum_{\sigma} n_{\sigma} f_{\sigma *}[D^{n}],
 		$$
 		onde $[D^{n}]$ é um gerador do grupo $\homologiarelcel{n}{n}{}$.
-	\end{definition}
+	\end{definicao}
 
-	\begin{lemma}
+	\begin{lema}
 		(Inversa de $\Psi_{n}$) A aplicação inversa $\Phi_{n} : \homologiarelskelesimpl{n}{n} \to C_{n}(X,A)$ do isomorfismo definido anteriormente é dada por
 		$$
 		\Phi_{n}(\alpha) = \sum_{\sigma} \phi_{n}(p_{\sigma *}\alpha)\sigma,
 		$$
 		onde $\phi_{n}: \homologiarel{n}{S^{n}}{\{p\}} \to \Lambda$ é o único homomorfismo tal que $\phi_{n}([S^{n}])=1$ e $[S^{n}]$ é a classe fundamental do par $(S^{n}, \{p\})$.
-	\end{lemma}
+	\end{lema}
 	\prova{Mostremos a unicidade do homomorfismo. Sabemos que o grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabemos o que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$, com isso, tomemos $\sigma$ uma $n-$célula geradora de $C_{n}(X)$, então
 		$$
 		\begin{aligned}
@@ -176,11 +201,11 @@
 		$$
 		e como $\sigma \in C_{n}(X,A)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$, como desejávamos.}
 	
-	\begin{definition}
+	\begin{definicao}
 		(Grau homológico) Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{n}{S^{n}} \to \homologia{n}{S^{n}}$ o homomorfismo induzindo. Seja $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador não-trivial desse grupo, então $f_{*}[S^{n}] = k[S^{n}]$ para algum $k \in \Lambda$. Denominamos por grau da aplicação $deg(f) = k$, com $k$ definido anteriormente.
-	\end{definition}
+	\end{definicao}
 
-	\begin{definition}
+	\begin{definicao}
 		(Aplicação CW-bordo) Tome a tripla $(\skeleton{n}, \skeleton{n-1}, \skeleton{n-2})$ e a composição abaixo
 		\[
 		\xymatrix{
@@ -191,15 +216,15 @@
 		}
 		\]
 		onde $\delta_{*}$ é o homomorfismo de conexão. Denominamos por operador CW-bordo o homomorfismo $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} : C_{n}(X) \to C_{n-1}(X)$.
-	\end{definition}
+	\end{definicao}
 	
-	\begin{theorem}
+	\begin{teorema}
 		Teorema (CW-bordo) A aplicação CW-bordo é um homomorfismo tal que $\partial_{n-1}\circ\partial_{n} = 0$ e é dado por:
 		$$
 		\partial_{n}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
 		$$
 		onde $[\beta:\sigma]$ é o grau da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.
-	\end{theorem}
+	\end{teorema}
 	
 	\prova{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, e sejam $\alpha,\beta \in C_{n}(X; \Lambda)$ e $\lambda \in \Lambda$, então
 	$$ 
@@ -283,83 +308,84 @@
 	\end{enumerate}
 	}{Fora do escopo dessas notas}
 	
-	\begin{theorem}
+	\begin{teorema}
 		Teorema (CW-homologia) Existe uma identificação natural entre a homologia do complexo $C_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
 		$$
 		\homologia{k}{X} \cong \homologia{k}{C_{*}(X)}\; \forall k \in \mathbb{Z}.
 		$$
-	\end{theorem}
-	\prova{
-	Definimos que $C_{k}(X) = \homologiarelskelesimpl{k}{k}$, e observando a sequência
-	\[
-	\xymatrix{
-		C_{k+1}(X) \ar[r]^{\delta_{1*}} & C_{k}(X) \ar[r]^{\delta_{2*}} & C_{k-1}(X) &
-	}
-	\]
-	veremos que $\homologia{k}{C_{*}(X)} = Ker(\delta_{2*})/Im(\delta_{1*})$, então provaremos que $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologia{k}{X}$ para que concluir a equivalência entre a CW-homologia e a homologia singular do espaço $X$.
-	
-	\vspace{2mm} Tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
-	\[
-	\xymatrix{
-		& & \homologiarelskele{k}{k-1}{k-2}= 0 \ar[d]^{i_{*}} &
-		\\
-		& & \homologiarelskele{k}{k+1}{k-2} \ar[d]^{j_{*}} &
-		\\
-		\homologiarelskele{k+1}{k+1}{k} \ar[r]^{\quad\delta_{1*}} &		\homologiarelskele{k}{k}{k-1} \ar[r]^{i_{*}} \ar[rd]^{\delta_{2*}} & \homologiarelskele{k}{k+1}{k-1} \ar[r] \ar[d]^{\delta_{3*}} & 0
-		\\
-		& & \homologiarelskele{k-1}{k-1}{k-2} &
-	}
-	\]	
-	onde $i_{*}, \; j_{*}$ e $\delta_{*}$ são as inclusões induzidas e o homomorfismo conectante, respectivamente. Seja $\classe{\alpha} \in \homologiarelskelesimpl{k}{k}$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha}$, pois $i_{*}$ é um monomorfismo e pela construção do homomorfismo conectante, caso contrário não conectaríamos as homologias, logo temos a comutatividade do triângulo do diagrama.
-	
-	\vspace{2mm} Vamos agora caracterizar $Ker(\delta_{2*})$. Dado $[\alpha] \in Ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
-	
-	\vspace{2mm} Afirmo que $\phi: Ker(\delta_{2*}) \to \homologiarelskele{k}{k+1}{k-2}$ dado por $\phi(\classe{\alpha}) = \classe{\beta}$ é um epimorfismo. Seja $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, então existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$, com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0$ pois $Im(j_{*}) = Ker(\delta_{3*})$, logo $\classe{\alpha'} \in Ker(\delta_{2*})$ e $\phi$ é epimorfismo.
-	
-	\vspace{2mm} Analogamente temos $Im(\delta_{1*}) = Ker(i_{*}) \Rightarrow i_{*}\circ\delta_{1*}=0$. Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$, o que implica em $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e pela exatidão, $\classe{\alpha} \in Im(\delta_{1*})$. Com isso podemos concluir que $Ker(\phi) = Im(\delta_{1*})$, e pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-2}$.
-	
-	\vspace{2mm} Sem perda de generalidade, vamos assumir que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$, então temos $X= \skeleton{n} \supseteq \skeleton{n-1} \supseteq \dots \supseteq \skeleton{0} \supseteq \skeleton{-1}$, onde $\skeleton{-1} = \emptyset$. Com isso, podemos escrever a sequência de homomorfismos de inclusão de pares:
-	\[
-	\xymatrix{
-		\homologia{k}{X} = \homologiarel{k}{\skeleton{n}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{n}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}}
-	}
-	\]
-	
-	de modo que, para cada $i-$ésimo termo $\homologiarelskele{k}{n}{i}$ no centro do diagrama abaixo, teremos a sequência exata de triplas nas verticais $(\skeleton{n}, \skeleton{i}, \skeleton{i-1})$, com $0\leq i\leq k-2$ com $h_{i}$ sendo os homomorfismos de inclusão:
-	\[
-	\xymatrix{
-		\homologiarel{k}{\skeleton{i-1}}{\skeleton{i-2}}=0 \ar[d] & \homologiarel{k}{\skeleton{i}}{\skeleton{i-1}}=0 \ar[d] & \homologiarel{k}{\skeleton{i+1}}{\skeleton{i}}=0 \ar[d] &	
-		\\
-		\homologiarel{k}{\skeleton{n}}{\skeleton{i-2}} \ar[d]^{h_{i-1}} & \homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \ar[d]^{h_{i}} & \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \ar[d]^{h_{i+1}}
-		\\
-		\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \ar[r]\ar[d]^{\delta_{(i-1)*}}& \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \ar[r] \ar[d]^{\delta_{i*}} &  \homologiarel{k}{\skeleton{n}}{\skeleton{i+1}} \ar[d]^{\delta_{(i+1)*}} 
-		\\
-		\homologiarelskele{k-1}{i-1}{i-2}=0& \homologiarel{k-1}{\skeleton{i}}{\skeleton{i-1}}=0 &  \homologiarel{k}{\skeleton{i+1}}{\skeleton{i}}=0. &		
-	}
-	\]
-	Do lema \ref{homologiacelular} temos que $\homologiarelskele{k}{i}{i-1} =0$ caso $k \neq i$, logo os grupos naz extemidades verticais do diagrama serão os triviais. Pela exatidão das sequências verticais temos $Im(h_{i}) = Ker(\delta_{i*})$, mas como $Im(\delta_{i*}) = 0 \Rightarrow Ker(\delta_{i*}) = \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, logo $h_{i}$ é um epimorfismo, portanto um isomorfismo para $0\leq i \leq k-2$, isto é, $\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, o que nos pertmite escrever a cadeia de isomorfismos 
-	
-	$$
-	\begin{aligned}
+	\end{teorema}
+	\begin{proof}
+		
+		Definimos que $C_{k}(X) = \homologiarelskelesimpl{k}{k}$, e observando a sequência
+		\[
+		\xymatrix{
+			C_{k+1}(X) \ar[r]^{\delta_{1*}} & C_{k}(X) \ar[r]^{\delta_{2*}} & C_{k-1}(X) &
+		}
+		\]
+		veremos que $\homologia{k}{C_{*}(X)} = Ker(\delta_{2*})/Im(\delta_{1*})$, então provaremos que $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologia{k}{X}$ para que concluir a equivalência entre a CW-homologia e a homologia singular do espaço $X$.
+		
+		\vspace{2mm} Tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
+		\[
+		\xymatrix{
+			& & \homologiarelskele{k}{k-1}{k-2}= 0 \ar[d]^{i_{*}} &
+			\\
+			& & \homologiarelskele{k}{k+1}{k-2} \ar[d]^{j_{*}} &
+			\\
+			\homologiarelskele{k+1}{k+1}{k} \ar[r]^{\quad\delta_{1*}} &		\homologiarelskele{k}{k}{k-1} \ar[r]^{i_{*}} \ar[rd]^{\delta_{2*}} & \homologiarelskele{k}{k+1}{k-1} \ar[r] \ar[d]^{\delta_{3*}} & 0
+			\\
+			& & \homologiarelskele{k-1}{k-1}{k-2} &
+		}
+		\]	
+		onde $i_{*}, \; j_{*}$ e $\delta_{*}$ são as inclusões induzidas e o homomorfismo conectante, respectivamente. Seja $\classe{\alpha} \in \homologiarelskelesimpl{k}{k}$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha}$, pois $i_{*}$ é um monomorfismo e pela construção do homomorfismo conectante, caso contrário não conectaríamos as homologias, logo temos a comutatividade do triângulo do diagrama.
+		
+		\vspace{2mm} Vamos agora caracterizar $Ker(\delta_{2*})$. Dado $[\alpha] \in Ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
+		
+		\vspace{2mm} Afirmo que $\phi: Ker(\delta_{2*}) \to \homologiarelskele{k}{k+1}{k-2}$ dado por $\phi(\classe{\alpha}) = \classe{\beta}$ é um epimorfismo. Seja $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, então existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$, com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0$ pois $Im(j_{*}) = Ker(\delta_{3*})$, logo $\classe{\alpha'} \in Ker(\delta_{2*})$ e $\phi$ é epimorfismo.
+		
+		\vspace{2mm} Analogamente temos $Im(\delta_{1*}) = Ker(i_{*}) \Rightarrow i_{*}\circ\delta_{1*}=0$. Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$, o que implica em $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e pela exatidão, $\classe{\alpha} \in Im(\delta_{1*})$. Com isso podemos concluir que $Ker(\phi) = Im(\delta_{1*})$, e pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-2}$.
+		
+		\vspace{2mm} Sem perda de generalidade, vamos assumir que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$, então temos $X= \skeleton{n} \supseteq \skeleton{n-1} \supseteq \dots \supseteq \skeleton{0} \supseteq \skeleton{-1}$, onde $\skeleton{-1} = \emptyset$. Com isso, podemos escrever a sequência de homomorfismos de inclusão de pares:
+		\[
+		\xymatrix{
+			\homologia{k}{X} = \homologiarel{k}{\skeleton{n}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{n}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}}
+		}
+		\]
+		
+		de modo que, para cada $i-$ésimo termo $\homologiarelskele{k}{n}{i}$ no centro do diagrama abaixo, teremos a sequência exata de triplas nas verticais $(\skeleton{n}, \skeleton{i}, \skeleton{i-1})$, com $0\leq i\leq k-2$ com $h_{i}$ sendo os homomorfismos de inclusão:
+		\[
+		\xymatrix{
+			\homologiarel{k}{\skeleton{i-1}}{\skeleton{i-2}}=0 \ar[d] & \homologiarel{k}{\skeleton{i}}{\skeleton{i-1}}=0 \ar[d] & \homologiarel{k}{\skeleton{i+1}}{\skeleton{i}}=0 \ar[d] &	
+			\\
+			\homologiarel{k}{\skeleton{n}}{\skeleton{i-2}} \ar[d]^{h_{i-1}} & \homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \ar[d]^{h_{i}} & \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \ar[d]^{h_{i+1}}
+			\\
+			\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \ar[r]\ar[d]^{\delta_{(i-1)*}}& \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \ar[r] \ar[d]^{\delta_{i*}} &  \homologiarel{k}{\skeleton{n}}{\skeleton{i+1}} \ar[d]^{\delta_{(i+1)*}} 
+			\\
+			\homologiarelskele{k-1}{i-1}{i-2}=0& \homologiarel{k-1}{\skeleton{i}}{\skeleton{i-1}}=0 &  \homologiarel{k}{\skeleton{i+1}}{\skeleton{i}}=0. &		
+		}
+		\]
+		Do lema \ref{homologiacelular} temos que $\homologiarelskele{k}{i}{i-1} =0$ caso $k \neq i$, logo os grupos naz extemidades verticais do diagrama serão os triviais. Pela exatidão das sequências verticais temos $Im(h_{i}) = Ker(\delta_{i*})$, mas como $Im(\delta_{i*}) = 0 \Rightarrow Ker(\delta_{i*}) = \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, logo $h_{i}$ é um epimorfismo, portanto um isomorfismo para $0\leq i \leq k-2$, isto é, $\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, o que nos pertmite escrever a cadeia de isomorfismos 
+		
+		$$
+		\begin{aligned}
 		\homologia{k}{X} &= \homologiarel{k}{\skeleton{n}}{\skeleton{-1}} 
 		\\
 		&\cong  \homologiarel{k}{\skeleton{n}}{\skeleton{0}} \cong \dots \cong  \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \cong  \dots \cong \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}},
-	\end{aligned}
-	$$
-	logo $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$ para $0 \leq i \leq k-2$.
-	\vspace{2mm} Por fim, podemos repetir a mesma construção anterior para $0 \leq j \leq n$ da sequência abaixo:
-	\[
-	\xymatrix{
-		\homologiarel{k}{\skeleton{j}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{j}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{j}}{\skeleton{k-2}}
-	}
-	\]
-	e concluiremos $\homologiarel{k}{\skeleton{j}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{j}}{\skeleton{i}}$ onde $0 \leq i \leq k-2$.
-	
-	\vspace{2mm} Conclusão, temos isomorfismo entre as homologias 
-	$$
-	\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*}) = \homologia{k}{C_{*}(X)}.
-	$$
-	}
+		\end{aligned}
+		$$
+		logo $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$ para $0 \leq i \leq k-2$.
+		\vspace{2mm} Por fim, podemos repetir a mesma construção anterior para $0 \leq j \leq n$ da sequência abaixo:
+		\[
+		\xymatrix{
+			\homologiarel{k}{\skeleton{j}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{j}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{j}}{\skeleton{k-2}}
+		}
+		\]
+		e concluiremos $\homologiarel{k}{\skeleton{j}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{j}}{\skeleton{i}}$ onde $0 \leq i \leq k-2$.
+		
+		\vspace{2mm} Conclusão, temos isomorfismo entre as homologias 
+		$$
+		\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*}) = \homologia{k}{C_{*}(X)}.
+		$$
+	\end{proof}
 	
 	\section{Exemplos}
 	\tese{Homologia da n-esféra}{$\homologia{*}{S^{n}}$}{Vamos exibir uma estrutura de CW-complexo para $S^{n}$, para isso tomemos um ponto $p \in S^{n}$ e definindo o $0-$skeleton $\skeleton{0}=\{p\}$, agora anexando uma $n-$célula a $\skeleton{0}$ onde $f_{\partial}: \celulabordo{n}{} \to \skeleton{0}$, isto é, $\skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$. Pelo teorema da CW-homologia temos que $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{k}$, de onde temos apenas $k \in \{0,n\}$, logo $\homologia{0}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \cong \Lambda$, e analogamente, $\homologia{n}{S^{n}} \cong \homologiarelskelesimpl{n}{n} \cong \Lambda$ e $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{j} =0$ caso $k \neq j$, como desejávamos.}
@@ -402,20 +428,29 @@
 	
 	\tese{Lema}{Seja M uma variedade fechada, $f$ uma função de Morse e $X =-\nabla f$, então $\alpha(p), \omega(p)$ consistem de um único ponto crítico de $f$ para qualquer $p \in M$.}
 	{Como $M$ é uma variedade fechada e $f$ é uma função de Morse, então $Crit(f) = \{p_{i} \in M: 1\leq i \leq k \}$ é um conjunto finito de pontos isolados. Pela proposição anterior, dado $p_{i} \in Crit(f), \exists q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$. Com isso, podemos afirmar que $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que os conjuntos limite $\omega(q_{i})$ e $\alpha(q_{i})$ consistem de singularidades do campo gradiente $-\nabla f$, logo $\forall p \in \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$ teremos $\nabla f(p) = 0 \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0 \therefore p \in Crit(f)$, e como $p$ é arbitrário, então $\bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Com esse resultado fica evidente que $\omega(q_{i}), \alpha(q_{i}) \subset Crit(f)$. Como os conjuntos limites são conjuntos finitos de pontos isolados vamos supor que $\omega(q_{i}) = \{r_{j} \in Crit(f): 0\leq j \leq m\}$, logo pela topologia induzinda, os abertos de cada um deles serão os conjuntos unitários e teremos $\omega(q_{i}) = \bigcup_{j=1}^{k} \{r_{j}\} $, e como os conjuntos limite são conexos (vide resultado do Palis), essa união disjunta contradiz a conexidade, portanto $\omega(q_{i}) = \{r_{i}\}$. Os mesmos argumentos valem para o conjunto $\alpha(q_{j})$. Portanto, ambos os conjuntos limite devem conter apenas um ponto crítico, como desejávamos.}
-	
-	\definicaonomeada{funções de Morse}{$\morsefunc{M} \subset \suavefunc{M}$ é o conjunto de todas as funções de Morse definidas na variedade $M$.}
-	
-	\definicaonomeada{norma $C^{r}$}{Sabemos o que espaço das fuções infinitamente diferenciáveis $\suavefunc{M}$ forma um espaço vetorial, além disso, como temos uma variedade compacta, dada uma cobertura, podemos escolher uma subconvertura finita por abertos $\{V_{i}\}_{i=1}^{k}$e um atlas finito $\{(U_{i}, \phi_{i})\}_{i=1}^{k}$ tal que $V_{i} \subset \phi_{i}(U_{i})$ com $\phi_{i}^{-1}(\phi_{i}(U_{i})) = B(0,2)$ e $\phi_{i}^{-1}(V_{i}) = B(0,1)$. Dado $f \in \suavefunc{M}$ definimos $f_{i} := f|_{\phi_{i}(U_{i})}$ e a \textit{r-norma} como sendo 
-	$$
-	||f||_{r} := \max_{i} \sup\{||f_{i}(p)||, ||D^{1}f_{i}(p)||, \dots, ||D^{r}f_{i}(p)||: p \in B(1)\}.
-	$$
-	Pode-se verificar que $||.||_{1}: \suavefunc{M} \to \real{}$ é uma norma, além disso, esse espaço é completo nessa norma, portanto é um \textit{espaço de Banach}.}
 
-	\definicao{Dados $f, g \in \suavefunc{M}$, dizemos que $f$ é uma $C^{1}$-aproximação de $g$ quando existe um $\epsilon \in \real{+}$ tal que $||f-g||_{1} < \epsilon$.}
+	\begin{definicao}
+		(Funções de Morse) $\morsefunc{M} \subset \suavefunc{M}$ é o conjunto de todas as funções de Morse definidas na variedade $M$.
+	\end{definicao}
 	
-	\tese{Teorema (transversalidade de Morse-Smale)}{Seja M uma variedade fechada e $f \in \morsefunc{M}$, então existe uma $h \neq f \in \morsefunc{M}$ tal que $\nabla f$ pode ser $C^{1}$-aproximado por $\nabla h$ e que satisfaz as condições de Morse-Smale.}{
-		
-	Seja $p \in \pontocritico{f}$ e tomemos uma vizinhança aberta $U \ni p$ tal que esse ponto seja o único ponto crítico pertencente a ela. Como o espaço das funções de Morse $\morsefunc{M} \subset C^{\infty}(M, \real{})$ é um conjunto denso na topologia $C^{1}$, então dado $\epsilon > 0 \in \real{}$ existe uma $h \neq f \in \morsefunc{M}$ tal que $||f-h||_{1} < \epsilon$. Sejam $\gamma, \alpha : \real{} \to M$ as curvas integrais dos campos $-\nabla f$ e $-\nabla h$, respectivamente, de modo que $\gamma'(p) = -\nabla f(p), \alpha'(p) = -\nabla h(p)$ com $\gamma(p) = \alpha(p)$, então }
+	\begin{definicao}
+		(Norma $C^{r}$) Sabemos o que espaço das fuções infinitamente diferenciáveis $\suavefunc{M}$ forma um espaço vetorial, além disso, como temos uma variedade compacta, dada uma cobertura, podemos escolher uma subconvertura finita por abertos $\{V_{i}\}_{i=1}^{k}$e um atlas finito $\{(U_{i}, \phi_{i})\}_{i=1}^{k}$ tal que $V_{i} \subset \phi_{i}(U_{i})$ com $\phi_{i}^{-1}(\phi_{i}(U_{i})) = B(0,2)$ e $\phi_{i}^{-1}(V_{i}) = B(0,1)$. Dado $f \in \suavefunc{M}$ definimos $f_{i} := f|_{\phi_{i}(U_{i})}$ e a \textit{r-norma} como sendo 
+		$$
+		||f||_{r} := \max_{i} \sup\{||f_{i}(p)||, ||D^{1}f_{i}(p)||, \dots, ||D^{r}f_{i}(p)||: p \in B(1)\}.
+		$$
+		Pode-se verificar que $||.||_{1}: \suavefunc{M} \to \real{}$ é uma norma, além disso, esse espaço é completo nessa norma, portanto é um \textit{espaço de Banach}.
+	\end{definicao}
+	
+	\begin{definicao}
+		Dados $f, g \in \suavefunc{M}$, dizemos que $f$ é uma $C^{1}$-aproximação de $g$ quando existe um $\epsilon \in \real{+}$ tal que $||f-g||_{1} < \epsilon$.
+	\end{definicao}
+	
+	\begin{teorema}
+		(Transversalidade de Morse-Smale) Seja M uma variedade fechada e $f \in \morsefunc{M}$, então existe uma $h \neq f \in \morsefunc{M}$ tal que $\nabla f$ pode ser $C^{1}$-aproximado por $\nabla h$ e que satisfaz as condições de Morse-Smale.
+	\end{teorema}
+	\begin{prova}
+		Seja $p \in \pontocritico{f}$ e tomemos uma vizinhança aberta $U \ni p$ tal que esse ponto seja o único ponto crítico pertencente a ela. Como o espaço das funções de Morse $\morsefunc{M} \subset C^{\infty}(M, \real{})$ é um conjunto denso na topologia $C^{1}$, então dado $\epsilon > 0 \in \real{}$ existe uma $h \neq f \in \morsefunc{M}$ tal que $||f-h||_{1} < \epsilon$. Sejam $\gamma, \alpha : \real{} \to M$ as curvas integrais dos campos $-\nabla f$ e $-\nabla h$, respectivamente, de modo que $\gamma'(p) = -\nabla f(p), \alpha'(p) = -\nabla h(p)$ com $\gamma(p) = \alpha(p)$, então
+	\end{prova}
 
 	\section{Desigualdades de Morse}
 	\tese{Teorema de Euler-Poincaré}{Seja $(C_{*}, \partial_{*})$ um complexo de cadeia finitamente gerado com $C_{k} = 0$ para $k>m>0$ e algum $m \in \mathbb{Z}$. Definindo $c_{k} = dim(C_{k})$ e $b_{k} = dim(\homologia{k}{C_{*}})$ para $0 \leq k \leq m$, então
