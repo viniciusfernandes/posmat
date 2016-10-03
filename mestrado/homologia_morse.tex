@@ -84,12 +84,12 @@
 				\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]^{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\delta_{*}} & \homologiarel{k-1}{Y}{Z} \ar[r] & \dots
 			}
 			\]
-			onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo conectante.
+			onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
 	\end{definition}
 	
 	\section{CW-Homologia}
-	\begin{lemma}
-		(isomorfismo dos grupos de homologia) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo,  então $\homologiarelskelesimpl{k}{n} $ é um $\Lambda-$módulo livre e finitamente gerado pelas $n-$cpelulas de $X$ tal que
+	\begin{lemma}\label{homologiacelular}
+		(Homologia celular relativa) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo,  então $\homologiarelskelesimpl{k}{n} $ é um $\Lambda-$módulo livre e finitamente gerado pelas $n-$cpelulas de $X$ tal que
 		$$
 		\homologiarelskelesimpl{k}{n} \cong 
 		\left\{
@@ -122,72 +122,86 @@
 		\]
 		Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong \Lambda$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} \Lambda$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.}
 
-	\definicaonomeada{CW $k-$geradores}{Nas condições do lema dos isomorfismos de grupos de homologia denotaremos $C_{k}(X)=\homologiarelskelesimpl{k}{k}$ como sendo o $\Lambda-$módulo da $k-$ésima CW-homologia, mais ainda, $C_{*}(X) = \somadir{k}C_{k}(X)$ é um $\Lambda-$módulo graduado e finitamente gerado em cada um de suas dimensões.}
+		\vspace{2mm} Nas condições do Lema \ref{homologiacelular} denotaremos $C_{k}(X)=\homologiarelskelesimpl{k}{k}$ como sendo o $\Lambda-$módulo da $k-$ésima CW-homologia, mais ainda, $C_{*}(X) = \somadir{k}C_{k}(X)$ é um $\Lambda-$módulo graduado e finitamente gerado em cada um de suas dimensões.
 
-	\definicaonomeada{aplicação de pares}{Seja $X = \skeleton{n}$ um CW-complexo e fixando um ponto $p \in \skeleton{n-1}$, realizamos o quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ tal que 	
-	$$
+	\begin{definition}
+		(Aplicação de Pares) Seja $X = \skeleton{n}$ um CW-complexo e tome $p \in \skeleton{n-1}$ como um ponto-base. Identificaremos um dado $q \in \skeleton{n}$ com o ponto-base se $q \in \skeleton{n-1}$, e diremos que $q \sim p$. Definimos $\skeleton{n}/\skeleton{n-1} = \{[q]: q \in \skeleton{n}, \; q \sim p\}$ e a aplicação quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ por:
+		$$
 		\pi(q) = 
 		\left\{
 		\begin{array}{cc}
-		p, & q \in \skeleton{n-1}\\
-		q, & q \notin \skeleton{n-1}\\
+		\classe{p}, & q \in \skeleton{n-1}\\
+		\classe{q}, & q \notin \skeleton{n-1}\\
 		\end{array}
 		\right..
-	$$
-	Seja $\bigvee_{\sigma} S^{n}_{\sigma}$ o buquet de $n-$esfperas, então $\skeleton{n}/\skeleton{n-1} \approx \bigvee_{\sigma} S^{n}_{\sigma}$. Agora, definindo $s_{\sigma} : \skeleton{n}/\skeleton{n-1} \to S^{n}_{\sigma}$ tal que 
-	$$
-	\funcaocond{s_{\sigma}(q)}{q}{q \in \celula{n}{\sigma}}{p}{q \notin \celula{n}{\sigma}}
-	$$
-	chamamos de $\sigma-$aplicação de pares $p_{\sigma} = s_{\sigma} \circ \pi : (\skeleton{n}, \skeleton{n-1}) \to (S^{n}_{\sigma}, \{p\})$.}
+		$$
+		Seja $\bigvee_{\sigma} S^{n}_{\sigma}$ o buquet de $n-$esféras com o ponto-base $p$, então $\skeleton{n}/\skeleton{n-1} \approx \bigvee_{\sigma} S^{n}_{\sigma}$. Agora, definindo $s_{\sigma} : \skeleton{n}/\skeleton{n-1} \to S^{n}_{\sigma}$ por 
+		$$
+		\funcaocond{s_{\sigma}([q])}{q}{q \in \celula{n}{\sigma}}{p}{q \notin \celula{n}{\sigma}}
+		$$
+		chamamos de $\sigma-$aplicação de pares $p_{\sigma} = s_{\sigma} \circ \pi : (\skeleton{n}, \skeleton{n-1}) \to (S^{n}_{\sigma}, \{p\})$.
+	\end{definition}
 	
-	\definicao{Denotaremos $\Psi_{n}:\homologiarelskelesimpl{k}{n} \to C_{k}(X,A)$ como o isomorfismo anterior dado por 
-	$$
-	\Psi(\sum_{\sigma} n_{\sigma} \sigma) = \sum_{\sigma} n_{\sigma} f_{\sigma *}[D^{n}],
-	$$
-	onde $[D^{n}]$ é um gerador do grupo $\homologiarelcel{n}{n}{}$.}
+	\begin{definition}
+		Denotaremos $\Psi_{n}:C_{k}(X) \to \homologiarelskelesimpl{k}{n}$ como sendo o isomorfismo anterior dado por 
+		$$
+		\Psi(\sum_{\sigma} n_{\sigma} \sigma) = \sum_{\sigma} n_{\sigma} f_{\sigma *}[D^{n}],
+		$$
+		onde $[D^{n}]$ é um gerador do grupo $\homologiarelcel{n}{n}{}$.
+	\end{definition}
 
-	\tese{Proposição (inversa do isomorfimo)}{A aplicação inversa $\Phi_{n} : \homologiarelskelesimpl{n}{n} \to C_{n}(X,A)$ do isomorfismo definido anteriormente é dada por
-	$$
-	\Phi_{n}(\alpha) = \sum_{\sigma} \phi_{n}(p_{\sigma *}\alpha)\sigma,
-	$$
-	onde $\phi_{n}: \homologiarel{n}{S^{n}}{\{p\}} \to \Lambda$ é o único homomorfismo tal que $\phi_{n}([S^{n}])=1$ e $[S^{n}]$ é a classe fundamental do par $(S^{n}, \{p\})$.}{O grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabemos o que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$, com isso, tomemos $\sigma$ uma $n-$célula geradora de $C_{n}(X,A)$, então
-	$$
-	\begin{aligned}
-	\Phi_{n}(\Psi_{n}(\sigma)) 
-	&= \sum_{\beta}\phi_{n}(p_{\beta *}\Psi_{n}(\sigma))\beta
-	\\
-	&= \sum_{\beta}\phi_{n}(p_{\beta *}f_{\sigma *}[D^{n}])\beta
-	\\
-	&= \sum_{\beta}\phi_{n}((p_{\beta}\circ f_{\sigma})_{*}[D^{n}])\beta
-	\\
-	&= \phi_{n}((p_{\sigma}\circ f_{\sigma})_{*}[D^{n}])\sigma
-	\\
-	&= \phi_{n}([S^{n}])\sigma
-	\\
-	&= \sigma	
-	\end{aligned},
-	$$
-	e como $\sigma \in C_{n}(X,A)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$, como desejávamos.
-	}
+	\begin{lemma}
+		(Inversa de $\Psi_{n}$) A aplicação inversa $\Phi_{n} : \homologiarelskelesimpl{n}{n} \to C_{n}(X,A)$ do isomorfismo definido anteriormente é dada por
+		$$
+		\Phi_{n}(\alpha) = \sum_{\sigma} \phi_{n}(p_{\sigma *}\alpha)\sigma,
+		$$
+		onde $\phi_{n}: \homologiarel{n}{S^{n}}{\{p\}} \to \Lambda$ é o único homomorfismo tal que $\phi_{n}([S^{n}])=1$ e $[S^{n}]$ é a classe fundamental do par $(S^{n}, \{p\})$.
+	\end{lemma}
+	\prova{Mostremos a unicidade do homomorfismo. Sabemos que o grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabemos o que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$, com isso, tomemos $\sigma$ uma $n-$célula geradora de $C_{n}(X)$, então
+		$$
+		\begin{aligned}
+		\Phi_{n}(\Psi_{n}(\sigma)) 
+		&= \sum_{\beta}\phi_{n}(p_{\beta *}\Psi_{n}(\sigma))\beta
+		\\
+		&= \sum_{\beta}\phi_{n}(p_{\beta *}f_{\partial\sigma *}[D^{n}])\beta
+		\\
+		&= \sum_{\beta}\phi_{n}((p_{\beta}\circ f_{\partial\sigma})_{*}[D^{n}])\beta
+		\\
+		&= \phi_{n}((p_{\sigma}\circ f_{\partial\sigma})_{*}[D^{n}])\sigma
+		\\
+		&= \phi_{n}([S^{n}])\sigma
+		\\
+		&= \sigma	
+		\end{aligned},
+		$$
+		e como $\sigma \in C_{n}(X,A)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$, como desejávamos.}
 	
-	\definicaonomeada{grau homologico}{Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{k}{S^{n} \to \homologia{k}{S^{n}}}$ o homomorfismo induzindo. Como $[1] \in \homologia{k}{S^{n}}$ é o elemento gerador, então $f_{*}[1] \in \homologia{k}{S^{n}}$ é um elemento gerador, logo $f_{*}[1] = deg(f)[1]$ para algum $deg(f) \in \Lambda$. Denominamos por grau da aplicação o elemento $deg(f) \in \Lambda$.}
-	
-	\definicaonomeada{operador CW-bordo}{Tome a composição abaixo
-	\[
-	\xymatrix{
-		C_{n}(X,A) \ar[r]^{\Psi_{n}\qquad} &
-		\homologiarelskelesimpl{n}{n} \ar[r]^{\delta_{*}} & 
-		\homologiarelskele{n-1}{n-1}{n-2} \ar[r]^{\qquad \Phi_{n-1}}&
-		C_{n-1}(X,A)
+	\begin{definition}
+		(Grau homológico) Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{n}{S^{n}} \to \homologia{n}{S^{n}}$ o homomorfismo induzindo. Seja $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador não-trivial desse grupo, então $f_{*}[S^{n}] = k[S^{n}]$ para algum $k \in \Lambda$. Denominamos por grau da aplicação $deg(f) = k$, com $k$ definido anteriormente.
+	\end{definition}
+
+	\begin{definition}
+		(Aplicação CW-bordo) Tome a tripla $(\skeleton{n}, \skeleton{n-1}, \skeleton{n-2})$ e a composição abaixo
+		\[
+		\xymatrix{
+			C_{n}(X) \ar[r]^{\Psi_{n}\qquad} &
+			\homologiarelskelesimpl{n}{n} \ar[r]^{\delta_{*}} & 
+			\homologiarelskele{n-1}{n-1}{n-2} \ar[r]^{\qquad \Phi_{n-1}}&
+			C_{n-1}(X)
 		}
-	\]
-	então $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$ tal que $\partial_{n}: C_{n}(X,A) \to C_{n-1}(X,A)$ é denomidado de operador CW-bordo.}
-
-	\tese{Teorema (CW-bordo)}{O operador  CW-bordo é um homomorfismo, $\partial_{n-1}\circ\partial_{n} = 0$ e é dado por:
-	$$
-	\partial_{n}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
-	$$
-	onde $[\beta:\sigma]$ é o grau da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.}{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, e sejam $\alpha,\beta \in C_{n}(X,A; \Lambda)$ e $\lambda \in \Lambda$, então
+		\]
+		onde $\delta_{*}$ é o homomorfismo de conexão. Denominamos por operador CW-bordo o homomorfismo $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} : C_{n}(X) \to C_{n-1}(X)$.
+	\end{definition}
+	
+	\begin{theorem}
+		Teorema (CW-bordo) A aplicação CW-bordo é um homomorfismo tal que $\partial_{n-1}\circ\partial_{n} = 0$ e é dado por:
+		$$
+		\partial_{n}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
+		$$
+		onde $[\beta:\sigma]$ é o grau da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.
+	\end{theorem}
+	
+	\prova{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, e sejam $\alpha,\beta \in C_{n}(X; \Lambda)$ e $\lambda \in \Lambda$, então
 	$$ 
 	\begin{aligned}
 	\partial_{n}(\lambda \alpha+\beta) &= (\Phi_{n-1} \circ \delta_{*} \circ \Psi_{n})(\lambda \alpha+\beta)
@@ -200,21 +214,29 @@
 	\\
 	&=\lambda (\Phi_{n-1}\circ\delta_{*} \circ\Psi_{n})(\alpha) + (\Phi_{n-1}\circ\delta_{*} \circ\Psi_{n})(\beta)
 	\\
-	&= \lambda\partial_{n}\alpha +\partial_{n}\beta
-	\end{aligned},
+	&= \lambda\partial_{n}\alpha +\partial_{n}\beta,
+	\end{aligned}
 	$$
 	logo é um homomorfismo.
 	
-	 Temos a sequência exata longa de pares
+	 Consideremos a sequência exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
 	\[
 	\xymatrix{
-		\dots \ar[r]^{i_{*}} &
-		\homologia{n-1}{\skeleton{n-1}}\ar[r]^{j_{*}\qquad} &
+		\dots \ar[r]^{i_{*}\qquad} &
+		\homologia{n-1}{\skeleton{n-1}} \ar[r]^{j_{*}\qquad} &
 		\homologiarel{n-1}{\skeleton{n-1}}{\skeleton{n-2}} \ar[r]^{\qquad \delta_{n-1}}&
-		\homologia{n-1}{\skeleton{n-2}} \ar[r] & \dots
+		\homologia{n-2}{\skeleton{n-2}} \ar[r]^{\qquad i_{*}} & \dots
 	}
 	\]	
-	e como é uma sequência exata temos $Im(j_{*})=ker(\delta_{n-1})$ e $\delta_{*} = j_{*}\circ \delta_{n-1}$, logo dado $\sigma \in \homologiarelskelesimpl{n}{n}$ então $\delta_{*}^{2}\sigma = (j_{*}\circ \delta_{n-1})\circ(j_{*}\circ \delta_{n-1})\sigma = j_{*}( \delta_{n-1}\beta) = 0$, pois $\beta = j_{*}(\delta_{n-1}\sigma) \in Im(j_{*})$, portanto $\delta_{*}^{2} = 0$. Por definição, temos que 
+	Note que $\delta_{*} = j_{*}\circ i_{*}\circ \delta_{n-1}: \homologia{n-1}{\skeleton{n-1}} \to \homologia{n-2}{\skeleton{n-2}}$. Temos a composição 
+	$$
+	\begin{aligned}
+		\delta_{*}^{2} &= (j_{*}\circ i_{*}\circ \delta_{n-2}) \circ (j_{*}\circ i_{*}\circ \delta_{n-1}) 
+		\\
+		&= j_{*}\circ i_{*}\circ (\delta_{n-2} \circ j_{*} ) \circ i_{*}\circ \delta_{n-1} = 0,
+	\end{aligned}
+	$$
+	pois temos da exatidão $Im(j_{*}) = ker(\delta_{k})$, para todo $k \in \mathbb{Z}$. Comsequentemente, temos a composição do CW-bordo
 	$$
 	\begin{aligned}
 		\partial_{n-1}\circ \partial_{n} 
@@ -225,28 +247,28 @@
 		&=0.
 	\end{aligned}
 	$$
-	Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$, analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas como os geradores são únicos, então $\lambda = 1 \in \Lambda$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
+	Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
 	$$
 	\begin{aligned}
 	\partial_{n}(\sigma) &= \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}(\sigma)
 	\\
 	&= \Phi_{n-1}\circ\delta_{*}\circ f_{\sigma*}([\celula{n}{\sigma}])
 	\\
-	&= \Phi_{n-1}\circ f_{\sigma*}\circ\delta_{*}([\celula{n}{\sigma}])
+	&= \Phi_{n-1}\circ f_{\partial\sigma*}\circ\delta_{*}([\celula{n}{\sigma}])
 	\\
-	&= \Phi_{n-1}\circ f_{\sigma*}\circ (j_{*}\circ \delta_{n}) ([\celula{n}{\sigma}])
+	&= \Phi_{n-1}\circ f_{\partial\sigma*}\circ (j_{*}\circ \delta_{n}) ([\celula{n}{\sigma}])
 	\\
-	&= \Phi_{n-1} \circ f_{\sigma*}([\celulabordo{n}{\sigma}])
+	&= \Phi_{n-1} \circ f_{\partial\sigma*}([\celulabordo{n}{\sigma}])
 	\\
-	&= \sum_{\beta} \phi_{n-1}(p_{\beta*}\circ f_{\sigma*}[\celulabordo{n}{\sigma}])\beta
+	&= \sum_{\beta} \phi_{n-1}(p_{\beta*}\circ f_{\partial\sigma*}[\celulabordo{n}{\sigma}])\beta
 	\\
-	&= \sum_{\beta} \phi_{n-1}((p_{\beta}\circ f_{\sigma})_{*}[S^{n-1}])\beta
+	&= \sum_{\beta} \phi_{n-1}((p_{\beta}\circ f_{\partial\sigma})_{*}[S^{n-1}])\beta
 	\\
-	&= \sum_{\beta} \phi_{n-1}(deg(p_{\beta}\circ f_{\sigma})[S^{n-1}])\beta
+	&= \sum_{\beta} \phi_{n-1}(deg(p_{\beta}\circ f_{\partial\sigma})[S^{n-1}])\beta
 	\\
-	&= \sum_{\beta} deg(p_{\beta}\circ f_{\sigma})\phi_{n-1}([S^{n-1}])\beta
+	&= \sum_{\beta} deg(p_{\beta}\circ f_{\partial\sigma})\phi_{n-1}([S^{n-1}])\beta
 	\\
-	&= \sum_{\beta} deg(p_{\beta}\circ f_{\sigma})\beta,
+	&= \sum_{\beta} deg(p_{\beta}\circ f_{\partial\sigma})\beta,
 	\end{aligned}
 	$$
 	como desejávamos.}
@@ -261,65 +283,79 @@
 	\end{enumerate}
 	}{Fora do escopo dessas notas}
 	
-	
-	\tese{Teorema (CW-homologia)}{Existe uma identificação natural entre a homologia do complexo $C_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é, $\homologia{k}{X} \cong \homologia{k}{C_{*}(X)}\; \forall k \in \mathbb{Z}$}
-	{
+	\begin{theorem}
+		Teorema (CW-homologia) Existe uma identificação natural entre a homologia do complexo $C_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
+		$$
+		\homologia{k}{X} \cong \homologia{k}{C_{*}(X)}\; \forall k \in \mathbb{Z}.
+		$$
+	\end{theorem}
+	\prova{
 	Definimos que $C_{k}(X) = \homologiarelskelesimpl{k}{k}$, e observando a sequência
 	\[
 	\xymatrix{
-		& C_{k}(X) \ar[d]^{=}& &
-		\\
-		\homologiarelskele{k+1}{k+1}{k} \ar[r]^{\delta_{1*}} & \homologiarelskele{k}{k}{k-1} \ar[r]^{\delta_{2*}} & \homologiarelskele{k-1}{k-1}{k-2} &
+		C_{k+1}(X) \ar[r]^{\delta_{1*}} & C_{k}(X) \ar[r]^{\delta_{2*}} & C_{k-1}(X) &
 	}
 	\]
-	veremos que $\homologia{k}{C_{*}(X)} = Ker(\delta_{2*})/Im(\delta_{1*})$, logo devemos que $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologia{k}{X}$ para que provemos a equivalência entre a CW-homologia e a homologia singular do espaço $X$.
+	veremos que $\homologia{k}{C_{*}(X)} = Ker(\delta_{2*})/Im(\delta_{1*})$, então provaremos que $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologia{k}{X}$ para que concluir a equivalência entre a CW-homologia e a homologia singular do espaço $X$.
 	
-	\vspace{2mm} Por definição de CW-complexo temos que $\skeleton{k-1} \subseteq \skeleton{k}$ para $k \in \mathbb{Z}$, logo podemos considerar a tripla $\skeleton{k-2} \subseteq \skeleton{k-1} \subseteq \skeleton{k}$, e tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$  no diagrama abaixo:
+	\vspace{2mm} Tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
 	\[
 	\xymatrix{
-		& & 0 \ar[d] &
+		& & \homologiarelskele{k}{k-1}{k-2}= 0 \ar[d]^{i_{*}} &
 		\\
 		& & \homologiarelskele{k}{k+1}{k-2} \ar[d]^{j_{*}} &
 		\\
-		\homologiarelskele{k+1}{k+1}{k} \ar[r]^{\quad\delta_{1*}} &		\homologiarelskele{k}{k}{k-1} \ar[r]^{i_{*}} \ar[rd]^{\delta_{2*}} \ar[ru]^{\phi}& \homologiarelskele{k}{k+1}{k-2} \ar[r] \ar[d]^{\delta_{3*}} & 0
+		\homologiarelskele{k+1}{k+1}{k} \ar[r]^{\quad\delta_{1*}} &		\homologiarelskele{k}{k}{k-1} \ar[r]^{i_{*}} \ar[rd]^{\delta_{2*}} & \homologiarelskele{k}{k+1}{k-1} \ar[r] \ar[d]^{\delta_{3*}} & 0
 		\\
 		& & \homologiarelskele{k-1}{k-1}{k-2} &
 	}
 	\]	
 	onde $i_{*}, \; j_{*}$ e $\delta_{*}$ são as inclusões induzidas e o homomorfismo conectante, respectivamente. Seja $\classe{\alpha} \in \homologiarelskelesimpl{k}{k}$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha}$, pois $i_{*}$ é um monomorfismo e pela construção do homomorfismo conectante, caso contrário não conectaríamos as homologias, logo temos a comutatividade do triângulo do diagrama.
 	
-	\vspace{2mm} Vamos agora caracterizar $Ker(\delta_{2*})$, para isso tomemos $\classe{\alpha} \in Ker(\delta_{2*})$, consequentemente $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$, e como $Im(i_{*})\cap Im(j_{*}) \neq \emptyset$, pois $i_{*}$ é um epimorfismo, e como $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. Definamos $\phi: Ker(\delta_{2*}) \to \homologiarelskele{k}{k}{k-2}$ tal que $\phi(\classe{\alpha}) = \classe{\beta}$. Seja um outro $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, consequentemente, existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$, com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0 \Rightarrow \classe{\alpha'} \in Ker(\delta_{2*})$, portanto $\phi$ é epimorfismo.
+	\vspace{2mm} Vamos agora caracterizar $Ker(\delta_{2*})$. Dado $[\alpha] \in Ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
 	
-	\vspace{2mm} Novamente, pela exatidão da sequência, temos $Im(\delta_{1*}) = Ker(i_{*}) \Rightarrow i_{*}\circ\delta_{1*}=0$, agora, como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$, o que implica em $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e pela exatidão, $\classe{\alpha} \in Im(\delta_{1*})$. Com isso acabamos de verificar que $Ker(\phi) = Im(\delta_{1*})$, e pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-1}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-1}$.
+	\vspace{2mm} Afirmo que $\phi: Ker(\delta_{2*}) \to \homologiarelskele{k}{k+1}{k-2}$ dado por $\phi(\classe{\alpha}) = \classe{\beta}$ é um epimorfismo. Seja $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, então existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$, com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0$ pois $Im(j_{*}) = Ker(\delta_{3*})$, logo $\classe{\alpha'} \in Ker(\delta_{2*})$ e $\phi$ é epimorfismo.
 	
-	\vspace{2mm} Sem perda de generalidade, vamos assumir que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$, então por definição temos $X= \skeleton{n} \supseteq \skeleton{n-1} \supseteq \dots \supseteq \skeleton{0} \supseteq \skeleton{-1}$, onde $\skeleton{-1} = \emptyset$. Com isso, podemos escrever a sequência de homomorfismos de inclusão de pares:
+	\vspace{2mm} Analogamente temos $Im(\delta_{1*}) = Ker(i_{*}) \Rightarrow i_{*}\circ\delta_{1*}=0$. Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$, o que implica em $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e pela exatidão, $\classe{\alpha} \in Im(\delta_{1*})$. Com isso podemos concluir que $Ker(\phi) = Im(\delta_{1*})$, e pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-2}$.
+	
+	\vspace{2mm} Sem perda de generalidade, vamos assumir que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$, então temos $X= \skeleton{n} \supseteq \skeleton{n-1} \supseteq \dots \supseteq \skeleton{0} \supseteq \skeleton{-1}$, onde $\skeleton{-1} = \emptyset$. Com isso, podemos escrever a sequência de homomorfismos de inclusão de pares:
 	\[
 	\xymatrix{
 		\homologia{k}{X} = \homologiarel{k}{\skeleton{n}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{n}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}}
 	}
 	\]
 	
-	de modo que, para cada $i-$ésimo termo $\homologiarelskele{k}{n}{i}$ no centro do diagrama abaixo, teremos a sequência exata de triplas nas verticais, onde $0\leq i\leq k-2$:
+	de modo que, para cada $i-$ésimo termo $\homologiarelskele{k}{n}{i}$ no centro do diagrama abaixo, teremos a sequência exata de triplas nas verticais $(\skeleton{n}, \skeleton{i}, \skeleton{i-1})$, com $0\leq i\leq k-2$ com $h_{i}$ sendo os homomorfismos de inclusão:
 	\[
 	\xymatrix{
-		\homologiarel{k}{\skeleton{i-1}}{\skeleton{i-3}}=0 \ar[d] & \homologiarel{k}{\skeleton{i}}{\skeleton{i-2}}=0 \ar[d] & \homologiarel{k}{\skeleton{i+1}}{\skeleton{i-1}}=0 \ar[d] &	
+		\homologiarel{k}{\skeleton{i-1}}{\skeleton{i-2}}=0 \ar[d] & \homologiarel{k}{\skeleton{i}}{\skeleton{i-1}}=0 \ar[d] & \homologiarel{k}{\skeleton{i+1}}{\skeleton{i}}=0 \ar[d] &	
 		\\
 		\homologiarel{k}{\skeleton{n}}{\skeleton{i-2}} \ar[d]^{h_{i-1}} & \homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \ar[d]^{h_{i}} & \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \ar[d]^{h_{i+1}}
 		\\
 		\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \ar[r]\ar[d]^{\delta_{(i-1)*}}& \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \ar[r] \ar[d]^{\delta_{i*}} &  \homologiarel{k}{\skeleton{n}}{\skeleton{i+1}} \ar[d]^{\delta_{(i+1)*}} 
 		\\
-		\homologiarelskele{k-1}{i-1}{i-2}=0& \homologiarel{k-1}{\skeleton{i}}{\skeleton{i-1}}=0 &  \homologiarel{k}{\skeleton{n}}{\skeleton{i+1}}=0. &		
+		\homologiarelskele{k-1}{i-1}{i-2}=0& \homologiarel{k-1}{\skeleton{i}}{\skeleton{i-1}}=0 &  \homologiarel{k}{\skeleton{i+1}}{\skeleton{i}}=0. &		
 	}
 	\]
-	Do teorema dos isomorfismos dos grupos de homologia, temos que $\homologiarelskele{k}{n}{i} =0$ quanto $k \neq i$, logo os grupos naz extemidades verticais do diagrama serão os triviais. Novamente, pela exatidão das sequências verticais, temos que $Im(h_{i}) = Ker(\delta_{i*})$, mas como $Im(\delta_{i*}) = 0 \Rightarrow Ker(\delta_{i*}) = \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, logo $h_{i}$ é um epimorfismo, portanto um isomorfismo para $0\leq i \leq k-2$, isto é, $\homologiarel{k}{\skeleton{n}}{\skeleton{-1}} \cong \homologiarel{k}{\skeleton{i}}{\skeleton{k-2}}$, portanto $\homologia{k}{X} = \homologiarel{k}{\skeleton{n}}{\skeleton{-1}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}}$.
+	Do lema \ref{homologiacelular} temos que $\homologiarelskele{k}{i}{i-1} =0$ caso $k \neq i$, logo os grupos naz extemidades verticais do diagrama serão os triviais. Pela exatidão das sequências verticais temos $Im(h_{i}) = Ker(\delta_{i*})$, mas como $Im(\delta_{i*}) = 0 \Rightarrow Ker(\delta_{i*}) = \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, logo $h_{i}$ é um epimorfismo, portanto um isomorfismo para $0\leq i \leq k-2$, isto é, $\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, o que nos pertmite escrever a cadeia de isomorfismos 
 	
-	\vspace{2mm} Por fim, podemos repetir a mesma construção anterior para uma sequência $k+1 \leq j \leq k-2$
+	$$
+	\begin{aligned}
+		\homologia{k}{X} &= \homologiarel{k}{\skeleton{n}}{\skeleton{-1}} 
+		\\
+		&\cong  \homologiarel{k}{\skeleton{n}}{\skeleton{0}} \cong \dots \cong  \homologiarel{k}{\skeleton{n}}{\skeleton{i}} \cong  \dots \cong \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}},
+	\end{aligned}
+	$$
+	logo $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$ para $0 \leq i \leq k-2$.
+	\vspace{2mm} Por fim, podemos repetir a mesma construção anterior para $0 \leq j \leq n$ da sequência abaixo:
 	\[
 	\xymatrix{
 		\homologiarel{k}{\skeleton{j}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{j}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{j}}{\skeleton{k-2}}
 	}
 	\]
-	e concluiremos que para $j = k+1$ teremos $\homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}}$, logo teremos o isomorfismo $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{k-2}} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}}$. Por fim, temos isomorfismo entre as homologias 
+	e concluiremos $\homologiarel{k}{\skeleton{j}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{j}}{\skeleton{i}}$ onde $0 \leq i \leq k-2$.
+	
+	\vspace{2mm} Conclusão, temos isomorfismo entre as homologias 
 	$$
 	\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*}) = \homologia{k}{C_{*}(X)}.
 	$$
