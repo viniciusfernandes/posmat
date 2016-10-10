@@ -64,9 +64,9 @@
 	
 	\maketitle
 	
-	\chapter{CW-Complexos}
-	\section{Definições Gerais}
-
+	\chapter{CW-Homologia}
+	\section{Homologia singular}
+	\vspace{2mm} Para cada $k \in \mathbb{N}$ temo 
 	\begin{definicao}
 		(Sequência da triplas) Sejam $X, Y, Z$ espaços topológicos tais que $Z \subseteq Y \subseteq X$. Então a sequência da tripla $(X,Y,Z)$ é dada por:
 			\[
@@ -100,7 +100,7 @@
 	
 	\subsection{Exemplos de CW-complexos}
 	\begin{exemplo}
-		(n-esféra) Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $(n+1)-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} = \skeleton{n+1} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+		(n-esféra) Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
 	\end{exemplo}
 	
 	\begin{exemplo}
@@ -114,21 +114,21 @@
 	\subsection{Homologia Celular}
 	
 	\begin{lema}\label{homologiacelular}
-		(Homologia celular relativa) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo,  então $\homologiarelskelesimpl{k}{n} $ é um $\Lambda-$módulo livre e finitamente gerado pelas $n-$cpelulas de $X$ tal que
+		(Homologia celular relativa) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo, então
 		$$
 		\homologiarelskelesimpl{k}{n} \cong 
 		\left\{
 		\begin{array}{cc}
-		\somadir{\sigma} \homologiarelcel{n}{n}{\sigma} , & k = n\\
+		\mathcal{C}_{n}(X), & k = n\\
 		0, & k\neq n\\
 		\end{array}
 		\right.,
 		$$
-		onde 
+		onde $\mathcal{C}_{n}(X)$ é um $\Lambda-$módulo livre e finitamente gerado pelas $n-$células de $X$. Além disso,
 		$$
 		\somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} \Lambda
 		$$
-		e
+		tal que 
 		$$
 		\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
 		$$
@@ -146,8 +146,6 @@
 		}
 		\]
 		Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong \Lambda$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} \Lambda$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.}
-
-		\vspace{2mm} Nas condições do Lema \ref{homologiacelular} denotaremos $C_{k}(X)=\homologiarelskelesimpl{k}{k}$ como sendo o $\Lambda-$módulo da $k-$ésima CW-homologia, mais ainda, $C_{*}(X) = \somadir{k}C_{k}(X)$ é um $\Lambda-$módulo graduado e finitamente gerado em cada um de suas dimensões.
 
 	\begin{definicao}
 		(Aplicação de Pares) Seja $X = \skeleton{n}$ um CW-complexo e tome $p \in \skeleton{n-1}$ como um ponto-base. Identificaremos um dado $q \in \skeleton{n}$ com o ponto-base se $q \in \skeleton{n-1}$, e diremos que $q \sim p$. Definimos $\skeleton{n}/\skeleton{n-1} = \{[q]: q \in \skeleton{n}, \; q \sim p\}$ e a aplicação quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ por:
@@ -168,7 +166,7 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		Denotaremos $\Psi_{n}:C_{k}(X) \to \homologiarelskelesimpl{k}{n}$ como sendo o isomorfismo anterior dado por 
+		Denotaremos $\Psi_{n}:\mathcal{C}_{k}(X) \to \homologiarelskelesimpl{k}{n}$ como sendo o isomorfismo anterior dado por 
 		$$
 		\Psi(\sum_{\sigma} n_{\sigma} \sigma) = \sum_{\sigma} n_{\sigma} f_{\sigma *}[D^{n}],
 		$$
@@ -176,13 +174,13 @@
 	\end{definicao}
 
 	\begin{lema}
-		(Inversa de $\Psi_{n}$) A aplicação inversa $\Phi_{n} : \homologiarelskelesimpl{n}{n} \to C_{n}(X,A)$ do isomorfismo definido anteriormente é dada por
+		(Inversa de $\Psi_{n}$) A aplicação inversa $\Phi_{n} : \homologiarelskelesimpl{n}{n} \to \mathcal{C}_{n}(X)$ do isomorfismo definido anteriormente é dada por
 		$$
 		\Phi_{n}(\alpha) = \sum_{\sigma} \phi_{n}(p_{\sigma *}\alpha)\sigma,
 		$$
 		onde $\phi_{n}: \homologiarel{n}{S^{n}}{\{p\}} \to \Lambda$ é o único homomorfismo tal que $\phi_{n}([S^{n}])=1$ e $[S^{n}]$ é a classe fundamental do par $(S^{n}, \{p\})$.
 	\end{lema}
-	\prova{Mostremos a unicidade do homomorfismo. Sabemos que o grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabemos o que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$, com isso, tomemos $\sigma$ uma $n-$célula geradora de $C_{n}(X)$, então
+	\prova{Mostremos a unicidade do homomorfismo. Sabemos que o grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabemos o que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$, com isso, tomemos $\sigma$ uma $n-$célula geradora de $\mathcal{C}_{n}(X)$, então
 		$$
 		\begin{aligned}
 		\Phi_{n}(\Psi_{n}(\sigma)) 
@@ -199,7 +197,7 @@
 		&= \sigma	
 		\end{aligned},
 		$$
-		e como $\sigma \in C_{n}(X,A)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$, como desejávamos.}
+		e como $\sigma \in \mathcal{C}_{n}(X)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$, como desejávamos.}
 	
 	\begin{definicao}
 		(Grau homológico) Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{n}{S^{n}} \to \homologia{n}{S^{n}}$ o homomorfismo induzindo. Seja $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador não-trivial desse grupo, então $f_{*}[S^{n}] = k[S^{n}]$ para algum $k \in \Lambda$. Denominamos por grau da aplicação $deg(f) = k$, com $k$ definido anteriormente.
@@ -209,13 +207,13 @@
 		(Aplicação CW-bordo) Tome a tripla $(\skeleton{n}, \skeleton{n-1}, \skeleton{n-2})$ e a composição abaixo
 		\[
 		\xymatrix{
-			C_{n}(X) \ar[r]^{\Psi_{n}\qquad} &
+			\mathcal{C}_{n}(X) \ar[r]^{\Psi_{n}\qquad} &
 			\homologiarelskelesimpl{n}{n} \ar[r]^{\delta_{*}} & 
 			\homologiarelskele{n-1}{n-1}{n-2} \ar[r]^{\qquad \Phi_{n-1}}&
-			C_{n-1}(X)
+			\mathcal{C}_{n-1}(X)
 		}
 		\]
-		onde $\delta_{*}$ é o homomorfismo de conexão. Denominamos por operador CW-bordo o homomorfismo $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} : C_{n}(X) \to C_{n-1}(X)$.
+		onde $\delta_{*}$ é o homomorfismo de conexão. Denominamos por operador CW-bordo o homomorfismo $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} : \mathcal{C}_{n}(X) \to \mathcal{C}_{n-1}(X)$.
 	\end{definicao}
 	
 	\begin{teorema}
@@ -226,53 +224,25 @@
 		onde $[\beta:\sigma]$ é o grau da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.
 	\end{teorema}
 	
-	\prova{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, e sejam $\alpha,\beta \in C_{n}(X; \Lambda)$ e $\lambda \in \Lambda$, então
-	$$ 
-	\begin{aligned}
-	\partial_{n}(\lambda \alpha+\beta) &= (\Phi_{n-1} \circ \delta_{*} \circ \Psi_{n})(\lambda \alpha+\beta)
-	\\
-	&= (\Phi_{n-1} \circ \delta_{*}) (\lambda\Psi_{n}(\alpha) + \Psi_{n}(\beta))
-	\\
-	&= \Phi_{n-1}(\lambda\delta_{*}(\Psi_{n}(\alpha)) + \delta_{*}(\Psi_{n}(\beta)))
-	\\
-	&= \lambda \Phi_{n-1}(\delta_{*}(\Psi_{n}(\alpha))) + \Phi_{n-1}(\delta_{*}(\Psi_{n}(\beta)))
-	\\
-	&=\lambda (\Phi_{n-1}\circ\delta_{*} \circ\Psi_{n})(\alpha) + (\Phi_{n-1}\circ\delta_{*} \circ\Psi_{n})(\beta)
-	\\
-	&= \lambda\partial_{n}\alpha +\partial_{n}\beta,
-	\end{aligned}
-	$$
-	logo é um homomorfismo.
+	\prova{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, logo é um homomorfismo pois é a composição de homomorfismos.
 	
-	 Consideremos a sequência exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
+	 Consideremos a sequência vertical exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
 	\[
 	\xymatrix{
-		\dots \ar[r]^{i_{*}\qquad} &
-		\homologia{n-1}{\skeleton{n-1}} \ar[r]^{j_{*}\qquad} &
-		\homologiarel{n-1}{\skeleton{n-1}}{\skeleton{n-2}} \ar[r]^{\qquad \delta_{n-1}}&
-		\homologia{n-2}{\skeleton{n-2}} \ar[r]^{\qquad i_{*}} & \dots
+		& \homologia{n-2}{\skeleton{n-2}}\ar[rd]^{j_{*}}
+		\\
+		\homologiarelskele{n}{n}{n-1} \ar[r]^{\delta_{*} \qquad}\ar[rd]_{\delta_{n}} &
+		\homologiarelskele{n-1}{n-1}{n-2} \ar[u]^{\delta_{n-1}} \ar[r]^{ \delta_{*}}&
+		\homologiarelskele{n-2}{n-2}{n-3}
+		\\
+		& \homologia{n-1}{\skeleton{n-1}}\ar[u]^{j_{*}}
 	}
 	\]	
-	Note que $\delta_{*} = j_{*}\circ i_{*}\circ \delta_{n-1}: \homologia{n-1}{\skeleton{n-1}} \to \homologia{n-2}{\skeleton{n-2}}$. Temos a composição 
-	$$
-	\begin{aligned}
-		\delta_{*}^{2} &= (j_{*}\circ i_{*}\circ \delta_{n-2}) \circ (j_{*}\circ i_{*}\circ \delta_{n-1}) 
-		\\
-		&= j_{*}\circ i_{*}\circ (\delta_{n-2} \circ j_{*} ) \circ i_{*}\circ \delta_{n-1} = 0,
-	\end{aligned}
-	$$
-	pois temos da exatidão $Im(j_{*}) = ker(\delta_{k})$, para todo $k \in \mathbb{Z}$. Comsequentemente, temos a composição do CW-bordo
-	$$
-	\begin{aligned}
-		\partial_{n-1}\circ \partial_{n} 
-		&= \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}
-		\\
-		&=\Phi_{n-2} \circ \delta_{*} \circ  \delta_{*} \circ \Psi_{n}
-		\\
-		&=0.
-	\end{aligned}
-	$$
-	Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
+	
+	\vspace{2mm} Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical temos $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, temos o composição do CW-bordo 
+	$\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$.
+	
+	\vspace{2mm} Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
 	$$
 	\begin{aligned}
 	\partial_{n}(\sigma) &= \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}(\sigma)
@@ -298,31 +268,20 @@
 	$$
 	como desejávamos.}
 	
-	\vspace{2mm} Antes de enunciarmos o teorema mais importante desse capítulo, afirmaremos o seguinte lema técnico, utilizado no teorema da CW-homologia.
-	
-	\tese{Lema}{
-	\begin{enumerate}
-		\item $i_{*}:\homologiarel{k}{\skeleton{n}}{A} \to \homologiarel{k}{X}{A}$ é um isomorfismo para $k<n$.
-		\item $H_{k}(\skeleton{n},A) = 0$ para $k>n$
-		\item $\homologiarel{n}{\skeleton{n}}{A} \cong \homologiarelskele{n}{n}{n-2} $
-	\end{enumerate}
-	}{Fora do escopo dessas notas}
-	
 	\begin{teorema}
-		Teorema (CW-homologia) Existe uma identificação natural entre a homologia do complexo $C_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
+		Teorema (CW-homologia) Existe uma identificação natural entre a homologia do complexo $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
 		$$
-		\homologia{k}{X} \cong \homologia{k}{C_{*}(X)}\; \forall k \in \mathbb{Z}.
+		\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \mathbb{Z}.
 		$$
 	\end{teorema}
 	\begin{proof}
-		
-		Definimos que $C_{k}(X) = \homologiarelskelesimpl{k}{k}$, e observando a sequência
+		Para a demonstração desse resultado vamos considerar a sequência 
 		\[
 		\xymatrix{
-			C_{k+1}(X) \ar[r]^{\delta_{1*}} & C_{k}(X) \ar[r]^{\delta_{2*}} & C_{k-1}(X) &
+			\mathcal{C}_{k+1}(X) \ar[r]^{\partial_{k+1}} & \mathcal{C}_{k}(X) \ar[r]^{\partial_{k}} & \mathcal{C}_{k-1}(X) &
 		}
 		\]
-		veremos que $\homologia{k}{C_{*}(X)} = Ker(\delta_{2*})/Im(\delta_{1*})$, então provaremos que $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologia{k}{X}$ para que concluir a equivalência entre a CW-homologia e a homologia singular do espaço $X$.
+		e por definição temos $\homologia{k}{\mathcal{C}_{*}(X)} = Ker(\partial_{k})/Im(\partial_{k+1})$, então provaremos que $Ker(\partial_{k})/Im(\partial_{k+1}) \cong \homologia{k}{X}$ para que concluir a equivalência entre a CW-homologia e a homologia singular do espaço $X$.
 		
 		\vspace{2mm} Tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
 		\[
@@ -381,10 +340,7 @@
 		\]
 		e concluiremos $\homologiarel{k}{\skeleton{j}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{j}}{\skeleton{i}}$ onde $0 \leq i \leq k-2$.
 		
-		\vspace{2mm} Conclusão, temos isomorfismo entre as homologias 
-		$$
-		\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*}) = \homologia{k}{C_{*}(X)}.
-		$$
+		\vspace{2mm} Assim, $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*})$. Mas como $\partial_{k} = \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}$, então $Ker(\delta_{2*}) \cong Ker(\partial_{k})$ e $Im(\delta_{1*}) \cong Im(\partial_{k+1})$, logo $Ker(\delta_{2*})/Im(\delta_{1*}) \cong Ker(\partial_{k})/Im(\partial_{k+1}) = \homologia{k}{\mathcal{C}_{*}}$, logo $\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}}$ que é a equivalência entre as homologias, como desejávamos.
 	\end{proof}
 	
 	\section{Exemplos}
