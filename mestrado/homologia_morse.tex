@@ -32,6 +32,7 @@
 \newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
+\newcommand{\dparcial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\funcaocond}[5]{
 	#1 = 
 	\left\{
@@ -47,6 +48,7 @@
 \newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
 \newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
+\newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
@@ -66,19 +68,17 @@
 	
 	\chapter{CW-Homologia}
 	\section{Homologia singular}
-	\vspace{2mm} Para cada $k \in \mathbb{N}$ temo 
 	\begin{definicao}
 		(Sequência da triplas) Sejam $X, Y, Z$ espaços topológicos tais que $Z \subseteq Y \subseteq X$. Então a sequência da tripla $(X,Y,Z)$ é dada por:
-			\[
-			\xymatrix{
+		$$
+		\xymatrix{
 				\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]^{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\delta_{*}} & \homologiarel{k-1}{Y}{Z} \ar[r] & \dots
-			}
-			\]
-			onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
+		}
+		$$
+		onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
 	\end{definicao}
 	
 	\section{CW-Homologia}
-	
 	\begin{definicao}
 		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
  	\end{definicao}
@@ -87,7 +87,7 @@
 		Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem $\skeleton{n}$ espaços tais com 
 		$$
 		\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
-		$$
+		$$ 
 		tal que:
 		\begin{enumerate}
 			\item $\skeleton{0}$ é um conjunto discreto de pontos
@@ -96,7 +96,7 @@
 		\end{enumerate}
 	\end{definicao}
 	
-	\vspace{2mm} Um espaço $X$ com uma CW-estrutura é chamado de CW-complexo e cada subespaço $\skeleton{n}$ é chamado $n-$esqueleto do CW-complexo $X$. Uma aplicação $f_{\partial}:S^{n-1} \to \skeleton{n-1}$ estende a uma aplicação $f:D^{n} \to \skeleton{n}$ chamada aplicação caraterística. Chamaremos a imagem de $D^{n}$ por $f$ de célula fechada em $X$, e a imagem de $D^{n} - \partial D^{n}$ de célula aberta em $X$.
+	Um espaço $X$ com uma CW-estrutura é chamado de CW-complexo e cada subespaço $\skeleton{n}$ é chamado $n-$esqueleto do CW-complexo $X$. Uma aplicação $f_{\partial}:S^{n-1} \to \skeleton{n-1}$ estende a uma aplicação $f:D^{n} \to \skeleton{n}$ chamada aplicação caraterística. Chamaremos a imagem de $D^{n}$ por $f$ de célula fechada em $X$, e a imagem de $D^{n} - \partial D^{n}$ de célula aberta em $X$.
 	
 	\subsection{Exemplos de CW-complexos}
 	\begin{exemplo}
@@ -227,7 +227,7 @@
 	\prova{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, logo é um homomorfismo pois é a composição de homomorfismos.
 	
 	 Consideremos o diagrama comutativo e na vertical temos a sequência exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
-	\[
+	$$
 	\xymatrix{
 		& \homologia{n-2}{\skeleton{n-2}}\ar[rd]^{j_{*}}
 		\\
@@ -237,12 +237,10 @@
 		\\
 		& \homologia{n-1}{\skeleton{n-1}}\ar[u]^{j_{*}}
 	}
-	\]	
+	$$
+	Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical temos $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, temos o composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$.
 	
-	\vspace{2mm} Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical temos $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, temos o composição do CW-bordo 
-	$\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$.
-	
-	\vspace{2mm} Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
+	Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
 	$$
 	\begin{aligned}
 	\partial_{n}(\sigma) &= \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}(\sigma)
@@ -282,7 +280,7 @@
 		$$
 		e por definição temos $\homologia{k}{\mathcal{C}_{*}(X)} = Ker(\partial_{k})/Im(\partial_{k+1})$, então provaremos que $Ker(\partial_{k})/Im(\partial_{k+1}) \cong \homologia{k}{X}$ para que concluir a equivalência entre a CW-homologia e a homologia singular do espaço $X$.
 		
-		\vspace{2mm} Tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
+		Tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
 		$$
 		\xymatrix{
 			& & \homologiarelskele{k}{k-1}{k-2}= 0 \ar[d]^{i_{*}} &
@@ -433,4 +431,115 @@
 	onde teremos somas alternadas no ultimo termo que se cancelarão, restando apenas $dim(Im(\partial_{m+1})) - dim(Im(\partial_{0}))$, mas ambos são identicamente nulos, pois $\partial_{m+1} = 0$ e $\partial_{0} = 0$.
 	}
 	
+	
+	\chapter{Homologia de Floer}
+	\section{Variedades simpléticas}
+	\begin{definicao}
+		(Variedade Simplética) Uma variedade simplética de dimensão 2m é o par $(M, \omega)$ onde $M$ é uma 2m-variedade diferenciável e $\omega \in \Omega^{2}(M^{m})$ é uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$ e para cada $p \in M$ temos que $(T_{p}M, \omega_{p})$ é um espaço vetorial simpletico. Cada $x = (q_{1}, \dots, q_{m}, p_{1}, \dots, p_{m}) \in M$  será abreviado pelo par $(q,p)$.
+	\end{definicao}
+	
+	\begin{definicao}
+		Um simplectomorfismo é um difeomorfismo $\psi \in Diff(M)$ tal que $\psi^{*}\omega = \omega$, isto é, uma aplicação que preserva a forma simplética.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Gradiente simplético) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simplético é o único campo vetorial $X \in \mathfrak{X}(M)$ tal que $\omega(X, Y) = df(Y)$ para todo $Y \in \mathfrak{X}(M)$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Campo hamiltoniano) Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função hamiltoniana se satisfaz as equações diferenciais de Hamilton
+		$$
+		\frac{\partial q}{\partial t} = \frac{\partial H}{\partial p}, \; \frac{\partial p}{\partial t} = \frac{\partial H}{\partial p}. 
+		$$
+		Um campo hamiltoniano é o único campo vetorial tal que $\omega(X_{H}, Y) = -dH(Y)$. Disso, podemos definir o fluxo hamiltoniano como sendo a solução dos sitema de equações 
+		$$
+		\dparcial{x(t)}{t} = X_{H}(x(t), t).
+		$$
+		As soluções dessa equação geram uma família de simpléctomorfismos a 1-parametro tal que $\psi_{t}(x(0)) = x(t)$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Espaço das soluções periódicas) Denotamos por $P_{0} = \{x:\real{} \to M: x(t+1) = x(t), \text{são soluções null-homotópicas das eq. hamilton} \}$ o espaço das soluções contráteis 1-periódicas. E diremos que uma solução $x \in P_{0}$ é não-degenerada se $det(Id-d\psi_{1}(x(0))) \neq 0$, ou seja, o isomorfismo $d\psi_{1}:T_{x(0)}M \to T_{x(0)}M$ não possui autovalores com valor 1.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Condição de aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
+		$$
+		\int_{S^{2}} u^{*}\omega = 0.
+		$$
+	\end{definicao}
+	
+	\begin{teorema}
+		(Número de pontos críticos de Floer) Suponha a condição de aesfericidade e que $x \in P_{0}$ seja não-degenerada, então o número mínimo de soluções é dado pela soma dos número de Betti de $M$.
+	\end{teorema}
+	
+	\begin{definicao}
+		(Espaço de loops contráteis) Denotamos $LM = \{\gamma:S^{1} \to M: \gamma \; \text{são contínuas} \}$ e $L_{0}M \subset LM$ o espaço dos loops contráteis. Ao adotarmos a topologia $C^{2}$ para o espaço $L_{0}M$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}L_{0}M$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
+	\end{definicao}
+	O espaço das soluções contráteis $P_{0}$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:L_{0}M \to \real{}$, dado por
+	$$
+	f_{H}(\gamma) = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
+	$$
+	onde $D^{2} \subset \mathbb{C}$ e $u(e^{i2\pi t}) = \gamma(t)$. Vamos agora determinar o gradiente do funcional $df_{H}: TL_{0}M \to \real{}$. Sejam $\tilde{\gamma}:[0,1] \times S^{1} \to M$  e $\tilde{u}:[0,1] \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \dparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
+	$$
+	f_{H}(\tilde{\gamma}) = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{\gamma}(s,t))dt.
+	$$
+	Para derivar o primeiro termo, lembremos a identidade de Cartan onde dados $\alpha \in \Omega^{k}(M)$ e $\xi \in \mathfrak{X}(M)$ temos $\mathcal{L}_{\xi}\alpha = d(i_{\xi}\alpha) + i_{\xi}d\alpha$, assim:
+	$$
+	\begin{aligned}
+	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{D^{2}}\tilde{u}^{*}\omega &=\int_{D^{2}}\frac{d}{ds} (\tilde{u}^{*}\omega)\Bigm\lvert_{s=0}  =\int_{D^{2}}\tilde{u}^{*} \mathcal{L}_{\xi(z)}(\omega)
+	\\
+	&=\int_{D^{2}}\tilde{u}^{*} (d(i_{\xi}\omega) + i_{\xi}d\omega) =\int_{D^{2}}\tilde{u}^{*} d(i_{\xi}\omega)
+	\\
+	&=\int_{\partial D^{2}}	\gamma^{*} (i_{\xi(t)}\omega) = \int_{[0,1]} \omega(\xi(t), \dot{\gamma}(t))dt.
+	\end{aligned}
+	$$
+	Derivando o segundo termo:
+	$$
+	\begin{aligned}
+	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{\gamma}(s,t)) 
+	&= \int_{[0,1]} \dparcial{}{s} H(\tilde{\gamma}(s,t)) \Bigm\lvert_{s=0}
+	\\
+	&= \int_{[0,1]} (dH(\tilde{\gamma}(s,t)))_{\tilde{\gamma}(0,t)}(\xi(t))dt
+	\\
+	&= \int_{[0,1]} \omega_{\gamma(t)}(\xi(t), X(\gamma(t), t))dt. 
+	\end{aligned}
+	$$
+	Por fim temos:
+	$$
+	df_{H}(\gamma)(\xi) = \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)dt.
+	$$
+	De onde segue-se que $df_{H}(\gamma) = 0 \iff \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)=0\; \forall \xi \in T_{\gamma}L_{0}M$, que pela não-degenerecência de $\omega$ temos que $df_{H}(\gamma) = 0 \iff \dot{\gamma}(t) - X(\gamma(t), t)=0$, isto é, $\gamma \in P_{0}$ é uma solução null-homotópica das equações de hamilton.
+
+	Em geometria Riemanniana definimos o gradiente de uma função suave $f:M \to \real{}$ como sendo o campo $\nabla f(p) \in T_{p}M$ tal que $df(p)(v) = \iprod{ \nabla f(p)}{v}\; \forall v \in T_{p}M$. Note que temos a dependência da métrica riemanniana nessa definição. Construiremos o conceito de gradiente do funcional $f_{H}$, para isso, definamos uma estrutura quase-complexa em $M$ por $J \in C^{\infty}(End(TM))$ tais que $J^{2} = -Id$, então temos a métrica riemanniana associada a $\omega$, isto é,
+	$$
+	g(X, Y)= \omega(X, J(x)Y), \; X,Y \in T_{x}M,
+	$$
+	o que induzirá uma métrica em $L_{0}M$. Assim, dado $\gamma \in L_{0}M$ teremos a métrica nos espaço dos loops contráteis
+	$$
+	\iprod{\alpha}{\beta}_{\gamma} = \int_{[0,1]}g(\alpha(t), \beta(t))dt, \; \alpha, \beta \in T_{\gamma}L_{0}M.
+	$$
+	Se $f: L_{0}M \to \real{}$ é uma função diferenciável, então seu campo gradiente será dado por 
+	$$
+	\begin{aligned}
+	df(\gamma)(\xi) &= \iprod{\nabla f(\gamma)}{\xi}_{\gamma} = \int_{[0,1]}g(\nabla f(\gamma(t)), \xi(\gamma(t)))dt
+	\\
+	&=\int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))\xi(\gamma(t)))dt,
+	\end{aligned}
+	$$
+	portanto, para o funcional teremos
+	$$
+	\begin{aligned}
+		df_{H}(\gamma)(\xi) 
+		&=  \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi(\gamma(t)))dt
+		\\
+		&= \int_{[0,1]} \omega(J(\gamma(t))(\dot{\gamma}(t) - X(\gamma(t), t)), J(\gamma(t))\xi(\gamma(t)))dt
+		\\
+		&= \int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))\xi(\gamma(t)))dt,
+	\end{aligned}
+	$$
+	logo 
+	$$
+	\nabla f(\gamma) = J(\gamma(t))\dot{\gamma}(t) - J(\gamma(t)) X(\gamma(t)) =J_{\gamma(t)}\dot{\gamma}(t) + \nabla_{\gamma(t)}H(\gamma(t), t).  
+	$$
 \end{document}
