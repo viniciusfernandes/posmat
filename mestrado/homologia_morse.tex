@@ -58,6 +58,8 @@
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
 \newcommand{\suavefunc}[1]{C^{\infty}(#1, \real{})}
+\newcommand{\vermelho}[1]{{\color{red}#1}}
+\newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
 \begin{document}
 	
 	\title{Homologia de Morse}
@@ -65,6 +67,8 @@
 	\author{Vinicius Fernades}
 	
 	\maketitle
+	
+	\tableofcontents
 	
 	\chapter{CW-Homologia}
 	\section{Homologia singular}
@@ -453,14 +457,16 @@
 		$$
 		Um campo hamiltoniano é o único campo vetorial tal que $\omega(X_{H}, Y) = -dH(Y)$. Disso, podemos definir o fluxo hamiltoniano como sendo a solução dos sitema de equações 
 		$$
-		\dparcial{x(t)}{t} = X_{H}(x(t), t).
+		\label{sisHamilt}
+		\dparcial{\psi(t)}{t} = X_{H}(\psi(t), t).
 		$$
+		
 		As soluções dessa equação geram uma família de simpléctomorfismos a 1-parametro tal que $\psi_{t}(x(0)) = x(t)$.
 	\end{definicao}
 	
 	\begin{definicao}
-		(Espaço das soluções periódicas) Denotamos por $P_{0} = \{x:\real{} \to M: x(t+1) = x(t), \text{são soluções null-homotópicas das eq. hamilton} \}$ o espaço das soluções contráteis 1-periódicas. E diremos que uma solução $x \in P_{0}$ é não-degenerada se $det(Id-d\psi_{1}(x(0))) \neq 0$, ou seja, o isomorfismo $d\psi_{1}:T_{x(0)}M \to T_{x(0)}M$ não possui autovalores com valor 1.
-	\end{definicao}
+		(Espaço das soluções contráteis e periódicas) Denotamos $LM = \{x:\real{}/\mathbb{Z} \to M: x \; \text{é solução contrátil das equações de Hamilton} \}$. Ao adotarmos a topologia $C^{2}$ para o espaço $LM$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}LM$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
+	\end{definicao}	
 	
 	\begin{definicao}
 		(Condição de aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
@@ -469,18 +475,18 @@
 		$$
 	\end{definicao}
 	
-	\begin{teorema}
-		(Número de pontos críticos de Floer) Suponha a condição de aesfericidade e que $x \in P_{0}$ seja não-degenerada, então o número mínimo de soluções é dado pela soma dos número de Betti de $M$.
-	\end{teorema}
+	\textbf{Motivação da conjectura:} Os pontos fixos da aplicação $\psi_{1}$ estão relacionado injetivamente com as soluções 1-periódicas do sistema hamiltoniana. Assim, a conjectura de Arnold afirma que, para os casos de não-degenerecência, o número de soluções 1-periódicas do sistema hamiltoniano deve ser limitado inferiormente pela soma dos números de Betti da variedade $M$. Tal conjectura, do mesmo modo que o Teorema de Poincaré-Hopf, esta relacionada com Teoria de Morse da seguinte forma: a hipótese de não-degenerecência das soluções do sistema hamiltoniano implicam que a função de hamilton $H: M \times \real{} \to \real{}$ seja uma função de Morse. Algumas particularizações da conjectura foram demonstradas por primeiramente para superfícies Riemannianas e, posteriormente, para 2n-toro por Conley e Zehnder, sendo que, em sua forma um pouco mais geral, foi utilizada a hipótese $\pi_{2}(M)=0$, o que é equivalente a hipótese da aesfericidade.
 	
-	\begin{definicao}
-		(Espaço de loops contráteis) Denotamos $LM = \{\gamma:S^{1} \to M: \gamma \; \text{são contínuas} \}$ e $L_{0}M \subset LM$ o espaço dos loops contráteis. Ao adotarmos a topologia $C^{2}$ para o espaço $L_{0}M$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}L_{0}M$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
-	\end{definicao}
-	O espaço das soluções contráteis $P_{0}$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:L_{0}M \to \real{}$, dado por
+	\textbf{Conjectura de Arnold:} Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
+	$$
+	\#LM \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
+	$$
+	
+	O espaço das soluções contráteis $LM$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:LM \to \real{}$, dado por
 	$$
 	f_{H}(\gamma) = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
 	$$
-	onde $D^{2} \subset \mathbb{C}$ e $u(e^{i2\pi t}) = \gamma(t)$. Vamos agora determinar o gradiente do funcional $df_{H}: TL_{0}M \to \real{}$. Sejam $\tilde{\gamma}:[0,1] \times S^{1} \to M$  e $\tilde{u}:[0,1] \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \dparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
+	onde $D^{2} \subset \mathbb{C}$ e $u(e^{i2\pi t}) = \gamma(t)$. Vamos agora determinar o gradiente do funcional $df_{H}: TLM \to \real{}$. Sejam $\tilde{\gamma}:[0,1] \times S^{1} \to M$  e $\tilde{u}:[0,1] \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \dparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
 	$$
 	f_{H}(\tilde{\gamma}) = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{\gamma}(s,t))dt.
 	$$
@@ -509,17 +515,17 @@
 	$$
 	df_{H}(\gamma)(\xi) = \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)dt.
 	$$
-	De onde segue-se que $df_{H}(\gamma) = 0 \iff \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)=0\; \forall \xi \in T_{\gamma}L_{0}M$, que pela não-degenerecência de $\omega$ temos que $df_{H}(\gamma) = 0 \iff \dot{\gamma}(t) - X(\gamma(t), t)=0$, isto é, $\gamma \in P_{0}$ é uma solução null-homotópica das equações de hamilton.
+	De onde segue-se que $df_{H}(\gamma) = 0 \iff \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)=0\; \forall \xi \in T_{\gamma}LM$, que pela não-degenerecência de $\omega$ temos que $df_{H}(\gamma) = 0 \iff \dot{\gamma}(t) - X(\gamma(t), t)=0$, isto é, $\gamma \in LM$ é uma solução null-homotópica das equações de hamilton.
 
 	Em geometria Riemanniana definimos o gradiente de uma função suave $f:M \to \real{}$ como sendo o campo $\nabla f(p) \in T_{p}M$ tal que $df(p)(v) = \iprod{ \nabla f(p)}{v}\; \forall v \in T_{p}M$. Note que temos a dependência da métrica riemanniana nessa definição. Construiremos o conceito de gradiente do funcional $f_{H}$, para isso, definamos uma estrutura quase-complexa em $M$ por $J \in C^{\infty}(End(TM))$ tais que $J^{2} = -Id$, então temos a métrica riemanniana associada a $\omega$, isto é,
 	$$
 	g(X, Y)= \omega(X, J(x)Y), \; X,Y \in T_{x}M,
 	$$
-	o que induzirá uma métrica em $L_{0}M$. Assim, dado $\gamma \in L_{0}M$ teremos a métrica nos espaço dos loops contráteis
+	o que induzirá uma métrica em $LM$. Assim, dado $\gamma \in LM$ teremos a métrica nos espaço dos loops contráteis
 	$$
-	\iprod{\alpha}{\beta}_{\gamma} = \int_{[0,1]}g(\alpha(t), \beta(t))dt, \; \alpha, \beta \in T_{\gamma}L_{0}M.
+	\iprod{\alpha}{\beta}_{\gamma} = \int_{[0,1]}g(\alpha(t), \beta(t))dt, \; \alpha, \beta \in T_{\gamma}LM.
 	$$
-	Se $f: L_{0}M \to \real{}$ é uma função diferenciável, então seu campo gradiente será dado por 
+	Se $f: LM \to \real{}$ é uma função diferenciável, então seu campo gradiente será dado por 
 	$$
 	\begin{aligned}
 	df(\gamma)(\xi) &= \iprod{\nabla f(\gamma)}{\xi}_{\gamma} = \int_{[0,1]}g(\nabla f(\gamma(t)), \xi(\gamma(t)))dt
@@ -542,4 +548,68 @@
 	$$
 	\nabla f(\gamma) = J(\gamma(t))\dot{\gamma}(t) - J(\gamma(t)) X(\gamma(t)) =J_{\gamma(t)}\dot{\gamma}(t) + \nabla_{\gamma(t)}H(\gamma(t), t).  
 	$$
+	As linhas do fluxo gradiente do funcional $f_{H}$ serão dadas pela aplicação suave $u : \real{} \times S^{1} \to M$ satisfazendo o problema de valor inicial:
+	$$
+	\dparcial{u}{s}(s,t) = -\nabla f(\gamma(t)), \; u(0,t) = \gamma(t).
+	$$
+	Que substituindo essa relação na expressao do gradiente do funcional:
+	$$
+	\dparcial{u}{s}(s,t) + J_{u(s,t)}\dparcial{u}{t}(s,t) + \nabla_{u(s,t)}H(u(s,t))=0, 
+	$$
+	que é chamada de equação de Floer. Contudo, esse problema não esta bem-definido com um problema de Cauchy, além disso, qualquer ponto crítico de $f_{H}$ tem seu índice de Morse infinito.
+	
+	\textbf{Observação:} no estudo dos pontos críticos do funcional $f_{H}$ encontra-se a dificuldade de se determinar que o princípio variacional possui uma cota inferior ou superior. Além disso, a hessiana do funcional pode ter um subespaço de dimensão infinita tanto para os casos de autovalores negativos quanto positivos, impossibilitando a realização da teoria de Morse. Por fim, \vermelho{a determinação do gradiente do funcional também não esta bem-definida, já que não esta bem posto como um problema de Cauchy.}
+	
+	Sejam $y, x\in LM$ e defina $\mathcal{M}(y, x)$ como sendo o espaço das órbitas conectantes com respeito ao fluxo gradiente de $f_{H}$. Essas são soluções da equação de Floer com a seguinte condição de contorno \vermelho{(estamos supondo que as mesmas existem)}
+	$$
+	\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t). 
+	$$
+	
+	Seja o funcional energia por
+	$$
+	E(u) = \frac{1}{2}\int_{\real{}} \int_{S{^{1}}} \bigmodulo{\dparcial{u}{s}}^{2} + \bigmodulo{\dparcial{u}{t} - X_{H}(u,t)}^{2}dsdt
+	$$
+	vamos definir $
+	\mathcal{M} = \{u \in \mathcal{M}(y,x):y,x \in LM,\; |E(u)| < \infty, \; u \sim p \in M\}
+	$ como sendo o espaço das soluções limitadas da equação de Floer, e vamos utilizar características desse conjunto para construir um conceito de índice dos pontos críticos do funcional $f_{H}$.
+	
+	\begin{lema}
+		(Floer) $\mathcal{M} = \bigcup \mathcal{M}(y,x)$, onde a união dos pares $y,x \in LM$, além disso, supondo a condição de aesfericidade, $\mathcal{M}$ será compacta.
+	\end{lema}
+	
+	O lema abaixo é equivalente as condições de transversalidade em teoria finita de Morse, isto é, dada um função de Morse, o subconjunto de funções de Morse-Smale é um conjunto denso.
+	
+	\begin{lema}
+		(Floer) Suponha que as soluções do sistema hamiltoniano sejam não-degenerados, então exite um conjunto denso $J_{reg} \subset C^{\infty}(End(TM))$ de estruturas quase-complexas tais que dado $J \in J_{reg}$ e cada par $y,x \in LM$ o espaço $\mathcal{M}(y,x)$ é uma variedade de dimensão finita.
+	\end{lema}
+	
+	\textbf{Observação:} o lema acima afirma que, dada uma métrica gerada pelo par $\omega$ e J, teremos um conjunto denso de métricas geradas por outras estruturas complexas. Como o gradiente $\nabla f_{H}$ depende da métrica que adotamos então, como consequencia do lema, dado um gradiente sempre conseguimos construir um outro gradiente suficientemente proximo.
+	
+	A estratéria dada por Floer para a demonstração desse lema 
+	é a utilização de operadores diferenciais lineares  definidos por 
+	$$
+	F_{u} \xi = \nabla_{s}\xi+J(u)(\nabla_{t}\xi - \nabla_{s}X_{H}(u,t))+\nabla_{\xi}J(u)\Big(\dparcial{u}{t}-X_{H}(u,t)\Big),
+	$$
+	onde $\xi \in C^{\infty}(u^{*}TM)$, $u \in \mathcal{M}$ e $\nabla$ é a conexão riemanniana definida pela métrica anterior. Sendo que sua forma adjunta, de acordo com a mesma métrica, será dada por:
+	$$
+	F_{u}^{*} \beta = -\nabla_{s}\beta+J(u)(\nabla_{t}\beta - \nabla_{s}X_{H}(u,t))+\nabla_{\beta}J(u)\Big(\dparcial{u}{t}-X_{H}(u,t)\Big).
+	$$
+	Podemos então definir 	os campos vetorias de quadrado integrável localmente como sendo a solução fraca da equação $F_{u}\xi = \beta$ se 
+	$$
+	\int_{\real{}} \int_{S{^{1}}} \iprod{F_{u}^{*}\beta}{\xi} dsdt= 
+	\int_{\real{}} \int_{S{^{1}}} \iprod{\beta}{F_{u}\xi} dsdt.
+	$$
+	Defininindo o espaço de Hilbert $L^{2}(u) = \{\xi \in u^{*}TM: \int_{\real{}} \int_{S{^{1}}}|\xi|^{2} dsdt < \infty\}$ e o espaço $W^{1,2}(u) = \{\xi \in L^{2}(u):\nabla_{s} \xi,\nabla_{t} \xi \in L^{2}(u) \}$, podemos ver que $F_{u}: W^{1,2}(u) \to L^{2}(u)$ é um operador linear. \vermelho{Então a regularidade local dos operadores elípticos nos fornece a seguinte estimativa:}
+	
+	\begin{definicao}
+		$L^{2}_{loc} = \{\xi \in u^{*}TM: \int_{K} |\xi(s,t)|^{2}dsdt <\infty, \; \text{compacto K} \subseteq M \}$ é é o conjunto de todos os campos vetoriais de quadrado integrável localmente.
+	\end{definicao}
+	
+	\begin{lema}
+		Sejam $\xi, \beta \in L^{2}_{loc}$, então $\nabla_{s}\xi, \nabla_{s}\xi \in L^{2}_{loc}$ (no sentido distribucional) e além disso
+		$$
+		\int_{-T}^{T}\int_{S^{1}}(|\xi|^{2}+|\nabla_{s}\xi|^{2}+|\nabla_{t}\xi|^{2})dsdt \leq c \int_{-T}^{T}\int_{S^{1}}(|\xi|^{2}+|F_{u}\xi|^{2})dsdt,
+		$$
+		onde c depende do parâmetro T e não de $\xi$.
+	\end{lema}
 \end{document}
