@@ -49,6 +49,7 @@
 \newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
+\newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
@@ -60,6 +61,7 @@
 \newcommand{\suavefunc}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\vermelho}[1]{{\color{red}#1}}
 \newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
+\newcommand{\bigparenteses}[1]{\big( #1 \big) }
 \begin{document}
 	
 	\title{Homologia de Morse}
@@ -464,6 +466,23 @@
 		As soluções dessa equação geram uma família de simpléctomorfismos a 1-parametro tal que $\psi_{t}(x(0)) = x(t)$.
 	\end{definicao}
 	
+	\begin{lema}
+		O fluxo hamiltoniano preserva a forma simpléctica.
+	\end{lema}
+	\begin{prova}\label{fluxo_convervativo}
+			$$
+			\begin{aligned}
+			\frac{d}{dt}\bigparenteses{(\psi_{t})^{*}\omega} 
+			&= (\psi_{t})^{*} \liederivada{X_{H}}\omega  
+			\\
+			&= (\psi_{t})^{*} di_{X_{H}}\omega 
+			\\
+			&= (\psi_{t})^{*} (-ddH)=0,
+			\end{aligned}
+			$$
+			logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
+	\end{prova}
+	
 	\begin{definicao}
 		(Espaço das soluções contráteis e periódicas) Denotamos $LM = \{x:\real{}/\mathbb{Z} \to M: x \; \text{é solução contrátil das equações de Hamilton} \}$. Ao adotarmos a topologia $C^{2}$ para o espaço $LM$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}LM$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
 	\end{definicao}	
@@ -659,4 +678,25 @@
 		HF_{*}(M,\mathbb{Z}_{2};H,J) \cong H_{*}(M;\mathbb{Z}_{2}). 
 		$$
 	\end{teorema}
+	
+	\section{Índice de Maslov}
+	\begin{definicao}
+		(Grupo simpléctico) Seja $(V,\omega)$ um espaço vetorial simpléctico 2n-dimensional, então o grupo simpléctico de $V$ é denotado por $Sp(2n) = \{g \in GL(2n) : \omega(gX, gY) = \omega(X, Y), \; X,Y \in V \}$. 
+	\end{definicao}
+	
+	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $(\psi_{t})_{*}$ como sendo o diferencial de $\psi_{t}$, teremos
+	$$
+	\omega((\psi_{t})_{*}X, (\psi_{t})_{*}Y)=(\psi_{t})^{*}\omega(X,Y) = \omega(X,Y),
+	$$
+	portanto, $(\psi_{t})^{*} \in Sp(2n)$. Como $\psi_{t}$ é um difeomorfismo, então temos uma famíla de bases suaves $e(t)$ de $T_{x(t)}M$ para cada $t \in \real{}$.
+	
+	Denotando a aplicação $A:\real{} \to Sp(2n)$ como sendo a matriz do diferencial $(\psi_{t})_{*}$, então $A$ é uma curva suave tal que tal que $A(0) = Id$ e $det(Id-A(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
+	
+	Sejam $Sp(2n)^{*} = \{A\in Sp(2n): det(Id-A) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$, então podemos afirmar que as matrizes $A(t), A'(t)$ associadas a essas bases, respectivamente, são homotópicas. Tome $u,v : D^{2} \subset \mathbb{C}^{n} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. \vermelho{Sabe-se que, dada uma aplicação contínua $f: D^{2} \to M$, o fibrado simpléctico $f^{*}TM$ pode ser trivializado e todas as suas trivializações são homotópicas. A equivalência homotópica entre as trivializações seguse do fato de que duas trivializações podem ser associadas a uma aplicação $f:D^{k} \to Sp(2n) $ e do fato que $Sp(2n)$ é conexo por caminhos.}
+	
+	Desse modo, também pode-se mostrar que 
+	
+	Desse modo podemos ver que, por construção, pode-se mostrar que existe uma aplicação contínua $h: D^{2} \times [0,1]\to M$ tal que $h(p, 0) = u(p)$, $h(p, 1) = v(p)$  e $h(\partial D^{2}, t) = x$, que é uma colagem uma colagem das extensões, isto é, uma homotopia entre $u$ e $v$. Conclusão, 
+	
+	 
 \end{document}
