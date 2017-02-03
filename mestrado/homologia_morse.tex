@@ -692,11 +692,49 @@
 	
 	Denotando a aplicação $A:\real{} \to Sp(2n)$ como sendo a matriz do diferencial $(\psi_{t})_{*}$, então $A$ é uma curva suave tal que tal que $A(0) = Id$ e $det(Id-A(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
 	
-	Sejam $Sp(2n)^{*} = \{A\in Sp(2n): det(Id-A) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$, então podemos afirmar que as matrizes $A(t), A'(t)$ associadas a essas bases, respectivamente, são homotópicas. Tome $u,v : D^{2} \subset \mathbb{C}^{n} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. \vermelho{Sabe-se que, dada uma aplicação contínua $f: D^{2} \to M$, o fibrado simpléctico $f^{*}TM$ pode ser trivializado e todas as suas trivializações são homotópicas. A equivalência homotópica entre as trivializações seguse do fato de que duas trivializações podem ser associadas a uma aplicação $f:D^{k} \to Sp(2n) $ e do fato que $Sp(2n)$ é conexo por caminhos.}
+	Sejam $Sp(2n)^{*} = \{A\in Sp(2n): det(Id-A) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C}^{n} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. \vermelho{Sabe-se que, dada uma aplicação contínua $f: D^{k} \to M$, o fibrado simpléctico $f^{*}TM$ pode ser trivializado e todas as suas trivializações são homotópicas. A equivalência homotópica entre as trivializações seguse do fato de que duas trivializações podem ser associadas a uma aplicação $g:D^{k} \to Sp(2n) $ e do fato que $Sp(2n)$ é conexo por caminhos.}
 	
-	Desse modo, também pode-se mostrar que 
+	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$, e aplicando o fato mencionado anteriormente para as extensões $u, v$ de $x$, podemos afirmar que $u^{*}TM$ e $v^{*}TM$ são fibrados simpécticos triviais, assim, as matrizes $A(t), A'(t)$ associadas a essas bases, respectivamente, são homotópicas em $\mathcal{S}$. Portanto, o caminho $A \in \mathcal{S}$ assosiado a solução não-degenerada do sistema hamiltoniano $x(t)$ é única, a menos de uma homotopia.
 	
-	Desse modo podemos ver que, por construção, pode-se mostrar que existe uma aplicação contínua $h: D^{2} \times [0,1]\to M$ tal que $h(p, 0) = u(p)$, $h(p, 1) = v(p)$  e $h(\partial D^{2}, t) = x$, que é uma colagem uma colagem das extensões, isto é, uma homotopia entre $u$ e $v$. Conclusão, 
+	O seguinte resultado será utlizado nas demais construções do índice de Maslov.
 	
-	 
+	\begin{teorema}
+		Para cada $n \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
+		\begin{enumerate}
+			\item Naturalidade: se $A, T \in Sp(2n)$, então 
+			$$\rho(TAT^{-1}) = \rho(A).$$
+			\item Produto: Se $A\in Sp(2m)$ e $B\in Sp(2n)$, então
+			$$
+			\rho
+			\begin{pmatrix} 
+				A & 0 
+				\\ 
+				0 & B
+			\end{pmatrix}
+			= \rho(A)\rho(B).
+			$$
+			\item Deteminante: Se $A \in U(n) = Sp(2n) \bigcap O(2n)$, então
+			$$
+			\rho(A) = det_{\mathbb{C}}(X+iY), \; \text{onde} \; A = 
+			\begin{pmatrix} 
+			X & -Y 
+			\\ 
+			Y & X
+			\end{pmatrix}.
+			$$ 
+			Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \mathbb{Z}.$
+			\item Normalização: Se $Spec(A) \subset \real{}$, então
+			$$
+			\rho(A) = (-1)^{m_{0}/2},
+			$$
+			onde $m_{0}$ é a multiplicidade dos auto-valores reais negativos.
+			\item $\rho(A^{t}) = \rho(A^{-1}) = \overline{\rho(A)}$.
+		\end{enumerate}
+	\end{teorema}
+	
+	Vejamos que $Sp(2n)^{*} \subset Sp(2n)$ é um subconjunto aberto, e que $\Sigma = \{A\in Sp(2n): det(Id-A)=0\} = Sp(2n)\backslash Sp(2n)^{*}$ é um conjunto fechado, além disso $Sp(2n)^{*} = Sp^{+}\cup Sp^{-}$ onde $Sp^{+}=\{A\in Sp(2n)^{*}: det(Id-A)>0\} $ e $Sp^{-}=\{A\in Sp(2n)^{*}: det(Id-A)<0\}$ são ambos subconjutos abertos, portanto $Sp(2n)^{*}$ é disconexo. O resultado abaixo nos diz um pouco da topologia de $Sp(2n)^{*}$:
+	
+	\begin{lema}
+		O conjunto aberto $Sp(2n)^{*}$ possui duas compenentes conexas, além disso, a inclusão de cada uma dessas componentes em $Sp(2n)$ induz o homomorsfismo trivial entre seus grupos fundamentais.
+	\end{lema}
 \end{document}
