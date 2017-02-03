@@ -19,6 +19,7 @@
 \usepackage[all,cmtip]{xy}
 
 \newtheorem{teorema}{Teorema}[section]
+\newtheorem{corolario}[teorema]{Corolário}
 \newtheorem{lema}[teorema]{Lema}
 \newtheorem{definicao}[teorema]{Definição}
 \newtheorem{exemplo}[teorema]{Exemplo}
@@ -737,4 +738,44 @@
 	\begin{lema}
 		O conjunto aberto $Sp(2n)^{*}$ possui duas compenentes conexas, além disso, a inclusão de cada uma dessas componentes em $Sp(2n)$ induz o homomorsfismo trivial entre seus grupos fundamentais.
 	\end{lema}
+	
+	\begin{definicao}
+		(Índice de Maslov de uma curva) Fixemos as matrizes $W^{\pm} \in Sp^{\pm}$ e para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]
+			\\
+			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		e definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Seja $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ (sua homotopia esta bem-definida) com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $r(\gamma_{A}) \in \real{}$ fixo.
+		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
+		$$
+		\mu(\psi) = \varDelta(\psi) - r(A).
+		$$
+		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
+	\end{definicao}
+	
+	O teorema e corolário abaixo nos oferece uma mecânismo de cálculo para o índice de Maslov na aplicação do formalismo.
+	
+	\begin{teorema}
+		Fixando $W^{\pm} \in Sp^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
+		\begin{enumerate}
+			\item $\mu(\psi) \in \mathbb{Z}$.
+			\item Duas curvas $\alpha, \beta \in \mathcal{S}$ são homotópicas se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+			\item Se $S \in GL(2n)$ (é invertível), com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(tJ_{0}S)$, então 
+			$$
+			\mu(\psi) = Ind(S) - n,
+			$$
+			onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
+		\end{enumerate}
+	\end{teorema}
+	
+	\begin{corolario}
+		Sejam $(M, \omega)$ uma 2n-variedade simpléctica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$, com $Ind(x)$ seu índice como ponto crítico da função $H$, é dado por:
+		$$
+		\mu(x) = Ind(x) - n.
+		$$
+	\end{corolario}
 \end{document}
