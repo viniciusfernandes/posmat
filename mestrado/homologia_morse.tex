@@ -440,13 +440,42 @@
 	
 	
 	\chapter{Homologia de Floer}
-	\section{Variedades simpléticas}
+	\section{Espaços Simplécticos}
 	\begin{definicao}
-		(Variedade Simplética) Uma variedade simplética de dimensão 2m é o par $(M, \omega)$ onde $M$ é uma 2m-variedade diferenciável e $\omega \in \Omega^{2}(M^{m})$ é uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$ e para cada $p \in M$ temos que $(T_{p}M, \omega_{p})$ é um espaço vetorial simpletico. Cada $x = (q_{1}, \dots, q_{m}, p_{1}, \dots, p_{m}) \in M$  será abreviado pelo par $(q,p)$.
+		(Espaço vetorial simpléctico) Sejam $V$ um espaço vetorial 2n-dimensional real e $\omega \in \Lambda^{2}(V, \real{})$ não-degenerada (ou forma simplética), isto é, $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. O par $(V, \omega)$ é chamado de espaço vetorial simpléctico.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Base simplética) Seja $(V, \omega)$ um espço vetorial simplético 2n-dimensional, então uma base simplética é uma base $\{ e_{1},\dots, e_{1},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
+		$$
+		\omega(e_{i}, e_{j}) = \omega(f_{i}, f_{j}) = 0, \; \omega(e_{i}, f_{j}) = \delta_{ij}.
+		$$
 	\end{definicao}
 	
 	\begin{definicao}
 		Um simplectomorfismo é um difeomorfismo $\psi \in Diff(M)$ tal que $\psi^{*}\omega = \omega$, isto é, uma aplicação que preserva a forma simplética.
+	\end{definicao}
+	
+	\begin{teorema}
+		\vermelho{Todo espaço vetorial simpético de dimensão finita possui uma base simplética.}
+	\end{teorema}
+	
+	\begin{definicao}
+		(Simpléctomorfismo) Dois espaços vetoriais simpléticos $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ são ditos simpléctomorfos se existe um isomorfismo $\varphi:V\to W$ que preseva a forma simplética, isto é, $\varphi^{*}\omega_{2} = \omega_{1}$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Estrutura complexa) Dizemos que $J: V \to V$, onde $J^{2} = -Id$, é uma estrutura complexa compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$.
+	\end{definicao}
+	
+	\begin{teorema}
+		\vermelho{
+			Seja $(V, \omega)$ um espaço vetorial simplético, então cada produto interno $g$ em $V$ define uma estrutura complexa $\omega$-compatível.}
+	\end{teorema}
+	
+	\section{Variedades simpléticas}
+	\begin{definicao}
+		(Variedade Simplética) Uma variedade simplética de dimensão 2m é o par $(M, \omega)$ onde $M$ é uma 2m-variedade diferenciável e $\omega \in \Omega^{2}(M^{m})$ é uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$ e para cada $p \in M$ temos que $(T_{p}M, \omega_{p})$ é um espaço vetorial simpletico. Cada $x = (q_{1}, \dots, q_{m}, p_{1}, \dots, p_{m}) \in M$  será abreviado pelo par $(q,p)$.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -773,7 +802,7 @@
 	\end{teorema}
 	
 	\begin{corolario}
-		Sejam $(M, \omega)$ uma 2n-variedade simpléctica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$, com $Ind(x)$ seu índice como ponto crítico da função $H$, é dado por:
+		Sejam $(M, \omega)$ uma 2n-variedade simpléctica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$, pode ser relacionado o o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
 		$$
 		\mu(x) = Ind(x) - n.
 		$$
