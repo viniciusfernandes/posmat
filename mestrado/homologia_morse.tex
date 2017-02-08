@@ -401,20 +401,6 @@
 		$$
 	\end{exemplo}	
 	
-	\tese{Homologia do n-plano projetivo real}{$\homologia{*}{\realprojetivo{n}}$}{
-	Para $n=0$ temos que $\realprojetivo{0} = \{\classe{p}\}$, para um determinado $p \in \real{}$. Já para $n=1$, sabemos que existe um homeomorfismo $\realprojetivo{1} \approx S^{1}_{\sim}$ onde $S^{1}_{\sim} = \{\classe{p}: p \in S^{1},\; p \sim -p\}$, contudo, notemos que o conjunto $E^{1} = \{p \in S^{1}: p = (x, 0)\}$ serão levados em um único ponto realizarmos a identificação, isto é, $E^{1}_{\sim} = \{\classe{p_{0}}\}$, onde $p_{0} = (1,0)$, sem perda de generalidade. Por outro lado, essa identificação contém uma estrutura de CW-complexo, pois $S^{1}_{\sim}$ é o mesmo que anexar uma $1-$célula a um ponto, isto é, $S^{1}_{\sim} \approx \{p_{0}\} \cup_{f_{1}}D^{1}$, mas como $\realprojetivo{0} =\{\classe{p}\} \approx p_{0} \Rightarrow S^{1}_{\sim} \approx \realprojetivo{0} \cup_{f_{1\partial}}D^{1}$, logo $\realprojetivo{1} \approx \realprojetivo{0} \cup_{f_{1}}D^{1}$. Repetindo o procedimento anterior para $\realprojetivo{n} \approx S^{n}_{\sim} $, $E^{n} = \{p \in S^{n}: p = (x_{1}, \dots, x_{n}, 0)\}$ e $E^{n}_{\sim} = \{\classe{p_{0}}\}$, onde $p_{0} = (1,0,\dots, 0)$, teremos $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f_{n\partial}}D^{n}$. Assim, temos a estrutura de CW-complexo $\realprojetivo{j-1} \subseteq \realprojetivo{j}$  e $\realprojetivo{j} = \skeleton{j} \approx \skeleton{j-1}\cup_{f_{j\partial}}D^{j}$ para $1\leq j \leq n$. Calculando a homologia:
-	$$
-	\begin{aligned}
-	\homologia{0}{\realprojetivo{n}} &\cong \homologiarelskelesimpl{0}{0} \cong \Lambda
-	\\
-	\homologia{1}{\realprojetivo{n}} &\cong \homologiarelskelesimpl{1}{1} \cong \Lambda
-	\\
-	\vdots
-	\\
-	\homologia{n}{\realprojetivo{n}} &\cong \homologiarelskelesimpl{n}{n} \cong \Lambda.
-	\end{aligned}
-	$$
-	}
 	\chapter{Teoria de Morse}
 	\section{Pontos Críticos}
 	
@@ -481,9 +467,11 @@
 	
 	
 	\chapter{Homologia de Floer}
-	\section{Espaços Simplécticos}
+	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia. Imaginemos que tenhamos agora uma variedade simplética $M$ e um difeomorfismo $\psi:M\to M$ que preserva a estrutura simplética (veremos adiante o que isso significa). Na tentativa de se investigar os pontos fixos desse difeomorfismo e enumerá-los surge a conjectura de Arnold. Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a de Morse clássica deparou-se com índices de Morse e variedades infinitos.
+	 
+	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
-		(Espaço vetorial simpléctico) Sejam $V$ um espaço vetorial 2n-dimensional real e $\omega \in \Lambda^{2}(V, \real{})$ não-degenerada (ou forma simplética), isto é, $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. O par $(V, \omega)$ é chamado de espaço vetorial simpléctico.
+		(Espaço vetorial simplético) Sejam $V$ um espaço vetorial 2n-dimensional real e $\omega \in \Lambda^{2}(V, \real{})$ não-degenerada (ou forma simplética), isto é, $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. O par $(V, \omega)$ é chamado de espaço vetorial simplético.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -567,10 +555,13 @@
 	
 	\textbf{Motivação da conjectura:} Os pontos fixos da aplicação $\psi_{1}$ estão relacionado injetivamente com as soluções 1-periódicas do sistema hamiltoniana. Assim, a conjectura de Arnold afirma que, para os casos de não-degenerecência, o número de soluções 1-periódicas do sistema hamiltoniano deve ser limitado inferiormente pela soma dos números de Betti da variedade $M$. Tal conjectura, do mesmo modo que o Teorema de Poincaré-Hopf, esta relacionada com Teoria de Morse da seguinte forma: a hipótese de não-degenerecência das soluções do sistema hamiltoniano implicam que a função de hamilton $H: M \times \real{} \to \real{}$ seja uma função de Morse. Algumas particularizações da conjectura foram demonstradas por primeiramente para superfícies Riemannianas e, posteriormente, para 2n-toro por Conley e Zehnder, sendo que, em sua forma um pouco mais geral, foi utilizada a hipótese $\pi_{2}(M)=0$, o que é equivalente a hipótese da aesfericidade.
 	
-	\textbf{Conjectura de Arnold:} Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
-	$$
-	\#LM \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
-	$$
+	\begin{teorema}
+		(Conjectura de Arnold) 
+		Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
+		$$
+		\#LM \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
+		$$
+	\end{teorema}
 	
 	O espaço das soluções contráteis $LM$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:LM \to \real{}$, dado por
 	$$
@@ -752,7 +743,7 @@
 	
 	\section{Índice de Maslov}
 	\begin{definicao}
-		(Grupo simpléctico) Seja $(V,\omega)$ um espaço vetorial simpléctico 2n-dimensional, então o grupo simpléctico de $V$ é denotado por $Sp(2n) = \{g \in GL(2n) : \omega(gX, gY) = \omega(X, Y), \; X,Y \in V \}$. 
+		(Grupo simplético) Seja $(V,\omega)$ um espaço vetorial simplético 2n-dimensional, então o grupo simplético de $V$ é denotado por $Sp(2n) = \{g \in GL(2n) : \omega(gX, gY) = \omega(X, Y), \; X,Y \in V \}$. 
 	\end{definicao}
 	
 	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $(\psi_{t})_{*}$ como sendo o diferencial de $\psi_{t}$, teremos
@@ -763,9 +754,9 @@
 	
 	Denotando a aplicação $A:\real{} \to Sp(2n)$ como sendo a matriz do diferencial $(\psi_{t})_{*}$, então $A$ é uma curva suave tal que tal que $A(0) = Id$ e $det(Id-A(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
 	
-	Sejam $Sp(2n)^{*} = \{A\in Sp(2n): det(Id-A) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C}^{n} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. \vermelho{Sabe-se que, dada uma aplicação contínua $f: D^{k} \to M$, o fibrado simpléctico $f^{*}TM$ pode ser trivializado e todas as suas trivializações são homotópicas. A equivalência homotópica entre as trivializações seguse do fato de que duas trivializações podem ser associadas a uma aplicação $g:D^{k} \to Sp(2n) $ e do fato que $Sp(2n)$ é conexo por caminhos.}
+	Sejam $Sp(2n)^{*} = \{A\in Sp(2n): det(Id-A) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C}^{n} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. \vermelho{Sabe-se que, dada uma aplicação contínua $f: D^{k} \to M$, o fibrado simplético $f^{*}TM$ pode ser trivializado e todas as suas trivializações são homotópicas. A equivalência homotópica entre as trivializações seguse do fato de que duas trivializações podem ser associadas a uma aplicação $g:D^{k} \to Sp(2n) $ e do fato que $Sp(2n)$ é conexo por caminhos.}
 	
-	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$, e aplicando o fato mencionado anteriormente para as extensões $u, v$ de $x$, podemos afirmar que $u^{*}TM$ e $v^{*}TM$ são fibrados simpécticos triviais, assim, as matrizes $A(t), A'(t)$ associadas a essas bases, respectivamente, são homotópicas em $\mathcal{S}$. Portanto, o caminho $A \in \mathcal{S}$ assosiado a solução não-degenerada do sistema hamiltoniano $x(t)$ é única, a menos de uma homotopia.
+	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$, e aplicando o fato mencionado anteriormente para as extensões $u, v$ de $x$, podemos afirmar que $u^{*}TM$ e $v^{*}TM$ são fibrados simpléticos triviais, assim, as matrizes $A(t), A'(t)$ associadas a essas bases, respectivamente, são homotópicas em $\mathcal{S}$. Portanto, o caminho $A \in \mathcal{S}$ assosiado a solução não-degenerada do sistema hamiltoniano $x(t)$ é única, a menos de uma homotopia.
 	
 	O seguinte resultado será utlizado nas demais construções do índice de Maslov.
 	
