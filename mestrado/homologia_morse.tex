@@ -74,7 +74,36 @@
 	\tableofcontents
 	
 	\chapter{CW-Homologia}
+	\section{Homologia Formal}
+	Sejam A um anel comutativo com unidade, $C_{k}$ com $k \in \mathbb{Z}$ $A$-módulos e $\partial_{k}: C_{k} \to C_{k-1} $ homomorfismos tais que $\partial_{k-1}\circ\partial_{k} = 0$ (o homomorfismo trivial), então denotamos por complexo de cadeias a sequência $\mathcal{C} = (C_{k}, \partial_{k})$. Cada elemento $\alpha \in C_{k}$ é chamado k-cadeia.
+	
+	\begin{definicao}
+		(A-módulo de homologia) Chamamos o homomorfismo $\partial_{k}: C_{k} \to C_{k-1} $ de operador de bordo. Dados $\alpha \in C_{k}$, $\beta \in C_{k-1}$  é um k-ciclo se $\partial_{k }\alpha=0$ e se $\beta =  \partial_{k }\alpha$ dizemos que $\beta \in C_{k-1}$ é um (k-1)-bordo da k-cadeia $\alpha$. O A-módulo de todos os k-cíclos denotamos por $Z_{p} \subseteq C_{p}$ e o  A-módulo de todos os k-bordos por $B_{p} \subseteq C_{p}$. O A-módulo quociente $H_{k} = Z_{k} / B_{k}$ é chamado grupo de homologia k-dimensional, onde $[\alpha] \in H_{k}$ é tal que $[\alpha] = \{\alpha+\partial_{k+1}\gamma :\gamma \in  C_{k+1}\}$ = $\alpha + B_{k}$. A homologia do complexo de cadeias $\mathcal{C}$ é denotado pela soma formal $H_{*}(\mathcal{C}) = \bigoplus_{k \in \mathbb{Z}} H_{k}(\mathcal{C})$.
+	\end{definicao}
+	
+	A partir desse momento omitiremos a indexação dimensional do operador bordo dos complexos de cadeia, sendo que a dimensão estará implícita no contexto. Sejam $\mathcal{C}, \mathcal{D}$ dois complexos de cadeias, um morfismo $f: \mathcal{C} \to \mathcal{D}$ é uma sequência de homomorfismos $f_{k}: C_{k} \to D_{k}$ tais que $f_{k-1}\circ\partial = \partial\circ f_{k}$, ou seja, comutam com o operador bordo. Uma consequência imediata dessa definição é que $f_{k}(Z_{k}(\mathcal{C})) \subseteq Z_{k}(\mathcal{D})$ e $f_{k}(B_{k}(\mathcal{C})) \subseteq B_{k}(\mathcal{D})$, ou seja, leva ciclos em ciclos e bordos em bordos. Podemos definir na passagem ao quociente o homomorfismo $(f_{k})_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ tal que $(f_{k})_{*}([\alpha]) = [f_{k}(\alpha)]$, que por brevidade denotaremos $f_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ o homomorfismo induzido pelos morfismos de cadeias.
+	
+	\begin{definicao}
+		(Sequências exatas) Seja $(M_{k}, f_{k})$ uma sequência de $A$-módulos e homomorfismos $f_{k}:M_{k}\to M_{k-1}$. Diremos que essa sequência é exata quando $Im(f_{k})=Ker(f_{k-1}) \; \forall k \in \mathbb{Z}$.
+	\end{definicao}
+	
+	Seja $(M_{k}, f_{k})$ uma sequência exata, e tomemos um $k \in \mathbb{Z}$. Por definição $Im(f_{k}) = Ker(f_{k-1})$ e suponha que $f_{k-1}$ seja injetivo, então $Ker(f_{k-1}) = 0$ e $Im(f_{k}) = 0$, portanto $f_{k} = 0$. Por outro lado, suponha que $f_{k}$ seja sobrejetor, então $Im(f_{k}) = M_{k-1}$ e $Ker(f_{k-1})=M_{k-1}$, portanto $f_{k-1} = 0$. Usaremos essa caracterização em alguns resultados adiante.
+	
 	\section{Homologia singular}
+	Para as próximas definições denotaresmo $X$ como um espaço topológico e $A$ um anel, então:
+	\begin{definicao}
+		(Simplexo singular) Denotaremos por $\Delta_{k}$ o simplexo k-dimesional cujos vertices $e_{0}, \dots, e_{k}$ formam um base canônica de $\real{k+1}$ de modo que $\Delta_{k} = \{(x_{0}, \dots, x_{k}) \in \real{k+1}: x_{j}\geq 0, \;\sum_{j}x_{j}=1\}$. Um k-simplexo singular no espaço topológico $X$ é uma aplicação contínua $\sigma:\Delta_{k} \to X$. Denotaremos por $S_{k}(X)$ o A-módulo livre gerado pelos k-cadeias singulares de $X$, consequentemente, seus elementos são as combinações lineares $\alpha = \sum_{\sigma} \alpha_{\sigma}.\sigma $ de k-simplexos singulares $\sigma$ e $\alpha_{\sigma} \in A$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Operador bordo) A i-ésima face do k-simplexo singular $\sigma: \Delta_{k} \to X$ é o (k-1)-simplexo singular $\partial_{i}\sigma:\Delta_{k-1} \to X$ onde $\partial_{i}\sigma = \sigma(t_{0}, \dots, t_{i-1},0,t_{i+1}, \dots, t_{k-1})$. O operador bordo é o homomorfismo denotado por $\partial : S_{k} \to S_{k-1}$ onde $\partial\sigma = \sum_{i} (-1)^{i}\partial_{i}\sigma$.
+	\end{definicao}
+	Pode-se mostrar que o operador bordo satisfaz $\partial_{k-1}\circ\partial_{k} = 0$, ou seja, é o homomorfismo trivial. Com isso, podemos definir o complexo singular o espaço $X$ como sendo a sequência $\mathcal{S} = (S_{k}(X), \partial_{k})$. Desse modo teremos os k-clíclos e os (k-1)-bordos tal que, dado $\alpha \in S_{k}$ e $\beta \in S_{k-1}$, se $\partial\alpha = 0$, então $\alpha \in Z_{k}(X)$ (o A-módulo dos k-cíclos) e se $\beta = \partial\alpha$, então $\beta\in B_{k-1}(X)$ (o A-módulo dos (k-1)-bordos).
+	
+	\begin{definicao}
+		(Homologia singular) O grupo de homologia k-dimensional de X é definido por $H_{k}(S(X)) = Z_{k}(S(X))/B_{k}(S(X))$, que por abreviação denotaremos $H_{k}(X)=H_{k}(S(X))$. A homologia do complexo singular de $X$ é definida pela soma formal $H_{*}(X) = \bigoplus_{k \in \mathbb{Z}}H_{k}(X)$.
+	\end{definicao}
+	
 	\begin{definicao}
 		(Sequência da triplas) Sejam $X, Y, Z$ espaços topológicos tais que $Z \subseteq Y \subseteq X$. Então a sequência da tripla $(X,Y,Z)$ é dada por:
 		$$
@@ -86,12 +115,13 @@
 	\end{definicao}
 	
 	\section{CW-Homologia}
+	O conceito de espaço topológico é algo bem genérico, que em muitos casos podem nos levar a dificuldades técnicas na construção de solução de um determinado problema. Um CW-complexo é um tipo de espaço topológico, introduzindo por J. H. C. Whitehead, que a grosso modo, teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sicessivas colagens (identificação) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
 	\begin{definicao}
 		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
  	\end{definicao}
 	
 	\begin{definicao}
-		Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem $\skeleton{n}$ espaços tais com 
+		(CW-complexo) Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem $\skeleton{n}$ espaços tais com 
 		$$
 		\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
 		$$ 
@@ -340,25 +370,36 @@
 		Assim, $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*})$. Mas como $\partial_{k} = \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}$, então $Ker(\delta_{2*}) \cong Ker(\partial_{k})$ e $Im(\delta_{1*}) \cong Im(\partial_{k+1})$, logo $Ker(\delta_{2*})/Im(\delta_{1*}) \cong Ker(\partial_{k})/Im(\partial_{k+1}) = \homologia{k}{\mathcal{C}_{*}}$, logo $\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}}$ que é a equivalência entre as homologias, como desejávamos.
 	\end{proof}
 	
-	\section{Exemplos}
-	\tese{Homologia da n-esfera}{$\homologia{*}{S^{n}}$}{Vamos exibir uma estrutura de CW-complexo para $S^{n}$, para isso tomemos um ponto $p \in S^{n}$ e definindo o $0-$skeleton $\skeleton{0}=\{p\}$, agora anexando uma $n-$célula a $\skeleton{0}$ onde $f_{\partial}: \celulabordo{n}{} \to \skeleton{0}$, isto é, $\skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$. Pelo teorema da CW-homologia temos que $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{k}$, de onde temos apenas $k \in \{0,n\}$, logo $\homologia{0}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \cong \Lambda$, e analogamente, $\homologia{n}{S^{n}} \cong \homologiarelskelesimpl{n}{n} \cong \Lambda$ e $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{j} =0$ caso $k \neq j$, como desejávamos.}
-	
-	\tese{Homologia do 2-toro}{$\homologia{*}{T^{2}}$}{
-	Vamos exibir uma estrutura de CW-complexo para $T^{2}$, para isso tomemos a identificação do toro com o quadrado cujo os lados opostos serão identificados, assim os vertices do quadrado serão um ponto $p \in T^{2}$ e definindo o $0-$skeleton $\skeleton{0} = \{p\}$, agora vamos anexar às faces do quadrado duas $1-$células, isto é, $\skeleton{1} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$, e por fim, cobrir o centro do quandrado anexando um $2-$célula, com isso, $\skeleton{2} = \skeleton{1}\cup_{f_{3\partial}}\celula{2}{3}$, então
-	$$
-	T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}.
-	$$
-	Teremos os grupos de homologia não-triviais:
-	$$
-	\begin{aligned}
-	\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
-	\\
-	\homologia{1}{T^{2}} &\cong \homologiarelskele{1}{1}{0} \cong \somadir{i=1,2}\homologiarelcel{1}{1}{i} \cong \somadir{i=1,2}\Lambda
-	\\
-	\homologia{2}{T^{2}} &\cong \homologiarelskele{2}{2}{1} \cong \Lambda.
-	\end{aligned}
-	$$
-	}
+	\subsection{Exemplos CW-homologia}
+	\begin{exemplo}
+		(Homologia da n-esfera)
+		Vamos exibir uma estrutura de CW-complexo para $S^{n}$, para isso tomemos um ponto $p \in S^{n}$ e definindo o $0-$skeleton $\skeleton{0}=\{p\}$, agora anexando uma $n-$célula a $\skeleton{0}$ onde $f_{\partial}: \celulabordo{n}{} \to \skeleton{0}$, isto é, $\skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$. Pelo teorema da CW-homologia temos que $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{k}$, de onde temos apenas $k \in \{0,n\}$, logo $\homologia{0}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \cong \Lambda$, e analogamente, $\homologia{n}{S^{n}} \cong \homologiarelskelesimpl{n}{n} \cong \Lambda$ e $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{j} =0$ caso $k \neq j$, logo
+		$$
+		\homologia{*}{S^{n}} = \homologia{0}{S^{n}}\oplus\homologia{n}{S^{n}} \cong \Lambda\oplus\Lambda.
+		$$
+	\end{exemplo}
+
+	\begin{exemplo}
+		(Homologia do 2-toro) Vamos exibir uma estrutura de CW-complexo para $T^{2}$, para isso tomemos a identificação do toro com o quadrado cujo os lados opostos serão identificados, assim os vertices do quadrado serão um ponto $p \in T^{2}$ e definindo o $0-$skeleton $\skeleton{0} = \{p\}$, agora vamos anexar às faces do quadrado duas $1-$células, isto é, $\skeleton{1} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$, e por fim, cobrir o centro do quandrado anexando um $2-$célula, com isso, $\skeleton{2} = \skeleton{1}\cup_{f_{3\partial}}\celula{2}{3}$, então
+		$$
+		T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}.
+		$$
+		Teremos os grupos de homologia não-triviais:
+		$$
+		\begin{aligned}
+		\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
+		\\
+		\homologia{1}{T^{2}} &\cong \homologiarelskele{1}{1}{0} \cong \somadir{i=1,2}\homologiarelcel{1}{1}{i} \cong \somadir{i=1,2}\Lambda
+		\\
+		\homologia{2}{T^{2}} &\cong \homologiarelskele{2}{2}{1} \cong \Lambda.
+		\end{aligned}
+		$$
+		Logo,
+		$$
+		\\
+		\homologia{*}{T^{2}} = \homologia{0}{T^{2}}\oplus\homologia{1}{T^{2}} \oplus\homologia{2}{T^{2}}\cong \Lambda\oplus\Lambda\oplus\Lambda\oplus\Lambda.
+		$$
+	\end{exemplo}	
 	
 	\tese{Homologia do n-plano projetivo real}{$\homologia{*}{\realprojetivo{n}}$}{
 	Para $n=0$ temos que $\realprojetivo{0} = \{\classe{p}\}$, para um determinado $p \in \real{}$. Já para $n=1$, sabemos que existe um homeomorfismo $\realprojetivo{1} \approx S^{1}_{\sim}$ onde $S^{1}_{\sim} = \{\classe{p}: p \in S^{1},\; p \sim -p\}$, contudo, notemos que o conjunto $E^{1} = \{p \in S^{1}: p = (x, 0)\}$ serão levados em um único ponto realizarmos a identificação, isto é, $E^{1}_{\sim} = \{\classe{p_{0}}\}$, onde $p_{0} = (1,0)$, sem perda de generalidade. Por outro lado, essa identificação contém uma estrutura de CW-complexo, pois $S^{1}_{\sim}$ é o mesmo que anexar uma $1-$célula a um ponto, isto é, $S^{1}_{\sim} \approx \{p_{0}\} \cup_{f_{1}}D^{1}$, mas como $\realprojetivo{0} =\{\classe{p}\} \approx p_{0} \Rightarrow S^{1}_{\sim} \approx \realprojetivo{0} \cup_{f_{1\partial}}D^{1}$, logo $\realprojetivo{1} \approx \realprojetivo{0} \cup_{f_{1}}D^{1}$. Repetindo o procedimento anterior para $\realprojetivo{n} \approx S^{n}_{\sim} $, $E^{n} = \{p \in S^{n}: p = (x_{1}, \dots, x_{n}, 0)\}$ e $E^{n}_{\sim} = \{\classe{p_{0}}\}$, onde $p_{0} = (1,0,\dots, 0)$, teremos $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f_{n\partial}}D^{n}$. Assim, temos a estrutura de CW-complexo $\realprojetivo{j-1} \subseteq \realprojetivo{j}$  e $\realprojetivo{j} = \skeleton{j} \approx \skeleton{j-1}\cup_{f_{j\partial}}D^{j}$ para $1\leq j \leq n$. Calculando a homologia:

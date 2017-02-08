@@ -17,6 +17,7 @@
 \usepackage{makeidx}
 \usepackage{blindtext}
 
+\usepackage{indentfirst}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes}
 % \usepackage{enumitem}
@@ -200,6 +201,18 @@ Sejam A um anel comutativo com unidade, $C_{k}$ com $k \in \mathbb{Z}$ $A$-módu
 \end{defn}
 
 A partir desse momento omitiremos a indexação dimensional do operador bordo dos complexos de cadeia, sendo que a dimensão estará implícita no contexto. Sejam $\mathcal{C}, \mathcal{D}$ dois complexos de cadeias, um morfismo $f: \mathcal{C} \to \mathcal{D}$ é uma sequência de homomorfismos $f_{k}: C_{k} \to D_{k}$ tais que $f_{k-1}\circ\partial = \partial\circ f_{k}$, ou seja, comutam com o operador bordo. Uma consequência imediata dessa definição é que $f_{k}(Z_{k}(\mathcal{C})) \subseteq Z_{k}(\mathcal{D})$ e $f_{k}(B_{k}(\mathcal{C})) \subseteq B_{k}(\mathcal{D})$, ou seja, leva ciclos em ciclos e bordos em bordos. Podemos definir na passagem ao quociente o homomorfismo $(f_{k})_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ tal que $(f_{k})_{*}([\alpha]) = [f_{k}(\alpha)]$, que por brevidade denotaremos $f_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ o homomorfismo induzido pelos morfismos de cadeias.
+
+\begin{defn}
+	(Sequências exatas) Uma sequência de homomorfismos de $A$-módulos
+	$$
+	\xymatrix{
+		\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]_{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\delta_{*}} & \homologiarel{k-1}{Y}{Z} \ar[r] & 1\dots
+	}
+	$$
+	
+	
+\end{defn}
+
 \section{Homologia singular}
 Sejam $X$ um espaço topológico e $A$ um anel, então:
 \begin{defn}
@@ -219,7 +232,7 @@ Pode-se mostrar que o operador bordo satisfaz $\partial_{k-1}\circ\partial_{k} =
 	(Sequência da triplas) Sejam $X, Y, Z$ espaços topológicos tais que $Z \subseteq Y \subseteq X$. Então a sequência da tripla $(X,Y,Z)$ é dada por:
 	$$
 	\xymatrix{
-		\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]^{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\delta_{*}} & \homologiarel{k-1}{Y}{Z} \ar[r] & \dots
+		\dots \ar[r] & A \ar[r]^{f} & B \ar[r] & C & \dots
 	}
 	$$
 	onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
