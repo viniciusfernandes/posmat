@@ -75,10 +75,10 @@
 	
 	\chapter{CW-Homologia}
 	\section{Homologia Formal}
-	Sejam A um anel comutativo com unidade, $C_{k}$ com $k \in \mathbb{Z}$ $A$-módulos e $\partial_{k}: C_{k} \to C_{k-1} $ homomorfismos tais que $\partial_{k-1}\circ\partial_{k} = 0$ (o homomorfismo trivial), então denotamos por complexo de cadeias a sequência $\mathcal{C} = (C_{k}, \partial_{k})$. Cada elemento $\alpha \in C_{k}$ é chamado k-cadeia.
+	Sejam A um anel comutativo com unidade, $C_{k}$ com $k \in \mathbb{Z}$ $A$-módulos e $f_{k,q}: C_{k} \to C_{k-q} $ homomorfismos de grau q (homomorsfismos graduados), então denotamos por complexo de cadeias a sequência $\mathcal{C} = (C_{k}, f_{k,q})$. Cada elemento $\alpha \in C_{k}$ é chamado k-cadeia. Nos homologias que iremos construir trataremos apenas dos homomorfismos de grau 1 e a notação será abreviada por $f_{k} = f_{k,1} \; \forall k \in \mathbb{Z}$.
 	
 	\begin{definicao}
-		(A-módulo de homologia) Chamamos o homomorfismo $\partial_{k}: C_{k} \to C_{k-1} $ de operador de bordo. Dados $\alpha \in C_{k}$, $\beta \in C_{k-1}$  é um k-ciclo se $\partial_{k }\alpha=0$ e se $\beta =  \partial_{k }\alpha$ dizemos que $\beta \in C_{k-1}$ é um (k-1)-bordo da k-cadeia $\alpha$. O A-módulo de todos os k-cíclos denotamos por $Z_{p} \subseteq C_{p}$ e o  A-módulo de todos os k-bordos por $B_{p} \subseteq C_{p}$. O A-módulo quociente $H_{k} = Z_{k} / B_{k}$ é chamado grupo de homologia k-dimensional, onde $[\alpha] \in H_{k}$ é tal que $[\alpha] = \{\alpha+\partial_{k+1}\gamma :\gamma \in  C_{k+1}\}$ = $\alpha + B_{k}$. A homologia do complexo de cadeias $\mathcal{C}$ é denotado pela soma formal $H_{*}(\mathcal{C}) = \bigoplus_{k \in \mathbb{Z}} H_{k}(\mathcal{C})$.
+		(A-módulo de homologia) Seja $\mathcal{C} = (C_{k}, \partial_{k})$ um complexo de cadeias sobre o anel $A$. Chamamos o homomorfismo $\partial_{k}: C_{k} \to C_{k-1} $ de operador de bordo. Dados $\alpha \in C_{k}$, $\beta \in C_{k-1}$  é um k-ciclo se $\partial_{k }\alpha=0$ e se $\beta =  \partial_{k }\alpha$ dizemos que $\beta \in C_{k-1}$ é um (k-1)-bordo da k-cadeia $\alpha$. O A-módulo de todos os k-cíclos denotamos por $Z_{p} \subseteq C_{p}$ e o  A-módulo de todos os k-bordos por $B_{p} \subseteq C_{p}$. O A-módulo quociente $H_{k} = Z_{k} / B_{k}$ é chamado grupo de homologia k-dimensional, onde $[\alpha] \in H_{k}$ é tal que $[\alpha] = \{\alpha+\partial_{k+1}\gamma :\gamma \in  C_{k+1}\}$ = $\alpha + B_{k}$. A homologia do complexo de cadeias $\mathcal{C}$ é denotado pela soma formal $H_{*}(\mathcal{C}) = \bigoplus_{k \in \mathbb{Z}} H_{k}(\mathcal{C})$.
 	\end{definicao}
 	
 	A partir desse momento omitiremos a indexação dimensional do operador bordo dos complexos de cadeia, sendo que a dimensão estará implícita no contexto. Sejam $\mathcal{C}, \mathcal{D}$ dois complexos de cadeias, um morfismo $f: \mathcal{C} \to \mathcal{D}$ é uma sequência de homomorfismos $f_{k}: C_{k} \to D_{k}$ tais que $f_{k-1}\circ\partial = \partial\circ f_{k}$, ou seja, comutam com o operador bordo. Uma consequência imediata dessa definição é que $f_{k}(Z_{k}(\mathcal{C})) \subseteq Z_{k}(\mathcal{D})$ e $f_{k}(B_{k}(\mathcal{C})) \subseteq B_{k}(\mathcal{D})$, ou seja, leva ciclos em ciclos e bordos em bordos. Podemos definir na passagem ao quociente o homomorfismo $(f_{k})_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ tal que $(f_{k})_{*}([\alpha]) = [f_{k}(\alpha)]$, que por brevidade denotaremos $f_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ o homomorfismo induzido pelos morfismos de cadeias.
@@ -467,8 +467,14 @@
 	
 	
 	\chapter{Homologia de Floer}
-	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia. Imaginemos que tenhamos agora uma variedade simplética $M$ e um difeomorfismo $\psi:M\to M$ que preserva a estrutura simplética (veremos adiante o que isso significa). Na tentativa de se investigar os pontos fixos desse difeomorfismo e enumerá-los surge a conjectura de Arnold. Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a de Morse clássica deparou-se com índices de Morse e variedades infinitos.
-	 
+	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
+	
+	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pntos fixos de um simpléctomorfismos e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
+	
+	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de ponstos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
+	
+	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
+	
 	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
 		(Espaço vetorial simplético) Sejam $V$ um espaço vetorial 2n-dimensional real e $\omega \in \Lambda^{2}(V, \real{})$ não-degenerada (ou forma simplética), isto é, $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. O par $(V, \omega)$ é chamado de espaço vetorial simplético.
@@ -524,7 +530,13 @@
 		
 		As soluções dessa equação geram uma família de simpléctomorfismos a 1-parametro tal que $\psi_{t}(x(0)) = x(t)$.
 	\end{definicao}
-	
+	Para demonstrar o invariância da forma simplética pelo fluxo Hamiltoniano, vamos usar o seguinte resultado:
+	\begin{lema}
+		Sejam $M$ uma variedade diferenciável com dimensão finita, $X \in T_{p}M$ e $\alpha \in \Omega^{k}(M)$. Definindo $i_{X}:\Omega^{k} \to \Omega^{k-1}$ por $i_{X}\alpha(Y_{1}, \dots, Y_{k-1}) = \alpha(X, Y_{1}, \dots, Y_{k-1})$ então
+		$$
+		\liederivada{X}\alpha = i_{X}d\alpha + di_{X}\alpha.
+		$$
+	\end{lema}
 	\begin{lema}
 		O fluxo hamiltoniano preserva a forma simpléctica.
 	\end{lema}
@@ -554,9 +566,10 @@
 	\end{definicao}
 	
 	\textbf{Motivação da conjectura:} Os pontos fixos da aplicação $\psi_{1}$ estão relacionado injetivamente com as soluções 1-periódicas do sistema hamiltoniana. Assim, a conjectura de Arnold afirma que, para os casos de não-degenerecência, o número de soluções 1-periódicas do sistema hamiltoniano deve ser limitado inferiormente pela soma dos números de Betti da variedade $M$. Tal conjectura, do mesmo modo que o Teorema de Poincaré-Hopf, esta relacionada com Teoria de Morse da seguinte forma: a hipótese de não-degenerecência das soluções do sistema hamiltoniano implicam que a função de hamilton $H: M \times \real{} \to \real{}$ seja uma função de Morse. Algumas particularizações da conjectura foram demonstradas por primeiramente para superfícies Riemannianas e, posteriormente, para 2n-toro por Conley e Zehnder, sendo que, em sua forma um pouco mais geral, foi utilizada a hipótese $\pi_{2}(M)=0$, o que é equivalente a hipótese da aesfericidade.
+
+	Que em uma outra reformlução pode ser escrita como:
 	
 	\begin{teorema}
-		(Conjectura de Arnold) 
 		Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
 		$$
 		\#LM \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
