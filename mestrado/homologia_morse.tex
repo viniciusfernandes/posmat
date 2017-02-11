@@ -756,10 +756,10 @@
 	
 	\section{Fibrados Vetoriais - Definições e exemplos}
 	\begin{definicao}
-		(Fibrado vetorial n-dimensional) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é a tripla $(E(\eta), B, p)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e, para cada $p \in B$ temos $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$.
+		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$. Dizemos que um fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$.
 	\end{definicao}
 	
-	Dizemos que um fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$.
+	Daqui em diante definiremos os grupos de estrutura como sendo $G = GL(n,\real{})$ e abreviaremos a notação de um n-fibrado vetorial por $\eta = (E,B,p)$.
 	
 	\begin{definicao}
 		(Mapa de fibrados) Sejam $\eta, \xi$ dou fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
@@ -774,23 +774,52 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		(Pull-back de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um fibrado vetorial $n-dimensional$ e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ um subconjunto consistindo de todos os pares $(b, e)$ com $e\in p'^{-1}(f(b))$. Além disso, definindo o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. Chamamos de pull-back de $\eta$ por $f$ a tripla $f^{*}\eta = (E,B, p)$.
+		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ um subconjunto consistindo de todos os pares $(b, e)$ com $e\in p'^{-1}(f(b))$. Além disso, definindo o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. Chamamos de pullback de $\eta$ por $f$ a tripla $f^{*}\eta = (E,B, p)$.
 	\end{definicao}
 	
-	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um fibrado vetorial n-dimensional.
+	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
 	
 	\begin{exemplo}
-		(Fibrado vetorial 1-dimensional) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
+		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
 	\end{exemplo}
 
 	\begin{lema}
 		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $p\in M$ temos as fibras $F_{p} = T_{p}M$ e o espaço total é denotado $TM$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
 	\end{lema}
 	
+	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
+	
+	\begin{lema}\label{pullback_composicao}
+		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
+	\end{lema}
+	$\square$
+	Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ e $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$ são n-fibrados vetoriais onde $E_{g\circ f} = \{(a, e) \in A\times E: p(e) = (g\circ f)(a)\}$ e $E_{f} = \{(a, e) \in A\times E_{g}: p_{f}(e) = f(a)=b\}$. Pela definição 
+	\hfill$\blacksquare$
+	
+	\begin{teorema}\label{pullback_isomorfismo}
+		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, p)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
+	\end{teorema}
+	
+	\begin{corolario}\label{pullback_contratil}
+		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base compacto e contrátil, então $\eta$ é trivial.
+	\end{corolario}
+	$\square$
+	Sejam $\eta = (E, B, p)$ e $\xi=(E', B', p')$ n-fibrados vetoriais com $B$ um compacto e $B' = \{*\}$ um espaço topológico com um único ponto de $B$. Por construção $\xi$ é um fibrado trivial. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to \{*\}$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese devemos ter $g\circ f \simeq Id_{B}$. Pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\xi \cong Id_{B}^{*}\eta = \eta$, por outro lado, $g\circ f \simeq Id_{\{*\}}$ $(f \circ g)^{*}\xi \cong Id_{\{*\}}\xi = \xi$, o que implica que $\eta \cong \xi$. 
+	
+	
+	\hfill$\blacksquare$
 	\section{Índice de Maslov}
+	\begin{definicao}
+		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido so grupo de simpléctomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
+	\end{definicao}
+	
 	\begin{definicao}
 		(Grupo simplético) Seja $(V,\omega)$ um espaço vetorial simplético 2n-dimensional, então o grupo simplético de $V$ é denotado por $Sp(2n) = \{g \in GL(2n; \real{}) : \omega(gX, gY) = \omega(X, Y), \; X,Y \in V \}$. 
 	\end{definicao}
+	
+	\begin{lema}\label{Sp2n_homotopia}
+		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \mathbb{Z}$.
+	\end{lema}
 	
 	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $(\psi_{t})_{*}$ como sendo o diferencial de $\psi_{t}$, teremos
 	$$
@@ -800,7 +829,7 @@
 	
 	Denotando a aplicação $\Psi:\real{} \to Sp(2n)$ tal que $\Psi(t)$ a matriz do diferencial $(\psi_{t})_{*}$, então $\Psi$ é uma curva suave onde $\Psi(0) = Id$ e $det(Id-\Psi(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
 	
-	Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. \vermelho{Sabe-se que, dada uma aplicação contínua $f: D^{k} \to M$, o fibrado simplético $f^{*}TM$ pode ser trivializado e todas as suas trivializações são homotópicas. A equivalência homotópica entre as trivializações seguse do fato de que duas trivializações podem ser associadas a uma aplicação $g:D^{k} \to Sp(2n) $ e do fato que $Sp(2n)$ é conexo por caminhos.}
+	Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. Como as extensões $u,v:D^{2} \to M$ são aplicações contínuas e $D^{2}$ é compacto e contrátil, então pelo Corolário $\ref{pullback_contratil}$ temos que os pullbacks $u^{*}TM$ e $v^{*}TM$ são fibrados vetoriais triviais, além disso, ambas as extensões so aplicações homotópicas por construção, logo pelo Teorema $\ref{pullback_isomorfismo}$  $u^{*}TM \cong v^{*}TM$.
 	
 	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$, e aplicando o fato mencionado anteriormente para as extensões $u, v$ de $x$, podemos afirmar que $u^{*}TM$ e $v^{*}TM$ são fibrados simpléticos triviais, assim, as matrizes $A(t), A'(t)$ associadas a essas bases, respectivamente, são homotópicas em $\mathcal{S}$. Portanto, o caminho $A \in \mathcal{S}$ assosiado a solução não-degenerada do sistema hamiltoniano $x(t)$ é única, a menos de uma homotopia.
 	
