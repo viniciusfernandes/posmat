@@ -23,8 +23,9 @@
 \newtheorem{lema}[teorema]{Lema}
 \newtheorem{definicao}[teorema]{Definição}
 \newtheorem{exemplo}[teorema]{Exemplo}
+\newtheorem{observacao}[teorema]{Observação}
 
-\newenvironment{prova}{$\square$}{\hfill$\blacksquare$}
+\newenvironment{prova}[1]{$\square$ #1}{\hfill$\blacksquare$}
 
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
@@ -717,16 +718,191 @@
 	
 	\textbf{Observação:} Para se definir o conceito de índice de Morse relativo vamos utilizar a definição de índice de $F_{u}$, o que dará origem a homologia de Floer. Sabemos que $\mathcal{M}(y,x)$ é uma variedade diferenciável, e que $F_{u}$ é sobrejetor, então existe uma vizinhaça de $u \in \mathcal{M}(y,x)$ que é difeomorfa a uma vizinhança de $0 \in Ker(F_{u})$, logo nessa vizinhança teremos $dim(\mathcal{M}(y,x)) = ind(F_{u})$.
 	
-	\begin{lema} Sejam $z,y,x \in LM$ então $\mu(y,x) = ind(F_{u})$ é independente de $u \in \mathcal{M}(y,x)$. Além disso
+	\begin{lema}\label{indice_ponto_critico} Sejam $z,y,x \in LM$ então $\mu(y,x) = ind(F_{u})$ é independente de $u \in \mathcal{M}(y,x)$. Além disso
 		$$
 		\mu(z,y) + \mu(y,x) = \mu(y,x), \; \mu(x,x) = 0.   
 		$$
 	\end{lema}
-	\vermelho{Então podemos afirmar que existe uma função $m : LM \to \mathbb{Z}$ definida, a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
+	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \mathbb{Z}$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \mathbb{Z}$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : LM \to \mathbb{Z}$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
+	$$
+	k = ind(F_{u}) = m(y)-m(x).
+	$$
+	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in LM$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
+	
+	\section{Índice de Maslov}
+	\subsection{Fibrados Vetoriais - Definições e exemplos}
+	\begin{definicao}
+		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$. Dizemos que um fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$.
+	\end{definicao}
+	
+	Daqui em diante definiremos os grupos de estrutura como sendo $G = GL(n,\real{})$ e abreviaremos a notação de um n-fibrado vetorial por $\eta = (E,B,p)$.
+	
+	\begin{definicao}
+		(Mapa de fibrados) Sejam $\eta, \xi$ dou fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
 		$$
-		ind(F_{u}) = m(y)-m(x).
-		$$}
-		
+		\xymatrix{
+			E \ar[r]^{F}\ar[d]^{p} & E'\ar[d]^{p'}
+			\\
+			B\ar[r]^{f} & B'
+		},
+		$$
+		e tal que $F$ é um isomorfismo entre $p^{-1}(b)$ e $p'^{-1}(f(b))$. A aplicação $f:B\to B'$ é chamada mapa de espaço base.
+	\end{definicao}
+	
+	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
+	
+	\begin{exemplo}
+		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
+	\end{exemplo}
+	
+	\begin{lema}
+		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $p\in M$ temos as fibras $F_{p} = T_{p}M$ e o espaço total é denotado $TM$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
+	\end{lema}
+	
+	\begin{definicao}
+		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ um subconjunto consistindo de todos os pares $(b, e)$ com $e\in p'^{-1}(f(b))$. Além disso, definindo o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. Chamamos de pullback de $\eta$ por $f$ a tripla $f^{*}\eta = (E,B, p)$.
+	\end{definicao}
+	
+	\begin{lema}\label{pullback_composicao}
+		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
+	\end{lema}
+	\begin{prova}
+		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = p^{-1}((g\circ f)(a))$. Temos $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$ e suas fibras são dadas por $F_{g(b)} = p^{-1}(g(b))$, mas na composicão temos $b=f(a)$, logo  $F_{g(f(a))} = p^{-1}(g(f(a))) = p^{-1}((g \circ f)(a)))$, o que define a mesma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ são as mesmas, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
+	\end{prova}
+	\begin{lema}\label{pullback_trivial}
+		(Pullback trivial) Sejam $\eta = (E, B, p)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
+	\end{lema}
+	\begin{prova}
+		Como $\eta$ é trivial, então todas as suas fibras são iguais, isto é, $F=F_{b} = F_{b'} \forall b, b' \in B$. Por definição $f^{*}\eta = (E', A, p')$ onde as fibras são dadas por $F'_{a} = p^{-1}(f(a)) = F$ pois $f(a) \in B$ e todas as fibras de $\eta$ são iguais, logo todas as fibras de $f^{*}\eta$ são iguais, portanto é trivial.
+	\end{prova}
+	
+	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
+	
+	\begin{teorema}\label{pullback_isomorfismo}
+		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, p)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
+	\end{teorema}
+	
+	\begin{corolario}\label{pullback_contratil}
+		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base compacto e contrátil, então $\eta$ é trivial.
+	\end{corolario}
+	\begin{prova}
+		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
+	\end{prova}
+	
+	\subsection{Definição do Índice de Maslov}
+	
+	\begin{definicao}
+		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido so grupo de simpléctomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Grupo simplético) Seja $(V,\omega)$ um espaço vetorial simplético 2n-dimensional, então o grupo simplético de $V$ é denotado por $Sp(2n) = \{g \in GL(2n; \real{}) : \omega(gX, gY) = \omega(X, Y), \; X,Y \in V \}$. 
+	\end{definicao}
+	
+	\begin{observacao}
+		O grupo $GL(2n, \real{})$ é um espaço topológico com a topologia gerada pela norma da convergência uniforma $||.|| : GL(2n, \real{}) \to \real{}$ tal que $||T||= max|T_{ij}| $, então $Sp(2n)$ como subconjunto de $GL(2n, \real{})$ será um espaço topológico com a topologia induzida.
+	\end{observacao}
+	
+	\begin{lema}\label{Sp2n_homotopia}
+		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \mathbb{Z}$.
+	\end{lema}
+	
+	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $D_{x(0)}\psi_{t}$ como sendo o diferencial de $\psi_{t}$ em $x(0)$, teremos
+	$$
+	\omega_{x(0)}(D_{x(0)}\psi_{t}X, D_{x(0)}\psi_{t}Y)=(\psi_{t})^{*}\omega_{x(t)}(X,Y) = \omega_{x(t)}(X,Y).
+	$$
+	
+	Seja $\Psi_{x}(t)$ a matriz do diferencial $D_{x(0)}\psi_{t}$ para daca $t\in S^{1}$. Como vimos anteriormente, $\psi_{t}$ é um simplectomorfismo, logo $\Psi_{x}(t) \in Sp(2n)$, além disso, temos uma famíla de bases suaves $e(t)$ de $T_{x(t)}M$ para cada $t \in \real{}$. Podemos definir a curva $\Psi_{x}:\real{} \to Sp(2n)$ tal que $\Psi_{x}(0) = Id$ e $det(Id-\Psi_{x}(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
+	
+	Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. Como as extensões $u,v:D^{2} \to M$ são aplicações contínuas e $D^{2}$ é compacto e contrátil, então pelo Corolário $\ref{pullback_contratil}$ temos que os pullbacks $u^{*}TM$ e $v^{*}TM$ são fibrados vetoriais triviais, além disso, ambas as extensões so aplicações homotópicas por construção, logo pelo Teorema $\ref{pullback_isomorfismo}$  $u^{*}TM \cong v^{*}TM$.
+	
+	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$ e $\Psi_{x}(t), \Psi'_{x}(t)$ as matrizes do diferencial nas respectivas bases. Por definição temos $\Psi_{x}, \Psi_{x}' \in \mathcal{S}$ tal que $\Psi_{x} \simeq \Psi'_{x}$, isto é, \vermelho{são curvas homotópicas em $\mathcal{S}$}. Com isso, consequimos associar a cada solução 1-periódica dos sistema Hamiltoniano a uma curva $\Psi_{x} \in \mathcal{S}$ a menos de uma homotopia da seguinte forma $\hat{\Psi}_{t}:LM \to \mathcal{S}$ tal que $\hat{\Psi}_{t}(x) = \Psi_{x}(t)$.
+	
+	O seguinte resultado será utlizado nas demais construções do índice de Maslov.
+	
+	\begin{teorema}
+		Para cada $n \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
+		\begin{enumerate}
+			\item Naturalidade: se $Q, T \in Sp(2n)$, então 
+			$$\rho(TQT^{-1}) = \rho(Q).$$
+			\item Produto: Se $Q\in Sp(2m)$ e $T\in Sp(2n)$, então
+			$$
+			\rho
+			\begin{pmatrix} 
+			Q & 0 
+			\\ 
+			0 & T
+			\end{pmatrix}
+			= \rho(Q)\rho(T).
+			$$
+			\item Deteminante: Se $Q \in U(n) = Sp(2n) \bigcap O(2n)$, então
+			$$
+			\rho(Q) = det_{\mathbb{C}}(X+iY), \; \text{onde} \; Q = 
+			\begin{pmatrix} 
+			X & -Y 
+			\\ 
+			Y & X
+			\end{pmatrix}.
+			$$ 
+			Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \mathbb{Z}.$
+			\item Normalização: Se os auto-valores de $Q$ são todos reais, então
+			$$
+			\rho(Q) = (-1)^{m_{0}/2},
+			$$
+			onde $m_{0}$ é a multiplicidade dos auto-valores reais negativos.
+			\item $\rho(Q^{t}) = \rho(Q^{-1}) = \overline{\rho(Q)}$.
+		\end{enumerate}
+	\end{teorema}
+	
+	Vejamos que $Sp(2n)^{*} \subset Sp(2n)$ é um subconjunto aberto, e que $\Sigma = \{T\in Sp(2n): det(Id-T)=0\} = Sp(2n)\backslash Sp(2n)^{*}$ é um conjunto fechado, além disso $Sp(2n)^{*} = Sp(2n)^{+}\cup Sp(2n)^{-}$ onde $Sp(2n)^{+}=\{T\in Sp(2n)^{*}: det(Id-T)>0\} $ e $Sp(2n)^{-}=\{T\in Sp(2n)^{*}: det(Id-T)<0\}$ são ambos subconjutos abertos, portanto $Sp(2n)^{*}$ é disconexo. O resultado abaixo nos diz um pouco da topologia de $Sp(2n)^{*}$:
+	
+	\begin{lema}
+		O conjunto aberto $Sp(2n)^{*}$ possui duas compenentes conexas $Sp(2n)^{\pm}$, além disso, a inclusão de cada uma dessas componentes em $Sp(2n)$ induz o homomorsfismo trivial entre seus grupos fundamentais, isto é, definindo as inclusões $i_{\pm}:Sp(2n)^{\pm} \hookrightarrow Sp(2n)$, então $(i_{\pm})_{\#}:\pi_{1}(Sp(2n)^{\pm}) \hookrightarrow \pi_{1}(Sp(2n))$ é tal que $(i_{\pm})_{\#}=0$. 
+	\end{lema}
+	
+	\begin{definicao}
+		(Índice de Maslov de uma curva) Sejam $exp:\real{} \to S^{1} \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Seja $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ (sua homotopia esta bem-definida) com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
+		$$
+		\mu(\psi) = \varDelta(\psi) - r(A).
+		$$
+		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
+	\end{definicao}
+	
+	O teorema e corolário abaixo nos oferece uma mecânismo de cálculo para o índice de Maslov na aplicação do formalismo.
+	
+	\begin{teorema}
+		Fixando $W^{\pm} \in Sp(2n)^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
+		\begin{enumerate}
+			\item $\mu(\psi) \in \mathbb{Z}$.
+			\item Duas curvas $\alpha, \beta \in \mathcal{S}$ são homotópicas se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+			\item Se $S \in GL(2n)$ com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(tJ_{0}S)$, então 
+			$$
+			\mu(\psi) = Ind(S) - n,
+			$$
+			onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
+		\end{enumerate}
+	\end{teorema}
+	
+	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $LM$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
+	
+	\begin{corolario}
+		Sejam $(M, \omega)$ uma 2n-variedade simpléctica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$, pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
+		$$
+		\mu(x) = Ind(x) - n.
+		$$
+	\end{corolario}	
+	
+	\section{Definição da Homologia de Floer}
 	Seja $C = C(M, \mathbb{Z}_{2})$ o espaço vetorial sobre o corpo $\mathbb{Z}_{2}$ e gerado pelos elementos de LM. Esse espaço é graduado pela função $m$, de modo que
 	$$
 	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \mathbb{Z}_{2}) = \text{span}\{x \in LM:m(x)=k \}.
@@ -754,164 +930,4 @@
 		$$
 	\end{teorema}
 	
-	\section{Fibrados Vetoriais - Definições e exemplos}
-	\begin{definicao}
-		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$. Dizemos que um fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$.
-	\end{definicao}
-	
-	Daqui em diante definiremos os grupos de estrutura como sendo $G = GL(n,\real{})$ e abreviaremos a notação de um n-fibrado vetorial por $\eta = (E,B,p)$.
-	
-	\begin{definicao}
-		(Mapa de fibrados) Sejam $\eta, \xi$ dou fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
-		$$
-		\xymatrix{
-			E \ar[r]^{F}\ar[d]^{p} & E'\ar[d]^{p'}
-			\\
-			B\ar[r]^{f} & B'
-		},
-		$$
-		e tal que $F$ é um isomorfismo entre $p^{-1}(b)$ e $p'^{-1}(f(b))$. A aplicação $f:B\to B'$ é chamada mapa de espaço base.
-	\end{definicao}
-	
-	\begin{definicao}
-		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ um subconjunto consistindo de todos os pares $(b, e)$ com $e\in p'^{-1}(f(b))$. Além disso, definindo o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. Chamamos de pullback de $\eta$ por $f$ a tripla $f^{*}\eta = (E,B, p)$.
-	\end{definicao}
-	
-	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
-	
-	\begin{exemplo}
-		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
-	\end{exemplo}
-
-	\begin{lema}
-		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $p\in M$ temos as fibras $F_{p} = T_{p}M$ e o espaço total é denotado $TM$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
-	\end{lema}
-	
-	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
-	
-	\begin{lema}\label{pullback_composicao}
-		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
-	\end{lema}
-	$\square$
-	Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ e $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$ são n-fibrados vetoriais onde $E_{g\circ f} = \{(a, e) \in A\times E: p(e) = (g\circ f)(a)\}$ e $E_{f} = \{(a, e) \in A\times E_{g}: p_{f}(e) = f(a)=b\}$. Pela definição 
-	\hfill$\blacksquare$
-	
-	\begin{teorema}\label{pullback_isomorfismo}
-		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, p)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
-	\end{teorema}
-	
-	\begin{corolario}\label{pullback_contratil}
-		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base compacto e contrátil, então $\eta$ é trivial.
-	\end{corolario}
-	$\square$
-	Sejam $\eta = (E, B, p)$ e $\xi=(E', B', p')$ n-fibrados vetoriais com $B$ um compacto e $B' = \{*\}$ um espaço topológico com um único ponto de $B$. Por construção $\xi$ é um fibrado trivial. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to \{*\}$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese devemos ter $g\circ f \simeq Id_{B}$. Pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\xi \cong Id_{B}^{*}\eta = \eta$, por outro lado, $g\circ f \simeq Id_{\{*\}}$ $(f \circ g)^{*}\xi \cong Id_{\{*\}}\xi = \xi$, o que implica que $\eta \cong \xi$. 
-	
-	
-	\hfill$\blacksquare$
-	\section{Índice de Maslov}
-	\begin{definicao}
-		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido so grupo de simpléctomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
-	\end{definicao}
-	
-	\begin{definicao}
-		(Grupo simplético) Seja $(V,\omega)$ um espaço vetorial simplético 2n-dimensional, então o grupo simplético de $V$ é denotado por $Sp(2n) = \{g \in GL(2n; \real{}) : \omega(gX, gY) = \omega(X, Y), \; X,Y \in V \}$. 
-	\end{definicao}
-	
-	\begin{lema}\label{Sp2n_homotopia}
-		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \mathbb{Z}$.
-	\end{lema}
-	
-	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $(\psi_{t})_{*}$ como sendo o diferencial de $\psi_{t}$, teremos
-	$$
-	\omega((\psi_{t})_{*}X, (\psi_{t})_{*}Y)=(\psi_{t})^{*}\omega(X,Y) = \omega(X,Y),
-	$$
-	portanto, $(\psi_{t})^{*} \in Sp(2n)$. Como $\psi_{t}$ é um difeomorfismo, então temos uma famíla de bases suaves $e(t)$ de $T_{x(t)}M$ para cada $t \in \real{}$.
-	
-	Denotando a aplicação $\Psi:\real{} \to Sp(2n)$ tal que $\Psi(t)$ a matriz do diferencial $(\psi_{t})_{*}$, então $\Psi$ é uma curva suave onde $\Psi(0) = Id$ e $det(Id-\Psi(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
-	
-	Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. Como as extensões $u,v:D^{2} \to M$ são aplicações contínuas e $D^{2}$ é compacto e contrátil, então pelo Corolário $\ref{pullback_contratil}$ temos que os pullbacks $u^{*}TM$ e $v^{*}TM$ são fibrados vetoriais triviais, além disso, ambas as extensões so aplicações homotópicas por construção, logo pelo Teorema $\ref{pullback_isomorfismo}$  $u^{*}TM \cong v^{*}TM$.
-	
-	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$, e aplicando o fato mencionado anteriormente para as extensões $u, v$ de $x$, podemos afirmar que $u^{*}TM$ e $v^{*}TM$ são fibrados simpléticos triviais, assim, as matrizes $A(t), A'(t)$ associadas a essas bases, respectivamente, são homotópicas em $\mathcal{S}$. Portanto, o caminho $A \in \mathcal{S}$ assosiado a solução não-degenerada do sistema hamiltoniano $x(t)$ é única, a menos de uma homotopia.
-	
-	O seguinte resultado será utlizado nas demais construções do índice de Maslov.
-	
-	\begin{teorema}
-		Para cada $n \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
-		\begin{enumerate}
-			\item Naturalidade: se $A, T \in Sp(2n)$, então 
-			$$\rho(TAT^{-1}) = \rho(A).$$
-			\item Produto: Se $A\in Sp(2m)$ e $B\in Sp(2n)$, então
-			$$
-			\rho
-			\begin{pmatrix} 
-				A & 0 
-				\\ 
-				0 & B
-			\end{pmatrix}
-			= \rho(A)\rho(B).
-			$$
-			\item Deteminante: Se $A \in U(n) = Sp(2n) \bigcap O(2n)$, então
-			$$
-			\rho(A) = det_{\mathbb{C}}(X+iY), \; \text{onde} \; A = 
-			\begin{pmatrix} 
-			X & -Y 
-			\\ 
-			Y & X
-			\end{pmatrix}.
-			$$ 
-			Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \mathbb{Z}.$
-			\item Normalização: Se $Spec(A) \subset \real{}$, então
-			$$
-			\rho(A) = (-1)^{m_{0}/2},
-			$$
-			onde $m_{0}$ é a multiplicidade dos auto-valores reais negativos.
-			\item $\rho(A^{t}) = \rho(A^{-1}) = \overline{\rho(A)}$.
-		\end{enumerate}
-	\end{teorema}
-	
-	Vejamos que $Sp(2n)^{*} \subset Sp(2n)$ é um subconjunto aberto, e que $\Sigma = \{A\in Sp(2n): det(Id-A)=0\} = Sp(2n)\backslash Sp(2n)^{*}$ é um conjunto fechado, além disso $Sp(2n)^{*} = Sp^{+}\cup Sp^{-}$ onde $Sp^{+}=\{A\in Sp(2n)^{*}: det(Id-A)>0\} $ e $Sp^{-}=\{A\in Sp(2n)^{*}: det(Id-A)<0\}$ são ambos subconjutos abertos, portanto $Sp(2n)^{*}$ é disconexo. O resultado abaixo nos diz um pouco da topologia de $Sp(2n)^{*}$:
-	
-	\begin{lema}
-		O conjunto aberto $Sp(2n)^{*}$ possui duas compenentes conexas, além disso, a inclusão de cada uma dessas componentes em $Sp(2n)$ induz o homomorsfismo trivial entre seus grupos fundamentais.
-	\end{lema}
-	
-	\begin{definicao}
-		(Índice de Maslov de uma curva) Fixemos as matrizes $W^{\pm} \in Sp^{\pm}$ e para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$
-		$$
-		\xymatrix{
-			& & \real{}\ar[d]
-			\\
-			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
-		}
-		$$	
-		e definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Seja $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ (sua homotopia esta bem-definida) com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $r(\gamma_{A}) \in \real{}$ fixo.
-		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
-		$$
-		\mu(\psi) = \varDelta(\psi) - r(A).
-		$$
-		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
-	\end{definicao}
-	
-	O teorema e corolário abaixo nos oferece uma mecânismo de cálculo para o índice de Maslov na aplicação do formalismo.
-	
-	\begin{teorema}
-		Fixando $W^{\pm} \in Sp^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
-		\begin{enumerate}
-			\item $\mu(\psi) \in \mathbb{Z}$.
-			\item Duas curvas $\alpha, \beta \in \mathcal{S}$ são homotópicas se, e somente se, $\mu(\alpha) = \mu(\beta)$.
-			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
-			\item Se $S \in GL(2n)$ (é invertível), com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(tJ_{0}S)$, então 
-			$$
-			\mu(\psi) = Ind(S) - n,
-			$$
-			onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
-		\end{enumerate}
-	\end{teorema}
-	
-	\begin{corolario}
-		Sejam $(M, \omega)$ uma 2n-variedade simpléctica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$, pode ser relacionado o o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
-		$$
-		\mu(x) = Ind(x) - n.
-		$$
-	\end{corolario}
 \end{document}
