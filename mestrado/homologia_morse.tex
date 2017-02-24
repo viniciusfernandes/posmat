@@ -27,6 +27,8 @@
 
 \newenvironment{prova}[1]{$\square$ #1}{\hfill$\blacksquare$}
 
+\newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
+\newcommand{\bigparenteses}[1]{\big( #1 \big) }
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
 \newcommand{\classe}[1]{[#1]}
@@ -44,7 +46,12 @@
 	\end{array}
 	\right.
 	}
-\newcommand{\skeleton}[1]{X^{(#1)}}
+\newcommand{\estruturacomplexa}[2]{\mathcal{J}(#1, #2)}
+\newcommand{\estruturacomplexapadrao}{\mathcal{J}(V, \omega)}
+\newcommand{\generalgroup}[2]{GL(#1, #2)}
+\newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
+\newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
+\newcommand{\gruposimpletico}[1]{Sp(#1)}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
 \newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
@@ -52,18 +59,21 @@
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
+\newcommand{\matrizortogonal}[1]{O(#1)}
+\newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
+\newcommand{\matrizunitaria}[1]{U(#1)}
+\newcommand{\produtosinternos}[1]{Riem(#1)}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
+\newcommand{\complexo}[1]{\mathbb{C}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 
-\newcommand{\tese}[3]{\vspace{2mm} \textit{\textbf{#1}}: \textit{#2} \par $\square$ #3 \par $\blacksquare$}
 \newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
+\newcommand{\skeleton}[1]{X^{(#1)}}
 \newcommand{\suavefunc}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\vermelho}[1]{{\color{red}#1}}
-\newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
-\newcommand{\bigparenteses}[1]{\big( #1 \big) }
 \begin{document}
 	
 	\title{Homologia de Morse}
@@ -405,11 +415,20 @@
 	\chapter{Teoria de Morse}
 	\section{Pontos Críticos}
 	
-	\tese{Proposição}{Seja M uma variedade fechada e $f$ uma função de Morse, então se $p \in Crit(f)$ teremos $\nabla f(p)=0$ e $\exists q \in M$ tal que $p \in \omega(q)$ ou $p \in \alpha(q)$ , isto é, $p$ é uma singularidade e é um ponto limite.}{Tomando $p \in Crit(f)$, então $\forall v \in T_{p}M \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0$, portanto, para $v = -\nabla f(p)$ teremos $-\innerprod{\nabla f(p)}{\nabla f(p)} = 0 \iff \nabla f(p) = 0$, logo, $p$ é uma singularidade do campo gradiente. Com isso, podemos afirmar que existe um ponto $q \in M$ tal que a órbita $\mathcal{O}(q)$ tenha como um dos pontos limites o dado $p \in Crit(f)$ pois caso contrário, o ponto $p$ não será uma singularidade. Como $p \in Crit(f)$ é um ponto limite, então $p \in \omega(q)$ ou $p \in \alpha(q)$, como desejávamos.}
+	\begin{lema}
+		Seja M uma variedade fechada e $f$ uma função de Morse, então se $p \in Crit(f)$ teremos $\nabla f(p)=0$ e $\exists q \in M$ tal que $p \in \omega(q)$ ou $p \in \alpha(q)$ , isto é, $p$ é uma singularidade e é um ponto limite.
+	\end{lema}
+	\begin{prova}
+		Tomando $p \in Crit(f)$, então $\forall v \in T_{p}M \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0$, portanto, para $v = -\nabla f(p)$ teremos $-\innerprod{\nabla f(p)}{\nabla f(p)} = 0 \iff \nabla f(p) = 0$, logo, $p$ é uma singularidade do campo gradiente. Com isso, podemos afirmar que existe um ponto $q \in M$ tal que a órbita $\mathcal{O}(q)$ tenha como um dos pontos limites o dado $p \in Crit(f)$ pois caso contrário, o ponto $p$ não será uma singularidade. Como $p \in Crit(f)$ é um ponto limite, então $p \in \omega(q)$ ou $p \in \alpha(q)$, como desejávamos.
+	\end{prova}
 	
-	\tese{Lema}{Seja M uma variedade fechada, $f$ uma função de Morse e $X =-\nabla f$, então $\alpha(p), \omega(p)$ consistem de um único ponto crítico de $f$ para qualquer $p \in M$.}
-	{Como $M$ é uma variedade fechada e $f$ é uma função de Morse, então $Crit(f) = \{p_{i} \in M: 1\leq i \leq k \}$ é um conjunto finito de pontos isolados. Pela proposição anterior, dado $p_{i} \in Crit(f), \exists q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$. Com isso, podemos afirmar que $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que os conjuntos limite $\omega(q_{i})$ e $\alpha(q_{i})$ consistem de singularidades do campo gradiente $-\nabla f$, logo $\forall p \in \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$ teremos $\nabla f(p) = 0 \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0 \therefore p \in Crit(f)$, e como $p$ é arbitrário, então $\bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Com esse resultado fica evidente que $\omega(q_{i}), \alpha(q_{i}) \subset Crit(f)$. Como os conjuntos limites são conjuntos finitos de pontos isolados vamos supor que $\omega(q_{i}) = \{r_{j} \in Crit(f): 0\leq j \leq m\}$, logo pela topologia induzinda, os abertos de cada um deles serão os conjuntos unitários e teremos $\omega(q_{i}) = \bigcup_{j=1}^{k} \{r_{j}\} $, e como os conjuntos limite são conexos (vide resultado do Palis), essa união disjunta contradiz a conexidade, portanto $\omega(q_{i}) = \{r_{i}\}$. Os mesmos argumentos valem para o conjunto $\alpha(q_{j})$. Portanto, ambos os conjuntos limite devem conter apenas um ponto crítico, como desejávamos.}
-
+	\begin{lema}
+		Seja M uma variedade fechada, $f$ uma função de Morse e $X =-\nabla f$, então $\alpha(p), \omega(p)$ consistem de um único ponto crítico de $f$ para qualquer $p \in M$.
+	\end{lema}
+	\begin{prova}
+		Como $M$ é uma variedade fechada e $f$ é uma função de Morse, então $Crit(f) = \{p_{i} \in M: 1\leq i \leq k \}$ é um conjunto finito de pontos isolados. Pela proposição anterior, dado $p_{i} \in Crit(f), \exists q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$. Com isso, podemos afirmar que $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que os conjuntos limite $\omega(q_{i})$ e $\alpha(q_{i})$ consistem de singularidades do campo gradiente $-\nabla f$, logo $\forall p \in \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$ teremos $\nabla f(p) = 0 \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0 \therefore p \in Crit(f)$, e como $p$ é arbitrário, então $\bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Com esse resultado fica evidente que $\omega(q_{i}), \alpha(q_{i}) \subset Crit(f)$. Como os conjuntos limites são conjuntos finitos de pontos isolados vamos supor que $\omega(q_{i}) = \{r_{j} \in Crit(f): 0\leq j \leq m\}$, logo pela topologia induzinda, os abertos de cada um deles serão os conjuntos unitários e teremos $\omega(q_{i}) = \bigcup_{j=1}^{k} \{r_{j}\} $, e como os conjuntos limite são conexos (vide resultado do Palis), essa união disjunta contradiz a conexidade, portanto $\omega(q_{i}) = \{r_{i}\}$. Os mesmos argumentos valem para o conjunto $\alpha(q_{j})$. Portanto, ambos os conjuntos limite devem conter apenas um ponto crítico, como desejávamos.
+	\end{prova}
+	
 	\begin{definicao}
 		(Funções de Morse) $\morsefunc{M} \subset \suavefunc{M}$ é o conjunto de todas as funções de Morse definidas na variedade $M$.
 	\end{definicao}
@@ -434,38 +453,42 @@
 	\end{prova}
 
 	\section{Desigualdades de Morse}
-	\tese{Teorema de Euler-Poincaré}{Seja $(C_{*}, \partial_{*})$ um complexo de cadeia finitamente gerado com $C_{k} = 0$ para $k>m>0$ e algum $m \in \mathbb{Z}$. Definindo $c_{k} = dim(C_{k})$ e $b_{k} = dim(\homologia{k}{C_{*}})$ para $0 \leq k \leq m$, então
-	$$
-	\sum_{k=0}^{m}(-1)^{k}c_{k} = \sum_{k=0}^{m}(-1)^{k}b_{k}.
-	$$}{Temos que $Ker(\partial_{k}) \subseteq C_{k}(X)$ e $Im(\partial_{k}) \subseteq C_{k-1}(X)$ são submódulos, então podemos construir a sequência exata
-	\[
-	\xymatrix{
-		0 \ar[r] & Ker(\partial_{k}) \ar[r]^{i_{*}} &  C_{k}(X)  \ar[r]^{\partial_{k}} & Im(\partial_{k}) \ar[r] & 0,
-	}
-	\]
-	onde $i_{*}$ é a inclusão e $\partial_{k}$ é um epimorfismo, logo pelo teorema fundamental de isomorfismo de grupos, temos que $ C_{k}(X)/Ker(\partial_{k}) \cong Im(\partial_{k})$, portanto $dim(C_{k}(X)/Ker(\partial_{k})) = dim(C_{k}(X)) - dim(Ker(\partial_{k})) = dim(Im(\partial_{k})) \Rightarrow c_{k} = dim(Ker(\partial_{k})) + dim(Im(\partial_{k}))$. Análogamente, temos a sequência exata
-	\[
-	\xymatrix{
-		0 \ar[r] & Im(\partial_{k+1}) \ar[r] &  Ker(\partial_{k})  \ar[r]^{j_{*}} & \homologia{k}{X}\ar[r] & 0,
-	}
-	\]
-	onde $j_{*}$ é um epimorfismo pois dado $\classe{\alpha} \in \homologia{k}{X} = Ker(\partial_{k})/Im(\partial_{k+1})$ podemos tomar $\alpha \in Ker(\partial_{k})$ tal que $j_{*}(\alpha) = \classe{\alpha}$, consequentemente, pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\partial_{k})/Ker(j_{*}) \cong \homologia{k}{X}$, mas $Ker(j_{*}) = Im(\partial_{k+1})$, pela definição de homologia, então $dim(Ker(\partial_{k})/Ker(j_{*})) = dim(Ker(\partial_{k})) - dim(Ker(j_{*})) = dim(\homologia{k}{X}) \Rightarrow dim(Ker(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k}$. Igualando as expressões para $dim(Ker(\partial_{k}))$:
-	$$
-	dim(Ker(\partial_{k})) = c_{k} - dim(Im(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k} = dim(Ker(\partial_{k})).
-	$$
-	Como vale para $0 \leq k \leq m$, então:
-	$$
-	\begin{aligned}
+	
+	\begin{teorema}
+		(Teorema de Euler-Poincaré) Seja $(C_{*}, \partial_{*})$ um complexo de cadeia finitamente gerado com $C_{k} = 0$ para $k>m>0$ e algum $m \in \mathbb{Z}$. Definindo $c_{k} = dim(C_{k})$ e $b_{k} = dim(\homologia{k}{C_{*}})$ para $0 \leq k \leq m$, então
+		$$
+		\sum_{k=0}^{m}(-1)^{k}c_{k} = \sum_{k=0}^{m}(-1)^{k}b_{k}.
+		$$
+	\end{teorema}
+	\begin{prova}
+		Temos que $Ker(\partial_{k}) \subseteq C_{k}(X)$ e $Im(\partial_{k}) \subseteq C_{k-1}(X)$ são submódulos, então podemos construir a sequência exata
+		$$
+		\xymatrix{
+			0 \ar[r] & Ker(\partial_{k}) \ar[r]^{i_{*}} &  C_{k}(X)  \ar[r]^{\partial_{k}} & Im(\partial_{k}) \ar[r] & 0,
+		}
+		$$
+		onde $i_{*}$ é a inclusão e $\partial_{k}$ é um epimorfismo, logo pelo teorema fundamental de isomorfismo de grupos, temos que $ C_{k}(X)/Ker(\partial_{k}) \cong Im(\partial_{k})$, portanto $dim(C_{k}(X)/Ker(\partial_{k})) = dim(C_{k}(X)) - dim(Ker(\partial_{k})) = dim(Im(\partial_{k})) \Rightarrow c_{k} = dim(Ker(\partial_{k})) + dim(Im(\partial_{k}))$. Análogamente, temos a sequência exata
+		$$
+		\xymatrix{
+			0 \ar[r] & Im(\partial_{k+1}) \ar[r] &  Ker(\partial_{k})  \ar[r]^{j_{*}} & \homologia{k}{X}\ar[r] & 0,
+		}
+		$$
+		onde $j_{*}$ é um epimorfismo pois dado $\classe{\alpha} \in \homologia{k}{X} = Ker(\partial_{k})/Im(\partial_{k+1})$ podemos tomar $\alpha \in Ker(\partial_{k})$ tal que $j_{*}(\alpha) = \classe{\alpha}$, consequentemente, pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\partial_{k})/Ker(j_{*}) \cong \homologia{k}{X}$, mas $Ker(j_{*}) = Im(\partial_{k+1})$, pela definição de homologia, então $dim(Ker(\partial_{k})/Ker(j_{*})) = dim(Ker(\partial_{k})) - dim(Ker(j_{*})) = dim(\homologia{k}{X}) \Rightarrow dim(Ker(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k}$. Igualando as expressões para $dim(Ker(\partial_{k}))$:
+		$$
+		dim(Ker(\partial_{k})) = c_{k} - dim(Im(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k} = dim(Ker(\partial_{k})).
+		$$
+		Como vale para $0 \leq k \leq m$, então:
+		$$
+		\begin{aligned}
 		\sum_{k=0}^{m}	(-1)^{k}(c_{k} - dim(Im(\partial_{k}))) &= \sum_{k=0}^{m}	(-1)^{k}( dim(Im(\partial_{k+1}))+ b_{k})
 		\\
 		\sum_{k=0}^{m}	(-1)^{k}c_{k} - \sum_{k=0}^{m}(-1)^{k} b_{k} &= \sum_{k=0}^{m}	(-1)^{k} (dim(Im(\partial_{k+1})) -  dim(Im(\partial_{k})))
 		\\
 		&= 0,
-	\end{aligned}
-	$$
-	onde teremos somas alternadas no ultimo termo que se cancelarão, restando apenas $dim(Im(\partial_{m+1})) - dim(Im(\partial_{0}))$, mas ambos são identicamente nulos, pois $\partial_{m+1} = 0$ e $\partial_{0} = 0$.
-	}
-	
+		\end{aligned}
+		$$
+		onde teremos somas alternadas no ultimo termo que se cancelarão, restando apenas $dim(Im(\partial_{m+1})) - dim(Im(\partial_{0}))$, mas ambos são identicamente nulos, pois $\partial_{m+1} = 0$ e $\partial_{0} = 0$.
+	\end{prova}
 	
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
@@ -552,7 +575,7 @@
 	\end{prova}
 	
 	\begin{teorema}
-		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in GL(V, \real{})$, então podemos escrever $A=PO$ onde $P,O\in  \mathcal{L}(V)$ tal que $P = P^{t}$ (auto-adjunta) e $OO^{t} = Id$ (ortogonal).
+		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ (auto-adjunta) e $OO^{t} = Id$ (ortogonal).
 	\end{teorema}
 	\begin{prova}
 		Dados $v,w \in V$ então 
@@ -565,6 +588,39 @@
 		$$
 		logo $O$ é ortogonal.
 	\end{prova}
+	
+	\begin{lema}\label{lema_caracterizacao_matriz_normal}
+		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ tal que $A^{t}A=AA^{t}$, então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida (seus elementos são positivos-definidos) e uma matriz $S\in \matrizortogonal{n}$ tal que $A=SDS^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos-definidos. 
+	\end{lema}
+	\begin{prova}
+		\vermelho{Veja em ........}
+	\end{prova}
+	
+	\begin{lema}
+		(Raíz de matriz normal) Seja $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ com $AA^{t}=A^{t}A$ (matriz normal), então existe $P\in \matrizquadreal{n}$ \vermelho{semi-positiva-definida} tal que $A=P^{2}$. 
+	\end{lema}
+	\begin{prova}
+		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=SDS^{t}$, onde  $D$ é sua matriz diagonal $D=(D_{ii})$ e suas entradas são positivos-definidos e $S\in \matrizortogonal{n}$, logo podemos definir $C \in \matrizquadreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = SCS^{t}$ teremos $P^{2} = SCS^{t}SCS^{t} = SC^{2}S^{t} = SDS^{t}=A$, como desejávamos.
+	\end{prova}
+	
+	Os próximos passos serão dados em direção a demonstração de que o grupo simpletico $\gruposimpletico{2n}$ é um espaço topológico contrátil.
+	
+	\begin{definicao}
+		Seja $(V,\omega)$ um n-espaço vetorial simpletico, então $\estruturacomplexapadrao$ é o conjunto de todas as estruturas complexas $\omega$-compatíveis. Com isso, podemos afirmar que $\estruturacomplexapadrao \subseteq Endo(V)$, sendo o último o conjunto dos endomorfismos de $V$. Como espaço topológico, vamos utilizar a topologia $\estruturacomplexapadrao$ como sendo a topologia induzida por $Endo(V)$.
+	\end{definicao}
+	
+	Sejam $\produtosinternos{V}$ o conjunto de todos os produtos internos definidos em $V$ (n-espaço vetorial real). \vermelho{Pode-se mostrar que $\produtosinternos{V}$ é um subconjunto aberto e convexo do conjunto de todas as formas bilineares simétricas definidas em $V$}.
+	
+	Vimos que, dados $(V, \omega)$ n-espaço vetorial simpletico e uma estrutura complexa $J$ que é $\omega$-compatível, podemos definir um produto interno em $V$ através da relação $g(u,v) = \omega(u,Jv)$, o que define a aplicação $G:\estruturacomplexapadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g(u,v)$. Por outro lado, dado $g \in \produtosinternos{V}$, temos o isomorfismo $g^{\#}:V \to V^{*}$ dado por $g^{\#}(u)(v) = g(u,v)$, e tomando $A \in AntiSkew(V) =\{A \in Auto(V) : A^{t} = -A\}$ teremos que a composição $g^{\#}\circ A:V\to V^{*}$ pois é a composição de isomorfismos. Definindo $\omega^{\#}=g^{\#}\circ A$ teremos $\omega^{\#}(u)(v)=(g^{\#}\circ A)(u)(v) =g^{\#}(Au)(v) = g(Au,v)$, e denotando $\omega^{\#}(u)(v) = \omega(u,v)$ teremos
+	$$
+	\omega(u,v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Avu,u) = -\omega(v,u),
+	$$
+	que é uma forma bilinear anti-simétrica. Com isso, para casa
+	
+	\begin{definicao}
+		content...
+	\end{definicao}
+	
 	
 	\section{Variedades simpléticas}
 	\begin{definicao}
@@ -886,7 +942,7 @@
 	\begin{prova}
 		Primeiramente, todas as intersecções da hipótese são não-vazias pois a identidade pertence a todas elas. Sejam:
 		\begin{enumerate}
-			\item Por definição do conjunto ortogonal temos $Sp(2n) \cap O(2n) \subseteq Sp(2n) \cap GL(n, \mathbb{C}) $. Por outro lado, seja $A \in Sp(2n) \cap GL(n, \mathbb{C})$, então $J_{0} = AJ_{0}A^{t}$ e $J_{0} = AJ_{0}A^{-1}$ o que implica em $A^{t}=A^{-1}$, então $A \in Sp(2n) \cap O(2n)$, portanto $Sp(2n) \cap O(2n)=Sp(2n) \cap GL(n, \mathbb{C})$
+			\item Por definição do conjunto ortogonal temos $Sp(2n) \cap O(2n) \subseteq Sp(2n) \cap GL(n, \mathbb{C}) $. Por outro lado, seja $A \in Sp(2n) \cap GL(n, \mathbb{C})$, então $J_{0} = AJ_{0}A^{t}$ e $J_{0} = AJ_{0}A^{-1}$ o que implica em $A^{t}=A^{-1}$, então $A \in Sp(2n) \cap O(2n)$, portanto $Sp(2n) \cap O(2n)=Sp(2n) \cap GL(n, \mathbb{C})$.
 		\end{enumerate}
 	\end{prova}
 	
