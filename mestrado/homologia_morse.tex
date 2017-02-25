@@ -59,6 +59,7 @@
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
+\newcommand{\matrizantisimetrica}[1]{AntiSkew(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
 \newcommand{\matrizunitaria}[1]{U(#1)}
@@ -574,7 +575,7 @@
 		$$
 	\end{prova}
 	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_decomposicao_polar}
 		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ (auto-adjunta) e $OO^{t} = Id$ (ortogonal).
 	\end{teorema}
 	\begin{prova}
@@ -611,11 +612,38 @@
 	
 	Sejam $\produtosinternos{V}$ o conjunto de todos os produtos internos definidos em $V$ (n-espaço vetorial real). \vermelho{Pode-se mostrar que $\produtosinternos{V}$ é um subconjunto aberto e convexo do conjunto de todas as formas bilineares simétricas definidas em $V$}.
 	
-	Vimos que, dados $(V, \omega)$ n-espaço vetorial simpletico e uma estrutura complexa $J$ que é $\omega$-compatível, podemos definir um produto interno em $V$ através da relação $g(u,v) = \omega(u,Jv)$, o que define a aplicação $G:\estruturacomplexapadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g(u,v)$. Por outro lado, dado $g \in \produtosinternos{V}$, temos o isomorfismo $g^{\#}:V \to V^{*}$ dado por $g^{\#}(u)(v) = g(u,v)$, e tomando $A \in AntiSkew(V) =\{A \in Auto(V) : A^{t} = -A\}$ teremos que a composição $g^{\#}\circ A:V\to V^{*}$ pois é a composição de isomorfismos. Definindo $\omega^{\#}=g^{\#}\circ A$ teremos $\omega^{\#}(u)(v)=(g^{\#}\circ A)(u)(v) =g^{\#}(Au)(v) = g(Au,v)$, e denotando $\omega^{\#}(u)(v) = \omega(u,v)$ teremos
+	Vimos que, dados $(V, \omega)$ n-espaço vetorial simpletico e uma estrutura complexa $J$ que é $\omega$-compatível, podemos definir um produto interno em $V$ através da relação $g(u,v) = \omega(u,Jv)$, o que define a aplicação $G:\estruturacomplexapadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g(u,v)$. Por outro lado, dado $g \in \produtosinternos{V}$, temos o isomorfismo $g^{\#}:V \to V^{*}$ dado por $g^{\#}(u)(v) = g(u,v)$. Sejam $\matrizantisimetrica{V}$, o conjunto dos automorfismos anti-simétricos em V, e $S^{2}(V)$, o conjunto das formas bilineares anti-simétricas. Tomando $A \in \matrizantisimetrica{V}$ teremos $G^{\#} = g^{\#}\circ A:V\to V^{*}$ é um isomorfismo pois é a composição de isomorfismos. Teremos 
 	$$
-	\omega(u,v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Avu,u) = -\omega(v,u),
+	G^{\#}(u)(v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Av,u) = -G^{\#}(v)(u),
 	$$
-	que é uma forma bilinear anti-simétrica. Com isso, para casa
+	logo, dado $A\in \matrizantisimetrica{V}$ temos que a aplicação $G^{\#}$ pode ser associada a única forma bilinear anti-simétrica da seguinte forma $G': \matrizantisimetrica{V} \to AntiS^{2}(V)$ onde $G'(A)(u,v)  = g(Au,v)= G^{\#}(u)(v)$. Vamos denotar $\Omega(u,v) = G'(A)(u,v)$. Pelo Teorema $\ref{teorema_decomposicao_polar}$ podemos escrever $A = PJ$ onde $P$ é auto-adjunto e $J$ ortogonal. Além disso $-A^{2}=AA^{t} = PJJ^{t}P^{t} = P^{2}$ portanto $P=\sqrt{-A^{2}}$, o que resulta em $A^{2} = PJPJ = PPJJ = -A^{2}J^{2}$ o que implica que $J^{2} = -Id$. Notemos que $J=P^{-1}A:V \to V$ é um automorfismo pois é a composição de automorfismos, além disso é um simplectomorfismo pois:
+	$$
+	\begin{aligned}
+		\Omega(Ju,Jv) &= g(AJu, Jv)= g(J^{t}AJu, v)
+		\\
+		&=g(-JAJu, v)=g(-JA^{-1}AAJu, v)
+		\\
+		&=g(-JA^{-1}AAJu, v)=g(JA^{-1}\underbrace{(-A^{2})}_{P^{2}}Ju, v)
+		\\
+		&=g(P^{-1}P^{2}Ju, v)=g(PJu, v)
+		\\
+		&=g(Au, v)
+		\\
+		&=\Omega(u,v)
+	\end{aligned}
+	$$
+	Por fim, vejamos que $\Omega(.,J.):V\times V\to \real{}$ é um produto interno. Por construção, precisamos apenas verificar se é positivo-definido:
+	$$
+	\begin{aligned}
+	\Omega(u,Ju) &= g(Au, Ju)= g(J^{t}Au, u)
+	\\
+	&=g(-JAu, u)=g(-JA^{-1}AAu, u)
+	\\
+	&=g(JA^{-1}(-A^{2})u, u)=g(P^{-1}P^{2}u, u)
+	\\
+	&=g(Pu, u)\geq 0
+	\end{aligned}
+	$$
 	
 	\begin{definicao}
 		content...
