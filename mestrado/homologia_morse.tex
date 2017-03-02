@@ -525,7 +525,18 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		(Estrutura complexa) Dizemos que $J: V \to V$, onde $J^{2} = -Id$, é uma estrutura complexa compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$.
+		(Estrutura complexa) Dizemos que $J: V \to V$, onde $J^{2} = -Id$, é uma estrutura complexa compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$. Vamos fixar a notação $J_{0}$ como sendo:
+		$$
+		J_{0}=
+		\left(
+			\begin{array}{cc}
+			0 & -Id
+			\\
+			Id & 0
+			\end{array}
+		\right).
+		$$
+		
 	\end{definicao}
 	
 	\begin{teorema}
@@ -575,7 +586,185 @@
 		$$
 	\end{prova}
 	
-	\subsection{\gruposimpletico{2n} e sua topologia}
+	\subsection{O grupo simpletico 
+		\gruposimpletico{2n} e sua topologia}
+	O grupo simpletico e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros, sendo que esse isomorfismo se dará pelo índice de Maslov.
+	
+	\begin{definicao}
+		(Grupo simplético) Seja $(V,\omega)$ um espaço vetorial simplético 2n-dimensional, então o grupo simplético de $V$ é denotado por $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$. $\gruposimpletico{2n}$ como espaço topológico terá sua topologia induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
+	\end{definicao}
+	
+	Vejamos a seguinte caracterização do grupo simpletico e sua relação com a estrutura complexa:
+	
+	\begin{lema}\label{lema_caracterizacao_Sp2n}
+		(Caracterização de $Sp(2n)$) Sejam $(V, \omega)$ um 2n-espaço vetorial simpletico e $J \in \estruturacomplexapadrao$ uma estrutura complexa, então dada $A\in Sp(2n)$ se, e somente se, $A^{t}JA = J$. Além disso, podemos escrever 
+		$$
+		A=
+		\left(
+		\begin{array}{cc}
+		B & C
+		\\
+		D & E
+		\end{array}
+		\right)
+		$$
+		onde $B^{t}D, CE^{t}, BC^{t}, DE^{t} $ são matrizes simétricas e $B^{t}E - D^{t}C = Id$ e $BE^{t} - CD^{t} = Id$.
+	\end{lema}
+	\begin{prova}
+		Suponha $A \in Sp(2n)$, então:
+		$$
+		\omega(Av, Jw)= g(Av,w) = g(v,A^{t}w) = \omega(v, JA^{t}w) = \omega(Av, AJA^{t}w),
+		$$
+		e como vale para quaisquer $v,w$, então $J = AJA^{t}$. Por outro lado, suponha que $A \in \generalgroupreal{2n}$, tal que $A^{t}JA=J$ para qualquer $J \in \estruturacomplexapadrao$, então:
+		$$
+		\begin{aligned}
+		\omega(Av, Aw) &= \omega(Av, -J^{2}Aw)=g(Av, -JAw) \\
+		&= g(A, -A^{t}JAw) = g(A, -Jw) 
+		\\
+		&= \omega(v, -J^{2}w) = \omega(v, w), 
+		\end{aligned}
+		$$
+		logo $A \in \gruposimpletico{2n}$. Seja $J \in \estruturacomplexapadrao$ e $\{e, f\}$ uma base simpletica de $V$ tal que $J = J_{0}$ nessa base. A equação $A^{t}JA=J$ nos fornece as relações entre os blocos de matrizes de $A$:
+		
+		$$
+		\begin{aligned}
+			A^{t}JA&=
+			\left(
+			\begin{array}{cc}
+			B^{t} & D^{t}
+			\\
+			C^{t} & E^{t}
+			\end{array}
+			\right)
+			\left(
+			\begin{array}{cc}
+			-D & -E
+			\\
+			B & C
+			\end{array}
+			\right)
+			\\
+			&=
+			\left(
+			\begin{array}{cc}
+			-B^{t}D +D^{t}B & -B^{t}E+D^{t}C
+			\\
+			-C^{t}D+E^{t}B & -C^{t}E+E^{t}C
+			\end{array}
+			\right)
+			\\
+			&=	
+			\left(
+			\begin{array}{cc}
+			0 & -Id
+			\\
+			Id & 0
+			\end{array}
+			\right),
+		\end{aligned}
+		$$
+		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. Temos condições análogas para os outros logos de matrizes, como desejávamos.
+	\end{prova}
+	
+	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaço vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(J_{0}z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $J_{0}$ pela multiplicação por $i$ nos complexos. 
+	
+	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{2n}$. Afirmo que o mapa $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	$$
+	F(A)=
+	\left(
+	\begin{array}{cc}
+	B & -C
+	\\
+	C & B
+	\end{array}
+	\right)
+	$$
+	é um monomorfismo pois é linear e $F(A) = 0$ se, e somente se, $B=C=0$, logo $A=0$. Além disso, pode-se verificar que $F(A^{*}) = F(B^{t} - iC^{t}) = F(A)^{t}$.
+	Com isso podemos identificar o grupo $GL(n, \mathbb{C})$ como sendo subgrupo de $GL(2n, \real{})$ e definir o isomorfismo:
+	
+	\begin{lema}
+		A restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo.
+	\end{lema}
+	\begin{prova}
+		Seja $\mathcal{U} = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio pois a identidade esta na intersecção. Tomando $A \in U(2n)$, então devemos ter $A^{t}A= Id$ e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
+		$$
+			\begin{aligned}
+				Id=A^{t}A &=
+				\left(
+				\begin{array}{cc}
+				B^{t} & D^{t}
+				\\
+				C^{t} & E^{t}
+				\end{array}
+				\right)
+				\left(
+				\begin{array}{cc}
+				B & C
+				\\
+				D & E
+				\end{array}
+				\right)
+			\\
+			&= 
+			\left(
+			\begin{array}{cc}
+			B^{t}B + D^{t}D & B^{t}C + D^{t}E 
+			\\
+			C^{t}B + E^{t}D  & CC^{t}+EE^{t}
+			\end{array}
+			\right)
+			\\
+			&=
+			\left(
+			\begin{array}{cc}
+			B^{t}B + D^{t}D & 0 
+			\\
+			0 & CC^{t}+EE^{t}
+			\end{array}
+			\right),
+			\end{aligned}
+		$$
+		onde a condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + CC^{t} = DD^{t}+EE^{t} = Id$. 
+		
+		Tomando agora $Z \in \matrizunitaria{n}$, então $F(Z^{*}Z) = F(Id) = Id = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ teremos
+		$$
+		F(Z)=
+		\left(
+		\begin{array}{cc}
+		B & -C
+		\\
+		C & B
+		\end{array}
+		\right)
+		$$
+		e
+		$$
+		F(Z^{*})F(Z)=
+		\left(
+		\begin{array}{cc}
+		BB^{t} +CC^{t} & -B^{t}C +C^{t}B
+		\\
+		B^{t}C -C^{t}B & BB^{t} +CC^{t}
+		\end{array}
+		\right)	
+		= Id
+		$$
+		o que implica que devemos ter $B^{t}C =C^{t}B$ que é a condição para que valha o Lema $\ref{lema_caracterizacao_Sp2n}$, logo $F(Z) \in \gruposimpletico{2n}$, portanto $F(Z) \in \mathcal{U}$ e temos $F(\matrizunitaria{n}) \subseteq \mathcal{U}$.
+		
+		Seja $A \in \mathcal{U}$, então vimos que
+	\end{prova}
+	
+	e $\matrizunitaria{n}$ como subgrupo de $\matrizortogonal{2n}$. Por abuso de notação denotaremos a continência dessas identificações entre os grupos $\generalgroupcomplexo{n} \subset \generalgroupreal{2n}$ e $\matrizunitaria{n} \subset \matrizortogonal{2n}$. Podemos agora enunciar o lema:
+	
+	\begin{lema}
+		$Sp(2n) \cap O(2n) = Sp(2n) \cap GL(n, \mathbb{C}) = O(2n) \cap GL(n, \mathbb{C}) = U(n)$.
+	\end{lema}
+	\begin{prova}
+		Primeiramente, todas as intersecções da hipótese são não-vazias pois a identidade pertence a todas elas. Sejam:
+		\begin{enumerate}
+			\item Por definição do conjunto ortogonal temos $Sp(2n) \cap O(2n) \subseteq Sp(2n) \cap GL(n, \mathbb{C}) $. Por outro lado, seja $A \in Sp(2n) \cap GL(n, \mathbb{C})$, então $J_{0} = AJ_{0}A^{t}$ e $J_{0} = AJ_{0}A^{-1}$ o que implica em $A^{t}=A^{-1}$, então $A \in Sp(2n) \cap O(2n)$, portanto $Sp(2n) \cap O(2n)=Sp(2n) \cap GL(n, \mathbb{C})$.
+		\end{enumerate}
+	\end{prova}
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
 		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ (auto-adjunta) e $OO^{t} = Id$ (ortogonal).
@@ -943,57 +1132,11 @@
 		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
 	\end{prova}
 	
-	\subsection{O grupo simpletico Sp(2n)}
-	O grupo simpletico e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros, sendo que esse isomorfismo se dará pelo índice de Maslov.
-	
-	\begin{definicao}
-		(Grupo simplético) Seja $(V,\omega)$ um espaço vetorial simplético 2n-dimensional, então o grupo simplético de $V$ é denotado por $Sp(2n) = \{g \in GL(2n; \real{}) : \omega(g(v), g(w)) = \omega(v, w), \; v,w \in V \}$. 
-	\end{definicao}
-	
-	\begin{observacao}\label{obs_topologia_grupo_simpletico}
-		O grupo $GL(2n, \real{})$ é um espaço topológico com a topologia gerada pela norma da convergência uniforma $||.|| : GL(2n, \real{}) \to \real{}$ tal que $||T||= max|T_{ij}| $, então $Sp(2n)$ como subconjunto de $GL(2n, \real{})$ será um espaço topológico com a topologia induzida.
-	\end{observacao}
-	
-	Vejamos a seguinte caracterização do grupo simpletico e sua relação com a estrutura complexa:
-	
-	\begin{lema}\label{lema_caracterizacao_GL2n}
-		(Caracterização de $Sp(2n)$) Sejam $(V, \omega)$ um 2n-espaço vetorial simpletico e $J_{0}$ uma estrutura complexo, então dada $A\in GL(2n,\real{})$ temos $AJ_{0}=J_{0}A$. Além disso, se $A\in Sp(2n)$ temos $A^{t}J_{0}A = J_{0}$.
-	\end{lema}
-	\begin{prova}
-		Temos os produto interno $\innerprod{v}{w} = \omega(v,J_{0w})$. 
-		Supondo $A \in GL(2n,\real{})$, então:
-		$$
-		xxx
-		$$
-		
-		Seja $A \in Sp(2n)$, então:
-		$$
-			\omega(Av, J_{0}(w))=\innerprod{A(v)}{w} = \innerprod{v}{A^{t}(w)}=\omega(v, J_{0}A^{t}(w)) = \omega(Av, AJ_{0}A^{t}(w)),
-		$$
-		e como $v,w$ sã arbitrários, então $J_{0}=AJ_{0}A^{t}$.
-	\end{prova}
-	
-	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaço vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada tomando $z=(x,y) \in \real{2n}$ tal que $(x,y) \mapsto x+iy \in \mathbb{C}^{n}$, onde $x,y \in \real{n}$. Note que $J_{0}(z) = (-y, x) \mapsto -y +ix = i(x+iy)$, isto é, podemos identificar a aplicação de $J_{0}$ pela multiplicação por $i$ nos complexos. Assim, podemos identificar $GL(n, \mathbb{C}) \mapsto GL(2n, \real{})$ e com um abuso de notação enunciaremos o lema abaixo:
-	
-	\begin{lema}
-		$Sp(2n) \cap O(2n) = Sp(2n) \cap GL(n, \mathbb{C}) = O(2n) \cap GL(n, \mathbb{C}) = U(n)$.
-	\end{lema}
-	\begin{prova}
-		Primeiramente, todas as intersecções da hipótese são não-vazias pois a identidade pertence a todas elas. Sejam:
-		\begin{enumerate}
-			\item Por definição do conjunto ortogonal temos $Sp(2n) \cap O(2n) \subseteq Sp(2n) \cap GL(n, \mathbb{C}) $. Por outro lado, seja $A \in Sp(2n) \cap GL(n, \mathbb{C})$, então $J_{0} = AJ_{0}A^{t}$ e $J_{0} = AJ_{0}A^{-1}$ o que implica em $A^{t}=A^{-1}$, então $A \in Sp(2n) \cap O(2n)$, portanto $Sp(2n) \cap O(2n)=Sp(2n) \cap GL(n, \mathbb{C})$.
-		\end{enumerate}
-	\end{prova}
-	
 	\subsection{Definição do Índice de Maslov}
 	
 	\begin{definicao}
 		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
 	\end{definicao}
-	
-
-	
-	
 	
 	\begin{lema}\label{Sp2n_homotopia}
 		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \mathbb{Z}$.
