@@ -683,7 +683,7 @@
 	Com isso podemos identificar o grupo $GL(n, \mathbb{C})$ como sendo subgrupo de $GL(2n, \real{})$ e definir o isomorfismo:
 	
 	\begin{lema}
-		A restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo.
+		A restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo. Além disso, dado $A \in \mathcal{U}$ temos $AJ_{0}=J_{0}A$.
 	\end{lema}
 	\begin{prova}
 		Seja $\mathcal{U} = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio pois a identidade esta na intersecção. Tomando $A \in U(2n)$, então devemos ter $A^{t}A= Id$ e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
@@ -813,18 +813,40 @@
 		\end{array}
 		\right),
 		$$
-		mas dado $Z = B+iC$ temos pela caracterização anterior que $A = F(Z)$ logo $A\in \matrizunitaria{n}$, portanto $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão $\mathcal{U} = \matrizunitaria{n}$. Já demonstramos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
+		Seja $Z = B+iC \in \matrizunitaria{n}$, então temos $F(Z) = A$, portanto $A\in \matrizunitaria{n}$, o que implica $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão $\mathcal{U} = \matrizunitaria{n}$. Temos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 	
 	\begin{teorema}
 		$\gruposimpletico{2n}$ é conexo.
 	\end{teorema}
 	\begin{prova}
-		Afirmo que $\mathcal{U} \subset \matrizunitaria{n}$ é um subgrupo normal. De fato, tomando $A \in \mathcal{U}$ temos que $A^{t}A=A1A$
+		Afirmo que $\mathcal{U} \subset \matrizunitaria{n}$ é um subgrupo normal. De fato é grupo pois, tomando $U,V \in \mathcal{U}$, isso implica que $U^{-1}, U^{-1} \in \mathcal{U}$, e basta mostrar que $UV^{-1} \in \mathcal{U}$ pois a identidade já esta no conjunto, então 
+		$$
+		(UV^{-1})J_{0} = U(V^{-1}J_{0}) = UJ_{0}V^{-1}=J_{0}UV^{-1}=J_{0}(UV^{-1}),
+		$$ 
+		onde usamos o fato de que $U,V^{-1}$ comutam com $J_{0}$, logo $UV^{-1} \in \mathcal{U}$. 
+		
+		$\mathcal{U}$ é um grupo normal se, e somente se, dado $U \in \mathcal{U}$ e para qualquer $S \in \gruposimpletico{2n}$ temos $S^{-1}US \in \mathcal{U}$ com isso 
+		$$
+		\begin{aligned}
+			(S^{-1}US)J 
+			&= 
+			(S^{-1}U)SJS^{t}(S^{t})^{-1} = (S^{-1}U)\underbrace{J}_{SJS^{t}}(S^{t})^{-1}
+			\\
+			&=S^{-1}JU(S^{t})^{-1}=S^{-1}\underbrace{SJS^{t}}_{J}U(S^{t})^{-1}
+			\\
+			&=
+			JS^{t}U(S^{t})^{-1}=J(S^{-1}US)^{t}
+			\\
+			&=
+			J(S^{-1}US)^{-1} = J
+			SU^{-1}S^{-1}
+		\end{aligned}
+		$$
 	\end{prova}
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
-		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ (auto-adjunta) e $OO^{t} = Id$ (ortogonal).
+		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ (auto-adjunta) é positiva definida e $OO^{t} = Id$ (ortogonal).
 	\end{teorema}
 	\begin{prova}
 		Dados $v,w \in V$ então 
@@ -852,7 +874,7 @@
 		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=SDS^{t}$, onde  $D$ é sua matriz diagonal $D=(D_{ii})$ e suas entradas são positivos-definidos e $S\in \matrizortogonal{n}$, logo podemos definir $C \in \matrizquadreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = SCS^{t}$ teremos $P^{2} = SCS^{t}SCS^{t} = SC^{2}S^{t} = SDS^{t}=A$, como desejávamos.
 	\end{prova}
 	
-	Os próximos passos serão dados em direção a demonstração de que o grupo simpletico $\gruposimpletico{2n}$ é um espaço topológico contrátil.
+	Os próximos passos serão dados em direção a demonstração de que o grupo simpletico $\gruposimpletico{2n}$ é um conjunto conexo.
 	
 	\begin{definicao} \label{definicao_conjunto_estrutura_complexa}
 		Seja $(V,\omega)$ um 2n-espaço vetorial simpletico, então $\estruturacomplexapadrao$ é o conjunto de todas as estruturas complexas $\omega$-compatíveis. Com isso, podemos afirmar que $\estruturacomplexapadrao \subseteq Endo(V)$, sendo o último o conjunto dos endomorfismos de $V$. $\estruturacomplexapadrao$ será um espaço topológico com a topologia induzida por $Endo(V)$.
