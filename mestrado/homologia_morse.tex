@@ -751,19 +751,76 @@
 		$$
 		o que implica que devemos ter $B^{t}C =C^{t}B$ que é a condição para que valha o Lema $\ref{lema_caracterizacao_Sp2n}$, logo $F(Z) \in \gruposimpletico{2n}$, portanto $F(Z) \in \mathcal{U}$ e temos $F(\matrizunitaria{n}) \subseteq \mathcal{U}$.
 		
-		Seja $A \in \mathcal{U}$, então vimos que
+		Seja $A \in \mathcal{U}$, $A^{t}A=Id$, isto é, $A^{t}=A^{-1}$ e $J_{0}=A^{t}J_{0}A=A^{-1}J_{0}A$, o que implica que $AJ_{0}=J_{0}A$, assim:
+		$$
+		\begin{aligned}
+			AJ_{0}&=J_{0}A
+			\\
+			\left(
+			\begin{array}{cc}
+			B & C
+			\\
+			D & E
+			\end{array}
+			\right)
+			\left(
+			\begin{array}{cc}
+			0 & -Id
+			\\
+			Id & 0
+			\end{array}
+			\right)
+			&=
+			\left(
+			\begin{array}{cc}
+			0 & -Id
+			\\
+			Id & 0
+			\end{array}
+			\right)
+			\left(
+			\begin{array}{cc}
+			B & C
+			\\
+			D & E
+			\end{array}
+			\right)
+			\\
+			\left(
+			\begin{array}{cc}
+			C & -B
+			\\
+			E & -D
+			\end{array}
+			\right)
+			&=
+			\left(
+			\begin{array}{cc}
+			-D & -E
+			\\
+			B & C
+			\end{array}
+			\right), 
+		\end{aligned}
+		$$
+		logo temos $C=-D$ e $B=E$, portanto:
+		$$
+		A=\left(
+		\begin{array}{cc}
+		B & -C
+		\\
+		C & B
+		\end{array}
+		\right),
+		$$
+		mas dado $Z = B+iC$ temos pela caracterização anterior que $A = F(Z)$ logo $A\in \matrizunitaria{n}$, portanto $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão $\mathcal{U} = \matrizunitaria{n}$. Já demonstramos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 	
-	e $\matrizunitaria{n}$ como subgrupo de $\matrizortogonal{2n}$. Por abuso de notação denotaremos a continência dessas identificações entre os grupos $\generalgroupcomplexo{n} \subset \generalgroupreal{2n}$ e $\matrizunitaria{n} \subset \matrizortogonal{2n}$. Podemos agora enunciar o lema:
-	
-	\begin{lema}
-		$Sp(2n) \cap O(2n) = Sp(2n) \cap GL(n, \mathbb{C}) = O(2n) \cap GL(n, \mathbb{C}) = U(n)$.
-	\end{lema}
+	\begin{teorema}
+		$\gruposimpletico{2n}$ é conexo.
+	\end{teorema}
 	\begin{prova}
-		Primeiramente, todas as intersecções da hipótese são não-vazias pois a identidade pertence a todas elas. Sejam:
-		\begin{enumerate}
-			\item Por definição do conjunto ortogonal temos $Sp(2n) \cap O(2n) \subseteq Sp(2n) \cap GL(n, \mathbb{C}) $. Por outro lado, seja $A \in Sp(2n) \cap GL(n, \mathbb{C})$, então $J_{0} = AJ_{0}A^{t}$ e $J_{0} = AJ_{0}A^{-1}$ o que implica em $A^{t}=A^{-1}$, então $A \in Sp(2n) \cap O(2n)$, portanto $Sp(2n) \cap O(2n)=Sp(2n) \cap GL(n, \mathbb{C})$.
-		\end{enumerate}
+		Afirmo que $\mathcal{U} \subset \matrizunitaria{n}$ é um subgrupo normal. De fato, tomando $A \in \mathcal{U}$ temos que $A^{t}A=A1A$
 	\end{prova}
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
