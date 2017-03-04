@@ -504,7 +504,7 @@
 	
 	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
-		(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e $\omega \in \Lambda^{2}(V, \real{})$ não-degenerada (ou forma simplética), isto é, $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. O par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
+		(Espaço vetorial simpletico) Sejam $V$ um 2n-espaço vetorial real e $\omega \in \Lambda^{2}(V, \real{})$ não-degenerada (ou forma simplética), isto é, $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. O par $(V, \omega)$ é chamado de 2n-espaço vetorial simpletico.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -523,7 +523,7 @@
 	\end{teorema}
 	
 	\begin{definicao}
-		(Simplectomorfismo) Dois espaços vetoriais simpléticos $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ são ditos simplectomorfos se existe um isomorfismo $\varphi:V\to W$ que preseva a forma simplética, isto é, $\varphi^{*}\omega_{2} = \omega_{1}$.
+		(Simplectomorfismo) Dois espaços vetoriais simpleticos $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ são ditos simplectomorfos se existe um isomorfismo $\varphi:V\to W$ que preseva a forma simplética, isto é, $\varphi^{*}\omega_{2} = \omega_{1}$.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -543,7 +543,7 @@
 	
 	\begin{teorema}
 		\vermelho{
-			Seja $(V, \omega)$ um espaço vetorial simplético, então cada produto interno $g$ em $V$ define uma estrutura complexa $\omega$-compatível.}
+			Seja $(V, \omega)$ um espaço vetorial simpletico, então cada produto interno $g$ em $V$ define uma estrutura complexa $\omega$-compatível.}
 	\end{teorema}
 	
 	\begin{lema}
@@ -588,12 +588,47 @@
 		$$
 	\end{prova}
 	
-	\subsection{O grupo simpletico 
+	\section{O grupo simpletico 
 		\gruposimpletico{2n} e sua topologia}
 	O grupo simpletico e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros, sendo que esse isomorfismo se dará pelo índice de Maslov.
+
+	O teorema da decomposição espectral, logo a seguir, será aplicado na demonstração da conexidade de $\gruposimpletico{2n}$, então:
+	
+	\begin{definicao}\label{definicao_matriz_positiva_definida}
+		(Matrizes positiva-definidas) Sejam $V$ um k-espaço vetorial real  e $A \in \generalgroupreal{k}$, então dizemos que $A$ é uma matriz positiva-definida se $A=A^{t}$ e para qualquer $v\in V$ temos $v^{t}Av > 0$. Denotamos $Sym_{+}(k)$ como sendo o conjunto das matrizes positivas-definidas
+	\end{definicao}
+	
+	\begin{teorema}\label{teorema_decomposicao_polar}
+		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ é positiva definida e $OO^{t} = Id$ (ortogonal).
+	\end{teorema}
+	\begin{prova}
+		Dados $v,w \in V$ então 
+		$$
+		\innerprod{AA^{t}v}{w}=\innerprod{v}{A^{t}Aw}=\innerprod{Av}{Aw}=\innerprod{A^{t}Av}{w}=\innerprod{(AA^{t})^{t} v}{w},
+		$$
+		como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é auto-adjunta e positiva. Suponha $A=PO$, então pela hipótese $AA^{t} = POO^{t}P^{t} = P^{2}$. Como $A$ e $A^{t}$ são únicas, então $AA^{t}$ é única, logo $P$ é única. Como $A=PO$ então pela unicidade de $P$ temos que $O$ é única, assim $A=PO$ esta bem-definida e $O=P^{-1}A$. Por fim, 
+		$$
+		OO^{t} = P^{-1}AA^{t}(P^{-1})^{t}= P^{-1}AA^{t}(P^{t})^{-1}=P^{-1}AA^{t}(P)^{-1}=P^{-1}P^{2}(P)^{-1}=Id,
+		$$
+		logo $O$ é ortogonal.
+	\end{prova}
+	
+	\begin{lema}\label{lema_caracterizacao_matriz_normal}
+		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ tal que $A^{t}A=AA^{t}$, então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida (seus elementos são positivos-definidos) e uma matriz $S\in \matrizortogonal{n}$ tal que $A=SDS^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos-definidos. 
+	\end{lema}
+	\begin{prova}
+		\vermelho{Veja em ........}
+	\end{prova}
+	
+	\begin{lema}
+		(Raíz de matriz normal) Seja $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ com $AA^{t}=A^{t}A$ (matriz normal), então existe $P\in \matrizquadreal{n}$ \vermelho{positiva-definida} tal que $A=P^{2}$. 
+	\end{lema}
+	\begin{prova}
+		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=SDS^{t}$, onde  $D$ é sua matriz diagonal $D=(D_{ii})$ e suas entradas são positivos-definidos e $S\in \matrizortogonal{n}$, logo podemos definir $C \in \matrizquadreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = SCS^{t}$ teremos $P^{2} = SCS^{t}SCS^{t} = SC^{2}S^{t} = SDS^{t}=A$, como desejávamos.
+	\end{prova}
 	
 	\begin{definicao}
-		(Grupo simplético) Seja $(V,\omega)$ um espaço vetorial simplético 2n-dimensional, então o grupo simplético de $V$ é denotado por $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$. $\gruposimpletico{2n}$ como espaço topológico terá sua topologia induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
+		(Grupo simpletico) Seja $(V,\omega)$ um espaço vetorial simpletico 2n-dimensional, então o grupo simpletico de $V$ é denotado por $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$. $\gruposimpletico{2n}$ como espaço topológico terá sua topologia induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
 	\end{definicao}
 	
 	Vejamos a seguinte caracterização do grupo simpletico e sua relação com a estrutura complexa:
@@ -670,7 +705,7 @@
 	
 	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaço vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(J_{0}z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $J_{0}$ pela multiplicação por $i$ nos complexos. 
 	
-	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{2n}$. Afirmo que o mapa $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{2n}$. Definindo o mapa $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
 	$$
 	F(A)=
 	\left(
@@ -679,16 +714,16 @@
 	\\
 	C & B
 	\end{array}
-	\right)
+	\right).
 	$$
-	é um monomorfismo pois é linear e $F(A) = 0$ se, e somente se, $B=C=0$, logo $A=0$. Além disso, pode-se verificar que $F(A^{*}) = F(B^{t} - iC^{t}) = F(A)^{t}$.
-	Com isso podemos identificar o grupo $GL(n, \mathbb{C})$ como sendo subgrupo de $GL(2n, \real{})$ e definir o isomorfismo:
+	Afirmo que $F$ é injetivo pois $F(A) = 0$ se, e somente se, $B=C=0$, logo $A=0$ e pode-se verificar que $F(AB)=F(A)F(B)$, portanto é um monomorfismo. Além disso, temos a propriedade $F(A^{*}) = F(B^{t} - iC^{t}) = F(A)^{t}$.
+	Com isso podemos, identificar o grupo $GL(n, \mathbb{C})$ como sendo subgrupo de $GL(2n, \real{})$ e definir o isomorfismo:
 	
 	\begin{lema}
 		A restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo. Além disso, dado $A \in \mathcal{U}$ temos $AJ_{0}=J_{0}A$.
 	\end{lema}
 	\begin{prova}
-		Seja $\mathcal{U} = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio pois a identidade esta na intersecção. Tomando $A \in U(2n)$, então devemos ter $A^{t}A= Id$ e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
+		Seja $\mathcal{U} = \gruposimpletico{2n} \cap \matrizortogonal{2n}$, logo $\mathcal{U}$ é não-vazio pois a identidade esta na intersecção. Tomando $A \in U(2n)$, então $A^{t}A= Id$. Pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
 		$$
 			\begin{aligned}
 				Id=A^{t}A &=
@@ -728,7 +763,7 @@
 		$$
 		onde a condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + CC^{t} = DD^{t}+EE^{t} = Id$. 
 		
-		Tomando agora $Z \in \matrizunitaria{n}$, então $F(Z^{*}Z) = F(Id) = Id = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ teremos
+		Seja $Z \in \matrizunitaria{n}$, então $F(Z^{*}Z) = F(Id) = Id = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ teremos
 		$$
 		F(Z)=
 		\left(
@@ -818,10 +853,6 @@
 		Seja $Z = B+iC \in \matrizunitaria{n}$, então temos $F(Z) = A$, portanto $A\in \matrizunitaria{n}$, o que implica $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão $\mathcal{U} = \matrizunitaria{n}$. Temos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 	
-	\begin{definicao}\label{definicao_matriz_positiva_definida}
-		(Matrizes positiva-definidas) Sejam $V$ um k-espaço vetorial real  e $A \in \generalgroupreal{k}$, então dizemos que $A$ é uma matriz positiva-definida se $A=A^{t}$ e para qualquer $v\in V$ temos $v^{t}Av > 0$. Denotamos $Sym_{+}(k)$ como sendo o conjunto das matrizes positivas-definidas
-	\end{definicao}
-	
 	\begin{lema}
 		$\matrizsimetricapositiva{k}$ é conexo.
 	\end{lema}
@@ -840,39 +871,10 @@
 		Dado $A \in \gruposimpletico{2n}$, então pelo Teorema $\ref{teorema_decomposicao_polar}$ podemos escrever $A=PO$. Pela unicidade da decomposição polar podemos definir a aplicação injetora $G: \gruposimpletico{2n} \to \matrizsimetricapositiva{2n}\times \mathcal{U}$ tal que $G(A) = (P,O)$. Por outro lado, dado $(P,O) \in \matrizsimetricapositiva{2n}\times \mathcal{U}$ temos $(PO)^{t}J_{0}PO = O^{t}P^{t}J_{0}PO = O^{t}J_{0}O = J_{0}$ que pelo Lema $\ref{lema_caracterizacao_Sp2n}$ implica $PO \in \gruposimpletico{2n}$. Pela unicidade da decomposição polar podemos definir a aplicação $G^{-1}:\matrizsimetricapositiva{2n}\times \mathcal{U} \to \gruposimpletico{2n}$, tal que $G^{-1}(P,O) = PO \in \gruposimpletico{2n}$, logo $G^{-1} \circ G =Id$. Como $G, G^{-1}$ são aplicações contínuas, portanto um homeomorfismo, e $\matrizsimetricapositiva{2n}\times \mathcal{U}$ é conexo, pois é o produto cartesianos de espaços topológicos conexos, funções contínuas preservam a conexidade, então $G^{-1}(\matrizsimetricapositiva{2n}\times \mathcal{U}) = \gruposimpletico{2n}$ é conexo.
 	\end{prova}
 	
-	\begin{teorema}\label{teorema_decomposicao_polar}
-		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ (auto-adjunta) é positiva definida e $OO^{t} = Id$ (ortogonal).
-	\end{teorema}
-	\begin{prova}
-		Dados $v,w \in V$ então 
-		$$
-		\innerprod{AA^{t}v}{w}=\innerprod{v}{A^{t}Aw}=\innerprod{Av}{Aw}=\innerprod{A^{t}Av}{w}=\innerprod{(AA^{t})^{t} v}{w},
-		$$
-		como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é auto-adjunta e positiva. Suponha $A=PO$, então pela hipótese $AA^{t} = POO^{t}P^{t} = P^{2}$. Como $A$ e $A^{t}$ são únicas, então $AA^{t}$ é única, logo $P$ é única. Como $A=PO$ então pela unicidade de $P$ temos que $O$ é única, assim $A=PO$ esta bem-definida e $O=P^{-1}A$. Por fim, 
-		$$
-		OO^{t} = P^{-1}AA^{t}(P^{-1})^{t}= P^{-1}AA^{t}(P^{t})^{-1}=P^{-1}AA^{t}(P)^{-1}=P^{-1}P^{2}(P)^{-1}=Id,
-		$$
-		logo $O$ é ortogonal.
-	\end{prova}
-	
-	\begin{lema}\label{lema_caracterizacao_matriz_normal}
-		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ tal que $A^{t}A=AA^{t}$, então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida (seus elementos são positivos-definidos) e uma matriz $S\in \matrizortogonal{n}$ tal que $A=SDS^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos-definidos. 
-	\end{lema}
-	\begin{prova}
-		\vermelho{Veja em ........}
-	\end{prova}
-	
-	\begin{lema}
-		(Raíz de matriz normal) Seja $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ com $AA^{t}=A^{t}A$ (matriz normal), então existe $P\in \matrizquadreal{n}$ \vermelho{semi-positiva-definida} tal que $A=P^{2}$. 
-	\end{lema}
-	\begin{prova}
-		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=SDS^{t}$, onde  $D$ é sua matriz diagonal $D=(D_{ii})$ e suas entradas são positivos-definidos e $S\in \matrizortogonal{n}$, logo podemos definir $C \in \matrizquadreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = SCS^{t}$ teremos $P^{2} = SCS^{t}SCS^{t} = SC^{2}S^{t} = SDS^{t}=A$, como desejávamos.
-	\end{prova}
-	
-	Os próximos passos serão dados em direção a demonstração de que o grupo simpletico $\gruposimpletico{2n}$ é um conjunto conexo.
+	\section{As estruturas complexas $\estruturacomplexapadrao$ e sua topologia}
 	
 	\begin{definicao} \label{definicao_conjunto_estrutura_complexa}
-		Seja $(V,\omega)$ um 2n-espaço vetorial simpletico, então $\estruturacomplexapadrao$ é o conjunto de todas as estruturas complexas $\omega$-compatíveis. Com isso, podemos afirmar que $\estruturacomplexapadrao \subseteq Endo(V)$, sendo o último o conjunto dos endomorfismos de $V$. $\estruturacomplexapadrao$ será um espaço topológico com a topologia induzida por $Endo(V)$.
+		Sejam $(V,\omega)$ um 2n-espaço vetorial simpletico e $Endo(V)$ o conjunto dos endomorfismos de $V$. Denotamos $\estruturacomplexapadrao \subseteq Endo(V)$ como conjunto de todas as estruturas complexas $\omega$-compatíveis. Além disso, $\estruturacomplexapadrao$ é um espaço topológico com a topologia induzida pela topologia de $Endo(V)$.
 	\end{definicao}
 	
 	\begin{definicao}\label{definicao_espaco_produtos_internos}
@@ -930,7 +932,7 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		(Gradiente simplético) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simplético é o único campo vetorial $X \in \mathfrak{X}(M)$ tal que $\omega(X, Y) = df(Y)$ para todo $Y \in \mathfrak{X}(M)$.
+		(Gradiente simpletico) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simpletico é o único campo vetorial $X \in \mathfrak{X}(M)$ tal que $\omega(X, Y) = df(Y)$ para todo $Y \in \mathfrak{X}(M)$.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -1209,7 +1211,7 @@
 	\subsection{Definição do Índice de Maslov}
 	
 	\begin{definicao}
-		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
+		(Fibrado simpletico) Um n-fibrado simpletico $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
 	\end{definicao}
 	
 	\begin{lema}\label{Sp2n_homotopia}
