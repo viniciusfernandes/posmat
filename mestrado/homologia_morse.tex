@@ -62,6 +62,8 @@
 \newcommand{\matrizantisimetrica}[1]{AntiSkew(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
+\newcommand{\matrizsimetrica}[1]{Sym(#1)}
+\newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
 \newcommand{\matrizunitaria}[1]{U(#1)}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
@@ -816,33 +818,26 @@
 		Seja $Z = B+iC \in \matrizunitaria{n}$, então temos $F(Z) = A$, portanto $A\in \matrizunitaria{n}$, o que implica $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão $\mathcal{U} = \matrizunitaria{n}$. Temos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 	
+	\begin{definicao}\label{definicao_matriz_positiva_definida}
+		(Matrizes positiva-definidas) Sejam $V$ um k-espaço vetorial real  e $A \in \generalgroupreal{k}$, então dizemos que $A$ é uma matriz positiva-definida se $A=A^{t}$ e para qualquer $v\in V$ temos $v^{t}Av > 0$. Denotamos $Sym_{+}(k)$ como sendo o conjunto das matrizes positivas-definidas
+	\end{definicao}
+	
+	\begin{lema}
+		$\matrizsimetricapositiva{k}$ é conexo.
+	\end{lema}
+	\begin{prova}
+		Sejam $V$ um k-espaço vetorial real, $A, B \in \matrizsimetricapositiva{k}$ e $\gamma : [0,1] \to \matrizquadreal{k}$ tal que $\gamma(\lambda) = \lambda A +(1-\lambda)B$, então é simétrica pois é a combinação linear de matrizes simétricas, e para qualquer $v \in V$:
+		$$
+		v^{t}\gamma(t)v = v^{t}(\lambda A +(1-\lambda)B)v = \lambda v^{t}v + (1-\lambda)v^{t}Bv >0,
+		$$
+		pois é a soma de valores não-negativos, logo $\gamma([0,1]) \subset \matrizsimetricapositiva{k}$. Como $A, B \in \matrizsimetricapositiva{k}$ são arbitrários e são conectados por um caminho, então $\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
+	\end{prova}
+	
 	\begin{teorema}
 		$\gruposimpletico{2n}$ é conexo.
 	\end{teorema}
 	\begin{prova}
-		Afirmo que $\mathcal{U} \subset \matrizunitaria{n}$ é um subgrupo normal. De fato é grupo pois, tomando $U,V \in \mathcal{U}$, isso implica que $U^{-1}, U^{-1} \in \mathcal{U}$, e basta mostrar que $UV^{-1} \in \mathcal{U}$ pois a identidade já esta no conjunto, então 
-		$$
-		(UV^{-1})J_{0} = U(V^{-1}J_{0}) = UJ_{0}V^{-1}=J_{0}UV^{-1}=J_{0}(UV^{-1}),
-		$$ 
-		onde usamos o fato de que $U,V^{-1}$ comutam com $J_{0}$, logo $UV^{-1} \in \mathcal{U}$. 
-		
-		$\mathcal{U}$ é um grupo normal se, e somente se, dado $U \in \mathcal{U}$ e para qualquer $S \in \gruposimpletico{2n}$ temos $S^{-1}US \in \mathcal{U}$ com isso 
-		$$
-		\begin{aligned}
-			(S^{-1}US)J 
-			&= 
-			(S^{-1}U)SJS^{t}(S^{t})^{-1} = (S^{-1}U)\underbrace{J}_{SJS^{t}}(S^{t})^{-1}
-			\\
-			&=S^{-1}JU(S^{t})^{-1}=S^{-1}\underbrace{SJS^{t}}_{J}U(S^{t})^{-1}
-			\\
-			&=
-			JS^{t}U(S^{t})^{-1}=J(S^{-1}US)^{t}
-			\\
-			&=
-			J(S^{-1}US)^{-1} = J
-			SU^{-1}S^{-1}
-		\end{aligned}
-		$$
+		Dado $A \in \gruposimpletico{2n}$, então pelo Teorema $\ref{teorema_decomposicao_polar}$ podemos escrever $A=PO$. Pela unicidade da decomposição polar podemos definir a aplicação injetora $G: \gruposimpletico{2n} \to \matrizsimetricapositiva{2n}\times \mathcal{U}$ tal que $G(A) = (P,O)$. Por outro lado, dado $(P,O) \in \matrizsimetricapositiva{2n}\times \mathcal{U}$ temos $(PO)^{t}J_{0}PO = O^{t}P^{t}J_{0}PO = O^{t}J_{0}O = J_{0}$ que pelo Lema $\ref{lema_caracterizacao_Sp2n}$ implica $PO \in \gruposimpletico{2n}$. Pela unicidade da decomposição polar podemos definir a aplicação $G^{-1}:\matrizsimetricapositiva{2n}\times \mathcal{U} \to \gruposimpletico{2n}$, tal que $G^{-1}(P,O) = PO \in \gruposimpletico{2n}$, logo $G^{-1} \circ G =Id$. Como $G, G^{-1}$ são aplicações contínuas, portanto um homeomorfismo, e $\matrizsimetricapositiva{2n}\times \mathcal{U}$ é conexo, pois é o produto cartesianos de espaços topológicos conexos, funções contínuas preservam a conexidade, então $G^{-1}(\matrizsimetricapositiva{2n}\times \mathcal{U}) = \gruposimpletico{2n}$ é conexo.
 	\end{prova}
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
