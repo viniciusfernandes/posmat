@@ -53,6 +53,7 @@
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
 \newcommand{\gruposimpletico}[1]{Sp(#1)}
+\newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
 \newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
@@ -576,17 +577,17 @@
 	
 	
 	\begin{lema}
-		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula.
+		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula. Além disso, se $\varphi:V\to V$ é um simpléctomorfismo, então $det(\varphi)=1$;
 	\end{lema}
 	\begin{prova}
-		Supondo $\omega$ uma forma simplética, então 
-		$$
-		\omega^{\wedge n}(v_{1}, \dots, v_{2n}) =\sum_{\sigma} \omega(v_{\sigma(1)}, v_{\sigma(2)})...\omega(v_{\sigma(2n-1)}, v_{\sigma(2n)}),
-		$$
-		onde $\sigma:\{1, 2, \dots , 2n\} \to \{1, 2, \dots , 2n\}$ é uma permutação desse conjunto. Como $\omega$ é não-degenerada então $\omega(v_{i}, v_{j}) \neq 0 $ para todos $i \neq j$, logo $\omega^{\wedge n}(v_{1}, \dots, v_{2n}) \neq 0$. Por outro lado, basta avaliar a forma volume nos elementos da base teremos 
-		$$
-		\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1},\dots, f_{n}) = \sum_{\sigma} \omega(v_{\sigma(1)}, v_{\sigma(2)})...\omega(v_{\sigma(2n-1)}, v_{\sigma(2n)})
-		$$
+		\vermelho{Supondo $\omega$ uma forma simplética, então 
+			$$
+			\omega^{\wedge n}(v_{1}, \dots, v_{2n}) =\sum_{\sigma} \omega(v_{\sigma(1)}, v_{\sigma(2)})...\omega(v_{\sigma(2n-1)}, v_{\sigma(2n)}),
+			$$
+			onde $\sigma:\{1, 2, \dots , 2n\} \to \{1, 2, \dots , 2n\}$ é uma permutação desse conjunto. Como $\omega$ é não-degenerada então $\omega(v_{i}, v_{j}) \neq 0 $ para todos $i \neq j$, logo $\omega^{\wedge n}(v_{1}, \dots, v_{2n}) \neq 0$. Por outro lado, basta avaliar a forma volume nos elementos da base teremos 
+			$$
+			\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1},\dots, f_{n}) = \sum_{\sigma} \omega(v_{\sigma(1)}, v_{\sigma(2)})...\omega(v_{\sigma(2n-1)}, v_{\sigma(2n)})
+			$$}
 	\end{prova}
 	
 	\section{O grupo simplético 
@@ -620,6 +621,10 @@
 	\begin{prova}
 		\vermelho{Veja em ........}
 	\end{prova}
+
+	\begin{definicao}\label{definicao_potenciacao_matriz}
+		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$ um operador linear diagonalizável e $V_{\lambda}$ um de seus auto-espaços. Definimos $A^{\alpha}:V \to V$, onde $\alpha \in \real{}$, o operador linear cujos auto-valores sejam $\lambda^{\alpha}$.
+	\end{definicao}
 	
 	\begin{lema}
 		(Raíz de matriz normal) Seja $V$ um k-espaço vetorial e $A\in \matrizquadreal{k}$ uma matriz normal, então existe $P\in \matrizquadreal{k}$ \vermelho{positiva-definida} tal que $A=P^{2}$. 
@@ -869,7 +874,7 @@
 		pois é a soma de valores não-negativos, logo $\gamma([0,1]) \subset \matrizsimetricapositiva{k}$. Como $A, B \in \matrizsimetricapositiva{k}$ são arbitrários e são conectados por um caminho, então $\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
-	\begin{teorema}\label{teoerma_sp2n_conexo_caminhos}
+	\begin{teorema}\label{teoerma_sp2n_conexo}
 		$\gruposimpletico{2n}$ é conexo.
 	\end{teorema}
 	\begin{prova}
@@ -878,10 +883,36 @@
 	
 	Analisaremos agora o espectro $\espectro{A}$ de um dado simpléctomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov. 
 	\begin{lema}
-		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$, então $\lambda \in \espectro{A}$ se, e somente se, $\lambda^{-1} \in \espectro{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos sendo $\lambda_{u}$ e $\lambda_{v}$ seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então $\omega(u,v) = 0$.  
+		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$, então $\lambda \in \espectro{A}$ se, e somente se, $\lambda^{-1} \in \espectro{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos sendo $\lambda_{u}$ e $\lambda_{v}$ seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
 	\end{lema}
 	\begin{prova}
-		Da caracterização de do grupo simplético temos que se $A \in \gruposimpletico{2n}$ então $A^{t}J_{0}A = J_{0}$ o que implica em $J_{0}^{-1}A^{t}J_{0} = A^{-1}$, isto é, $A^{t}$ e $A^{-1}$ são matrizes similares, e matrizes similares possuem o mesmo espectro, então $\espectro{A^{t}}=\espectro{A^{-1}}$. Alé disso, $A^{t}$ sabemos que $\espectro{A^{t}} = \espectro{A}$, logo $\espectro{A^{-1}} = \espectro{A}$, isto é, se $\lambda \in \espectro{A}$, então $\lambda^{-1} \in \espectro{A}$.
+		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}J_{0}A = J_{0}$ o que implica em $J_{0}^{-1}A^{t}J_{0} = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectro{A^{t}}=\espectro{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectro{A^{t}} = \espectro{A}$, o que implica em $\espectro{A^{-1}} = \espectro{A}$, isto é, se $\lambda \in \espectro{A}$, então $\lambda^{-1} \in \espectro{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valores $\lambda \in \espectro{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectro{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
+		
+		Sejam $u, v$ auto-vetores de $A$ e $\lambda_{u}, \lambda_{v}$ seus auto-valores, respectivamente, tal que $\lambda_{u}\lambda_{v}\neq 1$. Então:
+		$$
+		\omega(u,v)=\omega(Au,Av) = \lambda_{u}\lambda_{v}\omega(u,v), 
+		$$
+		como $\lambda_{u}\lambda_{v}\neq 1$ isso implica que $\omega(u,v)=0$.
+	\end{prova}
+	
+	\begin{lema}\label{lema_potenciacao_grupo_simpletico}
+		(Potênciação em $\gruposimpletico{2n}$) Seja \vermelho{$\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ (o conjunto das matrizes simpléticas positivas-definidas)}. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer \vermelho{$\alpha \in \real{}_{+}$}.
+	\end{lema}
+	\begin{prova}
+		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é dianonalizável. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectro{A}$. Sejam $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então:
+		$$
+		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v), 
+		$$
+		caso $\lambda_{u}\lambda_{v}\neq 1$, então $\omega(A^{\alpha}u,A^{\alpha}v)=\omega(u,v)=0$, é trivial. Caso $\lambda_{u}\lambda_{v}=1$ temos $\omega(A^{\alpha}u,A^{\alpha}v) = \omega(u,v)$, portanto $A^{\alpha} \in \gruposimpletico{2n}$.
+	\end{prova}
+	
+	\begin{teorema}
+		O quociente $\gruposimpletico{2n}/\mathcal{U}$ é contrátil.
+	\end{teorema}
+	\begin{prova}
+		Na demonstração do Teorema $\ref{teoerma_sp2n_conexo}$ (conexidade de $\gruposimpletico{2n}$) foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \matrizsimetricapositiva{2n}$ e $O \in \mathcal{U}$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, logo $AA^{t} = P^{2} \in \gruposimpletico{2n}$. Pelo Lema $\ref{lema_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}_{+}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. De fato $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\mathcal{U}$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \mathcal{U}$ e, por fim, tomando $B \in \mathcal{U}$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		
+		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\mathcal{U}$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \mathcal{U}$, isto é, $R(., 0) = Id_{\mathcal{S}}$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
 	
 	\section{As estruturas complexas $\estruturacomplexapadrao$ e sua topologia}
