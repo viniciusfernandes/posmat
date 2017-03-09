@@ -24,6 +24,7 @@
 \newtheorem{definicao}[teorema]{Definição}
 \newtheorem{exemplo}[teorema]{Exemplo}
 \newtheorem{observacao}[teorema]{Observação}
+\newtheorem{proposicao}[teorema]{Proposição}
 
 \newenvironment{prova}[1]{$\square$ #1}{\hfill$\blacksquare$}
 
@@ -577,7 +578,7 @@
 	
 	
 	\begin{lema}
-		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula. Além disso, se $\varphi:V\to V$ é um simpléctomorfismo, então $det(\varphi)=1$;
+		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula.
 	\end{lema}
 	\begin{prova}
 		\vermelho{Supondo $\omega$ uma forma simplética, então 
@@ -588,6 +589,39 @@
 			$$
 			\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1},\dots, f_{n}) = \sum_{\sigma} \omega(v_{\sigma(1)}, v_{\sigma(2)})...\omega(v_{\sigma(2n-1)}, v_{\sigma(2n)})
 			$$}
+	\end{prova}
+	
+	\begin{proposicao}\label{proposicao_preservacao_volume}
+		(Preservação do volume) Sejam $(V,\omega)$ um 2n-espaço vetorial simplético e $\varphi:V\to V$ um simpléctomorfismo, então $\varphi^{*}\omega^{\wedge n}=\omega^{\wedge n}$ e $det(\varphi)=1$.
+	\end{proposicao}
+	\begin{prova}
+		Seja $\varphi:V \to V$ um simpléctomorfismo, então $\varphi^{*}\omega = \omega$, então pode definição de pullback temos
+		$$
+		\begin{aligned}
+			\varphi^{*}\omega^{\wedge n} 
+			&= 
+			\varphi^{*}(\omega\wedge \dots \wedge\omega) 
+			\\
+			&= \varphi^{*}\omega\wedge \dots \wedge\varphi^{*}\omega
+			\\
+			&=\omega\wedge \dots \wedge \omega 
+			\\
+			&= \omega^{\wedge n}.
+		\end{aligned} 
+		$$
+		Aplicando esse resultado veremos que
+		$$
+		\begin{aligned}
+		\omega^{\wedge n}(e_{1}, \dots,e_{n}, f_{1},\dots, f_{n})
+		&=(\varphi^{*}\omega^{\wedge n})(e_{1}, \dots, e_{n}, f_{1},\dots, f_{n})
+		\\
+		&=
+		\omega^{\wedge n}(\varphi e_{1}, \dots,\varphi  e_{n}, \varphi f_{1},\dots, \varphi f_{n})
+		\\
+		&=det(\varphi)\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1},\dots, f_{n}),
+		\end{aligned}
+		$$
+		portanto $det(\varphi) = 1$.
 	\end{prova}
 	
 	\section{O grupo simplético 
@@ -637,7 +671,9 @@
 		(Grupo simplético) Seja $(V,\omega)$ um 2n-espaço vetorial simplético, então o grupo simplético de $V$ é denotado por $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$.
 	\end{definicao}
 	
-	Quando tratarmos $\gruposimpletico{2n}$ como espaço topológico adotaremos sua topologia induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
+	\begin{observacao}
+		Quando tratarmos $\gruposimpletico{2n}$ como espaço topológico adotaremos sua topologia induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
+	\end{observacao}
 	
 	Vejamos a seguinte caracterização do grupo simplético e sua relação com a estrutura complexa:
 	
@@ -713,7 +749,7 @@
 	
 	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaço vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(J_{0}z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $J_{0}$ pela multiplicação por $i$ nos complexos. 
 	
-	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{2n}$. Definindo a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Definindo a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
 	$$
 	F(A)=
 	\left(
@@ -729,7 +765,7 @@
 	||F(A) - F(X)|| = max \{|B_{ij} - Y_{ij}|, |C_{ij} - Z_{ij}| \}< \epsilon/2 < \epsilon.
 	$$
 	
-	\begin{lema}
+	\begin{lema}\label{lema_isomorfismo_U}
 		A restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo. Além disso, dado $A \in \mathcal{U}$ temos $AJ_{0}=J_{0}A$.
 	\end{lema}
 	\begin{prova}
@@ -874,12 +910,20 @@
 		pois é a soma de valores não-negativos, logo $\gamma([0,1]) \subset \matrizsimetricapositiva{k}$. Como $A, B \in \matrizsimetricapositiva{k}$ são arbitrários e são conectados por um caminho, então $\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
+	\begin{observacao}
+		Note que $\mathcal{U}$ é conexo pois $\matrizunitaria{n}$ é conexo \vermelho{ver referencia}, e como a conexidade é preservada por funções contínuas, então $F(\matrizunitaria{n}) = \mathcal{U}$ é conexo.
+	\end{observacao}
+	
 	\begin{teorema}\label{teoerma_sp2n_conexo}
 		$\gruposimpletico{2n}$ é conexo.
 	\end{teorema}
 	\begin{prova}
 		Dado $A \in \gruposimpletico{2n}$, então pelo Teorema $\ref{teorema_decomposicao_polar}$ podemos escrever $A=PO$. Pela unicidade da decomposição polar podemos definir a aplicação injetora $G: \gruposimpletico{2n} \to \matrizsimetricapositiva{2n}\times \mathcal{U}$ tal que $G(A) = (P,O)$. Por outro lado, dado $(P,O) \in \matrizsimetricapositiva{2n}\times \mathcal{U}$ temos $(PO)^{t}J_{0}PO = O^{t}P^{t}J_{0}PO = O^{t}J_{0}O = J_{0}$ que pelo Lema $\ref{lema_caracterizacao_Sp2n}$ implica $PO \in \gruposimpletico{2n}$. Pela unicidade da decomposição polar podemos definir a aplicação $G^{-1}:\matrizsimetricapositiva{2n}\times \mathcal{U} \to \gruposimpletico{2n}$, tal que $G^{-1}(P,O) = PO \in \gruposimpletico{2n}$, logo $G^{-1} \circ G =Id$. Como $G, G^{-1}$ são aplicações contínuas, portanto um homeomorfismo, e $\matrizsimetricapositiva{2n}\times \mathcal{U}$ é conexo, pois é o produto cartesianos de espaços topológicos conexos, funções contínuas preservam a conexidade, então $G^{-1}(\matrizsimetricapositiva{2n}\times \mathcal{U}) = \gruposimpletico{2n}$ é conexo.
 	\end{prova}
+	
+	\begin{observacao}\label{observacao_decomposicao_Sp2n}
+		No teorema anterior exibimos um homeomorfismo $G:\gruposimpletico{2n} \to \matrizsimetricapositiva{2n} \times \mathcal{U}$, isto é, mostramos que se $A \in \gruposimpletico{2n}$, então ela pode ser decomposta univacamente como $A=PO$, onde $P\in \matrizsimetricapositiva{2n}$ e $O \in \mathcal{U}$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
+	\end{observacao}
 	
 	Analisaremos agora o espectro $\espectro{A}$ de um dado simpléctomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov. 
 	\begin{lema}
@@ -921,19 +965,27 @@
 		Sejam $(V,\omega)$ um 2n-espaço vetorial simplético e $Endo(V)$ o conjunto dos endomorfismos de $V$. Denotamos $\estruturacomplexapadrao \subseteq Endo(V)$ como conjunto de todas as estruturas complexas $\omega$-compatíveis. Além disso, $\estruturacomplexapadrao$ é um espaço topológico com a topologia induzida pela topologia de $Endo(V)$.
 	\end{definicao}
 	
-	\begin{definicao}\label{definicao_espaco_produtos_internos}
-		Seja $V$ um k-espaço vetorial real munido de um produto interno, então $\produtosinternos{V}$é o conjunto de todos os produtos internos definido em $V$. Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$, que é um espaço topológico na norma da convergência uniforme, logo $\produtosinternos{V}$ será um espaço topológico com sua topologia induzida por $\mathcal{L}(V \times V; \real{})$.
+	\begin{observacao}\label{observacao_conjunto_estrutura_complexa}
+		Quando tratarmos $\estruturacomplexapadrao$ como espaço topológico adotaremos sua topologia induzida pela topologia de $Endo(V)$ gerada pela norma da convergência uniforme.
+	\end{observacao}
+
+	\begin{definicao}
+		Seja $V$ um k-espaço vetorial real munido de um produto interno, então $\produtosinternos{V}$ é o conjunto de todos os produtos internos definido em $V$.
 	\end{definicao}
 	
-	Seja $\produtosinternos{V}$ o conjunto de todos os produtos internos definidos em $V$ (n-espaço vetorial real). \vermelho{Pode-se mostrar que $\produtosinternos{V}$ é um subconjunto aberto e convexo do conjunto de todas as formas bilineares simétricas definidas em $V$}.
+	\begin{observacao}
+		Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$, que é um espaço topológico na norma da convergência uniforme, logo $\produtosinternos{V}$ será um espaço topológico com sua topologia induzida por $\mathcal{L}(V \times V; \real{})$.
+	\end{observacao} 
+	
+	\vermelho{Pode-se mostrar que $\produtosinternos{V}$ é um subconjunto aberto e convexo do conjunto de todas as formas bilineares simétricas definidas em $V$}.
 	
 	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ que é $\omega$-compatível, podemos definir um produto interno em $V$ através da relação $g(u,v) = \omega(u,Jv)$, o que define a aplicação $G:\estruturacomplexapadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g(u,v)$. Vamos mostrar que podemos definir uma aplicação $G^{-1}: \produtosinternos{V} \to \estruturacomplexapadrao$, com isso provaremos que $\estruturacomplexapadrao$ é contrátil.
 	
 	Dado $g \in \produtosinternos{V}$, temos o isomorfismo $g^{\#}:V \to V^{*}$ dado por $g^{\#}(u)(v) = g(u,v)$. Sejam $\matrizantisimetrica{V}$, o conjunto dos automorfismos anti-simétricos em V, e $S^{2}(V)$, o conjunto das formas bilineares anti-simétricas. Tomando $A \in \matrizantisimetrica{V}$ teremos $G^{\#} = g^{\#}\circ A:V\to V^{*}$ é um isomorfismo pois é a composição de isomorfismos. Teremos 
 	$$
-	G^{\#}(u)(v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Av,u) = -G^{\#}(v)(u),
+	G^{\#}(u)(v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Av,u) = -G^{\#}(v)(u).
 	$$
-	logo, dado $A\in \matrizantisimetrica{V}$ temos que a aplicação $G^{\#}$ pode ser associada a única forma bilinear anti-simétrica da seguinte forma $\Omega : \matrizantisimetrica{V} \to AntiS^{2}(V)$ onde $\Omega(A)(u,v)  = g(Au,v)= G^{\#}(u)(v)$. Vamos denotar $\Omega_{A}(u,v) = \Omega(A)(u,v)$. Pelo Teorema $\ref{teorema_decomposicao_polar}$ podemos escrever $A = PJ$ onde $P$ é auto-adjunto e $J$ ortogonal. Além disso $-A^{2}=AA^{t} = PJJ^{t}P^{t} = P^{2}$ portanto $P=\sqrt{-A^{2}}$, o que resulta em $A^{2} = PJPJ = PPJJ = -A^{2}J^{2}$ o que implica que $J^{2} = -Id$. Notemos que $J=P^{-1}A:V \to V$ é um automorfismo pois é a composição de automorfismos, e também é um simplectomorfismo pois:
+	Tomando $A\in \matrizantisimetrica{V}$ temos que a aplicação $G^{\#}$ pode ser associada a única forma bilinear anti-simétrica da seguinte forma $\Omega : \matrizantisimetrica{V} \to AntiS^{2}(V)$ onde $\Omega(A)(u,v)  = g(Au,v)= G^{\#}(u)(v)$. Vamos denotar $\Omega_{A}(u,v) = \Omega(A)(u,v)$. Pelo Teorema $\ref{teorema_decomposicao_polar}$ (decomposição polar) podemos escrever $A = PJ$ onde $P$ é positiva-definida e $J$ ortogonal. Além disso $-A^{2}=AA^{t} = PJJ^{t}P^{t} = P^{2}$ portanto $P=\sqrt{-A^{2}}$, \vermelho{o que resulta em $A^{2} = PJPJ = PPJJ = -A^{2}J^{2}$ o que implica que $J^{2} = -Id$.} Notemos que $J=P^{-1}A:V \to V$ é um automorfismo pois é a composição de automorfismos, e também é um simplectomorfismo pois:
 	$$
 	\begin{aligned}
 		\Omega_{A}(Ju,Jv) &= g(AJu, Jv)= g(J^{t}AJu, v)
@@ -967,9 +1019,52 @@
 		Seja $(V,\omega)$ um 2n-espaço vetorial real simplético, então $\estruturacomplexapadrao$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Sejam $\estruturacomplexapadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{definicao_conjunto_estrutura_complexa}$ e $\ref{definicao_espaco_produtos_internos}$. Tomando $G:\produtosinternos{V} \to \estruturacomplexapadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturacomplexapadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
+		Sejam $\estruturacomplexapadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{observacao_conjunto_estrutura_complexa}$. Tomando $G:\produtosinternos{V} \to \estruturacomplexapadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturacomplexapadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
 	\end{prova}
 	
+	\subsection{O índice de Maslov}
+	Para a esclarecer algumas escolhas feitas na definição do índice de Maslov, faremos um breve anúncio sobre resultado do grupo fundamental de $S^{1}$, sendo que mais detalhes podem ser consultados em \vermelho{Elon Lages Lima}.
+	
+	Sabe-se que o grupo fundamental de $S^{1}$ é isomorfo aos inteiros, isto é, $\pi_{1}(S^{1}) \cong \mathbb{Z}$. Com isso podemos afirmar que tal grupo é um grupo cíclico infinito, pois $\mathbb{Z}$ é cíclico infinito. A cada curva fechada $\gamma:[0,1] \to S^{1}$ pode-se associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que duas curvas $\gamma, \beta$ em $S^{1}$ são homotópicas se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
+	
+	Seja $exp:\real{} \to S^{1}$ a aplicação exponencial $exp(t) = e^{it}$. Pode-se mostrar o importante resultado sobre levantamento de curvas em $S^{1}$:
+	
+	\begin{proposicao}\label{proposicao_levantamento_curvas}
+		(Levantamento de curvas) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = exp(t_{a})$.Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = exp(\alpha(t))$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. Esse levantamento é a apicação que faz com que o diagrama abaixo comute:
+		$$
+		\xymatrix{
+			& \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
+		}
+		$$
+	\end{proposicao}
+	Agora temos ferramental para definirmos o índice de Maslov.
+	
+	\begin{teorema}
+		Existe uma única aplicação $\mu$, chamada índice de Maslov, que associa a cada curva fechada $\gamma: [0,1] \to \gruposimpletico{2n}$ a um inteiro $\mu(\gamma) \in \mathbb{Z}$. Sejam curvas fechadas $\gamma, \beta: [0,1] \to \gruposimpletico{2n}$, então satisfaz os seguintes axiomas:
+		\begin{enumerate}
+			\item \textbf{(homotopia)} $\gamma$ e $\beta$ são homotópicas se, e somente se, $\mu(\gamma)=\mu(\beta)$.
+			
+			\item \textbf{(produto)} $\mu(\gamma.\beta) = \mu(\gamma)+\mu(\beta)$, em particular, se $\gamma$ é uma curva constante, então $\mu(\gamma) = 0$.
+			
+			\item \textbf{(normalização)} Se $\gamma:[0,1] \to \mathcal{U} \subset \gruposimpletico{2n}$, então $\mu(\gamma) = 1$.
+		\end{enumerate}
+	\end{teorema}
+	\begin{prova}
+		Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação conítnua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ esta bem-definida. De fato, dado $B \in \matrizunitaria{n}$, então $B^{*}B = Id$, o que implica que $1=det(B^{*}B)=det(B^{*})det(B) = \overline{det(B)}det(B) = |det(B)|$, logo $det(B) \in S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
+		
+		Seja $\gamma:[0,1] \to \gruposimpletico{2n}$ uma curva fechada, então temos a aplicação contínua $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ pois é a composição de aplicações contínuas. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \mathbb{Z}$. Definimos como o índice de Maslov da curva $\gamma$ o número:
+		$$
+			\mu(\gamma) = deg(\rho \circ \gamma) = deg(\rho_{\gamma}) \in \mathbb{Z}.
+		$$
+		Afirmo que a aplicação $\mu$ satsifaz os axiomas de índice de Maslov. De fato, supondo $\gamma, \beta :[0,1] \to \gruposimpletico{2n}$ sejam duas curvas fechadas homotópicas e $h:\gruposimpletico{2n}\times [0,1]\to \gruposimpletico{2n}$ a homotopia entre elas, isto é $h(p, 0) = \gamma(\lambda)$ e $h(p, 1) = \beta(\lambda)$. Afirmo que $H:S^{1}\times [0,1] \to S^{1}$ tal que $H(p, t) = (\rho \circ h)(p,t)$ é uma homotopia entre $\rho_{\gamma}$ e $\rho_{\gamma}$. De fato, $H$ é composição de aplicações contínuas, logo é contínua, e $H(p, 0) = (\rho \circ h)(p,0) = \rho (h(p,0))= \rho (\gamma(\lambda)) = \rho_{\gamma}(\lambda)$, analogamente, $H(p, 0) = (\rho \circ h)(p,0) = \rho (h(p,))= \rho_{\beta}(\lambda)$, portanto $\rho_{\gamma}$ e $\rho_{\beta}$ são homotópicas, então:
+		$$
+		\mu(\gamma) = deg(\rho_{\gamma}) = deg(\rho_{\beta}) = \mu(\beta).
+		$$
+		
+	\end{prova}
+		
 	\section{Variedades simpléticas}
 	\begin{definicao}
 		(Variedade Simplética) Uma variedade simplética de dimensão 2m é o par $(M, \omega)$ onde $M$ é uma 2m-variedade diferenciável e $\omega \in \Omega^{2}(M^{m})$ é uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$ e para cada $p \in M$ temos que $(T_{p}M, \omega_{p})$ é um espaço vetorial simplético. Cada $x = (q_{1}, \dots, q_{m}, p_{1}, \dots, p_{m}) \in M$  será abreviado pelo par $(q,p)$.
