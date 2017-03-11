@@ -1042,13 +1042,15 @@
 	
 	Procuramos uma função que associe uma curva em $S^{1}$ a um número inteiro. Note que cada curva fechada envolve $S^{1}$ uma quantidade inteira de vezes, por exemplo: uma curva constante envolve $S^{1}$ zero vezes; uma curva homotópica a $S^{1}$ envolve 1 vez. Assim, vamos definir o grau de uma curva em $S^{1}$ como uma função com essas características.
 	
-	\begin{definicao}
-		(O grau de uma curva fechada) Seja $\curvasfechadascirculo{0}{1}$ o conjunto de todas as curvas contínuas e fechadas em $S^{1}$, então a aplicação $deg:\curvasfechadascirculo{0}{1} \to \mathbb{Z}$ tal que $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$, esta bem-definida.
-	\end{definicao}
+	\begin{proposicao}
+		(O grau de uma curva fechada) Seja $\curvasfechadascirculo{0}{1}$ o conjunto de todas as curvas contínuas e fechadas em $S^{1}$, então a aplicação $deg:\curvasfechadascirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso, se $\gamma$ e $\beta$ são curvas homotópicas, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \curvasfechadascirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
+	\end{proposicao}
 	\begin{prova}
 		Seja $\gamma \in \curvasfechadascirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $\gamma(\lambda) = e^{i\alpha(\lambda)}$. Como é uma curva fechada temos $\gamma(0)=\gamma(1)$, o que implica em $e^{i\alpha(0)}=e^{i\alpha(1)}$, logo $e^{i(\alpha(1)-\alpha(0))} = 1$, portanto $\alpha(1)-\alpha(0) = 2\pi k$, onde $k\in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e esta bem-definida pois para cada $\gamma \in \curvasfechadascirculo{0}{1}$ existe um único levantamento $\alpha$, logo $deg(\gamma)$ é único.
 		
 		Sejam $\gamma, \beta \in \curvasfechadascirculo{0}{1}$ homotópicas e $h:S^{1}\times [0,1]\to S^{1}$ a homotopia entre elas, onde $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \curvasfechadascirculo{0}{1}$, logo $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, o curvas homotópicas possuem o mesmo grau. 
+		
+		Tomando o produto das curvas anteriormente definidas, temos $(\gamma.\beta)(\lambda)= e^{i\alpha(\lambda)}e^{i\xi(\lambda)} = e^{i(\alpha(\lambda)+\xi(\lambda))} \in S^{1}$ o que implica que $deg(\gamma.\beta) = ((\alpha(1)+\xi(1))-(\alpha(0)+\xi(0)))/2\pi = deg(\gamma)+deg(\beta)$.
 	\end{prova}
 	
 	
@@ -1078,7 +1080,7 @@
 		
 		É verdade para o axioma do produto pois:
 		$$
-		\vermelho{\mu(\gamma.\beta) = deg(\rho_{\gamma}.\rho_{\beta})} = deg(\rho_{\gamma})+deg(\rho_{\beta}) = \mu(\gamma)+\mu(\beta).
+		\mu(\gamma.\beta) = deg(\rho_{\gamma}.\rho_{\beta}) = deg(\rho_{\gamma})+deg(\rho_{\beta}) = \mu(\gamma)+\mu(\beta).
 		$$	
 		Além disso, se $\gamma$ é curva constante o que implica que $\rho_{\gamma}$ é uma curva constante, então temos pela efinição de grau de uma curva $0=deg(\rho_{\gamma}) = \mu(\gamma)$.
 	\end{prova}
