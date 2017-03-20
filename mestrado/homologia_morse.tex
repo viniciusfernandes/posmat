@@ -67,6 +67,7 @@
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
 \newcommand{\matrizsimetrica}[1]{Sym(#1)}
 \newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
+\newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
 \newcommand{\matrizunitaria}[1]{U(#1)}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
@@ -631,8 +632,25 @@
 	O teorema da decomposição espectral, logo a seguir, será aplicado na demonstração da conexidade de $\gruposimpletico{2n}$, então:
 	
 	\begin{definicao}\label{definicao_matriz_positiva_definida}
-		(Matrizes positiva-definidas) Sejam $V$ um k-espaço vetorial real  e $A \in \generalgroupreal{k}$, então dizemos que $A$ é uma matriz positiva-definida se $A=A^{t}$ e para qualquer $v\in V$ temos $v^{t}Av > 0$. Denotamos $Sym_{+}(k)$ como sendo o conjunto das matrizes positivas-definidas
+		(Matrizes positiva-definidas) Sejam $V$ um k-espaço vetorial real  e $A \in \generalgroupreal{k}$, então dizemos que $A$ é uma matriz positiva-definida se sua forma quadrática é positiva-definida, isto é, $Q_{A}(v)\ge 0$ para qualquer $v\in V$. Denotaremos $\matrizsimetricapositiva{k}$ como sendo o conjunto das matrizes simétricas e positivas-definidas
 	\end{definicao}
+	
+	\begin{observacao}\label{observacao_matriz_positiva_definida}
+		Seja $A$ uma matriz de ordem $n$. Definimos seu k-subdeterminante o escalar
+		$$
+		det_{k}(A) =
+		det \left(
+		\begin{array}{ccc}
+		A_{11} & \dots & A_{1k}
+		\\
+		\vdots & \ddots & \vdots
+		\\
+		A_{k1} & \dots & A_{kk}
+		\end{array}
+		\right)
+		$$
+		Pode-se mostrar que uma matriz $A$ é positiva-definida se, e somente se, $A=A^{t}$ e seus k-subdeterminantes são todos positivos. Uma consequência imediata é que, se $A$ for diagonalizável, então todos os seus auto-valores serão positivos. \vermelho{Veja hoffmam}.
+	\end{observacao}
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
 		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um k-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ é positiva-definida e $OO^{t} = Id$ (ortogonal).
@@ -650,10 +668,10 @@
 	\end{prova}
 	
 	\begin{lema}\label{lema_caracterizacao_matriz_normal}
-		(Caracterização matriz normal) Seja $A\in \matrizquadreal{k}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Afirmo que existem uma matriz diagonal $D \in \matrizquadreal{k}$ positiva-definida e uma matriz $S\in \matrizortogonal{k}$ tal que $A=SDS^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos-definidos. 
+		(Caracterização matriz normal) Seja $A\in \matrizquadreal{k}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Afirmo que existem uma matriz diagonal $D \in \matrizquadreal{k}$ positiva-definida e uma matriz $O\in \matrizortogonal{k}$ tal que $A=ODO^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos-definidos. 
 	\end{lema}
 	\begin{prova}
-		\vermelho{Veja em ........}
+		\vermelho{Veja em Hoffman no caítulo sobre operadores normais}
 	\end{prova}
 
 	\begin{definicao}\label{definicao_potenciacao_matriz}
@@ -661,10 +679,10 @@
 	\end{definicao}
 	
 	\begin{lema}
-		(Raíz de matriz normal) Seja $V$ um k-espaço vetorial e $A\in \matrizquadreal{k}$ uma matriz normal, então existe $P\in \matrizquadreal{k}$ \vermelho{positiva-definida} tal que $A=P^{2}$. 
+		(Raíz de matriz normal) Seja $V$ um k-espaço vetorial e $A\in \matrizquadreal{k}$ uma matriz normal, então existe $P\in \matrizquadreal{k}$ tal que $A=P^{2}$. 
 	\end{lema}
 	\begin{prova}
-		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=SDS^{t}$, onde  $D$ é sua matriz diagonal $D=(D_{ii})$ e suas entradas são positivos-definidos e $S\in \matrizortogonal{k}$, logo podemos definir $C \in \matrizquadreal{k}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = SCS^{t}$ teremos $P^{2} = SCS^{t}SCS^{t} = SC^{2}S^{t} = SDS^{t}=A$, como desejávamos.
+		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=ODO^{t}$, onde  $D$ é sua matriz diagonal $D=(D_{ii})$ e suas entradas são positivos-definidos e $O\in \matrizortogonal{k}$, logo podemos definir $C \in \matrizquadreal{k}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = OCO^{t}$ teremos $P^{2} = OCO^{t}OCO^{t} = OC^{2}O^{t} = ODO^{t}=A$, como desejávamos.
 	\end{prova}
 	
 	\begin{definicao}
@@ -896,36 +914,10 @@
 		\end{array}
 		\right),
 		$$
-		Seja $Z = B+iC \in \matrizunitaria{n}$, então temos $F(Z) = A$, portanto $A\in \matrizunitaria{n}$, o que implica $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão $\mathcal{U} = \matrizunitaria{n}$. Temos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
+		Seja $Z = B+iC \in \matrizunitaria{n}$, então temos $F(Z) = A$, portanto $A\in \matrizunitaria{n}$, o que implica $\mathcal{U} \subseteq F(\matrizunitaria{n})$, logo $\mathcal{U} = F(\matrizunitaria{n})$. Temos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
-	
-	\begin{lema}
-		$\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
-	\end{lema}
-	\begin{prova}
-		Sejam $V$ um k-espaço vetorial real, $A, B \in \matrizsimetricapositiva{k}$ e $\gamma : [0,1] \to \matrizquadreal{k}$ tal que $\gamma(\lambda) = \lambda A +(1-\lambda)B$, então é simétrica pois é a combinação linear de matrizes simétricas, e para qualquer $v \in V$:
-		$$
-		v^{t}\gamma(t)v = v^{t}(\lambda A +(1-\lambda)B)v = \lambda v^{t}Av + (1-\lambda)v^{t}Bv \geq 0,
-		$$
-		pois é a soma de valores não-negativos, logo $\gamma([0,1]) \subset \matrizsimetricapositiva{k}$. Como $A, B \in \matrizsimetricapositiva{k}$ são arbitrários e são conectados por um caminho, então $\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
-	\end{prova}
-	
-	\begin{observacao}
-		Note que $\mathcal{U}$ é conexo pois $\matrizunitaria{n}$ é conexo \vermelho{ver referencia}, e como a conexidade é preservada por funções contínuas, então $F(\matrizunitaria{n}) = \mathcal{U}$ é conexo.
-	\end{observacao}
-	
-	\begin{teorema}\label{teoerma_sp2n_conexo}
-		$\gruposimpletico{2n}$ é conexo.
-	\end{teorema}
-	\begin{prova}
-		Dado $A \in \gruposimpletico{2n}$, então pelo Teorema $\ref{teorema_decomposicao_polar}$ podemos escrever $A=PO$. Pela unicidade da decomposição polar podemos definir a aplicação injetora $G: \gruposimpletico{2n} \to \matrizsimetricapositiva{2n}\times \mathcal{U}$ tal que $G(A) = (P,O)$. Por outro lado, dado $(P,O) \in \matrizsimetricapositiva{2n}\times \mathcal{U}$ temos $(PO)^{t}J_{0}PO = O^{t}P^{t}J_{0}PO = O^{t}J_{0}O = J_{0}$ que pelo Lema $\ref{lema_caracterizacao_Sp2n}$ implica $PO \in \gruposimpletico{2n}$. Pela unicidade da decomposição polar podemos definir a aplicação $G^{-1}:\matrizsimetricapositiva{2n}\times \mathcal{U} \to \gruposimpletico{2n}$, tal que $G^{-1}(P,O) = PO \in \gruposimpletico{2n}$, logo $G^{-1} \circ G =Id$. Como $G, G^{-1}$ são aplicações contínuas, portanto um homeomorfismo, e $\matrizsimetricapositiva{2n}\times \mathcal{U}$ é conexo, pois é o produto cartesianos de espaços topológicos conexos, funções contínuas preservam a conexidade, então $G^{-1}(\matrizsimetricapositiva{2n}\times \mathcal{U}) = \gruposimpletico{2n}$ é conexo.
-	\end{prova}
-	
-	\begin{observacao}\label{observacao_decomposicao_Sp2n}
-		No teorema anterior exibimos um homeomorfismo $G:\gruposimpletico{2n} \to \matrizsimetricapositiva{2n} \times \mathcal{U}$, isto é, mostramos que se $A \in \gruposimpletico{2n}$, então ela pode ser decomposta univacamente como $A=PO$, onde $P\in \matrizsimetricapositiva{2n}$ e $O \in \mathcal{U}$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
-	\end{observacao}
-	
-	Analisaremos agora o espectro $\espectro{A}$ de um dado simpléctomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov. 
+
+	Analisaremos agora o espectro $\espectro{A}$ de um dado simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov. 
 	\begin{lema}
 		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$, então $\lambda \in \espectro{A}$ se, e somente se, $\lambda^{-1} \in \espectro{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos sendo $\lambda_{u}$ e $\lambda_{v}$ seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
 	\end{lema}
@@ -939,22 +931,67 @@
 		como $\lambda_{u}\lambda_{v}\neq 1$ isso implica que $\omega(u,v)=0$.
 	\end{prova}
 	
-	\begin{lema}\label{lema_potenciacao_grupo_simpletico}
-		(Potênciação em $\gruposimpletico{2n}$) Seja \vermelho{$\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ (o conjunto das matrizes simpléticas positivas-definidas)}. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer \vermelho{$\alpha \in \real{}_{+}$}.
-	\end{lema}
+	\begin{proposicao}\label{proposicao_potenciacao_grupo_simpletico}
+		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
+	\end{proposicao}
 	\begin{prova}
-		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é dianonalizável. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectro{A}$. Sejam $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então:
+		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é diagonalizável e pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectro{A}$. Sejam $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então:
 		$$
 		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v), 
 		$$
 		caso $\lambda_{u}\lambda_{v}\neq 1$, então $\omega(A^{\alpha}u,A^{\alpha}v)=\omega(u,v)=0$, é trivial. Caso $\lambda_{u}\lambda_{v}=1$ temos $\omega(A^{\alpha}u,A^{\alpha}v) = \omega(u,v)$, portanto $A^{\alpha} \in \gruposimpletico{2n}$.
 	\end{prova}
 	
+	\begin{corolario}
+		Seja $A \in \gruposimpletico{2n}$ uma matriz positiva-definida, então para cada $\alpha \in \real{}$ existe um único $S \in \gruposimpleticopositivo{2n}$ tal que $S=A^{\alpha}$, e em particular, $S^{1/2}\in \gruposimpletico{2n}$
+	\end{corolario}
+	\begin{prova}
+		content...
+	\end{prova}
+	
+	\begin{lema}
+		$\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
+	\end{lema}
+	\begin{prova}
+		Sejam $V$ um k-espaço vetorial real, $A, B \in \matrizsimetricapositiva{k}$ e $\gamma : [0,1] \to \matrizquadreal{k}$ tal que $\gamma(\lambda) = \lambda A +(1-\lambda)B$, então é simétrica pois é a combinação linear de matrizes simétricas, e para qualquer $v \in V$:
+		$$
+		v^{t}\gamma(t)v = v^{t}(\lambda A +(1-\lambda)B)v = \lambda v^{t}Av + (1-\lambda)v^{t}Bv \geq 0,
+		$$
+		pois é a soma de valores não-negativos, logo $\gamma([0,1]) \subset \matrizsimetricapositiva{k}$. Como $A, B \in \matrizsimetricapositiva{k}$ são arbitrários e são conectados por um caminho, então $\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
+	\end{prova}
+	
+	Lembremos que dado $A \in \matrizunitaria{n}$, então $AA^{*} = Id$ o que implica que $1= det(AA^{*}) = det(A)det(A^{*}) = det(A)\overline{det(A)} = ||det(A)||$, portanto $det(\matrizunitaria{n}) \subseteq S^{1}$. Vamos usar esse fato em outras demonstrações adiante.
+	
+	\begin{lema}
+		$\mathcal{U}$ é conexo por caminhos, logo é conexo.
+	\end{lema}
+	\begin{prova}
+		Seja $A \in \matrizunitaria{n}$, então $A$ é diagonalizável e $det(A) \in S^{1}$, logo existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$. Definindo a caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é um isomorfismo, mas vimos que essa aplicação também é contínua, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\mathcal{U} = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
+	\end{prova}
+
+	\begin{lema}
+		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
+	\end{lema}
+	\begin{prova}
+		Seja $A\in \gruposimpleticopositivo{2n}$, então pela Observação $\ref{observacao_matriz_positiva_definida}$ temos que todos os seus auto-valores são positivos e $A=A^{t}$, portanto $A$ é normal e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ (caracterização de matriz normal) pode ser escrita como $A=O^{t}DO$, onde $O \in \matrizortogonal{2n}$ e $D = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$, onde $\lambda_{k} > 0$ com $1\leq k \leq 2n$ são os auto-valores de $A$. Definindo o caminho contínuo $\gamma:[0,1]\to \gruposimpleticopositivo{2n}$ tal que $\gamma(\lambda) = O^{t}diag\{(\lambda_{1}-1)\lambda + 1, \dots, (\lambda_{2n}-1)\lambda + 1 \}O$, onde $\gamma(0) = Id$ e $\gamma(1) = A$. Definindo $D(\lambda)=diag\{(\lambda_{1}-1)\lambda + 1, \dots, (\lambda_{2n}-1)\lambda + 1 \}$ temos que $\gamma(\lambda)^{t}=(O^{t}D(\lambda)O)^{t} = O^{t}D(\lambda)^{t}O = O^{t}D(\lambda)O = \gamma(\lambda)$. Além disso $det(\gamma(\lambda)) = det(O^{t})det(D(\lambda))det(O) =det(D(\lambda))>0$, portanto, pelo Observação $\ref{observacao_matriz_positiva_definida}$ o caminho $\gamma(\lambda)$ é positivo-definido para todo $\lambda\in [0,1]$. \vermelho{ESTUDAR UMA ESTRATÉGIA PARA PROVAR QUE $\gamma(\lambda) \in \gruposimpletico{2n}$}. Portanto, $\gamma([0,1]) \subset \gruposimpleticopositivo{2n}$ e qualquer $A\in \gruposimpleticopositivo{2n}$ pode ser conectado a identidade por um caminho contínuo, o que implica que dados $A, B \in \gruposimpleticopositivo{2n}$ podemos definir uma caminho que conecte $A$ a $B$ passando pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
+	\end{prova}	
+	
+	\begin{teorema}\label{teoerma_sp2n_conexo}
+		$\gruposimpletico{2n}$ é conexo.
+	\end{teorema}
+	\begin{prova}
+		Dado $A \in \gruposimpletico{2n}$, então pelo Teorema $\ref{teorema_decomposicao_polar}$ podemos escrever $A=PO$. Pela unicidade da decomposição polar podemos definir a aplicação injetora $G: \gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \mathcal{U}$ tal que $G(A) = (P,O)$. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \mathcal{U}$ temos $(PO)^{t}J_{0}PO = O^{t}P^{t}J_{0}PO = O^{t}J_{0}O = J_{0}$ que pelo Lema $\ref{lema_caracterizacao_Sp2n}$ implica $PO \in \gruposimpletico{2n}$. Pela unicidade da decomposição polar podemos definir a aplicação $G^{-1}:\gruposimpleticopositivo{2n}\times \mathcal{U} \to \gruposimpletico{2n}$, tal que $G^{-1}(P,O) = PO \in \gruposimpletico{2n}$, logo $G^{-1} \circ G =Id$. Como $G, G^{-1}$ são aplicações contínuas, portanto um homeomorfismo, e $\gruposimpleticopositivo{2n}\times \mathcal{U}$ é conexo, pois é o produto cartesianos de espaços topológicos conexos, funções contínuas preservam a conexidade, então $G^{-1}(\gruposimpleticopositivo{2n}\times \mathcal{U}) = \gruposimpletico{2n}$ é conexo.
+	\end{prova}
+	
+	\begin{observacao}\label{observacao_decomposicao_Sp2n}
+		No teorema anterior exibimos um homeomorfismo $G:\gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \mathcal{U}$, isto é, mostramos que se $A \in \gruposimpletico{2n}$, então ela pode ser decomposta univacamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
+	\end{observacao}
+	
 	\begin{teorema}
 		O quociente $\gruposimpletico{2n}/\mathcal{U}$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Na demonstração do Teorema $\ref{teoerma_sp2n_conexo}$ (conexidade de $\gruposimpletico{2n}$) foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \matrizsimetricapositiva{2n}$ e $O \in \mathcal{U}$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, logo $AA^{t} = P^{2} \in \gruposimpletico{2n}$. Pelo Lema $\ref{lema_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}_{+}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. De fato $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\mathcal{U}$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \mathcal{U}$ e, por fim, tomando $B \in \mathcal{U}$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		Na demonstração do Teorema $\ref{teoerma_sp2n_conexo}$ (conexidade de $\gruposimpletico{2n}$) foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \matrizsimetricapositiva{2n}$ e $O \in \mathcal{U}$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, logo $AA^{t} = P^{2} \in \gruposimpletico{2n}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}_{+}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. De fato $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\mathcal{U}$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \mathcal{U}$ e, por fim, tomando $B \in \mathcal{U}$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
 		
 		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\mathcal{U}$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \mathcal{U}$, isto é, $R(., 0) = Id_{\mathcal{S}}$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
@@ -1055,9 +1092,13 @@
 	
 	
 	Agora temos ferramental para definirmos o índice de Maslov.
-	
+
+	\begin{definicao}
+		O índice de Maslov de uma curva é a aplicação $\mu:\curvasfechadascirculo{0}{1}\to \mathbb{Z}$ tal que $\mu(\gamma) = deg(\gamma)$, onde $deg(\gamma)$ é o grau de $\gamma$.
+	\end{definicao}
+		
 	\begin{teorema}
-		Existe uma única aplicação $\mu$, chamada índice de Maslov, que associa a cada curva fechada $\gamma: [0,1] \to \gruposimpletico{2n}$ a um inteiro $\mu(\gamma) \in \mathbb{Z}$. Sejam curvas fechadas $\gamma, \beta: [0,1] \to \gruposimpletico{2n}$, então satisfaz os seguintes axiomas:
+		O índice de Maslov esta bem-definido, além disso, dadas curvas $\gamma, \beta \in \curvasfechadascirculo{0}{1}$, então satisfaz os seguintes axiomas:
 		\begin{enumerate}
 			\item \textbf{(homotopia)} $\gamma$ e $\beta$ são homotópicas se, e somente se, $\mu(\gamma)=\mu(\beta)$.
 			
@@ -1305,8 +1346,8 @@
 	$$
 	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in LM$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
 	
-	\section{Índice de Maslov}
-	\subsection{Fibrados Vetoriais - Definições e exemplos}
+	\section{Teoria de Fredholm}
+	\subsection{Fibrados Vetoriais - alguns resultados}
 	\begin{definicao}
 		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$. Dizemos que um fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$.
 	\end{definicao}
@@ -1328,7 +1369,7 @@
 	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
 	
 	\begin{exemplo}
-		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
+		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ \vermelho{temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.}
 	\end{exemplo}
 	
 	\begin{lema}
@@ -1366,6 +1407,8 @@
 	\begin{prova}
 		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
 	\end{prova}
+	
+	\subsection{xx}
 	
 	\subsection{Definição do Índice de Maslov}
 	
