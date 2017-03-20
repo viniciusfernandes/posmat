@@ -80,7 +80,8 @@
 \newcommand{\skeleton}[1]{X^{(#1)}}
 \newcommand{\suavefunc}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\vermelho}[1]{{\color{red}#1}}
-\newcommand{\curvasfechadascirculo}[2]{L([#1,#2], S^{1})}
+\newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
+\newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \begin{document}
 	
 	\title{Homologia de Morse}
@@ -922,7 +923,7 @@
 		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$, então $\lambda \in \espectro{A}$ se, e somente se, $\lambda^{-1} \in \espectro{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos sendo $\lambda_{u}$ e $\lambda_{v}$ seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
 	\end{lema}
 	\begin{prova}
-		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}J_{0}A = J_{0}$ o que implica em $J_{0}^{-1}A^{t}J_{0} = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectro{A^{t}}=\espectro{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectro{A^{t}} = \espectro{A}$, o que implica em $\espectro{A^{-1}} = \espectro{A}$, isto é, se $\lambda \in \espectro{A}$, então $\lambda^{-1} \in \espectro{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valores $\lambda \in \espectro{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectro{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
+		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}J_{0}A = J_{0}$ o que implica em $J_{0}^{-1}A^{t}J_{0} = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectro{A^{t}}=\espectro{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectro{A^{t}} = \espectro{A}$, o que implica em $\espectro{A^{-1}} = \espectro{A}$, isto é, se $\lambda \in \espectro{A}$, então $\lambda^{-1} \in \espectro{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectro{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectro{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
 		
 		Sejam $u, v$ auto-vetores de $A$ e $\lambda_{u}, \lambda_{v}$ seus auto-valores, respectivamente, tal que $\lambda_{u}\lambda_{v}\neq 1$. Então:
 		$$
@@ -942,25 +943,9 @@
 		caso $\lambda_{u}\lambda_{v}\neq 1$, então $\omega(A^{\alpha}u,A^{\alpha}v)=\omega(u,v)=0$, é trivial. Caso $\lambda_{u}\lambda_{v}=1$ temos $\omega(A^{\alpha}u,A^{\alpha}v) = \omega(u,v)$, portanto $A^{\alpha} \in \gruposimpletico{2n}$.
 	\end{prova}
 	
-	\begin{corolario}
-		Seja $A \in \gruposimpletico{2n}$ uma matriz positiva-definida, então para cada $\alpha \in \real{}$ existe um único $S \in \gruposimpleticopositivo{2n}$ tal que $S=A^{\alpha}$, e em particular, $S^{1/2}\in \gruposimpletico{2n}$
-	\end{corolario}
-	\begin{prova}
-		content...
-	\end{prova}
-	
-	\begin{lema}
-		$\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
-	\end{lema}
-	\begin{prova}
-		Sejam $V$ um k-espaço vetorial real, $A, B \in \matrizsimetricapositiva{k}$ e $\gamma : [0,1] \to \matrizquadreal{k}$ tal que $\gamma(\lambda) = \lambda A +(1-\lambda)B$, então é simétrica pois é a combinação linear de matrizes simétricas, e para qualquer $v \in V$:
-		$$
-		v^{t}\gamma(t)v = v^{t}(\lambda A +(1-\lambda)B)v = \lambda v^{t}Av + (1-\lambda)v^{t}Bv \geq 0,
-		$$
-		pois é a soma de valores não-negativos, logo $\gamma([0,1]) \subset \matrizsimetricapositiva{k}$. Como $A, B \in \matrizsimetricapositiva{k}$ são arbitrários e são conectados por um caminho, então $\matrizsimetricapositiva{k}$ é conexo por caminhos, logo é conexo.
-	\end{prova}
-	
-	Lembremos que dado $A \in \matrizunitaria{n}$, então $AA^{*} = Id$ o que implica que $1= det(AA^{*}) = det(A)det(A^{*}) = det(A)\overline{det(A)} = ||det(A)||$, portanto $det(\matrizunitaria{n}) \subseteq S^{1}$. Vamos usar esse fato em outras demonstrações adiante.
+	\begin{observacao}\label{observacao_determinante_matriz_unitaria}
+		Lembremos que dado $A \in \matrizunitaria{n}$, então $AA^{*} = Id$ o que implica que $1= det(AA^{*}) = det(A)det(A^{*}) = det(A)\overline{det(A)} = ||det(A)||$, portanto $det(\matrizunitaria{n}) \subseteq S^{1}$. Vamos usar esse fato em outras demonstrações adiante.
+	\end{observacao}
 	
 	\begin{lema}
 		$\mathcal{U}$ é conexo por caminhos, logo é conexo.
@@ -984,14 +969,14 @@
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_decomposicao_Sp2n}
-		No teorema anterior exibimos um homeomorfismo $G:\gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \mathcal{U}$, isto é, mostramos que se $A \in \gruposimpletico{2n}$, então ela pode ser decomposta univacamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
+		No teorema anterior exibimos um homeomorfismo $G:\gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \mathcal{U}$, isto é, mostramos que se $A \in \gruposimpletico{2n}$, então ela pode ser decomposta unicamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
 	\end{observacao}
 	
 	\begin{teorema}
 		O quociente $\gruposimpletico{2n}/\mathcal{U}$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Na demonstração do Teorema $\ref{teoerma_sp2n_conexo}$ (conexidade de $\gruposimpletico{2n}$) foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \matrizsimetricapositiva{2n}$ e $O \in \mathcal{U}$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, logo $AA^{t} = P^{2} \in \gruposimpletico{2n}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}_{+}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. De fato $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\mathcal{U}$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \mathcal{U}$ e, por fim, tomando $B \in \mathcal{U}$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} =P^{2} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Vejamos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\mathcal{U}$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \mathcal{U}$ e, por fim, tomando $B \in \mathcal{U}$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
 		
 		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\mathcal{U}$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \mathcal{U}$, isto é, $R(., 0) = Id_{\mathcal{S}}$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
@@ -1062,12 +1047,12 @@
 	\subsection{O índice de Maslov}
 	Para a esclarecer algumas escolhas feitas na definição do índice de Maslov, faremos um breve anúncio sobre resultado do grupo fundamental de $S^{1}$, sendo que mais detalhes podem ser consultados em \vermelho{Elon Lages Lima}.
 	
-	Sabe-se que o grupo fundamental de $S^{1}$ é isomorfo aos inteiros, isto é, $\pi_{1}(S^{1}) \cong \mathbb{Z}$. Com isso podemos afirmar que tal grupo é um grupo cíclico infinito, pois $\mathbb{Z}$ é cíclico infinito. A cada curva fechada $\gamma:[0,1] \to S^{1}$ pode-se associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que duas curvas $\gamma, \beta$ em $S^{1}$ são homotópicas se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
+	Sabe-se que o grupo fundamental de $S^{1}$ é isomorfo aos inteiros, isto é, $\pi_{1}(S^{1}) \cong \mathbb{Z}$. Com isso podemos afirmar que tal grupo é um grupo cíclico infinito, pois $\mathbb{Z}$ é cíclico infinito. A cada caminho fechado $\gamma:[0,1] \to S^{1}$ pode-se associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicas se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
 	
-	Seja $exp:\real{} \to S^{1}$ a aplicação exponencial $exp(t) = e^{it}$. Pode-se mostrar o importante resultado sobre levantamento de curvas em $S^{1}$:
+	Seja $exp:\real{} \to S^{1}$ a aplicação exponencial $exp(t) = e^{it}$. Pode-se mostrar o importante resultado sobre levantamento de caminhos em $S^{1}$:
 	
 	\begin{proposicao}\label{proposicao_levantamento_curvas}
-		(Levantamento de curvas) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = exp(t_{a})$.Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = exp(\alpha(t))$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. Esse levantamento é a apicação que faz com que o diagrama abaixo comute:
+		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = exp(t_{a})$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = exp(\alpha(t))$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. Esse levantamento é a aplicação que faz com que o diagrama abaixo comute:
 		$$
 		\xymatrix{
 			& \real{}\ar[d]\ar[d]^{\text{exp}}
@@ -1077,53 +1062,64 @@
 		$$
 	\end{proposicao}
 	
-	Procuramos uma função que associe uma curva em $S^{1}$ a um número inteiro. Note que cada curva fechada envolve $S^{1}$ uma quantidade inteira de vezes, por exemplo: uma curva constante envolve $S^{1}$ zero vezes; uma curva homotópica a $S^{1}$ envolve 1 vez. Assim, vamos definir o grau de uma curva em $S^{1}$ como uma função com essas características.
-	
 	\begin{proposicao}
-		(O grau de uma curva fechada) Seja $\curvasfechadascirculo{0}{1}$ o conjunto de todas as curvas contínuas e fechadas em $S^{1}$, então a aplicação $deg:\curvasfechadascirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso, se $\gamma$ e $\beta$ são curvas homotópicas, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \curvasfechadascirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
+		(O grau de uma caminhos fechado) Seja $\caminhosfechadoscirculo{0}{1}$ o conjunto de todos os caminhos contínuos e fechados em $S^{1}$, então a aplicação $deg:\caminhosfechadoscirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso, se $\gamma$ e $\beta$ são caminhos homotópicos, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \caminhosfechadoscirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $\gamma \in \curvasfechadascirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $\gamma(\lambda) = e^{i\alpha(\lambda)}$. Como é uma curva fechada temos $\gamma(0)=\gamma(1)$, o que implica em $e^{i\alpha(0)}=e^{i\alpha(1)}$, logo $e^{i(\alpha(1)-\alpha(0))} = 1$, portanto $\alpha(1)-\alpha(0) = 2\pi k$, onde $k\in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e esta bem-definida pois para cada $\gamma \in \curvasfechadascirculo{0}{1}$ existe um único levantamento $\alpha$, logo $deg(\gamma)$ é único.
+		Seja $\gamma \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $\gamma(\lambda) = e^{i\alpha(\lambda)}$. Como é um caminho fechado temos $\gamma(0)=\gamma(1)$, o que implica em $e^{i\alpha(0)}=e^{i\alpha(1)}$, logo $e^{i(\alpha(1)-\alpha(0))} = 1$, portanto $\alpha(1)-\alpha(0) = 2\pi k$, onde $k\in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e esta bem-definida pois para cada $\gamma \in \caminhosfechadoscirculo{0}{1}$ existe um único levantamento $\alpha$, logo $deg(\gamma)$ é único.
 		
-		Sejam $\gamma, \beta \in \curvasfechadascirculo{0}{1}$ homotópicas e $h:S^{1}\times [0,1]\to S^{1}$ a homotopia entre elas, onde $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \curvasfechadascirculo{0}{1}$, logo $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, o curvas homotópicas possuem o mesmo grau. 
+		Sejam $\gamma, \beta \in \caminhosfechadoscirculo{0}{1}$ caminhos homotópicos e $h:S^{1}\times [0,1]\to S^{1}$ a homotopia entre eles, onde $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \caminhosfechadoscirculo{0}{1}$, logo $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, caminhos homotópicos possuem o mesmo grau. 
 		
-		Tomando o produto das curvas anteriormente definidas, temos $(\gamma.\beta)(\lambda)= e^{i\alpha(\lambda)}e^{i\xi(\lambda)} = e^{i(\alpha(\lambda)+\xi(\lambda))} \in S^{1}$ o que implica que $deg(\gamma.\beta) = ((\alpha(1)+\xi(1))-(\alpha(0)+\xi(0)))/2\pi = deg(\gamma)+deg(\beta)$.
+		Tomando o produto dos caminhos fechados, temos $(\gamma.\beta)(\lambda)= e^{i\alpha(\lambda)}e^{i\xi(\lambda)} = e^{i(\alpha(\lambda)+\xi(\lambda))} \in S^{1}$ o que implica que $deg(\gamma.\beta) = ((\alpha(1)+\xi(1))-(\alpha(0)+\xi(0)))/2\pi = deg(\gamma)+deg(\beta)$.
 	\end{prova}
 	
 	
-	Agora temos ferramental para definirmos o índice de Maslov.
+	Agora temos instrumentos para definirmos o índice de Maslov. Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
+	
+	Sejam $\caminhosfechadosSp{0}{1}$ o conjuntos dos caminhos fechados em $S^{1}$ e $\gamma \in \caminhosfechadosSp{0}{1}$, então temos que aplicação $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ é contínua pois é a composição de aplicações contínuas, portanto $\rho_{\gamma} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \mathbb{Z}$. Definimos como o índice de Maslov como sendo a aplicação $\mu:\caminhosfechadosSp{0}{1} \to \mathbb{Z}$ tal que:
+	$$
+	\mu(\gamma) = deg(\rho \circ \gamma) = deg(\rho_{\gamma}) \in \mathbb{Z}.
+	$$
 
-	\begin{definicao}
-		O índice de Maslov de uma curva é a aplicação $\mu:\curvasfechadascirculo{0}{1}\to \mathbb{Z}$ tal que $\mu(\gamma) = deg(\gamma)$, onde $deg(\gamma)$ é o grau de $\gamma$.
-	\end{definicao}
+	O diagrama abaixo representa o índice de Maslov $\mu(\gamma)$ de um caminho $\gamma \in \caminhosfechadosSp{0}{1}$:
+	$$
+	\xymatrix{
+		& & \real{}\ar[d]\ar[d]^{\text{exp}}
+		\\
+		[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+	}
+	\xymatrix{
+		& &
+		\\
+		\caminhosfechadoscirculo{0}{1}\ar[rr]_{\mu} & & \mathbb{Z} 
+	}
+	$$		
+
+
+	Com isso podemos enunciar o teorema:
 		
-	\begin{teorema}
-		O índice de Maslov esta bem-definido, além disso, dadas curvas $\gamma, \beta \in \curvasfechadascirculo{0}{1}$, então satisfaz os seguintes axiomas:
+	\begin{teorema}\label{teorema_indice_maslov}
+		O índice de Maslov esta bem-definido, além disso, dados os caminhos $\gamma, \beta \in \caminhosfechadosSp{0}{1}$, então satisfaz os seguintes axiomas:
 		\begin{enumerate}
 			\item \textbf{(homotopia)} $\gamma$ e $\beta$ são homotópicas se, e somente se, $\mu(\gamma)=\mu(\beta)$.
 			
-			\item \textbf{(produto)} $\mu(\gamma.\beta) = \mu(\gamma)+\mu(\beta)$, em particular, se $\gamma$ é uma curva constante, então $\mu(\gamma) = 0$.
+			\item \textbf{(produto)} $\mu(\gamma.\beta) = \mu(\gamma)+\mu(\beta)$, em particular, se $\gamma$ é um caminho constante, então $\mu(\gamma) = 0$.
 			
 			\item \textbf{(normalização)} Se $\gamma:[0,1] \to \mathcal{U} \subset \gruposimpletico{2n}$, então $\mu(\gamma) = 1$.
 		\end{enumerate}
 	\end{teorema}
 	\begin{prova}
-		Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação conítnua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ esta bem-definida. De fato, dado $B \in \matrizunitaria{n}$, então $B^{*}B = Id$, o que implica que $1=det(B^{*}B)=det(B^{*})det(B) = \overline{det(B)}det(B) = |det(B)|$, logo $det(B) \in S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
-		
-		Seja $\gamma:[0,1] \to \gruposimpletico{2n}$ uma curva fechada, então temos a aplicação contínua $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ pois é a composição de aplicações contínuas. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \mathbb{Z}$. Definimos como o índice de Maslov da curva $\gamma$ o número:
-		$$
-			\mu(\gamma) = deg(\rho \circ \gamma) = deg(\rho_{\gamma}) \in \mathbb{Z}.
-		$$
-		Afirmo que a aplicação $\mu$ satsifaz os axiomas de índice de Maslov. É verdade para o axioma da homotopia pois: supondo $\gamma, \beta :[0,1] \to \gruposimpletico{2n}$ sejam duas curvas fechadas homotópicas e $h:\gruposimpletico{2n}\times [0,1]\to \gruposimpletico{2n}$ a homotopia entre elas, isto é $h(p, 0) = \gamma(\lambda)$ e $h(p, 1) = \beta(\lambda)$. Afirmo que $H:S^{1}\times [0,1] \to S^{1}$ tal que $H(p, t) = (\rho \circ h)(p,t)$ é uma homotopia entre $\rho_{\gamma}$ e $\rho_{\gamma}$. De fato, $H$ é composição de aplicações contínuas, logo é contínua, e $H(p, 0) = (\rho \circ h)(p,0) = \rho (h(p,0))= \rho (\gamma(\lambda)) = \rho_{\gamma}(\lambda)$, analogamente, $H(p, 0) = (\rho \circ h)(p,0) = \rho (h(p,))= \rho_{\beta}(\lambda)$, portanto $\rho_{\gamma}$ e $\rho_{\beta}$ são homotópicas, então:
-		$$
-		\mu(\gamma) = deg(\rho_{\gamma}) = deg(\rho_{\beta}) = \mu(\beta).
-		$$
-		
-		É verdade para o axioma do produto pois:
-		$$
-		\mu(\gamma.\beta) = deg(\rho_{\gamma}.\rho_{\beta}) = deg(\rho_{\gamma})+deg(\rho_{\beta}) = \mu(\gamma)+\mu(\beta).
-		$$	
-		Além disso, se $\gamma$ é curva constante o que implica que $\rho_{\gamma}$ é uma curva constante, então temos pela efinição de grau de uma curva $0=deg(\rho_{\gamma}) = \mu(\gamma)$.
+		\begin{enumerate}
+			\item É verdade para o axioma da homotopia pois: supondo $\gamma, \beta \in \caminhosfechadosSp{0}{1}$ sejam dois caminhos fechados homotópicos e $h:[0,1]\times [0,1]\to \gruposimpletico{2n}$ a homotopia entre eles, isto é $h(\lambda, 0) = \gamma(\lambda)$ e $h(\lambda, 1) = \beta(\lambda)$. Afirmo que $H:[0,1] \times [0,1] \to S^{1}$ tal que $H(\lambda, t) = (\rho \circ h)(\lambda,t)$ é uma homotopia entre $\rho_{\gamma}, \rho_{\beta} \in \caminhosfechadoscirculo{0}{1}$. De fato, $H$ é composição de aplicações contínuas, logo é contínua, e $H(\lambda, 0) = (\rho \circ h)(\lambda,0) = \rho (h(\lambda,0))= \rho (\gamma(\lambda)) = \rho_{\gamma}(\lambda)$, analogamente, $H(\lambda, 1) = (\rho \circ h)(\lambda, 1) = \rho (h(\lambda,1))= \rho_{\beta}(\lambda)$, portanto $\rho_{\gamma}$ e $\rho_{\beta}$ são homotópicas, então:
+			$$
+			\mu(\gamma) = deg(\rho_{\gamma}) = deg(\rho_{\beta}) = \mu(\beta).
+			$$
+			\item É verdade para o axioma do produto pois:
+			$$
+			\mu(\gamma.\beta) = deg(\rho_{\gamma}.\rho_{\beta}) = deg(\rho_{\gamma})+deg(\rho_{\beta}) = \mu(\gamma)+\mu(\beta).
+			$$	
+			Além disso, se $\gamma$ é caminho constante o que implica que $\rho_{\gamma}$ também é um caminho constante, então temos pela definição de grau de um caminho $0=deg(\rho_{\gamma}) = \mu(\gamma)$.
+		\end{enumerate}
 	\end{prova}
 		
 	\section{Variedades simpléticas}
