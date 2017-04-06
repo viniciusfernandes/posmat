@@ -38,18 +38,20 @@
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
 \newcommand{\dparcial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\espectro}[1]{Spect(#1)}
+\newcommand{\estruturacomplexa}[2]{\mathcal{J}(#1, #2)}
+\newcommand{\estruturacomplexapadrao}{\mathcal{J}(V, \omega)}
 \newcommand{\funcaocond}[5]{
 	#1 = 
 	\left\{
 	\begin{array}{cc}
-	#2, & #3\\
-	#4, & #5\\
+		#2, & #3\\
+		#4, & #5\\
 	\end{array}
 	\right.
-	}
-\newcommand{\espectro}[1]{Spect(#1)}
-\newcommand{\estruturacomplexa}[2]{\mathcal{J}(#1, #2)}
-\newcommand{\estruturacomplexapadrao}{\mathcal{J}(V, \omega)}
+}
+\newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
+\newcommand{\espacomoduli}[2]{\mathcal{M}(#1, #2)}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
@@ -69,7 +71,10 @@
 \newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
 \newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
 \newcommand{\matrizunitaria}[1]{U(#1)}
+\newcommand{\operadoresfredholm}[2]{\mathcal{F}(#1, #2)}
+\newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
+\newcommand{\cartesianorealporcirculo}{\real{} \times \real{}/\mathbb{Z}}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
@@ -951,14 +956,15 @@
 		$\mathcal{U}$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
-		Seja $A \in \matrizunitaria{n}$, então $A$ é diagonalizável e $det(A) \in S^{1}$, logo existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$. Definindo a caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é um isomorfismo, mas vimos que essa aplicação também é contínua, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\mathcal{U} = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
+		Seja $A \in \matrizunitaria{n}$, então $A$ é diagonalizável e $det(A) \in S^{1}$, logo existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temo $1 = det(A) = e^{i(\theta_{1}+\dots+\theta_{n})}$ o que implica que $\theta_{1}+\dots+\theta_{n}=0$. Definindo a caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} = 1$, pois $\theta_{1}+\dots+\theta_{n}=0$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é um isomorfismo, mas vimos que essa aplicação também é contínua, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\mathcal{U} = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 
 	\begin{lema}
 		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
-		Seja $A\in \gruposimpleticopositivo{2n}$, então pela Observação $\ref{observacao_matriz_positiva_definida}$ temos que todos os seus auto-valores são positivos e $A=A^{t}$, portanto $A$ é normal e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ (caracterização de matriz normal) pode ser escrita como $A=O^{t}DO$, onde $O \in \matrizortogonal{2n}$ e $D = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$, onde $\lambda_{k} > 0$ com $1\leq k \leq 2n$ são os auto-valores de $A$. Definindo o caminho contínuo $\gamma:[0,1]\to \gruposimpleticopositivo{2n}$ tal que $\gamma(\lambda) = O^{t}diag\{(\lambda_{1}-1)\lambda + 1, \dots, (\lambda_{2n}-1)\lambda + 1 \}O$, onde $\gamma(0) = Id$ e $\gamma(1) = A$. Definindo $D(\lambda)=diag\{(\lambda_{1}-1)\lambda + 1, \dots, (\lambda_{2n}-1)\lambda + 1 \}$ temos que $\gamma(\lambda)^{t}=(O^{t}D(\lambda)O)^{t} = O^{t}D(\lambda)^{t}O = O^{t}D(\lambda)O = \gamma(\lambda)$. Além disso $det(\gamma(\lambda)) = det(O^{t})det(D(\lambda))det(O) =det(D(\lambda))>0$, portanto, pelo Observação $\ref{observacao_matriz_positiva_definida}$ o caminho $\gamma(\lambda)$ é positivo-definido para todo $\lambda\in [0,1]$. \vermelho{ESTUDAR UMA ESTRATÉGIA PARA PROVAR QUE $\gamma(\lambda) \in \gruposimpletico{2n}$}. Portanto, $\gamma([0,1]) \subset \gruposimpleticopositivo{2n}$ e qualquer $A\in \gruposimpleticopositivo{2n}$ pode ser conectado a identidade por um caminho contínuo, o que implica que dados $A, B \in \gruposimpleticopositivo{2n}$ podemos definir uma caminho que conecte $A$ a $B$ passando pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
+		Seja $A\in \gruposimpleticopositivo{2n}$, então pela Observação $\ref{observacao_matriz_positiva_definida}$ temos que todos os seus auto-valores são positivos e $A=A^{t}$, portanto $A$ é normal e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ (caracterização de matriz normal) pode ser escrita como $A=O^{t}DO$, onde $O \in \matrizortogonal{2n}$ e $D = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$, onde $\lambda_{k} > 0$ com $1\leq k \leq 2n$ são os auto-valores de $A$. Definindo o caminho contínuo $\gamma:[0,1]\to \gruposimpleticopositivo{2n}$ tal que $\gamma(\lambda) = O^{t}D(\lambda)O$, onde $\gamma(0) = Id$, $\gamma(1) = A$ e $D(\lambda)$ é a matriz diagonal com o k-
+		ésimo elemento dado por $(\lambda_{k} - 1)\lambda +1$ com $1 \leq k \leq 2n$. Temos que $\gamma(\lambda)^{t}=(O^{t}D(\lambda)O)^{t} = O^{t}D(\lambda)^{t}O = O^{t}D(\lambda)O = \gamma(\lambda)$. Além disso $det(\gamma(\lambda)) = det(O^{t})det(D(\lambda))det(O) =det(D(\lambda))>0$, portanto, pelo Observação $\ref{observacao_matriz_positiva_definida}$ o caminho $\gamma(\lambda)$ é positivo-definido para todo $\lambda\in [0,1]$. \vermelho{ESTUDAR UMA ESTRATÉGIA PARA PROVAR QUE $\gamma(\lambda) \in \gruposimpletico{2n}$}. Portanto, $\gamma([0,1]) \subset \gruposimpleticopositivo{2n}$ e qualquer $A\in \gruposimpleticopositivo{2n}$ pode ser conectado a identidade por um caminho contínuo, o que implica que dados $A, B \in \gruposimpleticopositivo{2n}$ podemos definir uma caminho que conecte $A$ a $B$ passando pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{prova}	
 	
 	\begin{teorema}\label{teoerma_sp2n_conexo}
@@ -1093,8 +1099,7 @@
 		\\
 		\caminhosfechadoscirculo{0}{1}\ar[rr]_{\mu} & & \mathbb{Z} 
 	}
-	$$		
-
+	$$
 
 	Com isso podemos enunciar o teorema:
 		
@@ -1104,8 +1109,6 @@
 			\item \textbf{(homotopia)} $\gamma$ e $\beta$ são homotópicas se, e somente se, $\mu(\gamma)=\mu(\beta)$.
 			
 			\item \textbf{(produto)} $\mu(\gamma.\beta) = \mu(\gamma)+\mu(\beta)$, em particular, se $\gamma$ é um caminho constante, então $\mu(\gamma) = 0$.
-			
-			\item \textbf{(normalização)} Se $\gamma:[0,1] \to \mathcal{U} \subset \gruposimpletico{2n}$, então $\mu(\gamma) = 1$.
 		\end{enumerate}
 	\end{teorema}
 	\begin{prova}
@@ -1342,7 +1345,10 @@
 	$$
 	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in LM$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
 	
-	\section{Teoria de Fredholm}
+	\section{Variedades conectantes - espaços das soluções de Floer}
+	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x, y$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\espacomoduli{x}{y}$ como sendo o conjunto das equações de Floer que conectam as óbitas $x$ e $y$. Vamos demonstrar que $\espacomoduli{x}{y}$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\espacomoduli{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma apicação $F: \espacomoduli{x}{y} \to \campossuaves{M}$ e mostrar que $Ker(F) = \espacomoduli{x}{y}$. Por fim, vamos mostrar que $F$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\espacomoduli{x}{y}) = dim (Ker(F)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $F$ para mostrar que $\espacomoduli{x}{y} = F^{-1}(0)$ é uma variedade diferenciável.
+
+	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais, caso haja familiaridade com tais definições, a leitura dessa seção não se faz necessária. \vermelho{Na verdade, boa parte da literatura do assunto utiliza muito pouco desses resultados, o que desconfio que podemos efetuar as mesmas construções sem que citemos tais conceitos.}
 	\subsection{Fibrados Vetoriais - alguns resultados}
 	\begin{definicao}
 		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$. Dizemos que um fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$.
@@ -1404,7 +1410,30 @@
 		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
 	\end{prova}
 	
-	\subsection{xx}
+	\subsection{Operadores de Fredholm}
+	\begin{definicao}\label{definicao_oeprador_fredholm}
+		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/Im(T)$. O operador $T$ é chamado de operador de Fredholm se $Im(T)=\overline{Im(T)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$.  
+	\end{definicao}
+	
+	Os resultados a seguir serão utilizados na construção e demonstração de estabilidade do operador de Fredholm adiante. Vamos denotar $\operadoresfredholm{A}{B}$ o conjunto dos operadores de Fredholm de $A$ em $B$ e $\operadoreslimitados{A}{B}$ o conjunto dos operadores limitados definidos nos mesmo espaços de Banach.
+
+	\begin{teorema}\label{teorema_estabilidade_fredholm}
+		(Estabilidade de Fredholm) Sejam  $T \in \operadoresfredholm{A}{B}$ e $\epsilon>0$, então para todo $K \in \operadoreslimitados{A}{B}$ tal que $||K|| < \epsilon$ temos que $T+K \in \operadoresfredholm{A}{B}$. Além disso, $ind(T+k)=ind(T)$ e $k(T+K) \leq k(T)$.
+	\end{teorema}
+	
+	\begin{definicao}
+		(Mapa de Fredholm) Uma aplicação suave $f: A \to B$ é chamada de mapa de Fredholm se o diferencial $df(p): A \to B$ é um operador de Fredholm para todo $p \in A$.
+	\end{definicao}
+	
+	
+	Pela estabilidade dos operadores de Fredholm, podemos afirmar que o índice de $df(p) \in \operadoresfredholm{A}{B}$ não depende do ponto $p \in A$, com isso podemos definir o índice do mapa de Fredholm como $ind(f)=ind(df(p))$ que é constante e assim esta bem-definido.
+	
+	Seja $\mathcal{L}(x,y)$ o conjunto de todas as aplicações suaves $u:\real{}\times \real{}/\mathbb{Z} \to M$ satisfazendo as condições de contorno $\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t)$ o conjunto de todas as curvas suaves que conectam $x$ a $y$ e definindo o operador $F:\mathcal{L}(x,y) \to TM$ tal que 
+	$$
+	F(u) = \dparcial{u}{s} + J_{u}\dparcial{u}{t}+ \nabla H(u).
+	$$
+	Dado $u \in \mathcal{L}(x,y)$ temos que $u^{*}TM$ \vermelho{é o conjunto de todas as seções do fibrado $TM$ definidas restritas ao subconjunto $u(\cartesianorealporcirculo) \subset M$}, com isso temos que $F(u) \in u^{*}TM$. Definindo $\espacomoduli{x}{y}$ como sendo o conjunto das soluções da equação de Floer que conectam $x$ a $y$, então dado $u \in \espacomoduli{x}{y}$ temos $F(u) = 0$, logo $ker(F) = \espacomoduli{x}{y}$.
+	
 	
 	\subsection{Definição do Índice de Maslov}
 	
