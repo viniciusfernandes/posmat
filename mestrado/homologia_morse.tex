@@ -38,7 +38,7 @@
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
 \newcommand{\dparcial}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\espectro}[1]{Spect(#1)}
+\newcommand{\espectrooperador}[1]{\sigma(#1)}
 \newcommand{\estruturacomplexa}[2]{\mathcal{J}(#1, #2)}
 \newcommand{\estruturacomplexapadrao}{\mathcal{J}(V, \omega)}
 \newcommand{\funcaocond}[5]{
@@ -64,6 +64,7 @@
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
+\newcommand{\curvassuavesconectantes}[2]{\mathcal{L}(#1, #2)}
 \newcommand{\matrizantisimetrica}[1]{AntiSkew(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
@@ -635,14 +636,14 @@
 		\gruposimpletico{2n} e sua topologia}
 	O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros, sendo que esse isomorfismo se dará pelo índice de Maslov.
 
-	O teorema da decomposição espectral, logo a seguir, será aplicado na demonstração da conexidade de $\gruposimpletico{2n}$, então:
+	Primeiramente introduziremos o teorema da decomposição espectral que será aplicado na demonstração da conexidade de $\gruposimpletico{2n}$.
 	
 	\begin{definicao}\label{definicao_matriz_positiva_definida}
-		(Matrizes positiva-definidas) Sejam $V$ um k-espaço vetorial real  e $A \in \generalgroupreal{k}$, então dizemos que $A$ é uma matriz positiva-definida se sua forma quadrática é positiva-definida, isto é, $Q_{A}(v)\ge 0$ para qualquer $v\in V$. Denotaremos $\matrizsimetricapositiva{k}$ como sendo o conjunto das matrizes simétricas e positivas-definidas
+		(Matrizes positiva-definidas) Sejam $V$ um n-espaço vetorial real  e $A \in \generalgroupreal{n}$, então dizemos que $A$ é uma matriz positiva-definida se sua forma quadrática é positiva-definida, isto é, $Q_{A}(v)\ge 0$ para qualquer $v\in V$. Denotaremos por $\matrizsimetricapositiva{n}$ o conjunto das matrizes simétricas e positivas-definidas.
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_matriz_positiva_definida}
-		Seja $A$ uma matriz de ordem $n$. Definimos seu k-subdeterminante o escalar
+		Seja $A$ uma matriz de ordem $n$. O seu k-subdeterminante é
 		$$
 		det_{k}(A) =
 		det \left(
@@ -658,8 +659,10 @@
 		Pode-se mostrar que uma matriz $A$ é positiva-definida se, e somente se, $A=A^{t}$ e seus k-subdeterminantes são todos positivos. Uma consequência imediata é que, se $A$ for diagonalizável, então todos os seus auto-valores serão positivos. \vermelho{Veja hoffmam}.
 	\end{observacao}
 	
+	Seja $\matrizortogonal{n} =\{ A \in \generalgroupreal{n}: AA^{t}=Id \}$, o grupo das matrizes ortogonais, então:
+	
 	\begin{teorema}\label{teorema_decomposicao_polar}
-		(Decomposição polar) Sejam $(V, \innerprod{}{})$ um k-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P,O\in  \generalgroupreal{n}$ tal que $P = P^{t}$ é positiva-definida e $OO^{t} = Id$ (ortogonal).
+		(Decomposição polar) Se $(V, \innerprod{}{})$ é um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$.
 	\end{teorema}
 	\begin{prova}
 		Dados $v,w \in V$ então 
@@ -674,18 +677,20 @@
 	\end{prova}
 	
 	\begin{lema}\label{lema_caracterizacao_matriz_normal}
-		(Caracterização matriz normal) Seja $A\in \matrizquadreal{k}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Afirmo que existem uma matriz diagonal $D \in \matrizquadreal{k}$ positiva-definida e uma matriz $O\in \matrizortogonal{k}$ tal que $A=ODO^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos-definidos. 
+		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida e uma matriz $O\in \matrizortogonal{n}$ tal que $A=ODO^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos. 
 	\end{lema}
 	\begin{prova}
 		\vermelho{Veja em Hoffman no caítulo sobre operadores normais}
 	\end{prova}
 
+	Seja $A \in \generalgroupreal{n}$ uma matriz dianonalizável. Denotamos por $\sigma(A)$ o conjunto dos auto-valores de $A$.
+
 	\begin{definicao}\label{definicao_potenciacao_matriz}
-en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$ um operador linear diagonalizável e $V_{\lambda}$ um de seus auto-espaços. Definimos $A^{\alpha}:V \to V$, onde $\alpha \in \real{}$, o operador linear cujos auto-valores sejam $\lambda^{\alpha}$.
+		(Potênciação de matriz) Sejam $V$ um n-espaço vetorial real e $A:V \to V$ um operador linear diagonalizável e $V_{\lambda}$ o auto-espaço associado ao auto-valor $\lambda \in \sigma(A)$. Dado $\alpha \in \real{}$ o operador linear $A^{\alpha}:V \to V$ é o operador cujos auto-valores sejam $\lambda^{\alpha}$ onde $\lambda \in \sigma(A)$.
 	\end{definicao}
 	
 	\begin{proposicao}\label{proposicao_transposta_potenciacao_matriz}
-		Sejam $V$ um k-espaço vetorial real e $A:V\to V$ um operador linear diagonalizável, então $(A^{\alpha})^{t}=(A^{t})^{\alpha}$.
+		Sejam $V$ um n-espaço vetorial real e $A:V\to V$ um operador linear diagonalizável, então $(A^{\alpha})^{t}=(A^{t})^{\alpha}$.
 	\end{proposicao}
 	\begin{prova}
 		Temos que $A$ e $A^{t}$ são invertíveis, logo podemos escrever $(A^{-1})^{\alpha}=(A^{\alpha})^{-1}=A^{-\alpha}$ e, analogamente, $(A^{t})^{-\alpha}$. Por hipótese temos que $det(A^{\alpha}) = \lambda_{1}^{\alpha} \dots \lambda_{k}^{\alpha}$ (pois $\lambda_{j}^{\alpha}$ são os auto-valores de $A^{\alpha}$). Suponha que exista $\alpha \in \real{}$ tal que $(A^{-\alpha})^{t}(A^{t})^{\alpha} \neq Id$, então 
@@ -695,7 +700,7 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 		\\
 		&= det((A^{-\alpha})^{t})det((A^{t})^{\alpha})
 		\\
-		&= \lambda_{1}^{-\alpha} \dots \lambda_{k}^{-\alpha}\lambda_{1}^{\alpha} \dots \lambda_{k}^{\alpha}
+		&= \lambda_{1}^{-\alpha} \dots \lambda_{n}^{-\alpha}\lambda_{1}^{\alpha} \dots \lambda_{n}^{\alpha}
 		\\
 		&=1,
 		\end{aligned}
@@ -704,15 +709,19 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 	\end{prova}
 	
 	
-	\begin{lema}
-		(Raíz de matriz normal) Seja $V$ um k-espaço vetorial e $A\in \matrizquadreal{k}$ uma matriz normal, então existe $P\in \matrizquadreal{k}$ tal que $A=P^{2}$. 
+	\begin{lema}\label{lema_raiz_matriz_normal}
+		(Raíz de matriz normal) Seja $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ uma matriz normal, então existe $P\in \matrizquadreal{n}$ tal que $A=P^{2}$. 
 	\end{lema}
 	\begin{prova}
-		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=ODO^{t}$, onde  $D$ é sua matriz diagonal $D=(D_{ii})$ e suas entradas são positivos-definidos e $O\in \matrizortogonal{k}$, logo podemos definir $C \in \matrizquadreal{k}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = OCO^{t}$ teremos $P^{2} = OCO^{t}OCO^{t} = OC^{2}O^{t} = ODO^{t}=A$, como desejávamos.
+		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=ODO^{t}$, onde $D=(D_{ii})$ é uma amtriz diagonal com entradas positivas e $O\in \matrizortogonal{n}$. Logo podemos definir $C \in \matrizquadreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = OCO^{t}$ teremos $P^{2} = OCO^{t}OCO^{t} = OC^{2}O^{t} = ODO^{t}=A$, como desejávamos.
 	\end{prova}
 	
+	\begin{observacao}\label{observacao_raiz_matriz_normal}
+		A matriz do Lema $\ref{lema_raiz_matriz_normal}$ e chamada raíz de $A$ e denotamos por $P=\sqrt{A}$.
+	\end{observacao}
+	
 	\begin{definicao}
-		(Grupo simplético) Seja $(V,\omega)$ um 2n-espaço vetorial simplético, então o grupo simplético de $V$ é denotado por $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$.
+		(Grupo simplético) Seja $(V,\omega)$ um 2n-espaço vetorial simplético. O grupo simplético de $V$ é $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$.
 	\end{definicao}
 	
 	\begin{observacao}
@@ -740,7 +749,7 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 		$$
 		\omega(Av, Jw)= g(Av,w) = g(v,A^{t}w) = \omega(v, JA^{t}w) = \omega(Av, AJA^{t}w),
 		$$
-		e como vale para quaisquer $v,w$, então $J = AJA^{t}$. Por outro lado, suponha que $A \in \generalgroupreal{2n}$, tal que $A^{t}JA=J$ para qualquer $J \in \estruturacomplexapadrao$, então:
+		e, como a igualdade vale para quaisquer $v,w$, então $J = AJA^{t}$. Por outro lado, suponha que $A \in \generalgroupreal{2n}$, tal que $A^{t}JA=J$ para qualquer $J \in \estruturacomplexapadrao$, então:
 		$$
 		\begin{aligned}
 		\omega(Av, Aw) &= \omega(Av, -J^{2}Aw)=g(Av, -JAw) \\
@@ -791,9 +800,11 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. Temos condições análogas para os outros logos de matrizes, como desejávamos.
 	\end{prova}
 	
-	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaço vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(J_{0}z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $J_{0}$ pela multiplicação por $i$ nos complexos. 
+	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaços vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(J_{0}z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $J_{0}$ corresponde à multiplicação por $i$ nos complexos. 
 	
-	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Definindo a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. 
+	
+	Definimos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
 	$$
 	F(A)=
 	\left(
@@ -804,16 +815,18 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 	\end{array}
 	\right).
 	$$
-	Afirmo que $F$ é injetivo pois $F(A) = 0$ se, e somente se, $B=C=0$, logo $A=0$ e pode-se verificar que $F(AB)=F(A)F(B)$, portanto é um monomorfismo. Além disso, temos a propriedade $F(A^{*}) = F(B^{t} - iC^{t}) = F(A)^{t}$. Além disso $F$ é contínua pois dada $A=B+iC \in \generalgroupcomplexo{n}$ e $\epsilon > 0$ tal que $||F(A) - F(X)|| < \epsilon$, então para todo $X \in \generalgroupcomplexo{n}$ onde $X= Y+iZ$ tal que $||A - X||=max \{|B_{ij} - Y_{ij}|,  |C_{ij} - Z_{ij}|\} < \epsilon/2$ temos
+	Note que $F$ é injetivo pois $F(A) = 0$ e pode-se verificar que $F(AB)=F(A)F(B)$, portanto é um monomorfismo. Além disso, temos a propriedade $F(A^{*}) = F(B^{t} - iC^{t}) = F(A)^{t}$. A aplicação $F$ é contínua pois dados $A=B+iC \in \generalgroupcomplexo{n}$ e $\epsilon > 0$, então para todo $X= Y+iZ \in \generalgroupcomplexo{n}$ tal que $||A - X||=max \{|B_{ij} - Y_{ij}|,  |C_{ij} - Z_{ij}|\} < \epsilon/2$ temos
 	$$
 	||F(A) - F(X)|| = max \{|B_{ij} - Y_{ij}|, |C_{ij} - Z_{ij}| \}< \epsilon/2 < \epsilon.
 	$$
+
+	Seja $\matrizunitaria{n} = \{A\in \generalgroupcomplexo{n}: det(A)=1 \}$ o conjunto das matrizes unitárias, então:
 	
 	\begin{lema}\label{lema_isomorfismo_U}
-		A restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo. Além disso, dado $A \in \mathcal{U}$ temos $AJ_{0}=J_{0}A$.
+		Seja $F$ a aplicação contínua definida anteriormente, Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo. Além disso, dado $A \in \mathcal{U}$ temos $AJ_{0}=J_{0}A$.
 	\end{lema}
 	\begin{prova}
-		Seja $\mathcal{U} = \gruposimpletico{2n} \cap \matrizortogonal{2n}$, logo $\mathcal{U}$ é não-vazio pois a identidade esta na intersecção. Tomando $A \in \mathcal{U}$, então $A^{t}A= Id$. Pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
+		Temos que $\mathcal{U} = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio, pois a identidade esta na intersecção. Tomando $A \in \mathcal{U}$, então $A^{t}A= Id$. Pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
 		$$
 			\begin{aligned}
 				Id=A^{t}A &=
@@ -943,12 +956,12 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 		Seja $Z = B+iC \in \matrizunitaria{n}$, então temos $F(Z) = A$, portanto $A\in \matrizunitaria{n}$, o que implica $\mathcal{U} \subseteq F(\matrizunitaria{n})$, logo $\mathcal{U} = F(\matrizunitaria{n})$. Temos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 
-	Analisaremos agora o espectro $\espectro{A}$ de um dado simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov. 
+	Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov. 
 	\begin{lema}
-		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$, então $\lambda \in \espectro{A}$ se, e somente se, $\lambda^{-1} \in \espectro{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos sendo $\lambda_{u}$ e $\lambda_{v}$ seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
+		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$. Então $\lambda \in \espectrooperador{A}$ se, e somente se, $\lambda^{-1} \in \espectrooperador{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos sendo $\lambda_{u}$ e $\lambda_{v}$ seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
 	\end{lema}
 	\begin{prova}
-		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}J_{0}A = J_{0}$ o que implica em $J_{0}^{-1}A^{t}J_{0} = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectro{A^{t}}=\espectro{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectro{A^{t}} = \espectro{A}$, o que implica em $\espectro{A^{-1}} = \espectro{A}$, isto é, se $\lambda \in \espectro{A}$, então $\lambda^{-1} \in \espectro{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectro{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectro{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
+		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}J_{0}A = J_{0}$ o que implica em $J_{0}^{-1}A^{t}J_{0} = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectrooperador{A^{t}}=\espectrooperador{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectrooperador{A^{t}} = \espectrooperador{A}$, o que implica em $\espectrooperador{A^{-1}} = \espectrooperador{A}$, isto é, se $\lambda \in \espectrooperador{A}$, então $\lambda^{-1} \in \espectrooperador{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectrooperador{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
 		
 		Sejam $u, v$ auto-vetores de $A$ e $\lambda_{u}, \lambda_{v}$ seus auto-valores, respectivamente, tal que $\lambda_{u}\lambda_{v}\neq 1$. Então:
 		$$
@@ -961,7 +974,7 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é diagonalizável e pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectro{A}$. Sejam $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então:
+		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é diagonalizável e pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Sejam $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então:
 		$$
 		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v), 
 		$$
@@ -1366,7 +1379,7 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in LM$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
 	
 	\section{Variedades conectantes - espaços das soluções de Floer}
-	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x, y$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\espacomoduli{x}{y}$ como sendo o conjunto das equações de Floer que conectam as óbitas $x$ e $y$. Vamos demonstrar que $\espacomoduli{x}{y}$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\espacomoduli{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma apicação $F: \espacomoduli{x}{y} \to \campossuaves{M}$ e mostrar que $Ker(F) = \espacomoduli{x}{y}$. Por fim, vamos mostrar que $F$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\espacomoduli{x}{y}) = dim (Ker(F)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $F$ para mostrar que $\espacomoduli{x}{y} = F^{-1}(0)$ é uma variedade diferenciável.
+	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x, y$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\espacomoduli{x}{y}$ como sendo o conjunto das equações de Floer que conectam as óbitas $x$ e $y$. Vamos demonstrar que $\espacomoduli{x}{y}$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\espacomoduli{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $F: \curvassuavesconectantes{x}{y} \to TM$ e mostrar que $Ker(F) = \espacomoduli{x}{y}$. Por fim, vamos mostrar que $F$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\espacomoduli{x}{y}) = dim (Ker(F)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $F$ para mostrar que $\espacomoduli{x}{y} = F^{-1}(0)$ é uma variedade diferenciável.
 
 	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais, caso haja familiaridade com tais definições, a leitura dessa seção não se faz necessária. \vermelho{Na verdade, boa parte da literatura do assunto utiliza muito pouco desses resultados, o que desconfio que podemos efetuar as mesmas construções sem que citemos tais conceitos.}
 	\subsection{Fibrados Vetoriais - alguns resultados}
@@ -1438,7 +1451,7 @@ en		(Potênciação de matriz) Seja $V$ um k-espaço vetorial real e $A:V \to V$
 	Os resultados a seguir serão utilizados na construção e demonstração de estabilidade do operador de Fredholm adiante. Vamos denotar $\operadoresfredholm{A}{B}$ o conjunto dos operadores de Fredholm de $A$ em $B$ e $\operadoreslimitados{A}{B}$ o conjunto dos operadores limitados definidos nos mesmo espaços de Banach.
 
 	\begin{teorema}\label{teorema_estabilidade_fredholm}
-		(Estabilidade de Fredholm) Sejam  $T \in \operadoresfredholm{A}{B}$ e $\epsilon>0$, então para todo $K \in \operadoreslimitados{A}{B}$ tal que $||K|| < \epsilon$ temos que $T+K \in \operadoresfredholm{A}{B}$. Além disso, $ind(T+k)=ind(T)$ e $k(T+K) \leq k(T)$.
+		(Estabilidade de Fredholm) Sejam  $T \in \operadoresfredholm{A}{B}$ e $\epsilon>0$, então para todo $K \in \operadoreslimitados{A}{B}$ tal que $||K|| < \epsilon$ temos que $T+K \in \operadoresfredholm{A}{B}$. Além disso, $ind(T+K)=ind(T)$ e $k(T+K) \leq k(T)$.
 	\end{teorema}
 	
 	\begin{definicao}
