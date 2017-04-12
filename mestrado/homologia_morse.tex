@@ -28,16 +28,25 @@
 
 \newenvironment{prova}[1]{$\square$ #1}{\hfill$\blacksquare$}
 
+\newcommand{\aplicaoessuaves}[2]{C^{\infty}(#1, #2)}
+\newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo, M)}
 \newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
 \newcommand{\bigparenteses}[1]{\big( #1 \big) }
+\newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
+\newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
+\newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
+\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{+}}{x^{-}}}
+\newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
+\newcommand{\circulo}{S^{1}}
 \newcommand{\classe}[1]{[#1]}
 \newcommand{\cohomologia}[2]{H^{#1}(#2)}
 \newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
-\newcommand{\dparcial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\complexo}[1]{\mathbb{C}^{#1}}
+\newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\espectrooperador}[1]{\sigma(#1)}
 \newcommand{\estruturacomplexa}[2]{\mathcal{J}(#1, #2)}
 \newcommand{\estruturacomplexapadrao}{\mathcal{J}(V, \omega)}
@@ -52,6 +61,7 @@
 }
 \newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
 \newcommand{\espacomoduli}[2]{\mathcal{M}(#1, #2)}
+\newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
@@ -64,7 +74,6 @@
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
-\newcommand{\curvassuavesconectantes}[2]{\mathcal{L}(#1, #2)}
 \newcommand{\matrizantisimetrica}[1]{AntiSkew(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
@@ -72,22 +81,25 @@
 \newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
 \newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
 \newcommand{\matrizunitaria}[1]{U(#1)}
+\newcommand{\norma}[1]{||#1||}
+\newcommand{\normaLp}[1]{||#1||_{L_{p}}}
+\newcommand{\normaWp}[1]{||#1||_{W_{1,p}}}
 \newcommand{\operadoresfredholm}[2]{\mathcal{F}(#1, #2)}
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
-\newcommand{\produtosinternos}[1]{Riem(#1)}
-\newcommand{\cartesianorealporcirculo}{\real{} \times \real{}/\mathbb{Z}}
-\newcommand{\real}[1]{\mathbb{R}^{#1}}
-\newcommand{\complexo}[1]{\mathbb{C}^{#1}}
-\newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
-\newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
-\newcommand{\innerprod}[2]{\langle #1, #2 \rangle}
-\newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
+\newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
+\newcommand{\produtosinternos}[1]{Riem(#1)}
+\newcommand{\pullbackfibradotangente}[2]{#1^{*}T#2}
+\newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
+\newcommand{\pullbackfibradotangenteMpadrao}{\pullbackfibradotangente{u}{M}}
+\newcommand{\retacartesianocirculo}{\real{} \times \circulo}
+\newcommand{\real}[1]{\mathbb{R}^{#1}}
+\newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
+\newcommand{\solucoesperiodicascontrateis}{\mathcal{L}M}
+\newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
+\newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\skeleton}[1]{X^{(#1)}}
-\newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\vermelho}[1]{{\color{red}#1}}
-\newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
-\newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \begin{document}
 	
 	\title{Homologia de Morse}
@@ -433,14 +445,14 @@
 		Seja M uma variedade fechada e $f$ uma função de Morse, então se $p \in Crit(f)$ teremos $\nabla f(p)=0$ e $\exists q \in M$ tal que $p \in \omega(q)$ ou $p \in \alpha(q)$ , isto é, $p$ é uma singularidade e é um ponto limite.
 	\end{lema}
 	\begin{prova}
-		Tomando $p \in Crit(f)$, então $\forall v \in T_{p}M \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0$, portanto, para $v = -\nabla f(p)$ teremos $-\innerprod{\nabla f(p)}{\nabla f(p)} = 0 \iff \nabla f(p) = 0$, logo, $p$ é uma singularidade do campo gradiente. Com isso, podemos afirmar que existe um ponto $q \in M$ tal que a órbita $\mathcal{O}(q)$ tenha como um dos pontos limites o dado $p \in Crit(f)$ pois caso contrário, o ponto $p$ não será uma singularidade. Como $p \in Crit(f)$ é um ponto limite, então $p \in \omega(q)$ ou $p \in \alpha(q)$, como desejávamos.
+		Tomando $p \in Crit(f)$, então $\forall v \in T_{p}M \Rightarrow Df(p)(v) = \produtointerno{\nabla f(p)}{v} = 0$, portanto, para $v = -\nabla f(p)$ teremos $-\produtointerno{\nabla f(p)}{\nabla f(p)} = 0 \iff \nabla f(p) = 0$, logo, $p$ é uma singularidade do campo gradiente. Com isso, podemos afirmar que existe um ponto $q \in M$ tal que a órbita $\mathcal{O}(q)$ tenha como um dos pontos limites o dado $p \in Crit(f)$ pois caso contrário, o ponto $p$ não será uma singularidade. Como $p \in Crit(f)$ é um ponto limite, então $p \in \omega(q)$ ou $p \in \alpha(q)$, como desejávamos.
 	\end{prova}
 	
 	\begin{lema}
 		Seja M uma variedade fechada, $f$ uma função de Morse e $X =-\nabla f$, então $\alpha(p), \omega(p)$ consistem de um único ponto crítico de $f$ para qualquer $p \in M$.
 	\end{lema}
 	\begin{prova}
-		Como $M$ é uma variedade fechada e $f$ é uma função de Morse, então $Crit(f) = \{p_{i} \in M: 1\leq i \leq k \}$ é um conjunto finito de pontos isolados. Pela proposição anterior, dado $p_{i} \in Crit(f), \exists q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$. Com isso, podemos afirmar que $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que os conjuntos limite $\omega(q_{i})$ e $\alpha(q_{i})$ consistem de singularidades do campo gradiente $-\nabla f$, logo $\forall p \in \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$ teremos $\nabla f(p) = 0 \Rightarrow Df(p)(v) = \innerprod{\nabla f(p)}{v} = 0 \therefore p \in Crit(f)$, e como $p$ é arbitrário, então $\bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Com esse resultado fica evidente que $\omega(q_{i}), \alpha(q_{i}) \subset Crit(f)$. Como os conjuntos limites são conjuntos finitos de pontos isolados vamos supor que $\omega(q_{i}) = \{r_{j} \in Crit(f): 0\leq j \leq m\}$, logo pela topologia induzinda, os abertos de cada um deles serão os conjuntos unitários e teremos $\omega(q_{i}) = \bigcup_{j=1}^{k} \{r_{j}\} $, e como os conjuntos limite são conexos (vide resultado do Palis), essa união disjunta contradiz a conexidade, portanto $\omega(q_{i}) = \{r_{i}\}$. Os mesmos argumentos valem para o conjunto $\alpha(q_{j})$. Portanto, ambos os conjuntos limite devem conter apenas um ponto crítico, como desejávamos.
+		Como $M$ é uma variedade fechada e $f$ é uma função de Morse, então $Crit(f) = \{p_{i} \in M: 1\leq i \leq k \}$ é um conjunto finito de pontos isolados. Pela proposição anterior, dado $p_{i} \in Crit(f), \exists q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$. Com isso, podemos afirmar que $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que os conjuntos limite $\omega(q_{i})$ e $\alpha(q_{i})$ consistem de singularidades do campo gradiente $-\nabla f$, logo $\forall p \in \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$ teremos $\nabla f(p) = 0 \Rightarrow Df(p)(v) = \produtointerno{\nabla f(p)}{v} = 0 \therefore p \in Crit(f)$, e como $p$ é arbitrário, então $\bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Com esse resultado fica evidente que $\omega(q_{i}), \alpha(q_{i}) \subset Crit(f)$. Como os conjuntos limites são conjuntos finitos de pontos isolados vamos supor que $\omega(q_{i}) = \{r_{j} \in Crit(f): 0\leq j \leq m\}$, logo pela topologia induzinda, os abertos de cada um deles serão os conjuntos unitários e teremos $\omega(q_{i}) = \bigcup_{j=1}^{k} \{r_{j}\} $, e como os conjuntos limite são conexos (vide resultado do Palis), essa união disjunta contradiz a conexidade, portanto $\omega(q_{i}) = \{r_{i}\}$. Os mesmos argumentos valem para o conjunto $\alpha(q_{j})$. Portanto, ambos os conjuntos limite devem conter apenas um ponto crítico, como desejávamos.
 	\end{prova}
 	
 	\begin{definicao}
@@ -662,12 +674,12 @@
 	Seja $\matrizortogonal{n} =\{ A \in \generalgroupreal{n}: AA^{t}=Id \}$, o grupo das matrizes ortogonais, então:
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
-		(Decomposição polar) Se $(V, \innerprod{}{})$ é um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$.
+		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$.
 	\end{teorema}
 	\begin{prova}
 		Dados $v,w \in V$ então 
 		$$
-		\innerprod{AA^{t}v}{w}=\innerprod{v}{A^{t}Aw}=\innerprod{Av}{Aw}=\innerprod{A^{t}Av}{w}=\innerprod{(AA^{t})^{t} v}{w},
+		\produtointerno{AA^{t}v}{w}=\produtointerno{v}{A^{t}Aw}=\produtointerno{Av}{Aw}=\produtointerno{A^{t}Av}{w}=\produtointerno{(AA^{t})^{t} v}{w},
 		$$
 		como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é auto-adjunta e positiva. Suponha $A=PO$, então pela hipótese $AA^{t} = POO^{t}P^{t} = P^{2}$. Como $A$ e $A^{t}$ são únicas, então $AA^{t}$ é única, logo $P$ é única. Como $A=PO$ então pela unicidade de $P$ temos que $O$ é única, assim $A=PO$ esta bem-definida e $O=P^{-1}A$. Por fim, 
 		$$
@@ -1176,7 +1188,7 @@
 		Um campo hamiltoniano é o único campo vetorial tal que $\omega(X_{H}, Y) = -dH(Y)$. Disso, podemos definir o fluxo hamiltoniano como sendo a solução dos sitema de equações 
 		$$
 		\label{sisHamilt}
-		\dparcial{\psi(t)}{t} = X_{H}(\psi(t), t).
+		\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t).
 		$$
 		
 		As soluções dessa equação geram uma família de simplectomorfismos a 1-parametro tal que $\psi_{t}(x(0)) = x(t)$.
@@ -1205,8 +1217,8 @@
 			logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
 	\end{prova}
 	
-	\begin{definicao}
-		(Espaço das soluções contráteis e periódicas) Denotamos $LM = \{x:\real{}/\mathbb{Z} \to M: x \; \text{é solução contrátil das equações de Hamilton} \}$. Ao adotarmos a topologia $C^{2}$ para o espaço $LM$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}LM$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
+	\begin{definicao}\label{definicao_solucoes_periodicas_contratei}
+		(Espaço das soluções contráteis e periódicas) Denotamos $\solucoesperiodicascontrateis = \{x:\circulo \to M: x \; \text{é solução contrátil das equações de Hamilton} \}$. Ao adotarmos a topologia $C^{2}$ para o espaço $\solucoesperiodicascontrateis$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}\solucoesperiodicascontrateis$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
 	\end{definicao}	
 	
 	\begin{definicao}
@@ -1223,15 +1235,15 @@
 	\begin{teorema}
 		Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
 		$$
-		\#LM \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
+		\#\solucoesperiodicascontrateis \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
 		$$
 	\end{teorema}
 	
-	O espaço das soluções contráteis $LM$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:LM \to \real{}$, dado por
+	O espaço das soluções contráteis $\solucoesperiodicascontrateis$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:\solucoesperiodicascontrateis \to \real{}$, dado por
 	$$
 	f_{H}(\gamma) = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
 	$$
-	onde $D^{2} \subset \mathbb{C}$ e $u(e^{i2\pi t}) = \gamma(t)$. Vamos agora determinar o gradiente do funcional $df_{H}: TLM \to \real{}$. Sejam $\tilde{\gamma}:[0,1] \times S^{1} \to M$  e $\tilde{u}:[0,1] \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \dparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
+	onde $D^{2} \subset \mathbb{C}$ e $u(e^{i2\pi t}) = \gamma(t)$. Vamos agora determinar o gradiente do funcional $df_{H}: T\solucoesperiodicascontrateis \to \real{}$. Sejam $\tilde{\gamma}:[0,1] \times S^{1} \to M$  e $\tilde{u}:[0,1] \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \derivadaparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
 	$$
 	f_{H}(\tilde{\gamma}) = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{\gamma}(s,t))dt.
 	$$
@@ -1249,7 +1261,7 @@
 	$$
 	\begin{aligned}
 	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{\gamma}(s,t)) 
-	&= \int_{[0,1]} \dparcial{}{s} H(\tilde{\gamma}(s,t)) \Bigm\lvert_{s=0}
+	&= \int_{[0,1]} \derivadaparcial{}{s} H(\tilde{\gamma}(s,t)) \Bigm\lvert_{s=0}
 	\\
 	&= \int_{[0,1]} (dH(\tilde{\gamma}(s,t)))_{\tilde{\gamma}(0,t)}(\xi(t))dt
 	\\
@@ -1260,17 +1272,17 @@
 	$$
 	df_{H}(\gamma)(\xi) = \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)dt.
 	$$
-	De onde segue-se que $df_{H}(\gamma) = 0 \iff \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)=0\; \forall \xi \in T_{\gamma}LM$, que pela não-degenerecência de $\omega$ temos que $df_{H}(\gamma) = 0 \iff \dot{\gamma}(t) - X(\gamma(t), t)=0$, isto é, $\gamma \in LM$ é uma solução null-homotópica das equações de hamilton.
+	De onde segue-se que $df_{H}(\gamma) = 0 \iff \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)=0\; \forall \xi \in T_{\gamma}\solucoesperiodicascontrateis$, que pela não-degenerecência de $\omega$ temos que $df_{H}(\gamma) = 0 \iff \dot{\gamma}(t) - X(\gamma(t), t)=0$, isto é, $\gamma \in \solucoesperiodicascontrateis$ é uma solução null-homotópica das equações de hamilton.
 
 	Em geometria Riemanniana definimos o gradiente de uma função suave $f:M \to \real{}$ como sendo o campo $\nabla f(p) \in T_{p}M$ tal que $df(p)(v) = \iprod{ \nabla f(p)}{v}\; \forall v \in T_{p}M$. Note que temos a dependência da métrica riemanniana nessa definição. Construiremos o conceito de gradiente do funcional $f_{H}$, para isso, definamos uma estrutura quase-complexa em $M$ por $J \in C^{\infty}(End(TM))$ tais que $J^{2} = -Id$, então temos a métrica riemanniana associada a $\omega$, isto é,
 	$$
 	g(X, Y)= \omega(X, J(x)Y), \; X,Y \in T_{x}M,
 	$$
-	o que induzirá uma métrica em $LM$. Assim, dado $\gamma \in LM$ teremos a métrica nos espaço dos loops contráteis
+	o que induzirá uma métrica em $\solucoesperiodicascontrateis$. Assim, dado $\gamma \in \solucoesperiodicascontrateis$ teremos a métrica nos espaço dos loops contráteis
 	$$
-	\iprod{\alpha}{\beta}_{\gamma} = \int_{[0,1]}g(\alpha(t), \beta(t))dt, \; \alpha, \beta \in T_{\gamma}LM.
+	\iprod{\alpha}{\beta}_{\gamma} = \int_{[0,1]}g(\alpha(t), \beta(t))dt, \; \alpha, \beta \in T_{\gamma}\solucoesperiodicascontrateis.
 	$$
-	Se $f: LM \to \real{}$ é uma função diferenciável, então seu campo gradiente será dado por 
+	Se $f: \solucoesperiodicascontrateis \to \real{}$ é uma função diferenciável, então seu campo gradiente será dado por 
 	$$
 	\begin{aligned}
 	df(\gamma)(\xi) &= \iprod{\nabla f(\gamma)}{\xi}_{\gamma} = \int_{[0,1]}g(\nabla f(\gamma(t)), \xi(\gamma(t)))dt
@@ -1293,39 +1305,39 @@
 	$$
 	\nabla f(\gamma) = J(\gamma(t))\dot{\gamma}(t) - J(\gamma(t)) X(\gamma(t)) =J_{\gamma(t)}\dot{\gamma}(t) + \nabla_{\gamma(t)}H(\gamma(t), t).  
 	$$
-	As linhas do fluxo gradiente do funcional $f_{H}$ serão dadas pela aplicação suave $u : \real{} \times S^{1} \to M$ satisfazendo o problema de valor inicial:
+	As linhas do fluxo gradiente do funcional $f_{H}$ serão dadas pela aplicação suave $u : \retacartesianocirculo \to M$ satisfazendo o problema de valor inicial:
 	$$
-	\dparcial{u}{s}(s,t) = -\nabla f(\gamma(t)), \; u(0,t) = \gamma(t).
+	\derivadaparcial{u}{s}(s,t) = -\nabla f(\gamma(t)), \; u(0,t) = \gamma(t).
 	$$
 	Que substituindo essa relação na expressao do gradiente do funcional:
 	$$
-	\dparcial{u}{s}(s,t) + J_{u(s,t)}\dparcial{u}{t}(s,t) + \nabla_{u(s,t)}H(u(s,t))=0, 
+	\derivadaparcial{u}{s}(s,t) + J_{u(s,t)}\derivadaparcial{u}{t}(s,t) + \nabla_{u(s,t)}H(u(s,t))=0, 
 	$$
 	que é chamada de equação de Floer. Contudo, esse problema não esta bem-definido com um problema de Cauchy, além disso, qualquer ponto crítico de $f_{H}$ tem seu índice de Morse infinito.
 	
 	\textbf{Observação:} no estudo dos pontos críticos do funcional $f_{H}$ encontra-se a dificuldade de se determinar que o princípio variacional possui uma cota inferior ou superior. Além disso, a hessiana do funcional pode ter um subespaço de dimensão infinita tanto para os casos de autovalores negativos quanto positivos, impossibilitando a realização da teoria de Morse. Por fim, \vermelho{a determinação do gradiente do funcional também não esta bem-definida, já que não esta bem posto como um problema de Cauchy.}
 	
-	Sejam $y, x\in LM$ e defina $\mathcal{M}(y, x)$ como sendo o espaço das órbitas conectantes com respeito ao fluxo gradiente de $f_{H}$. Essas são soluções da equação de Floer com a seguinte condição de contorno \vermelho{(estamos supondo que as mesmas existem)}
+	Sejam $y, x\in \solucoesperiodicascontrateis$ e defina $\mathcal{M}(y, x)$ como sendo o espaço das órbitas conectantes com respeito ao fluxo gradiente de $f_{H}$. Essas são soluções da equação de Floer com a seguinte condição de contorno \vermelho{(estamos supondo que as mesmas existem)}
 	$$
 	\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t). 
 	$$
 	
 	Seja o funcional energia por
 	$$
-	E(u) = \frac{1}{2}\int_{\real{}} \int_{S{^{1}}} \bigmodulo{\dparcial{u}{s}}^{2} + \bigmodulo{\dparcial{u}{t} - X_{H}(u,t)}^{2}dsdt
+	E(u) = \frac{1}{2}\int_{\real{}} \int_{S{^{1}}} \bigmodulo{\derivadaparcial{u}{s}}^{2} + \bigmodulo{\derivadaparcial{u}{t} - X_{H}(u,t)}^{2}dsdt
 	$$
 	vamos definir $
-	\mathcal{M} = \{u \in \mathcal{M}(y,x):y,x \in LM,\; |E(u)| < \infty, \; u \sim p \in M\}
+	\mathcal{M} = \{u \in \mathcal{M}(y,x):y,x \in \solucoesperiodicascontrateis,\; |E(u)| < \infty, \; u \sim p \in M\}
 	$ como sendo o espaço das soluções limitadas da equação de Floer, e vamos utilizar características desse conjunto para construir um conceito de índice dos pontos críticos do funcional $f_{H}$.
 	
 	\begin{lema}
-		(Floer) $\mathcal{M} = \bigcup \mathcal{M}(y,x)$, onde a união dos pares $y,x \in LM$, além disso, supondo a condição de aesfericidade, $\mathcal{M}$ será compacta.
+		(Floer) $\mathcal{M} = \bigcup \mathcal{M}(y,x)$, onde a união dos pares $y,x \in \solucoesperiodicascontrateis$, além disso, supondo a condição de aesfericidade, $\mathcal{M}$ será compacta.
 	\end{lema}
 	
 	O lema abaixo é equivalente as condições de transversalidade em teoria finita de Morse, isto é, dada um função de Morse, o subconjunto de funções de Morse-Smale é um conjunto denso.
 	
 	\begin{lema}
-		(Floer) Suponha que as soluções do sistema hamiltoniano sejam não-degenerados, então exite um conjunto denso $J_{reg} \subset C^{\infty}(End(TM))$ de estruturas quase-complexas tais que dado $J \in J_{reg}$ e cada par $y,x \in LM$ o espaço $\mathcal{M}(y,x)$ é uma variedade de dimensão finita.
+		(Floer) Suponha que as soluções do sistema hamiltoniano sejam não-degenerados, então exite um conjunto denso $J_{reg} \subset C^{\infty}(End(TM))$ de estruturas quase-complexas tais que dado $J \in J_{reg}$ e cada par $y,x \in \solucoesperiodicascontrateis$ o espaço $\mathcal{M}(y,x)$ é uma variedade de dimensão finita.
 	\end{lema}
 	
 	\textbf{Observação:} o lema acima afirma que, dada uma métrica gerada pelo par $\omega$ e J, teremos um conjunto denso de métricas geradas por outras estruturas complexas. Como o gradiente $\nabla f_{H}$ depende da métrica que adotamos então, como consequencia do lema, dado um gradiente sempre conseguimos construir um outro gradiente suficientemente proximo.
@@ -1333,11 +1345,11 @@
 	A estratéria dada por Floer para a demonstração desse lema 
 	é a utilização de operadores diferenciais lineares  definidos por 
 	$$
-	F_{u} \xi = \nabla_{s}\xi+J(u)(\nabla_{t}\xi - \nabla_{s}X_{H}(u,t))+\nabla_{\xi}J(u)\Big(\dparcial{u}{t}-X_{H}(u,t)\Big),
+	F_{u} \xi = \nabla_{s}\xi+J(u)(\nabla_{t}\xi - \nabla_{s}X_{H}(u,t))+\nabla_{\xi}J(u)\Big(\derivadaparcial{u}{t}-X_{H}(u,t)\Big),
 	$$
 	onde $\xi \in C^{\infty}(u^{*}TM)$, $u \in \mathcal{M}$ e $\nabla$ é a conexão riemanniana definida pela métrica anterior. Sendo que sua forma adjunta, de acordo com a mesma métrica, será dada por:
 	$$
-	F_{u}^{*} \beta = -\nabla_{s}\beta+J(u)(\nabla_{t}\beta - \nabla_{s}X_{H}(u,t))+\nabla_{\beta}J(u)\Big(\dparcial{u}{t}-X_{H}(u,t)\Big).
+	F_{u}^{*} \beta = -\nabla_{s}\beta+J(u)(\nabla_{t}\beta - \nabla_{s}X_{H}(u,t))+\nabla_{\beta}J(u)\Big(\derivadaparcial{u}{t}-X_{H}(u,t)\Big).
 	$$
 	Podemos então definir 	os campos vetorias de quadrado integrável localmente como sendo a solução fraca da equação $F_{u}\xi = \beta$ se 
 	$$
@@ -1368,19 +1380,19 @@
 	
 	\textbf{Observação:} Para se definir o conceito de índice de Morse relativo vamos utilizar a definição de índice de $F_{u}$, o que dará origem a homologia de Floer. Sabemos que $\mathcal{M}(y,x)$ é uma variedade diferenciável, e que $F_{u}$ é sobrejetor, então existe uma vizinhaça de $u \in \mathcal{M}(y,x)$ que é difeomorfa a uma vizinhança de $0 \in Ker(F_{u})$, logo nessa vizinhança teremos $dim(\mathcal{M}(y,x)) = ind(F_{u})$.
 	
-	\begin{lema}\label{indice_ponto_critico} Sejam $z,y,x \in LM$ então $\mu(y,x) = ind(F_{u})$ é independente de $u \in \mathcal{M}(y,x)$. Além disso
+	\begin{lema}\label{indice_ponto_critico} Sejam $z,y,x \in \solucoesperiodicascontrateis$ então $\mu(y,x) = ind(F_{u})$ é independente de $u \in \mathcal{M}(y,x)$. Além disso
 		$$
 		\mu(z,y) + \mu(y,x) = \mu(y,x), \; \mu(x,x) = 0.   
 		$$
 	\end{lema}
-	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \mathbb{Z}$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \mathbb{Z}$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : LM \to \mathbb{Z}$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
+	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \mathbb{Z}$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \mathbb{Z}$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : \solucoesperiodicascontrateis \to \mathbb{Z}$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
 	$$
 	k = ind(F_{u}) = m(y)-m(x).
 	$$
-	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in LM$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
+	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \solucoesperiodicascontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
 	
 	\section{Variedades conectantes - espaços das soluções de Floer}
-	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x, y$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\espacomoduli{x}{y}$ como sendo o conjunto das equações de Floer que conectam as óbitas $x$ e $y$. Vamos demonstrar que $\espacomoduli{x}{y}$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\espacomoduli{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $F: \curvassuavesconectantes{x}{y} \to TM$ e mostrar que $Ker(F) = \espacomoduli{x}{y}$. Por fim, vamos mostrar que $F$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\espacomoduli{x}{y}) = dim (Ker(F)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $F$ para mostrar que $\espacomoduli{x}{y} = F^{-1}(0)$ é uma variedade diferenciável.
+	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x, y$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\espacomoduli{x}{y}$ como sendo o conjunto das equações de Floer que conectam as óbitas $x$ e $y$. Vamos demonstrar que $\espacomoduli{x}{y}$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\espacomoduli{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $F: \caminhossuavesconectantes{x}{y} \to TM$ e mostrar que $Ker(F) = \espacomoduli{x}{y}$. Por fim, vamos mostrar que $F$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\espacomoduli{x}{y}) = dim (Ker(F)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $F$ para mostrar que $\espacomoduli{x}{y} = F^{-1}(0)$ é uma variedade diferenciável.
 
 	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais, caso haja familiaridade com tais definições, a leitura dessa seção não se faz necessária. \vermelho{Na verdade, boa parte da literatura do assunto utiliza muito pouco desses resultados, o que desconfio que podemos efetuar as mesmas construções sem que citemos tais conceitos.}
 	
@@ -1449,25 +1461,7 @@
 		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
 	\end{prova}
 	
-	\subsection{Operadores de Fredholm}
-	\begin{definicao}\label{definicao_oeprador_fredholm}
-		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/Im(T)$. O operador $T$ é chamado de operador de Fredholm se $Im(T)=\overline{Im(T)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$.  
-	\end{definicao}
-	
-	Os resultados a seguir serão utilizados na construção e demonstração de estabilidade do operador de Fredholm adiante. Vamos denotar $\operadoresfredholm{A}{B}$ o conjunto dos operadores de Fredholm de $A$ em $B$ e $\operadoreslimitados{A}{B}$ o conjunto dos operadores limitados definidos nos mesmo espaços de Banach.
-
-	\begin{teorema}\label{teorema_estabilidade_fredholm}
-		(Estabilidade de Fredholm) Sejam  $T \in \operadoresfredholm{A}{B}$ e $\epsilon>0$, então para todo $K \in \operadoreslimitados{A}{B}$ tal que $||K|| < \epsilon$ temos que $T+K \in \operadoresfredholm{A}{B}$. Além disso, $ind(T+K)=ind(T)$ e $k(T+K) \leq k(T)$.
-	\end{teorema}
-	
-	\begin{definicao}
-		(Mapa de Fredholm) Uma aplicação suave $f: A \to B$ é chamada de mapa de Fredholm se o diferencial $df(p): A \to B$ é um operador de Fredholm para todo $p \in A$.
-	\end{definicao}
-	
-	
-	Pela estabilidade dos operadores de Fredholm, podemos afirmar que o índice de $df(p) \in \operadoresfredholm{A}{B}$ não depende do ponto $p \in A$, com isso podemos definir o índice do mapa de Fredholm como $ind(f)=ind(df(p))$ que é constante e assim esta bem-definido.
-	
-	\subsection{Variedade Riemanniana - definições}
+	\subsection{Variedade Riemanniana - algumas definições}
 	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
 	
 	\begin{definicao}\label{definicao_variedade_riemanniana}
@@ -1517,14 +1511,71 @@
 	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, será utilizada diretamente na construção de uma estrutura de variedade em espaço de funções.
 	
 	\begin{proposicao}\label{p}
-		Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existe $\epsilon>0$ e uma vizinhança $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
+		Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
 	\end{proposicao}
+	
+	\subsection{Operadores de Fredholm}
+	\begin{definicao}\label{definicao_oeprador_fredholm}
+		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/Im(T)$. O operador $T$ é chamado de operador de Fredholm se $Im(T)=\overline{Im(T)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$.  
+	\end{definicao}
+	
+	Os resultados a seguir serão utilizados na construção e demonstração de estabilidade do operador de Fredholm adiante. Vamos denotar $\operadoresfredholm{A}{B}$ o conjunto dos operadores de Fredholm de $A$ em $B$ e $\operadoreslimitados{A}{B}$ o conjunto dos operadores limitados definidos nos mesmo espaços de Banach.
+
+	\begin{teorema}\label{teorema_estabilidade_fredholm}
+		(Estabilidade de Fredholm) Sejam  $T \in \operadoresfredholm{A}{B}$ e $\epsilon>0$, então para todo $K \in \operadoreslimitados{A}{B}$ tal que $||K|| < \epsilon$ temos que $T+K \in \operadoresfredholm{A}{B}$. Além disso, $ind(T+K)=ind(T)$ e $k(T+K) \leq k(T)$.
+	\end{teorema}
+	
+	\begin{definicao}
+		(Mapa de Fredholm) Uma aplicação suave $f: A \to B$ é chamada de mapa de Fredholm se o diferencial $df(p): A \to B$ é um operador de Fredholm para todo $p \in A$.
+	\end{definicao}
+	
+	
+	Pela estabilidade dos operadores de Fredholm, podemos afirmar que o índice de $df(p) \in \operadoresfredholm{A}{B}$ não depende do ponto $p \in A$, com isso podemos definir o índice do mapa de Fredholm como $ind(f)=ind(df(p))$ que é constante e assim esta bem-definido.
+	
+	\subsection{Os espaços de Banach das curvas conectantes}
+	
+	\begin{definicao}\label{definimos_caminhos_decaimentos_exponenciais}
+		(Caminhos de decaímentos exponenciais) Sejam $x^{+}, x^{-} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
+		$$
+		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \pm} u(s,t) = x^{\pm}(t) \},
+		$$
+		onde 
+		$$
+		\Big|\derivadaparcial{u}{s}\Big| \leq Ke^{-\delta|s|},  \Big|\derivadaparcial{u}{t}\Big| \leq Ke^{-\delta|s|}.
+		$$
+	\end{definicao}
+	
+	\begin{observacao}
+		$\caminhosdecaimentoexponencialpadrao$ é não-vazio pois as soluções da equação de Floer existem e satisfazem tais condições, logo são elementos desse conjunto. A estimativa do módulo das derivadas parciais pode ser encontrada em $\cite{floer_homology}$.
+	\end{observacao}
+	
+	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que os espaço das funções suaves não é um espaço de Banach \vermelho{(DEVO MELHORAR ESSE ARGUMENTO)}, portanto $\caminhosdecaimentoexponencialpadrao$ não é um candidato a espaço de Banach. \vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
+	
+	\begin{definicao}
+		(Espaço das funções p-integráveis) Seja $\Omega\subset \real{n}$ um aberto. O espaço das funções p-integráveis em $W$ é o conjunto 
+		$$
+		L^{p}(\Omega) = \{f:W \to \real{} : \normaLp{f} < \infty \}, \; \normaLp{f} = \Big(\int_{W}|f(x)|^{p}dx\Big)^{1/p}.
+		$$
+	\end{definicao}
+	
+	O espaço $L^{p}(W)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equações de Floer envolve derivadas de primeira ordem, o espaço de Banach que trabalharemos deverá considerar tais condições, por isso teremos uma norma um pouco mais específica, o que é chamado por espaço de Sobolev definido por:
+	
+	\begin{definicao}
+		(Espaço de Sobolev)  Seja $\Omega \subset \real{n}$ um aberto. Denotaremos por (1,p)-espaço de Sobolev o conjunto
+		$$
+		W^{1,p}(\Omega) = \{f \in L^{p}(\Omega) : \normaWp{f} <\infty  \},
+		$$
+		onde 
+		$$
+		\normaWp{f} = \Big(\int_{W}|f(x)|^{p} + \sum_{i} \Big|\derivadaparcial{f}{x^{i}}(x)\Big|^{p}dx\Big)^{1/p}.
+		$$
+	\end{definicao}
 	
 	Seja $\mathcal{L}(x,y)$ o conjunto de todas as aplicações suaves $u:\real{}\times \real{}/\mathbb{Z} \to M$ satisfazendo as condições de contorno $\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t)$ o conjunto de todas as curvas suaves que conectam $x$ a $y$ e definindo o operador $F:\mathcal{L}(x,y) \to TM$ tal que 
 	$$
-	F(u) = \dparcial{u}{s} + J_{u}\dparcial{u}{t}+ \nabla H(u).
+	F(u) = \derivadaparcial{u}{s} + J_{u}\derivadaparcial{u}{t}+ \nabla H(u).
 	$$
-	Dado $u \in \mathcal{L}(x,y)$ temos que $u^{*}TM$ \vermelho{é o conjunto de todas as seções do fibrado $TM$ definidas restritas ao subconjunto $u(\cartesianorealporcirculo) \subset M$}, com isso temos que $F(u) \in u^{*}TM$. Definindo $\espacomoduli{x}{y}$ como sendo o conjunto das soluções da equação de Floer que conectam $x$ a $y$, então dado $u \in \espacomoduli{x}{y}$ temos $F(u) = 0$, logo $ker(F) = \espacomoduli{x}{y}$.
+	Dado $u \in \mathcal{L}(x,y)$ temos que $u^{*}TM$ \vermelho{é o conjunto de todas as seções do fibrado $TM$ definidas restritas ao subconjunto $u(\retacartesianocirculo) \subset M$}, com isso temos que $F(u) \in u^{*}TM$. Definindo $\espacomoduli{x}{y}$ como sendo o conjunto das soluções da equação de Floer que conectam $x$ a $y$, então dado $u \in \espacomoduli{x}{y}$ temos $F(u) = 0$, logo $ker(F) = \espacomoduli{x}{y}$.
 	
 	
 	\subsection{Definição do Índice de Maslov}
@@ -1546,7 +1597,7 @@
 	
 	Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. Como as extensões $u,v:D^{2} \to M$ são aplicações contínuas e $D^{2}$ é compacto e contrátil, então pelo Corolário $\ref{pullback_contratil}$ temos que os pullbacks $u^{*}TM$ e $v^{*}TM$ são fibrados vetoriais triviais, além disso, ambas as extensões so aplicações homotópicas por construção, logo pelo Teorema $\ref{pullback_isomorfismo}$  $u^{*}TM \cong v^{*}TM$.
 	
-	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$ e $\Psi_{x}(t), \Psi'_{x}(t)$ as matrizes do diferencial nas respectivas bases. Por definição temos $\Psi_{x}, \Psi_{x}' \in \mathcal{S}$ tal que $\Psi_{x} \simeq \Psi'_{x}$, isto é, \vermelho{são curvas homotópicas em $\mathcal{S}$}. Com isso, consequimos associar a cada solução 1-periódica dos sistema Hamiltoniano a uma curva $\Psi_{x} \in \mathcal{S}$ a menos de uma homotopia da seguinte forma $\hat{\Psi}_{t}:LM \to \mathcal{S}$ tal que $\hat{\Psi}_{t}(x) = \Psi_{x}(t)$.
+	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$ e $\Psi_{x}(t), \Psi'_{x}(t)$ as matrizes do diferencial nas respectivas bases. Por definição temos $\Psi_{x}, \Psi_{x}' \in \mathcal{S}$ tal que $\Psi_{x} \simeq \Psi'_{x}$, isto é, \vermelho{são curvas homotópicas em $\mathcal{S}$}. Com isso, consequimos associar a cada solução 1-periódica dos sistema Hamiltoniano a uma curva $\Psi_{x} \in \mathcal{S}$ a menos de uma homotopia da seguinte forma $\hat{\Psi}_{t}:\solucoesperiodicascontrateis \to \mathcal{S}$ tal que $\hat{\Psi}_{t}(x) = \Psi_{x}(t)$.
 	
 	O seguinte resultado será utlizado nas demais construções do índice de Maslov.
 	
@@ -1623,7 +1674,7 @@
 		\end{enumerate}
 	\end{teorema}
 	
-	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $LM$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
+	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $\solucoesperiodicascontrateis$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
 	
 	\begin{corolario}
 		Sejam $(M, \omega)$ uma 2n-variedade simplectica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$, pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
@@ -1633,9 +1684,9 @@
 	\end{corolario}	
 	
 	\section{Definição da Homologia de Floer}
-	Seja $C = C(M, \mathbb{Z}_{2})$ o espaço vetorial sobre o corpo $\mathbb{Z}_{2}$ e gerado pelos elementos de LM. Esse espaço é graduado pela função $m$, de modo que
+	Seja $C = C(M, \mathbb{Z}_{2})$ o espaço vetorial sobre o corpo $\mathbb{Z}_{2}$ e gerado pelos elementos de $\solucoesperiodicascontrateis$. Esse espaço é graduado pela função $m$, de modo que
 	$$
-	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \mathbb{Z}_{2}) = \text{span}\{x \in LM:m(x)=k \}.
+	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \mathbb{Z}_{2}) = \text{span}\{x \in \solucoesperiodicascontrateis:m(x)=k \}.
 	$$
 	Segue-se da compacidade e da estruta de variedade diferenciável que $\mathcal{M}(y,x)$ possui um número finito de elementos sempre que $ m(y)-m(x)=1 = dim(\mathcal{M}(y,x))$. Com esse fato podemos construir o operador bordo $\partial : C_{k+1} \to C_{k}$ tal que
 	$$
@@ -1662,14 +1713,25 @@
 	\end{teorema}
 	
 	\begin{thebibliography}{9}
+		\bibitem{floer_homology}
+		Audi, Michèlle; Damian, Mihai:
+		\emph{Morse Theory and Floer Homology},
+		Springer, first edition,
+		2010.
 		
-		\bibitem{nakahara}
+		\bibitem{breazis_sobolev_spaces}
+		Brezis, Haim:
+		\emph{Functional Analysis, Sobolev Spaces and Partial Differential Equantions},
+		Springer, first edition,
+		2011.
+		
+		\bibitem{manfredo_riemannian_geo}
 		Do Carmo, Manfredo P.:
 		\emph{Riemannian Geometry},
 		Birkhauser, 2nd edition,
 		1992.
 	
-		\bibitem{manfredo_riemannian_geo}
+		\bibitem{nakahara}
 		Nakahara, Mikio:
 		\emph{Geometry, Topology and Physics},
 		Graduate Student Series in Physics, 2nd edition,
