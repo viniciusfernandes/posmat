@@ -35,8 +35,11 @@
 \newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
 \newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
-\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{+}}{x^{-}}}
+\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
+\newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
+\newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
+\newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
 \newcommand{\circulo}{S^{1}}
@@ -47,6 +50,9 @@
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
+\newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
+\newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
 \newcommand{\espectrooperador}[1]{\sigma(#1)}
 \newcommand{\estruturacomplexa}[2]{\mathcal{J}(#1, #2)}
 \newcommand{\estruturacomplexapadrao}{\mathcal{J}(V, \omega)}
@@ -59,8 +65,6 @@
 	\end{array}
 	\right.
 }
-\newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
-\newcommand{\espacomoduli}[2]{\mathcal{M}(#1, #2)}
 \newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
@@ -74,6 +78,9 @@
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
+\newcommand{\mapafloer}{\mathcal{F}}
+\newcommand{\mapafloerparametro}[1]{\mathcal{F}(#1)}
+\newcommand{\mapafloerpadrao}{\mapafloerparametro{u}}
 \newcommand{\matrizantisimetrica}[1]{AntiSkew(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
@@ -82,10 +89,14 @@
 \newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
 \newcommand{\matrizunitaria}[1]{U(#1)}
 \newcommand{\norma}[1]{||#1||}
+\newcommand{\normagrande}[1]{\Big|\Big|#1\Big|\Big|}
 \newcommand{\normaLp}[1]{||#1||_{L_{p}}}
 \newcommand{\normaWp}[1]{||#1||_{W_{1,p}}}
+\newcommand{\normaWpgeral}[2]{||#1||_{W_{1,#2}}}
 \newcommand{\operadoresfredholm}[2]{\mathcal{F}(#1, #2)}
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
+\newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
+\newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
 \newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
@@ -1392,9 +1403,9 @@
 	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \solucoesperiodicascontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
 	
 	\section{Variedades conectantes - espaços das soluções de Floer}
-	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x, y$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\espacomoduli{x}{y}$ como sendo o conjunto das equações de Floer que conectam as óbitas $x$ e $y$. Vamos demonstrar que $\espacomoduli{x}{y}$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\espacomoduli{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $F: \caminhossuavesconectantes{x}{y} \to TM$ e mostrar que $Ker(F) = \espacomoduli{x}{y}$. Por fim, vamos mostrar que $F$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\espacomoduli{x}{y}) = dim (Ker(F)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $F$ para mostrar que $\espacomoduli{x}{y} = F^{-1}(0)$ é uma variedade diferenciável.
+	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x^{-}, x^{+}$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\orbitasconectantespadrao$ como sendo o conjunto das soluções da equação de Floer que conectam as óbitas $x^{-}$ e $x^{+}$. Vamos demonstrar que $\orbitasconectantespadrao$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\orbitasconectantes{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $\mapafloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são determinadas curvas conectando $x^{-}, x^{+}$ tal que $\orbitasconectantespadrao \subset \caminhosexponenciaisconectantespadrao$. Mostraremos que $Ker(\mapafloer) = \orbitasconectantespadrao$. Por fim, vamos provar que $\mapafloer$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\orbitasconectantespadrao) = dim (Ker(\mapafloer)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $\mapafloer$ para mostrar que $\orbitasconectantespadrao = \mapafloer^{-1}(0)$ é uma variedade diferenciável.
 
-	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais, caso haja familiaridade com tais definições, a leitura dessa seção não se faz necessária. \vermelho{Na verdade, boa parte da literatura do assunto utiliza muito pouco desses resultados, o que desconfio que podemos efetuar as mesmas construções sem que citemos tais conceitos.}
+	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais e conexões afins em variedades Riemannianas, mas caso haja familiaridade com tais definições a leitura dessa seção não se faz necessária.
 	
 	\subsection{Fibrados Vetoriais - alguns resultados}
 	\begin{definicao}
@@ -1535,18 +1546,18 @@
 	\subsection{Os espaços de Banach das curvas conectantes}
 	
 	\begin{definicao}\label{definimos_caminhos_decaimentos_exponenciais}
-		(Caminhos de decaímentos exponenciais) Sejam $x^{+}, x^{-} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
+		(Caminhos de decaímentos exponenciais) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{+}$ a $x^{-}, $ por
 		$$
-		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \pm} u(s,t) = x^{\pm}(t) \},
+		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \mp} u(s,t) = x^{\mp}(t) \},
 		$$
 		onde 
 		$$
-		\Big|\derivadaparcial{u}{s}\Big| \leq Ke^{-\delta|s|},  \Big|\derivadaparcial{u}{t}\Big| \leq Ke^{-\delta|s|}.
+		\Big|\derivadaparcial{u}{s}(s,t)\Big| \leq Ke^{-\delta|s|},  \Big|\derivadaparcial{u}{t}(s,t) -X_{H}(u) \Big| \leq Ke^{-\delta|s|}.
 		$$
 	\end{definicao}
 	
 	\begin{observacao}
-		$\caminhosdecaimentoexponencialpadrao$ é não-vazio pois as soluções da equação de Floer existem e satisfazem tais condições, logo são elementos desse conjunto. A estimativa do módulo das derivadas parciais pode ser encontrada em $\cite{floer_homology}$.
+		$\caminhosdecaimentoexponencialpadrao$ é não-vazio pois as soluções da equação de Floer existem e satisfazem tais condições, logo são elementos desse conjunto. A estimativa do módulo das derivadas parciais pode ser encontrada em $\cite{floer_homology}$. Além disso, essas estimativas indicam que nos limites $s\to \mp \infty$ teremos as soluções das esquações do sistema Hamiltonio.
 	\end{observacao}
 	
 	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que os espaço das funções suaves não é um espaço de Banach \vermelho{(DEVO MELHORAR ESSE ARGUMENTO)}, portanto $\caminhosdecaimentoexponencialpadrao$ não é um candidato a espaço de Banach. \vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
@@ -1557,6 +1568,10 @@
 		L^{p}(\Omega) = \{f:W \to \real{} : \normaLp{f} < \infty \}, \; \normaLp{f} = \Big(\int_{W}|f(x)|^{p}dx\Big)^{1/p}.
 		$$
 	\end{definicao}
+	
+	\begin{observacao}
+		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, sendo que um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
+	\end{observacao}
 	
 	O espaço $L^{p}(W)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equações de Floer envolve derivadas de primeira ordem, o espaço de Banach que trabalharemos deverá considerar tais condições, por isso teremos uma norma um pouco mais específica, o que é chamado por espaço de Sobolev definido por:
 	
@@ -1571,11 +1586,43 @@
 		$$
 	\end{definicao}
 	
+	\begin{observacao}\label{observacao}
+		Quando $dim(\Omega) = 1$, por exemplo um intervalo da reta, temos que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $dim(\Omega)>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Consequentemente, nem todos os elementos de  $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$  são contínuas. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev), e esta demonstrado em $\cite{breazis_sobolev_spaces}$, garante a inclusão em $L^{p}$:
+	\end{observacao}
+	
+	\begin{teorema}\label{teorema_sobolev}
+		(Mergulho de Sobolev) Seja $1 \leq p < n$. Então $\espacosobolev{\real{n}} \subset L^{q}(\real{n})$, onde $q = 1/p -1/n$.
+	\end{teorema}
+	
+	Notemos que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial, por isso vamos adotar como espaço de Sobolev 
+	$$
+	\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}=\{X:\retacartesianocirculo \to \real{2n} : \normaWp{X}<\infty\},
+	$$
+	onde 
+	$$
+	\normaWp{X} = \Big(\int_{\real{}}\int_{\circulo} \norma{X(s,t)}^{p}+\normagrande{\derivadaparcial{X}{s}(s,t)}^{p}+\normagrande{\derivadaparcial{X}{t}(s,t)}^{p}dsdt \Big)^{1/p}.
+	$$
+	
+	Notemos que $dim(\retacartesianocirculo) = 2$, logo pelas limitações citadas na Observação $\ref{Sp2n_homotopia}$ e pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev) temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{q}$, onde $q = 1/p - 1/n$ e $n = 2$, o que implica que $q = 0$ se $p=2$, logo temos que trabalhar $p>2$.
+	
+	\begin{definicao}
+		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$, $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ o das aplicações $exp(w,X):\retacartesianocirculo \to M$ tal que $exp(w,X)(s,t) = exp_{w(s,t)}X(s,t)$.
+	\end{definicao}
+	
+	\begin{proposicao}
+		$\orbitasconectantespadrao \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
+	\end{proposicao}
+	\begin{prova}
+		Seja $u \in \orbitasconectantespadrao$, então pelas condições de contorno das soluções temos $u(s,t)  \to x^{\mp}(t)$ quando $s\to \mp \infty$, logo $\derivadaparcial{u}{s} \to 0$ e $\derivadaparcial{u}{t} \to X_{H}(x^{\mp})$ quando $s\to \mp \infty$, portanto $u \in \caminhosdecaimentoexponencialpadrao$. Suponha que $u \in \caminhosdecaimentoexponencialpadrao$ então tomando $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Definindo $\gamma(s, t) = exp_{u(s, t)}(v(s, t))$, podemos ver que $\gamma$ satisfaz as condições de decaímento exponencial, logo $\gamma \in \caminhosdecaimentoexponencialpadrao$, mas por construção temos que $\gamma \in \caminhosexponenciaisconectantespadrao$. Como cada $u \in \caminhosdecaimentoexponencialpadrao$ temos uma única $\gamma \in \caminhosexponenciaisconectantespadrao$, então $\caminhosdecaimentoexponencialpadrao \subset \caminhosexponenciaisconectantespadrao$. 
+	\end{prova}
+	
+	
+	
 	Seja $\mathcal{L}(x,y)$ o conjunto de todas as aplicações suaves $u:\real{}\times \real{}/\mathbb{Z} \to M$ satisfazendo as condições de contorno $\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t)$ o conjunto de todas as curvas suaves que conectam $x$ a $y$ e definindo o operador $F:\mathcal{L}(x,y) \to TM$ tal que 
 	$$
 	F(u) = \derivadaparcial{u}{s} + J_{u}\derivadaparcial{u}{t}+ \nabla H(u).
 	$$
-	Dado $u \in \mathcal{L}(x,y)$ temos que $u^{*}TM$ \vermelho{é o conjunto de todas as seções do fibrado $TM$ definidas restritas ao subconjunto $u(\retacartesianocirculo) \subset M$}, com isso temos que $F(u) \in u^{*}TM$. Definindo $\espacomoduli{x}{y}$ como sendo o conjunto das soluções da equação de Floer que conectam $x$ a $y$, então dado $u \in \espacomoduli{x}{y}$ temos $F(u) = 0$, logo $ker(F) = \espacomoduli{x}{y}$.
+	Dado $u \in \mathcal{L}(x,y)$ temos que $u^{*}TM$ \vermelho{é o conjunto de todas as seções do fibrado $TM$ definidas restritas ao subconjunto $u(\retacartesianocirculo) \subset M$}, com isso temos que $F(u) \in u^{*}TM$. Definindo $\orbitasconectantes{x}{y}$ como sendo o conjunto das soluções da equação de Floer que conectam $x$ a $y$, então dado $u \in \orbitasconectantes{x}{y}$ temos $F(u) = 0$, logo $ker(F) = \orbitasconectantes{x}{y}$.
 	
 	
 	\subsection{Definição do Índice de Maslov}
@@ -1730,6 +1777,11 @@
 		\emph{Riemannian Geometry},
 		Birkhauser, 2nd edition,
 		1992.
+	
+		\bibitem{kreyszig_analise_funcional}
+		Kreyszig, Erwin
+		\emph{Instriduction to Functional Analysis with Applications},
+		John Wiley and Sons, 1978.
 	
 		\bibitem{nakahara}
 		Nakahara, Mikio:
