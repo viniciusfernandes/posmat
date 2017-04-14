@@ -28,6 +28,8 @@
 
 \newenvironment{prova}[1]{$\square$ #1}{\hfill$\blacksquare$}
 
+\newcommand{\aplicacaoexponencial}[2]{exp_{#1}(#2)}
+\newcommand{\aplicacaoexponencialgeral}[1]{exp_{#1}}
 \newcommand{\aplicaoessuaves}[2]{C^{\infty}(#1, #2)}
 \newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo, M)}
 \newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
@@ -1521,8 +1523,8 @@
 	
 	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, será utilizada diretamente na construção de uma estrutura de variedade em espaço de funções.
 	
-	\begin{proposicao}\label{p}
-		Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
+	\begin{proposicao}\label{proposicao_difeomorfismo_exponencial}
+		(Difeomorfismo exponencial) Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
 	\end{proposicao}
 	
 	\subsection{Operadores de Fredholm}
@@ -1606,16 +1608,30 @@
 	Notemos que $dim(\retacartesianocirculo) = 2$, logo pelas limitações citadas na Observação $\ref{Sp2n_homotopia}$ e pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev) temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{q}$, onde $q = 1/p - 1/n$ e $n = 2$, o que implica que $q = 0$ se $p=2$, logo temos que trabalhar $p>2$.
 	
 	\begin{definicao}
-		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$, $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ o das aplicações $exp(w,X):\retacartesianocirculo \to M$ tal que $exp(w,X)(s,t) = exp_{w(s,t)}X(s,t)$.
+		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$, $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ o das aplicações $exp(w,X):\retacartesianocirculo \to M$ tal que $exp(w,X)(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$.
 	\end{definicao}
 	
 	\begin{proposicao}
 		$\orbitasconectantespadrao \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $u \in \orbitasconectantespadrao$, então pelas condições de contorno das soluções temos $u(s,t)  \to x^{\mp}(t)$ quando $s\to \mp \infty$, logo $\derivadaparcial{u}{s} \to 0$ e $\derivadaparcial{u}{t} \to X_{H}(x^{\mp})$ quando $s\to \mp \infty$, portanto $u \in \caminhosdecaimentoexponencialpadrao$. Suponha que $u \in \caminhosdecaimentoexponencialpadrao$ então tomando $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Definindo $\gamma(s, t) = exp_{u(s, t)}(v(s, t))$, podemos ver que $\gamma$ satisfaz as condições de decaímento exponencial, logo $\gamma \in \caminhosdecaimentoexponencialpadrao$, mas por construção temos que $\gamma \in \caminhosexponenciaisconectantespadrao$. Como cada $u \in \caminhosdecaimentoexponencialpadrao$ temos uma única $\gamma \in \caminhosexponenciaisconectantespadrao$, então $\caminhosdecaimentoexponencialpadrao \subset \caminhosexponenciaisconectantespadrao$. 
+		Seja $u \in \orbitasconectantespadrao$, então pelas condições de contorno das soluções temos $u(s,t)  \to x^{\mp}(t)$ quando $s\to \mp \infty$, logo $\derivadaparcial{u}{s} \to 0$ e $\derivadaparcial{u}{t} \to X_{H}(x^{\mp})$ quando $s\to \mp \infty$, portanto $u \in \caminhosdecaimentoexponencialpadrao$. Suponha que $u \in \caminhosdecaimentoexponencialpadrao$ então tomando $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Definindo $\gamma(s, t) =\aplicacaoexponencial{u(s, t)}{v(s, t)}$, podemos ver que $\gamma$ satisfaz as condições de decaímento exponencial, logo $\gamma \in \caminhosdecaimentoexponencialpadrao$, mas por construção temos que $\gamma \in \caminhosexponenciaisconectantespadrao$. Como cada $u \in \caminhosdecaimentoexponencialpadrao$ temos uma única $\gamma \in \caminhosexponenciaisconectantespadrao$, então $\caminhosdecaimentoexponencialpadrao \subset \caminhosexponenciaisconectantespadrao$. 
 	\end{prova}
 	
+	\subsection{$\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach}
+	
+	\begin{definicao}
+		(Variedade de Banach) Seja N um espaço topologico de Hausdorff. Uma família indexada $\{(U_{i}, \phi_{i})\}_{i \in I}$, cujos pares $(U_{i}, \phi_{i})$ são chamados de cartas, é um k-atlas de N se:
+		\begin{enumerate}
+			\item $N=\bigcup_{i\in I} U_{i}$
+			\item $\phi_{i}:U_{i} \to \phi_{i}(U_{i})$ é um homeomorfismo
+			\item $\phi_{i}\circ \phi_{j}^{-1}: \phi_{j}(U_{j}\cap U_{i}) \to \phi_{i}(U_{j}\cap U_{i}) $ é uma aplicação de classe $C^{k}$
+		\end{enumerate}
+	\end{definicao}
+	
+	Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{\infty}(\retacartesianocirculo, \real{2n})$. Então dado $X \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, existem constantes $A, B >0$ tais que $A\normaWp{X}\leq \norma{X}_{\infty} \leq B\normaWp{X}$, portanto, ambas as normas geram a mesma topologia. Como $L^{\infty}(\retacartesianocirculo, \real{2n})$ é um espaço de Banach, então pela inclusão e compatibilidade das normas, $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ é um espaço de Banach.
+	
+	Pela Proposição $\ref{proposicao_difeomorfismo_exponencial}$, dado $\epsilon > 0$, existe uma vizinhaça aberta $B_{\epsilon}(0)$ de seção nula $0 \in \espacosobolev{\pullbackfibradotangenteM{w}}$ tal que a restrição da aplicação exponencial $\aplicacaoexponencialgeral{w}:B_{\epsilon}(0) \to V$ é um difeomorfismo sobre um aberto $V \subset \pullbackfibradotangenteM{w}$. Para cada $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$ temos a aplicação $\aplicacaoexponencial{w}{X}:\retacartesianocirculo \to M$ tal que $\aplicacaoexponencial{w}{X}(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$, logo $\aplicacaoexponencial{w}{X} \in \caminhosexponenciaisconectantespadrao$. Portanto o par $(B_{\epsilon}(0), \aplicacaoexponencialgeral{w})$ de abertos e difeomorfismos é uma carta de $\caminhosexponenciaisconectantespadrao$, consequentemente a família indexada $\{(B_{\epsilon_{w}}(0), \aplicacaoexponencialgeral{w})\}_{w \in \mathcal{P}}$, onde $\mathcal{P} = \caminhosexponenciaisconectantespadrao$, forma um 1-atlas. Portanto, $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
 	
 	
 	Seja $\mathcal{L}(x,y)$ o conjunto de todas as aplicações suaves $u:\real{}\times \real{}/\mathbb{Z} \to M$ satisfazendo as condições de contorno $\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t)$ o conjunto de todas as curvas suaves que conectam $x$ a $y$ e definindo o operador $F:\mathcal{L}(x,y) \to TM$ tal que 
