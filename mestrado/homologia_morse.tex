@@ -84,6 +84,7 @@
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
 \newcommand{\mapafloer}{\mathcal{F}}
+\newcommand{\mapafloerdefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
 \newcommand{\mapafloerparametro}[1]{\mathcal{F}(#1)}
 \newcommand{\mapafloerpadrao}{\mapafloerparametro{u}}
 \newcommand{\matrizantisimetrica}[1]{AntiSkew(#1)}
@@ -96,6 +97,9 @@
 \newcommand{\norma}[1]{||#1||}
 \newcommand{\normagrande}[1]{\Big|\Big|#1\Big|\Big|}
 \newcommand{\normaLp}[1]{||#1||_{L_{p}}}
+\newcommand{\normaLpdefinicao}[2]{ \Big(\int_{#2}#1^{p}dx\Big)^{1/p}}
+\newcommand{\normapequenaLpdefinicao}[2]{ \normaLpdefinicao{\norma{#1}}{#2}}
+\newcommand{\normagrandeLpdefinicao}[2]{ \normaLpdefinicao{\normagrande{#1}}{#2}}
 \newcommand{\normaWp}[1]{||#1||_{W_{1,p}}}
 \newcommand{\normaWpgeral}[2]{||#1||_{W_{1,#2}}}
 \newcommand{\operadorfloer}{\mathfrak{F}}
@@ -1551,14 +1555,14 @@
 	
 	\subsection{Os espaços de Banach das curvas conectantes}
 	
-	\begin{definicao}\label{definimos_caminhos_decaimentos_exponenciais}
+	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
 		(Caminhos de decaímentos exponenciais) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{+}$ a $x^{-}, $ por
 		$$
 		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \mp} u(s,t) = x^{\mp}(t) \},
 		$$
 		onde 
 		$$
-		\Big|\derivadaparcial{u}{s}(s,t)\Big| \leq Ke^{-\delta|s|},  \Big|\derivadaparcial{u}{t}(s,t) -X_{H}(u) \Big| \leq Ke^{-\delta|s|}.
+		\normagrande{\derivadaparcial{u}{s}(s,t)} \leq Ke^{-\delta|s|},  \normagrande{\derivadaparcial{u}{t}(s,t) -X_{H}(u)} \leq Ke^{-\delta|s|}.
 		$$
 	\end{definicao}
 	
@@ -1571,7 +1575,7 @@
 	\begin{definicao}
 		(Espaço das funções p-integráveis) Seja $\Omega\subset \real{n}$ um aberto. O espaço das funções p-integráveis em $W$ é o conjunto 
 		$$
-		L^{p}(\Omega) = \{f:W \to \real{} : \normaLp{f} < \infty \}, \; \normaLp{f} = \Big(\int_{W}|f(x)|^{p}dx\Big)^{1/p}.
+		L^{p}(\Omega) = \{f:W \to \real{} : \normaLp{f} < \infty \}, \; \normaLp{f} = \normaLpdefinicao{f(x)}.
 		$$
 	\end{definicao}
 	
@@ -1606,7 +1610,7 @@
 	$$
 	onde 
 	$$
-	\normaWp{X} = \Big(\int_{\real{}}\int_{\circulo} \norma{X(s,t)}^{p}+\normagrande{\derivadaparcial{X}{s}(s,t)}^{p}+\normagrande{\derivadaparcial{X}{t}(s,t)}^{p}dsdt \Big)^{1/p}.
+	\normaWp{X} = \Big(\int_{\retacartesianocirculo} \norma{X(s,t)}^{p}+\normagrande{\derivadaparcial{X}{s}(s,t)}^{p}+\normagrande{\derivadaparcial{X}{t}(s,t)}^{p}dx \Big)^{1/p}.
 	$$
 	
 	Notemos que $dim(\retacartesianocirculo) = 2$, logo pelas limitações citadas na Observação $\ref{Sp2n_homotopia}$ e pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev) temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{q}$, onde $q = 1/p - 1/n$ e $n = 2$, o que implica que $q = 0$ se $p=2$, logo temos que trabalhar $p>2$.
@@ -1653,13 +1657,6 @@
 	
 	Por definição temos que, dado $w : \retacartesianocirculo \to M $ com $w \in C^{\infty}$ temos $\pullbackfibradotangenteM{w} = \{(p, X(p)) : p = w(s,t) \in M, \; X(s,t) \in T_{w(s,t)M} \}$. Pelo Teorema $\ref{teorema_whitney}$ (Whitney) temos que $\pullbackfibradotangenteM{w} \subset T\real{k}$, para algum $k \geq dim(\pullbackfibradotangenteM{w}) +1$. Seja $\psi : \pullbackfibradotangenteM{w} \to \real{k}$ o mergulho, então a composição $\Psi=\psi \circ X:\retacartesianocirculo \to \real{k}$ esta bem-definida, logo $\Psi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$. 
 	
-	\begin{proposicao}
-		A aplicação $\Psi : \espacosobolev{\pullbackfibradotangenteM{u}} \to \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$, para um dado $k>0$, é injeção contínua.
-	\end{proposicao}
-	\begin{prova}
-		Da construção anterior vimos que $\Psi=\psi \circ X$
-	\end{prova}
-	
 	\subsection{O operador de Floer $\operadorfloer$}
 	
 	Sabemos que $\caminhosexponenciaisconectantesabrev$ é um espço de Banach, portanto é um espaço topológico com sua topologia gerada pela norma. Definindo $\fibradocaminhosexponenciais =\{(u, X): u \in \caminhosexponenciaisconectantesabrev,\; X \in L^{p}(\pullbackfibradotangenteM{u})\}$, temos que a tripla $
@@ -1669,15 +1666,25 @@
 	\begin{definicao}
 		(Mapa de Floer) O mapa de Floer é a aplicação $\mapafloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciaisabrev$ tal que
 		$$
-		\mapafloerparametro{u} = \derivadaparcial{u}{s} + J(u)\derivadaparcial{u}{t}+ \nabla H(u).
+		\mapafloerparametro{u} =\mapafloerdefinicao{u}.
 		$$
 	\end{definicao}
 	
-	Pela definição de $\caminhosexponenciaisconectantesabrev \ni u$ podemos escrever $u = \aplicacaoexponencial{w}{X}$, onde $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \pullbackfibradotangenteM{w}$.
-	
-	
-	\vermelho{Precisamos mostrar que a definicao acima tem sentido, isto é, $Im(\mapafloer) \subset L^{p}$}
-	
+	Seja $u \in \caminhosexponenciaisconectantesabrev$, então
+	$$
+	\begin{aligned}
+	\normaLp{\mapafloerpadrao} &= \normagrandeLpdefinicao{\mapafloerdefinicao{u}}{\retacartesianocirculo}
+	\\
+	&\leq \normaLpdefinicao{\normagrande{\derivadaparcial{u}{s}} +|J|\normagrande{\derivadaparcial{u}{t} - X_{H}(u)}}{\retacartesianocirculo}
+	\\
+	&\leq \normaLpdefinicao{(Ke^{-\delta|s|} +|J|Ke^{-\delta|s|})}{\retacartesianocirculo}
+	\\
+	&\leq G \int_{\retacartesianocirculo}e^{-\delta|s|p}dx
+	\\
+	&< \infty,
+	\end{aligned}	
+	$$ 
+	portanto $\mapafloerparametro{\caminhosexponenciaisconectantesabrev} \subset L^{p}(\pullbackfibradotangenteMpadrao)$ e o mapa de Floer esta bem-definido.
 	
 	Seja $\mathcal{L}(x,y)$ o conjunto de todas as aplicações suaves $u:\real{}\times \real{}/\mathbb{Z} \to M$ satisfazendo as condições de contorno $\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t)$ o conjunto de todas as curvas suaves que conectam $x$ a $y$ e definindo o operador $F:\mathcal{L}(x,y) \to TM$ tal que 
 	$$
