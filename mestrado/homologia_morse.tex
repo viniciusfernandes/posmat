@@ -38,6 +38,7 @@
 \newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
 \newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
+\newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
@@ -58,6 +59,8 @@
 \newcommand{\espectrooperador}[1]{\sigma(#1)}
 \newcommand{\estruturacomplexa}[2]{\mathcal{J}(#1, #2)}
 \newcommand{\estruturacomplexapadrao}{\mathcal{J}(V, \omega)}
+\newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-1}, x^{+})}
+\newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
 \newcommand{\funcaocond}[5]{
 	#1 = 
 	\left\{
@@ -95,7 +98,8 @@
 \newcommand{\normaLp}[1]{||#1||_{L_{p}}}
 \newcommand{\normaWp}[1]{||#1||_{W_{1,p}}}
 \newcommand{\normaWpgeral}[2]{||#1||_{W_{1,#2}}}
-\newcommand{\operadoresfredholm}[2]{\mathcal{F}(#1, #2)}
+\newcommand{\operadorfloer}{\mathfrak{F}}
+\newcommand{\operadoresfredholm}[2]{\mathcal{F}r(#1, #2)}
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
 \newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
 \newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
@@ -1492,7 +1496,7 @@
 		\end{enumerate}
 	\end{definicao}
 	
-	\begin{observacao}
+	\begin{observacao}\label{observacao_conexao_afim}
 		Seja $\{e_{j}(p)\}$ uma base ortonormal de $T_{p}M$, então pode-se mostrar que, dados $X=\sum X_{j}e_{j}, Y=\sum Y_{j}e_{j} \in T_{p}M$, temos:
 		$$
 		\nabla_{X}Y = \sum_{k} \Big( \sum_{ij} X(Y_{k}) + X_{i}Y_{j} \Gamma^{k}_{ij}\Big)e_{k} = \sum_{k} (\nabla_{X}Y)^{k}e_{k}. 
@@ -1619,7 +1623,9 @@
 	\end{prova}
 	
 	\subsection{$\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach}
-	
+
+	Quando não houver riscos de ambiguidades, adotaremos a notação de $\caminhosexponenciaisconectantesabrev$ em vez de $\caminhosexponenciaisconectantespadrao$.
+
 	\begin{definicao}
 		(Variedade de Banach) Seja N um espaço topologico de Hausdorff. Uma família indexada $\{(U_{i}, \phi_{i})\}_{i \in I}$, cujos pares $(U_{i}, \phi_{i})$ são chamados de cartas, é um k-atlas de N se:
 		\begin{enumerate}
@@ -1631,7 +1637,38 @@
 	
 	Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{\infty}(\retacartesianocirculo, \real{2n})$. Então dado $X \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, existem constantes $A, B >0$ tais que $A\normaWp{X}\leq \norma{X}_{\infty} \leq B\normaWp{X}$, portanto, ambas as normas geram a mesma topologia. Como $L^{\infty}(\retacartesianocirculo, \real{2n})$ é um espaço de Banach, então pela inclusão e compatibilidade das normas, $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ é um espaço de Banach.
 	
-	Pela Proposição $\ref{proposicao_difeomorfismo_exponencial}$, dado $\epsilon > 0$, existe uma vizinhaça aberta $B_{\epsilon}(0)$ de seção nula $0 \in \espacosobolev{\pullbackfibradotangenteM{w}}$ tal que a restrição da aplicação exponencial $\aplicacaoexponencialgeral{w}:B_{\epsilon}(0) \to V$ é um difeomorfismo sobre um aberto $V \subset \pullbackfibradotangenteM{w}$. Para cada $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$ temos a aplicação $\aplicacaoexponencial{w}{X}:\retacartesianocirculo \to M$ tal que $\aplicacaoexponencial{w}{X}(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$, logo $\aplicacaoexponencial{w}{X} \in \caminhosexponenciaisconectantespadrao$. Portanto o par $(B_{\epsilon}(0), \aplicacaoexponencialgeral{w})$ de abertos e difeomorfismos é uma carta de $\caminhosexponenciaisconectantespadrao$, consequentemente a família indexada $\{(B_{\epsilon_{w}}(0), \aplicacaoexponencialgeral{w})\}_{w \in \mathcal{P}}$, onde $\mathcal{P} = \caminhosexponenciaisconectantespadrao$, forma um 1-atlas. Portanto, $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
+	\begin{proposicao}\label{proposicao_variedade_banach}
+		Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$ soluções contráteis do sistema Hamiltoniano, então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
+	\end{proposicao}
+	\begin{prova}
+		Pela Proposição $\ref{proposicao_difeomorfismo_exponencial}$, dado $\epsilon > 0$, existe uma vizinhaça aberta $B_{\epsilon}(0)$ de seção nula $0 \in \espacosobolev{\pullbackfibradotangenteM{w}}$ tal que a restrição da aplicação exponencial $\aplicacaoexponencialgeral{w}:B_{\epsilon}(0) \to V$ é um difeomorfismo sobre um aberto $V \subset \pullbackfibradotangenteM{w}$. Para cada $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$ temos a aplicação $\aplicacaoexponencial{w}{X}:\retacartesianocirculo \to M$ tal que $\aplicacaoexponencial{w}{X}(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$, logo $\aplicacaoexponencial{w}{X} \in \caminhosexponenciaisconectantespadrao$. Portanto o par $(B_{\epsilon}(0), \aplicacaoexponencialgeral{w})$ de abertos e difeomorfismos é uma carta de $\caminhosexponenciaisconectantespadrao$, consequentemente a família indexada $\{(B_{\epsilon_{w}}(0), \aplicacaoexponencialgeral{w})\}_{w \in \caminhosexponenciaisconectantesabrev}$, forma um 1-atlas. Portanto, $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
+	\end{prova}
+	
+	\subsection{Trivialização de $\pullbackfibradotangenteM{u}$}
+	Em muitas situações  vamos nos deparar com a necessidade de efetuar diferenciação em variedades com estruturas diferenciais complexas tornando dificultanto muito as técnicas utilizadas na demonstração dos resultados desejado. Para contornar esse dificuldade adicional vamos utilizar o Teorema de Whitney, enunciado aqui, mas demonstrado em $\cite{guillemin_differential_topology}$, e com isso comparar campos vetoriais se torna trivial, já que estamos em um espaço euclidiano e os espaços tangentes estão todos identificados com o próprio $\real{k}$ (para algum k), além disso, as conexões afins (associadas ao transporte paralelo de campos vetoriais em variedades Riemannianas) são reduzidas a derivadas parciais. Veja um pouco na Observação $\ref{observacao_conexao_afim}$.
+	
+	\begin{teorema}\label{teorema_whitney}
+		(Mergulho de Whitney) Toda variedade n-dimensional pode ser mergulhada em $\real{2n+1}$.
+	\end{teorema}
+	
+	Por definição temos que, dado $w : \retacartesianocirculo \to M $ com $w \in C^{\infty}$ temos $\pullbackfibradotangenteM{w} = \{(p, X(p)) : p = w(s,t) \in M, \; X(s,t) \in T_{w(s,t)M} \}$. Pelo Teorema $\ref{teorema_whitney}$ (Whitney) temos que $\pullbackfibradotangenteM{w} \subset T\real{k}$, para algum $k\geq 4n+1$
+	\subsection{O operador de Floer $\operadorfloer$}
+	
+	Sabemos que $\caminhosexponenciaisconectantesabrev$ é um espço de Banach, portanto é um espaço topológico com sua topologia gerada pela norma. Definindo $\fibradocaminhosexponenciais =\{(u, X): u \in \caminhosexponenciaisconectantesabrev,\; X \in L^{p}(\pullbackfibradotangenteM{u})\}$, temos que a tripla $
+	\fibradocaminhosexponenciaisabrev= (\fibradocaminhosexponenciais, \caminhosexponenciaisconectantesabrev, \pi)
+	$ é um fribrado vetorial sobre $\caminhosexponenciaisconectantesabrev$  onde $\pi: \fibradocaminhosexponenciais \to \caminhosexponenciaisconectantesabrev$ é tal que $\pi(u, X)=u$ é a projeção e $\pi^{-1}(u) = L^{p}(\pullbackfibradotangenteM{u})$ é uma fibra em $u$.
+	
+	\begin{definicao}
+		(Mapa de Floer) O mapa de Floer é a aplicação $\mapafloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciaisabrev$ tal que
+		$$
+		\mapafloerparametro{u} = \derivadaparcial{u}{s} + J(u)\derivadaparcial{u}{t}+ \nabla H(u).
+		$$
+	\end{definicao}
+	
+	Pela definição de $\caminhosexponenciaisconectantesabrev \ni u$ podemos escrever $u = \aplicacaoexponencial{w}{X}$, onde $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \pullbackfibradotangenteM{w}$.
+	
+	
+	\vermelho{Precisamos mostrar que a definicao acima tem sentido, isto é, $Im(\mapafloer) \subset L^{p}$}
 	
 	
 	Seja $\mathcal{L}(x,y)$ o conjunto de todas as aplicações suaves $u:\real{}\times \real{}/\mathbb{Z} \to M$ satisfazendo as condições de contorno $\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t)$ o conjunto de todas as curvas suaves que conectam $x$ a $y$ e definindo o operador $F:\mathcal{L}(x,y) \to TM$ tal que 
@@ -1793,6 +1830,12 @@
 		\emph{Riemannian Geometry},
 		Birkhauser, 2nd edition,
 		1992.
+		
+		\bibitem{guillemin_differential_topology}
+		Guillemin, Victor; Pollack, Alan:
+		\emph{Differential Topolgy},
+		Prentice-Hall,
+		1974.	
 	
 		\bibitem{kreyszig_analise_funcional}
 		Kreyszig, Erwin
