@@ -691,30 +691,6 @@
 		$$
 		Pode-se mostrar que uma matriz $A$ é positiva-definida se, e somente se, $A=A^{t}$ e seus k-subdeterminantes são todos positivos. Uma consequência imediata é que, se $A$ for diagonalizável, então todos os seus auto-valores serão positivos. \vermelho{Veja hoffmam}.
 	\end{observacao}
-	
-	Seja $\matrizortogonal{n} =\{ A \in \generalgroupreal{n}: AA^{t}=Id \}$, o grupo das matrizes ortogonais, então:
-	
-	\begin{teorema}\label{teorema_decomposicao_polar}
-		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$.
-	\end{teorema}
-	\begin{prova}
-		Dados $v,w \in V$ então 
-		$$
-		\produtointerno{AA^{t}v}{w}=\produtointerno{v}{A^{t}Aw}=\produtointerno{Av}{Aw}=\produtointerno{A^{t}Av}{w}=\produtointerno{(AA^{t})^{t} v}{w},
-		$$
-		como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é auto-adjunta e positiva. Suponha $A=PO$, então pela hipótese $AA^{t} = POO^{t}P^{t} = P^{2}$. Como $A$ e $A^{t}$ são únicas, então $AA^{t}$ é única, logo $P$ é única. Como $A=PO$ então pela unicidade de $P$ temos que $O$ é única, assim $A=PO$ esta bem-definida e $O=P^{-1}A$. Por fim, 
-		$$
-		OO^{t} = P^{-1}AA^{t}(P^{-1})^{t}= P^{-1}AA^{t}(P^{t})^{-1}=P^{-1}AA^{t}(P)^{-1}=P^{-1}P^{2}(P)^{-1}=Id,
-		$$
-		logo $O$ é ortogonal.
-	\end{prova}
-	
-	\begin{lema}\label{lema_caracterizacao_matriz_normal}
-		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida e uma matriz $O\in \matrizortogonal{n}$ tal que $A=ODO^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos. 
-	\end{lema}
-	\begin{prova}
-		\vermelho{Veja em Hoffman no caítulo sobre operadores normais}
-	\end{prova}
 
 	Seja $A \in \generalgroupreal{n}$ uma matriz dianonalizável. Denotamos por $\sigma(A)$ o conjunto dos auto-valores de $A$.
 
@@ -741,17 +717,43 @@
 			o que é um absurdo, portanto $(A^{-\alpha})^{t}(A^{t})^{\alpha} =Id$ para qualquer $\alpha \in \real{}$, o que implica que $(A^{-\alpha})^{t}=(A^{t})^{-\alpha}$. Claro que fazendo $-\alpha \mapsto \alpha$ teremos a tese do enunciado.
 	\end{prova}
 	
+	\begin{definicao}
+		(Matriz ortogonal) O conjunto $\matrizortogonal{n} =\{ A \in \generalgroupreal{n}: AA^{t}=Id \}$ é denominado por conjunto das matrizes ortogonais.
+	\end{definicao}
+	
+	\begin{observacao}
+		O conjunto das matrizes ortogonais forma um grupo com a operação de multiplicação de matrizes.
+	\end{observacao}
+	
+	O resultado abaixo, por ser demasiadamente técnico, tem sua demonstração feita em $\cite{hoffman_kunze}$.
+	
+	\begin{lema}\label{lema_caracterizacao_matriz_normal}
+		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida e uma matriz $O\in \matrizortogonal{n}$ tal que $A=ODO^{t}$. Nesse caso dizemos que $A$ é uma matriz normal e seus auto-valores são positivos. 
+	\end{lema}
 	
 	\begin{lema}\label{lema_raiz_matriz_normal}
-		(Raíz de matriz normal) Seja $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ uma matriz normal, então existe $P\in \matrizquadreal{n}$ tal que $A=P^{2}$. 
+		(Raíz de matriz normal) Seja $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ uma matriz normal, então existe uma única $P\in \matrizsimetricapositiva{n}$ tal que $A=P^{2}$. 
 	\end{lema}
 	\begin{prova}
-		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=ODO^{t}$, onde $D=(D_{ii})$ é uma amtriz diagonal com entradas positivas e $O\in \matrizortogonal{n}$. Logo podemos definir $C \in \matrizquadreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = OCO^{t}$ teremos $P^{2} = OCO^{t}OCO^{t} = OC^{2}O^{t} = ODO^{t}=A$, como desejávamos.
+		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=ODO^{t}$, onde $D=(D_{ii})$ é uma matriz diagonal com entradas positivas e $O\in \matrizortogonal{n}$. Logo podemos definir $C \in \generalgroupreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = OCO^{t}$ teremos $P^{2} = OCO^{t}OCO^{t} = OC^{2}O^{t} = ODO^{t}=A$. Temos que $P^{t} = (OCO^{t})^{t} = OCO^{t} = P$, pois $C$ é diagonal. Além disso, $P$ é semelhante a uma matriz diagonal, então pela Observação $\ref{observacao_matriz_positiva_definida}$ temos que $P \in \matrizsimetricapositiva{n}$. A unicidade vem do fato de que $C^{2} = D$ é única, logo $P$ é única.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_raiz_matriz_normal}
 		A matriz do Lema $\ref{lema_raiz_matriz_normal}$ e chamada raíz de $A$ e denotamos por $P=\sqrt{A}$.
 	\end{observacao}
+	
+	O seguinte teorema é de grande importância pois é fundamental na caracterização do grupo simplético e investigação de sua topologia. Um caso mais geral que pode ser encontrado em $\cite{hoffman_kunze}$.
+	
+	\begin{teorema}\label{teorema_decomposicao_polar}
+		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$.
+	\end{teorema}
+	\begin{prova}
+		Dados $v,w \in V$ então 
+		$$
+		\produtointerno{AA^{t}v}{w}=\produtointerno{v}{A^{t}Aw}=\produtointerno{Av}{Aw}=\produtointerno{A^{t}Av}{w}=\produtointerno{(AA^{t})^{t} v}{w},
+		$$
+		como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é normal. Então pelo Lema $\ref{lema_raiz_matriz_normal}$ existe uma única $P \in \matrizsimetricapositiva{n}$ tal que $P^{2} = AA^{t}$, isto é, $P = \sqrt{AA^{t}}$. Como $P$ é invertível, podemos definir $O = P^{-1}A$. Vejamos que $OO^{t} = P^{-1}AA^{t}(P^{-1})^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1} = Id$, logo $O \in \matrizortogonal{n}$. Pela unicidade de $P$ temos que $O=P^{-1}A$ é única. Portanto $A=PO$, onde $P \in \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ são únicas.
+	\end{prova}
 	
 	\begin{definicao}
 		(Grupo simplético) Seja $(V,\omega)$ um 2n-espaço vetorial simplético. O grupo simplético de $V$ é $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$.
@@ -775,7 +777,7 @@
 		\end{array}
 		\right)
 		$$
-		onde $B^{t}D, CE^{t}, BC^{t}, DE^{t} $ são matrizes simétricas e $B^{t}E - D^{t}C = Id$ e $BE^{t} - CD^{t} = Id$.
+		onde $B^{t}D, C^{t}E, BC^{t}, DE^{t} $ são matrizes simétricas e $B^{t}E - D^{t}C = Id$ e $BE^{t} - CD^{t} = Id$.
 	\end{lema}
 	\begin{prova}
 		Suponha $A \in Sp(2n)$, então:
@@ -786,7 +788,7 @@
 		$$
 		\begin{aligned}
 		\omega(Av, Aw) &= \omega(Av, -J^{2}Aw)=g(Av, -JAw) \\
-		&= g(A, -A^{t}JAw) = g(A, -Jw) 
+		&= g(Av, -A^{t}JAw) = g(Av, -Jw) 
 		\\
 		&= \omega(v, -J^{2}w) = \omega(v, w), 
 		\end{aligned}
@@ -795,49 +797,47 @@
 		
 		$$
 		\begin{aligned}
-			A^{t}JA&=
-			\left(
-			\begin{array}{cc}
-			B^{t} & D^{t}
+			J &= A^{t}JA
 			\\
-			C^{t} & E^{t}
-			\end{array}
+			\left(
+				\begin{array}{cc}
+				0 & -Id
+				\\
+				Id & 0
+				\end{array}
+			\right)
+			&=
+			\left(
+				\begin{array}{cc}
+				B^{t} & D^{t}
+				\\
+				C^{t} & E^{t}
+				\end{array}
 			\right)
 			\left(
-			\begin{array}{cc}
-			-D & -E
-			\\
-			B & C
-			\end{array}
+				\begin{array}{cc}
+				-D & -E
+				\\
+				B & C
+				\end{array}
 			\right)
 			\\
 			&=
 			\left(
-			\begin{array}{cc}
-			-B^{t}D +D^{t}B & -B^{t}E+D^{t}C
-			\\
-			-C^{t}D+E^{t}B & -C^{t}E+E^{t}C
-			\end{array}
-			\right)
-			\\
-			&=	
-			\left(
-			\begin{array}{cc}
-			0 & -Id
-			\\
-			Id & 0
-			\end{array}
+				\begin{array}{cc}
+				-B^{t}D +D^{t}B & -B^{t}E+D^{t}C
+				\\
+				-C^{t}D+E^{t}B & -C^{t}E+E^{t}C
+				\end{array}
 			\right),
 		\end{aligned}
 		$$
-		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. Temos condições análogas para os outros logos de matrizes, como desejávamos.
+		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. De forma análoga obtemos as outras identidades.
 	\end{prova}
 	
-	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaços vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(J_{0}z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $J_{0}$ corresponde à multiplicação por $i$ nos complexos. 
+	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaços vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(J_{0}z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $J_{0}$ é a identificação com a multiplicação por $i$ nos complexos. 
 	
-	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. 
-	
-	Definimos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Com isso, consideremos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
 	$$
 	F(A)=
 	\left(
@@ -899,7 +899,7 @@
 		$$
 		onde a condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + CC^{t} = DD^{t}+EE^{t} = Id$. 
 		
-		Seja $Z \in \matrizunitaria{n}$, então $F(Z^{*}Z) = F(Id) = Id = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ teremos
+		Seja $Z, Z^{*} \in \matrizunitaria{n}$, então $F(Z^{*}Z) = F(Id) = Id = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ teremos
 		$$
 		F(Z)=
 		\left(
@@ -922,9 +922,9 @@
 		\right)	
 		= Id
 		$$
-		o que implica que devemos ter $B^{t}C =C^{t}B$ que é a condição para que valha o Lema $\ref{lema_caracterizacao_Sp2n}$, logo $F(Z) \in \gruposimpletico{2n}$, portanto $F(Z) \in \mathcal{U}$ e temos $F(\matrizunitaria{n}) \subseteq \mathcal{U}$.
+		o que implica que devemos ter $B^{t}C =C^{t}B$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$ temos que $F(Z) \in \gruposimpletico{2n}$. Portanto $F(Z) \in \mathcal{U}$ o que implica que $F(\matrizunitaria{n}) \subseteq \mathcal{U}$.
 		
-		Seja $A \in \mathcal{U}$, $A^{t}A=Id$, isto é, $A^{t}=A^{-1}$ e $J_{0}=A^{t}J_{0}A=A^{-1}J_{0}A$, o que implica que $AJ_{0}=J_{0}A$, assim:
+		Se $A \in \mathcal{U}$, então $A^{t}=A^{-1}$ e $J_{0}=A^{t}J_{0}A=A^{-1}J_{0}A$, o que implica que $AJ_{0}=J_{0}A$, assim:
 		$$
 		\begin{aligned}
 			AJ_{0}&=J_{0}A
@@ -986,13 +986,15 @@
 		\end{array}
 		\right),
 		$$
-		Seja $Z = B+iC \in \matrizunitaria{n}$, então temos $F(Z) = A$, portanto $A\in \matrizunitaria{n}$, o que implica $\mathcal{U} \subseteq F(\matrizunitaria{n})$, logo $\mathcal{U} = F(\matrizunitaria{n})$. Temos que $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
+		Mostramos que $F(\matrizunitaria{n}) \subseteq \mathcal{U}$, agora vamos mostrar a inclusão $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Seja $A \in \mathcal{U}$ escrito como no resultado anterior. Tomando $Z = B+iC \in \matrizunitaria{n}$ temos que $F(Z) = A$, o que implica que $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão, $\mathcal{U} = F(\matrizunitaria{n})$. 
+		
+		Como $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 
 	Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov.
 	
 	\begin{lema}
-		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$. Então $\lambda \in \espectrooperador{A}$ se, e somente se, $\lambda^{-1} \in \espectrooperador{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos sendo $\lambda_{u}$ e $\lambda_{v}$ seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
+		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$. Então $\lambda \in \espectrooperador{A}$ se, e somente se, $\lambda^{-1} \in \espectrooperador{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos e $\lambda_{u}$ e $\lambda_{v}$ são seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
 	\end{lema}
 	\begin{prova}
 		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}J_{0}A = J_{0}$ o que implica em $J_{0}^{-1}A^{t}J_{0} = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectrooperador{A^{t}}=\espectrooperador{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectrooperador{A^{t}} = \espectrooperador{A}$, o que implica em $\espectrooperador{A^{-1}} = \espectrooperador{A}$, isto é, se $\lambda \in \espectrooperador{A}$, então $\lambda^{-1} \in \espectrooperador{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectrooperador{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
@@ -1008,15 +1010,15 @@
 		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é diagonalizável e pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Sejam $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então:
+		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é simétrica, logo é normal, portanto pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável, além disso, pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Se $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então
 		$$
-		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v), 
+		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v).
 		$$
-		caso $\lambda_{u}\lambda_{v}\neq 1$, então $\omega(A^{\alpha}u,A^{\alpha}v)=\omega(u,v)=0$, é trivial. Caso $\lambda_{u}\lambda_{v}=1$ temos $\omega(A^{\alpha}u,A^{\alpha}v) = \omega(u,v)$, portanto $A^{\alpha} \in \gruposimpletico{2n}$.
+		Se $\lambda_{u}\lambda_{v}\neq 1$, então $\omega(u,v)=0$, o que implica que $\omega(A^{\alpha}u,A^{\alpha}v)=(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v)=0$, logo $\omega(A^{\alpha}u,A^{\alpha}v) = \omega(u,v)=0$, portanto $A^{\alpha} \in \gruposimpletico{2n}$. Caso $\lambda_{u}\lambda_{v}=1$ temos $\omega(A^{\alpha}u,A^{\alpha}v) = \omega(u,v)$, portanto $A^{\alpha} \in \gruposimpletico{2n}$.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_determinante_matriz_unitaria}
-		Lembremos que dado $A \in \matrizunitaria{n}$, então $AA^{*} = Id$ o que implica que $1= det(AA^{*}) = det(A)det(A^{*}) = det(A)\overline{det(A)} = ||det(A)||^{2}$, portanto $det(\matrizunitaria{n}) \subseteq S^{1}$. Vamos usar esse fato em outras demonstrações adiante.
+		Note que, dado $A \in \matrizunitaria{n}$, $1= det(AA^{*}) = det(A)det(A^{*}) = det(A)\overline{det(A)} = ||det(A)||^{2}$, portanto $det(\matrizunitaria{n}) \subseteq S^{1}$.
 	\end{observacao}
 	
 	
@@ -1516,6 +1518,11 @@
 		$$		
 	\end{observacao}
 	
+	\begin{observacao}\label{observacao_transporte_paralelo}
+		(Transporte paralelo) 	Não podemos efetuar uma álgebra vetorial para campos vetoriais em pontos diferentes de uma $N$ n-variedade diferenciável, pois essa operação não esta bem-definida. Contudo, o transporte paralelo é um meio de efetuar uma comparação de como um campo vetorial muda quando avaliado em pontos diferentes da variedade $N$. Suponha que $\gamma:[0,1] \to N$ uma curva suave e $Y \in TN$. Então o transporte paralelo de $Y \in TN$ ao longo de $\gamma$ é dado por 
+		$\nabla_{\frac{d\gamma}{dt}}Y$. O conceito de conexão afim generaliza o transporte paralelo. Mais detalhes sobre podem ser encontrados em $\cite{nakahara}$.
+	\end{observacao}
+	
 	Dizemos um campo $X \in \campossuaves{M}$ é paralelamente transportado ao longo de uma curva $\gamma:\real{} \to M$ se $\nabla_{\gamma'}X=0$. Uma curva na variedade é chamada de geodésica se o seu campo de velocidades $v(t) = \gamma'(t)$ é paralelamente transportado ao logo dela, isto é, $\nabla_{v}v=0$ o que implica que $|v| = constante$.
 	
 	Seja $\gamma:[0,1] \to M$ a geodésica definida por $\gamma(t,p,v)$ tal que $\gamma(0,p,v) = p$ e $\gamma'(0,p,v) = v(p)$ com $|v|$ constante. Então o comprimento de arco de $\gamma$ é definido por 
@@ -1649,19 +1656,23 @@
 	\end{prova}
 	
 	\subsection{A identificação  $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$}
-	Em muitas situações  vamos nos deparar com a necessidade de efetuar diferenciação em variedades com estruturas diferenciais complexas tornando dificultanto muito as técnicas utilizadas na demonstração dos resultados desejado. Para contornar esse dificuldade adicional vamos utilizar o Teorema de Whitney, enunciado aqui, mas demonstrado em $\cite{guillemin_differential_topology}$, e com isso comparar campos vetoriais se torna trivial, já que estamos em um espaço euclidiano e os espaços tangentes estão todos identificados com o próprio $\real{k}$ (para algum k), além disso, as conexões afins (associadas ao transporte paralelo de campos vetoriais em variedades Riemannianas) são reduzidas a derivadas parciais. Veja um pouco na Observação $\ref{observacao_conexao_afim}$.
+	Em muitas situações  vamos nos deparar com a necessidade de efetuar diferenciação em variedades com estruturas diferenciais complexas tornando dificultanto muito as técnicas utilizadas na demonstração dos resultados desejado. Para contornar esse dificuldade adicional vamos utilizar o Teorema de Whitney, enunciado aqui, mas demonstrado em $\cite{guillemin_differential_topology}$, e com isso comparar campos vetoriais se torna trivial, já que estamos em um espaço euclidiano e os espaços tangentes estão todos identificados com o próprio $\real{k}$ (para algum k), além disso, as conexões afins (associadas ao transporte paralelo de campos vetoriais em variedades Riemannianas) são reduzidas a derivadas parciais. Veja uma breve descrição na Observação $\ref{observacao_conexao_afim}$.
+	
+	\begin{definicao}\label{definicao_mergulho_variedades}
+		(Mergulho de variedades) Sejam $M, N$ m,n-variedade s diferenciávei, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Dizemos que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
+	\end{definicao}
 	
 	\begin{teorema}\label{teorema_whitney}
 		(Mergulho de Whitney) Toda variedade n-dimensional pode ser mergulhada em $\real{2n+1}$.
 	\end{teorema}
 	
-	Por definição temos que, dado $w : \retacartesianocirculo \to M $ com $w \in C^{\infty}$ temos $\pullbackfibradotangenteM{w} = \{(p, X(p)) : p = w(s,t) \in M, \; X(s,t) \in T_{w(s,t)M} \}$. Pelo Teorema $\ref{teorema_whitney}$ (Whitney) temos que $\pullbackfibradotangenteM{w} \subset T\real{k}$, para algum $k \geq dim(\pullbackfibradotangenteM{w}) +1$. Seja $\psi : \pullbackfibradotangenteM{w} \to \real{k}$ o mergulho, então a composição $\Psi=\psi \circ X:\retacartesianocirculo \to \real{k}$ esta bem-definida, logo $\Psi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$. 
+	Por definição temos que, dado $w : \retacartesianocirculo \to M $ com $w \in C^{\infty}$ temos $\pullbackfibradotangenteM{w} = \{(p, X(p)) : p = w(s,t) \in M, \; X(s,t) \in T_{w(s,t)M} \}$. Pelo Teorema $\ref{teorema_whitney}$ (Whitney) temos que $\pullbackfibradotangenteM{w} \subset T\real{k}$, para algum $k \geq 2 dim(\pullbackfibradotangenteM{w}) +1$. Seja $\psi : \pullbackfibradotangenteM{w} \to \real{k}$ o mergulho, então a composição $\Psi=\psi \circ X:\retacartesianocirculo \to \real{k}$ esta bem-definida, logo $\Psi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$. 
 	
 	\subsection{O operador de Floer $\operadorfloer$}
 	
 	Sabemos que $\caminhosexponenciaisconectantesabrev$ é um espço de Banach, portanto é um espaço topológico com sua topologia gerada pela norma. Definindo $\fibradocaminhosexponenciais =\{(u, X): u \in \caminhosexponenciaisconectantesabrev,\; X \in L^{p}(\pullbackfibradotangenteM{u})\}$, temos que a tripla $
 	\fibradocaminhosexponenciaisabrev= (\fibradocaminhosexponenciais, \caminhosexponenciaisconectantesabrev, \pi)
-	$ é um fribrado vetorial sobre $\caminhosexponenciaisconectantesabrev$  onde $\pi: \fibradocaminhosexponenciais \to \caminhosexponenciaisconectantesabrev$ é tal que $\pi(u, X)=u$ é a projeção e $\pi^{-1}(u) = L^{p}(\pullbackfibradotangenteM{u})$ é uma fibra em $u$.
+	$ é um fibrado vetorial sobre $\caminhosexponenciaisconectantesabrev$  onde $\pi: \fibradocaminhosexponenciais \to \caminhosexponenciaisconectantesabrev$ é tal que $\pi(u, X)=u$ é a projeção e $\pi^{-1}(u) = L^{p}(\pullbackfibradotangenteM{u})$ é uma fibra em $u$.
 	
 	\begin{definicao}
 		(Mapa de Floer) O mapa de Floer é a aplicação $\mapafloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciaisabrev$ tal que
@@ -1686,12 +1697,33 @@
 	$$ 
 	portanto $\mapafloerparametro{\caminhosexponenciaisconectantesabrev} \subset L^{p}(\pullbackfibradotangenteMpadrao)$ e o mapa de Floer esta bem-definido.
 	
-	Seja $\mathcal{L}(x,y)$ o conjunto de todas as aplicações suaves $u:\real{}\times \real{}/\mathbb{Z} \to M$ satisfazendo as condições de contorno $\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t)$ o conjunto de todas as curvas suaves que conectam $x$ a $y$ e definindo o operador $F:\mathcal{L}(x,y) \to TM$ tal que 
-	$$
-	F(u) = \derivadaparcial{u}{s} + J_{u}\derivadaparcial{u}{t}+ \nabla H(u).
-	$$
-	Dado $u \in \mathcal{L}(x,y)$ temos que $u^{*}TM$ \vermelho{é o conjunto de todas as seções do fibrado $TM$ definidas restritas ao subconjunto $u(\retacartesianocirculo) \subset M$}, com isso temos que $F(u) \in u^{*}TM$. Definindo $\orbitasconectantes{x}{y}$ como sendo o conjunto das soluções da equação de Floer que conectam $x$ a $y$, então dado $u \in \orbitasconectantes{x}{y}$ temos $F(u) = 0$, logo $ker(F) = \orbitasconectantes{x}{y}$.
+	\subsection{O diferencial de $\mapafloer$}
+	\vermelho{Explicar o porque temos que tomar o diferencial do mapa de Floer.}
 	
+
+	
+	Por hipótese $M$ é uma 2n-variedade Riemanniana, consequentemente, $\pullbackfibradotangenteM{w}$ também é uma variedade Riemannina para todo $u \in \caminhosexponenciaisconectantesabrev$. Portanto, para realizarmos a diferencição de $\mapafloer$ devemos comparar os campos vetoriais $\mapafloerparametro{w}$ a $\mapafloerparametro{w'}$ através do transporte paralelo descricao na Observação $\ref{observacao_transporte_paralelo}$, obrigando-nos a trabalhar com conexões afins, levando complexidade adicional à análise das características de $D\mapafloer(w)$. Termos do transporte paralelo teríamos a seguinte expressão:
+	$$
+	D\mapafloerparametro{w}(\xi) = \nabla_{s}\xi + J(w)\nabla_{t}\xi + dJ(w)(\xi)(\xi - X_{H}(w)) - J(w)(dX_{H})_{w}(\xi).
+	$$ 
+	
+	Vamos recorrer novamente o Teorema $\ref{teorema_whitney}$ (teorema de Whitney) para simplificar essa análise. Seja $\pullbackfibradotangenteM{w} \subset \real{k}$ o mergulho de Whitney, então todo $(s,t) \in \retacartesianocirculo$ temos $w(s,t) \in \real{k}$, logo  $ w(s,t)+\xi \in \real{k}$ para todo $\xi \in \real{k}$. Com isso:
+	$$
+	\begin{aligned}
+		\mapafloerparametro{w+\xi}-\mapafloerparametro{w}
+		&= \mapafloerdefinicao{w+\xi}
+		\\
+		 - & \mapafloerdefinicao{w}
+		\\
+		&=\derivadaparcial{\xi}{s} + \bigparenteses{J(w+\xi)-J(w)}\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} + J(w+\xi)\derivadaparcial{\xi}{t} 
+		\\
+		- & J(w+\xi)\bigparenteses{X_{H}(w+\xi) - X_{H}(\xi)} - J(w+\xi)X_{H}(w+\xi)
+	\end{aligned}
+	$$
+	Como os termos $w, \xi, J, X_{H}$ são suaves, então o limite $\norma{\xi} \to 0$ existe e é expresso por:
+	$$
+	D\mapafloer_{w}(\xi) = \derivadaparcial{\xi}{s} + J(w)\derivadaparcial{\xi}{t}+ dJ_{w}(\xi)\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} - J(w) (dX_{H})_{w}(\xi).
+	$$
 	
 	\subsection{Definição do Índice de Maslov}
 	
@@ -1852,9 +1884,14 @@
 		Prentice-Hall,
 		1974.	
 	
+		\bibitem{hoffman_kunze}
+		Hoffman, Kenneth; Kunze, Ray
+		\emph{Linear Algebra},
+		John Wiley and Sons, 2nd edition, 1971.
+		
 		\bibitem{kreyszig_analise_funcional}
 		Kreyszig, Erwin
-		\emph{Instriduction to Functional Analysis with Applications},
+		\emph{Introduction to Functional Analysis with Applications},
 		John Wiley and Sons, 1978.
 	
 		\bibitem{nakahara}
