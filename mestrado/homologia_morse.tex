@@ -129,6 +129,7 @@
 \newcommand{\retacartesianocirculo}{\real{} \times \circulo}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
+\newcommand{\retareal}{\real{}}
 \newcommand{\solucoesperiodicascontrateis}{\mathcal{L}M}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
@@ -1805,7 +1806,56 @@
 	
 	A demonstração será dividida em 4 etapas a seguir:
 	
-	\textbf{Etapa 1:} Vamos mostrar que o Lema $\ref{lema_diferencial_floer_bijecao}$ vale para $p=2$. Como $S$ não depende do parametro $s \in \real{}$, então podemos definir $A = \estruturacomplexa \derivadaparcialabrev{t} + S: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$. \vermelho{O operador $A$ é auto-adjunto e ilimitado no espaço de Hilbert $H=\espacoLdois{\circulo;\real{2n}}$ (não sei demonstrar isso).} Por hipótese temos que $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$ o que implica em $(\derivadaparcialabrev{t} - \estruturacomplexa S)\Psi(t) = 0$. Aplicando $\estruturacomplexa$ nessa identidade e usando o fato de que $\estruturacomplexa^{2} = -Id$ teremos  $(\estruturacomplexa\derivadaparcialabrev{t} + S)\Psi(t) = A\Psi(t)= 0$. \vermelho{Portanto $A$ invertível (não sei demonstrar issso),} com isso não existe auto-valor nulo. Sejam $E^{+}, E^{-}$ os auto-espaços de $A$ cujos auto-valores são positivos e negativos, respectivamente. Então temos a decomposição $W = \espacosobolevgeral{2}{\circulo;\real{2n}} = E^{+}\oplus E^{-}$. Definindo $A^{\pm}=A |_{E^{\pm}}$ e $P^{\pm}: W \to E^{\pm}$ as projeções ortogonais, $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(W)$ e $K: \real{}\to \mathcal{L}(W)$.
+	\textbf{Etapa 1:} Vamos mostrar que o Lema $\ref{lema_diferencial_floer_bijecao}$ vale para $p=2$. Como $S$ não depende do parametro $s \in \real{}$, então podemos definir $A = \estruturacomplexa \derivadaparcialabrev{t} + S: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$. \vermelho{O operador $A$ é auto-adjunto e ilimitado no espaço de Hilbert $H=\espacoLdois{\circulo;\real{2n}}$ (não sei demonstrar isso).} Note que $A\Psi(t) = 0$ se, e somente se, é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$, isto é, $\Psi \in Ker(A)$. Vamos mostrar que $A$ é invertível, e com isso, decomporemos $\espacosobolevgeral{2}{\circulo;\real{2n}} $ em uma soma direta de seus auto-espaços.
+	
+	Por simplicidade denotaremos $W = \espacosobolevgeral{2}{\circulo;\real{2n}} $. Afirmar que $A$ é invertível é equivalente a determinar um único $\Psi \in W$ para um dado $\zeta \in H$ tal que $A\Psi(t) = \zeta(t)$. Caso $\zeta = 0$, então temos um sistema homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial que determina unicamente a solução, logo $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO \vermelho{colocar referencias} podemos afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema, isto é, $\Psi_{0} \mapsto \Psi$ da forma $\Psi = R\Psi_{0}$ e, analogamente, $\Psi \mapsto \Psi_{0}$ da forma $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $R(t)\Psi_{0}$ temos um sistema de equações para $R$ dado por 
+	$0=A\Psi(t) = A(R(t)\Psi_{0}) = (\estruturacomplexa\derivadaparcialabrev{t}+S)R(t)\Psi_{0}$, o que implica em $\dot{R}(t) = \estruturacomplexa SR(t)$ com $R(0) = Id$. 
+	
+	Para determinar a solução da equação mais geral ($\zeta\neq 0$), aplicaremos o método de variação de constantes \vermelho{(procurar uma referencia)} que consiste em analisar uma solução mais geral da forma $\Psi(t) = R(t)\Psi_{0}(t)$ para $t \in [0,1]$. Aplicando o operador $A$ na solução $R(t)\Psi_{0}(t)$ e usando o fato de que $\dot{R}(t) = \estruturacomplexa SR(t)$ e $R(t)$ é invertível, teremos a seguinte condição sobre $\Psi_{0}(t)$
+	$$
+	\begin{aligned}
+		\zeta(t) 
+		&= A\Psi(t)
+		\\ 
+		&= (\estruturacomplexa\derivadaparcialabrev{t}+S)(R(t)\Psi_{0}(t)) 
+		\\ 
+		&= \estruturacomplexa\dot{R}(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
+		\\
+		&= -SR(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
+		\\
+		&= \estruturacomplexa R(t)\dot{\Psi}_{0}(t),
+		\\
+		&\therefore 
+		\\
+		\dot{\Psi}_{0}(t) &= -R^{-1}(t)\estruturacomplexa \zeta(t).
+	\end{aligned}
+	$$
+	
+	Integrando ambos os lados da equação, temos
+	$$
+	\Psi_{0}(t) = \Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)
+	$$
+	e
+	$$
+	\Psi(t) = R(t)\Big(\Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big).
+	$$
+	
+	Aplicando a condições de periodicidade $\Psi(1) = \Psi(0)$ temos
+	$$
+	\Psi_{0}(0)=\Psi(0)=\Psi(1)=R(1)\Big(\Psi_{0}(0)-\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big)
+	$$
+	o que implica em
+	
+	$$
+	(Id - R(1))\Psi_{0}(0) = -R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
+	$$
+		
+	Temos que $R \in Ker(A)$ e pela hipótese $det(Id - R(1))\neq 0$, portanto o operador $Id - R(1)$ é invertível. Com isso a condição inicial $\Psi_{0}(0)$ esta unicamente determinada por
+	$$
+	\Psi_{0}(0) = -(Id - R(1))^{-1}R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
+	$$
+		
+	\vermelho{Portanto $A$ invertível (não sei demonstrar issso),} com isso não existe auto-valor nulo. Sejam $E^{+}, E^{-}$ os auto-espaços de $A$ cujos auto-valores são positivos e negativos, respectivamente. Então temos a decomposição $W = \espacosobolevgeral{2}{\circulo;\real{2n}} = E^{+}\oplus E^{-}$. Definindo $A^{\pm}=A |_{E^{\pm}}$ e $P^{\pm}: W \to E^{\pm}$ as projeções ortogonais, $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(W)$ e $K: \real{}\to \mathcal{L}(W)$.
 	$$
 	\funcaocond{K(s)}{exp(-s A^{+})P^{+}}{s \geq 0}{-exp(-s 	A^{-})P^{-}}{s<0}.
 	$$
@@ -1837,6 +1887,92 @@
 	$$
 	onde fizemos $\xi^{\pm}$ os auto-vetores de $A^{\pm}$ com auto-valores $\lambda^{\pm}$ positivos e negativos, respectivamente. Na ultima desigualdade tivemos dois casos: o primeiro quando $s<0$ implicando em $- s\lambda^{\pm} = - s\lambda^{-} <0$, e o segundo quando $s>0$ implicando em $- s\lambda^{+}<0$. Definindo $\lambda = \inf \{|\alpha|: \alpha \in \sigma(A) \}$, temos a desigualdade desejada.
 	
+	Seja $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}} \cap \espacoLdois{\retacartesianocirculo;\real{2n}}$ tal que 
+	$$
+		Q(\eta(s))(t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
+	$$
+	
+	Esse operador esta bem-definido pois, dado $\eta(s) \in \espacoLdois{\retareal, H}$ temos
+	$$
+	\begin{aligned}
+		\norma{Q(\eta(s))(t)}_{\espacoLdois{\retacartesianocirculo}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLdois{\retacartesianocirculo}}
+		\\
+		&\leq
+		\int_{\retareal}\norma{K(s-\alpha)\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\\
+		&\leq
+		\int_{\retareal}\norma{K(s-\alpha)}\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\\
+		&\leq
+		\int_{\retareal}e^{-\delta|s-\alpha|}  \underbrace{\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}}_{N < \infty}d\alpha
+		\\
+		&\leq
+		N\int_{\retareal}e^{-\delta|s-\alpha|} d\alpha
+		\\
+		&< \infty,	
+	\end{aligned}
+	$$
+	
+	portanto $Q(\eta(s)) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ através do cálculo
+	$$
+	\begin{aligned}
+		Q(\eta(s)) 
+		&= \int_{\retareal}K(s-\alpha)\eta(\alpha)
+		\\
+		&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha)
+		\\
+		&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha)}_{\xi^{-}}
+		\\
+		&= \xi^{+}(s)+\xi^{-}(s).
+	\end{aligned}
+	$$
+	
+	Definindo $\xi = \xi^{+} + \xi^{-}$ e realizando a diferenciação de $\xi^{+}$ temos
+	$$
+	\begin{aligned}
+		\derivada{\xi^{+}}{s} 
+		&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)
+		\\
+		&= exp(-0A^{+})\eta^{+}(s)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) 
+		\\
+		&= \eta^{+}(s)-A^{+}\xi^{+}.
+	\end{aligned}
+	$$
+	Realizando o mesmo cáculo para $\xi^{-}$ teremos 
+	$$
+	 \eta^{\pm}(s) =\derivada{\xi^{\pm}}{s}+A^{\pm}\xi^{\pm}
+	$$
+	o que implica que
+	$$
+	\eta(s) =\derivada{\xi}{s}+A\xi = (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s) = \diferebcialmapafloerabrev \xi(s) = (\diferebcialmapafloerabrev \circ Q)\eta(s).
+	$$
+	Como $\eta(s) \in \espacoLdois{\retareal; H}$ é arbitrário, então mostramos que $\diferebcialmapafloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferebcialmapafloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferebcialmapafloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferebcialmapafloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
+	$$
+	\begin{aligned}
+		Q(\diferebcialmapafloerabrev \eta^{+}(s))
+		&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)\Big)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivadaparcial{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - Q(\derivadaparcialabrev{s}\eta^{+}(s)) + \eta^{+}(s)
+		\\
+		&=\eta^{+}(s).
+	\end{aligned}
+	$$
+	Analogamente teremos $Q(\diferebcialmapafloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferebcialmapafloerabrev = Id$ pois
+	$$
+	Q(\diferebcialmapafloerabrev \eta(s)) = Q(\diferebcialmapafloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferebcialmapafloerabrev \eta^{+}(s))+Q(\diferebcialmapafloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
+	$$
 	
 	\subsection{Definição do Índice de Maslov}
 	
