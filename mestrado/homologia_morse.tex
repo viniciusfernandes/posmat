@@ -129,6 +129,7 @@
 \newcommand{\retacartesianocirculo}{\real{} \times \circulo}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
+\newcommand{\retareal}{\real{}}
 \newcommand{\solucoesperiodicascontrateis}{\mathcal{L}M}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
@@ -1837,6 +1838,92 @@
 	$$
 	onde fizemos $\xi^{\pm}$ os auto-vetores de $A^{\pm}$ com auto-valores $\lambda^{\pm}$ positivos e negativos, respectivamente. Na ultima desigualdade tivemos dois casos: o primeiro quando $s<0$ implicando em $- s\lambda^{\pm} = - s\lambda^{-} <0$, e o segundo quando $s>0$ implicando em $- s\lambda^{+}<0$. Definindo $\lambda = \inf \{|\alpha|: \alpha \in \sigma(A) \}$, temos a desigualdade desejada.
 	
+	Seja $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}} \cap \espacoLdois{\retacartesianocirculo;\real{2n}}$ tal que 
+	$$
+		Q(\eta(s))(t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
+	$$
+	
+	Esse operador esta bem-definido pois, dado $\eta(s) \in \espacoLdois{\retareal, H}$ temos
+	$$
+	\begin{aligned}
+		\norma{Q(\eta(s))(t)}_{\espacoLdois{\retacartesianocirculo}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLdois{\retacartesianocirculo}}
+		\\
+		&\leq
+		\int_{\retareal}\norma{K(s-\alpha)\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\\
+		&\leq
+		\int_{\retareal}\norma{K(s-\alpha)}\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\\
+		&\leq
+		\int_{\retareal}e^{-\delta|s-\alpha|}  \underbrace{\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}}_{N < \infty}d\alpha
+		\\
+		&\leq
+		N\int_{\retareal}e^{-\delta|s-\alpha|} d\alpha
+		\\
+		&< \infty,	
+	\end{aligned}
+	$$
+	
+	portanto $Q(\eta(s)) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ através do cálculo
+	$$
+	\begin{aligned}
+		Q(\eta(s)) 
+		&= \int_{\retareal}K(s-\alpha)\eta(\alpha)
+		\\
+		&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha)
+		\\
+		&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha)}_{\xi^{-}}
+		\\
+		&= \xi^{+}(s)+\xi^{-}(s).
+	\end{aligned}
+	$$
+	
+	Definindo $\xi = \xi^{+} + \xi^{-}$ e realizando a diferenciação de $\xi^{+}$ temos
+	$$
+	\begin{aligned}
+		\derivada{\xi^{+}}{s} 
+		&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)
+		\\
+		&= exp(-0A^{+})\eta^{+}(s)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) 
+		\\
+		&= \eta^{+}(s)-A^{+}\xi^{+}.
+	\end{aligned}
+	$$
+	Realizando o mesmo cáculo para $\xi^{-}$ teremos 
+	$$
+	 \eta^{\pm}(s) =\derivada{\xi^{\pm}}{s}+A^{\pm}\xi^{\pm}
+	$$
+	o que implica que
+	$$
+	\eta(s) =\derivada{\xi}{s}+A\xi = (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s) = \diferebcialmapafloerabrev \xi(s) = (\diferebcialmapafloerabrev \circ Q)\eta(s).
+	$$
+	Como $\eta(s) \in \espacoLdois{\retareal; H}$ é arbitrário, então mostramos que $\diferebcialmapafloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferebcialmapafloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferebcialmapafloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferebcialmapafloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
+	$$
+	\begin{aligned}
+		Q(\diferebcialmapafloerabrev \eta^{+}(s))
+		&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)\Big)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivadaparcial{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - Q(\derivadaparcialabrev{s}\eta^{+}(s)) + \eta^{+}(s)
+		\\
+		&=\eta^{+}(s).
+	\end{aligned}
+	$$
+	Analogamente teremos $Q(\diferebcialmapafloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferebcialmapafloerabrev = Id$ pois
+	$$
+	Q(\diferebcialmapafloerabrev \eta(s)) = Q(\diferebcialmapafloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferebcialmapafloerabrev \eta^{+}(s))+Q(\diferebcialmapafloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
+	$$
 	
 	\subsection{Definição do Índice de Maslov}
 	
