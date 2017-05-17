@@ -88,6 +88,8 @@
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
+\newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
+\newcommand{\grupofundamentalpontobase}[2]{\pi_{1}(#1; #2)}
 \newcommand{\gruposimpletico}[1]{Sp(#1)}
 \newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
@@ -479,6 +481,15 @@
 		\homologia{*}{T^{2}} = \homologia{0}{T^{2}}\oplus\homologia{1}{T^{2}} \oplus\homologia{2}{T^{2}}\cong \Lambda\oplus\Lambda\oplus\Lambda\oplus\Lambda.
 		$$
 	\end{exemplo}	
+	
+	\chapter{Grupo Fundamental}
+	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analizar a topologia de um conjunto (um espaço topológico) e seus invariantes. Nesse capítulo abordaremos um caso específico de esturtura algébrica, o grupo fundamental $\grupofundamental{X}$, de um espaço topológico $X$. 
+	
+	De maneira intuitiva, construiremos esse grupo através de um procedimento que involve caminhos contínuos fechados $\gamma:[0,1]\to X$ e seus caminhos equivalentes (que ficará mais claro adiante), assim, se $\gamma, \gamma':[0,1]\to X$ são caminhos fechados tais que $\gamma \sim \gamma'$, então $[\gamma] = [\gamma'] \in \grupofundamental{X}$. Mostraremos que se $X,Y$ forem espaços topológicos homeomorfos, então $\grupofundamental{X}$ e $\grupofundamental{Y}$ serão isomorfos.
+	
+	Um caminho fechado em um espaço topológico $X$ pode ser definido com uma aplicação contínua $\gamma:\circulo\to X$. Assim, podemos efetuar a construção de grupos mais gerais, ou de ordens superiores, do seguinte modo: seja $S^{n}= \{x \in \real{n+1}: \norma{x}=1\}$ a $n$-esféra. Então o $n$-grupo de homotopia, ou grupo de homotopia de ordem n, é o grupo $\pi_{n}(X) = \{\classe{\gamma}: \gamma,\gamma':S^{n}\to X,\; \gamma \sim \gamma'\}$, onde $\gamma \sim \gamma'$ se, e somente se, existe uma homotopia entre ambas. Com isso, o grupo fundamental é dado pelo $1$-grupo de homotopia.
+	
+	Os grupos fundamentais de nos dão mais informações sobre a topologia de nossos objetos de estudo do que os grupos de homologia, por exemplo: supondo que $M$ seja uma $n$-variedade compacta e $H_{k}(M)$ seja seu k-ésimo grupo de homologia, pode-se mostrar que $\homologia{k}{M} = 0$, contudo, podemos ter $\pi_{k}(M)\neq 0$ para $k\geq n$.
 	
 	\chapter{Teoria de Morse}
 	\section{Pontos Críticos}
