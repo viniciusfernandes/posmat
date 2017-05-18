@@ -43,6 +43,8 @@
 \newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
+\newcommand{\caminhospontobase}[1]{\mathcal{L}_{#1}}
+\newcommand{\caminhospontobasegeral}[2]{\mathcal{L}_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
 \newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
@@ -491,9 +493,101 @@
 	
 	Os grupos fundamentais de nos dão mais informações sobre a topologia de nossos objetos de estudo do que os grupos de homologia, por exemplo: supondo que $M$ seja uma $n$-variedade compacta e $H_{k}(M)$ seja seu k-ésimo grupo de homologia, pode-se mostrar que $\homologia{k}{M} = 0$, contudo, podemos ter $\pi_{k}(M)\neq 0$ para $k\geq n$.
 	
-	\chapter{Teoria de Morse}
-	\section{Pontos Críticos}
+	\subsection{Definições}
 	
+	Sejam $X$ um espaço topológico, $p \in X$ um ponto base e $\caminhospontobasegeral{p}{X}=\{\gamma:\circulo\to X: \gamma(0) = p\}$. Definimos o produto $*:\caminhospontobasegeral{p}{X}\times \caminhospontobasegeral{p}{X} \to \caminhospontobasegeral{p}{X}$ tal que
+	$$
+	\funcaocond{(f*g)(t)}{f(2t)}{0\leq t \leq 1/2}{g(2t-1)}{1/2 \leq t \leq 1}.
+	$$
+	Quando não houver ambiguidades denotaremos por simplicidade $\caminhospontobase{p}=\caminhospontobasegeral{p}{X}$.
+	
+	\begin{definicao}
+		(Caminhos homotópicos) Sejam $\gamma, \gamma' \in \caminhospontobase{p}$. Uma aplicação contínua $F:\circulo \times [0,1] \to X$ é chamada homotopia de entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \circulo$. Dizemos que  $\gamma$ e $\gamma'$ são homotopicamente equivalentes se, e somente se, exite uma homotopia entre elas. Nesse caso denotaremos $\gamma \sim \gamma'$. 
+	\end{definicao}
+	
+	\begin{observacao}
+		A definição de equivalência de homotopia não depende da homotopia escolhida, pois, dadas $F,G$ homotopias entre $\gamma$ e $\gamma'$, podemos definir uma aplicação contínua $H: \circulo \times [0,1] \times [0,1] \to X$ tal que $H(t,s ,0) = F(t,s)$ e $H(t,s, 1) = G(t,s)$ que é uma homotopia entre as homotopias, logo será uma homotpia entre ambas as curvas.
+	\end{observacao}
+	
+	O próximo lema demonstra a compatibilidade entre o produto e a relação de equivalência homotópica, isto é, o produto de dois caminhos em $\caminhospontobase{p}$ é equivalente ao produto de seus caminhos equivalentes.
+	
+	\begin{lema}\label{lema_compatibilidade_produto_caminhos}
+		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhospontobase{p}$ tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
+	\end{lema}
+	\begin{prova}
+		\vermelho{
+			Sejam  $F, G:\circulo \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$.}
+	\end{prova}
+	
+	\begin{definicao}
+		(Grupo Fundamental) O grupo fundamental é o grupo abeliano $\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}/\sim, .)$ munido do produto $.:\grupofundamentalpontobase{X}{p}  \times \grupofundamentalpontobase{X}{p}  \to \grupofundamentalpontobase{X}{p}$ tal que  $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'}$.
+	\end{definicao}
+	
+	Sejam $\gamma, \gamma' \in \caminhospontobase{p}$ e suponha que $\gamma':\circulo\to X$ seja um caminho constante, isto é, $\gamma'(t) =p$ para todo $t \in \circulo$. Pela definição de produto temos $(\gamma*\gamma')(t) = \gamma(2t)$ para $0\leq t \leq 1/2$ e  $(\gamma*\gamma')(t) = \gamma'(2t-1) = p$ para $1/2 \leq t \leq 1$, logo $(\gamma*\gamma')(t) = \gamma(t)$ para todo $t \in \circulo$. Com isso, podemos afirmar que $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'} = \classe{\gamma}$, portanto $\classe{\gamma'}$ é o elemento neutro $Id_{p}$ do grupo $\grupofundamentalpontobase{X}{p}$. Note que aqui é necessário indexar o elemento neutro ao ponto base, bem como foi definido o seu grupo fundamental.
+	
+	\begin{observacao}
+		Como consequência direta do Lema $\ref{lema_compatibilidade_produto_caminhos}$, qualquer curva homotopicamente equivalente ao caminho constante pertence ao elemento neutro do grupo fundamental.
+	\end{observacao}
+	
+	Na definição de grupo fundamental se mantém a escolha deita do ponto base, contudo, pode-se mostrar que, para espaços topológicos conexos por caminhos, a definição de grupo fundamental independe da escolha do ponto base. A demonstração do teorema a seguir pode ser encontrado em $\cite{massey}$.
+	
+	\begin{teorema}
+		Se $X$ é um espaço topológico conexo por caminhos, então $\grupofundamentalpontobase{X}{p} \cong \grupofundamentalpontobase{X}{q}$ para quaisquer $p,q \in X$.
+	\end{teorema}
+	
+	\begin{observacao}
+		No caso em que $X$ seja um espaço espaços topológico conexo por caminhos denotaremos $\grupofundamental{X}=\grupofundamentalpontobase{X}{p}$.
+	\end{observacao}
+	
+	\subsection{Homomorfismos induzidos}
+		Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então temos a composição $\beta=f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Sejam $\gamma' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $F$ for a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $G=f\circ F$ é uma homotopia entre $\beta=f\circ \gamma$ e $\beta' = f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$, assim, $\beta \sim \beta'$.
+		
+		\begin{lema}
+			(Homomorfismo induzido) Seja $f:X\to Y$ uma aplicação contínua entre espaços topológicos, então a aplicação $f_{*}:\grupofundamentalpontobase{p}{X} \to \grupofundamentalpontobase{f(p)}{Y}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo.
+		\end{lema}
+		\begin{prova}
+			Seja $\gamma \in \caminhospontobasegeral{p}{X}$ uma curva constante, então $\classe{\gamma} = Id_{p}$, logo $f_{*}Id_{p} = f_{*}\classe{\gamma} = \classe{f\circ\gamma} = Id_{f(p)}$, pois a composição $f\circ\gamma$ é uma curva constante em $Y$ com $(f\circ\gamma)(t) = f(p)$.
+			
+			Se $\classe{\gamma}, \classe{\gamma'}\in \grupofundamentalpontobase{p}{X}$, então 
+			$$
+			f_{*}(\classe{\gamma}.\classe{\gamma'}) = f_{*}(\classe{\gamma*\gamma'}) = \classe{f\circ(\gamma*\gamma')} = \classe{f\circ\gamma*f\circ\gamma'} =
+			\classe{f\circ\gamma}.\classe{f\circ\gamma'}=	f_{*}\classe{\gamma}.f_{*}\classe{\gamma'}.
+			$$
+			Portanto $f_{*}$ é um homomorfismo de grupos.
+		\end{prova}
+		
+		Do lema anterior podemos concluir que
+		\begin{teorema}
+			Seja $f:X\to Y$ um homeomorfismo entre espaços topológicos. Então $\grupofundamentalpontobase{p}{X}$ e $\grupofundamentalpontobase{f(p)}{Y}$ são isomorfos.
+		\end{teorema}
+		\begin{prova}
+			Seja $\beta \in \caminhospontobasegeral{f(p)}{Y}$. Como $f$ é homeomorfismo, então $\alpha=f^{-1}\circ\beta \in \caminhospontobasegeral{p}{X}$. Logo $f_{*}\classe{\alpha} = \classe{f\circ\alpha} = \classe{f\circ f^{-1}\circ\beta}=\classe{\beta}$, portanto $f_{*}$ é sobrejetora. Afirmo que $f_{*}$ é injetor. De fato, suponha que $\alpha \in \caminhospontobasegeral{p}{X}$ onde $Id_{f(p)}=f_{*}\classe{\alpha} = \classe{f\circ \alpha} $, portanto $f\circ\alpha$ é homotópicamente equivalente a curva constante $\beta'$ em $\caminhospontobasegeral{f(p)}{Y}$. Como $f$ é um homeomorfismo, então $f^{-1}\circ\beta'$ é homotópicamente equivalente a curva constante $\alpha' \in \caminhospontobasegeral{p}{Y}$. Temos que $f\circ \alpha\sim \beta'$ o que implica que $\alpha \sim f^{-1}\circ \beta'$, logo $\classe{\alpha} = \classe{f^{-1}\circ \beta'} = Id_{p}$, logo $f_{*}$ é injetor, portanto é um isomorfismo.
+		\end{prova}
+		
+		O seguinte resultato, e fundamental na determinação do grupo fundamental de várias aplicações é o cálculo do grupo fundamental de $\circulo$, cuja demonstração pode ser encontrada em $\cite{massey}$.
+		
+		\begin{teorema}\label{teorema_grupo_fundamental_circulo}
+			(Grupo fundamental de $\circulo$) O grupo fundamental $\grupofundamental{\circulo}$ e $\mathbb{Z}$ são isomorfos.
+		\end{teorema} 
+		
+		Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então podemos construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
+		
+		\begin{lema}\label{lema_produto_grupo_fundamental}
+			Se $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então $\grupofundamentalpontobase{(p,q)}{X\times Y} \cong \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$
+		\end{lema}
+		\begin{prova}
+			Dado o caminho $\Gamma \in \caminhospontobasegeral{(p,q)}{X\times Y}$ podemos escrever $\Gamma(t) = (\alpha(t), \beta(t)) \in X\times Y$ onde $\alpha \in \caminhospontobasegeral{p}{X}$ e $\beta \in \caminhospontobasegeral{q}{Y}$. Seja $\Gamma' \in \caminhospontobasegeral{(p,q)}{X\times Y}$. Então $\Gamma \sim \Gamma'$ implica que $ (\alpha, \beta) \sim (\alpha', \beta')$, logo $\alpha \sim \alpha'$ e $\beta \sim \beta'$. Portanto, temos a bijeção $I(\classe{ (\alpha, \beta)}) =  (\classe{\alpha}, \classe{\beta}) \in \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$. Tomando $\classe{(\gamma, \lambda)} \in \grupofundamentalpontobase{(p,q)}{X\times Y}$, então $I(\classe{(\alpha, \beta)} .\classe{(\gamma, \lambda)} ) = I(\classe{(\alpha*\gamma, \beta*\lambda)} ) = (\classe{\alpha*\gamma}, \classe{\beta*\lambda})=(\classe{\alpha}, \classe{\beta}) .(\classe{\gamma}, \classe{\lambda}) = I(\classe{(\alpha, \beta)} ).I(\classe{(\gamma, \lambda)} )$, portanto é um isomorfismo.
+		\end{prova}
+		
+		\subsection{Exemplo - $\grupofundamental{T^{2}}$}
+		Seja $\varphi:U\to T^{2}$ uma parametrização do 2-toro dada por $\varphi(\theta,\phi) = ((a + bcos(\phi))cos(\theta), (a + bcos(\phi))sin(\theta), bsin(\phi))$,
+		onde $\theta, \phi\in [0,2\pi)$.
+		
+		Definindo os caminhos $\gamma, \gamma' \in \caminhospontobase{(0,0)}{T^{2}}$ tais que $\gamma(\theta) = \varphi(\theta,0)= ((a + b)cos(\theta), (a + b)sin(\theta), 0)$ e $\gamma'(\phi) = 	\varphi(0,\phi) = ((a + bcos(\phi)), 0, bsin(\phi))$. Note que $\gamma$ e $\gamma'$ são os círculos maiores do tóro. Afirmo que não existe homotopia entre $\gamma$ e $\gamma'$. De fato, suponha que $F$ seja a homotopia entre essas curvas, então $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$, ou seja, $F$ deve mapear continuamente cada uma das componentes dessas curvas, assim a imagem de $\gamma$ por $F$ será $\gamma(t) = ((a + bcos(t)), 0, 0)$, que não é ho
+		
+	\chapter{Teoria de Morse}
+	
+	\section{Pontos Críticos}
 	\begin{lema}
 		Seja M uma variedade fechada e $f$ uma função de Morse, então se $p \in Crit(f)$ teremos $\nabla f(p)=0$ e $\exists q \in M$ tal que $p \in \omega(q)$ ou $p \in \alpha(q)$ , isto é, $p$ é uma singularidade e é um ponto limite.
 	\end{lema}
@@ -2229,6 +2323,12 @@
 		\emph{Introduction to Functional Analysis with Applications},
 		John Wiley and Sons, 1978.
 	
+		\bibitem{massey}
+		Massey, William S.:
+		\emph{A Basic Course in Algebraic Topology},
+		Springer-Verlag, first edition,
+		1991.
+		
 		\bibitem{nakahara}
 		Nakahara, Mikio:
 		\emph{Geometry, Topology and Physics},
