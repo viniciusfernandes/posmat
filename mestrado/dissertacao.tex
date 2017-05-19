@@ -615,19 +615,58 @@
 		
 		Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então podemos construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
 		
-		\begin{lema}\label{lema_produto_grupo_fundamental}
+		\begin{proposicao}\label{proposicao_produto_grupo_fundamental}
 			Se $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então $\grupofundamentalpontobase{(p,q)}{X\times Y} \cong \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$
-		\end{lema}
+		\end{proposicao}
 		\begin{prova}
 			Dado o caminho $\Gamma \in \caminhospontobasegeral{(p,q)}{X\times Y}$ podemos escrever $\Gamma(t) = (\alpha(t), \beta(t)) \in X\times Y$ onde $\alpha \in \caminhospontobasegeral{p}{X}$ e $\beta \in \caminhospontobasegeral{q}{Y}$. Seja $\Gamma' \in \caminhospontobasegeral{(p,q)}{X\times Y}$. Então $\Gamma \sim \Gamma'$ implica que $ (\alpha, \beta) \sim (\alpha', \beta')$, logo $\alpha \sim \alpha'$ e $\beta \sim \beta'$. Portanto, temos a bijeção $I(\classe{ (\alpha, \beta)}) =  (\classe{\alpha}, \classe{\beta}) \in \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$. Tomando $\classe{(\gamma, \lambda)} \in \grupofundamentalpontobase{(p,q)}{X\times Y}$, então $I(\classe{(\alpha, \beta)} .\classe{(\gamma, \lambda)} ) = I(\classe{(\alpha*\gamma, \beta*\lambda)} ) = (\classe{\alpha*\gamma}, \classe{\beta*\lambda})=(\classe{\alpha}, \classe{\beta}) .(\classe{\gamma}, \classe{\lambda}) = I(\classe{(\alpha, \beta)} ).I(\classe{(\gamma, \lambda)} )$, portanto é um isomorfismo.
 		\end{prova}
 		
+		\begin{proposicao}
+			Se $X$ é um espaço topológico simplesmente conexo, então $\grupofundamental{X}$ é trivial.
+		\end{proposicao}
+		\begin{prova}
+			Seja $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \circulo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, portanto $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id$. Portanto $\grupofundamental{X}$ é trivial.
+		\end{prova}
+		
+		\subsection{Grau de Aplicação}
+		Sabemos que o grupo fundamental de $S^{1}$ é isomorfo aos inteiros, com isso podemos afirmar que tal grupo é um grupo cíclico infinito, pois $\mathbb{Z}$ é cíclico infinito. A cada caminho fechado $\gamma:[0,1] \to S^{1}$ pode-se associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicas se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
+		
+		Seja $exp:\real{} \to S^{1}$ a aplicação exponencial $exp(t) = e^{it}$. A proposição a seguir é de grande relevência para o restante do texto Pode-se e se trata de levantamento de caminhos em $S^{1}$. Sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
+		
+		\begin{proposicao}\label{proposicao_levantamento_curvas}
+			(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = exp(t_{a})$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = exp(\alpha(t))$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. Esse levantamento é a aplicação que faz com que o diagrama abaixo comute:
+			$$
+			\xymatrix{
+				& \real{}\ar[d]\ar[d]^{\text{exp}}
+				\\
+				[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
+			}
+			$$
+		\end{proposicao}
+		
+		\begin{proposicao}\label{proposicao_grau_aplicacao}
+			(O grau de uma caminhos fechado) Seja $\caminhosfechadoscirculo{0}{1}$ o conjunto de todos os caminhos contínuos e fechados em $S^{1}$, então a aplicação $deg:\caminhosfechadoscirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso, se $\gamma$ e $\beta$ são caminhos homotópicos, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \caminhosfechadoscirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
+		\end{proposicao}
+		\begin{prova}
+			Seja $\gamma \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $\gamma(\lambda) = e^{i\alpha(\lambda)}$. Como é um caminho fechado temos $\gamma(0)=\gamma(1)$, o que implica em $e^{i\alpha(0)}=e^{i\alpha(1)}$, logo $e^{i(\alpha(1)-\alpha(0))} = 1$, portanto $\alpha(1)-\alpha(0) = 2\pi k$, onde $k\in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e esta bem-definida pois para cada $\gamma \in \caminhosfechadoscirculo{0}{1}$ existe um único levantamento $\alpha$, logo $deg(\gamma)$ é único.
+			
+			Sejam $\gamma, \beta \in \caminhosfechadoscirculo{0}{1}$ caminhos homotópicos e $h:S^{1}\times [0,1]\to S^{1}$ a homotopia entre eles, onde $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \caminhosfechadoscirculo{0}{1}$, logo $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, caminhos homotópicos possuem o mesmo grau. 
+			
+			Tomando o produto dos caminhos fechados, temos $(\gamma.\beta)(\lambda)= e^{i\alpha(\lambda)}e^{i\xi(\lambda)} = e^{i(\alpha(\lambda)+\xi(\lambda))} \in S^{1}$ o que implica que 
+			$$
+			deg(\gamma.\beta) = ((\alpha(1)+\xi(1))-(\alpha(0)+\xi(0)))/2\pi = deg(\gamma)+deg(\beta).
+			$$
+		\end{prova}
+		
 		\subsection{Exemplos}
 		\begin{exemplo}
-			 (2-toro) Por definição temos que $T^{2}=\circulo \times \circulo$. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \mathbb{Z} \times \mathbb{Z}$, pelo Lema $\ref{lema_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
+			(Grupo fundamental do 2-toro) Por definição temos que $T^{2}=\circulo \times \circulo$. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \mathbb{Z} \times \mathbb{Z}$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
 		\end{exemplo}
 		
-		Definindo os caminhos $\gamma, \gamma' \in \caminhospontobase{(0,0)}{T^{2}}$ tais que $\gamma(\theta) = \varphi(\theta,0)= ((a + b)cos(\theta), (a + b)sin(\theta), 0)$ e $\gamma'(\phi) = 	\varphi(0,\phi) = ((a + bcos(\phi)), 0, bsin(\phi))$. Note que $\gamma$ e $\gamma'$ são os círculos maiores do tóro. Afirmo que não existe homotopia entre $\gamma$ e $\gamma'$. De fato, suponha que $F$ seja a homotopia entre essas curvas, então $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$, ou seja, $F$ deve mapear continuamente cada uma das componentes dessas curvas, assim a imagem de $\gamma$ por $F$ será $\gamma(t) = ((a + bcos(t)), 0, 0)$, que não é ho
+		\begin{exemplo}
+			(Grupo fundamental do plano com furo) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$. Definido $deg(\beta)=n>0$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Caso $deg(\beta) = n <0$ teremos $\classe{\beta} = \classe{\hat{\gamma}}^{-n}$ pois $deg(\hat{\gamma}) = -1$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X} \cong \mathbb{Z}$.
+		\end{exemplo}
 		
 	\chapter{Teoria de Morse}
 	
@@ -1311,33 +1350,6 @@
 	
 	\subsection{O índice de Maslov}
 	Para a esclarecer algumas escolhas feitas na definição do índice de Maslov, faremos um breve anúncio sobre resultado do grupo fundamental de $S^{1}$, sendo que mais detalhes podem ser consultados em \vermelho{Elon Lages Lima}.
-	
-	Sabe-se que o grupo fundamental de $S^{1}$ é isomorfo aos inteiros, isto é, $\pi_{1}(S^{1}) \cong \mathbb{Z}$. Com isso podemos afirmar que tal grupo é um grupo cíclico infinito, pois $\mathbb{Z}$ é cíclico infinito. A cada caminho fechado $\gamma:[0,1] \to S^{1}$ pode-se associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicas se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
-	
-	Seja $exp:\real{} \to S^{1}$ a aplicação exponencial $exp(t) = e^{it}$. Pode-se mostrar o importante resultado sobre levantamento de caminhos em $S^{1}$:
-	
-	\begin{proposicao}\label{proposicao_levantamento_curvas}
-		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = exp(t_{a})$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = exp(\alpha(t))$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. Esse levantamento é a aplicação que faz com que o diagrama abaixo comute:
-		$$
-		\xymatrix{
-			& \real{}\ar[d]\ar[d]^{\text{exp}}
-			\\
-			[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
-		}
-		$$
-	\end{proposicao}
-	
-	\begin{proposicao}
-		(O grau de uma caminhos fechado) Seja $\caminhosfechadoscirculo{0}{1}$ o conjunto de todos os caminhos contínuos e fechados em $S^{1}$, então a aplicação $deg:\caminhosfechadoscirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso, se $\gamma$ e $\beta$ são caminhos homotópicos, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \caminhosfechadoscirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
-	\end{proposicao}
-	\begin{prova}
-		Seja $\gamma \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $\gamma(\lambda) = e^{i\alpha(\lambda)}$. Como é um caminho fechado temos $\gamma(0)=\gamma(1)$, o que implica em $e^{i\alpha(0)}=e^{i\alpha(1)}$, logo $e^{i(\alpha(1)-\alpha(0))} = 1$, portanto $\alpha(1)-\alpha(0) = 2\pi k$, onde $k\in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e esta bem-definida pois para cada $\gamma \in \caminhosfechadoscirculo{0}{1}$ existe um único levantamento $\alpha$, logo $deg(\gamma)$ é único.
-		
-		Sejam $\gamma, \beta \in \caminhosfechadoscirculo{0}{1}$ caminhos homotópicos e $h:S^{1}\times [0,1]\to S^{1}$ a homotopia entre eles, onde $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \caminhosfechadoscirculo{0}{1}$, logo $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, caminhos homotópicos possuem o mesmo grau. 
-		
-		Tomando o produto dos caminhos fechados, temos $(\gamma.\beta)(\lambda)= e^{i\alpha(\lambda)}e^{i\xi(\lambda)} = e^{i(\alpha(\lambda)+\xi(\lambda))} \in S^{1}$ o que implica que $deg(\gamma.\beta) = ((\alpha(1)+\xi(1))-(\alpha(0)+\xi(0)))/2\pi = deg(\gamma)+deg(\beta)$.
-	\end{prova}
-	
 	
 	Agora temos instrumentos para definirmos o índice de Maslov. Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
 	
@@ -2366,6 +2378,11 @@
 		Kreyszig, Erwin
 		\emph{Introduction to Functional Analysis with Applications},
 		John Wiley and Sons, 1978.
+
+		\bibitem{elon_grupo_fundamental}
+		Lima, Elon Lages:
+		\emph{Fundamental Group and Covering Spaces},
+		A K Peters, 2003.
 	
 		\bibitem{massey}
 		Massey, William S.:
