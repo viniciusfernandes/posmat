@@ -469,13 +469,13 @@
 		$$
 		Teremos os grupos de homologia não-triviais:
 		$$
-		\begin{aligned}
-		\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
-		\\
-		\homologia{1}{T^{2}} &\cong \homologiarelskele{1}{1}{0} \cong \somadir{i=1,2}\homologiarelcel{1}{1}{i} \cong \somadir{i=1,2}\Lambda
-		\\
-		\homologia{2}{T^{2}} &\cong \homologiarelskele{2}{2}{1} \cong \Lambda.
-		\end{aligned}
+			\begin{aligned}
+			\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
+			\\
+			\homologia{1}{T^{2}} &\cong \homologiarelskele{1}{1}{0} \cong \somadir{i=1,2}\homologiarelcel{1}{1}{i} \cong \somadir{i=1,2}\Lambda
+			\\
+			\homologia{2}{T^{2}} &\cong \homologiarelskele{2}{2}{1} \cong \Lambda.
+			\end{aligned}
 		$$
 		Logo,
 		$$
@@ -497,11 +497,12 @@
 	
 	Sejam $X$ um espaço topológico, $p \in X$ um ponto base e $\caminhospontobasegeral{p}{X}=\{\gamma:\circulo\to X: \gamma(0) = p\}$. Definimos o produto $*:\caminhospontobasegeral{p}{X}\times \caminhospontobasegeral{p}{X} \to \caminhospontobasegeral{p}{X}$ tal que
 	$$
-	\funcaocond{(f*g)(t)}{f(2t)}{0\leq t \leq 1/2}{g(2t-1)}{1/2 \leq t \leq 1}.
+		\funcaocond{(\gamma*\beta)(t)}{\gamma(2t)}{0\leq t \leq 1/2}{\beta(2t-1)}{1/2 \leq t \leq 1}.
 	$$
+	
 	Quando não houver ambiguidades denotaremos por simplicidade $\caminhospontobase{p}=\caminhospontobasegeral{p}{X}$.
 	
-	\begin{definicao}
+	\begin{definicao}\label{definicao_caminhos_homotopicos}
 		(Caminhos homotópicos) Sejam $\gamma, \gamma' \in \caminhospontobase{p}$. Uma aplicação contínua $F:\circulo \times [0,1] \to X$ é chamada homotopia de entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \circulo$. Dizemos que  $\gamma$ e $\gamma'$ são homotopicamente equivalentes se, e somente se, exite uma homotopia entre elas. Nesse caso denotaremos $\gamma \sim \gamma'$. 
 	\end{definicao}
 	
@@ -519,11 +520,53 @@
 			Sejam  $F, G:\circulo \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$.}
 	\end{prova}
 	
+	Pode-se mostrar que existem $\alpha, \beta, \gamma \in \caminhospontobase{p}$ não vale a associatividade do produto, isto é, $(\alpha*\beta)*\gamma \neq \alpha*(\beta*\gamma)$. Contudo, o seguinte lema estabelece uma situação de associatividade e sua demonstração pode ser encontrada em $\cite{massey}$.
+	
+	\begin{lema}\label{lema_associatividade_produto_caminhos}
+		Dados $\alpha, \beta, \gamma \in \caminhospontobase{p}$, então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
+	\end{lema}
+	
+	\begin{lema}\label{lema_caminho_inverso}
+		Sejam $\gamma, \hat{\gamma}, c \in \caminhospontobase{p}$ tais que $c(t) = p$ para todo $t\in \circulo$ (é a curva constante) e $\hat{\gamma}(t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma} \sim \hat{\gamma}*\gamma \sim c$.
+	\end{lema} 	
+	\begin{prova}
+		Seja a aplicação contínua $F:\circulo\times [0,1]\to X$ tal que
+		$$
+			F(t,s) = 
+			\left\{
+			\begin{array}{cc}
+				\gamma(2t), & 0\leq t \leq s/2\\
+				\gamma(s), & s/2 \leq t \leq 1-s/2\\
+				\gamma(2-2t), & 1-s/2 \leq t \leq 1\\
+			\end{array}
+			\right.
+		$$
+		Temos que $F(t,1) = (\gamma*\hat{\gamma})(t)$ e $F(t,0) = c(t) = p$, logo $\gamma*\hat{\gamma}\sim c$ pois $F$ deforma continuamente o produto na curva constante. Podemos definir uma homotopia $\hat{F}$ análoga a $F$ substituindo $\gamma$ por $\hat{\gamma}$, consequentemente teremos $\hat{\gamma}*\gamma \sim c$, logo $\gamma*\hat{\gamma} \sim \hat{\gamma}*\gamma \sim c$.
+	\end{prova}
+	
+	Seja o quociente $\caminhospontobase{p}/\sim = \{ \classe{\gamma} : \gamma,\gamma' \in \caminhospontobase{p},\;\;\gamma \sim \gamma'\}$. Então o produto definido por $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'}$ esta bem-definido.
+	
 	\begin{definicao}
-		(Grupo Fundamental) O grupo fundamental é o grupo abeliano $\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}/\sim, .)$ munido do produto $.:\grupofundamentalpontobase{X}{p}  \times \grupofundamentalpontobase{X}{p}  \to \grupofundamentalpontobase{X}{p}$ tal que  $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'}$.
+		(Grupo Fundamental) O grupo fundamental é o par 
+		$$
+		\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}/\sim, .).
+		$$
 	\end{definicao}
 	
-	Sejam $\gamma, \gamma' \in \caminhospontobase{p}$ e suponha que $\gamma':\circulo\to X$ seja um caminho constante, isto é, $\gamma'(t) =p$ para todo $t \in \circulo$. Pela definição de produto temos $(\gamma*\gamma')(t) = \gamma(2t)$ para $0\leq t \leq 1/2$ e  $(\gamma*\gamma')(t) = \gamma'(2t-1) = p$ para $1/2 \leq t \leq 1$, logo $(\gamma*\gamma')(t) = \gamma(t)$ para todo $t \in \circulo$. Com isso, podemos afirmar que $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'} = \classe{\gamma}$, portanto $\classe{\gamma'}$ é o elemento neutro $Id_{p}$ do grupo $\grupofundamentalpontobase{X}{p}$. Note que aqui é necessário indexar o elemento neutro ao ponto base, bem como foi definido o seu grupo fundamental.
+	\begin{teorema}
+		O grupo fundamental $\grupofundamentalpontobase{X}{p}$ é um grupo.
+	\end{teorema}
+	\begin{prova}
+		Sejam $\classe{\alpha}, \classe{\beta}, \classe{\gamma} \in  \grupofundamentalpontobase{X}{p}$ e $c\in \caminhospontobase{p}$ o caminho constante.
+		\begin{enumerate}
+			\item \textit{(Operação fechada)} Pelas construções anteriores de produto entre caminhos e pela construções da equivalência homotópica, temos que $\classe{\alpha}.\classe{\beta} \in \grupofundamentalpontobase{X}{p}$, logo é fechada.
+			\item \textit{(Associatividade)} $(\classe{\alpha}. \classe{\beta}). \classe{\gamma} = \classe{\alpha*\beta}. \classe{\gamma} = \classe{(\alpha*\beta)*\gamma} = \classe{\alpha*(\beta*\gamma)} = \classe{\alpha}. (\classe{\beta}. \classe{\gamma} )$, onde usamos o Lema $\ref{lema_associatividade_produto_caminhos}$.
+			\item \textit{(Elemento neutro)} Pela definição de produto temos $(\gamma*c)(t) = \gamma(2t)$ para $0\leq t \leq 1/2$ e  $(\gamma*c)(t) = c(2t-1) = p$ para $1/2 \leq t \leq 1$, logo $(\gamma*c)(t) = \gamma(t)$ para todo $t \in \circulo$. Com isso, podemos afirmar que $\classe{\gamma}.\classe{c} = \classe{\gamma*c} = \classe{\gamma}$, portanto $\classe{c}$ é o elemento neutro $Id_{p}$.
+			\item \textit{(Elemento inverso)} Pelo Lema $\ref{lema_caminho_inverso}$ vimos que $\gamma *\hat{\gamma} \sim \hat{\gamma} *\gamma \sim c$, logo $Id_{p} =\classe{c} =  \classe{\gamma*\hat{\gamma}} = \classe{\gamma}.\classe{\hat{\gamma}}$, portanto $\classe{\hat{\gamma}}$ é o elemento inverso de $\classe{\gamma}$.
+		\end{enumerate}
+		Portanto $\grupofundamentalpontobase{X}{p}$ é um grupo.
+	\end{prova}
+	
 	
 	\begin{observacao}
 		Como consequência direta do Lema $\ref{lema_compatibilidade_produto_caminhos}$, qualquer curva homotopicamente equivalente ao caminho constante pertence ao elemento neutro do grupo fundamental.
@@ -579,9 +622,10 @@
 			Dado o caminho $\Gamma \in \caminhospontobasegeral{(p,q)}{X\times Y}$ podemos escrever $\Gamma(t) = (\alpha(t), \beta(t)) \in X\times Y$ onde $\alpha \in \caminhospontobasegeral{p}{X}$ e $\beta \in \caminhospontobasegeral{q}{Y}$. Seja $\Gamma' \in \caminhospontobasegeral{(p,q)}{X\times Y}$. Então $\Gamma \sim \Gamma'$ implica que $ (\alpha, \beta) \sim (\alpha', \beta')$, logo $\alpha \sim \alpha'$ e $\beta \sim \beta'$. Portanto, temos a bijeção $I(\classe{ (\alpha, \beta)}) =  (\classe{\alpha}, \classe{\beta}) \in \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$. Tomando $\classe{(\gamma, \lambda)} \in \grupofundamentalpontobase{(p,q)}{X\times Y}$, então $I(\classe{(\alpha, \beta)} .\classe{(\gamma, \lambda)} ) = I(\classe{(\alpha*\gamma, \beta*\lambda)} ) = (\classe{\alpha*\gamma}, \classe{\beta*\lambda})=(\classe{\alpha}, \classe{\beta}) .(\classe{\gamma}, \classe{\lambda}) = I(\classe{(\alpha, \beta)} ).I(\classe{(\gamma, \lambda)} )$, portanto é um isomorfismo.
 		\end{prova}
 		
-		\subsection{Exemplo - $\grupofundamental{T^{2}}$}
-		Seja $\varphi:U\to T^{2}$ uma parametrização do 2-toro dada por $\varphi(\theta,\phi) = ((a + bcos(\phi))cos(\theta), (a + bcos(\phi))sin(\theta), bsin(\phi))$,
-		onde $\theta, \phi\in [0,2\pi)$.
+		\subsection{Exemplos}
+		\begin{exemplo}
+			 (2-toro) Por definição temos que $T^{2}=\circulo \times \circulo$. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \mathbb{Z} \times \mathbb{Z}$, pelo Lema $\ref{lema_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
+		\end{exemplo}
 		
 		Definindo os caminhos $\gamma, \gamma' \in \caminhospontobase{(0,0)}{T^{2}}$ tais que $\gamma(\theta) = \varphi(\theta,0)= ((a + b)cos(\theta), (a + b)sin(\theta), 0)$ e $\gamma'(\phi) = 	\varphi(0,\phi) = ((a + bcos(\phi)), 0, bsin(\phi))$. Note que $\gamma$ e $\gamma'$ são os círculos maiores do tóro. Afirmo que não existe homotopia entre $\gamma$ e $\gamma'$. De fato, suponha que $F$ seja a homotopia entre essas curvas, então $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$, ou seja, $F$ deve mapear continuamente cada uma das componentes dessas curvas, assim a imagem de $\gamma$ por $F$ será $\gamma(t) = ((a + bcos(t)), 0, 0)$, que não é ho
 		
