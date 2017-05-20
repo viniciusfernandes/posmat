@@ -632,12 +632,12 @@
 		\end{prova}
 		
 		\subsection{Grau de Aplicação}
-		Sabemos que o grupo fundamental de $S^{1}$ é isomorfo aos inteiros, com isso podemos afirmar que tal grupo é um grupo cíclico infinito, pois $\mathbb{Z}$ é cíclico infinito. A cada caminho fechado $\gamma:[0,1] \to S^{1}$ pode-se associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicas se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
+		O grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\mathbb{Z}$. Com isso, a cada caminho fechado $\gamma:[0,1] \to S^{1}$ podemos associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
 		
-		Seja $exp:\real{} \to S^{1}$ a aplicação exponencial $exp(t) = e^{it}$. A proposição a seguir é de grande relevência para o restante do texto Pode-se e se trata de levantamento de caminhos em $S^{1}$. Sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
+		A proposição a seguir é de grande relevência para o restante do texto e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
 		
 		\begin{proposicao}\label{proposicao_levantamento_curvas}
-			(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = exp(t_{a})$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = exp(\alpha(t))$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. Esse levantamento é a aplicação que faz com que o diagrama abaixo comute:
+			(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
 			$$
 			\xymatrix{
 				& \real{}\ar[d]\ar[d]^{\text{exp}}
@@ -648,12 +648,35 @@
 		\end{proposicao}
 		
 		\begin{proposicao}\label{proposicao_grau_aplicacao}
-			(O grau de uma caminhos fechado) Seja $\caminhosfechadoscirculo{0}{1}$ o conjunto de todos os caminhos contínuos e fechados em $S^{1}$, então a aplicação $deg:\caminhosfechadoscirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso, se $\gamma$ e $\beta$ são caminhos homotópicos, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \caminhosfechadoscirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
+			(O grau de uma caminhos fechado) Seja $\caminhosfechadoscirculo{0}{1}$ o conjunto de todos os caminhos contínuos e fechados em $S^{1}$, então a aplicação $deg:\caminhosfechadoscirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso
+			\begin{enumerate}
+				\item Se $\gamma, \beta$ possuem o mesmo ponto base, isto é, $\gamma(0)=\beta(0 )=p$ para um dado $p \in \circulo$, então $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$.
+				\item Tem-se que $\gamma\sim \beta$ se, e somente se, $deg(\gamma)=deg(\beta)$
+			\end{enumerate}
+			
+			
+			
+			
+			, se $\gamma$ e $\beta$ são caminhos homotópicos, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \caminhosfechadoscirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
 		\end{proposicao}
 		\begin{prova}
-			Seja $\gamma \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $\gamma(\lambda) = e^{i\alpha(\lambda)}$. Como é um caminho fechado temos $\gamma(0)=\gamma(1)$, o que implica em $e^{i\alpha(0)}=e^{i\alpha(1)}$, logo $e^{i(\alpha(1)-\alpha(0))} = 1$, portanto $\alpha(1)-\alpha(0) = 2\pi k$, onde $k\in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e esta bem-definida pois para cada $\gamma \in \caminhosfechadoscirculo{0}{1}$ existe um único levantamento $\alpha$, logo $deg(\gamma)$ é único.
+			\begin{enumerate}
+				\item Seja $p \in \circulo$ um ponto base para $\gamma$ e $\beta$ tal que $\gamma(1)= \beta(0) = p$. Suponha que $\alpha$ e $\lambda$ sejam os levatamentos de $\gamma$ e $\beta$, então o vínculo do ponto base implica que $\alpha(1) = \lambda(0)$. Pelo produto entre caminhos temos $(\gamma*\beta)(t) = e^{i\alpha(2t)}$ para $0\leq t\leq 1/2$ e  $(\gamma*\beta)(t) = e^{i\lambda(2t - 1)}$ para $1/2\leq t\leq 1$. Logo 
+				$$
+				\begin{aligned}
+				deg(\gamma*\beta) &= (\lambda(1)- \alpha(0))/2\pi 
+				\\
+				&= (\lambda(1) -\lambda(0)+ \alpha(1)- \alpha(0))/2\pi
+				\\
+				&= deg(\gamma)+deg(\beta).
+				\end{aligned}
+				$$  
+				\item Suponha que $h:\circulo \times [0,1]\to S^{1}$ seja uma homotopia entre $\gamma$ e $\beta$ tal que $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ o caminho fechado $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, caminhos homotópicos possuem o mesmo grau. 
+			\end{enumerate}
+		\end{prova}
+		\begin{prova}
+		
 			
-			Sejam $\gamma, \beta \in \caminhosfechadoscirculo{0}{1}$ caminhos homotópicos e $h:S^{1}\times [0,1]\to S^{1}$ a homotopia entre eles, onde $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \caminhosfechadoscirculo{0}{1}$, logo $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, caminhos homotópicos possuem o mesmo grau. 
 			
 			Tomando o produto dos caminhos fechados, temos $(\gamma.\beta)(\lambda)= e^{i\alpha(\lambda)}e^{i\xi(\lambda)} = e^{i(\alpha(\lambda)+\xi(\lambda))} \in S^{1}$ o que implica que 
 			$$
