@@ -495,10 +495,12 @@
 	
 	\subsection{Definições}
 	
-	Sejam $X$ um espaço topológico, $p \in X$ um ponto base e $\caminhospontobasegeral{p}{X}=\{\gamma:\circulo\to X: \gamma(0) = p\}$. Definimos o produto $*:\caminhospontobasegeral{p}{X}\times \caminhospontobasegeral{p}{X} \to \caminhospontobasegeral{p}{X}$ tal que
+	Sejam $X$ um espaço topológico, $p \in X$ um ponto base e $\caminhospontobasegeral{p}{X}=\{\gamma:[0,1]\to X: \gamma(0) = \gamma(1) = p\}$. Definimos o produto $*:\caminhospontobasegeral{p}{X}\times \caminhospontobasegeral{p}{X} \to \caminhospontobasegeral{p}{X}$ tal que
 	$$
 		\funcaocond{(\gamma*\beta)(t)}{\gamma(2t)}{0\leq t \leq 1/2}{\beta(2t-1)}{1/2 \leq t \leq 1}.
 	$$
+
+	No desenvolvimento desse capítulo utilizaremos a identificação $\varphi:\real{}/[0,1] \to \circulo$, e assim, trabalharemos com os caminhos, $\gamma\circ\varphi : \real{}/[0,1] \to X$ onde $(\gamma\circ\varphi)(0) = p$. Por um abuso de notação escreveremos $\caminhospontobasegeral{p}{X} = \{\gamma :\circulo \to X : \gamma(0) =p\}$.
 	
 	Quando não houver ambiguidades denotaremos por simplicidade $\caminhospontobase{p}=\caminhospontobasegeral{p}{X}$.
 	
@@ -527,7 +529,7 @@
 	\end{lema}
 	
 	\begin{lema}\label{lema_caminho_inverso}
-		Sejam $\gamma, \hat{\gamma}, c \in \caminhospontobase{p}$ tais que $c(t) = p$ para todo $t\in \circulo$ (é a curva constante) e $\hat{\gamma}(t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma} \sim \hat{\gamma}*\gamma \sim c$.
+		Sejam $\gamma, \gamma^{-1}, c \in \caminhospontobase{p}$ tais que $c(t) = p$ para todo $t\in \circulo$ (é a curva constante) e $\gamma^{-1}(t) = \gamma(1-t)$. Então $\gamma*\gamma^{-1} \sim \gamma^{-1}*\gamma \sim c$.
 	\end{lema} 	
 	\begin{prova}
 		Seja a aplicação contínua $F:\circulo\times [0,1]\to X$ tal que
@@ -541,7 +543,7 @@
 			\end{array}
 			\right.
 		$$
-		Temos que $F(t,1) = (\gamma*\hat{\gamma})(t)$ e $F(t,0) = c(t) = p$, logo $\gamma*\hat{\gamma}\sim c$ pois $F$ deforma continuamente o produto na curva constante. Podemos definir uma homotopia $\hat{F}$ análoga a $F$ substituindo $\gamma$ por $\hat{\gamma}$, consequentemente teremos $\hat{\gamma}*\gamma \sim c$, logo $\gamma*\hat{\gamma} \sim \hat{\gamma}*\gamma \sim c$.
+		Temos que $F(t,1) = (\gamma*\gamma^{-1})(t)$ e $F(t,0) = c(t) = p$, logo $\gamma*\gamma^{-1}\sim c$ pois $F$ deforma continuamente o produto na curva constante. Podemos definir uma homotopia $\hat{F}$ análoga a $F$ substituindo $\gamma$ por $\gamma^{-1}$, consequentemente teremos $\gamma^{-1}*\gamma \sim c$, logo $\gamma*\gamma^{-1} \sim \gamma^{-1}*\gamma \sim c$.
 	\end{prova}
 	
 	Seja o quociente $\caminhospontobase{p}/\sim = \{ \classe{\gamma} : \gamma,\gamma' \in \caminhospontobase{p},\;\;\gamma \sim \gamma'\}$. Então o produto definido por $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'}$ esta bem-definido.
@@ -562,7 +564,7 @@
 			\item \textit{(Operação fechada)} Pelas construções anteriores de produto entre caminhos e pela construções da equivalência homotópica, temos que $\classe{\alpha}.\classe{\beta} \in \grupofundamentalpontobase{X}{p}$, logo é fechada.
 			\item \textit{(Associatividade)} $(\classe{\alpha}. \classe{\beta}). \classe{\gamma} = \classe{\alpha*\beta}. \classe{\gamma} = \classe{(\alpha*\beta)*\gamma} = \classe{\alpha*(\beta*\gamma)} = \classe{\alpha}. (\classe{\beta}. \classe{\gamma} )$, onde usamos o Lema $\ref{lema_associatividade_produto_caminhos}$.
 			\item \textit{(Elemento neutro)} Pela definição de produto temos $(\gamma*c)(t) = \gamma(2t)$ para $0\leq t \leq 1/2$ e  $(\gamma*c)(t) = c(2t-1) = p$ para $1/2 \leq t \leq 1$, logo $(\gamma*c)(t) = \gamma(t)$ para todo $t \in \circulo$. Com isso, podemos afirmar que $\classe{\gamma}.\classe{c} = \classe{\gamma*c} = \classe{\gamma}$, portanto $\classe{c}$ é o elemento neutro $Id_{p}$.
-			\item \textit{(Elemento inverso)} Pelo Lema $\ref{lema_caminho_inverso}$ vimos que $\gamma *\hat{\gamma} \sim \hat{\gamma} *\gamma \sim c$, logo $Id_{p} =\classe{c} =  \classe{\gamma*\hat{\gamma}} = \classe{\gamma}.\classe{\hat{\gamma}}$, portanto $\classe{\hat{\gamma}}$ é o elemento inverso de $\classe{\gamma}$.
+			\item \textit{(Elemento inverso)} Pelo Lema $\ref{lema_caminho_inverso}$ vimos que $\gamma *\gamma^{-1} \sim \gamma^{-1} *\gamma \sim c$, logo $Id_{p} =\classe{c} =  \classe{\gamma*\gamma^{-1}} = \classe{\gamma}.\classe{\gamma^{-1}}$, portanto $\classe{\gamma^{-1}}$ é o elemento inverso de $\classe{\gamma}$.
 		\end{enumerate}
 		Portanto $\grupofundamentalpontobase{X}{p}$ é um grupo.
 	\end{prova}
@@ -622,11 +624,11 @@
 			Dado o caminho $\Gamma \in \caminhospontobasegeral{(p,q)}{X\times Y}$ podemos escrever $\Gamma(t) = (\alpha(t), \beta(t)) \in X\times Y$ onde $\alpha \in \caminhospontobasegeral{p}{X}$ e $\beta \in \caminhospontobasegeral{q}{Y}$. Seja $\Gamma' \in \caminhospontobasegeral{(p,q)}{X\times Y}$. Então $\Gamma \sim \Gamma'$ implica que $ (\alpha, \beta) \sim (\alpha', \beta')$, logo $\alpha \sim \alpha'$ e $\beta \sim \beta'$. Portanto, temos a bijeção $I(\classe{ (\alpha, \beta)}) =  (\classe{\alpha}, \classe{\beta}) \in \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$. Tomando $\classe{(\gamma, \lambda)} \in \grupofundamentalpontobase{(p,q)}{X\times Y}$, então $I(\classe{(\alpha, \beta)} .\classe{(\gamma, \lambda)} ) = I(\classe{(\alpha*\gamma, \beta*\lambda)} ) = (\classe{\alpha*\gamma}, \classe{\beta*\lambda})=(\classe{\alpha}, \classe{\beta}) .(\classe{\gamma}, \classe{\lambda}) = I(\classe{(\alpha, \beta)} ).I(\classe{(\gamma, \lambda)} )$, portanto é um isomorfismo.
 		\end{prova}
 		
-		\begin{proposicao}
+		\begin{proposicao}\label{proposicao_grupo_fundamental_simplesmente_conexo}
 			Se $X$ é um espaço topológico simplesmente conexo, então $\grupofundamental{X}$ é trivial.
 		\end{proposicao}
 		\begin{prova}
-			Seja $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \circulo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, portanto $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id$. Portanto $\grupofundamental{X}$ é trivial.
+			Seja $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \circulo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, logo $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id$. Portanto $\grupofundamental{X}$ é trivial.
 		\end{prova}
 		
 		\subsection{Grau de Aplicação}
@@ -661,11 +663,14 @@
 		
 		\subsection{Exemplos}
 		\begin{exemplo}
+			(Grupo fundamental de $\real{n}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
+		\end{exemplo}
+		\begin{exemplo}
 			(Grupo fundamental do 2-toro) Por definição temos que $T^{2}=\circulo \times \circulo$. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \mathbb{Z} \times \mathbb{Z}$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
 		\end{exemplo}
 		
 		\begin{exemplo}
-			(Grupo fundamental do plano com furo) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$. Definido $deg(\beta)=n>0$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Caso $deg(\beta) = n <0$ teremos $\classe{\beta} = \classe{\hat{\gamma}}^{-n}$ pois $deg(\hat{\gamma}) = -1$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X} \cong \mathbb{Z}$.
+			(Grupo fundamental do plano com furo) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X} \cong \mathbb{Z}$.
 		\end{exemplo}
 		
 	\chapter{Teoria de Morse}
@@ -914,7 +919,7 @@
 		\end{array}
 		\right)
 		$$
-		Pode-se mostrar que uma matriz $A$ é positiva-definida se, e somente se, $A=A^{t}$ e seus k-subdeterminantes são todos positivos. Uma consequência imediata é que, se $A$ for diagonalizável, então todos os seus auto-valores serão positivos. Mais detalhes podemo ser encontrados em $\cite{hoffman_kunze}$.
+		Pode-se mostrar que uma matriz $A$ é positiva-definida se, e somente se, $A=A^{t}$ e seus k-subdeterminantes são todos positivos. Uma consequência imediata é que, se $A$ for diagonalizável, então todos os seus auto-valores serão positivos. Mais detalhes podem ser encontrados em $\cite{hoffman_kunze}$.
 	\end{observacao}
 
 	Seja $A \in \generalgroupreal{n}$ uma matriz dianonalizável. Denotamos por $\sigma(A)$ o conjunto dos auto-valores de $A$.
