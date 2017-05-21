@@ -1,4 +1,5 @@
 \documentclass[12pt]{book}
+\usepackage[portuguese]{babel}
 \usepackage{graphicx}
 \usepackage{indentfirst}
 \usepackage[utf8]{inputenc}
@@ -8,7 +9,22 @@
 \usepackage[fleqn]{amsmath}
 \usepackage[a4paper, margin=1.0in]{geometry}
 \usepackage{verbatim}
+
+% INICIO CONFIGURACAO DO HYPER LINK %
 \usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\newcommand\myshade{45}
+\colorlet{mylinkcolor}{violet}
+\colorlet{mycitecolor}{YellowOrange}
+\colorlet{myurlcolor}{Aquamarine}
+
+\hypersetup{
+	linkcolor  = mylinkcolor!\myshade!black,
+	citecolor  = mycitecolor!\myshade!black,
+	urlcolor   = myurlcolor!\myshade!black,
+	colorlinks = true,
+}
+% FIM CONFIGURACAO DO HYPER LINK %
 
 \usepackage{amsthm, amssymb, amsfonts, amsmath}
 \usepackage{graphicx}
@@ -197,7 +213,7 @@
 		onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
 	\end{definicao}
 	
-	\section{CW-Homologia}
+	\section{CW-Complexo}
 	O conceito de espaço topológico é algo bem geral e em muitos casos podem nos levar a dificuldades técnicas na construção de solução de um determinado problema. Um CW-complexo é um tipo de espaço topológico, introduzindo por J. H. C. Whitehead, que teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sicessivas colagens (identificação) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
 	\begin{definicao}
 		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
@@ -231,7 +247,7 @@
 		(n-espaço projetivo) Vamos exibir uma estrutura de CW-complexo para $\realprojetivo{n}$. Para $n=0$ temos que $\realprojetivo{0} = \{\classe{p}\}$, para um determinado $p \in \real{}$. Já para $n=1$, sabemos que existe um homeomorfismo $\realprojetivo{1} \approx S^{1}_{\sim} = \{\classe{p}: p \in S^{1},\; p \sim -p\}$. Note esse espaço quociente já possui, naturalmente, uma CW-estrutura pois, na passagem ao quociente, identificamos todos os pontos do equador com um único ponto desse conjunto. Digamos este ponto $p_{0} = (1,0)$, sem perda de generalidade. Isso quer dizer que ao colarmos uma 1-célula no ponto $p_{0}$ teremos $S^{1}_{\sim} \approx \{[p_{0}]\} \cup_{f}D^{1} \approx \realprojetivo{0}\cup_{f}D^{1} $ pois $\realprojetivo{0} \approx \{[p_{0}]\}$, portanto $ \realprojetivo{1} \approx \realprojetivo{0}\cup_{f}D^{1}$. Repetindo o procedimento anterior para $\realprojetivo{n} \approx S^{n}_{\sim} $ onde $p_{0} = (1,0,\dots, 0)$, teremos $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f_{\partial}}D^{n}$. Assim, temos a CW-estrutura $\realprojetivo{j-1} \subseteq \realprojetivo{j}$ e $\realprojetivo{j} = \skeleton{j} \approx \skeleton{j-1}\cup_{f_{j\partial}}D^{j}$ para $1\leq j \leq n$.
 	\end{exemplo}
 	
-	\subsection{Homologia Celular}
+	\section{CW-Homologia}
 	
 	\begin{lema}\label{homologiacelular}
 		(Homologia celular relativa) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo, então
@@ -701,14 +717,18 @@
 		
 		\subsection{Exemplos}
 		\begin{exemplo}
-			(Grupo fundamental de $\real{n}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
+			(Grupo fundamental $\grupofundamental{\real{n}}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
 		\end{exemplo}
 		\begin{exemplo}
-			(Grupo fundamental do 2-toro) Por definição temos que $T^{2}=\circulo \times \circulo$. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \mathbb{Z} \times \mathbb{Z}$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
+			(Grupo fundamental $\grupofundamental{T^{2}}$ do 2-toro) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \mathbb{Z} \times \mathbb{Z}$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
+		\end{exemplo}
+		
+		\begin{exemplo}\label{exemplo_grupo_fundamental_plano_furo}
+			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X} \cong \mathbb{Z}$.
 		\end{exemplo}
 		
 		\begin{exemplo}
-			(Grupo fundamental do plano com furo) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X} \cong \mathbb{Z}$.
+			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $\real{2} \ni r=(0,0)$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \mathbb{Z}$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \mathbb{Z}\times\mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \mathbb{Z}\times\mathbb{Z}$.
 		\end{exemplo}
 		
 	\chapter{Teoria de Morse}
@@ -789,14 +809,7 @@
 		onde teremos somas alternadas no ultimo termo que se cancelarão, restando apenas $dim(Im(\partial_{m+1})) - dim(Im(\partial_{0}))$, mas ambos são identicamente nulos, pois $\partial_{m+1} = 0$ e $\partial_{0} = 0$.
 	\end{prova}
 	
-	\chapter{Homologia de Floer}
-	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
-	
-	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pntos fixos de um simplectomorfismos e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
-	
-	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de ponstos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
-	
-	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
+	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	
 	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
@@ -933,8 +946,7 @@
 		portanto $det(\varphi) = 1$.
 	\end{prova}
 	
-	\section{O grupo simplético 
-		\gruposimpletico{2n} e sua topologia}
+	\section{$\gruposimpletico{2n}$ e sua topologia}
 	O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros, sendo que esse isomorfismo se dará pelo índice de Maslov.
 
 	Primeiramente introduziremos o teorema da decomposição espectral que será aplicado na demonstração da conexidade de $\gruposimpletico{2n}$.
@@ -1328,7 +1340,7 @@
 		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\mathcal{U}$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \mathcal{U}$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
 	
-	\section{As estruturas complexas $\estruturascomplexaspadrao$ e sua topologia}
+	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
 	\begin{definicao} \label{definicao_conjunto_estrutura_complexa}
 		Sejam $(V,\omega)$ um 2n-espaço vetorial simplético e $Endo(V)$ o conjunto dos endomorfismos de $V$. Denotamos $\estruturascomplexaspadrao \subseteq Endo(V)$ como conjunto de todas as estruturas complexas $\omega$-compatíveis. Além disso, $\estruturascomplexaspadrao$ é um espaço topológico com a topologia induzida pela topologia de $Endo(V)$.
@@ -1391,10 +1403,8 @@
 		Sejam $\estruturascomplexaspadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{observacao_conjunto_estrutura_complexa}$. Tomando $G:\produtosinternos{V} \to \estruturascomplexaspadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturascomplexaspadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
 	\end{prova}
 	
-	\subsection{O índice de Maslov}
-	Para a esclarecer algumas escolhas feitas na definição do índice de Maslov, faremos um breve anúncio sobre resultado do grupo fundamental de $S^{1}$, sendo que mais detalhes podem ser consultados em \vermelho{Elon Lages Lima}.
-	
-	Agora temos instrumentos para definirmos o índice de Maslov. Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
+	\section{O índice de Maslov}
+	Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
 	
 	Sejam $\caminhosfechadosSp{0}{1}$ o conjuntos dos caminhos fechados em $S^{1}$ e $\gamma \in \caminhosfechadosSp{0}{1}$, então temos que aplicação $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ é contínua pois é a composição de aplicações contínuas, portanto $\rho_{\gamma} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \mathbb{Z}$. Definimos como o índice de Maslov como sendo a aplicação $\mu:\caminhosfechadosSp{0}{1} \to \mathbb{Z}$ tal que:
 	$$
@@ -2358,7 +2368,16 @@
 			\end{corolario}	
 	\end{comment}
 	
-	\section{Definição da Homologia de Floer}
+	\chapter{Homologia de Floer}
+	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
+	
+	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pntos fixos de um simplectomorfismos e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
+	
+	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de ponstos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
+	
+	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
+	
+	\subsection{Definições}
 	Seja $C = C(M, \mathbb{Z}_{2})$ o espaço vetorial sobre o corpo $\mathbb{Z}_{2}$ e gerado pelos elementos de $\solucoesperiodicascontrateis$. Esse espaço é graduado pela função $m$, de modo que
 	$$
 	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \mathbb{Z}_{2}) = \text{span}\{x \in \solucoesperiodicascontrateis:m(x)=k \}.
