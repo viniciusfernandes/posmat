@@ -499,8 +499,6 @@
 	$$
 		\funcaocond{(\gamma*\beta)(t)}{\gamma(2t)}{0\leq t \leq 1/2}{\beta(2t-1)}{1/2 \leq t \leq 1}.
 	$$
-
-	No desenvolvimento desse capítulo utilizaremos a identificação $\varphi:\real{}/[0,1] \to \circulo$, e assim, trabalharemos com os caminhos, $\gamma\circ\varphi : \real{}/[0,1] \to X$ onde $(\gamma\circ\varphi)(0) = p$. Por um abuso de notação escreveremos $\caminhospontobasegeral{p}{X} = \{\gamma :\circulo \to X : \gamma(0) =p\}$.
 	
 	Quando não houver ambiguidades denotaremos por simplicidade $\caminhospontobase{p}=\caminhospontobasegeral{p}{X}$.
 	
@@ -509,7 +507,7 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		A definição de equivalência de homotopia não depende da homotopia escolhida, pois, dadas $F,G$ homotopias entre $\gamma$ e $\gamma'$, podemos definir uma aplicação contínua $H: \circulo \times [0,1] \times [0,1] \to X$ tal que $H(t,s ,0) = F(t,s)$ e $H(t,s, 1) = G(t,s)$ que é uma homotopia entre as homotopias, logo será uma homotpia entre ambas as curvas.
+		A definição de equivalência de homotopia não depende da homotopia escolhida, pois, dadas $F,G$ homotopias entre $\gamma$ e $\gamma'$, podemos definir uma aplicação contínua $H: [0,1] \times [0,1] \times [0,1] \to X$ tal que $H(t,s ,0) = F(t,s)$ e $H(t,s, 1) = G(t,s)$ que é uma homotopia entre as homotopias, logo será uma homotpia entre ambas as curvas.
 	\end{observacao}
 	
 	O próximo lema demonstra a compatibilidade entre o produto e a relação de equivalência homotópica, isto é, o produto de dois caminhos em $\caminhospontobase{p}$ é equivalente ao produto de seus caminhos equivalentes.
@@ -519,7 +517,7 @@
 	\end{lema}
 	\begin{prova}
 		\vermelho{
-			Sejam  $F, G:\circulo \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$.}
+			Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$.}
 	\end{prova}
 	
 	Pode-se mostrar que existem $\alpha, \beta, \gamma \in \caminhospontobase{p}$ não vale a associatividade do produto, isto é, $(\alpha*\beta)*\gamma \neq \alpha*(\beta*\gamma)$. Contudo, o seguinte lema estabelece uma situação de associatividade e sua demonstração pode ser encontrada em $\cite{massey}$.
@@ -532,7 +530,7 @@
 		Sejam $\gamma, \gamma^{-1}, c \in \caminhospontobase{p}$ tais que $c(t) = p$ para todo $t\in \circulo$ (é a curva constante) e $\gamma^{-1}(t) = \gamma(1-t)$. Então $\gamma*\gamma^{-1} \sim \gamma^{-1}*\gamma \sim c$.
 	\end{lema} 	
 	\begin{prova}
-		Seja a aplicação contínua $F:\circulo\times [0,1]\to X$ tal que
+		Seja a aplicação contínua $F:[0,1]\times [0,1]\to X$ tal que
 		$$
 			F(t,s) = 
 			\left\{
@@ -648,20 +646,17 @@
 		\end{proposicao}
 		
 		\begin{proposicao}\label{proposicao_grau_aplicacao}
-			(O grau de uma caminhos fechado) Seja $\caminhosfechadoscirculo{0}{1}$ o conjunto de todos os caminhos contínuos e fechados em $S^{1}$, então a aplicação $deg:\caminhosfechadoscirculo{0}{1} \to \mathbb{Z}$ onde $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$ esta bem-definida e $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Além disso
+			(O grau de uma caminhos fechado) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \mathbb{Z}$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Então $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamdo grau do caminho $\gamma$. Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
 			\begin{enumerate}
-				\item Se $\gamma, \beta$ possuem o mesmo ponto base, isto é, $\gamma(0)=\beta(0 )=p$ para um dado $p \in \circulo$, então $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$.
-				\item Tem-se que $\gamma\sim \beta$ se, e somente se, $deg(\gamma)=deg(\beta)$
+				\item $deg(\caminhospontobasegeral{p}{\circulo}) = \mathbb{Z}$, além disso, se $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = 1$.
+				\item $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$.
+				\item Se $\gamma\sim \beta$ se, e somente se, $deg(\gamma)=deg(\beta)$
 			\end{enumerate}
-			
-			
-			
-			
-			, se $\gamma$ e $\beta$ são caminhos homotópicos, então $deg(\gamma)=deg(\beta)$ e para o produto $\gamma.\beta \in \caminhosfechadoscirculo{0}{1}$ temos $deg(\gamma.\beta) = deg(\gamma)+deg(\beta)$.
 		\end{proposicao}
 		\begin{prova}
 			\begin{enumerate}
-				\item Seja $p \in \circulo$ um ponto base para $\gamma$ e $\beta$ tal que $\gamma(1)= \beta(0) = p$. Suponha que $\alpha$ e $\lambda$ sejam os levatamentos de $\gamma$ e $\beta$, então o vínculo do ponto base implica que $\alpha(1) = \lambda(0)$. Pelo produto entre caminhos temos $(\gamma*\beta)(t) = e^{i\alpha(2t)}$ para $0\leq t\leq 1/2$ e  $(\gamma*\beta)(t) = e^{i\lambda(2t - 1)}$ para $1/2\leq t\leq 1$. Logo 
+				\item Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$, pela proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e $deg$ esta bem-definida. Supondo que $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = (2\pi -0)/2\pi =1$. Dado $k \in \mathbb{Z}$ e supondo que $\beta(t) = e^{i2\pi kt}$ temos $deg(\beta) = k$, logo $deg$ é sobrejetora e $deg(\caminhospontobasegeral{p}{\circulo}) = \mathbb{Z}$.
+				\item Suponha que $\gamma$ e $\beta$ sejam tais que $\gamma(1)= \beta(0) = p$ e que $\alpha$ e $\lambda$ sejam seus respectivos levatamentos, então temos que $\alpha(1) = \lambda(0)$. Pelo produto entre caminhos temos $(\gamma*\beta)(t) = e^{i\alpha(2t)}$ para $0\leq t\leq 1/2$ e  $(\gamma*\beta)(t) = e^{i\lambda(2t - 1)}$ para $1/2\leq t\leq 1$. Logo 
 				$$
 				\begin{aligned}
 				deg(\gamma*\beta) &= (\lambda(1)- \alpha(0))/2\pi 
@@ -671,17 +666,37 @@
 				&= deg(\gamma)+deg(\beta).
 				\end{aligned}
 				$$  
-				\item Suponha que $h:\circulo \times [0,1]\to S^{1}$ seja uma homotopia entre $\gamma$ e $\beta$ tal que $h(p,0) = \gamma(\lambda)$ e $h(p,1) = \beta(\lambda)$. Com isso, para cada $t \in [0,1]$ fixo temos $h_{t} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ o caminho fechado $h_{t}$ possui um único levantamento $\alpha_{t}$ tal que $(\alpha_{t}(1)-\alpha_{t}(0))/2\pi = q \in \mathbb{Z}$, portanto $deg(h_{t})=q$ é constante, logo $deg(\gamma)=deg(h_{0})=deg(h_{1})=deg(\beta)$, isto é, caminhos homotópicos possuem o mesmo grau. 
+				\item Suponha que $h:[0,1]\times [0,1]\to S^{1}$ seja uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1) = \beta(t)$. Pela continuidade de $h$ podemos afirmar que, para cada $s \in [0,1]$ fixo, temos $h_{s}(0) = h_{s}(1)$ portanto $h_{s} \in \caminhospontobasegeral{p}{\circulo}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ podemos escrever $h_{s}(t) = e^{i\alpha_{s}t}$. Com isso, podemos escolher $s, s_{0 }\in [0,1]$ tais que $\norma{h_{s}(t)-h_{s_{0}}(t)} =\norma{e^{i\alpha_{s}t} - e^{i\alpha_{s_{0}}t}} <2$, ou seja, $h_{s}(t), h_{s_{0}}(t) \in \circulo$ não são anti-podais, logo $|\alpha_{s}(t)-\alpha_{s_{0}}(t)| <\pi$ para todo $t\in [0,1]$. Seja $0=s_{0}<s_{1}<s_{2}\dots s_{m-1}<s_{m} = 1$ uma partição do intervalo $[0,1]$, tal que $\norma{h_{s_{j+1}}(t)-h_{s_{j}}(t)}<2$ para $0\leq j \leq k-1$. A partição escolhida implica em $|\alpha_{j+1}(t)-\alpha_{s_{j}}(t)| <\pi$. Então
+				$$
+				\begin{aligned}
+					2\pi|deg(h_{s_{j+1}})-deg(h_{s_{j}})| 
+					&= |\alpha_{s_{j+1}}(1)-\alpha_{s_{j+1}}(0) - \alpha_{s_{j+1}}(1)+\alpha_{s_{j}}(0)|
+					\\
+					&\leq |\alpha_{s_{j+1}}(1)-\alpha_{s_{j}}(1)| + |\alpha_{s_{j+1}}(0)+\alpha_{s_{j}}(0)|
+					\\
+					&<2\pi,
+				\end{aligned} 
+				$$
+				logo $|deg(h_{s_{j+1}})-deg(h_{s_{j}})| <1$. Portanto $deg(h_{s_{j+1}})=deg(h_{s_{j}})$ para todo $0\leq j \leq m-1$. Logo, 
+				$$
+				deg(\beta) = deg(h_{s_{m}})=deg(h_{s_{m-1}})=\dots=deg(h_{s_{0}}) = deg(\alpha).
+				$$
+				Por outro lado, vamos supor que $n = deg(\gamma)=deg(\beta)$. Como os levantamentos $\alpha$ e $\lambda$, das respectivas curvas, são únicos, então mostrar que $\alpha$ e $\lambda$ são homotópicos é equivalente a mostrar que $\alpha \sim \beta$. Seja a aplicação contínua $H:[0,1]\times [0,1] \to \real{}$ definida por $H(t,s) = (1-s)\alpha(t) + s\beta(t)$. Então $H(t,0)=\alpha(t)$ e $H(t,1)=\lambda(t)$, logo $H$ é uma homotopia entre $\alpha$ e $\lambda$. Além disso 
+				$$
+				\begin{aligned}
+					H(1,s) - H(0,s) 
+					&= (1-s)\alpha(1) + s\beta(1) - (1-s)\alpha(0) + s\beta(0) 
+					\\
+					&= (1-s)(\alpha(1)-\alpha(0)) + s(\beta(1)-\beta(0))
+					\\
+					&=(1-s)deg(\gamma) +sdeg(\beta)
+					\\
+					&= n.
+				\end{aligned}
+				$$ 
+				
+				Seja a aplicação contínua $G(t, s) = e^{iH(s,t)}$. Então, para $s \in [0,1]$ fixo temos que $G_{s} \in \caminhospontobasegeral{p}{\circulo}$ com $deg(G_{s}) = n$. Além disso, $G(t,0) = e^{i\alpha(t)} = \gamma(t)$ e $G(t,1) = e^{i\lambda(t)} = \beta(t)$, logo $G$ é uma homotopia entre $\gamma$ e $\beta$, portanto $\gamma \sim \beta$.
 			\end{enumerate}
-		\end{prova}
-		\begin{prova}
-		
-			
-			
-			Tomando o produto dos caminhos fechados, temos $(\gamma.\beta)(\lambda)= e^{i\alpha(\lambda)}e^{i\xi(\lambda)} = e^{i(\alpha(\lambda)+\xi(\lambda))} \in S^{1}$ o que implica que 
-			$$
-			deg(\gamma.\beta) = ((\alpha(1)+\xi(1))-(\alpha(0)+\xi(0)))/2\pi = deg(\gamma)+deg(\beta).
-			$$
 		\end{prova}
 		
 		\subsection{Exemplos}
