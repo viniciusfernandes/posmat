@@ -13,15 +13,13 @@
 % INICIO CONFIGURACAO DO HYPER LINK %
 \usepackage{hyperref}
 \usepackage[dvipsnames]{xcolor}
-\newcommand\myshade{45}
+\newcommand\myshade{85}
 \colorlet{mylinkcolor}{violet}
-\colorlet{mycitecolor}{YellowOrange}
-\colorlet{myurlcolor}{Aquamarine}
 
 \hypersetup{
 	linkcolor  = mylinkcolor!\myshade!black,
-	citecolor  = mycitecolor!\myshade!black,
-	urlcolor   = myurlcolor!\myshade!black,
+	citecolor  = mylinkcolor!\myshade!black,
+	urlcolor   = mylinkcolor!\myshade!black,
 	colorlinks = true,
 }
 % FIM CONFIGURACAO DO HYPER LINK %
@@ -1043,6 +1041,20 @@
 		(Grupo simplético) Seja $(V,\omega)$ um 2n-espaço vetorial simplético. O grupo simplético de $V$ é $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$.
 	\end{definicao}
 	
+	\begin{proposicao}\label{proposicao_grupo_simpletico_estrutura_grupo}
+		$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
+	\end{proposicao}
+	\begin{prova}
+		Sejam $A,B \in \gruposimpletico{2n}$ e $u,v \in \real{2n}$, então
+		\begin{enumerate}
+			\item \textit{(Operação fechada)} $\omega(ABu, ABv) = \omega(Bu, Bv) = \omega(u,v)$, logo $AB \in \gruposimpletico{2n}$.
+			\item \textit{(Associatividade)} $\gruposimpletico{2n}$ é associativo pois a operação de multiplicação de matrizes reais é associativa.
+			\item \textit{(Elemento neutro)} o elementro neutro de $\gruposimpletico{2n}$ é a identidade.
+			\item \textit{(Elemento inverso)} $\omega(u, v)=\omega(AA^{-1}u, AA^{-1}v) = \omega(A^{-1}u, A^{-1}v)$, logo $A^{-1} \in \gruposimpletico{2n}$. 
+		\end{enumerate}
+		Portanto $\gruposimpletico{2n}$ é um grupo.
+	\end{prova}
+	
 	\begin{observacao}
 		Quando tratarmos $\gruposimpletico{2n}$ como espaço topológico adotaremos sua topologia induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
 	\end{observacao}
@@ -1313,12 +1325,19 @@
 		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável e $det(A) \in S^{1}$, logo pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $1 = det(A) = e^{i(\theta_{1}+\dots+\theta_{n})}$ o que implica que $\theta_{1}+\dots+\theta_{n}=0$. Definindo a caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Vejamos que $\gamma$ esta bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) = U^{*}D(\lambda)U\in \matrizunitaria{n}$ pois $\matrizunitaria{n}$ é um grupo na operação de multiplicação. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} = 1$, pois $\theta_{1}+\dots+\theta_{n}=0$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é um isomorfismo, portanto é contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\mathcal{U} = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 
-	\begin{lema}
+	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
 		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
 		Seja a aplicação contínua $\gamma:\gruposimpleticopositivo{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $\gamma(A,\lambda) = A^{\lambda}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, a aplicação $\gamma$ está bem-definida e é contínua. Fixando $A \in \gruposimpleticopositivo{2n}$ temos a curva $\gamma_{A}:[0,1]\to \gruposimpletico{2n}$ tal que $\gamma_{A}(0) = Id$ e $\gamma_{A}(1) = A$, ou seja, é um caminho contínuo que conecta a identidade a matriz $A$. Como $A=A^{t}$, segue da Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ que $\gamma_{A}(\lambda)^{t} = (A^{\lambda})^{t} = (A^{t})^{\lambda} = (A)^{\lambda} = \gamma_{A}(\lambda)$. Temos que todos $\lambda_{k} \in \sigma(A)$ são positivos, logo os k-subdeterminantes $det_{k}(\gamma_{A}(\lambda)) = det_{k}(A^{\lambda}) = \lambda_{1}^{\lambda}\dots\lambda_{k}^{\lambda}>0$ para $1\leq k \leq 2n$. Pelo fato de que $\gamma_{A}(\lambda)$ é simétrica e pela Observação $\ref{observacao_matriz_positiva_definida}$ temos que $\gamma_{A}(\lambda)$ é positiva-definida, logo $\gamma_{A}([0,1]) \subset \gruposimpleticopositivo{2n}$. Como $A \in \gruposimpleticopositivo{2n}$ é arbitrária, então a construção anterior vale para quaisquer elementos de $\gruposimpleticopositivo{2n}$. Com isso, dados $A, B \in \gruposimpleticopositivo{2n}$, podemos conectar $A$ a $B$ por uma curva contínua que passa pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{prova}	
+	
+	\begin{lema}
+		Se $A \in \gruposimpletico{2n}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$ tal que $A=PO$.
+	\end{lema}
+	\begin{prova}
+		Sejam $P = AA^{t}$ e $v \in \real{2n}$ um auto-vetor de $A$ com auto-valor $\lambda \in \sigma(A)$. Sabe-se que $v$ também é autor-vetor de $A^{t}$ com o mesmo auto-valor, o que implica em $Pv=AA^{t}v = \lambda^{2}v = \alpha v$, portanto $P$ possui todos os auto-valores positvos, consequentemente, todos os seus k-subdeterminantes são positivos. Além disso, $P^{t} = (AA^{t})^{t} = AA^{t} = P$, logo pela Observação $\ref{observacao_matriz_positiva_definida}$ $P$ é positiva-definida. Como $A$ e $A^{t} $ são matrizes simpléticas e, pela Proposição $\ref{proposicao_grupo_simpletico_estrutura_grupo}$, $\gruposimpletico{2n}$ é um grupo, então $P=AA^{t}\in \gruposimpletico{2n}$. Logo $P \in \gruposimpleticopositivo{2n}$. Pela unicidade da decomposição polar, temos $A=PO$, onde $O \in \matrizortogonal{2n}$. Afirmo que $O \in \mathcal{U}$. De fato, $P$ é invertível, pois é composição de matrizes invertíveis, então $O = P^{-1}A =O$. Como $P^{-1} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, então $O=P^{-1}A \in \gruposimpletico{2n}$. Portanto, $O \in \mathcal{U}$.
+	\end{prova}
 	
 	\begin{teorema}\label{teoerma_sp2n_conexo}
 		$\gruposimpletico{2n}$ é conexo.
