@@ -507,7 +507,7 @@
 	
 	Os grupos fundamentais de nos dão mais informações sobre a topologia de nossos objetos de estudo do que os grupos de homologia, por exemplo: supondo que $M$ seja uma $n$-variedade compacta e $H_{k}(M)$ seja seu k-ésimo grupo de homologia, pode-se mostrar que $\homologia{k}{M} = 0$, contudo, podemos ter $\pi_{k}(M)\neq 0$ para $k\geq n$.
 	
-	\subsection{Definições}
+	\section{Definições}
 	
 	Sejam $X$ um espaço topológico, $p \in X$ um ponto base e $\caminhospontobasegeral{p}{X}=\{\gamma:[0,1]\to X: \gamma(0) = \gamma(1) = p\}$. Definimos o produto $*:\caminhospontobasegeral{p}{X}\times \caminhospontobasegeral{p}{X} \to \caminhospontobasegeral{p}{X}$ tal que
 	$$
@@ -596,7 +596,7 @@
 		No caso em que $X$ seja um espaço espaços topológico conexo por caminhos denotaremos $\grupofundamental{X}=\grupofundamentalpontobase{X}{p}$.
 	\end{observacao}
 	
-	\subsection{Homomorfismos induzidos}
+	\section{Homomorfismos induzidos}
 		Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então temos a composição $\beta=f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Sejam $\gamma' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $F$ for a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $G=f\circ F$ é uma homotopia entre $\beta=f\circ \gamma$ e $\beta' = f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$, assim, $\beta \sim \beta'$.
 		
 		\begin{lema}
@@ -643,7 +643,7 @@
 			Seja $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \circulo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, logo $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id$. Portanto $\grupofundamental{X}$ é trivial.
 		\end{prova}
 		
-		\subsection{Grau de Aplicação}
+		\section{Grau de Aplicação}
 		O grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\mathbb{Z}$. Com isso, a cada caminho fechado $\gamma:[0,1] \to S^{1}$ podemos associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
 		
 		A proposição a seguir é de grande relevência para o restante do texto e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
@@ -713,7 +713,7 @@
 			\end{enumerate}
 		\end{prova}
 		
-		\subsection{Exemplos}
+		\section{Exemplos de Grupo Fundamental}
 		\begin{exemplo}
 			(Grupo fundamental $\grupofundamental{\real{n}}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
 		\end{exemplo}
@@ -1424,9 +1424,116 @@
 	\end{teorema}
 	\begin{prova}
 		Sejam $\estruturascomplexaspadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{observacao_conjunto_estrutura_complexa}$. Tomando $G:\produtosinternos{V} \to \estruturascomplexaspadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturascomplexaspadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
-	\end{prova}
+	\end{prova}			
 	
-	\section{O índice de Maslov}
+	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
+	
+	\begin{definicao}
+		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
+	\end{definicao}
+	
+	\begin{lema}\label{Sp2n_homotopia}
+		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \mathbb{Z}$.
+	\end{lema}
+	
+	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $D_{x(0)}\psi_{t}$ como sendo o diferencial de $\psi_{t}$ em $x(0)$, teremos
+	$$
+	\omega_{x(0)}(D_{x(0)}\psi_{t}X, D_{x(0)}\psi_{t}Y)=(\psi_{t})^{*}\omega_{x(t)}(X,Y) = \omega_{x(t)}(X,Y).
+	$$
+	
+	Seja $\Psi_{x}(t)$ a matriz do diferencial $D_{x(0)}\psi_{t}$ para daca $t\in S^{1}$. Como vimos anteriormente, $\psi_{t}$ é um simplectomorfismo, logo $\Psi_{x}(t) \in Sp(2n)$, além disso, temos uma famíla de bases suaves $e(t)$ de $T_{x(t)}M$ para cada $t \in \real{}$. Podemos definir a curva $\Psi_{x}:\real{} \to Sp(2n)$ tal que $\Psi_{x}(0) = Id$ e $det(Id-\Psi_{x}(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
+	
+	Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. Como as extensões $u,v:D^{2} \to M$ são aplicações contínuas e $D^{2}$ é compacto e contrátil, então pelo Corolário $\ref{pullback_contratil}$ temos que os pullbacks $u^{*}TM$ e $v^{*}TM$ são fibrados vetoriais triviais, além disso, ambas as extensões so aplicações homotópicas por construção, logo pelo Teorema $\ref{pullback_isomorfismo}$  $u^{*}TM \cong v^{*}TM$.
+	
+	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$ e $\Psi_{x}(t), \Psi'_{x}(t)$ as matrizes do diferencial nas respectivas bases. Por definição temos $\Psi_{x}, \Psi_{x}' \in \mathcal{S}$ tal que $\Psi_{x} \simeq \Psi'_{x}$, isto é, \vermelho{são curvas homotópicas em $\mathcal{S}$}. Com isso, consequimos associar a cada solução 1-periódica dos sistema Hamiltoniano a uma curva $\Psi_{x} \in \mathcal{S}$ a menos de uma homotopia da seguinte forma $\hat{\Psi}_{t}:\solucoesperiodicascontrateis \to \mathcal{S}$ tal que $\hat{\Psi}_{t}(x) = \Psi_{x}(t)$.
+	
+	O seguinte resultado será utlizado nas demais construções do índice de Maslov.
+	
+	\begin{teorema}
+		Para cada $n \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
+		\begin{enumerate}
+			\item Naturalidade: se $Q, T \in Sp(2n)$, então 
+			$$\rho(TQT^{-1}) = \rho(Q).$$
+			\item Produto: Se $Q\in Sp(2m)$ e $T\in Sp(2n)$, então
+			$$
+			\rho
+			\begin{pmatrix} 
+			Q & 0 
+			\\ 
+			0 & T
+			\end{pmatrix}
+			= \rho(Q)\rho(T).
+			$$
+			\item Deteminante: Se $Q \in U(n) = Sp(2n) \bigcap O(2n)$, então
+			$$
+			\rho(Q) = det_{\mathbb{C}}(X+iY), \; \text{onde} \; Q = 
+			\begin{pmatrix} 
+			X & -Y 
+			\\ 
+			Y & X
+			\end{pmatrix}.
+			$$ 
+			Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \mathbb{Z}.$
+			\item Normalização: Se os auto-valores de $Q$ são todos reais, então
+			$$
+			\rho(Q) = (-1)^{m_{0}/2},
+			$$
+			onde $m_{0}$ é a multiplicidade dos auto-valores reais negativos.
+			\item $\rho(Q^{t}) = \rho(Q^{-1}) = \overline{\rho(Q)}$.
+		\end{enumerate}
+	\end{teorema}
+	
+	Vejamos que $Sp(2n)^{*} \subset Sp(2n)$ é um subconjunto aberto, e que $\Sigma = \{T\in Sp(2n): det(Id-T)=0\} = Sp(2n)\backslash Sp(2n)^{*}$ é um conjunto fechado, além disso $Sp(2n)^{*} = Sp(2n)^{+}\cup Sp(2n)^{-}$ onde $Sp(2n)^{+}=\{T\in Sp(2n)^{*}: det(Id-T)>0\} $ e $Sp(2n)^{-}=\{T\in Sp(2n)^{*}: det(Id-T)<0\}$ são ambos subconjutos abertos, portanto $Sp(2n)^{*}$ é disconexo. O resultado abaixo nos diz um pouco da topologia de $Sp(2n)^{*}$:
+	
+	\begin{lema}
+		O conjunto aberto $Sp(2n)^{*}$ possui duas compenentes conexas $Sp(2n)^{\pm}$, além disso, a inclusão de cada uma dessas componentes em $Sp(2n)$ induz o homomorsfismo trivial entre seus grupos fundamentais, isto é, definindo as inclusões $i_{\pm}:Sp(2n)^{\pm} \hookrightarrow Sp(2n)$, então $(i_{\pm})_{\#}:\pi_{1}(Sp(2n)^{\pm}) \hookrightarrow \pi_{1}(Sp(2n))$ é tal que $(i_{\pm})_{\#}=0$. 
+	\end{lema}
+	
+	\begin{definicao}
+		(Índice de Maslov de uma curva) Sejam $exp:\real{} \to S^{1} \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Seja $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ (sua homotopia esta bem-definida) com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
+		$$
+		\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
+		$$
+		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
+	\end{definicao}
+	
+	O teorema e corolário abaixo nos oferece uma mecânismo de cálculo para o índice de Maslov na aplicação do formalismo.
+	
+	\begin{teorema}
+		Fixando $W^{\pm} \in Sp(2n)^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
+		\begin{enumerate}
+			\item $\mu(\psi) \in \mathbb{Z}$.
+			\item Duas curvas $\alpha, \beta \in \mathcal{S}$ são homotópicas se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+			\item Se $S \in GL(2n)$ com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+			$$
+			\mu(\psi) = Ind(S) - n,
+			$$
+			onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
+		\end{enumerate}
+	\end{teorema}
+	
+	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $\solucoesperiodicascontrateis$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
+	
+	\begin{corolario}
+		Sejam $(M, \omega)$ uma 2n-variedade simplectica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$, pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
+		$$
+		\mu(x) = Ind(x) - n.
+		$$
+	\end{corolario}	
+	
+	
+	
+	\chapter{Índice de Maslov - ???}
 	Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
 	
 	Sejam $\caminhosfechadosSp{0}{1}$ o conjuntos dos caminhos fechados em $S^{1}$ e $\gamma \in \caminhosfechadosSp{0}{1}$, então temos que aplicação $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ é contínua pois é a composição de aplicações contínuas, portanto $\rho_{\gamma} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \mathbb{Z}$. Definimos como o índice de Maslov como sendo a aplicação $\mu:\caminhosfechadosSp{0}{1} \to \mathbb{Z}$ tal que:
@@ -1471,7 +1578,8 @@
 			Além disso, se $\gamma$ é caminho constante o que implica que $\rho_{\gamma}$ também é um caminho constante, então temos pela definição de grau de um caminho $0=deg(\rho_{\gamma}) = \mu(\gamma)$.
 		\end{enumerate}
 	\end{prova}
-		
+	
+	\chapter{Equação de Floer e o Operador de Fredholm}
 	\section{Variedades simpléticas}
 	\begin{definicao}
 		(Variedade Simplética) Uma variedade simplética de dimensão 2m é o par $(M, \omega)$ onde $M$ é uma 2m-variedade diferenciável e $\omega \in \Omega^{2}(M^{m})$ é uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$ e para cada $p \in M$ temos que $(T_{p}M, \omega_{p})$ é um espaço vetorial simplético. Cada $x = (q_{1}, \dots, q_{m}, p_{1}, \dots, p_{m}) \in M$  será abreviado pelo par $(q,p)$.
@@ -1697,7 +1805,7 @@
 
 	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais e conexões afins em variedades Riemannianas, mas caso haja familiaridade com tais definições a leitura dessa seção não se faz necessária.
 	
-	\subsection{Fibrados Vetoriais - alguns resultados}
+	\section{Fibrados Vetoriais - alguns resultados}
 	\begin{definicao}
 		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$.
 	\end{definicao}
@@ -1762,7 +1870,7 @@
 		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
 	\end{prova}
 	
-	\subsection{Variedade Riemanniana - algumas definições}
+	\section{Variedade Riemanniana - algumas definições}
 	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
 	
 	\begin{definicao}\label{definicao_variedade_riemanniana}
@@ -1821,7 +1929,7 @@
 		(Difeomorfismo exponencial) Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
 	\end{proposicao}
 	
-	\subsection{Operadores de Fredholm}
+	\section{Operadores de Fredholm}
 	\begin{definicao}\label{definicao_oeprador_fredholm}
 		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/Im(T)$. O operador $T$ é chamado de operador de Fredholm se $Im(T)=\overline{Im(T)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$.  
 	\end{definicao}
@@ -1839,7 +1947,7 @@
 	
 	Pela estabilidade dos operadores de Fredholm, podemos afirmar que o índice de $df(p) \in \operadoresfredholm{A}{B}$ não depende do ponto $p \in A$, com isso podemos definir o índice do mapa de Fredholm como $ind(f)=ind(df(p))$ que é constante e assim esta bem-definido.
 	
-	\subsection{Os espaços de Banach das curvas conectantes}
+	\section{Os espaços de Banach das curvas conectantes}
 	
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
 		(Caminhos de decaímentos exponenciais) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
@@ -1919,7 +2027,7 @@
 		Seja $u \in \orbitasconectantespadrao$, então pelas condições de contorno das soluções temos $u(s,t)  \to x^{\mp}(t)$ quando $s\to \mp \infty$, logo $\derivadaparcial{u}{s} \to 0$ e $\derivadaparcial{u}{t} \to X_{H}(x^{\mp})$ quando $s\to \mp \infty$, portanto $u \in \caminhosdecaimentoexponencialpadrao$. Suponha que $u \in \caminhosdecaimentoexponencialpadrao$ então tomando $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Definindo $\gamma(s, t) =\aplicacaoexponencial{u(s, t)}{v(s, t)}$, podemos ver que $\gamma$ satisfaz as condições de decaímento exponencial, logo $\gamma \in \caminhosdecaimentoexponencialpadrao$, mas por construção temos que $\gamma \in \caminhosexponenciaisconectantespadrao$. Como cada $u \in \caminhosdecaimentoexponencialpadrao$ temos uma única $\gamma \in \caminhosexponenciaisconectantespadrao$, então $\caminhosdecaimentoexponencialpadrao \subset \caminhosexponenciaisconectantespadrao$. 
 	\end{prova}
 	
-	\subsection{$\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach}
+	\section{$\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach}
 
 	Quando não houver riscos de ambiguidades adotaremos a notação de $\caminhosexponenciaisconectantesabrev$ em vez de $\caminhosexponenciaisconectantespadrao$.
 
@@ -1941,7 +2049,7 @@
 		Pela Proposição $\ref{proposicao_difeomorfismo_exponencial}$, dado $\epsilon > 0$, existe uma vizinhaça aberta $B_{\epsilon}(0)$ de seção nula $0 \in \espacosobolev{\pullbackfibradotangenteM{w}}$ tal que a restrição da aplicação exponencial $\aplicacaoexponencialgeral{w}:B_{\epsilon}(0) \to V$ é um difeomorfismo sobre um aberto $V \subset \pullbackfibradotangenteM{w}$. Para cada $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$ temos a aplicação $\aplicacaoexponencial{w}{X}:\retacartesianocirculo \to M$ tal que $\aplicacaoexponencial{w}{X}(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$, logo $\aplicacaoexponencial{w}{X} \in \caminhosexponenciaisconectantespadrao$. Portanto o par $(B_{\epsilon}(0), \aplicacaoexponencialgeral{w})$ de abertos e difeomorfismos é uma carta de $\caminhosexponenciaisconectantespadrao$, consequentemente a família indexada $\{(B_{\epsilon_{w}}(0), \aplicacaoexponencialgeral{w})\}_{w \in \caminhosexponenciaisconectantesabrev}$, forma um 1-atlas. Portanto, $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
 	\end{prova}
 	
-	\subsection{A identificação  $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$}
+	\section{A identificação  $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$}
 	Em muitas situações  vamos nos deparar com a necessidade de efetuar diferenciação em variedades com estruturas diferenciais complexas tornando dificultanto muito as técnicas utilizadas na demonstração dos resultados desejado. Para contornar esse dificuldade adicional vamos utilizar o Teorema de Whitney, enunciado aqui, mas demonstrado em $\cite{guillemin_differential_topology}$, e com isso comparar campos vetoriais se torna trivial, já que estamos em um espaço euclidiano e os espaços tangentes estão todos identificados com o próprio $\real{k}$ (para algum k), além disso, as conexões afins (associadas ao transporte paralelo de campos vetoriais em variedades Riemannianas) são reduzidas a derivadas parciais. Veja uma breve descrição na Observação $\ref{observacao_conexao_afim}$.
 	
 	\begin{definicao}\label{definicao_mergulho_variedades}
@@ -1954,7 +2062,7 @@
 	
 	Por definição temos que, dado $w : \retacartesianocirculo \to M $ com $w \in C^{\infty}$ temos $\pullbackfibradotangenteM{w} = \{(p, X(p)) : p = w(s,t) \in M, \; X(s,t) \in T_{w(s,t)M} \}$. Pelo Teorema $\ref{teorema_whitney}$ (Whitney) temos que $\pullbackfibradotangenteM{w} \subset T\real{k}$, para algum $k \geq 2 dim(\pullbackfibradotangenteM{w}) +1$. Seja $\psi : \pullbackfibradotangenteM{w} \to \real{k}$ o mergulho, então a composição $\Psi=\psi \circ X:\retacartesianocirculo \to \real{k}$ esta bem-definida, logo $\Psi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$. 
 	
-	\subsection{O operador de Floer $\mapafloer$}
+	\section{O operador de Floer $\mapafloer$}
 	
 	Sabemos que $\caminhosexponenciaisconectantesabrev$ é um espço de Banach, portanto é um espaço topológico com sua topologia gerada pela norma. Definindo $\fibradocaminhosexponenciais =\{(u, X): u \in \caminhosexponenciaisconectantesabrev,\; X \in L^{p}(\pullbackfibradotangenteM{u})\}$, temos que a tripla $
 	\fibradocaminhosexponenciaisabrev= (\fibradocaminhosexponenciais, \caminhosexponenciaisconectantesabrev, \pi)
@@ -1983,7 +2091,7 @@
 	$$ 
 	portanto $\mapafloerparametro{\caminhosexponenciaisconectantesabrev} \subset L^{p}(\pullbackfibradotangenteMpadrao)$ e o mapa de Floer esta bem-definido.
 	
-	\subsection{O diferencial de $\mapafloer$}
+	\section{O diferencial de $\mapafloer$}
 	\vermelho{Explicar o porque temos que tomar o diferencial do mapa de Floer.}
 	
 
@@ -2026,7 +2134,7 @@
 		Note que, ao mergulharmos a variedade $M$ em um espaço euclidiano com dimensão suficientemente grande, teremos $\nabla \mapafloer_{w}(\xi)=D\mapafloer_{w}(\xi)$, pois como vimos na Observação $\ref{observacao_conexao_afim}$, a conexão afim se reduz a derivadas parciais.
 	\end{observacao}
 	
-	\subsection{$\orbitasconectantespadrao = Ker(D\mapafloer)$}
+	\section{$\orbitasconectantespadrao = Ker(D\mapafloer)$}
 	Dado $x \in \solucoesperiodicascontrateis$ temos que $\dot{x}(t) = \campohamiltoniano{x(t)}$. Seja $y \in \solucoesperiodicascontrateis$ uma outra solução do sistema Hamiltoniano e suficientemente próxima a $x$. Realizando os mergulhos $\pullbackfibradotangenteM{x}, \pullbackfibradotangenteM{y} \subset \real{k}$, para um $k$ suficientemente grande, temos  $x(t), y(t) \in \real{k}$ para todo $t \in \circ$, logo existe $\xi:\real{}\to \real{k}$ talq ue $\xi(t)=x(t)-y(t)$, portanto
 	$$
 	\derivada{\xi(t)}{t} = \derivada{x(t)}{t} -\derivada{y(t)}{t} = \campohamiltoniano{x(t)} - \campohamiltoniano{y(t)} =\diferencialhamiltoniano{x(t)}(\xi(t)).
@@ -2049,7 +2157,7 @@
 	$$
 	Como $w \in \caminhosexponenciaisconectantespadrao$ é arbitraria, então 
 	 
-	\subsection{$D\mapafloer$ é um operador de Fredholm}
+	\section{$D\mapafloer$ é um operador de Fredholm}
 	A estratégia não é demonstrar diretamente que o diferencial do mapa de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o seguinte resultado  \vermelho{(COLOCAR A REFERENCIA DA PROPOSICAO)}
 
 	Para simplificar a notação, definiremos $\diferebcialmapafloerabrev = D\mapafloer_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
@@ -2283,114 +2391,7 @@
 	\end{aligned}
 	$$
 	Temso duas condições sobre $\beta$: a primeira é se $0<C\leq 1$, então $\beta<0$. A segunda é se $C>1$, então 
-	
-	\begin{comment}
-			\subsection{Definição do Índice de Maslov}
-			
-			\begin{definicao}
-				(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
-			\end{definicao}
-			
-			\begin{lema}\label{Sp2n_homotopia}
-				Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \mathbb{Z}$.
-			\end{lema}
-			
-			Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $D_{x(0)}\psi_{t}$ como sendo o diferencial de $\psi_{t}$ em $x(0)$, teremos
-			$$
-			\omega_{x(0)}(D_{x(0)}\psi_{t}X, D_{x(0)}\psi_{t}Y)=(\psi_{t})^{*}\omega_{x(t)}(X,Y) = \omega_{x(t)}(X,Y).
-			$$
-			
-			Seja $\Psi_{x}(t)$ a matriz do diferencial $D_{x(0)}\psi_{t}$ para daca $t\in S^{1}$. Como vimos anteriormente, $\psi_{t}$ é um simplectomorfismo, logo $\Psi_{x}(t) \in Sp(2n)$, além disso, temos uma famíla de bases suaves $e(t)$ de $T_{x(t)}M$ para cada $t \in \real{}$. Podemos definir a curva $\Psi_{x}:\real{} \to Sp(2n)$ tal que $\Psi_{x}(0) = Id$ e $det(Id-\Psi_{x}(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
-			
-			Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. Como as extensões $u,v:D^{2} \to M$ são aplicações contínuas e $D^{2}$ é compacto e contrátil, então pelo Corolário $\ref{pullback_contratil}$ temos que os pullbacks $u^{*}TM$ e $v^{*}TM$ são fibrados vetoriais triviais, além disso, ambas as extensões so aplicações homotópicas por construção, logo pelo Teorema $\ref{pullback_isomorfismo}$  $u^{*}TM \cong v^{*}TM$.
-			
-			Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$ e $\Psi_{x}(t), \Psi'_{x}(t)$ as matrizes do diferencial nas respectivas bases. Por definição temos $\Psi_{x}, \Psi_{x}' \in \mathcal{S}$ tal que $\Psi_{x} \simeq \Psi'_{x}$, isto é, \vermelho{são curvas homotópicas em $\mathcal{S}$}. Com isso, consequimos associar a cada solução 1-periódica dos sistema Hamiltoniano a uma curva $\Psi_{x} \in \mathcal{S}$ a menos de uma homotopia da seguinte forma $\hat{\Psi}_{t}:\solucoesperiodicascontrateis \to \mathcal{S}$ tal que $\hat{\Psi}_{t}(x) = \Psi_{x}(t)$.
-			
-			O seguinte resultado será utlizado nas demais construções do índice de Maslov.
-			
-			\begin{teorema}
-				Para cada $n \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
-				\begin{enumerate}
-					\item Naturalidade: se $Q, T \in Sp(2n)$, então 
-					$$\rho(TQT^{-1}) = \rho(Q).$$
-					\item Produto: Se $Q\in Sp(2m)$ e $T\in Sp(2n)$, então
-					$$
-					\rho
-					\begin{pmatrix} 
-					Q & 0 
-					\\ 
-					0 & T
-					\end{pmatrix}
-					= \rho(Q)\rho(T).
-					$$
-					\item Deteminante: Se $Q \in U(n) = Sp(2n) \bigcap O(2n)$, então
-					$$
-					\rho(Q) = det_{\mathbb{C}}(X+iY), \; \text{onde} \; Q = 
-					\begin{pmatrix} 
-					X & -Y 
-					\\ 
-					Y & X
-					\end{pmatrix}.
-					$$ 
-					Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \mathbb{Z}.$
-					\item Normalização: Se os auto-valores de $Q$ são todos reais, então
-					$$
-					\rho(Q) = (-1)^{m_{0}/2},
-					$$
-					onde $m_{0}$ é a multiplicidade dos auto-valores reais negativos.
-					\item $\rho(Q^{t}) = \rho(Q^{-1}) = \overline{\rho(Q)}$.
-				\end{enumerate}
-			\end{teorema}
-			
-			Vejamos que $Sp(2n)^{*} \subset Sp(2n)$ é um subconjunto aberto, e que $\Sigma = \{T\in Sp(2n): det(Id-T)=0\} = Sp(2n)\backslash Sp(2n)^{*}$ é um conjunto fechado, além disso $Sp(2n)^{*} = Sp(2n)^{+}\cup Sp(2n)^{-}$ onde $Sp(2n)^{+}=\{T\in Sp(2n)^{*}: det(Id-T)>0\} $ e $Sp(2n)^{-}=\{T\in Sp(2n)^{*}: det(Id-T)<0\}$ são ambos subconjutos abertos, portanto $Sp(2n)^{*}$ é disconexo. O resultado abaixo nos diz um pouco da topologia de $Sp(2n)^{*}$:
-			
-			\begin{lema}
-				O conjunto aberto $Sp(2n)^{*}$ possui duas compenentes conexas $Sp(2n)^{\pm}$, além disso, a inclusão de cada uma dessas componentes em $Sp(2n)$ induz o homomorsfismo trivial entre seus grupos fundamentais, isto é, definindo as inclusões $i_{\pm}:Sp(2n)^{\pm} \hookrightarrow Sp(2n)$, então $(i_{\pm})_{\#}:\pi_{1}(Sp(2n)^{\pm}) \hookrightarrow \pi_{1}(Sp(2n))$ é tal que $(i_{\pm})_{\#}=0$. 
-			\end{lema}
-			
-			\begin{definicao}
-				(Índice de Maslov de uma curva) Sejam $exp:\real{} \to S^{1} \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
-				$$
-				\xymatrix{
-					& & \real{}\ar[d]\ar[d]^{\text{exp}}
-					\\
-					[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
-				}
-				$$	
-				Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Seja $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ (sua homotopia esta bem-definida) com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
-				Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
-				$$
-				\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
-				$$
-				Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
-			\end{definicao}
-			
-			O teorema e corolário abaixo nos oferece uma mecânismo de cálculo para o índice de Maslov na aplicação do formalismo.
-			
-			\begin{teorema}
-				Fixando $W^{\pm} \in Sp(2n)^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
-				\begin{enumerate}
-					\item $\mu(\psi) \in \mathbb{Z}$.
-					\item Duas curvas $\alpha, \beta \in \mathcal{S}$ são homotópicas se, e somente se, $\mu(\alpha) = \mu(\beta)$.
-					\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
-					\item Se $S \in GL(2n)$ com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
-					$$
-					\mu(\psi) = Ind(S) - n,
-					$$
-					onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
-				\end{enumerate}
-			\end{teorema}
-			
-			No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $\solucoesperiodicascontrateis$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
-			
-			\begin{corolario}
-				Sejam $(M, \omega)$ uma 2n-variedade simplectica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$, pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
-				$$
-				\mu(x) = Ind(x) - n.
-				$$
-			\end{corolario}	
-	\end{comment}
-	
+		
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
 	
@@ -2400,7 +2401,7 @@
 	
 	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
 	
-	\subsection{Definições}
+	\section{Definições}
 	Seja $C = C(M, \mathbb{Z}_{2})$ o espaço vetorial sobre o corpo $\mathbb{Z}_{2}$ e gerado pelos elementos de $\solucoesperiodicascontrateis$. Esse espaço é graduado pela função $m$, de modo que
 	$$
 	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \mathbb{Z}_{2}) = \text{span}\{x \in \solucoesperiodicascontrateis:m(x)=k \}.
