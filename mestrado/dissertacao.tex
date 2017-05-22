@@ -50,6 +50,7 @@
 \newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo, M)}
 \newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
 \newcommand{\bigparenteses}[1]{\big( #1 \big) }
+\newcommand{\caminhos}[3]{\mathcal{L}([#1, #2]; #3)}
 \newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
 \newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
@@ -58,6 +59,7 @@
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhospontobase}[1]{\mathcal{L}_{#1}}
+\newcommand{\caminhossempontobase}[1]{\mathcal{L}(#1)}
 \newcommand{\caminhospontobasegeral}[2]{\mathcal{L}_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
@@ -81,6 +83,7 @@
 \newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
 \newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
 \newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
 \newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
 \newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
 \newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
@@ -113,6 +116,7 @@
 \newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
 \newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
+\newcommand{\inteiros}{\mathbb{Z}}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
 \newcommand{\mapafloer}{\mathcal{F}}
@@ -172,19 +176,19 @@
 	
 	\chapter{CW-Homologia}
 	\section{Homologia Formal}
-	Sejam A um anel comutativo com unidade, $C_{k}$ com $k \in \mathbb{Z}$ $A$-módulos e $f_{k,q}: C_{k} \to C_{k-q} $ homomorfismos de grau q (homomorsfismos graduados), então denotamos por complexo de cadeias a sequência $\mathcal{C} = (C_{k}, f_{k,q})$. Cada elemento $\alpha \in C_{k}$ é chamado k-cadeia. Nos homologias que iremos construir trataremos apenas dos homomorfismos de grau 1 e a notação será abreviada por $f_{k} = f_{k,1} \; \forall k \in \mathbb{Z}$.
+	Sejam A um anel comutativo com unidade, $C_{k}$ com $k \in \inteiros$ $A$-módulos e $f_{k,q}: C_{k} \to C_{k-q} $ homomorfismos de grau q (homomorsfismos graduados), então denotamos por complexo de cadeias a sequência $\mathcal{C} = (C_{k}, f_{k,q})$. Cada elemento $\alpha \in C_{k}$ é chamado k-cadeia. Nos homologias que iremos construir trataremos apenas dos homomorfismos de grau 1 e a notação será abreviada por $f_{k} = f_{k,1} \; \forall k \in \inteiros$.
 	
 	\begin{definicao}
-		(A-módulo de homologia) Seja $\mathcal{C} = (C_{k}, \partial_{k})$ um complexo de cadeias sobre o anel $A$. Chamamos o homomorfismo $\partial_{k}: C_{k} \to C_{k-1} $ de operador de bordo. Dados $\alpha \in C_{k}$, $\beta \in C_{k-1}$  é um k-ciclo se $\partial_{k }\alpha=0$ e se $\beta =  \partial_{k }\alpha$ dizemos que $\beta \in C_{k-1}$ é um (k-1)-bordo da k-cadeia $\alpha$. O A-módulo de todos os k-cíclos denotamos por $Z_{p} \subseteq C_{p}$ e o  A-módulo de todos os k-bordos por $B_{p} \subseteq C_{p}$. O A-módulo quociente $H_{k} = Z_{k} / B_{k}$ é chamado grupo de homologia k-dimensional, onde $[\alpha] \in H_{k}$ é tal que $[\alpha] = \{\alpha+\partial_{k+1}\gamma :\gamma \in  C_{k+1}\}$ = $\alpha + B_{k}$. A homologia do complexo de cadeias $\mathcal{C}$ é denotado pela soma formal $H_{*}(\mathcal{C}) = \bigoplus_{k \in \mathbb{Z}} H_{k}(\mathcal{C})$.
+		(A-módulo de homologia) Seja $\mathcal{C} = (C_{k}, \partial_{k})$ um complexo de cadeias sobre o anel $A$. Chamamos o homomorfismo $\partial_{k}: C_{k} \to C_{k-1} $ de operador de bordo. Dados $\alpha \in C_{k}$, $\beta \in C_{k-1}$  é um k-ciclo se $\partial_{k }\alpha=0$ e se $\beta =  \partial_{k }\alpha$ dizemos que $\beta \in C_{k-1}$ é um (k-1)-bordo da k-cadeia $\alpha$. O A-módulo de todos os k-cíclos denotamos por $Z_{p} \subseteq C_{p}$ e o  A-módulo de todos os k-bordos por $B_{p} \subseteq C_{p}$. O A-módulo quociente $H_{k} = Z_{k} / B_{k}$ é chamado grupo de homologia k-dimensional, onde $[\alpha] \in H_{k}$ é tal que $[\alpha] = \{\alpha+\partial_{k+1}\gamma :\gamma \in  C_{k+1}\}$ = $\alpha + B_{k}$. A homologia do complexo de cadeias $\mathcal{C}$ é denotado pela soma formal $H_{*}(\mathcal{C}) = \bigoplus_{k \in \inteiros} H_{k}(\mathcal{C})$.
 	\end{definicao}
 	
 	A partir desse momento omitiremos a indexação dimensional do operador bordo dos complexos de cadeia, sendo que a dimensão estará implícita no contexto. Sejam $\mathcal{C}, \mathcal{D}$ dois complexos de cadeias, um morfismo $f: \mathcal{C} \to \mathcal{D}$ é uma sequência de homomorfismos $f_{k}: C_{k} \to D_{k}$ tais que $f_{k-1}\circ\partial = \partial\circ f_{k}$, ou seja, comutam com o operador bordo. Uma consequência imediata dessa definição é que $f_{k}(Z_{k}(\mathcal{C})) \subseteq Z_{k}(\mathcal{D})$ e $f_{k}(B_{k}(\mathcal{C})) \subseteq B_{k}(\mathcal{D})$, ou seja, leva ciclos em ciclos e bordos em bordos. Podemos definir na passagem ao quociente o homomorfismo $(f_{k})_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ tal que $(f_{k})_{*}([\alpha]) = [f_{k}(\alpha)]$, que por brevidade denotaremos $f_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ o homomorfismo induzido pelos morfismos de cadeias.
 	
 	\begin{definicao}
-		(Sequências exatas) Seja $(M_{k}, f_{k})$ uma sequência de $A$-módulos e homomorfismos $f_{k}:M_{k}\to M_{k-1}$. Diremos que essa sequência é exata quando $Im(f_{k})=Ker(f_{k-1}) \; \forall k \in \mathbb{Z}$.
+		(Sequências exatas) Seja $(M_{k}, f_{k})$ uma sequência de $A$-módulos e homomorfismos $f_{k}:M_{k}\to M_{k-1}$. Diremos que essa sequência é exata quando $Im(f_{k})=Ker(f_{k-1}) \; \forall k \in \inteiros$.
 	\end{definicao}
 	
-	Seja $(M_{k}, f_{k})$ uma sequência exata, e tomemos um $k \in \mathbb{Z}$. Por definição $Im(f_{k}) = Ker(f_{k-1})$ e suponha que $f_{k-1}$ seja injetivo, então $Ker(f_{k-1}) = 0$ e $Im(f_{k}) = 0$, portanto $f_{k} = 0$. Por outro lado, suponha que $f_{k}$ seja sobrejetor, então $Im(f_{k}) = M_{k-1}$ e $Ker(f_{k-1})=M_{k-1}$, portanto $f_{k-1} = 0$. Usaremos essa caracterização em alguns resultados adiante.
+	Seja $(M_{k}, f_{k})$ uma sequência exata, e tomemos um $k \in \inteiros$. Por definição $Im(f_{k}) = Ker(f_{k-1})$ e suponha que $f_{k-1}$ seja injetivo, então $Ker(f_{k-1}) = 0$ e $Im(f_{k}) = 0$, portanto $f_{k} = 0$. Por outro lado, suponha que $f_{k}$ seja sobrejetor, então $Im(f_{k}) = M_{k-1}$ e $Ker(f_{k-1})=M_{k-1}$, portanto $f_{k-1} = 0$. Usaremos essa caracterização em alguns resultados adiante.
 	
 	\section{Homologia singular}
 	Para as próximas definições denotaresmo $X$ como um espaço topológico e $A$ um anel, então:
@@ -198,7 +202,7 @@
 	Pode-se mostrar que o operador bordo satisfaz $\partial_{k-1}\circ\partial_{k} = 0$, ou seja, é o homomorfismo trivial. Com isso, podemos definir o complexo singular o espaço $X$ como sendo a sequência $\mathcal{S} = (S_{k}(X), \partial_{k})$. Desse modo teremos os k-clíclos e os (k-1)-bordos tal que, dado $\alpha \in S_{k}$ e $\beta \in S_{k-1}$, se $\partial\alpha = 0$, então $\alpha \in Z_{k}(X)$ (o A-módulo dos k-cíclos) e se $\beta = \partial\alpha$, então $\beta\in B_{k-1}(X)$ (o A-módulo dos (k-1)-bordos).
 	
 	\begin{definicao}
-		(Homologia singular) O grupo de homologia k-dimensional de X é definido por $H_{k}(S(X)) = Z_{k}(S(X))/B_{k}(S(X))$, que por abreviação denotaremos $H_{k}(X)=H_{k}(S(X))$. A homologia do complexo singular de $X$ é definida pela soma formal $H_{*}(X) = \bigoplus_{k \in \mathbb{Z}}H_{k}(X)$.
+		(Homologia singular) O grupo de homologia k-dimensional de X é definido por $H_{k}(S(X)) = Z_{k}(S(X))/B_{k}(S(X))$, que por abreviação denotaremos $H_{k}(X)=H_{k}(S(X))$. A homologia do complexo singular de $X$ é definida pela soma formal $H_{*}(X) = \bigoplus_{k \in \inteiros}H_{k}(X)$.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -402,7 +406,7 @@
 	\begin{teorema}
 		(CW-homologia) Seja $X$ um CW-complexo, então existe uma identificação natural entre a homologia do complexo de cadeia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
 		$$
-		\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \mathbb{Z}.
+		\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
 		$$
 	\end{teorema}
 	\begin{proof}
@@ -592,8 +596,8 @@
 		Se $X$ é um espaço topológico conexo por caminhos, então $\grupofundamentalpontobase{X}{p} \cong \grupofundamentalpontobase{X}{q}$ para quaisquer $p,q \in X$.
 	\end{teorema}
 	
-	\begin{observacao}
-		No caso em que $X$ seja um espaço espaços topológico conexo por caminhos denotaremos $\grupofundamental{X}=\grupofundamentalpontobase{X}{p}$.
+	\begin{observacao}\label{observacao_grupo_funcamental_sem_ponto_base}
+		No caso em que $X$ seja um espaço espaços topológico conexo por caminhos denotaremos $\grupofundamental{X}=\grupofundamentalpontobase{X}{p}$ e $\caminhossempontobase{X}=\caminhospontobasegeral{p}{X}$.
 	\end{observacao}
 	
 	\section{Homomorfismos induzidos}
@@ -624,7 +628,7 @@
 		O seguinte resultato, e fundamental na determinação do grupo fundamental de várias aplicações é o cálculo do grupo fundamental de $\circulo$, cuja demonstração pode ser encontrada em $\cite{massey}$.
 		
 		\begin{teorema}\label{teorema_grupo_fundamental_circulo}
-			(Grupo fundamental de $\circulo$) O grupo fundamental $\grupofundamental{\circulo}$ e $\mathbb{Z}$ são isomorfos.
+			(Grupo fundamental de $\circulo$) O grupo fundamental $\grupofundamental{\circulo}$ e $\inteiros$ são isomorfos.
 		\end{teorema} 
 		
 		Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então podemos construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
@@ -644,7 +648,7 @@
 		\end{prova}
 		
 		\section{Grau de Aplicação}
-		O grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\mathbb{Z}$. Com isso, a cada caminho fechado $\gamma:[0,1] \to S^{1}$ podemos associar um número $deg(\gamma) \in \mathbb{Z}$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\mathbb{Z}$.
+		O grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Com isso, a cada caminho fechado $\gamma:[0,1] \to S^{1}$ podemos associar um número $deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
 		
 		A proposição a seguir é de grande relevência para o restante do texto e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
 		
@@ -660,16 +664,16 @@
 		\end{proposicao}
 		
 		\begin{proposicao}\label{proposicao_grau_aplicacao}
-			(O grau de uma caminhos fechado) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \mathbb{Z}$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Então $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamdo grau do caminho $\gamma$. Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
+			(O grau de uma caminhos fechado) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Então $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamdo grau do caminho $\gamma$. Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
 			\begin{enumerate}
-				\item $deg(\caminhospontobasegeral{p}{\circulo}) = \mathbb{Z}$, além disso, se $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = 1$.
+				\item $deg(\caminhospontobasegeral{p}{\circulo}) = \inteiros$, além disso, se $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = 1$.
 				\item $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$.
 				\item Se $\gamma\sim \beta$ se, e somente se, $deg(\gamma)=deg(\beta)$
 			\end{enumerate}
 		\end{proposicao}
 		\begin{prova}
 			\begin{enumerate}
-				\item Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$, pela proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \mathbb{Z}$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \mathbb{Z}$ e $deg$ esta bem-definida. Supondo que $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = (2\pi -0)/2\pi =1$. Dado $k \in \mathbb{Z}$ e supondo que $\beta(t) = e^{i2\pi kt}$ temos $deg(\beta) = k$, logo $deg$ é sobrejetora e $deg(\caminhospontobasegeral{p}{\circulo}) = \mathbb{Z}$.
+				\item Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$, pela proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \inteiros$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \inteiros$ e $deg$ esta bem-definida. Supondo que $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = (2\pi -0)/2\pi =1$. Dado $k \in \inteiros$ e supondo que $\beta(t) = e^{i2\pi kt}$ temos $deg(\beta) = k$, logo $deg$ é sobrejetora e $deg(\caminhospontobasegeral{p}{\circulo}) = \inteiros$.
 				\item Suponha que $\gamma$ e $\beta$ sejam tais que $\gamma(1)= \beta(0) = p$ e que $\alpha$ e $\lambda$ sejam seus respectivos levatamentos, então temos que $\alpha(1) = \lambda(0)$. Pelo produto entre caminhos temos $(\gamma*\beta)(t) = e^{i\alpha(2t)}$ para $0\leq t\leq 1/2$ e  $(\gamma*\beta)(t) = e^{i\lambda(2t - 1)}$ para $1/2\leq t\leq 1$. Logo 
 				$$
 				\begin{aligned}
@@ -718,15 +722,15 @@
 			(Grupo fundamental $\grupofundamental{\real{n}}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
 		\end{exemplo}
 		\begin{exemplo}
-			(Grupo fundamental $\grupofundamental{T^{2}}$ do 2-toro) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \mathbb{Z} \times \mathbb{Z}$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
+			(Grupo fundamental $\grupofundamental{T^{2}}$ do 2-toro) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \inteiros \times \inteiros$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
 		\end{exemplo}
 		
 		\begin{exemplo}\label{exemplo_grupo_fundamental_plano_furo}
-			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X} \cong \mathbb{Z}$.
+			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
 		\end{exemplo}
 		
 		\begin{exemplo}
-			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $\real{2} \ni r=(0,0)$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \mathbb{Z}$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \mathbb{Z}\times\mathbb{Z}$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \mathbb{Z}\times\mathbb{Z}$.
+			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $\real{2} \ni r=(0,0)$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
 		\end{exemplo}
 		
 	\chapter{Teoria de Morse}
@@ -772,7 +776,7 @@
 	\section{Desigualdades de Morse}
 	
 	\begin{teorema}
-		(Teorema de Euler-Poincaré) Seja $(C_{*}, \partial_{*})$ um complexo de cadeia finitamente gerado com $C_{k} = 0$ para $k>m>0$ e algum $m \in \mathbb{Z}$. Definindo $c_{k} = dim(C_{k})$ e $b_{k} = dim(\homologia{k}{C_{*}})$ para $0 \leq k \leq m$, então
+		(Teorema de Euler-Poincaré) Seja $(C_{*}, \partial_{*})$ um complexo de cadeia finitamente gerado com $C_{k} = 0$ para $k>m>0$ e algum $m \in \inteiros$. Definindo $c_{k} = dim(C_{k})$ e $b_{k} = dim(\homologia{k}{C_{*}})$ para $0 \leq k \leq m$, então
 		$$
 		\sum_{k=0}^{m}(-1)^{k}c_{k} = \sum_{k=0}^{m}(-1)^{k}b_{k}.
 		$$
@@ -815,7 +819,7 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		(Base simplética) Seja $(V, \omega)$ um 2n-espço vetorial simplético, então uma base simplética é uma base $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
+		(Base simplética) Seja $(V, \omega)$ um 2n-espaço vetorial simplético, então uma base simplética é uma base $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
 		$$
 		\omega(e_{i}, e_{j}) = \omega(f_{i}, f_{j}) = 0, \; \omega(e_{i}, f_{j}) = \delta_{ij}.
 		$$
@@ -827,6 +831,34 @@
 	\begin{exemplo}
 		Seja $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $w=dx \wedge dy$. Então $\omega(e_{x}, e_{y}) = (dx \wedge dy)(e_{x}, e_{y}) = dx\otimes dy(e_{x}, e_{y})-dy\otimes dx(e_{x}, e_{y}) =dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1$. Por outro lado, $\omega(e_{y}, e_{x}) =dx(e_{y}) dy(e_{x}) - dx(e_{x}) dy(e_{y}) =-1 =-\omega(e_{x}, e_{y})$, logo é anti-simetrica. Além disso, $\omega(e_{x}, e_{x}) = \omega(e_{y}, e_{y}) = 0$. Fixando $v \in V$ e para qualquer $u \in V$ temos que $\omega(v, u) = \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y}) = v_{x}u_{y}\omega(e_{x}, e_{y}) +v_{y}u_{x}\omega(e_{y}, e_{x}) = v_{x}u_{y} -v_{y}u_{x} = 0$ se, e somente se, $v_{x}=v_{y}=0$, logo $\omega$ é não-degenerada. Para ver isso basta tomar $u_{x} = 1$ e $u_{y} = 0$, isso implica que $v_{y} = 0$. Fazendo $u_{x} = 0$ e $u_{y} = 1$ teremos $v_{x} = 0$, logo $v=0$. Seja $\varphi:V \to V$ tal que $\varphi(v) = -v$. Como $\varphi$ é um operador de reflexão, então é um isomorfismo. Definido $\varphi^{*}\omega(v, u) = \omega(Av, Au)$, então $\varphi^{*}\omega(v, u) = \omega(Av, Au)=\omega(-v, -u)=\omega(v, u)$, logo $\varphi^{*}\omega = \omega$ e $\varphi$ é um simplectomorfismo.
 	\end{exemplo}
+	
+	\begin{definicao}\label{definicao_subespaco_simpletico_ortogonais}
+		(Espaços $\omega$-ortogonais) Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial simplético. Então o complemento $\omega$-ortogonal de $W$ é o subespaço vetorial simplético
+		$$
+		W^{\omega} = \{v\in V: \omega(v,u) = 0,\;\forall u\in W \}.
+		$$
+		Além disso, $W$ pode ser classificado de acordo com as seguintes características
+		\begin{enumerate}
+			\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = 0$
+			\item \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
+			\item \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
+			\item \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
+		\end{enumerate}
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_subespaco_simpletico_ortogonal}
+		Temos as sequintes caracterizações: 1) se $W$ é isotrópico, então dado $v \in W \subseteq \espacoSimpleticoOrtogonal{W}$ temos $\omega(v,u) = 0$ para todo $u\in \espacoSimpleticoOrtogonal{W}$. Supondo $v=u \in W$, então $\omega(v,v) = 0$. Como vale para todo $v\in W$, então $\omega|_{W}: W\times W \to \reta$ é a aplicação nula. \vermelho{2) se $W$ é lagrangiano, então $???$}. 3) se $W$ é simplético, então dado $v \in W$ temos $\omega(v, u) = 0$ para $u\in \espacoSimpleticoOrtogonal{W}$ se, e somente se, $v=u=0$, portanto $\omega(v,u \neq 0)$ de outra forma, logo $\omega|_{W}$ é não-degenerada e $(W, \omega|_{W})$ é um subespaço vetorial simplético.
+	\end{observacao}
+	
+	Não há garantias de que sempre tenhamos $V = W\oplus\espacoSimpleticoOrtogonal{W}$. Contudo, a proposição abaixo nos dá uma relação entre suas dimensões.
+	
+	\begin{proposicao}
+		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
+	\end{proposicao}
+	\begin{prova}
+		Seja $\omega^{*}: V \to V^{*}$ tal que $\omega^{*}(v)(u) = \omega(v,u)$. Pode-se verificar em $\cite{hoffman_kunze}$ que $\omega^{*}$ é um isomorfimo. Seja $W^{\circ}=\{f\in W^{*}: f(v) = 0,\; \forall v\in W \}$ o anulador de $W$. Tomando $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ temos $f(u) = \omega^{*}(v)(u)=\omega(v,u)$, para algum $v \in \espacoSimpleticoOrtogonal{W}$. Se $u\in W$, então $f(u) = 0$. Portanto $f \in W^{\circ}$ e  $\omega^{*}(\espacoSimpleticoOrtogonal{W})\subseteq W^{\circ}$. Por outro lado, seja $f \in W^{\circ}$. Como $\omega^{*}$ é um isomorfismo, entao existe $v \in v$ tal que $f = \omega^{*}(v)$, logo $0=f(u) = \omega^{*}(v)(u) = \omega(v,u)$, o que imlpica que $v \in \espacoSimpleticoOrtogonal{W}$. Portanto, $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ e $W^{\circ} \subseteq \omega^{*}(\espacoSimpleticoOrtogonal{W})$. Logo $W^{\circ} =\omega^{*}(\espacoSimpleticoOrtogonal{W})$.
+		Como $\omega^{*}$ é um isomorfismo, então $dim(\espacoSimpleticoOrtogonal{W}) = dim(\omega^{*}(\espacoSimpleticoOrtogonal{W}))$. Pelo teorema da dimensão do espaço anulador (veja em \cite{hoffman_kunze}) temos que $dim(V) = dim(W)+dim(W^{\circ}) = dim(W)+dim(\omega^{*}(\espacoSimpleticoOrtogonal{W})) = dim(W)+dim(\espacoSimpleticoOrtogonal{W})$. 
+	\end{prova}
 	
 	\begin{teorema}
 		\vermelho{Todo espaço vetorial simpético de dimensão finita possui uma base simplética.}
@@ -1360,7 +1392,7 @@
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
-		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \mathbb{Z}$. Aqui esta a importância da conexidade. Supondo que $\gruposimpletico{2n}$ tivesse duas componentes conexas, então poderiamos ter $\grupofundamental{\gruposimpletico{2n}} \cong \mathbb{Z} \times \mathbb{Z}$, o que inviabilizaria a construção da homologia de Floer abordade no texto.
+		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Aqui esta a importância da conexidade. Supondo que $\gruposimpletico{2n}$ tivesse duas componentes conexas, então poderiamos ter $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros \times \inteiros$, o que inviabilizaria a construção da homologia de Floer abordade no texto.
 	\end{observacao}
 	
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
@@ -1427,13 +1459,49 @@
 	\end{prova}			
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
+	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existem uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+
+	\section{A Axiomatização}
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\caminhos{a}{b}{V}= \{\gamma:[a,b]\to \mathcal{V} \times \mathcal{V} \}$ o conjunto de todos os caminho contínuos e suaves por parte em $V$ onde $\mathcal{V}$ é o conjunto dos subespaços Lagrangianos de $V$ (veja a Definição $\ref{definicao_subespaco_simpletico_ortogonais}$). Como topologia de $\caminhos{a}{b}{V}$ vamos \vermelho{adotar a topologia compacto-aberta (PRECISO DEFINIR).} O índice de Maslov é a aplicação $\mu:\caminhos{a}{b}{V}\to \inteiros$ satisfazendo as seguintes propriedades:
+	\begin{enumerate}
+		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhos{ak+l}{bk+l}{V}$ temos que 
+		$$
+			\mu(\gamma) = \mu(\gamma\circ g).
+		$$
+		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhos{a}{b}{V}$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
+		$$
+			\mu(\gamma) = \mu(\beta).
+		$$
+		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhos{a}{c}{V}$, então $$
+			\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
+		$$
+		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $\gamma \in \caminhos{a}{b}{V}$ e $\gamma' \in \caminhos{a}{b}{V'}$. Defina $\gamma\oplus\gamma' \in \caminhos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
+		$$
+			\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
+		$$
+		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhos{a}{b}{V}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simpléctomorfimos. Defina $\phi_{*}:\caminhos{a}{b}{V}\to \caminhos{a}{b}{V}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t)(L_{1}(t)), \phi(t)(L_{2}(t)))$. Então 
+		$$
+			\mu(\phi_{*}\gamma)) = \mu(\gamma)).
+		$$
+		\item \textbf{\textit{(Normalização)}} Seja $\mathbb{C} = \real{2}$ o espaço vetorial simplético munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=(v_{1},v_{2}),u (u_{1},u_{2})\in \real{2}$. Defina $\gamma \in \caminhos{-\pi/4}{\pi/4}{\real{2}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
+			\begin{enumerate}
+				\item $\mu(\gamma|_{-\pi/4, \pi/4}) = 1;$
+				\item $\mu(\gamma|_{-\pi/4, 0}) = 0;$
+				\item $\mu(\gamma|_{0, \pi/4}) = 1.$	
+			\end{enumerate}
+			\begin{observacao}
+				Uma discussão mais extensa e contendo diagramas esquemáticos pode ser encontrada em $\cite{cappell_maslov_index_equivalencia}$.
+			\end{observacao}
+	\end{enumerate}
+	
+
 	
 	\begin{definicao}
 		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
 	\end{definicao}
 	
 	\begin{lema}\label{Sp2n_homotopia}
-		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \mathbb{Z}$.
+		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \inteiros$.
 	\end{lema}
 	
 	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $D_{x(0)}\psi_{t}$ como sendo o diferencial de $\psi_{t}$ em $x(0)$, teremos
@@ -1473,7 +1541,7 @@
 			Y & X
 			\end{pmatrix}.
 			$$ 
-			Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \mathbb{Z}.$
+			Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \inteiros.$
 			\item Normalização: Se os auto-valores de $Q$ são todos reais, então
 			$$
 			\rho(Q) = (-1)^{m_{0}/2},
@@ -1511,7 +1579,7 @@
 	\begin{teorema}
 		Fixando $W^{\pm} \in Sp(2n)^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
 		\begin{enumerate}
-			\item $\mu(\psi) \in \mathbb{Z}$.
+			\item $\mu(\psi) \in \inteiros$.
 			\item Duas curvas $\alpha, \beta \in \mathcal{S}$ são homotópicas se, e somente se, $\mu(\alpha) = \mu(\beta)$.
 			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
 			\item Se $S \in GL(2n)$ com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
@@ -1536,9 +1604,9 @@
 	\chapter{Índice de Maslov - ???}
 	Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
 	
-	Sejam $\caminhosfechadosSp{0}{1}$ o conjuntos dos caminhos fechados em $S^{1}$ e $\gamma \in \caminhosfechadosSp{0}{1}$, então temos que aplicação $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ é contínua pois é a composição de aplicações contínuas, portanto $\rho_{\gamma} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \mathbb{Z}$. Definimos como o índice de Maslov como sendo a aplicação $\mu:\caminhosfechadosSp{0}{1} \to \mathbb{Z}$ tal que:
+	Sejam $\caminhosfechadosSp{0}{1}$ o conjuntos dos caminhos fechados em $S^{1}$ e $\gamma \in \caminhosfechadosSp{0}{1}$, então temos que aplicação $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ é contínua pois é a composição de aplicações contínuas, portanto $\rho_{\gamma} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \inteiros$. Definimos como o índice de Maslov como sendo a aplicação $\mu:\caminhosfechadosSp{0}{1} \to \inteiros$ tal que:
 	$$
-	\mu(\gamma) = deg(\rho \circ \gamma) = deg(\rho_{\gamma}) \in \mathbb{Z}.
+	\mu(\gamma) = deg(\rho \circ \gamma) = deg(\rho_{\gamma}) \in \inteiros.
 	$$
 
 	O diagrama abaixo representa o índice de Maslov $\mu(\gamma)$ de um caminho $\gamma \in \caminhosfechadosSp{0}{1}$:
@@ -1551,7 +1619,7 @@
 	\xymatrix{
 		& &
 		\\
-		\caminhosfechadoscirculo{0}{1}\ar[rr]_{\mu} & & \mathbb{Z} 
+		\caminhosfechadoscirculo{0}{1}\ar[rr]_{\mu} & & \inteiros 
 	}
 	$$
 
@@ -1794,7 +1862,7 @@
 		\mu(z,y) + \mu(y,x) = \mu(y,x), \; \mu(x,x) = 0.   
 		$$
 	\end{lema}
-	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \mathbb{Z}$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \mathbb{Z}$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : \solucoesperiodicascontrateis \to \mathbb{Z}$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
+	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \inteiros$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \inteiros$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : \solucoesperiodicascontrateis \to \inteiros$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
 	$$
 	k = ind(F_{u}) = m(y)-m(x).
 	$$
@@ -2402,9 +2470,9 @@
 	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
 	
 	\section{Definições}
-	Seja $C = C(M, \mathbb{Z}_{2})$ o espaço vetorial sobre o corpo $\mathbb{Z}_{2}$ e gerado pelos elementos de $\solucoesperiodicascontrateis$. Esse espaço é graduado pela função $m$, de modo que
+	Seja $C = C(M, \inteiros_{2})$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos de $\solucoesperiodicascontrateis$. Esse espaço é graduado pela função $m$, de modo que
 	$$
-	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \mathbb{Z}_{2}) = \text{span}\{x \in \solucoesperiodicascontrateis:m(x)=k \}.
+	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \inteiros_{2}) = \text{span}\{x \in \solucoesperiodicascontrateis:m(x)=k \}.
 	$$
 	Segue-se da compacidade e da estruta de variedade diferenciável que $\mathcal{M}(y,x)$ possui um número finito de elementos sempre que $ m(y)-m(x)=1 = dim(\mathcal{M}(y,x))$. Com esse fato podemos construir o operador bordo $\partial : C_{k+1} \to C_{k}$ tal que
 	$$
@@ -2412,7 +2480,7 @@
 	$$
 	onde $n_{k}(x)$ é o número de componentes de $\mathcal{M}(y,x)$ módulo 2. Posteriormente Floer demonstra que $\partial^{2}=0$, assim $(C,\partial)$ define um complexo de cadeias e a homologia
 	$$
-	HF_{*}(M, \mathbb{Z}_{2}) = \frac{Ker(\partial)}{Im(\partial)}
+	HF_{*}(M, \inteiros_{2}) = \frac{Ker(\partial)}{Im(\partial)}
 	$$
 	é chamada homologia de Floer.
 	
@@ -2421,11 +2489,11 @@
 	\begin{teorema}
 		Sejam $(H,J)$ e $(H',J')$ pares regulares, isto é, $J, J' \in J_{reg}$, respeticamente, então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
 		$$
-		HF_{*}(M,\mathbb{Z}_{2};H,J) \cong HF_{*}(M,\mathbb{Z}_{2};H',J'). 
+		HF_{*}(M,\inteiros_{2};H,J) \cong HF_{*}(M,\inteiros_{2};H',J'). 
 		$$
 		Além disso, existe um isomorfismo natural entre a homologia de Floer e a homologia singular de $M$
 		$$
-		HF_{*}(M,\mathbb{Z}_{2};H,J) \cong H_{*}(M;\mathbb{Z}_{2}). 
+		HF_{*}(M,\inteiros_{2};H,J) \cong H_{*}(M;\inteiros_{2}). 
 		$$
 		
 	\end{teorema}
@@ -2442,6 +2510,10 @@
 		\emph{Functional Analysis, Sobolev Spaces and Partial Differential Equantions},
 		Springer, first edition,
 		2011.
+		
+		\bibitem{cappell_maslov_index_equivalencia}
+		Cappell, Sylvain E.; Lee, Ronnie; Miller, Edward Y.
+		\emph{On Masvlov Index}, Communication on Pure and Applied Mathematics, Vol. XLVII, 121-186 (1994).
 		
 		\bibitem{manfredo_riemannian_geo}
 		Do Carmo, Manfredo P.:
