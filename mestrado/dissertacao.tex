@@ -94,6 +94,8 @@
 \newcommand{\estruturascomplexaspadrao}{\mathcal{J}(V, \omega)}
 \newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-1}, x^{+})}
 \newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
+\newcommand{\formaSimpletica}[2]{\omega(#1, #2)}
+\newcommand{\formaSimpleticaPadrao}[2]{\omega_{0}(#1, #2)}
 \newcommand{\funcaocond}[5]{
 	#1 = 
 	\left\{
@@ -1459,9 +1461,19 @@
 	\end{prova}			
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
-	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existem uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	\section{Motivação}
+	Temos como hipótese um sistema Hamiltoniano dependente do tempo e 1-periódico, isto é, uma função Hamiltoniana $H:M\times \circulo \to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano e definido equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \circulo \to M$ é solução do sistema Hamiltoniano
+	$$
+	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t)
+	$$
+	satisfasendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Além disso, assumimos que tais soluções são contráteis, isto é, homotópicas a uma curva constante. Vimos que essas soluções são pontos críticos do funcional $f_{H}$. Analogamente a Teoria de Morse (veja em $\cite{milnor}$), vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
 
-	\section{A Axiomatização}
+	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $det(Id - A(t))\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
+	
+	\section{Axiomatização}
+	
+	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existem uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\caminhos{a}{b}{V}= \{\gamma:[a,b]\to \mathcal{V} \times \mathcal{V} \}$ o conjunto de todos os caminho contínuos e suaves por parte em $V$ onde $\mathcal{V}$ é o conjunto dos subespaços Lagrangianos de $V$ (veja a Definição $\ref{definicao_subespaco_simpletico_ortogonais}$). Como topologia de $\caminhos{a}{b}{V}$ vamos \vermelho{adotar a topologia compacto-aberta (PRECISO DEFINIR).} O índice de Maslov é a aplicação $\mu:\caminhos{a}{b}{V}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
 		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhos{ak+l}{bk+l}{V}$ temos que 
@@ -1485,17 +1497,18 @@
 		$$
 		\item \textbf{\textit{(Normalização)}} Seja $\mathbb{C} = \real{2}$ o espaço vetorial simplético munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=(v_{1},v_{2}),u (u_{1},u_{2})\in \real{2}$. Defina $\gamma \in \caminhos{-\pi/4}{\pi/4}{\real{2}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
 			\begin{enumerate}
-				\item $\mu(\gamma|_{-\pi/4, \pi/4}) = 1;$
-				\item $\mu(\gamma|_{-\pi/4, 0}) = 0;$
-				\item $\mu(\gamma|_{0, \pi/4}) = 1.$	
+				\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
+				\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
+				\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
 			\end{enumerate}
 			\begin{observacao}
-				Uma discussão mais extensa e contendo diagramas esquemáticos pode ser encontrada em $\cite{cappell_maslov_index_equivalencia}$.
+				Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
 			\end{observacao}
 	\end{enumerate}
 	
-
+	\section{Contrução da extensão analítica $\rho$}
 	
+	\section{Construção antiga}
 	\begin{definicao}
 		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
 	\end{definicao}
@@ -2513,7 +2526,7 @@
 		
 		\bibitem{cappell_maslov_index_equivalencia}
 		Cappell, Sylvain E.; Lee, Ronnie; Miller, Edward Y.
-		\emph{On Masvlov Index}, Communication on Pure and Applied Mathematics, Vol. XLVII, 121-186 (1994).
+		\emph{On Maslov Index}, Communication on Pure and Applied Mathematics, Vol. XLVII, 121-186 (1994).
 		
 		\bibitem{manfredo_riemannian_geo}
 		Do Carmo, Manfredo P.:
@@ -2547,6 +2560,11 @@
 		\emph{A Basic Course in Algebraic Topology},
 		Springer-Verlag, first edition,
 		1991.
+		
+		\bibitem{milnor}
+		Milnor, J.:
+		\emph{Morse Theory},
+		Princeton University Press, 1963.
 		
 		\bibitem{nakahara}
 		Nakahara, Mikio:
