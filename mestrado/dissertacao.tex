@@ -60,6 +60,7 @@
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhospontobase}[1]{\mathcal{L}_{#1}}
 \newcommand{\caminhossempontobase}[1]{\mathcal{L}(#1)}
+\newcommand{\caminhosNaoDegeneradosSp}{\mathcal{L}^{*}(\gruposimpletico{2n})}
 \newcommand{\caminhospontobasegeral}[2]{\mathcal{L}_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
@@ -1352,7 +1353,7 @@
 	\end{observacao}
 	
 	
-	\begin{lema}
+	\begin{lema}\label{lema_conexidade_matriz_unitaria}
 		$\mathcal{U}$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
@@ -1393,10 +1394,48 @@
 		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\mathcal{U}$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \mathcal{U}$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
 	
+	\begin{observacao}\label{observacao_quociente_grupo_simpletico_contratil}
+		Na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$ mostramos que $\mathcal{U}$ é um retrato por deformação de $\gruposimpletico{2n}$, logo todo caminho contínuo em $\gruposimpletico{2n}$ pode ser deformada contínuamente em um caminho contínuo em $\mathcal{U}$.
+	\end{observacao}
+	
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
 		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Aqui esta a importância da conexidade. Supondo que $\gruposimpletico{2n}$ tivesse duas componentes conexas, então poderiamos ter $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros \times \inteiros$, o que inviabilizaria a construção da homologia de Floer abordade no texto.
 	\end{observacao}
+
+	\begin{lema}
+		$\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
+	\end{lema}
+	\begin{prova}
+		Sejam $Id \in \matrizunitaria{n}$ e $1 \in \circulo$ pontos base. Dada $A\in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ podemos escrever $A(t) = e^{i\lambda(t)}$,  onde $\lambda:[0,1 ]\to \reta$ é contínua. Notemos que $det:\matrizunitaria{n} \to \circulo$ é uma aplicação sobrejetora pois, dada $\beta \in \caminhospontobasegeral{1}{\circulo}$, podemos escrever $\beta(t) = e^{i\alpha(t)}$. Definindo $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, então $det(A(t)) =e^{i\alpha(t)}=\beta(t)$.
+		
+		Defina $det_{*}: \grupofundamentalpontobase{\matrizunitaria{n}}{Id} \to \grupofundamentalpontobase{\circulo}{1}$ tal que $det_{*}\classe{A} = \classe{det(A)}$. Então dado $A' \in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ temos 
+		$$
+		\begin{aligned}
+			det_{*}(\classe{A}\classe{A'}) 
+			&= det_{*}(\classe{A}\classe{A'}) 
+			\\
+			&= det_{*}(\classe{A.A'}) 
+			\\
+			&=\classe{det(A.A')}
+			\\
+			&=\classe{det(A)det(A')}
+			\\
+			&=\classe{det(A)}.\classe{det(A')}
+			\\
+			&=det_{*}\classe{A}.det_{*}\classe{A'},  
+		\end{aligned}
+		$$
+		logo é um homomorfismo. Definindo $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, então $det(A(t)) = e^{i\alpha(t)} = \beta(t)$, logo é sobrejetora. Sejam $Id \in \matrizunitaria{n}$ e $ 1 \in \circulo$ pontos bases. Como $det$ é sobrejetora, então $det_{*}$ é sobrejetora. Supondo que $Id = det_{*}\classe{A} = \classe{det(A(t))}$, então $det(A) \sim c$, onde $c$ é uma curva constante em $\circulo$. Logo $A \sim Id $, onde $C$ é a curva constate em $\matrizunitaria{n}$. Com isso, $\classe{A} = Id$ e $det_{*}$ é injetora, portanto é um isomorfismo.
+		Como $\matrizunitaria{n}$ é conexo por caminhos, então $\grupofundamental{\matrizunitaria{n}} = \grupofundamentalpontobase{\matrizunitaria{n}}{Id}$.
+	\end{prova}
 	
+	\begin{teorema}
+		$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+	\end{teorema}
+	\begin{prova}
+		Da Observação $\ref{observacao_quociente_grupo_simpletico_contratil}$ temos que todo caminho contínuo em $\gruposimpletico{2n}$ é homotópico a um caminho contínuo em $\mathcal{U}$, isto é, dado $\gamma \in \caminhospontobasegeral{Id }{\gruposimpletico{2n}}$ existe $\beta \in \caminhospontobasegeral{Id}{\mathcal{U}}$ tal que $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$ e 
+		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\mathcal{U}}{Id}$. Como $\mathcal{U}$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\mathcal{U}}= \grupofundamentalpontobase{\mathcal{U}}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\mathcal{U}\cong \matrizunitaria{n}$, logo $\grupofundamental{\mathcal{U}} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+	\end{prova}
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
 	\begin{definicao} \label{definicao_conjunto_estrutura_complexa}
@@ -1472,7 +1511,7 @@
 	
 	\section{Axiomatização}
 	
-	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existem uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\caminhos{a}{b}{V}= \{\gamma:[a,b]\to \mathcal{V} \times \mathcal{V} \}$ o conjunto de todos os caminho contínuos e suaves por parte em $V$ onde $\mathcal{V}$ é o conjunto dos subespaços Lagrangianos de $V$ (veja a Definição $\ref{definicao_subespaco_simpletico_ortogonais}$). Como topologia de $\caminhos{a}{b}{V}$ vamos \vermelho{adotar a topologia compacto-aberta (PRECISO DEFINIR).} O índice de Maslov é a aplicação $\mu:\caminhos{a}{b}{V}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
@@ -1506,7 +1545,7 @@
 			\end{observacao}
 	\end{enumerate}
 	
-	\section{Contrução da extensão analítica $\rho$}
+	\section{Contrução de $\rho: \caminhosNaoDegeneradosSp \to \circulo$}
 	
 	\section{Construção antiga}
 	\begin{definicao}
