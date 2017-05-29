@@ -113,6 +113,8 @@
 \newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
 \newcommand{\grupofundamentalpontobase}[2]{\pi_{1}(#1; #2)}
 \newcommand{\gruposimpletico}[1]{Sp(#1)}
+\newcommand{\gruposimpleticocomplexo}[1]{Sp(#1; \complexo{})}
+\newcommand{\gruposimpleticoreal}[1]{Sp(#1;\reta)}
 \newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
@@ -130,6 +132,7 @@
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
 \newcommand{\matrizsimetrica}[1]{Sym(#1)}
+\newcommand{\matrizSimpleticaOrtogonal}{\mathcal{U}}
 \newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
 \newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
 \newcommand{\matrizunitaria}[1]{U(#1)}
@@ -152,6 +155,8 @@
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
 \newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
 \newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
+\newcommand{\parteImaginaria}[1]{\mathcal{I}m(#1)}
+\newcommand{\parteReal}[1]{\mathcal{R}e(#1)}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
 \newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
@@ -1166,7 +1171,10 @@
 		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. De forma análoga obtemos as outras identidades.
 	\end{prova}
 	
-	Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaços vetoriais de dimensão $2n$, logo são isomorfos. Tal identificação pode ser realizada definindo $f:\real{2n}\to \complexo{n}$ tomando $z=(x,y) \in \real{2n}$ com $x,y \in \real{n}$ e $f(z) = f(x,y) =x+iy $. Com isso, $f(\estruturacomplexa z) = f(-y, x) = -y +ix = i(x+iy) = if(z)$, isto é, a aplicação de $\estruturacomplexa$ é a identificação com a multiplicação por $i$ nos complexos. 
+	\begin{observacao}\label{observacao_identificacao_complexos}
+			Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaços vetoriais de dimensão $2n$, logo são isomorfos. Tal isomorfismo pode ser dado por $\real{2n}\ni (v_{1}, v_{2}) = v \mapsto z = v_{1}+iv_{2} \in \complexo{n}$. Desse modo temos $\estruturacomplexa v = (v_{2}, -v_{1}) \mapsto v_{2}-iv_{1} = -i(v_{1}+iv_{2}) = -iz \in \complexo{n}$. Portanto, aplicar $\estruturacomplexa$ é equivalente a multiplicação por $-i$. 
+			Por definição temos $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa v)^{t}.u=v_{1}u_{2}-v_{2}u_{1}$. Então, $(\estruturacomplexa v)^{t}  \mapsto -i\overline{v}.u \in \reta$, portanto temos a associação $\formaSimpleticaPadrao{v}{u} \mapsto \parteImaginaria{\Omega(\overline{v},u)}$ com a parte imaginária de $\Omega$, uma forma bilinear, antí-simétrica e não degenerada nos complexos.
+	\end{observacao} 
 	
 	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Com isso, consideremos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
 	$$
@@ -1187,10 +1195,10 @@
 	Seja $\matrizunitaria{n} = \{A\in \generalgroupcomplexo{n}: AA^{*}=Id \}$ o subgrupo das matrizes unitárias, então temos o seguinte lema:
 	
 	\begin{lema}\label{lema_isomorfismo_U}
-		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \mathcal{U}$, onde $\mathcal{U} = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \mathcal{U}$ temos $A\estruturacomplexa=\estruturacomplexa A$.
+		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
 	\end{lema}
 	\begin{prova}
-		Temos que $\mathcal{U} = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio, pois a identidade esta na intersecção. Tomando $A \in \mathcal{U}$, então $A^{t}A= Id$. Pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
+		Temos que $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio, pois a identidade esta na intersecção. Tomando $A \in \matrizSimpleticaOrtogonal $, então $A^{t}A= Id$. Pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
 		$$
 			\begin{aligned}
 				Id=A^{t}A &=
@@ -1253,9 +1261,9 @@
 		\right)	
 		= Id
 		$$
-		o que implica que devemos ter $B^{t}C =C^{t}B$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$ temos que $F(Z) \in \gruposimpletico{2n}$. Portanto $F(Z) \in \mathcal{U}$ o que implica que $F(\matrizunitaria{n}) \subseteq \mathcal{U}$.
+		o que implica que devemos ter $B^{t}C =C^{t}B$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$ temos que $F(Z) \in \gruposimpletico{2n}$. Portanto $F(Z) \in \matrizSimpleticaOrtogonal $ o que implica que $F(\matrizunitaria{n}) \subseteq \matrizSimpleticaOrtogonal$.
 		
-		Se $A \in \mathcal{U}$, então $A^{t}=A^{-1}$ e $\estruturacomplexa=A^{t}\estruturacomplexa  A=A^{-1}\estruturacomplexa A$, o que implica que $A\estruturacomplexa=\estruturacomplexa A$, assim:
+		Se $A \in \matrizSimpleticaOrtogonal$, então $A^{t}=A^{-1}$ e $\estruturacomplexa=A^{t}\estruturacomplexa  A=A^{-1}\estruturacomplexa A$, o que implica que $A\estruturacomplexa=\estruturacomplexa A$, assim:
 		$$
 		\begin{aligned}
 			A\estruturacomplexa&=\estruturacomplexa A
@@ -1317,15 +1325,15 @@
 		\end{array}
 		\right),
 		$$
-		Mostramos que $F(\matrizunitaria{n}) \subseteq \mathcal{U}$, agora vamos mostrar a inclusão $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Seja $A \in \mathcal{U}$ escrito como no resultado anterior. Tomando $Z = B+iC \in \matrizunitaria{n}$ temos que $F(Z) = A$, o que implica que $\mathcal{U} \subseteq F(\matrizunitaria{n})$. Conclusão, $\mathcal{U} = F(\matrizunitaria{n})$. 
+		Mostramos que $F(\matrizunitaria{n}) \subseteq \matrizSimpleticaOrtogonal$, agora vamos mostrar a inclusão $\matrizSimpleticaOrtogonal \subseteq F(\matrizunitaria{n})$. Seja $A \in \matrizSimpleticaOrtogonal$ escrito como no resultado anterior. Tomando $Z = B+iC \in \matrizunitaria{n}$ temos que $F(Z) = A$, o que implica que $\matrizSimpleticaOrtogonal \subseteq F(\matrizunitaria{n})$. Conclusão, $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$. 
 		
-		Como $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
+		Como $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 
-	Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$, que por sua vez será utilizado na construção do índice de Maslov.
+	Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
 	
-	\begin{lema}
-		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$. Então $\lambda \in \espectrooperador{A}$ se, e somente se, $\lambda^{-1} \in \espectrooperador{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos e $\lambda_{u}$ e $\lambda_{v}$ são seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $V_{\lambda_{u}}$ e $V_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in V_{\lambda_{u}}$ e $v' \in V_{\lambda_{v}}$. 
+	\begin{lema}\label{lema_auto_espaco_grupo_simpletico}
+		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$. Então $\lambda \in \espectrooperador{A}$ se, e somente se, $\lambda^{-1} \in \espectrooperador{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos e $\lambda_{u}$ e $\lambda_{v}$ são seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $E_{\lambda_{u}}$ e $E_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in E_{\lambda_{u}}$ e $v' \in E_{\lambda_{v}}$. 
 	\end{lema}
 	\begin{prova}
 		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}\estruturacomplexa A = \estruturacomplexa$ o que implica em $\estruturacomplexa^{-1}A^{t}\estruturacomplexa = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectrooperador{A^{t}}=\espectrooperador{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectrooperador{A^{t}} = \espectrooperador{A}$, o que implica em $\espectrooperador{A^{-1}} = \espectrooperador{A}$, isto é, se $\lambda \in \espectrooperador{A}$, então $\lambda^{-1} \in \espectrooperador{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectrooperador{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
@@ -1337,11 +1345,27 @@
 		como $\lambda_{u}\lambda_{v}\neq 1$ isso implica que $\omega(u,v)=0$.
 	\end{prova}
 	
+	\begin{corolario}
+		Sejam $A \in \gruposimpletico{2n}$ e $\lambda, \mu \in \sigma(A)$. Então 
+		\begin{enumerate}
+			\item Se $\lambda\mu \neq 1$, então $\formaSimpletica{E_{\lambda}}{E_{\mu}} = 0$, isto é, são ambos classificados como subespaços simpléticos.
+			\item As restrições $\omega|_{\pm 1}$ a $E_{\pm 1}$ são não-degeneradas. Além disso, suas multiplicidades $m(\pm 1)$ são pares.
+			\item Se $\lambda \neq \pm 1$, então a restrição $\omega|_{E_{\lambda} \oplus E_{\lambda^{-1}}}$ é não-degenerada.
+		\end{enumerate}
+	\end{corolario}
+	\begin{prova}
+		\begin{enumerate}
+			\item Dados $v \in E_{\lambda}$ e $u \in E_{\mu}$, temos pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ que $\formaSimpletica{v}{u} = 0$, então a restrição $\omega|_{E_{\lambda} \oplus E_{\mu}}:E_{\lambda} \oplus E_{\mu}\to \reta$ é identicamente nula. Logo, $\formaSimpletica{E_{\lambda} }{E_{\mu}} = 0$.
+			\item Se $v, u \in E_{1}$, então pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ temos $\formaSimpletica{v}{u} \neq 0$, logo a restrição  $\omega|_{E_{1}\times E_{1}}$ é não-degenerada. Com um argumento análogo podemos afirmar o mesmo para a restrição $\omega|_{E_{-1}\times E_{-1}}$.
+			\item Seja $v\in E_{\lambda}$. Suponha por absurdo que exista $u \in E_{\lambda^{-1}}$ tal que $\formaSimpletica{v}{u} = 0$, logo $u \in E_{\lambda}^{\omega} \subseteq E_{\lambda^{-1}}$ e $E_{\lambda^{-1}}\cap E_{\lambda} \neq \emptyset$. O que implica em $Au= \lambda u $ e $Au =\lambda^{-1} u$, portanto $\lambda = \lambda^{-1}$, logo $\lambda = \pm 1$, contradizendo a hipótese de que $\lambda \neq \pm 1$. Portanto a restrição $\omega|_{E_{\lambda} \oplus E_{\lambda^{-1}}}$ é não-degenerada.
+		\end{enumerate}
+	\end{prova}
+	
 	\begin{proposicao}\label{proposicao_potenciacao_grupo_simpletico}
 		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é simétrica, logo é normal, portanto pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável, além disso, pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Podemos decompor $V$ na soma direta de seus auto-espaços $V_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Se $u \in V_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então
+		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é simétrica, logo é normal, portanto pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável, além disso, pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Podemos decompor $V$ na soma direta de seus auto-espaços $E_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Se $u \in E_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então
 		$$
 		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v).
 		$$
@@ -1354,10 +1378,10 @@
 	
 	
 	\begin{lema}\label{lema_conexidade_matriz_unitaria}
-		$\mathcal{U}$ é conexo por caminhos, logo é conexo.
+		$\matrizSimpleticaOrtogonal$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
-		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável e $det(A) \in S^{1}$, logo pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $1 = det(A) = e^{i(\theta_{1}+\dots+\theta_{n})}$ o que implica que $\theta_{1}+\dots+\theta_{n}=0$. Definindo a caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Vejamos que $\gamma$ esta bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) = U^{*}D(\lambda)U\in \matrizunitaria{n}$ pois $\matrizunitaria{n}$ é um grupo na operação de multiplicação. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} = 1$, pois $\theta_{1}+\dots+\theta_{n}=0$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \mathcal{U}$ é um isomorfismo, portanto é contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\mathcal{U} = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
+		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável e $det(A) \in S^{1}$, logo pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $1 = det(A) = e^{i(\theta_{1}+\dots+\theta_{n})}$ o que implica que $\theta_{1}+\dots+\theta_{n}=0$. Definindo a caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Vejamos que $\gamma$ esta bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) = U^{*}D(\lambda)U\in \matrizunitaria{n}$ pois $\matrizunitaria{n}$ é um grupo na operação de multiplicação. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} = 1$, pois $\theta_{1}+\dots+\theta_{n}=0$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo, portanto é contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 
 	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
@@ -1368,41 +1392,41 @@
 	\end{prova}	
 	
 	\begin{lema}
-		Se $A \in \gruposimpletico{2n}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$ tal que $A=PO$.
+		Se $A \in \gruposimpletico{2n}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$ tal que $A=PO$.
 	\end{lema}
 	\begin{prova}
-		Sejam $P = AA^{t}$ e $v \in \real{2n}$ um auto-vetor de $A$ com auto-valor $\lambda \in \sigma(A)$. Sabe-se que $v$ também é autor-vetor de $A^{t}$ com o mesmo auto-valor, o que implica em $Pv=AA^{t}v = \lambda^{2}v = \alpha v$, portanto $P$ possui todos os auto-valores positvos, consequentemente, todos os seus k-subdeterminantes são positivos. Além disso, $P^{t} = (AA^{t})^{t} = AA^{t} = P$, logo pela Observação $\ref{observacao_matriz_positiva_definida}$ $P$ é positiva-definida. Como $A$ e $A^{t} $ são matrizes simpléticas e, pela Proposição $\ref{proposicao_grupo_simpletico_estrutura_grupo}$, $\gruposimpletico{2n}$ é um grupo, então $P=AA^{t}\in \gruposimpletico{2n}$. Logo $P \in \gruposimpleticopositivo{2n}$. Pela unicidade da decomposição polar, temos $A=PO$, onde $O \in \matrizortogonal{2n}$. Afirmo que $O \in \mathcal{U}$. De fato, $P$ é invertível, pois é composição de matrizes invertíveis, então $O = P^{-1}A =O$. Como $P^{-1} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, então $O=P^{-1}A \in \gruposimpletico{2n}$. Portanto, $O \in \mathcal{U}$.
+		Sejam $P = AA^{t}$ e $v \in \real{2n}$ um auto-vetor de $A$ com auto-valor $\lambda \in \sigma(A)$. Sabe-se que $v$ também é autor-vetor de $A^{t}$ com o mesmo auto-valor, o que implica em $Pv=AA^{t}v = \lambda^{2}v = \alpha v$, portanto $P$ possui todos os auto-valores positvos, consequentemente, todos os seus k-subdeterminantes são positivos. Além disso, $P^{t} = (AA^{t})^{t} = AA^{t} = P$, logo pela Observação $\ref{observacao_matriz_positiva_definida}$ $P$ é positiva-definida. Como $A$ e $A^{t} $ são matrizes simpléticas e, pela Proposição $\ref{proposicao_grupo_simpletico_estrutura_grupo}$, $\gruposimpletico{2n}$ é um grupo, então $P=AA^{t}\in \gruposimpletico{2n}$. Logo $P \in \gruposimpleticopositivo{2n}$. Pela unicidade da decomposição polar, temos $A=PO$, onde $O \in \matrizortogonal{2n}$. Afirmo que $O \in \matrizSimpleticaOrtogonal$. De fato, $P$ é invertível, pois é composição de matrizes invertíveis, então $O = P^{-1}A =O$. Como $P^{-1} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, então $O=P^{-1}A \in \gruposimpletico{2n}$. Portanto, $O \in \matrizSimpleticaOrtogonal$.
 	\end{prova}
 	
 	\begin{teorema}\label{teoerma_sp2n_conexo}
 		$\gruposimpletico{2n}$ é conexo.
 	\end{teorema}
 	\begin{prova}
-		Se $A \in \gruposimpletico{2n}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ podemos escrever $A=PO$ onde $P \in \gruposimpleticopositivo{2n}$ e $O\in \mathcal{U}$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \mathcal{U}$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \mathcal{U}$ temos $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$, temos $PO \in \gruposimpletico{2n}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{2n}$ temos que $G(A) = (P,O)$. Portanto $G$ é bijetora. Seja $G^{-1}:\gruposimpleticopositivo{2n} \times \mathcal{U}\to \gruposimpletico{2n}$ tal que $G^{-1}(P,O) = PO$. Então, podemos ver que $G\circ G^{-1} = Id$ e $G^{-1} \circ G= Id$, logo $G^{-1} $ é a inversa de $G$. Como $G$ e $G^{-1} $ são aplicações contínuas, então $G$ é um homeomorfismo. Podemos afirmar que $\gruposimpleticopositivo{2n}\times \mathcal{U}$ é conexo, pois é o produto cartesianos de espaços topológicos conexos e, como funções contínuas preservam a conexidade, então $G^{-1}(\gruposimpleticopositivo{2n}\times \mathcal{U}) = \gruposimpletico{2n}$ é conexo.
+		Se $A \in \gruposimpletico{2n}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ podemos escrever $A=PO$ onde $P \in \gruposimpleticopositivo{2n}$ e $O\in \matrizSimpleticaOrtogonal$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ temos $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$, temos $PO \in \gruposimpletico{2n}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{2n}$ temos que $G(A) = (P,O)$. Portanto $G$ é bijetora. Seja $G^{-1}:\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal\to \gruposimpletico{2n}$ tal que $G^{-1}(P,O) = PO$. Então, podemos ver que $G\circ G^{-1} = Id$ e $G^{-1} \circ G= Id$, logo $G^{-1} $ é a inversa de $G$. Como $G$ e $G^{-1} $ são aplicações contínuas, então $G$ é um homeomorfismo. Podemos afirmar que $\gruposimpleticopositivo{2n}\times \matrizSimpleticaOrtogonal$ é conexo, pois é o produto cartesianos de espaços topológicos conexos e, como funções contínuas preservam a conexidade, então $G^{-1}(\gruposimpleticopositivo{2n}\times \matrizSimpleticaOrtogonal) = \gruposimpletico{2n}$ é conexo.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_decomposicao_Sp2n}
-		No teorema anterior exibimos um homeomorfismo $G:\gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \mathcal{U}$, isto é, mostramos que se $A \in \gruposimpletico{2n}$, então ela pode ser decomposta unicamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
+		No teorema anterior exibimos um homeomorfismo $G:\gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$, isto é, mostramos que se $A \in \gruposimpletico{2n}$, então ela pode ser decomposta unicamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
 	\end{observacao}
 	
 	\begin{teorema}
-		O quociente $\gruposimpletico{2n}/\mathcal{U}$ é contrátil.
+		O quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \mathcal{U}$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} =P^{2} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Vejamos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\mathcal{U}$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \mathcal{U}$ e, por fim, tomando $B \in \mathcal{U}$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} =P^{2} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Vejamos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, por fim, tomando $B \in \matrizSimpleticaOrtogonal$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
 		
-		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\mathcal{U}$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \mathcal{U}$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
+		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_quociente_grupo_simpletico_contratil}
-		Na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\mathcal{U}$ mostramos que $\mathcal{U}$ é um retrato por deformação de $\gruposimpletico{2n}$, logo todo caminho contínuo em $\gruposimpletico{2n}$ pode ser deformada contínuamente em um caminho contínuo em $\mathcal{U}$.
+		Na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ mostramos que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, logo todo caminho contínuo em $\gruposimpletico{2n}$ pode ser deformada contínuamente em um caminho contínuo em $\matrizSimpleticaOrtogonal$.
 	\end{observacao}
 	
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
 		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Aqui esta a importância da conexidade. Supondo que $\gruposimpletico{2n}$ tivesse duas componentes conexas, então poderiamos ter $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros \times \inteiros$, o que inviabilizaria a construção da homologia de Floer abordade no texto.
 	\end{observacao}
 
-	\begin{lema}
+	\begin{lema}\label{lema_isomorfismo_grupo_fundamental_matriz_unitaria}
 		$\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 	\end{lema}
 	\begin{prova}
@@ -1429,13 +1453,32 @@
 		Como $\matrizunitaria{n}$ é conexo por caminhos, então $\grupofundamental{\matrizunitaria{n}} = \grupofundamentalpontobase{\matrizunitaria{n}}{Id}$.
 	\end{prova}
 	
+	\begin{observacao}\label{observacao_determinante_homomorfismo}
+		Mostramos que no Lema $\ref{lema_isomorfismo_grupo_fundamental_matriz_unitaria}$ que o determinando, que é uma aplicação contínua, induz o isomorfismo $det_{*}: \grupofundamental{\matrizunitaria{n}} to \inteiros$.
+	\end{observacao}
+	
 	\begin{teorema}
 		$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{teorema}
 	\begin{prova}
-		Da Observação $\ref{observacao_quociente_grupo_simpletico_contratil}$ temos que todo caminho contínuo em $\gruposimpletico{2n}$ é homotópico a um caminho contínuo em $\mathcal{U}$, isto é, dado $\gamma \in \caminhospontobasegeral{Id }{\gruposimpletico{2n}}$ existe $\beta \in \caminhospontobasegeral{Id}{\mathcal{U}}$ tal que $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$ e 
-		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\mathcal{U}}{Id}$. Como $\mathcal{U}$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\mathcal{U}}= \grupofundamentalpontobase{\mathcal{U}}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\mathcal{U}\cong \matrizunitaria{n}$, logo $\grupofundamental{\mathcal{U}} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+		Da Observação $\ref{observacao_quociente_grupo_simpletico_contratil}$ temos que todo caminho contínuo em $\gruposimpletico{2n}$ é homotópico a um caminho contínuo em $\matrizSimpleticaOrtogonal$, isto é, dado $\gamma \in \caminhospontobasegeral{Id }{\gruposimpletico{2n}}$ existe $\beta \in \caminhospontobasegeral{Id}{\matrizSimpleticaOrtogonal}$ tal que $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$ e 
+		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
+	
+	\section{A complexificação de $\gruposimpletico{2n}$}\label{capitulo_complexificacao_grupo_simpetico}
+	
+		Até o momento os resultados foram demonstrados para o caso de espaços vetoriais simpléticos reais. Contudo, a estratégia adotada para construírmos o índice de Maslov exige uma associação $\gruposimpletico{2n}\mapsto \circulo$ que será realizada naturalmente se trabalharmos com espaços vetoriais simpléticos complexos. Vamos realizar as inclusões $\real{2n} \hookrightarrow \complexo{2n}$, $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ e, pela identificação $\matrizunitaria{n} \mapsto \matrizSimpleticaOrtogonal$, temos $\matrizunitaria{n} \hookrightarrow \gruposimpletico{2n, \reta}$. Com um abuso de notação, vamos escrever $\matrizSimpleticaOrtogonal = \gruposimpletico{2n} \cap \matrizortogonal{2n }= \matrizunitaria{n}$. 
+		
+		Por fim, extenderemos a forma simplética $\omega$ para uma 2-forma $\complexo{}$-bilinear anti-simétrica não-degenerada $\Omega:\complexo{2n}\times \complexo{2n} \to \complexo{}$, logo temos a inclusão do 2n-espaço simplético $(\real{2n}, \omega) \hookrightarrow (\complexo{2n}, \Omega)$.
+		
+		\begin{observacao}
+			Poderíamos ter feito a identificação $\real{2n} \mapsto \complexo{n}$, porém, a teoria de espaços vetoriais simpléticos tem como premissa de que a dimensão do espaço vetorial deve ser um multiplo de 2 sobre o corpo escolhido, logo devemos ter $\complexo{2n}$ como espaço vetorial sobre $\complexo{}$.
+		\end{observacao}
+		
+		O Lema $\ref{lema_auto_espaco_grupo_simpletico}$ (auto-espaços de $\gruposimpletico{2n}$) terá o seu análogo nos complexos do seguinte modo: dado $A \in \matrizunitaria{n}\subset \gruposimpletico{2n}$ e supondo $\lambda \in \sigma(A)$ teremos que os auto-valores ocorrem em quádruplo $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1} \in \sigma(A)$ desde que $\lambda \notin \reta$ ou $\lambda \in \circulo$.
+	
+		O lema citado foi utilizado nos resultados seguintes desse capítulo, cujas demonstraçções não utilizam características específicas do corpo escolhido, portanto, tais resultados terão resultados análogos na caso dos complexos.
+		
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
 	\begin{definicao} \label{definicao_conjunto_estrutura_complexa}
@@ -1546,7 +1589,71 @@
 	\end{enumerate}
 	
 	\section{Contrução de $\rho: \caminhosNaoDegeneradosSp \to \circulo$}
+		Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \omega) \hookrightarrow (\complexo{2n}, \omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{capitulo_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
+		
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simpléctomorfismos em $V$. 
+		\begin{teorema}
+			Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
+			\begin{enumerate}
+				\item \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
+				$$
+					\rho(TAT^{-1}) = \rho(A)
+				$$
+				para $A\in \gruposimpletico{V_{1}}$.
+				
+				\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
+				$$
+					\rho(A) = \rho(A_{1})\rho(A_{2})
+				$$
+				para $A\in \gruposimpletico{V}$ definido por $A(v_{1}, v_{2})=(A_{2}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
+				
+				\item \textbf{Deteminante:} Se $A\in \gruposimpleticopositivo{2n}$, então 
+				$$
+					\rho(A) = det(X+iY), \text{onde} \;	
+					A=\left(
+					\begin{array}{cc}
+					X & -Y					\\
+					Y & X
+					\end{array}
+					\right).
+				$$
+			\end{enumerate}
+		\end{teorema}
+		
+		\begin{lema}
+			Seja $B:\complexo{2n}\times \complexo{2n} \to \reta$ tal que $B(v, u ) = \parteImaginaria{\formaSimpletica{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
+			$$
+			B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
+			$$
+		\end{lema}
+		\begin{prova}
+		A aplicação $B$ é bilinear pois é a parte imaginária da forma bilinear $\omega$, logo é bilinear. \vermelho{Por definição temos $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa v)^{t}.u=v_{1}u_{2}-v_{2}u_{1}$. Pela Observação $\ref{observacao_identificacao_complexos}$ temos $v_{1}.u_{2}-v_{2}.u_{1} \mapsto (-iv)^{t}.u$. Então $B(v,u) =  \parteImaginaria{\omega(\overline{v}, u)}=Im (\estruturacomplexa v)^{t}.u = -v_{2}u_{1} -v_{1}u_{2} = -u_{2}v_{1}-u_{1}v_{2}  = Im \omega(\overline{u}, v) = \omega(\overline{u}, v) = B(u,v)$, logo é simétrica.}
+		
+		Seja $v \in \complexo{n}$ tal que $B(v, u) = 0 \; \forall u \in \complexo{n}$. Tomando $z=a+ib \in \complexo{n}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$, logo 
+		$$
+			\begin{aligned}
+			\formaSimpletica{\overline{v}}{z} &=\parteReal{\formaSimpletica{\overline{v}}{z}} +i \parteImaginaria{\formaSimpletica{\overline{v}}{z}} 
+			\\
+			&= \parteImaginaria{-i\formaSimpletica{\overline{v}}{z}} +i \parteImaginaria{\formaSimpletica{\overline{v}}{z}}
+			\\
+			&= \underbrace{\parteImaginaria{\formaSimpletica{\overline{v}}{-iz}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpletica{\overline{v}}{z}}}_{=0}
+			\\
+			&=0.
+			\end{aligned}
+		$$
+		Como $\omega$ é não-degenerada, então $\overline{v} = 0$ e $B$ é não-degenerada.
+		
+		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpletica{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpletica{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpletica{v}{\overline{u}}} = \parteImaginaria{-\formaSimpletica{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
+		\end{prova}
 	
+	\begin{corolario}
+		Sejam $Q: \complexo{n} \times \complexo{n} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$ e $m(Q) = m_{+}(Q) - m_{-}(Q) $, onde $m_{\pm}(Q) \in \inteiros$ são as dimensões dos subespaços em que $Q$ é positiva-definida, ou negativa-definida, respectivamente. Então $Q$ é não-degenerada e $m(Q) = 0$.
+	\end{corolario}
+	\begin{prova}
+		\vermelho{Sejam $A \in \gruposimpletico{2n}$, $\lambda \in \sigma(A)$ e $E_{\lambda}$ os auto-espaços associados a $\lambda$.}
+	\end{prova}
+	
+		
 	\section{Construção antiga}
 	\begin{definicao}
 		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
@@ -1654,7 +1761,7 @@
 	
 	
 	\chapter{Índice de Maslov - ???}
-	Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \mathcal{U}$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
+	Seja $A\in \gruposimpletico{2n}$, então pela Observação $\ref{observacao_decomposicao_Sp2n}$ temos a decomposição $A=PO$. Definindo a projeção $\pi:\gruposimpletico{2n}\to \matrizSimpleticaOrtogonal$ tal que $\pi(A) = \pi(PO) = O$, que é uma aplicação contínua. Seja $F$ o isomorfismo do Lema $\ref{lema_isomorfismo_U}$, então $F^{-1}(O) = X+iY \in \matrizunitaria{n}$. Definindo a aplicação $\rho = det\circ F^{-1}\circ \pi :\gruposimpletico{2n} \to S^{1}$ está bem-definida. De fato, pela Observação $\ref{observacao_determinante_matriz_unitaria}$ temos que $det(\matrizunitaria{n}) \subseteq S^{1}$. Com isso, $\rho(A) = det(F^{-1}(\pi(A))) = det(F^{-1}(O)) = det(X+iY) \in S^{1}$.
 	
 	Sejam $\caminhosfechadosSp{0}{1}$ o conjuntos dos caminhos fechados em $S^{1}$ e $\gamma \in \caminhosfechadosSp{0}{1}$, então temos que aplicação $\rho_{\gamma}=\rho\circ \gamma:[0,1] \to S^{1}$ é contínua pois é a composição de aplicações contínuas, portanto $\rho_{\gamma} \in \caminhosfechadoscirculo{0}{1}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ temos $deg(\rho_{\gamma}) \in \inteiros$. Definimos como o índice de Maslov como sendo a aplicação $\mu:\caminhosfechadosSp{0}{1} \to \inteiros$ tal que:
 	$$
