@@ -96,6 +96,7 @@
 \newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-1}, x^{+})}
 \newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
 \newcommand{\formaSimpletica}[2]{\omega(#1, #2)}
+\newcommand{\formaSimpleticaExtendida}[2]{\Omega(#1, #2)}
 \newcommand{\formaSimpleticaPadrao}[2]{\omega_{0}(#1, #2)}
 \newcommand{\funcaocond}[5]{
 	#1 = 
@@ -115,6 +116,7 @@
 \newcommand{\gruposimpletico}[1]{Sp(#1)}
 \newcommand{\gruposimpleticocomplexo}[1]{Sp(#1; \complexo{})}
 \newcommand{\gruposimpleticoreal}[1]{Sp(#1;\reta)}
+\newcommand{\gruposimpleticoespecial}[1]{Sp^{1}(#1)}
 \newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
@@ -1460,7 +1462,7 @@
 		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
-	\section{A complexificação de $\gruposimpletico{2n}$}\label{capitulo_complexificacao_grupo_simpetico}
+	\section{A complexificação de $\gruposimpletico{2n}$}\label{secao_complexificacao_grupo_simpetico}
 	
 		Até o momento os resultados foram demonstrados para o caso de espaços vetoriais simpléticos reais. Contudo, a estratégia adotada para construírmos o índice de Maslov exige uma associação $\gruposimpletico{2n}\mapsto \circulo$ que será realizada naturalmente se trabalharmos com espaços vetoriais simpléticos complexos. Vamos realizar as inclusões $\real{2n} \hookrightarrow \complexo{2n}$, $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ e, pela identificação $\matrizunitaria{n} \mapsto \matrizSimpleticaOrtogonal$, temos $\matrizunitaria{n} \hookrightarrow \gruposimpletico{2n, \reta}$. Com um abuso de notação, vamos escrever $\matrizSimpleticaOrtogonal = \gruposimpletico{2n} \cap \matrizortogonal{2n }= \matrizunitaria{n}$. 
 		
@@ -1476,7 +1478,21 @@
 		
 		Com a inclusão descrita acima podemos associar $\real{2n}\ni (v_{1}, v_{2}) = v \mapsto z = v_{1}+iv_{2} \in \complexo{2n}$. Desse modo temos $\estruturacomplexa v = (v_{2}, -v_{1}) \mapsto v_{2}-iv_{1} = -i(v_{1}+iv_{2}) = -iz \in \complexo{2n}$. Portanto, aplicar $\estruturacomplexa$ é equivalente a multiplicação por $-i$. 
 		
-		Sejam $V=(v_{i})$ e $U = (u_{i})$ as representações matriciais de $v$ e $u$. Como $\omega_{0}$ é uma aplicação bilinear, então podemos representa-la em termos matriciais como  $\formaSimpleticaPadrao{v}{u} = V^{t}GU=v_{1}u_{2}-v_{2}u_{1}$, o que implica em $G = -\estruturacomplexa = \estruturacomplexa^{t}$ e $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa V)^{t}U$. Complexificando temos $(\estruturacomplexa V)^{t}U = \formaSimpleticaPadrao{v}{u}  \mapsto \Omega(v,u) = -iV^{t}U \in \complexo{}$.
+		Sejam $V=(v_{i})$ e $U = (u_{i})$ as representações matriciais de $v$ e $u$. Como $\omega_{0}$ é uma aplicação bilinear, então podemos representa-la em termos matriciais como  $\formaSimpleticaPadrao{v}{u} = V^{t}GU=v_{1}u_{2}-v_{2}u_{1}$, o que implica em $G = -\estruturacomplexa = \estruturacomplexa^{t}$ e $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa V)^{t}U$. Complexificando temos $(\estruturacomplexa V)^{t}U = \formaSimpleticaPadrao{v}{u}  \mapsto \Omega(v,u) = -i\overline{v}.u \in \complexo{}$, onde $v.u = (v_{1}+iv_{2}).(u_{1}+iu_{2}) = \produtointerno{v_{1}}{u_{1}} - \produtointerno{v_{2}}{u_{2}} + i(\produtointerno{v_{1}}{u_{2}}+\produtointerno{v_{2}}{u_{1}})$ e $\produtointerno{.}{.}$ é o produto euclidiano de $\real{2n}$. Por simplicidade vamos omitir a notação do produto eucliano e escerver $v.u = v_{1}u_{1} - v_{2}u_{2} + i(v_{1}u_{2}+v_{2}u_{1})$.
+		
+		De fato temos uma extensão contínua pois, fazendo $v = v_{1}+iv_{2}, u = u_{1}+iu_{2} \in \complexo{2n}$ e definindo $c(v,u) = v_{1}u_{1} + v_{2}v_{2}$, temos 
+		$$
+		\begin{aligned}
+			\Omega(v,u) 
+			&= -i\overline{v}.u
+			\\
+			&=-i(v_{1}-iv_{2}).(u_{1}+iu_{2}) 
+			\\
+			&= v_{1}u_{2} - v_{2}v_{1} + i(-v_{1}u_{1} - v_{2}v_{2})
+			\\
+			&=\formaSimpleticaPadrao{v}{u} - ic(v,u) 
+		\end{aligned}	
+		$$
 		
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
@@ -1588,7 +1604,7 @@
 	\end{enumerate}
 	
 	\section{Contrução de $\rho: \caminhosNaoDegeneradosSp \to \circulo$}
-		Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \omega) \hookrightarrow (\complexo{2n}, \omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{capitulo_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
+		Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \Omega) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{secao_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
 		
 		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simpléctomorfismos em $V$. 
 		\begin{teorema}
@@ -1619,10 +1635,15 @@
 			\end{enumerate}
 		\end{teorema}
 		
-		Na Seção $\ref{capitulo_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Tomando $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$, e os auto-vetores $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, então $\formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \neq 0$ e $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. Definindo $Q: \complexo{2n} \to \reta$ tal que $Q(v) = \parteImaginaria{\formaSimpleticaPadrao{\overline{v}}{v}}$, então temos $Q(v)>0$. Como a aplicação $Q$ é positiva-definida, então podemos ordenar os auto-valores de A do seguinte modo: se $|\lambda| = 1$, isto é, $\lambda \in \circulo$, diremos que $\lambda \leq \lambda'$ se $ Q(v) \leq Q(v')$, para $v\in E_{\lambda}$ e $v'\in E_{\lambda'}$. Se $|\lambda| \neq 1$, isto é, $\lambda \notin \circulo$ diremos que $\lambda \leq \lambda'$ se $|\lambda| \leq |\lambda'|$. Com isso, temos a cadeia $\lambda_{1} \leq \lambda_{2} \leq \dots\leq \lambda_{n}\leq \lambda_{1}^{-1}\leq \dots\leq \lambda_{n}^{-1}$. \vermelho{O Salamon faz uma afirmação sobre $|\lambda|<1$, mas e o caso que $|\lambda|>1$??? Não entendi. Outro ponto é que essa ordenação só pode ser feita se todos os auto-valores de $A$ forem distintos.}
+		Na Seção $\ref{secao_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Tomando $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$, e os auto-vetores $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, então $\formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \neq 0$ e $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. Definindo $Q: \complexo{2n} \to \reta$ tal que $Q(v) = \parteImaginaria{\formaSimpleticaPadrao{\overline{v}}{v}}$, então temos $Q(v)>0$. Como a aplicação $Q$ é positiva-definida, então podemos ordenar os auto-valores de A do seguinte modo: se $|\lambda| = 1$, isto é, $\lambda \in \circulo$, diremos que $\lambda \leq \lambda'$ se $ Q(v) \leq Q(v')$, para $v\in E_{\lambda}$ e $v'\in E_{\lambda'}$. Se $|\lambda| \neq 1$, isto é, $\lambda \notin \circulo$ diremos que $\lambda \leq \lambda'$ se $|\lambda| \leq |\lambda'|$. Com isso, temos a cadeia $\lambda_{1} \leq \lambda_{2} \leq \dots\leq \lambda_{n}\leq \lambda_{1}^{-1}\leq \dots\leq \lambda_{n}^{-1}$. \vermelho{O Salamon faz uma afirmação sobre $|\lambda|<1$, mas e o caso que $|\lambda|>1$??? Não entendi. Outro ponto é que essa ordenação só pode ser feita se todos os auto-valores de $A$ forem distintos.}
+		
+		\begin{definicao}
+			
+			Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior. \vermelho{Ainda não sei se esta bem-definido para o caso que $\lambda=1$.!!!!}
+		\end{definicao}
 		
 		\begin{lema}
-			Seja $A\in \gruposimpletico{2n}$ \vermelho{com todos os auto-valores distintos e ordenados de acordo com a descrição anterior.} Então a aplicação $\rho:\gruposimpletico{2n} \to \circulo$ definida por 
+			A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
 			$$
 				\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
 			$$
@@ -1636,33 +1657,36 @@
 		|\rho(A) -\rho(B)| < \Big|\prod_{j=1}^{n} \frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} \Big| <\frac{1}{\alpha}\prod_{j=1}^{n} sup|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon.
 		$$
 		Portanto, $\rho$ é contínua.
-		
 	\end{prova}		
-		
+	
+	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
+	
 		\begin{lema}
-			Seja $B:\complexo{2n}\times \complexo{2n} \to \reta$ tal que $B(v, u ) = \parteImaginaria{\formaSimpletica{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
+			A aplicação $B:\complexo{2n}\times \complexo{2n} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
 			$$
 			B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
 			$$
 		\end{lema}
 		\begin{prova}
-		A aplicação $B$ é bilinear pois é a parte imaginária da forma bilinear $\omega$, logo é bilinear. \vermelho{Por definição temos $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa v)^{t}.u=v_{1}u_{2}-v_{2}u_{1}$. Pela Observação $\ref{observacao_identificacao_complexos}$ temos $v_{1}.u_{2}-v_{2}.u_{1} \mapsto (-iv)^{t}.u$. Então $B(v,u) =  \parteImaginaria{\omega(\overline{v}, u)}=Im (\estruturacomplexa v)^{t}.u = -v_{2}u_{1} -v_{1}u_{2} = -u_{2}v_{1}-u_{1}v_{2}  = Im \omega(\overline{u}, v) = \omega(\overline{u}, v) = B(u,v)$, logo é simétrica.}
+		A aplicação $B$ é bilinear pois é a parte imaginária da aplicação bilinear $\omega$. Sejam $v' = (v_{1}, - v_{2}), u' = (u_{1}, - u_{2}) \in \real{2n}$. Pela complexificação temos $v'\mapsto \overline{v} = v_{1}-iv_{2}$ e, analogamente, $u'\mapsto \overline{u}$. Por definição temos $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} -ic(v',u)$. Vejamos que $c(v',u) = v_{1}u_{1} - v_{2}u_{2} = u_{1}v_{1} - u_{2}v_{2} = c(u',v)$. Afirmo que $B$ é simétrica. De fato,
+		$$B(v,u) =\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} =-c(v',u) = -c(u',v) = \parteImaginaria{\formaSimpleticaExtendida{\overline{u}}{v}} = B(u,v).
+		$$
 		
-		Seja $v \in \complexo{n}$ tal que $B(v, u) = 0 \; \forall u \in \complexo{n}$. Tomando $z=a+ib \in \complexo{n}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$, logo 
+		Seja $v \in \complexo{2n}$ tal que $B(v, u) = 0 \; \forall u \in \complexo{2n}$. Tomando $z \in \complexo{2n}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$, logo 
 		$$
 			\begin{aligned}
-			\formaSimpletica{\overline{v}}{z} &=\parteReal{\formaSimpletica{\overline{v}}{z}} +i \parteImaginaria{\formaSimpletica{\overline{v}}{z}} 
+			\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
 			\\
-			&= \parteImaginaria{-i\formaSimpletica{\overline{v}}{z}} +i \parteImaginaria{\formaSimpletica{\overline{v}}{z}}
+			&= \parteImaginaria{-i\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}
 			\\
-			&= \underbrace{\parteImaginaria{\formaSimpletica{\overline{v}}{-iz}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpletica{\overline{v}}{z}}}_{=0}
+			&= \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{-iu}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}}_{=0}
 			\\
 			&=0.
 			\end{aligned}
 		$$
-		Como $\omega$ é não-degenerada, então $\overline{v} = 0$ e $B$ é não-degenerada.
+		Como $\omega_{0}$ é não degenerada e $\formaSimpleticaPadrao{v'}{u} = \parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} = 0$, então $v = 0$ e $B$ é não-degenerada.
 		
-		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpletica{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpletica{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpletica{v}{\overline{u}}} = \parteImaginaria{-\formaSimpletica{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
+		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
 		\end{prova}
 	
 	\begin{corolario}
