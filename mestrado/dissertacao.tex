@@ -1171,11 +1171,6 @@
 		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. De forma análoga obtemos as outras identidades.
 	\end{prova}
 	
-	\begin{observacao}\label{observacao_identificacao_complexos}
-			Sabemos que $\real{2n}$ e $\mathbb{C}^{n}$ são espaços vetoriais de dimensão $2n$, logo são isomorfos. Tal isomorfismo pode ser dado por $\real{2n}\ni (v_{1}, v_{2}) = v \mapsto z = v_{1}+iv_{2} \in \complexo{n}$. Desse modo temos $\estruturacomplexa v = (v_{2}, -v_{1}) \mapsto v_{2}-iv_{1} = -i(v_{1}+iv_{2}) = -iz \in \complexo{n}$. Portanto, aplicar $\estruturacomplexa$ é equivalente a multiplicação por $-i$. 
-			Por definição temos $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa v)^{t}.u=v_{1}u_{2}-v_{2}u_{1}$. Então, $(\estruturacomplexa v)^{t}  \mapsto -i\overline{v}.u \in \reta$, portanto temos a associação $\formaSimpleticaPadrao{v}{u} \mapsto \parteImaginaria{\Omega(\overline{v},u)}$ com a parte imaginária de $\Omega$, uma forma bilinear, antí-simétrica e não degenerada nos complexos.
-	\end{observacao} 
-	
 	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Com isso, consideremos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
 	$$
 	F(A)=
@@ -1356,7 +1351,7 @@
 	\begin{prova}
 		\begin{enumerate}
 			\item Dados $v \in E_{\lambda}$ e $u \in E_{\mu}$, temos pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ que $\formaSimpletica{v}{u} = 0$, então a restrição $\omega|_{E_{\lambda} \oplus E_{\mu}}:E_{\lambda} \oplus E_{\mu}\to \reta$ é identicamente nula. Logo, $\formaSimpletica{E_{\lambda} }{E_{\mu}} = 0$.
-			\item Se $v, u \in E_{1}$, então pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ temos $\formaSimpletica{v}{u} \neq 0$, logo a restrição  $\omega|_{E_{1}\times E_{1}}$ é não-degenerada. Com um argumento análogo podemos afirmar o mesmo para a restrição $\omega|_{E_{-1}\times E_{-1}}$.
+			\item Se $v, u \in E_{1}$, então pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ temos $\formaSimpletica{v}{u} \neq 0$, logo a restrição  $\omega|_{E_{1}\times E_{1}}$ é não-degenerada. Com um argumento análogo podemos afirmar o mesmo para a restrição $\omega|_{E_{-1}\times E_{-1}}$. Sabemos que os auto-valores de $A$ são determinado aos pares $\lambda, \lambda^{-1} \in \sigma(A)$, além disso, $dim(E_{\lambda}) = m(\lambda)$ e $dim(E_{\lambda^{-1}})= m(\lambda^{-1})$. Se $\lambda = 1$, então $m(\lambda) = m(\lambda^{-1}) = m(1)$, portanto $m(1)$ é um multiplo de $2$. Com um argumento análogo concluímos que o mesmo para $m(-1)$.
 			\item Seja $v\in E_{\lambda}$. Suponha por absurdo que exista $u \in E_{\lambda^{-1}}$ tal que $\formaSimpletica{v}{u} = 0$, logo $u \in E_{\lambda}^{\omega} \subseteq E_{\lambda^{-1}}$ e $E_{\lambda^{-1}}\cap E_{\lambda} \neq \emptyset$. O que implica em $Au= \lambda u $ e $Au =\lambda^{-1} u$, portanto $\lambda = \lambda^{-1}$, logo $\lambda = \pm 1$, contradizendo a hipótese de que $\lambda \neq \pm 1$. Portanto a restrição $\omega|_{E_{\lambda} \oplus E_{\lambda^{-1}}}$ é não-degenerada.
 		\end{enumerate}
 	\end{prova}
@@ -1399,10 +1394,10 @@
 	\end{prova}
 	
 	\begin{teorema}\label{teoerma_sp2n_conexo}
-		$\gruposimpletico{2n}$ é conexo.
+		$\gruposimpletico{2n}$ é conexo por caminhos, logo é conexo.
 	\end{teorema}
 	\begin{prova}
-		Se $A \in \gruposimpletico{2n}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ podemos escrever $A=PO$ onde $P \in \gruposimpleticopositivo{2n}$ e $O\in \matrizSimpleticaOrtogonal$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ temos $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$, temos $PO \in \gruposimpletico{2n}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{2n}$ temos que $G(A) = (P,O)$. Portanto $G$ é bijetora. Seja $G^{-1}:\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal\to \gruposimpletico{2n}$ tal que $G^{-1}(P,O) = PO$. Então, podemos ver que $G\circ G^{-1} = Id$ e $G^{-1} \circ G= Id$, logo $G^{-1} $ é a inversa de $G$. Como $G$ e $G^{-1} $ são aplicações contínuas, então $G$ é um homeomorfismo. Podemos afirmar que $\gruposimpleticopositivo{2n}\times \matrizSimpleticaOrtogonal$ é conexo, pois é o produto cartesianos de espaços topológicos conexos e, como funções contínuas preservam a conexidade, então $G^{-1}(\gruposimpleticopositivo{2n}\times \matrizSimpleticaOrtogonal) = \gruposimpletico{2n}$ é conexo.
+		Se $A \in \gruposimpletico{2n}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ podemos escrever $A=PO$ onde $P \in \gruposimpleticopositivo{2n}$ e $O\in \matrizSimpleticaOrtogonal$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ temos $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$, temos $PO \in \gruposimpletico{2n}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{2n}$ temos que $G(A) = (P,O)$. Portanto $G$ é bijetora. Seja $G^{-1}:\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal\to \gruposimpletico{2n}$ tal que $G^{-1}(P,O) = PO$. Então, podemos ver que $G\circ G^{-1} = Id$ e $G^{-1} \circ G= Id$, logo $G^{-1} $ é a inversa de $G$. Como $G$ e $G^{-1} $ são aplicações contínuas, então $G$ é um homeomorfismo. Podemos afirmar que $\gruposimpleticopositivo{2n}\times \matrizSimpleticaOrtogonal$ é conexo por caminhos, pois é o produto cartesianos de espaços topológicos conexos por caminhos e, como funções contínuas preservam a conexidade, então $G^{-1}(\gruposimpleticopositivo{2n}\times \matrizSimpleticaOrtogonal) = \gruposimpletico{2n}$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_decomposicao_Sp2n}
@@ -1478,6 +1473,10 @@
 		O Lema $\ref{lema_auto_espaco_grupo_simpletico}$ (auto-espaços de $\gruposimpletico{2n}$) terá o seu análogo nos complexos do seguinte modo: dado $A \in \matrizunitaria{n}\subset \gruposimpletico{2n}$ e supondo $\lambda \in \sigma(A)$ teremos que os auto-valores ocorrem em quádruplo $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1} \in \sigma(A)$ desde que $\lambda \notin \reta$ ou $\lambda \in \circulo$.
 	
 		O lema citado foi utilizado nos resultados seguintes desse capítulo, cujas demonstraçções não utilizam características específicas do corpo escolhido, portanto, tais resultados terão resultados análogos na caso dos complexos.
+		
+		Com a inclusão descrita acima podemos associar $\real{2n}\ni (v_{1}, v_{2}) = v \mapsto z = v_{1}+iv_{2} \in \complexo{2n}$. Desse modo temos $\estruturacomplexa v = (v_{2}, -v_{1}) \mapsto v_{2}-iv_{1} = -i(v_{1}+iv_{2}) = -iz \in \complexo{2n}$. Portanto, aplicar $\estruturacomplexa$ é equivalente a multiplicação por $-i$. 
+		
+		Sejam $V=(v_{i})$ e $U = (u_{i})$ as representações matriciais de $v$ e $u$. Como $\omega_{0}$ é uma aplicação bilinear, então podemos representa-la em termos matriciais como  $\formaSimpleticaPadrao{v}{u} = V^{t}GU=v_{1}u_{2}-v_{2}u_{1}$, o que implica em $G = -\estruturacomplexa = \estruturacomplexa^{t}$ e $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa V)^{t}U$. Complexificando temos $(\estruturacomplexa V)^{t}U = \formaSimpleticaPadrao{v}{u}  \mapsto \Omega(v,u) = -iV^{t}U \in \complexo{}$.
 		
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
@@ -1620,6 +1619,26 @@
 			\end{enumerate}
 		\end{teorema}
 		
+		Na Seção $\ref{capitulo_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Tomando $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$, e os auto-vetores $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, então $\formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \neq 0$ e $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. Definindo $Q: \complexo{2n} \to \reta$ tal que $Q(v) = \parteImaginaria{\formaSimpleticaPadrao{\overline{v}}{v}}$, então temos $Q(v)>0$. Como a aplicação $Q$ é positiva-definida, então podemos ordenar os auto-valores de A do seguinte modo: se $|\lambda| = 1$, isto é, $\lambda \in \circulo$, diremos que $\lambda \leq \lambda'$ se $ Q(v) \leq Q(v')$, para $v\in E_{\lambda}$ e $v'\in E_{\lambda'}$. Se $|\lambda| \neq 1$, isto é, $\lambda \notin \circulo$ diremos que $\lambda \leq \lambda'$ se $|\lambda| \leq |\lambda'|$. Com isso, temos a cadeia $\lambda_{1} \leq \lambda_{2} \leq \dots\leq \lambda_{n}\leq \lambda_{1}^{-1}\leq \dots\leq \lambda_{n}^{-1}$. \vermelho{O Salamon faz uma afirmação sobre $|\lambda|<1$, mas e o caso que $|\lambda|>1$??? Não entendi. Outro ponto é que essa ordenação só pode ser feita se todos os auto-valores de $A$ forem distintos.}
+		
+		\begin{lema}
+			Seja $A\in \gruposimpletico{2n}$ \vermelho{com todos os auto-valores distintos e ordenados de acordo com a descrição anterior.} Então a aplicação $\rho:\gruposimpletico{2n} \to \circulo$ definida por 
+			$$
+				\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
+			$$
+			é contínua.
+		\end{lema}
+	\begin{prova}
+		Como os auto-valores de $A$ são não-nulos, então podemos escrever $\lambda/|\lambda| = e^{i\theta}$. Com isso, $\rho(A)=\prod \lambda_{j}/|\lambda_{j}| = \prod e^{i\theta_{j}} = e^{i(\theta_{1}+\dots +\theta_{n})} \in \circulo$, onde $\lambda_{j}/|\lambda_{j}| = e^{i\theta_{j}}$ para $1\leq j \leq n$. Logo $\rho$ esta bem-definida.
+		
+		Pelo Teorema $\ref{teoerma_sp2n_conexo}$ sabemos que $\gruposimpletico{2n}$ é conexo por caminhos. Com isso, na topologia herdada de $\generalgroupcomplexo{2n}$, dado $1>\epsilon >0$ tal que $\norma{A-B}< \epsilon$ as representação diagonal $D_{A}$ e $D_{B}$, respectivamente, também satisfazem $\norma{D_{A}-D_{B}}< \epsilon$, isto é, $sup|\lambda_{j}-\beta_{k}| < \epsilon$, onde $\beta_{k} \in \sigma(B)$. Sejam $\alpha = inf \{|\lambda_{j}|,|\beta_{j}|\}$. Então
+		$$
+		|\rho(A) -\rho(B)| < \Big|\prod_{j=1}^{n} \frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} \Big| <\frac{1}{\alpha}\prod_{j=1}^{n} sup|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon.
+		$$
+		Portanto, $\rho$ é contínua.
+		
+	\end{prova}		
+		
 		\begin{lema}
 			Seja $B:\complexo{2n}\times \complexo{2n} \to \reta$ tal que $B(v, u ) = \parteImaginaria{\formaSimpletica{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
 			$$
@@ -1647,11 +1666,12 @@
 		\end{prova}
 	
 	\begin{corolario}
-		Sejam $Q: \complexo{n} \times \complexo{n} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$ e $m(Q) = m_{+}(Q) - m_{-}(Q) $, onde $m_{\pm}(Q) \in \inteiros$ são as dimensões dos subespaços em que $Q$ é positiva-definida, ou negativa-definida, respectivamente. Então $Q$ é não-degenerada e $m(Q) = 0$.
+		Sejam $Q: \complexo{2n} \times \complexo{2n} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$ e $m(Q) = m_{+}(Q) - m_{-}(Q) $, onde $m_{\pm}(Q) \in \inteiros$ são as dimensões dos subespaços em que $Q$ é positiva-definida, ou negativa-definida, respectivamente. Então $Q$ é não-degenerada e $m(Q) = 0$.
 	\end{corolario}
 	\begin{prova}
 		\vermelho{Sejam $A \in \gruposimpletico{2n}$, $\lambda \in \sigma(A)$ e $E_{\lambda}$ os auto-espaços associados a $\lambda$.}
 	\end{prova}
+	
 	
 		
 	\section{Construção antiga}
