@@ -1464,7 +1464,7 @@
 		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
-	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}
+	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}\label{secao_grupo_simpletico_nao_degenerado}
 	
 	Sejam $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ e $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$.
 	
@@ -1475,7 +1475,7 @@
 	\end{lema}
 	
 	\begin{lema}
-		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de $\gruposimpleticonaodegenerado{*}$. Além disso, a inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
+		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas. Além disso, a inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
 	\end{lema}
 	\begin{prova}
 		Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupreal{2n}$ tal que 
@@ -1538,6 +1538,10 @@
 			
 			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda<0$, então $\lambda^{-1} < 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Podemos ordenar a base simplética tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores negativos. Assim, $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\} = W^{-}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a composição $\alpha \circ \Gamma$, definida como no item anterior, é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior concluimos que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo. Portanto $W^{-}$ é conexo por caminhos, logo é conexo.
 		\end{enumerate}
+		
+		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, seja $A \in \gruposimpleticonaodegenerado{\pm}$. Como $det: \gruposimpleticonaodegenerado{\pm}\to \reta$ é contínua, então dado $\epsilon>0$ existe $\delta>0$ tal que $|det(A)-det(B)|<\delta$ para todo $\norma{A-B}<\epsilon$, logo $A$ é um ponto interior de $\gruposimpleticonaodegenerado{\pm}$. Portanto, $\gruposimpleticonaodegenerado{\pm}$ são abertos.
+		
+		\vermelho{Não sei demonstrar a hipótese sobre a trivialidade da inclusão dos grupos fundamentais.}
 	\end{prova}
 	
 	
@@ -1818,8 +1822,7 @@
 		\vermelho{Ainda não sei como fazer. VEr o Salamon novamente}
 	\end{prova}
 	
-	Segue a demonstração do Teorema $\ref{teorema_aplicacao_rho}$
-	
+	\subsection*{Demosntração das propriedades de $\rho$}
 	\begin{prova}
 		Seja $\rho :\gruposimpletico{2n} \to \circulo$ definida no Lema $\ref{lema_identidade_aplicacao_rho}$.
 		\begin{enumerate}
@@ -1832,23 +1835,22 @@
 			\item \textbf{\textit{Deteminante:}} Seja $A \in \mathcal{U} = \matrizunitaria{n}$. Com um argumento análogo ao que foi feito na demostração da Item $\ref{item_naturalidade_rho}$, podemos afirmar que $\estruturacomplexa$ presenva a $\Omega$-ortogonalidade dos subespaços de $A$. Como $\estruturacomplexa$ é um isomorfismo simplético, então é diagonalizável  e $\pm i \in \sigma(\estruturacomplexa)$. De fato, seja $v = (u, \pm iu) \in \complexo{2n}$, onde $u \in \complexo{n}$. Então $\estruturacomplexa v = (\pm iu, -u) = \pm i(u,iu) = \pm iv$. Seja $E^{\estruturacomplexa}_{\pm i} = \{(u, \pm i u):u \in \complexo{n} \}$ os auto-espaços de $\estruturacomplexa$ para os auto-valores $\pm i$.
 			Supondo que $v \in E^{\estruturacomplexa}_{ i}$, então $\overline{v} = (\overline{u}, -i \overline{u})$ e $\overline{v} \mapsto v' = Rv = R(u, -u) = (u,u)$. Com isso, $Q(v) = -c(v', v) = -(v'_{1}v_{1}+v'_{2}v_{2}) = -(\norma{v_{1}}^{2}+\norma{v_{2}}^{2}) =-2\norma{u}^{2}<0$. Logo a restrição $Q|_{E^{\estruturacomplexa}_{ i}}$ é negativa-definida. Com um argumento análogo teremos que a restrição $Q|_{E^{\estruturacomplexa}_{-i}}$ é positiva-definida.
 
-			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$.
+			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$. \vermelho{Enteder melhor a construção do determinante.}
 			
-			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. 
+			\item \textbf{\textit{Normalização:}} \vermelho{Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$}. 
 		\end{enumerate}
 	\end{prova}
 		
 	\section{Índice de Maslov $\mu : \caminhosNaoDegeneradosSp \to \inteiros$}
 	
+	Sabemos que $\gruposimpletico{2n}$ é conexo por caminhos, logo a definição de um índice de Maslov que não se restrinja a caminhos fechados enriquece mais a teoria do que nos atermos apenas a caminhos fechados. \vermelho{(Escrever um pouco mais sobre as órbitas conectantes dos pontos críticos do funcional hamiltoniano.)}
 	
-	Vejamos que $Sp(2n)^{*} \subset Sp(2n)$ é um subconjunto aberto, e que $\Sigma = \{T\in Sp(2n): det(Id-T)=0\} = Sp(2n)\backslash Sp(2n)^{*}$ é um conjunto fechado, além disso $Sp(2n)^{*} = Sp(2n)^{+}\cup Sp(2n)^{-}$ onde $Sp(2n)^{+}=\{T\in Sp(2n)^{*}: det(Id-T)>0\} $ e $Sp(2n)^{-}=\{T\in Sp(2n)^{*}: det(Id-T)<0\}$ são ambos subconjutos abertos, portanto $Sp(2n)^{*}$ é disconexo. O resultado abaixo nos diz um pouco da topologia de $Sp(2n)^{*}$:
+	Vimos na Seção $\ref{secao_grupo_simpletico_nao_degenerado}$ que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
 	
-	\begin{lema}
-		O conjunto aberto $Sp(2n)^{*}$ possui duas compenentes conexas $Sp(2n)^{\pm}$, além disso, a inclusão de cada uma dessas componentes em $Sp(2n)$ induz o homomorsfismo trivial entre seus grupos fundamentais, isto é, definindo as inclusões $i_{\pm}:Sp(2n)^{\pm} \hookrightarrow Sp(2n)$, então $(i_{\pm})_{\#}:\pi_{1}(Sp(2n)^{\pm}) \hookrightarrow \pi_{1}(Sp(2n))$ é tal que $(i_{\pm})_{\#}=0$. 
-	\end{lema}
+	Um dado caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ pode partir de uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ e cruzar $\Sigma$ um número finíto de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov. Para efetuar a contagem dos cruzamentos de $\gamma$ valos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico_nao_degenerado}$ que ambas são conexar por caminhos. Com isso, o caminho conectando um dado $A \in \gruposimpletico{2n}$ a $W^{+}$ pode ser conectado a um outro ponto $U^{+} \in \gruposimpleticonaodegenerado{+}$ através do caminho que conecta $W^{+}$ a $U^{+}$. Com uma construção análoga, o mesmo é válido para $W^{-} \in \gruposimpleticonaodegenerado{-}$. 
 	
 	\begin{definicao}
-		(Índice de Maslov de uma curva) Sejam $exp:\real{} \to S^{1} \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
+		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
 		$$
 		\xymatrix{
 			& & \real{}\ar[d]\ar[d]^{\text{exp}}
@@ -1864,7 +1866,7 @@
 		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
 	\end{definicao}
 	
-	O teorema e corolário abaixo nos oferece uma mecânismo de cálculo para o índice de Maslov na aplicação do formalismo.
+	O teorema e corolário abaixo nos oferece uma método de cálculo para o índice de Maslov na aplicação do formalismo.
 	
 	\begin{teorema}
 		Fixando $W^{\pm} \in Sp(2n)^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
