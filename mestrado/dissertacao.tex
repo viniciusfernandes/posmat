@@ -118,6 +118,7 @@
 \newcommand{\gruposimpleticocomplexo}[1]{Sp(#1; \complexo{})}
 \newcommand{\gruposimpleticoreal}[1]{Sp(#1;\reta)}
 \newcommand{\gruposimpleticoespecial}[1]{Sp^{1}(#1)}
+\newcommand{\gruposimpleticonaodegenerado}[1]{Sp^{#1}(2n)}
 \newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
@@ -1463,6 +1464,83 @@
 		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
+	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}
+	
+	Sejam $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ e $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$.
+	
+	O seguinte lema é demasiadamente técnico e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	
+	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
+		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ \vermelho{(não sei se  B esta realmente em $\gruposimpleticonaodegenerado{*}$)} cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
+	\end{lema}
+	
+	\begin{lema}
+		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de $\gruposimpleticonaodegenerado{*}$. Além disso, a inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
+	\end{lema}
+	\begin{prova}
+		Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupreal{2n}$ tal que 
+		$$
+		W(a) = diag\{a, -1, \dots, -1, a^{-1}, -1, \dots , -1\},
+		$$
+		onde cada bloco diagonal é uma matriz de ordem $n$. Afirmo que $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$. De fato, $det(Id - W(a)) = (1-a)(1-a^{-1})4^{n-1} \neq 0$, pois $a\neq 1$.
+		
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $x,y \in V$ tais que $x=(x_{(1)}, x_{(2)})$, onde $x_{(1)} = (x_{1}, \dots, x_{n})$ e $x_{(2)} = (x_{n+1}, \dots, x_{2n})$ e analogamente para $y$. Com isso, 
+		$$
+		\begin{aligned}	
+		W(a)x &= (ax_{1}, -x_{2}, \dots, -x_{n}, a^{-1}x_{n+1}, -x_{n+2}, \dots, -x_{2n})
+		\\
+		\estruturacomplexa W(a)x &= (a^{-1}x_{n+1}, -x_{n+2}, \dots, -x_{2n}, -ax_{1}, x_{2}, \dots, x_{n}).
+		\end{aligned}
+		$$ 
+		
+		Definindo $X, Y$ as representações matriciais de $x$ e $y$, respectivamente e sabendo que $\formaSimpleticaPadrao{x}{y} = (\estruturacomplexa X)^{t}Y$, temos
+		$$
+		\begin{aligned}
+			\formaSimpleticaPadrao{W(a)x}{W(a)y} 
+			&=
+			(\estruturacomplexa W(a)X)^{t}W(a)Y
+			\\
+			&=a^{-1} x_{n+1}ay_{1} + x_{n+2}y_{2}+ \dots + x_{2n}ay_{n}
+			\\
+			& \;\;\;\; -ax_{1}a^{-1}y_{n+1}- x_{2}y_{n+2}-\dots - x_{n}y_{2n} 
+			\\
+			&=\sum_{j=1}^{n}x_{n+j}y_{j} - 	x_{j}y_{n+j}
+			\\
+			&= \produtointerno{x_{(2)}}{y_{(1)}} - \produtointerno{x_{(1)}}{y_{(2)}}
+			\\
+			&= \formaSimpleticaPadrao{x}{y}.
+		\end{aligned}
+		$$
+		Portanto, $W(a) \in \gruposimpletico{2n}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
+		
+		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Temos que $det(W^{+}) = 1$  e $det(W^{-}) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
+		
+		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Suponha que $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$, sendo $v_{\lambda_{j}}$ auto-vetores de $B$, uma base de $V$ e que seja invariante pela conjugação complexo, isto é, $\{\overline{v}_{\lambda_{1}}, \dots , \overline{v}_{\lambda_{2n}} \}$ também é uma base simplética \vermelho{(não entendi a necessidade dessa hipótese)}. 
+		
+		Sejam $\gamma:[0,1]\to \reta$ um caminho contínuo tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ com $1 \notin \gamma([0,1])$ \vermelho{(não entendi essa condição)} e $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ definido por
+		$$
+		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
+		$$
+		
+		com $\Gamma(0) = B$. Assim, podemos escrever $\Gamma(s)v_{\lambda} = \beta(s)v_{\lambda}$, sendo $\beta$ um caminho definido por $\Gamma$, que no caso dos auto-valores $1/\lambda$ e $\overline{\lambda}$ teremos $\beta(s) = 1/\gamma(s)$ e $\overline{\beta}(s) = 1/\overline{\gamma}(s)$. Com isso, temos $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$. De fato, supondo $\lambda,\lambda' \in \sigma(B)$ tais que $\lambda\lambda' \neq 1$ e $\omega$ tal que $\omega$ uma 2-forma simplética nessa base,  $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \beta(s)\beta'(s)\omega(v_{\lambda},v_{\lambda'}) = 0$, pela $\omega$-ortoganalidade. Por outro lado, caso $\lambda\lambda'=1$, teremos $\lambda'=\lambda^{-1}$ implicando $\beta'(s) = 1/\beta(s)$, logo $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \omega(v_{\lambda},v_{\lambda'})$. Por fim, caso $\lambda = \lambda'$, teremos $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda}) = \beta^{2}(s)\omega(v_{\lambda},v_{\lambda}) =0$. Portanto, $\Gamma^{*}(s)\omega = \omega$ e $\Gamma(s) \in \gruposimpletico{2n}$.
+		
+		Por definição $\gruposimpleticonaodegenerado{*}$ temos que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, logo o caminho contínuo $\alpha$ conectando $A$ a $B$ esta em apenas uma dessas componentes, isto é, $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$.
+		
+		Vamos mostrar que ambas componentes são conexas por caminhos. De acordo com o Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ $B$ temos as duas seguintes condições:
+		\begin{enumerate}
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Com isso, $\Gamma(s) = diag\{\gamma_{\lambda{1}}(s)\dots, \gamma_{\lambda{2n}}(s)\}$ e $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{+}$. A composição 
+			
+			$$
+			\funcaocond{(\alpha\circ \Gamma)(s)
+				}{\alpha(2s)}{0\leq s \leq 1/2}{\Gamma(s)}{1/2\leq s \leq 1}
+			$$
+			é um caminho contínuo conectando $A$ a $W^{+}$. Seja $A\neq A' \in \gruposimpleticonaodegenerado{+}$. Então, com uma construção análoga a anterior, podemos conectar $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Temos caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente, logo conectamos $A$ a $A'$. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
+			
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda<0$, então $\lambda^{-1} < 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Podemos ordenar a base simplética tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores negativos. Assim, $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\} = W^{-}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a composição $\alpha \circ \Gamma$, definida como no item anterior, é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior concluimos que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo. Portanto $W^{-}$ é conexo por caminhos, logo é conexo.
+		\end{enumerate}
+	\end{prova}
+	
+	
 	\section{A complexificação de $\gruposimpletico{2n}$}\label{secao_complexificacao_grupo_simpetico}
 	
 		Até o momento os resultados foram demonstrados para o caso de espaços vetoriais simpléticos reais. Contudo, a estratégia adotada para construírmos o índice de Maslov exige uma associação $\gruposimpletico{2n}\mapsto \circulo$ que será realizada naturalmente se trabalharmos com espaços vetoriais simpléticos complexos. Vamos realizar as inclusões $\real{2n} \hookrightarrow \complexo{2n}$, $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ e, pela identificação $\matrizunitaria{n} \mapsto \matrizSimpleticaOrtogonal$, temos $\matrizunitaria{n} \hookrightarrow \gruposimpletico{2n, \reta}$. Com um abuso de notação, vamos escrever $\matrizSimpleticaOrtogonal = \gruposimpletico{2n} \cap \matrizortogonal{2n }= \matrizunitaria{n}$. 
@@ -1609,7 +1687,7 @@
 			\end{observacao}
 	\end{enumerate}
 	
-	\section{Contrução de $\rho: \caminhosNaoDegeneradosSp \to \circulo$}
+	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
 		Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \Omega) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{secao_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
 		
 		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simpléctomorfismos em $V$. 
@@ -1745,72 +1823,23 @@
 	\begin{prova}
 		Seja $\rho :\gruposimpletico{2n} \to \circulo$ definida no Lema $\ref{lema_identidade_aplicacao_rho}$.
 		\begin{enumerate}
-			\item \textbf{\textit{Naturalidade:}} Sejam $T : \complexo{2n} \to \complexo{2n}$ um isomorfismo simplético, sito é, $T\in \gruposimpletico{2n}$. Então $T$ preserva a $\Omega$-ortogonalidade de $A$. De fato, sejam $E_{\lambda}$ e $E_{\lambda'}$ subespaços $\Omega$-ortogonais de $A$, então $(T^{*}\Omega)(E_{\lambda}, E_{\lambda'}) = \Omega(T(
-			E_{\lambda}), T(
-			E_{\lambda'})) = \Omega(E_{\lambda}, E_{\lambda'}) = 0$. Seja $S^{-1}DS$ a representação diagonal de $A$. Então $B = T^{-1}AT = (ST)^{-1}DST$, logo $B$ é similar a matriz diagonal $D$ e possui os mesmo auto-valores de $A$. Além disso, temos que $T^{-1}AT\in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Portanto $\rho(T^{-1}AT) = \rho(B) = \rho(A)$. 
+			\item \label{item_naturalidade_rho} \textbf{\textit{Naturalidade:}} Sejam $T : \complexo{2n} \to \complexo{2n}$ um isomorfismo simplético, isto é, $T\in \gruposimpletico{2n}$. Então $T$ preserva a $\Omega$-ortogonalidade de $A$. De fato, supondo $E$ e $E'$ subespaços $\Omega$-ortogonais de $A$, então $(T^{*}\Omega)(E, E') = \Omega(T(
+			E), T(E')) = \Omega(E, E') = 0$. Seja $S^{-1}DS$ a representação diagonal de $A$. Então $B = T^{-1}AT = (ST)^{-1}DST$, logo $B$ é similar a matriz diagonal $D$ e possui os mesmo auto-valores de $A$. Além disso, temos que $T^{-1}AT\in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Portanto $\rho(T^{-1}AT) = \rho(B) = \rho(A)$. 
+			
 			\item \textbf{\textit{Produto:}} Sejam $(V, \Omega) = (\complexo{2n}\times \complexo{2n}, \Omega_{1}\times \Omega_{2})$ e $A \in \gruposimpletico{V}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\oplus E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, respectivamente. Desse modo, $A = A_{1}\oplus A_{2}$ e $\rho(A) = \rho(A_{1})\rho(A_{2})$.
 			
-			\item \textbf{\textit{Deteminante:}} XXXXXXXXXXXXXXXXXXXXXXx
+			
+			\item \textbf{\textit{Deteminante:}} Seja $A \in \mathcal{U} = \matrizunitaria{n}$. Com um argumento análogo ao que foi feito na demostração da Item $\ref{item_naturalidade_rho}$, podemos afirmar que $\estruturacomplexa$ presenva a $\Omega$-ortogonalidade dos subespaços de $A$. Como $\estruturacomplexa$ é um isomorfismo simplético, então é diagonalizável  e $\pm i \in \sigma(\estruturacomplexa)$. De fato, seja $v = (u, \pm iu) \in \complexo{2n}$, onde $u \in \complexo{n}$. Então $\estruturacomplexa v = (\pm iu, -u) = \pm i(u,iu) = \pm iv$. Seja $E^{\estruturacomplexa}_{\pm i} = \{(u, \pm i u):u \in \complexo{n} \}$ os auto-espaços de $\estruturacomplexa$ para os auto-valores $\pm i$.
+			Supondo que $v \in E^{\estruturacomplexa}_{ i}$, então $\overline{v} = (\overline{u}, -i \overline{u})$ e $\overline{v} \mapsto v' = Rv = R(u, -u) = (u,u)$. Com isso, $Q(v) = -c(v', v) = -(v'_{1}v_{1}+v'_{2}v_{2}) = -(\norma{v_{1}}^{2}+\norma{v_{2}}^{2}) =-2\norma{u}^{2}<0$. Logo a restrição $Q|_{E^{\estruturacomplexa}_{ i}}$ é negativa-definida. Com um argumento análogo teremos que a restrição $Q|_{E^{\estruturacomplexa}_{-i}}$ é positiva-definida.
+
+			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$.
 			
 			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. 
 		\end{enumerate}
 	\end{prova}
 		
-	\section{Construção antiga}
-	\begin{definicao}
-		(Fibrado simplético) Um n-fibrado simplético $(E,B, p)$ é um n-fibrado vetorial onde o grupo estrutural é reduzido ao grupo de simplectomorfismos $Symp(M,\omega)$ da n-variedade simplética $(M,\omega)$. Nesse caso, cada fibra $F_{p}$ é munida de uma 2-forma fechada e não-degenerada $\omega_{p}$.
-	\end{definicao}
+	\section{Índice de Maslov $\mu : \caminhosNaoDegeneradosSp \to \inteiros$}
 	
-	\begin{lema}\label{Sp2n_homotopia}
-		Temos $U(n) = Sp(2n)\cap O(2n)$, além disso $U(n)$ é um retrato por deformação de $Sp(2n)$. Por fim, $Sp(2n)$ é conexo por caminhos e $\pi_{1}(Sp(2n)) \cong \inteiros$.
-	\end{lema}
-	
-	Ainda considerando a hamiltoniana dependente do tempo $H:W \times S^{1} \to \real{}$ e as soluções 1-periódicas dos sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$. Fixando $x(t) = \psi_{t}(x(0))$ e definamos $e(0) = \{e_{j}(0)\}$ uma base de $T_{x(0)}M$. Sabemos que, de acordo com o Lema \ref{fluxo_convervativo}, o fluxo hamiltoniano preserva $\omega$, então dados $X,Y \in T_{x(0)}M$ e $D_{x(0)}\psi_{t}$ como sendo o diferencial de $\psi_{t}$ em $x(0)$, teremos
-	$$
-	\omega_{x(0)}(D_{x(0)}\psi_{t}X, D_{x(0)}\psi_{t}Y)=(\psi_{t})^{*}\omega_{x(t)}(X,Y) = \omega_{x(t)}(X,Y).
-	$$
-	
-	Seja $\Psi_{x}(t)$ a matriz do diferencial $D_{x(0)}\psi_{t}$ para daca $t\in S^{1}$. Como vimos anteriormente, $\psi_{t}$ é um simplectomorfismo, logo $\Psi_{x}(t) \in Sp(2n)$, além disso, temos uma famíla de bases suaves $e(t)$ de $T_{x(t)}M$ para cada $t \in \real{}$. Podemos definir a curva $\Psi_{x}:\real{} \to Sp(2n)$ tal que $\Psi_{x}(0) = Id$ e $det(Id-\Psi_{x}(1)) \neq 0$ pois as soluções do sistema hamiltoniano são não-degeneradas.
-	
-	Sejam $Sp(2n)^{*} = \{T\in Sp(2n): det(Id-T) \neq 0\}$ e $\mathcal{S} = \{\gamma:[0,1] \to Sp(2n): \gamma(0) = Id,\; \gamma(1)\in Sp(2n)^{*} \}$. Tome $u,v : D^{2} \subset \mathbb{C} \to M$ duas extensões de $x(t)$, isto é, duas aplicações suaves tal que $u|_{\partial D^{2}} = v|_{\partial D^{2}} = x$. Como as extensões $u,v:D^{2} \to M$ são aplicações contínuas e $D^{2}$ é compacto e contrátil, então pelo Corolário $\ref{pullback_contratil}$ temos que os pullbacks $u^{*}TM$ e $v^{*}TM$ são fibrados vetoriais triviais, além disso, ambas as extensões so aplicações homotópicas por construção, logo pelo Teorema $\ref{pullback_isomorfismo}$  $u^{*}TM \cong v^{*}TM$.
-	
-	Sejam $e(t)$ e $e'(t)$ duas bases ao longo de $x(t)$ e $\Psi_{x}(t), \Psi'_{x}(t)$ as matrizes do diferencial nas respectivas bases. Por definição temos $\Psi_{x}, \Psi_{x}' \in \mathcal{S}$ tal que $\Psi_{x} \simeq \Psi'_{x}$, isto é, \vermelho{são curvas homotópicas em $\mathcal{S}$}. Com isso, consequimos associar a cada solução 1-periódica dos sistema Hamiltoniano a uma curva $\Psi_{x} \in \mathcal{S}$ a menos de uma homotopia da seguinte forma $\hat{\Psi}_{t}:\solucoesperiodicascontrateis \to \mathcal{S}$ tal que $\hat{\Psi}_{t}(x) = \Psi_{x}(t)$.
-	
-	O seguinte resultado será utlizado nas demais construções do índice de Maslov.
-	
-	\begin{teorema}
-		Para cada $n \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
-		\begin{enumerate}
-			\item Naturalidade: se $Q, T \in Sp(2n)$, então 
-			$$\rho(TQT^{-1}) = \rho(Q).$$
-			\item Produto: Se $Q\in Sp(2m)$ e $T\in Sp(2n)$, então
-			$$
-			\rho
-			\begin{pmatrix} 
-			Q & 0 
-			\\ 
-			0 & T
-			\end{pmatrix}
-			= \rho(Q)\rho(T).
-			$$
-			\item Deteminante: Se $Q \in U(n) = Sp(2n) \bigcap O(2n)$, então
-			$$
-			\rho(Q) = det_{\mathbb{C}}(X+iY), \; \text{onde} \; Q = 
-			\begin{pmatrix} 
-			X & -Y 
-			\\ 
-			Y & X
-			\end{pmatrix}.
-			$$ 
-			Em particular $\rho$ induz um isomorfismo $\rho_{*}:\pi_{1}(Sp(2n)) \to \pi_{1}(S^{1}) \cong \inteiros.$
-			\item Normalização: Se os auto-valores de $Q$ são todos reais, então
-			$$
-			\rho(Q) = (-1)^{m_{0}/2},
-			$$
-			onde $m_{0}$ é a multiplicidade dos auto-valores reais negativos.
-			\item $\rho(Q^{t}) = \rho(Q^{-1}) = \overline{\rho(Q)}$.
-		\end{enumerate}
-	\end{teorema}
 	
 	Vejamos que $Sp(2n)^{*} \subset Sp(2n)$ é um subconjunto aberto, e que $\Sigma = \{T\in Sp(2n): det(Id-T)=0\} = Sp(2n)\backslash Sp(2n)^{*}$ é um conjunto fechado, além disso $Sp(2n)^{*} = Sp(2n)^{+}\cup Sp(2n)^{-}$ onde $Sp(2n)^{+}=\{T\in Sp(2n)^{*}: det(Id-T)>0\} $ e $Sp(2n)^{-}=\{T\in Sp(2n)^{*}: det(Id-T)<0\}$ são ambos subconjutos abertos, portanto $Sp(2n)^{*}$ é disconexo. O resultado abaixo nos diz um pouco da topologia de $Sp(2n)^{*}$:
 	
