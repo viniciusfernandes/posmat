@@ -254,6 +254,10 @@
 	\end{exemplo}
 	
 	\begin{exemplo}
+		(O 1-disco com alça) Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.   
+	\end{exemplo}
+	
+	\begin{exemplo}
 		(2-toro) Vamos exibir uma estrutura de CW-complexo para $T^{2}$. Representando o toro como o quadrado cujos os lados opostos estão identificados preservando a orientação, então todos os vértices do quadrado serão identificados com um único ponto um ponto $p \in T^{2}$. Definamos o $0-$esqueleto como sendo $\skeleton{0} = \{p\}$. As arestas horizontais representam o mesmo $S^{1}$ no toro. Isso equivale a colar uma 1-célula ao 0-esqueleto, ou seja, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}$. Analogamente, as faces verticais também representam o mesmo $S^{1}$ no toro, o que indica que devemos anexar uma outra 1-célula a espaço anexado anteriormente, isto é, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$. Por fim, temos que anexar um 2-célula para cobrir o interior do quadrado. Então $T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}$.
 	\end{exemplo}
 	
@@ -729,6 +733,17 @@
 			\end{enumerate}
 		\end{prova}
 		
+		\begin{proposicao}\label{proposicao_gerador_grupo_fundamental_ciruclo}
+			O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = <\gamma>$.
+		\end{proposicao}
+		\begin{prova}
+			Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ podemos escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $deg(\gamma) = 1$, logo 
+			$$
+			deg(\beta) = k = \underbrace{1+\dots+1}_{k-vezes} = deg(\gamma)+\dots+deg(\gamma) = deg(\gamma \dots \gamma) = deg(\gamma^{n}).
+			$$
+			Portanto $\beta \sim \gamma^{n}$ e $\classe{\beta} = \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo $\grupofundamental{\circulo} = <\gamma>$.
+		\end{prova}
+		
 		\section{Exemplos de Grupo Fundamental}
 		\begin{exemplo}
 			(Grupo fundamental $\grupofundamental{\real{n}}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
@@ -742,7 +757,7 @@
 		\end{exemplo}
 		
 		\begin{exemplo}
-			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $\real{2} \ni r=(0,0)$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
+			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $r=(0,0)\in \real{2}$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
 		\end{exemplo}
 		
 	\chapter{Teoria de Morse}
@@ -1453,7 +1468,7 @@
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_determinante_homomorfismo}
-		Mostramos que no Lema $\ref{lema_isomorfismo_grupo_fundamental_matriz_unitaria}$ que o determinando, que é uma aplicação contínua, induz o isomorfismo $det_{*}: \grupofundamental{\matrizunitaria{n}} to \inteiros$.
+		Mostramos que no Lema $\ref{lema_isomorfismo_grupo_fundamental_matriz_unitaria}$ que o determinando, que é uma aplicação contínua, induz o isomorfismo $det_{*}: \grupofundamental{\matrizunitaria{n}} \to \inteiros$.
 	\end{observacao}
 	
 	\begin{teorema}
@@ -1541,7 +1556,16 @@
 		
 		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, seja $A \in \gruposimpleticonaodegenerado{\pm}$. Como $det: \gruposimpleticonaodegenerado{\pm}\to \reta$ é contínua, então dado $\epsilon>0$ existe $\delta>0$ tal que $|det(A)-det(B)|<\delta$ para todo $\norma{A-B}<\epsilon$, logo $A$ é um ponto interior de $\gruposimpleticonaodegenerado{\pm}$. Portanto, $\gruposimpleticonaodegenerado{\pm}$ são abertos.
 		
-		\vermelho{Não sei demonstrar a hipótese sobre a trivialidade da inclusão dos grupos fundamentais.}
+		Por fim, vamos demonstrar a trivialidade da inclusão dos grupos fundamentais.
+		
+		Sejam $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ aplicações contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
+		onde $\lambda_{j}\neq \pm 1$ \vermelho{ (aqui acho que tenho que usar o argumento da complexificação pois o Salamon diz que os atuo-valores devem ser de primeira ordem)} e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\mathcal{L}(\gruposimpleticonaodegenerado{+})$ o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
+		$$
+		\exp(i2\pi \sum_{j=1}^{n}\alpha_{j}(A)) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
+		$$ 
+		Dado $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{+})$, então $\rho \circ \gamma$ é um caminho contínuo e periódico. Se $\lambda_{j} \in \complementar{\sigma(A)}{\real{+}}$, então $\alpha_{j}$ estão determinadas unicamente. De fato, suponha que $\lambda_{k}$ e $\lambda_{m}$ são ambos auto-valores reais positivos, então $\alpha_{k}(A) = \lambda_{k}/|\lambda_{k}| =1 = \lambda_{m}/|\lambda_{m}| =\alpha_{m}(A)$. \vermelho{(Não consigo entender o restante dos argumentos do Salamon ne do Michelle).}
+		
+		Portanto, dado  $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{\pm})$ o caminho $i\circ \gamma:[0,1] \to \gruposimpletico{2n}$ é contrátil e a aplicação induzida $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{\pm}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é trivial, isto é, $i_{*} = 0$.
 	\end{prova}
 	
 	
@@ -1720,6 +1744,7 @@
 					\end{array}
 					\right).
 				$$
+				Além disso, a aplicação indizuda $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
 				
 				\item \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
 			\end{enumerate}
@@ -1841,7 +1866,7 @@
 		\end{enumerate}
 	\end{prova}
 		
-	\section{Índice de Maslov $\mu : \caminhosNaoDegeneradosSp \to \inteiros$}
+	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
 	Sabemos que $\gruposimpletico{2n}$ é conexo por caminhos, logo a definição de um índice de Maslov que não se restrinja a caminhos fechados enriquece mais a teoria do que nos atermos apenas a caminhos fechados. \vermelho{(Escrever um pouco mais sobre as órbitas conectantes dos pontos críticos do funcional hamiltoniano.)}
 	
@@ -1869,10 +1894,10 @@
 	O teorema e corolário abaixo nos oferece uma método de cálculo para o índice de Maslov na aplicação do formalismo.
 	
 	\begin{teorema}
-		Fixando $W^{\pm} \in Sp(2n)^{\pm}$ e escolhendo uma $A \in Sp(2n)^{*}$ e uma curva $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então para uma curva  $\psi:[0,1] \to Sp(2n)$ com $\psi(0) = Id$ e $\psi(1) = A$ teremos:
+		Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
-			\item Duas curvas $\alpha, \beta \in \mathcal{S}$ são homotópicas se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+			\item Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
 			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
 			\item Se $S \in GL(2n)$ com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
 			$$
@@ -1881,6 +1906,33 @@
 			onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
 		\end{enumerate}
 	\end{teorema}
+	\begin{prova}
+		\begin{enumerate}
+			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$. Pelo Teorema $\ref{teoerma_sp2n_conexo}$ $\gruposimpletico{2n}$ é conexo por caminhos, logo $\psi$ existe. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ podemos afirmar que existe um caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Seja a composição desses caminhos $\psi_{A}:[0,1]\to \gruposimpleticonaodegenerado{*}$ definida por
+			$\mu(\mathcal{L}(\gruposimpletico{2n})) \subseteq \inteiros$.
+			$$	
+			\funcaocond{\psi_{A}(s)
+				}{\psi(2s)}{0\leq s \leq 1/2}{\gamma(s)}{1/2\leq s \leq 1.}
+			$$
+			Então, $\mu(\psi) = \varDelta(\psi) - \varDelta(\psi_{A}(1)) = \varDelta(\psi) - \varDelta(W^{\pm})= \varDelta(\psi)$, pois $\rho(W^{\pm})= \exp(i\theta^{\pm})$ para algum $\theta^{\pm} \in \reta$ constante, logo $\varDelta(W^{\pm}) = 0$. Portanto, $\mu(\psi) \in \inteiros$. Como $A$ e $\psi$ são arbitrários, então $\mu (\mathcal{L}(\gruposimpletico{2n})) \subseteq \inteiros$.
+			
+			\item Como $\alpha \sim \beta$, então $\classe{\alpha} = \classe{\beta} \in \grupofundamental{\gruposimpletico{2n}}$ e, pelo Teorema $\ref{teorema_aplicacao_rho}$, $\rho_{*}$ é um isomorfismo, com isso $\rho_{*}[\alpha] = \rho_{*}[\beta] \in \grupofundamental{\circulo}$. Pela Proposição $\ref{proposicao_gerador_grupo_fundamental_ciruclo}$ temos $deg(\alpha) = (\theta(1)-\theta(0))/2\pi = \varDelta(\beta)/2$, o que implica em $\varDelta(\alpha) = \varDelta(\beta)$. Portanto
+			$$
+			\begin{aligned}
+			\mu(\alpha) 
+			&= \varDelta(\alpha) - \varDelta(\alpha(1)) 
+			\\
+			&= \varDelta(\beta) - \varDelta(\alpha(1)) 
+			\\
+			&= \varDelta(\beta) - \varDelta(\beta(1)) 
+			\\
+			&= \mu(\beta).
+			\end{aligned}
+			$$
+			
+			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $det(Id - \psi(1))>0$, então $\gamma(1) = W^{+}$ e $\rho(W^{+}) = (-1)^{n}$. Com isso $\mu(\psi) \varDelta(\psi)$
+		\end{enumerate}
+	\end{prova}
 	
 	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $\solucoesperiodicascontrateis$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
 	
