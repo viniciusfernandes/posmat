@@ -1899,7 +1899,7 @@
 			\item $\mu(\psi) \in \inteiros$.
 			\item Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
 			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
-			\item Se $S \in GL(2n)$ com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+			\item Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
 			$$
 			\mu(\psi) = Ind(S) - n,
 			$$
@@ -1930,7 +1930,85 @@
 			\end{aligned}
 			$$
 			
-			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $det(Id - \psi(1))>0$, então $\gamma(1) = W^{+}$ e $\rho(W^{+}) = (-1)^{n}$. Com isso $\mu(\psi) \varDelta(\psi)$
+			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $det(Id - \psi(1))>0$, então $\gamma(1) = W^{+}$ e $\rho(W^{+}) = (-1)^{n}$. Com isso $\mu(\psi) - n$ é par \vermelho{(não entendi esse argumento. No michelle e no salamn estão iguais.)}
+			
+			\item Afirmo que, $\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. De fato, vamos mostrar que, dada uma matriz simétrica $S$, temos que $\exp(t\estruturacomplexa S)$ comuta com $\estruturacomplexa$, de forma equivalente, $\estruturacomplexa^{-1}\exp(t\estruturacomplexa S)\estruturacomplexa = \exp(t\estruturacomplexa S)$. Seja um inteiro $k\geq 0$. Então
+			$$
+			\begin{aligned}
+			\estruturacomplexa^{-1}(\estruturacomplexa S)^{k}\estruturacomplexa 
+			&= \estruturacomplexa^{-1}\underbrace{(\estruturacomplexa S)\dots (\estruturacomplexa S)}_{k-vezes}\estruturacomplexa
+			\\
+			&=\underbrace{(S\estruturacomplexa )\dots (S\estruturacomplexa )}_{k-vezes}
+			\\
+			&=(S\estruturacomplexa )^{k},
+			\end{aligned}
+			$$
+			o que implica em 
+			$$
+				\estruturacomplexa^{-1}\exp(t\estruturacomplexa S)\estruturacomplexa =\sum_{k=0}^{\infty}\frac{\estruturacomplexa^{-1}(t\estruturacomplexa S)^{k}\estruturacomplexa}{k!} = \sum_{k=0}^{\infty}\frac{(tS\estruturacomplexa )^{k}}{k!} = \exp(tS\estruturacomplexa).
+			$$
+			logo $(\estruturacomplexa S )^{t}= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$ \vermelho{(para mim essa afirmação vale se tivermos uma matriz anti-simétrica, iso é, $S^{t} =-S$...e agora?????).}
+			
+			Sejam um caminho contínuo $P:[0,1]\to \matrizortogonal{2n}$ e $S(\alpha) = P^{t}(\alpha)SP(\alpha)$ tais que $P(0) = Id$ e $S(1)$ é uma matriz diagonal. Temos que $S(\alpha)^{t}$ é simétrica, pois $S(\alpha)^{t} = (P^{t}(\alpha)SP(\alpha))^{t} = P^{t}(\alpha)S^{t}P(\alpha) = P^{t}(\alpha)SP(\alpha) = S(\alpha)$ \vermelho{(novamente temos o problema da simetria aqui)}, logo $\Psi_{\alpha}(t)=\exp(t\estruturacomplexa S(\alpha)) \in \gruposimpletico{2n}$.
+			
+			Por hipótese temos $\norma{S}< 2\pi $ e $S(1) = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$. Com isso, $det(S(1)) = det(P^{t}(1)SP(1)) = det(S)< (2\pi)^{2n}$, logo $\lambda_{1} \dots \lambda_{2n}< \lambda^{2n} < 2\pi^{2n}$, onde $\lambda = \max\{|\lambda_{j}|\}$ e $0\leq j\leq 2n$. Dessa forma, podemos reduzir a análise às matrizes diagonais. Seja $0<\epsilon<2\pi$. Então, sem perda de generalidade, podemos assumir que $S = diag\{\epsilon, \dots, \epsilon, -\epsilon, \dots, -\epsilon \}$, onde temos $m$ termos negativos. \vermelho{(Aqui o Salamon diz algo sobre a decomposição de $\real{2n}$ em n planos simpléticos, não entendi o porque)}. Temos os casos quando $m=0$, $0\leq m\leq 2n$ e $m = 2n$. 
+			
+			\textbf{Caso $m = 0$:} Nessa condição temo $S = diag\{\epsilon, \dots, \epsilon\}$. Dado um inteiro $k\geq 0$ temos que $\estruturacomplexa^{2k} = (-1)^{k}$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$. Com isso
+			$$
+			\begin{aligned}
+				\exp(\epsilon\estruturacomplexa ) 
+				&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{k}}{k!} 
+				\\
+				&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k}}{(2k)!} + \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k+1}}{(2k+1)!}
+				\\
+				&=\sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k} }{(2k)!} Id+ \sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k+1}}{(2k+1)!}\estruturacomplexa
+				\\
+				&=\cos(\epsilon)Id+\sin(\epsilon)\estruturacomplexa
+				\\
+				&=
+				\left(
+				\begin{array}{cc}
+					\cos(\epsilon) & \sin(\epsilon)
+					\\
+					-\sin(\epsilon) & \cos(\epsilon)
+				\end{array}
+				\right).
+				\
+			\end{aligned}
+			$$
+			Portanto, temos
+			$$
+			det(Id - \exp(\epsilon\estruturacomplexa ) )=
+			\left|
+			\begin{array}{cc}
+			1-\cos(\epsilon) & -\sin(\epsilon)
+			\\
+			\sin(\epsilon) & 1-\cos(\epsilon)
+			\end{array}
+			\right| \neq 0
+			$$
+			pois $\epsilon \notin \{0, 2\pi\}$ e $\exp(\epsilon\estruturacomplexa ) \in \gruposimpleticonaodegenerado{*}$. Com isso, dado $v \in \real{2n}$ temos $\exp(t\estruturacomplexa S)v = \exp(t\estruturacomplexa \epsilon)v$. Como $v$ é arbitrário, então $ \exp(t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$. Por fim, $\rho(\exp(t\estruturacomplexa S))$
+			
+			\textbf{Caso $m = 2n$:} Nessa condição temos $S = diag\{-\epsilon, \dots, -\epsilon \}$. Com um cálculo análogo ao caso m=0 e fazendo $\epsilon \mapsto -\epsilon$ teremos $\exp(-t\estruturacomplexa S) = \exp(-t\estruturacomplexa \epsilon)$. Então
+			
+			$$
+			\exp(-\epsilon \estruturacomplexa)
+			=\left(
+			\begin{array}{cc}
+			\cos(-\epsilon) & \sin(-\epsilon)
+			\\
+			-\sin(-\epsilon) & \cos(-\epsilon)
+			\end{array}
+			\right)
+			=\left(
+			\begin{array}{cc}
+			\cos(\epsilon) & -\sin(\epsilon)
+			\\
+			\sin(\epsilon) & \cos(\epsilon)
+			\end{array}
+			\right),
+			$$
+			logo $det(Id - \exp(-\epsilon\estruturacomplexa ) ) \neq 0 $ pois $\epsilon \notin \{0,2\pi \}$. Portanto, $\exp(-t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$.
 		\end{enumerate}
 	\end{prova}
 	
