@@ -883,7 +883,7 @@
 	
 	Seja $Q= \real{n}$ e $P=\real{2n}$ os espaços de configuraões e fase, respectivamente. Por simplicidade vamos utilizar a notação $(q, p ) = (q_{i}, \dots ,q_{n}, p_{i}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  temos o espaço tangente $T_{(q_{0},p_{0})} P = span\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=span\{\partial_{q}, \partial_{p}\}$, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
 	
-	Sejam $H:P \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$. O gradiente Hamiltoniano é dado por
+	Seja $H:P \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$. O gradiente Hamiltoniano é dado por
 	$$
 	\nabla H =\sum_{j=1}^{n}\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
 	$$
@@ -905,6 +905,52 @@
 	$$
 	isto é, $\estruturacomplexa \derivadaparcialabrev{q} = \derivadaparcialabrev{p}$ e $\estruturacomplexa \derivadaparcialabrev{p} = -\derivadaparcialabrev{q}$.
 
+	Vejamos que o campo Hamiltoniano representa um campo conservativo. Seja $\psi:P\times \reta \to P$ o fluxo do campo $\campohamiltonianoabrev$ tal que $\psi(t) = (q(t), p(t))$. Então as equaçoes de Hamilton podem ser reescritas como 
+	$$
+	\begin{aligned}
+		\dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
+		\\
+		\left(
+		\begin{array}{c}
+			\dot{q}(t)
+			\\
+			\dot{p}(t)
+		\end{array}
+		\right)
+		&=
+		\left(
+		\begin{array}{c}
+		\derivadaparcial{H(t)}{q}
+		\\
+		-\derivadaparcial{H(t)}{p}
+		\end{array}
+		\right).
+	\end{aligned}
+	$$	
+
+	Vejamos que, ao longo do fluxo $\psi$, o sistema Hailtoniano é conservativo. De fato
+	
+	$$
+	\begin{aligned}
+		\derivada{}{t}H(\psi(t)) 
+		&= \produtointerno{\nabla H}{\dot{\psi}(t)} 
+		\\
+		&= \produtointerno{\nabla H}{\campohamiltoniano{\psi(t)}} 
+		\\
+		&= 
+		-\produtointerno{\nabla H}{\estruturacomplexa \nabla H(t)} 
+		\\
+		&=-\produtointerno{\derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}
+			}{\derivadaparcial{H}{p}\estruturacomplexa\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\estruturacomplexa\derivadaparcialabrev{p}}
+		\\
+		&=-\derivadaparcial{H}{p}^{2}\produtointerno{\derivadaparcialabrev{q}
+		}{\derivadaparcialabrev{p}}	-\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{q}}
+		+\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{p}}{\derivadaparcialabrev{p}}	+\derivadaparcial{H}{q}^{2}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{p}}
+		\\
+		&=0.
+	\end{aligned}
+	$$
+
 	Defina $\formaSimpleticaabrev :T_{(q,p)} P \times T_{(q,p)} P \to \reta$ tal que $\formaSimpleticaabrev(v, u) = -V^{t}\estruturacomplexa U$, onde $V, U$ são as  representações matricias desses campos vetoriais no ponto $(q,p)$. Afirmo que $\Omega$ é bilinear anti-simétrica e não degenerada, isto é, se dado $(q,p) \in P$ e $\formaSimpleticaPadrao{v}{y} = 0$ para todo $y \in T_{(q,p)} P$, então $v = 0$. De fato, dados $x \in T_{(q,p)} P$ e $\lambda \in \reta$, teremos $\formaSimpleticaPadrao{v + \lambda x}{u} = -(V+\lambda X)^{t}\estruturacomplexa U = -V^{t}\estruturacomplexa U -\lambda X^{t}\estruturacomplexa U = \formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{x}{u}$. Com um arguento análogo podemos mostrar que $\formaSimpleticaPadrao{v}{u + \lambda x} =\formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{v}{x} $. Portanto $\Omega$ é bilinear. É anti-simétrica pois $\formaSimpleticaPadrao{v}{u} = -V^{t}\estruturacomplexa U = -(\estruturacomplexa^{t} V)^{t}U = -U^{t}(\estruturacomplexa^{t} V)= U^{t}(\estruturacomplexa V) = -\formaSimpleticaPadrao{u}{v}$, onde usamos $\estruturacomplexa^{t} = -\estruturacomplexa$. Seja $I_{j}$ uma matriz $2\times 1$ com a j-ésima entrada igual a 1 e as outras nulas. Com isso, temos que $\estruturacomplexa I_{j+n} = -I_{j}$ e $\estruturacomplexa I_{j} = I_{j+n}$. Suponha que $v = v_{j}\derivadaparcialabrev{q_{j}}$ tal que $\formaSimpleticaPadrao{v}{e} = 0$ para todo $e$ elemento da base de $T_{(q,p)} P$. Então, fazendo $e= \derivadaparcialabrev{p_{j}}$ teremos $0= v_{j}\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{j}}} = -v_{j}I_{j}^{t}\estruturacomplexa I_{j+n} = v_{j}I_{j}^{t}I_{j}=v_{j}$, portanto $v_{j} = 0$. Repetindo a mesma construção para $1\leq j \leq n$ podemos concluir que $\formaSimpleticaPadrao{v}{u} = 0$ para todo $u$, então $\Omega$ é não-degenerada.
 	
 	Vejamos que nessa base temos $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{q_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k} = -I_{j}^{t}I_{k+n} = 0$. Analogamente, $\formaSimpleticaPadrao{\derivadaparcialabrev{p_{j}}}{\derivadaparcialabrev{p_{k}}} = 0$. Por fim, $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k+n} = I_{j}^{t}I_{k} = \delta_{jk}$. Assim, de forma equivalente, podemos escrever $\formaSimpleticaabrev = \sum_{j}  dq_{j}\wedge dp_{j}$, logo
@@ -922,9 +968,6 @@
 		&= dH(v).
 	\end{aligned}
 	$$
-
-
-	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	
 	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
@@ -1063,15 +1106,15 @@
 		Seja $\varphi:V \to V$ um simpléctomorfismo, então $\varphi^{*}\omega = \omega$, então pode definição de pullback temos
 		$$
 		\begin{aligned}
-			\varphi^{*}\omega^{\wedge n} 
-			&= 
-			\varphi^{*}(\omega\wedge \dots \wedge\omega) 
-			\\
-			&= \varphi^{*}\omega\wedge \dots \wedge\varphi^{*}\omega
-			\\
-			&=\omega\wedge \dots \wedge \omega 
-			\\
-			&= \omega^{\wedge n}.
+		\varphi^{*}\omega^{\wedge n} 
+		&= 
+		\varphi^{*}(\omega\wedge \dots \wedge\omega) 
+		\\
+		&= \varphi^{*}\omega\wedge \dots \wedge\varphi^{*}\omega
+		\\
+		&=\omega\wedge \dots \wedge \omega 
+		\\
+		&= \omega^{\wedge n}.
 		\end{aligned} 
 		$$
 		Aplicando esse resultado veremos que
@@ -1088,6 +1131,8 @@
 		$$
 		portanto $det(\varphi) = 1$.
 	\end{prova}
+
+	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	
 	\section{$\gruposimpletico{2n}$ e sua topologia}
 	O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros, sendo que esse isomorfismo se dará pelo índice de Maslov.
