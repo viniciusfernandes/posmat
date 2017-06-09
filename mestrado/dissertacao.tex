@@ -64,6 +64,7 @@
 \newcommand{\caminhospontobasegeral}[2]{\mathcal{L}_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
+\newcommand{\campohamiltonianoabrev}{X_{H}}
 \newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
@@ -97,6 +98,7 @@
 \newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-1}, x^{+})}
 \newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
 \newcommand{\formaSimpletica}[2]{\omega(#1, #2)}
+\newcommand{\formaSimpleticaabrev}{\omega_{0}}
 \newcommand{\formaSimpleticaExtendida}[2]{\Omega(#1, #2)}
 \newcommand{\formaSimpleticaPadrao}[2]{\omega_{0}(#1, #2)}
 \newcommand{\funcaocond}[5]{
@@ -127,6 +129,7 @@
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\inteiros}{\mathbb{Z}}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
+\newcommand{\intervalo}{[0,1]}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
 \newcommand{\mapafloer}{\mathcal{F}}
 \newcommand{\mapafloerdefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
@@ -838,6 +841,89 @@
 		onde teremos somas alternadas no ultimo termo que se cancelarão, restando apenas $dim(Im(\partial_{m+1})) - dim(Im(\partial_{0}))$, mas ambos são identicamente nulos, pois $\partial_{m+1} = 0$ e $\partial_{0} = 0$.
 	\end{prova}
 	
+	\chapter{Introdução à Geometria Simplética}
+	
+	\section{Origem na Física}
+	
+	A mecânica clássica visa o estudo da dinâmica de sistemas físicos, conservativos ou não. Diz-se que um campo vetorial $F:\real{3} \to \real{3}$ é conservativo quando, dados dois caminhos $\gamma,\beta:[0,1] \to \real{3}$ de classe $C^{2}$ tais que $\gamma(0)=\beta(0)$ e $\gamma(1)=\beta(1)$ (com extremos fixos), teremos
+	$$
+	\tau=\int_{\intervalo} \produtointerno{F(\gamma(t))}{\gamma'(t)}=
+	\int_{\intervalo} \produtointerno{F(\gamma(t))}{\beta'(t)}.
+	$$
+	A grandeza $\tau$ é definida como sendo o trabalho realizado pelo campo $F$ ao longo do caminho $\gamma$. Logo, se o campo é conservativo, então o trabalho independe do caminho.
+	
+	Parte dos sistemas físicos conhecidos podem ser descritos via mecânica Newtoniana, cuja dinâmica é regida pela equação diferencial 
+	$$
+	F(t) = m\derivada{v(t)}{t} = \derivada{p(t)}{t},
+	$$
+	onde $v = \gamma'(t)$, $m\geq0$ constante e $p(t) = m\gamma'(t)$, este último chamado de momento linear. Suponha agora que exista uma função, chamada de energia potencial, de classe $C^{2}$ tal que $U:\real{3}\to \reta$ e $F = -\nabla U$. Fazendo $q=(q_{1}),q_{2}, q_{3})\in \real{3}$, então $\gamma(t)=(q_{1}(t),q_{2}(t), q_{3}(t)) = q(t)$ e podemos escrever $F(q(t)) =m \ddot{q}(t)= -\nabla U(q(t))$. Temos um sistema de 3 equações de segunda ordem, contudo, realizando uma mudança de variáveis, podemos reduzir o problema de segunda ordem problema para primeira ordem, do seguinte modo
+	$$
+	\dot{q} = \frac{p}{m} \;\; e \;\;\dot{p} = -\nabla U(q).
+	$$
+	
+	O conjunto $Q$ das posições $q$ do sistema anterior é chamado espaço de configurações e o conjunto $P=\{(q,p): q,p\in \real{3}\}$ dos pares posição e momento linear é chamado de espaço de fases. No momento temos que $Q=\real{3}$ e $P = \real{6}$, porém, ambos poderão ser outros variedades diferenciáveis.
+	
+	Uma função Hamiltoniana é uma função $H:P \to \reta$ de classe $C^{1}$ tal que 
+	$$
+	\dot{q} = \derivadaparcial{H}{p} \;\; e \;\; \dot{p} = -\derivadaparcial{H}{q}.
+	$$
+	
+	O sistema de equações acima é chamado de equações de Hamilton. Sabe-se que a energia total de um sistema físico conservativo é a soma das energias pontecial $E_{p} = U$ e cinética $E_{c} = p^{2}/2m$ (veja $\cite{nussenzveig}$), onde $p^{2} = \produtointerno{p}{p}$. Definamos a função Hamiltoniana associada a energia total do sistema por
+	$$
+	H(q,p) = E_{c} +E_{p} = \frac{p^{2}}{2m}+U(q). 
+	$$
+	
+	Note que a função $H$ definida acima satisfaz as equações de Hamilton, logo é uma função Hamiltoniana e, por estar associado a energia total do sistema, é amplamente aplicada em modelos dinâmicos físicos.
+	
+	As equações de Hamilton nos dizem que, dada uma funções Hamiltoniana, podemos recuperar as equações de Newton. Portanto, temos uma compatibilidade entre ambas as descrições de um problema físico.
+	
+	\section{Geometrização}
+	
+	A geometrização de problemas em física nos permite estudar os resultados obtidos sobre outro ponto de vista, e com isso, generalizar e analizar novos aspectos. Faremos o mesmo com a descrição Hamiltoniana, de modo que definiremos objetos utilizados adiante na análise da topologia de uma categoria específica de variedades diferenciáveis.
+	
+	Seja $Q= \real{n}$ e $P=\real{2n}$ os espaços de configuraões e fase, respectivamente. Por simplicidade vamos utilizar a notação $(q, p ) = (q_{i}, \dots ,q_{n}, p_{i}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  temos o espaço tangente $T_{(q_{0},p_{0})} P = span\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=span\{\partial_{q}, \partial_{p}\}$, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
+	
+	Sejam $H:P \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$. O gradiente Hamiltoniano é dado por
+	$$
+	\nabla H =\sum_{j=1}^{n}\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
+	$$
+	
+	Definimos o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
+	$$
+	\campohamiltonianoabrev = -\estruturacomplexa \nabla H = \sum_{j=1}^{n}\derivadaparcial{H}{p_{j}}\derivadaparcial{}{q_{j}} - \derivadaparcial{H}{q_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
+	$$
+	onde
+	$$
+	\estruturacomplexa=
+		\left(
+		\begin{array}{cc}
+		0 & -Id
+		\\
+		Id & 0
+		\end{array}
+		\right), 
+	$$
+	isto é, $\estruturacomplexa \derivadaparcialabrev{q} = \derivadaparcialabrev{p}$ e $\estruturacomplexa \derivadaparcialabrev{p} = -\derivadaparcialabrev{q}$.
+
+	Defina $\formaSimpleticaabrev :T_{(q,p)} P \times T_{(q,p)} P \to \reta$ tal que $\formaSimpleticaabrev(v, u) = -V^{t}\estruturacomplexa U$, onde $V, U$ são as  representações matricias desses campos vetoriais no ponto $(q,p)$. Afirmo que $\Omega$ é bilinear anti-simétrica e não degenerada, isto é, se dado $(q,p) \in P$ e $\formaSimpleticaPadrao{v}{y} = 0$ para todo $y \in T_{(q,p)} P$, então $v = 0$. De fato, dados $x \in T_{(q,p)} P$ e $\lambda \in \reta$, teremos $\formaSimpleticaPadrao{v + \lambda x}{u} = -(V+\lambda X)^{t}\estruturacomplexa U = -V^{t}\estruturacomplexa U -\lambda X^{t}\estruturacomplexa U = \formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{x}{u}$. Com um arguento análogo podemos mostrar que $\formaSimpleticaPadrao{v}{u + \lambda x} =\formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{v}{x} $. Portanto $\Omega$ é bilinear. É anti-simétrica pois $\formaSimpleticaPadrao{v}{u} = -V^{t}\estruturacomplexa U = -(\estruturacomplexa^{t} V)^{t}U = -U^{t}(\estruturacomplexa^{t} V)= U^{t}(\estruturacomplexa V) = -\formaSimpleticaPadrao{u}{v}$, onde usamos $\estruturacomplexa^{t} = -\estruturacomplexa$. Seja $I_{j}$ uma matriz $2\times 1$ com a j-ésima entrada igual a 1 e as outras nulas. Com isso, temos que $\estruturacomplexa I_{j+n} = -I_{j}$ e $\estruturacomplexa I_{j} = I_{j+n}$. Suponha que $v = v_{j}\derivadaparcialabrev{q_{j}}$ tal que $\formaSimpleticaPadrao{v}{e} = 0$ para todo $e$ elemento da base de $T_{(q,p)} P$. Então, fazendo $e= \derivadaparcialabrev{p_{j}}$ teremos $0= v_{j}\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{j}}} = -v_{j}I_{j}^{t}\estruturacomplexa I_{j+n} = v_{j}I_{j}^{t}I_{j}=v_{j}$, portanto $v_{j} = 0$. Repetindo a mesma construção para $1\leq j \leq n$ podemos concluir que $\formaSimpleticaPadrao{v}{u} = 0$ para todo $u$, então $\Omega$ é não-degenerada.
+	
+	Vejamos que nessa base temos $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{q_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k} = -I_{j}^{t}I_{k+n} = 0$. Analogamente, $\formaSimpleticaPadrao{\derivadaparcialabrev{p_{j}}}{\derivadaparcialabrev{p_{k}}} = 0$. Por fim, $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k+n} = I_{j}^{t}I_{k} = \delta_{jk}$. Assim, de forma equivalente, podemos escrever $\formaSimpleticaabrev = \sum_{j}  dq_{j}\wedge dp_{j}$, logo
+	$$
+	\begin{aligned}
+		\formaSimpleticaPadrao{\campohamiltonianoabrev}{v} 
+		&= \sum_{j}  dq_{j}\wedge dp_{j}(\campohamiltonianoabrev, v) 
+		\\
+		&= \sum_{j}  dq_{j}(\campohamiltonianoabrev)dp_{j}(v) - dq_{j}(v)dp_{j}(\campohamiltonianoabrev)
+		\\
+		&= \sum_{j} \derivadaparcial{H}{p_{j}}dp_{j}(v) + dq_{j}(v)\derivadaparcial{H}{q_{j}}
+		\\
+		&= \Big(\sum_{j} \derivadaparcial{H}{q_{j}}dq_{j} +\derivadaparcial{H}{p_{j}}dp_{j} \Big)(v)
+		\\
+		&= dH(v).
+	\end{aligned}
+	$$
+
+
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	
 	\section{Espaços Vetoriais Simpléticos}
@@ -902,9 +988,9 @@
 		\estruturacomplexa=
 		\left(
 		\begin{array}{cc}
-		0 & -Id
+		0 & Id
 		\\
-		Id & 0
+		-Id & 0
 		\end{array}
 		\right).
 		$$
@@ -1930,9 +2016,9 @@
 			\end{aligned}
 			$$
 			
-			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $det(Id - \psi(1))>0$, então $\gamma(1) = W^{+}$ e $\rho(W^{+}) = (-1)^{n}$. Com isso $\mu(\psi) - n$ é par \vermelho{(não entendi esse argumento. No michelle e no salamn estão iguais.)}
+			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $det(Id - \psi(1))>0$, então $\gamma(1) = W^{+}$ e $\rho(W^{+}) = (-1)^{n}$. Com isso $\mu(\psi) - n$ é par \vermelho{(não entendi esse argumento. No michelle e no salamon estão iguais.)}
 			
-			\item Afirmo que, $\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. De fato, vamos mostrar que, dada uma matriz simétrica $S$, temos que $\exp(t\estruturacomplexa S)$ comuta com $\estruturacomplexa$, de forma equivalente, $\estruturacomplexa^{-1}\exp(t\estruturacomplexa S)\estruturacomplexa = \exp(t\estruturacomplexa S)$. Seja um inteiro $k\geq 0$. Então
+			\item Afirmo que, $\Psi(t)=\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $\Psi(t)$ comuta com $\estruturacomplexa$, ou  de forma equivalente, $\estruturacomplexa^{-1}\Psi(t)\estruturacomplexa = \Psi(t)$. Seja $k\geq 0$ um inteiro. Então
 			$$
 			\begin{aligned}
 			\estruturacomplexa^{-1}(\estruturacomplexa S)^{k}\estruturacomplexa 
@@ -1943,13 +2029,21 @@
 			&=(S\estruturacomplexa )^{k},
 			\end{aligned}
 			$$
-			o que implica em 
+			que implica em 
 			$$
-				\estruturacomplexa^{-1}\exp(t\estruturacomplexa S)\estruturacomplexa =\sum_{k=0}^{\infty}\frac{\estruturacomplexa^{-1}(t\estruturacomplexa S)^{k}\estruturacomplexa}{k!} = \sum_{k=0}^{\infty}\frac{(tS\estruturacomplexa )^{k}}{k!} = \exp(tS\estruturacomplexa).
+				\begin{aligned}
+				\estruturacomplexa^{-1}\exp(t\estruturacomplexa S)\estruturacomplexa &=\sum_{k=0}^{\infty}\frac{t^{k}}{k!}\estruturacomplexa^{-1}(\estruturacomplexa S)^{k}\estruturacomplexa
+				\\
+				&=\sum_{k=0}^{\infty}\frac{t^{k}}{k!}(S\estruturacomplexa)^{k}
+				\\
+				&=\exp(tS\estruturacomplexa).
+				\end{aligned}
 			$$
-			logo $(\estruturacomplexa S )^{t}= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$ \vermelho{(para mim essa afirmação vale se tivermos uma matriz anti-simétrica, iso é, $S^{t} =-S$...e agora?????).}
+			Como $(\estruturacomplexa S )^{t}= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$, temos $\exp(tS\estruturacomplexa)^{t} = \exp(t(S\estruturacomplexa)^{t}) = \exp(t\estruturacomplexa^{t}S^{t} = \exp(-t\estruturacomplexa S)$ \vermelho{(para mim essa afirmação vale se tivermos uma matriz anti-simétrica, iso é, $S^{t} =-S$...e agora?????).}
 			
-			Sejam um caminho contínuo $P:[0,1]\to \matrizortogonal{2n}$ e $S(\alpha) = P^{t}(\alpha)SP(\alpha)$ tais que $P(0) = Id$ e $S(1)$ é uma matriz diagonal. Temos que $S(\alpha)^{t}$ é simétrica, pois $S(\alpha)^{t} = (P^{t}(\alpha)SP(\alpha))^{t} = P^{t}(\alpha)S^{t}P(\alpha) = P^{t}(\alpha)SP(\alpha) = S(\alpha)$ \vermelho{(novamente temos o problema da simetria aqui)}, logo $\Psi_{\alpha}(t)=\exp(t\estruturacomplexa S(\alpha)) \in \gruposimpletico{2n}$.
+			Sejam $P:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $P(0) = Id$. Então a matriz $S(\alpha) = P^{t}(\alpha)SP(\alpha)$ é diagonalizável para todo $\alpha \in [0,1]$, pois é semelhante a $S$, que por hipótese é não-singular e simétrica.
+			
+			Temos que $S(\alpha)^{t}$ é simétrica, pois $S(\alpha)^{t} = (P^{t}(\alpha)SP(\alpha))^{t} = P^{t}(\alpha)S^{t}P(\alpha) = P^{t}(\alpha)SP(\alpha) = S(\alpha)$ \vermelho{(novamente temos o problema da simetria aqui)}, logo $\Psi_{\alpha}(t)=\exp(t\estruturacomplexa S(\alpha)) \in \gruposimpletico{2n}$.
 			
 			Por hipótese temos $\norma{S}< 2\pi $ e $S(1) = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$. Com isso, $det(S(1)) = det(P^{t}(1)SP(1)) = det(S)< (2\pi)^{2n}$, logo $\lambda_{1} \dots \lambda_{2n}< \lambda^{2n} < 2\pi^{2n}$, onde $\lambda = \max\{|\lambda_{j}|\}$ e $0\leq j\leq 2n$. Dessa forma, podemos reduzir a análise às matrizes diagonais. Seja $0<\epsilon<2\pi$. Então, sem perda de generalidade, podemos assumir que $S = diag\{\epsilon, \dots, \epsilon, -\epsilon, \dots, -\epsilon \}$, onde temos $m$ termos negativos. \vermelho{(Aqui o Salamon diz algo sobre a decomposição de $\real{2n}$ em n planos simpléticos, não entendi o porque)}. Temos os casos quando $m=0$, $0\leq m\leq 2n$ e $m = 2n$. 
 			
@@ -1987,7 +2081,12 @@
 			\end{array}
 			\right| \neq 0
 			$$
-			pois $\epsilon \notin \{0, 2\pi\}$ e $\exp(\epsilon\estruturacomplexa ) \in \gruposimpleticonaodegenerado{*}$. Com isso, dado $v \in \real{2n}$ temos $\exp(t\estruturacomplexa S)v = \exp(t\estruturacomplexa \epsilon)v$. Como $v$ é arbitrário, então $ \exp(t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$. Por fim, $\rho(\exp(t\estruturacomplexa S))$
+			pois $\epsilon \notin \{0, 2\pi\}$ e $\exp(\epsilon\estruturacomplexa ) \in \gruposimpleticonaodegenerado{*}$. Com isso, dado $v \in \real{2n}$ temos $\exp(t\estruturacomplexa S)v = \exp(t\estruturacomplexa \epsilon)v$. Como $v$ é arbitrário, então $ \exp(t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$. 
+			
+			Notemos que $\exp(t\epsilon\estruturacomplexa )$ é a matriz de rotação em $\real{2n}$ de um ângulo $t\epsilon$, porntanto 
+			
+			
+			Por fim, $\rho(\exp(t\estruturacomplexa S))$
 			
 			\textbf{Caso $m = 2n$:} Nessa condição temos $S = diag\{-\epsilon, \dots, -\epsilon \}$. Com um cálculo análogo ao caso m=0 e fazendo $\epsilon \mapsto -\epsilon$ teremos $\exp(-t\estruturacomplexa S) = \exp(-t\estruturacomplexa \epsilon)$. Então
 			
@@ -2931,7 +3030,13 @@
 		Nakahara, Mikio:
 		\emph{Geometry, Topology and Physics},
 		Graduate Student Series in Physics, 2nd edition,
-		2003.	
+		2003.
+		
+		\bibitem{nussenzveig}
+		Nussenzveig, Moyses:
+		\emph{Mecânica - Curso de Física Básica Vol 1},
+		Edgard Blucher, 4 edição,
+		2002.	
 	\end{thebibliography}
 	
 \end{document}
