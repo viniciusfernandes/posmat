@@ -50,7 +50,6 @@
 \newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo, M)}
 \newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
 \newcommand{\bigparenteses}[1]{\big( #1 \big) }
-\newcommand{\caminhos}[3]{\mathcal{L}([#1, #2]; #3)}
 \newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
 \newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
@@ -58,11 +57,12 @@
 \newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
-\newcommand{\caminhospontobase}[1]{\mathcal{L}_{#1}}
-\newcommand{\caminhossempontobase}[1]{\mathcal{L}(#1)}
-\newcommand{\caminhosNaoDegeneradosSp}{\mathcal{L}^{*}(\gruposimpletico{2n})}
-\newcommand{\caminhospontobasegeral}[2]{\mathcal{L}_{#1}(#2)}
-\newcommand{\caminhossuavesconectantes}[2]{\mathcal{L}(#1, #2)}
+\newcommand{\caminhos}{\mathcal{L}}
+\newcommand{\caminhospontobase}[1]{\caminhos_{#1}}
+\newcommand{\caminhossempontobase}[1]{\caminhos(#1)}
+\newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
+\newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
+\newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
 \newcommand{\campohamiltonianoabrev}{X_{H}}
 \newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
@@ -135,7 +135,7 @@
 \newcommand{\mapafloerdefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
 \newcommand{\mapafloerparametro}[1]{\mathcal{F}(#1)}
 \newcommand{\mapafloerpadrao}{\mapafloerparametro{u}}
-\newcommand{\matrizantisimetrica}[1]{AntiSkew(#1)}
+\newcommand{\matrizantisimetrica}[1]{Asym(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
 \newcommand{\matrizsimetrica}[1]{Sym(#1)}
@@ -166,6 +166,7 @@
 \newcommand{\parteReal}[1]{\mathcal{R}e(#1)}
 \newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
 \newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
+\newcommand{\produtointernoabrev}{\langle ., .\rangle}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
 \newcommand{\pullbackfibradotangente}[2]{#1^{*}T#2}
 \newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
@@ -532,39 +533,40 @@
 	
 	\section{Definições}
 	
-	Sejam $X$ um espaço topológico, $p \in X$ um ponto base e $\caminhospontobasegeral{p}{X}=\{\gamma:[0,1]\to X: \gamma(0) = \gamma(1) = p\}$. Definimos o produto $*:\caminhospontobasegeral{p}{X}\times \caminhospontobasegeral{p}{X} \to \caminhospontobasegeral{p}{X}$ tal que
+	Sejam $X$ um espaço topológico e $\caminhossempontobase{X}$ o conjunto dos caminhos contínuos $\gamma:[0,1]\to X$. Tome $\gamma, \beta \in \caminhossempontobase{X}$ tais que $\gamma(1) = \beta(0)$. Definimos o produto $*:\caminhossempontobase{X}\times \caminhossempontobase{X} \to \caminhossempontobase{X}$ entre $\gamma$ e $\beta$ por
 	$$
 		\funcaocond{(\gamma*\beta)(t)}{\gamma(2t)}{0\leq t \leq 1/2}{\beta(2t-1)}{1/2 \leq t \leq 1}.
 	$$
 	
-	Quando não houver ambiguidades denotaremos por simplicidade $\caminhospontobase{p}=\caminhospontobasegeral{p}{X}$.
+	Quando não houver ambiguidades denotaremos por simplicidade $\caminhos=\caminhossempontobase{X}$.
 	
 	\begin{definicao}\label{definicao_caminhos_homotopicos}
-		(Caminhos homotópicos) Sejam $\gamma, \gamma' \in \caminhospontobase{p}$. Uma aplicação contínua $F:\circulo \times [0,1] \to X$ é chamada homotopia de entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \circulo$. Dizemos que  $\gamma$ e $\gamma'$ são homotopicamente equivalentes se, e somente se, exite uma homotopia entre elas. Nesse caso denotaremos $\gamma \sim \gamma'$. 
+		(Caminhos homotópicos) Sejam $\gamma, \gamma' \in \caminhos$ tais que $\gamma(0)=\gamma'(0)$ e $\gamma(1)=\gamma'(1)$. Uma aplicação contínua $F:X \times [0,1] \to X$ é chamada homotopia de entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \circulo$. Dizemos que  $\gamma$ e $\gamma'$ são homotopicamente equivalentes se, e somente se, exite uma homotopia entre elas. Nesse caso denotaremos $\gamma \sim \gamma'$. 
 	\end{definicao}
 	
 	\begin{observacao}
 		A definição de equivalência de homotopia não depende da homotopia escolhida, pois, dadas $F,G$ homotopias entre $\gamma$ e $\gamma'$, podemos definir uma aplicação contínua $H: [0,1] \times [0,1] \times [0,1] \to X$ tal que $H(t,s ,0) = F(t,s)$ e $H(t,s, 1) = G(t,s)$ que é uma homotopia entre as homotopias, logo será uma homotpia entre ambas as curvas.
 	\end{observacao}
 	
-	O próximo lema demonstra a compatibilidade entre o produto e a relação de equivalência homotópica, isto é, o produto de dois caminhos em $\caminhospontobase{p}$ é equivalente ao produto de seus caminhos equivalentes.
+	O próximo lema demonstra a compatibilidade entre o produto e a relação de equivalência homotópica, isto é, o produto de dois caminhos em $\caminhos$ é equivalente ao produto de seus caminhos equivalentes.
 	
 	\begin{lema}\label{lema_compatibilidade_produto_caminhos}
-		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhospontobase{p}$ tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
+		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhos$ tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
 	\end{lema}
 	\begin{prova}
-		\vermelho{
-			Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$.}
+		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, $H(s) :\intervalo\to X$ é uma curva contínua pois é o produto de curvas contínuas para todo $s \in \intervalo$. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
 	\end{prova}
 	
-	Pode-se mostrar que existem $\alpha, \beta, \gamma \in \caminhospontobase{p}$ não vale a associatividade do produto, isto é, $(\alpha*\beta)*\gamma \neq \alpha*(\beta*\gamma)$. Contudo, o seguinte lema estabelece uma situação de associatividade e sua demonstração pode ser encontrada em $\cite{massey}$.
+	\begin{observacao}
+		Pode-se mostrar que o produto entre caminhos em $\caminhos$ nem sempre é associativo. Contudo, o seguinte lema afirma que tal associatividade vale a menos de uma homotopia, cuja demonstração pode ser encontrada em $\cite{massey}$.
+	\end{observacao}
 	
 	\begin{lema}\label{lema_associatividade_produto_caminhos}
-		Dados $\alpha, \beta, \gamma \in \caminhospontobase{p}$, então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
+		Dados $\alpha, \beta, \gamma\in \caminhos$, então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
 	\end{lema}
 	
 	\begin{lema}\label{lema_caminho_inverso}
-		Sejam $\gamma, \gamma^{-1}, c \in \caminhospontobase{p}$ tais que $c(t) = p$ para todo $t\in \circulo$ (é a curva constante) e $\gamma^{-1}(t) = \gamma(1-t)$. Então $\gamma*\gamma^{-1} \sim \gamma^{-1}*\gamma \sim c$.
+		Sejam $\gamma, \gamma^{-1}, c \in \caminhos$ tais que $c(t) = p$ para todo $t\in \circulo$ (é a curva constante) e $\gamma^{-1}(t) = \gamma(1-t)$. Então $\gamma*\gamma^{-1} \sim \gamma^{-1}*\gamma \sim c$.
 	\end{lema} 	
 	\begin{prova}
 		Seja a aplicação contínua $F:[0,1]\times [0,1]\to X$ tal que
@@ -581,7 +583,7 @@
 		Temos que $F(t,1) = (\gamma*\gamma^{-1})(t)$ e $F(t,0) = c(t) = p$, logo $\gamma*\gamma^{-1}\sim c$ pois $F$ deforma continuamente o produto na curva constante. Podemos definir uma homotopia $\hat{F}$ análoga a $F$ substituindo $\gamma$ por $\gamma^{-1}$, consequentemente teremos $\gamma^{-1}*\gamma \sim c$, logo $\gamma*\gamma^{-1} \sim \gamma^{-1}*\gamma \sim c$.
 	\end{prova}
 	
-	Seja o quociente $\caminhospontobase{p}/\sim = \{ \classe{\gamma} : \gamma,\gamma' \in \caminhospontobase{p},\;\;\gamma \sim \gamma'\}$. Então o produto definido por $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'}$ esta bem-definido.
+	Sejam $\caminhospontobasegeral{p}{X} = \{\gamma\in \caminhossempontobase{X}: \gamma(0)=\gamma(1)=p \}$, o conjunto dos caminhos contínuos e periódicos com o ponto base $p$, e o quociente $\caminhospontobasegeral{p}{X}/\sim = \{ \classe{\gamma} : \gamma,\gamma' \in \caminhospontobasegeral{p}{X},\;\;\gamma \sim \gamma'\}$. Então, o produto definido por $\classe{\gamma}.\classe{\gamma'} = \classe{\gamma*\gamma'}$ esta bem-definido. De fato, tomando $\alpha, \gamma, \gamma' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$, então $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha} = \classe{\gamma'*\alpha} = \classe{\gamma'}.\classe{\alpha}$.
 	
 	\begin{definicao}
 		(Grupo Fundamental) O grupo fundamental é o par 
@@ -666,7 +668,7 @@
 			Seja $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \circulo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, logo $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id$. Portanto $\grupofundamental{X}$ é trivial.
 		\end{prova}
 		
-		\section{Grau de Aplicação}
+		\section{Aplicação Grau}
 		O grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Com isso, a cada caminho fechado $\gamma:[0,1] \to S^{1}$ podemos associar um número $deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
 		
 		A proposição a seguir é de grande relevência para o restante do texto e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
@@ -682,8 +684,12 @@
 			$$
 		\end{proposicao}
 		
+		Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = \exp(i\alpha(t))$, onde $\alpha(t) \in \reta$ é uma aplicação contínua. Como $\gamma(\intervalo) \subseteq \circulo$ é um compacto, então o conjunto $\{t\in\intervalo: \gamma(0)=\gamma(t) \}$ é finito e possui um valor máximo, que denotaremos por $t_{\gamma} $. Definindo $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Com isso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópica a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
+		
+		Vamos definir a o grau de um caminho como sendo uma aplicação que associa um dado caminho em $\circulo$ a um multiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior vimos que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, vamos restringir nossas hipóteses a caminhos fechados.
+		
 		\begin{proposicao}\label{proposicao_grau_aplicacao}
-			(O grau de uma caminhos fechado) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Então $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamdo grau do caminho $\gamma$. Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
+			(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Então $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamado grau do caminho $\gamma$. Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
 			\begin{enumerate}
 				\item $deg(\caminhospontobasegeral{p}{\circulo}) = \inteiros$, além disso, se $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = 1$.
 				\item $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$.
@@ -928,7 +934,7 @@
 	\end{aligned}
 	$$	
 
-	Vejamos que, ao longo do fluxo $\psi$, o sistema Hailtoniano é conservativo. De fato
+	Vejamos que, ao longo do fluxo $\psi$, o sistema Hailtoniano é conservativo, isto é, a energia total do sistema é constante. De fato
 	
 	$$
 	\begin{aligned}
@@ -969,6 +975,8 @@
 	\end{aligned}
 	$$
 	
+	Definimos um espaço de fase $P$ e em cada ponto do espaço tangente de $P$ temos uma forma bilinear anti-simetrica e não-degenerada $\formaSimpleticaabrev$, chamada forma simplética. Com isso, o par $(T_{(q,p)}P, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético, onde $dim(T_{(q,p)}P) = 2n$. O capítulo seguinte é dedicado ao estudo de espaços vetoriais simpléticos reais.
+	
 	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
 		(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
@@ -1002,11 +1010,27 @@
 		\end{enumerate}
 	\end{definicao}
 	
-	\begin{observacao}\label{observacao_subespaco_simpletico_ortogonal}
-		Temos as sequintes caracterizações: 1) se $W$ é isotrópico, então dado $v \in W \subseteq \espacoSimpleticoOrtogonal{W}$ temos $\omega(v,u) = 0$ para todo $u\in \espacoSimpleticoOrtogonal{W}$. Supondo $v=u \in W$, então $\omega(v,v) = 0$. Como vale para todo $v\in W$, então $\omega|_{W}: W\times W \to \reta$ é a aplicação nula. \vermelho{2) se $W$ é lagrangiano, então $???$}. 3) se $W$ é simplético, então dado $v \in W$ temos $\omega(v, u) = 0$ para $u\in \espacoSimpleticoOrtogonal{W}$ se, e somente se, $v=u=0$, portanto $\omega(v,u \neq 0)$ de outra forma, logo $\omega|_{W}$ é não-degenerada e $(W, \omega|_{W})$ é um subespaço vetorial simplético.
-	\end{observacao}
+	\begin{lema}\label{lema_subespaco_simpletico_ortogonal}
+		(Caracterização de subespaço simplético)
+		\begin{enumerate}
+			\item Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
+			
+			\item Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$
+			
+			\item Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico. 
+		\end{enumerate}
+	\end{lema}
+	\begin{prova}
+		\begin{enumerate}
+			\item Seja $0\neq v \in W$. Supondo que exista $v\neq u \in W$ tal que $\omega(v, u ) = 0$, teremos $u \in W\cap W^{\omega}$, contradizendo a hipótese $W\cap W^{\omega} =0$. Logo $\omega|_{W \times W} $ é não-degenerada e $(W, \omega|_{W})$ é um espaço vetorial simplético.
+			
+			\item Dado $0\neq v \in W $ , então $\omega(v,u) = 0$ para todo $u \in W\cap W^{\omega} = W$. Portanto $\omega|_{W\times W}: W\times W \to \reta$ é a aplicação nula.
+			
+			\item  Como $W=W^{\omega}$, então $W\subseteq W^{\omega}$, logo $W$ é isotrópico. Seja $U \subseteq V$ um subespaço isotrópico tal que $W \subseteq U$. Então, pelo item anterior, $\omega|_{U\times U} = 0$, logo dado $v \in W \cap U$ e para todo $u \in U$, temos $\omega(v, u) = 0$, implicando $u \in W^{\omega}$. Portanto, $U = W^{\omega} = W$.
+		\end{enumerate}
+	\end{prova}
 	
-	Não há garantias de que sempre tenhamos $V = W\oplus\espacoSimpleticoOrtogonal{W}$. Contudo, a proposição abaixo nos dá uma relação entre suas dimensões.
+	Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição abaixo nos dá uma relação entre suas dimensões.
 	
 	\begin{proposicao}
 		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
@@ -1016,20 +1040,17 @@
 		Como $\omega^{*}$ é um isomorfismo, então $dim(\espacoSimpleticoOrtogonal{W}) = dim(\omega^{*}(\espacoSimpleticoOrtogonal{W}))$. Pelo teorema da dimensão do espaço anulador (veja em \cite{hoffman_kunze}) temos que $dim(V) = dim(W)+dim(W^{\circ}) = dim(W)+dim(\omega^{*}(\espacoSimpleticoOrtogonal{W})) = dim(W)+dim(\espacoSimpleticoOrtogonal{W})$. 
 	\end{prova}
 	
-	\begin{teorema}
-		\vermelho{Todo espaço vetorial simpético de dimensão finita possui uma base simplética.}
+	\begin{teorema}\label{teorema_existencia_base_simpletica}
+		(Existência de base simplética) Todo espaço vetorial simpético de dimensão finita possui uma base simplética.
 	\end{teorema}
+	\begin{prova}
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $0\neq e_{1} \in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, podemos afirmar que $V_{1}$ é simplético, logo $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes teremos $V = V_{1}\oplus \dots \oplus V_{n}$. Por construção temos $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
+	\end{prova}
 	
-	
-	\begin{definicao}\label{definicao_estrutura_complexa}
-		(Estrutura complexa) Dizemos que $J: V \to V$, onde $J^{2} = -Id$, é uma estrutura complexa compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$. Vamos definir $\estruturascomplexaspadrao$ como sendo o conjunto de todas as estruturas complexas $\omega$-compatíveis.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_estrutura_complexa}
-		Fixaremos a notação $\estruturacomplexa \in \estruturascomplexaspadrao$ como sendo o caso em que
+	\begin{observacao}\label{observacao_existencia_base_simpletica}
+		A existência de uma base simplética garante a existência d euma base em que a forma simpléctica $\omega$ poderá ser representada pela matriz
 		$$
-		\estruturacomplexa=
-		\left(
+		(\omega_{ij}) =\left(
 		\begin{array}{cc}
 		0 & Id
 		\\
@@ -1040,13 +1061,8 @@
 	\end{observacao}
 	
 	\begin{teorema}
-		\vermelho{
-			Seja $(V, \omega)$ um espaço vetorial simplético, então cada produto interno $g$ em $V$ define uma estrutura complexa $\omega$-compatível.}
+		Seja $V$ um 2n-espaço vetorial, então existe uma base $\{ e_{1},\dots, e_{n}, f_{1},\dots, f_{n}\}$ de $V$ e uma base $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ tal que dado $\alpha \in \Lambda^{*}(V)$ pode-se escrever $\alpha = \sum_{i=1}^{n} e^{*}_{i}\wedge f^{*}_{i}$.
 	\end{teorema}
-	
-	\begin{lema}
-		(Base simplética) Seja $V$ um 2n-espaço vetorial, então existe uma base $\{ e_{1},\dots, e_{n}, f_{1},\dots, f_{n}\}$ de $V$ e uma base $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ tal que dado $\alpha \in \Lambda^{*}(V)$ pode-se escrever $\alpha = \sum_{i=1}^{n} e^{*}_{i}\wedge f^{*}_{i}$.
-	\end{lema}
 	\begin{prova}
 		Seja $0\neq \alpha \in \Lambda^{2}(V) $, então existem $ a_{1}, a_{1+n} \in V $ tais que $\alpha(a_{1}, a_{1+n}) = \alpha_{1} \neq 0$. Definindo $e_{1} = a_{1}/\alpha_{1}$ e $a_{1+n} = f_{1}$ teremos $\alpha(e_{1}, f_{1}) = 1$, e pela anti-simetria temos $\alpha(e_{1}, e_{1}) = \alpha(f_{1}, f_{1}) = 0$. Definindo $B_{1}=span \{e_{1}, f_{1}\}$, então a matriz $(\alpha_{ij})$ de $\alpha|_{B_{1}}$
 		$$
@@ -1071,10 +1087,15 @@
 		Definindo a base dual $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ teremos $\alpha = \sum_{j=1}^{n}e_{j}^{*}\wedge f_{j}^{*}$.
 	\end{prova}
 	
-	\begin{observacao}\label{observacao_existencia_base_simpletica}
-		A existência de uma base simplética garante a existência d euma base em que a forma simpléctica $\omega$ poderá ser representada pela matriz
+	\begin{definicao}\label{definicao_estrutura_complexa}
+		(Estrutura complexa) Dizemos que $J: V \to V$, onde $J^{2} = -Id$, é uma estrutura complexa compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$. Vamos definir $\estruturascomplexaspadrao$ como sendo o conjunto de todas as estruturas complexas $\omega$-compatíveis.
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_estrutura_complexa}
+		Fixaremos a notação $\estruturacomplexa \in \estruturascomplexaspadrao$ como sendo o caso em que
 		$$
-		[\omega]=\left(
+		\estruturacomplexa=
+		\left(
 		\begin{array}{cc}
 		0 & Id
 		\\
@@ -1084,19 +1105,27 @@
 		$$
 	\end{observacao}
 	
-	
 	\begin{lema}
 		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula.
 	\end{lema}
 	\begin{prova}
-		\vermelho{Supondo $\omega$ uma forma simplética, então 
+		Suponha $\omega$ uma forma simplética. O Teorema $\ref{teorema_existencia_base_simpletica}$ garante a existência de uma base simplética $\{e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}\}$ de $V$. Pela bilinearidade de $\omega$ basta analisarmos $\omega$ nos elementos dessa base. Definindo $\sigma:\{1, 2, \dots , 2n\} \to \{1, 2, \dots , 2n\}$ com uma permutação, então
 			$$
-			\omega^{\wedge n}(v_{1}, \dots, v_{2n}) =\sum_{\sigma} \omega(v_{\sigma(1)}, v_{\sigma(2)})...\omega(v_{\sigma(2n-1)}, v_{\sigma(2n)}),
+			\begin{aligned}
+				\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}) &=\sum_{\sigma} \omega(e_{1}, f_{\sigma(1)})...\omega(e_{n}, f_{\sigma(n)})
+				\\
+				&= \sum_{\sigma}\delta_{1\sigma(1)}\dots\delta_{n\sigma(n)}
+				\\
+				&= \delta_{11}\dots\delta_{nn}
+				\\
+				&= 1.
+			\end{aligned}
 			$$
-			onde $\sigma:\{1, 2, \dots , 2n\} \to \{1, 2, \dots , 2n\}$ é uma permutação desse conjunto. Como $\omega$ é não-degenerada então $\omega(v_{i}, v_{j}) \neq 0 $ para todos $i \neq j$, logo $\omega^{\wedge n}(v_{1}, \dots, v_{2n}) \neq 0$. Por outro lado, basta avaliar a forma volume nos elementos da base teremos 
-			$$
-			\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1},\dots, f_{n}) = \sum_{\sigma} \omega(v_{\sigma(1)}, v_{\sigma(2)})...\omega(v_{\sigma(2n-1)}, v_{\sigma(2n)})
-			$$}
+		Por outro lado, temos que $\omega^{\wedge n} \neq 0$, Suponha que $\{v_{1},\dots, v_{2n}\}$ seja uma base de $V$ e que exista $v \sum a_{j}v_{j} \neq 0$ tal que $\omega(v, u) = 0$ para todo $u=\sum b_{j}v_{j}  \in V$. Então, $0=\omega(v, u ) = \sum_{j, k} a_{j}b_{k}\omega(v_{j}, v_{k})$, o que implica em $\omega(v_{j}, v_{k}) =0$. Então 
+		$$
+			\omega^{\wedge n}(v_{1},\dots, v_{2n}) = \sum_{\sigma} \omega(v_{1}, v_{\sigma(1)})...\omega(v_{2n}, v_{\sigma(2n)})=0,
+		$$
+		contradizendo a hipótese $\omega^{\wedge n} \neq 0$. Logo, $\omega$ é não-degenerada.
 	\end{prova}
 	
 	\begin{proposicao}\label{proposicao_preservacao_volume}
@@ -1131,6 +1160,110 @@
 		$$
 		portanto $det(\varphi) = 1$.
 	\end{prova}
+
+	\section{$\estruturascomplexaspadrao$ e sua topologia}
+	
+	Sendo $(V,\omega)$ um 2n-espaço vetorial simplético, definimos $\estruturascomplexaspadrao \subset \generalgroupreal{V}$ como conjunto de todas as estruturas complexas $\omega$-compatíveis.
+	
+	Nessa seção vamos mostrar que todo produto interno em $V$ pode ser associado a um elemento de $\estruturascomplexaspadrao$, sendo que dessa associação vamos retirar informações sobre sua topologia.
+	
+	\begin{observacao}\label{observacao_conjunto_estrutura_complexa}
+		Ao tratarmos $\estruturascomplexaspadrao$ como espaço topológico adotaremos sua topologia induzida pela topologia de $\generalgroupreal{V}$ gerada pela norma da convergência uniforme (ou norma do sup).
+	\end{observacao}
+	
+	\begin{definicao}
+		Seja $V$ um n-espaço vetorial real munido de um produto interno positivo-definido, então $\produtosinternos{V}$ é o conjunto de todos os produtos internos positivos-definidos em $V$.
+	\end{definicao}
+	
+	\begin{observacao}
+		Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$. Com isso, podemos muni-lo com a toplogia induzida por $\mathcal{L}(V \times V; \real{})$.
+	\end{observacao} 
+	
+	\begin{lema}\label{lema_contratibilidade_produtos_internos}
+		Seja $V$ um n-espaço vetorial com produto interno positivo-definido. Então $\produtosinternos{V}$ é contrátil.
+	\end{lema}
+	\begin{prova}
+		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta-nos mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ teremos $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, e os conectamos através do caminho contínuo $d$, então $\produtosinternos{V}$ é conexo por caminhos, logo é conexo. Além disso, como o caminho $d$ é uma reta, então $\produtosinternos{V}$ é convexo, logo é contrátil.
+	\end{prova}
+	
+	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ que é $\omega$-compatível, podemos definir um produto interno em $V$ através da relação $g(u,v) = \omega(u,Jv)$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g(u,v)$ esta bem-definida.
+	
+	A seguinte proposição afirma que toda estrutura complexa esta associada a um produto interno positivo-definido em $V$.
+	\begin{proposicao}
+		$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$.
+	\end{proposicao}
+	\begin{prova}
+		Vamos mostrar que existe uma aplicação injetora $G: \produtosinternos{V} \to \estruturascomplexaspadrao$. Sejam $A \in \generalgroupreal{V}$ uma matriz anti-simétrica e $\Lambda^{2}(V)$ o conjunto das aplicações bilineares anti-simétricas em $V$. Então a aplicação $A^{\#} : \produtosinternos{V} \to \Lambda^{2}(V)$ definida por = $A^{\#}(g)(u, v) = g(Au,v)$ esta bem-definida. De fato, é bilinear pois herda a bilinearidade de $g$, e é anti-simétrica pois
+		$$
+		A^{\#}(g)(u, v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Av,u) = -A^{\#}(g)(v,u).
+		$$
+		Com isso, a aplicação $A^{\#}$ pode ser associada a única forma bilinear anti-simétrica da seguinte forma $A^{\#}(g)(u, v) = \Omega(v,u)$. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$ (decomposição polar) podemos escrever $A = PJ$ onde $P = (-A)^{1/2}$ é positiva-definida,  $J$ é ortogonal com $J^{2} = -Id$ e $J^{-1}=J^{t} = -J$. Afirmo que $J$ é um simplectomorfismo pois:
+		$$
+		\begin{aligned}
+		\Omega(Ju,Jv) &= g(AJu, Jv)= g(J^{t}AJu, v)
+		\\
+		&=g(\underbrace{-J}_{J^{t}}A^{-1}AAJu, v) 
+		\\
+		&= g(JA^{-1}\underbrace{P^{2}}_{-A^{2}}Ju, v)
+		\\
+		&=g(JA^{-1}P\underbrace{PJ}_{A}u, v)
+		\\
+		&=g(JJ^{-1}P^{-1}PAu, v) 
+		\\
+		&= g(Au, v)
+		\\
+		&=\Omega(u,v).
+		\end{aligned}
+		$$
+		Vamos mostrar que, fixando a matriz $J$ tal que $A=PJ$, a aplicação $\produtointernoabrev :V \times V \to \reta$ definida por $\produtointerno{v}{u} = \Omega(v,Ju)$, é um produto interno positivo-definido. De fato, como $\Omega$ foi definida a partir do produto interno $g$, teremos que $\Omega$ é bilinear e satisfaz a desigualdade triangular. É simétrica pois 
+		$$
+		\begin{aligned}
+		\produtointerno{v}{u} 
+		&= g(Av,Ju) 
+		\\
+		&=g(Ju,Av)
+		\\
+		&=g(A^{t}Ju,v) 
+		\\
+		&=g(JA^{t}u,v)
+		\\
+		&= g(A^{t}u, J^{t}v)
+		\\
+		& = g(Au, J^v)
+		\\
+		&= \produtointerno{u}{v}.
+		\end{aligned}
+		$$
+		
+		Além disso, temos que $\produtointernoabrev$ é postivo-definido pois
+		$$
+		\begin{aligned}
+		\produtointerno{u}{u} &= g(Au, Ju)
+		\\
+		&= g(J^{t}Au, u)
+		\\
+		&=g(-JAu, u)
+		\\
+		&=g(-JA^{-1}AAu, u)
+		\\
+		&=g(JA^{-1}(-A^{2})u, u)
+		\\
+		&=g(P^{-1}P^{2}u, u)
+		\\
+		&=g(Pu, u)\geq 0,
+		\end{aligned}
+		$$ 
+		pois $P$ é uma matriz positiva-definida. Portanto temos um produto interno positivos-definido e $J$ é $\Omega$-compatível. 
+
+		Pela decomposição polar temos que, dado $A$ ainti-simétrico temos apenas um $J$ $\Omega$-compatível. Portanto, temos a aplicação injetora $\produtosinternos{V} \ni g \mapsto J \in \estruturascomplexaspadrao$ denotada por $G(g) = J$. Além disso, $G$ é sobrejetora. De fato, sabe-se que toda aplicação bilinear anti-simétrica $\Omega'$ pode ser escrita como $\Omega'(v, u) = V^{t}A'U$, onde $V,U$ são as representações matriciais de $v,u$, respectivamente, e $A'$ é uma matriz anti-simétrica. Pela decomposição polar temos $A'=P'J'$. Temos então $A'^{\#}(g)$??????????
+	\end{prova}		
+	
+	\begin{teorema}
+		Seja $(V,\omega)$ um 2n-espaço vetorial real simplético, então $\estruturascomplexaspadrao$ é contrátil.
+	\end{teorema}
+	\begin{prova}
+		Sejam $\estruturascomplexaspadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{observacao_conjunto_estrutura_complexa}$. Tomando $G:\produtosinternos{V} \to \estruturascomplexaspadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturascomplexaspadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
+	\end{prova}			
 
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	
@@ -1217,14 +1350,21 @@
 	O seguinte teorema é de grande importância pois é fundamental na caracterização do grupo simplético e investigação de sua topologia. Um caso mais geral que pode ser encontrado em $\cite{hoffman_kunze}$.
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
-		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$.
+		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
 	\end{teorema}
 	\begin{prova}
-		Dados $v,w \in V$ então 
-		$$
-		\produtointerno{AA^{t}v}{w}=\produtointerno{v}{A^{t}Aw}=\produtointerno{Av}{Aw}=\produtointerno{A^{t}Av}{w}=\produtointerno{(AA^{t})^{t} v}{w},
-		$$
-		como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é normal. Então pelo Lema $\ref{lema_raiz_matriz_normal}$ existe uma única $P \in \matrizsimetricapositiva{n}$ tal que $P^{2} = AA^{t}$, isto é, $P = \sqrt{AA^{t}}$. Como $P$ é invertível, podemos definir $O = P^{-1}A$. Vejamos que $OO^{t} = P^{-1}AA^{t}(P^{-1})^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1} = Id$, logo $O \in \matrizortogonal{n}$. Pela unicidade de $P$ temos que $O=P^{-1}A$ é única. Portanto $A=PO$, onde $P \in \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ são únicas.
+		\vermelho{Dados $v,w \in V$ então 
+			$$
+			\produtointerno{AA^{t}v}{w}=\produtointerno{v}{A^{t}Aw}=\produtointerno{Av}{Aw}=\produtointerno{A^{t}Av}{w}=\produtointerno{(AA^{t})^{t} v}{w},
+			$$
+			como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é normal. Então pelo Lema $\ref{lema_raiz_matriz_normal}$ existe uma única $P \in \matrizsimetricapositiva{n}$ tal que $P^{2} = AA^{t}$, isto é, $P = \sqrt{AA^{t}}$. Como $P$ é invertível, podemos definir $O = P^{-1}A$. Vejamos que $OO^{t} = P^{-1}AA^{t}(P^{-1})^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1} = Id$, logo $O \in \matrizortogonal{n}$. Pela unicidade de $P$ temos que $O=P^{-1}A$ é única. Portanto $A=PO$, onde $P \in \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ são únicas.}
+	\end{prova}
+	
+	\begin{corolario}\label{corolario_decomposicao_matriz_antisimetrica}
+		(Decomposição polar anti-simétrica) Considere as hipóteses no Teorema $\ref{teorema_decomposicao_polar}$ e tome $A \in \generalgroupreal{n}$ uma matriz anti-simétrica. Então $A = PO$, onde $P \in \matrizsimetricapositiva{n}$, $O \in \matrizortogonal{n}$ com  $O^{2} = -Id$ e $O^{t} = -O$.
+	\end{corolario}
+	\begin{prova}
+		Temos que $AA^{t}$ é uma matriz normal, logo pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável e podemos escrever $AA^{t} = B^{-1}diag\{\lambda_{1}, \dots, \lambda_{n}\}B$. Por definição de potênciação de matriz temos $(AA^{t})^{1/2} =B^{-1}diag\{\lambda_{1}^{1/2}, \dots, \lambda_{n}^{1/2}\}B$. Portanto, $P=(AA^{t})^{1/2}$ é positiva-definida, logo $P=P^{t}$. Sejam $D_{P}$ e $D_{A}$ as matrizes diagonais de $P$ e $A$, respectivamente. Afirmo que $PA = AP$. De fato, $PA = B^{-1}D_{P}B B^{-1}D_{A}B = B^{-1}D_{A} D_{P}B = B^{-1}D_{A}B B^{-1}D_{P}B = AP$. Definindo $O = P^{-1}A$ teremos $OO^{t} = P^{-1}A(P^{-1}A)^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1}  = Id$, portanto $O \in \matrizortogonal{n}$. Além disso, $O^{2} = P^{-1}AP^{-1}A = P^{-2}A^{2} = (AA^{t})^{-1}A^{2} = -Id$, onde usamos a anti-simetria e o fato de que $P^{-1}$ comuta com $A$. Pelo Teorema $\ref{teorema_decomposicao_polar}$ a decomposição $A=PO$ é única.
 	\end{prova}
 	
 	\begin{definicao}
@@ -1737,68 +1877,6 @@
 		\begin{observacao}\label{observacao_forma_extendida}
 			Notemos que $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} - ic(v',u) = $. Essa identificação será bastante utilizada na construção do índice de Maslov.
 		\end{observacao}
-	\section{$\estruturascomplexaspadrao$ e sua topologia}
-	
-	\begin{definicao} \label{definicao_conjunto_estrutura_complexa}
-		Sejam $(V,\omega)$ um 2n-espaço vetorial simplético e $Endo(V)$ o conjunto dos endomorfismos de $V$. Denotamos $\estruturascomplexaspadrao \subseteq Endo(V)$ como conjunto de todas as estruturas complexas $\omega$-compatíveis. Além disso, $\estruturascomplexaspadrao$ é um espaço topológico com a topologia induzida pela topologia de $Endo(V)$.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_conjunto_estrutura_complexa}
-		Quando tratarmos $\estruturascomplexaspadrao$ como espaço topológico adotaremos sua topologia induzida pela topologia de $Endo(V)$ gerada pela norma da convergência uniforme.
-	\end{observacao}
-
-	\begin{definicao}
-		Seja $V$ um k-espaço vetorial real munido de um produto interno, então $\produtosinternos{V}$ é o conjunto de todos os produtos internos definido em $V$.
-	\end{definicao}
-	
-	\begin{observacao}
-		Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$, que é um espaço topológico na norma da convergência uniforme, logo $\produtosinternos{V}$ será um espaço topológico com sua topologia induzida por $\mathcal{L}(V \times V; \real{})$.
-	\end{observacao} 
-	
-	\vermelho{Pode-se mostrar que $\produtosinternos{V}$ é um subconjunto aberto e convexo do conjunto de todas as formas bilineares simétricas definidas em $V$}.
-	
-	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ que é $\omega$-compatível, podemos definir um produto interno em $V$ através da relação $g(u,v) = \omega(u,Jv)$, o que define a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g(u,v)$. Vamos mostrar que podemos definir uma aplicação $G^{-1}: \produtosinternos{V} \to \estruturascomplexaspadrao$, com isso provaremos que $\estruturascomplexaspadrao$ é contrátil.
-	
-	Dado $g \in \produtosinternos{V}$, temos o isomorfismo $g^{\#}:V \to V^{*}$ dado por $g^{\#}(u)(v) = g(u,v)$. Sejam $\matrizantisimetrica{V}$, o conjunto dos automorfismos anti-simétricos em V, e $S^{2}(V)$, o conjunto das formas bilineares anti-simétricas. Tomando $A \in \matrizantisimetrica{V}$ teremos $G^{\#} = g^{\#}\circ A:V\to V^{*}$ é um isomorfismo pois é a composição de isomorfismos. Teremos 
-	$$
-	G^{\#}(u)(v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Av,u) = -G^{\#}(v)(u).
-	$$
-	Tomando $A\in \matrizantisimetrica{V}$ temos que a aplicação $G^{\#}$ pode ser associada a única forma bilinear anti-simétrica da seguinte forma $\Omega : \matrizantisimetrica{V} \to AntiS^{2}(V)$ onde $\Omega(A)(u,v)  = g(Au,v)= G^{\#}(u)(v)$. Vamos denotar $\Omega_{A}(u,v) = \Omega(A)(u,v)$. Pelo Teorema $\ref{teorema_decomposicao_polar}$ (decomposição polar) podemos escrever $A = PJ$ onde $P$ é positiva-definida e $J$ ortogonal. Além disso $-A^{2}=AA^{t} = PJJ^{t}P^{t} = P^{2}$ portanto $P=\sqrt{-A^{2}}$, \vermelho{o que resulta em $A^{2} = PJPJ = PPJJ = -A^{2}J^{2}$ o que implica que $J^{2} = -Id$.} Notemos que $J=P^{-1}A:V \to V$ é um automorfismo pois é a composição de automorfismos, e também é um simplectomorfismo pois:
-	$$
-	\begin{aligned}
-		\Omega_{A}(Ju,Jv) &= g(AJu, Jv)= g(J^{t}AJu, v)
-		\\
-		&=g(\underbrace{-J}_{J^{t}}A^{-1}AAJu, v) = g(JA^{-1}\underbrace{P^{2}}_{-A^{2}}Ju, v)
-		\\
-		&=g(PJu, v) = g(Au, v)
-		\\
-		&=\Omega_{A}(u,v)
-	\end{aligned}
-	$$
-	Para vermos que $\Omega_{A}:V\times V\to \real{}$ é um produto interno basta apenas se mostrar que é positivo-definido pois os outros axiomas são satisfeitos já que $\Omega_{A}$ foi definido a partir de um produto interno, assim:
-	$$
-	\begin{aligned}
-	\Omega_{A}(u,Ju) &= g(Au, Ju)= g(J^{t}Au, u)
-	\\
-	&=g(-JAu, u)=g(-JA^{-1}AAu, u)
-	\\
-	&=g(JA^{-1}(-A^{2})u, u)=g(P^{-1}P^{2}u, u)
-	\\
-	&=g(Pu, u)\geq 0,
-	\end{aligned}
-	$$ 
-	onde $g(Pu, u)=0$ se, e somente se, $u=0$ e caso $u\neq 0$ temos $g(Pu, u)>0$ pois $P$ é uma matriz positiva-definida, portanto temos um produto interno positivos-definido e $J$ é $\Omega_{A}$-compatível. Note que, fixando um automorfismo $A$, associamos uma única $\Omega_{A}$ e um único $J$ (decomposição polar $A=PJ$), logo temos uma aplicação $G^{-1} = \produtosinternos{V}\to \estruturascomplexaspadrao$, de modo que:
-	
-	$$
-	G\circ G^{-1} = Id.
-	$$
-	
-	\begin{teorema}
-		Seja $(V,\omega)$ um 2n-espaço vetorial real simplético, então $\estruturascomplexaspadrao$ é contrátil.
-	\end{teorema}
-	\begin{prova}
-		Sejam $\estruturascomplexaspadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{observacao_conjunto_estrutura_complexa}$. Tomando $G:\produtosinternos{V} \to \estruturascomplexaspadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturascomplexaspadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
-	\end{prova}			
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
 	\section{Motivação}
