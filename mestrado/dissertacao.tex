@@ -58,6 +58,7 @@
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhos}{\mathcal{L}}
+\newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
 \newcommand{\caminhospontobase}[1]{\caminhos_{#1}}
 \newcommand{\caminhossempontobase}[1]{\caminhos(#1)}
 \newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
@@ -81,6 +82,7 @@
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
 \newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
+\newcommand{\distribuicoes}[1]{\mathcal{D}(#1)}
 \newcommand{\espacoLdois}[1]{L^{2}(#1)}
 \newcommand{\espacoLp}[1]{L^{p}(#1)}
 \newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
@@ -110,6 +112,8 @@
 	\end{array}
 	\right.
 }
+\newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
+\newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
 \newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
@@ -1255,7 +1259,7 @@
 		$$ 
 		pois $P$ é uma matriz positiva-definida. Portanto temos um produto interno positivos-definido e $J$ é $\Omega$-compatível. 
 
-		Pela decomposição polar temos que, dado $A$ ainti-simétrico temos apenas um $J$ $\Omega$-compatível. Portanto, temos a aplicação injetora $\produtosinternos{V} \ni g \mapsto J \in \estruturascomplexaspadrao$ denotada por $G(g) = J$. Além disso, $G$ é sobrejetora. De fato, sabe-se que toda aplicação bilinear anti-simétrica $\Omega'$ pode ser escrita como $\Omega'(v, u) = V^{t}A'U$, onde $V,U$ são as representações matriciais de $v,u$, respectivamente, e $A'$ é uma matriz anti-simétrica. Pela decomposição polar temos $A'=P'J'$. Temos então $A'^{\#}(g)$??????????
+		Pela decomposição polar temos que, dado $A$ ainti-simétrico temos apenas um $J$ $\Omega$-compatível. Portanto, temos a aplicação injetora $\produtosinternos{V} \ni g \mapsto J \in \estruturascomplexaspadrao$ denotada por $G(g) = J$. Além disso, $G$ é sobrejetora. De fato, sabe-se que toda aplicação bilinear anti-simétrica $\Omega'$ pode ser escrita como $\Omega'(v, u) = V^{t}A'U$, onde $V,U$ são as representações matriciais de $v,u$, respectivamente, e $A'$ é uma matriz anti-simétrica. Pela decomposição polar temos $A'=P'J'$. \vermelho{Temos então $A'^{\#}(g)$??????????}
 	\end{prova}		
 	
 	\begin{teorema}
@@ -1296,8 +1300,12 @@
 	Seja $A \in \generalgroupreal{n}$ uma matriz dianonalizável. Denotamos por $\sigma(A)$ o conjunto dos auto-valores de $A$.
 
 	\begin{definicao}\label{definicao_potenciacao_matriz}
-		(Potênciação de matriz) Sejam $V$ um n-espaço vetorial real, $A:V \to V$ um operador linear diagonalizável e $V_{\lambda}$ o auto-espaço associado ao auto-valor $\lambda \in \sigma(A)$. Dado $\alpha \in \real{}$ o operador linear $A^{\alpha}:V \to V$ é um operador cujos auto-espaços são $V_{\lambda^{\alpha}}$ com $\lambda \in \sigma(A)$.
+		(Potênciação de matriz) Sejam $V$ um n-espaço vetorial real, $A:V \to V$ um operador linear diagonalizável e $V_{\lambda}$ o auto-espaço associado ao auto-valor $\lambda \in \sigma(A)$. Dado $\alpha \in \real{}$ o operador linear $A^{\alpha}:V \to V$ é o operador dado por $A^{\alpha} = B^{-1}diag\{ \lambda_{1}^{\alpha} , \dots, \lambda_{2n}^{\alpha} \}B$, onde $B$ é a matriz tal que $A= B^{-1}diag\{ \lambda_{1}, \dots, \lambda_{2n}\}B$.
 	\end{definicao}
+	
+	\begin{observacao}
+		Note que, para um dado $v \in E_{\lambda}$, teremos $A^{\alpha}v = \lambda^{\alpha}v$, logo $v \in E_{\lambda^{\alpha}}$. Portanto, $E_{\lambda}\subset E_{\lambda^{\alpha}}$.
+	\end{observacao}
 	
 	\begin{proposicao}\label{proposicao_transposta_potenciacao_matriz}
 		Sejam $V$ um n-espaço vetorial real e $A:V\to V$ um operador linear diagonalizável, então $(A^{\alpha})^{t}=(A^{t})^{\alpha}$.
@@ -1353,11 +1361,7 @@
 		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
 	\end{teorema}
 	\begin{prova}
-		\vermelho{Dados $v,w \in V$ então 
-			$$
-			\produtointerno{AA^{t}v}{w}=\produtointerno{v}{A^{t}Aw}=\produtointerno{Av}{Aw}=\produtointerno{A^{t}Av}{w}=\produtointerno{(AA^{t})^{t} v}{w},
-			$$
-			como $v,w $ são arbitrários isso que implica em $AA^{t}=(AA^{t})^{t}$, portanto $AA^{t}$ é normal. Então pelo Lema $\ref{lema_raiz_matriz_normal}$ existe uma única $P \in \matrizsimetricapositiva{n}$ tal que $P^{2} = AA^{t}$, isto é, $P = \sqrt{AA^{t}}$. Como $P$ é invertível, podemos definir $O = P^{-1}A$. Vejamos que $OO^{t} = P^{-1}AA^{t}(P^{-1})^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1} = Id$, logo $O \in \matrizortogonal{n}$. Pela unicidade de $P$ temos que $O=P^{-1}A$ é única. Portanto $A=PO$, onde $P \in \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ são únicas.}
+		Por construção temos que $AA^{t}$ é normal. Então pelo Lema $\ref{lema_raiz_matriz_normal}$ existe uma única $P \in \matrizsimetricapositiva{n}$ tal que $P^{2} = AA^{t}$, isto é, $P = \sqrt{AA^{t}}$. Como $P$ é invertível, podemos definir $O = P^{-1}A$. Vejamos que $OO^{t} = P^{-1}AA^{t}(P^{-1})^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1} = Id$, logo $O \in \matrizortogonal{n}$. Pela unicidade de $P$ temos que $O=P^{-1}A$ é única. Portanto $A=PO$, onde $P \in \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ são únicas.
 	\end{prova}
 	
 	\begin{corolario}\label{corolario_decomposicao_matriz_antisimetrica}
@@ -1739,7 +1743,7 @@
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_determinante_homomorfismo}
-		Mostramos que no Lema $\ref{lema_isomorfismo_grupo_fundamental_matriz_unitaria}$ que o determinando, que é uma aplicação contínua, induz o isomorfismo $det_{*}: \grupofundamental{\matrizunitaria{n}} \to \inteiros$.
+		No Lema $\ref{lema_isomorfismo_grupo_fundamental_matriz_unitaria}$ mostramos que o determinante, sendo uma aplicação contínua, induz o isomorfismo $det_{*}: \grupofundamental{\matrizunitaria{n}} \to \inteiros$.
 	\end{observacao}
 	
 	\begin{teorema}
@@ -1749,6 +1753,44 @@
 		Da Observação $\ref{observacao_quociente_grupo_simpletico_contratil}$ temos que todo caminho contínuo em $\gruposimpletico{2n}$ é homotópico a um caminho contínuo em $\matrizSimpleticaOrtogonal$, isto é, dado $\gamma \in \caminhospontobasegeral{Id }{\gruposimpletico{2n}}$ existe $\beta \in \caminhospontobasegeral{Id}{\matrizSimpleticaOrtogonal}$ tal que $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$ e 
 		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
+
+	\section{A complexificação de $\gruposimpletico{2n}$}\label{secao_complexificacao_grupo_simpetico}
+	
+	Até o momento os resultados foram demonstrados para o caso de espaços vetoriais simpléticos reais. Contudo, a estratégia adotada para construírmos o índice de Maslov exige uma associação $\gruposimpletico{2n}\mapsto \circulo$ que será realizada naturalmente se trabalharmos com espaços vetoriais simpléticos complexos. Vamos realizar as inclusões $\real{2n} \hookrightarrow \complexo{2n}$, $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ e, pela identificação $\matrizunitaria{n} \mapsto \matrizSimpleticaOrtogonal$, temos $\matrizunitaria{n} \hookrightarrow \gruposimpletico{2n, \reta}$. Com um abuso de notação, vamos escrever $\matrizSimpleticaOrtogonal = \gruposimpletico{2n} \cap \matrizortogonal{2n }= \matrizunitaria{n}$. 
+	
+	Por fim, extenderemos a forma simplética $\omega$ para uma 2-forma $\complexo{}$-bilinear anti-simétrica não-degenerada $\Omega:\complexo{2n}\times \complexo{2n} \to \complexo{}$, logo temos a inclusão do 2n-espaço simplético $(\real{2n}, \omega) \hookrightarrow (\complexo{2n}, \Omega)$.
+	
+	\begin{observacao}
+		Poderíamos ter feito a identificação $\real{2n} \mapsto \complexo{n}$, porém, a teoria de espaços vetoriais simpléticos tem como premissa de que a dimensão do espaço vetorial deve ser um multiplo de 2 sobre o corpo escolhido, logo devemos ter $\complexo{2n}$ como espaço vetorial sobre $\complexo{}$.
+	\end{observacao}
+	
+	O Lema $\ref{lema_auto_espaco_grupo_simpletico}$ (auto-espaços de $\gruposimpletico{2n}$) terá o seu análogo nos complexos do seguinte modo: dado $A \in \matrizunitaria{n}\subset \gruposimpletico{2n}$ e supondo $\lambda \in \sigma(A)$ teremos que os auto-valores ocorrem em quádruplo $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1} \in \sigma(A)$ desde que $\lambda \notin \reta$ ou $\lambda \in \circulo$. 
+	
+	O lema citado foi utilizado nos resultados seguintes desse capítulo, cujas demonstraçções não utilizam características específicas do corpo escolhido, portanto, tais resultados terão resultados análogos na caso dos complexos.
+	
+	Com a inclusão descrita acima podemos associar $\real{2n}\ni (v_{1}, v_{2}) = v \mapsto z = v_{1}+iv_{2} \in \complexo{2n}$. Desse modo temos $\estruturacomplexa v = (v_{2}, -v_{1}) \mapsto v_{2}-iv_{1} = -i(v_{1}+iv_{2}) = -iz \in \complexo{2n}$. Portanto, aplicar $\estruturacomplexa$ é equivalente a multiplicação por $-i$.
+	
+	Além disso, a operação de conjugação de um dado $v\in \complexo{2n}$ pode ser associada a opeação de rotação do seguinte modo: $\overline{v} = v_{1}-iv_{2} \mapsto (v_{1}, -v_{2}) = Rv$, onde $R$ é a matriz de rotação dessa operação. Nesse caso, e quando não houver ambiguidades nas definições, escreveremos $v' = Rv$, e o mesmo para $u$.
+	
+	Sejam $V=(v_{i})$ e $U = (u_{i})$ as representações matriciais de $v$ e $u$. Como $\omega_{0}$ é uma aplicação bilinear, então podemos representa-la em termos matriciais como  $\formaSimpleticaPadrao{v}{u} = V^{t}GU=v_{1}u_{2}-v_{2}u_{1}$, o que implica em $G = -\estruturacomplexa = \estruturacomplexa^{t}$ e $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa V)^{t}U$. Complexificando temos $(\estruturacomplexa V)^{t}U = \formaSimpleticaPadrao{v}{u}  \mapsto \Omega(v,u) = -i\overline{v}.u \in \complexo{}$, onde $v.u = (v_{1}+iv_{2}).(u_{1}+iu_{2}) = \produtointerno{v_{1}}{u_{1}} - \produtointerno{v_{2}}{u_{2}} + i(\produtointerno{v_{1}}{u_{2}}+\produtointerno{v_{2}}{u_{1}})$ e $\produtointerno{.}{.}$ é o produto euclidiano de $\real{2n}$. Por simplicidade vamos omitir a notação do produto eucliano e escerver $v.u = v_{1}u_{1} - v_{2}u_{2} + i(v_{1}u_{2}+v_{2}u_{1})$.
+	
+	De fato temos uma extensão contínua pois, fazendo $v = v_{1}+iv_{2}, u = u_{1}+iu_{2} \in \complexo{2n}$ e definindo $c(v,u) = v_{1}u_{1} + v_{2}v_{2}$, temos 
+	$$
+	\begin{aligned}
+	\Omega(v,u) 
+	&= -i\overline{v}.u
+	\\
+	&=-i(v_{1}-iv_{2}).(u_{1}+iu_{2}) 
+	\\
+	&= v_{1}u_{2} - v_{2}v_{1} + i(-v_{1}u_{1} - v_{2}v_{2})
+	\\
+	&=\formaSimpleticaPadrao{v}{u} - ic(v,u) 
+	\end{aligned}	
+	$$
+	
+	\begin{observacao}\label{observacao_forma_extendida}
+		Notemos que $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} - ic(v',u) $. Essa identificação será bastante utilizada na construção do índice de Maslov.
+	\end{observacao}
 	
 	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}\label{secao_grupo_simpletico_nao_degenerado}
 	
@@ -1757,11 +1799,11 @@
 	O seguinte lema é demasiadamente técnico e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
-		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ \vermelho{(não sei se  B esta realmente em $\gruposimpleticonaodegenerado{*}$)} cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
+		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ \vermelho{(não sei se  B esta realmente em $\gruposimpleticonaodegenerado{*}$, acredito que seja em $\gruposimpletico{2n}$)} cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
 	\end{lema}
 	
 	\begin{lema}
-		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas. Além disso, a inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
+		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
 	\end{lema}
 	\begin{prova}
 		Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupreal{2n}$ tal que 
@@ -1799,84 +1841,44 @@
 		$$
 		Portanto, $W(a) \in \gruposimpletico{2n}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
 		
-		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Temos que $det(W^{+}) = 1$  e $det(W^{-}) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
+		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Temos que $det(Id - W^{+}) = 4^{n}>0$  e $det(Id - W^{-}) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
 		
-		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Suponha que $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$, sendo $v_{\lambda_{j}}$ auto-vetores de $B$, uma base de $V$ e que seja invariante pela conjugação complexo, isto é, $\{\overline{v}_{\lambda_{1}}, \dots , \overline{v}_{\lambda_{2n}} \}$ também é uma base simplética \vermelho{(não entendi a necessidade dessa hipótese)}. 
+		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Seja $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base simplética de $V$ invariante por conjugação complexa, isto é, $\{\overline{v}_{\lambda_{1}}, \dots , \overline{v}_{\lambda_{2n}} \}$ também é uma base simplética \vermelho{(não entendi a necessidade dessa hipótese)}, onde $v_{\lambda_{j}}$ auto-vetores de $B$.
 		
-		Sejam $\gamma:[0,1]\to \reta$ um caminho contínuo tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ com $1 \notin \gamma([0,1])$ \vermelho{(não entendi essa condição)} e $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ definido por
+		Sejam $\gamma:[0,1]\to \reta$ um caminho contínuo tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ com $1 \notin \gamma([0,1])$ e $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo definido por
 		$$
 		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
 		$$
 		
-		com $\Gamma(0) = B$. Assim, podemos escrever $\Gamma(s)v_{\lambda} = \beta(s)v_{\lambda}$, sendo $\beta$ um caminho definido por $\Gamma$, que no caso dos auto-valores $1/\lambda$ e $\overline{\lambda}$ teremos $\beta(s) = 1/\gamma(s)$ e $\overline{\beta}(s) = 1/\overline{\gamma}(s)$. Com isso, temos $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$. De fato, supondo $\lambda,\lambda' \in \sigma(B)$ tais que $\lambda\lambda' \neq 1$ e $\omega$ tal que $\omega$ uma 2-forma simplética nessa base,  $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \beta(s)\beta'(s)\omega(v_{\lambda},v_{\lambda'}) = 0$, pela $\omega$-ortoganalidade. Por outro lado, caso $\lambda\lambda'=1$, teremos $\lambda'=\lambda^{-1}$ implicando $\beta'(s) = 1/\beta(s)$, logo $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \omega(v_{\lambda},v_{\lambda'})$. Por fim, caso $\lambda = \lambda'$, teremos $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda}) = \beta^{2}(s)\omega(v_{\lambda},v_{\lambda}) =0$. Portanto, $\Gamma^{*}(s)\omega = \omega$ e $\Gamma(s) \in \gruposimpletico{2n}$.
+		com $\Gamma(0) = B$. Assim, podemos escrever $\Gamma(s)v_{\lambda} = \beta(s)v_{\lambda}$, sendo $\beta$ um caminho definido por $\Gamma$, que no caso dos auto-valores $1/\lambda$ e $\overline{\lambda}$ teremos $\beta(s) = 1/\gamma(s)$ e $\overline{\beta}(s) = 1/\overline{\gamma}(s)$. Com isso, temos $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$. De fato, supondo $\lambda,\lambda' \in \sigma(B)$ tais que $\lambda\lambda' \neq 1$ teremos $\formaSimpleticaPadrao{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \beta(s)\beta'(s)\formaSimpleticaPadrao{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\omega$-ortoganalidade. Por outro lado, caso $\lambda\lambda'=1$, teremos $\lambda'=\lambda^{-1}$ implicando $\beta'(s) = 1/\beta(s)$, logo $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \omega(v_{\lambda},v_{\lambda'})$. Por fim, caso $\lambda = \lambda'$, teremos $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda}) = \beta^{2}(s)\omega(v_{\lambda},v_{\lambda}) =0$. Portanto, $\Gamma^{*}(s)\omega = \omega$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $det(Id - \Gamma(s))\neq 0 $, logo $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
 		
 		Por definição $\gruposimpleticonaodegenerado{*}$ temos que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, logo o caminho contínuo $\alpha$ conectando $A$ a $B$ esta em apenas uma dessas componentes, isto é, $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$.
 		
 		Vamos mostrar que ambas componentes são conexas por caminhos. De acordo com o Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ $B$ temos as duas seguintes condições:
 		\begin{enumerate}
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Com isso, $\Gamma(s) = diag\{\gamma_{\lambda{1}}(s)\dots, \gamma_{\lambda{2n}}(s)\}$ e $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{+}$. A composição 
-			
-			$$
-			\funcaocond{(\alpha\circ \Gamma)(s)
-				}{\alpha(2s)}{0\leq s \leq 1/2}{\Gamma(s)}{1/2\leq s \leq 1}
-			$$
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Com isso, $\Gamma(s) = diag\{\gamma_{\lambda{1}}(s)\dots, \gamma_{\lambda{2n}}(s)\}$ e $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. O produto $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
 			é um caminho contínuo conectando $A$ a $W^{+}$. Seja $A\neq A' \in \gruposimpleticonaodegenerado{+}$. Então, com uma construção análoga a anterior, podemos conectar $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Temos caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente, logo conectamos $A$ a $A'$. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
 			
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda<0$, então $\lambda^{-1} < 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Podemos ordenar a base simplética tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores negativos. Assim, $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\} = W^{-}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a composição $\alpha \circ \Gamma$, definida como no item anterior, é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior concluimos que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo. Portanto $W^{-}$ é conexo por caminhos, logo é conexo.
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda<0$, então $\lambda^{-1} < 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Podemos ordenar a base simplética tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores negativos. Assim, $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\} = W^{-}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{-}$ e o produto $\alpha * \Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior concluimos que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
 		\end{enumerate}
 		
 		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, seja $A \in \gruposimpleticonaodegenerado{\pm}$. Como $det: \gruposimpleticonaodegenerado{\pm}\to \reta$ é contínua, então dado $\epsilon>0$ existe $\delta>0$ tal que $|det(A)-det(B)|<\delta$ para todo $\norma{A-B}<\epsilon$, logo $A$ é um ponto interior de $\gruposimpleticonaodegenerado{\pm}$. Portanto, $\gruposimpleticonaodegenerado{\pm}$ são abertos.
+	\end{prova}
+	
+	\begin{corolario}
+		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
+	\end{corolario}
+	\begin{prova}
 		
-		Por fim, vamos demonstrar a trivialidade da inclusão dos grupos fundamentais.
-		
-		Sejam $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ aplicações contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
-		onde $\lambda_{j}\neq \pm 1$ \vermelho{ (aqui acho que tenho que usar o argumento da complexificação pois o Salamon diz que os atuo-valores devem ser de primeira ordem)} e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\mathcal{L}(\gruposimpleticonaodegenerado{+})$ o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
+		Suponha $A \in \gruposimpleticonaodegenerado{*}$ e $\sigma(A) \subset \complexo{}$. Note que, dado um auto-valor $\lambda$, teremos  $\lambda/|\lambda| \in \circulo$. Sejam $\lambda_{j} \in \sigma(A)$ com $1\leq j\leq n $ auto-valores tais que $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ aplicações contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
+		onde $\lambda_{j}\neq \pm 1$ \vermelho{ (aqui acho que tenho que usar o argumento da complexificação pois o Salamon diz que os atuo-valores devem ser de primeira ordem)} e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
 		$$
-		\exp(i2\pi \sum_{j=1}^{n}\alpha_{j}(A)) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
+		\exp\Big( i2\pi \sum_{j=1}^{n}\alpha_{j}(A) \Big) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
 		$$ 
 		Dado $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{+})$, então $\rho \circ \gamma$ é um caminho contínuo e periódico. Se $\lambda_{j} \in \complementar{\sigma(A)}{\real{+}}$, então $\alpha_{j}$ estão determinadas unicamente. De fato, suponha que $\lambda_{k}$ e $\lambda_{m}$ são ambos auto-valores reais positivos, então $\alpha_{k}(A) = \lambda_{k}/|\lambda_{k}| =1 = \lambda_{m}/|\lambda_{m}| =\alpha_{m}(A)$. \vermelho{(Não consigo entender o restante dos argumentos do Salamon ne do Michelle).}
 		
 		Portanto, dado  $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{\pm})$ o caminho $i\circ \gamma:[0,1] \to \gruposimpletico{2n}$ é contrátil e a aplicação induzida $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{\pm}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é trivial, isto é, $i_{*} = 0$.
 	\end{prova}
-	
-	
-	\section{A complexificação de $\gruposimpletico{2n}$}\label{secao_complexificacao_grupo_simpetico}
-	
-		Até o momento os resultados foram demonstrados para o caso de espaços vetoriais simpléticos reais. Contudo, a estratégia adotada para construírmos o índice de Maslov exige uma associação $\gruposimpletico{2n}\mapsto \circulo$ que será realizada naturalmente se trabalharmos com espaços vetoriais simpléticos complexos. Vamos realizar as inclusões $\real{2n} \hookrightarrow \complexo{2n}$, $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ e, pela identificação $\matrizunitaria{n} \mapsto \matrizSimpleticaOrtogonal$, temos $\matrizunitaria{n} \hookrightarrow \gruposimpletico{2n, \reta}$. Com um abuso de notação, vamos escrever $\matrizSimpleticaOrtogonal = \gruposimpletico{2n} \cap \matrizortogonal{2n }= \matrizunitaria{n}$. 
-		
-		Por fim, extenderemos a forma simplética $\omega$ para uma 2-forma $\complexo{}$-bilinear anti-simétrica não-degenerada $\Omega:\complexo{2n}\times \complexo{2n} \to \complexo{}$, logo temos a inclusão do 2n-espaço simplético $(\real{2n}, \omega) \hookrightarrow (\complexo{2n}, \Omega)$.
-		
-		\begin{observacao}
-			Poderíamos ter feito a identificação $\real{2n} \mapsto \complexo{n}$, porém, a teoria de espaços vetoriais simpléticos tem como premissa de que a dimensão do espaço vetorial deve ser um multiplo de 2 sobre o corpo escolhido, logo devemos ter $\complexo{2n}$ como espaço vetorial sobre $\complexo{}$.
-		\end{observacao}
-		
-		O Lema $\ref{lema_auto_espaco_grupo_simpletico}$ (auto-espaços de $\gruposimpletico{2n}$) terá o seu análogo nos complexos do seguinte modo: dado $A \in \matrizunitaria{n}\subset \gruposimpletico{2n}$ e supondo $\lambda \in \sigma(A)$ teremos que os auto-valores ocorrem em quádruplo $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1} \in \sigma(A)$ desde que $\lambda \notin \reta$ ou $\lambda \in \circulo$. 
-	
-		O lema citado foi utilizado nos resultados seguintes desse capítulo, cujas demonstraçções não utilizam características específicas do corpo escolhido, portanto, tais resultados terão resultados análogos na caso dos complexos.
-		
-		Com a inclusão descrita acima podemos associar $\real{2n}\ni (v_{1}, v_{2}) = v \mapsto z = v_{1}+iv_{2} \in \complexo{2n}$. Desse modo temos $\estruturacomplexa v = (v_{2}, -v_{1}) \mapsto v_{2}-iv_{1} = -i(v_{1}+iv_{2}) = -iz \in \complexo{2n}$. Portanto, aplicar $\estruturacomplexa$ é equivalente a multiplicação por $-i$.
-		
-		Além disso, a operação de conjugação de um dado $v\in \complexo{2n}$ pode ser associada a opeação de rotação do seguinte modo: $\overline{v} = v_{1}-iv_{2} \mapsto (v_{1}, -v_{2}) = Rv$, onde $R$ é a matriz de rotação dessa operação. Nesse caso, e quando não houver ambiguidades nas definições, escreveremos $v' = Rv$, e o mesmo para $u$.
-		
-		Sejam $V=(v_{i})$ e $U = (u_{i})$ as representações matriciais de $v$ e $u$. Como $\omega_{0}$ é uma aplicação bilinear, então podemos representa-la em termos matriciais como  $\formaSimpleticaPadrao{v}{u} = V^{t}GU=v_{1}u_{2}-v_{2}u_{1}$, o que implica em $G = -\estruturacomplexa = \estruturacomplexa^{t}$ e $\formaSimpleticaPadrao{v}{u} = (\estruturacomplexa V)^{t}U$. Complexificando temos $(\estruturacomplexa V)^{t}U = \formaSimpleticaPadrao{v}{u}  \mapsto \Omega(v,u) = -i\overline{v}.u \in \complexo{}$, onde $v.u = (v_{1}+iv_{2}).(u_{1}+iu_{2}) = \produtointerno{v_{1}}{u_{1}} - \produtointerno{v_{2}}{u_{2}} + i(\produtointerno{v_{1}}{u_{2}}+\produtointerno{v_{2}}{u_{1}})$ e $\produtointerno{.}{.}$ é o produto euclidiano de $\real{2n}$. Por simplicidade vamos omitir a notação do produto eucliano e escerver $v.u = v_{1}u_{1} - v_{2}u_{2} + i(v_{1}u_{2}+v_{2}u_{1})$.
-		
-		De fato temos uma extensão contínua pois, fazendo $v = v_{1}+iv_{2}, u = u_{1}+iu_{2} \in \complexo{2n}$ e definindo $c(v,u) = v_{1}u_{1} + v_{2}v_{2}$, temos 
-		$$
-		\begin{aligned}
-			\Omega(v,u) 
-			&= -i\overline{v}.u
-			\\
-			&=-i(v_{1}-iv_{2}).(u_{1}+iu_{2}) 
-			\\
-			&= v_{1}u_{2} - v_{2}v_{1} + i(-v_{1}u_{1} - v_{2}v_{2})
-			\\
-			&=\formaSimpleticaPadrao{v}{u} - ic(v,u) 
-		\end{aligned}	
-		$$
-		
-		\begin{observacao}\label{observacao_forma_extendida}
-			Notemos que $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} - ic(v',u) = $. Essa identificação será bastante utilizada na construção do índice de Maslov.
-		\end{observacao}
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
 	\section{Motivação}
@@ -1959,11 +1961,14 @@
 			\end{enumerate}
 		\end{teorema}
 		
-		Na Seção $\ref{secao_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Tomando $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$, e os auto-vetores $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, então $\formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \neq 0$ e $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. Definindo $Q: \complexo{2n} \to \reta$ tal que $Q(v) = \parteImaginaria{\formaSimpleticaPadrao{\overline{v}}{v}}$, então temos $Q(v)>0$. Como a aplicação $Q$ é positiva-definida, então podemos ordenar os auto-valores de A do seguinte modo: se $|\lambda| = 1$, isto é, $\lambda \in \circulo$, diremos que $\lambda \leq \lambda'$ se $ Q(v) \leq Q(v')$, para $v\in E_{\lambda}$ e $v'\in E_{\lambda'}$. Se $|\lambda| \neq 1$, isto é, $\lambda \notin \circulo$ diremos que $\lambda \leq \lambda'$ se $|\lambda| \leq |\lambda'|$. Com isso, temos a cadeia $\lambda_{1} \leq \lambda_{2} \leq \dots\leq \lambda_{n}\leq \lambda_{1}^{-1}\leq \dots\leq \lambda_{n}^{-1}$. \vermelho{O Salamon faz uma afirmação sobre $|\lambda|<1$, mas e o caso que $|\lambda|>1$??? Não entendi. Outro ponto é que essa ordenação só pode ser feita se todos os auto-valores de $A$ forem distintos.}
+		Na Seção $\ref{secao_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
+		
+		Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
+		
+		Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
 		
 		\begin{definicao}
-			
-			Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior. \vermelho{Ainda não sei se esta bem-definido para o caso que $\lambda=1$.!!!!}
+			Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior.
 		\end{definicao}
 		
 		\begin{lema}
@@ -2242,6 +2247,44 @@
 		\mu(x) = Ind(x) - n.
 		$$
 	\end{corolario}	
+	
+	\chapter{Espaços de Sobolev}
+	\section{Teoria de Distribuições - Espaços de Schwartz}
+	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, na descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
+	$$
+	\nabla.E(x) = \rho(x),
+	$$
+	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, sendo ambos de classe $C^{\infty}$. Um problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade dad por $\rho = q/V$ e $V \to 0$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
+	$$
+	\rho(x) = \lim_{V\to 0} \frac{q}{V} = q\delta(x - x_{0}),
+	$$
+	onde $x_{0} \in \real{3}$ é o ponto onde esta localizada a carga $q$ e 
+	$$
+	\funcaocond{\delta(x - x_{0})}{\infty}{x=x_{0}}{0}{x\neq x_{0}}\;\; e \;\; \int_{\real{3}} \delta(x) = 1.
+	$$
+	Note que o símbolo $\delta$ não esta bem-definido em $x_{0}$, portanto não é uma função e o problema 
+	$$
+	\nabla.E(x) = q\delta(x),
+	$$
+	não esta bem formulado matematicamente. 
+	
+	Em teoria de distribuição essa EDP terá uma solução em um sentido mais geral, o qual chamaremos de sentido distribuicional ou sentido fraco. Aqui vamos apresentar apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
+	
+	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto. Os elementos de tal conjunto receberão o nome de funções de teste.
+	
+	\begin{observacao}
+		É possível se mostrar que o espaço das funções de teste $\funcoesdiferenciaveissupp{k}{\Omega}$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
+	\end{observacao}
+	
+	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$ denotamos a $j$-ésima derivada parcial por $\derivadaparcialabrev{j}f(x) = \partial f(x)/\partial x_{j}$. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. Definimos o operador multi-diferencial por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
+	
+	\begin{definicao}
+		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma aplicação linear $f:\funcoesdiferenciaveissupp{\infty}{\Omega} \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathcal{N}$ tal que 
+		$$
+			|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
+		$$
+		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes{\Omega}$.
+	\end{definicao}
 	
 	\chapter{Equação de Floer e o Operador de Fredholm}
 	\section{Variedades simpléticas}
@@ -2631,17 +2674,18 @@
 	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que os espaço das funções suaves não é um espaço de Banach \vermelho{(DEVO MELHORAR ESSE ARGUMENTO)}, portanto $\caminhosdecaimentoexponencialpadrao$ não é um candidato a espaço de Banach. \vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
 	
 	\begin{definicao}
-		(Espaço das funções p-integráveis) Seja $\Omega\subset \real{n}$ um aberto. O espaço das funções p-integráveis em $W$ é o conjunto 
+		(Espaço das funções p-integráveis) Sejam $\Omega\subset \real{n}$ um aberto e $1\leq p \leq \infty$. O espaço das funções p-integráveis em $\Omega$ é o conjunto 
 		$$
-		L^{p}(\Omega) = \{f:\Omega \to \real{} : \normaLp{f} < \infty \}, \; \normaLp{f} = \normaLpdefinicao{|f(x)|}{\Omega}
+		L^{p}(\Omega) = \{f:\Omega \to \real{} : \normaLp{f} < \infty \}, \; \normaLp{f} = \normaLpdefinicao{|f(x)|}{\Omega}.
 		$$
+		No caso em que $p=\infty$ temos $\norma{f}_{L^{\infty}} = inf\{C\geq 0: |f(x)|\leq C\}$.
 	\end{definicao}
 	
 	\begin{observacao}
 		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, sendo que um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
 	\end{observacao}
 	
-	O espaço $L^{p}(W)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equação de Floer envolve derivadas de primeira ordem, o espaço de Banach que trabalharemos deverá considerar tais condições, por isso teremos uma norma um pouco mais específica, o que é chamado por espaço de Sobolev definido por:
+	O espaço $L^{p}(\Omega)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equação de Floer envolve derivadas de primeira ordem, o espaço de Banach com o qual trabalharemos será munido de uma norma que leva em consideração o comportamento dessas derivadas. Tal espaço normado é chamado por espaço de Sobolev.
 	
 	\begin{definicao}
 		(Espaço de Sobolev)  Seja $\Omega \subset \real{n}$ um aberto. Denotaremos por (1,p)-espaço de Sobolev o conjunto
@@ -2825,20 +2869,20 @@
 	A estratégia não é demonstrar diretamente que o diferencial do mapa de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o seguinte resultado  \vermelho{(COLOCAR A REFERENCIA DA PROPOSICAO)}
 
 	Para simplificar a notação, definiremos $\diferebcialmapafloerabrev = D\mapafloer_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
+
+	\begin{definicao}\label{definicao_operador_compacto}
+		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
+	\end{definicao}
 	
 	\begin{proposicao}
 		Sejam $A,B,C$ espaços de Banach e $D:A\to B$ um operador limitado e $K:A \to C$ um operador compacto. Supondo que exista uma constante $c>0$ tal que $\normasubscrito{\xi}{A} \leq c(\normasubscrito{D\xi}{B} + \normasubscrito{K\xi}{C})$, então $D(A) = \overline{D(A)}$ e $dim(Ker(D)) <\infty$.
 	\end{proposicao}
 	
-	\begin{definicao}\label{definicao_operador_compacto}
-		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
-	\end{definicao}
-	
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
 		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferebcialmapafloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
 	\end{lema}
 	
-	A demonstração será dividida em 4 etapas a seguir:
+	A demonstração será dividida em 4 etapas, sendo que algumas das construções feitas tiveram como base a referência $\cite{salamon_lecture}$ em sua maior parte e $\cite{audi_floer_homology}$ como apoio.
 	
 	\textbf{Etapa 1:} Vamos mostrar que o Lema $\ref{lema_diferencial_floer_bijecao}$ vale para $p=2$. Como $S$ não depende do parametro $s \in \real{}$, então podemos definir $A = \estruturacomplexa \derivadaparcialabrev{t} + S: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$. \vermelho{O operador $A$ é auto-adjunto e ilimitado no espaço de Hilbert $H=\espacoLdois{\circulo;\real{2n}}$ (não sei demonstrar isso).} Note que $A\Psi(t) = 0$ se, e somente se, é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$, isto é, $\Psi \in Ker(A)$. Vamos mostrar que $A$ é invertível, e com isso, decomporemos $\espacosobolevgeral{2}{\circulo;\real{2n}} $ em uma soma direta de seus auto-espaços.
 	
@@ -2889,7 +2933,7 @@
 	\Psi_{0}(0) = -(Id - R(1))^{-1}R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
 	$$
 		
-	O Teorema Funcamental de Existência e Unicidade das soluções de EDO \vermelho{(colocar referencia)} garante que existe $\Psi \in W$ solução do sistema $A\Psi = \zeta$ determinada unicamente pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in H$, existe uma única $\Psi_{0}(0)$, logo $\zeta$ deteremina unicamente a solução $\Psi$ e podemos escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível.
+	O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe $\Psi \in W$ solução do sistema $A\Psi = \zeta$ determinada unicamente pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in H$, existe uma única $\Psi_{0}(0)$, logo $\zeta$ deteremina unicamente a solução $\Psi$ e podemos escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível.
 	
 	Como $A$ é invertível, então $0 \notin \sigma(A)$, isto é, os auto-valores de $A$ são não-nulos. Sejam $E^{+}, E^{-}$ os auto-espaços de $A$ cujos auto-valores são positivos e negativos, respectivamente. Então temos a decomposição $W = \espacosobolevgeral{2}{\circulo;\real{2n}} = E^{+}\oplus E^{-}$. Definindo $A^{\pm}=A |_{E^{\pm}}$ e $P^{\pm}: W \to E^{\pm}$ as projeções ortogonais, $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(W)$ e $K: \real{}\to \mathcal{L}(W)$.
 	$$
@@ -3011,7 +3055,15 @@
 	$$
 	
 	\textbf{Etapa 2:}
-	O ponto de partida dessa etapa é o lema abaixo, o qual tem sua demonstração feita em $\cite{audi_floer_homology}$. Não a faremos pois é demasiadamente técnica e não trará entendimento adicional ao texto.
+	O ponto de partida dessa etapa é o lema abaixo, o qual tem sua demonstração feita em $\cite{audi_floer_homology}$. Não a faremos pois é demasiadamente técnica e não trará entendimento adicional ao texto. Enunciaremos o teorema que estabelece a desigualdade de Holder (vide $\cite{breazis_sobolev_spaces}$), o qual será utilizado no lema a seguir.
+	
+	\begin{teorema}
+		(Desigualdade de Holder) Sejam $1\leq p, q \leq \infty$ tais que $1/p + 1/q = 1$. Suponha que $f \in L^{p}(\Omega)$ e $g \in L^{q}(\Omega)$. Então $fg \in L^{1}(\Omega)$. Além disso, vale a desigualdade
+		$$
+		\int_{\Omega}|f(x)g(x)| \leq \normaLp{f}\norma{g}_{L^{q}}.
+		$$ 
+		
+	\end{teorema}
 	
 	\begin{lema}\label{lema_desigualdade_Lp}
 		(Desigualdade $L^{p}$) Se $p>1$ e $\xi \in \espacosobolevretacirculo$, então existe $C>0$ tal que
@@ -3024,7 +3076,7 @@
 	$$
 	\normaWpDominio{\xi}{[0,1]\times \circulo} \leq C'(\normaLpDominio{\diferebcialmapafloerabrev \xi}{[-1,2]\times \circulo}+\normaLpDominio{\xi}{[-1,2]\times \circulo}).
 	$$
-	De fato, dados $\xi:\retacartesianocirculo\to\real{2n}$ e $V \subseteq \reta$, então pela desigualdade de Holder \vermelho{(colocar referencia explicando o que significa)} temos que $\espacoLp{V\times \circulo} \subset \espacoLdois{V\times \circulo}$ e, analogamente, $\espacosobolev{V\times \circulo} \subset \espacosobolevgeral{2}{V\times \circulo}$. Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevgeral{2}{V\times \circulo} \subset \espacoLp{V\times \circulo}$ para 
+	De fato, fazendo $f = g \in \espacoLp{\Omega}$ na desigualdade de Holder, teremos $\int $ dados $\xi:\retacartesianocirculo\to\real{2n}$ e $V \subseteq \reta$, então pela desigualdade de Holder temos que $\espacoLp{V\times \circulo} \subset \espacoLdois{V\times \circulo}$ e, analogamente, $\espacosobolev{V\times \circulo} \subset \espacosobolevgeral{2}{V\times \circulo}$. Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevgeral{2}{V\times \circulo} \subset \espacoLp{V\times \circulo}$ para 
 	
 	
 	
@@ -3117,6 +3169,12 @@
 		Birkhauser, 2nd edition,
 		1992.
 		
+		\bibitem{doering_ode}
+		Doering, Claus I.; Lopes, Artur O.:
+		\emph{Equações Diferenciais Ordinárias - Coleção Matemática Universitária},
+		IMPA, terceira edição,
+		2008.
+		
 		\bibitem{guillemin_differential_topology}
 		Guillemin, Victor; Pollack, Alan:
 		\emph{Differential Topolgy},
@@ -3132,6 +3190,12 @@
 		Kreyszig, Erwin
 		\emph{Introduction to Functional Analysis with Applications},
 		John Wiley and Sons, 1978.
+		
+		\bibitem{friedlander}
+		Friedlander, F. G.; Joshi, M.
+		\emph{Introduction to Theory of Distributions},
+		Cambridge University Press, 2nd edition
+		1998.
 
 		\bibitem{elon_grupo_fundamental}
 		Lima, Elon Lages:
@@ -3159,7 +3223,19 @@
 		Nussenzveig, Moyses:
 		\emph{Mecânica - Curso de Física Básica Vol 1},
 		Edgard Blucher, 4 edição,
-		2002.	
+		2002.
+		
+		\bibitem{pontryagin_ode}
+		Pontryagin, L.S.:
+		\emph{Ordinary Differential Equations},
+		Addison-Wesley Publishing Company,
+		1962.
+		
+		\bibitem{salamon_lecture}
+		Salamon, Dietmar:
+		\emph{Lectures on Floer Homology},
+		University of Warnick,
+		1997.
 	\end{thebibliography}
 	
 \end{document}
