@@ -82,9 +82,10 @@
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
 \newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
-\newcommand{\distribuicoes}[1]{\mathcal{D}(#1)}
+\newcommand{\distribuicoes}{\mathcal{D'}(\Omega)}
 \newcommand{\espacoLdois}[1]{L^{2}(#1)}
 \newcommand{\espacoLp}[1]{L^{p}(#1)}
+\newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
 \newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
 \newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
 \newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
@@ -115,6 +116,7 @@
 \newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
 \newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
 \newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
+\newcommand{\funcoesteste}{\mathcal{D}(\Omega)}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
@@ -2249,7 +2251,7 @@
 	\end{corolario}	
 	
 	\chapter{Espaços de Sobolev}
-	\section{Teoria de Distribuições - Espaços de Schwartz}
+	\section{Distribuições - Motivação e Definições}
 	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, na descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
 	$$
 	\nabla.E(x) = \rho(x),
@@ -2270,21 +2272,101 @@
 	
 	Em teoria de distribuição essa EDP terá uma solução em um sentido mais geral, o qual chamaremos de sentido distribuicional ou sentido fraco. Aqui vamos apresentar apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
 	
-	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto. Os elementos de tal conjunto receberão o nome de funções de teste.
+	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesteste=\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto. Os elementos de tal conjunto receberão o nome de funções de teste.
 	
 	\begin{observacao}
-		É possível se mostrar que o espaço das funções de teste $\funcoesdiferenciaveissupp{k}{\Omega}$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
+		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
 	\end{observacao}
+	
+	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\int_{\Omega}|f(x)| \in \reta$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
+	$$
+	\norma{f}=\normaLpdefinicao{|f(x)|}{\Omega}
+	$$
+	forma um espaço de Banach. Porém, o que será útil para o desenvolvimento dos formalismos posteriores é o seguinte quociente.
+	
+	\begin{definicao}
+		(Espaços $\espacoLpGeral{p}{\Omega}$ e $\espacoLpcomp{\Omega}$) Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) = g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula. Assim, definiremos o quociente por $\espacoLpGeral{p}{\Omega} = l^{p}(\Omega)/\sim$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Espaços $\espacoLpcomp{\Omega}$) O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
+	\end{definicao}
 	
 	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$ denotamos a $j$-ésima derivada parcial por $\derivadaparcialabrev{j}f(x) = \partial f(x)/\partial x_{j}$. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. Definimos o operador multi-diferencial por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
 	
 	\begin{definicao}
-		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma aplicação linear $f:\funcoesdiferenciaveissupp{\infty}{\Omega} \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathcal{N}$ tal que 
+		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma forma linear $f:\funcoesteste \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathcal{N}$ tal que 
 		$$
 			|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
 		$$
-		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes{\Omega}$.
+		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes$.
 	\end{definicao}
+	
+	Vamos caracterizar alguns tipos de distribuições, as quais serão utilizadas com frequência. Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$ e $\phi \in \funcoesteste$. Defina $\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x)$ e $K = supp(\phi) \subset \Omega$ compacto. Como $f$ é contínua, então a sua restrição a $K$ é limitada, logo $|\produtointerno{f}{\phi}|\leq sup(|\phi|)\int_{K}|f(x)|<\infty$ e $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma estamos aplicação injetora $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que indica uma condição de integrabilidade. Com isso, podemos generalizar um pouco a condição de continuidade e extender essa construção para o espaço $\espacoLpcomp{\Omega}$ e de modo análogo temos a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
+		
+	Por fim, pode-se efetuar uma diferenciação das distribuições. Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e $\alpha$ um k-multi-índice, então $\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}$.
+
+	\begin{definicao}
+		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada de Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
+	\end{definicao}
+	
+	\begin{exemplo}
+		(Função de Heaviside) Seja $\theta:\Omega = \reta \to \reta$, chamada de função de Heaviside, definida por
+		$$
+		\funcaocond{\theta(x)}{1}{x\geq0}{0}{x<0}.
+		$$
+		Temos que a derivada de $\theta$ é o delta de Dirac. De fato,
+		$$
+		\produtointerno{\partial\theta}{\phi} = -		\produtointerno{\theta}{\partial\phi} = -\int_{\reta_{+}}\partial \phi(x) = -\phi(0)\Big|^{\infty}_{0} = \phi(0) = \produtointerno{\delta}{\phi}.
+		$$
+		Como $\phi \in \funcoesteste$ é arbitrária, então $\partial \theta = \delta \in \distribuicoes$.
+	\end{exemplo}
+	
+	\begin{observacao}
+		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
+	\end{observacao}
+	
+	\section{Espaço de Sobolev $W^{1,p}$}
+	\begin{definicao}
+		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $\mathbb{N} \ni p\geq 1$. Os espaços de Sobolev são os conjuntos
+		$$
+		W^{k,p} (\Omega)= \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
+		$$
+		Quando existir uma $g \in \espacoLpGeral{p}{\Omega}$ diremos que $g = \partial^{\alpha}f$.
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_espacos_sobolev_distribuicao}
+		Como foi definido, podemos descrever $W^{k,p}$ como um espaço de distribuições.
+	\end{observacao}
+	
+	\begin{exemplo}
+		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Então, $f \in \espacoLp{\Omega}$ pois $\normaLp{f} \leq \int_{\Omega}|f(x)|^{p} \leq sup(f)^{p}Vol(\Omega) <\infty$, onde $Vol(\Omega)$ é o volume de $\Omega$. Vamos mostrar que $\partial f \in \espacoLpGeral{p}{\Omega}$. Definindo $g:\Omega\to \reta$ tal que
+		$$
+		\funcaocond{g(x)}{\pm 1}{\pm x_{1}>0}{0}{x_{1} = 0},
+		$$
+		temos que $g(x) = \partial f(x)$ para $x \in \complementar{\Omega}{\{0\}}$. Como $\{0\}$ é um conjunto de medida nula, então $\int_{\complementar{\Omega}{\{0\}}}g(x)\phi(x) = \int_{\Omega}g(x)\phi(x) = \int_{\Omega}\partial f(x)\phi(x)$. Como $g$ é limitada em $\Omega$, então $\partial f =g \in \espacoLpGeral{p}{\Omega}$. 
+		
+		Além disso, dado $\phi \in \funcoesteste$ temos 
+		$$
+		\begin{aligned}
+			\produtointerno{\partial f(x)}{\phi} 
+			&= \int_{\Omega}\derivadaparcial{f(x)}{x_{1}}\phi(x)
+			\\
+			&= \int_{\Omega}\derivadaparcial{f(x)\phi(x)}{x_{1}}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
+			\\
+			&=\underbrace{f(x)\phi(x)\Big|_{\partial \Omega}}_{=0}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
+			\\
+			&=-\produtointerno{f}{\partial \phi}.
+		\end{aligned}
+		$$
+		Onde usamos o fato de que o suporte de $\phi$ é um compacto no interior da bola, logo $\phi$ restrita a borda é nula. Portanto, $f \in \espacosobolevgeral{p}{\Omega}$.
+	\end{exemplo}
+	
+	De acordo com a proposição a seguir, demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
+	
+	\begin{proposicao}
+		Os espaços de Sobolev $W^{1,p}$ são espaços de Banach separáveis para $1\leq p \leq \infty$.
+	\end{proposicao}
 	
 	\chapter{Equação de Floer e o Operador de Fredholm}
 	\section{Variedades simpléticas}
