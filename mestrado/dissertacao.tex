@@ -77,7 +77,8 @@
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
 \newcommand{\complementar}[2]{#1 \backslash #2}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
-\newcommand{\diferebcialmapafloerabrev}{\mathcal{D}}
+\newcommand{\diferencialmapafloer}{D\mapafloer}
+\newcommand{\diferencialmapafloerabrev}{\mathcal{D}}
 \newcommand{\derivada}[2]{\frac{d #1}{d #2}}
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
@@ -2049,18 +2050,56 @@
 		Portando, $m_{+}(Q) = m_{-}(Q) = n$ e $m(Q) = 0$.
 	\end{prova}
 	
-	Sejam $A \in \gruposimpletico{2n}$ e $\lambda\in \sigma(A)$ tal que $\lambda \in \complementar{\circulo}{\{\pm 1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ e pelo Corolário $\ref{corolario_assinatura_forma_quadratica}$ podemos decompor o auto-espaço $E_{\lambda} = E_{\lambda}^{+} \oplus E_{\lambda}^{-}$, onde $E_{\lambda}^{\pm} $ são subespaços vetoriais tais que $Q$ é positivo-definida, ou negativo-definida, respectivamente. Assim, temos a multiplicidade de $\lambda$ dada por$m(\lambda) = m_{+}(\lambda)+m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda})$, onde  $m_{\pm}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{\pm} )$. Definamos a assinatura de $\lambda$ por $\sigma(\lambda)= m_{+}(\lambda) - m_{-}(\lambda)$. 
+	Sejam $A \in \gruposimpletico{2n}$ e $\lambda\in \sigma(A)$ tal que $\lambda \in \complementar{\circulo}{\{\pm 1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ e pelo Corolário $\ref{corolario_assinatura_forma_quadratica}$ podemos decompor o auto-espaço $E_{\lambda} = E_{\lambda}^{+} \oplus E_{\lambda}^{-}$, onde $E_{\lambda}^{\pm} $ são subespaços vetoriais tais que $Q$ é positivo-definida, ou negativo-definida, respectivamente. Assim, temos a multiplicidade de $\lambda$ dada por $m(\lambda) = m_{+}(\lambda)+m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda})$, onde  $m_{\pm}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{\pm} )$. Definamos a assinatura de $\lambda$ por $\sigma(\lambda)= m_{+}(\lambda) - m_{-}(\lambda)$. 
 	
 	Suponha que $\lambda<0$, então $\lambda^{-1}<0$. Pelo Corolário $\ref{corolario_restricao_forma_simpletica}$ temos que a restrição $\Omega|_{E_{\lambda}\oplus E_{\lambda^{-1}}}$ é não-degenerada, e assim, $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}\oplus E_{\lambda^{-1}}^{+}\oplus E_{\lambda^{-1}}^{-}$, logo $m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{-})+dim_{\complexo{}}(E_{\lambda^{-1}}^{-})=2dim_{\complexo{}}(E_{\lambda}^{-})$. Portanto, $m_{-}(\lambda) \in 2\mathbb{N}$.
 	
 	\begin{lema}\label{lema_identidade_aplicacao_rho}
 		Sejam $A \in \gruposimpletico{2n}$, $m_{0} = \sum_{\lambda \in \sigma(A)} m_{-}(\lambda)$  e $\sigma'(A)=\sigma(A)\cap \complementar{\circulo}{\{ \pm 1 \}}$. Então
 		$$
-		\rho'(A) = (-1)^{m_{0}/2} \prod_{\lambda \in \sigma'(A) }\lambda^{m_{+}(\lambda)} = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|} = \rho(A).
+		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|} =(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A) }\lambda^{m_{+}(\lambda)} .
 		$$
 	\end{lema}
 	\begin{prova}
-		\vermelho{Ainda não sei como fazer. VEr o Salamon novamente}
+		Defina $\lambda_{j} \in \sigma(A)$ com $0\leq j \leq 2n$, auto-valores ordenados como anteriormente. Então, sem perda de generalidade, o produto $\prod \lambda_{j}/|\lambda_{j}|$ pode ser reordenado de modo que:
+		$$
+		\left\{
+		\begin{array}{cc}
+			\lambda_{j} \in \{\pm 1\} &, 1\leq j \leq k
+			\\
+			\lambda_{j} \in \complementar{\circulo}{\{\pm 1\}} &, k+1\leq j \leq m
+			\\
+			\lambda_{j} \in \complexo{} &, m+1\leq j \leq n.
+		\end{array}
+		\right.
+		$$
+		Definindo $\beta_{j} = \lambda_{j} = |\lambda_{j}|$, teremos o produto
+		$$
+		\begin{aligned}
+		\rho(A)&=\prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
+		\\
+			&=
+			\frac{\lambda_{1}}{|\lambda_{1}|} \dots \frac{\lambda_{k}}{|\lambda_{k}|}
+			\frac{\lambda_{k+1}}{|\lambda_{k+1}|} \dots  \frac{\lambda_{m}}{|\lambda_{m}|}
+			\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
+			\frac{\lambda_{n}}{|\lambda_{n}|}
+			\\
+			&=
+			\underbrace{\pm 1 \dots \pm 1}_{k-vezes}
+			\underbrace{\lambda_{k+1}\dots  \lambda_{m}}_{\in \complementar{\circulo}{\{\pm 1 \}}}
+			\underbrace{	\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
+				\frac{\lambda_{n}}{|\lambda_{n}|}}_{\in \complementar{\circulo}{\{\pm 1 \}}}	
+			\\
+			&=
+			(-1)^{m_{0}}\beta_{k+1}\dots \beta_{n}	
+			\\
+			&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A) \cap\complementar{\circulo}{\{ \pm 1 \}}} \lambda^{m_{+}(\lambda)}
+			\\
+			&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A)}\lambda^{m_{+}(\lambda)}.
+		\end{aligned}
+		$$
+		
+		\vermelho{(Ainda não ficou clara o produto sobre todos os autovalores em $\circulo$. Ver novamente o Salamon artigo. Ele afirma algo sobre os auto-valores de primeira ordem e suas multiplicidades)}
 	\end{prova}
 	
 	\subsection*{Demosntração das propriedades de $\rho$}
@@ -2078,7 +2117,7 @@
 
 			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$. \vermelho{Enteder melhor a construção do determinante.}
 			
-			\item \textbf{\textit{Normalização:}} \vermelho{Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$}. 
+			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então, pelo Lema $\ref{lema_identidade_aplicacao_rho}$, a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
 		\end{enumerate}
 	\end{prova}
 		
@@ -2146,7 +2185,7 @@
 			\end{aligned}
 			$$
 			
-			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $det(Id - \psi(1))>0$, então $\gamma(1) = W^{+}$ e $\rho(W^{+}) = (-1)^{n}$. Com isso $\mu(\psi) - n$ é par \vermelho{(não entendi esse argumento. No michelle e no salamon estão iguais.)}
+			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $\gamma(1) = W^{+}$ e \vermelho{$\rho(W^{+}) = (-1)^{n}$}. Com isso $\mu(\psi) - n$ é par \vermelho{(não entendi esse argumento. No michelle e no salamon estão iguais.)}
 			
 			\item Afirmo que, $\Psi(t)=\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $\Psi(t)$ comuta com $\estruturacomplexa$, ou  de forma equivalente, $\estruturacomplexa^{-1}\Psi(t)\estruturacomplexa = \Psi(t)$. Seja $k\geq 0$ um inteiro. Então
 			$$
@@ -2278,19 +2317,23 @@
 		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
 	\end{observacao}
 	
-	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\int_{\Omega}|f(x)| \in \reta$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
+	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\reta\ni \int_{\Omega}|f(x)| < \infty$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
 	$$
 	\norma{f}=\normaLpdefinicao{|f(x)|}{\Omega}
 	$$
 	forma um espaço de Banach. Porém, o que será útil para o desenvolvimento dos formalismos posteriores é o seguinte quociente.
 	
-	\begin{definicao}
+	\begin{definicao}\label{definicao_espaco_Lp}
 		(Espaços $\espacoLpGeral{p}{\Omega}$ e $\espacoLpcomp{\Omega}$) Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) = g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula. Assim, definiremos o quociente por $\espacoLpGeral{p}{\Omega} = l^{p}(\Omega)/\sim$.
 	\end{definicao}
 	
 	\begin{definicao}
 		(Espaços $\espacoLpcomp{\Omega}$) O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
 	\end{definicao}
+	
+	\begin{observacao}
+		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, sendo que um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
+	\end{observacao}
 	
 	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$ denotamos a $j$-ésima derivada parcial por $\derivadaparcialabrev{j}f(x) = \partial f(x)/\partial x_{j}$. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. Definimos o operador multi-diferencial por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
 	
@@ -2326,7 +2369,7 @@
 		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
 	\end{observacao}
 	
-	\section{Espaço de Sobolev $W^{1,p}$}
+	\section{Espaço de Sobolev $W^{1,p}$}\label{secao_espaco_sobolev}
 	\begin{definicao}
 		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $\mathbb{N} \ni p\geq 1$. Os espaços de Sobolev são os conjuntos
 		$$
@@ -2338,6 +2381,11 @@
 	\begin{observacao}\label{observacao_espacos_sobolev_distribuicao}
 		Como foi definido, podemos descrever $W^{k,p}$ como um espaço de distribuições.
 	\end{observacao}
+	
+	\begin{definicao}
+		(Espaço de Sobolev generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então 
+		$\espacoLpcontradominio{\Omega}{\real{k}}$ é o conjunto de todas as aplicações $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ e $f_{j}\in \espacoLp{\Omega}$ com $1\leq j\leq k$. Analogamente, teremos a definição de $\espacosobolevcontradominio{\Omega}{\real{k}}$.
+	\end{definicao}
 	
 	\begin{exemplo}
 		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Então, $f \in \espacoLp{\Omega}$ pois $\normaLp{f} \leq \int_{\Omega}|f(x)|^{p} \leq sup(f)^{p}Vol(\Omega) <\infty$, onde $Vol(\Omega)$ é o volume de $\Omega$. Vamos mostrar que $\partial f \in \espacoLpGeral{p}{\Omega}$. Definindo $g:\Omega\to \reta$ tal que
@@ -2362,11 +2410,30 @@
 		Onde usamos o fato de que o suporte de $\phi$ é um compacto no interior da bola, logo $\phi$ restrita a borda é nula. Portanto, $f \in \espacosobolevgeral{p}{\Omega}$.
 	\end{exemplo}
 	
-	De acordo com a proposição a seguir, demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
+	De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
+	
+	
 	
 	\begin{proposicao}
 		Os espaços de Sobolev $W^{1,p}$ são espaços de Banach separáveis para $1\leq p \leq \infty$.
 	\end{proposicao}
+	
+	Quando $dim(\Omega) = 1$, por exemplo um intervalo da reta, temos que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $dim(\Omega)>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Consequentemente, nem todos os elementos de  $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$  são contínuas. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev), cuja demosntração pode ser encontrada em $\cite{breazis_sobolev_spaces}$, garante a inclusão em $L^{p}$ da seguinte forma:
+	
+	\begin{teorema}\label{teorema_sobolev}
+		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $q<np(n-p)$.
+	\end{teorema}
+	
+	\begin{observacao}
+		A compacidade da inclusão do teorema anterior é um resultado que será encontrado com o nome de Teorema de Rellich-Kondrachov.
+	\end{observacao}
+	
+	\begin{observacao}
+		O teorema implica que existe uma constate $C>0$ tal que 
+		$$
+		\normaLgGeral{\xi}{q}{\Omega} \leq C \normaWpGeralDominio{\xi}{p}{\Omega}.
+		$$
+	\end{observacao}
 	
 	\chapter{Equação de Floer e o Operador de Fredholm}
 	\section{Variedades simpléticas}
@@ -2719,8 +2786,11 @@
 	\end{proposicao}
 	
 	\section{Operadores de Fredholm}
+	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabse-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. De forma equivalente, $T$ é um isomorfismo se, e somente se, $dim(Ker(T)) = 0$ e $dim(T(A)) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de "quanto o operador" se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
+	
+	
 	\begin{definicao}\label{definicao_oeprador_fredholm}
-		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/Im(T)$. O operador $T$ é chamado de operador de Fredholm se $Im(T)=\overline{Im(T)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$.  
+		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$. 
 	\end{definicao}
 	
 	Os resultados a seguir serão utilizados na construção e demonstração de estabilidade do operador de Fredholm adiante. Vamos denotar $\operadoresfredholm{A}{B}$ o conjunto dos operadores de Fredholm de $A$ em $B$ e $\operadoreslimitados{A}{B}$ o conjunto dos operadores limitados definidos nos mesmo espaços de Banach.
@@ -2739,7 +2809,7 @@
 	\section{Os espaços de Banach das curvas conectantes}
 	
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
-		(Caminhos de decaímentos exponenciais) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
+		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
 		$$
 		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \mp} u(s,t) = x^{\mp}(t) \},
 		$$
@@ -2755,54 +2825,9 @@
 	
 	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que os espaço das funções suaves não é um espaço de Banach \vermelho{(DEVO MELHORAR ESSE ARGUMENTO)}, portanto $\caminhosdecaimentoexponencialpadrao$ não é um candidato a espaço de Banach. \vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
 	
-	\begin{definicao}
-		(Espaço das funções p-integráveis) Sejam $\Omega\subset \real{n}$ um aberto e $1\leq p \leq \infty$. O espaço das funções p-integráveis em $\Omega$ é o conjunto 
-		$$
-		L^{p}(\Omega) = \{f:\Omega \to \real{} : \normaLp{f} < \infty \}, \; \normaLp{f} = \normaLpdefinicao{|f(x)|}{\Omega}.
-		$$
-		No caso em que $p=\infty$ temos $\norma{f}_{L^{\infty}} = inf\{C\geq 0: |f(x)|\leq C\}$.
-	\end{definicao}
-	
-	\begin{observacao}
-		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, sendo que um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
-	\end{observacao}
-	
-	O espaço $L^{p}(\Omega)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equação de Floer envolve derivadas de primeira ordem, o espaço de Banach com o qual trabalharemos será munido de uma norma que leva em consideração o comportamento dessas derivadas. Tal espaço normado é chamado por espaço de Sobolev.
-	
-	\begin{definicao}
-		(Espaço de Sobolev)  Seja $\Omega \subset \real{n}$ um aberto. Denotaremos por (1,p)-espaço de Sobolev o conjunto
-		$$
-		W^{1,p}(\Omega) = \{f \in L^{p}(\Omega) : \normaWp{f} <\infty  \},
-		$$
-		onde 
-		$$
-		\normaWp{f} = \Big(\int_{W}|f(x)|^{p} + \sum_{i} \Big|\derivadaparcial{f}{x^{i}}(x)\Big|^{p}dx\Big)^{1/p}.
-		$$
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao}
-		Quando $dim(\Omega) = 1$, por exemplo um intervalo da reta, temos que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $dim(\Omega)>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Consequentemente, nem todos os elementos de  $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$  são contínuas. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev), e esta demonstrado em $\cite{breazis_sobolev_spaces}$, garante a inclusão em $L^{p}$:
-	\end{observacao}
-	
-	\begin{teorema}\label{teorema_sobolev}
-		(Mergulho de Sobolev) Seja $1 \leq p < n$. Então $\espacosobolev{\real{n}} \subset L^{q}(\real{n})$, onde $1/q = 1/p -1/n$. Além disso, para $q<np(n-p)$ a injeção é um operador compacto.
-	\end{teorema}
-	
-	\begin{observacao}
-		O teorema implica que existe uma constate $C>0$ tal que 
-		$$
-		\normaLgGeral{\xi}{q}{V \times \circulo} \leq C \normaWpGeralDominio{\xi}{p}{V \times \circulo}.
-		$$
-	\end{observacao}
-	
-	Notemos que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial, por isso vamos adotar como espaço de Sobolev 
-	$$
-	\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}=\{X:\retacartesianocirculo \to \real{2n} : \normaWp{X}<\infty\},
-	$$
-	onde 
-	$$
-	\normaWp{X} = \Big(\int_{\retacartesianocirculo} \norma{X(s,t)}^{p}+\normagrande{\derivadaparcial{X}{s}(s,t)}^{p}+\normagrande{\derivadaparcial{X}{t}(s,t)}^{p}dx \Big)^{1/p}.
-	$$
+	De acordo com a Definição  $\ref{definicao_espaco_Lp}$ o espaço $L^{p}(\Omega)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equação de Floer envolve derivadas de primeira ordem, o espaço de Banach com o qual trabalharemos será munido de uma norma que leva em consideração o comportamento dessas derivadas. Tal espaço normado é chamado por espaço de Sobolev.
+		
+	Notemos que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial, por isso vamos adotar como espaço de Sobolev generalizado do que foi feito na Seção $\ref{secao_espaco_sobolev}$. 
 	
 	Notemos que $dim(\retacartesianocirculo) = 2$, logo pelas limitações citadas na Observação $\ref{Sp2n_homotopia}$ e pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev) temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{q}$, onde $q = 1/p - 1/n$ e $n = 2$, o que implica que $q = 0$ se $p=2$, logo temos que trabalhar $p>2$.
 	
@@ -2839,7 +2864,7 @@
 		Pela Proposição $\ref{proposicao_difeomorfismo_exponencial}$, dado $\epsilon > 0$, existe uma vizinhaça aberta $B_{\epsilon}(0)$ de seção nula $0 \in \espacosobolev{\pullbackfibradotangenteM{w}}$ tal que a restrição da aplicação exponencial $\aplicacaoexponencialgeral{w}:B_{\epsilon}(0) \to V$ é um difeomorfismo sobre um aberto $V \subset \pullbackfibradotangenteM{w}$. Para cada $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$ temos a aplicação $\aplicacaoexponencial{w}{X}:\retacartesianocirculo \to M$ tal que $\aplicacaoexponencial{w}{X}(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$, logo $\aplicacaoexponencial{w}{X} \in \caminhosexponenciaisconectantespadrao$. Portanto o par $(B_{\epsilon}(0), \aplicacaoexponencialgeral{w})$ de abertos e difeomorfismos é uma carta de $\caminhosexponenciaisconectantespadrao$, consequentemente a família indexada $\{(B_{\epsilon_{w}}(0), \aplicacaoexponencialgeral{w})\}_{w \in \caminhosexponenciaisconectantesabrev}$, forma um 1-atlas. Portanto, $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
 	\end{prova}
 	
-	\section{A identificação  $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$}
+	\section{A identificação  $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$}\label{secao_identificacao_pullback_fibrado}
 	Em muitas situações  vamos nos deparar com a necessidade de efetuar diferenciação em variedades com estruturas diferenciais complexas tornando dificultanto muito as técnicas utilizadas na demonstração dos resultados desejado. Para contornar esse dificuldade adicional vamos utilizar o Teorema de Whitney, enunciado aqui, mas demonstrado em $\cite{guillemin_differential_topology}$, e com isso comparar campos vetoriais se torna trivial, já que estamos em um espaço euclidiano e os espaços tangentes estão todos identificados com o próprio $\real{k}$ (para algum k), além disso, as conexões afins (associadas ao transporte paralelo de campos vetoriais em variedades Riemannianas) são reduzidas a derivadas parciais. Veja uma breve descrição na Observação $\ref{observacao_conexao_afim}$.
 	
 	\begin{definicao}\label{definicao_mergulho_variedades}
@@ -2924,7 +2949,7 @@
 		Note que, ao mergulharmos a variedade $M$ em um espaço euclidiano com dimensão suficientemente grande, teremos $\nabla \mapafloer_{w}(\xi)=D\mapafloer_{w}(\xi)$, pois como vimos na Observação $\ref{observacao_conexao_afim}$, a conexão afim se reduz a derivadas parciais.
 	\end{observacao}
 	
-	\section{$\orbitasconectantespadrao = Ker(D\mapafloer)$}
+	\section{$\orbitasconectantespadrao = Ker(\diferencialmapafloer)$}
 	Dado $x \in \solucoesperiodicascontrateis$ temos que $\dot{x}(t) = \campohamiltoniano{x(t)}$. Seja $y \in \solucoesperiodicascontrateis$ uma outra solução do sistema Hamiltoniano e suficientemente próxima a $x$. Realizando os mergulhos $\pullbackfibradotangenteM{x}, \pullbackfibradotangenteM{y} \subset \real{k}$, para um $k$ suficientemente grande, temos  $x(t), y(t) \in \real{k}$ para todo $t \in \circ$, logo existe $\xi:\real{}\to \real{k}$ talq ue $\xi(t)=x(t)-y(t)$, portanto
 	$$
 	\derivada{\xi(t)}{t} = \derivada{x(t)}{t} -\derivada{y(t)}{t} = \campohamiltoniano{x(t)} - \campohamiltoniano{y(t)} =\diferencialhamiltoniano{x(t)}(\xi(t)).
@@ -2948,248 +2973,215 @@
 	Como $w \in \caminhosexponenciaisconectantespadrao$ é arbitraria, então 
 	 
 	\section{$D\mapafloer$ é um operador de Fredholm}
-	A estratégia não é demonstrar diretamente que o diferencial do mapa de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o seguinte resultado  \vermelho{(COLOCAR A REFERENCIA DA PROPOSICAO)}
-
-	Para simplificar a notação, definiremos $\diferebcialmapafloerabrev = D\mapafloer_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
+	A estratégia não é demonstrar diretamente que o diferencial do mapa de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o Lema $\ref{lema_desigualdade_operador_compacto}$ abaixo.
 
 	\begin{definicao}\label{definicao_operador_compacto}
 		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
 	\end{definicao}
 	
-	\begin{proposicao}
+	\begin{observacao}\label{observacao_operador_compacto_limitado}
+		Pode-se mostrar que todo operador compacto entre espaços de Banach é limitado. Veja $\cite{kreyszig_analise_funcional}$.
+	\end{observacao}
+	
+	\begin{lema}\label{lema_desigualdade_operador_compacto}
 		Sejam $A,B,C$ espaços de Banach e $D:A\to B$ um operador limitado e $K:A \to C$ um operador compacto. Supondo que exista uma constante $c>0$ tal que $\normasubscrito{\xi}{A} \leq c(\normasubscrito{D\xi}{B} + \normasubscrito{K\xi}{C})$, então $D(A) = \overline{D(A)}$ e $dim(Ker(D)) <\infty$.
-	\end{proposicao}
+	\end{lema}
+	
+	Para simplificar a notação, definiremos $\diferencialmapafloerabrev = D\mapafloer_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
+	
+	O seguinte lema afirma a injetividade do mapa de Floer $\diferencialmapafloerabrev$, o que implicará diretamente que $\diferencialmapafloer$ é um operador compacto. Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$ \vermelho{(Caso sobre tempo podemos fazer o caso $p>2$)}. 
 	
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
-		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferebcialmapafloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
+		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialmapafloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
 	\end{lema}
-	
-	A demonstração será dividida em 4 etapas, sendo que algumas das construções feitas tiveram como base a referência $\cite{salamon_lecture}$ em sua maior parte e $\cite{audi_floer_homology}$ como apoio.
-	
-	\textbf{Etapa 1:} Vamos mostrar que o Lema $\ref{lema_diferencial_floer_bijecao}$ vale para $p=2$. Como $S$ não depende do parametro $s \in \real{}$, então podemos definir $A = \estruturacomplexa \derivadaparcialabrev{t} + S: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$. \vermelho{O operador $A$ é auto-adjunto e ilimitado no espaço de Hilbert $H=\espacoLdois{\circulo;\real{2n}}$ (não sei demonstrar isso).} Note que $A\Psi(t) = 0$ se, e somente se, é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$, isto é, $\Psi \in Ker(A)$. Vamos mostrar que $A$ é invertível, e com isso, decomporemos $\espacosobolevgeral{2}{\circulo;\real{2n}} $ em uma soma direta de seus auto-espaços.
-	
-	Por simplicidade denotaremos $W = \espacosobolevgeral{2}{\circulo;\real{2n}} $. Afirmar que $A$ é invertível é equivalente a determinar um único $\Psi \in W$ para um dado $\zeta \in H$ tal que $A\Psi(t) = \zeta(t)$. Caso $\zeta = 0$, então temos um sistema homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial que determina unicamente a solução, logo $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO \vermelho{colocar referencias} podemos afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema, isto é, $\Psi_{0} \mapsto \Psi$ da forma $\Psi = R\Psi_{0}$ e, analogamente, $\Psi \mapsto \Psi_{0}$ da forma $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $R(t)\Psi_{0}$ temos um sistema de equações para $R$ dado por 
-	$0=A\Psi(t) = A(R(t)\Psi_{0}) = (\estruturacomplexa\derivadaparcialabrev{t}+S)R(t)\Psi_{0}$, o que implica em $\dot{R}(t) = \estruturacomplexa SR(t)$ com $R(0) = Id$. 
-	
-	Para determinar a solução da equação mais geral ($\zeta\neq 0$), aplicaremos o método de variação de constantes \vermelho{(procurar uma referencia)} que consiste em analisar uma solução mais geral da forma $\Psi(t) = R(t)\Psi_{0}(t)$ para $t \in [0,1]$. Aplicando o operador $A$ na solução $R(t)\Psi_{0}(t)$ e usando o fato de que $\dot{R}(t) = \estruturacomplexa SR(t)$ e $R(t)$ é invertível, teremos a seguinte condição sobre $\Psi_{0}(t)$
-	$$
-	\begin{aligned}
-		\zeta(t) 
-		&= A\Psi(t)
-		\\ 
-		&= (\estruturacomplexa\derivadaparcialabrev{t}+S)(R(t)\Psi_{0}(t)) 
-		\\ 
-		&= \estruturacomplexa\dot{R}(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
-		\\
-		&= -SR(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
-		\\
-		&= \estruturacomplexa R(t)\dot{\Psi}_{0}(t),
-		\\
-		&\therefore 
-		\\
-		\dot{\Psi}_{0}(t) &= -R^{-1}(t)\estruturacomplexa \zeta(t).
-	\end{aligned}
-	$$
-	
-	Integrando ambos os lados da equação, temos
-	$$
-	\Psi_{0}(t) = \Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)
-	$$
-	e
-	$$
-	\Psi(t) = R(t)\Big(\Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big).
-	$$
-	
-	Aplicando a condições de periodicidade $\Psi(1) = \Psi(0)$ temos
-	$$
-	\Psi_{0}(0)=\Psi(0)=\Psi(1)=R(1)\Big(\Psi_{0}(0)-\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big)
-	$$
-	o que implica em
-	
-	$$
-	(Id - R(1))\Psi_{0}(0) = -R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
-	$$
+	\begin{prova}
+		Como $S$ não depende do parametro $s \in \real{}$, então podemos definir $A = \estruturacomplexa \derivadaparcialabrev{t} + S: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$. \vermelho{O operador $A$ é auto-adjunto e ilimitado no espaço de Hilbert $H=\espacoLdois{\circulo;\real{2n}}$ (não sei demonstrar isso e acredito que possa ser retirado da demonstração).} Note que $A\Psi(t) = 0$ se, e somente se, é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$, isto é, $\Psi \in Ker(A)$. Vamos mostrar que $A$ é invertível, e com isso, decomporemos $\espacosobolevgeral{2}{\circulo;\real{2n}} $ em uma soma direta de seus auto-espaços.
 		
-	Temos que $R \in Ker(A)$ e pela hipótese $det(Id - R(1))\neq 0$, portanto o operador $Id - R(1)$ é invertível. Com isso a condição inicial $\Psi_{0}(0)$ esta unicamente determinada por
-	$$
-	\Psi_{0}(0) = -(Id - R(1))^{-1}R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
-	$$
+		Por simplicidade denotaremos $W = \espacosobolevgeral{2}{\circulo;\real{2n}} $. Afirmar que $A$ é invertível é equivalente a determinar um único $\Psi \in W$ para um dado $\zeta \in H$ tal que $A\Psi(t) = \zeta(t)$. Caso $\zeta = 0$, então temos um sistema homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial que determina unicamente a solução, logo $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO $\cite{pontryagin_ode}$ podemos afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema, isto é, $\Psi_{0} \mapsto \Psi$ da forma $\Psi = R\Psi_{0}$ e, analogamente, $\Psi \mapsto \Psi_{0}$ da forma $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $R(t)\Psi_{0}$ temos um sistema de equações para $R$ dado por 
+		$0=A\Psi(t) = A(R(t)\Psi_{0}) = (\estruturacomplexa\derivadaparcialabrev{t}+S)R(t)\Psi_{0}$, o que implica em $\dot{R}(t) = \estruturacomplexa SR(t)$ com $R(0) = Id$. 
 		
-	O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe $\Psi \in W$ solução do sistema $A\Psi = \zeta$ determinada unicamente pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in H$, existe uma única $\Psi_{0}(0)$, logo $\zeta$ deteremina unicamente a solução $\Psi$ e podemos escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível.
+		Para determinar a solução da equação mais geral ($\zeta\neq 0$), aplicaremos o método de variação de constantes \vermelho{(procurar uma referencia)} que consiste em analisar uma solução mais geral da forma $\Psi(t) = R(t)\Psi_{0}(t)$ para $t \in [0,1]$. Aplicando o operador $A$ na solução $R(t)\Psi_{0}(t)$ e usando o fato de que $\dot{R}(t) = \estruturacomplexa SR(t)$ e $R(t)$ é invertível, teremos a seguinte condição sobre $\Psi_{0}(t)$
+		$$
+		\begin{aligned}
+			\zeta(t) 
+			&= A\Psi(t)
+			\\ 
+			&= (\estruturacomplexa\derivadaparcialabrev{t}+S)(R(t)\Psi_{0}(t)) 
+			\\ 
+			&= \estruturacomplexa\dot{R}(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
+			\\
+			&= -SR(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
+			\\
+			&= \estruturacomplexa R(t)\dot{\Psi}_{0}(t),
+			\\
+			&\therefore 
+			\\
+			\dot{\Psi}_{0}(t) &= -R^{-1}(t)\estruturacomplexa \zeta(t).
+		\end{aligned}
+		$$
+		
+		Integrando ambos os lados da equação, temos
+		$$
+		\Psi_{0}(t) = \Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)
+		$$
+		e
+		$$
+		\Psi(t) = R(t)\Big(\Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big).
+		$$
+		
+		Aplicando a condições de periodicidade $\Psi(1) = \Psi(0)$ temos
+		$$
+		\Psi_{0}(0)=\Psi(0)=\Psi(1)=R(1)\Big(\Psi_{0}(0)-\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big)
+		$$
+		o que implica em
+		
+		$$
+		(Id - R(1))\Psi_{0}(0) = -R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
+		$$
+			
+		Temos que $R \in Ker(A)$ e pela hipótese $det(Id - R(1))\neq 0$, portanto o operador $Id - R(1)$ é invertível. Com isso a condição inicial $\Psi_{0}(0)$ esta unicamente determinada por
+		$$
+		\Psi_{0}(0) = -(Id - R(1))^{-1}R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
+		$$
+			
+		O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe $\Psi \in W$ solução do sistema $A\Psi = \zeta$ determinada unicamente pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in H$, existe uma única $\Psi_{0}(0)$, logo $\zeta$ deteremina unicamente a solução $\Psi$ e podemos escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível.
+		
+		Como $A$ é invertível, então $0 \notin \sigma(A)$, isto é, os auto-valores de $A$ são não-nulos. Sejam $E^{+}, E^{-}$ os auto-espaços de $A$ cujos auto-valores são positivos e negativos, respectivamente. Então temos a decomposição $W = \espacosobolevgeral{2}{\circulo;\real{2n}} = E^{+}\oplus E^{-}$. Definindo $A^{\pm}=A |_{E^{\pm}}$ e $P^{\pm}: W \to E^{\pm}$ as projeções ortogonais, $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(W)$ e $K: \real{}\to \mathcal{L}(W)$.
+		$$
+		\funcaocond{K(s)}{exp(-s A^{+})P^{+}}{s \geq 0}{-exp(-s 	A^{-})P^{-}}{s<0}.
+		$$
+		
+		Um semi-grupo fortemente contínuo sobre um espaço de Banach $B$ é uma aplicação $T:\real{}_{+}\to B$ tal que:
+		
+		\begin{enumerate}
+			\item $T(0) = Id$,
+			\item $T(s+t) = T(s)T(t), \;\forall s, t \in \real{}_{+}$
+			\item $lim_{t \to 0^{+}}\norma{T(t)x - x } = 0, \; \forall x \in B $.
+		\end{enumerate}
+		Os dois primeiros  axiomas são algébricos, já o último é topológico e caracteriza a contínuidade do operador. Nesse sentido, a aplicação $exp(\mp A^{\pm}):\real{}_{+} \to \mathcal{L}(W)$ é um semi-grupo fortemente contínuo e $K$ é descontínua em $s=0$ pois $lim_{s\to 0^{+}}K(s) = P^{+}$ e $lim_{s\to 0^{-}} K(s)= -P^{-}$, mas é fortemente contínua para $s \in \real{}\backslash\{0\}$. Dado $s \in \real{}$ afirmo que $K(s)$ é um operador linear limitado. De fato, é linear pois é a composição dos operadores lineares $\pm exp(- sA^{\pm})$ e $P^{\pm}$. É limitado pois
+		$$
+		\begin{aligned}
+			\norma{K(s)}_{\mathcal{L}(W)} &= \sup_{\norma{\xi}=1}\norma{K(s)\xi}
+			\\
+			&=\sup_{\norma{\xi}=1}\norma{\pm exp(- sA^{\pm})P^{\pm}\xi}
+			\\
+			&=\sup_{\norma{\xi}=1}\norma{exp(- sA^{\pm})\xi^{\pm}}
+			\\
+			&=\sup_{\norma{\xi}=1}\norma{exp(- s\lambda^{\pm})\xi^{\pm}}
+			\\
+			&\leq |exp(- s\lambda^{\pm})|\sup_{\norma{\xi}=1}\norma{\xi^{\pm}}
+			\\
+			&\leq exp(- s\lambda^{\pm})
+			\\
+			&\leq exp(- |s|\lambda),
+		\end{aligned}
+		$$
+		onde fizemos $\xi^{\pm}$ os auto-vetores de $A^{\pm}$ com auto-valores $\lambda^{\pm}$ positivos e negativos, respectivamente. Na ultima desigualdade tivemos dois casos: o primeiro quando $s<0$ implicando em $- s\lambda^{\pm} = - s\lambda^{-} <0$, e o segundo quando $s>0$ implicando em $- s\lambda^{+}<0$. Definindo $\lambda = \inf \{|\alpha|: \alpha \in \sigma(A) \}$, temos a desigualdade desejada.
+		
+		Seja $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}} \cap \espacoLdois{\retacartesianocirculo;\real{2n}}$ tal que 
+		$$
+			Q(\eta(s))(t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
+		$$
+		
+		Esse operador esta bem-definido pois, dado $\eta(s) \in \espacoLdois{\reta, H}$ temos
+		$$
+		\begin{aligned}
+			\norma{Q(\eta(s))(t)}_{\espacoLdois{\retacartesianocirculo}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLdois{\retacartesianocirculo}}
+			\\
+			&\leq
+			\int_{\reta}\norma{K(s-\alpha)\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+			\\
+			&\leq
+			\int_{\reta}\norma{K(s-\alpha)}\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+			\\
+			&\leq
+			\int_{\reta}e^{-\delta|s-\alpha|}  \underbrace{\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}}_{N < \infty}d\alpha
+			\\
+			&\leq
+			N\int_{\reta}e^{-\delta|s-\alpha|} d\alpha
+			\\
+			&< \infty,	
+		\end{aligned}
+		$$
+		
+		portanto $Q(\eta(s)) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ através do cálculo
+		$$
+		\begin{aligned}
+			Q(\eta(s)) 
+			&= \int_{\reta}K(s-\alpha)\eta(\alpha)
+			\\
+			&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha)
+			\\
+			&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha)}_{\xi^{-}}
+			\\
+			&= \xi^{+}(s)+\xi^{-}(s).
+		\end{aligned}
+		$$
+		
+		Definindo $\xi = \xi^{+} + \xi^{-}$ e realizando a diferenciação de $\xi^{+}$ temos
+		$$
+		\begin{aligned}
+			\derivada{\xi^{+}}{s} 
+			&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)
+			\\
+			&= exp(-0A^{+})\eta^{+}(s)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) 
+			\\
+			&= \eta^{+}(s)-A^{+}\xi^{+}.
+		\end{aligned}
+		$$
+		Realizando o mesmo cáculo para $\xi^{-}$ teremos 
+		$$
+		 \eta^{\pm}(s) =\derivada{\xi^{\pm}}{s}+A^{\pm}\xi^{\pm}
+		$$
+		o que implica que
+		$$
+		\eta(s) =\derivada{\xi}{s}+A\xi = (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s) = \diferencialmapafloerabrev \xi(s) = (\diferencialmapafloerabrev \circ Q)\eta(s).
+		$$
+		Como $\eta(s) \in \espacoLdois{\reta; H}$ é arbitrário, então mostramos que $\diferencialmapafloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferencialmapafloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferencialmapafloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferencialmapafloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
+		$$
+		\begin{aligned}
+			Q(\diferencialmapafloerabrev \eta^{+}(s))
+			&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
+			\\
+			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
+			\\
+			&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha)
+			\\
+			&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)\Big)
+			\\
+			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
+			\\
+			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
+			\\
+			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivadaparcial{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
+			\\
+			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - Q(\derivadaparcialabrev{s}\eta^{+}(s)) + \eta^{+}(s)
+			\\
+			&=\eta^{+}(s).
+		\end{aligned}
+		$$
+		Analogamente teremos $Q(\diferencialmapafloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferencialmapafloerabrev = Id$ pois
+		$$
+		Q(\diferencialmapafloerabrev \eta(s)) = Q(\diferencialmapafloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferencialmapafloerabrev \eta^{+}(s))+Q(\diferencialmapafloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
+		$$
+	\end{prova}
 	
-	Como $A$ é invertível, então $0 \notin \sigma(A)$, isto é, os auto-valores de $A$ são não-nulos. Sejam $E^{+}, E^{-}$ os auto-espaços de $A$ cujos auto-valores são positivos e negativos, respectivamente. Então temos a decomposição $W = \espacosobolevgeral{2}{\circulo;\real{2n}} = E^{+}\oplus E^{-}$. Definindo $A^{\pm}=A |_{E^{\pm}}$ e $P^{\pm}: W \to E^{\pm}$ as projeções ortogonais, $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(W)$ e $K: \real{}\to \mathcal{L}(W)$.
-	$$
-	\funcaocond{K(s)}{exp(-s A^{+})P^{+}}{s \geq 0}{-exp(-s 	A^{-})P^{-}}{s<0}.
-	$$
+	Foi mostrado na Seção $\ref{secao_identificacao_pullback_fibrado}$ que, dado $u \in \caminhosexponenciaisconectantespadrao$, temos as identificações entre os espaços  $\espacoLp{\pullbackfibradotangenteM{u}} \mapsto \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Sendo que essa identificação foi utilizada para simplificar cálculos e tonar a exposição do assunto menos densa. Na demosntração a seguir esse fato será crucial pois, para aplicarmos o Teorema $\ref{teorema_sobolev}$, necessitamos restrigir o domínio das funções a conjuntos limitados com borda de classe $C^{1}$. Note que $\retacartesianocirculo$ não é limitado. Pelo Teorema $\ref{teorema_whitney}$, temos o mergulho $\caminhosexponenciaisconectantespadrao \subset M\subset \real{k}$, o que já foi feito na Seção $\ref{secao_identificacao_pullback_fibrado}$. Podemos afirmar que $\caminhosexponenciaisconectantespadrao$ é um limitado, pois é um subconjunto da variedade compacta $M$ mergulhada em $\real{k}$. Além disso, seu bordo é dado por $\partial \caminhosexponenciaisconectantesabrev =x^{+}(\circulo) \cup x^{-}(\circulo)$. \vermelho{(aqui devemos ter uma figura ilustrando o bordo ...!!!)}
 	
-	Um semi-grupo fortemente contínuo sobre um espaço de Banach $B$ é uma aplicação $T:\real{}_{+}\to B$ tal que:
-	
-	\begin{enumerate}
-		\item $T(0) = Id$,
-		\item $T(s+t) = T(s)T(t), \;\forall s, t \in \real{}_{+}$
-		\item $lim_{t \to 0^{+}}\norma{T(t)x - x } = 0, \; \forall x \in B $.
-	\end{enumerate}
-	Os dois primeiros  axiomas são algébricos, já o último é topológico e caracteriza a contínuidade do operador. Nesse sentido, a aplicação $exp(\mp A^{\pm}):\real{}_{+} \to \mathcal{L}(W)$ é um semi-grupo fortemente contínuo e $K$ é descontínua em $s=0$ pois $lim_{s\to 0^{+}}K(s) = P^{+}$ e $lim_{s\to 0^{-}} K(s)= -P^{-}$, mas é fortemente contínua para $s \in \real{}\backslash\{0\}$. Dado $s \in \real{}$ afirmo que $K(s)$ é um operador linear limitado. De fato, é linear pois é a composição dos operadores lineares $\pm exp(- sA^{\pm})$ e $P^{\pm}$. É limitado pois
-	$$
-	\begin{aligned}
-		\norma{K(s)}_{\mathcal{L}(W)} &= \sup_{\norma{\xi}=1}\norma{K(s)\xi}
-		\\
-		&=\sup_{\norma{\xi}=1}\norma{\pm exp(- sA^{\pm})P^{\pm}\xi}
-		\\
-		&=\sup_{\norma{\xi}=1}\norma{exp(- sA^{\pm})\xi^{\pm}}
-		\\
-		&=\sup_{\norma{\xi}=1}\norma{exp(- s\lambda^{\pm})\xi^{\pm}}
-		\\
-		&\leq |exp(- s\lambda^{\pm})|\sup_{\norma{\xi}=1}\norma{\xi^{\pm}}
-		\\
-		&\leq exp(- s\lambda^{\pm})
-		\\
-		&\leq exp(- |s|\lambda),
-	\end{aligned}
-	$$
-	onde fizemos $\xi^{\pm}$ os auto-vetores de $A^{\pm}$ com auto-valores $\lambda^{\pm}$ positivos e negativos, respectivamente. Na ultima desigualdade tivemos dois casos: o primeiro quando $s<0$ implicando em $- s\lambda^{\pm} = - s\lambda^{-} <0$, e o segundo quando $s>0$ implicando em $- s\lambda^{+}<0$. Definindo $\lambda = \inf \{|\alpha|: \alpha \in \sigma(A) \}$, temos a desigualdade desejada.
-	
-	Seja $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}} \cap \espacoLdois{\retacartesianocirculo;\real{2n}}$ tal que 
-	$$
-		Q(\eta(s))(t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
-	$$
-	
-	Esse operador esta bem-definido pois, dado $\eta(s) \in \espacoLdois{\reta, H}$ temos
-	$$
-	\begin{aligned}
-		\norma{Q(\eta(s))(t)}_{\espacoLdois{\retacartesianocirculo}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLdois{\retacartesianocirculo}}
-		\\
-		&\leq
-		\int_{\reta}\norma{K(s-\alpha)\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
-		\\
-		&\leq
-		\int_{\reta}\norma{K(s-\alpha)}\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
-		\\
-		&\leq
-		\int_{\reta}e^{-\delta|s-\alpha|}  \underbrace{\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}}_{N < \infty}d\alpha
-		\\
-		&\leq
-		N\int_{\reta}e^{-\delta|s-\alpha|} d\alpha
-		\\
-		&< \infty,	
-	\end{aligned}
-	$$
-	
-	portanto $Q(\eta(s)) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ através do cálculo
-	$$
-	\begin{aligned}
-		Q(\eta(s)) 
-		&= \int_{\reta}K(s-\alpha)\eta(\alpha)
-		\\
-		&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha)
-		\\
-		&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha)}_{\xi^{-}}
-		\\
-		&= \xi^{+}(s)+\xi^{-}(s).
-	\end{aligned}
-	$$
-	
-	Definindo $\xi = \xi^{+} + \xi^{-}$ e realizando a diferenciação de $\xi^{+}$ temos
-	$$
-	\begin{aligned}
-		\derivada{\xi^{+}}{s} 
-		&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)
-		\\
-		&= exp(-0A^{+})\eta^{+}(s)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) 
-		\\
-		&= \eta^{+}(s)-A^{+}\xi^{+}.
-	\end{aligned}
-	$$
-	Realizando o mesmo cáculo para $\xi^{-}$ teremos 
-	$$
-	 \eta^{\pm}(s) =\derivada{\xi^{\pm}}{s}+A^{\pm}\xi^{\pm}
-	$$
-	o que implica que
-	$$
-	\eta(s) =\derivada{\xi}{s}+A\xi = (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s) = \diferebcialmapafloerabrev \xi(s) = (\diferebcialmapafloerabrev \circ Q)\eta(s).
-	$$
-	Como $\eta(s) \in \espacoLdois{\reta; H}$ é arbitrário, então mostramos que $\diferebcialmapafloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferebcialmapafloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferebcialmapafloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferebcialmapafloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
-	$$
-	\begin{aligned}
-		Q(\diferebcialmapafloerabrev \eta^{+}(s))
-		&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
-		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
-		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha)
-		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)\Big)
-		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
-		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
-		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivadaparcial{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
-		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - Q(\derivadaparcialabrev{s}\eta^{+}(s)) + \eta^{+}(s)
-		\\
-		&=\eta^{+}(s).
-	\end{aligned}
-	$$
-	Analogamente teremos $Q(\diferebcialmapafloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferebcialmapafloerabrev = Id$ pois
-	$$
-	Q(\diferebcialmapafloerabrev \eta(s)) = Q(\diferebcialmapafloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferebcialmapafloerabrev \eta^{+}(s))+Q(\diferebcialmapafloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
-	$$
-	
-	\textbf{Etapa 2:}
-	O ponto de partida dessa etapa é o lema abaixo, o qual tem sua demonstração feita em $\cite{audi_floer_homology}$. Não a faremos pois é demasiadamente técnica e não trará entendimento adicional ao texto. Enunciaremos o teorema que estabelece a desigualdade de Holder (vide $\cite{breazis_sobolev_spaces}$), o qual será utilizado no lema a seguir.
+	Faremos o uso do seguinte lema, demonstrado em $\cite{audi_floer_homology}$.
+	\begin{lema}\label{lema_desigualdade_inclusao_sobolev}
+		Sejam $p \in \mathbb{N}$ tal que $p\geq 1$. Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialmapafloer \xi} +\normaLp{\xi})$.
+	\end{lema}
 	
 	\begin{teorema}
-		(Desigualdade de Holder) Sejam $1\leq p, q \leq \infty$ tais que $1/p + 1/q = 1$. Suponha que $f \in L^{p}(\Omega)$ e $g \in L^{q}(\Omega)$. Então $fg \in L^{1}(\Omega)$. Além disso, vale a desigualdade
-		$$
-		\int_{\Omega}|f(x)g(x)| \leq \normaLp{f}\norma{g}_{L^{q}}.
-		$$ 
-		
+		O operador $\diferencialmapafloer: \espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}\to \espacoLpcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ é compacto e é um operador de Fredholm.
 	\end{teorema}
-	
-	\begin{lema}\label{lema_desigualdade_Lp}
-		(Desigualdade $L^{p}$) Se $p>1$ e $\xi \in \espacosobolevretacirculo$, então existe $C>0$ tal que
-		$$
-		\normaWp{\xi} \leq C(\normaLp{\diferebcialmapafloerabrev \xi}+\normaLp{\xi}).
-		$$
-	\end{lema}
-	
-	Afirmo que existe uma constante $C'>0$ tal que
-	$$
-	\normaWpDominio{\xi}{[0,1]\times \circulo} \leq C'(\normaLpDominio{\diferebcialmapafloerabrev \xi}{[-1,2]\times \circulo}+\normaLpDominio{\xi}{[-1,2]\times \circulo}).
-	$$
-	De fato, fazendo $f = g \in \espacoLp{\Omega}$ na desigualdade de Holder, teremos $\int $ dados $\xi:\retacartesianocirculo\to\real{2n}$ e $V \subseteq \reta$, então pela desigualdade de Holder temos que $\espacoLp{V\times \circulo} \subset \espacoLdois{V\times \circulo}$ e, analogamente, $\espacosobolev{V\times \circulo} \subset \espacosobolevgeral{2}{V\times \circulo}$. Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevgeral{2}{V\times \circulo} \subset \espacoLp{V\times \circulo}$ para 
-	
-	
-	
-	
-	$\normaLpDominio{\xi}{V\times \circulo} \leq \normaWpDominio{\xi}{V \times \circulo}$ por consequência da definição. Além disso, podemos escrever
-	$$
-	\begin{aligned}
-	\normaLpDominio{\xi}{\retacartesianocirculo} 
-	&= \normaLpdefinicao{\norma{\xi}}{\retacartesianocirculo} 
-	\\
-	&= \normaLpdefinicao{\norma{\xi}}{\reta\backslash V \times \circulo}+\normaLpdefinicao{\norma{\xi}}{V\times \circulo} 
-	\\
-	&= \normaLpDominio{\xi}{\reta\backslash V \times \circulo} +\normaLpDominio{\xi}{V\times \circulo}.
-	\end{aligned}
-	$$
-	Suponha que $V$ seja um compacto e defina $A = V \times \circulo$ e $A^{c} = \reta\backslash V\times \circulo$. Da desiguldade $L^{p}$. Então, aplicando a identidade anterior na desigualdade $L^{p}$ temos
-	$$
-	\begin{aligned}
-		\normaWpDominio{\xi}{A} + \normaWpDominio{\xi}{A^{c}}
-		&\leq C(\normaLpDominio{\diferebcialmapafloerabrev \xi}{A}+\normaLpDominio{\diferebcialmapafloerabrev \xi}{A^{c}}+\normaLpDominio{\xi}{A}+\normaLpDominio{\xi}{A^{c}})
-		\\
-		\normaWpDominio{\xi}{A} 
-		&\leq C(\normaLpDominio{\diferebcialmapafloerabrev \xi}{A}+\normaLpDominio{\diferebcialmapafloerabrev \xi}{A^{c}}
-		\\
-		&+\normaLpDominio{\xi}{A}+\underbrace{\normaLpDominio{\xi}{A^{c}} -C^{-1}\normaWpDominio{\xi}{A^{c}}}_{\beta})
-		\\
-		&=C(\normaLpDominio{\diferebcialmapafloerabrev \xi}{A}+\normaLpDominio{\diferebcialmapafloerabrev \xi}{A^{c}}+\normaLpDominio{\xi}{A}+ \beta).
-	\end{aligned}
-	$$
-	Temso duas condições sobre $\beta$: a primeira é se $0<C\leq 1$, então $\beta<0$. A segunda é se $C>1$, então 
+	\begin{prova}
+		Temos que $\caminhosexponenciaisconectantesabrev \subset \real{k}$ é limitado. Então pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev), temos que a inclusão $\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}} \hookrightarrow \espacoLpcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ é compacta. Temos que $\diferencialmapafloer$ é um operador linear, logo é contínuo. Pelo Lema $\ref{lema_diferencial_floer_bijecao}$ é uma bijeção, portanto é um homeomorfismo, então $\diferencialmapafloer(\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}) \subset \espacoLpcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ é um compacto. Dado um limitado $K \subset \espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$, então $\overline{\diferencialmapafloer(K)} \subset \diferencialmapafloer(\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}})$ é um compacto, pois todo subconjunto fechado de compacto é compacto. Portanto $\diferencialmapafloer$ é um operador compacto e limitado, pela Observação $\ref{observacao_operador_compacto_limitado}$.
 		
+		Supondo $\xi \in \espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ temos, pelo Lema $\ref{lema_desigualdade_inclusao_sobolev}$, que existe uma constate $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialmapafloer \xi} +\normaLp{\xi})$. Onde podemos identificar pela inclusão $i(\xi) = \xi$. Como $\diferencialmapafloer$ é um operador limitado e a inclusão é um operador compacto, então pelo Lema $\ref{lema_desigualdade_operador_compacto}$ temos que $\diferencialmapafloer(\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}})$ é fechado e $dim (Ker(\diferencialmapafloer))<\infty$. \vermelho{(Falta demonstrar a codimesão finita)}
+	\end{prova}
+	
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
 	
@@ -3229,6 +3221,11 @@
 	\end{teorema}
 	
 	\begin{thebibliography}{9}
+		\bibitem{abramovich}
+		Abramovich, Y. A.; Aliprantis, C. D.
+		\emph{An Invitation to Operator Theory},
+		American Mathematical Society, 2002.
+		
 		\bibitem{audi_floer_homology}
 		Audi, Michèlle; Damian, Mihai:
 		\emph{Morse Theory and Floer Homology},
