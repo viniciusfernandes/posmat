@@ -144,6 +144,7 @@
 \newcommand{\mapafloerpadrao}{\mapafloerparametro{u}}
 \newcommand{\matrizantisimetrica}[1]{Asym(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
+\newcommand{\matrizquadcomplexa}[1]{M_{#1 \times #1}(\complexo{})}
 \newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
 \newcommand{\matrizsimetrica}[1]{Sym(#1)}
 \newcommand{\matrizSimpleticaOrtogonal}{\mathcal{U}}
@@ -1273,11 +1274,11 @@
 	\end{prova}			
 
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
+	O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
 	
-	\section{$\gruposimpletico{2n}$ e sua topologia}
-	O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros, sendo que esse isomorfismo se dará pelo índice de Maslov.
-
-	Primeiramente introduziremos o teorema da decomposição espectral que será aplicado na demonstração da conexidade de $\gruposimpletico{2n}$.
+	Primeiramente demonstraremos alguns resultados de álgebra linear necessários para a analize da topologia de $\gruposimpletico{2n}$ e sua conexidade, sendo o teorema da decomposição polar o de maior importância nas construções que se seguem.
+	
+	\section{Álgebra Linear - resultados}
 	
 	\begin{definicao}\label{definicao_matriz_positiva_definida}
 		(Matrizes positiva-definidas) Sejam $V$ um n-espaço vetorial real  e $A \in \generalgroupreal{n}$, então dizemos que $A$ é uma matriz positiva-definida se sua forma quadrática é positiva-definida, isto é, $Q_{A}(v)\ge 0$ para qualquer $v\in V$. Denotaremos por $\matrizsimetricapositiva{n}$ o conjunto das matrizes simétricas e positivas-definidas.
@@ -1373,6 +1374,69 @@
 	\begin{prova}
 		Temos que $AA^{t}$ é uma matriz normal, logo pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável e podemos escrever $AA^{t} = B^{-1}diag\{\lambda_{1}, \dots, \lambda_{n}\}B$. Por definição de potênciação de matriz temos $(AA^{t})^{1/2} =B^{-1}diag\{\lambda_{1}^{1/2}, \dots, \lambda_{n}^{1/2}\}B$. Portanto, $P=(AA^{t})^{1/2}$ é positiva-definida, logo $P=P^{t}$. Sejam $D_{P}$ e $D_{A}$ as matrizes diagonais de $P$ e $A$, respectivamente. Afirmo que $PA = AP$. De fato, $PA = B^{-1}D_{P}B B^{-1}D_{A}B = B^{-1}D_{A} D_{P}B = B^{-1}D_{A}B B^{-1}D_{P}B = AP$. Definindo $O = P^{-1}A$ teremos $OO^{t} = P^{-1}A(P^{-1}A)^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1}  = Id$, portanto $O \in \matrizortogonal{n}$. Além disso, $O^{2} = P^{-1}AP^{-1}A = P^{-2}A^{2} = (AA^{t})^{-1}A^{2} = -Id$, onde usamos a anti-simetria e o fato de que $P^{-1}$ comuta com $A$. Pelo Teorema $\ref{teorema_decomposicao_polar}$ a decomposição $A=PO$ é única.
 	\end{prova}
+	
+	Seja $T:V\to V$ um operador linear e $V$ um n-espaço vetorial sobre os complexos. Suponha que $A \in \matrizquadcomplexa{n}$ seja sua representação matricial. Mesmo que $A$ seja invertível, isso não garante que $T$ seja diagnalizável. Contudo, sob algumas hipósteses, podemos escrever $A$ de um modo que se assemelha a uma matriz diagonal, e com isso, decompormos $V$ como soma direta de subespaços vetoriais construidos a partir de $T$. Essa construção é o que chamamos de forma canônica de Jordan e será utilizada na análise dos auto-valores do grupo simplético.
+	
+	\begin{definicao}\label{definicao_espectro_operador}
+		(Espectro de operador) Sejam $T:V \to V$ um operador linear e $V$ um n-espaço vetorial complexo (ou real). Então o conjunto $\sigma(T)=\{\lambda\in \complexo{}: Tv = \lambda v, \; v \in V \}$ é chamado de espectro de $T$. 
+	\end{definicao}
+	
+	\begin{definicao}
+		(Forma canônica de Jordan) Sejam $T:V \to V$ um operador linear, $V$ um n-espaço vetorial complexo (ou real) e $A\in \matrizquadcomplexa{n}$ sua representação amtricial. Suponha que $\sigma(T) = \{\lambda_{i},\dots, \lambda_{k} \}$ sejam todos auto-valores dois a dois distintos. A amtriz $A$ esta na forma canônica de Jordan se
+		$$
+		A = 
+		\left(
+			\begin{array}{cccc}
+			A_{1} & 0 & \hdots & 0
+			\\
+			0 & A_{2} & \hdots & 0
+			\\
+			\vdots & \vdots & \ddots & \vdots
+			\\
+			0 & 0 & \hdots & A_{k}
+			\end{array}
+		\right), \text{onde}\;
+		A_{j} =
+		\left(
+			 \begin{array}{ccccc}
+			\lambda_{j} & 1 & 0 & \hdots & 0
+			\\
+			0 & \lambda_{j} & 1 & \hdots & 0
+			\\
+			\vdots & \vdots & \ddots & \ddots & \vdots
+			\\
+			0 & 0  & \hdots & \lambda_{j} & 1
+			\\
+			0 & 0 & \hdots & 0 & \lambda_{j}
+			\end{array}
+		\right).
+		$$
+		
+		O bloco $A_{j}$ é chamado j-ésimo bloco de Jordan associado ao auto-valor $\lambda_{j}$.
+		
+	\end{definicao}
+	
+	\begin{teorema}\label{teorema_jordan}
+		(Jordan) Seja $T:V\to V$ um operador linear definido no n-espaço vetorial complexo $V$. Então existe uma base de $V$ na qual $T$ pode ser representado por uma matriz na forma canônica de Jordan. Essa representação é única a menos do ordenamento dos blocos de Jordan.
+	\end{teorema}
+	
+	\begin{corolario}
+		(Teorema Espectral) Sejam $T:V \to V$ um operador linear e $V$ um n-espaço vetorial complexo. Suponha que o polinômio característico de $T$ seja
+		$$
+		p_{T}(\lambda) = (\lambda - \lambda_{1})^{n_{1}}\dots (\lambda - \lambda_{k})^{n_{k}}
+		$$
+		em que $\lambda_{j} \in \sigma(T)$ sejam todos distintos. Então existem subespaços $V_{j} \subset V$ com $1\leq j \leq k$ invariantes por $T$ tais que 
+		$$
+		V = V_{1}\oplus \dots \oplus V_{k}.
+		$$
+		Além disso, $dim(V_{j}) = n_{j}$,  o polinômio de $T|_{V_{j}}$ é $m_{j}(\lambda) = (\lambda - \lambda_{j})^{m_{j}}$ e $V_{j} = Ker(T-\lambda_{j})^{m_{j}}$, em que $1\leq m_{j}\leq n_{j}$ é o comprimento do maior bloco de Jordan associado ao auto-valor $\lambda_{j}$.
+	\end{corolario}
+	
+	\begin{observacao}\label{observacao_autoespaco_generalizado}
+		Os subespaços vetoriais $V_{j} \subset V$ do teorema anterior também são chamados de auto-espaços generalizados.
+	\end{observacao}
+	
+	\section{$\gruposimpletico{2n}$ e sua topologia}
 	
 	\begin{definicao}
 		(Grupo simplético) Seja $(V,\omega)$ um 2n-espaço vetorial simplético. O grupo simplético de $V$ é $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$.
@@ -1897,7 +1961,7 @@
 	
 	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\caminhos{a}{b}{V}= \{\gamma:[a,b]\to \mathcal{V} \times \mathcal{V} \}$ o conjunto de todos os caminho contínuos e suaves por parte em $V$ onde $\mathcal{V}$ é o conjunto dos subespaços Lagrangianos de $V$ (veja a Definição $\ref{definicao_subespaco_simpletico_ortogonais}$). Como topologia de $\caminhos{a}{b}{V}$ vamos \vermelho{adotar a topologia compacto-aberta (PRECISO DEFINIR).} O índice de Maslov é a aplicação $\mu:\caminhos{a}{b}{V}\to \inteiros$ satisfazendo as seguintes propriedades:
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\caminhos{a}{b}{V}= \{\gamma:[a,b]\to \mathcal{V} \times \mathcal{V} \}$ o conjunto de todos os caminho contínuos e suaves por parte em $V$, onde $\mathcal{V}$ é o conjunto dos subespaços Lagrangianos de $V$ (veja a Definição $\ref{definicao_subespaco_simpletico_ortogonais}$). Como topologia de $\caminhos{a}{b}{V}$ vamos \vermelho{adotar a topologia compacto-aberta (PRECISO DEFINIR).} O índice de Maslov é a aplicação $\mu:\caminhos{a}{b}{V}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
 		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhos{ak+l}{bk+l}{V}$ temos que 
 		$$
@@ -2187,34 +2251,46 @@
 			
 			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $\gamma(1) = W^{+}$ e \vermelho{$\rho(W^{+}) = (-1)^{n}$}. Com isso $\mu(\psi) - n$ é par \vermelho{(não entendi esse argumento. No michelle e no salamon estão iguais.)}
 			
-			\item Afirmo que, $\Psi(t)=\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $\Psi(t)$ comuta com $\estruturacomplexa$, ou  de forma equivalente, $\estruturacomplexa^{-1}\Psi(t)\estruturacomplexa = \Psi(t)$. Seja $k\geq 0$ um inteiro. Então
+			\item Afirmo que, $\Psi(t)=\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $\Psi(t)^{t}\estruturacomplexa\Psi(t)= \estruturacomplexa$ para todo $t \in \reta$. Note que $(\estruturacomplexa S)^{t} 
+			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ temos a identidade 
 			$$
 			\begin{aligned}
-			\estruturacomplexa^{-1}(\estruturacomplexa S)^{k}\estruturacomplexa 
-			&= \estruturacomplexa^{-1}\underbrace{(\estruturacomplexa S)\dots (\estruturacomplexa S)}_{k-vezes}\estruturacomplexa
-			\\
-			&=\underbrace{(S\estruturacomplexa )\dots (S\estruturacomplexa )}_{k-vezes}
-			\\
-			&=(S\estruturacomplexa )^{k},
+			 \estruturacomplexa (\estruturacomplexa S)^{k} 
+			 &= \estruturacomplexa\underbrace{\estruturacomplexa  S\dots \estruturacomplexa S}_{k-vezes} 
+			 \\
+			 &= -Id  S\estruturacomplexa \dots \estruturacomplexa S (-\estruturacomplexa^{2}) 
+			 \\
+			 &=\underbrace{ S\estruturacomplexa \dots  S \estruturacomplexa }_{k-vezes}\estruturacomplexa 
+			 \\
+			 &= (S\estruturacomplexa)^{k}\estruturacomplexa.
 			\end{aligned}
 			$$
-			que implica em 
+			
+			Sabendo que $((\estruturacomplexa S)^{k})^{t} = (S^{t})^{k}(\estruturacomplexa^{t})^{k}$ temos
 			$$
 				\begin{aligned}
-				\estruturacomplexa^{-1}\exp(t\estruturacomplexa S)\estruturacomplexa &=\sum_{k=0}^{\infty}\frac{t^{k}}{k!}\estruturacomplexa^{-1}(\estruturacomplexa S)^{k}\estruturacomplexa
+				\Psi(t)^{t}\estruturacomplexa\Psi(t)
+				&=
+				\exp(t\estruturacomplexa S)^{t}\estruturacomplexa\exp(t\estruturacomplexa S)
 				\\
-				&=\sum_{k=0}^{\infty}\frac{t^{k}}{k!}(S\estruturacomplexa)^{k}
+				&=\sum_{j=0}^{\infty}\frac{t^{j}(S^{t})^{j}(\estruturacomplexa^{t})^{j}}{j!}\estruturacomplexa \sum_{k=0}^{\infty}\frac{t^{k}(\estruturacomplexa S)^{k}}{k!}
 				\\
-				&=\exp(tS\estruturacomplexa).
+				&=\sum_{k,j=0}^{\infty}\frac{t^{j}S^{j}(-1)^{j}\estruturacomplexa^{j}}{j!} \sum_{k=0}^{\infty}\frac{t^{k}\estruturacomplexa(\estruturacomplexa S)^{k}}{k!}
+				\\
+				&=\sum_{k,j=0}^{\infty}\frac{(-tS\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{(tS\estruturacomplexa)^{k}\estruturacomplexa}{k!}
+				\\
+				&=exp(-tS\estruturacomplexa)exp(tS\estruturacomplexa)\estruturacomplexa
+				\\
+				&=\estruturacomplexa.
 				\end{aligned}
 			$$
-			Como $(\estruturacomplexa S )^{t}= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$, temos $\exp(tS\estruturacomplexa)^{t} = \exp(t(S\estruturacomplexa)^{t}) = \exp(t\estruturacomplexa^{t}S^{t} = \exp(-t\estruturacomplexa S)$ \vermelho{(para mim essa afirmação vale se tivermos uma matriz anti-simétrica, iso é, $S^{t} =-S$...e agora?????).}
+			Portanto, $\Psi(t) \in \gruposimpletico{2n}$.
 			
 			Sejam $P:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $P(0) = Id$. Então a matriz $S(\alpha) = P^{t}(\alpha)SP(\alpha)$ é diagonalizável para todo $\alpha \in [0,1]$, pois é semelhante a $S$, que por hipótese é não-singular e simétrica.
 			
-			Temos que $S(\alpha)^{t}$ é simétrica, pois $S(\alpha)^{t} = (P^{t}(\alpha)SP(\alpha))^{t} = P^{t}(\alpha)S^{t}P(\alpha) = P^{t}(\alpha)SP(\alpha) = S(\alpha)$ \vermelho{(novamente temos o problema da simetria aqui)}, logo $\Psi_{\alpha}(t)=\exp(t\estruturacomplexa S(\alpha)) \in \gruposimpletico{2n}$.
+			Temos que $S(\alpha)^{t}$ é simétrica, pois $S(\alpha)^{t} = (P^{t}(\alpha)SP(\alpha))^{t} = P^{t}(\alpha)S^{t}P(\alpha) = P^{t}(\alpha)SP(\alpha) = S(\alpha)$, logo $\Psi_{\alpha}(t)=\exp(t\estruturacomplexa S(\alpha)) \in \gruposimpletico{2n}$.
 			
-			Por hipótese temos $\norma{S}< 2\pi $ e $S(1) = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$. Com isso, $det(S(1)) = det(P^{t}(1)SP(1)) = det(S)< (2\pi)^{2n}$, logo $\lambda_{1} \dots \lambda_{2n}< \lambda^{2n} < 2\pi^{2n}$, onde $\lambda = \max\{|\lambda_{j}|\}$ e $0\leq j\leq 2n$. Dessa forma, podemos reduzir a análise às matrizes diagonais. Seja $0<\epsilon<2\pi$. Então, sem perda de generalidade, podemos assumir que $S = diag\{\epsilon, \dots, \epsilon, -\epsilon, \dots, -\epsilon \}$, onde temos $m$ termos negativos. \vermelho{(Aqui o Salamon diz algo sobre a decomposição de $\real{2n}$ em n planos simpléticos, não entendi o porque)}. Temos os casos quando $m=0$, $0\leq m\leq 2n$ e $m = 2n$. 
+			Por hipótese temos $\norma{S}< 2\pi $ e $S(1) = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$. Com isso, $det(S(1)) = det(P^{t}(1)SP(1)) = det(S)< (2\pi)^{2n}$, logo $\lambda_{1} \dots \lambda_{2n}< \lambda^{2n} < 2\pi^{2n}$, onde $\lambda = \max\{|\lambda_{j}|\}$ e $0\leq j\leq 2n$. Dessa forma, podemos reduzir a análise às matrizes diagonais. Seja $0<\epsilon<2\pi$. Então, sem perda de generalidade, podemos assumir que $S = diag\{\epsilon, \dots, \epsilon, -\epsilon, \dots, -\epsilon \}$, onde temos $m$ termos negativos. \vermelho{(Aqui o Salamon diz algo sobre a decomposição de $\real{2n}$ em n planos simpléticos, não entendi o porque. Ele constrói n matrizes 2X2).} Temos os casos $0\leq m\leq 2n$.
 			
 			\textbf{Caso $m = 0$:} Nessa condição temo $S = diag\{\epsilon, \dots, \epsilon\}$. Dado um inteiro $k\geq 0$ temos que $\estruturacomplexa^{2k} = (-1)^{k}$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$. Com isso
 			$$
@@ -2252,10 +2328,7 @@
 			$$
 			pois $\epsilon \notin \{0, 2\pi\}$ e $\exp(\epsilon\estruturacomplexa ) \in \gruposimpleticonaodegenerado{*}$. Com isso, dado $v \in \real{2n}$ temos $\exp(t\estruturacomplexa S)v = \exp(t\estruturacomplexa \epsilon)v$. Como $v$ é arbitrário, então $ \exp(t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$. 
 			
-			Notemos que $\exp(t\epsilon\estruturacomplexa )$ é a matriz de rotação em $\real{2n}$ de um ângulo $t\epsilon$, porntanto 
-			
-			
-			Por fim, $\rho(\exp(t\estruturacomplexa S))$
+			Notemos que $\exp(t\epsilon\estruturacomplexa )$ é a matriz de rotação em $\real{2n}$ de um ângulo $t\epsilon$, portanto $\rho(\exp(t\estruturacomplexa S)) = exp(-it\epsilon)????????????????$
 			
 			\textbf{Caso $m = 2n$:} Nessa condição temos $S = diag\{-\epsilon, \dots, -\epsilon \}$. Com um cálculo análogo ao caso m=0 e fazendo $\epsilon \mapsto -\epsilon$ teremos $\exp(-t\estruturacomplexa S) = \exp(-t\estruturacomplexa \epsilon)$. Então
 			
@@ -2277,6 +2350,8 @@
 			\right),
 			$$
 			logo $det(Id - \exp(-\epsilon\estruturacomplexa ) ) \neq 0 $ pois $\epsilon \notin \{0,2\pi \}$. Portanto, $\exp(-t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$.
+			
+			\textbf{Caso $0<m<2n$:}?????????
 		\end{enumerate}
 	\end{prova}
 	
@@ -2482,19 +2557,10 @@
 			logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
 	\end{prova}
 	
-	\begin{definicao}\label{definicao_solucoes_periodicas_contratei}
-		(Espaço das soluções contráteis e periódicas) Denotamos $\solucoesperiodicascontrateis = \{x:\circulo \to M: x \; \text{é solução contrátil das equações de Hamilton} \}$. Ao adotarmos a topologia $C^{2}$ para o espaço $\solucoesperiodicascontrateis$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}\solucoesperiodicascontrateis$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
-	\end{definicao}	
+	\section{Equação de Floer}
+	\textbf{Motivação da conjectura de Arnold:} Os pontos fixos da aplicação $\psi_{1}$ estão relacionado injetivamente com as soluções 1-periódicas do sistema hamiltoniana. Assim, a conjectura de Arnold afirma que, para os casos de não-degenerecência, o número de soluções 1-periódicas do sistema hamiltoniano deve ser limitado inferiormente pela soma dos números de Betti da variedade $M$. Tal conjectura, do mesmo modo que o Teorema de Poincaré-Hopf, esta relacionada com Teoria de Morse da seguinte forma: a hipótese de não-degenerecência das soluções do sistema hamiltoniano implicam que a função de hamilton $H: M \times \real{} \to \real{}$ seja uma função de Morse. Algumas particularizações da conjectura foram demonstradas primeiramente para superfícies Riemannianas e, posteriormente, para 2n-toro por Conley e Zehnder, sendo que, em sua forma um pouco mais geral, foi utilizada a hipótese $\pi_{2}(M)=0$, o que é equivalente a hipótese da aesfericidade.
+	\vermelho{(Melhorar um pouco o texto no parágrafo inicial e a condição de aesfericidade.)}
 	
-	\begin{definicao}
-		(Condição de aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
-		$$
-		\int_{S^{2}} u^{*}\omega = 0.
-		$$
-	\end{definicao}
-	
-	\textbf{Motivação da conjectura:} Os pontos fixos da aplicação $\psi_{1}$ estão relacionado injetivamente com as soluções 1-periódicas do sistema hamiltoniana. Assim, a conjectura de Arnold afirma que, para os casos de não-degenerecência, o número de soluções 1-periódicas do sistema hamiltoniano deve ser limitado inferiormente pela soma dos números de Betti da variedade $M$. Tal conjectura, do mesmo modo que o Teorema de Poincaré-Hopf, esta relacionada com Teoria de Morse da seguinte forma: a hipótese de não-degenerecência das soluções do sistema hamiltoniano implicam que a função de hamilton $H: M \times \real{} \to \real{}$ seja uma função de Morse. Algumas particularizações da conjectura foram demonstradas por primeiramente para superfícies Riemannianas e, posteriormente, para 2n-toro por Conley e Zehnder, sendo que, em sua forma um pouco mais geral, foi utilizada a hipótese $\pi_{2}(M)=0$, o que é equivalente a hipótese da aesfericidade.
-
 	Que em uma outra reformlução pode ser escrita como:
 	
 	\begin{teorema}
@@ -2503,6 +2569,17 @@
 		\#\solucoesperiodicascontrateis \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
 		$$
 	\end{teorema}
+	
+	\begin{definicao}\label{definicao_solucoes_periodicas_contratei}
+		(Espaço das soluções contráteis e periódicas) Denotamos $\solucoesperiodicascontrateis \subset \caminhosfechados{M}$ como sendo o conjunto das soluções contráteis das equações de Hamilton. Ao adotarmos a topologia $C^{2}$ para o espaço $\solucoesperiodicascontrateis$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}\solucoesperiodicascontrateis$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
+	\end{definicao}	
+	
+	\begin{definicao}
+		(Condição de aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
+		$$
+		\int_{S^{2}} u^{*}\omega = 0.
+		$$
+	\end{definicao}
 	
 	O espaço das soluções contráteis $\solucoesperiodicascontrateis$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:\solucoesperiodicascontrateis \to \real{}$, dado por
 	$$
