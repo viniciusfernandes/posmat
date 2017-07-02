@@ -76,6 +76,7 @@
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
 \newcommand{\complementar}[2]{#1 \backslash #2}
+\newcommand{\complexificacao}[1]{#1_{\complexo{}}}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
 \newcommand{\diferencialmapafloer}{D\mapafloer}
 \newcommand{\diferencialmapafloerabrev}{\mathcal{D}}
@@ -1279,6 +1280,9 @@
 	Primeiramente demonstraremos alguns resultados de álgebra linear necessários para a analize da topologia de $\gruposimpletico{2n}$ e sua conexidade, sendo o teorema da decomposição polar o de maior importância nas construções que se seguem.
 	
 	\section{Álgebra Linear - resultados}
+	\begin{definicao}\label{definicao_espectro_operador}
+		(Espectro de operador) Sejam $T:V \to V$ um operador linear e $V$ um n-espaço vetorial complexo (ou real). Então o conjunto $\sigma(T)=\{\lambda\in \complexo{}: Tv = \lambda v, \; v \in V \}$ é chamado de espectro de $T$. 
+	\end{definicao}
 	
 	\begin{definicao}\label{definicao_matriz_positiva_definida}
 		(Matrizes positiva-definidas) Sejam $V$ um n-espaço vetorial real  e $A \in \generalgroupreal{n}$, então dizemos que $A$ é uma matriz positiva-definida se sua forma quadrática é positiva-definida, isto é, $Q_{A}(v)\ge 0$ para qualquer $v\in V$. Denotaremos por $\matrizsimetricapositiva{n}$ o conjunto das matrizes simétricas e positivas-definidas.
@@ -1300,8 +1304,6 @@
 		$$
 		Pode-se mostrar que uma matriz $A$ é positiva-definida se, e somente se, $A=A^{t}$ e seus k-subdeterminantes são todos positivos. Uma consequência imediata é que, se $A$ for diagonalizável, então todos os seus auto-valores serão positivos. Mais detalhes podem ser encontrados em $\cite{hoffman_kunze}$.
 	\end{observacao}
-
-	Seja $A \in \generalgroupreal{n}$ uma matriz dianonalizável. Denotamos por $\sigma(A)$ o conjunto dos auto-valores de $A$.
 
 	\begin{definicao}\label{definicao_potenciacao_matriz}
 		(Potênciação de matriz) Sejam $V$ um n-espaço vetorial real, $A:V \to V$ um operador linear diagonalizável e $V_{\lambda}$ o auto-espaço associado ao auto-valor $\lambda \in \sigma(A)$. Dado $\alpha \in \real{}$ o operador linear $A^{\alpha}:V \to V$ é o operador dado por $A^{\alpha} = B^{-1}diag\{ \lambda_{1}^{\alpha} , \dots, \lambda_{2n}^{\alpha} \}B$, onde $B$ é a matriz tal que $A= B^{-1}diag\{ \lambda_{1}, \dots, \lambda_{2n}\}B$.
@@ -1377,10 +1379,6 @@
 	
 	Seja $T:V\to V$ um operador linear e $V$ um n-espaço vetorial sobre os complexos. Suponha que $A \in \matrizquadcomplexa{n}$ seja sua representação matricial. Mesmo que $A$ seja invertível, isso não garante que $T$ seja diagnalizável. Contudo, sob algumas hipósteses, podemos escrever $A$ de um modo que se assemelha a uma matriz diagonal, e com isso, decompormos $V$ como soma direta de subespaços vetoriais construidos a partir de $T$. Essa construção é o que chamamos de forma canônica de Jordan e será utilizada na análise dos auto-valores do grupo simplético.
 	
-	\begin{definicao}\label{definicao_espectro_operador}
-		(Espectro de operador) Sejam $T:V \to V$ um operador linear e $V$ um n-espaço vetorial complexo (ou real). Então o conjunto $\sigma(T)=\{\lambda\in \complexo{}: Tv = \lambda v, \; v \in V \}$ é chamado de espectro de $T$. 
-	\end{definicao}
-	
 	\begin{definicao}
 		(Forma canônica de Jordan) Sejam $T:V \to V$ um operador linear, $V$ um n-espaço vetorial complexo (ou real) e $A\in \matrizquadcomplexa{n}$ sua representação amtricial. Suponha que $\sigma(T) = \{\lambda_{i},\dots, \lambda_{k} \}$ sejam todos auto-valores dois a dois distintos. A amtriz $A$ esta na forma canônica de Jordan se
 		$$
@@ -1420,21 +1418,71 @@
 		(Jordan) Seja $T:V\to V$ um operador linear definido no n-espaço vetorial complexo $V$. Então existe uma base de $V$ na qual $T$ pode ser representado por uma matriz na forma canônica de Jordan. Essa representação é única a menos do ordenamento dos blocos de Jordan.
 	\end{teorema}
 	
-	\begin{corolario}
+	\begin{corolario}\label{teorema_espectral_jordan}
 		(Teorema Espectral) Sejam $T:V \to V$ um operador linear e $V$ um n-espaço vetorial complexo. Suponha que o polinômio característico de $T$ seja
 		$$
 		p_{T}(\lambda) = (\lambda - \lambda_{1})^{n_{1}}\dots (\lambda - \lambda_{k})^{n_{k}}
 		$$
 		em que $\lambda_{j} \in \sigma(T)$ sejam todos distintos. Então existem subespaços $V_{j} \subset V$ com $1\leq j \leq k$ invariantes por $T$ tais que 
 		$$
-		V = V_{1}\oplus \dots \oplus V_{k}.
+		V = E_{1}\oplus \dots \oplus E_{k}.
 		$$
-		Além disso, $dim(V_{j}) = n_{j}$,  o polinômio de $T|_{V_{j}}$ é $m_{j}(\lambda) = (\lambda - \lambda_{j})^{m_{j}}$ e $V_{j} = Ker(T-\lambda_{j})^{m_{j}}$, em que $1\leq m_{j}\leq n_{j}$ é o comprimento do maior bloco de Jordan associado ao auto-valor $\lambda_{j}$.
+		Além disso, $dim(E_{j}) = n_{j}$,  o polinômio de $T|_{E_{j}}$ é $m_{j}(\lambda) = (\lambda - \lambda_{j})^{m_{j}}$ e $E_{j} = Ker(T-\lambda_{j})^{m_{j}}$, em que $1\leq m_{j}\leq n_{j}$ é o comprimento do maior bloco de Jordan associado ao auto-valor $\lambda_{j}$.
 	\end{corolario}
 	
-	\begin{observacao}\label{observacao_autoespaco_generalizado}
-		Os subespaços vetoriais $V_{j} \subset V$ do teorema anterior também são chamados de auto-espaços generalizados.
+	\begin{definicao}\label{definicao_autoespaco_generalizado}
+		(Auto-espaços generalizados) Sejam $A$ como no teorema anterio e $\lambda \in \sigma(A)$. O $\lambda-$auto-espaço de generalizado de $A$ é o conjunto $E_{\lambda} = \bigcup_{r \in \mathbb{N}} Ker(A - \lambda)^{r}$.
+	\end{definicao}
+	
+	\section{A complexificação $\complexificacao{V}$ de $V$}
+	Para estudarmos algumas características dos auto-espaços do grupo simplético precisaremos decompor esse espaço vetorial em soma direta de determinados  auto-espaços. Tal composição será garantida pelo teorema espectral $\ref{teorema_espectral_jordan}$, que depende de um espaço vetorial complexo como hipótese.
+	
+	Seja $V$ um n-espaço vetorial real. Desejamos construir um espaço vetorial complexo a partir de $V$ e uma forma de realizarmos essa construção é tomando $v \in V $ e $a+ib \in \complexo{}$ e efetuando a multiplicação $(a+ib)v = av+ibv$. Porém, a multiplicação por $i$ não tem sentido nesse contexto, já que estamos tratando de um espaço vetorial real. Podemos contornar essa dificuldade tratando a multiplicação formal $(a+ib)v = av+ibv$ como o par ordenado $(av, bv)$, resultando na seguinte definição de complexificação:
+	
+	\begin{definicao}
+		(Complexificação do n-espaço vetorial real V) A complexificação do n-espaço vetorial real $V$ é definida por $\complexificacao{V}=V\oplus V$ munido da multiplicação por escalares $(a+ib)(v_{1}, v_{2}) = (av_{1}-bv_{2}, bv_{1}+ av_{2})$, onde $a+ib \in \complexo{}$ e $(v_{1}, v_{2})\in \complexificacao{V}$.
+	\end{definicao}
+	
+	\begin{observacao}
+		Essa definição tem como motivação a seguinte situação: supondo $V$ complexo, então $V \ni (a+ib)v = (a+ib)(v_{1}+iv_{2}) = av_{1}-bv_{2}+i(bv_{2}+av_{1}) \mapsto (av_{1}-bv_{2}, bv_{1}+ av_{2}) \in \complexificacao{V}$.
 	\end{observacao}
+	
+	É possivel se mostrar que $\complexificacao{V}$ é um espaço vetorial sobre $\complexo{}$. Vejamos que esse espaço é fechado pela operação de adição e multiplicação por escalares. Dados $a+ib \in \complexo{}$ e $v,u \in \complexificacao{V}$, então $(a+ib )v+u = (av_{1}-bv_{2}, bv_{1}+ av_{2}) + (u_{1}, u_{2}) = (av_{1}-bv_{2} + u_{1}, bv_{1}+ av_{2} + u_{2}) \in \complexificacao{V}$. As demais propriedades dos aximomas de espaços vetoriais resultam imediatamente dessa.
+	
+	\begin{exemplo}
+		Definindo $V = \reta$ teremos $\complexificacao{\reta} = \reta\oplus \reta$. Assim, a identificação $(a+ib)(x, y ) = (ax-by, bx+ay) \mapsto ax-by+i(bx+ay) \in \complexo{}$. Portanto temos o isomorfimo $\complexificacao{\reta} \ni (x,y)\mapsto x +iy\in \complexo{}$.
+	\end{exemplo}
+	
+	\begin{exemplo}
+		Analogamente ao exemplo anterior temos que as aplicações $\complexificacao{\real{n}} \ni (x,y) \mapsto x+iy \in \complexo{n}$ e  $\complexificacao{\matrizquadreal{n}} \ni (x,y) \mapsto x+iy \in \matrizquadcomplexa{n}$ também são isomorfismos.
+	\end{exemplo}
+	
+	Notemos que os espaços vetoriais $V\oplus\{0\}$ e $\{0\}\oplus V$ são isomorfos a $V$, pelos exemplos anteriores. Com isso, a inclusão $i :V \hookrightarrow \complexificacao{V}$ definida por $i(v) = (v, 0)$ é chamado de mergulho padrão de $V$ em $\complexificacao{V}$.
+	
+	Complexificamos os espaços vetoriais reais, porém, as aplicações lineares entre tais espaços vetoriais são outros tipos de objetos a serem complexificados. O teorema a seguir afirma a unicidade da complexificação de aplicações lineares entre as complexificações de espaços vetoriais reais.
+	
+	\begin{teorema}
+		(Complexificação de aplicações lineares) Seja $\varphi : V \to W$ uma aplicação
+		$\reta$-linear entre espaços vetoriais reais de dimensão finita. Então existe uma única aplicação linear $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ tal que $i\circ \varphi = \complexificacao{\varphi} \circ i$.
+	\end{teorema}
+	\begin{prova}
+		Defina $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ por $\complexificacao{\varphi}(v_{1}, v_{2}) = (\varphi v_{1}, \varphi v_{2})$. Como $\varphi v_{1}, \varphi v_{1} \in W$, então $(\varphi v_{1}, \varphi v_{2}) \in W\oplus W = \complexificacao{W}$. Além disso, dados $\lambda = (a+ib)\in \complexo{}$ e $(v_{1}, v_{2}), (u_{1}, u_{2})\complexificacao{\varphi}$ temos 
+		$$
+			\begin{aligned}
+			\complexificacao{\varphi} (\lambda(v_{1}, v_{2}) + (u_{1}, u_{2})) 
+			&= (\varphi(a v_{1} - bv_{2} + u_{1}), \varphi(b v_{1}+a v_{2} + u_{2}))
+			\\
+			&=(a\varphi v_{1} - b\varphi v_{2} + \varphi u_{1}, b\varphi v_{1}+a\varphi v_{2} + \varphi u_{2})
+			\\
+			&=(a\varphi v_{1} - b\varphi v_{2} , b\varphi v_{1}+a\varphi v_{2} )+(\varphi u_{1},\varphi u_{2})
+			\\
+			&=\lambda(\varphi v_{1},\varphi v_{2})+(\varphi u_{1},\varphi u_{2})
+			\\
+			&=\lambda 	\complexificacao{\varphi} (\varphi v_{1},\varphi v_{2})+\complexificacao{\varphi} (\varphi u_{1},\varphi u_{2}).
+			\end{aligned}
+		$$
+		Portanto $\complexificacao{\varphi}$ é $\complexo{}$-linear. Dado $v \in V$ temos $(i\circ \varphi)(v) = (\varphi v,0) = \complexificacao{\varphi}(v,0) = (\complexificacao{\varphi} \circ i)(v)$, logo $i\circ \varphi =\complexificacao{\varphi} \circ i$. Por fim, suponha que exista $\complexificacao{\varphi'} $ definida por $\complexificacao{\varphi'}(v_{1}, v_{2}) = (\varphi' v_{1}, \varphi' v_{2})$ e tal que $i\circ \varphi =\complexificacao{\varphi'} \circ i$, onde $\varphi':V\to W$ é uma aplicação linear. Então para todo $v \in V$ temos $i\circ \varphi =\complexificacao{\varphi} \circ i = \complexificacao{\varphi'} \circ i$, o que implicam em $(\varphi v, 0) = (\varphi' v, 0)$. Como $v \in V$ é arbitrário, então $\varphi = \varphi'$, logo $\complexificacao{\varphi} = \complexificacao{\varphi'}$, demonstrando a unicidade. 
+	\end{prova}
 	
 	\section{$\gruposimpletico{2n}$ e sua topologia}
 	
@@ -1688,17 +1736,38 @@
 
 	Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
 	
-	\begin{lema}\label{lema_auto_espaco_grupo_simpletico}
-		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $A \in \gruposimpletico{2n}$. Então $\lambda \in \espectrooperador{A}$ se, e somente se, $\lambda^{-1} \in \espectrooperador{A}$ e as multiplicidades de $\lambda$ e $\lambda^{-1}$ são as mesmas. Além disso, se $u$ e $v$ são auto-vetores distintos e $\lambda_{u}$ e $\lambda_{v}$ são seus auto-valores tais que $\lambda_{u}\lambda_{v} \neq 1$, então seus auto-espaços $E_{\lambda_{u}}$ e $E_{\lambda_{v}}$ são $\omega$-ortogonais, isto é, $\omega(u',v') = 0$ para quaisquer $u' \in E_{\lambda_{u}}$ e $v' \in E_{\lambda_{v}}$. 
+	\begin{lema}
+		Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são similares. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 	\end{lema}
 	\begin{prova}
-		Da caracterização do grupo simplético temos que dado $A \in \gruposimpletico{2n}$, então $A^{t}\estruturacomplexa A = \estruturacomplexa$ o que implica em $\estruturacomplexa^{-1}A^{t}\estruturacomplexa = A^{-1}$. Com isso $A^{t}$ e $A^{-1}$ são matrizes similares. Sabe-se que matrizes similares possuem o mesmo espectro, logo $\espectrooperador{A^{t}}=\espectrooperador{A^{-1}}$. Além disso, $A^{t}$ e $A$ possuem o mesmo espectro, ou seja, $\espectrooperador{A^{t}} = \espectrooperador{A}$, o que implica em $\espectrooperador{A^{-1}} = \espectrooperador{A}$, isto é, se $\lambda \in \espectrooperador{A}$, então $\lambda^{-1} \in \espectrooperador{A}$. Seja $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$, então para cada $\lambda \neq 1$ existe um $\lambda^{-1} \in \espectrooperador{A}$, logo possuem a mesma multiplicidade, isto é $m(\lambda) = m(\lambda^{-1})$.
+		Temos que $A^{t}\estruturacomplexa A = \estruturacomplexa$, o que implica em $A^{t} = \estruturacomplexa A^{-1} \estruturacomplexa^{-1}$. Logo $A^{t}$ é similar a $A^{-1}$. Como $A^{t} = \estruturacomplexa A^{-1} \estruturacomplexa^{-1}$, então $A = (\estruturacomplexa^{-1})^{t} (A^{t})^{-1} \estruturacomplexa^{t} = \estruturacomplexa^{-1}(A^{t})^{-1}\estruturacomplexa = \estruturacomplexa^{-1}(B^{-1}A^{-1}B)^{-1}\estruturacomplexa$ para algum $B \in \generalgroupreal{2n}$, logo $A$ é similar a $A^{-1}$. Como $A$ e $A^{t}$ são similares a $A^{-1}$, então $A$ é similar a $A^{t}$. Como matrizes similares possuem o mesmo polinômio característico, então $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
+	\end{prova}
+	
+	\begin{observacao}
+		$\lambda \in \sigma(A)$ se , e somente se, $\lambda^{-1}\in \sigma(A)$.
+	\end{observacao}
+	
+	\begin{lema}\label{lema_auto_espaco_grupo_simpletico}
+		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $\inteiros \ni r,s \geq 1$. Se $\lambda, \mu \in \sigma(A)$ sejam tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
+	\end{lema}
+	\begin{prova}
+		Sejam $P(r,s)$ a proposição que define a tese. Por indução finita, vejamos que $P(1,1)$ é verdadeira. De fato, dados $v\in E_{\lambda}$ e $u\in E_{\mu}$ temos que $\formaSimpletica{v}{u} = \formaSimpletica{Av}{Au} = \lambda\mu\formaSimpletica{v}{u}$, o que implica que $\formaSimpletica{v}{u} = 0$, pois $\lambda\mu\neq 1$. Aplicando a hipótese de indução no índice $s$, podemos assumir que $P(1,s)$ é verdadeira e que $u \in Ker(A-\mu Id)^{s+1}$. Com isso, $0=(A-\mu Id)^{s+1}u = (A-\mu Id)^{s}(A-\mu Id)u $, logo $(A-\mu Id)u \in Ker(A-\mu Id)^{s}$, o que implica em
+		$$
+		\begin{aligned}
+			\formaSimpletica{v}{u}
+			&=\formaSimpletica{Av}{Au}
+			\\
+			&= \formaSimpletica{Av}{Au -\mu u +\mu u} 
+			\\
+			&= \lambda\underbrace{\formaSimpletica{v}{(A-\mu Id)u}}_{=0}+\lambda\mu\formaSimpletica{v}{u}
+			\\
+			&=\lambda\mu\formaSimpletica{v}{u}.
+		\end{aligned}
+		$$
+		Como $\lambda\mu \neq 1$, então $\formaSimpletica{v}{u}=0$ e $P(1, s+1)$ é verdadeira.
 		
-		Sejam $u, v$ auto-vetores de $A$ e $\lambda_{u}, \lambda_{v}$ seus auto-valores, respectivamente, tal que $\lambda_{u}\lambda_{v}\neq 1$. Então:
-		$$
-		\omega(u,v)=\omega(Au,Av) = \lambda_{u}\lambda_{v}\omega(u,v), 
-		$$
-		como $\lambda_{u}\lambda_{v}\neq 1$ isso implica que $\omega(u,v)=0$.
+		Sabemos que $P(1, s)$ é verdadeira para todo $s\geq 1$. Aplicando a hipótese de indução, podemos assumir que $P(r, s+1)$ é verdadeira. Uma construção análoga a anterior demonstrará que $P(r+1, s+1)$ é verdadeira. Portanto $\omega(E_{\lambda}, E_{\mu}) = 0$ para quaisquer $\inteiros \ni r,s\geq 1$.
+	
 	\end{prova}
 	
 	\begin{corolario}\label{corolario_restricao_forma_simpletica}
@@ -1712,8 +1781,22 @@
 	\begin{prova}
 		\begin{enumerate}
 			\item Dados $v \in E_{\lambda}$ e $u \in E_{\mu}$, temos pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ que $\formaSimpletica{v}{u} = 0$, então a restrição $\omega|_{E_{\lambda} \oplus E_{\mu}}:E_{\lambda} \oplus E_{\mu}\to \reta$ é identicamente nula. Logo, $\formaSimpletica{E_{\lambda} }{E_{\mu}} = 0$.
-			\item Se $v, u \in E_{1}$, então pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ temos $\formaSimpletica{v}{u} \neq 0$, logo a restrição  $\omega|_{E_{1}\times E_{1}}$ é não-degenerada. Com um argumento análogo podemos afirmar o mesmo para a restrição $\omega|_{E_{-1}\times E_{-1}}$. Sabemos que os auto-valores de $A$ são determinado aos pares $\lambda, \lambda^{-1} \in \sigma(A)$, além disso, $dim(E_{\lambda}) = m(\lambda)$ e $dim(E_{\lambda^{-1}})= m(\lambda^{-1})$. Se $\lambda = 1$, então $m(\lambda) = m(\lambda^{-1}) = m(1)$, portanto $m(1)$ é um multiplo de $2$. Com um argumento análogo concluímos que o mesmo para $m(-1)$.
-			\item Seja $v\in E_{\lambda}$. Suponha por absurdo que exista $u \in E_{\lambda^{-1}}$ tal que $\formaSimpletica{v}{u} = 0$, logo $u \in E_{\lambda}^{\omega} \subseteq E_{\lambda^{-1}}$ e $E_{\lambda^{-1}}\cap E_{\lambda} \neq \emptyset$. O que implica em $Au= \lambda u $ e $Au =\lambda^{-1} u$, portanto $\lambda = \lambda^{-1}$, logo $\lambda = \pm 1$, contradizendo a hipótese de que $\lambda \neq \pm 1$. Portanto a restrição $\omega|_{E_{\lambda} \oplus E_{\lambda^{-1}}}$ é não-degenerada.
+			
+			\item  Sejam $\lambda = \mu =\pm 1$. Suponha que $\omega|_{E_{\pm 1} \times E_{\pm 1}}$ seja degenerada. Então existe $0\neq v \in E_{\pm 1}$ tal que $\omega(v, u) = 0$ para todo $u \in E_{\pm 1}$. Seja $\beta \in \complementar{\sigma(A)}{\{\pm 1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ temos que $\formaSimpletica{E_{\pm 1}}{E_{\beta}} = 0$. Pelo Teorema $\ref{teorema_espectral_jordan}$ podemos escrever $V = E_{1} \bigoplus E_{-1} \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{\pm 1\}  }}E_{\lambda}$. Com isso, $\formaSimpletica{v}{V} = 0$. Logo $\omega$ é degenerada, o que contradiz a hipótese. Portanto $\omega|_{E_{\pm 1} \times E_{\pm 1}}$ é não-degenerada. Além disso, como $\lambda = \lambda^{-1}$, então a multiplicidade $m(\pm 1)$ é par.
+			
+			\item Definindo $W = E_{\lambda}\oplus E_{\lambda^{-1}}$ podemos escrever todo $v\in W$ como $v = v_{1}+v_{2}$, onde $v_{1} \in E_{\lambda}$ e $v_{2} \in E_{\lambda^{-1}}$. Seja $0 \neq v \in W$. Então 
+			$$
+			\begin{aligned}
+				\formaSimpletica{v}{u} 
+				&=
+				\formaSimpletica{v_{1}+v_{2}}{u_{1}+u_{2}}
+				\\
+				&= \underbrace{\formaSimpletica{v_{1}}{u_{1}}}_{=0}+\formaSimpletica{v_{1}}{u_{2}}+\formaSimpletica{v_{2}}{u_{1}}+\underbrace{\formaSimpletica{v_{2}}{u_{2}}}_{=0}
+				\\
+				&=\formaSimpletica{v_{1}}{u_{2}}+\formaSimpletica{v_{2}}{u_{1}}
+				\vermelho{?????}
+			\end{aligned}
+			$$
 		\end{enumerate}
 	\end{prova}
 	
@@ -1929,7 +2012,7 @@
 			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda<0$, então $\lambda^{-1} < 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Podemos ordenar a base simplética tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores negativos. Assim, $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\} = W^{-}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{-}$ e o produto $\alpha * \Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior concluimos que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
 		\end{enumerate}
 		
-		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, seja $A \in \gruposimpleticonaodegenerado{\pm}$. Como $det: \gruposimpleticonaodegenerado{\pm}\to \reta$ é contínua, então dado $\epsilon>0$ existe $\delta>0$ tal que $|det(A)-det(B)|<\delta$ para todo $\norma{A-B}<\epsilon$, logo $A$ é um ponto interior de $\gruposimpleticonaodegenerado{\pm}$. Portanto, $\gruposimpleticonaodegenerado{\pm}$ são abertos.
+		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, sejam $A \in \gruposimpleticonaodegenerado{\pm}$, $\real{\pm } = \{x \in \reta: \pm x> 0 \}$. Como $det: \gruposimpleticonaodegenerado{\pm}\to\real{\pm }$ é contínua, então dado $\epsilon>0$ existe $\delta>0$ tal que $|det(A)-det(B)|<\delta$ para todo $B \in \gruposimpleticonaodegenerado{\pm }$ tal que $\norma{A-B}<\epsilon$, logo $A$ é um ponto interior de $\gruposimpleticonaodegenerado{\pm}$. Portanto, $\gruposimpleticonaodegenerado{\pm}$ são abertos.
 	\end{prova}
 	
 	\begin{corolario}
