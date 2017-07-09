@@ -78,6 +78,7 @@
 \newcommand{\complementar}[2]{#1 \backslash #2}
 \newcommand{\complexificacao}[1]{#1_{\complexo{}}}
 \newcommand{\complexificacaotensorial}[1]{\complexo{}\otimes_{\reta} #1}
+\newcommand{\complexificacaotensorialabrev}[1]{\mathcal{V}}
 \newcommand{\complexificacaoelemento}[2]{#1\otimes_{\reta} #2}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
 \newcommand{\diferencialmapafloer}{D\mapafloer}
@@ -1450,23 +1451,30 @@
 		Essa definição tem como motivação a seguinte situação: supondo $V$ complexo, então $V \ni (a+ib)v = (a+ib)(v_{1}+iv_{2}) = av_{1}-bv_{2}+i(bv_{2}+av_{1}) \mapsto (av_{1}-bv_{2}, bv_{1}+ av_{2}) \in \complexificacao{V}$.
 	\end{observacao}
 	
-	É possivel se mostrar que $\complexificacao{V}$ é um espaço vetorial sobre $\complexo{}$. Vejamos que esse espaço é fechado pela operação de adição e multiplicação por escalares. Dados $a+ib \in \complexo{}$ e $v,u \in \complexificacao{V}$, então $(a+ib )v+u = (av_{1}-bv_{2}, bv_{1}+ av_{2}) + (u_{1}, u_{2}) = (av_{1}-bv_{2} + u_{1}, bv_{1}+ av_{2} + u_{2}) \in \complexificacao{V}$. As demais propriedades dos aximomas de espaços vetoriais resultam imediatamente dessa.
+	É possivel se mostrar que $\complexificacao{V}$ é um espaço vetorial sobre $\complexo{}$. De fato, bastas mostrarmos que esse espaço é fechado pela operação de adição e multiplicação por escalares, pois as outras operaçoes são triviais. Dados $a+ib \in \complexo{}$ e $v,u \in \complexificacao{V}$, então $(a+ib )v+u = (av_{1}-bv_{2}, bv_{1}+ av_{2}) + (u_{1}, u_{2}) = (av_{1}-bv_{2} + u_{1}, bv_{1}+ av_{2} + u_{2}) \in \complexificacao{V}$. As demais propriedades dos aximomas de espaços vetoriais resultam imediatamente dessa.
 	
-	\begin{exemplo}
-		Definindo $V = \reta$ teremos $\complexificacao{\reta} = \reta\oplus \reta$. Assim, a identificação $(a+ib)(x, y ) = (ax-by, bx+ay) \mapsto ax-by+i(bx+ay) \in \complexo{}$. Portanto temos o isomorfimo $\complexificacao{\reta} \ni (x,y)\mapsto x +iy\in \complexo{}$.
+	\begin{exemplo}\label{exemplo_conjugado_reta_real}
+		(Complexificação de $\reta$) Definindo $V = \reta$ teremos $\complexificacao{\reta} = \reta\oplus \reta$. Assim, a identificação $(a+ib)(x, y ) = (ax-by, bx+ay) \mapsto ax-by+i(bx+ay) \in \complexo{}$. Portanto temos o isomorfimo $\complexificacao{\reta} \ni (x,y)\mapsto x +iy\in \complexo{}$.
 	\end{exemplo}
 	
-	\begin{exemplo}
-		Analogamente ao exemplo anterior temos que as aplicações $\complexificacao{\real{n}} \ni (x,y) \mapsto x+iy \in \complexo{n}$ e  $\complexificacao{\matrizquadreal{n}} \ni (x,y) \mapsto x+iy \in \matrizquadcomplexa{n}$ também são isomorfismos.
+	\begin{exemplo}\label{exemplo_complexificacao_matrizes}
+		(Complexificação de $\matrizquadreal{n}$) Analogamente ao exemplo anterior temos que as aplicações $\complexificacao{\real{n}} \ni (x,y) \mapsto x+iy \in \complexo{n}$ e  $\complexificacao{\matrizquadreal{n}} \ni (x,y) \mapsto x+iy \in \matrizquadcomplexa{n}$ também são isomorfismos.
 	\end{exemplo}
 	
-	Notemos que os espaços vetoriais $V\oplus\{0\}$ e $\{0\}\oplus V$ são isomorfos a $V$, pelos exemplos anteriores. Com isso, a inclusão $i :V \hookrightarrow \complexificacao{V}$ definida por $i(v) = (v, 0)$ é chamado de mergulho padrão de $V$ em $\complexificacao{V}$.
+	Notemos que os espaços vetoriais $V\oplus\{0\}$ e $\{0\}\oplus V$ são isomorfos a $V$, pelos exemplos anteriores. Com isso, a inclusão $i_{V} :V \hookrightarrow \complexificacao{V}$ definida por $i(v) = (v, 0)$ é chamado de mergulho padrão de $V$ em $\complexificacao{V}$.
 	
 	Complexificamos os espaços vetoriais reais, porém, as aplicações lineares entre tais espaços vetoriais são outros tipos de objetos a serem complexificados. O teorema a seguir afirma a unicidade da complexificação de aplicações lineares entre as complexificações de espaços vetoriais reais.
 	
 	\begin{teorema}
 		(Complexificação de aplicações lineares) Seja $\varphi : V \to W$ uma aplicação
-		$\reta$-linear entre espaços vetoriais reais de dimensão finita. Então existe uma única aplicação linear $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ tal que $i\circ \varphi = \complexificacao{\varphi} \circ i$.
+		$\reta$-linear entre espaços vetoriais reais de dimensão finita. Então existe uma única aplicação linear $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ tal que $i_{W}\circ \varphi = \complexificacao{\varphi} \circ i_{V}$, isto é, o diagrama abaixo é comutativo.
+		$$
+		\xymatrix{
+			V\ar[d]_{i_{V}}\ar[r]^{\varphi} & W\ar[d]^{i_{W}} 
+			\\
+			\complexificacao{V} \ar[r]_{\complexificacao{\varphi}}&\complexificacao{W} 
+			}
+		$$
 	\end{teorema}
 	\begin{prova}
 		Defina $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ por $\complexificacao{\varphi}(v_{1}, v_{2}) = (\varphi v_{1}, \varphi v_{2})$. Como $\varphi v_{1}, \varphi v_{1} \in W$, então $(\varphi v_{1}, \varphi v_{2}) \in W\oplus W = \complexificacao{W}$. Além disso, dados $\lambda = (a+ib)\in \complexo{}$ e $(v_{1}, v_{2}), (u_{1}, u_{2})\complexificacao{\varphi}$ temos 
@@ -1481,22 +1489,18 @@
 			\\
 			&=\lambda(\varphi v_{1},\varphi v_{2})+(\varphi u_{1},\varphi u_{2})
 			\\
-			&=\lambda 	\complexificacao{\varphi} (\varphi v_{1},\varphi v_{2})+\complexificacao{\varphi} (\varphi u_{1},\varphi u_{2}).
+			&=\lambda 	\complexificacao{\varphi} (v_{1},v_{2})+\complexificacao{\varphi} (u_{1},u_{2}).
 			\end{aligned}
 		$$
 		Portanto $\complexificacao{\varphi}$ é $\complexo{}$-linear. Dado $v \in V$ temos $(i\circ \varphi)(v) = (\varphi v,0) = \complexificacao{\varphi}(v,0) = (\complexificacao{\varphi} \circ i)(v)$, logo $i\circ \varphi =\complexificacao{\varphi} \circ i$. Por fim, suponha que exista $\complexificacao{\varphi'} $ definida por $\complexificacao{\varphi'}(v_{1}, v_{2}) = (\varphi' v_{1}, \varphi' v_{2})$ e tal que $i\circ \varphi =\complexificacao{\varphi'} \circ i$, onde $\varphi':V\to W$ é uma aplicação linear. Então para todo $v \in V$ temos $i\circ \varphi =\complexificacao{\varphi} \circ i = \complexificacao{\varphi'} \circ i$, o que implicam em $(\varphi v, 0) = (\varphi' v, 0)$. Como $v \in V$ é arbitrário, então $\varphi = \varphi'$, logo $\complexificacao{\varphi} = \complexificacao{\varphi'}$, demonstrando a unicidade. 
 	\end{prova}
 	
-	Vendo o corpo dos complexos como um espaço vetorial sobre um corpo $\reta$, o seguinte produto tensorial é equivalente a construção da complexificação feita anteriormente.
+	Seja $\varphi: V \to \reta$ uma aplicação bilinear. Então pelo temorema anterior, existe uma 
 	
-	\begin{definicao}
-		Seja $V$ um n-espaço vetorial sobre real. Então o produto tensorial $\complexificacaotensorial{V}$ é a complexificação de $V$.
-	\end{definicao}
-	
-	Pode-se mostrar que o complexificação $\complexificacaotensorial{V}$ é um espaço vetorial sobre os complexos com a operação de multiplicação por escalares dada por $z'(z\otimes_{\reta} \alpha) = z'z\otimes_{\reta} \alpha$, onde $\alpha \in V$ e $z,z' \in \complexo{}$. Com isso, se $B = \{e_{j}\}_{j=1}^{n}$ é uma base de $V$, então $1\otimes_{\reta}B$ é uma base de $\complexificacao{V}$. O teorema seguinte afirma que ambas as complexificações são equivalentes.
-	
+	Vendo o corpo dos complexos como um espaço vetorial sobre $\reta$, mostraremos que o produto tensorial $\complexificacaotensorial{V}$ é equivalente a construção da complexificação feita anteriormente. Utilizaremos construção na complexificação do 2n-espaço vetorial simplético $(V, \omega)$.
+
 	\begin{teorema}\label{teorema_isomorfismo_complexificacao}
-		Para cada $V$ um espaço vetorial real de dimensão finita existe um único isomorfismo $f_{V}: \complexificacao{V} \to \complexificacaotensorial{V}$ entre os espaços vetoriais complexos que realiza a comutação do diagrama
+		Seja $V$ um espaço vetorial real de dimensão finita. A aplicação $f_{V}: \complexificacao{V} \to \complexificacaotensorial{V}$ definida por  $f_{V}(v_{1},v_{2}) = 1\otimes_{\reta} v_{1} + i \otimes_{\reta} v_{2}$ é um isomorfismo entre os espaços vetoriais complexos e comuta o diagrama
 		$$
 			\xymatrix{
 				& V\ar[dl]_{i}\ar[rd]^{j} &
@@ -1504,7 +1508,7 @@
 				\complexificacao{V}\ar[rr]_{f_{V}}& & \complexificacaotensorial{V},
 			}
 		$$
-		onde $i$ indica o mergulho padrão, e $j(v) = 1\otimes_{\reta} v$ e $f_{V}(v_{1},v_{2}) = 1\otimes_{\reta} v_{1} + i \otimes_{\reta} v_{2}$.
+		onde $i(v) = (v,0)$ (é o mergulho padrão) e $j(v) = 1\otimes_{\reta} v$.
 	\end{teorema}
 	\begin{prova}
 		Dados $z=(a+ib) \in \complexo{}$ e $v,u \in \complexificacao{V}$ temos
@@ -1523,37 +1527,56 @@
 		$$
 		Portanto $f_{V}$ é $\complexo{}$-linear. Além disso, é injetora pois $f_{V}(u) = 0$ se, e somente se, $u = 0$. Tomando um elemento arbitrário $w = (a+ib)\otimes_{\reta}v \in \complexificacaotensorial{V} $ e definindo $u = ((a+ib)v, (-ia+b)v) \in \complexificacao{V}$ temos que $f_{V}(u) = 1\otimes_{\reta} (a+ib)v + i \otimes_{\reta} (-ia+b)v = (a+ib)\otimes_{\reta} v$. Portanto $f_{V}$ é sobrejetora. Logo é um isomorfismo.
 		
-		Para todo $v \in V$ temos que $(f_{V}\circ i )(v) = f_{V}(v, 0) = 1\otimes_{\reta} v = j(v)$. Portanto o diagrama é comutativo. \vermelho{(Não fiz a de unicidade do isomorfismo.)}
+		Seja $\varphi : V\ \to \reta$ Para todo $v \in V$ temos que $(f_{V}\circ i )(v) = f_{V}(v, 0) = 1\otimes_{\reta} v = j(v)$. Portanto o diagrama é comutativo.
 	\end{prova}
 	
-	O conjugado de cada $z=(a+ib) \in \complexo{}$ é definido por $\overline{z} = a-ib$. Analogamente, o conjugado de $z \otimes_{\reta}v \in \complexificacaotensorial{V}$ é definido por $\overline{z} \otimes_{\reta}v \in \complexificacaotensorial{V}$.
-	
+	O conjugado de cada $z=(a+ib) \in \complexo{}$ é definido por $\overline{z} = a-ib$. Analogamente, o conjugado de $\complexificacaoelemento{z}{v} \in \complexificacaotensorial{V}$ é definido por $\complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$. Definindo $v_{1} =av$ e $v_{2} = -bv$ temos $f_{V}(v_{1}, v_{2}) =\complexificacaoelemento{1}{v_{1}} +\complexificacaoelemento{i}{v_{2}} = \complexificacaoelemento{a}{v} -\complexificacaoelemento{ib}{v}  =\complexificacaoelemento{\overline{z}}{v}  $. Portanto, temos a identificação entre os conjugados $ \complexificacao{V} \ni (av, -bv) \mapsto \complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$.
+
 	Sejam $k\geq 1$ um inteiro e $\{V_{j}\}_{j=1}^{k}$ um conjunto de espaços vetoriais de dimensão finita sobre um corpo $\mathbb{K}$. Sabe-se que o produto tensorial $\produtotensorial{V}{k}$ é um espaço vetorial de dimensão finita sobre $\mathbb{K}$. Alem disso, sabe-se que, dado um $W$ espaço vetorial também sobre $\mathbb{K}$, tem-se que $W\otimes_{\mathbb{K}}(\produtotensorial{V}{k}) \cong W\otimes_{\mathbb{K}} \produtotensorial{V}{k}$. 
 	
-	\begin{corolario}
-		Seja $V = V_{1}\otimes_{\reta} \dots \otimes_{\reta}V_{k}$ o produto tensorial dos k espaços vetoriais reais. A complexificação tensorial é dada por $\complexificacao{V} \cong  \complexificacaotensorial{\produtotensorialreal{V}{k}}$. 
-	\end{corolario}
-	\begin{prova}
-		É imediato que $\complexificacao{V} \cong \complexificacaotensorial{(\produtotensorialreal{V}{k})} \cong  \complexificacaotensorial{\produtotensorialreal{V}{k}}$.
-	\end{prova}
+	Definindo $\complexificacaotensorialabrev{V} = \complexificacaotensorial{V}$, podemos escrever o produto tensorial $\complexificacaotensorialabrev{V}^{k\otimes} = \bigotimes_{j=1}^{k}\complexificacaotensorialabrev{V} =\bigotimes_{j=1}^{k}\complexificacaotensorial{V} \cong  \complexo{^{k\otimes}}\otimes V^{k\otimes}$, de acordo com o isomorfimo citado anteriormente. Assim, a complexificação de um tensor $T \in V^{k\otimes} $ será dado por $\complexificacao{T} = z_{1}\otimes \dots \otimes z_{k}\otimes T$. A aplicação $p: \complexificacaotensorialabrev{V}\times \dots \times  \complexificacaotensorialabrev{V} \to \complexo{k}\times V^{k}$ definida no k-produto cartesiano tal que $p(v_{1}, \dots, v_{k}) = (z_{1}, \dots, z_{k},v'_{1}, \dots, v'_{k})$ é um isomorfismo, onde $v_{j} = z_{j}\otimes v'_{j}$ para $1\leq j \leq k$.
 	
-	\begin{observacao}\label{observacao_complexificacao_tensores}
-		Se $\complexificacao{V}$ é a complexificação do produto tensorial $V = \produtotensorialreal{V}{k}$, então a complexificação $\complexificacao{T} \in \complexificacao{V}$ do tensor $T \in V$ é dada por $\complexificacao{T} = \complexificacaoelemento{z}{T}$.
-	\end{observacao}
+	Sejam $B = \{e_{j}\}_{j=1}^{n}$ uma base do n-espaço vetorial real $V$, $B^{*} = \{e_{j}^{*}\}_{j=1}^{n}$ a base de seu dual $V^{*}$ tal que $e^{*}_{j}(e_{k}) =\delta_{jk}$. Então $1\otimes B = \{a_{j}\}_{j=1}^{k}$ e $1\otimes B^{*}=\{a^{*}_{j}\}_{j=1}^{k}$ são bases de $\complexificacaotensorialabrev{V}$ e $\complexificacaotensorialabrev{V}^{*}$, respectivamente, tais que $a^{*}_{j}(a_{k})=\complexificacaoelemento{1}{e^{*}_{j}}(\complexificacaoelemento{1}{e_{k}}) = 1.e^{*}_{j}(e_{k}) = \delta_{ik}$.
 	
 	\section{Complexificação de $\gruposimpletico{2n}$}
 	
 	Para estudarmos algumas características dos auto-espaços do grupo simplético precisaremos decompor esse espaço vetorial em soma direta de determinados  auto-espaços. Tal composição será garantida pelo teorema espectral $\ref{teorema_espectral_jordan}$, que depende de um espaço vetorial complexo como hipótese. Como consequencia desse fato, precisaremos de um espaço vetorial simplético complexo e que seja gerado a partir de um dado espaço vetorial simplético.
 	
-	Seja $(V, \omega) $ um 2n-espaço vetorial simplético. Na seção anterior vimos que a complexificação de $V$ é o produto tensorial $\complexificacaotensorial{V}$ e que a complexificação do produto tensorial $V\otimes_{\reta} V$ é $\complexificacaotensorial{V\otimes_{\reta} V}$. Sabe-se que uma aplicação bilinear anti-simétrica é um tensor de ordem 2. Com isso podemos afirmar que $\omega \in V\otimes_{\reta} V$ e, pela Observação $\ref{observacao_complexificacao_tensores}$ temos $\complexificacao{\omega} = \complexificacaoelemento{1}{\omega} \in \complexificacaotensorial{V \otimes_{\reta }V}$ é a complexificação da forma simplética. Vamos denotar $\Omega = \complexificacao{\omega}$.
+	Na seção anterior vimos que a complexificação de $V$ é o espaço vetorial complexo $\complexificacaotensorialabrev{V}$. Sabe-se que uma aplicação bilinear anti-simétrica real $\beta: V\times V\to   \reta$ é um tensor de ordem 2 anti-simétrico, isto é, $\beta \in V^{2\otimes}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V^{2\otimes}$. Então a complexificação da forma simplética é dada por $\complexificacao{\omega} = 1^{2\otimes}\otimes \omega \in \complexo{2\otimes}\otimes \complexificacaotensorialabrev{V}^{2\otimes}$. 
 	
-	\begin{proposicao} Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. Então a complexificação $(\complexificacao{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
+	Denotaremos $\Omega = \complexificacao{\omega}$ e $(\complexificacaotensorialabrev{V}, \Omega)$ como sendo a complexificação de $(V, \omega)$.
+	
+	\begin{proposicao} Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. A complexificação $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
 	\end{proposicao}
 	\begin{prova}
-		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$ temos que $\complexificacao{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega = \complexificacao{\omega}$ é uma aplicação bilinear anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, supondo que $\Omega$ seja degenerada, então existe $0\neq v \in \complexificacao{V}$ tal que para todo $u \in \complexificacao{V}$ temos $\formaSimpleticaExtendida{v}{u} = 0$. Com isso, $0=\formaSimpleticaExtendida{v}{u} = (\complexificacaoelemento{1}{\omega})(v,u) = \formaSimpletica{v}{u}$, o que implica que $\omega$ é degenerada, contradizendo a hipótese de que $\omega$ é não-degenerado. Portanto $\Omega$ é não-degenenada e o par $(\complexificacao{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
+		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$ temos que $\complexificacaotensorialabrev{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega = \complexificacao{\omega}$ é uma aplicação $\complexo{}$-bilinear. Tomando $v = \complexificacaoelemento{x}{v'}, u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\Omega(v,u) = 1(x)1(y)\omega(v',u') = -1(y)1(x)\omega(u',v')  = -\Omega(u,v)$, logo é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, supondo que $\Omega$ seja degenerada, então existe $0\neq v = \complexificacaoelemento{x}{v'}\in \complexificacaotensorialabrev{V}$ tal que para todo $u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\formaSimpleticaExtendida{v}{u} = 0$. Com isso, 
+		$$
+			0=\Omega( v, u) = (\complexificacaoelemento{1^{2\otimes}}{\omega})(x\otimes_{\reta}y \otimes_{\reta} v' \otimes_{\reta} u') = xy\formaSimpletica{v'}{u'},
+		$$
+		o que implica que $\omega$ é degenerada, contradizendo a hipótese de que $\omega$ é não-degenerado. Portanto $\Omega$ é não-degenenada e o par $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
 	\end{prova}
-	
-	
+
+	\begin{proposicao}
+		A complexificação $\Omega$ de $\omega$ pode ser decomposta em $\Omega = g +i k$, onde $g,k$ são ambas formas simpléticas definidas em $V$.
+	\end{proposicao}
+	\begin{prova}
+		
+		O Teorema $\ref{teorema_existencia_base_simpletica}$ garante que $\complexificacaotensorialabrev{V}$ possui uma base simplética $B$. Pela Observação $\ref{observacao_existencia_base_simpletica}$ temos que a representação matricial de $\Omega$ nessa base simplética é $\estruturacomplexa$. Suponha que $V, U \in \matrizquadcomplexa{2n}$ sejam as representações matriciais de $v,u \in \complexificacaotensorialabrev{V}$ nessa base. Então podemos escrever $$
+		\begin{aligned}
+		\formaSimpleticaExtendida{v}{u} &= V^{*}\estruturacomplexa^{*} U 
+		\\
+		&= (V_{1}+iV_{2})^{*}\estruturacomplexa^{*} (U_{1}+iU_{2})
+		\\
+		&= \underbrace{V_{1}^{t}\estruturacomplexa^{t} U_{1}}_{\formaSimpletica{v_{1}}{u_{1}}} -V_{2}^{t}\estruturacomplexa^{t} U_{2}+i(\underbrace{ V_{1}^{t}\estruturacomplexa^{t} U_{2}}_{\formaSimpletica{v_{1}}{u_{2}}} - V_{2}^{t}\estruturacomplexa^{t} U_{1})
+		\\
+		&= \underbrace{\formaSimpletica{v_{1}}{u_{1}} -\formaSimpletica{v_{2}}{u_{2}}}_{g(v,u)}+i(\underbrace{ \formaSimpletica{v_{1}}{u_{2}}- \formaSimpletica{v_{2}}{u_{1}}}_{k(v,u)})
+		\\
+		&= g(v,u)+ik(v,u),
+		\end{aligned}
+		$$
+		onde fizemos $v_{j}, u_{j}\in V$ e $V_{j}, U_{j}$ sendo a representação matricial de cada um deles para $j \in \{1,2\}$.
+		Temos que $g,k:\complexificacaotensorialabrev{V}\times \complexificacaotensorialabrev{V} \to \reta$ são aplicações bilineares anti-simétricas pois são combinações lineares de aplicações bilineares anti-simétricas não-degeneradas.
+	\end{prova}
 	\section{$\gruposimpletico{2n}$ e sua topologia}
 	
 	\begin{definicao}
