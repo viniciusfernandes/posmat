@@ -87,7 +87,8 @@
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
 \newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
-\newcommand{\distribuicoes}{\mathcal{D'}(\Omega)}
+\newcommand{\distribuicoes}{\distribuicoesgeral{\Omega}}
+\newcommand{\distribuicoesgeral}[1]{\mathcal{D'}(#1)}
 \newcommand{\espacoLdois}[1]{L^{2}(#1)}
 \newcommand{\espacoLp}[1]{L^{p}(#1)}
 \newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
@@ -1551,7 +1552,7 @@
 	\begin{prova}
 		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$ temos que $\complexificacaotensorialabrev{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega = \complexificacao{\omega}$ é uma aplicação $\complexo{}$-bilinear. Tomando $v = \complexificacaoelemento{x}{v'}, u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\Omega(v,u) = 1(x)1(y)\omega(v',u') = -1(y)1(x)\omega(u',v')  = -\Omega(u,v)$, logo é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, supondo que $\Omega$ seja degenerada, então existe $0\neq v = \complexificacaoelemento{x}{v'}\in \complexificacaotensorialabrev{V}$ tal que para todo $u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\formaSimpleticaExtendida{v}{u} = 0$. Com isso, 
 		$$
-			0=\Omega( v, u) = (\complexificacaoelemento{1^{2\otimes}}{\omega})(x\otimes_{\reta}y \otimes_{\reta} v' \otimes_{\reta} u') = xy\formaSimpletica{v'}{u'},
+			0=\Omega( v, u) = (\complexificacaoelemento{1^{2\otimes}}{\omega})(x,y ,v' ,u') = xy\formaSimpletica{v'}{u'},
 		$$
 		o que implica que $\omega$ é degenerada, contradizendo a hipótese de que $\omega$ é não-degenerado. Portanto $\Omega$ é não-degenenada e o par $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
 	\end{prova}
@@ -2004,7 +2005,7 @@
 	O seguinte lema é demasiadamente técnico e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
-		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ \vermelho{(não sei se  B esta realmente em $\gruposimpleticonaodegenerado{*}$, acredito que seja em $\gruposimpletico{2n}$)} cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
+		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
 	\end{lema}
 	
 	\begin{lema}
@@ -2304,7 +2305,7 @@
 		\vermelho{(Ainda não ficou clara o produto sobre todos os autovalores em $\circulo$. Ver novamente o Salamon artigo. Ele afirma algo sobre os auto-valores de primeira ordem e suas multiplicidades)}
 	\end{prova}
 	
-	\subsection*{Demosntração das propriedades de $\rho$}
+	\subsection*{Demonstração das propriedades de $\rho$}
 	\begin{prova}
 		Seja $\rho :\gruposimpletico{2n} \to \circulo$ definida no Lema $\ref{lema_identidade_aplicacao_rho}$.
 		\begin{enumerate}
@@ -2582,6 +2583,17 @@
 		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
 	\end{observacao}
 	
+		Sejam $\Omega, \Sigma \subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Sigma}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Sigma$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
+		$$
+			\sum_{|\alpha|\leq p}|\partial^{\alpha}(h\phi)|\leq c			\sum_{|\beta|\leq p}|\partial^{\beta}(\phi)|, \text{onde }\; \phi \in \funcoesdiferenciaveissupp{\infty}{K}.
+		$$
+		
+	\begin{definicao}\label{definicao_distribuicao_adjunta}
+		(Distribuição adjunta) Sejam $\Omega, \Sigma$ como descrito anteriormente. O adjunto $h^{*}: \distribuicoesgeral{\Sigma} \to \distribuicoesgeral{\Omega}$é definida por
+		$$
+		\produtointerno{h^{*}\circ f}{\phi} = 		\produtointerno{f}{h\circ\phi}.
+		$$
+	\end{definicao}\label{definicao_espalo_sobolev}
 	\section{Espaço de Sobolev $W^{1,p}$}\label{secao_espaco_sobolev}
 	\begin{definicao}
 		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $\mathbb{N} \ni p\geq 1$. Os espaços de Sobolev são os conjuntos
@@ -2595,7 +2607,7 @@
 		Como foi definido, podemos descrever $W^{k,p}$ como um espaço de distribuições.
 	\end{observacao}
 	
-	\begin{definicao}
+	\begin{definicao}\label{definicao_espalo_sobolev_generalizado}
 		(Espaço de Sobolev generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então 
 		$\espacoLpcontradominio{\Omega}{\real{k}}$ é o conjunto de todas as aplicações $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ e $f_{j}\in \espacoLp{\Omega}$ com $1\leq j\leq k$. Analogamente, teremos a definição de $\espacosobolevcontradominio{\Omega}{\real{k}}$.
 	\end{definicao}
@@ -3204,8 +3216,7 @@
 	
 	Para simplificar a notação, definiremos $\diferencialmapafloerabrev = D\mapafloer_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
 	
-	O seguinte lema afirma a injetividade do mapa de Floer $\diferencialmapafloerabrev$, o que implicará diretamente que $\diferencialmapafloer$ é um operador compacto. Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$ \vermelho{(Caso sobre tempo podemos fazer o caso $p>2$)}. 
-	
+	O seguinte lema afirma a injetividade do mapa de Floer $\diferencialmapafloerabrev$, o que implicará diretamente que $\diferencialmapafloer$ é um operador compacto. Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$.
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
 		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialmapafloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
 	\end{lema}
@@ -3380,21 +3391,48 @@
 		Q(\diferencialmapafloerabrev \eta(s)) = Q(\diferencialmapafloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferencialmapafloerabrev \eta^{+}(s))+Q(\diferencialmapafloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
 		$$
 	\end{prova}
+
+	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do mapa de Floer $\diferencialmapafloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	
+	\begin{teorema}
+		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialmapafloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$.
+	\end{teorema} 
+
 	
 	Foi mostrado na Seção $\ref{secao_identificacao_pullback_fibrado}$ que, dado $u \in \caminhosexponenciaisconectantespadrao$, temos as identificações entre os espaços  $\espacoLp{\pullbackfibradotangenteM{u}} \mapsto \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Sendo que essa identificação foi utilizada para simplificar cálculos e tonar a exposição do assunto menos densa. Na demosntração a seguir esse fato será crucial pois, para aplicarmos o Teorema $\ref{teorema_sobolev}$, necessitamos restrigir o domínio das funções a conjuntos limitados com borda de classe $C^{1}$. Note que $\retacartesianocirculo$ não é limitado. Pelo Teorema $\ref{teorema_whitney}$, temos o mergulho $\caminhosexponenciaisconectantespadrao \subset M\subset \real{k}$, o que já foi feito na Seção $\ref{secao_identificacao_pullback_fibrado}$. Podemos afirmar que $\caminhosexponenciaisconectantespadrao$ é um limitado, pois é um subconjunto da variedade compacta $M$ mergulhada em $\real{k}$. Além disso, seu bordo é dado por $\partial \caminhosexponenciaisconectantesabrev =x^{+}(\circulo) \cup x^{-}(\circulo)$. \vermelho{(aqui devemos ter uma figura ilustrando o bordo ...!!!)}
 	
-	Faremos o uso do seguinte lema, demonstrado em $\cite{audi_floer_homology}$.
+	A seguir enunciaremos alguns resultados importantes de análise funcional os quais serão utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialmapafloerabrev$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach. Todos podem ser encontrados em $\cite{kreyszig_analise_funcional}$. Por fim, o seguinte lema, que pode ser encontrado em $\cite{audi_floer_homology}$, também será utilizado na demonstração.
+	
 	\begin{lema}\label{lema_desigualdade_inclusao_sobolev}
 		Sejam $p \in \mathbb{N}$ tal que $p\geq 1$. Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialmapafloer \xi} +\normaLp{\xi})$.
 	\end{lema}
 	
+	\begin{teorema}\label{teorema_aplicacao_aberta}
+		(Teorema da aplicação aberta) Seja $T : A \to E$ uma aplicação linear limitada e sobrejetora entre os espaços de Banach $A$ e $E$. Se $T$ é uma bijeção, então $T^{-1}$ é contínua e limitada.
+	\end{teorema}
+	
+	\begin{observacao}\label{observacao_teorema_aplicacao_aberta}
+		Como consequência do teorema anterior pode-se afirma que, dada a bola aberta centrada na origem $B_{A}(0,1)$, existe uma constante $c>0$ tal que $B_{E}(0,c)\subset T(B_{A}(0,1))$
+	\end{observacao}
+	
 	\begin{teorema}
-		O operador $\diferencialmapafloer: \espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}\to \espacoLpcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ é compacto e é um operador de Fredholm.
+		(Teorema da representação de Reisz) Seja $f:H \to \reta$ um funcional linear limitado definido em um espaço de Hilbert $H$. Então $f$ pode ser representado em termos de produto interno, isto é, $f(x) = \produtointerno{x}{z}$, onde $z$ depende de $f$, é unicamente determinada por $f$ e sua norma é $\norma{z} = \norma{f}$.
+	\end{teorema}
+	
+	Seja $f: B \to \reta$ um funcional linear definido no espaço vetorial $B$. Dizemos que $f$ é sublinear se $f(x+y)\leq f(x)+f(y)$ para todos $x,y \in B$.
+	
+	\begin{teorema}
+		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
+	\end{teorema}
+	
+	\begin{teorema}
+		(Propriedade de Fredholm de $\diferencialmapafloerabrev$) Suponha que $det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialmapafloerabrev: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador de Fredholm para $1<p<\infty$. Além disso, seu índice de Fredholm é dado por
+		$$
+		ind(\diferencialmapafloerabrev) = \mu(\Psi^{+}) - \mu(\Psi^{-}).
+		$$
 	\end{teorema}
 	\begin{prova}
-		Temos que $\caminhosexponenciaisconectantesabrev \subset \real{k}$ é limitado. Então pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev), temos que a inclusão $\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}} \hookrightarrow \espacoLpcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ é compacta. Temos que $\diferencialmapafloer$ é um operador linear, logo é contínuo. Pelo Lema $\ref{lema_diferencial_floer_bijecao}$ é uma bijeção, portanto é um homeomorfismo, então $\diferencialmapafloer(\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}) \subset \espacoLpcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ é um compacto. Dado um limitado $K \subset \espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$, então $\overline{\diferencialmapafloer(K)} \subset \diferencialmapafloer(\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}})$ é um compacto, pois todo subconjunto fechado de compacto é compacto. Portanto $\diferencialmapafloer$ é um operador compacto e limitado, pela Observação $\ref{observacao_operador_compacto_limitado}$.
-		
-		Supondo $\xi \in \espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}}$ temos, pelo Lema $\ref{lema_desigualdade_inclusao_sobolev}$, que existe uma constate $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialmapafloer \xi} +\normaLp{\xi})$. Onde podemos identificar pela inclusão $i(\xi) = \xi$. Como $\diferencialmapafloer$ é um operador limitado e a inclusão é um operador compacto, então pelo Lema $\ref{lema_desigualdade_operador_compacto}$ temos que $\diferencialmapafloer(\espacosobolevcontradominio{\caminhosexponenciaisconectantesabrev}{\real{2n}})$ é fechado e $dim (Ker(\diferencialmapafloer))<\infty$. \vermelho{(Falta demonstrar a codimesão finita)}
+		Como $\diferencialmapafloerabrev$ é bijetor e limitado, então pelo Teorema $\ref{teorema_aplicacao_aberta}$ temos que $\diferencialmapafloerabrev^{-1}$ é continuo. Pela Observação $\ref{observacao_teorema_aplicacao_aberta}$ existe uma constante $c>0$ tal que $B_{W^{1,p}}(0,c)\subset\diferencialmapafloerabrev^{-1}(B_{L^{p}}(0,1))$, isto é, $\normaWp{\xi} \leq k \normaLp{\diferencialmapafloerabrev\xi}$ para algum $k>0$.
 	\end{prova}
 	
 	\chapter{Homologia de Floer}
