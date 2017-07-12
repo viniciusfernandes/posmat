@@ -121,6 +121,7 @@
 }
 \newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
 \newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
+\newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
 \newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\funcoesteste}{\mathcal{D}(\Omega)}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
@@ -177,7 +178,7 @@
 \newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
 \newcommand{\parteImaginaria}[1]{\mathcal{I}m(#1)}
 \newcommand{\parteReal}[1]{\mathcal{R}e(#1)}
-\newcommand{\pontocritico}[1]{\textit{Crit}(#1)}
+\newcommand{\pontoscriticos}[1]{\textit{Cr}(#1)}
 \newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
 \newcommand{\produtointernoabrev}{\langle ., .\rangle}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
@@ -246,7 +247,7 @@
 		onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
 	\end{definicao}
 	
-	\section{CW-Complexo}
+	\section{CW-Complexo}\label{secao_cw_complexo}
 	O conceito de espaço topológico é algo bem geral e em muitos casos podem nos levar a dificuldades técnicas na construção de solução de um determinado problema. Um CW-complexo é um tipo de espaço topológico, introduzindo por J. H. C. Whitehead, que teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sicessivas colagens (identificação) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
 	\begin{definicao}
 		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
@@ -284,7 +285,7 @@
 		(n-espaço projetivo) Vamos exibir uma estrutura de CW-complexo para $\realprojetivo{n}$. Para $n=0$ temos que $\realprojetivo{0} = \{\classe{p}\}$, para um determinado $p \in \real{}$. Já para $n=1$, sabemos que existe um homeomorfismo $\realprojetivo{1} \approx S^{1}_{\sim} = \{\classe{p}: p \in S^{1},\; p \sim -p\}$. Note esse espaço quociente já possui, naturalmente, uma CW-estrutura pois, na passagem ao quociente, identificamos todos os pontos do equador com um único ponto desse conjunto. Digamos este ponto $p_{0} = (1,0)$, sem perda de generalidade. Isso quer dizer que ao colarmos uma 1-célula no ponto $p_{0}$ teremos $S^{1}_{\sim} \approx \{[p_{0}]\} \cup_{f}D^{1} \approx \realprojetivo{0}\cup_{f}D^{1} $ pois $\realprojetivo{0} \approx \{[p_{0}]\}$, portanto $ \realprojetivo{1} \approx \realprojetivo{0}\cup_{f}D^{1}$. Repetindo o procedimento anterior para $\realprojetivo{n} \approx S^{n}_{\sim} $ onde $p_{0} = (1,0,\dots, 0)$, teremos $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f_{\partial}}D^{n}$. Assim, temos a CW-estrutura $\realprojetivo{j-1} \subseteq \realprojetivo{j}$ e $\realprojetivo{j} = \skeleton{j} \approx \skeleton{j-1}\cup_{f_{j\partial}}D^{j}$ para $1\leq j \leq n$.
 	\end{exemplo}
 	
-	\section{CW-Homologia}
+	\section{CW-Homologia}\label{secao_cw_homologia}
 	
 	\begin{lema}\label{homologiacelular}
 		(Homologia celular relativa) Sejam $\Lambda$ um anel comutativo com unidade e $X$ um CW-complexo, então
@@ -785,84 +786,65 @@
 		\end{exemplo}
 		
 	\chapter{Teoria de Morse}
-	
-	\section{Pontos Críticos}
-	\begin{lema}
-		Seja M uma variedade fechada e $f$ uma função de Morse, então se $p \in Crit(f)$ teremos $\nabla f(p)=0$ e $\exists q \in M$ tal que $p \in \omega(q)$ ou $p \in \alpha(q)$ , isto é, $p$ é uma singularidade e é um ponto limite.
-	\end{lema}
-	\begin{prova}
-		Tomando $p \in Crit(f)$, então $\forall v \in T_{p}M \Rightarrow Df(p)(v) = \produtointerno{\nabla f(p)}{v} = 0$, portanto, para $v = -\nabla f(p)$ teremos $-\produtointerno{\nabla f(p)}{\nabla f(p)} = 0 \iff \nabla f(p) = 0$, logo, $p$ é uma singularidade do campo gradiente. Com isso, podemos afirmar que existe um ponto $q \in M$ tal que a órbita $\mathcal{O}(q)$ tenha como um dos pontos limites o dado $p \in Crit(f)$ pois caso contrário, o ponto $p$ não será uma singularidade. Como $p \in Crit(f)$ é um ponto limite, então $p \in \omega(q)$ ou $p \in \alpha(q)$, como desejávamos.
-	\end{prova}
-	
-	\begin{lema}
-		Seja M uma variedade fechada, $f$ uma função de Morse e $X =-\nabla f$, então $\alpha(p), \omega(p)$ consistem de um único ponto crítico de $f$ para qualquer $p \in M$.
-	\end{lema}
-	\begin{prova}
-		Como $M$ é uma variedade fechada e $f$ é uma função de Morse, então $Crit(f) = \{p_{i} \in M: 1\leq i \leq k \}$ é um conjunto finito de pontos isolados. Pela proposição anterior, dado $p_{i} \in Crit(f), \exists q_{i} \in M$ tal que $p_{i} \in \omega(q_{i})$ ou $p_{i} \in \alpha(q_{i})$. Com isso, podemos afirmar que $Crit(f) \subseteq \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Sabemos que os conjuntos limite $\omega(q_{i})$ e $\alpha(q_{i})$ consistem de singularidades do campo gradiente $-\nabla f$, logo $\forall p \in \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$ teremos $\nabla f(p) = 0 \Rightarrow Df(p)(v) = \produtointerno{\nabla f(p)}{v} = 0 \therefore p \in Crit(f)$, e como $p$ é arbitrário, então $\bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i}) \subseteq Crit(f)$, logo $Crit(f) = \bigcup_{i=1}^{k}\omega(q_{i}) \cup \alpha(q_{i})$. Com esse resultado fica evidente que $\omega(q_{i}), \alpha(q_{i}) \subset Crit(f)$. Como os conjuntos limites são conjuntos finitos de pontos isolados vamos supor que $\omega(q_{i}) = \{r_{j} \in Crit(f): 0\leq j \leq m\}$, logo pela topologia induzinda, os abertos de cada um deles serão os conjuntos unitários e teremos $\omega(q_{i}) = \bigcup_{j=1}^{k} \{r_{j}\} $, e como os conjuntos limite são conexos (vide resultado do Palis), essa união disjunta contradiz a conexidade, portanto $\omega(q_{i}) = \{r_{i}\}$. Os mesmos argumentos valem para o conjunto $\alpha(q_{j})$. Portanto, ambos os conjuntos limite devem conter apenas um ponto crítico, como desejávamos.
-	\end{prova}
-	
-	\begin{definicao}
-		(Funções de Morse) $\morsefunc{M} \subset \funcoessuaves{M}$ é o conjunto de todas as funções de Morse definidas na variedade $M$.
-	\end{definicao}
-	
-	\begin{definicao}
-		(Norma $C^{r}$) Sabemos o que espaço das fuções infinitamente diferenciáveis $\funcoessuaves{M}$ forma um espaço vetorial, além disso, como temos uma variedade compacta, dada uma cobertura, podemos escolher uma subconvertura finita por abertos $\{V_{i}\}_{i=1}^{k}$e um atlas finito $\{(U_{i}, \phi_{i})\}_{i=1}^{k}$ tal que $V_{i} \subset \phi_{i}(U_{i})$ com $\phi_{i}^{-1}(\phi_{i}(U_{i})) = B(0,2)$ e $\phi_{i}^{-1}(V_{i}) = B(0,1)$. Dado $f \in \funcoessuaves{M}$ definimos $f_{i} := f|_{\phi_{i}(U_{i})}$ e a \textit{r-norma} como sendo 
-		$$
-		||f||_{r} := \max_{i} \sup\{||f_{i}(p)||, ||D^{1}f_{i}(p)||, \dots, ||D^{r}f_{i}(p)||: p \in B(1)\}.
-		$$
-		Pode-se verificar que $||.||_{1}: \funcoessuaves{M} \to \real{}$ é uma norma, além disso, esse espaço é completo nessa norma, portanto é um \textit{espaço de Banach}.
-	\end{definicao}
-	
-	\begin{definicao}
-		Dados $f, g \in \funcoessuaves{M}$, dizemos que $f$ é uma $C^{1}$-aproximação de $g$ quando existe um $\epsilon \in \real{+}$ tal que $||f-g||_{1} < \epsilon$.
-	\end{definicao}
-	
-	\begin{teorema}
-		(Transversalidade de Morse-Smale) Seja M uma variedade fechada e $f \in \morsefunc{M}$, então existe uma $h \neq f \in \morsefunc{M}$ tal que $\nabla f$ pode ser $C^{1}$-aproximado por $\nabla h$ e que satisfaz as condições de Morse-Smale.
-	\end{teorema}
-	\begin{prova}
-		Seja $p \in \pontocritico{f}$ e tomemos uma vizinhança aberta $U \ni p$ tal que esse ponto seja o único ponto crítico pertencente a ela. Como o espaço das funções de Morse $\morsefunc{M} \subset C^{\infty}(M, \real{})$ é um conjunto denso na topologia $C^{1}$, então dado $\epsilon > 0 \in \real{}$ existe uma $h \neq f \in \morsefunc{M}$ tal que $||f-h||_{1} < \epsilon$. Sejam $\gamma, \alpha : \real{} \to M$ as curvas integrais dos campos $-\nabla f$ e $-\nabla h$, respectivamente, de modo que $\gamma'(p) = -\nabla f(p), \alpha'(p) = -\nabla h(p)$ com $\gamma(p) = \alpha(p)$, então
-	\end{prova}
-
-	\section{Desigualdades de Morse}
-	
-	\begin{teorema}
-		(Teorema de Euler-Poincaré) Seja $(C_{*}, \partial_{*})$ um complexo de cadeia finitamente gerado com $C_{k} = 0$ para $k>m>0$ e algum $m \in \inteiros$. Definindo $c_{k} = dim(C_{k})$ e $b_{k} = dim(\homologia{k}{C_{*}})$ para $0 \leq k \leq m$, então
-		$$
-		\sum_{k=0}^{m}(-1)^{k}c_{k} = \sum_{k=0}^{m}(-1)^{k}b_{k}.
-		$$
-	\end{teorema}
-	\begin{prova}
-		Temos que $Ker(\partial_{k}) \subseteq C_{k}(X)$ e $Im(\partial_{k}) \subseteq C_{k-1}(X)$ são submódulos, então podemos construir a sequência exata
-		$$
-		\xymatrix{
-			0 \ar[r] & Ker(\partial_{k}) \ar[r]^{i_{*}} &  C_{k}(X)  \ar[r]^{\partial_{k}} & Im(\partial_{k}) \ar[r] & 0,
-		}
-		$$
-		onde $i_{*}$ é a inclusão e $\partial_{k}$ é um epimorfismo, logo pelo teorema fundamental de isomorfismo de grupos, temos que $ C_{k}(X)/Ker(\partial_{k}) \cong Im(\partial_{k})$, portanto $dim(C_{k}(X)/Ker(\partial_{k})) = dim(C_{k}(X)) - dim(Ker(\partial_{k})) = dim(Im(\partial_{k})) \Rightarrow c_{k} = dim(Ker(\partial_{k})) + dim(Im(\partial_{k}))$. Análogamente, temos a sequência exata
-		$$
-		\xymatrix{
-			0 \ar[r] & Im(\partial_{k+1}) \ar[r] &  Ker(\partial_{k})  \ar[r]^{j_{*}} & \homologia{k}{X}\ar[r] & 0,
-		}
-		$$
-		onde $j_{*}$ é um epimorfismo pois dado $\classe{\alpha} \in \homologia{k}{X} = Ker(\partial_{k})/Im(\partial_{k+1})$ podemos tomar $\alpha \in Ker(\partial_{k})$ tal que $j_{*}(\alpha) = \classe{\alpha}$, consequentemente, pelo teorema fundamental do isomorfismo de grupos, temos que $Ker(\partial_{k})/Ker(j_{*}) \cong \homologia{k}{X}$, mas $Ker(j_{*}) = Im(\partial_{k+1})$, pela definição de homologia, então $dim(Ker(\partial_{k})/Ker(j_{*})) = dim(Ker(\partial_{k})) - dim(Ker(j_{*})) = dim(\homologia{k}{X}) \Rightarrow dim(Ker(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k}$. Igualando as expressões para $dim(Ker(\partial_{k}))$:
-		$$
-		dim(Ker(\partial_{k})) = c_{k} - dim(Im(\partial_{k})) = dim(Im(\partial_{k+1}))+ b_{k} = dim(Ker(\partial_{k})).
-		$$
-		Como vale para $0 \leq k \leq m$, então:
-		$$
-		\begin{aligned}
-		\sum_{k=0}^{m}	(-1)^{k}(c_{k} - dim(Im(\partial_{k}))) &= \sum_{k=0}^{m}	(-1)^{k}( dim(Im(\partial_{k+1}))+ b_{k})
-		\\
-		\sum_{k=0}^{m}	(-1)^{k}c_{k} - \sum_{k=0}^{m}(-1)^{k} b_{k} &= \sum_{k=0}^{m}	(-1)^{k} (dim(Im(\partial_{k+1})) -  dim(Im(\partial_{k})))
-		\\
-		&= 0,
-		\end{aligned}
-		$$
-		onde teremos somas alternadas no ultimo termo que se cancelarão, restando apenas $dim(Im(\partial_{m+1})) - dim(Im(\partial_{0}))$, mas ambos são identicamente nulos, pois $\partial_{m+1} = 0$ e $\partial_{0} = 0$.
-	\end{prova}
-	
-	\chapter{Introdução à Geometria Simplética}
+		Na investigação da topologia de variedades o principal objetivo e a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas aboragens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo que é homotopicamente equivalente a variedade, sendo que essa homotopia induzirá um isomorfismo entre a $CW$-homologia do $CW$-complexo e a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_homologia}$. O que torna a Toeria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
+		
+		O porpósito desse capítulo é de apresentação rápida do formalismos e alguns dos principais resultados para que possamos extender a construção aqui feita para a hologogia de variedades de dimensão inifita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
+		
+		De agora em diante $M$ será uma n-variedade diferenciável fechada, ou seja, uma variedade compacta e sem bordo.
+		
+		\begin{definicao}
+			(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ uma e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
+		\end{definicao}
+		
+		\begin{observacao}
+			Pode-se mostrar que $\pontoscriticos{f} \subset M$ é um conjuntos finito, consequentemente, todos os seus pontos são isolados. Isso decorre da compacidade de $M$.
+		\end{observacao}
+		
+		O índice de Morse de um dado $p \in \pontoscriticos{f}$ é a dimensão dos subespaço $V\subset T_{p}M $ tal que \ hessiana é negativa-definita, isto é, $H_{p}(f)(v,u)<0$ para todo $v,u \in V$. Denotaremos esse índice por $\lambda_{p} = dim(V)$. Como a heessiana e não-degenerada, então $H_{p}(f)$ é diagonalizável e o número de auto-valores negativos é o índice $\lambda_{p}$. O que fica claro no lema de Morse.
+		
+		\begin{lema}
+			(Lema de Morse) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ cujo índice é $\lambda$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
+			$$
+			\begin{aligned}
+			(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) &= f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda}+x^{2}_{\lambda+1}+\dots + x^{2}_{n}
+			\\
+			&=f(p)+x^{t}Dx,
+			\end{aligned}
+			$$
+			onde $D$ é a rerepsentação diagonal de $H_{p}(f)$.
+		\end{lema}
+		
+		A existência das funções de Morse é garantida pelo seguinte exemplo. Seja $f:M\to \reta$ tal que $f(x_{1}, \dots, x_{n}) = x_{n}$. Essa função é chamada de função altura e pode-se mostrar que $f$ é uma função de Morse, logo $\funcoesmorse{M} \neq \emptyset$.
+		
+		\begin{exemplo}
+			Sejam $S^{2} \subset \real{3}$ a 2-esféra centrada na origem e $f:S^{2}\to \reta$ a função altura dadar por $f(x,y,z) = z$. Os pontos críticos de $f$ são $p_{\pm} = \{(0,0,\pm 1)\}$, cujos índices são $\lambda_{- } = 0$ e $\lambda_{+ } = 2$.
+		\end{exemplo}
+		
+		As funções de Morse não são um caso raro nessa descrição, muito pelo contrário. O seguinte teorema garante que tais funções são abundantes no conjunto das funções suaves e tal resultado pode ser encontrado em $\cite{amyia_diff_topology}$.
+		
+		\begin{teorema}
+			Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
+		\end{teorema} 
+		
+		As seguintes definições nos permitirão a definir o tipo de homotopia de variedade $M$ em termos dos pontos críticos de uma dada função de Morse $f$. A estratégia é fatiar a variedade em níveis e construirmos os $CW$-complexos homotópicos associado a cada um deles.
+		
+		Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto de nível $a$ em $M$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+		
+		\begin{teorema}
+			Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomordo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+		\end{teorema}
+		
+		O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, os conjuntos de nível ao passar por um ponto crítico, isto é, $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro. Em termos,  $M^{a}$ e $M^{t}$ não são homotópicos. É apartir dele que iniciaremos a decomposição da variedade $M$ em níveis homotópicos para realizarmos a construção do $CW$-complexo.
+		
+		\begin{teorema}
+			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda}$.
+		\end{teorema}
+		
+		\begin{observacao}
+			O teorema antior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([c-\epsilon,c+\epsilon])$. No caso em que tenhamos $f^{-1}([c-\epsilon,c+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$ teremos $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$. Essa notação pode ser encontrada na Seção $\ref{secao_cw_complexo}$.
+		\end{observacao}
+		
+	\chapter{Introdução à Espaços Vetoriais Simpléticos}
 	
 	\section{Origem na Física}
 	
@@ -3432,7 +3414,9 @@
 		$$
 	\end{teorema}
 	\begin{prova}
-		Como $\diferencialmapafloerabrev$ é bijetor e limitado, então pelo Teorema $\ref{teorema_aplicacao_aberta}$ temos que $\diferencialmapafloerabrev^{-1}$ é continuo. Pela Observação $\ref{observacao_teorema_aplicacao_aberta}$ existe uma constante $c>0$ tal que $B_{W^{1,p}}(0,c)\subset\diferencialmapafloerabrev^{-1}(B_{L^{p}}(0,1))$, isto é, $\normaWp{\xi} \leq k \normaLp{\diferencialmapafloerabrev\xi}$ para algum $k>0$.
+		\vermelho{	Como $\diferencialmapafloerabrev$ é bijetor e limitado, então pelo Teorema $\ref{teorema_aplicacao_aberta}$ temos que $\diferencialmapafloerabrev^{-1}$ é continuo. Pela Observação $\ref{observacao_teorema_aplicacao_aberta}$ existe uma constante $c>0$ tal que $B_{W^{1,p}}(0,c)\subset\diferencialmapafloerabrev^{-1}(B_{L^{p}}(0,1))$, isto é, $\normaWp{\xi} \leq k \normaLp{\diferencialmapafloerabrev\xi}$ para algum $k>0$.(Acho que não é necessario esse argumento.)}
+		
+		
 	\end{prova}
 	
 	\chapter{Homologia de Floer}
@@ -3479,11 +3463,23 @@
 		\emph{An Invitation to Operator Theory},
 		American Mathematical Society, 2002.
 		
+		\bibitem{amyia_diff_topology}
+		Amyia, Mukherjee:
+		\emph{Topics in Differential Topology},
+		Texts and Reading in Mathematics 34,
+		2005.
+		
 		\bibitem{audi_floer_homology}
 		Audi, Michèlle; Damian, Mihai:
 		\emph{Morse Theory and Floer Homology},
 		Springer, first edition,
 		2010.
+		
+		\bibitem{banyaga_morse_homology}
+		Banyaga, Augustin; Hurtubise, David
+		\emph{Lectures on Morse Homology},
+		Springer Science + Business Media, first edition,
+		2004.
 		
 		\bibitem{breazis_sobolev_spaces}
 		Brezis, Haim:
