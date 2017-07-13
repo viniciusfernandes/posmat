@@ -70,6 +70,7 @@
 \newcommand{\celula}[2]{D^{#1}_{#2}}
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
 \newcommand{\circulo}{S^{1}}
+\newcommand{\circulovariedade}{\circulo\times M}
 \newcommand{\classe}[1]{[#1]}
 \newcommand{\cohomologia}[2]{H^{#1}(#2)}
 \newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
@@ -188,6 +189,7 @@
 \newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
 \newcommand{\pullbackfibradotangenteMpadrao}{\pullbackfibradotangente{u}{M}}
 \newcommand{\retacartesianocirculo}{\real{} \times \circulo}
+\newcommand{\retacartesianovariedade}{\real{} \times M}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\reta}{\real{}}
@@ -205,6 +207,23 @@
 	\maketitle
 	
 	\tableofcontents
+
+	\chapter{Introdução}
+	Como muitas das construções desenvolvidas na matemática, o tema desse texto, Homologia de Floer, teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalente a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podemo ser desenvolvidos em uma 2n-variedade diferenciável $M$, chamado de espaço de fase, e munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ cujas soluções satisfazem a equação geometrica $\omega(\campohamiltonianoabrev(t), v) = dH_{t}(v)$, onde o campo vetorial $\campohamiltonianoabrev(t) \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. As equações de movimento são as soluções do fluxo
+	$$
+	\derivada{\psi(t)}{t} = \campohamiltoniano{\psi(t)}.
+	$$ 
+	Foi estudando sistemas dinâmicos Hamiltonianos que V. I. Arnold formulou a primeira versão da conjectura que, atualmente, leva seu nome. Seja $(M, \omega )$ uma 2n-variedade simplética. Um difeomorfismo $\phi:M \to M$ tal que $\phi^{*}\omega = \omega$ é chamado de simpléctomorfismo. Pode-se mostrar que $\psi(t):M\to M$ é um simplétomorfismo e o conjunto $G=\{\psi(t): t \in \reta\}$ forma um grupo de difeomorfismos com a operação de composição, chamado grupo de aplicações Hamiltonianas (ou grupo a 1-parâmetro de difeomorfismos). De acordo com a Teoria de Lefschetz toda aplicação Hamiltoniana possui ao menos um ponto fixo, caso a característica de Euler de $M$ seja não-nula, isto é, $\chi(M)\neq 0$. A ideia de Arnold era generalizar esse resultado, o que levou a seguinte versão da conjectura:
+	
+	\textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de ponstos críticos de uma função Hamiltoniana em $M$.}
+	
+	Posteriormente, trabalhando em particularizações do problema, tais como $T^{2}$ e $S^{2}$, Arnold observou que, se a função Hamiltoniana $H$ depende periodicamente no tempo, isto é, $H:\circulovariedade\to \reta$ com período 1, então as soluções 1-periódicas do campo Hamiltoniano estão em bijeção com os pontos fixos da aplicação Hamiltoniana $\phi$ o qual é dado por $\phi(1)$. Com isso, em vez de determinar diretamente os pontos fixos da aplicação Hamiltoniana $\phi$, basta determinar as soluções 1-periódicas do sistema Hamiltoniano. O que resultou na seguinte reformulação da conjectura
+	
+	\textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
+	$$
+	\#\text{soluções }\geq \sum_{i=0}^{2n}\beta_{i}(M).
+	$$}
+	
 	
 	\chapter{CW-Homologia}
 	\section{Homologia Formal}
@@ -788,9 +807,11 @@
 	\chapter{Teoria de Morse}
 		Na investigação da topologia de variedades o principal objetivo e a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas aboragens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo que é homotopicamente equivalente a variedade, sendo que essa homotopia induzirá um isomorfismo entre a $CW$-homologia do $CW$-complexo e a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_homologia}$. O que torna a Toeria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
 		
-		O porpósito desse capítulo é de apresentação rápida do formalismos e alguns dos principais resultados para que possamos extender a construção aqui feita para a hologogia de variedades de dimensão inifita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
+		O propósito desse capítulo é de apresentação rápida do formalismos e alguns dos principais resultados para que possamos extender a construção aqui feita para a hologogia de variedades de dimensão inifita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
 		
 		De agora em diante $M$ será uma n-variedade diferenciável fechada, ou seja, uma variedade compacta e sem bordo.
+		
+		\section{Teoria de Morse Clássica}
 		
 		\begin{definicao}
 			(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ uma e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
@@ -836,13 +857,102 @@
 		
 		O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, os conjuntos de nível ao passar por um ponto crítico, isto é, $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro. Em termos,  $M^{a}$ e $M^{t}$ não são homotópicos. É apartir dele que iniciaremos a decomposição da variedade $M$ em níveis homotópicos para realizarmos a construção do $CW$-complexo.
 		
-		\begin{teorema}
+		\begin{teorema}\label{teorema cw_complexo_ponto_critico_morse}
 			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda}$.
 		\end{teorema}
 		
 		\begin{observacao}
 			O teorema antior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([c-\epsilon,c+\epsilon])$. No caso em que tenhamos $f^{-1}([c-\epsilon,c+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$ teremos $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$. Essa notação pode ser encontrada na Seção $\ref{secao_cw_complexo}$.
 		\end{observacao}
+		
+		\begin{observacao}
+			Uma consequência imediata do teorema anterior é que, supondo $p \in \pontoscriticos{f}$ e fazendo $a = f(p)$, temos que $M^{a}$ é um $CW$-complexo. 
+		\end{observacao}
+		
+		Como $M$ é um compacto, então $f(M) = [a,b] \subset \reta$ é um compacto. Suponha que $\pontoscriticos{f} = \{p_{j}\}_{j=1}^{k}$, $\lambda_{j}$ seja o índice do j-ésimo ponto crítico e que exista uma partição $t_{1} = a < t_{2}< \dots< t_{k+1} = b$ tal que $f^{-1}((t_{k}, t_{k+1})) \cap \pontoscriticos{f} = \{p_{k}\}$. Ao variarmos $t \in [a,b]$ teremos a construção do $CW$-complexo
+		$$
+		\begin{aligned}
+			M^{t_{1}} &\simeq \{p_{1}\}
+			\\
+			M^{t_{2}} & \simeq \{p_{1}\} \cup_{f_{\partial_{1}}} D^{\lambda_{1}}
+			\\
+			\vdots&
+			\\
+			M = M^{t_{k+1}} &\simeq\{p_{1}\} \cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{k}}} D^{\lambda_{k}}.
+		\end{aligned}
+		$$
+		
+		Essa partição existe e sua construção pode ser feita perturbando  a função de Morse $f$ de modo a obter uma outra $f' \in \funcoesmorse{M}$ com os mesmos pontos críticos. Essa construção é viabilizada pela densidade das funções de Morse em $\funcoessuaves{M}$. Contudo, não entraremos nos detalhes pois o propósito da discussão anterior foi apenas ilustrar a ideia por trás do Teorema $\ref{teorema cw_complexo_ponto_critico_morse}$ e seu emprego dentro da teoria.
+		
+		\begin{exemplo}
+			(2-toro) Seja $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização do toro $T^{2}$ dada por
+			$$
+			\varphi(\theta, \phi) = ((1+2cos\phi)cos\theta, (1+2cos\phi)sin\theta, 2sin\phi).
+			$$
+			Esse é um toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$. Com isso, temos que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
+			$$
+			\begin{aligned}
+				\derivadaparcialabrev{\theta} &= -(1+2cos\phi)sin\theta \derivadaparcialabrev{x}+(1+2cos\phi)cos\theta \derivadaparcialabrev{y} 
+				\\
+				\derivadaparcialabrev{\phi} &=  - 2sin\phi cos\theta 	\derivadaparcialabrev{x} - 2sin\phi sin\theta 	\derivadaparcialabrev{y} +2cos\phi				\derivadaparcialabrev{z}.
+			\end{aligned} 
+			$$
+			
+			
+			Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Temos que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ temos $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, caso $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$, mas basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e $\pontoscriticos{f} = \{(\pm 3,0,0), (\pm 1,0,0)\}$, de modo que $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
+		
+			Temos a representação matricial da Hessiana $H_{p}(f)$
+			$$
+			H(\theta, \phi) = 
+			\left(
+			\begin{array}{cc}
+			-(1+2cos\phi)cos\theta & 2sin\phi sin\theta  
+			\\
+			2sin\phi sin\theta   & -2cos\phi cos\theta  
+			\end{array}
+			\right).
+			$$
+			Avaliando a hessiana nos pontos críticos temos
+			$$
+				H(0, 0) = 
+				\left(
+				\begin{array}{cc}
+				-3 & 0
+				\\
+				0& -2
+				\end{array}
+				\right),
+				H(0, \pi) = 
+				\left(
+				\begin{array}{cc}
+				1 & 0
+				\\
+				0& 2
+				\end{array}
+				\right)
+			$$
+			$$
+			H(\pi, 0) = 
+			\left(
+			\begin{array}{cc}
+			3 & 0
+			\\
+			0& 2
+			\end{array}
+			\right),
+			H(\pi, \pi) = 
+			\left(
+			\begin{array}{cc}
+			-1 & 0
+			\\
+			0& -2
+			\end{array}
+			\right)
+			$$
+			\vermelho{Não entendo a diferença entre os índices dos pontos críticos....!!!!!!!!!!}
+		\end{exemplo}
+		
+		
 		
 	\chapter{Introdução à Espaços Vetoriais Simpléticos}
 	
@@ -2692,15 +2802,6 @@
 	\section{Equação de Floer}
 	\textbf{Motivação da conjectura de Arnold:} Os pontos fixos da aplicação $\psi_{1}$ estão relacionado injetivamente com as soluções 1-periódicas do sistema hamiltoniana. Assim, a conjectura de Arnold afirma que, para os casos de não-degenerecência, o número de soluções 1-periódicas do sistema hamiltoniano deve ser limitado inferiormente pela soma dos números de Betti da variedade $M$. Tal conjectura, do mesmo modo que o Teorema de Poincaré-Hopf, esta relacionada com Teoria de Morse da seguinte forma: a hipótese de não-degenerecência das soluções do sistema hamiltoniano implicam que a função de hamilton $H: M \times \real{} \to \real{}$ seja uma função de Morse. Algumas particularizações da conjectura foram demonstradas primeiramente para superfícies Riemannianas e, posteriormente, para 2n-toro por Conley e Zehnder, sendo que, em sua forma um pouco mais geral, foi utilizada a hipótese $\pi_{2}(M)=0$, o que é equivalente a hipótese da aesfericidade.
 	\vermelho{(Melhorar um pouco o texto no parágrafo inicial e a condição de aesfericidade.)}
-	
-	Que em uma outra reformlução pode ser escrita como:
-	
-	\begin{teorema}
-		Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
-		$$
-		\#\solucoesperiodicascontrateis \geq \sum_{i=0}^{2n}dim(H_{i}(M, \mathbb{Q})).
-		$$
-	\end{teorema}
 	
 	\begin{definicao}\label{definicao_solucoes_periodicas_contratei}
 		(Espaço das soluções contráteis e periódicas) Denotamos $\solucoesperiodicascontrateis \subset \caminhosfechados{M}$ como sendo o conjunto das soluções contráteis das equações de Hamilton. Ao adotarmos a topologia $C^{2}$ para o espaço $\solucoesperiodicascontrateis$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}\solucoesperiodicascontrateis$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
