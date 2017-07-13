@@ -213,7 +213,7 @@
 	$$
 	\derivada{\psi(t)}{t} = \campohamiltoniano{\psi(t)}.
 	$$ 
-	Foi estudando sistemas dinâmicos Hamiltonianos que V. I. Arnold formulou a primeira versão da conjectura que, atualmente, leva seu nome. Seja $(M, \omega )$ uma 2n-variedade simplética. Um difeomorfismo $\phi:M \to M$ tal que $\phi^{*}\omega = \omega$ é chamado de simpléctomorfismo. Pode-se mostrar que $\psi(t):M\to M$ é um simplétomorfismo e o conjunto $G=\{\psi(t): t \in \reta\}$ forma um grupo de difeomorfismos com a operação de composição, chamado grupo de aplicações Hamiltonianas (ou grupo a 1-parâmetro de difeomorfismos). De acordo com a Teoria de Lefschetz toda aplicação Hamiltoniana possui ao menos um ponto fixo, caso a característica de Euler de $M$ seja não-nula, isto é, $\chi(M)\neq 0$. A ideia de Arnold era generalizar esse resultado, o que levou a seguinte versão da conjectura:
+	Foi estudando sistemas dinâmicos Hamiltonianos que V. I. Arnold formulou a primeira versão da conjectura que, atualmente, leva seu nome. Sejam $(M, \omega )$ uma 2n-variedade simplética e $\phi:M \to M$ um difeomorfismo tal que $\phi^{*}\omega = \omega$. Então $\phi$ é chamado de simpléctomorfismo. Pode-se mostrar que $\psi(t):M\to M$ é um simplétomorfismo e o conjunto $G=\{\psi(t): t \in \reta\}$ forma um grupo de difeomorfismos com a operação de composição, chamado grupo de aplicações Hamiltonianas (ou grupo a 1-parâmetro de difeomorfismos). De acordo com a Teoria de Lefschetz toda aplicação Hamiltoniana possui ao menos um ponto fixo, caso a característica de Euler de $M$ seja não-nula, isto é, $\chi(M)\neq 0$. A ideia de Arnold era generalizar esse resultado, o que levou a seguinte versão da conjectura:
 	
 	\textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de ponstos críticos de uma função Hamiltoniana em $M$.}
 	
@@ -221,9 +221,21 @@
 	
 	\textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
 	$$
-	\#\text{soluções }\geq \sum_{i=0}^{2n}\beta_{i}(M).
-	$$}
+	\#\text{soluções }\geq \sum_{i=0}^{2n}\beta_{i}(M),
+	$$
+	onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
 	
+	Motivado pela demonstração dessa conjectura, nasce um dos principais formalismos no estudo da topologia simplética: a Homologia de Floer.
+	
+	O fato de estar presente a soma dos números de Betti na conjectura nos conduz a ideia de construirmos uma homologia que tenha como ingredientes as soluções do sistema Hamiltoniano. Mas uma abordagem similiar já era conhecida: a Homologia de Morse-Witten. Também tem origem em problemas de sistemas dinâmicos da Física, mais espeficicamente, em estudos dos aspectos topologicos de sistemas quânticos por Edward Witten $\cite{witten_supersymmetry_morse}$.
+	
+	A construção de Witten traz um entendimento geométrico do operador bordo do complexo de cadeias. Munindo a variedade $M$ com uma métrica Riemanniana, determina-se os pontos críticos de função de Morse $f: M \to \reta$ e mostra-se que, para cada par de ponstos críticos, existem um número finito de linhas do fluxo gradiente conectando-os. Escolhendo uma orientação para as linhas de fluxo teremos linhas que convergem para o ponto crítico e linhas que divergem do ponto crítico. Witten definiou o operador bordo do complexo avaliado no ponto crítico como sendo a diferença entre o total de linhas que emanam e o total de linhas de convergem para o ponto crítico de $f$. Assim, fornece uma metodologia simples e elegante de cálculo da homologia da variedade. Essa técnica nos permite o estudo dos aspectos topológicos das variedades via sistemas dinâmicos, sendo que a dinâmica é materializada no gradiente da função de Morse $f$.
+	
+	É tentador nos enveredarmos na demonstração da conjectura de Arnold via construção de Witten. Contudo, dificuldades técnicas fizeram com que uma abordagem ligeiramente diferente fosse realizada por Floer. Em vez de estudar o gradiente de uma função Hamiltoniana definida na variedade $M$ a estratégia foi de se analizar o comportamento de um funcional, chamado funcional Hamiltoniano, definido no espaço de curvas 1-periódicas e contráteis em $M$. Aplicando o princípio variacional clássico, determina-se que as soluções 1-periódicas e contráteis do sistema Hamiltoniano são os pontos críticos do funcional Hamiltoniano. Consequentemente, essa técnia é conhecido como abdordagem variacional. Uma das grandes dificuldades nesse cenário é que o conjunto de curvas 1-periódicas e contráteis forma uma variedade de dimensão infinita, com isso, estabelecer uma análogo ao índice de Morse para os pontos críticos do funcional é uma tarefa árdua. Muito árdua. Mas foi realizada com a construção de operadores de Fredholm e índices de Maslov, a generalização dos índices de Morse para dimensão infinita.
+	
+	O princípio variacional aplicado no funcional Hamiltoniano resulta na determinação das solução de um sistema de equações diferenciais parciais de primeira lineares e de primeira ordem. A esse sistema de equações diferenciais é associado um operador diferencial, chamado operador de Floer, cujas soluções são as curvas integrais que conectam os pontos críticos do funcional Hamiltoniano, situação análoga a determinação das lihas de fluxo do negativo do gradiente.
+	
+	O operador de Floer pode ser visto como sendo um operador linear e limitado definido no espaço de todas as curvas que um dado par de pontos críticos do funcional Hamiltoniano. Mostra-se que esse espaço é uma variedade de dimensão inifinta (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado de índice de Fredholm, e que no caso em estudo, tal índice coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constate. Tem-se aqui a generalização da Homologia de Morse-Witten.
 	
 	\chapter{CW-Homologia}
 	\section{Homologia Formal}
@@ -3665,6 +3677,12 @@
 		\emph{Lectures on Floer Homology},
 		University of Warnick,
 		1997.
+		
+		\bibitem{witten_supersymmetry_morse}
+		Witten, Edward:
+		\emph{Supersymmetry and Morse Theory},
+		J. Differential Geometry 17,
+		1982.
 	\end{thebibliography}
 	
 \end{document}
