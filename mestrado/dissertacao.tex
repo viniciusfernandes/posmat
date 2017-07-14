@@ -175,6 +175,7 @@
 \newcommand{\operadorfloer}{\mathfrak{F}}
 \newcommand{\operadoresfredholm}[2]{\mathcal{F}r(#1, #2)}
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
+\newcommand{\orbitaponto}[1]{\phi^{#1}(\reta)}
 \newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
 \newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
 \newcommand{\parteImaginaria}[1]{\mathcal{I}m(#1)}
@@ -817,7 +818,7 @@
 		\end{exemplo}
 		
 	\chapter{Teoria de Morse}
-		Na investigação da topologia de variedades o principal objetivo e a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas aboragens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo que é homotopicamente equivalente a variedade, sendo que essa homotopia induzirá um isomorfismo entre a $CW$-homologia do $CW$-complexo e a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_homologia}$. O que torna a Toeria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
+		Na investigação da topologia de variedades o principal objetivo e a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas aboragens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo que é homotopicamente equivalente a variedade, sendo que essa homotopia induzirá um isomorfismo entre a $CW$-homologia do $CW$-complexo e a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_homologia}$. O que torna a Teoria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
 		
 		O propósito desse capítulo é de apresentação rápida do formalismos e alguns dos principais resultados para que possamos extender a construção aqui feita para a hologogia de variedades de dimensão inifita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
 		
@@ -964,6 +965,53 @@
 			\vermelho{Não entendo a diferença entre os índices dos pontos críticos....!!!!!!!!!!}
 		\end{exemplo}
 		
+		A relação entre a topologia de $M$ e os pontos críticos da função de Morse $f:M \to \reta$, originalmente foi data em termos de desigualdades, chamadas desigualdades de Morse.
+		
+		\begin{definicao}
+			(Números de Betti) O j-ésimo número de Betti é o inteiro $\beta_{j}(M) = dim(H_{j}(M))$, onde $H_{j}(M)$ é o j-ésimo grupo de homologia singular de $M$.
+		\end{definicao}
+		
+		Como os grupos de homologia de $M$ são invariantes topológicos, então os números de Betti de $M$ também o serão.
+		
+		Seja $f \in \funcoesmorse{M}$. O número de pontos crítico de índice $k$ é definido por $\nu_{k} = \#\{p\in \pontoscriticos{f}: \lambda_{p} = k \}$. Aqui faremos a conexão entre a topologia de variedade $M$ e os pontos críticos de $f$. Note que $\beta_{k}(M)$ contém as informações sobre a topologia da variedade, por outro lado, $\nu_{k}$ contém as informações sobre os pontos críticos de $f$. A desigualdade de Morse afirma que:
+		
+		\begin{teorema}
+			(Desigualdade de Morse) Se $f \in \funcoesmorse{M}$, então valem as seguintes desigualdades:
+			\begin{enumerate}
+				\item $\beta_{k}(M) \leq \nu_{k}$ para $0\leq k\leq n$
+				
+				\item $\sum_{j = 0}^{k}(-1)^{k-j}\beta_{j}(M) \leq \sum_{j = 0}^{k}(-1)^{k-j}\nu_{j} $ para $0 \leq k \leq n$ e vale a igualdade para o caso em que $k=n$.
+			\end{enumerate}
+		\end{teorema}
+		
+		\begin{observacao}
+			No caso da igualdade do segundo item do teorema temos a característica de Euler-Poincaré $\chi(M) = \sum_{j = 0}^{n}(-1)^{n-j}\beta_{j}(M)$, que tamém é um invariante topológico e é a generalização do teorema de Euler para poliédros convexos $V-A+F = 2$, onde $V$ é o número de faces, $A$ é o número de arestas e $F$ é o número de faces.
+		\end{observacao}
+		
+		\section{Fluxos Gradiente e Variedades de Conexão}
+		Seja $X \in \campossuaves{M}$ um campo vetorial suave. Sabe-se que existe uma curva $\gamma: \reta\to M$ que é solução do sistema de equações diferenciais 
+		$$
+		\derivada{\gamma(t)}{t} = X(\gamma(t)), \; \gamma(0) = p.
+		$$
+		Como $M$ é compacta, então a solução $\gamma = \gamma_{p}$ existe para todo $t\in \reta$. Assim, a aplicação $\phi: \retacartesianovariedade\to M$ definida por $\phi(t,p) - \gamma_{p}(t)$ é chamada de fluxo gerado por $X$ e, fixado $p\in M$, a curva $\gamma_{p}:\reta\to M$ é chamada de linha do fluxo de $X$. Como o fluxo $\phi$ esta bem-definido para todo $t \in \reta$, então podemos efetuar a composição $\phi_{s}\circ\phi_{t}(p) = \phi(s+t, p)$ para todo $p\in M$, logo $\phi_{s}\circ\phi_{t} = \phi_{s+t}$ e $\phi_{0} = Id$. O conjunto $G_{\phi} = \{\phi_{t}:t\in \reta\}$ é um grupo com a operação de composição e é chamado de grupo de difeomorfismos a 1-parametro, o que pode ser encontrado em $\cite{palis_dynamical_systems}$.
+		
+		\begin{definicao}
+			(Órbitas) A órbita de $p \in M$ pelo fluxo $\phi$ é a imagem da curva $\phi^{p} = \phi(.,p):\reta\to M$ e será denotada por $\orbitaponto{p}$. As órbitas podemo ser de três categorias
+			\begin{enumerate}
+				\item (Singular): se $\orbitaponto{p}$ = \{p\},
+				
+				\item (Fechada) se existe $\tau \in \reta$ tal que $\phi_{\tau+t}(p) = p$ para todo $t \in \reta$,
+				
+				\item (Regular) quando não é singular e não é fechada.
+			\end{enumerate}
+			
+		\end{definicao}
+
+		Pela compacidade de $M$ e pela unidade da solução do problema de valor inicial anteriormente descrito, temos que $\orbitaponto{p}\subset M$ é uma imersão injetiva no caso em que seja uma órbita regular. Vista como um subconjunto de $\real{m}$, para um inteiro $m>0$ suficientemente grande (Teorema de Megulho de Whitney $\cite{guillemin_differential_topology}$), $M$ é um conjunto limitado, logo $\orbitaponto{p}$ também é limitado. Assim, tal órbita pode admitir pontos limites. Os conjunto $\alpha$-limite e $\omega$-limite de $p \in M$ são definidos por $\alpha(p) = \{q \in M: \phi_{t}(p) \to q, t \to -\infty\}$ e $\omega(p) = \{q \in M: \phi_{t}(p) \to q, t \to \infty\}$. O seguinte resultado sobre a topologia dos conjuntos limites é feito em $\cite{palis_dynamical_systems}$.
+		
+		\begin{proposicao}
+			Sejam $M$ uma variedade é compacta e $X\in \campossuaves{M}$. Então para $p \in M$ tem-se que $\alpha(p)$ e $\omega(p)$ são fechados, conexos e invariantes pelo fluxo de $X$, isto é, são a união das órbitas de $X$.
+		\end{proposicao}
 		
 		
 	\chapter{Introdução à Espaços Vetoriais Simpléticos}
@@ -3665,6 +3713,12 @@
 		\emph{Mecânica - Curso de Física Básica Vol 1},
 		Edgard Blucher, 4 edição,
 		2002.
+		
+		\bibitem{palis_dynamical_systems}
+		Palis, Jaboc; Melo, Welington:
+		\emph{Geometric Theory od Dynamical Systems},
+		Springer-Verlag,
+		1982.
 		
 		\bibitem{pontryagin_ode}
 		Pontryagin, L.S.:
