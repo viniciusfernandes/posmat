@@ -185,7 +185,7 @@
 \newcommand{\operadorfloer}{\mathfrak{F}}
 \newcommand{\operadoresfredholm}[2]{\mathcal{F}r(#1, #2)}
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
-\newcommand{\orbitaponto}[1]{\phi^{#1}(\reta)}
+\newcommand{\orbitaponto}[1]{\mathcal{O}(#1)}
 \newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
 \newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
 \newcommand{\parteImaginaria}[1]{\mathcal{I}m(#1)}
@@ -1066,7 +1066,7 @@
 	
 	Definimos por espaço tangente instável o subespaço $\espacotangentevariedadeinstavel\subset \espacotangentevariedade$ tal que, a restrição da Hessiana $\hessiana$ a $\espacotangentevariedadeestavel$ é negativa-definida. Analogamente temos $\espacotangentevariedadeestavel \subset \espacotangentevariedade$, onde a Hessiana é positiva-definida. Com isso, segue o teorema da variedade estável, cuja demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
 	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_variedade_instavel_estavel}
 		(Teorema da variedade instável/estável) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
 	\end{teorema}
 	
@@ -1119,6 +1119,61 @@
 	\begin{proposicao}
 		Sejam $f \in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$ de índice relativo 1, isto é, $\lambda_{p} - \lambda_{q} = 1$. Então $\overline{\variedadeconectantepontos{p}{q}} = \variedadeconectantepontos{p}{q} \cup \{p,q\}$. Além disso, o número de órbitas conectando $p$ a $q$ é finito.
 	\end{proposicao}
+
+	\section{Complexo de Morse-Smale-Witten}
+	
+	Sejam $V$ um n-espaço vetorial, $B=\{e_{j}\}_{j=1}^{n}$ e $B'=\{e'_{j}\}_{j=1}^{n}$ duas bases ordenadas de $V$. Dizemos que $B$ e $B'$ possuem a mesma orientação se o determinante da matriz de mudança de base, $A: B \to B'$, definida por $e_{j} = \sum_{i=1}^{n}A_{ji}e'_{i}$, possui determinante positivo. 
+	
+	Uma orientação em um n-espaço vetorial $V$ é uma classe de equivalência entre bases ordenadas de $V$. Um espaço vetorial munido de um orientação é um espaço vetorial orientado. tal orientação pode ser positiva ou negativa, de acordo com o determinande da matriz de mudança de base for positiva ou negativa.
+	
+	Sejam $M$ uma n-variedade diferenciável. A n-upla ordenada $B=\{e_{j}\}_{j=1}^{n}$ é um referencial local se $B(p)=\{e_{j}(p)\}_{j=1}^{n}$ é uma base para $\espacotangenteponto{p}{M}$ ordenada para todo $p \in M$. Dizemos que $B$ é um referencial positivamente orientado se $B(p)$ é positivamente orientado para todo $p \in M$. Seja $A: B \to B'$ uma aplicação onde $A(p)$ é a matriz de mudança de base $B(p) $ para $B'(p)$. Se $det(A):M \to \reta$ for uma aplicação contínua tal que $det(A)(p) = det(A(p))>0$ para todo $p \in M$, então dizemos que $B$ possui orientação continuamente positiva. Analogamente, se tivermos $det(A)(p)<0$ diremos que $B$ possui uma orientação continuamente negativa.
+	
+	\begin{definicao}
+		(Varidade orientável) Seja $M$ uma n-variedade diferenciável com uma referencial $B$ continuamente orientado. Então a classe de equivalência desses referenciais $o(M)$ é chamada de orientação de $M$ e dizemos que a variedade é orientável se existe uma orientção $o(M)$.
+	\end{definicao}
+	
+	A questão de orientação de variedades e subvariedades é crucial no processo de construção do complexo de Morse-Smale-Witten.
+	
+	\begin{teorema}\label{teorema_orientacao_variedade_instavel}
+		Sejam $f \in \funcoesmorsesmale{M}$. Fixando as orientação $o(\variedadeinstavel{p})$ para todo $p \in \pontoscriticos{f}$ tal que $\lambda_{p}>0$, então para todos $p,q \in \pontoscriticos{f}$ temos que $\variedadeconectantepontos{p}{q}$ e $\espacomoduli{p}{q}$ são variedades com orientações $o(\variedadeconectantepontos{p}{q})$ e $o(\espacomoduli{p}{q})$ induzidas pela orientação de $\variedadeinstavel{p}$.
+	\end{teorema}
+	
+	\begin{observacao}
+		Note que no lema anterior não foi necessária a orientabilidade de $M$, mas apenas das variedades instáveis dos pontos críticos. O procedimento para a construção da orientação induzida da variedade conectante é:
+		\begin{enumerate}
+			\item Para cada $p\in \pontoscriticos{f}$ com $\lambda_{p}>0$ fixa-se uma orientação $o(\variedadeinstavel{p})$
+			
+			\item Considere um subespaço tangente $\espacotangenteponto{p}{\variedadeestavel{p}}$ com a orientação compatível com $\espacotangenteponto{p}{\variedadeinstavel{p}}$
+			
+			\item Como $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap\variedadeestavel{q}$ e temos a transversalidade $\variedadeinstavel{p}\pitchfork\variedadeestavel{q}$, então a orientação $o(\variedadeconectantepontos{p}{q})$ é determinada pelo isomorfismo $\espacotangenteponto{x}{\variedadeinstavel{p}}\cong \espacotangenteponto{x}{\variedadeconectantepontos{p}{q}}\oplus \espacotangenteponto{x}{\variedadeestavel{q}}$, onde $x \in \variedadeconectantepontos{p}{q}$.
+		\end{enumerate}
+	\end{observacao}
+
+	Sejam $M$ uma n-variedade orientável, $f \in \funcoesmorsesmale{M}$, $p,q\in \pontoscriticos{f}$ tais que $\lambda_{p}-\lambda_{q} = 1$ e $\gamma:\retacartesianovariedade\to M$ uma linha do fluxo gradiente onde 
+	$$
+	\derivada{}{t}\gamma(t) = -\gradiente(\gamma(t)), \; \lim_{t \to -\infty}\gamma(t) = p\;\;\text{e}\; \lim_{t \to \infty}\gamma(t) = q.
+	$$
+	Tomando um ponto $x \in \gamma(\reta) \subset \variedadeconectantepontos{p}{q}$, juntamente com o campo $-\gradiente$ podemos definir um referencial $B^{u}$ em $M$ tal que $\{-\gradiente(x), B^{u}(x)\}$ seja uma base de $\espacotangenteponto{x}{\variedadeinstavel{p}}$. Pelo Teorema $\ref{teorema_variedade_instavel_estavel}$ temos que $\espacotangenteponto{x}{M}=\espacotangenteponto{x}{\variedadeinstavel{p}}\oplus\espacotangenteponto{x}{\variedadeestavel{p}}$. Com isso, podemos afirmar que existe um referencial $B^{s}$ definido em $\variedadeestavel{p}$ e um referencial $B_{\gamma}$ em $\gamma(\reta)$ tal que $B_{\gamma}(x) = \{-\gradiente(x), B^{u}(x), B^{s}(x)\}$ é uma base de $\espacotangenteponto{x}{M}$.
+	
+	\begin{definicao}
+		(Número de intersecção) Com as hipóteses descritas anteriormente, o sinal característico da órbita $\orbitaponto{x}$ é o índice $n_{x}(B_{\gamma})$ que assume os valores $\pm 1$, caso o referencial $B_{\gamma}$ tenha orientação positiva ou negativa, respectivamente. O número de intersecção é definido por 
+		$$
+		n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}.
+		$$
+	\end{definicao}
+	
+	\begin{definicao}
+		(Número de intersecção) O número de intesecção 
+	\end{definicao}
+	
+	\begin{definicao}
+		(Complexo de Morse-Smale-Witten) Seja $f \in \funcoesmorsesmale{M}$. Para cada $p \in \pontoscriticos{f}$ assuma uma orientação $o(\variedadeinstavel{p})$. Sejam $C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ e $C_{*}(f) =\bigoplus^{m}_{k=1}C_{k}(f)$. O homomorfismo $\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido por 
+		$$
+		\partial_{k}(p)=\sum_{q \in \pontoscriticos{f}}n(p,q)q
+		$$
+		pe chamado de operador de bordo de Morse-Smale-Witten e o par $(C_{*}(f)), \partial_{*}$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
+		
+	\end{definicao}
 	
 	\chapter{Introdução à Espaços Vetoriais Simpléticos}
 	
