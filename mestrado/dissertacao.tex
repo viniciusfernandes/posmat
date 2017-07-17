@@ -64,6 +64,7 @@
 \newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
 \newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
+\newcommand{\campogradiente}{\mathcal{X}}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
 \newcommand{\campohamiltonianoabrev}{X_{H}}
 \newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
@@ -96,11 +97,17 @@
 \newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
 \newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
 \newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacomoduli}[2]{\mathcal{M}_{#1#2}}
 \newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
 \newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
 \newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
 \newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
 \newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
+\newcommand{\espacotangente}[1]{\espacotangenteponto{p}{#1}}
+\newcommand{\espacotangentevariedadeestavel}{T^{s}_{p}M}
+\newcommand{\espacotangentevariedadeinstavel}{T^{u}_{p}M}
+\newcommand{\espacotangenteponto}[2]{T_{#1}#2}
+\newcommand{\espacotangentevariedade}{\espacotangenteponto{p}{M}}
 \newcommand{\espectrooperador}[1]{\sigma(#1)}
 \newcommand{\estruturacomplexa}{J_{0}}
 \newcommand{\estruturascomplexas}[2]{\mathcal{J}(#1, #2)}
@@ -123,11 +130,13 @@
 \newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
 \newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
 \newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
+\newcommand{\funcoesmorsesmale}[1]{\mathcal{M}^{S}_{o}(#1)}
 \newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
 \newcommand{\funcoesteste}{\mathcal{D}(\Omega)}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
+\newcommand{\gradiente}{\nabla f}
 \newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
 \newcommand{\grupofundamentalpontobase}[2]{\pi_{1}(#1; #2)}
 \newcommand{\gruposimpletico}[1]{Sp(#1)}
@@ -136,6 +145,7 @@
 \newcommand{\gruposimpleticoespecial}[1]{Sp^{1}(#1)}
 \newcommand{\gruposimpleticonaodegenerado}[1]{Sp^{#1}(2n)}
 \newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
+\newcommand{\hessiana}{H_{p}(f)}
 \newcommand{\homologia}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
 \newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
@@ -198,6 +208,10 @@
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\skeleton}[1]{X^{(#1)}}
+\newcommand{\variedadeconectante}{\variedadeconectantepontos{p}{q}}
+\newcommand{\variedadeconectantepontos}[2]{W_{#1#2}}
+\newcommand{\variedadeestavel}[1]{W^{s}(#1)}
+\newcommand{\variedadeinstavel}[1]{W^{u}(#1)}
 \newcommand{\vermelho}[1]{{\color{red}#1}}
 \begin{document}
 	
@@ -208,7 +222,7 @@
 	\maketitle
 	
 	\tableofcontents
-
+	
 	\chapter{Introdução}
 	Como muitas das construções desenvolvidas na matemática, o tema desse texto, Homologia de Floer, teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalente a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podemo ser desenvolvidos em uma 2n-variedade diferenciável $M$, chamado de espaço de fase, e munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ cujas soluções satisfazem a equação geometrica $\omega(\campohamiltonianoabrev(t), v) = dH_{t}(v)$, onde o campo vetorial $\campohamiltonianoabrev(t) \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. As equações de movimento são as soluções do fluxo
 	$$
@@ -221,10 +235,10 @@
 	Posteriormente, trabalhando em particularizações do problema, tais como $T^{2}$ e $S^{2}$, Arnold observou que, se a função Hamiltoniana $H$ depende periodicamente no tempo, isto é, $H:\circulovariedade\to \reta$ com período 1, então as soluções 1-periódicas do campo Hamiltoniano estão em bijeção com os pontos fixos da aplicação Hamiltoniana $\phi$ o qual é dado por $\phi(1)$. Com isso, em vez de determinar diretamente os pontos fixos da aplicação Hamiltoniana $\phi$, basta determinar as soluções 1-periódicas do sistema Hamiltoniano. O que resultou na seguinte reformulação da conjectura
 	
 	\textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{}$ uma função hamiltonia 1-periódica e suponda que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas, então o número de soluções desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
-	$$
-	\#\text{soluções }\geq \sum_{i=0}^{2n}\beta_{i}(M),
-	$$
-	onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
+		$$
+		\#\text{soluções }\geq \sum_{i=0}^{2n}\beta_{i}(M),
+		$$
+		onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
 	
 	Motivado pela demonstração dessa conjectura, nasce um dos principais formalismos no estudo da topologia simplética: a Homologia de Floer.
 	
@@ -273,7 +287,7 @@
 		(Sequência da triplas) Sejam $X, Y, Z$ espaços topológicos tais que $Z \subseteq Y \subseteq X$. Então a sequência da tripla $(X,Y,Z)$ é dada por:
 		$$
 		\xymatrix{
-				\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]^{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\delta_{*}} & \homologiarel{k-1}{Y}{Z} \ar[r] & 1\dots
+			\dots \ar[r] & \homologiarel{k}{Y}{Z} \ar[r]^{i_{*}} & \homologiarel{k}{X}{Z} \ar[r]^{j_{*}} & \homologiarel{k}{X}{Y} \ar[r]^{\delta_{*}} & \homologiarel{k-1}{Y}{Z} \ar[r] & 1\dots
 		}
 		$$
 		onde $i_{*},\;j_{*}$ são inclusões e $\delta_{*}$ o homomorfismo de conexão.
@@ -283,7 +297,7 @@
 	O conceito de espaço topológico é algo bem geral e em muitos casos podem nos levar a dificuldades técnicas na construção de solução de um determinado problema. Um CW-complexo é um tipo de espaço topológico, introduzindo por J. H. C. Whitehead, que teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sicessivas colagens (identificação) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
 	\begin{definicao}
 		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
- 	\end{definicao}
+	\end{definicao}
 	
 	\begin{definicao}
 		(CW-complexo) Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem $\skeleton{n}$ espaços tais com 
@@ -352,7 +366,7 @@
 		}
 		\]
 		Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong \Lambda$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} \Lambda$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.}
-
+	
 	\begin{definicao}
 		(Aplicação de Pares) Seja $X = \skeleton{n}$ um CW-complexo e tome $p \in \skeleton{n-1}$ como um ponto-base. Identificaremos um dado $q \in \skeleton{n}$ com o ponto-base se $q \in \skeleton{n-1}$, e diremos que $q \sim p$. Definimos $\skeleton{n}/\skeleton{n-1} = \{[q]: q \in \skeleton{n}, \; q \sim p\}$ e a aplicação quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ por:
 		$$
@@ -378,7 +392,7 @@
 		$$
 		onde $[D^{n}]$ é um gerador do grupo $\homologiarelcel{n}{n}{}$.
 	\end{definicao}
-
+	
 	\begin{lema}
 		(Inversa de $\Psi_{n}$) A aplicação inversa $\Phi_{n} : \homologiarelskelesimpl{n}{n} \to \mathcal{C}_{n}(X)$ do isomorfismo definido anteriormente é dada por
 		$$
@@ -408,7 +422,7 @@
 	\begin{definicao}
 		(Grau homológico) Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{n}{S^{n}} \to \homologia{n}{S^{n}}$ o homomorfismo induzindo. Seja $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador não-trivial desse grupo, então $f_{*}[S^{n}] = k[S^{n}]$ para algum $k \in \Lambda$. Denominamos por grau da aplicação $deg(f) = k$, com $k$ definido anteriormente.
 	\end{definicao}
-
+	
 	\begin{definicao}
 		(Aplicação CW-bordo) Tome a tripla $(\skeleton{n}, \skeleton{n-1}, \skeleton{n-2})$ e a composição abaixo
 		\[
@@ -431,46 +445,46 @@
 	\end{teorema}
 	
 	\prova{Por definição temos $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, logo é um homomorfismo pois é a composição de homomorfismos.
-	
-	 Consideremos o diagrama comutativo e na vertical temos a sequência exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
-	$$
-	\xymatrix{
-		& \homologia{n-2}{\skeleton{n-2}}\ar[rd]^{j_{*}}
+		
+		Consideremos o diagrama comutativo e na vertical temos a sequência exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
+		$$
+		\xymatrix{
+			& \homologia{n-2}{\skeleton{n-2}}\ar[rd]^{j_{*}}
+			\\
+			\homologiarelskele{n}{n}{n-1} \ar[r]^{\delta_{*} \qquad}\ar[rd]_{\delta_{n}} &
+			\homologiarelskele{n-1}{n-1}{n-2} \ar[u]^{\delta_{n-1}} \ar[r]^{ \delta_{*}}&
+			\homologiarelskele{n-2}{n-2}{n-3}
+			\\
+			& \homologia{n-1}{\skeleton{n-1}}\ar[u]^{j_{*}}
+		}
+		$$
+		Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical temos $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, temos o composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$.
+		
+		Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
+		$$
+		\begin{aligned}
+		\partial_{n}(\sigma) &= \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}(\sigma)
 		\\
-		\homologiarelskele{n}{n}{n-1} \ar[r]^{\delta_{*} \qquad}\ar[rd]_{\delta_{n}} &
-		\homologiarelskele{n-1}{n-1}{n-2} \ar[u]^{\delta_{n-1}} \ar[r]^{ \delta_{*}}&
-		\homologiarelskele{n-2}{n-2}{n-3}
+		&= \Phi_{n-1}\circ\delta_{*}\circ f_{\sigma*}([\celula{n}{\sigma}])
 		\\
-		& \homologia{n-1}{\skeleton{n-1}}\ar[u]^{j_{*}}
-	}
-	$$
-	Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical temos $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, temos o composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$.
-	
-	Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador, por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$, mas sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, portanto $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n} \Rightarrow f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
-	$$
-	\begin{aligned}
-	\partial_{n}(\sigma) &= \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}(\sigma)
-	\\
-	&= \Phi_{n-1}\circ\delta_{*}\circ f_{\sigma*}([\celula{n}{\sigma}])
-	\\
-	&= \Phi_{n-1}\circ f_{\partial\sigma*}\circ\delta_{*}([\celula{n}{\sigma}])
-	\\
-	&= \Phi_{n-1}\circ f_{\partial\sigma*}\circ (j_{*}\circ \delta_{n}) ([\celula{n}{\sigma}])
-	\\
-	&= \Phi_{n-1} \circ f_{\partial\sigma*}([\celulabordo{n}{\sigma}])
-	\\
-	&= \sum_{\beta} \phi_{n-1}(p_{\beta*}\circ f_{\partial\sigma*}[\celulabordo{n}{\sigma}])\beta
-	\\
-	&= \sum_{\beta} \phi_{n-1}((p_{\beta}\circ f_{\partial\sigma})_{*}[S^{n-1}])\beta
-	\\
-	&= \sum_{\beta} \phi_{n-1}(deg(p_{\beta}\circ f_{\partial\sigma})[S^{n-1}])\beta
-	\\
-	&= \sum_{\beta} deg(p_{\beta}\circ f_{\partial\sigma})\phi_{n-1}([S^{n-1}])\beta
-	\\
-	&= \sum_{\beta} deg(p_{\beta}\circ f_{\partial\sigma})\beta,
-	\end{aligned}
-	$$
-	como desejávamos.}
+		&= \Phi_{n-1}\circ f_{\partial\sigma*}\circ\delta_{*}([\celula{n}{\sigma}])
+		\\
+		&= \Phi_{n-1}\circ f_{\partial\sigma*}\circ (j_{*}\circ \delta_{n}) ([\celula{n}{\sigma}])
+		\\
+		&= \Phi_{n-1} \circ f_{\partial\sigma*}([\celulabordo{n}{\sigma}])
+		\\
+		&= \sum_{\beta} \phi_{n-1}(p_{\beta*}\circ f_{\partial\sigma*}[\celulabordo{n}{\sigma}])\beta
+		\\
+		&= \sum_{\beta} \phi_{n-1}((p_{\beta}\circ f_{\partial\sigma})_{*}[S^{n-1}])\beta
+		\\
+		&= \sum_{\beta} \phi_{n-1}(deg(p_{\beta}\circ f_{\partial\sigma})[S^{n-1}])\beta
+		\\
+		&= \sum_{\beta} deg(p_{\beta}\circ f_{\partial\sigma})\phi_{n-1}([S^{n-1}])\beta
+		\\
+		&= \sum_{\beta} deg(p_{\beta}\circ f_{\partial\sigma})\beta,
+		\end{aligned}
+		$$
+		como desejávamos.}
 	\begin{teorema}
 		(CW-homologia) Seja $X$ um CW-complexo, então existe uma identificação natural entre a homologia do complexo de cadeia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
 		$$
@@ -503,7 +517,7 @@
 		Vamos agora caracterizar $Ker(\delta_{2*})$. Dado $[\alpha] \in Ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
 		
 		Afirmo que $\phi: Ker(\delta_{2*}) \to \homologiarelskele{k}{k+1}{k-2}$ dado por $\phi(\classe{\alpha}) = \classe{\beta}$ é um epimorfismo. Seja $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, então existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$. Com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0$ pois $Im(j_{*}) = Ker(\delta_{3*})$, logo $\classe{\alpha'} \in Ker(\delta_{2*})$ e $\phi$ é epimorfismo.
-		 
+		
 		Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$. Pela comutatividade do diagrama temos $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e, pela exatidão, temos $Ker(i_{*})=Im(\delta_{1*})$, logo $\classe{\alpha} \in Im(\delta_{1*})$. Com isso podemos concluir que $Ker(\phi) = Im(\delta_{1*})$. Pelo teorema fundamental do isomorfismo de grupos temos que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-2}$.
 		
 		Sem perda de generalidade, vamos assumir que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$. Fixemos um $0 \leq j \leq n$ e tomemos o $j-$ésimo esqueleto $\skeleton{j}$ e definamos $\skeleton{-1}$. Com isso, podemos escrever a sequência de homomorfismos de inclusão de pares:
@@ -547,7 +561,7 @@
 		\homologia{*}{S^{n}} = \homologia{0}{S^{n}}\oplus\homologia{n}{S^{n}} \cong \Lambda\oplus\Lambda.
 		$$
 	\end{exemplo}
-
+	
 	\begin{exemplo}
 		(Homologia do 2-toro) Vamos exibir uma estrutura de CW-complexo para $T^{2}$, para isso tomemos a identificação do toro com o quadrado cujo os lados opostos serão identificados, assim os vertices do quadrado serão um ponto $p \in T^{2}$ e definindo o $0-$skeleton $\skeleton{0} = \{p\}$, agora vamos anexar às faces do quadrado duas $1-$células, isto é, $\skeleton{1} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$, e por fim, cobrir o centro do quandrado anexando um $2-$célula, com isso, $\skeleton{2} = \skeleton{1}\cup_{f_{3\partial}}\celula{2}{3}$, então
 		$$
@@ -555,13 +569,13 @@
 		$$
 		Teremos os grupos de homologia não-triviais:
 		$$
-			\begin{aligned}
-			\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
-			\\
-			\homologia{1}{T^{2}} &\cong \homologiarelskele{1}{1}{0} \cong \somadir{i=1,2}\homologiarelcel{1}{1}{i} \cong \somadir{i=1,2}\Lambda
-			\\
-			\homologia{2}{T^{2}} &\cong \homologiarelskele{2}{2}{1} \cong \Lambda.
-			\end{aligned}
+		\begin{aligned}
+		\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
+		\\
+		\homologia{1}{T^{2}} &\cong \homologiarelskele{1}{1}{0} \cong \somadir{i=1,2}\homologiarelcel{1}{1}{i} \cong \somadir{i=1,2}\Lambda
+		\\
+		\homologia{2}{T^{2}} &\cong \homologiarelskele{2}{2}{1} \cong \Lambda.
+		\end{aligned}
 		$$
 		Logo,
 		$$
@@ -583,7 +597,7 @@
 	
 	Sejam $X$ um espaço topológico e $\caminhossempontobase{X}$ o conjunto dos caminhos contínuos $\gamma:[0,1]\to X$. Tome $\gamma, \beta \in \caminhossempontobase{X}$ tais que $\gamma(1) = \beta(0)$. Definimos o produto $*:\caminhossempontobase{X}\times \caminhossempontobase{X} \to \caminhossempontobase{X}$ entre $\gamma$ e $\beta$ por
 	$$
-		\funcaocond{(\gamma*\beta)(t)}{\gamma(2t)}{0\leq t \leq 1/2}{\beta(2t-1)}{1/2 \leq t \leq 1}.
+	\funcaocond{(\gamma*\beta)(t)}{\gamma(2t)}{0\leq t \leq 1/2}{\beta(2t-1)}{1/2 \leq t \leq 1}.
 	$$
 	
 	Quando não houver ambiguidades denotaremos por simplicidade $\caminhos=\caminhossempontobase{X}$.
@@ -619,14 +633,14 @@
 	\begin{prova}
 		Seja a aplicação contínua $F:[0,1]\times [0,1]\to X$ tal que
 		$$
-			F(t,s) = 
-			\left\{
-			\begin{array}{cc}
-				\gamma(2t), & 0\leq t \leq s/2\\
-				\gamma(s), & s/2 \leq t \leq 1-s/2\\
-				\gamma(2-2t), & 1-s/2 \leq t \leq 1\\
-			\end{array}
-			\right.
+		F(t,s) = 
+		\left\{
+		\begin{array}{cc}
+		\gamma(2t), & 0\leq t \leq s/2\\
+		\gamma(s), & s/2 \leq t \leq 1-s/2\\
+		\gamma(2-2t), & 1-s/2 \leq t \leq 1\\
+		\end{array}
+		\right.
 		$$
 		Temos que $F(t,1) = (\gamma*\gamma^{-1})(t)$ e $F(t,0) = c(t) = p$, logo $\gamma*\gamma^{-1}\sim c$ pois $F$ deforma continuamente o produto na curva constante. Podemos definir uma homotopia $\hat{F}$ análoga a $F$ substituindo $\gamma$ por $\gamma^{-1}$, consequentemente teremos $\gamma^{-1}*\gamma \sim c$, logo $\gamma*\gamma^{-1} \sim \gamma^{-1}*\gamma \sim c$.
 	\end{prova}
@@ -670,350 +684,442 @@
 	\end{observacao}
 	
 	\section{Homomorfismos induzidos}
-		Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então temos a composição $\beta=f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Sejam $\gamma' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $F$ for a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $G=f\circ F$ é uma homotopia entre $\beta=f\circ \gamma$ e $\beta' = f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$, assim, $\beta \sim \beta'$.
+	Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então temos a composição $\beta=f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Sejam $\gamma' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $F$ for a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $G=f\circ F$ é uma homotopia entre $\beta=f\circ \gamma$ e $\beta' = f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$, assim, $\beta \sim \beta'$.
+	
+	\begin{lema}
+		(Homomorfismo induzido) Seja $f:X\to Y$ uma aplicação contínua entre espaços topológicos, então a aplicação $f_{*}:\grupofundamentalpontobase{p}{X} \to \grupofundamentalpontobase{f(p)}{Y}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo.
+	\end{lema}
+	\begin{prova}
+		Seja $\gamma \in \caminhospontobasegeral{p}{X}$ uma curva constante, então $\classe{\gamma} = Id_{p}$, logo $f_{*}Id_{p} = f_{*}\classe{\gamma} = \classe{f\circ\gamma} = Id_{f(p)}$, pois a composição $f\circ\gamma$ é uma curva constante em $Y$ com $(f\circ\gamma)(t) = f(p)$.
 		
-		\begin{lema}
-			(Homomorfismo induzido) Seja $f:X\to Y$ uma aplicação contínua entre espaços topológicos, então a aplicação $f_{*}:\grupofundamentalpontobase{p}{X} \to \grupofundamentalpontobase{f(p)}{Y}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo.
-		\end{lema}
-		\begin{prova}
-			Seja $\gamma \in \caminhospontobasegeral{p}{X}$ uma curva constante, então $\classe{\gamma} = Id_{p}$, logo $f_{*}Id_{p} = f_{*}\classe{\gamma} = \classe{f\circ\gamma} = Id_{f(p)}$, pois a composição $f\circ\gamma$ é uma curva constante em $Y$ com $(f\circ\gamma)(t) = f(p)$.
-			
-			Se $\classe{\gamma}, \classe{\gamma'}\in \grupofundamentalpontobase{p}{X}$, então 
-			$$
-			f_{*}(\classe{\gamma}.\classe{\gamma'}) = f_{*}(\classe{\gamma*\gamma'}) = \classe{f\circ(\gamma*\gamma')} = \classe{f\circ\gamma*f\circ\gamma'} =
-			\classe{f\circ\gamma}.\classe{f\circ\gamma'}=	f_{*}\classe{\gamma}.f_{*}\classe{\gamma'}.
-			$$
-			Portanto $f_{*}$ é um homomorfismo de grupos.
-		\end{prova}
-		
-		Do lema anterior podemos concluir que
-		\begin{teorema}
-			Seja $f:X\to Y$ um homeomorfismo entre espaços topológicos. Então $\grupofundamentalpontobase{p}{X}$ e $\grupofundamentalpontobase{f(p)}{Y}$ são isomorfos.
-		\end{teorema}
-		\begin{prova}
-			Seja $\beta \in \caminhospontobasegeral{f(p)}{Y}$. Como $f$ é homeomorfismo, então $\alpha=f^{-1}\circ\beta \in \caminhospontobasegeral{p}{X}$. Logo $f_{*}\classe{\alpha} = \classe{f\circ\alpha} = \classe{f\circ f^{-1}\circ\beta}=\classe{\beta}$, portanto $f_{*}$ é sobrejetora. Afirmo que $f_{*}$ é injetor. De fato, suponha que $\alpha \in \caminhospontobasegeral{p}{X}$ onde $Id_{f(p)}=f_{*}\classe{\alpha} = \classe{f\circ \alpha} $, portanto $f\circ\alpha$ é homotópicamente equivalente a curva constante $\beta'$ em $\caminhospontobasegeral{f(p)}{Y}$. Como $f$ é um homeomorfismo, então $f^{-1}\circ\beta'$ é homotópicamente equivalente a curva constante $\alpha' \in \caminhospontobasegeral{p}{Y}$. Temos que $f\circ \alpha\sim \beta'$ o que implica que $\alpha \sim f^{-1}\circ \beta'$, logo $\classe{\alpha} = \classe{f^{-1}\circ \beta'} = Id_{p}$, logo $f_{*}$ é injetor, portanto é um isomorfismo.
-		\end{prova}
-		
-		O seguinte resultato, e fundamental na determinação do grupo fundamental de várias aplicações é o cálculo do grupo fundamental de $\circulo$, cuja demonstração pode ser encontrada em $\cite{massey}$.
-		
-		\begin{teorema}\label{teorema_grupo_fundamental_circulo}
-			(Grupo fundamental de $\circulo$) O grupo fundamental $\grupofundamental{\circulo}$ e $\inteiros$ são isomorfos.
-		\end{teorema} 
-		
-		Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então podemos construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
-		
-		\begin{proposicao}\label{proposicao_produto_grupo_fundamental}
-			Se $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então $\grupofundamentalpontobase{(p,q)}{X\times Y} \cong \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$
-		\end{proposicao}
-		\begin{prova}
-			Dado o caminho $\Gamma \in \caminhospontobasegeral{(p,q)}{X\times Y}$ podemos escrever $\Gamma(t) = (\alpha(t), \beta(t)) \in X\times Y$ onde $\alpha \in \caminhospontobasegeral{p}{X}$ e $\beta \in \caminhospontobasegeral{q}{Y}$. Seja $\Gamma' \in \caminhospontobasegeral{(p,q)}{X\times Y}$. Então $\Gamma \sim \Gamma'$ implica que $ (\alpha, \beta) \sim (\alpha', \beta')$, logo $\alpha \sim \alpha'$ e $\beta \sim \beta'$. Portanto, temos a bijeção $I(\classe{ (\alpha, \beta)}) =  (\classe{\alpha}, \classe{\beta}) \in \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$. Tomando $\classe{(\gamma, \lambda)} \in \grupofundamentalpontobase{(p,q)}{X\times Y}$, então $I(\classe{(\alpha, \beta)} .\classe{(\gamma, \lambda)} ) = I(\classe{(\alpha*\gamma, \beta*\lambda)} ) = (\classe{\alpha*\gamma}, \classe{\beta*\lambda})=(\classe{\alpha}, \classe{\beta}) .(\classe{\gamma}, \classe{\lambda}) = I(\classe{(\alpha, \beta)} ).I(\classe{(\gamma, \lambda)} )$, portanto é um isomorfismo.
-		\end{prova}
-		
-		\begin{proposicao}\label{proposicao_grupo_fundamental_simplesmente_conexo}
-			Se $X$ é um espaço topológico simplesmente conexo, então $\grupofundamental{X}$ é trivial.
-		\end{proposicao}
-		\begin{prova}
-			Seja $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \circulo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, logo $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id$. Portanto $\grupofundamental{X}$ é trivial.
-		\end{prova}
-		
-		\section{Aplicação Grau}
-		O grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Com isso, a cada caminho fechado $\gamma:[0,1] \to S^{1}$ podemos associar um número $deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
-		
-		A proposição a seguir é de grande relevência para o restante do texto e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
-		
-		\begin{proposicao}\label{proposicao_levantamento_curvas}
-			(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
-			$$
-			\xymatrix{
-				& \real{}\ar[d]\ar[d]^{\text{exp}}
-				\\
-				[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
-			}
-			$$
-		\end{proposicao}
-		
-		Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = \exp(i\alpha(t))$, onde $\alpha(t) \in \reta$ é uma aplicação contínua. Como $\gamma(\intervalo) \subseteq \circulo$ é um compacto, então o conjunto $\{t\in\intervalo: \gamma(0)=\gamma(t) \}$ é finito e possui um valor máximo, que denotaremos por $t_{\gamma} $. Definindo $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Com isso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópica a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
-		
-		Vamos definir a o grau de um caminho como sendo uma aplicação que associa um dado caminho em $\circulo$ a um multiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior vimos que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, vamos restringir nossas hipóteses a caminhos fechados.
-		
-		\begin{proposicao}\label{proposicao_grau_aplicacao}
-			(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Então $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamado grau do caminho $\gamma$. Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
-			\begin{enumerate}
-				\item $deg(\caminhospontobasegeral{p}{\circulo}) = \inteiros$, além disso, se $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = 1$.
-				\item $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$.
-				\item Se $\gamma\sim \beta$ se, e somente se, $deg(\gamma)=deg(\beta)$
-			\end{enumerate}
-		\end{proposicao}
-		\begin{prova}
-			\begin{enumerate}
-				\item Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$, pela proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \inteiros$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \inteiros$ e $deg$ esta bem-definida. Supondo que $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = (2\pi -0)/2\pi =1$. Dado $k \in \inteiros$ e supondo que $\beta(t) = e^{i2\pi kt}$ temos $deg(\beta) = k$, logo $deg$ é sobrejetora e $deg(\caminhospontobasegeral{p}{\circulo}) = \inteiros$.
-				\item Suponha que $\gamma$ e $\beta$ sejam tais que $\gamma(1)= \beta(0) = p$ e que $\alpha$ e $\lambda$ sejam seus respectivos levatamentos, então temos que $\alpha(1) = \lambda(0)$. Pelo produto entre caminhos temos $(\gamma*\beta)(t) = e^{i\alpha(2t)}$ para $0\leq t\leq 1/2$ e  $(\gamma*\beta)(t) = e^{i\lambda(2t - 1)}$ para $1/2\leq t\leq 1$. Logo 
-				$$
-				\begin{aligned}
-				deg(\gamma*\beta) &= (\lambda(1)- \alpha(0))/2\pi 
-				\\
-				&= (\lambda(1) -\lambda(0)+ \alpha(1)- \alpha(0))/2\pi
-				\\
-				&= deg(\gamma)+deg(\beta).
-				\end{aligned}
-				$$  
-				\item Suponha que $h:[0,1]\times [0,1]\to S^{1}$ seja uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1) = \beta(t)$. Pela continuidade de $h$ podemos afirmar que, para cada $s \in [0,1]$ fixo, temos $h_{s}(0) = h_{s}(1)$ portanto $h_{s} \in \caminhospontobasegeral{p}{\circulo}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ podemos escrever $h_{s}(t) = e^{i\alpha_{s}t}$. Com isso, podemos escolher $s, s_{0 }\in [0,1]$ tais que $\norma{h_{s}(t)-h_{s_{0}}(t)} =\norma{e^{i\alpha_{s}t} - e^{i\alpha_{s_{0}}t}} <2$, ou seja, $h_{s}(t), h_{s_{0}}(t) \in \circulo$ não são anti-podais, logo $|\alpha_{s}(t)-\alpha_{s_{0}}(t)| <\pi$ para todo $t\in [0,1]$. Seja $0=s_{0}<s_{1}<s_{2}\dots s_{m-1}<s_{m} = 1$ uma partição do intervalo $[0,1]$, tal que $\norma{h_{s_{j+1}}(t)-h_{s_{j}}(t)}<2$ para $0\leq j \leq k-1$. A partição escolhida implica em $|\alpha_{j+1}(t)-\alpha_{s_{j}}(t)| <\pi$. Então
-				$$
-				\begin{aligned}
-					2\pi|deg(h_{s_{j+1}})-deg(h_{s_{j}})| 
-					&= |\alpha_{s_{j+1}}(1)-\alpha_{s_{j+1}}(0) - \alpha_{s_{j+1}}(1)+\alpha_{s_{j}}(0)|
-					\\
-					&\leq |\alpha_{s_{j+1}}(1)-\alpha_{s_{j}}(1)| + |\alpha_{s_{j+1}}(0)+\alpha_{s_{j}}(0)|
-					\\
-					&<2\pi,
-				\end{aligned} 
-				$$
-				logo $|deg(h_{s_{j+1}})-deg(h_{s_{j}})| <1$. Portanto $deg(h_{s_{j+1}})=deg(h_{s_{j}})$ para todo $0\leq j \leq m-1$. Logo, 
-				$$
-				deg(\beta) = deg(h_{s_{m}})=deg(h_{s_{m-1}})=\dots=deg(h_{s_{0}}) = deg(\alpha).
-				$$
-				Por outro lado, vamos supor que $n = deg(\gamma)=deg(\beta)$. Como os levantamentos $\alpha$ e $\lambda$, das respectivas curvas, são únicos, então mostrar que $\alpha$ e $\lambda$ são homotópicos é equivalente a mostrar que $\alpha \sim \beta$. Seja a aplicação contínua $H:[0,1]\times [0,1] \to \real{}$ definida por $H(t,s) = (1-s)\alpha(t) + s\beta(t)$. Então $H(t,0)=\alpha(t)$ e $H(t,1)=\lambda(t)$, logo $H$ é uma homotopia entre $\alpha$ e $\lambda$. Além disso 
-				$$
-				\begin{aligned}
-					H(1,s) - H(0,s) 
-					&= (1-s)\alpha(1) + s\beta(1) - (1-s)\alpha(0) + s\beta(0) 
-					\\
-					&= (1-s)(\alpha(1)-\alpha(0)) + s(\beta(1)-\beta(0))
-					\\
-					&=(1-s)deg(\gamma) +sdeg(\beta)
-					\\
-					&= n.
-				\end{aligned}
-				$$ 
-				
-				Seja a aplicação contínua $G(t, s) = e^{iH(s,t)}$. Então, para $s \in [0,1]$ fixo temos que $G_{s} \in \caminhospontobasegeral{p}{\circulo}$ com $deg(G_{s}) = n$. Além disso, $G(t,0) = e^{i\alpha(t)} = \gamma(t)$ e $G(t,1) = e^{i\lambda(t)} = \beta(t)$, logo $G$ é uma homotopia entre $\gamma$ e $\beta$, portanto $\gamma \sim \beta$.
-			\end{enumerate}
-		\end{prova}
-		
-		\begin{proposicao}\label{proposicao_gerador_grupo_fundamental_ciruclo}
-			O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = <\gamma>$.
-		\end{proposicao}
-		\begin{prova}
-			Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ podemos escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $deg(\gamma) = 1$, logo 
-			$$
-			deg(\beta) = k = \underbrace{1+\dots+1}_{k-vezes} = deg(\gamma)+\dots+deg(\gamma) = deg(\gamma \dots \gamma) = deg(\gamma^{n}).
-			$$
-			Portanto $\beta \sim \gamma^{n}$ e $\classe{\beta} = \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo $\grupofundamental{\circulo} = <\gamma>$.
-		\end{prova}
-		
-		\section{Exemplos de Grupo Fundamental}
-		\begin{exemplo}
-			(Grupo fundamental $\grupofundamental{\real{n}}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
-		\end{exemplo}
-		\begin{exemplo}
-			(Grupo fundamental $\grupofundamental{T^{2}}$ do 2-toro) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \inteiros \times \inteiros$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
-		\end{exemplo}
-		
-		\begin{exemplo}\label{exemplo_grupo_fundamental_plano_furo}
-			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
-		\end{exemplo}
-		
-		\begin{exemplo}
-			(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $r=(0,0)\in \real{2}$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
-		\end{exemplo}
-		
-	\chapter{Teoria de Morse}
-		Na investigação da topologia de variedades o principal objetivo e a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas aboragens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo que é homotopicamente equivalente a variedade, sendo que essa homotopia induzirá um isomorfismo entre a $CW$-homologia do $CW$-complexo e a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_homologia}$. O que torna a Teoria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
-		
-		O propósito desse capítulo é de apresentação rápida do formalismos e alguns dos principais resultados para que possamos extender a construção aqui feita para a hologogia de variedades de dimensão inifita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
-		
-		De agora em diante $M$ será uma n-variedade diferenciável fechada, ou seja, uma variedade compacta e sem bordo.
-		
-		\section{Teoria de Morse Clássica}
-		
-		\begin{definicao}
-			(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ uma e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
-		\end{definicao}
-		
-		\begin{observacao}
-			Pode-se mostrar que $\pontoscriticos{f} \subset M$ é um conjuntos finito, consequentemente, todos os seus pontos são isolados. Isso decorre da compacidade de $M$.
-		\end{observacao}
-		
-		O índice de Morse de um dado $p \in \pontoscriticos{f}$ é a dimensão dos subespaço $V\subset T_{p}M $ tal que \ hessiana é negativa-definita, isto é, $H_{p}(f)(v,u)<0$ para todo $v,u \in V$. Denotaremos esse índice por $\lambda_{p} = dim(V)$. Como a heessiana e não-degenerada, então $H_{p}(f)$ é diagonalizável e o número de auto-valores negativos é o índice $\lambda_{p}$. O que fica claro no lema de Morse.
-		
-		\begin{lema}
-			(Lema de Morse) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ cujo índice é $\lambda$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
+		Se $\classe{\gamma}, \classe{\gamma'}\in \grupofundamentalpontobase{p}{X}$, então 
+		$$
+		f_{*}(\classe{\gamma}.\classe{\gamma'}) = f_{*}(\classe{\gamma*\gamma'}) = \classe{f\circ(\gamma*\gamma')} = \classe{f\circ\gamma*f\circ\gamma'} =
+		\classe{f\circ\gamma}.\classe{f\circ\gamma'}=	f_{*}\classe{\gamma}.f_{*}\classe{\gamma'}.
+		$$
+		Portanto $f_{*}$ é um homomorfismo de grupos.
+	\end{prova}
+	
+	Do lema anterior podemos concluir que
+	\begin{teorema}
+		Seja $f:X\to Y$ um homeomorfismo entre espaços topológicos. Então $\grupofundamentalpontobase{p}{X}$ e $\grupofundamentalpontobase{f(p)}{Y}$ são isomorfos.
+	\end{teorema}
+	\begin{prova}
+		Seja $\beta \in \caminhospontobasegeral{f(p)}{Y}$. Como $f$ é homeomorfismo, então $\alpha=f^{-1}\circ\beta \in \caminhospontobasegeral{p}{X}$. Logo $f_{*}\classe{\alpha} = \classe{f\circ\alpha} = \classe{f\circ f^{-1}\circ\beta}=\classe{\beta}$, portanto $f_{*}$ é sobrejetora. Afirmo que $f_{*}$ é injetor. De fato, suponha que $\alpha \in \caminhospontobasegeral{p}{X}$ onde $Id_{f(p)}=f_{*}\classe{\alpha} = \classe{f\circ \alpha} $, portanto $f\circ\alpha$ é homotópicamente equivalente a curva constante $\beta'$ em $\caminhospontobasegeral{f(p)}{Y}$. Como $f$ é um homeomorfismo, então $f^{-1}\circ\beta'$ é homotópicamente equivalente a curva constante $\alpha' \in \caminhospontobasegeral{p}{Y}$. Temos que $f\circ \alpha\sim \beta'$ o que implica que $\alpha \sim f^{-1}\circ \beta'$, logo $\classe{\alpha} = \classe{f^{-1}\circ \beta'} = Id_{p}$, logo $f_{*}$ é injetor, portanto é um isomorfismo.
+	\end{prova}
+	
+	O seguinte resultato, e fundamental na determinação do grupo fundamental de várias aplicações é o cálculo do grupo fundamental de $\circulo$, cuja demonstração pode ser encontrada em $\cite{massey}$.
+	
+	\begin{teorema}\label{teorema_grupo_fundamental_circulo}
+		(Grupo fundamental de $\circulo$) O grupo fundamental $\grupofundamental{\circulo}$ e $\inteiros$ são isomorfos.
+	\end{teorema} 
+	
+	Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então podemos construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
+	
+	\begin{proposicao}\label{proposicao_produto_grupo_fundamental}
+		Se $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então $\grupofundamentalpontobase{(p,q)}{X\times Y} \cong \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$
+	\end{proposicao}
+	\begin{prova}
+		Dado o caminho $\Gamma \in \caminhospontobasegeral{(p,q)}{X\times Y}$ podemos escrever $\Gamma(t) = (\alpha(t), \beta(t)) \in X\times Y$ onde $\alpha \in \caminhospontobasegeral{p}{X}$ e $\beta \in \caminhospontobasegeral{q}{Y}$. Seja $\Gamma' \in \caminhospontobasegeral{(p,q)}{X\times Y}$. Então $\Gamma \sim \Gamma'$ implica que $ (\alpha, \beta) \sim (\alpha', \beta')$, logo $\alpha \sim \alpha'$ e $\beta \sim \beta'$. Portanto, temos a bijeção $I(\classe{ (\alpha, \beta)}) =  (\classe{\alpha}, \classe{\beta}) \in \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$. Tomando $\classe{(\gamma, \lambda)} \in \grupofundamentalpontobase{(p,q)}{X\times Y}$, então $I(\classe{(\alpha, \beta)} .\classe{(\gamma, \lambda)} ) = I(\classe{(\alpha*\gamma, \beta*\lambda)} ) = (\classe{\alpha*\gamma}, \classe{\beta*\lambda})=(\classe{\alpha}, \classe{\beta}) .(\classe{\gamma}, \classe{\lambda}) = I(\classe{(\alpha, \beta)} ).I(\classe{(\gamma, \lambda)} )$, portanto é um isomorfismo.
+	\end{prova}
+	
+	\begin{proposicao}\label{proposicao_grupo_fundamental_simplesmente_conexo}
+		Se $X$ é um espaço topológico simplesmente conexo, então $\grupofundamental{X}$ é trivial.
+	\end{proposicao}
+	\begin{prova}
+		Seja $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \circulo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, logo $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id$. Portanto $\grupofundamental{X}$ é trivial.
+	\end{prova}
+	
+	\section{Aplicação Grau}
+	O grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Com isso, a cada caminho fechado $\gamma:[0,1] \to S^{1}$ podemos associar um número $deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $deg(\gamma) = deg(\beta)$ (possuem o mesmo grau). Por fim, tal aplicação é um homomorfismo pois $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$, o que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
+	
+	A proposição a seguir é de grande relevência para o restante do texto e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
+	
+	\begin{proposicao}\label{proposicao_levantamento_curvas}
+		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
+		$$
+		\xymatrix{
+			& \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
+		}
+		$$
+	\end{proposicao}
+	
+	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = \exp(i\alpha(t))$, onde $\alpha(t) \in \reta$ é uma aplicação contínua. Como $\gamma(\intervalo) \subseteq \circulo$ é um compacto, então o conjunto $\{t\in\intervalo: \gamma(0)=\gamma(t) \}$ é finito e possui um valor máximo, que denotaremos por $t_{\gamma} $. Definindo $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Com isso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópica a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
+	
+	Vamos definir a o grau de um caminho como sendo uma aplicação que associa um dado caminho em $\circulo$ a um multiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior vimos que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, vamos restringir nossas hipóteses a caminhos fechados.
+	
+	\begin{proposicao}\label{proposicao_grau_aplicacao}
+		(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. Então $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamado grau do caminho $\gamma$. Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
+		\begin{enumerate}
+			\item $deg(\caminhospontobasegeral{p}{\circulo}) = \inteiros$, além disso, se $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = 1$.
+			\item $deg(\gamma.\beta)=deg(\gamma)+deg(\beta)$.
+			\item Se $\gamma\sim \beta$ se, e somente se, $deg(\gamma)=deg(\beta)$
+		\end{enumerate}
+	\end{proposicao}
+	\begin{prova}
+		\begin{enumerate}
+			\item Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$, pela proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \inteiros$. Portanto, $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \inteiros$ e $deg$ esta bem-definida. Supondo que $\gamma(t) = e^{i2\pi t}$, então $deg(\gamma) = (2\pi -0)/2\pi =1$. Dado $k \in \inteiros$ e supondo que $\beta(t) = e^{i2\pi kt}$ temos $deg(\beta) = k$, logo $deg$ é sobrejetora e $deg(\caminhospontobasegeral{p}{\circulo}) = \inteiros$.
+			\item Suponha que $\gamma$ e $\beta$ sejam tais que $\gamma(1)= \beta(0) = p$ e que $\alpha$ e $\lambda$ sejam seus respectivos levatamentos, então temos que $\alpha(1) = \lambda(0)$. Pelo produto entre caminhos temos $(\gamma*\beta)(t) = e^{i\alpha(2t)}$ para $0\leq t\leq 1/2$ e  $(\gamma*\beta)(t) = e^{i\lambda(2t - 1)}$ para $1/2\leq t\leq 1$. Logo 
 			$$
 			\begin{aligned}
-			(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) &= f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda}+x^{2}_{\lambda+1}+\dots + x^{2}_{n}
+			deg(\gamma*\beta) &= (\lambda(1)- \alpha(0))/2\pi 
 			\\
-			&=f(p)+x^{t}Dx,
+			&= (\lambda(1) -\lambda(0)+ \alpha(1)- \alpha(0))/2\pi
+			\\
+			&= deg(\gamma)+deg(\beta).
 			\end{aligned}
-			$$
-			onde $D$ é a rerepsentação diagonal de $H_{p}(f)$.
-		\end{lema}
-		
-		A existência das funções de Morse é garantida pelo seguinte exemplo. Seja $f:M\to \reta$ tal que $f(x_{1}, \dots, x_{n}) = x_{n}$. Essa função é chamada de função altura e pode-se mostrar que $f$ é uma função de Morse, logo $\funcoesmorse{M} \neq \emptyset$.
-		
-		\begin{exemplo}
-			Sejam $S^{2} \subset \real{3}$ a 2-esféra centrada na origem e $f:S^{2}\to \reta$ a função altura dadar por $f(x,y,z) = z$. Os pontos críticos de $f$ são $p_{\pm} = \{(0,0,\pm 1)\}$, cujos índices são $\lambda_{- } = 0$ e $\lambda_{+ } = 2$.
-		\end{exemplo}
-		
-		As funções de Morse não são um caso raro nessa descrição, muito pelo contrário. O seguinte teorema garante que tais funções são abundantes no conjunto das funções suaves e tal resultado pode ser encontrado em $\cite{amyia_diff_topology}$.
-		
-		\begin{teorema}
-			Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
-		\end{teorema} 
-		
-		As seguintes definições nos permitirão a definir o tipo de homotopia de variedade $M$ em termos dos pontos críticos de uma dada função de Morse $f$. A estratégia é fatiar a variedade em níveis e construirmos os $CW$-complexos homotópicos associado a cada um deles.
-		
-		Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto de nível $a$ em $M$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
-		
-		\begin{teorema}
-			Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomordo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
-		\end{teorema}
-		
-		O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, os conjuntos de nível ao passar por um ponto crítico, isto é, $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro. Em termos,  $M^{a}$ e $M^{t}$ não são homotópicos. É apartir dele que iniciaremos a decomposição da variedade $M$ em níveis homotópicos para realizarmos a construção do $CW$-complexo.
-		
-		\begin{teorema}\label{teorema cw_complexo_ponto_critico_morse}
-			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda}$.
-		\end{teorema}
-		
-		\begin{observacao}
-			O teorema antior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([c-\epsilon,c+\epsilon])$. No caso em que tenhamos $f^{-1}([c-\epsilon,c+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$ teremos $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$. Essa notação pode ser encontrada na Seção $\ref{secao_cw_complexo}$.
-		\end{observacao}
-		
-		\begin{observacao}
-			Uma consequência imediata do teorema anterior é que, supondo $p \in \pontoscriticos{f}$ e fazendo $a = f(p)$, temos que $M^{a}$ é um $CW$-complexo. 
-		\end{observacao}
-		
-		Como $M$ é um compacto, então $f(M) = [a,b] \subset \reta$ é um compacto. Suponha que $\pontoscriticos{f} = \{p_{j}\}_{j=1}^{k}$, $\lambda_{j}$ seja o índice do j-ésimo ponto crítico e que exista uma partição $t_{1} = a < t_{2}< \dots< t_{k+1} = b$ tal que $f^{-1}((t_{k}, t_{k+1})) \cap \pontoscriticos{f} = \{p_{k}\}$. Ao variarmos $t \in [a,b]$ teremos a construção do $CW$-complexo
-		$$
-		\begin{aligned}
-			M^{t_{1}} &\simeq \{p_{1}\}
-			\\
-			M^{t_{2}} & \simeq \{p_{1}\} \cup_{f_{\partial_{1}}} D^{\lambda_{1}}
-			\\
-			\vdots&
-			\\
-			M = M^{t_{k+1}} &\simeq\{p_{1}\} \cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{k}}} D^{\lambda_{k}}.
-		\end{aligned}
-		$$
-		
-		Essa partição existe e sua construção pode ser feita perturbando  a função de Morse $f$ de modo a obter uma outra $f' \in \funcoesmorse{M}$ com os mesmos pontos críticos. Essa construção é viabilizada pela densidade das funções de Morse em $\funcoessuaves{M}$. Contudo, não entraremos nos detalhes pois o propósito da discussão anterior foi apenas ilustrar a ideia por trás do Teorema $\ref{teorema cw_complexo_ponto_critico_morse}$ e seu emprego dentro da teoria.
-		
-		\begin{exemplo}
-			(2-toro) Seja $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização do toro $T^{2}$ dada por
-			$$
-			\varphi(\theta, \phi) = ((1+2cos\phi)cos\theta, (1+2cos\phi)sin\theta, 2sin\phi).
-			$$
-			Esse é um toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$. Com isso, temos que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
+			$$  
+			\item Suponha que $h:[0,1]\times [0,1]\to S^{1}$ seja uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1) = \beta(t)$. Pela continuidade de $h$ podemos afirmar que, para cada $s \in [0,1]$ fixo, temos $h_{s}(0) = h_{s}(1)$ portanto $h_{s} \in \caminhospontobasegeral{p}{\circulo}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ podemos escrever $h_{s}(t) = e^{i\alpha_{s}t}$. Com isso, podemos escolher $s, s_{0 }\in [0,1]$ tais que $\norma{h_{s}(t)-h_{s_{0}}(t)} =\norma{e^{i\alpha_{s}t} - e^{i\alpha_{s_{0}}t}} <2$, ou seja, $h_{s}(t), h_{s_{0}}(t) \in \circulo$ não são anti-podais, logo $|\alpha_{s}(t)-\alpha_{s_{0}}(t)| <\pi$ para todo $t\in [0,1]$. Seja $0=s_{0}<s_{1}<s_{2}\dots s_{m-1}<s_{m} = 1$ uma partição do intervalo $[0,1]$, tal que $\norma{h_{s_{j+1}}(t)-h_{s_{j}}(t)}<2$ para $0\leq j \leq k-1$. A partição escolhida implica em $|\alpha_{j+1}(t)-\alpha_{s_{j}}(t)| <\pi$. Então
 			$$
 			\begin{aligned}
-				\derivadaparcialabrev{\theta} &= -(1+2cos\phi)sin\theta \derivadaparcialabrev{x}+(1+2cos\phi)cos\theta \derivadaparcialabrev{y} 
-				\\
-				\derivadaparcialabrev{\phi} &=  - 2sin\phi cos\theta 	\derivadaparcialabrev{x} - 2sin\phi sin\theta 	\derivadaparcialabrev{y} +2cos\phi				\derivadaparcialabrev{z}.
+			2\pi|deg(h_{s_{j+1}})-deg(h_{s_{j}})| 
+			&= |\alpha_{s_{j+1}}(1)-\alpha_{s_{j+1}}(0) - \alpha_{s_{j+1}}(1)+\alpha_{s_{j}}(0)|
+			\\
+			&\leq |\alpha_{s_{j+1}}(1)-\alpha_{s_{j}}(1)| + |\alpha_{s_{j+1}}(0)+\alpha_{s_{j}}(0)|
+			\\
+			&<2\pi,
 			\end{aligned} 
 			$$
+			logo $|deg(h_{s_{j+1}})-deg(h_{s_{j}})| <1$. Portanto $deg(h_{s_{j+1}})=deg(h_{s_{j}})$ para todo $0\leq j \leq m-1$. Logo, 
+			$$
+			deg(\beta) = deg(h_{s_{m}})=deg(h_{s_{m-1}})=\dots=deg(h_{s_{0}}) = deg(\alpha).
+			$$
+			Por outro lado, vamos supor que $n = deg(\gamma)=deg(\beta)$. Como os levantamentos $\alpha$ e $\lambda$, das respectivas curvas, são únicos, então mostrar que $\alpha$ e $\lambda$ são homotópicos é equivalente a mostrar que $\alpha \sim \beta$. Seja a aplicação contínua $H:[0,1]\times [0,1] \to \real{}$ definida por $H(t,s) = (1-s)\alpha(t) + s\beta(t)$. Então $H(t,0)=\alpha(t)$ e $H(t,1)=\lambda(t)$, logo $H$ é uma homotopia entre $\alpha$ e $\lambda$. Além disso 
+			$$
+			\begin{aligned}
+			H(1,s) - H(0,s) 
+			&= (1-s)\alpha(1) + s\beta(1) - (1-s)\alpha(0) + s\beta(0) 
+			\\
+			&= (1-s)(\alpha(1)-\alpha(0)) + s(\beta(1)-\beta(0))
+			\\
+			&=(1-s)deg(\gamma) +sdeg(\beta)
+			\\
+			&= n.
+			\end{aligned}
+			$$ 
 			
-			
-			Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Temos que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ temos $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, caso $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$, mas basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e $\pontoscriticos{f} = \{(\pm 3,0,0), (\pm 1,0,0)\}$, de modo que $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
-		
-			Temos a representação matricial da Hessiana $H_{p}(f)$
-			$$
-			H(\theta, \phi) = 
-			\left(
-			\begin{array}{cc}
-			-(1+2cos\phi)cos\theta & 2sin\phi sin\theta  
-			\\
-			2sin\phi sin\theta   & -2cos\phi cos\theta  
-			\end{array}
-			\right).
-			$$
-			Avaliando a hessiana nos pontos críticos temos
-			$$
-				H(0, 0) = 
-				\left(
-				\begin{array}{cc}
-				-3 & 0
-				\\
-				0& -2
-				\end{array}
-				\right),
-				H(0, \pi) = 
-				\left(
-				\begin{array}{cc}
-				1 & 0
-				\\
-				0& 2
-				\end{array}
-				\right)
-			$$
-			$$
-			H(\pi, 0) = 
-			\left(
-			\begin{array}{cc}
-			3 & 0
-			\\
-			0& 2
-			\end{array}
-			\right),
-			H(\pi, \pi) = 
-			\left(
-			\begin{array}{cc}
-			-1 & 0
-			\\
-			0& -2
-			\end{array}
-			\right)
-			$$
-			\vermelho{Não entendo a diferença entre os índices dos pontos críticos....!!!!!!!!!!}
-		\end{exemplo}
-		
-		A relação entre a topologia de $M$ e os pontos críticos da função de Morse $f:M \to \reta$, originalmente foi data em termos de desigualdades, chamadas desigualdades de Morse.
-		
-		\begin{definicao}
-			(Números de Betti) O j-ésimo número de Betti é o inteiro $\beta_{j}(M) = dim(H_{j}(M))$, onde $H_{j}(M)$ é o j-ésimo grupo de homologia singular de $M$.
-		\end{definicao}
-		
-		Como os grupos de homologia de $M$ são invariantes topológicos, então os números de Betti de $M$ também o serão.
-		
-		Seja $f \in \funcoesmorse{M}$. O número de pontos crítico de índice $k$ é definido por $\nu_{k} = \#\{p\in \pontoscriticos{f}: \lambda_{p} = k \}$. Aqui faremos a conexão entre a topologia de variedade $M$ e os pontos críticos de $f$. Note que $\beta_{k}(M)$ contém as informações sobre a topologia da variedade, por outro lado, $\nu_{k}$ contém as informações sobre os pontos críticos de $f$. A desigualdade de Morse afirma que:
-		
-		\begin{teorema}
-			(Desigualdade de Morse) Se $f \in \funcoesmorse{M}$, então valem as seguintes desigualdades:
-			\begin{enumerate}
-				\item $\beta_{k}(M) \leq \nu_{k}$ para $0\leq k\leq n$
-				
-				\item $\sum_{j = 0}^{k}(-1)^{k-j}\beta_{j}(M) \leq \sum_{j = 0}^{k}(-1)^{k-j}\nu_{j} $ para $0 \leq k \leq n$ e vale a igualdade para o caso em que $k=n$.
-			\end{enumerate}
-		\end{teorema}
-		
-		\begin{observacao}
-			No caso da igualdade do segundo item do teorema temos a característica de Euler-Poincaré $\chi(M) = \sum_{j = 0}^{n}(-1)^{n-j}\beta_{j}(M)$, que tamém é um invariante topológico e é a generalização do teorema de Euler para poliédros convexos $V-A+F = 2$, onde $V$ é o número de faces, $A$ é o número de arestas e $F$ é o número de faces.
-		\end{observacao}
-		
-		\section{Fluxos Gradiente e Variedades de Conexão}
-		Seja $X \in \campossuaves{M}$ um campo vetorial suave. Sabe-se que existe uma curva $\gamma: \reta\to M$ que é solução do sistema de equações diferenciais 
+			Seja a aplicação contínua $G(t, s) = e^{iH(s,t)}$. Então, para $s \in [0,1]$ fixo temos que $G_{s} \in \caminhospontobasegeral{p}{\circulo}$ com $deg(G_{s}) = n$. Além disso, $G(t,0) = e^{i\alpha(t)} = \gamma(t)$ e $G(t,1) = e^{i\lambda(t)} = \beta(t)$, logo $G$ é uma homotopia entre $\gamma$ e $\beta$, portanto $\gamma \sim \beta$.
+		\end{enumerate}
+	\end{prova}
+	
+	\begin{proposicao}\label{proposicao_gerador_grupo_fundamental_ciruclo}
+		O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = <\gamma>$.
+	\end{proposicao}
+	\begin{prova}
+		Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ podemos escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $deg(\gamma) = 1$, logo 
 		$$
-		\derivada{\gamma(t)}{t} = X(\gamma(t)), \; \gamma(0) = p.
+		deg(\beta) = k = \underbrace{1+\dots+1}_{k-vezes} = deg(\gamma)+\dots+deg(\gamma) = deg(\gamma \dots \gamma) = deg(\gamma^{n}).
 		$$
-		Como $M$ é compacta, então a solução $\gamma = \gamma_{p}$ existe para todo $t\in \reta$. Assim, a aplicação $\phi: \retacartesianovariedade\to M$ definida por $\phi(t,p) - \gamma_{p}(t)$ é chamada de fluxo gerado por $X$ e, fixado $p\in M$, a curva $\gamma_{p}:\reta\to M$ é chamada de linha do fluxo de $X$. Como o fluxo $\phi$ esta bem-definido para todo $t \in \reta$, então podemos efetuar a composição $\phi_{s}\circ\phi_{t}(p) = \phi(s+t, p)$ para todo $p\in M$, logo $\phi_{s}\circ\phi_{t} = \phi_{s+t}$ e $\phi_{0} = Id$. O conjunto $G_{\phi} = \{\phi_{t}:t\in \reta\}$ é um grupo com a operação de composição e é chamado de grupo de difeomorfismos a 1-parametro, o que pode ser encontrado em $\cite{palis_dynamical_systems}$.
+		Portanto $\beta \sim \gamma^{n}$ e $\classe{\beta} = \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo $\grupofundamental{\circulo} = <\gamma>$.
+	\end{prova}
+	
+	\section{Exemplos de Grupo Fundamental}
+	\begin{exemplo}
+		(Grupo fundamental $\grupofundamental{\real{n}}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
+	\end{exemplo}
+	\begin{exemplo}
+		(Grupo fundamental $\grupofundamental{T^{2}}$ do 2-toro) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \inteiros \times \inteiros$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
+	\end{exemplo}
+	
+	\begin{exemplo}\label{exemplo_grupo_fundamental_plano_furo}
+		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
+	\end{exemplo}
+	
+	\begin{exemplo}
+		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $r=(0,0)\in \real{2}$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
+	\end{exemplo}
+	
+	\chapter{Teoria de Morse}
+	Na investigação da topologia de variedades o principal objetivo e a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas aboragens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo que é homotopicamente equivalente a variedade, sendo que essa homotopia induzirá um isomorfismo entre a $CW$-homologia do $CW$-complexo e a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_homologia}$. O que torna a Teoria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
+	
+	O propósito desse capítulo é de apresentação rápida do formalismos e alguns dos principais resultados para que possamos extender a construção aqui feita para a hologogia de variedades de dimensão inifita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
+	
+	De agora em diante $M$ será uma n-variedade Riemanniana diferenciável fechada, onde variedade fechada será uma variedade compacta e sem bordo. Veja a Seção $\ref{secao_variedade_riemanniana}$ para a definição de variedade Riemanniana.
+	
+	\section{Teoria de Morse Clássica}
+	
+	\begin{definicao}
+		(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ uma e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
+	\end{definicao}
+	
+	\begin{observacao}
+		Pode-se mostrar que $\pontoscriticos{f} \subset M$ é um conjuntos finito, consequentemente, todos os seus pontos são isolados. Isso decorre da compacidade de $M$.
+	\end{observacao}
+	
+	O índice de Morse de um dado $p \in \pontoscriticos{f}$ é a dimensão dos subespaço $V\subset T_{p}M $ tal que \ hessiana é negativa-definita, isto é, $H_{p}(f)(v,u)<0$ para todo $v,u \in V$. Denotaremos esse índice por $\lambda_{p} = dim(V)$. Como a heessiana e não-degenerada, então $H_{p}(f)$ é diagonalizável e o número de auto-valores negativos é o índice $\lambda_{p}$. O que fica claro no lema de Morse.
+	
+	\begin{lema}
+		(Lema de Morse) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ cujo índice é $\lambda$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
+		$$
+		\begin{aligned}
+		(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) &= f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda}+x^{2}_{\lambda+1}+\dots + x^{2}_{n}
+		\\
+		&=f(p)+x^{t}Dx,
+		\end{aligned}
+		$$
+		onde $D$ é a rerepsentação diagonal de $H_{p}(f)$.
+	\end{lema}
+	
+	A existência das funções de Morse é garantida pelo seguinte exemplo. Seja $f:M\to \reta$ tal que $f(x_{1}, \dots, x_{n}) = x_{n}$. Essa função é chamada de função altura e pode-se mostrar que $f$ é uma função de Morse, logo $\funcoesmorse{M} \neq \emptyset$.
+	
+	\begin{exemplo}
+		Sejam $S^{2} \subset \real{3}$ a 2-esféra centrada na origem e $f:S^{2}\to \reta$ a função altura dadar por $f(x,y,z) = z$. Os pontos críticos de $f$ são $p_{\pm} = \{(0,0,\pm 1)\}$, cujos índices são $\lambda_{- } = 0$ e $\lambda_{+ } = 2$.
+	\end{exemplo}
+	
+	As funções de Morse não são um caso raro nessa descrição, muito pelo contrário. O seguinte teorema garante que tais funções são abundantes no conjunto das funções suaves e tal resultado pode ser encontrado em $\cite{amyia_diff_topology}$.
+	
+	\begin{teorema}
+		Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
+	\end{teorema} 
+	
+	As seguintes definições nos permitirão a definir o tipo de homotopia de variedade $M$ em termos dos pontos críticos de uma dada função de Morse $f$. A estratégia é fatiar a variedade em níveis e construirmos os $CW$-complexos homotópicos associado a cada um deles.
+	
+	Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto de nível $a$ em $M$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+	
+	\begin{teorema}
+		Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomordo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+	\end{teorema}
+	
+	O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, os conjuntos de nível ao passar por um ponto crítico, isto é, $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro. Em termos,  $M^{a}$ e $M^{t}$ não são homotópicos. É apartir dele que iniciaremos a decomposição da variedade $M$ em níveis homotópicos para realizarmos a construção do $CW$-complexo.
+	
+	\begin{teorema}\label{teorema cw_complexo_ponto_critico_morse}
+		Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda}$.
+	\end{teorema}
+	
+	\begin{observacao}
+		O teorema antior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([c-\epsilon,c+\epsilon])$. No caso em que tenhamos $f^{-1}([c-\epsilon,c+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$ teremos $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$. Essa notação pode ser encontrada na Seção $\ref{secao_cw_complexo}$.
+	\end{observacao}
+	
+	\begin{observacao}
+		Uma consequência imediata do teorema anterior é que, supondo $p \in \pontoscriticos{f}$ e fazendo $a = f(p)$, temos que $M^{a}$ é um $CW$-complexo. 
+	\end{observacao}
+	
+	Como $M$ é um compacto, então $f(M) = [a,b] \subset \reta$ é um compacto. Suponha que $\pontoscriticos{f} = \{p_{j}\}_{j=1}^{k}$, $\lambda_{j}$ seja o índice do j-ésimo ponto crítico e que exista uma partição $t_{1} = a < t_{2}< \dots< t_{k+1} = b$ tal que $f^{-1}((t_{k}, t_{k+1})) \cap \pontoscriticos{f} = \{p_{k}\}$. Ao variarmos $t \in [a,b]$ teremos a construção do $CW$-complexo
+	$$
+	\begin{aligned}
+	M^{t_{1}} &\simeq \{p_{1}\}
+	\\
+	M^{t_{2}} & \simeq \{p_{1}\} \cup_{f_{\partial_{1}}} D^{\lambda_{1}}
+	\\
+	\vdots&
+	\\
+	M = M^{t_{k+1}} &\simeq\{p_{1}\} \cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{k}}} D^{\lambda_{k}}.
+	\end{aligned}
+	$$
+	
+	Essa partição existe e sua construção pode ser feita perturbando  a função de Morse $f$ de modo a obter uma outra $f' \in \funcoesmorse{M}$ com os mesmos pontos críticos. Essa construção é viabilizada pela densidade das funções de Morse em $\funcoessuaves{M}$. Contudo, não entraremos nos detalhes pois o propósito da discussão anterior foi apenas ilustrar a ideia por trás do Teorema $\ref{teorema cw_complexo_ponto_critico_morse}$ e seu emprego dentro da teoria.
+	
+	\begin{exemplo}
+		(2-toro) Seja $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização do toro $T^{2}$ dada por
+		$$
+		\varphi(\theta, \phi) = ((1+2cos\phi)cos\theta, (1+2cos\phi)sin\theta, 2sin\phi).
+		$$
+		Esse é um toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$. Com isso, temos que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
+		$$
+		\begin{aligned}
+		\derivadaparcialabrev{\theta} &= -(1+2cos\phi)sin\theta \derivadaparcialabrev{x}+(1+2cos\phi)cos\theta \derivadaparcialabrev{y} 
+		\\
+		\derivadaparcialabrev{\phi} &=  - 2sin\phi cos\theta 	\derivadaparcialabrev{x} - 2sin\phi sin\theta 	\derivadaparcialabrev{y} +2cos\phi				\derivadaparcialabrev{z}.
+		\end{aligned} 
+		$$
 		
-		\begin{definicao}
-			(Órbitas) A órbita de $p \in M$ pelo fluxo $\phi$ é a imagem da curva $\phi^{p} = \phi(.,p):\reta\to M$ e será denotada por $\orbitaponto{p}$. As órbitas podemo ser de três categorias
-			\begin{enumerate}
-				\item (Singular): se $\orbitaponto{p}$ = \{p\},
-				
-				\item (Fechada) se existe $\tau \in \reta$ tal que $\phi_{\tau+t}(p) = p$ para todo $t \in \reta$,
-				
-				\item (Regular) quando não é singular e não é fechada.
-			\end{enumerate}
+		
+		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Temos que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ temos $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, caso $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$, mas basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e $\pontoscriticos{f} = \{(\pm 3,0,0), (\pm 1,0,0)\}$, de modo que $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
+		
+		Temos a representação matricial da Hessiana $H_{p}(f)$
+		$$
+		H(\theta, \phi) = 
+		\left(
+		\begin{array}{cc}
+		-(1+2cos\phi)cos\theta & 2sin\phi sin\theta  
+		\\
+		2sin\phi sin\theta   & -2cos\phi cos\theta  
+		\end{array}
+		\right).
+		$$
+		Avaliando a hessiana nos pontos críticos temos
+		$$
+		H(0, 0) = 
+		\left(
+		\begin{array}{cc}
+		-3 & 0
+		\\
+		0& -2
+		\end{array}
+		\right),
+		H(0, \pi) = 
+		\left(
+		\begin{array}{cc}
+		1 & 0
+		\\
+		0& 2
+		\end{array}
+		\right)
+		$$
+		$$
+		H(\pi, 0) = 
+		\left(
+		\begin{array}{cc}
+		3 & 0
+		\\
+		0& 2
+		\end{array}
+		\right),
+		H(\pi, \pi) = 
+		\left(
+		\begin{array}{cc}
+		-1 & 0
+		\\
+		0& -2
+		\end{array}
+		\right)
+		$$
+		\vermelho{Não entendo a diferença entre os índices dos pontos críticos....!!!!!!!!!!}
+	\end{exemplo}
+	
+	A relação entre a topologia de $M$ e os pontos críticos da função de Morse $f:M \to \reta$, originalmente foi data em termos de desigualdades, chamadas desigualdades de Morse.
+	
+	\begin{definicao}
+		(Números de Betti) O j-ésimo número de Betti é o inteiro $\beta_{j}(M) = dim(H_{j}(M))$, onde $H_{j}(M)$ é o j-ésimo grupo de homologia singular de $M$.
+	\end{definicao}
+	
+	Como os grupos de homologia de $M$ são invariantes topológicos, então os números de Betti de $M$ também o serão.
+	
+	Seja $f \in \funcoesmorse{M}$. O número de pontos crítico de índice $k$ é definido por $\nu_{k} = \#\{p\in \pontoscriticos{f}: \lambda_{p} = k \}$. Aqui faremos a conexão entre a topologia de variedade $M$ e os pontos críticos de $f$. Note que $\beta_{k}(M)$ contém as informações sobre a topologia da variedade, por outro lado, $\nu_{k}$ contém as informações sobre os pontos críticos de $f$. A desigualdade de Morse afirma que:
+	
+	\begin{teorema}
+		(Desigualdade de Morse) Se $f \in \funcoesmorse{M}$, então valem as seguintes desigualdades:
+		\begin{enumerate}
+			\item $\beta_{k}(M) \leq \nu_{k}$ para $0\leq k\leq n$
 			
-		\end{definicao}
+			\item $\sum_{j = 0}^{k}(-1)^{k-j}\beta_{j}(M) \leq \sum_{j = 0}^{k}(-1)^{k-j}\nu_{j} $ para $0 \leq k \leq n$ e vale a igualdade para o caso em que $k=n$.
+		\end{enumerate}
+	\end{teorema}
+	
+	\begin{observacao}
+		No caso da igualdade do segundo item do teorema temos a característica de Euler-Poincaré $\chi(M) = \sum_{j = 0}^{n}(-1)^{n-j}\beta_{j}(M)$, que tamém é um invariante topológico e é a generalização do teorema de Euler para poliédros convexos $V-A+F = 2$, onde $V$ é o número de faces, $A$ é o número de arestas e $F$ é o número de faces.
+	\end{observacao}
+	
+	\section{Fluxos Gradiente e Variedades de Conexão}
+	Seja $X \in \campossuaves{M}$ um campo vetorial suave. Sabe-se que existe uma curva $\gamma: \reta\to M$ que é solução do sistema de equações diferenciais 
+	$$
+	\derivada{\gamma(t)}{t} = X(\gamma(t)), \; \gamma(0) = p.
+	$$
+	Como $M$ é compacta, então a solução $\gamma = \gamma_{p}$ existe para todo $t\in \reta$. Assim, a aplicação $\phi: \retacartesianovariedade\to M$ definida por $\phi(t,p) - \gamma_{p}(t)$ é chamada de fluxo gerado por $X$ e, fixado $p\in M$, a curva $\gamma_{p}:\reta\to M$ é chamada de linha do fluxo de $X$. Como o fluxo $\phi$ esta bem-definido para todo $t \in \reta$, então podemos efetuar a composição $\phi_{s}\circ\phi_{t}(p) = \phi(s+t, p)$ para todo $p\in M$, logo $\phi_{s}\circ\phi_{t} = \phi_{s+t}$ e $\phi_{0} = Id$. O conjunto $G_{\phi} = \{\phi_{t}:t\in \reta\}$ é um grupo com a operação de composição e é chamado de grupo de difeomorfismos a 1-parametro, o que pode ser encontrado em $\cite{palis_dynamical_systems}$.
+	
+	\begin{definicao}
+		(Órbitas) A órbita de $p \in M$ pelo fluxo $\phi$ é a imagem da curva $\phi^{p} = \phi(.,p):\reta\to M$ e será denotada por $\orbitaponto{p}$. As órbitas podemo ser de três categorias
+		\begin{enumerate}
+			\item (Singular): se $\orbitaponto{p}$ = \{p\},
+			
+			\item (Fechada) se existe $\tau \in \reta$ tal que $\phi_{\tau+t}(p) = p$ para todo $t \in \reta$,
+			
+			\item (Regular) quando não é singular e não é fechada.
+		\end{enumerate}
+		
+	\end{definicao}
+	
+	Pela compacidade de $M$ e pela unidade da solução do problema de valor inicial anteriormente descrito, temos que $\orbitaponto{p}\subset M$ é uma imersão injetiva no caso em que seja uma órbita regular. Vista como um subconjunto de $\real{m}$, para um inteiro $m>0$ suficientemente grande (Teorema de Megulho de Whitney $\cite{guillemin_differential_topology}$), $M$ é um conjunto limitado, logo $\orbitaponto{p}$ também é limitado. Assim, tal órbita pode admitir pontos limites. Os conjunto $\alpha$-limite e $\omega$-limite de $p \in M$ são definidos por $\alpha(p) = \{q \in M: \phi_{t}(p) \to q, t \to -\infty\}$ e $\omega(p) = \{q \in M: \phi_{t}(p) \to q, t \to \infty\}$. O seguinte resultado sobre a topologia dos conjuntos limites é feito em $\cite{palis_dynamical_systems}$.
+	
+	\begin{proposicao}
+		Sejam $M$ uma variedade é compacta e $X\in \campossuaves{M}$. Então para $p \in M$ tem-se que $\alpha(p)$ e $\omega(p)$ são fechados, conexos e invariantes pelo fluxo de $X$, isto é, são a união das órbitas de $X$.
+	\end{proposicao}
+	
+	Vamos trabalhar com o campo gradiente da função de Morse $f$ pois dele podemos extrair informações sobre o comportamento dessa função. Munindo $M$ com uma métrica Riemanniana $g: T_{p}M \times T_{p}M \to \reta$, temos que $df_{p}(v) = g(\nabla f(p), v)$, onde $v \in T_{p}M$. Denominado por campo gradiente de $f$ o campo vetorial suave $\nabla f \in \campossuaves{M}$. A escolha é motivada por um dos fatos: sejam $\campogradiente = -\gradiente \in \campossuaves{M}$ e $\gamma$ a curva integral de $\campogradiente$ tal que $\gamma(0) = p\in M$. Então
+	$$
+	\begin{aligned}
+	\derivada{}{t}(f \circ \gamma)(t) &= g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
+	\\
+	&=g(\gradiente(\gamma(t)), -\gradiente(\gamma(t))) 
+	\\
+	&= -\norma{\gradiente(\gamma(t))}^{2}
+	\\
+	&\leq 0,
+	\end{aligned}
+	$$
+	para todo $t \in \reta$.
+	
+	Isso mostra que a função de Morse $f$ é decrescente ao longo da linha de fluxo de do campo $\campogradiente$. Além disso, supondo que $\gamma(0) =p\in \pontoscriticos{f}$, então a desigualdade acima atinge seu maior valor em $t=0$, pois $df_{p }= 0$. Como $f$ é decrescente e atinge seu máximo em $t=0$, então a órbita $\orbitaponto{p}$ é regular e não-fechada. Em $\cite{palis_dynamical_systems}$ mostra-se que, para todo $q \in M$ tem-se que $\orbitaponto{q}$ intersecta $f^{-1}(f(q))$ transversalmente. Além disso, os pontos limites das órbitas são pontos críticos, ou seja, $\alpha(q)\cup\omega(q) \subset \pontoscriticos{f}$.
+	
+	
+	\begin{definicao}
+		(Variedades instáveis/estáveis)  A variedade instável e estável de um ponto $p \in M$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
+	\end{definicao}
+	
+	Sabemos que, se $f \in \funcoesmorse{M}$, então $\pontoscriticos{f}$ é um conjunto finito. Com isso, pode-se mostrar que, 
+	
+	\begin{lema}
+		Sejam $f\in \funcoesmorse{M}$ e $p \in M$. Então $\alpha(p) $ e $\omega(p)$ contém um único ponto.
+	\end{lema}
+	
+	\begin{observacao}
+		Em termos de pontos limite, podemos reescrever as variedades instáveis e estaveis de $p \in \pontoscriticos{f}$ como sendo $\variedadeinstavel{p} = \{q\in M: \alpha(q)=p\}$ e $\variedadeestavel{p} = \{q\in M: \omega(q)=p\}$.
+	\end{observacao}
+	
+	Da observação anterior podemos afirmar que ambas as variedades instável e estável dos pontos críticos são contráteis. De fato, defina $Id: M\to M$ como sendo a aplicação identidade e $c:M\to M$ como sendo a aplicação constante $c(M) =\{p\} $, onde $p \in \pontoscriticos{f}$. Então $h:\intervalo\times \variedadeinstavel{p} \to \variedadeinstavel{p}$ tal que $h(t,p) = \phi(t/(1-t), p)$ é uma homotopia entre $Id$ e $c$, pois é contínua e $h(0, p) = Id(p)$ e $\lim_{t \to \infty}h(t, p) = c(p)$ e a variedade instável é contrátil. Com uma argumento análogo mostra-se que $\variedadeestavel{p}$ é contrátil.
+	
+	\begin{observacao}
+		Como as variedades instáveis e estáveis dos pontos críticos de $f \in \funcoesmorse{M}$ são mergulhos de $\reta$ em $M$, então pode-se mostrar que as variedades estáveis, em certo sentido, não possuem auto-intesecções.
+	\end{observacao}
+	
+	Definimos por espaço tangente instável o subespaço $\espacotangentevariedadeinstavel\subset \espacotangentevariedade$ tal que, a restrição da Hessiana $\hessiana$ a $\espacotangentevariedadeestavel$ é negativa-definida. Analogamente temos $\espacotangentevariedadeestavel \subset \espacotangentevariedade$, onde a Hessiana é positiva-definida. Com isso, segue o teorema da variedade estável, cuja demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
+	
+	\begin{teorema}
+		(Teorema da variedade instável/estável) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
+	\end{teorema}
+	
+	\begin{observacao}
+		Do mergulho teorema anterior temos que as variedades instável e estável possuem a mesma homotopia de um disco aberto cujas dimensões são $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
+	\end{observacao}
 
-		Pela compacidade de $M$ e pela unidade da solução do problema de valor inicial anteriormente descrito, temos que $\orbitaponto{p}\subset M$ é uma imersão injetiva no caso em que seja uma órbita regular. Vista como um subconjunto de $\real{m}$, para um inteiro $m>0$ suficientemente grande (Teorema de Megulho de Whitney $\cite{guillemin_differential_topology}$), $M$ é um conjunto limitado, logo $\orbitaponto{p}$ também é limitado. Assim, tal órbita pode admitir pontos limites. Os conjunto $\alpha$-limite e $\omega$-limite de $p \in M$ são definidos por $\alpha(p) = \{q \in M: \phi_{t}(p) \to q, t \to -\infty\}$ e $\omega(p) = \{q \in M: \phi_{t}(p) \to q, t \to \infty\}$. O seguinte resultado sobre a topologia dos conjuntos limites é feito em $\cite{palis_dynamical_systems}$.
-		
-		\begin{proposicao}
-			Sejam $M$ uma variedade é compacta e $X\in \campossuaves{M}$. Então para $p \in M$ tem-se que $\alpha(p)$ e $\omega(p)$ são fechados, conexos e invariantes pelo fluxo de $X$, isto é, são a união das órbitas de $X$.
-		\end{proposicao}
-		
-		
+	De um determinado modo, podemos decompor a variedade $M$ como a união disjunta das variedades instáveis ou união disjunta da variedades estáveis, o que é garantido pela resultado a seguir.
+	
+	\begin{proposicao}
+		Se $f \in \funcoesmorse{M}$, então
+		$$
+		M = \dot{\bigcup_{p \in \pontoscriticos{f}}}\variedadeestavel{p} = \dot{\bigcup_{p \in \pontoscriticos{f}}}\variedadeinstavel{p}.
+		$$
+	\end{proposicao}
+
+	 O propósito das definições desse ponto em diante é a construção de um complexo de cadeis e operador bordo associados ao fluxo gradiente de uma função de Morse com algumas propriedades adicionais, o que chamaremos de propriedade de transversalidade, e as variedades instáveis e estáveis.
+	 
+	 \begin{definicao}
+	 	(Variedade Conectante e o Espaço Moduli) Sejam $f \in \funcoesmorse{M}$ e $p,q \in \pontoscriticos{f}$. A variedade conectante de $p$ e $q$ é definida por $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Seja $a = f(q)$ e $b = f(p)$ e tomando $c \in (a, b) \subset \reta$. O espaço moduli de $p$ e $q$ é definido por $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
+	 \end{definicao}
+	 
+	 Sejam $f: N\to M$ e $g: Z \to M$ duas aplicações suaves entre variedades diferenciáveis. Dizemos que $f$ é transversa a $g$, isto é, $f \pitchfork g$ se, e somente se, sempre que $f(x) = g(z) = y$ tem-se que $df_{x}(\espacotangenteponto{x}{N}) + dg_{z}(\espacotangenteponto{z}{Z}) = \espacotangenteponto{y}{M} $. Se $Z \subseteq M$ e $g$ é a aplicação de inclusão, então denotaremos a transversalidade por $f\pitchfork Z$. trataremos constatemente os casos em que $N, Z \subseteq M$, com isso $f$ e $g$ serão as inclusões e demotaremos a transversalidade por $N \pitchfork Z$.
+	 
+	 \begin{definicao}
+	 	(Funões de Morse-Smale) Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
+	 \end{definicao}
+	 
+	 \begin{teorema}
+	 	Sejam $f\in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$. Então a variedade conectante $\variedadeconectantepontos{p}{q}$ e o espaço moduli $\espacomoduli{p}{q}$ são vazios ou subvariedades de $M$ sem bordo cujas dimensões são $dim(\variedadeconectantepontos{p}{q}) = \lambda_{p} -\lambda_{q}$ e $dim(\espacomoduli{p}{q}) = \lambda_{p} -\lambda_{q}-1$. 
+	 \end{teorema}
+	 
+	 \begin{proposicao}
+	 	Sejam $f \in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$. Então
+	 	\begin{enumerate}
+	 		\item Se $\lambda_{p}<\lambda_{q}$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+	 		
+	 		\item $\variedadeconectantepontos{p}{p} = \{p\}$
+	 		
+	 		\item Se $\lambda_{p} = \lambda_{q}$ e $p\neq q$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+	 		
+	 		\item Se $p \neq q$ tal que $\variedadeconectantepontos{p}{q} \neq \emptyset$, então $\lambda_{p}>\lambda_{q}$.
+	 	\end{enumerate}
+	 \end{proposicao}
+
+	\begin{observacao}
+		Uma das consequências da proposição anterior é o fato de que, dada uma função de Morse-Smale, as óbitas não-singulares do fluxo do negativo do gradiente dessa função partem de um ponto crítico para um outro ponto crítico de índice inferior.
+	\end{observacao}
+	
+	\begin{proposicao}
+		Sejam $f \in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$ de índice relativo 1, isto é, $\lambda_{p} - \lambda_{q} = 1$. Então $\overline{\variedadeconectantepontos{p}{q}} = \variedadeconectantepontos{p}{q} \cup \{p,q\}$. Além disso, o número de órbitas conectando $p$ a $q$ é finito.
+	\end{proposicao}
+	
 	\chapter{Introdução à Espaços Vetoriais Simpléticos}
 	
 	\section{Origem na Física}
@@ -1068,77 +1174,77 @@
 	onde
 	$$
 	\estruturacomplexa=
-		\left(
-		\begin{array}{cc}
-		0 & -Id
-		\\
-		Id & 0
-		\end{array}
-		\right), 
+	\left(
+	\begin{array}{cc}
+	0 & -Id
+	\\
+	Id & 0
+	\end{array}
+	\right), 
 	$$
 	isto é, $\estruturacomplexa \derivadaparcialabrev{q} = \derivadaparcialabrev{p}$ e $\estruturacomplexa \derivadaparcialabrev{p} = -\derivadaparcialabrev{q}$.
-
+	
 	Vejamos que o campo Hamiltoniano representa um campo conservativo. Seja $\psi:P\times \reta \to P$ o fluxo do campo $\campohamiltonianoabrev$ tal que $\psi(t) = (q(t), p(t))$. Então as equaçoes de Hamilton podem ser reescritas como 
 	$$
 	\begin{aligned}
-		\dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
-		\\
-		\left(
-		\begin{array}{c}
-			\dot{q}(t)
-			\\
-			\dot{p}(t)
-		\end{array}
-		\right)
-		&=
-		\left(
-		\begin{array}{c}
-		\derivadaparcial{H(t)}{q}
-		\\
-		-\derivadaparcial{H(t)}{p}
-		\end{array}
-		\right).
+	\dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
+	\\
+	\left(
+	\begin{array}{c}
+	\dot{q}(t)
+	\\
+	\dot{p}(t)
+	\end{array}
+	\right)
+	&=
+	\left(
+	\begin{array}{c}
+	\derivadaparcial{H(t)}{q}
+	\\
+	-\derivadaparcial{H(t)}{p}
+	\end{array}
+	\right).
 	\end{aligned}
 	$$	
-
+	
 	Vejamos que, ao longo do fluxo $\psi$, o sistema Hailtoniano é conservativo, isto é, a energia total do sistema é constante. De fato
 	
 	$$
 	\begin{aligned}
-		\derivada{}{t}H(\psi(t)) 
-		&= \produtointerno{\nabla H}{\dot{\psi}(t)} 
-		\\
-		&= \produtointerno{\nabla H}{\campohamiltoniano{\psi(t)}} 
-		\\
-		&= 
-		-\produtointerno{\nabla H}{\estruturacomplexa \nabla H(t)} 
-		\\
-		&=-\produtointerno{\derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}
-			}{\derivadaparcial{H}{p}\estruturacomplexa\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\estruturacomplexa\derivadaparcialabrev{p}}
-		\\
-		&=-\derivadaparcial{H}{p}^{2}\produtointerno{\derivadaparcialabrev{q}
-		}{\derivadaparcialabrev{p}}	-\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{q}}
-		+\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{p}}{\derivadaparcialabrev{p}}	+\derivadaparcial{H}{q}^{2}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{p}}
-		\\
-		&=0.
+	\derivada{}{t}H(\psi(t)) 
+	&= \produtointerno{\nabla H}{\dot{\psi}(t)} 
+	\\
+	&= \produtointerno{\nabla H}{\campohamiltoniano{\psi(t)}} 
+	\\
+	&= 
+	-\produtointerno{\nabla H}{\estruturacomplexa \nabla H(t)} 
+	\\
+	&=-\produtointerno{\derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}
+	}{\derivadaparcial{H}{p}\estruturacomplexa\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\estruturacomplexa\derivadaparcialabrev{p}}
+	\\
+	&=-\derivadaparcial{H}{p}^{2}\produtointerno{\derivadaparcialabrev{q}
+	}{\derivadaparcialabrev{p}}	-\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{q}}
+	+\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{p}}{\derivadaparcialabrev{p}}	+\derivadaparcial{H}{q}^{2}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{p}}
+	\\
+	&=0.
 	\end{aligned}
 	$$
-
+	
 	Defina $\formaSimpleticaabrev :T_{(q,p)} P \times T_{(q,p)} P \to \reta$ tal que $\formaSimpleticaabrev(v, u) = -V^{t}\estruturacomplexa U$, onde $V, U$ são as  representações matricias desses campos vetoriais no ponto $(q,p)$. Afirmo que $\Omega$ é bilinear anti-simétrica e não degenerada, isto é, se dado $(q,p) \in P$ e $\formaSimpleticaPadrao{v}{y} = 0$ para todo $y \in T_{(q,p)} P$, então $v = 0$. De fato, dados $x \in T_{(q,p)} P$ e $\lambda \in \reta$, teremos $\formaSimpleticaPadrao{v + \lambda x}{u} = -(V+\lambda X)^{t}\estruturacomplexa U = -V^{t}\estruturacomplexa U -\lambda X^{t}\estruturacomplexa U = \formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{x}{u}$. Com um arguento análogo podemos mostrar que $\formaSimpleticaPadrao{v}{u + \lambda x} =\formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{v}{x} $. Portanto $\Omega$ é bilinear. É anti-simétrica pois $\formaSimpleticaPadrao{v}{u} = -V^{t}\estruturacomplexa U = -(\estruturacomplexa^{t} V)^{t}U = -U^{t}(\estruturacomplexa^{t} V)= U^{t}(\estruturacomplexa V) = -\formaSimpleticaPadrao{u}{v}$, onde usamos $\estruturacomplexa^{t} = -\estruturacomplexa$. Seja $I_{j}$ uma matriz $2\times 1$ com a j-ésima entrada igual a 1 e as outras nulas. Com isso, temos que $\estruturacomplexa I_{j+n} = -I_{j}$ e $\estruturacomplexa I_{j} = I_{j+n}$. Suponha que $v = v_{j}\derivadaparcialabrev{q_{j}}$ tal que $\formaSimpleticaPadrao{v}{e} = 0$ para todo $e$ elemento da base de $T_{(q,p)} P$. Então, fazendo $e= \derivadaparcialabrev{p_{j}}$ teremos $0= v_{j}\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{j}}} = -v_{j}I_{j}^{t}\estruturacomplexa I_{j+n} = v_{j}I_{j}^{t}I_{j}=v_{j}$, portanto $v_{j} = 0$. Repetindo a mesma construção para $1\leq j \leq n$ podemos concluir que $\formaSimpleticaPadrao{v}{u} = 0$ para todo $u$, então $\Omega$ é não-degenerada.
 	
 	Vejamos que nessa base temos $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{q_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k} = -I_{j}^{t}I_{k+n} = 0$. Analogamente, $\formaSimpleticaPadrao{\derivadaparcialabrev{p_{j}}}{\derivadaparcialabrev{p_{k}}} = 0$. Por fim, $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k+n} = I_{j}^{t}I_{k} = \delta_{jk}$. Assim, de forma equivalente, podemos escrever $\formaSimpleticaabrev = \sum_{j}  dq_{j}\wedge dp_{j}$, logo
 	$$
 	\begin{aligned}
-		\formaSimpleticaPadrao{\campohamiltonianoabrev}{v} 
-		&= \sum_{j}  dq_{j}\wedge dp_{j}(\campohamiltonianoabrev, v) 
-		\\
-		&= \sum_{j}  dq_{j}(\campohamiltonianoabrev)dp_{j}(v) - dq_{j}(v)dp_{j}(\campohamiltonianoabrev)
-		\\
-		&= \sum_{j} \derivadaparcial{H}{p_{j}}dp_{j}(v) + dq_{j}(v)\derivadaparcial{H}{q_{j}}
-		\\
-		&= \Big(\sum_{j} \derivadaparcial{H}{q_{j}}dq_{j} +\derivadaparcial{H}{p_{j}}dp_{j} \Big)(v)
-		\\
-		&= dH(v).
+	\formaSimpleticaPadrao{\campohamiltonianoabrev}{v} 
+	&= \sum_{j}  dq_{j}\wedge dp_{j}(\campohamiltonianoabrev, v) 
+	\\
+	&= \sum_{j}  dq_{j}(\campohamiltonianoabrev)dp_{j}(v) - dq_{j}(v)dp_{j}(\campohamiltonianoabrev)
+	\\
+	&= \sum_{j} \derivadaparcial{H}{p_{j}}dp_{j}(v) + dq_{j}(v)\derivadaparcial{H}{q_{j}}
+	\\
+	&= \Big(\sum_{j} \derivadaparcial{H}{q_{j}}dq_{j} +\derivadaparcial{H}{p_{j}}dp_{j} \Big)(v)
+	\\
+	&= dH(v).
 	\end{aligned}
 	$$
 	
@@ -1277,20 +1383,20 @@
 	\end{lema}
 	\begin{prova}
 		Suponha $\omega$ uma forma simplética. O Teorema $\ref{teorema_existencia_base_simpletica}$ garante a existência de uma base simplética $\{e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}\}$ de $V$. Pela bilinearidade de $\omega$ basta analisarmos $\omega$ nos elementos dessa base. Definindo $\sigma:\{1, 2, \dots , 2n\} \to \{1, 2, \dots , 2n\}$ com uma permutação, então
-			$$
-			\begin{aligned}
-				\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}) &=\sum_{\sigma} \omega(e_{1}, f_{\sigma(1)})...\omega(e_{n}, f_{\sigma(n)})
-				\\
-				&= \sum_{\sigma}\delta_{1\sigma(1)}\dots\delta_{n\sigma(n)}
-				\\
-				&= \delta_{11}\dots\delta_{nn}
-				\\
-				&= 1.
-			\end{aligned}
-			$$
+		$$
+		\begin{aligned}
+		\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}) &=\sum_{\sigma} \omega(e_{1}, f_{\sigma(1)})...\omega(e_{n}, f_{\sigma(n)})
+		\\
+		&= \sum_{\sigma}\delta_{1\sigma(1)}\dots\delta_{n\sigma(n)}
+		\\
+		&= \delta_{11}\dots\delta_{nn}
+		\\
+		&= 1.
+		\end{aligned}
+		$$
 		Por outro lado, temos que $\omega^{\wedge n} \neq 0$, Suponha que $\{v_{1},\dots, v_{2n}\}$ seja uma base de $V$ e que exista $v \sum a_{j}v_{j} \neq 0$ tal que $\omega(v, u) = 0$ para todo $u=\sum b_{j}v_{j}  \in V$. Então, $0=\omega(v, u ) = \sum_{j, k} a_{j}b_{k}\omega(v_{j}, v_{k})$, o que implica em $\omega(v_{j}, v_{k}) =0$. Então 
 		$$
-			\omega^{\wedge n}(v_{1},\dots, v_{2n}) = \sum_{\sigma} \omega(v_{1}, v_{\sigma(1)})...\omega(v_{2n}, v_{\sigma(2n)})=0,
+		\omega^{\wedge n}(v_{1},\dots, v_{2n}) = \sum_{\sigma} \omega(v_{1}, v_{\sigma(1)})...\omega(v_{2n}, v_{\sigma(2n)})=0,
 		$$
 		contradizendo a hipótese $\omega^{\wedge n} \neq 0$. Logo, $\omega$ é não-degenerada.
 	\end{prova}
@@ -1327,7 +1433,7 @@
 		$$
 		portanto $det(\varphi) = 1$.
 	\end{prova}
-
+	
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
 	Sendo $(V,\omega)$ um 2n-espaço vetorial simplético, definimos $\estruturascomplexaspadrao \subset \generalgroupreal{V}$ como conjunto de todas as estruturas complexas $\omega$-compatíveis.
@@ -1421,7 +1527,7 @@
 		\end{aligned}
 		$$ 
 		pois $P$ é uma matriz positiva-definida. Portanto temos um produto interno positivos-definido e $J$ é $\Omega$-compatível. 
-
+		
 		Pela decomposição polar temos que, dado $A$ ainti-simétrico temos apenas um $J$ $\Omega$-compatível. Portanto, temos a aplicação injetora $\produtosinternos{V} \ni g \mapsto J \in \estruturascomplexaspadrao$ denotada por $G(g) = J$. Além disso, $G$ é sobrejetora. De fato, sabe-se que toda aplicação bilinear anti-simétrica $\Omega'$ pode ser escrita como $\Omega'(v, u) = V^{t}A'U$, onde $V,U$ são as representações matriciais de $v,u$, respectivamente, e $A'$ é uma matriz anti-simétrica. Pela decomposição polar temos $A'=P'J'$. \vermelho{Temos então $A'^{\#}(g)$??????????}
 	\end{prova}		
 	
@@ -1431,7 +1537,7 @@
 	\begin{prova}
 		Sejam $\estruturascomplexaspadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{observacao_conjunto_estrutura_complexa}$. Tomando $G:\produtosinternos{V} \to \estruturascomplexaspadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturascomplexaspadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
 	\end{prova}			
-
+	
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
 	
@@ -1462,7 +1568,7 @@
 		$$
 		Pode-se mostrar que uma matriz $A$ é positiva-definida se, e somente se, $A=A^{t}$ e seus k-subdeterminantes são todos positivos. Uma consequência imediata é que, se $A$ for diagonalizável, então todos os seus auto-valores serão positivos. Mais detalhes podem ser encontrados em $\cite{hoffman_kunze}$.
 	\end{observacao}
-
+	
 	\begin{definicao}\label{definicao_potenciacao_matriz}
 		(Potênciação de matriz) Sejam $V$ um n-espaço vetorial real, $A:V \to V$ um operador linear diagonalizável e $V_{\lambda}$ o auto-espaço associado ao auto-valor $\lambda \in \sigma(A)$. Dado $\alpha \in \real{}$ o operador linear $A^{\alpha}:V \to V$ é o operador dado por $A^{\alpha} = B^{-1}diag\{ \lambda_{1}^{\alpha} , \dots, \lambda_{2n}^{\alpha} \}B$, onde $B$ é a matriz tal que $A= B^{-1}diag\{ \lambda_{1}, \dots, \lambda_{2n}\}B$.
 	\end{definicao}
@@ -1487,7 +1593,7 @@
 		&=1,
 		\end{aligned}
 		$$
-			o que é um absurdo, portanto $(A^{-\alpha})^{t}(A^{t})^{\alpha} =Id$ para qualquer $\alpha \in \real{}$, o que implica que $(A^{-\alpha})^{t}=(A^{t})^{-\alpha}$. Claro que fazendo $-\alpha \mapsto \alpha$ teremos a tese do enunciado.
+		o que é um absurdo, portanto $(A^{-\alpha})^{t}(A^{t})^{\alpha} =Id$ para qualquer $\alpha \in \real{}$, o que implica que $(A^{-\alpha})^{t}=(A^{t})^{-\alpha}$. Claro que fazendo $-\alpha \mapsto \alpha$ teremos a tese do enunciado.
 	\end{prova}
 	
 	\begin{definicao}
@@ -1542,29 +1648,29 @@
 		$$
 		A = 
 		\left(
-			\begin{array}{cccc}
-			A_{1} & 0 & \hdots & 0
-			\\
-			0 & A_{2} & \hdots & 0
-			\\
-			\vdots & \vdots & \ddots & \vdots
-			\\
-			0 & 0 & \hdots & A_{k}
-			\end{array}
+		\begin{array}{cccc}
+		A_{1} & 0 & \hdots & 0
+		\\
+		0 & A_{2} & \hdots & 0
+		\\
+		\vdots & \vdots & \ddots & \vdots
+		\\
+		0 & 0 & \hdots & A_{k}
+		\end{array}
 		\right), \text{onde}\;
 		A_{j} =
 		\left(
-			 \begin{array}{ccccc}
-			\lambda_{j} & 1 & 0 & \hdots & 0
-			\\
-			0 & \lambda_{j} & 1 & \hdots & 0
-			\\
-			\vdots & \vdots & \ddots & \ddots & \vdots
-			\\
-			0 & 0  & \hdots & \lambda_{j} & 1
-			\\
-			0 & 0 & \hdots & 0 & \lambda_{j}
-			\end{array}
+		\begin{array}{ccccc}
+		\lambda_{j} & 1 & 0 & \hdots & 0
+		\\
+		0 & \lambda_{j} & 1 & \hdots & 0
+		\\
+		\vdots & \vdots & \ddots & \ddots & \vdots
+		\\
+		0 & 0  & \hdots & \lambda_{j} & 1
+		\\
+		0 & 0 & \hdots & 0 & \lambda_{j}
+		\end{array}
 		\right).
 		$$
 		
@@ -1626,24 +1732,24 @@
 			V\ar[d]_{i_{V}}\ar[r]^{\varphi} & W\ar[d]^{i_{W}} 
 			\\
 			\complexificacao{V} \ar[r]_{\complexificacao{\varphi}}&\complexificacao{W} 
-			}
+		}
 		$$
 	\end{teorema}
 	\begin{prova}
 		Defina $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ por $\complexificacao{\varphi}(v_{1}, v_{2}) = (\varphi v_{1}, \varphi v_{2})$. Como $\varphi v_{1}, \varphi v_{1} \in W$, então $(\varphi v_{1}, \varphi v_{2}) \in W\oplus W = \complexificacao{W}$. Além disso, dados $\lambda = (a+ib)\in \complexo{}$ e $(v_{1}, v_{2}), (u_{1}, u_{2})\complexificacao{\varphi}$ temos 
 		$$
-			\begin{aligned}
-			\complexificacao{\varphi} (\lambda(v_{1}, v_{2}) + (u_{1}, u_{2})) 
-			&= (\varphi(a v_{1} - bv_{2} + u_{1}), \varphi(b v_{1}+a v_{2} + u_{2}))
-			\\
-			&=(a\varphi v_{1} - b\varphi v_{2} + \varphi u_{1}, b\varphi v_{1}+a\varphi v_{2} + \varphi u_{2})
-			\\
-			&=(a\varphi v_{1} - b\varphi v_{2} , b\varphi v_{1}+a\varphi v_{2} )+(\varphi u_{1},\varphi u_{2})
-			\\
-			&=\lambda(\varphi v_{1},\varphi v_{2})+(\varphi u_{1},\varphi u_{2})
-			\\
-			&=\lambda 	\complexificacao{\varphi} (v_{1},v_{2})+\complexificacao{\varphi} (u_{1},u_{2}).
-			\end{aligned}
+		\begin{aligned}
+		\complexificacao{\varphi} (\lambda(v_{1}, v_{2}) + (u_{1}, u_{2})) 
+		&= (\varphi(a v_{1} - bv_{2} + u_{1}), \varphi(b v_{1}+a v_{2} + u_{2}))
+		\\
+		&=(a\varphi v_{1} - b\varphi v_{2} + \varphi u_{1}, b\varphi v_{1}+a\varphi v_{2} + \varphi u_{2})
+		\\
+		&=(a\varphi v_{1} - b\varphi v_{2} , b\varphi v_{1}+a\varphi v_{2} )+(\varphi u_{1},\varphi u_{2})
+		\\
+		&=\lambda(\varphi v_{1},\varphi v_{2})+(\varphi u_{1},\varphi u_{2})
+		\\
+		&=\lambda 	\complexificacao{\varphi} (v_{1},v_{2})+\complexificacao{\varphi} (u_{1},u_{2}).
+		\end{aligned}
 		$$
 		Portanto $\complexificacao{\varphi}$ é $\complexo{}$-linear. Dado $v \in V$ temos $(i\circ \varphi)(v) = (\varphi v,0) = \complexificacao{\varphi}(v,0) = (\complexificacao{\varphi} \circ i)(v)$, logo $i\circ \varphi =\complexificacao{\varphi} \circ i$. Por fim, suponha que exista $\complexificacao{\varphi'} $ definida por $\complexificacao{\varphi'}(v_{1}, v_{2}) = (\varphi' v_{1}, \varphi' v_{2})$ e tal que $i\circ \varphi =\complexificacao{\varphi'} \circ i$, onde $\varphi':V\to W$ é uma aplicação linear. Então para todo $v \in V$ temos $i\circ \varphi =\complexificacao{\varphi} \circ i = \complexificacao{\varphi'} \circ i$, o que implicam em $(\varphi v, 0) = (\varphi' v, 0)$. Como $v \in V$ é arbitrário, então $\varphi = \varphi'$, logo $\complexificacao{\varphi} = \complexificacao{\varphi'}$, demonstrando a unicidade. 
 	\end{prova}
@@ -1651,15 +1757,15 @@
 	Seja $\varphi: V \to \reta$ uma aplicação bilinear. Então pelo temorema anterior, existe uma 
 	
 	Vendo o corpo dos complexos como um espaço vetorial sobre $\reta$, mostraremos que o produto tensorial $\complexificacaotensorial{V}$ é equivalente a construção da complexificação feita anteriormente. Utilizaremos construção na complexificação do 2n-espaço vetorial simplético $(V, \omega)$.
-
+	
 	\begin{teorema}\label{teorema_isomorfismo_complexificacao}
 		Seja $V$ um espaço vetorial real de dimensão finita. A aplicação $f_{V}: \complexificacao{V} \to \complexificacaotensorial{V}$ definida por  $f_{V}(v_{1},v_{2}) = 1\otimes_{\reta} v_{1} + i \otimes_{\reta} v_{2}$ é um isomorfismo entre os espaços vetoriais complexos e comuta o diagrama
 		$$
-			\xymatrix{
-				& V\ar[dl]_{i}\ar[rd]^{j} &
-				\\
-				\complexificacao{V}\ar[rr]_{f_{V}}& & \complexificacaotensorial{V},
-			}
+		\xymatrix{
+			& V\ar[dl]_{i}\ar[rd]^{j} &
+			\\
+			\complexificacao{V}\ar[rr]_{f_{V}}& & \complexificacaotensorial{V},
+		}
 		$$
 		onde $i(v) = (v,0)$ (é o mergulho padrão) e $j(v) = 1\otimes_{\reta} v$.
 	\end{teorema}
@@ -1667,15 +1773,15 @@
 		Dados $z=(a+ib) \in \complexo{}$ e $v,u \in \complexificacao{V}$ temos
 		$$
 		\begin{aligned}
-			f_{V}(zv+u) &= 1\otimes_{\reta} (a v_{1} - bv_{2} + u_{1}) + i \otimes_{\reta} (bv_{1}+av_{2} + u_{2})
-			\\
-			&=1\otimes_{\reta} (a v_{1} - bv_{2}) + i \otimes_{\reta} (bv_{1}+av_{2})+1\otimes_{\reta} u_{1} + i \otimes_{\reta} u_{2}
-			\\
-			&=(a+ib)\otimes_{\reta}v_{1} + (-b+ia)\otimes_{\reta} v_{2}+f_{V}(u)
-			\\
-			&=(a+ib)\otimes_{\reta}v_{1} + (a+ib)i\otimes_{\reta} v_{2}+f_{V}(u)
-			\\
-			&=zf_{V}(v)+f_{V}(u).
+		f_{V}(zv+u) &= 1\otimes_{\reta} (a v_{1} - bv_{2} + u_{1}) + i \otimes_{\reta} (bv_{1}+av_{2} + u_{2})
+		\\
+		&=1\otimes_{\reta} (a v_{1} - bv_{2}) + i \otimes_{\reta} (bv_{1}+av_{2})+1\otimes_{\reta} u_{1} + i \otimes_{\reta} u_{2}
+		\\
+		&=(a+ib)\otimes_{\reta}v_{1} + (-b+ia)\otimes_{\reta} v_{2}+f_{V}(u)
+		\\
+		&=(a+ib)\otimes_{\reta}v_{1} + (a+ib)i\otimes_{\reta} v_{2}+f_{V}(u)
+		\\
+		&=zf_{V}(v)+f_{V}(u).
 		\end{aligned}
 		$$
 		Portanto $f_{V}$ é $\complexo{}$-linear. Além disso, é injetora pois $f_{V}(u) = 0$ se, e somente se, $u = 0$. Tomando um elemento arbitrário $w = (a+ib)\otimes_{\reta}v \in \complexificacaotensorial{V} $ e definindo $u = ((a+ib)v, (-ia+b)v) \in \complexificacao{V}$ temos que $f_{V}(u) = 1\otimes_{\reta} (a+ib)v + i \otimes_{\reta} (-ia+b)v = (a+ib)\otimes_{\reta} v$. Portanto $f_{V}$ é sobrejetora. Logo é um isomorfismo.
@@ -1684,7 +1790,7 @@
 	\end{prova}
 	
 	O conjugado de cada $z=(a+ib) \in \complexo{}$ é definido por $\overline{z} = a-ib$. Analogamente, o conjugado de $\complexificacaoelemento{z}{v} \in \complexificacaotensorial{V}$ é definido por $\complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$. Definindo $v_{1} =av$ e $v_{2} = -bv$ temos $f_{V}(v_{1}, v_{2}) =\complexificacaoelemento{1}{v_{1}} +\complexificacaoelemento{i}{v_{2}} = \complexificacaoelemento{a}{v} -\complexificacaoelemento{ib}{v}  =\complexificacaoelemento{\overline{z}}{v}  $. Portanto, temos a identificação entre os conjugados $ \complexificacao{V} \ni (av, -bv) \mapsto \complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$.
-
+	
 	Sejam $k\geq 1$ um inteiro e $\{V_{j}\}_{j=1}^{k}$ um conjunto de espaços vetoriais de dimensão finita sobre um corpo $\mathbb{K}$. Sabe-se que o produto tensorial $\produtotensorial{V}{k}$ é um espaço vetorial de dimensão finita sobre $\mathbb{K}$. Alem disso, sabe-se que, dado um $W$ espaço vetorial também sobre $\mathbb{K}$, tem-se que $W\otimes_{\mathbb{K}}(\produtotensorial{V}{k}) \cong W\otimes_{\mathbb{K}} \produtotensorial{V}{k}$. 
 	
 	Definindo $\complexificacaotensorialabrev{V} = \complexificacaotensorial{V}$, podemos escrever o produto tensorial $\complexificacaotensorialabrev{V}^{k\otimes} = \bigotimes_{j=1}^{k}\complexificacaotensorialabrev{V} =\bigotimes_{j=1}^{k}\complexificacaotensorial{V} \cong  \complexo{^{k\otimes}}\otimes V^{k\otimes}$, de acordo com o isomorfimo citado anteriormente. Assim, a complexificação de um tensor $T \in V^{k\otimes} $ será dado por $\complexificacao{T} = z_{1}\otimes \dots \otimes z_{k}\otimes T$. A aplicação $p: \complexificacaotensorialabrev{V}\times \dots \times  \complexificacaotensorialabrev{V} \to \complexo{k}\times V^{k}$ definida no k-produto cartesiano tal que $p(v_{1}, \dots, v_{k}) = (z_{1}, \dots, z_{k},v'_{1}, \dots, v'_{k})$ é um isomorfismo, onde $v_{j} = z_{j}\otimes v'_{j}$ para $1\leq j \leq k$.
@@ -1704,11 +1810,11 @@
 	\begin{prova}
 		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$ temos que $\complexificacaotensorialabrev{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega = \complexificacao{\omega}$ é uma aplicação $\complexo{}$-bilinear. Tomando $v = \complexificacaoelemento{x}{v'}, u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\Omega(v,u) = 1(x)1(y)\omega(v',u') = -1(y)1(x)\omega(u',v')  = -\Omega(u,v)$, logo é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, supondo que $\Omega$ seja degenerada, então existe $0\neq v = \complexificacaoelemento{x}{v'}\in \complexificacaotensorialabrev{V}$ tal que para todo $u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\formaSimpleticaExtendida{v}{u} = 0$. Com isso, 
 		$$
-			0=\Omega( v, u) = (\complexificacaoelemento{1^{2\otimes}}{\omega})(x,y ,v' ,u') = xy\formaSimpletica{v'}{u'},
+		0=\Omega( v, u) = (\complexificacaoelemento{1^{2\otimes}}{\omega})(x,y ,v' ,u') = xy\formaSimpletica{v'}{u'},
 		$$
 		o que implica que $\omega$ é degenerada, contradizendo a hipótese de que $\omega$ é não-degenerado. Portanto $\Omega$ é não-degenenada e o par $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
 	\end{prova}
-
+	
 	\begin{proposicao}
 		A complexificação $\Omega$ de $\omega$ pode ser decomposta em $\Omega = g +i k$, onde $g,k$ são ambas formas simpléticas definidas em $V$.
 	\end{proposicao}
@@ -1788,39 +1894,39 @@
 		
 		$$
 		\begin{aligned}
-			J &= A^{t}JA
-			\\
-			\left(
-				\begin{array}{cc}
-				0 & -Id
-				\\
-				Id & 0
-				\end{array}
-			\right)
-			&=
-			\left(
-				\begin{array}{cc}
-				B^{t} & D^{t}
-				\\
-				C^{t} & E^{t}
-				\end{array}
-			\right)
-			\left(
-				\begin{array}{cc}
-				-D & -E
-				\\
-				B & C
-				\end{array}
-			\right)
-			\\
-			&=
-			\left(
-				\begin{array}{cc}
-				-B^{t}D +D^{t}B & -B^{t}E+D^{t}C
-				\\
-				-C^{t}D+E^{t}B & -C^{t}E+E^{t}C
-				\end{array}
-			\right),
+		J &= A^{t}JA
+		\\
+		\left(
+		\begin{array}{cc}
+		0 & -Id
+		\\
+		Id & 0
+		\end{array}
+		\right)
+		&=
+		\left(
+		\begin{array}{cc}
+		B^{t} & D^{t}
+		\\
+		C^{t} & E^{t}
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{cc}
+		-D & -E
+		\\
+		B & C
+		\end{array}
+		\right)
+		\\
+		&=
+		\left(
+		\begin{array}{cc}
+		-B^{t}D +D^{t}B & -B^{t}E+D^{t}C
+		\\
+		-C^{t}D+E^{t}B & -C^{t}E+E^{t}C
+		\end{array}
+		\right),
 		\end{aligned}
 		$$
 		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. De forma análoga obtemos as outras identidades.
@@ -1841,7 +1947,7 @@
 	$$
 	||F(A) - F(X)|| = max \{|B_{ij} - Y_{ij}|, |C_{ij} - Z_{ij}| \}< \epsilon/2 < \epsilon.
 	$$
-
+	
 	Seja $\matrizunitaria{n} = \{A\in \generalgroupcomplexo{n}: AA^{*}=Id \}$ o subgrupo das matrizes unitárias, então temos o seguinte lema:
 	
 	\begin{lema}\label{lema_isomorfismo_U}
@@ -1850,41 +1956,41 @@
 	\begin{prova}
 		Temos que $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio, pois a identidade esta na intersecção. Tomando $A \in \matrizSimpleticaOrtogonal $, então $A^{t}A= Id$. Pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever:
 		$$
-			\begin{aligned}
-				Id=A^{t}A &=
-				\left(
-				\begin{array}{cc}
-				B^{t} & D^{t}
-				\\
-				C^{t} & E^{t}
-				\end{array}
-				\right)
-				\left(
-				\begin{array}{cc}
-				B & C
-				\\
-				D & E
-				\end{array}
-				\right)
-			\\
-			&= 
-			\left(
-			\begin{array}{cc}
-			B^{t}B + D^{t}D & B^{t}C + D^{t}E 
-			\\
-			C^{t}B + E^{t}D  & CC^{t}+EE^{t}
-			\end{array}
-			\right)
-			\\
-			&=
-			\left(
-			\begin{array}{cc}
-			B^{t}B + D^{t}D & 0 
-			\\
-			0 & CC^{t}+EE^{t}
-			\end{array}
-			\right),
-			\end{aligned}
+		\begin{aligned}
+		Id=A^{t}A &=
+		\left(
+		\begin{array}{cc}
+		B^{t} & D^{t}
+		\\
+		C^{t} & E^{t}
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{cc}
+		B & C
+		\\
+		D & E
+		\end{array}
+		\right)
+		\\
+		&= 
+		\left(
+		\begin{array}{cc}
+		B^{t}B + D^{t}D & B^{t}C + D^{t}E 
+		\\
+		C^{t}B + E^{t}D  & CC^{t}+EE^{t}
+		\end{array}
+		\right)
+		\\
+		&=
+		\left(
+		\begin{array}{cc}
+		B^{t}B + D^{t}D & 0 
+		\\
+		0 & CC^{t}+EE^{t}
+		\end{array}
+		\right),
+		\end{aligned}
 		$$
 		onde a condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + CC^{t} = DD^{t}+EE^{t} = Id$. 
 		
@@ -1916,53 +2022,53 @@
 		Se $A \in \matrizSimpleticaOrtogonal$, então $A^{t}=A^{-1}$ e $\estruturacomplexa=A^{t}\estruturacomplexa  A=A^{-1}\estruturacomplexa A$, o que implica que $A\estruturacomplexa=\estruturacomplexa A$, assim:
 		$$
 		\begin{aligned}
-			A\estruturacomplexa&=\estruturacomplexa A
-			\\
-			\left(
-			\begin{array}{cc}
-			B & C
-			\\
-			D & E
-			\end{array}
-			\right)
-			\left(
-			\begin{array}{cc}
-			0 & -Id
-			\\
-			Id & 0
-			\end{array}
-			\right)
-			&=
-			\left(
-			\begin{array}{cc}
-			0 & -Id
-			\\
-			Id & 0
-			\end{array}
-			\right)
-			\left(
-			\begin{array}{cc}
-			B & C
-			\\
-			D & E
-			\end{array}
-			\right)
-			\\
-			\left(
-			\begin{array}{cc}
-			C & -B
-			\\
-			E & -D
-			\end{array}
-			\right)
-			&=
-			\left(
-			\begin{array}{cc}
-			-D & -E
-			\\
-			B & C
-			\end{array}
-			\right), 
+		A\estruturacomplexa&=\estruturacomplexa A
+		\\
+		\left(
+		\begin{array}{cc}
+		B & C
+		\\
+		D & E
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{cc}
+		0 & -Id
+		\\
+		Id & 0
+		\end{array}
+		\right)
+		&=
+		\left(
+		\begin{array}{cc}
+		0 & -Id
+		\\
+		Id & 0
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{cc}
+		B & C
+		\\
+		D & E
+		\end{array}
+		\right)
+		\\
+		\left(
+		\begin{array}{cc}
+		C & -B
+		\\
+		E & -D
+		\end{array}
+		\right)
+		&=
+		\left(
+		\begin{array}{cc}
+		-D & -E
+		\\
+		B & C
+		\end{array}
+		\right), 
 		\end{aligned}
 		$$
 		logo temos $C=-D$ e $B=E$, portanto:
@@ -1979,7 +2085,7 @@
 		
 		Como $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
-
+	
 	Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
 	
 	\begin{lema}
@@ -2000,20 +2106,20 @@
 		Sejam $P(r,s)$ a proposição que define a tese. Por indução finita, vejamos que $P(1,1)$ é verdadeira. De fato, dados $v\in E_{\lambda}$ e $u\in E_{\mu}$ temos que $\formaSimpletica{v}{u} = \formaSimpletica{Av}{Au} = \lambda\mu\formaSimpletica{v}{u}$, o que implica que $\formaSimpletica{v}{u} = 0$, pois $\lambda\mu\neq 1$. Aplicando a hipótese de indução no índice $s$, podemos assumir que $P(1,s)$ é verdadeira e que $u \in Ker(A-\mu Id)^{s+1}$. Com isso, $0=(A-\mu Id)^{s+1}u = (A-\mu Id)^{s}(A-\mu Id)u $, logo $(A-\mu Id)u \in Ker(A-\mu Id)^{s}$, o que implica em
 		$$
 		\begin{aligned}
-			\formaSimpletica{v}{u}
-			&=\formaSimpletica{Av}{Au}
-			\\
-			&= \formaSimpletica{Av}{Au -\mu u +\mu u} 
-			\\
-			&= \lambda\underbrace{\formaSimpletica{v}{(A-\mu Id)u}}_{=0}+\lambda\mu\formaSimpletica{v}{u}
-			\\
-			&=\lambda\mu\formaSimpletica{v}{u}.
+		\formaSimpletica{v}{u}
+		&=\formaSimpletica{Av}{Au}
+		\\
+		&= \formaSimpletica{Av}{Au -\mu u +\mu u} 
+		\\
+		&= \lambda\underbrace{\formaSimpletica{v}{(A-\mu Id)u}}_{=0}+\lambda\mu\formaSimpletica{v}{u}
+		\\
+		&=\lambda\mu\formaSimpletica{v}{u}.
 		\end{aligned}
 		$$
 		Como $\lambda\mu \neq 1$, então $\formaSimpletica{v}{u}=0$ e $P(1, s+1)$ é verdadeira.
 		
 		Sabemos que $P(1, s)$ é verdadeira para todo $s\geq 1$. Aplicando a hipótese de indução, podemos assumir que $P(r, s+1)$ é verdadeira. Uma construção análoga a anterior demonstrará que $P(r+1, s+1)$ é verdadeira. Portanto $\omega(E_{\lambda}, E_{\mu}) = 0$ para quaisquer $\inteiros \ni r,s\geq 1$.
-	
+		
 	\end{prova}
 	
 	\begin{corolario}\label{corolario_restricao_forma_simpletica}
@@ -2033,14 +2139,14 @@
 			\item Definindo $W = E_{\lambda}\oplus E_{\lambda^{-1}}$ podemos escrever todo $v\in W$ como $v = v_{1}+v_{2}$, onde $v_{1} \in E_{\lambda}$ e $v_{2} \in E_{\lambda^{-1}}$. Seja $0 \neq v \in W$. Então 
 			$$
 			\begin{aligned}
-				\formaSimpletica{v}{u} 
-				&=
-				\formaSimpletica{v_{1}+v_{2}}{u_{1}+u_{2}}
-				\\
-				&= \underbrace{\formaSimpletica{v_{1}}{u_{1}}}_{=0}+\formaSimpletica{v_{1}}{u_{2}}+\formaSimpletica{v_{2}}{u_{1}}+\underbrace{\formaSimpletica{v_{2}}{u_{2}}}_{=0}
-				\\
-				&=\formaSimpletica{v_{1}}{u_{2}}+\formaSimpletica{v_{2}}{u_{1}}
-				\vermelho{?????}
+			\formaSimpletica{v}{u} 
+			&=
+			\formaSimpletica{v_{1}+v_{2}}{u_{1}+u_{2}}
+			\\
+			&= \underbrace{\formaSimpletica{v_{1}}{u_{1}}}_{=0}+\formaSimpletica{v_{1}}{u_{2}}+\formaSimpletica{v_{2}}{u_{1}}+\underbrace{\formaSimpletica{v_{2}}{u_{2}}}_{=0}
+			\\
+			&=\formaSimpletica{v_{1}}{u_{2}}+\formaSimpletica{v_{2}}{u_{1}}
+			\vermelho{?????}
 			\end{aligned}
 			$$
 		\end{enumerate}
@@ -2068,7 +2174,7 @@
 	\begin{prova}
 		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável e $det(A) \in S^{1}$, logo pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $1 = det(A) = e^{i(\theta_{1}+\dots+\theta_{n})}$ o que implica que $\theta_{1}+\dots+\theta_{n}=0$. Definindo a caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Vejamos que $\gamma$ esta bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) = U^{*}D(\lambda)U\in \matrizunitaria{n}$ pois $\matrizunitaria{n}$ é um grupo na operação de multiplicação. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} = 1$, pois $\theta_{1}+\dots+\theta_{n}=0$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo, portanto é contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
-
+	
 	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
 		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{lema}
@@ -2110,7 +2216,7 @@
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
 		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Aqui esta a importância da conexidade. Supondo que $\gruposimpletico{2n}$ tivesse duas componentes conexas, então poderiamos ter $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros \times \inteiros$, o que inviabilizaria a construção da homologia de Floer abordade no texto.
 	\end{observacao}
-
+	
 	\begin{lema}\label{lema_isomorfismo_grupo_fundamental_matriz_unitaria}
 		$\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 	\end{lema}
@@ -2120,18 +2226,18 @@
 		Defina $det_{*}: \grupofundamentalpontobase{\matrizunitaria{n}}{Id} \to \grupofundamentalpontobase{\circulo}{1}$ tal que $det_{*}\classe{A} = \classe{det(A)}$. Então dado $A' \in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ temos 
 		$$
 		\begin{aligned}
-			det_{*}(\classe{A}\classe{A'}) 
-			&= det_{*}(\classe{A}\classe{A'}) 
-			\\
-			&= det_{*}(\classe{A.A'}) 
-			\\
-			&=\classe{det(A.A')}
-			\\
-			&=\classe{det(A)det(A')}
-			\\
-			&=\classe{det(A)}.\classe{det(A')}
-			\\
-			&=det_{*}\classe{A}.det_{*}\classe{A'},  
+		det_{*}(\classe{A}\classe{A'}) 
+		&= det_{*}(\classe{A}\classe{A'}) 
+		\\
+		&= det_{*}(\classe{A.A'}) 
+		\\
+		&=\classe{det(A.A')}
+		\\
+		&=\classe{det(A)det(A')}
+		\\
+		&=\classe{det(A)}.\classe{det(A')}
+		\\
+		&=det_{*}\classe{A}.det_{*}\classe{A'},  
 		\end{aligned}
 		$$
 		logo é um homomorfismo. Definindo $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, então $det(A(t)) = e^{i\alpha(t)} = \beta(t)$, logo é sobrejetora. Sejam $Id \in \matrizunitaria{n}$ e $ 1 \in \circulo$ pontos bases. Como $det$ é sobrejetora, então $det_{*}$ é sobrejetora. Supondo que $Id = det_{*}\classe{A} = \classe{det(A(t))}$, então $det(A) \sim c$, onde $c$ é uma curva constante em $\circulo$. Logo $A \sim Id $, onde $C$ é a curva constate em $\matrizunitaria{n}$. Com isso, $\classe{A} = Id$ e $det_{*}$ é injetora, portanto é um isomorfismo.
@@ -2182,19 +2288,19 @@
 		Definindo $X, Y$ as representações matriciais de $x$ e $y$, respectivamente e sabendo que $\formaSimpleticaPadrao{x}{y} = (\estruturacomplexa X)^{t}Y$, temos
 		$$
 		\begin{aligned}
-			\formaSimpleticaPadrao{W(a)x}{W(a)y} 
-			&=
-			(\estruturacomplexa W(a)X)^{t}W(a)Y
-			\\
-			&=a^{-1} x_{n+1}ay_{1} + x_{n+2}y_{2}+ \dots + x_{2n}ay_{n}
-			\\
-			& \;\;\;\; -ax_{1}a^{-1}y_{n+1}- x_{2}y_{n+2}-\dots - x_{n}y_{2n} 
-			\\
-			&=\sum_{j=1}^{n}x_{n+j}y_{j} - 	x_{j}y_{n+j}
-			\\
-			&= \produtointerno{x_{(2)}}{y_{(1)}} - \produtointerno{x_{(1)}}{y_{(2)}}
-			\\
-			&= \formaSimpleticaPadrao{x}{y}.
+		\formaSimpleticaPadrao{W(a)x}{W(a)y} 
+		&=
+		(\estruturacomplexa W(a)X)^{t}W(a)Y
+		\\
+		&=a^{-1} x_{n+1}ay_{1} + x_{n+2}y_{2}+ \dots + x_{2n}ay_{n}
+		\\
+		& \;\;\;\; -ax_{1}a^{-1}y_{n+1}- x_{2}y_{n+2}-\dots - x_{n}y_{2n} 
+		\\
+		&=\sum_{j=1}^{n}x_{n+j}y_{j} - 	x_{j}y_{n+j}
+		\\
+		&= \produtointerno{x_{(2)}}{y_{(1)}} - \produtointerno{x_{(1)}}{y_{(2)}}
+		\\
+		&= \formaSimpleticaPadrao{x}{y}.
 		\end{aligned}
 		$$
 		Portanto, $W(a) \in \gruposimpletico{2n}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
@@ -2245,7 +2351,7 @@
 	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t)
 	$$
 	satisfasendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Além disso, assumimos que tais soluções são contráteis, isto é, homotópicas a uma curva constante. Vimos que essas soluções são pontos críticos do funcional $f_{H}$. Analogamente a Teoria de Morse (veja em $\cite{milnor}$), vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
-
+	
 	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $det(Id - A(t))\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
 	
 	\section{Axiomatização}
@@ -2256,86 +2362,86 @@
 	\begin{enumerate}
 		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhos{ak+l}{bk+l}{V}$ temos que 
 		$$
-			\mu(\gamma) = \mu(\gamma\circ g).
+		\mu(\gamma) = \mu(\gamma\circ g).
 		$$
 		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhos{a}{b}{V}$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
 		$$
-			\mu(\gamma) = \mu(\beta).
+		\mu(\gamma) = \mu(\beta).
 		$$
 		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhos{a}{c}{V}$, então $$
-			\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
+		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
 		$$
 		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $\gamma \in \caminhos{a}{b}{V}$ e $\gamma' \in \caminhos{a}{b}{V'}$. Defina $\gamma\oplus\gamma' \in \caminhos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
 		$$
-			\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
+		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
 		$$
 		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhos{a}{b}{V}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simpléctomorfimos. Defina $\phi_{*}:\caminhos{a}{b}{V}\to \caminhos{a}{b}{V}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t)(L_{1}(t)), \phi(t)(L_{2}(t)))$. Então 
 		$$
-			\mu(\phi_{*}\gamma)) = \mu(\gamma)).
+		\mu(\phi_{*}\gamma)) = \mu(\gamma)).
 		$$
 		\item \textbf{\textit{(Normalização)}} Seja $\mathbb{C} = \real{2}$ o espaço vetorial simplético munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=(v_{1},v_{2}),u (u_{1},u_{2})\in \real{2}$. Defina $\gamma \in \caminhos{-\pi/4}{\pi/4}{\real{2}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
-			\begin{enumerate}
-				\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
-				\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
-				\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
-			\end{enumerate}
-			\begin{observacao}
-				Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
-			\end{observacao}
+		\begin{enumerate}
+			\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
+			\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
+			\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
+		\end{enumerate}
+		\begin{observacao}
+			Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
+		\end{observacao}
 	\end{enumerate}
 	
 	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
-		Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \Omega) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{secao_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
-		
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simpléctomorfismos em $V$. 
-		\begin{teorema}\label{teorema_aplicacao_rho}
-			Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
-			\begin{enumerate}
-				\item \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
-				$$
-					\rho(TAT^{-1}) = \rho(A)
-				$$
-				para $A\in \gruposimpletico{V_{1}}$.
-				
-				\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
-				$$
-					\rho(A) = \rho(A_{1})\rho(A_{2})
-				$$
-				para $A\in \gruposimpletico{V}$ definido por $A(v_{1}, v_{2})=(A_{2}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
-				
-				\item \textbf{Deteminante:} Se $A\in \gruposimpleticopositivo{2n}$, então 
-				$$
-					\rho(A) = det(X+iY), \text{onde} \;	
-					A=\left(
-					\begin{array}{cc}
-					X & -Y					\\
-					Y & X
-					\end{array}
-					\right).
-				$$
-				Além disso, a aplicação indizuda $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
-				
-				\item \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
-			\end{enumerate}
-		\end{teorema}
-		
-		Na Seção $\ref{secao_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
-		
-		Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
-		
-		Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
-		
-		\begin{definicao}
-			Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior.
-		\end{definicao}
-		
-		\begin{lema}
-			A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
+	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \Omega) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{secao_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
+	
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simpléctomorfismos em $V$. 
+	\begin{teorema}\label{teorema_aplicacao_rho}
+		Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
+		\begin{enumerate}
+			\item \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
 			$$
-				\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
+			\rho(TAT^{-1}) = \rho(A)
 			$$
-			é contínua.
-		\end{lema}
+			para $A\in \gruposimpletico{V_{1}}$.
+			
+			\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
+			$$
+			\rho(A) = \rho(A_{1})\rho(A_{2})
+			$$
+			para $A\in \gruposimpletico{V}$ definido por $A(v_{1}, v_{2})=(A_{2}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
+			
+			\item \textbf{Deteminante:} Se $A\in \gruposimpleticopositivo{2n}$, então 
+			$$
+			\rho(A) = det(X+iY), \text{onde} \;	
+			A=\left(
+			\begin{array}{cc}
+			X & -Y					\\
+			Y & X
+			\end{array}
+			\right).
+			$$
+			Além disso, a aplicação indizuda $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
+			
+			\item \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
+		\end{enumerate}
+	\end{teorema}
+	
+	Na Seção $\ref{secao_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
+	
+	Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
+	
+	Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
+	
+	\begin{definicao}
+		Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior.
+	\end{definicao}
+	
+	\begin{lema}
+		A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
+		$$
+		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
+		$$
+		é contínua.
+	\end{lema}
 	\begin{prova}
 		Como os auto-valores de $A$ são não-nulos, então podemos escrever $\lambda/|\lambda| = e^{i\theta}$. Com isso, $\rho(A)=\prod \lambda_{j}/|\lambda_{j}| = \prod e^{i\theta_{j}} = e^{i(\theta_{1}+\dots +\theta_{n})} \in \circulo$, onde $\lambda_{j}/|\lambda_{j}| = e^{i\theta_{j}}$ para $1\leq j \leq n$. Logo $\rho$ esta bem-definida.
 		
@@ -2348,13 +2454,13 @@
 	
 	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
 	
-		\begin{lema}
-			A aplicação $B:\complexo{2n}\times \complexo{2n} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
-			$$
-			B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
-			$$
-		\end{lema}
-		\begin{prova}
+	\begin{lema}
+		A aplicação $B:\complexo{2n}\times \complexo{2n} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
+		$$
+		B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
+		$$
+	\end{lema}
+	\begin{prova}
 		A aplicação $B$ é bilinear pois é a parte imaginária da aplicação bilinear $\omega$. Sejam $v = (v_{1},  v_{2}), u = (u_{1},  u_{2}) \in \real{2n}$. Pela Observação $\ref{observacao_forma_extendida}$ temos as associações $\overline{v}\mapsto v' = (v_{1}, -v_{2})$,  $\overline{u}\mapsto u' = (u_{1}, -u_{2})$ e a identidade $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} -ic(v',u)$. Além disso, $c(v',u) = v_{1}u_{1} - v_{2}u_{2} = u_{1}v_{1} - u_{2}v_{2} = c(u',v)$. 
 		
 		Afirmo que $B$ é simétrica. De fato,
@@ -2363,20 +2469,20 @@
 		
 		Seja $v \in \complexo{2n}$ tal que $B(v, u) = 0 \; \forall u \in \complexo{2n}$. Tomando $z \in \complexo{2n}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$, logo 
 		$$
-			\begin{aligned}
-			\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
-			\\
-			&= \parteImaginaria{-i\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}
-			\\
-			&= \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{-iu}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}}_{=0}
-			\\
-			&=0.
-			\end{aligned}
+		\begin{aligned}
+		\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
+		\\
+		&= \parteImaginaria{-i\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}
+		\\
+		&= \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{-iu}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}}_{=0}
+		\\
+		&=0.
+		\end{aligned}
 		$$
-		 Definindo $v'\in \complexo{2n}$ como anteriormente, temos que $\formaSimpleticaPadrao{v'}{u} = \parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} = 0$. Como $\omega_{0}$ é não degenerada, então $v = 0$ e $B$ é não-degenerada.
+		Definindo $v'\in \complexo{2n}$ como anteriormente, temos que $\formaSimpleticaPadrao{v'}{u} = \parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} = 0$. Como $\omega_{0}$ é não degenerada, então $v = 0$ e $B$ é não-degenerada.
 		
 		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
-		\end{prova}
+	\end{prova}
 	
 	\begin{definicao}
 		Seja  $Q: \complexo{2n} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos subespaços de $\complexo{2n}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
@@ -2388,18 +2494,18 @@
 	\begin{prova} $Q$ é não-degenerada pois $B$ é não-degenerada.
 		Afirmo que $m(Q) = 0$. De fato, pela Observação $\ref{observacao_forma_extendida}$ temos que 
 		$$
-			\begin{aligned}
-			Q(v) 
-			&= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} 
-			\\
-			&= - c(v', v) = -(v'_{1}v_{1} +v'_{2}v_{2}) 
-			\\
-			&= -v_{1}^{2} +v_{2}^{2} 
-			\\
-			&= -\produtointerno{v^{1}}{v^{1}} +\produtointerno{v^{2}}{v^{2}}
-			\\
-			&= \sum_{j=1}^{n}-v_{1j}^{2} +v_{2j}^{2}.
-			\end{aligned}
+		\begin{aligned}
+		Q(v) 
+		&= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} 
+		\\
+		&= - c(v', v) = -(v'_{1}v_{1} +v'_{2}v_{2}) 
+		\\
+		&= -v_{1}^{2} +v_{2}^{2} 
+		\\
+		&= -\produtointerno{v^{1}}{v^{1}} +\produtointerno{v^{2}}{v^{2}}
+		\\
+		&= \sum_{j=1}^{n}-v_{1j}^{2} +v_{2j}^{2}.
+		\end{aligned}
 		$$ 
 		
 		Portando, $m_{+}(Q) = m_{-}(Q) = n$ e $m(Q) = 0$.
@@ -2420,11 +2526,11 @@
 		$$
 		\left\{
 		\begin{array}{cc}
-			\lambda_{j} \in \{\pm 1\} &, 1\leq j \leq k
-			\\
-			\lambda_{j} \in \complementar{\circulo}{\{\pm 1\}} &, k+1\leq j \leq m
-			\\
-			\lambda_{j} \in \complexo{} &, m+1\leq j \leq n.
+		\lambda_{j} \in \{\pm 1\} &, 1\leq j \leq k
+		\\
+		\lambda_{j} \in \complementar{\circulo}{\{\pm 1\}} &, k+1\leq j \leq m
+		\\
+		\lambda_{j} \in \complexo{} &, m+1\leq j \leq n.
 		\end{array}
 		\right.
 		$$
@@ -2433,24 +2539,24 @@
 		\begin{aligned}
 		\rho(A)&=\prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
 		\\
-			&=
-			\frac{\lambda_{1}}{|\lambda_{1}|} \dots \frac{\lambda_{k}}{|\lambda_{k}|}
-			\frac{\lambda_{k+1}}{|\lambda_{k+1}|} \dots  \frac{\lambda_{m}}{|\lambda_{m}|}
-			\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-			\frac{\lambda_{n}}{|\lambda_{n}|}
-			\\
-			&=
-			\underbrace{\pm 1 \dots \pm 1}_{k-vezes}
-			\underbrace{\lambda_{k+1}\dots  \lambda_{m}}_{\in \complementar{\circulo}{\{\pm 1 \}}}
-			\underbrace{	\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-				\frac{\lambda_{n}}{|\lambda_{n}|}}_{\in \complementar{\circulo}{\{\pm 1 \}}}	
-			\\
-			&=
-			(-1)^{m_{0}}\beta_{k+1}\dots \beta_{n}	
-			\\
-			&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A) \cap\complementar{\circulo}{\{ \pm 1 \}}} \lambda^{m_{+}(\lambda)}
-			\\
-			&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A)}\lambda^{m_{+}(\lambda)}.
+		&=
+		\frac{\lambda_{1}}{|\lambda_{1}|} \dots \frac{\lambda_{k}}{|\lambda_{k}|}
+		\frac{\lambda_{k+1}}{|\lambda_{k+1}|} \dots  \frac{\lambda_{m}}{|\lambda_{m}|}
+		\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
+		\frac{\lambda_{n}}{|\lambda_{n}|}
+		\\
+		&=
+		\underbrace{\pm 1 \dots \pm 1}_{k-vezes}
+		\underbrace{\lambda_{k+1}\dots  \lambda_{m}}_{\in \complementar{\circulo}{\{\pm 1 \}}}
+		\underbrace{	\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
+			\frac{\lambda_{n}}{|\lambda_{n}|}}_{\in \complementar{\circulo}{\{\pm 1 \}}}	
+		\\
+		&=
+		(-1)^{m_{0}}\beta_{k+1}\dots \beta_{n}	
+		\\
+		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A) \cap\complementar{\circulo}{\{ \pm 1 \}}} \lambda^{m_{+}(\lambda)}
+		\\
+		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A)}\lambda^{m_{+}(\lambda)}.
 		\end{aligned}
 		$$
 		
@@ -2469,13 +2575,13 @@
 			
 			\item \textbf{\textit{Deteminante:}} Seja $A \in \mathcal{U} = \matrizunitaria{n}$. Com um argumento análogo ao que foi feito na demostração da Item $\ref{item_naturalidade_rho}$, podemos afirmar que $\estruturacomplexa$ presenva a $\Omega$-ortogonalidade dos subespaços de $A$. Como $\estruturacomplexa$ é um isomorfismo simplético, então é diagonalizável  e $\pm i \in \sigma(\estruturacomplexa)$. De fato, seja $v = (u, \pm iu) \in \complexo{2n}$, onde $u \in \complexo{n}$. Então $\estruturacomplexa v = (\pm iu, -u) = \pm i(u,iu) = \pm iv$. Seja $E^{\estruturacomplexa}_{\pm i} = \{(u, \pm i u):u \in \complexo{n} \}$ os auto-espaços de $\estruturacomplexa$ para os auto-valores $\pm i$.
 			Supondo que $v \in E^{\estruturacomplexa}_{ i}$, então $\overline{v} = (\overline{u}, -i \overline{u})$ e $\overline{v} \mapsto v' = Rv = R(u, -u) = (u,u)$. Com isso, $Q(v) = -c(v', v) = -(v'_{1}v_{1}+v'_{2}v_{2}) = -(\norma{v_{1}}^{2}+\norma{v_{2}}^{2}) =-2\norma{u}^{2}<0$. Logo a restrição $Q|_{E^{\estruturacomplexa}_{ i}}$ é negativa-definida. Com um argumento análogo teremos que a restrição $Q|_{E^{\estruturacomplexa}_{-i}}$ é positiva-definida.
-
+			
 			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$. \vermelho{Enteder melhor a construção do determinante.}
 			
 			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então, pelo Lema $\ref{lema_identidade_aplicacao_rho}$, a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
 		\end{enumerate}
 	\end{prova}
-		
+	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
 	Sabemos que $\gruposimpletico{2n}$ é conexo por caminhos, logo a definição de um índice de Maslov que não se restrinja a caminhos fechados enriquece mais a teoria do que nos atermos apenas a caminhos fechados. \vermelho{(Escrever um pouco mais sobre as órbitas conectantes dos pontos críticos do funcional hamiltoniano.)}
@@ -2522,7 +2628,7 @@
 			$\mu(\mathcal{L}(\gruposimpletico{2n})) \subseteq \inteiros$.
 			$$	
 			\funcaocond{\psi_{A}(s)
-				}{\psi(2s)}{0\leq s \leq 1/2}{\gamma(s)}{1/2\leq s \leq 1.}
+			}{\psi(2s)}{0\leq s \leq 1/2}{\gamma(s)}{1/2\leq s \leq 1.}
 			$$
 			Então, $\mu(\psi) = \varDelta(\psi) - \varDelta(\psi_{A}(1)) = \varDelta(\psi) - \varDelta(W^{\pm})= \varDelta(\psi)$, pois $\rho(W^{\pm})= \exp(i\theta^{\pm})$ para algum $\theta^{\pm} \in \reta$ constante, logo $\varDelta(W^{\pm}) = 0$. Portanto, $\mu(\psi) \in \inteiros$. Como $A$ e $\psi$ são arbitrários, então $\mu (\mathcal{L}(\gruposimpletico{2n})) \subseteq \inteiros$.
 			
@@ -2546,34 +2652,34 @@
 			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ temos a identidade 
 			$$
 			\begin{aligned}
-			 \estruturacomplexa (\estruturacomplexa S)^{k} 
-			 &= \estruturacomplexa\underbrace{\estruturacomplexa  S\dots \estruturacomplexa S}_{k-vezes} 
-			 \\
-			 &= -Id  S\estruturacomplexa \dots \estruturacomplexa S (-\estruturacomplexa^{2}) 
-			 \\
-			 &=\underbrace{ S\estruturacomplexa \dots  S \estruturacomplexa }_{k-vezes}\estruturacomplexa 
-			 \\
-			 &= (S\estruturacomplexa)^{k}\estruturacomplexa.
+			\estruturacomplexa (\estruturacomplexa S)^{k} 
+			&= \estruturacomplexa\underbrace{\estruturacomplexa  S\dots \estruturacomplexa S}_{k-vezes} 
+			\\
+			&= -Id  S\estruturacomplexa \dots \estruturacomplexa S (-\estruturacomplexa^{2}) 
+			\\
+			&=\underbrace{ S\estruturacomplexa \dots  S \estruturacomplexa }_{k-vezes}\estruturacomplexa 
+			\\
+			&= (S\estruturacomplexa)^{k}\estruturacomplexa.
 			\end{aligned}
 			$$
 			
 			Sabendo que $((\estruturacomplexa S)^{k})^{t} = (S^{t})^{k}(\estruturacomplexa^{t})^{k}$ temos
 			$$
-				\begin{aligned}
-				\Psi(t)^{t}\estruturacomplexa\Psi(t)
-				&=
-				\exp(t\estruturacomplexa S)^{t}\estruturacomplexa\exp(t\estruturacomplexa S)
-				\\
-				&=\sum_{j=0}^{\infty}\frac{t^{j}(S^{t})^{j}(\estruturacomplexa^{t})^{j}}{j!}\estruturacomplexa \sum_{k=0}^{\infty}\frac{t^{k}(\estruturacomplexa S)^{k}}{k!}
-				\\
-				&=\sum_{k,j=0}^{\infty}\frac{t^{j}S^{j}(-1)^{j}\estruturacomplexa^{j}}{j!} \sum_{k=0}^{\infty}\frac{t^{k}\estruturacomplexa(\estruturacomplexa S)^{k}}{k!}
-				\\
-				&=\sum_{k,j=0}^{\infty}\frac{(-tS\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{(tS\estruturacomplexa)^{k}\estruturacomplexa}{k!}
-				\\
-				&=exp(-tS\estruturacomplexa)exp(tS\estruturacomplexa)\estruturacomplexa
-				\\
-				&=\estruturacomplexa.
-				\end{aligned}
+			\begin{aligned}
+			\Psi(t)^{t}\estruturacomplexa\Psi(t)
+			&=
+			\exp(t\estruturacomplexa S)^{t}\estruturacomplexa\exp(t\estruturacomplexa S)
+			\\
+			&=\sum_{j=0}^{\infty}\frac{t^{j}(S^{t})^{j}(\estruturacomplexa^{t})^{j}}{j!}\estruturacomplexa \sum_{k=0}^{\infty}\frac{t^{k}(\estruturacomplexa S)^{k}}{k!}
+			\\
+			&=\sum_{k,j=0}^{\infty}\frac{t^{j}S^{j}(-1)^{j}\estruturacomplexa^{j}}{j!} \sum_{k=0}^{\infty}\frac{t^{k}\estruturacomplexa(\estruturacomplexa S)^{k}}{k!}
+			\\
+			&=\sum_{k,j=0}^{\infty}\frac{(-tS\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{(tS\estruturacomplexa)^{k}\estruturacomplexa}{k!}
+			\\
+			&=exp(-tS\estruturacomplexa)exp(tS\estruturacomplexa)\estruturacomplexa
+			\\
+			&=\estruturacomplexa.
+			\end{aligned}
 			$$
 			Portanto, $\Psi(t) \in \gruposimpletico{2n}$.
 			
@@ -2586,24 +2692,24 @@
 			\textbf{Caso $m = 0$:} Nessa condição temo $S = diag\{\epsilon, \dots, \epsilon\}$. Dado um inteiro $k\geq 0$ temos que $\estruturacomplexa^{2k} = (-1)^{k}$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$. Com isso
 			$$
 			\begin{aligned}
-				\exp(\epsilon\estruturacomplexa ) 
-				&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{k}}{k!} 
-				\\
-				&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k}}{(2k)!} + \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k+1}}{(2k+1)!}
-				\\
-				&=\sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k} }{(2k)!} Id+ \sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k+1}}{(2k+1)!}\estruturacomplexa
-				\\
-				&=\cos(\epsilon)Id+\sin(\epsilon)\estruturacomplexa
-				\\
-				&=
-				\left(
-				\begin{array}{cc}
-					\cos(\epsilon) & \sin(\epsilon)
-					\\
-					-\sin(\epsilon) & \cos(\epsilon)
-				\end{array}
-				\right).
-				\
+			\exp(\epsilon\estruturacomplexa ) 
+			&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{k}}{k!} 
+			\\
+			&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k}}{(2k)!} + \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k+1}}{(2k+1)!}
+			\\
+			&=\sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k} }{(2k)!} Id+ \sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k+1}}{(2k+1)!}\estruturacomplexa
+			\\
+			&=\cos(\epsilon)Id+\sin(\epsilon)\estruturacomplexa
+			\\
+			&=
+			\left(
+			\begin{array}{cc}
+			\cos(\epsilon) & \sin(\epsilon)
+			\\
+			-\sin(\epsilon) & \cos(\epsilon)
+			\end{array}
+			\right).
+			\
 			\end{aligned}
 			$$
 			Portanto, temos
@@ -2706,15 +2812,15 @@
 	\begin{definicao}
 		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma forma linear $f:\funcoesteste \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathcal{N}$ tal que 
 		$$
-			|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
+		|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
 		$$
 		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes$.
 	\end{definicao}
 	
 	Vamos caracterizar alguns tipos de distribuições, as quais serão utilizadas com frequência. Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$ e $\phi \in \funcoesteste$. Defina $\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x)$ e $K = supp(\phi) \subset \Omega$ compacto. Como $f$ é contínua, então a sua restrição a $K$ é limitada, logo $|\produtointerno{f}{\phi}|\leq sup(|\phi|)\int_{K}|f(x)|<\infty$ e $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma estamos aplicação injetora $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que indica uma condição de integrabilidade. Com isso, podemos generalizar um pouco a condição de continuidade e extender essa construção para o espaço $\espacoLpcomp{\Omega}$ e de modo análogo temos a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
-		
+	
 	Por fim, pode-se efetuar uma diferenciação das distribuições. Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e $\alpha$ um k-multi-índice, então $\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}$.
-
+	
 	\begin{definicao}
 		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada de Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
 	\end{definicao}
@@ -2735,11 +2841,11 @@
 		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
 	\end{observacao}
 	
-		Sejam $\Omega, \Sigma \subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Sigma}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Sigma$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
-		$$
-			\sum_{|\alpha|\leq p}|\partial^{\alpha}(h\phi)|\leq c			\sum_{|\beta|\leq p}|\partial^{\beta}(\phi)|, \text{onde }\; \phi \in \funcoesdiferenciaveissupp{\infty}{K}.
-		$$
-		
+	Sejam $\Omega, \Sigma \subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Sigma}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Sigma$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
+	$$
+	\sum_{|\alpha|\leq p}|\partial^{\alpha}(h\phi)|\leq c			\sum_{|\beta|\leq p}|\partial^{\beta}(\phi)|, \text{onde }\; \phi \in \funcoesdiferenciaveissupp{\infty}{K}.
+	$$
+	
 	\begin{definicao}\label{definicao_distribuicao_adjunta}
 		(Distribuição adjunta) Sejam $\Omega, \Sigma$ como descrito anteriormente. O adjunto $h^{*}: \distribuicoesgeral{\Sigma} \to \distribuicoesgeral{\Omega}$é definida por
 		$$
@@ -2774,14 +2880,14 @@
 		Além disso, dado $\phi \in \funcoesteste$ temos 
 		$$
 		\begin{aligned}
-			\produtointerno{\partial f(x)}{\phi} 
-			&= \int_{\Omega}\derivadaparcial{f(x)}{x_{1}}\phi(x)
-			\\
-			&= \int_{\Omega}\derivadaparcial{f(x)\phi(x)}{x_{1}}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
-			\\
-			&=\underbrace{f(x)\phi(x)\Big|_{\partial \Omega}}_{=0}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
-			\\
-			&=-\produtointerno{f}{\partial \phi}.
+		\produtointerno{\partial f(x)}{\phi} 
+		&= \int_{\Omega}\derivadaparcial{f(x)}{x_{1}}\phi(x)
+		\\
+		&= \int_{\Omega}\derivadaparcial{f(x)\phi(x)}{x_{1}}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
+		\\
+		&=\underbrace{f(x)\phi(x)\Big|_{\partial \Omega}}_{=0}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
+		\\
+		&=-\produtointerno{f}{\partial \phi}.
 		\end{aligned}
 		$$
 		Onde usamos o fato de que o suporte de $\phi$ é um compacto no interior da bola, logo $\phi$ restrita a borda é nula. Portanto, $f \in \espacosobolevgeral{p}{\Omega}$.
@@ -2846,17 +2952,17 @@
 		O fluxo hamiltoniano preserva a forma simplectica.
 	\end{lema}
 	\begin{prova}\label{fluxo_convervativo}
-			$$
-			\begin{aligned}
-			\frac{d}{dt}\bigparenteses{(\psi_{t})^{*}\omega} 
-			&= (\psi_{t})^{*} \liederivada{X_{H}}\omega  
-			\\
-			&= (\psi_{t})^{*} i_{X_{H}}\underbrace{d\omega }_ {=0}+ di_{X_{H}}\omega 
-			\\
-			&= (\psi_{t})^{*} (-ddH)=0,
-			\end{aligned}
-			$$
-			logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
+		$$
+		\begin{aligned}
+		\frac{d}{dt}\bigparenteses{(\psi_{t})^{*}\omega} 
+		&= (\psi_{t})^{*} \liederivada{X_{H}}\omega  
+		\\
+		&= (\psi_{t})^{*} i_{X_{H}}\underbrace{d\omega }_ {=0}+ di_{X_{H}}\omega 
+		\\
+		&= (\psi_{t})^{*} (-ddH)=0,
+		\end{aligned}
+		$$
+		logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
 	\end{prova}
 	
 	\section{Equação de Floer}
@@ -2908,7 +3014,7 @@
 	df_{H}(\gamma)(\xi) = \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)dt.
 	$$
 	De onde segue-se que $df_{H}(\gamma) = 0 \iff \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)=0\; \forall \xi \in T_{\gamma}\solucoesperiodicascontrateis$, que pela não-degenerecência de $\omega$ temos que $df_{H}(\gamma) = 0 \iff \dot{\gamma}(t) - X(\gamma(t), t)=0$, isto é, $\gamma \in \solucoesperiodicascontrateis$ é uma solução null-homotópica das equações de hamilton.
-
+	
 	Em geometria Riemanniana definimos o gradiente de uma função suave $f:M \to \real{}$ como sendo o campo $\nabla f(p) \in T_{p}M$ tal que $df(p)(v) = \iprod{ \nabla f(p)}{v}\; \forall v \in T_{p}M$. Note que temos a dependência da métrica riemanniana nessa definição. Construiremos o conceito de gradiente do funcional $f_{H}$, para isso, definamos uma estrutura quase-complexa em $M$ por $J \in C^{\infty}(End(TM))$ tais que $J^{2} = -Id$, então temos a métrica riemanniana associada a $\omega$, isto é,
 	$$
 	g(X, Y)= \omega(X, J(x)Y), \; X,Y \in T_{x}M,
@@ -2928,12 +3034,12 @@
 	portanto, para o funcional teremos
 	$$
 	\begin{aligned}
-		df_{H}(\gamma)(\xi) 
-		&=  \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi(\gamma(t)))dt
-		\\
-		&= \int_{[0,1]} \omega(J(\gamma(t))(\dot{\gamma}(t) - X(\gamma(t), t)), J(\gamma(t))\xi(\gamma(t)))dt
-		\\
-		&= \int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))\xi(\gamma(t)))dt,
+	df_{H}(\gamma)(\xi) 
+	&=  \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi(\gamma(t)))dt
+	\\
+	&= \int_{[0,1]} \omega(J(\gamma(t))(\dot{\gamma}(t) - X(\gamma(t), t)), J(\gamma(t))\xi(\gamma(t)))dt
+	\\
+	&= \int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))\xi(\gamma(t)))dt,
 	\end{aligned}
 	$$
 	logo 
@@ -3028,7 +3134,7 @@
 	
 	\section{Variedades conectantes - espaços das soluções de Floer}
 	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x^{-}, x^{+}$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\orbitasconectantespadrao$ como sendo o conjunto das soluções da equação de Floer que conectam as óbitas $x^{-}$ e $x^{+}$. Vamos demonstrar que $\orbitasconectantespadrao$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\orbitasconectantes{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $\mapafloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são determinadas curvas conectando $x^{-}, x^{+}$ tal que $\orbitasconectantespadrao \subset \caminhosexponenciaisconectantespadrao$. Mostraremos que $Ker(\mapafloer) = \orbitasconectantespadrao$. Por fim, vamos provar que $\mapafloer$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\orbitasconectantespadrao) = dim (Ker(\mapafloer)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $\mapafloer$ para mostrar que $\orbitasconectantespadrao = \mapafloer^{-1}(0)$ é uma variedade diferenciável.
-
+	
 	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais e conexões afins em variedades Riemannianas, mas caso haja familiaridade com tais definições a leitura dessa seção não se faz necessária.
 	
 	\section{Fibrados Vetoriais - alguns resultados}
@@ -3096,7 +3202,7 @@
 		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
 	\end{prova}
 	
-	\section{Variedade Riemanniana - algumas definições}
+	\section{Variedade Riemanniana - algumas definições}\label{secao_variedade_riemanniana}
 	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
 	
 	\begin{definicao}\label{definicao_variedade_riemanniana}
@@ -3123,7 +3229,7 @@
 		\\
 		&= 
 		\sum_{k} \Big( \sum_{ij} X_{i} (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\Big)\partial_{k} 
-		 \\
+		\\
 		&= \sum_{k} (\nabla_{X}Y)^{k}\partial_{k}.
 		\end{aligned} 
 		$$
@@ -3155,6 +3261,10 @@
 		(Difeomorfismo exponencial) Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
 	\end{proposicao}
 	
+	\begin{definicao}\label{definicao_gradiente_hessiana}
+		(campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $df_{p}(v) = g(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = d\gradiente(p)$.
+	\end{definicao}
+	
 	\section{Operadores de Fredholm}
 	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabse-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. De forma equivalente, $T$ é um isomorfismo se, e somente se, $dim(Ker(T)) = 0$ e $dim(T(A)) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de "quanto o operador" se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
 	
@@ -3164,7 +3274,7 @@
 	\end{definicao}
 	
 	Os resultados a seguir serão utilizados na construção e demonstração de estabilidade do operador de Fredholm adiante. Vamos denotar $\operadoresfredholm{A}{B}$ o conjunto dos operadores de Fredholm de $A$ em $B$ e $\operadoreslimitados{A}{B}$ o conjunto dos operadores limitados definidos nos mesmo espaços de Banach.
-
+	
 	\begin{teorema}\label{teorema_estabilidade_fredholm}
 		(Estabilidade de Fredholm) Sejam  $T \in \operadoresfredholm{A}{B}$ e $\epsilon>0$. Dado $K \in \operadoreslimitados{A}{B}$ tal que $||K|| < \epsilon$ temos que $T+K \in \operadoresfredholm{A}{B}$. Além disso, $ind(T+K)=ind(T)$ e $k(T+K) \leq k(T)$.
 	\end{teorema}
@@ -3196,7 +3306,7 @@
 	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que os espaço das funções suaves não é um espaço de Banach \vermelho{(DEVO MELHORAR ESSE ARGUMENTO)}, portanto $\caminhosdecaimentoexponencialpadrao$ não é um candidato a espaço de Banach. \vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
 	
 	De acordo com a Definição  $\ref{definicao_espaco_Lp}$ o espaço $L^{p}(\Omega)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equação de Floer envolve derivadas de primeira ordem, o espaço de Banach com o qual trabalharemos será munido de uma norma que leva em consideração o comportamento dessas derivadas. Tal espaço normado é chamado por espaço de Sobolev.
-		
+	
 	Notemos que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial, por isso vamos adotar como espaço de Sobolev generalizado do que foi feito na Seção $\ref{secao_espaco_sobolev}$. 
 	
 	Notemos que $dim(\retacartesianocirculo) = 2$, logo pelas limitações citadas na Observação $\ref{Sp2n_homotopia}$ e pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev) temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{q}$, onde $q = 1/p - 1/n$ e $n = 2$, o que implica que $q = 0$ se $p=2$, logo temos que trabalhar $p>2$.
@@ -3213,9 +3323,9 @@
 	\end{prova}
 	
 	\section{$\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach}
-
+	
 	Quando não houver riscos de ambiguidades adotaremos a notação de $\caminhosexponenciaisconectantesabrev$ em vez de $\caminhosexponenciaisconectantespadrao$.
-
+	
 	\begin{definicao}
 		(Variedade de Banach) Seja N um espaço topologico de Hausdorff. Uma família indexada $\{(U_{i}, \phi_{i})\}_{i \in I}$, cujos pares $(U_{i}, \phi_{i})$ são chamados de cartas, é um k-atlas de N se:
 		\begin{enumerate}
@@ -3279,7 +3389,7 @@
 	\section{O diferencial de $\mapafloer$}
 	\vermelho{Explicar o porque temos que tomar o diferencial do mapa de Floer.}
 	
-
+	
 	
 	Por hipótese $M$ é uma 2n-variedade Riemanniana, consequentemente, $\pullbackfibradotangenteM{w}$ também é uma variedade Riemannina para todo $u \in \caminhosexponenciaisconectantesabrev$. Portanto, para realizarmos a diferencição de $\mapafloer$ devemos comparar os campos vetoriais $\mapafloerparametro{w}$ a $\mapafloerparametro{w'}$ através do transporte paralelo descricao na Observação $\ref{observacao_transporte_paralelo}$, obrigando-nos a trabalhar com conexões afins, levando complexidade adicional à análise das características de $D\mapafloer(w)$. Termos do transporte paralelo teríamos a seguinte expressão:
 	$$
@@ -3289,14 +3399,14 @@
 	Vamos recorrer novamente o Teorema $\ref{teorema_whitney}$ (teorema de Whitney) para simplificar essa análise. Seja $\pullbackfibradotangenteM{w} \subset \real{k}$ o mergulho de Whitney, então todo $(s,t) \in \retacartesianocirculo$ temos $w(s,t) \in \real{k}$, logo  $ w(s,t)+\xi \in \real{k}$ para todo $\xi \in \real{k}$. Com isso:
 	$$
 	\begin{aligned}
-		\mapafloerparametro{w+\xi}-\mapafloerparametro{w}
-		&= \mapafloerdefinicao{w+\xi}
-		\\
-		 - & \mapafloerdefinicao{w}
-		\\
-		&=\derivadaparcial{\xi}{s} + \bigparenteses{J(w+\xi)-J(w)}\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} + J(w+\xi)\derivadaparcial{\xi}{t} 
-		\\
-		- & J(w+\xi)\bigparenteses{X_{H}(w+\xi) - X_{H}(\xi)} - \vermelho{\underbrace{J(w+\xi)X_{H}(w+\xi)}_{=0???}}
+	\mapafloerparametro{w+\xi}-\mapafloerparametro{w}
+	&= \mapafloerdefinicao{w+\xi}
+	\\
+	- & \mapafloerdefinicao{w}
+	\\
+	&=\derivadaparcial{\xi}{s} + \bigparenteses{J(w+\xi)-J(w)}\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} + J(w+\xi)\derivadaparcial{\xi}{t} 
+	\\
+	- & J(w+\xi)\bigparenteses{X_{H}(w+\xi) - X_{H}(\xi)} - \vermelho{\underbrace{J(w+\xi)X_{H}(w+\xi)}_{=0???}}
 	\end{aligned}
 	$$
 	Como os termos $w, \xi, J, X_{H}$ são suaves, então o limite $\norma{\xi} \to 0$ existe e é expresso por:
@@ -3336,15 +3446,15 @@
 	$$
 	logo
 	$$
-		D\mapafloer_{x^{\mp}}(\xi) =  \estruturacomplexa\derivadaparcial{\xi}{t}+ S^{\mp}\xi =
-		 \estruturacomplexa\derivadaparcial{\xi}{t} -\estruturacomplexa\derivada{\xi}{t}
-		=0.
+	D\mapafloer_{x^{\mp}}(\xi) =  \estruturacomplexa\derivadaparcial{\xi}{t}+ S^{\mp}\xi =
+	\estruturacomplexa\derivadaparcial{\xi}{t} -\estruturacomplexa\derivada{\xi}{t}
+	=0.
 	$$
 	Como $w \in \caminhosexponenciaisconectantespadrao$ é arbitraria, então 
-	 
+	
 	\section{$D\mapafloer$ é um operador de Fredholm}
 	A estratégia não é demonstrar diretamente que o diferencial do mapa de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o Lema $\ref{lema_desigualdade_operador_compacto}$ abaixo.
-
+	
 	\begin{definicao}\label{definicao_operador_compacto}
 		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
 	\end{definicao}
@@ -3372,20 +3482,20 @@
 		Para determinar a solução da equação mais geral ($\zeta\neq 0$), aplicaremos o método de variação de constantes \vermelho{(procurar uma referencia)} que consiste em analisar uma solução mais geral da forma $\Psi(t) = R(t)\Psi_{0}(t)$ para $t \in [0,1]$. Aplicando o operador $A$ na solução $R(t)\Psi_{0}(t)$ e usando o fato de que $\dot{R}(t) = \estruturacomplexa SR(t)$ e $R(t)$ é invertível, teremos a seguinte condição sobre $\Psi_{0}(t)$
 		$$
 		\begin{aligned}
-			\zeta(t) 
-			&= A\Psi(t)
-			\\ 
-			&= (\estruturacomplexa\derivadaparcialabrev{t}+S)(R(t)\Psi_{0}(t)) 
-			\\ 
-			&= \estruturacomplexa\dot{R}(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
-			\\
-			&= -SR(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
-			\\
-			&= \estruturacomplexa R(t)\dot{\Psi}_{0}(t),
-			\\
-			&\therefore 
-			\\
-			\dot{\Psi}_{0}(t) &= -R^{-1}(t)\estruturacomplexa \zeta(t).
+		\zeta(t) 
+		&= A\Psi(t)
+		\\ 
+		&= (\estruturacomplexa\derivadaparcialabrev{t}+S)(R(t)\Psi_{0}(t)) 
+		\\ 
+		&= \estruturacomplexa\dot{R}(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
+		\\
+		&= -SR(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
+		\\
+		&= \estruturacomplexa R(t)\dot{\Psi}_{0}(t),
+		\\
+		&\therefore 
+		\\
+		\dot{\Psi}_{0}(t) &= -R^{-1}(t)\estruturacomplexa \zeta(t).
 		\end{aligned}
 		$$
 		
@@ -3407,12 +3517,12 @@
 		$$
 		(Id - R(1))\Psi_{0}(0) = -R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
 		$$
-			
+		
 		Temos que $R \in Ker(A)$ e pela hipótese $det(Id - R(1))\neq 0$, portanto o operador $Id - R(1)$ é invertível. Com isso a condição inicial $\Psi_{0}(0)$ esta unicamente determinada por
 		$$
 		\Psi_{0}(0) = -(Id - R(1))^{-1}R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
 		$$
-			
+		
 		O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe $\Psi \in W$ solução do sistema $A\Psi = \zeta$ determinada unicamente pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in H$, existe uma única $\Psi_{0}(0)$, logo $\zeta$ deteremina unicamente a solução $\Psi$ e podemos escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível.
 		
 		Como $A$ é invertível, então $0 \notin \sigma(A)$, isto é, os auto-valores de $A$ são não-nulos. Sejam $E^{+}, E^{-}$ os auto-espaços de $A$ cujos auto-valores são positivos e negativos, respectivamente. Então temos a decomposição $W = \espacosobolevgeral{2}{\circulo;\real{2n}} = E^{+}\oplus E^{-}$. Definindo $A^{\pm}=A |_{E^{\pm}}$ e $P^{\pm}: W \to E^{\pm}$ as projeções ortogonais, $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(W)$ e $K: \real{}\to \mathcal{L}(W)$.
@@ -3430,77 +3540,77 @@
 		Os dois primeiros  axiomas são algébricos, já o último é topológico e caracteriza a contínuidade do operador. Nesse sentido, a aplicação $exp(\mp A^{\pm}):\real{}_{+} \to \mathcal{L}(W)$ é um semi-grupo fortemente contínuo e $K$ é descontínua em $s=0$ pois $lim_{s\to 0^{+}}K(s) = P^{+}$ e $lim_{s\to 0^{-}} K(s)= -P^{-}$, mas é fortemente contínua para $s \in \real{}\backslash\{0\}$. Dado $s \in \real{}$ afirmo que $K(s)$ é um operador linear limitado. De fato, é linear pois é a composição dos operadores lineares $\pm exp(- sA^{\pm})$ e $P^{\pm}$. É limitado pois
 		$$
 		\begin{aligned}
-			\norma{K(s)}_{\mathcal{L}(W)} &= \sup_{\norma{\xi}=1}\norma{K(s)\xi}
-			\\
-			&=\sup_{\norma{\xi}=1}\norma{\pm exp(- sA^{\pm})P^{\pm}\xi}
-			\\
-			&=\sup_{\norma{\xi}=1}\norma{exp(- sA^{\pm})\xi^{\pm}}
-			\\
-			&=\sup_{\norma{\xi}=1}\norma{exp(- s\lambda^{\pm})\xi^{\pm}}
-			\\
-			&\leq |exp(- s\lambda^{\pm})|\sup_{\norma{\xi}=1}\norma{\xi^{\pm}}
-			\\
-			&\leq exp(- s\lambda^{\pm})
-			\\
-			&\leq exp(- |s|\lambda),
+		\norma{K(s)}_{\mathcal{L}(W)} &= \sup_{\norma{\xi}=1}\norma{K(s)\xi}
+		\\
+		&=\sup_{\norma{\xi}=1}\norma{\pm exp(- sA^{\pm})P^{\pm}\xi}
+		\\
+		&=\sup_{\norma{\xi}=1}\norma{exp(- sA^{\pm})\xi^{\pm}}
+		\\
+		&=\sup_{\norma{\xi}=1}\norma{exp(- s\lambda^{\pm})\xi^{\pm}}
+		\\
+		&\leq |exp(- s\lambda^{\pm})|\sup_{\norma{\xi}=1}\norma{\xi^{\pm}}
+		\\
+		&\leq exp(- s\lambda^{\pm})
+		\\
+		&\leq exp(- |s|\lambda),
 		\end{aligned}
 		$$
 		onde fizemos $\xi^{\pm}$ os auto-vetores de $A^{\pm}$ com auto-valores $\lambda^{\pm}$ positivos e negativos, respectivamente. Na ultima desigualdade tivemos dois casos: o primeiro quando $s<0$ implicando em $- s\lambda^{\pm} = - s\lambda^{-} <0$, e o segundo quando $s>0$ implicando em $- s\lambda^{+}<0$. Definindo $\lambda = \inf \{|\alpha|: \alpha \in \sigma(A) \}$, temos a desigualdade desejada.
 		
 		Seja $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}} \cap \espacoLdois{\retacartesianocirculo;\real{2n}}$ tal que 
 		$$
-			Q(\eta(s))(t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
+		Q(\eta(s))(t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
 		$$
 		
 		Esse operador esta bem-definido pois, dado $\eta(s) \in \espacoLdois{\reta, H}$ temos
 		$$
 		\begin{aligned}
-			\norma{Q(\eta(s))(t)}_{\espacoLdois{\retacartesianocirculo}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLdois{\retacartesianocirculo}}
-			\\
-			&\leq
-			\int_{\reta}\norma{K(s-\alpha)\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
-			\\
-			&\leq
-			\int_{\reta}\norma{K(s-\alpha)}\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
-			\\
-			&\leq
-			\int_{\reta}e^{-\delta|s-\alpha|}  \underbrace{\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}}_{N < \infty}d\alpha
-			\\
-			&\leq
-			N\int_{\reta}e^{-\delta|s-\alpha|} d\alpha
-			\\
-			&< \infty,	
+		\norma{Q(\eta(s))(t)}_{\espacoLdois{\retacartesianocirculo}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLdois{\retacartesianocirculo}}
+		\\
+		&\leq
+		\int_{\reta}\norma{K(s-\alpha)\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\\
+		&\leq
+		\int_{\reta}\norma{K(s-\alpha)}\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\\
+		&\leq
+		\int_{\reta}e^{-\delta|s-\alpha|}  \underbrace{\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}}_{N < \infty}d\alpha
+		\\
+		&\leq
+		N\int_{\reta}e^{-\delta|s-\alpha|} d\alpha
+		\\
+		&< \infty,	
 		\end{aligned}
 		$$
 		
 		portanto $Q(\eta(s)) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ através do cálculo
 		$$
 		\begin{aligned}
-			Q(\eta(s)) 
-			&= \int_{\reta}K(s-\alpha)\eta(\alpha)
-			\\
-			&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha)
-			\\
-			&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha)}_{\xi^{-}}
-			\\
-			&= \xi^{+}(s)+\xi^{-}(s).
+		Q(\eta(s)) 
+		&= \int_{\reta}K(s-\alpha)\eta(\alpha)
+		\\
+		&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha)
+		\\
+		&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha)}_{\xi^{-}}
+		\\
+		&= \xi^{+}(s)+\xi^{-}(s).
 		\end{aligned}
 		$$
 		
 		Definindo $\xi = \xi^{+} + \xi^{-}$ e realizando a diferenciação de $\xi^{+}$ temos
 		$$
 		\begin{aligned}
-			\derivada{\xi^{+}}{s} 
-			&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)
-			\\
-			&= exp(-0A^{+})\eta^{+}(s)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) 
-			\\
-			&= \eta^{+}(s)-A^{+}\xi^{+}.
+		\derivada{\xi^{+}}{s} 
+		&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)
+		\\
+		&= exp(-0A^{+})\eta^{+}(s)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) 
+		\\
+		&= \eta^{+}(s)-A^{+}\xi^{+}.
 		\end{aligned}
 		$$
 		Realizando o mesmo cáculo para $\xi^{-}$ teremos 
 		$$
-		 \eta^{\pm}(s) =\derivada{\xi^{\pm}}{s}+A^{\pm}\xi^{\pm}
+		\eta^{\pm}(s) =\derivada{\xi^{\pm}}{s}+A^{\pm}\xi^{\pm}
 		$$
 		o que implica que
 		$$
@@ -3509,24 +3619,24 @@
 		Como $\eta(s) \in \espacoLdois{\reta; H}$ é arbitrário, então mostramos que $\diferencialmapafloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferencialmapafloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferencialmapafloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferencialmapafloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
 		$$
 		\begin{aligned}
-			Q(\diferencialmapafloerabrev \eta^{+}(s))
-			&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
-			\\
-			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
-			\\
-			&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha)
-			\\
-			&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)\Big)
-			\\
-			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
-			\\
-			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
-			\\
-			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivadaparcial{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
-			\\
-			&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - Q(\derivadaparcialabrev{s}\eta^{+}(s)) + \eta^{+}(s)
-			\\
-			&=\eta^{+}(s).
+		Q(\diferencialmapafloerabrev \eta^{+}(s))
+		&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)\Big)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivadaparcial{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
+		\\
+		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - Q(\derivadaparcialabrev{s}\eta^{+}(s)) + \eta^{+}(s)
+		\\
+		&=\eta^{+}(s).
 		\end{aligned}
 		$$
 		Analogamente teremos $Q(\diferencialmapafloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferencialmapafloerabrev = Id$ pois
@@ -3534,13 +3644,13 @@
 		Q(\diferencialmapafloerabrev \eta(s)) = Q(\diferencialmapafloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferencialmapafloerabrev \eta^{+}(s))+Q(\diferencialmapafloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
 		$$
 	\end{prova}
-
+	
 	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do mapa de Floer $\diferencialmapafloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{teorema}
 		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialmapafloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$.
 	\end{teorema} 
-
+	
 	
 	Foi mostrado na Seção $\ref{secao_identificacao_pullback_fibrado}$ que, dado $u \in \caminhosexponenciaisconectantespadrao$, temos as identificações entre os espaços  $\espacoLp{\pullbackfibradotangenteM{u}} \mapsto \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Sendo que essa identificação foi utilizada para simplificar cálculos e tonar a exposição do assunto menos densa. Na demosntração a seguir esse fato será crucial pois, para aplicarmos o Teorema $\ref{teorema_sobolev}$, necessitamos restrigir o domínio das funções a conjuntos limitados com borda de classe $C^{1}$. Note que $\retacartesianocirculo$ não é limitado. Pelo Teorema $\ref{teorema_whitney}$, temos o mergulho $\caminhosexponenciaisconectantespadrao \subset M\subset \real{k}$, o que já foi feito na Seção $\ref{secao_identificacao_pullback_fibrado}$. Podemos afirmar que $\caminhosexponenciaisconectantespadrao$ é um limitado, pois é um subconjunto da variedade compacta $M$ mergulhada em $\real{k}$. Além disso, seu bordo é dado por $\partial \caminhosexponenciaisconectantesabrev =x^{+}(\circulo) \cup x^{-}(\circulo)$. \vermelho{(aqui devemos ter uma figura ilustrando o bordo ...!!!)}
 	
@@ -3669,7 +3779,7 @@
 		\emph{Differential Topolgy},
 		Prentice-Hall,
 		1974.	
-	
+		
 		\bibitem{hoffman_kunze}
 		Hoffman, Kenneth; Kunze, Ray
 		\emph{Linear Algebra},
@@ -3685,12 +3795,12 @@
 		\emph{Introduction to Theory of Distributions},
 		Cambridge University Press, 2nd edition
 		1998.
-
+		
 		\bibitem{elon_grupo_fundamental}
 		Lima, Elon Lages:
 		\emph{Fundamental Group and Covering Spaces},
 		A K Peters, 2003.
-	
+		
 		\bibitem{massey}
 		Massey, William S.:
 		\emph{A Basic Course in Algebraic Topology},
