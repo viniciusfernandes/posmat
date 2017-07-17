@@ -485,7 +485,7 @@
 		\end{aligned}
 		$$
 		como desejávamos.}
-	\begin{teorema}
+	\begin{teorema}\label{teorema_cw_homologia}
 		(CW-homologia) Seja $X$ um CW-complexo, então existe uma identificação natural entre a homologia do complexo de cadeia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
 		$$
 		\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
@@ -838,7 +838,7 @@
 	
 	De agora em diante $M$ será uma n-variedade Riemanniana diferenciável fechada, onde variedade fechada será uma variedade compacta e sem bordo. Veja a Seção $\ref{secao_variedade_riemanniana}$ para a definição de variedade Riemanniana.
 	
-	\section{Teoria de Morse Clássica}
+	\section{Teoria de Morse Clássica}\label{secao_morse_classica}
 	
 	\begin{definicao}
 		(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ uma e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
@@ -1171,9 +1171,20 @@
 		$$
 		\partial_{k}(p)=\sum_{q \in \pontoscriticos{f}}n(p,q)q
 		$$
-		pe chamado de operador de bordo de Morse-Smale-Witten e o par $(C_{*}(f)), \partial_{*}$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
+		pe chamado de operador de bordo de Morse-Smale-Witten e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
 		
 	\end{definicao}
+	
+	O seguinte teorema é de grande importancia pois afirma o isomorfismo entre a homologia do complexo de Morse-Smale-Witten e a homologia singular da variedade. Sua demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
+	
+	\begin{teorema}
+		(Teorema da Homologia de Morse) Sejam $f \in \funcoesmorsesmale{M}$ e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten da função $f$. Então $H_{*}((C_{*}(f), \partial_{*})) $ é isomorfo a homologia singular $ H_{*}(M, \inteiros)$.
+	\end{teorema}
+	
+	O Teorema $\ref{teorema_cw_homologia}$ afirma que a homologia de um $CW$-complexo é isomorfa a sua homologia singular e também sabemos que a homologia de Morse é isomorfa a homologia singular da variedade. Vimos na Seção $\ref{secao_morse_classica}$ que uma n-variedade fechada possui o mesmo tipo de homotopia que de um $CW$-complexo construido a partir dos pontos críticos de uma função de Morse, logo a homologia singular dessa variedade é isomorfa a homologia do $CW$-complexo associado. Com isso, podemos afirmar que as homologias construidas via funções de Morse-Smale e funções de Morse clássicas são isomorfas.
+	
+	O cálculo da homologia singular de uma variedade com certas propriedades nem sempre é algo simples a se fazer. Contudo, podemos aplicar técnicas alternativas para a determinação de homologias isomorfas a homologia singular. Essa é importância dos resultados dos teoremas de isomorfismos anteriormente citados. Um outro ponto a ser comentado é o fato de que as homologias singulares são utilizadas para a descrição de alguns invariantes topológicos, por exemplo, a característica de Euler-Poicaré. Portanto, a demonstração desses isomorfismos garante que ainda estamos diantes dos mesmo invariantes topológicos.
+	
 	
 	\chapter{Introdução à Espaços Vetoriais Simpléticos}
 	
