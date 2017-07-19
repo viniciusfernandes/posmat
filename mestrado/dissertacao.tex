@@ -127,6 +127,8 @@
 	\end{array}
 	\right.
 }
+\newcommand{\funcionalH}{\mathcal{A}_{H}}
+\newcommand{\funcionalHponto}[1]{\mathcal{A}_{H}(#1)}
 \newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
 \newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
 \newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
@@ -137,6 +139,7 @@
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
 \newcommand{\gradiente}{\nabla f}
+\newcommand{\gradientefuncional}{\nabla \funcionalH}
 \newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
 \newcommand{\grupofundamentalpontobase}[2]{\pi_{1}(#1; #2)}
 \newcommand{\gruposimpletico}[1]{Sp(#1)}
@@ -204,7 +207,7 @@
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\reta}{\real{}}
-\newcommand{\solucoesperiodicascontrateis}{\mathcal{L}M}
+\newcommand{\lacocontrateis}{\mathcal{L}M}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\skeleton}[1]{X^{(#1)}}
@@ -1066,7 +1069,7 @@
 		No caso da igualdade do segundo item do teorema temos a característica de Euler-Poincaré $\chi(M) = \sum_{j = 0}^{n}(-1)^{n-j}\beta_{j}(M)$, que tamém é um invariante topológico e é a generalização do teorema de Euler para poliédros convexos $V-A+F = 2$, onde $V$ é o número de faces, $A$ é o número de arestas e $F$ é o número de faces.
 	\end{observacao}
 	
-	\section{Fluxos Gradiente e Variedades de Conexão}
+	\section{Fluxos Gradiente e Variedades de Conexão}\label{secao_fluxo_gradiente}
 	Seja $X \in \campossuaves{M}$ um campo vetorial suave. Sabe-se que existe uma curva $\gamma: \reta\to M$ que é solução do sistema de equações diferenciais 
 	$$
 	\derivada{\gamma(t)}{t} = X(\gamma(t)), \; \gamma(0) = p.
@@ -2821,7 +2824,7 @@
 		\end{enumerate}
 	\end{prova}
 	
-	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $\solucoesperiodicascontrateis$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
+	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
 	
 	\begin{corolario}
 		Sejam $(M, \omega)$ uma 2n-variedade simplectica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$, pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
@@ -3043,14 +3046,36 @@
 	$$
 	onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$, isto é, procuramos as soluções $\psi: \reta\to M$ tal que $\psi(t+1) = \psi(t)$ para todo $t \in \reta$ e são homotópicas a uma aplicação constante. 
 	
-	Considerando $\solucoesperiodicascontrateis$ como sendo o conjunto das aplicações $\psi : \circulo\to M$ de classe $C^{\infty}$, podemos tratar as soluções do sistema hamiltoniano 1-periódicas como elementos desse conjunto. Note que $\solucoesperiodicascontrateis$ não é conexo pois dois caminhos não-homotópicos não podem estar na mesma componente conexa. Isso nos leva a definição:
+	Considerando $\lacocontrateis$ como sendo o conjunto das aplicações $\psi : \circulo\to M$ de classe $C^{\infty}$, podemos tratar as soluções do sistema hamiltoniano 1-periódicas como elementos desse conjunto. Note que $\lacocontrateis$ não é conexo pois dois caminhos não-homotópicos não podem estar na mesma componente conexa. Isso nos leva a definição:
 	
 	\begin{definicao}
-		(Laços contráteis) O conjunto dos laços contráteis $\solucoesperiodicascontrateis$ é o conjunto de todas as aplicações $\psi:\circulo \to M$ de classe $C^{\infty}$ e contráteis a aplicação constante.
+		(Laços contráteis) O conjunto dos laços contráteis $\lacocontrateis$ é o conjunto de todas as aplicações $\psi:\circulo \to M$ de classe $C^{\infty}$ e contráteis a aplicação constante.
 	\end{definicao}
 	
-	No 
+	Na abordagem variacional que realizaremos adiante construiremos uma aplicação $\funcionalH: \lacocontrateis \to \reta$, chamada funcional Hamiltoniano. Através do método variacional buscamos determinar os pontos críticos desse funcional, isto é, buscamos os pontos $\gamma \in \lacocontrateis$ tais que $d\funcionalHponto{\gamma}(X) = 0$ para todo $X(\gamma)\in \espacotangenteponto{\gamma}{\lacocontrateis}$. Para a definição de vetores tangentes e espaços tangentes é necessário que $\lacocontrateis$ tenho uma estrutura de variedade. No Apêndice $\ref{apendice_estrura_variedade_LM}$ mostra-se que $\lacocontrateis$ é uma variedade de Banach.
 	
+	Uma das formas de se construir um espaço tangente em um ponto de uma variedade é definindo os vetores tangentes como sendo uma classe de equivalência das curvas que passam por esse ponto. Seja $\gamma \in \lacocontrateis$ e considere a curva $u : \reta \to \lacocontrateis$ tal que $u(0) = \gamma$. Note que, com essa descrição temos que as curvas suaves em $\lacocontrateis$ podemos ser vistas como superfícies em $M$, isto é, $u: \retacartesianocirculo\to M$, onde $u(0,t) = \gamma(t)$. Temos
+	$$
+	\derivadaparcial{}{s}u(s,t)|_{s=0} \in \espacotangenteponto{\gamma(t)}{M}.
+	$$
+
+	Com isso, dado $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$, temos $X(t) \in \espacotangenteponto{\gamma(t)}{M}$ para todo $t \in \reta$, resultando na identificação $\espacotangenteponto{\gamma}{\lacocontrateis} \cong \pullbackfibradotangente{\gamma}{M}$. 
+	
+	\begin{definicao}
+		(Funcional Hamiltonianno) O funcional Hamiltoniano é a aplicação $\funcionalH: \lacocontrateis\to \reta$ tal que
+		$$
+		\funcionalHponto{\gamma} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
+		$$
+		onde $D^{2} \subset \mathbb{C}$ é o disco fechado e $u(e^{i2\pi t})=\gamma(t)$. A aplicação $u:D^{2}\to M$ é chamada extensão de $\gamma$ para o disco.
+	\end{definicao}
+	
+	\begin{observacao}
+		Na definição do funcional a primeira integral, mesmo bem-definida, depende explicitamente da extensão de $\gamma$ escolhida. Seja $v : D^{2}\to M$ uma outra extensão de $\gamma$, então
+		$$
+		\int_{D^{2}}u^{*}\omega - \int_{D^{2}}v^{*}\omega  = \int_{S^{2}}w^{*}\omega, 
+		$$
+		onde $w:S^{2} \to M$ é uma colagem dos dois discos ao longo de seus bordos tal que sua imagem será homotópica a $S^{2}$. Para elimiar a dependencia da escolha da extensão de $\gamma$ vamos que $\int_{S^{2}}w^{*}\omega=0$.
+	\end{observacao}
 	
 	\begin{definicao}
 		(Condição de aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
@@ -3059,22 +3084,18 @@
 		$$
 	\end{definicao}
 	
-	O espaço das soluções contráteis $\solucoesperiodicascontrateis$ pode ser caracterizada com sendo o conjunto dos pontos críticos do funcional $f_{H}:\solucoesperiodicascontrateis \to \real{}$, dado por
+	Vamos agora determinar o gradiente do funcional $d\funcionalH: T\lacocontrateis \to \real{}$. Sejam $\tilde{\gamma}:\intervalo \times S^{1} \to M$  e $\tilde{u}:\intervalo \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \derivadaparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
 	$$
-	f_{H}(\gamma) = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
+	\funcionalHponto{\tilde{\gamma}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{\gamma}(s,t))dt.
 	$$
-	onde $D^{2} \subset \mathbb{C}$ e $u(e^{i2\pi t}) = \gamma(t)$. Vamos agora determinar o gradiente do funcional $df_{H}: T\solucoesperiodicascontrateis \to \real{}$. Sejam $\tilde{\gamma}:[0,1] \times S^{1} \to M$  e $\tilde{u}:[0,1] \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \derivadaparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
-	$$
-	f_{H}(\tilde{\gamma}) = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{\gamma}(s,t))dt.
-	$$
-	Para derivar o primeiro termo, lembremos a identidade de Cartan onde dados $\alpha \in \Omega^{k}(M)$ e $\xi \in \mathfrak{X}(M)$ temos $\mathcal{L}_{\xi}\alpha = d(i_{\xi}\alpha) + i_{\xi}d\alpha$, assim:
+	Para derivar o primeiro termo, lembremos a identidade de Cartan onde, dada $\alpha \in \Omega^{k}(M)$ k-forma e $Y \in \campossuaves{M}$ temos $\mathcal{L}_{Y}\alpha = d(i_{Y}\alpha) + i_{Y}d\alpha$, assim:
 	$$
 	\begin{aligned}
-	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{D^{2}}\tilde{u}^{*}\omega &=\int_{D^{2}}\frac{d}{ds} (\tilde{u}^{*}\omega)\Bigm\lvert_{s=0}  =\int_{D^{2}}\tilde{u}^{*} \mathcal{L}_{\xi(z)}(\omega)
+	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{D^{2}}\tilde{u}^{*}\omega &=\int_{D^{2}}\frac{d}{ds} (\tilde{u}^{*}\omega)\Bigm\lvert_{s=0}  =\int_{D^{2}}\tilde{u}^{*} \mathcal{L}_{Y(z)}(\omega)
 	\\
-	&=\int_{D^{2}}\tilde{u}^{*} (d(i_{\xi}\omega) + i_{\xi}d\omega) =\int_{D^{2}}\tilde{u}^{*} d(i_{\xi}\omega)
+	&=\int_{D^{2}}\tilde{u}^{*} (d(i_{Y}\omega) + i_{Y}d\omega) =\int_{D^{2}}\tilde{u}^{*} d(i_{Y}\omega)
 	\\
-	&=\int_{\partial D^{2}}	\gamma^{*} (i_{\xi(t)}\omega) = \int_{[0,1]} \omega(\xi(t), \dot{\gamma}(t))dt.
+	&=\int_{\partial D^{2}}	\gamma^{*} (i_{Y(t)}\omega) = \int_{[0,1]} \omega(Y(t), \dot{\gamma}(t))dt.
 	\end{aligned}
 	$$
 	Derivando o segundo termo:
@@ -3083,42 +3104,69 @@
 	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{\gamma}(s,t)) 
 	&= \int_{[0,1]} \derivadaparcial{}{s} H(\tilde{\gamma}(s,t)) \Bigm\lvert_{s=0}
 	\\
-	&= \int_{[0,1]} (dH(\tilde{\gamma}(s,t)))_{\tilde{\gamma}(0,t)}(\xi(t))dt
+	&= \int_{[0,1]} (dH(\tilde{\gamma}(s,t)))_{\tilde{\gamma}(0,t)}(Y(t))dt
 	\\
-	&= \int_{[0,1]} \omega_{\gamma(t)}(\xi(t), X(\gamma(t), t))dt. 
+	&= \int_{[0,1]} \omega_{\gamma(t)}(Y(t), \campohamiltonianoabrev(\gamma(t), t))dt. 
 	\end{aligned}
 	$$
-	Por fim temos:
+	Por fim, somando ambos os termos, temos:
 	$$
-	df_{H}(\gamma)(\xi) = \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)dt.
+	d\funcionalHponto{\gamma}(Y) = \int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev, Y)dt,
 	$$
-	De onde segue-se que $df_{H}(\gamma) = 0 \iff \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi)=0\; \forall \xi \in T_{\gamma}\solucoesperiodicascontrateis$, que pela não-degenerecência de $\omega$ temos que $df_{H}(\gamma) = 0 \iff \dot{\gamma}(t) - X(\gamma(t), t)=0$, isto é, $\gamma \in \solucoesperiodicascontrateis$ é uma solução null-homotópica das equações de hamilton.
+	onde imitimos os parâmetros de integração para facilitar a leitura.
 	
-	Em geometria Riemanniana definimos o gradiente de uma função suave $f:M \to \real{}$ como sendo o campo $\nabla f(p) \in T_{p}M$ tal que $df(p)(v) = \iprod{ \nabla f(p)}{v}\; \forall v \in T_{p}M$. Note que temos a dependência da métrica riemanniana nessa definição. Construiremos o conceito de gradiente do funcional $f_{H}$, para isso, definamos uma estrutura quase-complexa em $M$ por $J \in C^{\infty}(End(TM))$ tais que $J^{2} = -Id$, então temos a métrica riemanniana associada a $\omega$, isto é,
+	A condição para que $\gamma \in \lacocontrateis$ seja um ponto crítico é $df_{H}(\gamma)(Y) = 0 $ para todo $Y \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Como o integrando é uma aplicação contínua, então devemos ter 
 	$$
-	g(X, Y)= \omega(X, J(x)Y), \; X,Y \in T_{x}M,
+	\omega(\dot{\gamma} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{\gamma}{\lacocontrateis}.
 	$$
-	o que induzirá uma métrica em $\solucoesperiodicascontrateis$. Assim, dado $\gamma \in \solucoesperiodicascontrateis$ teremos a métrica nos espaço dos loops contráteis
+	
+	A não-degenerecência de $\omega$  implica que $\dot{\gamma}(t) - \campohamiltonianoabrev(\gamma(t), t)=0$, isto é, $\gamma \in \lacocontrateis$ é um ponto crítico do funcional Hamiltoniano se, e somente se, $\gamma$ é uma solução 1-periódica e contrátil das equações de Hamilton.
+	
+	Na Seção $\ref{secao_fluxo_gradiente}$ vimos que, dada um função de Morse, construímos um complexo de cadeias com base nas linhas do fluxo do negativo do gradiente dessa função. Uma técnica análoga será adotada para a construção de um complexo de cadeias e operador bordo na qual resultará na Homologia de Floer.
+	
+	Seja $J \in \estruturascomplexas{M}{\omega}$. Temos então uma metrica Riemanniana $g(X(p), Y(p)) = \formaSimpletica{X(p)}{J(p)Y(p)}$ a qual induz a métrica $\produtointerno{.}{.}:\espacotangenteponto{\gamma}{\lacocontrateis}\times \espacotangenteponto{\gamma}{\lacocontrateis} \to \reta$ definida por
 	$$
-	\iprod{\alpha}{\beta}_{\gamma} = \int_{[0,1]}g(\alpha(t), \beta(t))dt, \; \alpha, \beta \in T_{\gamma}\solucoesperiodicascontrateis.
+	\produtointerno{X(\gamma)}{Y(\gamma)} = \int_{0}^{1}g(X(\gamma(t)), Y(\gamma(t)))dt.
 	$$
-	Se $f: \solucoesperiodicascontrateis \to \real{}$ é uma função diferenciável, então seu campo gradiente será dado por 
-	$$
-	\begin{aligned}
-	df(\gamma)(\xi) &= \iprod{\nabla f(\gamma)}{\xi}_{\gamma} = \int_{[0,1]}g(\nabla f(\gamma(t)), \xi(\gamma(t)))dt
-	\\
-	&=\int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))\xi(\gamma(t)))dt,
-	\end{aligned}
-	$$
-	portanto, para o funcional teremos
+	
+	Analogamente ao caso de variedades Riemannianas, temos uma função diferenciável $\funcionalH: \lacocontrateis \to \reta$, logo buscamos um campo suave tal que $d\funcionalHponto{\gamma}(Y) = \produtointerno{\gradientefuncional(\gamma)}{Y(\gamma)}$ para todo $Y \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Usando a expressão do diferencial $d\funcionalHponto{\gamma}$ determinanda anteriormente, temos
 	$$
 	\begin{aligned}
-	df_{H}(\gamma)(\xi) 
-	&=  \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), \xi(\gamma(t)))dt
+	\int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev, Y)dt&=
+	d\funcionalHponto{\gamma}(Y)
+	\\ 
+	&= \iprod{\gradientefuncional(\gamma)}{Y(\gamma)}
 	\\
-	&= \int_{[0,1]} \omega(J(\gamma(t))(\dot{\gamma}(t) - X(\gamma(t), t)), J(\gamma(t))\xi(\gamma(t)))dt
+	&= \int_{[0,1]}g(\gradientefuncional, Y)dt
 	\\
-	&= \int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))\xi(\gamma(t)))dt,
+	&=\int_{[0,1]} \omega(\gradientefuncional, JY)dt
+	\\
+	&=\int_{[0,1]} \omega(-J\gradientefuncional, Y)dt
+	\end{aligned}.
+	$$
+	Subtraindo ambos os lados identidade, temos para todo $Y \in \espacotangenteponto{\gamma}{\lacocontrateis}$
+	$$
+	\int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev + J\gradientefuncional, Y)dt = 0.
+	$$
+	
+	Como o integrando é uma função contínua, então $\omega(\dot{\gamma} - \campohamiltonianoabrev + J\gradientefuncional, Y)=0$, que pela não-degenerecência de $\omega$ devemos ter
+	$$
+	J\gradientefuncional(\gamma(t)) +\dot{\gamma}(t)-\campohamiltoniano{\gamma(t), t} = 0.
+	$$
+	Portanto
+	$$
+	\gradientefuncional(\gamma(t))= J(\gamma(t))\dot{\gamma}(t)-J(\gamma(t))\campohamiltoniano{\gamma(t), t}.
+	$$
+	
+	
+	$$
+	\begin{aligned}
+	df_{H}(\gamma)(Y) 
+	&=  \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), Y(\gamma(t)))dt
+	\\
+	&= \int_{[0,1]} \omega(J(\gamma(t))(\dot{\gamma}(t) - X(\gamma(t), t)), J(\gamma(t))Y(\gamma(t)))dt
+	\\
+	&= \int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))Y(\gamma(t)))dt,
 	\end{aligned}
 	$$
 	logo 
@@ -3137,7 +3185,7 @@
 	
 	\textbf{Observação:} no estudo dos pontos críticos do funcional $f_{H}$ encontra-se a dificuldade de se determinar que o princípio variacional possui uma cota inferior ou superior. Além disso, a hessiana do funcional pode ter um subespaço de dimensão infinita tanto para os casos de autovalores negativos quanto positivos, impossibilitando a realização da teoria de Morse. Por fim, \vermelho{a determinação do gradiente do funcional também não esta bem-definida, já que não esta bem posto como um problema de Cauchy.}
 	
-	Sejam $y, x\in \solucoesperiodicascontrateis$ e defina $\mathcal{M}(y, x)$ como sendo o espaço das órbitas conectantes com respeito ao fluxo gradiente de $f_{H}$. Essas são soluções da equação de Floer com a seguinte condição de contorno \vermelho{(estamos supondo que as mesmas existem)}
+	Sejam $y, x\in \lacocontrateis$ e defina $\mathcal{M}(y, x)$ como sendo o espaço das órbitas conectantes com respeito ao fluxo gradiente de $f_{H}$. Essas são soluções da equação de Floer com a seguinte condição de contorno \vermelho{(estamos supondo que as mesmas existem)}
 	$$
 	\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t). 
 	$$
@@ -3147,17 +3195,17 @@
 	E(u) = \frac{1}{2}\int_{\real{}} \int_{S{^{1}}} \bigmodulo{\derivadaparcial{u}{s}}^{2} + \bigmodulo{\derivadaparcial{u}{t} - X_{H}(u,t)}^{2}dsdt
 	$$
 	vamos definir $
-	\mathcal{M} = \{u \in \mathcal{M}(y,x):y,x \in \solucoesperiodicascontrateis,\; |E(u)| < \infty, \; u \sim p \in M\}
+	\mathcal{M} = \{u \in \mathcal{M}(y,x):y,x \in \lacocontrateis,\; |E(u)| < \infty, \; u \sim p \in M\}
 	$ como sendo o espaço das soluções limitadas da equação de Floer, e vamos utilizar características desse conjunto para construir um conceito de índice dos pontos críticos do funcional $f_{H}$.
 	
 	\begin{lema}
-		(Floer) $\mathcal{M} = \bigcup \mathcal{M}(y,x)$, onde a união dos pares $y,x \in \solucoesperiodicascontrateis$, além disso, supondo a condição de aesfericidade, $\mathcal{M}$ será compacta.
+		(Floer) $\mathcal{M} = \bigcup \mathcal{M}(y,x)$, onde a união dos pares $y,x \in \lacocontrateis$, além disso, supondo a condição de aesfericidade, $\mathcal{M}$ será compacta.
 	\end{lema}
 	
 	O lema abaixo é equivalente as condições de transversalidade em teoria finita de Morse, isto é, dada um função de Morse, o subconjunto de funções de Morse-Smale é um conjunto denso.
 	
 	\begin{lema}
-		(Floer) Suponha que as soluções do sistema hamiltoniano sejam não-degenerados, então exite um conjunto denso $J_{reg} \subset C^{\infty}(End(TM))$ de estruturas quase-complexas tais que dado $J \in J_{reg}$ e cada par $y,x \in \solucoesperiodicascontrateis$ o espaço $\mathcal{M}(y,x)$ é uma variedade de dimensão finita.
+		(Floer) Suponha que as soluções do sistema hamiltoniano sejam não-degenerados, então exite um conjunto denso $J_{reg} \subset C^{\infty}(End(TM))$ de estruturas quase-complexas tais que dado $J \in J_{reg}$ e cada par $y,x \in \lacocontrateis$ o espaço $\mathcal{M}(y,x)$ é uma variedade de dimensão finita.
 	\end{lema}
 	
 	\textbf{Observação:} o lema acima afirma que, dada uma métrica gerada pelo par $\omega$ e J, teremos um conjunto denso de métricas geradas por outras estruturas complexas. Como o gradiente $\nabla f_{H}$ depende da métrica que adotamos então, como consequencia do lema, dado um gradiente sempre conseguimos construir um outro gradiente suficientemente proximo.
@@ -3200,16 +3248,16 @@
 	
 	\textbf{Observação:} Para se definir o conceito de índice de Morse relativo vamos utilizar a definição de índice de $F_{u}$, o que dará origem a homologia de Floer. Sabemos que $\mathcal{M}(y,x)$ é uma variedade diferenciável, e que $F_{u}$ é sobrejetor, então existe uma vizinhaça de $u \in \mathcal{M}(y,x)$ que é difeomorfa a uma vizinhança de $0 \in Ker(F_{u})$, logo nessa vizinhança teremos $dim(\mathcal{M}(y,x)) = ind(F_{u})$.
 	
-	\begin{lema}\label{indice_ponto_critico} Sejam $z,y,x \in \solucoesperiodicascontrateis$ então $\mu(y,x) = ind(F_{u})$ é independente de $u \in \mathcal{M}(y,x)$. Além disso
+	\begin{lema}\label{indice_ponto_critico} Sejam $z,y,x \in \lacocontrateis$ então $\mu(y,x) = ind(F_{u})$ é independente de $u \in \mathcal{M}(y,x)$. Além disso
 		$$
 		\mu(z,y) + \mu(y,x) = \mu(y,x), \; \mu(x,x) = 0.   
 		$$
 	\end{lema}
-	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \inteiros$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \inteiros$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : \solucoesperiodicascontrateis \to \inteiros$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
+	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \inteiros$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \inteiros$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : \lacocontrateis \to \inteiros$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
 	$$
 	k = ind(F_{u}) = m(y)-m(x).
 	$$
-	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \solucoesperiodicascontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
+	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \lacocontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
 	
 	\section{Variedades conectantes - espaços das soluções de Floer}
 	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x^{-}, x^{+}$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\orbitasconectantespadrao$ como sendo o conjunto das soluções da equação de Floer que conectam as óbitas $x^{-}$ e $x^{+}$. Vamos demonstrar que $\orbitasconectantespadrao$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\orbitasconectantes{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $\mapafloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são determinadas curvas conectando $x^{-}, x^{+}$ tal que $\orbitasconectantespadrao \subset \caminhosexponenciaisconectantespadrao$. Mostraremos que $Ker(\mapafloer) = \orbitasconectantespadrao$. Por fim, vamos provar que $\mapafloer$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\orbitasconectantespadrao) = dim (Ker(\mapafloer)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $\mapafloer$ para mostrar que $\orbitasconectantespadrao = \mapafloer^{-1}(0)$ é uma variedade diferenciável.
@@ -3305,7 +3353,7 @@
 	\section{Os espaços de Banach das curvas conectantes}
 	
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
-		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
+		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \lacocontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
 		$$
 		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \mp} u(s,t) = x^{\mp}(t) \},
 		$$
@@ -3328,7 +3376,7 @@
 	Notemos que $dim(\retacartesianocirculo) = 2$, logo pelas limitações citadas na Observação $\ref{Sp2n_homotopia}$ e pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev) temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{q}$, onde $q = 1/p - 1/n$ e $n = 2$, o que implica que $q = 0$ se $p=2$, logo temos que trabalhar $p>2$.
 	
 	\begin{definicao}
-		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$, $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ o das aplicações $exp(w,X):\retacartesianocirculo \to M$ tal que $exp(w,X)(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$.
+		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \lacocontrateis$, $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ o das aplicações $exp(w,X):\retacartesianocirculo \to M$ tal que $exp(w,X)(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$.
 	\end{definicao}
 	
 	\begin{proposicao}
@@ -3354,7 +3402,7 @@
 	Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{\infty}(\retacartesianocirculo, \real{2n})$. Então dado $X \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, existem constantes $A, B >0$ tais que $A\normaWp{X}\leq \norma{X}_{\infty} \leq B\normaWp{X}$, portanto, ambas as normas geram a mesma topologia. Como $L^{\infty}(\retacartesianocirculo, \real{2n})$ é um espaço de Banach, então pela inclusão e compatibilidade das normas, $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ é um espaço de Banach.
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
-		Sejam $x^{-}, x^{+} \in \solucoesperiodicascontrateis$ soluções contráteis do sistema Hamiltoniano, então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
+		Sejam $x^{-}, x^{+} \in \lacocontrateis$ soluções contráteis do sistema Hamiltoniano, então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
 	\end{proposicao}
 	\begin{prova}
 		Pela Proposição $\ref{proposicao_difeomorfismo_exponencial}$, dado $\epsilon > 0$, existe uma vizinhaça aberta $B_{\epsilon}(0)$ de seção nula $0 \in \espacosobolev{\pullbackfibradotangenteM{w}}$ tal que a restrição da aplicação exponencial $\aplicacaoexponencialgeral{w}:B_{\epsilon}(0) \to V$ é um difeomorfismo sobre um aberto $V \subset \pullbackfibradotangenteM{w}$. Para cada $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$ temos a aplicação $\aplicacaoexponencial{w}{X}:\retacartesianocirculo \to M$ tal que $\aplicacaoexponencial{w}{X}(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$, logo $\aplicacaoexponencial{w}{X} \in \caminhosexponenciaisconectantespadrao$. Portanto o par $(B_{\epsilon}(0), \aplicacaoexponencialgeral{w})$ de abertos e difeomorfismos é uma carta de $\caminhosexponenciaisconectantespadrao$, consequentemente a família indexada $\{(B_{\epsilon_{w}}(0), \aplicacaoexponencialgeral{w})\}_{w \in \caminhosexponenciaisconectantesabrev}$, forma um 1-atlas. Portanto, $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
@@ -3446,7 +3494,7 @@
 	\end{observacao}
 	
 	\section{$\orbitasconectantespadrao = Ker(\diferencialmapafloer)$}
-	Dado $x \in \solucoesperiodicascontrateis$ temos que $\dot{x}(t) = \campohamiltoniano{x(t)}$. Seja $y \in \solucoesperiodicascontrateis$ uma outra solução do sistema Hamiltoniano e suficientemente próxima a $x$. Realizando os mergulhos $\pullbackfibradotangenteM{x}, \pullbackfibradotangenteM{y} \subset \real{k}$, para um $k$ suficientemente grande, temos  $x(t), y(t) \in \real{k}$ para todo $t \in \circ$, logo existe $\xi:\real{}\to \real{k}$ talq ue $\xi(t)=x(t)-y(t)$, portanto
+	Dado $x \in \lacocontrateis$ temos que $\dot{x}(t) = \campohamiltoniano{x(t)}$. Seja $y \in \lacocontrateis$ uma outra solução do sistema Hamiltoniano e suficientemente próxima a $x$. Realizando os mergulhos $\pullbackfibradotangenteM{x}, \pullbackfibradotangenteM{y} \subset \real{k}$, para um $k$ suficientemente grande, temos  $x(t), y(t) \in \real{k}$ para todo $t \in \circ$, logo existe $\xi:\real{}\to \real{k}$ talq ue $\xi(t)=x(t)-y(t)$, portanto
 	$$
 	\derivada{\xi(t)}{t} = \derivada{x(t)}{t} -\derivada{y(t)}{t} = \campohamiltoniano{x(t)} - \campohamiltoniano{y(t)} =\diferencialhamiltoniano{x(t)}(\xi(t)).
 	$$
@@ -3716,9 +3764,9 @@
 	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
 	
 	\section{Definições}
-	Seja $C = C(M, \inteiros_{2})$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos de $\solucoesperiodicascontrateis$. Esse espaço é graduado pela função $m$, de modo que
+	Seja $C = C(M, \inteiros_{2})$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos de $\lacocontrateis$. Esse espaço é graduado pela função $m$, de modo que
 	$$
-	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \inteiros_{2}) = \text{span}\{x \in \solucoesperiodicascontrateis:m(x)=k \}.
+	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \inteiros_{2}) = \text{span}\{x \in \lacocontrateis:m(x)=k \}.
 	$$
 	Segue-se da compacidade e da estruta de variedade diferenciável que $\mathcal{M}(y,x)$ possui um número finito de elementos sempre que $ m(y)-m(x)=1 = dim(\mathcal{M}(y,x))$. Com esse fato podemos construir o operador bordo $\partial : C_{k+1} \to C_{k}$ tal que
 	$$
@@ -3745,7 +3793,7 @@
 	\end{teorema}
 	
 	\appendix
-	\chapter{Estrutura de variedade de $\solucoesperiodicascontrateis$}\label{apendice_estrura_variedade_LM}
+	\chapter{$\lacocontrateis$ é uma variedade de Banach}\label{apendice_estrura_variedade_LM}
 	?????????????????????
 	
 	\begin{thebibliography}{9}
