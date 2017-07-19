@@ -223,7 +223,7 @@
 	
 	\tableofcontents
 	
-	\chapter{Introdução}
+	\chapter{Introdução}\label{capitulo_introducao}
 	Como muitas das construções desenvolvidas na matemática, o tema desse texto, Homologia de Floer, teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalente a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podemo ser desenvolvidos em uma 2n-variedade diferenciável $M$, chamado de espaço de fase, e munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ cujas soluções satisfazem a equação geometrica $\omega(\campohamiltonianoabrev(t), v) = dH_{t}(v)$, onde o campo vetorial $\campohamiltonianoabrev(t) \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. As equações de movimento são as soluções do fluxo
 	$$
 	\derivada{\psi(t)}{t} = \campohamiltoniano{\psi(t)}.
@@ -837,6 +837,70 @@
 	O propósito desse capítulo é de apresentação rápida do formalismos e alguns dos principais resultados para que possamos extender a construção aqui feita para a hologogia de variedades de dimensão inifita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
 	
 	De agora em diante $M$ será uma n-variedade Riemanniana diferenciável fechada, onde variedade fechada será uma variedade compacta e sem bordo. Veja a Seção $\ref{secao_variedade_riemanniana}$ para a definição de variedade Riemanniana.
+
+	
+	\section{Variedades Riemannianas - algumas definições}\label{secao_variedade_riemanniana}
+	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
+	
+	\begin{definicao}\label{definicao_variedade_riemanniana}
+		(Variedade Riemanniana) Sejam $M$ uma n-variedade diferenciável e $g:T_{p}M \times T_{p}M \to \real{}$, um produto interno positivo-definido para todo $p \in M$, então o par $g$ é chamada de métrica Riemanniana e o par $(M, g)$ é chamado de n-variedade Riemanniana.
+	\end{definicao}
+	
+	O conceito de conexão afim esta intimamente relacionado com a forma de comparar um campo vetorial avaliado em pontos distintos da variedade. Uma das estratégias de se efetuar essa comparação é chamada de transporte paralelo e uma boa discussão pode ser encontrada em \cite{nakahara}. Por fim, veremos que a conexão afim é uma generalização do conceito de diferenciação de uma aplicação definida no espaço euclidiano.
+	
+	\begin{definicao}
+		(Conexão afim) Uma conexão afim $\nabla$ em uma n-variedade diferenciável é a aplicação $\nabla: \campossuaves{M} \times \campossuaves{M} \to \campossuaves{M}$ tal que, dadas $f,h \in \funcoessuaves{M}$ e $X,Y,Z \in \campossuaves{M}$:
+		\begin{enumerate}
+			\item $\nabla_{fX+hY}Z = f\nabla_{X}Z+h\nabla_{Y}Z$
+			\item $\nabla_{X}(Y+Z) = \nabla_{X}Y+ \nabla_{X}Z$
+			\item $\nabla_{X}(fY) = X(f)Y+f\nabla_{X}Y$.
+		\end{enumerate}
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_conexao_afim}
+		Seja $\{\partial_{j}(p)\}$ uma base ortonormal de $T_{p}M$ onde $\partial_{j} = \partial/\partial x_{j}$. Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in T_{p}M$, temos:
+		$$
+		\begin{aligned}
+		\nabla_{X}Y &= 
+		\sum_{k} \Big( \sum_{ij} X(Y_{k}) + X_{i}Y_{j} \Gamma^{k}_{ij}\Big)\partial_{k} 
+		\\
+		&= 
+		\sum_{k} \Big( \sum_{ij} X_{i} (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\Big)\partial_{k} 
+		\\
+		&= \sum_{k} (\nabla_{X}Y)^{k}\partial_{k}.
+		\end{aligned} 
+		$$
+		
+		Temos o operador linear $\nabla_{\partial_{i}}: \campossuaves{M} \to \campossuaves{M}$ tal que $\nabla_{\partial_{i}}Y = \sum_{j}  (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\partial_{k} $. Pode-se mostrar que no caso em que a n-variedade seja o $\real{n}$, então $\Gamma_{ij}^{k}=0$ para todos $1\leq i,j,k \leq n$. Suponha que $\campossuaves{\real{n}} \ni Y = f\partial_{j}$ para algum $0 \leq j \leq n$ e todas as outras componentes nula, então $\nabla_{\partial_{i}}Y = \partial_{i}(f)\partial_{j} $, isto é, a conexão afim se reduz a derivada direcional em $\real{n}$.
+	\end{observacao}
+	
+	\begin{observacao}\label{observacao_transporte_paralelo}
+		(Transporte paralelo) Um meio de comparar campos vetoriais em espaços tangentes distintos de $M$ é através do transporte paralelo. Suponha que $\gamma:[0,1] \to N$ uma curva suave e $Y \in TN$. Então o transporte paralelo de $Y \in TM$ ao longo de $\gamma$ é dado por 
+		$\nabla_{\frac{d\gamma}{dt}}Y$. Mais detalhes sobre podem ser encontrados em $\cite{nakahara}$.
+	\end{observacao}
+	
+	Dizemos um campo $X \in \campossuaves{M}$ é paralelamente transportado ao longo de uma curva $\gamma:\real{} \to M$ se $\nabla_{\gamma'}X=0$. Uma curva na variedade é chamada de geodésica se o seu campo de velocidades $v(t) = \gamma'(t)$ é paralelamente transportado ao logo dela, isto é, $\nabla_{v}v=0$, o que implica que $|v| = constante$.
+	
+	Seja $\gamma:[0,1] \to M$ a geodésica definida por $\gamma(t,p,v)$ tal que $\gamma(0,p,v) = p$ e $\gamma'(0,p,v) = v(p)$ com $|v|$ constante. Então o comprimento de arco de $\gamma$ é definido por 
+	$$
+	L(\gamma) =  \int_{0}^{1}|\gamma'|dt = \int_{0}^{1}|v|dt = |v|,
+	$$
+	logo $\gamma([0,1]) \subset M$ é um arco iniciado em $p \in M$ cujo comprimento é $|v|$.
+	\begin{definicao}\label{definicao_aplicacao_exponencial}
+		(Aplicação exponencial) Definimos $exp:U \subset TM \to M$ tal que $exp(p,v) = \gamma(1, p, v)$, onde $\gamma$ é a geodésica definida anteriormente. essa aplicação é chamada aplicação exponencial.
+	\end{definicao}
+	
+	Restringindo a aplicação expoencial a um ponto $p \in M$ arbitrário temos $exp_{p}:T_{p}M \to M$, isto é, $exp_{p}(v)$ é um ponto de $M$ conectado a $p$ por uma geodésica cujo comprimento de arco é $|v|$. 
+	
+	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, será utilizada na definição de uma aplicação exponencial para construirmos estruturas de variedade de dimensão infinita (variedade de Banach).
+	
+	\begin{proposicao}\label{proposicao_difeomorfismo_exponencial}
+		(Difeomorfismo exponencial) Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
+	\end{proposicao}
+	
+	\begin{definicao}\label{definicao_gradiente_hessiana}
+		(campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $df_{p}(v) = g(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = d\gradiente(p)$.
+	\end{definicao}
 	
 	\section{Teoria de Morse Clássica}\label{secao_morse_classica}
 	
@@ -1525,84 +1589,23 @@
 		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta-nos mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ teremos $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, e os conectamos através do caminho contínuo $d$, então $\produtosinternos{V}$ é conexo por caminhos, logo é conexo. Além disso, como o caminho $d$ é uma reta, então $\produtosinternos{V}$ é convexo, logo é contrátil.
 	\end{prova}
 	
-	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ que é $\omega$-compatível, podemos definir um produto interno em $V$ através da relação $g(u,v) = \omega(u,Jv)$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g(u,v)$ esta bem-definida.
+	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ $\omega$-compatível, temos que $\formaSimpletica{v}{Ju} = g_{J}(v,u)$ é um produto interno em $V$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g_{J}(u,v)$ esta bem-definida e é injetora.
 	
-	A seguinte proposição afirma que toda estrutura complexa esta associada a um produto interno positivo-definido em $V$.
+	A seguinte proposição afirma a reciproca do resultado anterior.
+	
 	\begin{proposicao}
-		$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$.
+		Seja $(V, \omega)$ uma 2n-espaço vetorial simplético. Então cada produto interno $g \in \produtosinternos{V}$ define uma estrutura complexa $\omega$-compatível.
 	\end{proposicao}
 	\begin{prova}
-		Vamos mostrar que existe uma aplicação injetora $G: \produtosinternos{V} \to \estruturascomplexaspadrao$. Sejam $A \in \generalgroupreal{V}$ uma matriz anti-simétrica e $\Lambda^{2}(V)$ o conjunto das aplicações bilineares anti-simétricas em $V$. Então a aplicação $A^{\#} : \produtosinternos{V} \to \Lambda^{2}(V)$ definida por = $A^{\#}(g)(u, v) = g(Au,v)$ esta bem-definida. De fato, é bilinear pois herda a bilinearidade de $g$, e é anti-simétrica pois
-		$$
-		A^{\#}(g)(u, v)=g(Au,v) = g(u,A^{t}v) = g(u,-Av) = -g(Av,u) = -A^{\#}(g)(v,u).
-		$$
-		Com isso, a aplicação $A^{\#}$ pode ser associada a única forma bilinear anti-simétrica da seguinte forma $A^{\#}(g)(u, v) = \Omega(v,u)$. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$ (decomposição polar) podemos escrever $A = PJ$ onde $P = (-A)^{1/2}$ é positiva-definida,  $J$ é ortogonal com $J^{2} = -Id$ e $J^{-1}=J^{t} = -J$. Afirmo que $J$ é um simplectomorfismo pois:
-		$$
-		\begin{aligned}
-		\Omega(Ju,Jv) &= g(AJu, Jv)= g(J^{t}AJu, v)
-		\\
-		&=g(\underbrace{-J}_{J^{t}}A^{-1}AAJu, v) 
-		\\
-		&= g(JA^{-1}\underbrace{P^{2}}_{-A^{2}}Ju, v)
-		\\
-		&=g(JA^{-1}P\underbrace{PJ}_{A}u, v)
-		\\
-		&=g(JJ^{-1}P^{-1}PAu, v) 
-		\\
-		&= g(Au, v)
-		\\
-		&=\Omega(u,v).
-		\end{aligned}
-		$$
-		Vamos mostrar que, fixando a matriz $J$ tal que $A=PJ$, a aplicação $\produtointernoabrev :V \times V \to \reta$ definida por $\produtointerno{v}{u} = \Omega(v,Ju)$, é um produto interno positivo-definido. De fato, como $\Omega$ foi definida a partir do produto interno $g$, teremos que $\Omega$ é bilinear e satisfaz a desigualdade triangular. É simétrica pois 
-		$$
-		\begin{aligned}
-		\produtointerno{v}{u} 
-		&= g(Av,Ju) 
-		\\
-		&=g(Ju,Av)
-		\\
-		&=g(A^{t}Ju,v) 
-		\\
-		&=g(JA^{t}u,v)
-		\\
-		&= g(A^{t}u, J^{t}v)
-		\\
-		& = g(Au, J^v)
-		\\
-		&= \produtointerno{u}{v}.
-		\end{aligned}
-		$$
-		
-		Além disso, temos que $\produtointernoabrev$ é postivo-definido pois
-		$$
-		\begin{aligned}
-		\produtointerno{u}{u} &= g(Au, Ju)
-		\\
-		&= g(J^{t}Au, u)
-		\\
-		&=g(-JAu, u)
-		\\
-		&=g(-JA^{-1}AAu, u)
-		\\
-		&=g(JA^{-1}(-A^{2})u, u)
-		\\
-		&=g(P^{-1}P^{2}u, u)
-		\\
-		&=g(Pu, u)\geq 0,
-		\end{aligned}
-		$$ 
-		pois $P$ é uma matriz positiva-definida. Portanto temos um produto interno positivos-definido e $J$ é $\Omega$-compatível. 
-		
-		Pela decomposição polar temos que, dado $A$ ainti-simétrico temos apenas um $J$ $\Omega$-compatível. Portanto, temos a aplicação injetora $\produtosinternos{V} \ni g \mapsto J \in \estruturascomplexaspadrao$ denotada por $G(g) = J$. Além disso, $G$ é sobrejetora. De fato, sabe-se que toda aplicação bilinear anti-simétrica $\Omega'$ pode ser escrita como $\Omega'(v, u) = V^{t}A'U$, onde $V,U$ são as representações matriciais de $v,u$, respectivamente, e $A'$ é uma matriz anti-simétrica. Pela decomposição polar temos $A'=P'J'$. \vermelho{Temos então $A'^{\#}(g)$??????????}
-	\end{prova}		
+		Seja $g \in \produtosinternos{V}$. Sabe-se que $\hat{g}:V \to V^{*}$, definido por $\hat{g}(v)(u)=g(v,u)$, é um isomorfismo. Além disso, existe um único automorfismo $A:V\to V$ tal que $\formaSimpletica{v}{u} = g(Av,u)$ para todo $v,u \in V$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$ podemos escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, temos $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, temos a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
+	\end{prova}
 	
-	\begin{teorema}
-		Seja $(V,\omega)$ um 2n-espaço vetorial real simplético, então $\estruturascomplexaspadrao$ é contrátil.
-	\end{teorema}
+	\begin{proposicao}
+		$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
+	\end{proposicao}
 	\begin{prova}
-		Sejam $\estruturascomplexaspadrao$ e $\produtosinternos{V}$ espaços topológicos dados pela Definição $\ref{observacao_conjunto_estrutura_complexa}$. Tomando $G:\produtosinternos{V} \to \estruturascomplexaspadrao$ definida como antes, \vermelho{podemos ver que nas topologias definidas é imediato que $G, G^{-1}$ são funções contínuas}, logo $G$ é um homeomorfismo. Como $\produtosinternos{V}$ é convexo, então é contrátil, logo $G^{-1}(\produtosinternos{V}) = \estruturascomplexaspadrao$ também é contrátil, pois contratibilidade é preservado por homeomorfismos.
-	\end{prova}			
+		Sejam $F: \produtosinternos{V} \to \estruturascomplexaspadrao$ e $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ dos resultados anteriores. Seja $J \in \estruturascomplexaspadrao$ arbitrário. Então $(F\circ G)(J) = F(g_{J}) =J$, logo $F\circ G = Id_{\estruturascomplexaspadrao}$. Por outro lado, $(G\circ F)(g_{J}) = G(J) = g_{J}$, logo $G\circ F = Id_{\produtosinternos{V}}$. Portanto $F = G^{-1}$. Munindo $\estruturascomplexaspadrao$ com a topologia induzida por $\generalgroupreal{2n}$, então pode-se mostrar que $F$ é contínua. Analogamente, munindo $\produtosinternos{V}$ com a topologia induzida do espaço vetorial de todas as forma simétricas definida em $V$, pode-se mostrar que $G$ é contínua. Portanto $F$ é um homeomorfismo. Pelo Lema $\ref{lema_contratibilidade_produtos_internos}$ temos que $\produtosinternos{V}$ é contrátil, e como a contratibilidade é preservada por homeomorfismos, então $\estruturascomplexaspadrao$ é contrátil.
+	\end{prova}
 	
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
@@ -3032,12 +3035,22 @@
 	\end{prova}
 	
 	\section{Equação de Floer}
-	\textbf{Motivação da conjectura de Arnold:} Os pontos fixos da aplicação $\psi_{1}$ estão relacionado injetivamente com as soluções 1-periódicas do sistema hamiltoniana. Assim, a conjectura de Arnold afirma que, para os casos de não-degenerecência, o número de soluções 1-periódicas do sistema hamiltoniano deve ser limitado inferiormente pela soma dos números de Betti da variedade $M$. Tal conjectura, do mesmo modo que o Teorema de Poincaré-Hopf, esta relacionada com Teoria de Morse da seguinte forma: a hipótese de não-degenerecência das soluções do sistema hamiltoniano implicam que a função de hamilton $H: M \times \real{} \to \real{}$ seja uma função de Morse. Algumas particularizações da conjectura foram demonstradas primeiramente para superfícies Riemannianas e, posteriormente, para 2n-toro por Conley e Zehnder, sendo que, em sua forma um pouco mais geral, foi utilizada a hipótese $\pi_{2}(M)=0$, o que é equivalente a hipótese da aesfericidade.
-	\vermelho{(Melhorar um pouco o texto no parágrafo inicial e a condição de aesfericidade.)}
+	No desenvolvimento desse capítulo consideraremos $M$ como sendo uma 2n-variedade diferenciável fechada, isto é, compacta e sem bordo.
 	
-	\begin{definicao}\label{definicao_solucoes_periodicas_contratei}
-		(Espaço das soluções contráteis e periódicas) Denotamos $\solucoesperiodicascontrateis \subset \caminhosfechados{M}$ como sendo o conjunto das soluções contráteis das equações de Hamilton. Ao adotarmos a topologia $C^{2}$ para o espaço $\solucoesperiodicascontrateis$ teremos uma estrutura de variedade diferenciável, portanto o espaço tangente $T_{\gamma}\solucoesperiodicascontrateis$ poderá ser representado pelo espaço dos campos vetoriais $\xi \in  C^{\infty}(\gamma^{*}TM)$ ao longo de $\gamma$ satisfazendo $\xi(t+1) = \xi(t)$.
-	\end{definicao}	
+	Como foi abordado no Capítulo $\ref{capitulo_introducao}$, a conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ e buscamos as soluções 1-periódicas e contráteis do sistema hamiltoniano
+	$$
+	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t),
+	$$
+	onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$, isto é, procuramos as soluções $\psi: \reta\to M$ tal que $\psi(t+1) = \psi(t)$ para todo $t \in \reta$ e são homotópicas a uma aplicação constante. 
+	
+	Considerando $\solucoesperiodicascontrateis$ como sendo o conjunto das aplicações $\psi : \circulo\to M$ de classe $C^{\infty}$, podemos tratar as soluções do sistema hamiltoniano 1-periódicas como elementos desse conjunto. Note que $\solucoesperiodicascontrateis$ não é conexo pois dois caminhos não-homotópicos não podem estar na mesma componente conexa. Isso nos leva a definição:
+	
+	\begin{definicao}
+		(Laços contráteis) O conjunto dos laços contráteis $\solucoesperiodicascontrateis$ é o conjunto de todas as aplicações $\psi:\circulo \to M$ de classe $C^{\infty}$ e contráteis a aplicação constante.
+	\end{definicao}
+	
+	No 
+	
 	
 	\begin{definicao}
 		(Condição de aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
@@ -3267,69 +3280,6 @@
 	\begin{prova}
 		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
 	\end{prova}
-	
-	\section{Variedade Riemanniana - algumas definições}\label{secao_variedade_riemanniana}
-	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
-	
-	\begin{definicao}\label{definicao_variedade_riemanniana}
-		(Variedade Riemanniana) Sejam $M$ uma n-variedade diferenciável e $g:T_{p}M \times T_{p}M \to \real{}$, um produto interno positivo-definido para todo $p \in M$, então o par $g$ é chamada de métrica Riemanniana e o par $(M, g)$ é chamado de n-variedade Riemanniana.
-	\end{definicao}
-	
-	O conceito de conexão afim esta intimamente relacionado com a forma de comparar um campo vetorial avaliado em pontos distintos da variedade. Uma das estratégias de se efetuar essa comparação é chamada de transporte paralelo e uma boa discussão pode ser encontrada em \cite{nakahara}. Por fim, veremos que a conexão afim é uma generalização do conceito de diferenciação de uma aplicação definida no espaço euclidiano.
-	
-	\begin{definicao}
-		(Conexão afim) Uma conexão afim $\nabla$ em uma n-variedade diferenciável é a aplicação $\nabla: \campossuaves{M} \times \campossuaves{M} \to \campossuaves{M}$ tal que, dadas $f,h \in \funcoessuaves{M}$ e $X,Y,Z \in \campossuaves{M}$:
-		\begin{enumerate}
-			\item $\nabla_{fX+hY}Z = f\nabla_{X}Z+h\nabla_{Y}Z$
-			\item $\nabla_{X}(Y+Z) = \nabla_{X}Y+ \nabla_{X}Z$
-			\item $\nabla_{X}(fY) = X(f)Y+f\nabla_{X}Y$.
-		\end{enumerate}
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_conexao_afim}
-		Seja $\{\partial_{j}(p)\}$ uma base ortonormal de $T_{p}M$ onde $\partial_{j} = \partial/\partial x_{j}$. Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in T_{p}M$, temos:
-		$$
-		\begin{aligned}
-		\nabla_{X}Y &= 
-		\sum_{k} \Big( \sum_{ij} X(Y_{k}) + X_{i}Y_{j} \Gamma^{k}_{ij}\Big)\partial_{k} 
-		\\
-		&= 
-		\sum_{k} \Big( \sum_{ij} X_{i} (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\Big)\partial_{k} 
-		\\
-		&= \sum_{k} (\nabla_{X}Y)^{k}\partial_{k}.
-		\end{aligned} 
-		$$
-		
-		Temos o operador linear $\nabla_{\partial_{i}}: \campossuaves{M} \to \campossuaves{M}$ tal que $\nabla_{\partial_{i}}Y = \sum_{j}  (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\partial_{k} $. Pode-se mostrar que no caso em que a n-variedade seja o $\real{n}$, então $\Gamma_{ij}^{k}=0$ para todos $1\leq i,j,k \leq n$. Suponha que $\campossuaves{\real{n}} \ni Y = f\partial_{j}$ para algum $0 \leq j \leq n$ e todas as outras componentes nula, então $\nabla_{\partial_{i}}Y = \partial_{i}(f)\partial_{j} $, isto é, a conexão afim se reduz a derivada direcional em $\real{n}$.
-	\end{observacao}
-	
-	\begin{observacao}\label{observacao_transporte_paralelo}
-		(Transporte paralelo) Um meio de comparar campos vetoriais em espaços tangentes distintos de $M$ é através do transporte paralelo. Suponha que $\gamma:[0,1] \to N$ uma curva suave e $Y \in TN$. Então o transporte paralelo de $Y \in TM$ ao longo de $\gamma$ é dado por 
-		$\nabla_{\frac{d\gamma}{dt}}Y$. Mais detalhes sobre podem ser encontrados em $\cite{nakahara}$.
-	\end{observacao}
-	
-	Dizemos um campo $X \in \campossuaves{M}$ é paralelamente transportado ao longo de uma curva $\gamma:\real{} \to M$ se $\nabla_{\gamma'}X=0$. Uma curva na variedade é chamada de geodésica se o seu campo de velocidades $v(t) = \gamma'(t)$ é paralelamente transportado ao logo dela, isto é, $\nabla_{v}v=0$, o que implica que $|v| = constante$.
-	
-	Seja $\gamma:[0,1] \to M$ a geodésica definida por $\gamma(t,p,v)$ tal que $\gamma(0,p,v) = p$ e $\gamma'(0,p,v) = v(p)$ com $|v|$ constante. Então o comprimento de arco de $\gamma$ é definido por 
-	$$
-	L(\gamma) =  \int_{0}^{1}|\gamma'|dt = \int_{0}^{1}|v|dt = |v|,
-	$$
-	logo $\gamma([0,1]) \subset M$ é um arco iniciado em $p \in M$ cujo comprimento é $|v|$.
-	\begin{definicao}\label{definicao_aplicacao_exponencial}
-		(Aplicação exponencial) Definimos $exp:U \subset TM \to M$ tal que $exp(p,v) = \gamma(1, p, v)$, onde $\gamma$ é a geodésica definida anteriormente. essa aplicação é chamada aplicação exponencial.
-	\end{definicao}
-	
-	Restringindo a aplicação expoencial a um ponto $p \in M$ arbitrário temos $exp_{p}:T_{p}M \to M$, isto é, $exp_{p}(v)$ é um ponto de $M$ conectado a $p$ por uma geodésica cujo comprimento de arco é $|v|$. 
-	
-	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, será utilizada na definição de uma aplicação exponencial para construirmos estruturas de variedade de dimensão infinita (variedade de Banach).
-	
-	\begin{proposicao}\label{proposicao_difeomorfismo_exponencial}
-		(Difeomorfismo exponencial) Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anterioemente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
-	\end{proposicao}
-	
-	\begin{definicao}\label{definicao_gradiente_hessiana}
-		(campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $df_{p}(v) = g(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = d\gradiente(p)$.
-	\end{definicao}
 	
 	\section{Operadores de Fredholm}
 	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabse-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. De forma equivalente, $T$ é um isomorfismo se, e somente se, $dim(Ker(T)) = 0$ e $dim(T(A)) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de "quanto o operador" se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
@@ -3793,6 +3743,10 @@
 		$$
 		
 	\end{teorema}
+	
+	\appendix
+	\chapter{Estrutura de variedade de $\solucoesperiodicascontrateis$}\label{apendice_estrura_variedade_LM}
+	?????????????????????
 	
 	\begin{thebibliography}{9}
 		\bibitem{abramovich}
