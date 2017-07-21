@@ -49,7 +49,7 @@
 \newcommand{\aplicaoessuaves}[2]{C^{\infty}(#1, #2)}
 \newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo, M)}
 \newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
-\newcommand{\bigparenteses}[1]{\big( #1 \big) }
+\newcommand{\bigparenteses}[1]{\Big( #1 \Big) }
 \newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
 \newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
@@ -65,6 +65,7 @@
 \newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
 \newcommand{\campogradiente}{\mathcal{X}}
+\newcommand{\campogradientefuncional}{\mathcal{X}_{\mathcal{A}}}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
 \newcommand{\campohamiltonianoabrev}{X_{H}}
 \newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
@@ -72,6 +73,7 @@
 \newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
 \newcommand{\circulo}{S^{1}}
 \newcommand{\circulovariedade}{\circulo\times M}
+\newcommand{\cktopologia}[1]{\mathcal{C}^{#1}\text{-topologia}}
 \newcommand{\classe}[1]{[#1]}
 \newcommand{\cohomologia}[2]{H^{#1}(#2)}
 \newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
@@ -83,14 +85,16 @@
 \newcommand{\complexificacaotensorialabrev}[1]{\mathcal{V}}
 \newcommand{\complexificacaoelemento}[2]{#1\otimes_{\reta} #2}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
-\newcommand{\diferencialmapafloer}{D\mapafloer}
-\newcommand{\diferencialmapafloerabrev}{\mathcal{D}}
+\newcommand{\diferencialfloer}{D\operadorflor}
+\newcommand{\diferencialfloerabrev}{\mathcal{D}}
 \newcommand{\derivada}[2]{\frac{d #1}{d #2}}
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
 \newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
 \newcommand{\distribuicoes}{\distribuicoesgeral{\Omega}}
 \newcommand{\distribuicoesgeral}[1]{\mathcal{D'}(#1)}
+\newcommand{\energiafinitaM}{\mathcal{E}M}
+\newcommand{\energiafinitaMconectante}{\energiafinitaM(x^{-}, x^{+})}
 \newcommand{\espacoLdois}[1]{L^{2}(#1)}
 \newcommand{\espacoLp}[1]{L^{p}(#1)}
 \newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
@@ -112,7 +116,7 @@
 \newcommand{\estruturacomplexa}{J_{0}}
 \newcommand{\estruturascomplexas}[2]{\mathcal{J}(#1, #2)}
 \newcommand{\estruturascomplexaspadrao}{\mathcal{J}(V, \omega)}
-\newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-1}, x^{+})}
+\newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-}, x^{+})}
 \newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
 \newcommand{\formaSimpletica}[2]{\omega(#1, #2)}
 \newcommand{\formaSimpleticaabrev}{\omega_{0}}
@@ -158,10 +162,10 @@
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\intervalo}{[0,1]}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
-\newcommand{\mapafloer}{\mathcal{F}}
-\newcommand{\mapafloerdefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
-\newcommand{\mapafloerparametro}[1]{\mathcal{F}(#1)}
-\newcommand{\mapafloerpadrao}{\mapafloerparametro{u}}
+\newcommand{\operadorflor}{\mathcal{F}}
+\newcommand{\operadorflordefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
+\newcommand{\operadorflorparametro}[1]{\mathcal{F}(#1)}
+\newcommand{\operadorflorpadrao}{\operadorflorparametro{u}}
 \newcommand{\matrizantisimetrica}[1]{Asym(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadcomplexa}[1]{M_{#1 \times #1}(\complexo{})}
@@ -209,6 +213,7 @@
 \newcommand{\reta}{\real{}}
 \newcommand{\lacocontrateis}{\mathcal{L}M}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
+\newcommand{\cilindrosLM}{\mathcal{C}M}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
 \newcommand{\skeleton}[1]{X^{(#1)}}
 \newcommand{\variedadeconectante}{\variedadeconectantepontos{p}{q}}
@@ -1074,7 +1079,7 @@
 	$$
 	\derivada{\gamma(t)}{t} = X(\gamma(t)), \; \gamma(0) = p.
 	$$
-	Como $M$ é compacta, então a solução $\gamma = \gamma_{p}$ existe para todo $t\in \reta$. Assim, a aplicação $\phi: \retacartesianovariedade\to M$ definida por $\phi(t,p) - \gamma_{p}(t)$ é chamada de fluxo gerado por $X$ e, fixado $p\in M$, a curva $\gamma_{p}:\reta\to M$ é chamada de linha do fluxo de $X$. Como o fluxo $\phi$ esta bem-definido para todo $t \in \reta$, então podemos efetuar a composição $\phi_{s}\circ\phi_{t}(p) = \phi(s+t, p)$ para todo $p\in M$, logo $\phi_{s}\circ\phi_{t} = \phi_{s+t}$ e $\phi_{0} = Id$. O conjunto $G_{\phi} = \{\phi_{t}:t\in \reta\}$ é um grupo com a operação de composição e é chamado de grupo de difeomorfismos a 1-parametro, o que pode ser encontrado em $\cite{palis_dynamical_systems}$.
+	Como $M$ é compacta, então a solução $\gamma = \gamma_{p}$ existe para todo $t\in \reta$. Assim, a aplicação $\phi: \retacartesianovariedade\to M$ definida por $\phi(t,p) = \gamma_{p}(t)$ é chamada de fluxo gerado por $X$ e, fixado $p\in M$, a curva $\gamma_{p}:\reta\to M$ é chamada de linha do fluxo de $X$. Como o fluxo $\phi$ esta bem-definido para todo $t \in \reta$, então podemos efetuar a composição $\phi_{s}\circ\phi_{t}(p) = \phi(s+t, p)$ para todo $p\in M$, logo $\phi_{s}\circ\phi_{t} = \phi_{s+t}$ e $\phi_{0} = Id$. O conjunto $G_{\phi} = \{\phi_{t}:t\in \reta\}$ é um grupo com a operação de composição e é chamado de grupo de difeomorfismos a 1-parametro, o que pode ser encontrado em $\cite{palis_dynamical_systems}$.
 	
 	\begin{definicao}
 		(Órbitas) A órbita de $p \in M$ pelo fluxo $\phi$ é a imagem da curva $\phi^{p} = \phi(.,p):\reta\to M$ e será denotada por $\orbitaponto{p}$. As órbitas podemo ser de três categorias
@@ -1117,8 +1122,8 @@
 	
 	Sabemos que, se $f \in \funcoesmorse{M}$, então $\pontoscriticos{f}$ é um conjunto finito. Com isso, pode-se mostrar que, 
 	
-	\begin{lema}
-		Sejam $f\in \funcoesmorse{M}$ e $p \in M$. Então $\alpha(p) $ e $\omega(p)$ contém um único ponto.
+	\begin{lema}\label{lema_conjunto_limite_funcao_morse}
+		Sejam $f\in \funcoesmorse{M}$ e $p \in M$. Então $\alpha(p)  = \{q\}$ e $\omega(p) = \{r\}$ onde $q, r \in \pontoscriticos{f}$.
 	\end{lema}
 	
 	\begin{observacao}
@@ -1615,7 +1620,7 @@
 	
 	Primeiramente demonstraremos alguns resultados de álgebra linear necessários para a analize da topologia de $\gruposimpletico{2n}$ e sua conexidade, sendo o teorema da decomposição polar o de maior importância nas construções que se seguem.
 	
-	\section{Álgebra Linear - resultados}
+	\section{Álgebra Linear - alguns resultados}
 	\begin{definicao}\label{definicao_espectro_operador}
 		(Espectro de operador) Sejam $T:V \to V$ um operador linear e $V$ um n-espaço vetorial complexo (ou real). Então o conjunto $\sigma(T)=\{\lambda\in \complexo{}: Tv = \lambda v, \; v \in V \}$ é chamado de espectro de $T$. 
 	\end{definicao}
@@ -2976,7 +2981,7 @@
 	Quando $dim(\Omega) = 1$, por exemplo um intervalo da reta, temos que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $dim(\Omega)>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Consequentemente, nem todos os elementos de  $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$  são contínuas. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev), cuja demosntração pode ser encontrada em $\cite{breazis_sobolev_spaces}$, garante a inclusão em $L^{p}$ da seguinte forma:
 	
 	\begin{teorema}\label{teorema_sobolev}
-		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $q<np(n-p)$.
+		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $q<np/(n-p)$.
 	\end{teorema}
 	
 	\begin{observacao}
@@ -2991,7 +2996,7 @@
 	\end{observacao}
 	
 	\chapter{Equação de Floer e o Operador de Fredholm}
-	\section{Variedades simpléticas}
+	\section{Variedades Simpléticas}
 	\begin{definicao}
 		(Variedade Simplética) Uma variedade simplética de dimensão 2m é o par $(M, \omega)$ onde $M$ é uma 2m-variedade diferenciável e $\omega \in \Omega^{2}(M^{m})$ é uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$ e para cada $p \in M$ temos que $(T_{p}M, \omega_{p})$ é um espaço vetorial simplético. Cada $x = (q_{1}, \dots, q_{m}, p_{1}, \dots, p_{m}) \in M$  será abreviado pelo par $(q,p)$.
 	\end{definicao}
@@ -3036,6 +3041,71 @@
 		$$
 		logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
 	\end{prova}
+
+	\section{Fibrados Vetoriais - alguns resultados}
+	\begin{definicao}
+		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$.
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_fibrado_vetorial_trivial}
+		Dizemos que um n-fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$, isto é, o espaço total $E(\eta)$ é homeomorfo a $B\times \real{n}$.
+	\end{observacao}
+	
+	Daqui em diante definiremos os grupos de estrutura como sendo $G = GL(n,\real{})$ e abreviaremos a notação de um n-fibrado vetorial por $\eta = (E,B,p)$.
+	
+	\begin{definicao}
+		(Mapa de fibrados) Sejam $\eta, \xi$ dou fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
+		$$
+		\xymatrix{
+			E \ar[r]^{F}\ar[d]^{p} & E'\ar[d]^{p'}
+			\\
+			B\ar[r]^{f} & B'
+		},
+		$$
+		e tal que $F$ é um isomorfismo entre $p^{-1}(b)$ e $p'^{-1}(f(b))$. A aplicação $f:B\to B'$ é chamada mapa de espaço base.
+	\end{definicao}
+	
+	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
+	
+	\begin{exemplo}
+		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
+	\end{exemplo}
+	
+	\begin{lema}
+		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $p\in M$ temos as fibras $F_{p} = T_{p}M$ e o espaço total é denotado $TM$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
+	\end{lema}
+	
+	Por questões de prática na grande parte das literaturas sobre Variedades Diferenciáveis e Fibrados Vetoriais vamos seguir denotando $TM$ como o fibrado tangente da variedade $M$.
+	
+	\begin{definicao}
+		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ um subconjunto consistindo de todos os pares $(b, e)$ com $e\in p'^{-1}(f(b))$. Além disso, definindo o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. Chamamos de pullback de $\eta$ por $f$ a tripla $f^{*}\eta = (E,B, p)$.
+	\end{definicao}
+	
+	\begin{lema}\label{pullback_composicao}
+		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
+	\end{lema}
+	\begin{prova}
+		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = p^{-1}((g\circ f)(a))$. Temos $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$ e suas fibras são dadas por $F_{g(b)} = p^{-1}(g(b))$, mas na composicão temos $b=f(a)$, logo  $F_{g(f(a))} = p^{-1}(g(f(a))) = p^{-1}((g \circ f)(a)))$, o que define a mesma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ são as mesmas, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
+	\end{prova}
+	\begin{lema}\label{pullback_trivial}
+		(Pullback trivial) Sejam $\eta = (E, B, p)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
+	\end{lema}
+	\begin{prova}
+		Como $\eta$ é trivial, então todas as suas fibras são iguais, isto é, $F=F_{b} = F_{b'} \forall b, b' \in B$. Por definição $f^{*}\eta = (E', A, p')$ onde as fibras são dadas por $F'_{a} = p^{-1}(f(a)) = F$ pois $f(a) \in B$ e todas as fibras de $\eta$ são iguais, logo todas as fibras de $f^{*}\eta$ são iguais, portanto é trivial.
+	\end{prova}
+	
+	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
+	
+	\begin{teorema}\label{pullback_isomorfismo}
+		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, p)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
+	\end{teorema}
+	
+	\begin{corolario}\label{pullback_contratil}
+		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base compacto e contrátil, então $\eta$ é trivial.
+	\end{corolario}
+	\begin{prova}
+		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial.
+	\end{prova}
 	
 	\section{Equação de Floer}
 	No desenvolvimento desse capítulo consideraremos $M$ como sendo uma 2n-variedade diferenciável fechada, isto é, compacta e sem bordo.
@@ -3077,8 +3147,8 @@
 		onde $w:S^{2} \to M$ é uma colagem dos dois discos ao longo de seus bordos tal que sua imagem será homotópica a $S^{2}$. Para elimiar a dependencia da escolha da extensão de $\gamma$ vamos que $\int_{S^{2}}w^{*}\omega=0$.
 	\end{observacao}
 	
-	\begin{definicao}
-		(Condição de aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
+	\begin{definicao}\label{definiciao_condicao_aesfericidade}
+		(Condição de Aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
 		$$
 		\int_{S^{2}} u^{*}\omega = 0.
 		$$
@@ -3158,57 +3228,149 @@
 	\gradientefuncional(\gamma(t))= J(\gamma(t))\dot{\gamma}(t)-J(\gamma(t))\campohamiltoniano{\gamma(t), t}.
 	$$
 	
+	Defina o campo vetorial $\campogradientefuncional = -\gradientefuncional$ e, para um dado $\gamma\in \lacocontrateis$, suponha que $\lambda : \reta \to \lacocontrateis$ seja uma solução da equação 
+	$$
+	\derivada{}{s}\lambda(s) = \campogradientefuncional(\lambda(s)), \; \; \lambda(0) = \gamma.
+	$$
+	A identificação $\espacotangenteponto{\gamma}{\lacocontrateis} \cong \pullbackfibradotangenteM{\gamma}$ nos permite escrever a equação diferencial anterior como
+	$$
+	\derivadaparcial{}{s}u(s,t) = \campogradiente(u(s,t)),\;\; u(0,t) = \gamma(t)\;\forall t\in \reta,
+	$$
+	onde $u :\retacartesianocirculo\to M$ é uma aplicação suave que, fixado $t\in \reta$ temos $\label{s} = u(s,t)$, garante a existência de $\lambda$ como curva integrado de $\campogradientefuncional$.
 	
+	Inserindo $u:\retacartesianocirculo\to M$ na expressão do gradiente do funcional Hamiltoniano temos
+	$$
+	\derivadaparcial{}{s}u(s,t) + J(u(s,t))\derivadaparcial{}{t}u(s,t) -J(u(s,t)) \campohamiltoniano{u(s,t)}=0, 
+	$$
+	que é chamada de equação de Floer. 
+	
+	Defina $\cilindrosLM =\{u:\reta\to \lacocontrateis: u \;\text{é} \;C^{\infty}\}$. Note que, um caminho suave no conjunto dos laços suaves pode ser visto como o conjunto dos cilíndros levados em $M$ por uma aplicação suave $u:\retacartesianocirculo\to M$. Logo, podemos escrever $\cilindrosLM = \{u:\retacartesianocirculo\to M : u \;\text{é} \;C^{\infty}\}$.
+	
+	\begin{definicao}
+		(Operador de Floer) O operador $\operadorflor: \cilindrosLM\to TM$ é definido por 
+		$$
+		\operadorflor = \derivadaparcial{}{s} + J(.)\derivadaparcial{}{t} -J(.) \campohamiltoniano{.},
+		$$
+		onde $\operadorflor(u) \in \pullbackfibradotangente{u}{M}$.
+	\end{definicao}
+	
+	\begin{observacao}
+		Note que, na busca das soluções da equação de Floer não estamos diante de um problema de Cauchy, pois não temos condições de contorno nessa formulação.
+	\end{observacao}
+		
+	\section{Soluções de Energia Finita $\energiafinitaM$}
+	
+	Em Teoria de Morse Clássica vimos que as linhas do fluxo do negativo do gradiente de uma função de Morse definida em uma variedade fechada, $f\in \funcoesmorse{M}$, conectam dois pontos críticos (Lema $\ref{lema_conjunto_limite_funcao_morse}$). Entretanto, esse naõ é o caso das construções feitas até aqui. Temos uma variedade de Banach, isto é, estamos em dimensão infinita e a compacidade não esta garantida.
+	
+	Ainda no caso clássico, suponha que $\gamma:\reta \to M$ seja uma solução do sistema de equações diferenciais
+	$$
+	\derivada{}{s}\gamma(s)=\campogradiente(\gamma(s)),
+	$$
+	isto é, $\gamma$ é uma trajetoria do negativo do gradiente. defina o funcionaç energia
+	$$
+	E(\gamma)= -\int_{\reta}\gamma^{*} df.
+	$$
+	Se $\gamma$ conecta dois pontos críticos $p,q\in \pontoscriticos{f}$, ou seja, $\lim_{s\to -\infty}\gamma(s)=a$ e $\lim_{s\to \infty}\gamma(s)=b$, então a energia de $\gamma$ é $E(\gamma) = f(a) -f(b)$. Definiremos um funcional energia de modo análogo.
+	
+	\begin{definicao}
+		(Funcional Energia) O funcional energia é a aplicação $E: \cilindrosLM \to \reta$ definido por
+		$$
+			E(u) = -\int_{\reta}u^{*}d\funcionalH.
+		$$
+	\end{definicao}
+	Supondo que $u$ seja uma curva integral de $-\gradientefuncional$ e que $Y \in \espacotangenteponto{s}{\reta}$, temos 
 	$$
 	\begin{aligned}
-	df_{H}(\gamma)(Y) 
-	&=  \int_{[0,1]} \omega(\dot{\gamma}(t) - X(\gamma(t), t), Y(\gamma(t)))dt
-	\\
-	&= \int_{[0,1]} \omega(J(\gamma(t))(\dot{\gamma}(t) - X(\gamma(t), t)), J(\gamma(t))Y(\gamma(t)))dt
-	\\
-	&= \int_{[0,1]} \omega(\nabla f(\gamma(t)), J(\gamma(t))Y(\gamma(t)))dt,
+		(u^{*}d\funcionalH)_{s}(Y) &= (d\funcionalH)_{u(s)}(du_{s}(Y))
+		\\
+		&=\produtointerno{\gradientefuncional(u(s))}{du_{s}(Y)}
+		\\
+		&=\produtointerno{\gradientefuncional(u(s))}{Y\derivada{}{s}u(s)}
+		\\
+		&=\produtointerno{\gradientefuncional(u(s))}{Y\derivada{}{s}u(s)}
+		\\
+		&=\produtointerno{\gradientefuncional(u(s))}{-Y\gradientefuncional(u(s))}
+		\\
+		&=-Y\norma{\gradientefuncional(u(s))}^{2}.
 	\end{aligned}
 	$$
-	logo 
+	Portanto, $(u^{*}d\funcionalH)_{s} = -\norma{\gradientefuncional(u(s))}^{2}$. Voltando no funcional energia, temos
 	$$
-	\nabla f(\gamma) = J(\gamma(t))\dot{\gamma}(t) - J(\gamma(t)) X(\gamma(t)) =J_{\gamma(t)}\dot{\gamma}(t) + \nabla_{\gamma(t)}H(\gamma(t), t).  
-	$$
-	As linhas do fluxo gradiente do funcional $f_{H}$ serão dadas pela aplicação suave $u : \retacartesianocirculo \to M$ satisfazendo o problema de valor inicial:
-	$$
-	\derivadaparcial{u}{s}(s,t) = -\nabla f(\gamma(t)), \; u(0,t) = \gamma(t).
-	$$
-	Que substituindo essa relação na expressao do gradiente do funcional:
-	$$
-	\derivadaparcial{u}{s}(s,t) + J_{u(s,t)}\derivadaparcial{u}{t}(s,t) + \nabla_{u(s,t)}H(u(s,t))=0, 
-	$$
-	que é chamada de equação de Floer. Contudo, esse problema não esta bem-definido com um problema de Cauchy, além disso, qualquer ponto crítico de $f_{H}$ tem seu índice de Morse infinito.
-	
-	\textbf{Observação:} no estudo dos pontos críticos do funcional $f_{H}$ encontra-se a dificuldade de se determinar que o princípio variacional possui uma cota inferior ou superior. Além disso, a hessiana do funcional pode ter um subespaço de dimensão infinita tanto para os casos de autovalores negativos quanto positivos, impossibilitando a realização da teoria de Morse. Por fim, \vermelho{a determinação do gradiente do funcional também não esta bem-definida, já que não esta bem posto como um problema de Cauchy.}
-	
-	Sejam $y, x\in \lacocontrateis$ e defina $\mathcal{M}(y, x)$ como sendo o espaço das órbitas conectantes com respeito ao fluxo gradiente de $f_{H}$. Essas são soluções da equação de Floer com a seguinte condição de contorno \vermelho{(estamos supondo que as mesmas existem)}
-	$$
-	\lim_{s\to -\infty} u(s,t) = y(t), \; 	\lim_{s\to \infty} u(s,t) = x(t). 
+	\begin{aligned}
+		E(u)&=-\int_{\reta}u^{*}d\funcionalH
+		\\
+		&=\int_{\reta}\norma{\gradientefuncional(u(s))}^{2}
+		\\
+		&=\int_{\reta}\norma{\gradientefuncional(u(s))}^{2} 
+		\\
+		&\geq 0
+	\end{aligned}
 	$$
 	
-	Seja o funcional energia por
-	$$
-	E(u) = \frac{1}{2}\int_{\real{}} \int_{S{^{1}}} \bigmodulo{\derivadaparcial{u}{s}}^{2} + \bigmodulo{\derivadaparcial{u}{t} - X_{H}(u,t)}^{2}dsdt
-	$$
-	vamos definir $
-	\mathcal{M} = \{u \in \mathcal{M}(y,x):y,x \in \lacocontrateis,\; |E(u)| < \infty, \; u \sim p \in M\}
-	$ como sendo o espaço das soluções limitadas da equação de Floer, e vamos utilizar características desse conjunto para construir um conceito de índice dos pontos críticos do funcional $f_{H}$.
+	A positividade do funcional energia esta de acordo com a analogia em Teoria de Morse Clássica. Suponha $u$ conecte dois pontos críticos $p,q \in \pontoscriticos{\funcionalH}$, então  $\lim_{s\to -\infty}u(s)=p$ e $\lim_{s\to \infty}u(s)=q$. Com isso, $E(u) = \funcionalH(p) - \funcionalH(q)<\infty$.
 	
+	\begin{observacao}
+		Como ocorre na Física, podem ocorrer situações em que o sistema atinge um mínimo de energia.
+	\end{observacao}
+	
+	Defina $\energiafinitaM\subset\cilindrosLM$ o conjunto de todas as trajetórias de $\campogradientefuncional$ tal que o funcional energia seja finito. Uma importante propriedade de $\energiafinitaM$ é a sua compacidade. Para isso, é necessário munir $\energiafinitaM$ com uma topologia, o que que pode não ser fácil. Para contornar esse problema vamos tratar $M$ como uma variedade mergulhara em $\real{m}$ para algum $m>0$ suficientemente grande, o que é garantido pelo Mergulho de Whitney $\ref{teorema_whitney}$. 
+	
+	\begin{definicao}
+		($\cktopologia{k}$) Seja $C^{r}(\real{m}, \real{n})$ o conjunto das aplicações de $\real{m}$ em $\real{n}$ de classe $C^{r}$. Então, dado $k\leq r$, definimos a $\cktopologia{k}$ de $C^{r}(\real{m}, \real{n})$ como sendo a topologia gerada pelo máximo das j-normas
+		$$
+		\norma{f}_{j} = \sup_{p \in B(1)}\norma{f^{(j)}(p)},
+		$$
+		isto é, $\norma{f} = max \{\norma{f}_{j}\}_{j=1}^{r}$, onde $B(1)$ é a bola unitária centrada na origem e $f^{(j)}(p)$ é a j-ésima diferenciação de $f$ no ponto $p$.
+	\end{definicao}
+
+	\begin{observacao}
+		Lembre-se que estamos sob o ponto de vista de que $N $ é um mergulho em algum espaço euclidiano com dimensão suficientemente grande. Além disso, Supondo que $N$ seja separável, então a $\cktopologia{r}$ é metrizável. Um pouco mais pode ser encontrado em $\cite{palis_dynamical_systems}$.
+	\end{observacao}
+
+	Sejam $C^{\infty}(\circulo; \real{m})$ e $C^{\infty}_{loc}(\retacartesianocirculo; \real{m})$ munidos da $\cktopologia{k}$ e da topologia da convergência uniforme, respectivamente. Como $M \subset \real{m}$ é um mergulho, então $C^{\infty}(\circulo; M)$ e $C^{\infty}_{loc}(\retacartesianocirculo; M)$ herdam as respectivas topologias.
+
+	\begin{proposicao}
+	Toda solução de classe $C^{1}$ da equação de Floer é de classe $C^{\infty}$. Além disso, em $\energiafinitaM$, as topologias $C^{0}_{loc}$, $C^{1}_{loc}$ e $C^{\infty}_{loc}$ são equivalentes.
+	\end{proposicao}
+	
+	O teorema a seguir afirma a compacidade de $\energiafinitaM$ sobre determinadas condições. Sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	
+	\begin{teorema}
+		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definiciao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
+	\end{teorema}
+	
+	Temos o teorema a seguir tem sua importância destacada nas demais demonstração de outros resultados, além ser o equivalente ao Lema $\ref{lema_conjunto_limite_funcao_morse}$.
+	
+	\begin{teorema}
+		Suponha que todas as trajetórias de $\campogradientefuncional \in \campossuaves{\lacocontrateis}$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $\gamma, \beta\in \pontoscriticos{\funcionalH}$ tais que
+		$$
+		\lim_{s\to -\infty}u(s)=\gamma,\; \lim_{s\to \infty}u(s)=\beta\;\;
+		$$
+		em $C^{\infty}(\circulo;M)$. Além disso, temos que
+		$$
+		\lim_{s\to \pm \infty}\derivadaparcial{}{s}u(s,t) = 0,
+		$$
+		converge uniformemente em $t\in \circulo$.
+	\end{teorema}
+	
+	O lema a seguir caracterisza o conjunto dos pontos críticos do funcional Hamiltoniano e sua demonstração esta em $\cite{audi_floer_homology}$. 
 	\begin{lema}
+		Supondo as condições de não-degenerecência de das trajetórias periódicas de $\campohamiltonianoabrev$, então o conjunto $\pontoscriticos{\funcionalH}$ é finito. Logo, o conjunto das trajetórias de $\campohamiltonianoabrev$ é finito.
+	\end{lema}
+
+	\begin{comment}
+		\begin{lema}
 		(Floer) $\mathcal{M} = \bigcup \mathcal{M}(y,x)$, onde a união dos pares $y,x \in \lacocontrateis$, além disso, supondo a condição de aesfericidade, $\mathcal{M}$ será compacta.
-	\end{lema}
-	
-	O lema abaixo é equivalente as condições de transversalidade em teoria finita de Morse, isto é, dada um função de Morse, o subconjunto de funções de Morse-Smale é um conjunto denso.
-	
-	\begin{lema}
+		\end{lema}
+		
+		O lema abaixo é equivalente as condições de transversalidade em teoria finita de Morse, isto é, dada um função de Morse, o subconjunto de funções de Morse-Smale é um conjunto denso.
+		
+		\begin{lema}
 		(Floer) Suponha que as soluções do sistema hamiltoniano sejam não-degenerados, então exite um conjunto denso $J_{reg} \subset C^{\infty}(End(TM))$ de estruturas quase-complexas tais que dado $J \in J_{reg}$ e cada par $y,x \in \lacocontrateis$ o espaço $\mathcal{M}(y,x)$ é uma variedade de dimensão finita.
-	\end{lema}
-	
-	\textbf{Observação:} o lema acima afirma que, dada uma métrica gerada pelo par $\omega$ e J, teremos um conjunto denso de métricas geradas por outras estruturas complexas. Como o gradiente $\nabla f_{H}$ depende da métrica que adotamos então, como consequencia do lema, dado um gradiente sempre conseguimos construir um outro gradiente suficientemente proximo.
+		\end{lema}
+		
+		\textbf{Observação:} o lema acima afirma que, dada uma métrica gerada pelo par $\omega$ e J, teremos um conjunto denso de métricas geradas por outras estruturas complexas. Como o gradiente $\nabla f_{H}$ depende da métrica que adotamos então, como consequencia do lema, dado um gradiente sempre conseguimos construir um outro gradiente suficientemente proximo.
+		
 	
 	A estratéria dada por Floer para a demonstração desse lema 
 	é a utilização de operadores diferenciais lineares  definidos por 
@@ -3259,77 +3421,15 @@
 	$$
 	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \lacocontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
 	
-	\section{Variedades conectantes - espaços das soluções de Floer}
-	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x^{-}, x^{+}$ sejam duas órbitas 1-periódicas de $H$. Vamos considerar $\orbitasconectantespadrao$ como sendo o conjunto das soluções da equação de Floer que conectam as óbitas $x^{-}$ e $x^{+}$. Vamos demonstrar que $\orbitasconectantespadrao$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das órbitas $x$ e $y$, isto é, $dim(\orbitasconectantes{x}{y}) = \mu(x)-\mu(y)$. Para  isso vamos construir uma aplicação $\mapafloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são determinadas curvas conectando $x^{-}, x^{+}$ tal que $\orbitasconectantespadrao \subset \caminhosexponenciaisconectantespadrao$. Mostraremos que $Ker(\mapafloer) = \orbitasconectantespadrao$. Por fim, vamos provar que $\mapafloer$ é um operador de Fredholm, isto é, seu núcleo possui dimensão finita, logo $dim (\orbitasconectantespadrao) = dim (Ker(\mapafloer)) < \infty$. Além disso, vamos usar o teorema da pré-imagem de valor regular de $\mapafloer$ para mostrar que $\orbitasconectantespadrao = \mapafloer^{-1}(0)$ é uma variedade diferenciável.
+	\end{comment}
+		
 	
-	Para seguir na demonstração precisamos introduzir alguns resultados sobre fibrados vetoriais e conexões afins em variedades Riemannianas, mas caso haja familiaridade com tais definições a leitura dessa seção não se faz necessária.
+	\section{Soluções da equações de Floer}
+	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x^{-}, x^{+}$ sejam duas soluções 1-periódicas do sistema Hamiltoniano, isto é, $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então, para toda estrutura complexa $J \in \estruturascomplexas{M}{\omega}$ podemos considerar $\energiafinitaMconectante \subset \energiafinitaM$ como sendo o conjunto das soluções da equação de Floer que conectam os pontos críticos $x^{-}$ e $x^{+}$. Vamos demonstrar que $\energiafinitaMconectante$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das soluções $x^{-}$ e $x^{+}$ do seguinte modo $dim(\energiafinitaMconectante) = \mu(x^{-})-\mu(x^{+})$. Para isso vamos descrever o conjunto $\energiafinitaMconectante$ como sendo os zero de uma seção do fibrado vetorial na variedade de Banach $\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são os caminhos de decaimento exponencial que conectam $x^{-}, x^{+}$ de modo que teremos $\energiafinitaMconectante \subset \caminhosexponenciaisconectantespadrao$. Aplicando a versão para dimensões infinitas do Teorema de Sard, chamado de Sard-Smale, mostraremos que $\energiafinitaMconectante$ é a pré-imagem de uma valor regular de uma determinada aplicação, sendo que para isso, deveremos mostrar que o diferencial dessa aplicação é um operador de Fredholm. Esse operador é chamado de operador de Fleor $\operadorflor$ e seu diferencial será denotador por $\diferencialfloer$. Mostraremos que, o índice do operador $\diferencialfloer$ é $\mu(x^{-}) - \mu(x^{+})$, portanto 
+	$$
+	dim(\energiafinitaMconectante)=ind(\diferencialfloer) <\infty.
+	$$
 	
-	\section{Fibrados Vetoriais - alguns resultados}
-	\begin{definicao}
-		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_fibrado_vetorial_trivial}
-		Dizemos que um n-fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$, isto é, o espaço total $E(\eta)$ é homeomorfo a $B\times \real{n}$.
-	\end{observacao}
-	
-	Daqui em diante definiremos os grupos de estrutura como sendo $G = GL(n,\real{})$ e abreviaremos a notação de um n-fibrado vetorial por $\eta = (E,B,p)$.
-	
-	\begin{definicao}
-		(Mapa de fibrados) Sejam $\eta, \xi$ dou fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
-		$$
-		\xymatrix{
-			E \ar[r]^{F}\ar[d]^{p} & E'\ar[d]^{p'}
-			\\
-			B\ar[r]^{f} & B'
-		},
-		$$
-		e tal que $F$ é um isomorfismo entre $p^{-1}(b)$ e $p'^{-1}(f(b))$. A aplicação $f:B\to B'$ é chamada mapa de espaço base.
-	\end{definicao}
-	
-	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
-	
-	\begin{exemplo}
-		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
-	\end{exemplo}
-	
-	\begin{lema}
-		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $p\in M$ temos as fibras $F_{p} = T_{p}M$ e o espaço total é denotado $TM$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
-	\end{lema}
-	
-	Por questões de prática na grande parte das literaturas sobre Variedades Diferenciáveis e Fibrados Vetoriais vamos seguir denotando $TM$ como o fibrado tangente da variedade $M$.
-	
-	\begin{definicao}
-		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ um subconjunto consistindo de todos os pares $(b, e)$ com $e\in p'^{-1}(f(b))$. Além disso, definindo o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. Chamamos de pullback de $\eta$ por $f$ a tripla $f^{*}\eta = (E,B, p)$.
-	\end{definicao}
-	
-	\begin{lema}\label{pullback_composicao}
-		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
-	\end{lema}
-	\begin{prova}
-		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = p^{-1}((g\circ f)(a))$. Temos $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$ e suas fibras são dadas por $F_{g(b)} = p^{-1}(g(b))$, mas na composicão temos $b=f(a)$, logo  $F_{g(f(a))} = p^{-1}(g(f(a))) = p^{-1}((g \circ f)(a)))$, o que define a mesma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ são as mesmas, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
-	\end{prova}
-	\begin{lema}\label{pullback_trivial}
-		(Pullback trivial) Sejam $\eta = (E, B, p)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
-	\end{lema}
-	\begin{prova}
-		Como $\eta$ é trivial, então todas as suas fibras são iguais, isto é, $F=F_{b} = F_{b'} \forall b, b' \in B$. Por definição $f^{*}\eta = (E', A, p')$ onde as fibras são dadas por $F'_{a} = p^{-1}(f(a)) = F$ pois $f(a) \in B$ e todas as fibras de $\eta$ são iguais, logo todas as fibras de $f^{*}\eta$ são iguais, portanto é trivial.
-	\end{prova}
-	
-	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
-	
-	\begin{teorema}\label{pullback_isomorfismo}
-		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, p)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
-	\end{teorema}
-	
-	\begin{corolario}\label{pullback_contratil}
-		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base compacto e contrátil, então $\eta$ é trivial.
-	\end{corolario}
-	\begin{prova}
-		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial, como desejávamos.
-	\end{prova}
-	
-	\section{Operadores de Fredholm}
 	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabse-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. De forma equivalente, $T$ é um isomorfismo se, e somente se, $dim(Ker(T)) = 0$ e $dim(T(A)) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de "quanto o operador" se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
 	
 	
@@ -3350,10 +3450,8 @@
 	
 	Pela estabilidade dos operadores de Fredholm, podemos afirmar que o índice de $df(p) \in \operadoresfredholm{A}{B}$ não depende do ponto $p \in A$, com isso podemos definir o índice do mapa de Fredholm como $ind(f)=ind(df(p))$ que é constante e assim esta bem-definido.
 	
-	\section{Os espaços de Banach das curvas conectantes}
-	
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
-		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \lacocontrateis$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
+		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
 		$$
 		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \mp} u(s,t) = x^{\mp}(t) \},
 		$$
@@ -3367,26 +3465,30 @@
 		$\caminhosdecaimentoexponencialpadrao$ é não-vazio pois as soluções da equação de Floer existem e satisfazem tais condições, logo são elementos desse conjunto. A estimativa do módulo das derivadas parciais pode ser encontrada em $\cite{audi_floer_homology}$. Além disso, essas estimativas indicam que nos limites $s\to \mp \infty$ teremos as soluções das esquações do sistema Hamiltonio.
 	\end{observacao}
 	
-	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que os espaço das funções suaves não é um espaço de Banach \vermelho{(DEVO MELHORAR ESSE ARGUMENTO)}, portanto $\caminhosdecaimentoexponencialpadrao$ não é um candidato a espaço de Banach. \vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
+	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que o espaço das funções suaves não é um espaço de Banach, mas sim um espaço de Frechet (uma generalização dos espaços de Banach e é munido de uma semi-norma), portanto $\caminhosdecaimentoexponencialpadrao$ não é um espaço de Banach. Isso é um impedimento pois necessitamos de um espaço normada para as construções seguintes.
 	
+	\begin{comment}
+		\vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
+		
+	\end{comment}
 	De acordo com a Definição  $\ref{definicao_espaco_Lp}$ o espaço $L^{p}(\Omega)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equação de Floer envolve derivadas de primeira ordem, o espaço de Banach com o qual trabalharemos será munido de uma norma que leva em consideração o comportamento dessas derivadas. Tal espaço normado é chamado por espaço de Sobolev.
 	
-	Notemos que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial, por isso vamos adotar como espaço de Sobolev generalizado do que foi feito na Seção $\ref{secao_espaco_sobolev}$. 
+	Uma segunda dificuldade técnica é que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial. Para contornar esse problemas vamos adotar como espaço normado os espaços de Sobolev generalizados do que foi feito na Seção $\ref{secao_espaco_sobolev}$. 
 	
-	Notemos que $dim(\retacartesianocirculo) = 2$, logo pelas limitações citadas na Observação $\ref{Sp2n_homotopia}$ e pelo Teorema $\ref{teorema_sobolev}$ (teorema de Sobolev) temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{q}$, onde $q = 1/p - 1/n$ e $n = 2$, o que implica que $q = 0$ se $p=2$, logo temos que trabalhar $p>2$.
+	\begin{observacao}\label{observacao_escolha_espacos_sobolev}
+		Pelo Teorema $\ref{teorema_sobolev}$ temos que, para um dado $\Omega \subset \real{n}$, a inclusão $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é contínua para $1/q = 1/p - 1/n$. Lembrando que estamos tratando a variedade $M$ como um mergulho em um $\real{m}$ para algum $m>0$ suficientemente grande. Com isso, as aplicacões $u \in \energiafinitaM$ podem ser vistas como $u:\retacartesianocirculo\to M \subseteq \real{m}$. Assim, a topologia de $\espacosobolevcontradominio{\retacartesianocirculo}{M}$ é induzida pela topologia de $\espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}$. Temos $\Omega = \retacartesianocirculo$, que é um cilíndro mergulhado em $\real{n}$ para algum $n\geq3$ o que implica em $ p\geq 2$. Essa condição é a restrição de escolha dos espaços de Sobolev com os quais trabalharemos.
+	\end{observacao}
 	
 	\begin{definicao}
-		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \lacocontrateis$, $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ o das aplicações $exp(w,X):\retacartesianocirculo \to M$ tal que $exp(w,X)(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$.
+		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, $w \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ o das aplicações $exp(w,X):\retacartesianocirculo \to M$ tal que $exp(w,X)(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$.
 	\end{definicao}
 	
 	\begin{proposicao}
-		$\orbitasconectantespadrao \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
+		$\energiafinitaMconectante \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $u \in \orbitasconectantespadrao$, então pelas condições de contorno das soluções temos $u(s,t)  \to x^{\mp}(t)$ quando $s\to \mp \infty$, logo $\derivadaparcial{u}{s} \to 0$ e $\derivadaparcial{u}{t} \to X_{H}(x^{\mp})$ quando $s\to \mp \infty$, portanto $u \in \caminhosdecaimentoexponencialpadrao$. Suponha que $u \in \caminhosdecaimentoexponencialpadrao$ então tomando $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Definindo $\gamma(s, t) =\aplicacaoexponencial{u(s, t)}{v(s, t)}$, podemos ver que $\gamma$ satisfaz as condições de decaímento exponencial, logo $\gamma \in \caminhosdecaimentoexponencialpadrao$, mas por construção temos que $\gamma \in \caminhosexponenciaisconectantespadrao$. Como cada $u \in \caminhosdecaimentoexponencialpadrao$ temos uma única $\gamma \in \caminhosexponenciaisconectantespadrao$, então $\caminhosdecaimentoexponencialpadrao \subset \caminhosexponenciaisconectantespadrao$. 
+		Seja $u \in \energiafinitaMconectante$, então pelas condições de contorno das soluções temos $u(s,t)  \to x^{\mp}(t)$ quando $s\to \mp \infty$, logo $\derivadaparcial{u}{s} \to 0$ e $\derivadaparcial{u}{t} \to X_{H}(x^{\mp})$ quando $s\to \mp \infty$, portanto $u \in \caminhosdecaimentoexponencialpadrao$. Suponha que $u \in \caminhosdecaimentoexponencialpadrao$ então tomando $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Definindo $\gamma(s, t) =\aplicacaoexponencial{u(s, t)}{v(s, t)}$, podemos ver que $\gamma$ satisfaz as condições de decaímento exponencial, logo $\gamma \in \caminhosdecaimentoexponencialpadrao$, mas por construção temos que $\gamma \in \caminhosexponenciaisconectantespadrao$. Como cada $u \in \caminhosdecaimentoexponencialpadrao$ temos uma única $\gamma \in \caminhosexponenciaisconectantespadrao$, então $\caminhosdecaimentoexponencialpadrao \subset \caminhosexponenciaisconectantespadrao$. 
 	\end{prova}
-	
-	\section{$\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach}
 	
 	Quando não houver riscos de ambiguidades adotaremos a notação de $\caminhosexponenciaisconectantesabrev$ em vez de $\caminhosexponenciaisconectantespadrao$.
 	
@@ -3402,7 +3504,7 @@
 	Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset L^{\infty}(\retacartesianocirculo, \real{2n})$. Então dado $X \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, existem constantes $A, B >0$ tais que $A\normaWp{X}\leq \norma{X}_{\infty} \leq B\normaWp{X}$, portanto, ambas as normas geram a mesma topologia. Como $L^{\infty}(\retacartesianocirculo, \real{2n})$ é um espaço de Banach, então pela inclusão e compatibilidade das normas, $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ é um espaço de Banach.
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
-		Sejam $x^{-}, x^{+} \in \lacocontrateis$ soluções contráteis do sistema Hamiltoniano, então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$ soluções contráteis do sistema Hamiltoniano, então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
 	\end{proposicao}
 	\begin{prova}
 		Pela Proposição $\ref{proposicao_difeomorfismo_exponencial}$, dado $\epsilon > 0$, existe uma vizinhaça aberta $B_{\epsilon}(0)$ de seção nula $0 \in \espacosobolev{\pullbackfibradotangenteM{w}}$ tal que a restrição da aplicação exponencial $\aplicacaoexponencialgeral{w}:B_{\epsilon}(0) \to V$ é um difeomorfismo sobre um aberto $V \subset \pullbackfibradotangenteM{w}$. Para cada $X \in \espacosobolev{\pullbackfibradotangenteM{w}}$ temos a aplicação $\aplicacaoexponencial{w}{X}:\retacartesianocirculo \to M$ tal que $\aplicacaoexponencial{w}{X}(s,t) = \aplicacaoexponencial{w(s,t)}{X(s,t)}$, logo $\aplicacaoexponencial{w}{X} \in \caminhosexponenciaisconectantespadrao$. Portanto o par $(B_{\epsilon}(0), \aplicacaoexponencialgeral{w})$ de abertos e difeomorfismos é uma carta de $\caminhosexponenciaisconectantespadrao$, consequentemente a família indexada $\{(B_{\epsilon_{w}}(0), \aplicacaoexponencialgeral{w})\}_{w \in \caminhosexponenciaisconectantesabrev}$, forma um 1-atlas. Portanto, $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
@@ -3421,23 +3523,23 @@
 	
 	Por definição temos que, dado $w : \retacartesianocirculo \to M $ com $w \in C^{\infty}$ temos $\pullbackfibradotangenteM{w} = \{(p, X(p)) : p = w(s,t) \in M, \; X(s,t) \in T_{w(s,t)M} \}$. Pelo Teorema $\ref{teorema_whitney}$ (Whitney) temos que $\pullbackfibradotangenteM{w} \subset T\real{k}$, para algum $k \geq 2 dim(\pullbackfibradotangenteM{w}) +1$. Seja $\psi : \pullbackfibradotangenteM{w} \to \real{k}$ o mergulho, então a composição $\Psi=\psi \circ X:\retacartesianocirculo \to \real{k}$ esta bem-definida, logo $\Psi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$. 
 	
-	\section{O operador de Floer $\mapafloer$}
+	\section{O operador de Floer $\operadorflor$ e seu diferencial $\diferencialfloer$}
 	
 	Sabemos que $\caminhosexponenciaisconectantesabrev$ é um espço de Banach, portanto é um espaço topológico com sua topologia gerada pela norma. Definindo $\fibradocaminhosexponenciais =\{(u, X): u \in \caminhosexponenciaisconectantesabrev,\; X \in L^{p}(\pullbackfibradotangenteM{u})\}$, temos que a tripla $
 	\fibradocaminhosexponenciaisabrev= (\fibradocaminhosexponenciais, \caminhosexponenciaisconectantesabrev, \pi)
 	$ é um fibrado vetorial sobre $\caminhosexponenciaisconectantesabrev$  onde $\pi: \fibradocaminhosexponenciais \to \caminhosexponenciaisconectantesabrev$ é tal que $\pi(u, X)=u$ é a projeção e $\pi^{-1}(u) = L^{p}(\pullbackfibradotangenteM{u})$ é uma fibra em $u$.
 	
 	\begin{definicao}
-		(Mapa de Floer) O mapa de Floer é a aplicação $\mapafloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciaisabrev$ tal que
+		(Operador de Floer) O operador de Floer é a aplicação $\operadorflor: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciaisabrev$ tal que
 		$$
-		\mapafloerparametro{u} =\mapafloerdefinicao{u}.
+		\operadorflorparametro{u} =\operadorflordefinicao{u}.
 		$$
 	\end{definicao}
 	
 	Seja $u \in \caminhosexponenciaisconectantesabrev$, então
 	$$
 	\begin{aligned}
-	\normaLp{\mapafloerpadrao} &= \normagrandeLpdefinicao{\mapafloerdefinicao{u}}{\retacartesianocirculo}
+	\normaLp{\operadorflorpadrao} &= \normagrandeLpdefinicao{\operadorflordefinicao{u}}{\retacartesianocirculo}
 	\\
 	&\leq \normaLpdefinicao{\normagrande{\derivadaparcial{u}{s}} +|J|\normagrande{\derivadaparcial{u}{t} - X_{H}(u)}}{\retacartesianocirculo}
 	\\
@@ -3448,76 +3550,54 @@
 	&< \infty,
 	\end{aligned}	
 	$$ 
-	portanto $\mapafloerparametro{\caminhosexponenciaisconectantesabrev} \subset L^{p}(\pullbackfibradotangenteMpadrao)$ e o mapa de Floer esta bem-definido.
+	portanto $\operadorflorparametro{\caminhosexponenciaisconectantesabrev} \subset L^{p}(\pullbackfibradotangenteMpadrao)$ e o operador de Floer esta bem-definido.
 	
-	\section{O diferencial de $\mapafloer$}
-	\vermelho{Explicar o porque temos que tomar o diferencial do mapa de Floer.}
-	
-	
-	
-	Por hipótese $M$ é uma 2n-variedade Riemanniana, consequentemente, $\pullbackfibradotangenteM{w}$ também é uma variedade Riemannina para todo $u \in \caminhosexponenciaisconectantesabrev$. Portanto, para realizarmos a diferencição de $\mapafloer$ devemos comparar os campos vetoriais $\mapafloerparametro{w}$ a $\mapafloerparametro{w'}$ através do transporte paralelo descricao na Observação $\ref{observacao_transporte_paralelo}$, obrigando-nos a trabalhar com conexões afins, levando complexidade adicional à análise das características de $D\mapafloer(w)$. Termos do transporte paralelo teríamos a seguinte expressão:
+	Por hipótese $M$ é uma 2n-variedade Riemanniana, consequentemente, $\pullbackfibradotangenteM{w}$ também é uma variedade Riemannina para todo $u \in \caminhosexponenciaisconectantesabrev$. Portanto, para realizarmos a diferencição de $\operadorflor$ devemos comparar os campos vetoriais $\operadorflorparametro{w}$ a $\operadorflorparametro{w'}$ através do transporte paralelo descricao na Observação $\ref{observacao_transporte_paralelo}$, obrigando-nos a trabalhar com conexões afins, levando complexidade adicional à análise das características de $D\operadorflor_{w}$. Em termos do transporte paralelo teríamos a seguinte expressão:
 	$$
-	\nabla\mapafloerparametro{w}(\xi) = \nabla_{s}\xi + J(w)\nabla_{t}\xi + dJ(w)(\xi)(\xi - X_{H}(w)) - J(w)(dX_{H})_{w}(\xi).
+	\nabla\operadorflorparametro{w}(\xi) = \nabla_{s}\xi + J(w)\nabla_{t}\xi + dJ(w)(\xi)(\xi - X_{H}(w)) - J(w)(dX_{H})_{w}(\xi).
 	$$ 
 	
 	Vamos recorrer novamente o Teorema $\ref{teorema_whitney}$ (teorema de Whitney) para simplificar essa análise. Seja $\pullbackfibradotangenteM{w} \subset \real{k}$ o mergulho de Whitney, então todo $(s,t) \in \retacartesianocirculo$ temos $w(s,t) \in \real{k}$, logo  $ w(s,t)+\xi \in \real{k}$ para todo $\xi \in \real{k}$. Com isso:
 	$$
 	\begin{aligned}
-	\mapafloerparametro{w+\xi}-\mapafloerparametro{w}
-	&= \mapafloerdefinicao{w+\xi}
+	\operadorflorparametro{w+\xi}-\operadorflorparametro{w}
+	&= \operadorflordefinicao{w+\xi}
 	\\
-	- & \mapafloerdefinicao{w}
+	&\;\;\;\; -\derivadaparcial{w}{s} - J(w)\derivadaparcial{w}{t} + J(w)\campohamiltoniano{w}
 	\\
-	&=\derivadaparcial{\xi}{s} + \bigparenteses{J(w+\xi)-J(w)}\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} + J(w+\xi)\derivadaparcial{\xi}{t} 
+	&=\derivadaparcial{\xi}{s}+J(w+\xi)\derivadaparcial{\xi}{t}+\bigparenteses{J(w+\xi)-J(w)}\derivadaparcial{w}{t}
 	\\
-	- & J(w+\xi)\bigparenteses{X_{H}(w+\xi) - X_{H}(\xi)} - \vermelho{\underbrace{J(w+\xi)X_{H}(w+\xi)}_{=0???}}
+	&\;\;\;\;-\bigparenteses{J(w+\xi)-J(w)}\campohamiltoniano{w} 
+	-J(w+\xi)\bigparenteses{\campohamiltoniano{w+\xi}-\campohamiltoniano{w}}
+	\\
+	&=\derivadaparcial{\xi}{s} + J(w+\xi)\derivadaparcial{\xi}{t} + \bigparenteses{J(w+\xi)-J(w)}\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)}  
+	\\
+	&\;\;\;\; -J(w+\xi)\bigparenteses{X_{H}(w+\xi) - X_{H}(\xi)} 
 	\end{aligned}
 	$$
-	Como os termos $w, \xi, J, X_{H}$ são suaves, então o limite $\norma{\xi} \to 0$ existe e é expresso por:
+	Como os termos $w, \xi, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorflor$ avaliado no ponto $w\in \caminhosexponenciaisconectantesabrev$ é o limite 
 	$$
 	\begin{aligned}
-	D\mapafloer_{w}(\xi) 
-	&= \derivadaparcial{\xi}{s} + J(w)\derivadaparcial{\xi}{t}+ dJ_{w}(\xi)\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} - J(w) \diferencialhamiltoniano{w}(\xi)
-	\\
-	&= \underbrace{\Big( \derivadaparcial{}{s} + J(w)\derivadaparcial {}{t}\Big)}_{\overline{\partial}_{w}}(\xi)+ \underbrace{\Big(dJ_{w}(.)\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} - J(w) \diferencialhamiltoniano{w}\Big)}_{S_{w}}(\xi)
-	\\
-	&= \operadorcauchyabrev{w} \xi + S_{w}\xi
-	\\
-	&= (\operadorcauchyabrev{w}  + S_{w})(\xi),
+		\diferencialfloer_{w}(\xi)
+		&=\lim_{\xi \to 0} \frac{	\operadorflorparametro{w+\xi}-\operadorflorparametro{w}}{\norma{\xi}}
+		\\
+		&= \derivadaparcial{\xi}{s} + J(w)\derivadaparcial{\xi}{t}+ dJ_{w}(\xi)\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} - J(w) \diferencialhamiltoniano{w}(\xi)
+		\\
+		&= \underbrace{\Big( \derivadaparcial{}{s} + J(w)\derivadaparcial {}{t}\Big)}_{\overline{\partial}_{w}}(\xi)+ \underbrace{\Big(dJ_{w}(.)\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} - J(w) \diferencialhamiltoniano{w}\Big)}_{S_{w}}(\xi)
+		\\
+		&= \operadorcauchyabrev{w} \xi + S_{w}\xi
+		\\
+		&= (\operadorcauchyabrev{w}  + S_{w})(\xi).
 	\end{aligned}
 	$$
-	
-	logo $ D\mapafloer_{w}= \operadorcauchyabrev{w}  + S_{w}$.
+	Portanto, temos $ D\operadorflor_{w}= \operadorcauchyabrev{w}  + S_{w}: \espacotangenteponto{w}{\caminhosexponenciaisconectantesabrev} \to \espacotangenteponto{\operadorflor(w)}{\fibradocaminhosexponenciaisabrev}$.
 	
 	\begin{observacao}
-		Note que, ao mergulharmos a variedade $M$ em um espaço euclidiano com dimensão suficientemente grande, teremos $\nabla \mapafloer_{w}(\xi)=D\mapafloer_{w}(\xi)$, pois como vimos na Observação $\ref{observacao_conexao_afim}$, a conexão afim se reduz a derivadas parciais.
+		Note que, ao mergulharmos a variedade $M$ em um espaço euclidiano com dimensão suficientemente grande, temos que a conexão afim se reduz a operação de parcial, isto é,  $\nabla=\partial$. Com isso, temos uma identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{m}$. Portanto, $\nabla\operadorflor_{w} = \diferencialfloer_{w}$.
 	\end{observacao}
 	
-	\section{$\orbitasconectantespadrao = Ker(\diferencialmapafloer)$}
-	Dado $x \in \lacocontrateis$ temos que $\dot{x}(t) = \campohamiltoniano{x(t)}$. Seja $y \in \lacocontrateis$ uma outra solução do sistema Hamiltoniano e suficientemente próxima a $x$. Realizando os mergulhos $\pullbackfibradotangenteM{x}, \pullbackfibradotangenteM{y} \subset \real{k}$, para um $k$ suficientemente grande, temos  $x(t), y(t) \in \real{k}$ para todo $t \in \circ$, logo existe $\xi:\real{}\to \real{k}$ talq ue $\xi(t)=x(t)-y(t)$, portanto
-	$$
-	\derivada{\xi(t)}{t} = \derivada{x(t)}{t} -\derivada{y(t)}{t} = \campohamiltoniano{x(t)} - \campohamiltoniano{y(t)} =\diferencialhamiltoniano{x(t)}(\xi(t)).
-	$$
-	
-	Tomando $w\in \caminhosexponenciaisconectantespadrao$ e no limite $s\to \mp\infty$ temos que $w \to x^{\mp}(t)$ o que implica que $\derivadaparcialabrev{t}w - \campohamiltoniano{w}\to 0$ (pois converge para soluções do sistema Hamiltoniano) e pelo decamimento exponencial $\derivadaparcialabrev{s}\xi \to 0$. Pelo mergulho de $\pullbackfibradotangenteM{w} \subset \real{k}$ e pela existencia uma uma base simplética em $\real{k}$ podemos assumir que $J(w) = \estruturacomplexa$. Denotando $S^{\mp}(t) = lim_{s\to \mp \infty}S(s,t)$, teremos $S^{\mp}(t) = \estruturacomplexa\diferencialhamiltoniano{x^{\mp}}(\xi)$. Então o limite do diferencial do mapa de Floer é
-	$$
-	D\mapafloer_{x^{\mp}}(\xi) =  \estruturacomplexa\derivadaparcial{\xi}{t}+ S^{\mp}\xi.
-	$$
-	
-	Como consequência do mergulho, podemos escrever
-	$$
-	S^{\mp}\xi = -\estruturacomplexa\diferencialhamiltoniano{x^{\mp}}(\xi) = -\estruturacomplexa\derivada{\xi}{t},
-	$$
-	logo
-	$$
-	D\mapafloer_{x^{\mp}}(\xi) =  \estruturacomplexa\derivadaparcial{\xi}{t}+ S^{\mp}\xi =
-	\estruturacomplexa\derivadaparcial{\xi}{t} -\estruturacomplexa\derivada{\xi}{t}
-	=0.
-	$$
-	Como $w \in \caminhosexponenciaisconectantespadrao$ é arbitraria, então 
-	
-	\section{$D\mapafloer$ é um operador de Fredholm}
-	A estratégia não é demonstrar diretamente que o diferencial do mapa de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o Lema $\ref{lema_desigualdade_operador_compacto}$ abaixo.
+	\section{$D\operadorflor$ é um operador de Fredholm}
+	A estratégia não é demonstrar diretamente que o diferencial do operador de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o Lema $\ref{lema_desigualdade_operador_compacto}$ abaixo.
 	
 	\begin{definicao}\label{definicao_operador_compacto}
 		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
@@ -3531,11 +3611,11 @@
 		Sejam $A,B,C$ espaços de Banach e $D:A\to B$ um operador limitado e $K:A \to C$ um operador compacto. Supondo que exista uma constante $c>0$ tal que $\normasubscrito{\xi}{A} \leq c(\normasubscrito{D\xi}{B} + \normasubscrito{K\xi}{C})$, então $D(A) = \overline{D(A)}$ e $dim(Ker(D)) <\infty$.
 	\end{lema}
 	
-	Para simplificar a notação, definiremos $\diferencialmapafloerabrev = D\mapafloer_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
+	Para simplificar a notação, definiremos $\diferencialfloerabrev = D\operadorflor_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
 	
-	O seguinte lema afirma a injetividade do mapa de Floer $\diferencialmapafloerabrev$, o que implicará diretamente que $\diferencialmapafloer$ é um operador compacto. Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$.
+	O seguinte lema afirma a injetividade do operador de Floer $\diferencialfloerabrev$, o que implicará diretamente que $\diferencialfloer$ é um operador compacto. Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$.
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
-		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialmapafloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
+		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialfloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
 	\end{lema}
 	\begin{prova}
 		Como $S$ não depende do parametro $s \in \real{}$, então podemos definir $A = \estruturacomplexa \derivadaparcialabrev{t} + S: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$. \vermelho{O operador $A$ é auto-adjunto e ilimitado no espaço de Hilbert $H=\espacoLdois{\circulo;\real{2n}}$ (não sei demonstrar isso e acredito que possa ser retirado da demonstração).} Note que $A\Psi(t) = 0$ se, e somente se, é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$, isto é, $\Psi \in Ker(A)$. Vamos mostrar que $A$ é invertível, e com isso, decomporemos $\espacosobolevgeral{2}{\circulo;\real{2n}} $ em uma soma direta de seus auto-espaços.
@@ -3678,12 +3758,12 @@
 		$$
 		o que implica que
 		$$
-		\eta(s) =\derivada{\xi}{s}+A\xi = (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s) = \diferencialmapafloerabrev \xi(s) = (\diferencialmapafloerabrev \circ Q)\eta(s).
+		\eta(s) =\derivada{\xi}{s}+A\xi = (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s) = \diferencialfloerabrev \xi(s) = (\diferencialfloerabrev \circ Q)\eta(s).
 		$$
-		Como $\eta(s) \in \espacoLdois{\reta; H}$ é arbitrário, então mostramos que $\diferencialmapafloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferencialmapafloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferencialmapafloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferencialmapafloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
+		Como $\eta(s) \in \espacoLdois{\reta; H}$ é arbitrário, então mostramos que $\diferencialfloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferencialfloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferencialfloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferencialfloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
 		$$
 		\begin{aligned}
-		Q(\diferencialmapafloerabrev \eta^{+}(s))
+		Q(\diferencialfloerabrev \eta^{+}(s))
 		&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
 		\\
 		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
@@ -3703,25 +3783,25 @@
 		&=\eta^{+}(s).
 		\end{aligned}
 		$$
-		Analogamente teremos $Q(\diferencialmapafloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferencialmapafloerabrev = Id$ pois
+		Analogamente teremos $Q(\diferencialfloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferencialfloerabrev = Id$ pois
 		$$
-		Q(\diferencialmapafloerabrev \eta(s)) = Q(\diferencialmapafloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferencialmapafloerabrev \eta^{+}(s))+Q(\diferencialmapafloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
+		Q(\diferencialfloerabrev \eta(s)) = Q(\diferencialfloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferencialfloerabrev \eta^{+}(s))+Q(\diferencialfloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
 		$$
 	\end{prova}
 	
-	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do mapa de Floer $\diferencialmapafloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do operador de Floer $\diferencialfloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{teorema}
-		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialmapafloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$.
+		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$.
 	\end{teorema} 
 	
 	
 	Foi mostrado na Seção $\ref{secao_identificacao_pullback_fibrado}$ que, dado $u \in \caminhosexponenciaisconectantespadrao$, temos as identificações entre os espaços  $\espacoLp{\pullbackfibradotangenteM{u}} \mapsto \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Sendo que essa identificação foi utilizada para simplificar cálculos e tonar a exposição do assunto menos densa. Na demosntração a seguir esse fato será crucial pois, para aplicarmos o Teorema $\ref{teorema_sobolev}$, necessitamos restrigir o domínio das funções a conjuntos limitados com borda de classe $C^{1}$. Note que $\retacartesianocirculo$ não é limitado. Pelo Teorema $\ref{teorema_whitney}$, temos o mergulho $\caminhosexponenciaisconectantespadrao \subset M\subset \real{k}$, o que já foi feito na Seção $\ref{secao_identificacao_pullback_fibrado}$. Podemos afirmar que $\caminhosexponenciaisconectantespadrao$ é um limitado, pois é um subconjunto da variedade compacta $M$ mergulhada em $\real{k}$. Além disso, seu bordo é dado por $\partial \caminhosexponenciaisconectantesabrev =x^{+}(\circulo) \cup x^{-}(\circulo)$. \vermelho{(aqui devemos ter uma figura ilustrando o bordo ...!!!)}
 	
-	A seguir enunciaremos alguns resultados importantes de análise funcional os quais serão utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialmapafloerabrev$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach. Todos podem ser encontrados em $\cite{kreyszig_analise_funcional}$. Por fim, o seguinte lema, que pode ser encontrado em $\cite{audi_floer_homology}$, também será utilizado na demonstração.
+	A seguir enunciaremos alguns resultados importantes de análise funcional os quais serão utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialfloerabrev$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach. Todos podem ser encontrados em $\cite{kreyszig_analise_funcional}$. Por fim, o seguinte lema, que pode ser encontrado em $\cite{audi_floer_homology}$, também será utilizado na demonstração.
 	
 	\begin{lema}\label{lema_desigualdade_inclusao_sobolev}
-		Sejam $p \in \mathbb{N}$ tal que $p\geq 1$. Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialmapafloer \xi} +\normaLp{\xi})$.
+		Sejam $p \in \mathbb{N}$ tal que $p\geq 1$. Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialfloer \xi} +\normaLp{\xi})$.
 	\end{lema}
 	
 	\begin{teorema}\label{teorema_aplicacao_aberta}
@@ -3743,13 +3823,13 @@
 	\end{teorema}
 	
 	\begin{teorema}
-		(Propriedade de Fredholm de $\diferencialmapafloerabrev$) Suponha que $det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialmapafloerabrev: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador de Fredholm para $1<p<\infty$. Além disso, seu índice de Fredholm é dado por
+		(Propriedade de Fredholm de $\diferencialfloerabrev$) Suponha que $det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloerabrev: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador de Fredholm para $1<p<\infty$. Além disso, seu índice de Fredholm é dado por
 		$$
-		ind(\diferencialmapafloerabrev) = \mu(\Psi^{+}) - \mu(\Psi^{-}).
+		ind(\diferencialfloerabrev) = \mu(\Psi^{+}) - \mu(\Psi^{-}).
 		$$
 	\end{teorema}
 	\begin{prova}
-		\vermelho{	Como $\diferencialmapafloerabrev$ é bijetor e limitado, então pelo Teorema $\ref{teorema_aplicacao_aberta}$ temos que $\diferencialmapafloerabrev^{-1}$ é continuo. Pela Observação $\ref{observacao_teorema_aplicacao_aberta}$ existe uma constante $c>0$ tal que $B_{W^{1,p}}(0,c)\subset\diferencialmapafloerabrev^{-1}(B_{L^{p}}(0,1))$, isto é, $\normaWp{\xi} \leq k \normaLp{\diferencialmapafloerabrev\xi}$ para algum $k>0$.(Acho que não é necessario esse argumento.)}
+		\vermelho{	Como $\diferencialfloerabrev$ é bijetor e limitado, então pelo Teorema $\ref{teorema_aplicacao_aberta}$ temos que $\diferencialfloerabrev^{-1}$ é continuo. Pela Observação $\ref{observacao_teorema_aplicacao_aberta}$ existe uma constante $c>0$ tal que $B_{W^{1,p}}(0,c)\subset\diferencialfloerabrev^{-1}(B_{L^{p}}(0,1))$, isto é, $\normaWp{\xi} \leq k \normaLp{\diferencialfloerabrev\xi}$ para algum $k>0$.(Acho que não é necessario esse argumento.)}
 		
 		
 	\end{prova}
