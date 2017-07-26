@@ -521,20 +521,6 @@
 	\end{exemplo}
 		
 	\chapter{Homologia}
-	\section{Homologia Formal}
-	Sejam A um anel comutativo com unidade, $C_{k}$ com $k \in \inteiros$ $A$-módulos e $f_{k,q}: C_{k} \to C_{k-q} $ homomorfismos de grau q (homomorsfismos graduados), então denotamos por complexo de cadeias a sequência $\mathcal{C} = (C_{k}, f_{k,q})$. Cada elemento $\alpha \in C_{k}$ é chamado k-cadeia. Nos homologias que iremos construir trataremos apenas dos homomorfismos de grau 1 e a notação será abreviada por $f_{k} = f_{k,1} \; \forall k \in \inteiros$.
-	
-	\begin{definicao}
-		(A-módulo de homologia) Seja $\mathcal{C} = (C_{k}, \partial_{k})$ um complexo de cadeias sobre o anel $A$. Chamamos o homomorfismo $\partial_{k}: C_{k} \to C_{k-1} $ de operador de bordo. Dados $\alpha \in C_{k}$, $\beta \in C_{k-1}$  é um k-ciclo se $\partial_{k }\alpha=0$ e se $\beta =  \partial_{k }\alpha$ dizemos que $\beta \in C_{k-1}$ é um (k-1)-bordo da k-cadeia $\alpha$. O A-módulo de todos os k-cíclos denotamos por $Z_{p} \subseteq C_{p}$ e o  A-módulo de todos os k-bordos por $B_{p} \subseteq C_{p}$. O A-módulo quociente $H_{k} = Z_{k} / B_{k}$ é chamado grupo de homologia k-dimensional, onde $[\alpha] \in H_{k}$ é tal que $[\alpha] = \{\alpha+\partial_{k+1}\gamma :\gamma \in  C_{k+1}\}$ = $\alpha + B_{k}$. A homologia do complexo de cadeias $\mathcal{C}$ é denotado pela soma formal $H_{*}(\mathcal{C}) = \bigoplus_{k \in \inteiros} H_{k}(\mathcal{C})$.
-	\end{definicao}
-	
-	A partir desse momento omitiremos a indexação dimensional do operador bordo dos complexos de cadeia, sendo que a dimensão estará implícita no contexto. Sejam $\mathcal{C}, \mathcal{D}$ dois complexos de cadeias, um morfismo $f: \mathcal{C} \to \mathcal{D}$ é uma sequência de homomorfismos $f_{k}: C_{k} \to D_{k}$ tais que $f_{k-1}\circ\partial = \partial\circ f_{k}$, ou seja, comutam com o operador bordo. Uma consequência imediata dessa definição é que $f_{k}(Z_{k}(\mathcal{C})) \subseteq Z_{k}(\mathcal{D})$ e $f_{k}(B_{k}(\mathcal{C})) \subseteq B_{k}(\mathcal{D})$, ou seja, leva ciclos em ciclos e bordos em bordos. Podemos definir na passagem ao quociente o homomorfismo $(f_{k})_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ tal que $(f_{k})_{*}([\alpha]) = [f_{k}(\alpha)]$, que por brevidade denotaremos $f_{*}:H_{k}(\mathcal{C}) \to H_{k}(\mathcal{D})$ o homomorfismo induzido pelos morfismos de cadeias.
-	
-	\begin{definicao}
-		(Sequências exatas) Seja $(M_{k}, f_{k})$ uma sequência de $A$-módulos e homomorfismos $f_{k}:M_{k}\to M_{k-1}$. Diremos que essa sequência é exata quando $Im(f_{k})=Ker(f_{k-1}) \; \forall k \in \inteiros$.
-	\end{definicao}
-	
-	Seja $(M_{k}, f_{k})$ uma sequência exata, e tomemos um $k \in \inteiros$. Por definição $Im(f_{k}) = Ker(f_{k-1})$ e suponha que $f_{k-1}$ seja injetivo, então $Ker(f_{k-1}) = 0$ e $Im(f_{k}) = 0$, portanto $f_{k} = 0$. Por outro lado, suponha que $f_{k}$ seja sobrejetor, então $Im(f_{k}) = M_{k-1}$ e $Ker(f_{k-1})=M_{k-1}$, portanto $f_{k-1} = 0$. Usaremos essa caracterização em alguns resultados adiante.
 	
 	\section{Homologia singular}
 	Para as próximas definições denotaresmo $X$ como um espaço topológico e $A$ um anel, então:
@@ -653,7 +639,7 @@
 		Se $f: X \to Y$ é uma equivalência homotópica entre espaços topológicos, então $f_{*}:\homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo, onde $C$ e $C'$ são complexos de cadeia de $X$ e $Y$, respectivamente.
 	\end{teorema}
 	
-	\section{Sequências exatas de homologias}
+	\section{Sequências exatas}
 	\begin{definicao}
 		Uma tripla $\xymatrix{C\ar[r]^{f} & D\ar[r]^{g} & E }$ de grupos abelianos e homomorfismo é chamada exata se $Im(f) = Ker(g)$. Uma sequência de grupos abelianos e homomorfismos
 		$$
@@ -708,6 +694,44 @@
 		$$
 		e $\bordorel{k}: \cadeia{k}{X} \to \cadeia{k-1}{U}$ é definido por $\bordorel{k}(\classe{c}) = \classe{\bordo{k}(c)}$.
 	\end{definicao}
+	
+	\begin{definicao}
+		(Homologia relativa) Seja $(X, U)$ um par topológico. O $k$-ésimo grupo de homologia relativa de $X$ mod $U$ é o grupo quociente
+		$$
+		\homologia{k}{X,U} = \frac{\kernelbordo{k}{X,U}}{\imagembordo{k}{X, U}}.
+		$$
+	\end{definicao}
+	
+	\begin{proposicao}
+		Dado um par topológico $(X, U)$ tal que $U$ seja um retrato de deformação de $X$, então $\homologia{*}{X,U} = 0$.
+	\end{proposicao}
+	
+	\begin{teorema}
+		(Sequêcia do exata par $(X, U)$) Seja $(X, U)$ uma par topológico. Então a sequência exata longa desse par é a sequência
+		$$
+		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U}\ar[r]^{i_{*}} & \homologiaabrev{k}{X}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U} \ar[r]^{i_{*}}& \dots},
+		$$
+		onde $\delta_{k}$ é o homomorfismo conectante para $k \in \inteirospos$.
+	\end{teorema}
+	
+	\begin{teorema}
+		(Excisão) Seja $(X, U)$ um par topológico. Se $U' \subset U$ com $\overline{U'} \subset int(U)$, então a inclusão $i : (\complementar{X}{U'}, \complementar{U}{U'}) \hookrightarrow (X, U)$ induz um isomorfismo 
+		$$
+		i_{*}: \homologiaabrev{*}{\complementar{X}{U'}, \complementar{U}{U'}} \to \homologiaabrev{*}{X, A}.
+		$$
+	\end{teorema}
+	
+	
+	Seja $U'\subseteq U \subseteq X$ subespaços do espaço topológico $X$ e considere a tripla topológica $(X, U, U')$. Analogamente ao caso do par, o teorema seguinte garante a existência deuma sequência exata longa da tripla.
+	
+	\begin{teorema}
+		(Sequência exta da tripla $(X, U, U')$) Seja $(X, U, U')$ uma tripla topológica. Então a sequência exata longa da tripla dessa é a sequência
+		$$
+		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U, U'}\ar[r]^{i_{*}} & \homologiaabrev{k}{X, U'}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U, U'} \ar[r]^{i_{*}}& \dots},
+		$$
+		onde $\delta_{k}$ é o homomorfismo conectante para $k \in \inteirospos$.
+	\end{teorema}
+	
 	
 	
 	\section{CW-Homologia}\label{secao_cw_complexo}
@@ -2052,7 +2076,8 @@
 		onde fizemos $v_{j}, u_{j}\in V$ e $V_{j}, U_{j}$ sendo a representação matricial de cada um deles para $j \in \{1,2\}$.
 		Temos que $g,k:\complexificacaotensorialabrev{V}\times \complexificacaotensorialabrev{V} \to \reta$ são aplicações bilineares anti-simétricas pois são combinações lineares de aplicações bilineares anti-simétricas não-degeneradas.
 	\end{prova}
-	\section{O grupo simplético $\gruposimpletico{2n}$}
+	
+	\section{O grupo simplético $\gruposimpletico{2n}$}\label{secao_grupo_simpletico}
 	
 	\begin{definicao}
 		(Grupo simplético) Seja $(V,\omega)$ um 2n-espaço vetorial simplético. O grupo simplético de $V$ é $\gruposimpletico{2n} = \{A \in \generalgroupreal{2n}: \omega(Av, Aw) = \omega(v, w), \; v,w \in V \}$.
@@ -2461,8 +2486,6 @@
 		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
-	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}\label{secao_grupo_simpletico_nao_degenerado}
-	
 	Sejam $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ e $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$.
 	
 	O seguinte lema é demasiadamente técnico e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
@@ -2791,9 +2814,9 @@
 	
 	Sabemos que $\gruposimpletico{2n}$ é conexo por caminhos, logo a definição de um índice de Maslov que não se restrinja a caminhos fechados enriquece mais a teoria do que nos atermos apenas a caminhos fechados. \vermelho{(Escrever um pouco mais sobre as órbitas conectantes dos pontos críticos do funcional hamiltoniano.)}
 	
-	Vimos na Seção $\ref{secao_grupo_simpletico_nao_degenerado}$ que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
+	Vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
 	
-	Um dado caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ pode partir de uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ e cruzar $\Sigma$ um número finíto de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov. Para efetuar a contagem dos cruzamentos de $\gamma$ valos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico_nao_degenerado}$ que ambas são conexar por caminhos. Com isso, o caminho conectando um dado $A \in \gruposimpletico{2n}$ a $W^{+}$ pode ser conectado a um outro ponto $U^{+} \in \gruposimpleticonaodegenerado{+}$ através do caminho que conecta $W^{+}$ a $U^{+}$. Com uma construção análoga, o mesmo é válido para $W^{-} \in \gruposimpleticonaodegenerado{-}$. 
+	Um dado caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ pode partir de uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ e cruzar $\Sigma$ um número finíto de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov. Para efetuar a contagem dos cruzamentos de $\gamma$ valos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que ambas são conexar por caminhos. Com isso, o caminho conectando um dado $A \in \gruposimpletico{2n}$ a $W^{+}$ pode ser conectado a um outro ponto $U^{+} \in \gruposimpleticonaodegenerado{+}$ através do caminho que conecta $W^{+}$ a $U^{+}$. Com uma construção análoga, o mesmo é válido para $W^{-} \in \gruposimpleticonaodegenerado{-}$. 
 	
 	\begin{definicao}
 		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
