@@ -709,6 +709,44 @@
 		e $\bordorel{k}: \cadeia{k}{X} \to \cadeia{k-1}{U}$ é definido por $\bordorel{k}(\classe{c}) = \classe{\bordo{k}(c)}$.
 	\end{definicao}
 	
+	\begin{definicao}
+		(Homologia relativa) Seja $(X, U)$ um par topológico. O $k$-ésimo grupo de homologia relativa de $X$ mod $U$ é o grupo quociente
+		$$
+		\homologia{k}{X,U} = \frac{\kernelbordo{k}{X,U}}{\imagembordo{k}{X, U}}.
+		$$
+	\end{definicao}
+	
+	\begin{proposicao}
+		Dado um par topológico $(X, U)$ tal que $U$ seja um retrato de deformação de $X$, então $\homologia{*}{X,U} = 0$.
+	\end{proposicao}
+	
+	\begin{teorema}
+		(Sequêcia do exata par $(X, U)$) Seja $(X, U)$ uma par topológico. Então a sequência exata longa desse par é a sequência
+		$$
+		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U}\ar[r]^{i_{*}} & \homologiaabrev{k}{X}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U} \ar[r]^{i_{*}}& \dots},
+		$$
+		onde $\delta_{k}$ é o homomorfismo conectante para $k \in \inteirospos$.
+	\end{teorema}
+	
+	\begin{teorema}
+		(Excisão) Seja $(X, U)$ um par topológico. Se $U' \subset U$ com $\overline{U'} \subset int(U)$, então a inclusão $i : (\complementar{X}{U'}, \complementar{U}{U'}) \hookrightarrow (X, U)$ induz um isomorfismo 
+		$$
+		i_{*}: \homologiaabrev{*}{\complementar{X}{U'}, \complementar{U}{U'}} \to \homologiaabrev{*}{X, A}.
+		$$
+	\end{teorema}
+	
+	
+	Seja $U'\subseteq U \subseteq X$ subespaços do espaço topológico $X$ e considere a tripla topológica $(X, U, U')$. Analogamente ao caso do par, o teorema seguinte garante a existência deuma sequência exata longa da tripla.
+	
+	\begin{teorema}
+		(Sequência exta da tripla $(X, U, U')$) Seja $(X, U, U')$ uma tripla topológica. Então a sequência exata longa da tripla dessa é a sequência
+		$$
+		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U, U'}\ar[r]^{i_{*}} & \homologiaabrev{k}{X, U'}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U, U'} \ar[r]^{i_{*}}& \dots},
+		$$
+		onde $\delta_{k}$ é o homomorfismo conectante para $k \in \inteirospos$.
+	\end{teorema}
+	
+	
 	
 	\section{CW-Homologia}\label{secao_cw_complexo}
 	Um CW-complexo é um tipo de espaço topológico introduzido por J. H. C. Whitehead, que teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sucessivas colagens (identificações) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
