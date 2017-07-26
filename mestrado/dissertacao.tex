@@ -2561,15 +2561,7 @@
 		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
 	\end{corolario}
 	\begin{prova}
-		
-		Suponha $A \in \gruposimpleticonaodegenerado{*}$ e $\sigma(A) \subset \complexo{}$. Note que, dado um auto-valor $\lambda$, teremos  $\lambda/|\lambda| \in \circulo$. Sejam $\lambda_{j} \in \sigma(A)$ com $1\leq j\leq n $ auto-valores tais que $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ aplicações contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
-		onde $\lambda_{j}\neq \pm 1$ \vermelho{ (aqui acho que tenho que usar o argumento da complexificação pois o Salamon diz que os atuo-valores devem ser de primeira ordem)} e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
-		$$
-		\exp\Big( i2\pi \sum_{j=1}^{n}\alpha_{j}(A) \Big) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
-		$$ 
-		Dado $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{+})$, então $\rho \circ \gamma$ é um caminho contínuo e periódico. Se $\lambda_{j} \in \complementar{\sigma(A)}{\real{+}}$, então $\alpha_{j}$ estão determinadas unicamente. De fato, suponha que $\lambda_{k}$ e $\lambda_{m}$ são ambos auto-valores reais positivos, então $\alpha_{k}(A) = \lambda_{k}/|\lambda_{k}| =1 = \lambda_{m}/|\lambda_{m}| =\alpha_{m}(A)$. \vermelho{(Não consigo entender o restante dos argumentos do Salamon ne do Michelle).}
-		
-		Portanto, dado  $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{\pm})$ o caminho $i\circ \gamma:[0,1] \to \gruposimpletico{2n}$ é contrátil e a aplicação induzida $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{\pm}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é trivial, isto é, $i_{*} = 0$.
+		A demonstração não esta completa e será finalizada futaramente.
 	\end{prova}
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
@@ -2680,135 +2672,7 @@
 		Portanto, $\rho$ é contínua.
 	\end{prova}		
 	
-	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
-	
-	\begin{lema}
-		A aplicação $B:\complexo{2n}\times \complexo{2n} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
-		$$
-		B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
-		$$
-	\end{lema}
-	\begin{prova}
-		A aplicação $B$ é bilinear pois é a parte imaginária da aplicação bilinear $\omega$. Sejam $v = (v_{1},  v_{2}), u = (u_{1},  u_{2}) \in \real{2n}$. Pela Observação $\ref{observacao_forma_extendida}$ temos as associações $\overline{v}\mapsto v' = (v_{1}, -v_{2})$,  $\overline{u}\mapsto u' = (u_{1}, -u_{2})$ e a identidade $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} -ic(v',u)$. Além disso, $c(v',u) = v_{1}u_{1} - v_{2}u_{2} = u_{1}v_{1} - u_{2}v_{2} = c(u',v)$. 
-		
-		Afirmo que $B$ é simétrica. De fato,
-		$$B(v,u) =\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} =-c(v',u) = -c(u',v) = \parteImaginaria{\formaSimpleticaExtendida{\overline{u}}{v}} = B(u,v).
-		$$
-		
-		Seja $v \in \complexo{2n}$ tal que $B(v, u) = 0 \; \forall u \in \complexo{2n}$. Tomando $z \in \complexo{2n}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$, logo 
-		$$
-		\begin{aligned}
-		\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
-		\\
-		&= \parteImaginaria{-i\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}
-		\\
-		&= \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{-iu}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}}_{=0}
-		\\
-		&=0.
-		\end{aligned}
-		$$
-		Definindo $v'\in \complexo{2n}$ como anteriormente, temos que $\formaSimpleticaPadrao{v'}{u} = \parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} = 0$. Como $\omega_{0}$ é não degenerada, então $v = 0$ e $B$ é não-degenerada.
-		
-		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
-	\end{prova}
-	
-	\begin{definicao}
-		Seja  $Q: \complexo{2n} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos subespaços de $\complexo{2n}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
-	\end{definicao}
-	
-	\begin{corolario}\label{corolario_assinatura_forma_quadratica}
-		A forma quadrática $Q$ é não-degenerada e $m(Q) = 0$. \vermelho{Aqui o artigo do Salamon coloca como hipótese que o atuo-valor $\lambda \notin \circulo$.}
-	\end{corolario}
-	\begin{prova} $Q$ é não-degenerada pois $B$ é não-degenerada.
-		Afirmo que $m(Q) = 0$. De fato, pela Observação $\ref{observacao_forma_extendida}$ temos que 
-		$$
-		\begin{aligned}
-		Q(v) 
-		&= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} 
-		\\
-		&= - c(v', v) = -(v'_{1}v_{1} +v'_{2}v_{2}) 
-		\\
-		&= -v_{1}^{2} +v_{2}^{2} 
-		\\
-		&= -\produtointerno{v^{1}}{v^{1}} +\produtointerno{v^{2}}{v^{2}}
-		\\
-		&= \sum_{j=1}^{n}-v_{1j}^{2} +v_{2j}^{2}.
-		\end{aligned}
-		$$ 
-		
-		Portando, $m_{+}(Q) = m_{-}(Q) = n$ e $m(Q) = 0$.
-	\end{prova}
-	
-	Sejam $A \in \gruposimpletico{2n}$ e $\lambda\in \sigma(A)$ tal que $\lambda \in \complementar{\circulo}{\{\pm 1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ e pelo Corolário $\ref{corolario_assinatura_forma_quadratica}$ podemos decompor o auto-espaço $E_{\lambda} = E_{\lambda}^{+} \oplus E_{\lambda}^{-}$, onde $E_{\lambda}^{\pm} $ são subespaços vetoriais tais que $Q$ é positivo-definida, ou negativo-definida, respectivamente. Assim, temos a multiplicidade de $\lambda$ dada por $m(\lambda) = m_{+}(\lambda)+m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda})$, onde  $m_{\pm}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{\pm} )$. Definamos a assinatura de $\lambda$ por $\sigma(\lambda)= m_{+}(\lambda) - m_{-}(\lambda)$. 
-	
-	Suponha que $\lambda<0$, então $\lambda^{-1}<0$. Pelo Corolário $\ref{corolario_restricao_forma_simpletica}$ temos que a restrição $\Omega|_{E_{\lambda}\oplus E_{\lambda^{-1}}}$ é não-degenerada, e assim, $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}\oplus E_{\lambda^{-1}}^{+}\oplus E_{\lambda^{-1}}^{-}$, logo $m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{-})+dim_{\complexo{}}(E_{\lambda^{-1}}^{-})=2dim_{\complexo{}}(E_{\lambda}^{-})$. Portanto, $m_{-}(\lambda) \in 2\mathbb{N}$.
-	
-	\begin{lema}\label{lema_identidade_aplicacao_rho}
-		Sejam $A \in \gruposimpletico{2n}$, $m_{0} = \sum_{\lambda \in \sigma(A)} m_{-}(\lambda)$  e $\sigma'(A)=\sigma(A)\cap \complementar{\circulo}{\{ \pm 1 \}}$. Então
-		$$
-		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|} =(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A) }\lambda^{m_{+}(\lambda)} .
-		$$
-	\end{lema}
-	\begin{prova}
-		Defina $\lambda_{j} \in \sigma(A)$ com $0\leq j \leq 2n$, auto-valores ordenados como anteriormente. Então, sem perda de generalidade, o produto $\prod \lambda_{j}/|\lambda_{j}|$ pode ser reordenado de modo que:
-		$$
-		\left\{
-		\begin{array}{cc}
-		\lambda_{j} \in \{\pm 1\} &, 1\leq j \leq k
-		\\
-		\lambda_{j} \in \complementar{\circulo}{\{\pm 1\}} &, k+1\leq j \leq m
-		\\
-		\lambda_{j} \in \complexo{} &, m+1\leq j \leq n.
-		\end{array}
-		\right.
-		$$
-		Definindo $\beta_{j} = \lambda_{j} = |\lambda_{j}|$, teremos o produto
-		$$
-		\begin{aligned}
-		\rho(A)&=\prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
-		\\
-		&=
-		\frac{\lambda_{1}}{|\lambda_{1}|} \dots \frac{\lambda_{k}}{|\lambda_{k}|}
-		\frac{\lambda_{k+1}}{|\lambda_{k+1}|} \dots  \frac{\lambda_{m}}{|\lambda_{m}|}
-		\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-		\frac{\lambda_{n}}{|\lambda_{n}|}
-		\\
-		&=
-		\underbrace{\pm 1 \dots \pm 1}_{k-vezes}
-		\underbrace{\lambda_{k+1}\dots  \lambda_{m}}_{\in \complementar{\circulo}{\{\pm 1 \}}}
-		\underbrace{	\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-			\frac{\lambda_{n}}{|\lambda_{n}|}}_{\in \complementar{\circulo}{\{\pm 1 \}}}	
-		\\
-		&=
-		(-1)^{m_{0}}\beta_{k+1}\dots \beta_{n}	
-		\\
-		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A) \cap\complementar{\circulo}{\{ \pm 1 \}}} \lambda^{m_{+}(\lambda)}
-		\\
-		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A)}\lambda^{m_{+}(\lambda)}.
-		\end{aligned}
-		$$
-		
-		\vermelho{(Ainda não ficou clara o produto sobre todos os autovalores em $\circulo$. Ver novamente o Salamon artigo. Ele afirma algo sobre os auto-valores de primeira ordem e suas multiplicidades)}
-	\end{prova}
-	
-	\subsection*{Demonstração das propriedades de $\rho$}
-	\begin{prova}
-		Seja $\rho :\gruposimpletico{2n} \to \circulo$ definida no Lema $\ref{lema_identidade_aplicacao_rho}$.
-		\begin{enumerate}
-			\item \label{item_naturalidade_rho} \textbf{\textit{Naturalidade:}} Sejam $T : \complexo{2n} \to \complexo{2n}$ um isomorfismo simplético, isto é, $T\in \gruposimpletico{2n}$. Então $T$ preserva a $\Omega$-ortogonalidade de $A$. De fato, supondo $E$ e $E'$ subespaços $\Omega$-ortogonais de $A$, então $(T^{*}\Omega)(E, E') = \Omega(T(
-			E), T(E')) = \Omega(E, E') = 0$. Seja $S^{-1}DS$ a representação diagonal de $A$. Então $B = T^{-1}AT = (ST)^{-1}DST$, logo $B$ é similar a matriz diagonal $D$ e possui os mesmo auto-valores de $A$. Além disso, temos que $T^{-1}AT\in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Portanto $\rho(T^{-1}AT) = \rho(B) = \rho(A)$. 
-			
-			\item \textbf{\textit{Produto:}} Sejam $(V, \Omega) = (\complexo{2n}\times \complexo{2n}, \Omega_{1}\times \Omega_{2})$ e $A \in \gruposimpletico{V}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\oplus E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, respectivamente. Desse modo, $A = A_{1}\oplus A_{2}$ e $\rho(A) = \rho(A_{1})\rho(A_{2})$.
-			
-			
-			\item \textbf{\textit{Deteminante:}} Seja $A \in \mathcal{U} = \matrizunitaria{n}$. Com um argumento análogo ao que foi feito na demostração da Item $\ref{item_naturalidade_rho}$, podemos afirmar que $\estruturacomplexa$ presenva a $\Omega$-ortogonalidade dos subespaços de $A$. Como $\estruturacomplexa$ é um isomorfismo simplético, então é diagonalizável  e $\pm i \in \sigma(\estruturacomplexa)$. De fato, seja $v = (u, \pm iu) \in \complexo{2n}$, onde $u \in \complexo{n}$. Então $\estruturacomplexa v = (\pm iu, -u) = \pm i(u,iu) = \pm iv$. Seja $E^{\estruturacomplexa}_{\pm i} = \{(u, \pm i u):u \in \complexo{n} \}$ os auto-espaços de $\estruturacomplexa$ para os auto-valores $\pm i$.
-			Supondo que $v \in E^{\estruturacomplexa}_{ i}$, então $\overline{v} = (\overline{u}, -i \overline{u})$ e $\overline{v} \mapsto v' = Rv = R(u, -u) = (u,u)$. Com isso, $Q(v) = -c(v', v) = -(v'_{1}v_{1}+v'_{2}v_{2}) = -(\norma{v_{1}}^{2}+\norma{v_{2}}^{2}) =-2\norma{u}^{2}<0$. Logo a restrição $Q|_{E^{\estruturacomplexa}_{ i}}$ é negativa-definida. Com um argumento análogo teremos que a restrição $Q|_{E^{\estruturacomplexa}_{-i}}$ é positiva-definida.
-			
-			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$. \vermelho{Enteder melhor a construção do determinante.}
-			
-			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então, pelo Lema $\ref{lema_identidade_aplicacao_rho}$, a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
-		\end{enumerate}
-	\end{prova}
+	A etapa final desse capítulo é a demonstração de que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$ e com isso provaremos que $\rho$ satisfaz todas as condições do Teorema $\ref{teorema_aplicacao_rho}$. Parte das demonstrações foram feitas, mas alguns resultados serão finalizados futuramente.
 	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
