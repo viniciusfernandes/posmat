@@ -263,7 +263,7 @@
 	
 	O fato de estar presente a soma dos números de Betti na conjectura nos conduz a ideia de construirmos uma homologia que tenha como ingredientes as soluções do sistema Hamiltoniano. Mas uma abordagem similiar já era conhecida: a Homologia de Morse-Witten. Também tem origem em problemas de sistemas dinâmicos da Física, mais espeficicamente, em estudos dos aspectos topológicos de sistemas quânticos por Edward Witten $\cite{witten_supersymmetry_morse}$.
 	
-	A construção de Witten traz um entendimento geométrico do operador bordo do complexo de cadeias. Munindo a variedade $M$ com uma métrica Riemanniana, determina-se os pontos críticos de função de Morse $f: M \to \reta$ e mostra-se que, para cada par de ponstos críticos, existem um número finito de linhas do fluxo gradiente conectando-os. Escolhendo uma orientação para as linhas de fluxo teremos linhas que convergem para o ponto crítico e linhas que divergem do ponto crítico. Witten definiu o operador bordo do complexo avaliado no ponto crítico como sendo a diferença entre a número total desses dois tipos de linhas, o que fornece uma metodologia simples e elegante de cálculo da homologia da variedade. Essa técnica nos permite o estudo dos aspectos topológicos das variedades via sistemas dinâmicos, sendo que a dinâmica é materializada no gradiente da função de Morse $f$.
+	A construção de Witten traz um entendimento geométrico do operador bordo do complexo de cadeias. Munindo a variedade $M$ com uma métrica Riemanniana, determina-se os pontos críticos de função de Morse $f: M \to \reta$ e mostra-se que, para cada par de ponstos críticos, existem um número finito de linhas do fluxo gradiente conectando-os. Escolhendo uma orientação para as linhas de fluxo teremos linhas que convergem para o ponto crítico e linhas que divergem do ponto crítico. Witten definiu o grupo das $k$-cadeia como sendo o grupo abeliano gerado pelos pontos críticos com índice igual a $k$. Já o operador bordo quando avaliado em uma k-cadeia é a soma dos pontos críticos com índice igual a $k-1$, sendo que os coeficientes dessa soma são dados pela diferença entre o número total das linhas que convergem para o ponto e o número total das linhas que divergem do ponto. Essa é uma metodologia simples e elegante de cálculo da homologia da variedade que permite o estudo dos aspectos topológicos das variedades via sistemas dinâmicos, sendo que a dinâmica é materializada no gradiente da função de Morse $f$.
 	
 	É tentador nos enveredarmos na demonstração da conjectura de Arnold via construção de Witten. Contudo, dificuldades técnicas fizeram com que uma abordagem ligeiramente diferente fosse realizada por Floer. Em vez de estudar o gradiente de uma função Hamiltoniana definida na variedade $M$ a estratégia foi de se analizar o comportamento de um funcional, chamado funcional Hamiltoniano, definido no espaço de curvas 1-periódicas e contráteis em $M$. Aplicando o princípio variacional clássico, determina-se que as soluções 1-periódicas e contráteis do sistema Hamiltoniano são os pontos críticos do funcional Hamiltoniano. Essa técnia é conhecido como abdordagem variacional. Uma das grandes dificuldades nesse cenário é que o conjunto de curvas 1-periódicas e contráteis forma uma variedade de dimensão infinita, com isso, estabelecer uma análogo ao índice de Morse para os pontos críticos do funcional é uma tarefa árdua. Foi necessária a construção de um operador de Fredholm e de um índice de Maslov, que generaliza índice de Morse para dimensão infinita.
 	
@@ -1421,10 +1421,6 @@
 		$$
 		n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}.
 		$$
-	\end{definicao}
-	
-	\begin{definicao}
-		(Número de intersecção) O número de intesecção 
 	\end{definicao}
 	
 	\begin{definicao}
@@ -2835,7 +2831,7 @@
 		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
 	\end{definicao}
 	
-	O teorema e corolário abaixo nos oferece uma método de cálculo para o índice de Maslov na aplicação do formalismo.
+	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
 	
 	\begin{teorema}
 		Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
