@@ -213,7 +213,7 @@
 \newcommand{\produtointernoabrev}{\langle ., .\rangle}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
 \newcommand{\produtotensorial}[2]{ #1_{1} \otimes_{\mathbb{K}} \dots \otimes_{\mathbb{K}} #1_{#2}}
-\newcommand{\produtotensorialreal}[2]{ #1_{1} \otimes_{\reta} \dots \otimes_{\reta} #1_{#2}}
+\newcommand{\produtotensorialreal}[2]{\bigotimes_{j=1}^{#1} #2_{j}}
 \newcommand{\pullbackfibradotangente}[2]{#1^{*}T#2}
 \newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
 \newcommand{\pullbackfibradotangenteMpadrao}{\pullbackfibradotangente{u}{M}}
@@ -1990,8 +1990,6 @@
 		Portanto $\complexificacao{\varphi}$ é $\complexo{}$-linear. Dado $v \in V$ temos $(i\circ \varphi)(v) = (\varphi v,0) = \complexificacao{\varphi}(v,0) = (\complexificacao{\varphi} \circ i)(v)$, logo $i\circ \varphi =\complexificacao{\varphi} \circ i$. Por fim, suponha que exista $\complexificacao{\varphi'} $ definida por $\complexificacao{\varphi'}(v_{1}, v_{2}) = (\varphi' v_{1}, \varphi' v_{2})$ e tal que $i\circ \varphi =\complexificacao{\varphi'} \circ i$, onde $\varphi':V\to W$ é uma aplicação linear. Então para todo $v \in V$ temos $i\circ \varphi =\complexificacao{\varphi} \circ i = \complexificacao{\varphi'} \circ i$, o que implicam em $(\varphi v, 0) = (\varphi' v, 0)$. Como $v \in V$ é arbitrário, então $\varphi = \varphi'$, logo $\complexificacao{\varphi} = \complexificacao{\varphi'}$, demonstrando a unicidade. 
 	\end{prova}
 	
-	Seja $\varphi: V \to \reta$ uma aplicação bilinear. Então pelo temorema anterior, existe uma 
-	
 	Vendo o corpo dos complexos como um espaço vetorial sobre $\reta$, mostraremos que o produto tensorial $\complexificacaotensorial{V}$ é equivalente a construção da complexificação feita anteriormente. Utilizaremos construção na complexificação do 2n-espaço vetorial simplético $(V, \omega)$.
 	
 	\begin{teorema}\label{teorema_isomorfismo_complexificacao}
@@ -2028,28 +2026,79 @@
 	O conjugado de cada $z=(a+ib) \in \complexo{}$ é definido por $\overline{z} = a-ib$. Analogamente, o conjugado de $\complexificacaoelemento{z}{v} \in \complexificacaotensorial{V}$ é definido por $\complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$. Definindo $v_{1} =av$ e $v_{2} = -bv$ temos $f_{V}(v_{1}, v_{2}) =\complexificacaoelemento{1}{v_{1}} +\complexificacaoelemento{i}{v_{2}} = \complexificacaoelemento{a}{v} -\complexificacaoelemento{ib}{v}  =\complexificacaoelemento{\overline{z}}{v}  $. Portanto, temos a identificação entre os conjugados $ \complexificacao{V} \ni (av, -bv) \mapsto \complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$.
 	
 	Sejam $k\geq 1$ um inteiro e $\{V_{j}\}_{j=1}^{k}$ um conjunto de espaços vetoriais de dimensão finita sobre um corpo $\mathbb{K}$. Sabe-se que o produto tensorial $\produtotensorial{V}{k}$ é um espaço vetorial de dimensão finita sobre $\mathbb{K}$. Alem disso, sabe-se que, dado um $W$ espaço vetorial também sobre $\mathbb{K}$, tem-se que $W\otimes_{\mathbb{K}}(\produtotensorial{V}{k}) \cong W\otimes_{\mathbb{K}} \produtotensorial{V}{k}$. 
+
+	Daqui em diante fixaremos a notação $\complexificacaotensorialabrev{V} = \complexificacaotensorial{V}$ para a complexificação de $V$ via produto tensorial.
 	
-	Definindo $\complexificacaotensorialabrev{V} = \complexificacaotensorial{V}$, podemos escrever o produto tensorial $\complexificacaotensorialabrev{V}^{k\otimes} = \bigotimes_{j=1}^{k}\complexificacaotensorialabrev{V} =\bigotimes_{j=1}^{k}\complexificacaotensorial{V} \cong  \complexo{^{k\otimes}}\otimes V^{k\otimes}$, de acordo com o isomorfimo citado anteriormente. Assim, a complexificação de um tensor $T \in V^{k\otimes} $ será dado por $\complexificacao{T} = z_{1}\otimes \dots \otimes z_{k}\otimes T$. A aplicação $p: \complexificacaotensorialabrev{V}\times \dots \times  \complexificacaotensorialabrev{V} \to \complexo{k}\times V^{k}$ definida no k-produto cartesiano tal que $p(v_{1}, \dots, v_{k}) = (z_{1}, \dots, z_{k},v'_{1}, \dots, v'_{k})$ é um isomorfismo, onde $v_{j} = z_{j}\otimes v'_{j}$ para $1\leq j \leq k$.
+	\begin{observacao}
+		Visto como espaço vetorial complexo, temos que $\{1\}$ é uma base de $\complexo{}$, logo temos que $\{1^{*}\}$ é uma base do dual $\complexo{*}$, tal que $1^{*}(1) = 1$. Com isso, dado $z = (a+ib).1 \in \complexo{}$, temos $1^{*}(z) = 1^{*}((a+ib).1) = (a+ib)1^{*}(1) = a+ib$.
+	\end{observacao}
 	
-	Sejam $B = \{e_{j}\}_{j=1}^{n}$ uma base do n-espaço vetorial real $V$, $B^{*} = \{e_{j}^{*}\}_{j=1}^{n}$ a base de seu dual $V^{*}$ tal que $e^{*}_{j}(e_{k}) =\delta_{jk}$. Então $1\otimes B = \{a_{j}\}_{j=1}^{k}$ e $1\otimes B^{*}=\{a^{*}_{j}\}_{j=1}^{k}$ são bases de $\complexificacaotensorialabrev{V}$ e $\complexificacaotensorialabrev{V}^{*}$, respectivamente, tais que $a^{*}_{j}(a_{k})=\complexificacaoelemento{1}{e^{*}_{j}}(\complexificacaoelemento{1}{e_{k}}) = 1.e^{*}_{j}(e_{k}) = \delta_{ik}$.
+	\begin{proposicao}\label{proposicao_base_complexificada}
+		Sejam $B = \{e_{j}\}_{j=1}^{n}$ uma base do n-espaço vetorial real $V$ e $B^{*} = \{e_{j}^{*}\}_{j=1}^{n}$ a base de seu dual $V^{*}$ tal que $e^{*}_{j}(e_{k}) =\delta_{jk}$. Então $1\otimes B = \{a_{j}\}_{j=1}^{k}$ e $1^{*}\otimes B^{*}=\{a^{*}_{j}\}_{j=1}^{k}$ são bases de $\complexificacaotensorialabrev{V}$ e $\complexificacaotensorialabrev{V}^{*}$, respectivamente, tais que $a^{*}_{j}(a_{k})=\delta_{ik}$.
+	\end{proposicao}
+	\begin{prova}
+		 Por construção $1\otimes B$ gera $\complexificacaotensorialabrev{V}$. Afirmo que $B$ é linearmente independente pois, $0=\sum_{j}z_{j}a_{j} = \sum_{j}z_{j}(1\otimes e_{j}) = \sum_{j}(b_{j} +ic_{j})(1\otimes e_{j}) = 1\otimes \sum_{j}b_{j}e_{j}+i\otimes \sum_{j}c_{j}e_{j}$, o que implica que $\sum_{j}b_{j}e_{j}=\sum_{j}c_{j}e_{j} = 0$. Logo, $b_{j}=c_{j}=0$  e $z_{j} = 0$ para $1\leq j\leq k$. O isomorfismo $\complexificacaotensorialabrev{V} \mapsto \complexificacaotensorialabrev{V}^{*}$ garante que $B^{*}$ é base de $\complexificacaotensorialabrev{V}^{*}$. Por fim, temos que $a^{*}_{j}(a_{k})=(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{1}{e_{k}}) = 1^{*}(1)e^{*}_{j}(e_{k}) = \delta_{ik}$.
+	\end{prova}
+	
+	Como o produto tensorial real $\otimes_{j=1}^{k}V_{j}$ é um espaço vetorial real, então sua complexificação será o espaço vetorial complexo $\complexificacaotensorial{(\produtotensorialreal{k}{V})} \cong \complexificacaotensorial{V_{1} \otimes_{\reta} \dots \otimes_{\reta} V_{k}}$, pelo isomorfismo anteriormente citado. Contudo, pode-se se mostrar que essa complexificação é isomorfa ao produto tensorial sobre os complexos $\bigotimes^{k}_{j=1}\complexificacaotensorialabrev{V}$, a qual denotamos por $\complexificacaotensorialabrev{V}^{k\otimes}$. 
+	
+	Na seção seguinte vamos utilizar o produto tensorial complexificado $\complexificacaotensorialabrev{V}^{k\otimes}$ pois ela facilita a demonstração de algumas propriedades da complexificação da forma simplética, que é um tensor de ordem 2.
+	
+	\begin{exemplo}\label{exemplo_complexificacao_tensorial}
+		Sejam $V$ um n-espaço vetorial real e $B = \{e_{j}\}_{j=1}^{n}$ uma base ortonormal. Supondo que $\complexificacaotensorialabrev{V}$ seja a complexificação de $V$, então pela Proposição $\ref{proposicao_base_complexificada}$ temos que $\complexificacaoelemento{1}{B}$ é uma base de $\complexificacaotensorialabrev{V}$. Com isso, dado $T \in \complexificacaotensorialabrev{V}^{2\otimes}$ podemos escrever $T = \sum_{i,j = 1}^{n} T^{ij}a^{*}_{i}\otimes a^{*}_{j}$, onde $T^{ij} \in \complexo{}$. Dados $v, u\in \complexificacaotensorialabrev{V}$ tais que $v=\complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta}$, temos
+		$$
+		\begin{aligned}
+			T(v,u) &= \sum_{i,j = 1}^{n}
+			 T^{ij}a^{*}_{i}\otimes a^{*}_{j}(v,u)
+			 \\
+			 &= \sum_{i,j = 1}^{n}
+			 T^{ij}a^{*}_{i}(v)a^{*}_{j}(u)
+			 \\
+			 &= \sum_{i,j = 1}^{n}
+			 T^{ij}(\complexificacaoelemento{1^{*}}{e^{*}_{i}})(\complexificacaoelemento{x}{\alpha})(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{y}{\beta})
+			 \\
+			 &= \sum_{i,j = 1}^{n}
+			 T^{ij}1^{*}(x)e^{*}_{i}(\alpha)1^{*}(y)e^{*}_{i}(\beta)
+			 \\
+			 &= \sum_{i,j = 1}^{n}
+			 xyT^{ij}\alpha_{i}\beta_{j},
+		\end{aligned}
+		$$ 
+		onde $\alpha_{j}$ e $\beta_{j}$ são as $j$-ésimas coordenadas de $\alpha, \beta \in V$. 
+	\end{exemplo}
 	
 	\section{Complexificação de $\gruposimpletico{2n}$}
 	
 	Para estudarmos algumas características dos auto-espaços do grupo simplético precisaremos decompor esse espaço vetorial em soma direta de determinados  auto-espaços. Tal composição será garantida pelo teorema espectral $\ref{teorema_espectral_jordan}$, que depende de um espaço vetorial complexo como hipótese. Como consequencia desse fato, precisaremos de um espaço vetorial simplético complexo e que seja gerado a partir de um dado espaço vetorial simplético.
 	
-	Na seção anterior vimos que a complexificação de $V$ é o espaço vetorial complexo $\complexificacaotensorialabrev{V}$. Sabe-se que uma aplicação bilinear anti-simétrica real $\beta: V\times V\to   \reta$ é um tensor de ordem 2 anti-simétrico, isto é, $\beta \in V^{2\otimes}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V^{2\otimes}$. Então a complexificação da forma simplética é dada por $\complexificacao{\omega} = 1^{2\otimes}\otimes \omega \in \complexo{2\otimes}\otimes \complexificacaotensorialabrev{V}^{2\otimes}$. 
+	Na seção anterior vimos que uma das construções da complexificação de $V$ é o espaço vetorial complexo $\complexificacaotensorialabrev{V}$. Sabe-se que uma aplicação bilinear anti-simétrica real $\beta: V\times V\to   \reta$ é um tensor de ordem 2 anti-simétrico, isto é, $\beta \in V^{2\otimes}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V\otimes V$. Sejam $B = \{e_{j}\}_{j=1}^{2n}$ uma base de $V$ e $\omega^{ij} = \omega(e_{i}, e_{j})$ as componentes da forma simplética nessa base. Dessa definição temos que $\omega^{ij} = -\omega^{ji}$.
 	
-	Denotaremos $\Omega = \complexificacao{\omega}$ e $(\complexificacaotensorialabrev{V}, \Omega)$ como sendo a complexificação de $(V, \omega)$.
+	Utilizando as notações da Proposição $\ref{proposicao_base_complexificada}$, defina $\Omega=\sum_{i,j}\omega^{ij}a^{*}_{i}\otimes a^{*}_{j} \in \complexificacaotensorialabrev{V}^{2\otimes}$. Temos que
 	
-	\begin{proposicao} Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. A complexificação $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
-	\end{proposicao}
+	\begin{proposicao} $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
+	\end{proposicao}\label{proposicao_complexificacao_espaco_simpletico}
 	\begin{prova}
-		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$ temos que $\complexificacaotensorialabrev{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega = \complexificacao{\omega}$ é uma aplicação $\complexo{}$-bilinear. Tomando $v = \complexificacaoelemento{x}{v'}, u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\Omega(v,u) = 1(x)1(y)\omega(v',u') = -1(y)1(x)\omega(u',v')  = -\Omega(u,v)$, logo é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, supondo que $\Omega$ seja degenerada, então existe $0\neq v = \complexificacaoelemento{x}{v'}\in \complexificacaotensorialabrev{V}$ tal que para todo $u=\complexificacaoelemento{y}{u'} \in \complexificacaotensorialabrev{V}$ temos $\formaSimpleticaExtendida{v}{u} = 0$. Com isso, 
+		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$ temos que $\complexificacaotensorialabrev{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega$ é uma aplicação $\complexo{}$-bilinear. Do fato $\omega^{ij}  = -\omega^{ji} $ temos que $\Omega$ é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, tomando $v, u \in \complexificacaotensorialabrev{V}$ tal que $v= \complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta} $, temos pelo Exemplo $\ref{exemplo_complexificacao_tensorial}$ que 
 		$$
-		0=\Omega( v, u) = (\complexificacaoelemento{1^{2\otimes}}{\omega})(x,y ,v' ,u') = xy\formaSimpletica{v'}{u'},
+		\begin{aligned}
+		\Omega(v,u) &= \sum_{i,j = 1}^{2n}
+		\omega^{ij}a^{*}_{i}\otimes a^{*}_{j}(v,u)
+		\\
+		&= \sum_{i,j = 1}^{2n}
+		xy\omega^{ij}\alpha_{i}\beta_{j}
+		\\
+		&= xy\sum_{i,j = 1}^{2n}
+		\formaSimpletica{\alpha_{i}e_{i}}{\alpha_{j}e_{j}}
+		\\
+		&= xy\formaSimpletica{\alpha}{\beta}.
+		\end{aligned}
 		$$
-		o que implica que $\omega$ é degenerada, contradizendo a hipótese de que $\omega$ é não-degenerado. Portanto $\Omega$ é não-degenenada e o par $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
+		Como $\omega$ é não-degenerada, então $\Omega$ é não-degenerada. Portanto, $(\complexificacaotensorialabrev{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
 	\end{prova}
+	
+	\begin{observacao}
+		Note que $\complexificacaotensorialabrev{V}_{0} = \{\complexificacaoelemento{1}{v} \in \complexificacaotensorialabrev{V} \}$ é um subespaço vetorial de $\complexificacaotensorialabrev{V}$ isomorfo a $\real{2n}$. Além disso, $\Omega|_{\complexificacaotensorialabrev{V}_{0}} = \omega$ e $\Omega$ é uma extensão contínua de $\omega$.
+	\end{observacao}
 	
 	\begin{proposicao}
 		A complexificação $\Omega$ de $\omega$ pode ser decomposta em $\Omega = g +i k$, onde $g,k$ são ambas formas simpléticas definidas em $V$.
@@ -2070,7 +2119,14 @@
 		\end{aligned}
 		$$
 		onde fizemos $v_{j}, u_{j}\in V$ e $V_{j}, U_{j}$ sendo a representação matricial de cada um deles para $j \in \{1,2\}$.
-		Temos que $g,k:\complexificacaotensorialabrev{V}\times \complexificacaotensorialabrev{V} \to \reta$ são aplicações bilineares anti-simétricas pois são combinações lineares de aplicações bilineares anti-simétricas não-degeneradas.
+		Temos que $g,k:\complexificacaotensorialabrev{V}\times \complexificacaotensorialabrev{V} \to \reta$ são aplicações $\complexo{}$-bilineares e anti-simétricas pois são combinações lineares de aplicações $\complexo{}$-bilineares anti-simétricas. Pelo mesmo argumento, $g,k$ são não-degeneradas.
+	\end{prova}
+	
+	\begin{proposicao}\label{proposicao_base_simpletica_conjugada}
+		Seja $B=\{a_{j}, f_{j} \}_{j=1}^{n}$ uma base simplética de $\complexificacaotensorialabrev{V}$, então $\overline{B}=\{\overline{a}_{j}, \overline{f}_{j}  \}_{j=1}^{n}$ é uma base simplética de $\complexificacaotensorialabrev{V}$.
+	\end{proposicao}
+	\begin{prova}
+		Temos que a aplicação de conjugação $\complexificacaotensorialabrev{V} \ni z\otimes v \mapsto \overline{z}\otimes  \in \complexificacaotensorialabrev{V}$ é um isomorfismo. Logo, leva base em base. Como $B$ é uma base simplética, temos $\Omega(a_{i}, a_{j}) = \Omega(f_{i}, f_{j}) =0$ e $\Omega(a_{i}, f_{j}) = \delta_{ij}$. Com isso, fazendo $a_{i} = \complexificacaoelemento{z_{i}}{v_{i}}$, e pela Proposição $\ref{proposicao_complexificacao_espaco_simpletico}$ temos $\Omega(\overline{a}_{i}, \overline{a}_{j}) =	\overline{z_{i}}\overline{z_{j}}\formaSimpletica{v_{i}}{v_{j}}=\overline{z_{i}z_{j}\formaSimpletica{v_{i}}{v_{j}}} = \overline{\Omega(a_{i}, a_{j})} = 0$. Com argumento análogo pode-se ver que $\Omega(\overline{f}_{i}, \overline{f}_{j}) =0$ e $\Omega(\overline{a}_{i}, \overline{f}_{j}) =\delta_{ij}$. Logo, $\overline{B}$ é uma base simplética.
 	\end{prova}
 	
 	\section{O grupo simplético $\gruposimpletico{2n}$}\label{secao_grupo_simpletico}
@@ -2531,7 +2587,7 @@
 		
 		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Temos que $det(Id - W^{+}) = 4^{n}>0$  e $det(Id - W^{-}) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
 		
-		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Seja $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base simplética de $V$ invariante por conjugação complexa, isto é, $\{\overline{v}_{\lambda_{1}}, \dots , \overline{v}_{\lambda_{2n}} \}$ também é uma base simplética \vermelho{(não entendi a necessidade dessa hipótese)}, onde $v_{\lambda_{j}}$ auto-vetores de $B$.
+		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Seja $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base simplética de $V$ invariante por conjugação complexa, isto é, $\{\overline{v}_{\lambda_{1}}, \dots , \overline{v}_{\lambda_{2n}} \}$ também é uma base simplética (veja $\ref{proposicao_base_simpletica_conjugada}$), onde $v_{\lambda_{j}}$ auto-vetores de $B$.
 		
 		Sejam $\gamma:[0,1]\to \reta$ um caminho contínuo tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ com $1 \notin \gamma([0,1])$ e $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo definido por
 		$$
