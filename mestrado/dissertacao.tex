@@ -398,12 +398,6 @@
 		Seja $f:X\to Y$ um homeomorfismo entre espaços topológicos. Então $\grupofundamentalpontobase{X}{p}$ e $\grupofundamentalpontobase{Y}{f(p)}$ são isomorfos.
 	\end{teorema}
 	
-	O seguinte resultado, cuja demonstração pode ser encontrada em $\cite{massey}$, mostra que o grupo fundamental de $\circulo$ é um grupo abeliano cíclico infinito.
-	
-	\begin{teorema}\label{teorema_grupo_fundamental_circulo}
-		(Grupo fundamental de $\circulo$) O grupo fundamental $\grupofundamental{\circulo}$ e $\inteiros$ são isomorfos.
-	\end{teorema} 
-	
 	Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então podemos construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
 	
 	\begin{proposicao}\label{proposicao_produto_grupo_fundamental}
@@ -482,7 +476,7 @@
 			$$
 			deg(\beta) = deg(h_{s_{m}})=deg(h_{s_{m-1}})=\dots=deg(h_{s_{0}}) = deg(\alpha).
 			$$
-			Por outro lado, vamos supor que $n = deg(\gamma)=deg(\beta)$. Considere os levantamentos $\alpha$ e $\lambda$, dos caminhos $\gamma$ e $\beta$, respectivamente. Seja a homotopia livre $H:[0,1]\times [0,1] \to \real{}$ definida por $H(t,s) = (1-s)\alpha(t) + s\beta(t)$. Então $H(t,0)=\alpha(t)$ e $H(t,1)=\lambda(t)$, logo $H$ é uma homotopia livre entre $\alpha$ e $\lambda$. Além disso 
+			Por outro lado, vamos supor que $n = deg(\gamma)=deg(\beta)$. Considere os levantamentos $\alpha$ e $\lambda$, dos caminhos $\gamma$ e $\beta$, respectivamente. Seja $H:[0,1]\times [0,1] \to \real{}$ definida por $H(t,s) = (1-s)\alpha(t) + s\beta(t)$. Então $H(t,0)=\alpha(t)$ e $H(t,1)=\lambda(t)$, logo $H$ é uma homotopia livre entre $\alpha$ e $\lambda$. Além disso 
 			$$
 			\begin{aligned}
 			H(1,s) - H(0,s) 
@@ -500,37 +494,46 @@
 		\end{enumerate}
 	\end{prova}
 	
+	O seguinte resultado é uma consequência imediata aplicação grau e mostra que o grupo fundamental de $\circulo$ é um grupo abeliano cíclico infinito.
+	
 	\begin{proposicao}\label{proposicao_gerador_grupo_fundamental_ciruclo}
-		O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = <\gamma>$.
+		O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = <\classe{\gamma}>$.
 	\end{proposicao}
 	\begin{prova}
 		Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ podemos escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $deg(\gamma) = 1$, logo 
 		$$
 		deg(\beta) = k = \underbrace{1+\dots+1}_{k-vezes} = deg(\gamma)+\dots+deg(\gamma) = deg(\gamma \dots \gamma) = deg(\gamma^{n}).
 		$$
-		Portanto $\beta \sim \gamma^{n}$ e $\classe{\beta} = \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo $\grupofundamental{\circulo} = <\gamma>$.
+		Portanto $\beta \sim \gamma^{n}$ e $\classe{\beta} = \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo $\grupofundamental{\circulo} = <\classe{\gamma}>$.
 	\end{prova}
 	
-	\section{Exemplos de Grupo Fundamental}
+	\begin{teorema}\label{teorema_grupo_fundamental_circulo}
+		(Grupo fundamental de $\circulo$) $\grupofundamental{\circulo} \cong \inteiros$.
+	\end{teorema}
+	\begin{prova}
+		Da proposição anterior temos que $\grupofundamental{\circulo} = <\classe{\gamma}>$. É evidente que aplicação $\grupofundamental{\circulo}  \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo.
+	\end{prova}
+	
+	\section{Exemplos}
 	\begin{exemplo}
-		(Grupo fundamental $\grupofundamental{\real{n}}$) Sabemos que $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
+		(Grupo fundamental $\grupofundamental{\real{n}}$) $\real{n}$ é conexo por caminhos e simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
 	\end{exemplo}
 	\begin{exemplo}
 		(Grupo fundamental $\grupofundamental{T^{2}}$ do 2-toro) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \inteiros \times \inteiros$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
 	\end{exemplo}
 	
 	\begin{exemplo}\label{exemplo_grupo_fundamental_plano_furo}
-		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é o produto de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
+		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Seja $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por outro lado, se $\beta \in \caminhospontobase{p}$ envolve a origem, então $\beta \sim \gamma^{n}$, onde $\gamma^{n}$ é a justaposição de $\gamma$ n-vezes e $n= deg(\beta)$. De fato, por definição $deg(\gamma) = 1$ e $deg(c) =0$, o que implica que $0= deg(c)=deg(\gamma.\gamma^{-1}) = 1 +deg(\gamma^{-1})$, portanto $deg(\gamma^{-1})=-1$. Definido $deg(\beta)=n$  temos $deg(\gamma^{n}) = n$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ $\beta \sim \gamma^{n}$, portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo inifnito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = <\classe{\gamma}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
 	\end{exemplo}
 	
 	\begin{exemplo}
-		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $r=(0,0)\in \real{2}$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada contínuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada contínuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser escrito como o produto $\gamma_{1}*\gamma_{2}$, logo $\gamma \sim \gamma_{1}*\gamma_{2}$, portanto $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
+		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Definindo  $r=(0,0)\in \real{2}$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $\gamma_{1}$ é o circulo envolvendo apenas $p$, $\gamma_{2}$ é o cículo envolvendo apenas $q$ e $c$ é a curva constante, então um dado caminho $\gamma \in \caminhospontobase{r}$, tal que $deg(\gamma) = 1$, pertencerá as seguintes classes de equivalência: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada continuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada continuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser deformado na justaposição $\gamma_{1}*\gamma_{2}$, ou seja, $\gamma \sim \gamma_{1}*\gamma_{2}$ e $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = <\classe{\gamma_{1}}, \classe{\gamma_{2}}>$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
 	\end{exemplo}
 		
 	\chapter{Homologia}
 	
 	\section{Homologia singular}
-	Para as próximas definições denotaresmo $X$ como um espaço topológico e $A$ um anel, então:
+	Para as próximas definições denotaremos por $X$ como um espaço topológico e $A$ por um anel.
 	\begin{definicao}
 		(Simplexo singular) Denotaremos por $\Delta_{k}$ o simplexo k-dimesional cujos vertices $e_{0}, \dots, e_{k}$ formam um base canônica de $\real{k+1}$ de modo que $\Delta_{k} = \{(x_{0}, \dots, x_{k}) \in \real{k+1}: x_{j}\geq 0, \;\sum_{j}x_{j}=1\}$. Um k-simplexo singular no espaço topológico $X$ é uma aplicação contínua $\sigma:\Delta_{k} \to X$.
 	\end{definicao}
