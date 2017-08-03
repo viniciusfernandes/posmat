@@ -2624,11 +2624,11 @@
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
 	\section{Motivação}
-	Temos como hipótese um sistema Hamiltoniano dependente do tempo e 1-periódico, isto é, uma função Hamiltoniana $H:M\times \circulo \to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano e definido equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \circulo \to M$ é solução do sistema Hamiltoniano
+	Temos uma função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
 	$$
 	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t)
 	$$
-	satisfasendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Além disso, assumimos que tais soluções são contráteis, isto é, homotópicas a uma curva constante. Vimos que essas soluções são pontos críticos do funcional $f_{H}$. Analogamente a Teoria de Morse (veja em $\cite{milnor}$), vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
+	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a uma curva constante. Vimos que elas são pontos críticos do funcional $f_{H}$. Analogamente a Teoria de Morse (veja em $\cite{milnor}$), vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
 	
 	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $det(Id - A(t))\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
 	
@@ -4088,13 +4088,13 @@
 	\end{teorema}
 	
 	\chapter{Homologia de Floer}
-	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
+	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
 	
-	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pntos fixos de um simplectomorfismos e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
+	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pontos fixos que um simplectomorfismo definido em uma variedade simplética possui e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
 	
 	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de ponstos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
 	
-	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
+	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica analoga a  Morse clássica que se deparou com algumas barreiras técnicas, tais como: variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades. Floer utiliza como função de Morse um funcional definido nesse espaço, que é um espaço de funções, e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
 	
 	\section{Definições}
 	Seja $C = C(M, \inteiros_{2})$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos de $\lacocontrateis$. Esse espaço é graduado pela função $m$, de modo que
