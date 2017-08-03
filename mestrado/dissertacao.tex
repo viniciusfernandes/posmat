@@ -84,6 +84,7 @@
 \newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
 \newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
 \newcommand{\colecao}[1]{\{#1_{k} \}_{k\in \inteiros}}
+\newcommand{\colecaofinita}[2]{\{#1_{j} \}_{j=1}^{#2}}
 \newcommand{\colecaosimples}[1]{\{#1 \}_{k\in \inteiros}}
 \newcommand{\complementar}[2]{#1 \backslash #2}
 \newcommand{\complexificacao}[1]{#1_{\complexo{}}}
@@ -1606,7 +1607,7 @@
 		$$
 		Além disso, $W$ pode ser classificado de acordo com as seguintes características
 		\begin{enumerate}
-			\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = 0$
+			\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$
 			\item \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
 			\item \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
 			\item \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
@@ -1618,14 +1619,14 @@
 		\begin{enumerate}
 			\item Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
 			
-			\item Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$
+			\item Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
 			
 			\item Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico. 
 		\end{enumerate}
 	\end{lema}
 	\begin{prova}
 		\begin{enumerate}
-			\item Seja $0\neq v \in W$. Supondo que exista $v\neq u \in W$ tal que $\omega(v, u ) = 0$, teremos $u \in W\cap W^{\omega}$, contradizendo a hipótese $W\cap W^{\omega} =0$. Logo $\omega|_{W \times W} $ é não-degenerada e $(W, \omega|_{W})$ é um espaço vetorial simplético.
+			\item Supondo que $\omega|_{W}$ seja degenerada, então existe $0\neq v \in W$ tal que $\omega(v, u ) = 0$ para todo $u \in W$, o que implica que $u \in W\cap W^{\omega}$, contradizendo a hipótese $W\cap W^{\omega} =0$. Logo $\omega|_{W } $ é não-degenerada e $(W, \omega|_{W})$ é um espaço vetorial simplético.
 			
 			\item Dado $0\neq v \in W $ , então $\omega(v,u) = 0$ para todo $u \in W\cap W^{\omega} = W$. Portanto $\omega|_{W\times W}: W\times W \to \reta$ é a aplicação nula.
 			
@@ -1633,25 +1634,35 @@
 		\end{enumerate}
 	\end{prova}
 	
-	Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição abaixo nos dá uma relação entre suas dimensões.
+	Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir nos dá uma relação entre as dimensões desses dois espaços vetoriais.
+	
+	\begin{lema}\label{lema_isomorfismo_forma_simpletica}
+		Seja $(V,\omega)$ um 2n-espaço vetorial simplético. A aplicação $\omega^{*}:V\to V^{*}$ definida por $\omega^{*}(v)(u) = \omega(v,u)$ é um isomorfismo.
+	\end{lema}
+	\begin{prova}
+		Dado $v \in V$, temos pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $w^{*}$ é injetora pois $\omega^{*}(0)(u) = \omega(0,u) = 0$ para todo $u \in V$, portanto $\omega^{*}(0) = 0$. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$ temos pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ devemos ter que $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
+	\end{prova}
 	
 	\begin{proposicao}
 		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $\omega^{*}: V \to V^{*}$ tal que $\omega^{*}(v)(u) = \omega(v,u)$. Pode-se verificar em $\cite{hoffman_kunze}$ que $\omega^{*}$ é um isomorfimo. Seja $W^{\circ}=\{f\in W^{*}: f(v) = 0,\; \forall v\in W \}$ o anulador de $W$. Tomando $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ temos $f(u) = \omega^{*}(v)(u)=\omega(v,u)$, para algum $v \in \espacoSimpleticoOrtogonal{W}$. Se $u\in W$, então $f(u) = 0$. Portanto $f \in W^{\circ}$ e  $\omega^{*}(\espacoSimpleticoOrtogonal{W})\subseteq W^{\circ}$. Por outro lado, seja $f \in W^{\circ}$. Como $\omega^{*}$ é um isomorfismo, entao existe $v \in v$ tal que $f = \omega^{*}(v)$, logo $0=f(u) = \omega^{*}(v)(u) = \omega(v,u)$, o que imlpica que $v \in \espacoSimpleticoOrtogonal{W}$. Portanto, $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ e $W^{\circ} \subseteq \omega^{*}(\espacoSimpleticoOrtogonal{W})$. Logo $W^{\circ} =\omega^{*}(\espacoSimpleticoOrtogonal{W})$.
-		Como $\omega^{*}$ é um isomorfismo, então $dim(\espacoSimpleticoOrtogonal{W}) = dim(\omega^{*}(\espacoSimpleticoOrtogonal{W}))$. Pelo teorema da dimensão do espaço anulador (veja em \cite{hoffman_kunze}) temos que $dim(V) = dim(W)+dim(W^{\circ}) = dim(W)+dim(\omega^{*}(\espacoSimpleticoOrtogonal{W})) = dim(W)+dim(\espacoSimpleticoOrtogonal{W})$. 
+		Seja $\omega^{*}: V \to V^{*}$ tal que $\omega^{*}(v)(u) = \omega(v,u)$. Pelo Lema $\ref{lema_isomorfismo_forma_simpletica}$ $\omega^{*}$ é um isomorfismo.. Seja $W^{\circ}=\{f\in W^{*}: f(v) = 0,\; \forall v\in W \}$ o anulador de $W$. Tomando $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ temos $f(u) = \omega^{*}(v)(u)=\omega(v,u)$, para algum $v \in \espacoSimpleticoOrtogonal{W}$. Se $u\in W$, então $f(u) = 0$. Portanto $f \in W^{\circ}$ e  $\omega^{*}(\espacoSimpleticoOrtogonal{W})\subseteq W^{\circ}$. Por outro lado, seja $f \in W^{\circ}$. Como $\omega^{*}$ é um isomorfismo, então existe $v \in v$ tal que $f = \omega^{*}(v)$, logo $0=f(u) = \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in W$, o que implica que $v \in \espacoSimpleticoOrtogonal{W}$. Portanto, $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ e $W^{\circ} \subseteq \omega^{*}(\espacoSimpleticoOrtogonal{W})$. Logo $W^{\circ} =\omega^{*}(\espacoSimpleticoOrtogonal{W})$.
+		Como $\omega^{*}$ é um isomorfismo, então $dim(\espacoSimpleticoOrtogonal{W}) = dim(\omega^{*}(\espacoSimpleticoOrtogonal{W}))$. Temos que 
+		$$
+		dim(V) = dim(W)+dim(W^{\circ}) = dim(W)+dim(\omega^{*}(\espacoSimpleticoOrtogonal{W})) = dim(W)+dim(\espacoSimpleticoOrtogonal{W}).
+		$$ 
 	\end{prova}
 	
 	\begin{teorema}\label{teorema_existencia_base_simpletica}
-		(Existência de base simplética) Todo espaço vetorial simpético de dimensão finita possui uma base simplética.
+		(Existência de base simplética) Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
 	\end{teorema}
 	\begin{prova}
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $0\neq e_{1} \in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, podemos afirmar que $V_{1}$ é simplético, logo $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes teremos $V = V_{1}\oplus \dots \oplus V_{n}$. Por construção temos $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $e_{1} \neq 0\in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, podemos afirmar que $V_{1}$ é simplético, logo $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes teremos $V = V_{1}\oplus \dots \oplus V_{n}$, onde $V_{i}$ é gerado por $e_{i}$ e $\omega(e_{i}, f_{i}) = 1$. Por construção temos $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_existencia_base_simpletica}
-		A existência de uma base simplética garante a existência d euma base em que a forma simpléctica $\omega$ poderá ser representada pela matriz
+		A existência de uma base simplética garante a existência de uma base em que a forma simpléctica $\omega$ poderá ser representada pela matriz
 		$$
 		(\omega_{ij}) =\left(
 		\begin{array}{cc}
@@ -1664,10 +1675,10 @@
 	\end{observacao}
 	
 	\begin{teorema}
-		Seja $V$ um 2n-espaço vetorial, então existe uma base $\{ e_{1},\dots, e_{n}, f_{1},\dots, f_{n}\}$ de $V$ e uma base $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ tal que dado $\alpha \in \Lambda^{*}(V)$ pode-se escrever $\alpha = \sum_{i=1}^{n} e^{*}_{i}\wedge f^{*}_{i}$.
+		Seja $V$ um 2n-espaço vetorial, então existe uma base $\{ e_{1},\dots, e_{n}, f_{1},\dots, f_{n}\}$ de $V$ e uma base $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ tal que dado $\alpha \in \Lambda^{2}(V)$ pode-se escrever $\alpha = \sum_{i=1}^{n} e^{*}_{i}\wedge f^{*}_{i}$.
 	\end{teorema}
 	\begin{prova}
-		Seja $0\neq \alpha \in \Lambda^{2}(V) $, então existem $ a_{1}, a_{1+n} \in V $ tais que $\alpha(a_{1}, a_{1+n}) = \alpha_{1} \neq 0$. Definindo $e_{1} = a_{1}/\alpha_{1}$ e $a_{1+n} = f_{1}$ teremos $\alpha(e_{1}, f_{1}) = 1$, e pela anti-simetria temos $\alpha(e_{1}, e_{1}) = \alpha(f_{1}, f_{1}) = 0$. Definindo $B_{1}=span \{e_{1}, f_{1}\}$, então a matriz $(\alpha_{ij})$ de $\alpha|_{B_{1}}$
+		Seja $\alpha\neq 0\in \Lambda^{2}(V) $, então existem $ a_{1}, a_{1+n} \in V $ tais que $\alpha(a_{1}, a_{1+n}) = \alpha_{1} \neq 0$. Definindo $e_{1} = a_{1}/\alpha_{1}$ e $a_{1+n} = f_{1}$ teremos $\alpha(e_{1}, f_{1}) = 1$, e pela anti-simetria temos $\alpha(e_{1}, e_{1}) = \alpha(f_{1}, f_{1}) = 0$. Definindo $B_{1}=span \{e_{1}, f_{1}\}$, então a matriz $(\alpha_{ij})$ de $\alpha|_{B_{1}}$ é
 		$$
 		\left(
 		\begin{array}{cc}
