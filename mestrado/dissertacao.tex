@@ -1640,7 +1640,8 @@
 		Seja $(V,\omega)$ um 2n-espaço vetorial simplético. A aplicação $\omega^{*}:V\to V^{*}$ definida por $\omega^{*}(v)(u) = \omega(v,u)$ é um isomorfismo.
 	\end{lema}
 	\begin{prova}
-		Dado $v \in V$, temos pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $w^{*}$ é injetora pois $\omega^{*}(0)(u) = \omega(0,u) = 0$ para todo $u \in V$, portanto $\omega^{*}(0) = 0$. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$ temos pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ devemos ter que $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
+		Dado $v \in V$, temos pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $w^{*}$ é injetora pois, suponha 
+		que exista $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$. Com isso, temos $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Portanto $\omega^{*}$ é injetora. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$ temos pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ devemos ter que $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
 	\end{prova}
 	
 	\begin{proposicao}
@@ -1701,30 +1702,12 @@
 		Definindo a base dual $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ teremos $\alpha = \sum_{j=1}^{n}e_{j}^{*}\wedge f_{j}^{*}$.
 	\end{prova}
 	
-	\begin{definicao}\label{definicao_estrutura_complexa}
-		(Estrutura complexa) Dizemos que $J: V \to V$, onde $J^{2} = -Id$, é uma estrutura complexa compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$. Vamos definir $\estruturascomplexaspadrao$ como sendo o conjunto de todas as estruturas complexas $\omega$-compatíveis.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_estrutura_complexa}
-		Fixaremos a notação $\estruturacomplexa \in \estruturascomplexaspadrao$ como sendo o caso em que
-		$$
-		\estruturacomplexa=
-		\left(
-		\begin{array}{cc}
-		0 & Id
-		\\
-		-Id & 0
-		\end{array}
-		\right).
-		$$
-	\end{observacao}
-	
 	\begin{lema}
 		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula.
 	\end{lema}
 	\begin{prova}
-		Suponha $\omega$ uma forma simplética. O Teorema $\ref{teorema_existencia_base_simpletica}$ garante a existência de uma base simplética $\{e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}\}$ de $V$. Pela bilinearidade de $\omega$ basta analisarmos $\omega$ nos elementos dessa base. Definindo $\sigma:\{1, 2, \dots , 2n\} \to \{1, 2, \dots , 2n\}$ com uma permutação, então
-		$$
+		Suponha $\omega$ uma forma simplética. O Teorema $\ref{teorema_existencia_base_simpletica}$ garante a existência de uma base simplética $\{e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}\}$ de $V$. Pela bilinearidade de $\omega$ basta analisarmos $\omega$ nos elementos dessa base. Considerando $\sigma$ no conjunto das permutações de $\{1, 2, \dots , 2n\}$ temos
+		$$		
 		\begin{aligned}
 		\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}) &=\sum_{\sigma} \omega(e_{1}, f_{\sigma(1)})...\omega(e_{n}, f_{\sigma(n)})
 		\\
@@ -1735,7 +1718,7 @@
 		&= 1.
 		\end{aligned}
 		$$
-		Por outro lado, temos que $\omega^{\wedge n} \neq 0$, Suponha que $\{v_{1},\dots, v_{2n}\}$ seja uma base de $V$ e que exista $v \sum a_{j}v_{j} \neq 0$ tal que $\omega(v, u) = 0$ para todo $u=\sum b_{j}v_{j}  \in V$. Então, $0=\omega(v, u ) = \sum_{j, k} a_{j}b_{k}\omega(v_{j}, v_{k})$, o que implica em $\omega(v_{j}, v_{k}) =0$. Então 
+		Por outro lado, se $\omega^{\wedge n} \neq 0$, suponha que $\{v_{1},\dots, v_{2n}\}$ seja uma base de $V$ e que exista $v =\sum a_{j}v_{j} \neq 0$ tal que $\omega(v, u) = 0$ para todo $u=\sum b_{j}v_{j}  \in V$. Então, $0=\omega(v, u ) = \sum_{j, k} a_{j}b_{k}\omega(v_{j}, v_{k})$, o que implica em $\omega(v_{j}, v_{k}) =0$. Então 
 		$$
 		\omega^{\wedge n}(v_{1},\dots, v_{2n}) = \sum_{\sigma} \omega(v_{1}, v_{\sigma(1)})...\omega(v_{2n}, v_{\sigma(2n)})=0,
 		$$
@@ -1746,7 +1729,7 @@
 		(Preservação do volume) Sejam $(V,\omega)$ um 2n-espaço vetorial simplético e $\varphi:V\to V$ um simplectomorfismo, então $\varphi^{*}\omega^{\wedge n}=\omega^{\wedge n}$ e $det(\varphi)=1$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $\varphi:V \to V$ um simplectomorfismo, então $\varphi^{*}\omega = \omega$, então pode definição de pullback temos
+		Seja $\varphi:V \to V$ um simplectomorfismo, então $\varphi^{*}\omega = \omega$, e portanto
 		$$
 		\begin{aligned}
 		\varphi^{*}\omega^{\wedge n} 
@@ -1812,9 +1795,25 @@
 	
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
-	Sendo $(V,\omega)$ um 2n-espaço vetorial simplético, definimos $\estruturascomplexaspadrao \subset \generalgroupreal{V}$ como conjunto de todas as estruturas complexas $\omega$-compatíveis.
+	\begin{definicao}\label{definicao_estrutura_complexa}
+		(Estrutura complexa) Uma estrutura complexa em um espaço vetorial $V$ é um endomorfismo linear $J: V \to V$, onde $J^{2} = -Id$. Dizemos que uma estrutura complexa em $V$ é compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$. Denotaremos por $\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas em $V$ que sejam $\omega$-compatíveis.
+	\end{definicao}
 	
-	Nessa seção vamos mostrar que todo produto interno em $V$ pode ser associado a um elemento de $\estruturascomplexaspadrao$, sendo que dessa associação vamos retirar informações sobre sua topologia.
+	\begin{observacao}\label{observacao_estrutura_complexa}
+		Fixaremos a notação $\estruturacomplexa \in \estruturascomplexaspadrao$ como sendo o caso em que
+		$$
+		\estruturacomplexa=
+		\left(
+		\begin{array}{cc}
+		0 & Id
+		\\
+		-Id & 0
+		\end{array}
+		\right).
+		$$
+	\end{observacao}
+	
+	Vamos mostrar que todo produto interno em $V$ pode ser associado a um elemento de $\estruturascomplexaspadrao$ e vice-versa, sendo que dessa associação vamos retirar informações sobre sua topologia.
 	
 	\begin{observacao}\label{observacao_conjunto_estrutura_complexa}
 		Ao tratarmos $\estruturascomplexaspadrao$ como espaço topológico adotaremos sua topologia induzida pela topologia de $\generalgroupreal{V}$ gerada pela norma da convergência uniforme (ou norma do sup).
@@ -1832,7 +1831,7 @@
 		Seja $V$ um n-espaço vetorial com produto interno positivo-definido. Então $\produtosinternos{V}$ é contrátil.
 	\end{lema}
 	\begin{prova}
-		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta-nos mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ teremos $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, e os conectamos através do caminho contínuo $d$, então $\produtosinternos{V}$ é conexo por caminhos, logo é conexo. Além disso, como o caminho $d$ é uma reta, então $\produtosinternos{V}$ é convexo, logo é contrátil.
+		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta-nos mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ teremos $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, e $d$ é uma reta, então $\produtosinternos{V}$ é convexo, logo é contrátil.
 	\end{prova}
 	
 	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ $\omega$-compatível, temos que $\formaSimpletica{v}{Ju} = g_{J}(v,u)$ é um produto interno em $V$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g_{J}(u,v)$ esta bem-definida e é injetora.
@@ -1843,7 +1842,8 @@
 		Seja $(V, \omega)$ uma 2n-espaço vetorial simplético. Então cada produto interno $g \in \produtosinternos{V}$ define uma estrutura complexa $\omega$-compatível.
 	\end{proposicao}
 	\begin{prova}
-		Seja $g \in \produtosinternos{V}$. Sabe-se que $\hat{g}:V \to V^{*}$, definido por $\hat{g}(v)(u)=g(v,u)$, é um isomorfismo. Além disso, existe um único automorfismo $A:V\to V$ tal que $\formaSimpletica{v}{u} = g(Av,u)$ para todo $v,u \in V$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$ podemos escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, temos $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, temos a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
+		Seja $g \in \produtosinternos{V}$. Sabe-se que $\hat{g}:V \to V^{*}$, definido por $\hat{g}(v)(u)=g(v,u)$, é um isomorfismo. Além disso, existe um único automorfismo $A:V\to V$ tal que $\formaSimpletica{v}{u} = g(Av,u)$ para todo $v,u \in V$ dado por $A = \hat{g}^{-1}\omega
+		^{*}$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$ podemos escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, temos $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, temos a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
 	\end{prova}
 	
 	\begin{proposicao}
