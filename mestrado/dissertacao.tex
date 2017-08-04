@@ -2455,18 +2455,19 @@
 		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável, e $det(A) \in S^{1}$, e pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $det(A) = e^{i(\theta_{1}+\dots+\theta_{n})} \in \circulo$. Definindo o caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Temos que $\gamma$ está bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) \in \matrizunitaria{n}$. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} \in \circulo$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
-	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
+	\begin{lema}
 		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
 		Seja a aplicação contínua $\gamma:\gruposimpleticopositivo{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $\gamma(A,\lambda) = A^{\lambda}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, a aplicação $\gamma$ está bem-definida e é contínua. Fixando $A \in \gruposimpleticopositivo{2n}$ temos a curva $\gamma_{A}:[0,1]\to \gruposimpletico{2n}$ tal que $\gamma_{A}(0) = Id$ e $\gamma_{A}(1) = A$, ou seja, é um caminho contínuo que conecta a identidade a matriz $A$. Como $A=A^{t}$, segue da Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ que $\gamma_{A}(\lambda)^{t} = (A^{\lambda})^{t} = (A^{t})^{\lambda} = (A)^{\lambda} = \gamma_{A}(\lambda)$. Além disso, os k-subdeterminantes $det_{k}(\gamma_{A}(\lambda)) = det_{k}(A^{\lambda}) > 0$ para $1\leq k \leq 2n$. Pelo fato de que $\gamma_{A}(\lambda)$ é simétrica e pelo Teorema $\ref{teorema_matriz_positiva_definida}$ temos que $\gamma_{A}(\lambda)$ é positiva-definida, logo $\gamma_{A}([0,1]) \subset \gruposimpleticopositivo{2n}$. Como $A \in \gruposimpleticopositivo{2n}$ é arbitrária, então a construção anterior vale para quaisquer elementos de $\gruposimpleticopositivo{2n}$. Com isso, dados $A, B \in \gruposimpleticopositivo{2n}$, podemos conectar $A$ a $B$ por uma curva contínua que passa pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{prova}	
 	
-	\begin{lema}
+	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
 		Se $A \in \gruposimpletico{2n}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$ tal que $A=PO$.
 	\end{lema}
 	\begin{prova}
-		Sejam $P = AA^{t}$ e $v \in \real{2n}$ um auto-vetor de $A$ com auto-valor $\lambda \in \sigma(A)$. Sabe-se que $v$ também é autor-vetor de $A^{t}$ com o mesmo auto-valor, o que implica em $Pv=AA^{t}v = \lambda^{2}v = \alpha v$, portanto $P$ possui todos os auto-valores positivos, consequentemente, todos os seus k-subdeterminantes são positivos. Além disso, $P^{t} = (AA^{t})^{t} = AA^{t} = P$, logo pela Observação $\ref{observacao_matriz_positiva_definida}$ $P$ é positiva-definida. Como $A$ e $A^{t} $ são matrizes simpléticas e, pela Proposição $\ref{proposicao_grupo_simpletico_estrutura_grupo}$, $\gruposimpletico{2n}$ é um grupo, então $P=AA^{t}\in \gruposimpletico{2n}$. Logo $P \in \gruposimpleticopositivo{2n}$. Pela unicidade da decomposição polar, temos $A=PO$, onde $O \in \matrizortogonal{2n}$. Afirmo que $O \in \matrizSimpleticaOrtogonal$. De fato, $P$ é invertível, pois é composição de matrizes invertíveis, então $O = P^{-1}A =O$. Como $P^{-1} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, então $O=P^{-1}A \in \gruposimpletico{2n}$. Portanto, $O \in \matrizSimpleticaOrtogonal$.
+		Segue do Teorema $\ref{teorema_decomposicao_polar}$ que $A=PO$, onde $P=AA^t$ é positiva definida e O é uma matriz ortogonal. Como $A$ e $A^{t} $ são matrizes simpléticas, então $P=AA^{t}\in \gruposimpletico{2n}$. 
+		Além disso, como $\gruposimpletico{2n}$ é grupo então $P^{-1}\in \gruposimpletico{2n}$, logo $O=P^{-1}A \in \mathcal{U}$.
 	\end{prova}
 	
 	\begin{teorema}\label{teoerma_sp2n_conexo}
@@ -2484,24 +2485,24 @@
 		O quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} =P^{2} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Vejamos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, por fim, tomando $B \in \matrizSimpleticaOrtogonal$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		No Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} =P^{2} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Temos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, por fim, tomando $B \in \matrizSimpleticaOrtogonal$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
 		
-		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
+		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$, temos que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_quociente_grupo_simpletico_contratil}
-		Na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ mostramos que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, logo todo caminho contínuo em $\gruposimpletico{2n}$ pode ser deformada contínuamente em um caminho contínuo em $\matrizSimpleticaOrtogonal$.
+		Na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ mostramos que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, logo todo caminho contínuo em $\gruposimpletico{2n}$ pode ser deformado contínuamente em um caminho contínuo em $\matrizSimpleticaOrtogonal$.
 	\end{observacao}
 	
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
-		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Aqui esta a importância da conexidade. Supondo que $\gruposimpletico{2n}$ tivesse duas componentes conexas, então poderiamos ter $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros \times \inteiros$, o que inviabilizaria a construção da homologia de Floer abordada no texto.
+		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Para mostrar esse fato precisamos da conexidade.
 	\end{observacao}
 	
 	\begin{lema}\label{lema_isomorfismo_grupo_fundamental_matriz_unitaria}
 		$\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 	\end{lema}
 	\begin{prova}
-		Sejam $Id \in \matrizunitaria{n}$ e $1 \in \circulo$ pontos base. Dada $A\in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ podemos escrever $A(t) = e^{i\lambda(t)}$,  onde $\lambda:[0,1 ]\to \reta$ é contínua. Notemos que $det:\matrizunitaria{n} \to \circulo$ é uma aplicação sobrejetora pois, dada $\beta \in \caminhospontobasegeral{1}{\circulo}$, podemos escrever $\beta(t) = e^{i\alpha(t)}$. Definindo $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, então $det(A(t)) =e^{i\alpha(t)}=\beta(t)$.
+		Sejam $Id \in \matrizunitaria{n}$ e $1 \in \circulo$ pontos base. Defina $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, onde $\alpha:\intervalo\to \reta$ é uma aplicação contínua tal que $\alpha(t+1) = \alpha(1)$ para todo $t \in \intervalo$. Temos que $A(t)A(t)^{t} = Id$, logo $A(t) \in \matrizunitaria{n}$. Além disso, $A(t+1) = A(t)$, portanto $A = \caminhospontobasegeral{Id}{\matrizunitaria{n}}$.
 		
 		Defina $det_{*}: \grupofundamentalpontobase{\matrizunitaria{n}}{Id} \to \grupofundamentalpontobase{\circulo}{1}$ tal que $det_{*}\classe{A} = \classe{det(A)}$. Então dado $A' \in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ temos 
 		$$
@@ -2520,8 +2521,11 @@
 		&=det_{*}\classe{A}.det_{*}\classe{A'},  
 		\end{aligned}
 		$$
-		logo é um homomorfismo. Definindo $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, então $det(A(t)) = e^{i\alpha(t)} = \beta(t)$, logo é sobrejetora. Sejam $Id \in \matrizunitaria{n}$ e $ 1 \in \circulo$ pontos bases. Como $det$ é sobrejetora, então $det_{*}$ é sobrejetora. Supondo que $Id = det_{*}\classe{A} = \classe{det(A(t))}$, então $det(A) \sim c$, onde $c$ é uma curva constante em $\circulo$. Logo $A \sim Id $, onde $C$ é a curva constate em $\matrizunitaria{n}$. Com isso, $\classe{A} = Id$ e $det_{*}$ é injetora, portanto é um isomorfismo.
-		Como $\matrizunitaria{n}$ é conexo por caminhos, então $\grupofundamental{\matrizunitaria{n}} = \grupofundamentalpontobase{\matrizunitaria{n}}{Id}$.
+		logo é um homomorfismo. Como $det$ é sobrejetora, então $det_{*}$ é sobrejetora. Supondo que $Id = det_{*}\classe{A} = \classe{det(A(t))}$, então $det(A) \sim c$, onde $c$ é uma curva constante em $\circulo$. Logo $A \sim Id $, onde $C$ é a curva constate em $\matrizunitaria{n}$. Com isso, $\classe{A} = Id$ e $det_{*}$ é injetora, portanto é um isomorfismo.
+		Como $\matrizunitaria{n}$ é conexo por caminhos, então 
+		$$
+		\grupofundamental{\matrizunitaria{n}} = \grupofundamentalpontobase{\matrizunitaria{n}}{Id}.
+		$$
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_determinante_homomorfismo}
@@ -2532,13 +2536,15 @@
 		$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{teorema}
 	\begin{prova}
-		Da Observação $\ref{observacao_quociente_grupo_simpletico_contratil}$ temos que todo caminho contínuo em $\gruposimpletico{2n}$ é homotópico a um caminho contínuo em $\matrizSimpleticaOrtogonal$, isto é, dado $\gamma \in \caminhospontobasegeral{Id }{\gruposimpletico{2n}}$ existe $\beta \in \caminhospontobasegeral{Id}{\matrizSimpleticaOrtogonal}$ tal que $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$ e 
-		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{2n}$, então $\grupofundamental{\gruposimpletico{2n}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. 
+		
+		
+		caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
-	Sejam $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ e $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$.
+	Definamos os conjuntos $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$, $\gruposimpleticonaodegenerado{+} = \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e  $\gruposimpleticonaodegenerado{-} = \{ A \in \gruposimpletico{2n}: det(Id-A)< 0 \}$.
 	
-	O seguinte lema é demasiadamente técnico e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	O seguinte lema será usado nas próximas demostrações e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
 		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
