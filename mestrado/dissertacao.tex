@@ -68,6 +68,7 @@
 \newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
 \newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
+\newcommand{\caminhossubespacoslagrangianos}[2]{L[#1,#2]}
 \newcommand{\campogradiente}{\mathcal{X}}
 \newcommand{\campogradientefuncional}{\mathcal{X}_{\mathcal{A}}}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
@@ -228,6 +229,7 @@
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\reta}{\real{}}
+\newcommand{\subespacoslagrangianos}{L(V)}
 \newcommand{\lacocontrateis}{\mathcal{L}M}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 \newcommand{\cilindrosLM}{\mathcal{C}M}
@@ -2566,11 +2568,11 @@
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
 	\section{Motivação}
-	Temos uma função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
+	Consideremos uma função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
 	$$
 	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t)
 	$$
-	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a uma curva constante. Vimos que elas são pontos críticos do funcional $f_{H}$. Analogamente a Teoria de Morse (veja em $\cite{milnor}$), vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
+	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a um caminho constante. Elas são pontos críticos do funcional de ação $f_{H}$. Analogamente a Teoria de Morse, vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
 	
 	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $det(Id - A(t))\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
 	
@@ -2578,13 +2580,13 @@
 	
 	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\mathcal{V}$ é o conjunto dos subespaços Lagrangianos de $V$ (veja a Definição $\ref{definicao_subespaco_simpletico_ortogonais}$).  $\mathcal{V}[a,b]= \{\gamma:[a,b]\to \mathcal{V} \times \mathcal{V} \}$ o conjunto de todos os caminho contínuos e suaves por partes. Como topologia de $\mathcal{V}[a,b]$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). O índice de Maslov é a aplicação $\mu:\mathcal{V}[a,b]\to \inteiros$ satisfazendo as seguintes propriedades:
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $L(V)$ é o conjunto dos subespaços Lagrangianos de $V$.  $\caminhossubespacoslagrangianos{a}{b}= \{\gamma:[a,b]\to \subespacoslagrangianos \times \subespacoslagrangianos \}$ o conjunto de todos os caminho contínuos e suaves por partes em $\subespacoslagrangianos \times \subespacoslagrangianos$. Como topologia de $\caminhossubespacoslagrangianos{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhossubespacoslagrangianos{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
-		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \mathcal{V}[ak+l,bk+l]$ temos que 
+		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhossubespacoslagrangianos{ak+l}{bk+l}$ temos que 
 		$$
 		\mu(\gamma) = \mu(\gamma\circ g).
 		$$
-		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \mathcal{V}[a,b]$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
+		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhossubespacoslagrangianos{a}{arg2}$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
 		$$
 		\mu(\gamma) = \mu(\beta).
 		$$
