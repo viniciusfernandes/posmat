@@ -2613,14 +2613,14 @@
 		$$
 		\mu(\gamma) = \mu(\gamma\circ g).
 		$$
-		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhoslagrangianosV{a}{b}$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
+		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhoslagrangianosV{a}{b}$ e $h:[0,1] \times [a,b] \to L_{V}\times L_{V}$ uma homotopia de extremos fixos entre $\gamma$ e $\beta$. Então
 		$$
 		\mu(\gamma) = \mu(\beta).
 		$$
 		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhoslagrangianosV{a}{c}$, então $$
 		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
 		$$
-		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
+		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$ dadas por $\gamma(t) = (L_{1}(t), L_{2}(t))$, $\gamma'(t) = (L'_{1}(t), L'_{2}(t))$, respectivamente, onde $L_{j}, L'_{j}: [a,b] \to L_{V}$ são aplicações contínuas por partes. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
 		$$
 		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
 		$$
@@ -2628,7 +2628,7 @@
 		$$
 		\mu(\phi_{*}\gamma) = \mu(\gamma)).
 		$$
-		\item \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=(v_{1},v_{2}),u (u_{1},u_{2})\in \real{2}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
+		\item \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=v_{1}+iv_{2},u =u_{1}+iu_{2}\in \complexo{}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
 		\begin{enumerate}
 			\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
 			\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
@@ -2677,24 +2677,26 @@
 		\end{enumerate}
 	\end{teorema}
 	
-	Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaExtendida{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaExtendida{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
-	
-	Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
-	
-	Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
-	
-	\begin{definicao}
+	\begin{comment}
+		
+		Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaExtendida{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaExtendida{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
+		
+		Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
+		
+		Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
+		
+		\begin{definicao}
 		Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior.
-	\end{definicao}
-	
-	\begin{lema}
+		\end{definicao}
+		
+		\begin{lema}
 		A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
 		$$
 		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
 		$$
 		é contínua.
-	\end{lema}
-	\begin{prova}
+		\end{lema}
+		\begin{prova}
 		Como os auto-valores de $A$ são não-nulos, então podemos escrever $\lambda/|\lambda| = e^{i\theta}$. Com isso, $\rho(A)=\prod \lambda_{j}/|\lambda_{j}| = \prod e^{i\theta_{j}} = e^{i(\theta_{1}+\dots +\theta_{n})} \in \circulo$, onde $\lambda_{j}/|\lambda_{j}| = e^{i\theta_{j}}$ para $1\leq j \leq n$. Logo $\rho$ esta bem-definida.
 		
 		Pelo Teorema $\ref{teoerma_sp2n_conexo}$ sabemos que $\gruposimpletico{2n}$ é conexo por caminhos. Com isso, na topologia herdada de $\generalgroupcomplexo{2n}$, dado $1>\epsilon >0$ tal que $\norma{A-B}< \epsilon$ as representação diagonal $D_{A}$ e $D_{B}$, respectivamente, também satisfazem $\norma{D_{A}-D_{B}}< \epsilon$, isto é, $sup|\lambda_{j}-\beta_{k}| < \epsilon$, onde $\beta_{k} \in \sigma(B)$. Sejam $\alpha = inf \{|\lambda_{j}|,|\beta_{j}|\}$. Então
@@ -2702,7 +2704,8 @@
 		|\rho(A) -\rho(B)| < \Big|\prod_{j=1}^{n} \frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} \Big| <\frac{1}{\alpha}\prod_{j=1}^{n} sup|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon.
 		$$
 		Portanto, $\rho$ é contínua.
-	\end{prova}		
+		\end{prova}		
+	\end{comment}
 	
 	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
 	
