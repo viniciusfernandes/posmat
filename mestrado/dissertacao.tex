@@ -63,6 +63,8 @@
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhos}{\mathcal{L}}
 \newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
+\newcommand{\caminhoslagrangianos}[3]{\caminhos_{#3}(#1,#2)}
+\newcommand{\caminhoslagrangianosV}[2]{\caminhoslagrangianos{#1}{#2}{V}}
 \newcommand{\caminhospontobase}[1]{\caminhos_{#1}}
 \newcommand{\caminhossempontobase}[1]{\caminhos(#1)}
 \newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
@@ -1866,7 +1868,7 @@
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	Neste capítulo definiremos o grupo fundamental e apresentaremos um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
 	
-	\section{Complexificação de espaços vetoriais}
+	\section{Complexificação de espaços vetoriais}\label{secao_complexificacao_espacos_vetoriais}
 	
 	Seja $V$ um n-espaço vetorial real. Desejamos construir um espaço vetorial complexo a partir de $V$ e uma forma de realizarmos essa construção é tomando $v \in V $ e $a+ib \in \complexo{}$ e efetuando a multiplicação $(a+ib)v = av+ibv$. Porém, a multiplicação por $i$ não tem sentido nesse contexto, já que estamos tratando de um espaço vetorial real. Podemos contornar essa dificuldade tratando a multiplicação formal $(a+ib)v = av+ibv$ como o par ordenado $(av, bv)$, resultando na seguinte definição de complexificação:
 	
@@ -2455,18 +2457,19 @@
 		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável, e $det(A) \in S^{1}$, e pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $det(A) = e^{i(\theta_{1}+\dots+\theta_{n})} \in \circulo$. Definindo o caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Temos que $\gamma$ está bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) \in \matrizunitaria{n}$. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} \in \circulo$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
-	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
+	\begin{lema}
 		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
 		Seja a aplicação contínua $\gamma:\gruposimpleticopositivo{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $\gamma(A,\lambda) = A^{\lambda}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, a aplicação $\gamma$ está bem-definida e é contínua. Fixando $A \in \gruposimpleticopositivo{2n}$ temos a curva $\gamma_{A}:[0,1]\to \gruposimpletico{2n}$ tal que $\gamma_{A}(0) = Id$ e $\gamma_{A}(1) = A$, ou seja, é um caminho contínuo que conecta a identidade a matriz $A$. Como $A=A^{t}$, segue da Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ que $\gamma_{A}(\lambda)^{t} = (A^{\lambda})^{t} = (A^{t})^{\lambda} = (A)^{\lambda} = \gamma_{A}(\lambda)$. Além disso, os k-subdeterminantes $det_{k}(\gamma_{A}(\lambda)) = det_{k}(A^{\lambda}) > 0$ para $1\leq k \leq 2n$. Pelo fato de que $\gamma_{A}(\lambda)$ é simétrica e pelo Teorema $\ref{teorema_matriz_positiva_definida}$ temos que $\gamma_{A}(\lambda)$ é positiva-definida, logo $\gamma_{A}([0,1]) \subset \gruposimpleticopositivo{2n}$. Como $A \in \gruposimpleticopositivo{2n}$ é arbitrária, então a construção anterior vale para quaisquer elementos de $\gruposimpleticopositivo{2n}$. Com isso, dados $A, B \in \gruposimpleticopositivo{2n}$, podemos conectar $A$ a $B$ por uma curva contínua que passa pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{prova}	
 	
-	\begin{lema}
+	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
 		Se $A \in \gruposimpletico{2n}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$ tal que $A=PO$.
 	\end{lema}
 	\begin{prova}
-		Sejam $P = AA^{t}$ e $v \in \real{2n}$ um auto-vetor de $A$ com auto-valor $\lambda \in \sigma(A)$. Sabe-se que $v$ também é autor-vetor de $A^{t}$ com o mesmo auto-valor, o que implica em $Pv=AA^{t}v = \lambda^{2}v = \alpha v$, portanto $P$ possui todos os auto-valores positivos, consequentemente, todos os seus k-subdeterminantes são positivos. Além disso, $P^{t} = (AA^{t})^{t} = AA^{t} = P$, logo pela Observação $\ref{observacao_matriz_positiva_definida}$ $P$ é positiva-definida. Como $A$ e $A^{t} $ são matrizes simpléticas e, pela Proposição $\ref{proposicao_grupo_simpletico_estrutura_grupo}$, $\gruposimpletico{2n}$ é um grupo, então $P=AA^{t}\in \gruposimpletico{2n}$. Logo $P \in \gruposimpleticopositivo{2n}$. Pela unicidade da decomposição polar, temos $A=PO$, onde $O \in \matrizortogonal{2n}$. Afirmo que $O \in \matrizSimpleticaOrtogonal$. De fato, $P$ é invertível, pois é composição de matrizes invertíveis, então $O = P^{-1}A =O$. Como $P^{-1} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo, então $O=P^{-1}A \in \gruposimpletico{2n}$. Portanto, $O \in \matrizSimpleticaOrtogonal$.
+		Segue do Teorema $\ref{teorema_decomposicao_polar}$ que $A=PO$, onde $P=AA^t$ é positiva definida e O é uma matriz ortogonal. Como $A$ e $A^{t} $ são matrizes simpléticas, então $P=AA^{t}\in \gruposimpletico{2n}$. 
+		Além disso, como $\gruposimpletico{2n}$ é grupo então $P^{-1}\in \gruposimpletico{2n}$, logo $O=P^{-1}A \in \mathcal{U}$.
 	\end{prova}
 	
 	\begin{teorema}\label{teoerma_sp2n_conexo}
@@ -2484,61 +2487,29 @@
 		O quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} =P^{2} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Vejamos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, por fim, tomando $B \in \matrizSimpleticaOrtogonal$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		No Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$. Como $A,A^{t} \in \gruposimpletico{2n}$, então $AA^{t} =P^{2} \in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Temos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, por fim, tomando $B \in \matrizSimpleticaOrtogonal$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
 		
-		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$. Afirmo que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
+		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$, temos que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_quociente_grupo_simpletico_contratil}
-		Na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ mostramos que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, logo todo caminho contínuo em $\gruposimpletico{2n}$ pode ser deformada contínuamente em um caminho contínuo em $\matrizSimpleticaOrtogonal$.
+		Na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ mostramos que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, logo todo caminho contínuo em $\gruposimpletico{2n}$ pode ser deformado contínuamente em um caminho contínuo em $\matrizSimpleticaOrtogonal$.
 	\end{observacao}
 	
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
-		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Aqui esta a importância da conexidade. Supondo que $\gruposimpletico{2n}$ tivesse duas componentes conexas, então poderiamos ter $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros \times \inteiros$, o que inviabilizaria a construção da homologia de Floer abordada no texto.
-	\end{observacao}
-	
-	\begin{lema}\label{lema_isomorfismo_grupo_fundamental_matriz_unitaria}
-		$\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
-	\end{lema}
-	\begin{prova}
-		Sejam $Id \in \matrizunitaria{n}$ e $1 \in \circulo$ pontos base. Dada $A\in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ podemos escrever $A(t) = e^{i\lambda(t)}$,  onde $\lambda:[0,1 ]\to \reta$ é contínua. Notemos que $det:\matrizunitaria{n} \to \circulo$ é uma aplicação sobrejetora pois, dada $\beta \in \caminhospontobasegeral{1}{\circulo}$, podemos escrever $\beta(t) = e^{i\alpha(t)}$. Definindo $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, então $det(A(t)) =e^{i\alpha(t)}=\beta(t)$.
-		
-		Defina $det_{*}: \grupofundamentalpontobase{\matrizunitaria{n}}{Id} \to \grupofundamentalpontobase{\circulo}{1}$ tal que $det_{*}\classe{A} = \classe{det(A)}$. Então dado $A' \in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ temos 
-		$$
-		\begin{aligned}
-		det_{*}(\classe{A}\classe{A'}) 
-		&= det_{*}(\classe{A}\classe{A'}) 
-		\\
-		&= det_{*}(\classe{A.A'}) 
-		\\
-		&=\classe{det(A.A')}
-		\\
-		&=\classe{det(A)det(A')}
-		\\
-		&=\classe{det(A)}.\classe{det(A')}
-		\\
-		&=det_{*}\classe{A}.det_{*}\classe{A'},  
-		\end{aligned}
-		$$
-		logo é um homomorfismo. Definindo $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, então $det(A(t)) = e^{i\alpha(t)} = \beta(t)$, logo é sobrejetora. Sejam $Id \in \matrizunitaria{n}$ e $ 1 \in \circulo$ pontos bases. Como $det$ é sobrejetora, então $det_{*}$ é sobrejetora. Supondo que $Id = det_{*}\classe{A} = \classe{det(A(t))}$, então $det(A) \sim c$, onde $c$ é uma curva constante em $\circulo$. Logo $A \sim Id $, onde $C$ é a curva constate em $\matrizunitaria{n}$. Com isso, $\classe{A} = Id$ e $det_{*}$ é injetora, portanto é um isomorfismo.
-		Como $\matrizunitaria{n}$ é conexo por caminhos, então $\grupofundamental{\matrizunitaria{n}} = \grupofundamentalpontobase{\matrizunitaria{n}}{Id}$.
-	\end{prova}
-	
-	\begin{observacao}\label{observacao_determinante_homomorfismo}
-		No Lema $\ref{lema_isomorfismo_grupo_fundamental_matriz_unitaria}$ mostramos que o determinante, sendo uma aplicação contínua, induz o isomorfismo $det_{*}: \grupofundamental{\matrizunitaria{n}} \to \inteiros$.
+		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Para mostrar esse fato precisamos da conexidade.
 	\end{observacao}
 	
 	\begin{teorema}
 		$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{teorema}
 	\begin{prova}
-		Da Observação $\ref{observacao_quociente_grupo_simpletico_contratil}$ temos que todo caminho contínuo em $\gruposimpletico{2n}$ é homotópico a um caminho contínuo em $\matrizSimpleticaOrtogonal$, isto é, dado $\gamma \in \caminhospontobasegeral{Id }{\gruposimpletico{2n}}$ existe $\beta \in \caminhospontobasegeral{Id}{\matrizSimpleticaOrtogonal}$ tal que $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$ e 
-		$\grupofundamentalpontobase{\gruposimpletico{2n}}{Id} = \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Como $\matrizSimpleticaOrtogonal$ é conexo por caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{2n}$, então $\grupofundamental{\gruposimpletico{2n}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
-	Sejam $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ e $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$.
+	Definamos os conjuntos $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$, $\gruposimpleticonaodegenerado{+} = \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e  $\gruposimpleticonaodegenerado{-} = \{ A \in \gruposimpletico{2n}: det(Id-A)< 0 \}$.
 	
-	O seguinte lema é demasiadamente técnico e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	O seguinte lema será usado nas próximas demostrações e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
 		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
@@ -2624,11 +2595,11 @@
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
 	\section{Motivação}
-	Temos como hipótese um sistema Hamiltoniano dependente do tempo e 1-periódico, isto é, uma função Hamiltoniana $H:M\times \circulo \to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano e definido equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \circulo \to M$ é solução do sistema Hamiltoniano
+	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
 	$$
 	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t)
 	$$
-	satisfasendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Além disso, assumimos que tais soluções são contráteis, isto é, homotópicas a uma curva constante. Vimos que essas soluções são pontos críticos do funcional $f_{H}$. Analogamente a Teoria de Morse (veja em $\cite{milnor}$), vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
+	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a uma curva constante. Elas são pontos críticos do funcional de ação $f_{H}$. Analogamente a Teoria de Morse vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
 	
 	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $det(Id - A(t))\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
 	
@@ -2636,40 +2607,43 @@
 	
 	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\mathcal{V}$ é o conjunto dos subespaços Lagrangianos de $V$ (veja a Definição $\ref{definicao_subespaco_simpletico_ortogonais}$).  $\mathcal{V}[a,b]= \{\gamma:[a,b]\to \mathcal{V} \times \mathcal{V} \}$ o conjunto de todos os caminho contínuos e suaves por partes. Como topologia de $\mathcal{V}[a,b]$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). O índice de Maslov é a aplicação $\mu:\mathcal{V}[a,b]\to \inteiros$ satisfazendo as seguintes propriedades:
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminho contínuos e suaves por partes em $L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
-		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \mathcal{V}[ak+l,bk+l]$ temos que 
+		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
 		$$
 		\mu(\gamma) = \mu(\gamma\circ g).
 		$$
-		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \mathcal{V}[a,b]$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
+		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhoslagrangianosV{a}{b}$ e $h:[0,1] \times [a,b] \to L_{V}\times L_{V}$ uma homotopia de extremos fixos entre $\gamma$ e $\beta$. Então
 		$$
 		\mu(\gamma) = \mu(\beta).
 		$$
-		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhos{a}{c}{V}$, então $$
+		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhoslagrangianosV{a}{c}$, então $$
 		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
 		$$
-		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $\gamma \in \mathcal{V}[a,b]$ e $\gamma' \in \mathcal{V}'[a,b]$. Defina $\gamma\oplus\gamma' \in \caminhos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
+		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$ dadas por $\gamma(t) = (L_{1}(t), L_{2}(t))$, $\gamma'(t) = (L'_{1}(t), L'_{2}(t))$, respectivamente, onde $L_{j}, L'_{j}: [a,b] \to L_{V}$ são aplicações contínuas por partes. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
 		$$
 		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
 		$$
-		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \mathcal{V}[a,b]$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}:\mathcal{V}[a,b]\to \mathcal{V}[a,b]$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t)(L_{1}(t)), \phi(t)(L_{2}(t)))$. Então 
+		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}: \caminhoslagrangianosV{a}{b} \to \caminhoslagrangianosV{a}{b}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t, L_{1}(t)), \phi(t, L_{2}(t)))$. Então 
 		$$
-		\mu(\phi_{*}\gamma)) = \mu(\gamma)).
+		\mu(\phi_{*}\gamma) = \mu(\gamma)).
 		$$
-		\item \textbf{\textit{(Normalização)}} Seja $\mathbb{C} = \real{2}$ o espaço vetorial simplético munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=(v_{1},v_{2}),u (u_{1},u_{2})\in \real{2}$. Defina $\gamma \in \caminhos{-\pi/4}{\pi/4}{\real{2}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
+		\item \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=v_{1}+iv_{2},u =u_{1}+iu_{2}\in \complexo{}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
 		\begin{enumerate}
 			\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
 			\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
 			\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
 		\end{enumerate}
-		\begin{observacao}
-			Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
-		\end{observacao}
+		\begin{comment}
+			\begin{observacao}
+				Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
+			\end{observacao}
+		\end{comment}
+
 	\end{enumerate}
 	
 	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \Omega) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{secao_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
+	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citadas no Seção $\ref{secao_complexificacao_espacos_vetoriais}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det|_{\matrizSimpleticaOrtogonal}:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que essa restrição pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
 	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simplectomorfismos em $V$. 
 	\begin{teorema}\label{teorema_aplicacao_rho}
@@ -2679,13 +2653,13 @@
 			$$
 			\rho(TAT^{-1}) = \rho(A)
 			$$
-			para $A\in \gruposimpletico{V_{1}}$.
+			para toda $A\in \gruposimpletico{V_{1}}$.
 			
 			\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
 			$$
 			\rho(A) = \rho(A_{1})\rho(A_{2})
 			$$
-			para $A\in \gruposimpletico{V}$ definido por $A(v_{1}, v_{2})=(A_{2}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
+			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
 			
 			\item \textbf{Deteminante:} Se $A\in \gruposimpleticopositivo{2n}$, então 
 			$$
@@ -2703,24 +2677,26 @@
 		\end{enumerate}
 	\end{teorema}
 	
-	Na Seção $\ref{secao_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
-	
-	Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
-	
-	Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
-	
-	\begin{definicao}
+	\begin{comment}
+		
+		Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaExtendida{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaExtendida{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
+		
+		Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
+		
+		Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
+		
+		\begin{definicao}
 		Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior.
-	\end{definicao}
-	
-	\begin{lema}
+		\end{definicao}
+		
+		\begin{lema}
 		A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
 		$$
 		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
 		$$
 		é contínua.
-	\end{lema}
-	\begin{prova}
+		\end{lema}
+		\begin{prova}
 		Como os auto-valores de $A$ são não-nulos, então podemos escrever $\lambda/|\lambda| = e^{i\theta}$. Com isso, $\rho(A)=\prod \lambda_{j}/|\lambda_{j}| = \prod e^{i\theta_{j}} = e^{i(\theta_{1}+\dots +\theta_{n})} \in \circulo$, onde $\lambda_{j}/|\lambda_{j}| = e^{i\theta_{j}}$ para $1\leq j \leq n$. Logo $\rho$ esta bem-definida.
 		
 		Pelo Teorema $\ref{teoerma_sp2n_conexo}$ sabemos que $\gruposimpletico{2n}$ é conexo por caminhos. Com isso, na topologia herdada de $\generalgroupcomplexo{2n}$, dado $1>\epsilon >0$ tal que $\norma{A-B}< \epsilon$ as representação diagonal $D_{A}$ e $D_{B}$, respectivamente, também satisfazem $\norma{D_{A}-D_{B}}< \epsilon$, isto é, $sup|\lambda_{j}-\beta_{k}| < \epsilon$, onde $\beta_{k} \in \sigma(B)$. Sejam $\alpha = inf \{|\lambda_{j}|,|\beta_{j}|\}$. Então
@@ -2728,7 +2704,8 @@
 		|\rho(A) -\rho(B)| < \Big|\prod_{j=1}^{n} \frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} \Big| <\frac{1}{\alpha}\prod_{j=1}^{n} sup|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon.
 		$$
 		Portanto, $\rho$ é contínua.
-	\end{prova}		
+		\end{prova}		
+	\end{comment}
 	
 	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
 	
@@ -4088,13 +4065,13 @@
 	\end{teorema}
 	
 	\chapter{Homologia de Floer}
-	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade. Tal estratégia resume-se a determinar os pontos críticos dessas funções, chamadas funções de Morse, e a eles associar invariantes topológicos (os índices de Morse), por fim constrói-se sua homologia.
+	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
 	
-	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pntos fixos de um simplectomorfismos e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
+	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pontos fixos que um simplectomorfismo definido em uma variedade simplética possui e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
 	
 	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de ponstos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
 	
-	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentaria de se construir uma técnica analoga a  Morse clássica deparou-se barreiras técnicas tais como variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades que, como veremos, serão espaços de funções. Floer utiliza um funcional definido nesse espaço de funções como função de Morse , estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da Homologia, a qual será isomorfa a Homologia singular da variedade simplética.
+	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica analoga a  Morse clássica que se deparou com algumas barreiras técnicas, tais como: variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades. Floer utiliza como função de Morse um funcional definido nesse espaço, que é um espaço de funções, e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
 	
 	\section{Definições}
 	Seja $C = C(M, \inteiros_{2})$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos de $\lacocontrateis$. Esse espaço é graduado pela função $m$, de modo que
