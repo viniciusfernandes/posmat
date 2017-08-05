@@ -2521,7 +2521,7 @@
 		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
 	\end{lema}
 	\begin{prova}
-		A demonstraçãõ não esta completa e será finalizada futuramente.
+		A demonstração não esta completa e será finalizada futuramente.
 	\end{prova}
 	
 	\begin{corolario}
@@ -2543,9 +2543,9 @@
 	
 	\section{Axiomatização}
 	
-	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	Originalmente, o índice de Maslov foi definido para associar um caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminho contínuos e suaves por partes em $L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
 		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
 		$$
@@ -2581,7 +2581,9 @@
 	\end{enumerate}
 	
 	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citadas no Seção $\ref{secao_complexificacao_espacos_vetoriais}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det|_{\matrizSimpleticaOrtogonal}:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que essa restrição pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
+	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ apresentadas na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
+	
+	
 	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simplectomorfismos em $V$. 
 	\begin{teorema}\label{teorema_aplicacao_rho}
@@ -2599,7 +2601,7 @@
 			$$
 			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
 			
-			\item \textbf{Deteminante:} Se $A\in \gruposimpleticopositivo{2n}$, então 
+			\item \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
 			$$
 			\rho(A) = det(X+iY), \text{onde} \;	
 			A=\left(
@@ -2645,14 +2647,14 @@
 		\end{prova}		
 	\end{comment}
 	
-	A etapa final desse capítulo é a demonstração de que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$ e com isso provaremos que $\rho$ satisfaz todas as condições do Teorema $\ref{teorema_aplicacao_rho}$. Parte das demonstrações foram feitas, mas alguns resultados serão finalizados futuramente.
+	Futuramente mostratemos que a aplicação $\rho$ pode ser estendida continuamente para $\gruposimpletico{2n}$ e com isso provaremos que $\rho$ satisfaz todas as condições do Teorema $\ref{teorema_aplicacao_rho}$.
 	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
 	Vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
 	
-	Um dado caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ pode partir de uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ e cruzar $\Sigma$ um número finíto de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov. Para efetuar a contagem dos cruzamentos de $\gamma$ valos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que ambas são conexar por caminhos. Com isso, o caminho conectando um dado $A \in \gruposimpletico{2n}$ a $W^{+}$ pode ser conectado a um outro ponto $U^{+} \in \gruposimpleticonaodegenerado{+}$ através do caminho que conecta $W^{+}$ a $U^{+}$. Com uma construção análoga, o mesmo é válido para $W^{-} \in \gruposimpleticonaodegenerado{-}$. 
-	
+	Um caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ partindo de uma matriz $A$ pertencente a uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ cruza $\Sigma$ um número finito de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov de $\gamma$. Para efetuar a contagem dos cruzamentos entre $\gamma$ e $\Sigma$ vamos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são ambas conexas por caminhos.
+		
 	\begin{definicao}
 		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
 		$$
@@ -2662,12 +2664,12 @@
 			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
 		}
 		$$	
-		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Seja $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ (sua homotopia esta bem-definida) com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
 		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
 		$$
 		\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
 		$$
-		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
+		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
 	\end{definicao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
@@ -2689,52 +2691,15 @@
 		Alguns pontos dessa demonstração ainda estão incompletos e serão finalizados futuramente.
 	\end{prova}
 	
-	No caso de sistemas Hamiltonianos autônomos teremos o caso Hamiltoniano reduzido a uma função de Morse $H:M\to \real{}$ e conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$, logo o índice de Maslov terá uma relação direta com Morse da seguinte forma:
+	O caso de sistemas Hamiltonianos autônomos fica reduzido ao caso de uma função de Morse $H:M\to \real{}$ cujo conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$. Com isso, o índice de Maslov terá uma relação direta com índice de Morse da seguinte forma:
 	
 	\begin{corolario}
-		Sejam $(M, \omega)$ uma 2n-variedade simplectica, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$, pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
+		Sejam $(M, \omega)$ uma 2n-variedade simplética, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$ pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
 		$$
 		\mu(x) = Ind(x) - n.
 		$$
 	\end{corolario}	
 	
-	\chapter{Homologia de Floer}
-	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
-	
-	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pontos fixos que um simplectomorfismo definido em uma variedade simplética possui e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
-	
-	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de ponstos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
-	
-	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica analoga a  Morse clássica que se deparou com algumas barreiras técnicas, tais como: variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades. Floer utiliza como função de Morse um funcional definido nesse espaço, que é um espaço de funções, e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
-	
-	\section{Definições}
-	Seja $C = C(M, \inteiros_{2})$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos de $\lacocontrateis$. Esse espaço é graduado pela função $m$, de modo que
-	$$
-	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \inteiros_{2}) = \text{span}\{x \in \lacocontrateis:m(x)=k \}.
-	$$
-	Segue-se da compacidade e da estruta de variedade diferenciável que $\mathcal{M}(y,x)$ possui um número finito de elementos sempre que $ m(y)-m(x)=1 = dim(\mathcal{M}(y,x))$. Com esse fato podemos construir o operador bordo $\partial : C_{k+1} \to C_{k}$ tal que
-	$$
-	\partial y = \sum_{m(x)=k} n_{k}(x) x,	
-	$$
-	onde $n_{k}(x)$ é o número de componentes de $\mathcal{M}(y,x)$ módulo 2. Posteriormente Floer demonstra que $\partial^{2}=0$, assim $(C,\partial)$ define um complexo de cadeias e a homologia
-	$$
-	HF_{*}(M, \inteiros_{2}) = \frac{Ker(\partial)}{Im(\partial)}
-	$$
-	é chamada homologia de Floer.
-	
-	\textbf{Observação:} Note que ao se definir o complexo de cadeias não fizemos referência a função Hamiltoniana nem a estrutura quase-complexa J escolhidas, isso porque a homologia de Floer não depende de tais escolhas, seguindo o teorema:
-	
-	\begin{teorema}
-		Sejam $(H,J)$ e $(H',J')$ pares regulares, isto é, $J, J' \in J_{reg}$, respeticamente, então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
-		$$
-		HF_{*}(M,\inteiros_{2};H,J) \cong HF_{*}(M,\inteiros_{2};H',J'). 
-		$$
-		Além disso, existe um isomorfismo natural entre a homologia de Floer e a homologia singular de $M$
-		$$
-		HF_{*}(M,\inteiros_{2};H,J) \cong H_{*}(M;\inteiros_{2}). 
-		$$
-		
-	\end{teorema}
 	
 	\appendix
 	\chapter{Preliminares de Álgebra}
