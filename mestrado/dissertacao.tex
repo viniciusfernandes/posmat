@@ -63,6 +63,8 @@
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhos}{\mathcal{L}}
 \newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
+\newcommand{\caminhoslagrangianos}[3]{\caminhos_{#3}(#1,#2)}
+\newcommand{\caminhoslagrangianosV}[2]{\caminhoslagrangianos{#1}{#2}{V}}
 \newcommand{\caminhospontobase}[1]{\caminhos_{#1}}
 \newcommand{\caminhossempontobase}[1]{\caminhos(#1)}
 \newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
@@ -1868,7 +1870,7 @@
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
 	Neste capítulo definiremos o grupo fundamental e apresentaremos um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
 	
-	\section{Complexificação de espaços vetoriais}
+	\section{Complexificação de espaços vetoriais}\label{secao_complexificacao_espacos_vetoriais}
 	
 	Seja $V$ um n-espaço vetorial real. Desejamos construir um espaço vetorial complexo a partir de $V$ e uma forma de realizarmos essa construção é tomando $v \in V $ e $a+ib \in \complexo{}$ e efetuando a multiplicação $(a+ib)v = av+ibv$. Porém, a multiplicação por $i$ não tem sentido nesse contexto, já que estamos tratando de um espaço vetorial real. Podemos contornar essa dificuldade tratando a multiplicação formal $(a+ib)v = av+ibv$ como o par ordenado $(av, bv)$, resultando na seguinte definição de complexificação:
 	
@@ -2500,48 +2502,11 @@
 		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Para mostrar esse fato precisamos da conexidade.
 	\end{observacao}
 	
-	\begin{lema}\label{lema_isomorfismo_grupo_fundamental_matriz_unitaria}
-		$\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
-	\end{lema}
-	\begin{prova}
-		Sejam $Id \in \matrizunitaria{n}$ e $1 \in \circulo$ pontos base. Defina $A(t) = diag\{e^{i\alpha(t)}, 1, \dots, 1\}$, onde $\alpha:\intervalo\to \reta$ é uma aplicação contínua tal que $\alpha(t+1) = \alpha(1)$ para todo $t \in \intervalo$. Temos que $A(t)A(t)^{t} = Id$, logo $A(t) \in \matrizunitaria{n}$. Além disso, $A(t+1) = A(t)$, portanto $A = \caminhospontobasegeral{Id}{\matrizunitaria{n}}$.
-		
-		Defina $det_{*}: \grupofundamentalpontobase{\matrizunitaria{n}}{Id} \to \grupofundamentalpontobase{\circulo}{1}$ tal que $det_{*}\classe{A} = \classe{det(A)}$. Então dado $A' \in \caminhospontobasegeral{Id}{\matrizunitaria{n}}$ temos 
-		$$
-		\begin{aligned}
-		det_{*}(\classe{A}\classe{A'}) 
-		&= det_{*}(\classe{A}\classe{A'}) 
-		\\
-		&= det_{*}(\classe{A.A'}) 
-		\\
-		&=\classe{det(A.A')}
-		\\
-		&=\classe{det(A)det(A')}
-		\\
-		&=\classe{det(A)}.\classe{det(A')}
-		\\
-		&=det_{*}\classe{A}.det_{*}\classe{A'},  
-		\end{aligned}
-		$$
-		logo é um homomorfismo. Como $det$ é sobrejetora, então $det_{*}$ é sobrejetora. Supondo que $Id = det_{*}\classe{A} = \classe{det(A(t))}$, então $det(A) \sim c$, onde $c$ é uma curva constante em $\circulo$. Logo $A \sim Id $, onde $C$ é a curva constate em $\matrizunitaria{n}$. Com isso, $\classe{A} = Id$ e $det_{*}$ é injetora, portanto é um isomorfismo.
-		Como $\matrizunitaria{n}$ é conexo por caminhos, então 
-		$$
-		\grupofundamental{\matrizunitaria{n}} = \grupofundamentalpontobase{\matrizunitaria{n}}{Id}.
-		$$
-	\end{prova}
-	
-	\begin{observacao}\label{observacao_determinante_homomorfismo}
-		No Lema $\ref{lema_isomorfismo_grupo_fundamental_matriz_unitaria}$ mostramos que o determinante, sendo uma aplicação contínua, induz o isomorfismo $det_{*}: \grupofundamental{\matrizunitaria{n}} \to \inteiros$.
-	\end{observacao}
-	
 	\begin{teorema}
 		$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{teorema}
 	\begin{prova}
-		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{2n}$, então $\grupofundamental{\gruposimpletico{2n}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. 
-		
-		
-		caminhos temos que $\grupofundamental{\gruposimpletico{2n}} =\grupofundamental{\matrizSimpleticaOrtogonal}= \grupofundamentalpontobase{\matrizSimpleticaOrtogonal}{Id}$. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{2n}$, então $\grupofundamental{\gruposimpletico{2n}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
 	Definamos os conjuntos $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$, $\gruposimpleticonaodegenerado{+} = \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e  $\gruposimpleticonaodegenerado{-} = \{ A \in \gruposimpletico{2n}: det(Id-A)< 0 \}$.
@@ -2568,11 +2533,11 @@
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
 	\section{Motivação}
-	Consideremos uma função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
+	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
 	$$
 	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t)
 	$$
-	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a um caminho constante. Elas são pontos críticos do funcional de ação $f_{H}$. Analogamente a Teoria de Morse, vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
+	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a uma curva constante. Elas são pontos críticos do funcional de ação $f_{H}$. Analogamente a Teoria de Morse vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
 	
 	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $det(Id - A(t))\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
 	
@@ -2580,40 +2545,43 @@
 	
 	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $L(V)$ é o conjunto dos subespaços Lagrangianos de $V$.  $\caminhossubespacoslagrangianos{a}{b}= \{\gamma:[a,b]\to \subespacoslagrangianos \times \subespacoslagrangianos \}$ o conjunto de todos os caminho contínuos e suaves por partes em $\subespacoslagrangianos \times \subespacoslagrangianos$. Como topologia de $\caminhossubespacoslagrangianos{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhossubespacoslagrangianos{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminho contínuos e suaves por partes em $L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
-		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhossubespacoslagrangianos{ak+l}{bk+l}$ temos que 
+		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
 		$$
 		\mu(\gamma) = \mu(\gamma\circ g).
 		$$
-		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhossubespacoslagrangianos{a}{arg2}$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
+		\item \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhoslagrangianosV{a}{b}$ e $h:[a,b] \times [0,1]$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0)= \gamma(t)$, $h(t,1) = \beta(t)$ e $h(s, a)$ e $h(s, b)$ constantes. Então
 		$$
 		\mu(\gamma) = \mu(\beta).
 		$$
-		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhos{a}{c}{V}$, então $$
+		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhoslagrangianosV{a}{c}$, então $$
 		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
 		$$
-		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $\gamma \in \mathcal{V}[a,b]$ e $\gamma' \in \mathcal{V}'[a,b]$. Defina $\gamma\oplus\gamma' \in \caminhos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
+		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
 		$$
 		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
 		$$
-		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \mathcal{V}[a,b]$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}:\mathcal{V}[a,b]\to \mathcal{V}[a,b]$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t)(L_{1}(t)), \phi(t)(L_{2}(t)))$. Então 
+		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}: \caminhoslagrangianosV{a}{b} \to \caminhoslagrangianosV{a}{b}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t, L_{1}(t)), \phi(t, L_{2}(t)))$. Então 
 		$$
-		\mu(\phi_{*}\gamma)) = \mu(\gamma)).
+		\mu(\phi_{*}\gamma) = \mu(\gamma)).
 		$$
-		\item \textbf{\textit{(Normalização)}} Seja $\mathbb{C} = \real{2}$ o espaço vetorial simplético munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=(v_{1},v_{2}),u (u_{1},u_{2})\in \real{2}$. Defina $\gamma \in \caminhos{-\pi/4}{\pi/4}{\real{2}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
+		\item \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=(v_{1},v_{2}),u (u_{1},u_{2})\in \real{2}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
 		\begin{enumerate}
 			\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
 			\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
 			\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
 		\end{enumerate}
-		\begin{observacao}
-			Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
-		\end{observacao}
+		\begin{comment}
+			\begin{observacao}
+				Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
+			\end{observacao}
+		\end{comment}
+
 	\end{enumerate}
 	
 	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \Omega) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citada no Seção $\ref{secao_complexificacao_grupo_simpetico}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que a restrição $\rho|_{\matrizSimpleticaOrtogonal} = det$ pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
+	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citadas no Seção $\ref{secao_complexificacao_espacos_vetoriais}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det|_{\matrizSimpleticaOrtogonal}:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que essa restrição pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
 	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simplectomorfismos em $V$. 
 	\begin{teorema}\label{teorema_aplicacao_rho}
@@ -2623,13 +2591,13 @@
 			$$
 			\rho(TAT^{-1}) = \rho(A)
 			$$
-			para $A\in \gruposimpletico{V_{1}}$.
+			para toda $A\in \gruposimpletico{V_{1}}$.
 			
 			\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
 			$$
 			\rho(A) = \rho(A_{1})\rho(A_{2})
 			$$
-			para $A\in \gruposimpletico{V}$ definido por $A(v_{1}, v_{2})=(A_{2}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
+			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
 			
 			\item \textbf{Deteminante:} Se $A\in \gruposimpleticopositivo{2n}$, então 
 			$$
@@ -2647,7 +2615,7 @@
 		\end{enumerate}
 	\end{teorema}
 	
-	Na Seção $\ref{secao_complexificacao_grupo_simpetico}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda , \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
+	Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaPadrao{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaPadrao{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaPadrao{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
 	
 	Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
 	
