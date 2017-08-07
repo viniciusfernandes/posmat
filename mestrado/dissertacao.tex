@@ -282,15 +282,7 @@
 	O operador de Floer é um operador linear e limitado definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional Hamiltoniano. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso em que estamos interessados, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui a generalização da Homologia de Morse-Witten.
 	
 	\chapter{Grupo Fundamental}
-	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analisar a topologia de um conjunto (um espaço topológico) e seus invariantes. Nesse capítulo abordaremos um caso específico de estrutura algébrica, o grupo fundamental $\grupofundamental{X}$, de um espaço topológico $X$. 
-	\begin{comment}
-	
-	De maneira intuitiva, construiremos esse grupo através de um procedimento que involve caminhos contínuos fechados $\gamma:[0,1]\to X$ e seus caminhos equivalentes (que ficará mais claro adiante), assim, se $\gamma, \gamma':[0,1]\to X$ são caminhos fechados tais que $\gamma \sim \gamma'$, então $[\gamma] = [\gamma'] \in \grupofundamental{X}$. Mostraremos que se $X,Y$ forem espaços topológicos homeomorfos, então $\grupofundamental{X}$ e $\grupofundamental{Y}$ serão isomorfos.
-	
-	Um caminho fechado em um espaço topológico $X$ pode ser definido com uma aplicação contínua $\gamma:\circulo\to X$. Assim, podemos efetuar a construção de grupos mais gerais, ou de ordens superiores, do seguinte modo: seja $S^{n}= \{x \in \real{n+1}: \norma{x}=1\}$ a $n$-esféra. Então o $n$-grupo de homotopia, ou grupo de homotopia de ordem n, é o grupo $\pi_{n}(X) = \{\classe{\gamma}: \gamma,\gamma':S^{n}\to X,\; \gamma \sim \gamma'\}$, onde $\gamma \sim \gamma'$ se, e somente se, existe uma homotopia entre ambas. Com isso, o grupo fundamental é dado pelo $1$-grupo de homotopia.
-	
-	Os grupos fundamentais de nos dão mais informações sobre a topologia de nossos objetos de estudo do que os grupos de homologia, por exemplo: supondo que $M$ seja uma $n$-variedade compacta e $H_{k}(M)$ seja seu k-ésimo grupo de homologia, pode-se mostrar que $\homologia{k}{M} = 0$, contudo, podemos ter $\pi_{k}(M)\neq 0$ para $k\geq n$.
-	\end{comment}
+	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analisar a topologia de um conjunto (um espaço topológico) e seus invariantes. Nesse capítulo abordaremos um caso específico de estrutura algébrica, o grupo fundamental $\grupofundamental{X}$, de um espaço topológico $X$.
 	
 	\section{Definições}
 	
@@ -1051,10 +1043,9 @@
 	
 	De agora em diante $M$ será uma n-variedade Riemanniana diferenciável fechada, onde variedade fechada será uma variedade compacta e sem bordo.
 	
-	\begin{comment}
-		\section{Variedades Riemannianas}\label{secao_variedade_riemanniana}
+	\section{Variedades Riemannianas}\label{secao_variedade_riemanniana}
 		
-		Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
+	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
 		
 		\begin{definicao}\label{definicao_variedade_riemanniana}
 			(Variedade Riemanniana) Sejam $M$ uma n-variedade diferenciável e $g:T_{p}M \times T_{p}M \to \real{}$, um produto interno positivo-definido para todo $p \in M$, então o par $g$ é chamada de métrica Riemanniana e o par $(M, g)$ é chamado de n-variedade Riemanniana.
@@ -1115,8 +1106,6 @@
 		\begin{definicao}\label{definicao_gradiente_hessiana}
 			(campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $df_{p}(v) = g(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = d\gradiente(p)$.
 		\end{definicao}
-		
-	\end{comment}
 	
 	\section{Teoria de Morse Clássica}\label{secao_morse_classica}
 	
@@ -1154,11 +1143,9 @@
 	\begin{teorema}
 		Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
 	\end{teorema} 
-	\begin{comment}
+	
+	As seguintes definições nos permitirão a definir o tipo de homotopia de variedade $M$ em termos dos pontos críticos de uma dada função de Morse $f$. A estratégia é fatiar a variedade em níveis e construirmos os $CW$-complexos homotópicos associado a cada um deles \vermelho{(Melhorar essa frase)}.
 		
-		As seguintes definições nos permitirão a definir o tipo de homotopia de variedade $M$ em termos dos pontos críticos de uma dada função de Morse $f$. A estratégia é fatiar a variedade em níveis e construirmos os $CW$-complexos homotópicos associado a cada um deles.
-		
-	\end{comment}
 	Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
 	
 	\begin{teorema}
@@ -1194,25 +1181,23 @@
 	
 	Caso existam pontos críticos distintos com valores críticos coincidentes a mesma construção pode ser feita perturbando a função de Morse $f$ de modo a obter uma outra $f' \in \funcoesmorse{M}$ com os mesmos pontos críticos agora com valores críticos todos distintos. Essa construção é viabilizada pela densidade das funções de Morse em $\funcoessuaves{M}$.
 	
-	\begin{comment}
-			\begin{exemplo}
-			(2-toro) Seja $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização do toro $T^{2}$ dada por
-			$$
-			\varphi(\theta, \phi) = ((1+2cos\phi)cos\theta, (1+2cos\phi)sin\theta, 2sin\phi).
-			$$
-			Esse é um toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$. Com isso, temos que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
-			$$
-			\begin{aligned}
+	\begin{exemplo}
+		(2-toro) Seja $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização do toro $T^{2}$ dada por
+		$$
+		\varphi(\theta, \phi) = ((1+2cos\phi)cos\theta, (1+2cos\phi)sin\theta, 2sin\phi).
+		$$
+		Esse é um toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$. Com isso, temos que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
+		$$
+		\begin{aligned}
 			\derivadaparcialabrev{\theta} &= -(1+2cos\phi)sin\theta \derivadaparcialabrev{x}+(1+2cos\phi)cos\theta \derivadaparcialabrev{y} 
 			\\
 			\derivadaparcialabrev{\phi} &=  - 2sin\phi cos\theta 	\derivadaparcialabrev{x} - 2sin\phi sin\theta 	\derivadaparcialabrev{y} +2cos\phi				\derivadaparcialabrev{z}.
 			\end{aligned} 
-			$$
+		$$
+				
+		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Temos que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ temos $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, caso $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$, mas basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e $\pontoscriticos{f} = \{(\pm 3,0,0), (\pm 1,0,0)\}$, de modo que $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
 			
-			
-			Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Temos que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ temos $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, caso $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$, mas basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e $\pontoscriticos{f} = \{(\pm 3,0,0), (\pm 1,0,0)\}$, de modo que $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
-			
-			Temos a representação matricial da Hessiana $H_{p}(f)$
+		Temos a representação matricial da Hessiana $H_{p}(f)$
 			$$
 			H(\theta, \phi) = 
 			\left(
@@ -1223,7 +1208,7 @@
 			\end{array}
 			\right).
 			$$
-			Avaliando a hessiana nos pontos críticos temos
+		Avaliando a hessiana nos pontos críticos temos
 			$$
 			H(0, 0) = 
 			\left(
@@ -1261,9 +1246,7 @@
 			\right)
 			$$
 			\vermelho{Não entendo a diferença entre os índices dos pontos críticos....!!!!!!!!!!}
-			\end{exemplo}
-			
-	\end{comment}
+	\end{exemplo}
 
 	A relação entre a topologia de $M$ e os pontos críticos da função de Morse $f:M \to \reta$, originalmente foi data em termos de desigualdades, chamadas desigualdades de Morse.
 	
@@ -2636,13 +2619,9 @@
 			\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
 			\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
 		\end{enumerate}
-		\begin{comment}
-			\begin{observacao}
-				Esse último axioma contém uma discussão mais extensa com diagramas esquemáticos em $\cite{cappell_maslov_index_equivalencia}$.
-			\end{observacao}
-		\end{comment}
-
 	\end{enumerate}
+	
+	Outros detalhes sobre a axiomatização e demonstração da equivalência entre diferentes construções do índice de Maslov pode ser encontrada em $\cite{cappell_maslov_index_equivalencia}$.
 	
 	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
 	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ apresentadas na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
@@ -2681,26 +2660,24 @@
 		\end{enumerate}
 	\end{teorema}
 	
-	\begin{comment}
-		
-		Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaExtendida{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaExtendida{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
+	\vermelho{	Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaExtendida{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaExtendida{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
 		
 		Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
 		
 		Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
-		
-		\begin{definicao}
+	}
+	
+	\begin{definicao}
 		Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior.
-		\end{definicao}
-		
-		\begin{lema}
+	\end{definicao}
+	\begin{lema}
 		A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
 		$$
 		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
 		$$
 		é contínua.
-		\end{lema}
-		\begin{prova}
+	\end{lema}
+	\begin{prova}
 		Como os auto-valores de $A$ são não-nulos, então podemos escrever $\lambda/|\lambda| = e^{i\theta}$. Com isso, $\rho(A)=\prod \lambda_{j}/|\lambda_{j}| = \prod e^{i\theta_{j}} = e^{i(\theta_{1}+\dots +\theta_{n})} \in \circulo$, onde $\lambda_{j}/|\lambda_{j}| = e^{i\theta_{j}}$ para $1\leq j \leq n$. Logo $\rho$ esta bem-definida.
 		
 		Pelo Teorema $\ref{teoerma_sp2n_conexo}$ sabemos que $\gruposimpletico{2n}$ é conexo por caminhos. Com isso, na topologia herdada de $\generalgroupcomplexo{2n}$, dado $1>\epsilon >0$ tal que $\norma{A-B}< \epsilon$ as representação diagonal $D_{A}$ e $D_{B}$, respectivamente, também satisfazem $\norma{D_{A}-D_{B}}< \epsilon$, isto é, $sup|\lambda_{j}-\beta_{k}| < \epsilon$, onde $\beta_{k} \in \sigma(B)$. Sejam $\alpha = inf \{|\lambda_{j}|,|\beta_{j}|\}$. Então
@@ -2708,8 +2685,7 @@
 		|\rho(A) -\rho(B)| < \Big|\prod_{j=1}^{n} \frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} \Big| <\frac{1}{\alpha}\prod_{j=1}^{n} sup|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon.
 		$$
 		Portanto, $\rho$ é contínua.
-		\end{prova}		
-	\end{comment}
+	\end{prova}		
 	
 	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
 	
@@ -4033,9 +4009,7 @@
 	
 	
 	Foi mostrado na Seção $\ref{secao_identificacao_pullback_fibrado}$ que, dado $u \in \caminhosexponenciaisconectantespadrao$, temos as identificações entre os espaços  $\espacoLp{\pullbackfibradotangenteM{u}} \mapsto \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Sendo que essa identificação foi utilizada para simplificar cálculos e tonar a exposição do assunto menos densa. Na demosntração a seguir esse fato será crucial pois, para aplicarmos o Teorema $\ref{teorema_sobolev}$, necessitamos restrigir o domínio das funções a conjuntos limitados com borda de classe $C^{1}$. Note que $\retacartesianocirculo$ não é limitado. Pelo Teorema $\ref{teorema_whitney}$, temos o mergulho $\caminhosexponenciaisconectantespadrao \subset M\subset \real{k}$, o que já foi feito na Seção $\ref{secao_identificacao_pullback_fibrado}$. Podemos afirmar que $\caminhosexponenciaisconectantespadrao$ é um limitado, pois é um subconjunto da variedade compacta $M$ mergulhada em $\real{k}$. Além disso, seu bordo é dado por $\partial \caminhosexponenciaisconectantesabrev =x^{+}(\circulo) \cup x^{-}(\circulo)$.
-	\begin{comment}
-		\vermelho{(aqui devemos ter uma figura ilustrando o bordo ...!!!)}
-	\end{comment}
+	\vermelho{(aqui devemos ter uma figura ilustrando o bordo ...!!!)}
 	
 	A seguir enunciaremos alguns resultados importantes de análise funcional os quais serão utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialfloerabrev$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach. Todos podem ser encontrados em $\cite{kreyszig_analise_funcional}$. Por fim, o seguinte lema, que pode ser encontrado em $\cite{audi_floer_homology}$, também será utilizado na demonstração.
 	
