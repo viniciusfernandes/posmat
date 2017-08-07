@@ -70,6 +70,7 @@
 \newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
 \newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
 \newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
+\newcommand{\caminhossubespacoslagrangianos}[2]{L[#1,#2]}
 \newcommand{\campogradiente}{\mathcal{X}}
 \newcommand{\campogradientefuncional}{\mathcal{X}_{\mathcal{A}}}
 \newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
@@ -230,6 +231,7 @@
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\reta}{\real{}}
+\newcommand{\subespacoslagrangianos}{L(V)}
 \newcommand{\lacocontrateis}{\mathcal{L}M}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 \newcommand{\cilindrosLM}{\mathcal{C}M}
@@ -2051,7 +2053,7 @@
 	\end{prova}
 	
 	\begin{observacao}
-		Note que $\complexificado{V}_{0} = \{\complexificacaoelemento{1}{v} \in \complexificado{V} \}$ é um subespaço vetorial de $\complexificado{V}$ isomorfo a $\real{2n}$. Além disso, $\Omega|_{\complexificado{V}_{0}} = \omega$ e $\Omega$ é uma extensão contínua de $\omega$.
+		Futuramente mostraremos que $\Omega$ é uma extensão contínua da forma simplética $\omega$.
 	\end{observacao}
 	
 	\begin{proposicao}
@@ -2519,78 +2521,14 @@
 		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
 	\end{lema}
 	\begin{prova}
-		Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupreal{2n}$ tal que 
-		$$
-		W(a) = diag\{a, -1, \dots, -1, a^{-1}, -1, \dots , -1\},
-		$$
-		onde cada bloco diagonal é uma matriz de ordem $n$. Afirmo que $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$. De fato, $det(Id - W(a)) = (1-a)(1-a^{-1})4^{n-1} \neq 0$, pois $a\neq 1$.
-		
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $x,y \in V$ tais que $x=(x_{(1)}, x_{(2)})$, onde $x_{(1)} = (x_{1}, \dots, x_{n})$ e $x_{(2)} = (x_{n+1}, \dots, x_{2n})$ e analogamente para $y$. Com isso, 
-		$$
-		\begin{aligned}	
-		W(a)x &= (ax_{1}, -x_{2}, \dots, -x_{n}, a^{-1}x_{n+1}, -x_{n+2}, \dots, -x_{2n})
-		\\
-		\estruturacomplexa W(a)x &= (a^{-1}x_{n+1}, -x_{n+2}, \dots, -x_{2n}, -ax_{1}, x_{2}, \dots, x_{n}).
-		\end{aligned}
-		$$ 
-		
-		Definindo $X, Y$ as representações matriciais de $x$ e $y$, respectivamente e sabendo que $\formaSimpleticaPadrao{x}{y} = (\estruturacomplexa X)^{t}Y$, temos
-		$$
-		\begin{aligned}
-		\formaSimpleticaPadrao{W(a)x}{W(a)y} 
-		&=
-		(\estruturacomplexa W(a)X)^{t}W(a)Y
-		\\
-		&=a^{-1} x_{n+1}ay_{1} + x_{n+2}y_{2}+ \dots + x_{2n}ay_{n}
-		\\
-		& \;\;\;\; -ax_{1}a^{-1}y_{n+1}- x_{2}y_{n+2}-\dots - x_{n}y_{2n} 
-		\\
-		&=\sum_{j=1}^{n}x_{n+j}y_{j} - 	x_{j}y_{n+j}
-		\\
-		&= \produtointerno{x_{(2)}}{y_{(1)}} - \produtointerno{x_{(1)}}{y_{(2)}}
-		\\
-		&= \formaSimpleticaPadrao{x}{y}.
-		\end{aligned}
-		$$
-		Portanto, $W(a) \in \gruposimpletico{2n}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
-		
-		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Temos que $det(Id - W^{+}) = 4^{n}>0$  e $det(Id - W^{-}) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
-		
-		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Seja $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base simplética de $V$ invariante por conjugação complexa, isto é, $\{\overline{v}_{\lambda_{1}}, \dots , \overline{v}_{\lambda_{2n}} \}$ também é uma base simplética (veja $\ref{proposicao_base_simpletica_conjugada}$), onde $v_{\lambda_{j}}$ auto-vetores de $B$.
-		
-		Sejam $\gamma:[0,1]\to \reta$ um caminho contínuo tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ com $1 \notin \gamma([0,1])$ e $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo definido por
-		$$
-		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
-		$$
-		
-		com $\Gamma(0) = B$. Assim, podemos escrever $\Gamma(s)v_{\lambda} = \beta(s)v_{\lambda}$, sendo $\beta$ um caminho definido por $\Gamma$, que no caso dos auto-valores $1/\lambda$ e $\overline{\lambda}$ teremos $\beta(s) = 1/\gamma(s)$ e $\overline{\beta}(s) = 1/\overline{\gamma}(s)$. Com isso, temos $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$. De fato, supondo $\lambda,\lambda' \in \sigma(B)$ tais que $\lambda\lambda' \neq 1$ teremos $\formaSimpleticaPadrao{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \beta(s)\beta'(s)\formaSimpleticaPadrao{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\omega$-ortoganalidade. Por outro lado, caso $\lambda\lambda'=1$, teremos $\lambda'=\lambda^{-1}$ implicando $\beta'(s) = 1/\beta(s)$, logo $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \omega(v_{\lambda},v_{\lambda'})$. Por fim, caso $\lambda = \lambda'$, teremos $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda}) = \beta^{2}(s)\omega(v_{\lambda},v_{\lambda}) =0$. Portanto, $\Gamma^{*}(s)\omega = \omega$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $det(Id - \Gamma(s))\neq 0 $, logo $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
-		
-		Por definição $\gruposimpleticonaodegenerado{*}$ temos que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, logo o caminho contínuo $\alpha$ conectando $A$ a $B$ esta em apenas uma dessas componentes, isto é, $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$.
-		
-		Vamos mostrar que ambas componentes são conexas por caminhos. De acordo com o Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ $B$ temos as duas seguintes condições:
-		\begin{enumerate}
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Com isso, $\Gamma(s) = diag\{\gamma_{\lambda{1}}(s)\dots, \gamma_{\lambda{2n}}(s)\}$ e $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. O produto $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
-			é um caminho contínuo conectando $A$ a $W^{+}$. Seja $A\neq A' \in \gruposimpleticonaodegenerado{+}$. Então, com uma construção análoga a anterior, podemos conectar $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Temos caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente, logo conectamos $A$ a $A'$. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
-			
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda<0$, então $\lambda^{-1} < 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Podemos ordenar a base simplética tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores negativos. Assim, $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\} = W^{-}$. Com isso, $\Gamma$ é um caminho conectando $B$ a $W^{-}$ e o produto $\alpha * \Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior concluimos que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
-		\end{enumerate}
-		
-		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, sejam $A \in \gruposimpleticonaodegenerado{\pm}$, $\real{\pm } = \{x \in \reta: \pm x> 0 \}$. Como $det: \gruposimpleticonaodegenerado{\pm}\to\real{\pm }$ é contínua, então dado $\epsilon>0$ existe $\delta>0$ tal que $|det(A)-det(B)|<\delta$ para todo $B \in \gruposimpleticonaodegenerado{\pm }$ tal que $\norma{A-B}<\epsilon$, logo $A$ é um ponto interior de $\gruposimpleticonaodegenerado{\pm}$. Portanto, $\gruposimpleticonaodegenerado{\pm}$ são abertos.
+		A demonstração não esta completa e será finalizada futuramente.
 	\end{prova}
 	
 	\begin{corolario}
 		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
 	\end{corolario}
 	\begin{prova}
-		
-		Suponha $A \in \gruposimpleticonaodegenerado{*}$ e $\sigma(A) \subset \complexo{}$. Note que, dado um auto-valor $\lambda$, teremos  $\lambda/|\lambda| \in \circulo$. Sejam $\lambda_{j} \in \sigma(A)$ com $1\leq j\leq n $ auto-valores tais que $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ aplicações contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
-		onde $\lambda_{j}\neq \pm 1$ \vermelho{ (aqui acho que tenho que usar o argumento da complexificação pois o Salamon diz que os atuo-valores devem ser de primeira ordem)} e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
-		$$
-		\exp\Big( i2\pi \sum_{j=1}^{n}\alpha_{j}(A) \Big) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
-		$$ 
-		Dado $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{+})$, então $\rho \circ \gamma$ é um caminho contínuo e periódico. Se $\lambda_{j} \in \complementar{\sigma(A)}{\real{+}}$, então $\alpha_{j}$ estão determinadas unicamente. De fato, suponha que $\lambda_{k}$ e $\lambda_{m}$ são ambos auto-valores reais positivos, então $\alpha_{k}(A) = \lambda_{k}/|\lambda_{k}| =1 = \lambda_{m}/|\lambda_{m}| =\alpha_{m}(A)$. \vermelho{(Não consigo entender o restante dos argumentos do Salamon ne do Michelle).}
-		
-		Portanto, dado  $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{\pm})$ o caminho $i\circ \gamma:[0,1] \to \gruposimpletico{2n}$ é contrátil e a aplicação induzida $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{\pm}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é trivial, isto é, $i_{*} = 0$.
+		A demonstração não esta completa e será finalizada futuramente.
 	\end{prova}
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
@@ -2605,9 +2543,9 @@
 	
 	\section{Axiomatização}
 	
-	Originalmente, o índice de Maslov foi definido para associar uma caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	Originalmente, o índice de Maslov foi definido para associar um caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminho contínuos e suaves por partes em $L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
 		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
 		$$
@@ -2643,7 +2581,9 @@
 	\end{enumerate}
 	
 	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ citadas no Seção $\ref{secao_complexificacao_espacos_vetoriais}$. Temos como candidato para aplicação contínua $\rho: \gruposimpletico{2n} \to \circulo$ a função determinante. De fato, temos $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$ e $\rho|_{\matrizSimpleticaOrtogonal}=det|_{\matrizSimpleticaOrtogonal}:\matrizSimpleticaOrtogonal \to \circulo$ (veja a Observação $\ref{observacao_determinante_matriz_unitaria}$). Notemos que apenas a imagem da restrição $\rho$ esta em $\circulo$. O seguinte lema mostra que essa restrição pode ser continuamente para uma única aplicação  $\rho: \gruposimpletico{2n} \to \circulo$.
+	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ apresentadas na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
+	
+	
 	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo dos simplectomorfismos em $V$. 
 	\begin{teorema}\label{teorema_aplicacao_rho}
@@ -2661,7 +2601,7 @@
 			$$
 			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
 			
-			\item \textbf{Deteminante:} Se $A\in \gruposimpleticopositivo{2n}$, então 
+			\item \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
 			$$
 			\rho(A) = det(X+iY), \text{onde} \;	
 			A=\left(
@@ -2707,142 +2647,14 @@
 		\end{prova}		
 	\end{comment}
 	
-	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
-	
-	\begin{lema}
-		A aplicação $B:\complexo{2n}\times \complexo{2n} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
-		$$
-		B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
-		$$
-	\end{lema}
-	\begin{prova}
-		A aplicação $B$ é bilinear pois é a parte imaginária da aplicação bilinear $\omega$. Sejam $v = (v_{1},  v_{2}), u = (u_{1},  u_{2}) \in \real{2n}$. Pela Observação $\ref{observacao_forma_extendida}$ temos as associações $\overline{v}\mapsto v' = (v_{1}, -v_{2})$,  $\overline{u}\mapsto u' = (u_{1}, -u_{2})$ e a identidade $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} -ic(v',u)$. Além disso, $c(v',u) = v_{1}u_{1} - v_{2}u_{2} = u_{1}v_{1} - u_{2}v_{2} = c(u',v)$. 
-		
-		Afirmo que $B$ é simétrica. De fato,
-		$$B(v,u) =\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} =-c(v',u) = -c(u',v) = \parteImaginaria{\formaSimpleticaExtendida{\overline{u}}{v}} = B(u,v).
-		$$
-		
-		Seja $v \in \complexo{2n}$ tal que $B(v, u) = 0 \; \forall u \in \complexo{2n}$. Tomando $z \in \complexo{2n}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$, logo 
-		$$
-		\begin{aligned}
-		\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
-		\\
-		&= \parteImaginaria{-i\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}
-		\\
-		&= \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{-iu}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}}_{=0}
-		\\
-		&=0.
-		\end{aligned}
-		$$
-		Definindo $v'\in \complexo{2n}$ como anteriormente, temos que $\formaSimpleticaPadrao{v'}{u} = \parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} = 0$. Como $\omega_{0}$ é não degenerada, então $v = 0$ e $B$ é não-degenerada.
-		
-		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
-	\end{prova}
-	
-	\begin{definicao}
-		Seja  $Q: \complexo{2n} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos subespaços de $\complexo{2n}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
-	\end{definicao}
-	
-	\begin{corolario}\label{corolario_assinatura_forma_quadratica}
-		A forma quadrática $Q$ é não-degenerada e $m(Q) = 0$. \vermelho{Aqui o artigo do Salamon coloca como hipótese que o atuo-valor $\lambda \notin \circulo$.}
-	\end{corolario}
-	\begin{prova} $Q$ é não-degenerada pois $B$ é não-degenerada.
-		Afirmo que $m(Q) = 0$. De fato, pela Observação $\ref{observacao_forma_extendida}$ temos que 
-		$$
-		\begin{aligned}
-		Q(v) 
-		&= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} 
-		\\
-		&= - c(v', v) = -(v'_{1}v_{1} +v'_{2}v_{2}) 
-		\\
-		&= -v_{1}^{2} +v_{2}^{2} 
-		\\
-		&= -\produtointerno{v^{1}}{v^{1}} +\produtointerno{v^{2}}{v^{2}}
-		\\
-		&= \sum_{j=1}^{n}-v_{1j}^{2} +v_{2j}^{2}.
-		\end{aligned}
-		$$ 
-		
-		Portando, $m_{+}(Q) = m_{-}(Q) = n$ e $m(Q) = 0$.
-	\end{prova}
-	
-	Sejam $A \in \gruposimpletico{2n}$ e $\lambda\in \sigma(A)$ tal que $\lambda \in \complementar{\circulo}{\{\pm 1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ e pelo Corolário $\ref{corolario_assinatura_forma_quadratica}$ podemos decompor o auto-espaço $E_{\lambda} = E_{\lambda}^{+} \oplus E_{\lambda}^{-}$, onde $E_{\lambda}^{\pm} $ são subespaços vetoriais tais que $Q$ é positivo-definida, ou negativo-definida, respectivamente. Assim, temos a multiplicidade de $\lambda$ dada por $m(\lambda) = m_{+}(\lambda)+m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda})$, onde  $m_{\pm}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{\pm} )$. Definamos a assinatura de $\lambda$ por $\sigma(\lambda)= m_{+}(\lambda) - m_{-}(\lambda)$. 
-	
-	Suponha que $\lambda<0$, então $\lambda^{-1}<0$. Pelo Corolário $\ref{corolario_restricao_forma_simpletica}$ temos que a restrição $\Omega|_{E_{\lambda}\oplus E_{\lambda^{-1}}}$ é não-degenerada, e assim, $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}\oplus E_{\lambda^{-1}}^{+}\oplus E_{\lambda^{-1}}^{-}$, logo $m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{-})+dim_{\complexo{}}(E_{\lambda^{-1}}^{-})=2dim_{\complexo{}}(E_{\lambda}^{-})$. Portanto, $m_{-}(\lambda) \in 2\mathbb{N}$.
-	
-	\begin{lema}\label{lema_identidade_aplicacao_rho}
-		Sejam $A \in \gruposimpletico{2n}$, $m_{0} = \sum_{\lambda \in \sigma(A)} m_{-}(\lambda)$  e $\sigma'(A)=\sigma(A)\cap \complementar{\circulo}{\{ \pm 1 \}}$. Então
-		$$
-		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|} =(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A) }\lambda^{m_{+}(\lambda)} .
-		$$
-	\end{lema}
-	\begin{prova}
-		Defina $\lambda_{j} \in \sigma(A)$ com $0\leq j \leq 2n$, auto-valores ordenados como anteriormente. Então, sem perda de generalidade, o produto $\prod \lambda_{j}/|\lambda_{j}|$ pode ser reordenado de modo que:
-		$$
-		\left\{
-		\begin{array}{cc}
-		\lambda_{j} \in \{\pm 1\} &, 1\leq j \leq k
-		\\
-		\lambda_{j} \in \complementar{\circulo}{\{\pm 1\}} &, k+1\leq j \leq m
-		\\
-		\lambda_{j} \in \complexo{} &, m+1\leq j \leq n.
-		\end{array}
-		\right.
-		$$
-		Definindo $\beta_{j} = \lambda_{j} = |\lambda_{j}|$, teremos o produto
-		$$
-		\begin{aligned}
-		\rho(A)&=\prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
-		\\
-		&=
-		\frac{\lambda_{1}}{|\lambda_{1}|} \dots \frac{\lambda_{k}}{|\lambda_{k}|}
-		\frac{\lambda_{k+1}}{|\lambda_{k+1}|} \dots  \frac{\lambda_{m}}{|\lambda_{m}|}
-		\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-		\frac{\lambda_{n}}{|\lambda_{n}|}
-		\\
-		&=
-		\underbrace{\pm 1 \dots \pm 1}_{k-vezes}
-		\underbrace{\lambda_{k+1}\dots  \lambda_{m}}_{\in \complementar{\circulo}{\{\pm 1 \}}}
-		\underbrace{	\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-			\frac{\lambda_{n}}{|\lambda_{n}|}}_{\in \complementar{\circulo}{\{\pm 1 \}}}	
-		\\
-		&=
-		(-1)^{m_{0}}\beta_{k+1}\dots \beta_{n}	
-		\\
-		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A) \cap\complementar{\circulo}{\{ \pm 1 \}}} \lambda^{m_{+}(\lambda)}
-		\\
-		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A)}\lambda^{m_{+}(\lambda)}.
-		\end{aligned}
-		$$
-		
-		\vermelho{(Ainda não ficou clara o produto sobre todos os autovalores em $\circulo$. Ver novamente o Salamon artigo. Ele afirma algo sobre os auto-valores de primeira ordem e suas multiplicidades)}
-	\end{prova}
-	
-	\subsection*{Demonstração das propriedades de $\rho$}
-	\begin{prova}
-		Seja $\rho :\gruposimpletico{2n} \to \circulo$ definida no Lema $\ref{lema_identidade_aplicacao_rho}$.
-		\begin{enumerate}
-			\item \label{item_naturalidade_rho} \textbf{\textit{Naturalidade:}} Sejam $T : \complexo{2n} \to \complexo{2n}$ um isomorfismo simplético, isto é, $T\in \gruposimpletico{2n}$. Então $T$ preserva a $\Omega$-ortogonalidade de $A$. De fato, supondo $E$ e $E'$ subespaços $\Omega$-ortogonais de $A$, então $(T^{*}\Omega)(E, E') = \Omega(T(
-			E), T(E')) = \Omega(E, E') = 0$. Seja $S^{-1}DS$ a representação diagonal de $A$. Então $B = T^{-1}AT = (ST)^{-1}DST$, logo $B$ é similar a matriz diagonal $D$ e possui os mesmo auto-valores de $A$. Além disso, temos que $T^{-1}AT\in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Portanto $\rho(T^{-1}AT) = \rho(B) = \rho(A)$. 
-			
-			\item \textbf{\textit{Produto:}} Sejam $(V, \Omega) = (\complexo{2n}\times \complexo{2n}, \Omega_{1}\times \Omega_{2})$ e $A \in \gruposimpletico{V}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\oplus E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, respectivamente. Desse modo, $A = A_{1}\oplus A_{2}$ e $\rho(A) = \rho(A_{1})\rho(A_{2})$.
-			
-			
-			\item \textbf{\textit{Deteminante:}} Seja $A \in \mathcal{U} = \matrizunitaria{n}$. Com um argumento análogo ao que foi feito na demostração da Item $\ref{item_naturalidade_rho}$, podemos afirmar que $\estruturacomplexa$ presenva a $\Omega$-ortogonalidade dos subespaços de $A$. Como $\estruturacomplexa$ é um isomorfismo simplético, então é diagonalizável  e $\pm i \in \sigma(\estruturacomplexa)$. De fato, seja $v = (u, \pm iu) \in \complexo{2n}$, onde $u \in \complexo{n}$. Então $\estruturacomplexa v = (\pm iu, -u) = \pm i(u,iu) = \pm iv$. Seja $E^{\estruturacomplexa}_{\pm i} = \{(u, \pm i u):u \in \complexo{n} \}$ os auto-espaços de $\estruturacomplexa$ para os auto-valores $\pm i$.
-			Supondo que $v \in E^{\estruturacomplexa}_{ i}$, então $\overline{v} = (\overline{u}, -i \overline{u})$ e $\overline{v} \mapsto v' = Rv = R(u, -u) = (u,u)$. Com isso, $Q(v) = -c(v', v) = -(v'_{1}v_{1}+v'_{2}v_{2}) = -(\norma{v_{1}}^{2}+\norma{v_{2}}^{2}) =-2\norma{u}^{2}<0$. Logo a restrição $Q|_{E^{\estruturacomplexa}_{ i}}$ é negativa-definida. Com um argumento análogo teremos que a restrição $Q|_{E^{\estruturacomplexa}_{-i}}$ é positiva-definida.
-			
-			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$. \vermelho{Enteder melhor a construção do determinante.}
-			
-			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então, pelo Lema $\ref{lema_identidade_aplicacao_rho}$, a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
-		\end{enumerate}
-	\end{prova}
+	Futuramente mostratemos que a aplicação $\rho$ pode ser estendida continuamente para $\gruposimpletico{2n}$ e com isso provaremos que $\rho$ satisfaz todas as condições do Teorema $\ref{teorema_aplicacao_rho}$.
 	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
 	Vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
 	
-	Um dado caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ pode partir de uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ e cruzar $\Sigma$ um número finíto de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov. Para efetuar a contagem dos cruzamentos de $\gamma$ valos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que ambas são conexar por caminhos. Com isso, o caminho conectando um dado $A \in \gruposimpletico{2n}$ a $W^{+}$ pode ser conectado a um outro ponto $U^{+} \in \gruposimpleticonaodegenerado{+}$ através do caminho que conecta $W^{+}$ a $U^{+}$. Com uma construção análoga, o mesmo é válido para $W^{-} \in \gruposimpleticonaodegenerado{-}$. 
-	
+	Um caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ partindo de uma matriz $A$ pertencente a uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ cruza $\Sigma$ um número finito de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov de $\gamma$. Para efetuar a contagem dos cruzamentos entre $\gamma$ e $\Sigma$ vamos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são ambas conexas por caminhos.
+		
 	\begin{definicao}
 		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
 		$$
@@ -2852,12 +2664,12 @@
 			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
 		}
 		$$	
-		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Seja $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ (sua homotopia esta bem-definida) com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
 		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
 		$$
 		\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
 		$$
-		Esse número indica quantas vezes a a imagem aplicação $\rho$ executa uma meia-volta.
+		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
 	\end{definicao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
