@@ -18,8 +18,6 @@
                                 % than watermarkheight.
           ]{ufabc}
 
-
-
 \author{Vinicius Fernandes}
 \title{Homologia de Floer, Índice de Maslov e a Conjectura de Arnold}
 \institute{Universidade Federal do ABC}
@@ -100,11 +98,11 @@ A motivação esta na conjectura de Arnold.
 		$$ 
 		tais que:
 		\begin{itemize}
-			\item $\skeleton{0}$ é um conjunto discreto de pontos.
+			\item 1) $\skeleton{0}$ é um conjunto discreto de pontos.
 			
-			\item $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$.
+			\item 2) $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$.
 			
-			\item $X$ tem uma topologia fraca, ou seja, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$.
+			\item 3) $X$ tem uma topologia fraca, ou seja, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$.
 		\end{itemize}
 	\end{definicao}
 \end{frame}
@@ -308,7 +306,6 @@ A motivação esta na conjectura de Arnold.
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
-
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
 	\titulo{Grupo Simplético}
@@ -330,11 +327,52 @@ A motivação esta na conjectura de Arnold.
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
+	\begin{definicao}
+		(Espaços $\omega$-ortogonais) Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial simplético. Então o complemento $\omega$-ortogonal de $W$ é o subespaço vetorial simplético
+		$$
+		W^{\omega} = \{v\in V: \omega(v,u) = 0,\;\forall u\in W \}.
+		$$
+		Além disso, $W$ pode ser classificado de acordo com as seguintes características
+		\begin{itemize}
+		\item 1) \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$
+			
+		\item 2) \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
+		
+		\item 3) \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
+		
+		\item 4) \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
+		\end{itemize}
+	\end{definicao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{lema}
+		(Caracterização de subespaço simplético)
+	\end{lema}
+	\begin{itemize}
+		\item 1) Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
+		
+		\item 2) Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
+		
+		\item 3) Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico. 
+	\end{itemize}
+	Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir nos dá uma relação entre as dimensões desses dois espaços vetoriais.
+	
+	\begin{proposicao}
+		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
+	\end{proposicao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
 	\begin{proposicao}
 		$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
 	\end{proposicao}
 	
-	\begin{lema}\label{lema_caracterizacao_Sp2n}
+	\begin{lema}
 		(Caracterização de $Sp(2n)$) Se $(V, \omega)$ é um 2n-espaço vetorial simplético e $J \in \estruturascomplexaspadrao$ uma estrutura complexa $\omega$-compatível, então $A\in Sp(2n)$ se, e somente se, $A^{t}JA = J$. Além disso, podemos escrever 
 		$$
 		A=
@@ -380,10 +418,6 @@ A motivação esta na conjectura de Arnold.
 		\begin{lema}
 			Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 		\end{lema}
-		\begin{prova}
-			Temos que $A^{t}\estruturacomplexa A = \estruturacomplexa$. Supondo que $A$ seja invertível, então $A^{t} = \estruturacomplexa A^{-1} \estruturacomplexa^{-1}$. Logo $A^{t}$ é semelhante a $A^{-1}$. Sabe-se que $A$ é semelhante a $A^{t}$, logo $A$ é semelhante a $A^{-1}$. Como matrizes semelhantes possuem o mesmo polinômio característico, então $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
-		\end{prova}
-		
 		\begin{observacao}
 			$\lambda \in \sigma(A)$ se , e somente se, $\lambda^{-1}\in \sigma(A)$.
 		\end{observacao}
@@ -464,32 +498,6 @@ A motivação esta na conjectura de Arnold.
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
-	\titulo{A topologia do grupo simplético}
-	\begin{proposicao}
-		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
-	\end{proposicao}
-	
-	\begin{lema}
-		$\matrizSimpleticaOrtogonal$ é conexo por caminhos, logo é conexo.
-	\end{lema}
-	
-	\begin{lema}
-		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
-	\end{lema}
-	
-	\begin{teorema}
-		$\gruposimpletico{2n}$ é conexo por caminhos, logo é conexo.
-	\end{teorema}
-	
-	\begin{teorema}
-		O quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
-	\end{teorema}
-	
-\end{frame}
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-\begin{frame}
 	A conexidade de $\gruposimpletico{2n}$ é um resultado fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$.
 	
 	\begin{teorema}
@@ -510,4 +518,202 @@ A motivação esta na conjectura de Arnold.
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Axiomatização do Índice de Maslov}
+	
+	\begin{itemize}
+		\item 
+		Originalmente, o índice de Maslov foi definido para associar um caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equi
+		valentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. 
+		
+		\item 
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V}$. Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes axiomas:
+	\end{itemize}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 1) \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
+		$$
+		\mu(\gamma) = \mu(\gamma\circ g).
+		$$
+		\item 2) \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhoslagrangianosV{a}{b}$ e $h:[0,1] \times [a,b] \to L_{V}\times L_{V}$ uma homotopia de extremos fixos entre $\gamma$ e $\beta$. Então
+		$$
+		\mu(\gamma) = \mu(\beta).
+		$$
+		\item 3) \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhoslagrangianosV{a}{c}$, então $$
+		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
+		$$
+	\end{itemize}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 4) \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$ dadas por $\gamma(t) = (L_{1}(t), L_{2}(t))$, $\gamma'(t) = (L'_{1}(t), L'_{2}(t))$, respectivamente, onde $L_{j}, L'_{j}: [a,b] \to L_{V}$ são aplicações contínuas por partes. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
+		$$
+		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
+		$$
+		\item 5) \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}: \caminhoslagrangianosV{a}{b} \to \caminhoslagrangianosV{a}{b}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t, L_{1}(t)), \phi(t, L_{2}(t)))$. Então 
+		$$
+		\mu(\phi_{*}\gamma) = \mu(\gamma)).
+		$$
+	\end{itemize}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 6) \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=v_{1}+iv_{2},u =u_{1}+iu_{2}\in \complexo{}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
+		\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
+		\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
+		\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{A aplicação $\rho$}
+	\begin{itemize}
+		\item Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
+		
+		\item 
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo transformações simpleticas definidas em $V$.
+		
+		\item \begin{teorema}\label{teorema_aplicacao_rho}
+			Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
+			
+		\end{teorema}
+		
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+			\item 1) \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
+			$$
+			\rho(TAT^{-1}) = \rho(A)
+			$$
+			para toda $A\in \gruposimpletico{V_{1}}$.
+			
+			\item 2) \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
+			$$
+			\rho(A) = \rho(A_{1})\rho(A_{2})
+			$$
+			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
+			
+			\item 3) \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
+			$$
+			\rho(A) = det(X+iY), \text{onde} \;	
+			A=\left(
+			\begin{array}{cc}
+			X & -Y					\\
+			Y & X
+			\end{array}
+			\right).
+			$$
+			Além disso, a aplicação indizuda $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
+			
+			\item 4) \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
+		
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Índice de Maslov}
+	\begin{definicao}
+		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por $\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A})$.
+	
+	\end{definicao}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 
+		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
+		
+		\item  Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
+	\end{itemize}
+	
+	\begin{teorema}
+		Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
+	\end{teorema}
+	\begin{itemize}
+		
+		\item 1) $\mu(\psi) \in \inteiros$.
+		\item 2) Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+		\item 3) $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+		\item 4) Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+		$$
+		\mu(\psi) = Ind(S) - n,
+		$$
+		onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 
+		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
+		
+		\item  Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
+	\end{itemize}
+	
+	\begin{teorema}
+		Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
+	\end{teorema}
+	\begin{itemize}
+		
+		\item 1) $\mu(\psi) \in \inteiros$.
+		\item 2) Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+		\item 3) $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+		\item 4) Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+		$$
+		\mu(\psi) = Ind(S) - n,
+		$$
+		onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	O caso de sistemas Hamiltonianos autônomos fica reduzido ao caso de uma função de Morse $H:M\to \real{}$ cujo conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$. Com isso, o índice de Maslov terá uma relação direta com índice de Morse da seguinte forma:
+	
+	\begin{corolario}
+		Sejam $(M, \omega)$ uma 2n-variedade simplética, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$ pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
+		$$
+		\mu(x) = Ind(x) - n.
+		$$
+	\end{corolario}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \end{document}
