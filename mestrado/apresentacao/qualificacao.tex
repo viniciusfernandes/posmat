@@ -1,0 +1,718 @@
+\documentclass{beamer}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\newcommand{\titulo}[1]{\centering \textbf{#1}}
+
+\input{../macros.tex}
+
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          alternativetitlepage=true,% Use the fancy title page.
+          titlepagelogo=logo-ufabc,% Logo for the first page.
+          watermark=watermark-ufabc,% Watermark used in every page.
+          watermarkheight=50px,% Height of the watermark.
+          watermarkheightmult=6% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{ufabc}
+
+\author{Vinicius Fernandes}
+\title{Homologia de Floer, Índice de Maslov e a Conjectura de Arnold}
+\institute{Universidade Federal do ABC}
+\date{18 de Agosto de 2017}
+
+\begin{document}
+	
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+
+A motivação esta na conjectura de Arnold.
+
+\begin{itemize}
+	\item \textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de pontos críticos de uma função Hamiltoniana em $M$.}
+	\item \textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina  $H:M\times \real{} \to \reta$  uma função hamiltonia 1-periódica e suponha que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
+	$$
+	\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
+	$$
+	onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
+\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	
+	A motivação esta na conjectura de Arnold.
+	
+	\begin{itemize}
+		\item \textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de pontos críticos de uma função Hamiltoniana em $M$.}
+		\item \textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina  $H:M\times \real{} \to \reta$  uma função hamiltonia 1-periódica e suponha que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
+			$$
+			\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
+			$$
+			onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	
+	\begin{proposicao}
+		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
+		$$
+		\xymatrix{
+			& \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
+		}
+		$$
+	\end{proposicao}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{definicao}
+		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
+	\end{definicao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	
+	\begin{definicao}
+		(CW-complexo) Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
+		$$
+		\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
+		$$ 
+		tais que:
+		\begin{itemize}
+			\item 1) $\skeleton{0}$ é um conjunto discreto de pontos.
+			
+			\item 2) $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$.
+			
+			\item 3) $X$ tem uma topologia fraca, ou seja, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$.
+		\end{itemize}
+	\end{definicao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{exemplo}
+		(n-esfera) Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+	\end{exemplo}
+	\begin{exemplo}
+		(Disco com alça) Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.   
+	\end{exemplo}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	
+	\begin{lema}
+		(Homologia celular relativa) Sejam $A$ um anel comutativo com unidade e $X$ um CW-complexo, então
+		$$
+		\homologiarelskelesimpl{k}{n} \cong 
+		\left\{
+		\begin{array}{cc}
+		\mathcal{C}_{n}(X), & k = n\\
+		0, & k\neq n\\
+		\end{array}
+		\right.,
+		$$
+		onde $\mathcal{C}_{n}(X)$ é um $A-$módulo livre e finitamente gerado pelas $n-$células de $X$. Além disso,
+		$$
+		\mathcal{C}_{n}(X) \cong \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} A
+		$$
+		em que 
+		$$
+		\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
+		$$
+		denota o isomorfismo descrito.
+	\end{lema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{teorema}
+		(CW-homologia) Seja $X$ um CW-complexo, então existe uma identificação natural entre a CW-homologia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
+		$$
+		\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
+		$$
+	\end{teorema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{definicao}
+		(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
+	\end{definicao}
+	\begin{lema}
+		(Lema de Morse) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ cujo índice é $\lambda_{p}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
+		$$
+		\begin{aligned}
+		(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) &= f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda_{p}}+x^{2}_{\lambda_{p}+1}+\dots + x^{2}_{n}
+		\\
+		&=f(p)+x^{t}Dx,
+		\end{aligned}
+		$$
+		onde $D$ é a representação diagonal de $H_{p}(f)$.
+	\end{lema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{exemplo}
+		Sejam $S^{2} \subset \real{3}$ a 2-esfera centrada na origem e $f:S^{2}\to \reta$ a função altura dadar por $f(x,y,z) = z$. Os pontos críticos de $f$ são $p_{\pm} = \{(0,0,\pm 1)\}$, cujos índices são $\lambda_{- } = 0$ e $\lambda_{+ } = 2$.
+	\end{exemplo}
+	
+	As funções de Morse não são um caso raro nessa descrição, muito pelo contrário. O seguinte teorema garante que tais funções são abundantes no conjunto das funções suaves.
+	\begin{teorema}
+		Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
+	\end{teorema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+	
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+	
+	\begin{teorema}
+		Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomordo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+	\end{teorema}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, se $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro.
+	
+	\begin{teorema}
+		Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda}$.
+	\end{teorema}
+	\begin{observacao}
+		O teorema anterior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([c-\epsilon,c+\epsilon])$. No caso em que $f^{-1}([c-\epsilon,c+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$, teremos $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$.
+	\end{observacao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Espaços Vetoriais Simpléticos - Origem na Física}
+	
+	Parte dos sistemas físicos conhecidos podem ser descritos via mecânica Newtoniana, cuja dinâmica é regida pela equação diferencial 
+	$$
+	F(t) = m\derivada{v(t)}{t} = \derivada{p(t)}{t}.
+	$$
+	Suponha agora que exista uma função, chamada de energia potencial, de classe $C^{2}$ tal que $U:\real{3}\to \reta$ e $F = -\nabla U$. Tomando $q=(q_{1},q_{2}, q_{3})\in \real{3}$, então $\gamma(t)=(q_{1}(t),q_{2}(t), q_{3}(t)) = q(t)$ e podemos escrever $F(q(t)) =m \ddot{q}(t)= -\nabla U(q(t))$. Temos
+	$$
+	\dot{q} = \frac{p}{m} \;\; e \;\;\dot{p} = -\nabla U(q).
+	$$	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Geometrização}
+	
+	Seja $H:\real{2n} \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$ e $\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=\{\partial_{q}, \partial_{p}\}$ uma base de $\real{2n}$. O gradiente Hamiltoniano é dado por
+	$$
+	\nabla H =\sum_{j=1}^{n}\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
+	$$
+	
+	Definimos o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
+	$$
+	\campohamiltonianoabrev = -\estruturacomplexa \nabla H = \sum_{j=1}^{n}\derivadaparcial{H}{p_{j}}\derivadaparcial{}{q_{j}} - \derivadaparcial{H}{q_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
+	$$
+	onde
+	$$
+	\estruturacomplexa=
+	\left(
+	\begin{array}{cc}
+	0 & -Id
+	\\
+	Id & 0
+	\end{array}
+	\right). 
+	$$
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	 Então as equações de Hamilton podem ser reescritas como 
+	 $$
+	 \begin{aligned}
+	 \dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
+	 \\
+	 \left(
+	 \begin{array}{c}
+	 \dot{q}(t)
+	 \\
+	 \dot{p}(t)
+	 \end{array}
+	 \right)
+	 &=
+	 \left(
+	 \begin{array}{c}
+	 \derivadaparcial{H(t)}{q}
+	 \\
+	 -\derivadaparcial{H(t)}{p}
+	 \end{array}
+	 \right).
+	 \end{aligned}
+	 $$
+	 Definindo $\omega_{0}= \sum_{j}  dq_{j}\wedge dp_{j}$, onde $dp_{i}(q_{j}) = dq_{i}(p_{j}) = 0$ e $dq_{i}(q_{j}) = dp_{i}(p_{j}) = \delta_{ij}$, temos
+	 $$
+	 \formaSimpleticaPadrao{\campohamiltonianoabrev}{v} = dH(v).
+	 $$
+	 
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{definicao}
+		(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
+	\end{definicao}
+	\begin{definicao}
+		(Base simplética) Seja $(V, \omega)$ um 2n-espaço vetorial simplético, então uma base simplética é uma base $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
+		$$
+		\omega(e_{i}, e_{j}) = \omega(f_{i}, f_{j}) = 0, \; \omega(e_{i}, f_{j}) = \delta_{ij}.
+		$$
+	\end{definicao}
+	\begin{teorema}
+		(Existência de base simplética) Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
+	\end{teorema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Grupo Simplético}
+	
+	Daqui em diante vamos denotar por $\gruposimpletico{2n}$ o grupo simplético real $\gruposimpletico{\real{2n}}$.
+	
+	\begin{definicao}
+		(Transformação simplética) Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. Um operador linear $T: V \to V$ é uma transformação simplética se 
+		$$
+		\formaSimpletica{Tu}{Tv} = \formaSimpletica{u}{v}
+		$$ para todo $u,v\in V$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Grupo simplético) O grupo simplético $\gruposimpletico{V} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
+	\end{definicao}	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{definicao}
+		(Espaços $\omega$-ortogonais) Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial simplético. Então o complemento $\omega$-ortogonal de $W$ é o subespaço vetorial simplético
+		$$
+		W^{\omega} = \{v\in V: \omega(v,u) = 0,\;\forall u\in W \}.
+		$$
+		Além disso, $W$ pode ser classificado de acordo com as seguintes características
+		\begin{itemize}
+		\item 1) \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$
+			
+		\item 2) \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
+		
+		\item 3) \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
+		
+		\item 4) \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
+		\end{itemize}
+	\end{definicao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{lema}
+		(Caracterização de subespaço simplético)
+	\end{lema}
+	\begin{itemize}
+		\item 1) Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
+		
+		\item 2) Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
+		
+		\item 3) Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico. 
+	\end{itemize}
+	Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir nos dá uma relação entre as dimensões desses dois espaços vetoriais.
+	
+	\begin{proposicao}
+		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
+	\end{proposicao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{proposicao}
+		$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
+	\end{proposicao}
+	
+	\begin{lema}
+		(Caracterização de $Sp(2n)$) Se $(V, \omega)$ é um 2n-espaço vetorial simplético e $J \in \estruturascomplexaspadrao$ uma estrutura complexa $\omega$-compatível, então $A\in Sp(2n)$ se, e somente se, $A^{t}JA = J$. Além disso, podemos escrever 
+		$$
+		A=
+		\left(
+		\begin{array}{cc}
+		B & C
+		\\
+		D & E
+		\end{array}
+		\right)
+		$$
+		onde $B^{t}D, C^{t}E, BC^{t}, DE^{t} $ são matrizes simétricas e $B^{t}E - D^{t}C = Id$ e $BE^{t} - CD^{t} = Id$.
+	\end{lema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	
+	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Com isso, consideremos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	$$
+	F(A)=
+	\left(
+	\begin{array}{cc}
+	B & -C
+	\\
+	C & B
+	\end{array}
+	\right).
+	$$
+	
+	
+	\begin{lema}
+		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
+	\end{lema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+		Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
+		
+		\begin{lema}
+			Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
+		\end{lema}
+		\begin{observacao}
+			$\lambda \in \sigma(A)$ se , e somente se, $\lambda^{-1}\in \sigma(A)$.
+		\end{observacao}
+		
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{lema}
+		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ sejam tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
+	\end{lema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Resultados de Álgebra}
+		
+	Sejam $V$ um n-espaço vetorial real, $B= \{e_{j}\}_{j=1}^{n}$ uma base ordenada e $f:V\times V\to \reta$ uma aplicação bilinear. Definindo $A$ como a matriz de $f$ na base $B$, isto é, $A_{ij} = f(e_{i}, e_{j})$, pode-se mostrar que $f$ é positiva-definida se, e somente se, a função $g_{A}: M_{n\times 1}(\reta)\times M_{n\times 1}(\reta) \to \reta$, definida por $
+		g_{A}(U,V) = U^{t}AV$, é positiva-definida.
+	
+	\begin{definicao}
+		(k-subdeterminante) Seja $A \in \matrizquadreal{n}$. O seu k-subdeterminante é
+		$$
+		det_{k}(A) =
+		det \left(
+		\begin{array}{ccc}
+		A_{11} & \dots & A_{1k}
+		\\
+		\vdots & \ddots & \vdots
+		\\
+		A_{k1} & \dots & A_{kk}
+		\end{array}
+		\right),\;\; 1\leq k \leq n.
+		$$
+	\end{definicao}	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{teorema}
+		Sejam $V$ um n-espaço vetorial real, $f: V\times V\to \reta$ uma aplicação bilinear e $A$ a matriz de $f$ na base ordenada $B$. Então $f$ é positiva-definida se, e somente se, $A=A^{t}$ e $det_{k}(A)>0$ para $1\leq k\leq n$.
+	\end{teorema}
+	
+	\begin{observacao}
+		Do teorema anterior pode-se afirmar que, se $A$ for diagonalizável, todos os seus auto-valores serão positivos.
+	\end{observacao}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{A topologia do grupo simplético}
+	\begin{proposicao}
+		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
+	\end{proposicao}
+	
+	\begin{lema}
+		$\matrizSimpleticaOrtogonal$ é conexo por caminhos, logo é conexo.
+	\end{lema}
+	
+	\begin{lema}
+		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
+	\end{lema}
+	
+	\begin{teorema}
+		$\gruposimpletico{2n}$ é conexo por caminhos, logo é conexo.
+	\end{teorema}
+	
+	\begin{teorema}
+		O quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
+	\end{teorema}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	A conexidade de $\gruposimpletico{2n}$ é um resultado fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$.
+	
+	\begin{teorema}
+		$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+	\end{teorema}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	Definamos os conjuntos $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$, $\gruposimpleticonaodegenerado{+} = \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e  $\gruposimpleticonaodegenerado{-} = \{ A \in \gruposimpletico{2n}: det(Id-A)< 0 \}$.
+
+	\begin{lema}
+		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
+	\end{lema}
+	
+	Essa propriedade de $\gruposimpleticonaodegenerado{*}$ é um dos pontos-base da construção do índice de Maslov.
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Axiomatização do Índice de Maslov}
+	
+	\begin{itemize}
+		\item 
+		Originalmente, o índice de Maslov foi definido para associar um caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equi
+		valentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. 
+		
+		\item 
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V}$. Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes axiomas:
+	\end{itemize}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 1) \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
+		$$
+		\mu(\gamma) = \mu(\gamma\circ g).
+		$$
+		\item 2) \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhoslagrangianosV{a}{b}$ e $h:[0,1] \times [a,b] \to L_{V}\times L_{V}$ uma homotopia de extremos fixos entre $\gamma$ e $\beta$. Então
+		$$
+		\mu(\gamma) = \mu(\beta).
+		$$
+		\item 3) \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhoslagrangianosV{a}{c}$, então $$
+		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
+		$$
+	\end{itemize}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 4) \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$ dadas por $\gamma(t) = (L_{1}(t), L_{2}(t))$, $\gamma'(t) = (L'_{1}(t), L'_{2}(t))$, respectivamente, onde $L_{j}, L'_{j}: [a,b] \to L_{V}$ são aplicações contínuas por partes. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
+		$$
+		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
+		$$
+		\item 5) \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}: \caminhoslagrangianosV{a}{b} \to \caminhoslagrangianosV{a}{b}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t, L_{1}(t)), \phi(t, L_{2}(t)))$. Então 
+		$$
+		\mu(\phi_{*}\gamma) = \mu(\gamma)).
+		$$
+	\end{itemize}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 6) \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=v_{1}+iv_{2},u =u_{1}+iu_{2}\in \complexo{}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
+		\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
+		\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
+		\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{A aplicação $\rho$}
+	\begin{itemize}
+		\item Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
+		
+		\item 
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo transformações simpleticas definidas em $V$.
+		
+		\item \begin{teorema}\label{teorema_aplicacao_rho}
+			Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
+			
+		\end{teorema}
+		
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+			\item 1) \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
+			$$
+			\rho(TAT^{-1}) = \rho(A)
+			$$
+			para toda $A\in \gruposimpletico{V_{1}}$.
+			
+			\item 2) \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
+			$$
+			\rho(A) = \rho(A_{1})\rho(A_{2})
+			$$
+			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
+			
+			\item 3) \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
+			$$
+			\rho(A) = det(X+iY), \text{onde} \;	
+			A=\left(
+			\begin{array}{cc}
+			X & -Y					\\
+			Y & X
+			\end{array}
+			\right).
+			$$
+			Além disso, a aplicação indizuda $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
+			
+			\item 4) \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
+		
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Índice de Maslov}
+	\begin{definicao}
+		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por $\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A})$.
+	
+	\end{definicao}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 
+		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
+		
+		\item  Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
+	\end{itemize}
+	
+	\begin{teorema}
+		Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
+	\end{teorema}
+	\begin{itemize}
+		
+		\item 1) $\mu(\psi) \in \inteiros$.
+		\item 2) Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+		\item 3) $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+		\item 4) Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+		$$
+		\mu(\psi) = Ind(S) - n,
+		$$
+		onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{itemize}
+		\item 
+		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
+		
+		\item  Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
+	\end{itemize}
+	
+	\begin{teorema}
+		Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
+	\end{teorema}
+	\begin{itemize}
+		
+		\item 1) $\mu(\psi) \in \inteiros$.
+		\item 2) Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+		\item 3) $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+		\item 4) Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+		$$
+		\mu(\psi) = Ind(S) - n,
+		$$
+		onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
+	\end{itemize}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	O caso de sistemas Hamiltonianos autônomos fica reduzido ao caso de uma função de Morse $H:M\to \real{}$ cujo conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$. Com isso, o índice de Maslov terá uma relação direta com índice de Morse da seguinte forma:
+	
+	\begin{corolario}
+		Sejam $(M, \omega)$ uma 2n-variedade simplética, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$ pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
+		$$
+		\mu(x) = Ind(x) - n.
+		$$
+	\end{corolario}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\end{document}
