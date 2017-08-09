@@ -6,7 +6,221 @@
 
 \newcommand{\titulo}[1]{\centering \textbf{#1}}
 
-\input{../macros.tex}
+% PACOTES PARA DIAGRAMAS %
+\usepackage[all,cmtip]{xy}
+% PACOTES PARA DIAGRAMAS %
+
+% QUALIFICADORES DOS RESULTADOS: TEOREMAS, LEMAS, COROLARIOS E PROVA %
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{corolario}[teorema]{Corolário}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{definicao}[teorema]{Definição}
+\newtheorem{exemplo}[teorema]{Exemplo}
+\newtheorem{observacao}[teorema]{Observação}
+\newtheorem{proposicao}[teorema]{Proposição}
+\newenvironment{prova}[1]{$\square$ #1}{\hfill$\blacksquare$}
+% QUALIFICADORES DOS RESULTADOS: TEOREMAS, LEMAS, COROLARIOS E PROVA %
+
+% AQUI ESTAO OS COMANDOS %
+\newcommand{\aplicacaoexponencial}[2]{exp_{#1}(#2)}
+\newcommand{\aplicacaoexponencialgeral}[1]{exp_{#1}}
+\newcommand{\aplicaoessuaves}[2]{C^{\infty}(#1, #2)}
+\newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo, M)}
+\newcommand{\autoespaco}[1]{E_{#1}}
+\newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
+\newcommand{\bigparenteses}[1]{\Big( #1 \Big) }
+\newcommand{\bordo}[1]{\partial_{#1}}
+\newcommand{\bordorel}[1]{\overline{\partial}_{#1}}
+\newcommand{\cadeia}[2]{C_{#1}(#2; A)}
+\newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
+\newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
+\newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
+\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
+\newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
+\newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
+\newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
+\newcommand{\caminhos}{\mathcal{L}}
+\newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
+\newcommand{\caminhoslagrangianos}[3]{\caminhos_{#3}(#1,#2)}
+\newcommand{\caminhoslagrangianosV}[2]{\caminhoslagrangianos{#1}{#2}{V}}
+\newcommand{\caminhospontobase}[1]{\caminhos_{#1}}
+\newcommand{\caminhossempontobase}[1]{\caminhos(#1)}
+\newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{2n})}
+\newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
+\newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
+\newcommand{\caminhossubespacoslagrangianos}[2]{L[#1,#2]}
+\newcommand{\campogradiente}{\mathcal{X}}
+\newcommand{\campogradientefuncional}{\mathcal{X}_{\mathcal{A}}}
+\newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
+\newcommand{\campohamiltonianoabrev}{X_{H}}
+\newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
+\newcommand{\celula}[2]{D^{#1}_{#2}}
+\newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
+\newcommand{\circulo}{S^{1}}
+\newcommand{\circulovariedade}{\circulo\times M}
+\newcommand{\cktopologia}[1]{\mathcal{C}^{#1}\text{-topologia}}
+\newcommand{\classe}[1]{[#1]}
+\newcommand{\cohomologia}[2]{H^{#1}(#2)}
+\newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
+\newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
+\newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
+\newcommand{\colecao}[1]{\{#1_{k} \}_{k\in \inteiros}}
+\newcommand{\colecaoabrev}[1]{\{#1 \}_{k\in \inteiros}}
+\newcommand{\colecaofinita}[2]{\{#1_{j} \}_{j=1}^{#2}}
+\newcommand{\colecaofinitaabrev}[2]{\{#1 \}_{j=1}^{#2}}
+\newcommand{\complementar}[2]{#1 \backslash #2}
+\newcommand{\complexificacao}[1]{#1_{\complexo{}}}
+\newcommand{\complexificacaotensorial}[1]{\complexo{}\otimes_{\reta} #1}
+\newcommand{\complexificado}[1]{\mathcal{V}}
+\newcommand{\complexificacaoelemento}[2]{#1\otimes_{\reta} #2}
+\newcommand{\complexo}[1]{\mathbb{C}^{#1}}
+\newcommand{\diferencialfloer}{D\operadorflor}
+\newcommand{\diferencialfloerabrev}{\mathcal{D}}
+\newcommand{\derivada}[2]{\frac{d #1}{d #2}}
+\newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
+\newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
+\newcommand{\distribuicoes}{\distribuicoesgeral{\Omega}}
+\newcommand{\distribuicoesgeral}[1]{\mathcal{D'}(#1)}
+\newcommand{\energiafinitaM}{\mathcal{E}M}
+\newcommand{\energiafinitaMconectante}{\energiafinitaM(x^{-}, x^{+})}
+\newcommand{\espacoLdois}[1]{L^{2}(#1)}
+\newcommand{\espacoLp}[1]{L^{p}(#1)}
+\newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
+\newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
+\newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
+\newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacomoduli}[2]{\mathcal{M}_{#1#2}}
+\newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
+\newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
+\newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
+\newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
+\newcommand{\espacotangente}[1]{\espacotangenteponto{p}{#1}}
+\newcommand{\espacotangentevariedadeestavel}{T^{s}_{p}M}
+\newcommand{\espacotangentevariedadeinstavel}{T^{u}_{p}M}
+\newcommand{\espacotangenteponto}[2]{T_{#1}#2}
+\newcommand{\espacotangentevariedade}{\espacotangenteponto{p}{M}}
+\newcommand{\espectrooperador}[1]{\sigma(#1)}
+\newcommand{\estruturacomplexa}{J_{0}}
+\newcommand{\estruturascomplexas}[2]{\mathcal{J}(#1, #2)}
+\newcommand{\estruturascomplexaspadrao}{\mathcal{J}(V, \omega)}
+\newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-}, x^{+})}
+\newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
+\newcommand{\formaSimpletica}[2]{\omega(#1, #2)}
+\newcommand{\formaSimpleticaabrev}{\omega_{0}}
+\newcommand{\formaSimpleticaExtendida}[2]{\Omega(#1, #2)}
+\newcommand{\formaSimpleticaPadrao}[2]{\omega_{0}(#1, #2)}
+\newcommand{\funcaocond}[5]{
+	#1 = 
+	\left\{
+	\begin{array}{cc}
+		#2, & #3\\
+		#4, & #5\\
+	\end{array}
+	\right.
+}
+\newcommand{\funcionalH}{\mathcal{A}_{H}}
+\newcommand{\funcionalHponto}[1]{\mathcal{A}_{H}(#1)}
+\newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
+\newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
+\newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
+\newcommand{\funcoesmorsesmale}[1]{\mathcal{M}^{S}_{o}(#1)}
+\newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
+\newcommand{\funcoesteste}{\mathcal{D}(\Omega)}
+\newcommand{\generalgroup}[2]{GL(#1, #2)}
+\newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
+\newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
+\newcommand{\gradiente}{\nabla f}
+\newcommand{\gradientefuncional}{\nabla \funcionalH}
+\newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
+\newcommand{\grupofundamentalpontobase}[2]{\pi_{1}(#1; #2)}
+\newcommand{\gruposimpletico}[1]{Sp(#1)}
+\newcommand{\gruposimpleticocomplexo}[1]{Sp(#1; \complexo{})}
+\newcommand{\gruposimpleticoreal}[1]{Sp(#1;\reta)}
+\newcommand{\gruposimpleticoespecial}[1]{Sp^{1}(#1)}
+\newcommand{\gruposimpleticonaodegenerado}[1]{Sp^{#1}(2n)}
+\newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
+\newcommand{\hessiana}{H_{p}(f)}
+\newcommand{\homologia}[2]{H_{#1}(#2;A)}
+\newcommand{\homologiaabrev}[2]{H_{#1}(#2)}
+\newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
+\newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
+\newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
+\newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
+\newcommand{\imagembordo}[2]{B_{#1}(#2;A)}
+\newcommand{\imagembordoabrev}[2]{B_{#1}(#2)}
+\newcommand{\induzida}[1]{#1_{\#}}
+\newcommand{\inteiros}{\mathbb{Z}}
+\newcommand{\inteirospos}{\inteiros_{+}}
+\newcommand{\iprod}[2]{\langle #1, #2 \rangle}
+\newcommand{\intervalo}{[0,1]}
+\newcommand{\kernelbordo}[2]{Z_{#1}(#2;A)}
+\newcommand{\kernelbordoabrev}[2]{Z_{#1}(#2)}
+\newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
+\newcommand{\operadorflor}{\mathcal{F}}
+\newcommand{\operadorflordefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
+\newcommand{\operadorflorparametro}[1]{\mathcal{F}(#1)}
+\newcommand{\operadorflorpadrao}{\operadorflorparametro{u}}
+\newcommand{\matrizantisimetrica}[1]{Asym(#1)}
+\newcommand{\matrizortogonal}[1]{O(#1)}
+\newcommand{\matrizquadcomplexa}[1]{M_{#1 \times #1}(\complexo{})}
+\newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
+\newcommand{\matrizsimetrica}[1]{Sym(#1)}
+\newcommand{\matrizSimpleticaOrtogonal}{\mathcal{U}}
+\newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
+\newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
+\newcommand{\matrizunitaria}[1]{U(#1)}
+\newcommand{\norma}[1]{||#1||}
+\newcommand{\normagrande}[1]{\Big|\Big|#1\Big|\Big|}
+\newcommand{\normaLp}[1]{||#1||_{L^{p}}}
+\newcommand{\normaLpdefinicao}[2]{ \Big(\int_{#2}#1^{p}\Big)^{1/p}}
+\newcommand{\normaLpDominio}[2]{||#1||_{L^{p}(#2)}}
+\newcommand{\normaLgGeral}[3]{\norma{#1}_{\espacoLpGeral{#2}{#3}}}
+\newcommand{\normapequenaLpdefinicao}[2]{ \normaLpdefinicao{\norma{#1}}{#2}}
+\newcommand{\normagrandeLpdefinicao}[2]{ \normaLpdefinicao{\normagrande{#1}}{#2}}
+\newcommand{\normasubscrito}[2]{\norma{#1}_{#2}}
+\newcommand{\normaWp}[1]{||#1||_{W^{1,p}}}
+\newcommand{\normaWpgeral}[2]{||#1||_{W^{1,#2}}}
+\newcommand{\normaWpGeralDominio}[3]{\norma{#1}_{W^{1,#2}(#3)}}
+\newcommand{\normaWpDominio}[2]{||#1||_{W^{1,p}(#2)}}
+\newcommand{\operadorcauchyabrev}[1]{\overline{\partial}_{#1}}
+\newcommand{\operadorfloer}{\mathfrak{F}}
+\newcommand{\operadoresfredholm}[2]{\mathcal{F}r(#1, #2)}
+\newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
+\newcommand{\orbitaponto}[1]{\mathcal{O}(#1)}
+\newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
+\newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
+\newcommand{\parteImaginaria}[1]{\mathcal{I}m(#1)}
+\newcommand{\parteReal}[1]{\mathcal{R}e(#1)}
+\newcommand{\pontoscriticos}[1]{\textit{Cr}(#1)}
+\newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
+\newcommand{\produtointernoabrev}{\langle ., .\rangle}
+\newcommand{\produtosinternos}[1]{Riem(#1)}
+\newcommand{\produtotensorial}[2]{ #1_{1} \otimes_{\mathbb{K}} \dots \otimes_{\mathbb{K}} #1_{#2}}
+\newcommand{\produtotensorialabrev}[2]{#1\otimes #2}
+\newcommand{\produtotensorialdual}{\produtotensorialabrev{\complexificado{V}^{*}}{\complexificado{V}^{*}}}
+\newcommand{\produtotensorialreal}[2]{\bigotimes_{j=1}^{#1} #2_{j}}
+\newcommand{\pullbackfibradotangente}[2]{#1^{*}T#2}
+\newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
+\newcommand{\pullbackfibradotangenteMpadrao}{\pullbackfibradotangente{u}{M}}
+\newcommand{\retacartesianocirculo}{\real{} \times \circulo}
+\newcommand{\retacartesianovariedade}{\real{} \times M}
+\newcommand{\real}[1]{\mathbb{R}^{#1}}
+\newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
+\newcommand{\reta}{\real{}}
+\newcommand{\subespacoslagrangianos}{L(V)}
+\newcommand{\lacocontrateis}{\mathcal{L}M}
+\newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
+\newcommand{\cilindrosLM}{\mathcal{C}M}
+\newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
+\newcommand{\skeleton}[1]{X^{(#1)}}
+\newcommand{\variedadeconectante}{\variedadeconectantepontos{p}{q}}
+\newcommand{\variedadeconectantepontos}[2]{W_{#1#2}}
+\newcommand{\variedadeestavel}[1]{W^{s}(#1)}
+\newcommand{\variedadeinstavel}[1]{W^{u}(#1)}
+\newcommand{\vermelho}[1]{{\color{red}#1}}
+% AQUI ESTAO OS COMANDOS %
 
 \usetheme[pageofpages=of,% String used between the current page and the
                          % total page count.
@@ -28,22 +242,6 @@
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}[t,plain]
 \titlepage
-\end{frame}
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-\begin{frame}
-
-A motivação esta na conjectura de Arnold.
-
-\begin{itemize}
-	\item \textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de pontos críticos de uma função Hamiltoniana em $M$.}
-	\item \textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina  $H:M\times \real{} \to \reta$  uma função hamiltonia 1-periódica e suponha que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
-	$$
-	\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
-	$$
-	onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
-\end{itemize}
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
@@ -124,7 +322,7 @@ A motivação esta na conjectura de Arnold.
 \begin{frame}
 	
 	\begin{lema}
-		(Homologia celular relativa) Sejam $A$ um anel comutativo com unidade e $X$ um CW-complexo, então
+		(Homologia celular) Sejam $A$ um anel comutativo com unidade e $X$ um CW-complexo, então
 		$$
 		\homologiarelskelesimpl{k}{n} \cong 
 		\left\{
@@ -136,13 +334,9 @@ A motivação esta na conjectura de Arnold.
 		$$
 		onde $\mathcal{C}_{n}(X)$ é um $A-$módulo livre e finitamente gerado pelas $n-$células de $X$. Além disso,
 		$$
-		\mathcal{C}_{n}(X) \cong \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} A
+		\mathcal{C}_{n}(X) \cong \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} A.
 		$$
-		em que 
-		$$
-		\somadir{\sigma}f_{\sigma*}: \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
-		$$
-		denota o isomorfismo descrito.
+		
 	\end{lema}
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
@@ -160,6 +354,7 @@ A motivação esta na conjectura de Arnold.
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
+	\titulo{Teoria de Morse Clássica}
 	\begin{definicao}
 		(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
 	\end{definicao}
@@ -179,10 +374,6 @@ A motivação esta na conjectura de Arnold.
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
-	\begin{exemplo}
-		Sejam $S^{2} \subset \real{3}$ a 2-esfera centrada na origem e $f:S^{2}\to \reta$ a função altura dadar por $f(x,y,z) = z$. Os pontos críticos de $f$ são $p_{\pm} = \{(0,0,\pm 1)\}$, cujos índices são $\lambda_{- } = 0$ e $\lambda_{+ } = 2$.
-	\end{exemplo}
-	
 	As funções de Morse não são um caso raro nessa descrição, muito pelo contrário. O seguinte teorema garante que tais funções são abundantes no conjunto das funções suaves.
 	\begin{teorema}
 		Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
@@ -307,9 +498,62 @@ A motivação esta na conjectura de Arnold.
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
+	
+	
+	
+	\begin{exemplo}
+		$\bullet $ Seja $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $w=dx \wedge dy$. Então $\omega(e_{x}, e_{y}) =dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1$. É imediato que $\omega$ é anti-simetrica. Além disso, $\omega(e_{x}, e_{x}) = \omega(e_{y}, e_{y}) = 0$. 
+		
+		$\bullet $ Suponha $v \in V$ e para qualquer $u \in V$ temos que $\omega(v, u) = \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y}) = v_{x}u_{y}\omega(e_{x}, e_{y}) +v_{y}u_{x}\omega(e_{y}, e_{x}) = v_{x}u_{y} -v_{y}u_{x} = 0$. Tomando $u_{x} = 1$ e $u_{y} = 0$, isso implica que $v_{y} = 0$. Fazendo $u_{x} = 0$ e $u_{y} = 1$ teremos $v_{x} = 0$, logo $v=0$. 
+		
+		$\bullet $ Seja $\varphi:V \to V$ tal que $\varphi(v) = -v$. É imediato que $\varphi$ é um isomorfismo. Então $\varphi^{*}\omega(v, u) = \omega(\varphi v, \varphi u)=\omega(-v, -u)=\omega(v, u)$, logo $\varphi^{*}\omega = \omega$ e $\varphi$ é um simplectomorfismo.		
+	\end{exemplo}
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\titulo{Estruturas complexas}
+	
+	\begin{definicao}
+		\begin{itemize}
+			\item 1) $J: V \to V$ é um endomorfismo tal que $J^{2} = -Id$. 
+			
+			\item 2) $J$ é $\omega$-compatível se $g(u,v):=\omega(u, Jv)$ é um produto interno. 
+			
+			\item 3) $\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas $\omega$-compatíveis.
+		\end{itemize}
+	\end{definicao}
+	
+	Fixaremos a notação
+		$
+		\estruturacomplexa=
+		\left(
+		\begin{array}{cc}
+		0 & Id
+		\\
+		-Id & 0
+		\end{array}
+		\right) \in \estruturascomplexaspadrao .
+		$
+		
+	
+	\begin{definicao}
+		$\produtosinternos{V}$ é o conjunto de todos os produtos internos positivos-definidos em $V$.
+	\end{definicao}
+	
+	\begin{proposicao}
+		$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
+	\end{proposicao}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
 	\titulo{Grupo Simplético}
 	
-	Daqui em diante vamos denotar por $\gruposimpletico{2n}$ o grupo simplético real $\gruposimpletico{\real{2n}}$.
+	Denotaremos $\gruposimpletico{2n}$ por $\gruposimpletico{\real{2n}}$.
 	
 	\begin{definicao}
 		(Transformação simplética) Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. Um operador linear $T: V \to V$ é uma transformação simplética se 
@@ -390,30 +634,40 @@ A motivação esta na conjectura de Arnold.
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
-	
-	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Com isso, consideremos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	Realizando a identificação
 	$$
-	F(A)=
+	\xymatrix{
+		 \generalgroupcomplexo{n}\ar[r]^{F}&\generalgroupreal{2n}\ar[l]
+	}
+	$$
+	$$
+	B+iC \leftrightarrow
 	\left(
 	\begin{array}{cc}
 	B & -C
 	\\
 	C & B
 	\end{array}
-	\right).
-	$$
-	
-	
+	\right)
+	$$  
 	\begin{lema}
-		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
+		$F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
 	\end{lema}
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
-		Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
+	\begin{itemize}
+		\item 1) Vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$. 
 		
+		\item 2) $\espectrooperador{A}$ o espectro de $A \in \gruposimpletico{2n}$ 
+	\end{itemize}	
+	
+	\begin{tiny}
+		Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$.
+		
+	\end{tiny}
 		\begin{lema}
 			Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 		\end{lema}
@@ -466,16 +720,17 @@ A motivação esta na conjectura de Arnold.
 	\begin{observacao}
 		Do teorema anterior pode-se afirmar que, se $A$ for diagonalizável, todos os seus auto-valores serão positivos.
 	\end{observacao}
+	
+	
+	\begin{teorema}
+		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
+	\end{teorema}
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
 	\titulo{A topologia do grupo simplético}
-	\begin{proposicao}
-		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
-	\end{proposicao}
-	
 	\begin{lema}
 		$\matrizSimpleticaOrtogonal$ é conexo por caminhos, logo é conexo.
 	\end{lema}
@@ -526,56 +781,8 @@ A motivação esta na conjectura de Arnold.
 		Originalmente, o índice de Maslov foi definido para associar um caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto \inteiros$. Contudo, existe uma pluralidade de definições equi
 		valentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. 
 		
-		\item 
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V}$. Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes axiomas:
 	\end{itemize}
 	
-\end{frame}
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-\begin{frame}
-	\begin{itemize}
-		\item 1) \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
-		$$
-		\mu(\gamma) = \mu(\gamma\circ g).
-		$$
-		\item 2) \textbf{\textit{(Invariância por Homotopia)}} Sejam $\gamma, \beta \in \caminhoslagrangianosV{a}{b}$ e $h:[0,1] \times [a,b] \to L_{V}\times L_{V}$ uma homotopia de extremos fixos entre $\gamma$ e $\beta$. Então
-		$$
-		\mu(\gamma) = \mu(\beta).
-		$$
-		\item 3) \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhoslagrangianosV{a}{c}$, então $$
-		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
-		$$
-	\end{itemize}
-	
-\end{frame}
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-\begin{frame}
-	\begin{itemize}
-		\item 4) \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$ dadas por $\gamma(t) = (L_{1}(t), L_{2}(t))$, $\gamma'(t) = (L'_{1}(t), L'_{2}(t))$, respectivamente, onde $L_{j}, L'_{j}: [a,b] \to L_{V}$ são aplicações contínuas por partes. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
-		$$
-		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
-		$$
-		\item 5) \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}: \caminhoslagrangianosV{a}{b} \to \caminhoslagrangianosV{a}{b}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t, L_{1}(t)), \phi(t, L_{2}(t)))$. Então 
-		$$
-		\mu(\phi_{*}\gamma) = \mu(\gamma)).
-		$$
-	\end{itemize}
-	
-\end{frame}
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-\begin{frame}
-	\begin{itemize}
-		\item 6) \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=v_{1}+iv_{2},u =u_{1}+iu_{2}\in \complexo{}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
-		\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
-		\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
-		\item $\mu(\gamma|_{[0, \pi/4]}) = 1.$	
-	\end{itemize}
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
@@ -583,10 +790,9 @@ A motivação esta na conjectura de Arnold.
 \begin{frame}
 	\titulo{A aplicação $\rho$}
 	\begin{itemize}
-		\item Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
+		\item O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
 		
-		\item 
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo transformações simpleticas definidas em $V$.
+		\item Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo transformações simpleticas definidas em $V$.
 		
 		\item \begin{teorema}\label{teorema_aplicacao_rho}
 			Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
