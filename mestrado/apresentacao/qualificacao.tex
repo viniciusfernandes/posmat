@@ -422,6 +422,82 @@
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
+	\titulo{Fluxos Gradiente e Variedades de Conexão}
+	
+	$X \in \campossuaves{M}$ e $p \in M$
+	temos $\derivada{\gamma(t)}{t} = X(\gamma(t)), \; \gamma(0) = p$.
+	
+	\begin{definicao}
+		(Órbitas) A órbita de $p \in M$ pelo fluxo $\phi$ é imagem de $\phi(.,p):\reta\to M$ e será denotada por $\orbitaponto{p}$.
+	\end{definicao}
+	\begin{itemize}
+			\item 1) Singular, se $\orbitaponto{p}$ = \{p\}.
+			
+			\item 2) Fechada, se existe $\tau \in \reta$ tal que $\phi_{\tau+t}(p) = p$ para todo $t \in \reta$.
+			
+			\item 3) Regular, quando não é singular e não é fechada.
+	\end{itemize}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{definicao}
+		Os conjunto $\alpha$-limite e $\omega$-limite de $p \in M$ são definidos por $\alpha(p) = \{q \in M: \phi_{t}(p) \to q, t \to -\infty\}$ e $\omega(p) = \{q \in M: \phi_{t}(p) \to q, t \to \infty\}$.
+	\end{definicao}
+	\begin{itemize}
+		\item O campo gradiente negativo $-\gradiente$ da função de Morse $f$ é tal que 
+	\end{itemize}
+	$$
+	\begin{aligned}
+	\derivada{}{t}(f \circ \gamma)(t) &= g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
+	=g(\gradiente(\gamma(t)), -\gradiente(\gamma(t))) 
+	\\
+	&= -\norma{\gradiente(\gamma(t))}^{2}
+	\leq 0.
+	\end{aligned}
+	$$
+	
+	Para o fluxo do gradiente negativo de $f$ temos
+	
+	\begin{lema}\label{lema_conjunto_limite_funcao_morse}
+		Se 
+		$p \in M$. Então $\alpha(p)  = \{q\}$ e $\omega(p) = \{r\}$ onde $q, r \in \pontoscriticos{f}$.
+	\end{lema}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{definicao}
+		(Variedades instáveis/estáveis)  As variedades instável e estável de um ponto $p \in M$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
+	\end{definicao}
+	\begin{teorema}
+		(Teorema da variedade instável/estável) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
+	\end{teorema}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	
+	\begin{definicao}
+		(Variedade Conectante e o Espaço Moduli) A variedade conectante de $p$ e $q$ é $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Tomando $c \in (f(a), f(p)) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
+	\end{definicao}
+	
+	Denotaremos $\variedadeestavel{p}\pitchfork \variedadeinstavel{q}$ se $\espacotangenteponto{y}{\variedadeestavel{p}} + \espacotangenteponto{y}{\variedadeinstavel{q}} = \espacotangenteponto{y}{M}$ para todo $y \in \variedadeestavel{p}\cap\variedadeinstavel{q}$.
+	\begin{definicao}
+		(Funções de Morse-Smale) Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
+	\end{definicao}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
 	\titulo{Geometrização}
 	
 	Seja $H:\real{2n} \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$ e $\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=\{\partial_{q}, \partial_{p}\}$ uma base de $\real{2n}$. O gradiente Hamiltoniano é dado por
