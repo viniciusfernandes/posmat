@@ -263,23 +263,6 @@
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
-	
-	\begin{proposicao}
-		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
-		$$
-		\xymatrix{
-			& \real{}\ar[d]\ar[d]^{\text{exp}}
-			\\
-			[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
-		}
-		$$
-	\end{proposicao}
-	
-\end{frame}
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-\begin{frame}
 	\begin{definicao}
 		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
 	\end{definicao}
@@ -441,33 +424,6 @@
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
-\begin{frame}
-	\begin{definicao}
-		Os conjunto $\alpha$-limite e $\omega$-limite de $p \in M$ são definidos por $\alpha(p) = \{q \in M: \phi_{t}(p) \to q, t \to -\infty\}$ e $\omega(p) = \{q \in M: \phi_{t}(p) \to q, t \to \infty\}$.
-	\end{definicao}
-	\begin{itemize}
-		\item O campo gradiente negativo $-\gradiente$ da função de Morse $f$ é tal que 
-	\end{itemize}
-	$$
-	\begin{aligned}
-	\derivada{}{t}(f \circ \gamma)(t) &= g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
-	=g(\gradiente(\gamma(t)), -\gradiente(\gamma(t))) 
-	\\
-	&= -\norma{\gradiente(\gamma(t))}^{2}
-	\leq 0.
-	\end{aligned}
-	$$
-	
-	Para o fluxo do gradiente negativo de $f$ temos
-	
-	\begin{lema}\label{lema_conjunto_limite_funcao_morse}
-		Se 
-		$p \in M$. Então $\alpha(p)  = \{q\}$ e $\omega(p) = \{r\}$ onde $q, r \in \pontoscriticos{f}$.
-	\end{lema}
-	
-\end{frame}
-% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
 \begin{frame}
@@ -492,6 +448,44 @@
 	\begin{definicao}
 		(Funções de Morse-Smale) Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
 	\end{definicao}
+	
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+	\begin{proposicao}
+		Sejam $f \in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$.
+		\begin{itemize}
+			\item 1) Se $\lambda_{p}<\lambda_{q}$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+			
+			\item 2) $\variedadeconectantepontos{p}{p} = \{p\}$
+			
+			\item 3) Se $\lambda_{p} = \lambda_{q}$ e $p\neq q$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+			
+			\item 4) Se $p \neq q$ tal que $\variedadeconectantepontos{p}{q} \neq \emptyset$, então $\lambda_{p}>\lambda_{q}$.
+		\end{itemize}
+	\end{proposicao}
+
+	Com isso, as óbitas não-singulares do fluxo do gradiente negativo dessa função sempre partem de um ponto crítico para um outro ponto crítico de índice inferior.
+		
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
+\begin{definicao}
+	(Número de intersecção) O sinal característico da órbita $\orbitaponto{x}$ é o índice $n_{x}(B_{\gamma})$ que assume os valores $\pm 1$, caso o referencial $B_{\gamma}$ tenha orientação positiva ou negativa, respectivamente. O número de intersecção é definido por 
+	$$
+	n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}.
+	$$
+\end{definicao}
+
+\end{frame}
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}
 	
 \end{frame}
 % % % % % % % % % % FRAME % % % % % % % % % % % % % % % % % % % % %
