@@ -244,10 +244,15 @@
 	%-------------------------------------------------
 	\begin{frame}
 		\begin{definicao}
-			(Número de intersecção) O sinal característico da órbita $\orbitaponto{x}$ é o índice $n_{x}(B_{\gamma})$ que assume os valores $\pm 1$, caso o referencial $B_{\gamma}$ tenha orientação positiva ou negativa, respectivamente. O número de intersecção é definido por 
-			$$
-			n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}.
-			$$
+			(Número de intersecção) 
+			Dado $x \in \espacomoduli{p}{q}$ tal que $\lambda_{p}-\lambda_{q} = 1$
+			
+			\begin{enumerate}
+				\item $o(\orbitaponto{x})_{ind} = n_{x}o(\phi(x))$, $n_{x}$ é o sinal característico da órbita de $x$.
+				
+				\item $n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}$ é o número de intersecçao de $p$ e $q$.
+			\end{enumerate}
+			
 		\end{definicao}
 		
 	\end{frame}
@@ -399,36 +404,44 @@
 		\frametitle{Estruturas complexas}
 		
 		\begin{definicao}
-			\begin{itemize}
-				\item 1) $J: V \to V$ é um endomorfismo tal que $J^{2} = -Id$. 
-				
-				\item 2) $J$ é $\omega$-compatível se $g(u,v):=\omega(u, Jv)$ é um produto interno. 
-				
-				\item 3) $\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas $\omega$-compatíveis.
-			\end{itemize}
+			$J: V \to V$ é um endomorfismo tal que $J^{2} = -Id$. 
+			\\~\\
+			
+			$J$ é $\omega$-compatível se $g(u,v):=\omega(u, Jv)$ é um produto interno. 
+			\\~\\
+			
+			$\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas $\omega$-compatíveis.
+			\\~\\
+			
+			Fixaremos a notação
+			$
+			\estruturacomplexa=
+			\left(
+			\begin{array}{cc}
+			0 & Id
+			\\
+			-Id & 0
+			\end{array}
+			\right) \in \estruturascomplexaspadrao .
+			$
 		\end{definicao}
 		
-		Fixaremos a notação
-		$
-		\estruturacomplexa=
-		\left(
-		\begin{array}{cc}
-		0 & Id
-		\\
-		-Id & 0
-		\end{array}
-		\right) \in \estruturascomplexaspadrao .
-		$
-		
+	\end{frame}
+	
+	\begin{frame}
 		
 		\begin{definicao}
 			$\produtosinternos{V}$ é o conjunto de todos os produtos internos positivos-definidos em $V$.
 		\end{definicao}
 		
+		
+		\begin{proposicao}
+			Se $V$ é um n-espaço vetorial real, então $\produtosinternos{V}$ é contrátil.
+		\end{proposicao}
+		
 		\begin{proposicao}
 			$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
 		\end{proposicao}
-		
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -436,8 +449,6 @@
 	%-------------------------------------------------
 	\begin{frame}
 		\frametitle{Grupo Simplético}
-		
-		Denotaremos $\gruposimpletico{2n}$ por $\gruposimpletico{\real{2n}}$.
 		
 		\begin{definicao}
 			(Transformação simplética) Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. Um operador linear $T: V \to V$ é uma transformação simplética se 
@@ -449,6 +460,9 @@
 		\begin{definicao}
 			(Grupo simplético) O grupo simplético $\gruposimpletico{V} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
 		\end{definicao}	
+		
+		Denotaremos $\gruposimpletico{2n}$ por $\gruposimpletico{\real{2n}}$.
+		
 	\end{frame}
 	
 	\begin{frame}

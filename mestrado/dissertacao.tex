@@ -157,6 +157,7 @@
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
+\newcommand{\gerador}[1]{\langle #1\rangle}
 \newcommand{\gradiente}{\nabla f}
 \newcommand{\gradientefuncional}{\nabla \funcionalH}
 \newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
@@ -1347,7 +1348,7 @@
 
 	Podemos decompor a variedade $M$ como a união disjunta das variedades instáveis ou união disjunta da variedades estáveis, o que é garantido pelo resultado a seguir.
 	
-	\begin{proposicao}
+	\begin{proposicao}\label{proposicao_uniao_variedade_instavel_estavel}
 		Se $f \in \funcoesmorse{M}$, então
 		$$
 		M = \dot{\bigcup_{p \in \pontoscriticos{f}}}\variedadeestavel{p} = \dot{\bigcup_{p \in \pontoscriticos{f}}}\variedadeinstavel{p}.
@@ -1443,6 +1444,36 @@
 		é chamado operador de bordo de Morse-Smale-Witten e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
 		
 	\end{definicao}
+	
+	\begin{exemplo}
+		(Complexo de Morse-Witten) Considere variedade 2-dimensional $M$ mergulhada em $\real{3}$ e representada pela figura \vermelho{(inserir o número da figura)}. Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Pode-se mostrar que $f=F|_{M} \in \funcoesmorsesmale{M}$,  $\pontoscriticos{f} = \{p,q,r,s\}$ e que os índices de Morse dos pontos críticos de $f$ são $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
+		
+		Definindo $A$ como sendo a imagem do caminho conectando os ponto críticos $r$ e $s$, temos que $\variedadeestavel{q} = \complementar{M}{A}$. Além disso, $\variedadeestavel{p} = A$ e $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$, o que está de acordo com a Proposição $\ref{proposicao_uniao_variedade_instavel_estavel}$. Seja $B$ a imagem dos caminhos conectando $p$ a $q$, então $\variedadeinstavel{p} = B$. Com isso, temos $\variedadeconectantepontos{p}{q} = B$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
+		
+		Seja $D$ a imagem do caminho conectando $r$ a $p$. Temos que $\variedadeinstavel{r}$ é a região da figura colorida em azul. $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap A = D$. Com isso, $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um procedimento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
+		
+		Pela orientação escolhida para a variedade instável $\variedadeinstavel{p}$, temos os sinais característicos $n_{x_{1}}=1$, $n_{x_{2}} = -1$. E a orientação escolhida para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$ nos dá $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
+		$$
+		n(p,q) = n_{x_{1}}+n_{x_{2}} = 0,\; n(r,p) = n(s,p)=n_{x_{3}}= 1. 
+		$$
+		
+		As $k$-cadeias do complexo, para $0\leq k\leq 2$, são
+		$$
+		C_{0}(f) = \inteiros\gerador{q},\; C_{1}(f) = \inteiros\gerador{p},\; C_{2}(f) = \inteiros\gerador{r}\oplus\inteiros\gerador{s}.
+		$$
+		E os $k$-operadores bordo são
+		$$
+		\bordo{0}\gerador{q} =0,\; \bordo{1}\gerador{p}=n(p,q)\gerador{q} = 0,\; \bordo{2}\gerador{r}=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
+		$$
+		
+		\begin{figure}
+			\centering
+			\textbf{Your title}\par
+			\includegraphics{imagem/feijao}
+			\caption{Função altura na variedade}
+		\end{figure}
+	\end{exemplo}
+
 	
 	O seguinte teorema é de grande importância pois afirma o isomorfismo entre a homologia do complexo de Morse-Smale-Witten e a homologia singular da variedade. Sua demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
 	
@@ -1648,7 +1679,7 @@
 		que exista $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$. Com isso, temos $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Portanto $\omega^{*}$ é injetora. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$ temos pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ devemos ter que $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
 	\end{prova}
 	
-	\begin{proposicao}
+	\begin{proposicao}\label{proposicao_dimensao_subespaco_simpletico}
 		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
 	\end{proposicao}
 	\begin{prova}
@@ -1663,7 +1694,7 @@
 		(Existência de base simplética) Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
 	\end{teorema}
 	\begin{prova}
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $e_{1} \neq 0\in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, podemos afirmar que $V_{1}$ é simplético, logo $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes teremos $V = V_{1}\oplus \dots \oplus V_{n}$, onde $V_{i}$ é gerado por $e_{i}$ e $\omega(e_{i}, f_{i}) = 1$. Por construção temos $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $e_{1} \neq 0\in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, podemos afirmar que $V_{1}$ é simplético, ou seja, $V_{1}\cap V_{1}^{\omega} = \{0\}$. Com isso e com a Proposição $\ref{proposicao_dimensao_subespaco_simpletico}$, podemos afirmar que $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes teremos $V = V_{1}\oplus \dots \oplus V_{n}$, onde $V_{i}$ é gerado por $e_{i}$ e $\omega(e_{i}, f_{i}) = 1$. Por construção temos $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_existencia_base_simpletica}
