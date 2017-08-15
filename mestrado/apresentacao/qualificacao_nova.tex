@@ -32,7 +32,7 @@
 	
 	\begin{frame}
 		\frametitle{
-			A motivação esta na conjectura de Arnold.}
+			A motivação.}
 		\textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de pontos críticos de uma função Hamiltoniana em $M$.}
 		\\~\\
 		
@@ -49,18 +49,18 @@
 	%-------------------------------------------------
 	\begin{frame}
 		
-		\begin{definicao}
-			(CW-complexo) Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
+		\begin{definicao}[CW-complexo]
+			Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
 			$$
 			\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
 			$$ 
 			tais que:
 			\begin{itemize}
-				\item 1) $\skeleton{0}$ é um conjunto discreto de pontos.
+				\item $\skeleton{0}$ é um conjunto discreto de pontos.
 				
-				\item 2) $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$.
+				\item $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$.
 				
-				\item 3) $X$ tem uma topologia fraca, ou seja, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$.
+				\item $X$ tem uma topologia fraca, ou seja, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$.
 			\end{itemize}
 		\end{definicao}
 	\end{frame}
@@ -70,13 +70,13 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		\begin{exemplo}
-			(n-esfera) Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+		\begin{exemplo}[n-esfera]
+			Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
 		\end{exemplo}
 		
 		\pause
-		\begin{exemplo}
-			(Disco com alça) Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.   
+		\begin{exemplo}[Disco com alça]
+			Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.   
 		\end{exemplo}
 	\end{frame}
 	
@@ -85,8 +85,8 @@
 	%-------------------------------------------------
 	\begin{frame}
 		
-		\begin{lema}
-			(Homologia celular) Sejam $A$ um anel comutativo com unidade e $X$ um CW-complexo, então
+		\begin{lema}[Homologia celular]
+		 	Sejam $A$ um anel comutativo com unidade e $X$ um CW-complexo, então
 			$$
 			\homologiarelskelesimpl{k}{n} \cong 
 			\left\{
@@ -112,8 +112,8 @@
 	\begin{frame}
 		
 		
-		\begin{teorema}
-			(CW-homologia) Seja $X$ um CW-complexo, então existe uma identificação natural entre a CW-homologia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
+		\begin{teorema}[CW-homologia]
+			Seja $X$ um CW-complexo, então existe uma identificação natural entre a CW-homologia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
 			$$
 			\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
 			$$
@@ -125,19 +125,14 @@
 	%-------------------------------------------------
 	\begin{frame}
 		\frametitle{Teoria de Morse Clássica}
-		\begin{definicao}
-			(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
+		\begin{definicao}[Função de Morse]
+			Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
 		\end{definicao}
-		\begin{lema}
-			(Lema de Morse) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ cujo índice é $\lambda_{p}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
+		\begin{lema}[Lema de Morse]
+			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ cujo índice é $\lambda_{p}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
 			$$
-			\begin{aligned}
-			(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) &= f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda_{p}}+x^{2}_{\lambda_{p}+1}+\dots + x^{2}_{n}
-			\\
-			&=f(p)+x^{t}Dx,
-			\end{aligned}
+			(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) = f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda_{p}}+x^{2}_{\lambda_{p}+1}+\dots + x^{2}_{n}.
 			$$
-			onde $D$ é a representação diagonal de $H_{p}(f)$.
 		\end{lema}
 	\end{frame}
 	
@@ -145,19 +140,20 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		As funções de Morse não são um caso raro nessa descrição, muito pelo contrário. O seguinte teorema garante que tais funções são abundantes no conjunto das funções suaves.
+		
 		\begin{teorema}
 			Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
 		\end{teorema}
-		
-		\pause
-		Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
-		
-		\pause
-		\begin{teorema}
-			Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomordo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
-		\end{teorema}
-		
+	\end{frame}
+	
+	\begin{frame}
+			Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+			
+			\pause
+			\begin{teorema}
+				Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomordo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+			\end{teorema}
+			
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -180,40 +176,28 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		\begin{definicao}
-			(Variedades instáveis/estáveis)  As variedades instável e estável de um ponto $p \in M$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
-		\end{definicao}
-		\begin{teorema}
-			(Teorema da variedade instável/estável) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
-		\end{teorema}
 		
-	\end{frame}
-	%-------------------------------------------------
-	% FRAME
-	%-------------------------------------------------
-	\begin{frame}
 		\frametitle{Fluxos Gradiente e Variedades de Conexão}
-		\begin{definicao}
-			(Variedades instáveis/estáveis)  As variedades instável e estável de um ponto $p \in M$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
+		
+		\begin{definicao}[Variedades instáveis/estáveis]
+			As variedades instável e estável de um ponto $p \in \pontoscriticos{f}$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
 		\end{definicao}
-		\begin{teorema}
-			(Teorema da variedade instável/estável) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
+		
+		\begin{teorema}[Teorema da variedade instável/estável]
+			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
 		\end{teorema}
 		
 	\end{frame}
 	
-	%-------------------------------------------------
-	% FRAME
-	%-------------------------------------------------
 	\begin{frame}
 		
-		\begin{definicao}
-			(Variedade Conectante e o Espaço Moduli) A variedade conectante de $p$ e $q$ é $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Tomando $c \in (f(a), f(p)) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
+		\begin{definicao}[Variedade Conectante e o Espaço Moduli]
+			A variedade conectante de $p$ e $q$ é $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Tomando $c \in (f(a), f(p)) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
 		\end{definicao}
 		
 		Denotaremos $\variedadeestavel{p}\pitchfork \variedadeinstavel{q}$ se $\espacotangenteponto{y}{\variedadeestavel{p}} + \espacotangenteponto{y}{\variedadeinstavel{q}} = \espacotangenteponto{y}{M}$ para todo $y \in \variedadeestavel{p}\cap\variedadeinstavel{q}$.
-		\begin{definicao}
-			(Funções de Morse-Smale) Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
+		\begin{definicao}[Funções de Morse-Smale]
+			Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
 		\end{definicao}
 		
 	\end{frame}
@@ -225,13 +209,13 @@
 		\begin{proposicao}
 			Sejam $f \in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$.
 			\begin{itemize}
-				\item 1) Se $\lambda_{p}<\lambda_{q}$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+				\item Se $\lambda_{p}<\lambda_{q}$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
 				
-				\item 2) $\variedadeconectantepontos{p}{p} = \{p\}$
+				\item $\variedadeconectantepontos{p}{p} = \{p\}$
 				
-				\item 3) Se $\lambda_{p} = \lambda_{q}$ e $p\neq q$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+				\item Se $\lambda_{p} = \lambda_{q}$ e $p\neq q$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
 				
-				\item 4) Se $p \neq q$ tal que $\variedadeconectantepontos{p}{q} \neq \emptyset$, então $\lambda_{p}>\lambda_{q}$.
+				\item Se $p \neq q$ tal que $\variedadeconectantepontos{p}{q} \neq \emptyset$, então $\lambda_{p}>\lambda_{q}$.
 			\end{itemize}
 		\end{proposicao}
 		
@@ -243,8 +227,7 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		\begin{definicao}
-			(Número de intersecção) 
+		\begin{definicao}[Número de intersecção]
 			Dado $x \in \espacomoduli{p}{q}$ tal que $\lambda_{p}-\lambda_{q} = 1$
 			
 			\begin{enumerate}
@@ -255,6 +238,60 @@
 			
 		\end{definicao}
 		
+		\begin{definicao}[Complexo de Morse-Smale-Witten]
+			$C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ 
+			\\~\\
+			$\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido em cada gerador p de $C_{k}$
+			$$
+			\partial_{k}\gerador{p}=\sum_{q \in Cr_{k-1}(f)}n(p,q)\gerador{q}
+			$$
+			\\~\\
+			O par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
+		\end{definicao}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Exemplo Complexo Morse-Witten}
+		
+		\begin{figure}
+			\centering
+			\textbf{}\par
+			\includegraphics{../imagem/feijao}
+			\caption{Função altura na variedade}
+		\end{figure}
+		
+	\end{frame}
+	
+	\begin{frame}
+		\begin{itemize}
+				\item Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Pode-se mostrar que $f=F|_{M} \in \funcoesmorsesmale{M}$,  $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
+				
+				\item $\variedadeestavel{q} = \complementar{M}{A}$, $\variedadeestavel{p} = A$ e $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$
+				
+				\item $\variedadeconectantepontos{p}{q} = B$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
+				
+				\item $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap A = D$ e $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um procedimento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
+				
+				\item Pela orientação escolhida para a variedade instável $\variedadeinstavel{p}$, temos $n_{x_{1}}=1$, $n_{x_{2}} = -1$. E a orientação escolhida para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$ nos dá $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
+				$$
+				n(p,q) = n_{x_{1}}+n_{x_{2}} = 0,\; n(r,p) = n(s,p)=n_{x_{3}}= 1. 
+				$$			
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\begin{itemize}
+		\item As $k$-cadeias do complexo, para $0\leq k\leq 2$, são
+		$$
+		C_{0}(f) = \inteiros\gerador{q},\; C_{1}(f) = \inteiros\gerador{p},\; C_{2}(f) = \inteiros\gerador{r}\oplus\inteiros\gerador{s}.
+		$$
+		
+		\item Os $k$-operadores bordo são
+		$$
+		\bordo{0}\gerador{q} =0,\; \bordo{1}\gerador{p}=n(p,q)\gerador{q} = 0,\; \bordo{2}\gerador{r}=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
+		$$
+		
+		\end{itemize}
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -322,11 +359,11 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		\begin{definicao}
-			(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
+		\begin{definicao}[Espaço vetorial simplético]
+			Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
 		\end{definicao}
-		\begin{definicao}
-			(Base simplética) Seja $(V, \omega)$ um 2n-espaço vetorial simplético, então uma base simplética é uma base $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
+		\begin{definicao}[Base simplética]
+			Seja $(V, \omega)$ um 2n-espaço vetorial simplético, então uma base simplética é uma base $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
 			$$
 			\omega(e_{i}, e_{j}) = \omega(f_{i}, f_{j}) = 0, \; \omega(e_{i}, f_{j}) = \delta_{ij}.
 			$$
@@ -335,36 +372,39 @@
 	\end{frame}
 	
 	\begin{frame}
-		\begin{definicao}
-			(Espaços $\omega$-ortogonais) Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial simplético. Então o complemento $\omega$-ortogonal de $W$ é o subespaço vetorial simplético
+		\begin{definicao}[Espaços $\omega$-ortogonais]
+			Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial simplético. Então o complemento $\omega$-ortogonal de $W$ é o subespaço vetorial simplético
 			$$
 			W^{\omega} = \{v\in V: \omega(v,u) = 0,\;\forall u\in W \}.
 			$$
 			Além disso, $W$ pode ser classificado de acordo com as seguintes características
 			\begin{itemize}
-				\item 1) \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$
+				\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$
 				
-				\item 2) \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
+				\item \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
 				
-				\item 3) \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
+				\item \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
 				
-				\item 4) \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
+				\item \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
 			\end{itemize}
 		\end{definicao}	
 		
 	\end{frame}
 	
 	\begin{frame}
-		\begin{lema}
-			(Caracterização de subespaço simplético)
+		\begin{definicao}[Subespaço Simplético]
+			$(W, \omega|_{\omega})$ é um subespaço simplético se $W\subset V$ é subespaço vetorial e
+			 $\omega|_{\omega}$ é uma forma simplética.
+		\end{definicao}
+		\begin{lema}[Caracterização de subespaço simplético]
+			\begin{enumerate}
+				\item Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
+				
+				\item Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
+				
+				\item Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico.
+			\end{enumerate}
 		\end{lema}
-		\begin{itemize}
-			\item 1) Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
-			
-			\item 2) Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
-			
-			\item 3) Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico. 
-		\end{itemize}
 		Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir nos dá uma relação entre as dimensões desses dois espaços vetoriais.
 		
 	\end{frame}
@@ -376,8 +416,8 @@
 		\end{proposicao}
 		
 		\pause
-		\begin{teorema}
-			(Existência de base simplética) Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
+		\begin{teorema}[Existência de base simplética]
+			Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
 		\end{teorema}
 	\end{frame}
 	
@@ -385,15 +425,35 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		
-		
-		
 		\begin{exemplo}
-			Seja $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $w=dx \wedge dy$. Então $\omega(e_{x}, e_{y}) =dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1$. É imediato que $\omega$ é anti-simetrica. Além disso, $\omega(e_{x}, e_{x}) = \omega(e_{y}, e_{y}) = 0$. 
-			\\~\\
-			Suponha $v \in V$ e para qualquer $u \in V$ temos que $\omega(v, u) = \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y}) = v_{x}u_{y}\omega(e_{x}, e_{y}) +v_{y}u_{x}\omega(e_{y}, e_{x}) = v_{x}u_{y} -v_{y}u_{x} = 0$. Tomando $u_{x} = 1$ e $u_{y} = 0$, isso implica que $v_{y} = 0$. Fazendo $u_{x} = 0$ e $u_{y} = 1$ teremos $v_{x} = 0$, logo $v=0$. 
-			\\~\\
-			Seja $\varphi:V \to V$ tal que $\varphi(v) = -v$. É imediato que $\varphi$ é um isomorfismo. Então $\varphi^{*}\omega(v, u) = \omega(\varphi v, \varphi u)=\omega(-v, -u)=\omega(v, u)$, logo $\varphi^{*}\omega = \omega$ e $\varphi$ é um simplectomorfismo.		
+			\begin{enumerate}
+				\item $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $w=dx \wedge dy$. Então 
+				$$
+				\begin{aligned}
+					\omega(e_{x}, e_{y}) &=dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1 \; e\; 
+					\\
+					\omega(e_{x}, e_{x}) &= \omega(e_{y}, e_{y}) = 0	
+				\end{aligned}
+				$$ 
+				
+				\item $v \in V$ e para qualquer $u \in V$ temos que 
+				$$
+				\begin{aligned}
+					\omega(v, u) &= \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y})
+					\\
+					&=
+					v_{x}u_{y}\omega(e_{x}, e_{y}) +v_{y}u_{x}\omega(e_{y}, e_{x})
+					\\
+					&= v_{x}u_{y} -v_{y}u_{x} = 0
+				\end{aligned}
+				$$
+				
+				$u_{x} = 1$ e $u_{y} = 0 \Rightarrow v_{y} = 0$ e $u_{x} = 0$ e $u_{y} = 1 \Rightarrow v_{x} = 0$, logo $v=0$.
+				
+				\item $\varphi:V \to V$ tal que $\varphi(v) = -v$. é um isomorfismo. 
+				$$
+				\varphi^{*}\omega(v, u) = \omega(\varphi v, \varphi u)=\omega(-v, -u)=\omega(v, u) \Rightarrow \varphi^{*}\omega = \omega$$
+			\end{enumerate}			
 		\end{exemplo}
 	\end{frame}
 	
@@ -403,17 +463,17 @@
 	\begin{frame}
 		\frametitle{Estruturas complexas}
 		
-		\begin{definicao}
-			$J: V \to V$ é um endomorfismo tal que $J^{2} = -Id$. 
-			\\~\\
-			
-			$J$ é $\omega$-compatível se $g(u,v):=\omega(u, Jv)$ é um produto interno. 
-			\\~\\
-			
-			$\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas $\omega$-compatíveis.
-			\\~\\
-			
-			Fixaremos a notação
+		\begin{definicao}[Estrutura Complexa]
+			\begin{itemize}
+				\item $J: V \to V$ é um endomorfismo tal que $J^{2} = -Id$. 
+				
+				\item $J$ é $\omega$-compatível se $g(u,v):=\omega(u, Jv)$ é um produto interno. 
+				
+				\item $\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas $\omega$-compatíveis.
+				
+			\end{itemize}
+		\end{definicao}
+		Fixaremos a notação
 			$
 			\estruturacomplexa=
 			\left(
@@ -424,8 +484,6 @@
 			\end{array}
 			\right) \in \estruturascomplexaspadrao .
 			$
-		\end{definicao}
-		
 	\end{frame}
 	
 	\begin{frame}
@@ -450,15 +508,15 @@
 	\begin{frame}
 		\frametitle{Grupo Simplético}
 		
-		\begin{definicao}
-			(Transformação simplética) Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. Um operador linear $T: V \to V$ é uma transformação simplética se 
+		\begin{definicao}[Transformação simplética]
+			Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. Um operador linear $T: V \to V$ é uma transformação simplética se 
 			$$
 			\formaSimpletica{Tu}{Tv} = \formaSimpletica{u}{v}
 			$$ para todo $u,v\in V$.
 		\end{definicao}
 		
-		\begin{definicao}
-			(Grupo simplético) O grupo simplético $\gruposimpletico{V} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
+		\begin{definicao}[Grupo simplético]
+			O grupo simplético $\gruposimpletico{V} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
 		\end{definicao}	
 		
 		Denotaremos $\gruposimpletico{2n}$ por $\gruposimpletico{\real{2n}}$.
@@ -470,8 +528,8 @@
 			$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
 		\end{proposicao}
 		
-		\begin{lema}
-			(Caracterização de $Sp(2n)$) Se $(V, \omega)$ é um 2n-espaço vetorial simplético e $J \in \estruturascomplexaspadrao$ uma estrutura complexa $\omega$-compatível, então $A\in Sp(2n)$ se, e somente se, $A^{t}JA = J$. Além disso, podemos escrever 
+		\begin{lema}[Caracterização de $Sp(2n)$]
+			 Se $(V, \omega)$ é um 2n-espaço vetorial simplético e $J \in \estruturascomplexaspadrao$ uma estrutura complexa $\omega$-compatível, então $A\in Sp(2n)$ se, e somente se, $A^{t}JA = J$. Além disso, podemos escrever 
 			$$
 			A=
 			\left(
@@ -508,9 +566,9 @@
 	
 	\begin{frame}
 		\begin{itemize}
-			\item 1) Vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$. 
+			\item Vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$. 
 			
-			\item 2) $\espectrooperador{A}$ o espectro de $A \in \gruposimpletico{2n}$ 
+			\item $\espectrooperador{A}$ o espectro de $A \in \gruposimpletico{2n}$ 
 		\end{itemize}	
 		
 		\begin{tiny}
@@ -522,8 +580,8 @@
 		\end{lema}
 		
 		
-		\begin{lema}
-			(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ sejam tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
+		\begin{lema}[Auto-espaços de $\gruposimpletico{2n}$]
+			Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
 		\end{lema}
 		
 	\end{frame}
@@ -531,8 +589,8 @@
 	\begin{frame}
 		\frametitle{A topologia do grupo simplético}
 		
-		\begin{teorema}
-			(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
+		\begin{teorema}[Decomposição polar]
+			Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
 		\end{teorema}
 		\begin{enumerate}
 			\item $\matrizSimpleticaOrtogonal$ é conexo
@@ -559,8 +617,6 @@
 				\pause
 				\item $G$, $G^{-1}$ são contínuas, logo temos um homeomorfismo.
 				
-				\pause
-				\item $\gruposimpleticopositivo{2n}, \;\matrizSimpleticaOrtogonal$ são conexos por caminhos, logo $\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ é conexo por caminhos.
 			\end{enumerate}
 		\end{prova}
 	\end{frame}
@@ -572,7 +628,7 @@
 		\end{teorema}
 		\begin{prova}
 			
-			\begin{enumerate}
+			\begin{itemize}
 				\item $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$
 				
 				\pause
@@ -586,7 +642,7 @@
 				
 				\pause
 				\item $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal $ é contrátil.
-			\end{enumerate}
+		\end{itemize}
 		\end{prova}
 	\end{frame}
 	
@@ -615,16 +671,12 @@
 			$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
 		\end{lema}
 		
-		Essa propriedade de $\gruposimpleticonaodegenerado{*}$ é um dos pontos-base da construção do índice de Maslov.
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Axiomatização do Índice de Maslov}
 		
-		Originalmente, o índice de Maslov foi definido para associar um caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto z \in \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto.
-		\\~\\
 		O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
-		
 		
 		\begin{teorema}
 			Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
@@ -634,20 +686,20 @@
 	\end{frame}
 	
 	\begin{frame}
-		\begin{itemize}
-			\item 1) \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
+		\begin{enumerate}
+			\item \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
 			$$
 			\rho(TAT^{-1}) = \rho(A)
 			$$
 			para toda $A\in \gruposimpletico{V_{1}}$.
 			
-			\item 2) \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
+			\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
 			$$
 			\rho(A) = \rho(A_{1})\rho(A_{2})
 			$$
 			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
 			
-			\item 3) \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
+			\item \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
 			$$
 			\rho(A) = det(X+iY), \text{onde} \;	
 			A=\left(
@@ -657,11 +709,10 @@
 			\end{array}
 			\right).
 			$$
-			Além disso, a aplicação indizuda $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
+			Além disso, a aplicação indizida $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
 			
-			\item 4) \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
-			
-		\end{itemize}
+			\item \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
+		\end{enumerate}
 	\end{frame}
 	
 	\begin{frame}
