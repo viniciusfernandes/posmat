@@ -71,7 +71,7 @@
 	%-------------------------------------------------
 	\begin{frame}
 		\begin{exemplo}[n-esfera]
-			Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+			Fixemos um ponto-base $p \in S^{2}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{2} \to \skeleton{0}$, isto é, $S^{2} \approx \skeleton{2} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
 		\end{exemplo}
 		
 		\pause
@@ -86,40 +86,43 @@
 	\begin{frame}
 		
 		\begin{lema}[Homologia celular]
-		 	Sejam $A$ um anel comutativo com unidade e $X$ um CW-complexo, então
+			$\mathcal{C}_{k}(X)$ é um $A-$módulo livre e finitamente gerado pelas $k-$células de $X$ tal que 
 			$$
-			\homologiarelskelesimpl{k}{n} \cong 
-			\left\{
-			\begin{array}{cc}
-			\mathcal{C}_{n}(X), & k = n\\
-			0, & k\neq n\\
-			\end{array}
-			\right.,
+			\mathcal{C}_{k}(X) \cong 
+			\homologiarelskelesimpl{k}{k} \cong \somadir{\sigma} A.
 			$$
-			onde $\mathcal{C}_{n}(X)$ é um $A-$módulo livre e finitamente gerado pelas $n-$células de $X$. Além disso,
-			$$
-			\mathcal{C}_{n}(X) \cong \somadir{\sigma} \homologiarelcel{n}{n}{\sigma} \cong \somadir{\sigma} A.
-			$$
-			
 		\end{lema}
 		
+		\begin{definicao}[Grau homológico]
+			Sejam $f: S^{n} \to S^{n}$ é contínua e $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador, então $f_{*}[S^{n}] = deg(f)[S^{n}]$, onde $deg(f) \in A$.
+		\end{definicao}
+		
+		\pause
+		\begin{teorema}[CW-bordo]
+			É o homomorfismo $\partial_{k}:\mathcal{C}_{k}(X)\to \mathcal{C}_{k-1}(X)$ definido por
+			$$
+			\partial_{k}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
+			$$
+			onde $[\beta:\sigma]$ é o grau homológico da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.
+		\end{teorema}
+		
 	\end{frame}
-	
-	
-	%-------------------------------------------------
-	% FRAME
-	%-------------------------------------------------
+
 	\begin{frame}
-		
-		
 		\begin{teorema}[CW-homologia]
 			Seja $X$ um CW-complexo, então existe uma identificação natural entre a CW-homologia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
 			$$
 			\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
 			$$
 		\end{teorema}
+		\begin{exemplo}[2-esfera]
+			$$
+			\homologia{*}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \oplus\homologiarelskelesimpl{2}{2}\cong \Lambda\oplus\Lambda.
+			$$
+		\end{exemplo}
+		
 	\end{frame}
-	
+
 	%-------------------------------------------------
 	% FRAME
 	%-------------------------------------------------
@@ -129,7 +132,7 @@
 			Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
 		\end{definicao}
 		\begin{lema}[Lema de Morse]
-			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ cujo índice é $\lambda_{p}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
+			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
 			$$
 			(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) = f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda_{p}}+x^{2}_{\lambda_{p}+1}+\dots + x^{2}_{n}.
 			$$
@@ -141,17 +144,26 @@
 	%-------------------------------------------------
 	\begin{frame}
 		
+		\begin{definicao}
+			O inteiro $\lambda_{p}$ no Lema anterior é chamado índice de Morse.
+		\end{definicao}
+		
+		\pause
 		\begin{teorema}
 			Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
 		\end{teorema}
 	\end{frame}
 	
 	\begin{frame}
-			Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+			\begin{itemize}
+				\item $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ o conjunto de nível $a$. 
+				
+				\item Dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+			\end{itemize}
 			
 			\pause
 			\begin{teorema}
-				Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomordo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+				Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
 			\end{teorema}
 			
 	\end{frame}
@@ -163,7 +175,7 @@
 		O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, se $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro.
 		
 		\begin{teorema}
-			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda}$.
+			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
 		\end{teorema}
 		
 		\pause
@@ -178,10 +190,34 @@
 	\begin{frame}
 		
 		\frametitle{Fluxos Gradiente e Variedades de Conexão}
+		\begin{tiny}
+			Para construirmos o operador bordo vamos olhar com os pontos críticos estão conectados.
+		\end{tiny}
 		
+		\begin{definicao}[Gradiente negativo]
+				$$
+				\derivada{\gamma(t)}{t} = -\gradiente(\gamma(t)), \; \gamma(0) = p.
+				$$
+		\end{definicao}
+		
+		$$
+		\derivada{}{t}(f \circ \gamma)(t) = g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
+		=-\norma{\gradiente(\gamma(t))}^{2}
+		\leq 0.
+		$$
+		\begin{tiny}
+			Isso mostra que o fluxo sai de um ponto crítico de 
+			índice maior para um ponto crítico de índice menor.
+		\end{tiny}
+		
+		\pause
 		\begin{definicao}[Variedades instáveis/estáveis]
 			As variedades instável e estável de um ponto $p \in \pontoscriticos{f}$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
 		\end{definicao}
+		
+	\end{frame}
+	
+	\begin{frame}
 		
 		\begin{teorema}[Teorema da variedade instável/estável]
 			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
@@ -199,7 +235,10 @@
 		\begin{definicao}[Funções de Morse-Smale]
 			Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
 		\end{definicao}
-		
+
+		\begin{tiny}
+			O conjunto das funções de Maslov é denso em no conjunto das funções de Morse.
+		\end{tiny}		
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -220,7 +259,10 @@
 		\end{proposicao}
 		
 		Com isso, as óbitas não-singulares do fluxo do gradiente negativo dessa função sempre partem de um ponto crítico para um outro ponto crítico de índice inferior.
-		
+
+		\begin{tiny}
+			Como as variedades instáveis/estáveis são homotópicas a discos, então são contráteis, logo orientáveis.
+		\end{tiny}		
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -264,13 +306,13 @@
 	
 	\begin{frame}
 		\begin{itemize}
-				\item Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Pode-se mostrar que $f=F|_{M} \in \funcoesmorsesmale{M}$,  $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
+				\item Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Temos que $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
 				
-				\item $\variedadeestavel{q} = \complementar{M}{A}$, $\variedadeestavel{p} = A$ e $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$
+				\item $\variedadeestavel{q} = \complementar{M}{\variedadeestavel{p}}$, $\variedadeestavel{r} =\{r\}$ e $ \variedadeestavel{s} = \{s\}$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}\dot{\cup}\{r\}\dot{\cup}\{s\}$
 				
 				\item $\variedadeconectantepontos{p}{q} = B$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
 				
-				\item $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap A = D$ e $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um procedimento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
+				\item $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap \variedadeestavel{p}$ e $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um procedimento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
 				
 				\item Pela orientação escolhida para a variedade instável $\variedadeinstavel{p}$, temos $n_{x_{1}}=1$, $n_{x_{2}} = -1$. E a orientação escolhida para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$ nos dá $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
 				$$
@@ -288,44 +330,22 @@
 		
 		\item Os $k$-operadores bordo são
 		$$
-		\bordo{0}\gerador{q} =0,\; \bordo{1}\gerador{p}=n(p,q)\gerador{q} = 0,\; \bordo{2}\gerador{r}=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
+			\begin{aligned}
+			\bordo{0}\gerador{q} &=0, 
+			\\
+			\bordo{1}\gerador{p} &=n(p,q)\gerador{q} = 0,
+			\\
+			\bordo{2}\gerador{r}&=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
+			\end{aligned}
 		$$
 		
 		\end{itemize}
 	\end{frame}
-	
-	%-------------------------------------------------
-	% FRAME
-	%-------------------------------------------------
 	\begin{frame}
-		\frametitle{Geometrização}
-		
-		Seja $H:\real{2n} \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$ e $\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=\{\partial_{q}, \partial_{p}\}$ uma base de $\real{2n}$. O gradiente Hamiltoniano é dado por
-		$$
-		\nabla H =\sum_{j=1}^{n}\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
-		$$
-		
-		Definimos o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
-		$$
-		\campohamiltonianoabrev = -\estruturacomplexa \nabla H = \sum_{j=1}^{n}\derivadaparcial{H}{p_{j}}\derivadaparcial{}{q_{j}} - \derivadaparcial{H}{q_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
-		$$
-		onde
-		$$
-		\estruturacomplexa=
-		\left(
-		\begin{array}{cc}
-		0 & -Id
-		\\
-		Id & 0
-		\end{array}
-		\right). 
-		$$
-	\end{frame}
-	
-	%-------------------------------------------------
-	% FRAME
-	%-------------------------------------------------
-	\begin{frame}
+			\frametitle{Geometrização}
+			
+			Seja $H:\real{2n} \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$ e $\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=\{\partial_{q}, \partial_{p}\}$ uma base de $\real{2n}$. 
+			\\~\\
 		Então as equações de Hamilton podem ser reescritas como 
 		$$
 		\begin{aligned}
@@ -348,13 +368,38 @@
 		\right).
 		\end{aligned}
 		$$
-		Definindo $\omega_{0}= \sum_{j}  dq_{j}\wedge dp_{j}$, onde $dp_{i}(q_{j}) = dq_{i}(p_{j}) = 0$ e $dq_{i}(q_{j}) = dp_{i}(p_{j}) = \delta_{ij}$, temos
+		
+		O gradiente Hamiltoniano é dado por
+		$$
+		\nabla H =\derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
+		$$
+	\end{frame}
+	
+	
+	\begin{frame}
+		
+		Definimos o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
+		$$
+		\campohamiltonianoabrev = -\estruturacomplexa \nabla H =  \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
+		$$
+		onde
+		$$
+		\estruturacomplexa=
+		\left(
+		\begin{array}{cc}
+		0 & -Id
+		\\
+		Id & 0
+		\end{array}
+		\right). 
+		$$
+		\\~\\
+		Definindo $\omega_{0}= dq \wedge dp$, onde $dp(q) = dq(p) = 0$ e $dq(q) = dp(p) = 1$, temos
 		$$
 		\formaSimpleticaPadrao{\campohamiltonianoabrev}{v} = dH(v).
 		$$
-		
 	\end{frame}
-	
+		
 	%-------------------------------------------------
 	% FRAME
 	%-------------------------------------------------
@@ -392,10 +437,7 @@
 	\end{frame}
 	
 	\begin{frame}
-		\begin{definicao}[Subespaço Simplético]
-			$(W, \omega|_{\omega})$ é um subespaço simplético se $W\subset V$ é subespaço vetorial e
-			 $\omega|_{\omega}$ é uma forma simplética.
-		\end{definicao}
+		
 		\begin{lema}[Caracterização de subespaço simplético]
 			\begin{enumerate}
 				\item Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
@@ -419,15 +461,22 @@
 		\begin{teorema}[Existência de base simplética]
 			Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
 		\end{teorema}
+		
+		\begin{observacao}
+			Na base simplética a representação matricial de $\omega$ é $\estruturacomplexa$.
+		\end{observacao}
 	\end{frame}
 	
 	%-------------------------------------------------
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
+		\begin{tiny}
+			Vamos mostrar que é uma base simplética, é não degenerada e um simplectomorfismo.
+		\end{tiny}
 		\begin{exemplo}
 			\begin{enumerate}
-				\item $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $w=dx \wedge dy$. Então 
+				\item $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $\omega=dx \wedge dy$. Então 
 				$$
 				\begin{aligned}
 					\omega(e_{x}, e_{y}) &=dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1 \; e\; 
@@ -436,7 +485,7 @@
 				\end{aligned}
 				$$ 
 				
-				\item $v \in V$ e para qualquer $u \in V$ temos que 
+				\item Dado $v \in V$ tal que $\formaSimpletica{v}{u}=0 \;\;\forall u \in V$, temos que 
 				$$
 				\begin{aligned}
 					\omega(v, u) &= \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y})
@@ -450,7 +499,7 @@
 				
 				$u_{x} = 1$ e $u_{y} = 0 \Rightarrow v_{y} = 0$ e $u_{x} = 0$ e $u_{y} = 1 \Rightarrow v_{x} = 0$, logo $v=0$.
 				
-				\item $\varphi:V \to V$ tal que $\varphi(v) = -v$. é um isomorfismo. 
+				\item $\varphi:V \to V$ tal que $\varphi(v) = -v$ é um isomorfismo. 
 				$$
 				\varphi^{*}\omega(v, u) = \omega(\varphi v, \varphi u)=\omega(-v, -u)=\omega(v, u) \Rightarrow \varphi^{*}\omega = \omega$$
 			\end{enumerate}			
