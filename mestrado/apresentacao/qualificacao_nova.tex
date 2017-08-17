@@ -222,7 +222,14 @@
 		\begin{teorema}[Teorema da variedade instável/estável]
 			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
 		\end{teorema}
+	
+		\begin{observacao}
+			$\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são homotopicamente equivalentes a discos.
+		\end{observacao}
 		
+		\begin{tiny}
+			Com isso, são orientáveis e podemos definir o número de intersecção.
+		\end{tiny}
 	\end{frame}
 	
 	\begin{frame}
@@ -231,14 +238,16 @@
 			A variedade conectante de $p$ e $q$ é $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Tomando $c \in (f(a), f(p)) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
 		\end{definicao}
 		
-		Denotaremos $\variedadeestavel{p}\pitchfork \variedadeinstavel{q}$ se $\espacotangenteponto{y}{\variedadeestavel{p}} + \espacotangenteponto{y}{\variedadeinstavel{q}} = \espacotangenteponto{y}{M}$ para todo $y \in \variedadeestavel{p}\cap\variedadeinstavel{q}$.
+		\begin{figure}
+			\centering
+			\textbf{}\par
+			\includegraphics[width=4cm,height=2.25cm]{../imagem/fluxoesfera}
+		\end{figure}
+		
 		\begin{definicao}[Funções de Morse-Smale]
 			Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
 		\end{definicao}
-
-		\begin{tiny}
-			O conjunto das funções de Maslov é denso em no conjunto das funções de Morse.
-		\end{tiny}		
+	
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -269,6 +278,9 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
+		
+		As variedades instável/estável dos pontos críticos são contráteis, logo são orientáveis.
+		
 		\begin{definicao}[Número de intersecção]
 			Dado $x \in \espacomoduli{p}{q}$ tal que $\lambda_{p}-\lambda_{q} = 1$
 			
@@ -279,7 +291,15 @@
 			\end{enumerate}
 			
 		\end{definicao}
-		
+		\begin{figure}
+			\centering
+			\textbf{}\par
+			\includegraphics[width=4cm,height=2.25cm]{../imagem/fluxoesfera}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{O complexo de Morse-Smale-Witten}
 		\begin{definicao}[Complexo de Morse-Smale-Witten]
 			$C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ 
 			\\~\\
@@ -293,53 +313,72 @@
 	\end{frame}
 	
 	\begin{frame}
+		
 		\frametitle{Exemplo Complexo Morse-Witten}
 		
-		\begin{figure}
-			\centering
-			\textbf{}\par
-			\includegraphics{../imagem/feijao}
-			\caption{Função altura na variedade}
-		\end{figure}
-		
-	\end{frame}
-	
-	\begin{frame}
-		\begin{itemize}
+		\begin{minipage}[t]{0.6\linewidth}
+			
+			\begin{itemize}
 				\item Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Temos que $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
 				
-				\item $\variedadeestavel{q} = \complementar{M}{\variedadeestavel{p}}$, $\variedadeestavel{r} =\{r\}$ e $ \variedadeestavel{s} = \{s\}$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}\dot{\cup}\{r\}\dot{\cup}\{s\}$
-				
-				\item $\variedadeconectantepontos{p}{q} = B$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
-				
-				\item $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap \variedadeestavel{p}$ e $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um procedimento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
+				\item $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$, $\espacomoduli{r}{p} = \{ x_{3}\}$, $\espacomoduli{s}{p} = \{x_{4} \}$.
 				
 				\item Pela orientação escolhida para a variedade instável $\variedadeinstavel{p}$, temos $n_{x_{1}}=1$, $n_{x_{2}} = -1$. E a orientação escolhida para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$ nos dá $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
 				$$
 				n(p,q) = n_{x_{1}}+n_{x_{2}} = 0,\; n(r,p) = n(s,p)=n_{x_{3}}= 1. 
 				$$			
-		\end{itemize}
+			\end{itemize}
+		\end{minipage}
+		\hfill%
+			\begin{minipage}[t]{0.3\linewidth}
+				\begin{figure}
+					\centering
+					\textbf{}\par
+					\includegraphics[width=5cm,height=3cm]{../imagem/fluxoesfera}
+				\end{figure}
+				
+			\end{minipage}
+	
 	\end{frame}
 	
 	\begin{frame}
-		\begin{itemize}
-		\item As $k$-cadeias do complexo, para $0\leq k\leq 2$, são
-		$$
-		C_{0}(f) = \inteiros\gerador{q},\; C_{1}(f) = \inteiros\gerador{p},\; C_{2}(f) = \inteiros\gerador{r}\oplus\inteiros\gerador{s}.
-		$$
 		
-		\item Os $k$-operadores bordo são
-		$$
-			\begin{aligned}
-			\bordo{0}\gerador{q} &=0, 
-			\\
-			\bordo{1}\gerador{p} &=n(p,q)\gerador{q} = 0,
-			\\
-			\bordo{2}\gerador{r}&=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
-			\end{aligned}
-		$$
+		\begin{minipage}[t]{0.6\linewidth}
+			\begin{itemize}
+				\item As $k$-cadeias do complexo são
+				$$
+				\begin{aligned}
+				C_{0}(f) &= \inteiros\gerador{q}, 
+				\\
+				C_{1}(f) &= \inteiros\gerador{p},
+				\\
+				C_{2}(f) &= \inteiros\gerador{r}\oplus\inteiros\gerador{s}.
+				\end{aligned}
+				$$
+				
+				\item Os $k$-operadores bordo são
+				$$
+				\begin{aligned}
+				\bordo{0}\gerador{q} &=0, 
+				\\
+				\bordo{1}\gerador{p} &=n(p,q)\gerador{q} = 0,
+				\\
+				\bordo{2}\gerador{r}&=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
+				\end{aligned}
+				$$
+				
+			\end{itemize}
+		\end{minipage}
+		\hfill%
+		\begin{minipage}[t]{0.3\linewidth}
+			\begin{figure}
+				\centering
+				\textbf{}\par
+				\includegraphics[width=5cm,height=3cm]{../imagem/fluxoesfera}
+			\end{figure}
+			
+		\end{minipage}
 		
-		\end{itemize}
 	\end{frame}
 	\begin{frame}
 			\frametitle{Geometrização}
@@ -565,10 +604,8 @@
 		\end{definicao}
 		
 		\begin{definicao}[Grupo simplético]
-			O grupo simplético $\gruposimpletico{V} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
+			O grupo simplético $\gruposimpletico{2n} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
 		\end{definicao}	
-		
-		Denotaremos $\gruposimpletico{2n}$ por $\gruposimpletico{\real{2n}}$.
 		
 	\end{frame}
 	
@@ -578,18 +615,7 @@
 		\end{proposicao}
 		
 		\begin{lema}[Caracterização de $Sp(2n)$]
-			 Se $(V, \omega)$ é um 2n-espaço vetorial simplético e $J \in \estruturascomplexaspadrao$ uma estrutura complexa $\omega$-compatível, então $A\in Sp(2n)$ se, e somente se, $A^{t}JA = J$. Além disso, podemos escrever 
-			$$
-			A=
-			\left(
-			\begin{array}{cc}
-			B & C
-			\\
-			D & E
-			\end{array}
-			\right)
-			$$
-			onde $B^{t}D, C^{t}E, BC^{t}, DE^{t} $ são matrizes simétricas e $B^{t}E - D^{t}C = Id$ e $BE^{t} - CD^{t} = Id$.
+			 Considere $V = \real{2n}$ e $\estruturacomplexa \in \estruturascomplexaspadrao$. Então $A\in Sp(2n)$ se, e somente se, $A^{t}\estruturacomplexa A = \estruturacomplexa$.
 		\end{lema}
 	\end{frame}
 	
@@ -628,9 +654,12 @@
 			Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 		\end{lema}
 		
+		\begin{tiny}
+			Se $\lambda$ é auto-valor de $A$, então $\lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}$ são auto-valores e posuem a mesma multiplicidade.
+		\end{tiny}
 		
 		\begin{lema}[Auto-espaços de $\gruposimpletico{2n}$]
-			Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
+			Sejam $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
 		\end{lema}
 		
 	\end{frame}
@@ -639,7 +668,7 @@
 		\frametitle{A topologia do grupo simplético}
 		
 		\begin{teorema}[Decomposição polar]
-			Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
+			 Se $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
 		\end{teorema}
 		\begin{enumerate}
 			\item $\matrizSimpleticaOrtogonal$ é conexo
@@ -664,8 +693,7 @@
 				\item $(P,O) \in \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ temos $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo $PO \in \gruposimpletico{2n}$ e $G$ é sobrejetora.
 				
 				\pause
-				\item $G$, $G^{-1}$ são contínuas, logo temos um homeomorfismo.
-				
+				\item $G^{-1}$ é contínua.
 			\end{enumerate}
 		\end{prova}
 	\end{frame}
@@ -678,16 +706,18 @@
 		\begin{prova}
 			
 			\begin{itemize}
-				\item $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$
+				\item $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$, $P=(AA^{t})^{1/2}$ e $O \in \matrizSimpleticaOrtogonal$
 				
 				\pause
-				\item $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$
+				\item $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua. 
 				
 				\pause
-				\item $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua e é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$.
+				\item $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$
+				
+				$r(B, 1) = (BB^{t})^{-1/2}B = B$, $B \in \matrizSimpleticaOrtogonal$ pois $BB^{t} = Id$. Portanto é um retrato de deformação.
 				
 				\pause
-				\item $R:\gruposimpletico{2n}/\matrizSimpleticaOrtogonal \times [0,1] \to \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$, temos que $R$ é uma contração. Temos que $R$ é contínua.
+				\item $R:\gruposimpletico{2n}/\matrizSimpleticaOrtogonal \times [0,1] \to \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$, $R$ é contínua.
 				
 				\pause
 				\item $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal $ é contrátil.
@@ -706,9 +736,6 @@
 				
 				\pause
 				\item $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \inteiros \Rightarrow \grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
-				
-				\pause
-				\item Não depende da escolha do ponto base pois $\matrizSimpleticaOrtogonal$ por conexo por caminhos.
 			\end{enumerate}
 		\end{prova}
 	\end{frame}
