@@ -23,7 +23,7 @@
 \author{Vinicius Fernandes}
 \title{Homologia de Floer, Índice de Maslov e Conjectura de Arnold}
 \institute{Universidade Federal do ABC}
-
+\date{18 de Agosto de 2017}
 \begin{document}
 	
 	\begin{frame}
@@ -49,6 +49,10 @@
 	%-------------------------------------------------
 	\begin{frame}
 		
+		\begin{definicao}[Colagem de célula]
+			Sejam $X$ um espaço topológico, $D^{k}$ o n-disco e $f_{\partial}:\partial D^{k} \to X$ contínua. Denotaremos a colagem da $k$-célula por $X\cup_{f_{\partial}}D^{k}$.
+		\end{definicao}
+		
 		\begin{definicao}[CW-complexo]
 			Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
 			$$
@@ -70,7 +74,7 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		\begin{exemplo}[n-esfera]
+		\begin{exemplo}[2-esfera]
 			Fixemos um ponto-base $p \in S^{2}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{2} \to \skeleton{0}$, isto é, $S^{2} \approx \skeleton{2} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
 		\end{exemplo}
 		
@@ -115,11 +119,6 @@
 			\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
 			$$
 		\end{teorema}
-		\begin{exemplo}[2-esfera]
-			$$
-			\homologia{*}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \oplus\homologiarelskelesimpl{2}{2}\cong \Lambda\oplus\Lambda.
-			$$
-		\end{exemplo}
 		
 	\end{frame}
 
@@ -316,7 +315,7 @@
 		
 		\frametitle{Exemplo Complexo Morse-Witten}
 		
-		\begin{minipage}[t]{0.6\linewidth}
+		\begin{minipage}[t]{0.5\linewidth}
 			
 			\begin{itemize}
 				\item Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Temos que $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
@@ -330,7 +329,7 @@
 			\end{itemize}
 		\end{minipage}
 		\hfill%
-			\begin{minipage}[t]{0.3\linewidth}
+			\begin{minipage}[t]{0.4\linewidth}
 				\begin{figure}
 					\centering
 					\textbf{}\par
@@ -343,7 +342,7 @@
 	
 	\begin{frame}
 		
-		\begin{minipage}[t]{0.6\linewidth}
+		\begin{minipage}[t]{0.5\linewidth}
 			\begin{itemize}
 				\item As $k$-cadeias do complexo são
 				$$
@@ -370,7 +369,7 @@
 			\end{itemize}
 		\end{minipage}
 		\hfill%
-		\begin{minipage}[t]{0.3\linewidth}
+		\begin{minipage}[t]{0.4\linewidth}
 			\begin{figure}
 				\centering
 				\textbf{}\par
@@ -380,69 +379,13 @@
 		\end{minipage}
 		
 	\end{frame}
-	\begin{frame}
-			\frametitle{Geometrização}
-			
-			Seja $H:\real{2n} \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$ e $\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=\{\partial_{q}, \partial_{p}\}$ uma base de $\real{2n}$. 
-			\\~\\
-		Então as equações de Hamilton podem ser reescritas como 
-		$$
-		\begin{aligned}
-		\dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
-		\\
-		\left(
-		\begin{array}{c}
-		\dot{q}(t)
-		\\
-		\dot{p}(t)
-		\end{array}
-		\right)
-		&=
-		\left(
-		\begin{array}{c}
-		\derivadaparcial{H(t)}{q}
-		\\
-		-\derivadaparcial{H(t)}{p}
-		\end{array}
-		\right).
-		\end{aligned}
-		$$
-		
-		O gradiente Hamiltoniano é dado por
-		$$
-		\nabla H =\derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
-		$$
-	\end{frame}
 	
-	
-	\begin{frame}
-		
-		Definimos o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
-		$$
-		\campohamiltonianoabrev = -\estruturacomplexa \nabla H =  \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
-		$$
-		onde
-		$$
-		\estruturacomplexa=
-		\left(
-		\begin{array}{cc}
-		0 & -Id
-		\\
-		Id & 0
-		\end{array}
-		\right). 
-		$$
-		\\~\\
-		Definindo $\omega_{0}= dq \wedge dp$, onde $dp(q) = dq(p) = 0$ e $dq(q) = dp(p) = 1$, temos
-		$$
-		\formaSimpleticaPadrao{\campohamiltonianoabrev}{v} = dH(v).
-		$$
-	\end{frame}
-		
+
 	%-------------------------------------------------
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
+		\frametitle{Espaço Vetorial Simplético}
 		\begin{definicao}[Espaço vetorial simplético]
 			Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
 		\end{definicao}
@@ -474,35 +417,21 @@
 		\end{definicao}	
 		
 	\end{frame}
-	
+		
 	\begin{frame}
 		
-		\begin{lema}[Caracterização de subespaço simplético]
-			\begin{enumerate}
-				\item Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
-				
-				\item Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
-				
-				\item Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico.
-			\end{enumerate}
-		\end{lema}
-		Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir nos dá uma relação entre as dimensões desses dois espaços vetoriais.
-		
-	\end{frame}
-	
-	\begin{frame}
-		
-		\begin{proposicao}
-			Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
-		\end{proposicao}
-		
-		\pause
 		\begin{teorema}[Existência de base simplética]
 			Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
 		\end{teorema}
 		
 		\begin{observacao}
-			Na base simplética a representação matricial de $\omega$ é $\estruturacomplexa$.
+			Na base simplética a representação matricial de $\omega$ é $\left(
+			\begin{array}{cc}
+			0 & Id
+			\\
+			-Id & 0
+			\end{array}
+			\right) $.
 		\end{observacao}
 	\end{frame}
 	
@@ -538,9 +467,6 @@
 				
 				$u_{x} = 1$ e $u_{y} = 0 \Rightarrow v_{y} = 0$ e $u_{x} = 0$ e $u_{y} = 1 \Rightarrow v_{x} = 0$, logo $v=0$.
 				
-				\item $\varphi:V \to V$ tal que $\varphi(v) = -v$ é um isomorfismo. 
-				$$
-				\varphi^{*}\omega(v, u) = \omega(\varphi v, \varphi u)=\omega(-v, -u)=\omega(v, u) \Rightarrow \varphi^{*}\omega = \omega$$
 			\end{enumerate}			
 		\end{exemplo}
 	\end{frame}
