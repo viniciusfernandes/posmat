@@ -78,10 +78,6 @@
 			Fixemos um ponto-base $p \in S^{2}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{2} \to \skeleton{0}$, isto é, $S^{2} \approx \skeleton{2} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
 		\end{exemplo}
 		
-		\pause
-		\begin{exemplo}[Disco com alça]
-			Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.   
-		\end{exemplo}
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -399,26 +395,6 @@
 	\end{frame}
 	
 	\begin{frame}
-		\begin{definicao}[Espaços $\omega$-ortogonais]
-			Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial simplético. Então o complemento $\omega$-ortogonal de $W$ é o subespaço vetorial simplético
-			$$
-			W^{\omega} = \{v\in V: \omega(v,u) = 0,\;\forall u\in W \}.
-			$$
-			Além disso, $W$ pode ser classificado de acordo com as seguintes características
-			\begin{itemize}
-				\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$
-				
-				\item \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
-				
-				\item \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
-				
-				\item \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
-			\end{itemize}
-		\end{definicao}	
-		
-	\end{frame}
-		
-	\begin{frame}
 		
 		\begin{teorema}[Existência de base simplética]
 			Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
@@ -439,10 +415,7 @@
 	% FRAME
 	%-------------------------------------------------
 	\begin{frame}
-		\begin{tiny}
-			Vamos mostrar que é uma base simplética, é não degenerada e um simplectomorfismo.
-		\end{tiny}
-		\begin{exemplo}
+	\begin{exemplo}
 			\begin{enumerate}
 				\item $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $\omega=dx \wedge dy$. Então 
 				$$
@@ -564,32 +537,7 @@
 			$F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
 		\end{lema}
 	\end{frame}
-	
-	\begin{frame}
-		\begin{itemize}
-			\item Vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$. 
-			
-			\item $\espectrooperador{A}$ o espectro de $A \in \gruposimpletico{2n}$ 
-		\end{itemize}	
 		
-		\begin{tiny}
-			Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$.
-			
-		\end{tiny}
-		\begin{lema}
-			Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
-		\end{lema}
-		
-		\begin{tiny}
-			Se $\lambda$ é auto-valor de $A$, então $\lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}$ são auto-valores e posuem a mesma multiplicidade.
-		\end{tiny}
-		
-		\begin{lema}[Auto-espaços de $\gruposimpletico{2n}$]
-			Sejam $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
-		\end{lema}
-		
-	\end{frame}
-	
 	\begin{frame}
 		\frametitle{A topologia do grupo simplético}
 		
@@ -735,37 +683,4 @@
 		
 	\end{frame}
 	
-	\begin{frame}
-		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
-		\\~\\	
-		Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
-		
-		\begin{teorema}
-			Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
-			\begin{enumerate}
-				\item $\mu(\psi) \in \inteiros$.
-				
-				\item Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
-				
-				\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
-				
-				\item Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
-				$$
-				\mu(\psi) = Ind(S) - n,
-				$$
-				onde $Ind(S)$ é a multiplicidade dos auto-valores negativos de $S$.
-			\end{enumerate}
-		\end{teorema}
-	\end{frame}
-	
-	\begin{frame}
-		O caso de sistemas Hamiltonianos autônomos fica reduzido ao caso de uma função de Morse $H:M\to \real{}$ cujo conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$. Com isso, o índice de Maslov terá uma relação direta com índice de Morse da seguinte forma:
-		
-		\begin{corolario}
-			Sejam $(M, \omega)$ uma 2n-variedade simplética, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$ pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
-			$$
-			\mu(x) = Ind(x) - n.
-			$$
-		\end{corolario}
-	\end{frame}
 \end{document}
