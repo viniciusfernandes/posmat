@@ -1123,10 +1123,10 @@
 	\section{Teoria de Morse Clássica}\label{secao_morse_classica}
 	
 	\begin{definicao}
-		(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
+		(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjunto dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
 	\end{definicao}
 
-	O índice de Morse de um dado $p \in \pontoscriticos{f}$ é a dimensão dos subespaço $V\subset T_{p}M $ tal que \ hessiana é negativa-definita, isto é, $H_{p}(f)(v,u)<0$ para todo $v,u \in V$. Denotaremos esse índice por $\lambda_{p} = dim(V)$. Como a hessiana é não-degenerada, então $H_{p}(f)$ é diagonalizável e o número de auto-valores negativos é o índice $\lambda_{p}$.
+	O índice de Morse de um dado $p \in \pontoscriticos{f}$ é a dimensão do maior subespaço $V\subset T_{p}M $ tal que \ hessiana é negativa-definita, isto é, $H_{p}(f)(v,u)<0$ para todo $v,u \in V$. Denotaremos esse índice por $\lambda_{p} = dim(V)$. Como a hessiana é não-degenerada, então $H_{p}(f)$ é diagonalizável e o número de auto-valores negativos é o índice $\lambda_{p}$.
 	
 	\begin{lema}
 		(Lema de Morse) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ com índice de Morse $\lambda_{p}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
@@ -1141,14 +1141,14 @@
 	\end{lema}
 	
 	\begin{observacao}
-		Como consequência do Lema de Morse, pode-se mostrar que os ponto críticos de uma função de Morse $f \in \funcoesmorse{M}$ são isolados. Pela compacidade de $M$ tem-se que os pontos isolados são finitos.
+		Como consequência do Lema de Morse, pode-se mostrar que os pontos críticos de uma função de Morse $f \in \funcoesmorse{M}$ são isolados. Pela compacidade de $M$ tem-se que os pontos isolados são finitos.
 	\end{observacao}
 	
 	
 	A existência das funções de Morse é ilustrada pelo seguinte exemplo. Seja $f:M\to \reta$ tal que $f(x_{1}, \dots, x_{n}) = x_{n}$. Essa função é chamada de função altura e pode-se mostrar que $f$ é uma função de Morse, logo $\funcoesmorse{M} \neq \emptyset$.
 	
 	\begin{exemplo}
-		Sejam $S^{2} \subset \real{3}$ a 2-esfera centrada na origem e $f:S^{2}\to \reta$ a função altura dadar por $f(x,y,z) = z$. Os pontos críticos de $f$ são $p_{\pm} = \{(0,0,\pm 1)\}$, cujos índices são $\lambda_{- } = 0$ e $\lambda_{+ } = 2$.
+		Sejam $S^{2} \subset \real{3}$ a 2-esfera centrada na origem e $f:S^{2}\to \reta$ a função altura dadar por $f(x,y,z) = z$. Os pontos críticos de $f$ são $p_{\pm} = \{(0,0,\pm 1)\}$, cujos índices são $\lambda_{p_{-} } = 0$ e $\lambda_{p_{+}} = 2$.
 	\end{exemplo}
 	
 	As funções de Morse não são um caso raro nessa descrição, muito pelo contrário. O seguinte teorema garante que tais funções são abundantes no conjunto das funções suaves e tal resultado pode ser encontrado em $\cite{amyia_diff_topology}$.
@@ -1157,18 +1157,16 @@
 		Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
 	\end{teorema} 
 	
-	As seguintes definições nos permitirão a definir o tipo de homotopia de variedade $M$ em termos dos pontos críticos de uma dada função de Morse $f$. A estratégia é fatiar a variedade em níveis e construirmos os $CW$-complexos homotópicos associado a cada um deles \vermelho{(Melhorar essa frase)}.
-		
 	Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
 	
 	\begin{teorema}
-		Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+		Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ não contenha pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
 	\end{teorema}
 	
 	O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, se $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro.
 	
 	\begin{teorema}\label{teorema cw_complexo_ponto_critico_morse}
-		Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
+		Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = c$. Suponhamos que$f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
 	\end{teorema}
 	
 	\begin{observacao}
@@ -1261,7 +1259,7 @@
 			\vermelho{Não entendo a diferença entre os índices dos pontos críticos....!!!!!!!!!!}
 	\end{exemplo}
 
-	A relação entre a topologia de $M$ e os pontos críticos da função de Morse $f:M \to \reta$, originalmente foi data em termos de desigualdades, chamadas desigualdades de Morse.
+	A relação entre a topologia de $M$ e os pontos críticos de uma função de Morse $f:M \to \reta$, originalmente foi data em termos de desigualdades, chamadas desigualdades de Morse.
 	
 	\begin{definicao}
 		(Números de Betti) O j-ésimo número de Betti de $M$ é o inteiro $\beta_{j}(M) = dim(H_{j}(M))$, onde $H_{j}(M)$ é o j-ésimo grupo de homologia singular de $M$.
@@ -1274,7 +1272,7 @@
 	\begin{teorema}
 		(Desigualdades de Morse) Sejam $f \in \funcoesmorse{M}$ e $\nu_{k}$ o número de pontos críticos de $f$ com índice de Morse $k$. Então valem as seguintes desigualdades:
 		\begin{enumerate}
-			\item $\beta_{k}(M) \leq \nu_{k}$ para $0\leq k\leq n$
+			\item $\beta_{k}(M) \leq \nu_{k}$ para $0\leq k\leq n$,
 			
 			\item $\sum_{j = 0}^{k}(-1)^{k-j}\beta_{j}(M) \leq \sum_{j = 0}^{k}(-1)^{k-j}\nu_{j} $ para $0 \leq k \leq n$ e vale a igualdade para o caso em que $k=n$.
 		\end{enumerate}
@@ -1305,7 +1303,7 @@
 	Pela compacidade de $M$ e pela unicidade da solução do problema de valor inicial anteriormente descrito, temos que $\orbitaponto{p}\subset M$ é uma imersão injetiva quando é uma órbita regular. Vista como um subconjunto de $\real{m}$, para um inteiro $m>0$ suficientemente grande (Teorema de Megulho de Whitney $\cite{guillemin_differential_topology}$), $M$ é um conjunto limitado, logo $\orbitaponto{p}$ também é limitado. Assim, tal órbita admite pontos limites. Os conjunto $\alpha$-limite e $\omega$-limite de $p \in M$ são definidos por $\alpha(p) = \{q \in M: \phi_{t}(p) \to q, t \to -\infty\}$ e $\omega(p) = \{q \in M: \phi_{t}(p) \to q, t \to \infty\}$. O seguinte resultado sobre a topologia dos conjuntos limites é feito em $\cite{palis_dynamical_systems}$.
 	
 	\begin{proposicao}
-		Sejam $M$ uma variedade é compacta e $X\in \campossuaves{M}$. Então para $p \in M$ tem-se que $\alpha(p)$ e $\omega(p)$ são fechados, conexos e invariantes pelo fluxo de $X$.
+		Sejam $M$ uma variedade compacta e $X\in \campossuaves{M}$. Então para $p \in M$ tem-se, que $\alpha(p)$ e $\omega(p)$ são fechados, conexos e invariantes pelo fluxo de $X$, isto é, são uniões de órbitas de $X$.
 	\end{proposicao}
 	
 	Vamos trabalhar com o campo gradiente da função de Morse $f$ pois dele podemos extrair informações sobre o comportamento dessa função. Munindo $M$ com uma métrica Riemanniana $g: T_{p}M \times T_{p}M \to \reta$, temos que $df_{p}(v) = g(\nabla f(p), v)$, onde $v \in T_{p}M$. Sejam $-\gradiente \in \campossuaves{M}$ e $\gamma$ a curva integral de $-\gradiente $ tal que $\gamma(0) = p\in M$. Então
@@ -1328,7 +1326,7 @@
 	
 	\begin{lema}\label{lema_conjunto_limite_funcao_morse}
 		Se 
-		$p \in M$. Então $\alpha(p)  = \{q\}$ e $\omega(p) = \{r\}$ onde $q, r \in \pontoscriticos{f}$.
+		$p \in M$, então $\alpha(p)  = \{q\}$ e $\omega(p) = \{r\}$ onde $q, r \in \pontoscriticos{f}$.
 	\end{lema}
 	
 	\begin{definicao}
@@ -1336,10 +1334,10 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		Em termos de pontos limite, podemos reescrever as variedades instáveis e estaveis de $p \in \pontoscriticos{f}$ como sendo $\variedadeinstavel{p} = \{q\in M: \alpha(q)=p\}$ e $\variedadeestavel{p} = \{q\in M: \omega(q)=p\}$.
+		Em termos de pontos limite, podemos reescrever as variedades instáveis e estáveis de $p \in \pontoscriticos{f}$ como sendo $\variedadeinstavel{p} = \{q\in M: \alpha(q)=p\}$ e $\variedadeestavel{p} = \{q\in M: \omega(q)=p\}$.
 	\end{observacao}
 	
-	Da observação anterior podemos afirmar que ambas as variedades instável e estável dos pontos críticos são contráteis. De fato, defina $Id: M\to M$ como sendo a aplicação identidade e $c:M\to M$ como sendo a aplicação constante $c(M) =\{p\} $, onde $p \in \pontoscriticos{f}$. Então $h:\intervalo\times \variedadeinstavel{p} \to \variedadeinstavel{p}$ tal que $h(t,q) = \phi(t/(1-t), q)$ é uma homotopia entre $Id$ e $c$, pois é contínua e $h(0, q) = Id(q)$ e $\lim_{t \to 1}h(t, q) = c(q)$ e a variedade instável é contrátil. Com uma argumento análogo mostra-se que $\variedadeestavel{p}$ é contrátil.
+	Da observação anterior, podemos afirmar que ambas as variedades instável e estável dos pontos críticos são contráteis. De fato, defina $Id: M\to M$ como sendo a aplicação identidade e $c:M\to M$ como sendo a aplicação constante $c(M) =\{p\} $, onde $p \in \pontoscriticos{f}$. Então $h:\intervalo\times \variedadeinstavel{p} \to \variedadeinstavel{p}$ tal que $h(t,q) = \phi(t/(1-t), q)$ é uma homotopia entre $Id$ e $c$, pois é contínua e $h(0, q) = Id(q)$ e $\lim_{t \to 1}h(t, q) = c(q)$, logo a variedade instável é contrátil. Com uma argumento análogo mostra-se que $\variedadeestavel{p}$ é contrátil.
 	
 	Definimos o espaço tangente instável como sendo o subespaço $\espacotangentevariedadeinstavel\subset \espacotangentevariedade$ tal que a restrição da Hessiana $\hessiana$ a $\espacotangentevariedadeinstavel$ é negativa-definida. Analogamente temos o espaço tangente estável $\espacotangentevariedadeestavel \subset \espacotangentevariedade$, onde a Hessiana é positiva-definida. Com isso, segue o teorema da variedade estável, cuja demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
 	
@@ -1348,7 +1346,7 @@
 	\end{teorema}
 	
 	\begin{observacao}
-		Do mergulho teorema anterior temos que as variedades instável e estável possuem a mesma homotopia de um disco aberto cujas dimensões são $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
+		Do mergulho dado pelo teorema anterior temos, que as variedades instável e estável possuem o mesmo tipo de homotopia de um disco aberto cujas dimensões são $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
 	\end{observacao}
 
 	Podemos decompor a variedade $M$ como a união disjunta das variedades instáveis ou união disjunta da variedades estáveis, o que é garantido pelo resultado a seguir.
@@ -1401,12 +1399,12 @@
 	
 	Sejam $V$ um n-espaço vetorial, $B=\{e_{j}\}_{j=1}^{n}$ e $B'=\{e'_{j}\}_{j=1}^{n}$ duas bases ordenadas de $V$. Dizemos que $B$ e $B'$ possuem a mesma orientação se o determinante da matriz de mudança de base, $A: B \to B'$, definida por $e_{j} = \sum_{i=1}^{n}A_{ji}e'_{i}$, possui determinante positivo. 
 	
-	Uma orientação em um n-espaço vetorial $V$ é uma classe de equivalência entre bases ordenadas de $V$. Um espaço vetorial munido de um orientação é um espaço vetorial orientado. tal orientação pode ser positiva ou negativa, de acordo com o determinande da matriz de mudança de base for positiva ou negativa.
+	Uma orientação em um n-espaço vetorial $V$ é uma classe de equivalência entre bases ordenadas de $V$. Um espaço vetorial munido de um orientação é um espaço vetorial orientado. Tal orientação pode ser positiva ou negativa, de acordo com o determinante da matriz de mudança de base for positiva ou negativa.
 	
 	Sejam $M$ uma n-variedade diferenciável. A n-upla ordenada $B=\{e_{j}\}_{j=1}^{n}$ é um referencial local se $B(p)=\{e_{j}(p)\}_{j=1}^{n}$ é uma base para $\espacotangenteponto{p}{M}$ ordenada para todo $p \in M$. Dizemos que $B$ é um referencial positivamente orientado se $B(p)$ é positivamente orientado para todo $p \in M$. Seja $A: B \to B'$ uma aplicação onde $A(p)$ é a matriz de mudança de base $B(p) $ para $B'(p)$. Se $det(A):M \to \reta$ for uma aplicação contínua tal que $det(A)(p) = det(A(p))>0$ para todo $p \in M$, então dizemos que $B$ possui orientação continuamente positiva. Analogamente, se tivermos $det(A)(p)<0$ diremos que $B$ possui uma orientação continuamente negativa.
 	
 	\begin{definicao}
-		(Variedade orientável) Seja $M$ uma n-variedade diferenciável com uma referencial $B$ continuamente orientado. Então a classe de equivalência desses referenciais $o(M)$ é chamada de orientação de $M$ e dizemos que a variedade é orientável se existe uma orientção $o(M)$.
+		(Variedade orientável) Seja $M$ uma n-variedade diferenciável com um referencial $B$ continuamente orientado. Então a classe de equivalência desses referenciais $o(M)$ é chamada de orientação de $M$ e dizemos que a variedade é orientável se existe uma orientção $o(M)$.
 	\end{definicao}
 	
 	A questão de orientação de variedades e subvariedades é crucial no processo de construção do complexo de Morse-Smale-Witten.
@@ -1420,20 +1418,20 @@
 		\begin{enumerate}
 			\item Para cada $p\in \pontoscriticos{f}$ com $\lambda_{p}>0$ fixa-se uma orientação $o(\variedadeinstavel{p})$
 			
-			\item Considere um subespaço tangente $\espacotangenteponto{p}{\variedadeestavel{p}}$ com a orientação compatível com $\espacotangenteponto{p}{\variedadeinstavel{p}}$
+			\item Considere o subespaço tangente $\espacotangenteponto{p}{\variedadeestavel{p}}$ com a orientação compatível com $\espacotangenteponto{p}{\variedadeinstavel{p}}$
 			
 			\item Como $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap\variedadeestavel{q}$ e temos a transversalidade $\variedadeinstavel{p}\pitchfork\variedadeestavel{q}$, então a orientação $o(\variedadeconectantepontos{p}{q})$ é determinada pelo isomorfismo $\espacotangenteponto{x}{\variedadeinstavel{p}}\cong \espacotangenteponto{x}{\variedadeconectantepontos{p}{q}}\oplus \espacotangenteponto{x}{\variedadeestavel{q}}$, onde $x \in \variedadeconectantepontos{p}{q}$.
 		\end{enumerate}
 	\end{observacao}
 
-	Sejam $M$ uma n-variedade orientável, $f \in \funcoesmorsesmale{M}$, $p,q\in \pontoscriticos{f}$ tais que $\lambda_{p}-\lambda_{q} = 1$ e $\gamma:\retacartesianovariedade\to M$ uma linha do fluxo gradiente negativo onde 
+	Sejam $M$ uma n-variedade orientável, $f \in \funcoesmorsesmale{M}$, $p,q\in \pontoscriticos{f}$ tais que $\lambda_{p}-\lambda_{q} = 1$ e $\gamma :\reta \to M$ a curva integral do negativo do gradiente com as condições de contorno a seguir
 	$$
 	\derivada{}{t}\gamma(t) = -\gradiente(\gamma(t)), \; \lim_{t \to -\infty}\gamma(t) = p\;\;\text{e}\; \lim_{t \to \infty}\gamma(t) = q.
 	$$
-	Tomando um ponto $x \in \gamma(\reta) \subset \variedadeconectantepontos{p}{q}$, juntamente com o campo $-\gradiente$ podemos definir um referencial $B^{u}$ em $M$ tal que $\{-\gradiente(x), B^{u}(x)\}$ seja uma base de $\espacotangenteponto{x}{\variedadeinstavel{p}}$. Pelo Teorema $\ref{teorema_variedade_instavel_estavel}$ temos que $\espacotangenteponto{x}{M}=\espacotangenteponto{x}{\variedadeinstavel{p}}\oplus\espacotangenteponto{x}{\variedadeestavel{p}}$. Com isso, podemos afirmar que existe um referencial $B^{s}$ definido em $\variedadeestavel{p}$ e um referencial $B_{\gamma}$ em $\gamma(\reta)$ tal que $B_{\gamma}(x) = \{-\gradiente(x), B^{u}(x), B^{s}(x)\}$ é uma base de $\espacotangenteponto{x}{M}$.
+	Tome um ponto $x \in \gamma(\reta) \subset \variedadeconectantepontos{p}{q}$. Como a variedade instável $\variedadeinstavel{p}$ é orientável, podemos fixar $o(\variedadeinstavel{p})$ como sendo sua orientação. Então existe um referencial $B^{u}$ nessa variedade tal que, juntamente com o campo $-\gradiente$, tem-se que $B(x) = \{-\gradiente(x), B^{u}(x)\}$ é uma base de $\espacotangenteponto{x}{\variedadeinstavel{p}}$.
 	
 	\begin{definicao}
-		(Número de intersecção) Com as hipóteses descritas anteriormente, o sinal característico da órbita $\orbitaponto{x}$ é o índice $n_{x}(B_{\gamma})$ que assume os valores $\pm 1$, caso o referencial $B_{\gamma}$ tenha orientação positiva ou negativa, respectivamente. O número de intersecção é definido por 
+		(Número de intersecção) Com as hipóteses descritas anteriormente, o sinal característico da órbita $\orbitaponto{x}$ é o índice $n_{x} \in \{\pm 1\}$ que assume os valores $1$, caso a orientação $o(B(x))$ seja equivalente a $o(\variedadeinstavel{p})$, e assume $-1$ caso contrário. O número de intersecção é definido por 
 		$$
 		n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}.
 		$$
@@ -1442,11 +1440,11 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		(Complexo de Morse-Smale-Witten) Seja $f \in \funcoesmorsesmale{M}$. Para cada $p \in \pontoscriticos{f}$ assuma uma orientação $o(\variedadeinstavel{p})$. Sejam $C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ e $C_{*}(f) =\bigoplus^{m}_{k=1}C_{k}(f)$. O homomorfismo $\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido em cada gerador p de $C_{k}$
+		(Complexo de Morse-Smale-Witten) Seja $f \in \funcoesmorsesmale{M}$. Para cada $p \in \pontoscriticos{f}$ assuma uma orientação $o(\variedadeinstavel{p})$. Sejam $C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ e $C_{*}(f) =\bigoplus^{m}_{k=0}C_{k}(f)$. O homomorfismo $\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido em cada gerador p de $C_{k}$
 		$$
 		\partial_{k}(p)=\sum_{q \in \pontoscriticos{f}}n(p,q)q
 		$$
-		é chamado operador de bordo de Morse-Smale-Witten e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
+		é chamado operador bordo de Morse-Smale-Witten e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
 		
 	\end{definicao}
 	
@@ -1498,7 +1496,7 @@
 	A mecânica clássica visa o estudo da dinâmica de sistemas físicos, conservativos ou não. Diz-se que um campo vetorial $F:\real{3} \to \real{3}$ é conservativo quando, dados dois caminhos $\gamma,\beta:[0,1] \to \real{3}$ de classe $C^{2}$ tais que $\gamma(0)=\beta(0)$ e $\gamma(1)=\beta(1)$ (com extremos fixos), temos
 	$$
 	\tau=\int_{\intervalo} \produtointerno{F(\gamma(t))}{\gamma'(t)}=
-	\int_{\intervalo} \produtointerno{F(\gamma(t))}{\beta'(t)}.
+	\int_{\intervalo} \produtointerno{F(\beta(t))}{\beta'(t)}.
 	$$
 	A grandeza $\tau$ é definida como sendo o trabalho realizado pelo campo $F$ ao longo do caminho $\gamma$. Logo, se o campo é conservativo, então o trabalho independe do caminho.
 	
@@ -1531,31 +1529,31 @@
 	
 	A geometrização de problemas em física nos permite estudar os resultados obtidos sobre outro ponto de vista, e com isso, generalizar e analisar novos aspectos. Faremos o mesmo com a descrição Hamiltoniana, de modo que definiremos objetos utilizados adiante na análise da topologia de uma categoria específica de variedades diferenciáveis.
 	
-	Sejam $Q= \real{n}$ e $P=\real{2n}$ os espaços de configurações e fase, respectivamente. Por simplicidade vamos utilizar a notação $(q, p ) = (q_{1}, \dots ,q_{n}, p_{1}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  temos o espaço tangente $T_{(q_{0},p_{0})} P = span\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}=span\{\partial_{q}, \partial_{p}\}$, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
+	Sejam $Q= \real{n}$ e $P=\real{2n}$ os espaços de configurações e fase, respectivamente. Por simplicidade vamos utilizar a notação $(q, p ) = (q_{1}, \dots ,q_{n}, p_{1}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  temos que $B(q_{0}, p_{0})=\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}= \{\partial_{q}, \partial_{p}\} $ é uma base do espaço tangente $T_{(q_{0},p_{0})} P $, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
 	
 	Seja $H:P \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$. O gradiente Hamiltoniano é dado por
 	$$
-	\nabla H =\sum_{j=1}^{n}\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
+	\nabla H =\sum_{j=1}^{n} \bigparenteses{\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} }= \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
 	$$
 	
 	Definimos o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
 	$$
-	\campohamiltonianoabrev = -\estruturacomplexa \nabla H = \sum_{j=1}^{n}\derivadaparcial{H}{p_{j}}\derivadaparcial{}{q_{j}} - \derivadaparcial{H}{q_{j}}\derivadaparcial{}{p_{j}} = \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
+	\campohamiltonianoabrev = -\estruturacomplexa \nabla H = \sum_{j=1}^{n}\bigparenteses{\derivadaparcial{H}{p_{j}}\derivadaparcial{}{q_{j}} - \derivadaparcial{H}{q_{j}}\derivadaparcial{}{p_{j}} } = \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
 	$$
-	onde
+	onde $\estruturacomplexa$ é a matriz $2n \times 2n$ dada por
 	$$
 	\estruturacomplexa=
 	\left(
 	\begin{array}{cc}
-	0 & -Id
+	0 & -Id_{n\times n}
 	\\
-	Id & 0
+	Id_{n\times n} & 0
 	\end{array}
 	\right), 
 	$$
-	isto é, $\estruturacomplexa \derivadaparcialabrev{q} = \derivadaparcialabrev{p}$ e $\estruturacomplexa \derivadaparcialabrev{p} = -\derivadaparcialabrev{q}$.
+	e $Id_{n\times n}$ a matriz identidade $n\times n$. Com isso, $\estruturacomplexa \derivadaparcialabrev{q} = \derivadaparcialabrev{p}$ e $\estruturacomplexa \derivadaparcialabrev{p} = -\derivadaparcialabrev{q}$.
 	
-	Vejamos que o campo Hamiltoniano representa um campo conservativo. Seja $\psi:P\times \reta \to P$ o fluxo do campo $\campohamiltonianoabrev$ tal que $\psi(t) = (q(t), p(t))$. Então as equações de Hamilton podem ser reescritas como 
+	Vejamos que o campo Hamiltoniano representa um campo conservativo. Seja $\psi:\reta \to P$ a curva integral do campo $\campohamiltonianoabrev$. Então as equações de Hamilton podem ser reescritas como 
 	$$
 	\begin{aligned}
 	\dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
@@ -1570,15 +1568,15 @@
 	&=
 	\left(
 	\begin{array}{c}
-	\derivadaparcial{H(t)}{q}
+	\derivadaparcial{H(t)}{p}
 	\\
-	-\derivadaparcial{H(t)}{p}
+	-\derivadaparcial{H(t)}{q}
 	\end{array}
 	\right).
 	\end{aligned}
 	$$	
 	
-	Afirmo que, ao longo do fluxo $\psi$, o sistema Hamiltoniano é conservativo, isto é, a energia total do sistema é constante. De fato
+	Afirmo que, ao longo das soluções dos sistema Hamiltoniano, o sistema é conservativo, isto é, a energia total do sistema é constante. De fato
 	
 	$$
 	\begin{aligned}
@@ -1588,22 +1586,22 @@
 	&= \produtointerno{\nabla H}{\campohamiltoniano{\psi(t)}} 
 	\\
 	&= 
-	-\produtointerno{\nabla H}{\estruturacomplexa \nabla H(t)} 
+	\produtointerno{\nabla H}{-\estruturacomplexa \nabla H(t)} 
 	\\
-	&=-\produtointerno{\derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}
-	}{\derivadaparcial{H}{p}\estruturacomplexa\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\estruturacomplexa\derivadaparcialabrev{p}}
+	&=\produtointerno{\derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}
+	}{\derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}}
 	\\
-	&=-\derivadaparcial{H}{p}^{2}\produtointerno{\derivadaparcialabrev{q}
-	}{\derivadaparcialabrev{p}}	-\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{q}}
-	+\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{p}}{\derivadaparcialabrev{p}}	+\derivadaparcial{H}{q}^{2}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{p}}
+	&=\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{q}}-\bigparenteses{\derivadaparcial{H}{p}}^{2}\produtointerno{\derivadaparcialabrev{q}
+	}{\derivadaparcialabrev{p}}	
+	+\bigparenteses{\derivadaparcial{H}{q}}^{2}\produtointerno{\derivadaparcialabrev{q}}{\derivadaparcialabrev{p}}
+	-\derivadaparcial{H}{p}\derivadaparcial{H}{q}\produtointerno{\derivadaparcialabrev{p}}{\derivadaparcialabrev{p}}
 	\\
 	&=0.
 	\end{aligned}
 	$$
 	
-	Defina $\formaSimpleticaabrev :T_{(q,p)} P \times T_{(q,p)} P \to \reta$ tal que $\formaSimpleticaabrev(v, u) = -V^{t}\estruturacomplexa U$, onde $V, U$ são as  representações matricias desses campos vetoriais no ponto $(q,p)$. Afirmo que $\formaSimpleticaabrev$ é bilinear anti-simétrica e não degenerada, isto é, dado $(q,p) \in P$ se $\formaSimpleticaPadrao{v}{y} = 0$ para todo $y \in T_{(q,p)} P$, então $v = 0$. De fato, dados $x \in T_{(q,p)} P$ e $\lambda \in \reta$, teremos $\formaSimpleticaPadrao{v + \lambda x}{u} = -(V+\lambda X)^{t}\estruturacomplexa U = -V^{t}\estruturacomplexa U -\lambda X^{t}\estruturacomplexa U = \formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{x}{u}$. Com um argumento análogo podemos mostrar que $\formaSimpleticaPadrao{v}{u + \lambda x} =\formaSimpleticaPadrao{v}{u} + \lambda\formaSimpleticaPadrao{v}{x} $. Portanto $\formaSimpleticaabrev$ é bilinear. É anti-simétrica pois $\formaSimpleticaPadrao{v}{u} = -V^{t}\estruturacomplexa U = -(\estruturacomplexa^{t} V)^{t}U = -U^{t}(\estruturacomplexa^{t} V)= U^{t}(\estruturacomplexa V) = -\formaSimpleticaPadrao{u}{v}$, onde usamos $\estruturacomplexa^{t} = -\estruturacomplexa$. Seja $I_{j}$ uma matriz $2\times 1$ com a j-ésima entrada igual a 1 e as outras nulas. Com isso, temos que $\estruturacomplexa I_{j+n} = -I_{j}$ e $\estruturacomplexa I_{j} = I_{j+n}$. Suponha que $v = v_{j}\derivadaparcialabrev{q_{j}}$ tal que $\formaSimpleticaPadrao{v}{e} = 0$ para todo $e$ elemento da base de $T_{(q,p)} P$. Então, fazendo $e= \derivadaparcialabrev{p_{j}}$ teremos $0= v_{j}\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{j}}} = -v_{j}I_{j}^{t}\estruturacomplexa I_{j+n} = v_{j}I_{j}^{t}I_{j}=v_{j}$, portanto $v_{j} = 0$. Repetindo a mesma construção para $1\leq j \leq n$ podemos concluir que $\formaSimpleticaPadrao{v}{u} = 0$ para todo $u$, então $\Omega$ é não-degenerada.
+	Tome a 2-forma $\formaSimpleticaabrev :T_{(q,p)} P \times T_{(q,p)} P \to \reta$ definida por $\formaSimpleticaabrev = \sum_{j}  dq_{j}\wedge dp_{j}$. Com isso, temos a geometrização das equações de Hamilton
 	
-	Vejamos que nessa base temos $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{q_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k} = -I_{j}^{t}I_{k+n} = 0$. Analogamente, $\formaSimpleticaPadrao{\derivadaparcialabrev{p_{j}}}{\derivadaparcialabrev{p_{k}}} = 0$. Por fim, $\formaSimpleticaPadrao{\derivadaparcialabrev{q_{j}}}{\derivadaparcialabrev{p_{k}}} = -I_{j}^{t}\estruturacomplexa I_{k+n} = I_{j}^{t}I_{k} = \delta_{jk}$. Assim, de forma equivalente, podemos escrever $\formaSimpleticaabrev = \sum_{j}  dq_{j}\wedge dp_{j}$, logo
 	$$
 	\begin{aligned}
 	\formaSimpleticaPadrao{\campohamiltonianoabrev}{v} 
@@ -1619,7 +1617,7 @@
 	\end{aligned}
 	$$
 	
-	Definimos um espaço de fase $P$ e em cada ponto do espaço tangente de $P$ temos uma forma bilinear anti-simetrica e não-degenerada $\formaSimpleticaabrev$, chamada forma simplética. Com isso, o par $(T_{(q,p)}P, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético, onde $dim(T_{(q,p)}P) = 2n$. A seção seguinte é dedicada ao estudo de espaços vetoriais simpléticos reais.
+	Definimos um espaço de fase $P$ e em cada ponto do espaço tangente de $P$ temos uma forma bilinear anti-simétrica e não-degenerada $\formaSimpleticaabrev$, chamada forma simplética. Com isso, o par $(T_{(q,p)}P, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético, onde $dim(T_{(q,p)}P) = 2n$. A seção seguinte é dedicada ao estudo de espaços vetoriais simpléticos reais.
 	
 	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
@@ -1632,6 +1630,8 @@
 		\omega(e_{i}, e_{j}) = \omega(f_{i}, f_{j}) = 0, \; \omega(e_{i}, f_{j}) = \delta_{ij}.
 		$$
 	\end{definicao}
+	
+	Sejam $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ dois espaços vetoriais simpléticos e uma aplicação linear $\varphi: V_{1}\to V_{2}$. O pullback de $\omega_{2}$ por $\varphi$ é a 2-forma $\varphi^{*}\omega_{2}:V_{1} \times V_{1} \to \reta$ definida por $\varphi^{*}\omega_{2}(v,u) = \omega_{2}(\varphi(v), \varphi(u))$.
 	
 	\begin{definicao}
 		(Simplectomorfismo) Dois espaços vetoriais simpléticos $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ são ditos simplectomorfos se existe um isomorfismo $\varphi:V\to W$ que preserva a forma simplética, isto é, $\varphi^{*}\omega_{2} = \omega_{1}$.
@@ -1647,30 +1647,33 @@
 		$$
 		Além disso, $W$ pode ser classificado de acordo com as seguintes características
 		\begin{enumerate}
-			\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$
-			\item \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$
-			\item \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$
-			\item \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$
+			\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$;
+			
+			\item \text{Isotrópico}, se $W \subseteq \espacoSimpleticoOrtogonal{W}$;
+			
+			\item \text{Coisototrópico}, se $W\supseteq \espacoSimpleticoOrtogonal{W}$;
+			
+			\item \text{Lagrangiano}, se $W =\espacoSimpleticoOrtogonal{W}$.
 		\end{enumerate}
 	\end{definicao}
 	
 	\begin{lema}\label{lema_subespaco_simpletico_ortogonal}
 		(Caracterização de subespaço simplético)
 		\begin{enumerate}
-			\item Se $W$ for simplético, então $(W, \omega|_{W})$ é um espaço vetorial simplético.
+			\item Se $W$ for simplético, então $(W, \omega|_{W \times W})$ é um espaço vetorial simplético.
 			
 			\item Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
 			
-			\item Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, não esta contido propriamente em nenhum outro subespaço isotrópico. 
+			\item Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, $W$ não está contido propriamente em nenhum outro subespaço isotrópico. 
 		\end{enumerate}
 	\end{lema}
 	\begin{prova}
 		\begin{enumerate}
-			\item Supondo que $\omega|_{W}$ seja degenerada, então existe $0\neq v \in W$ tal que $\omega(v, u ) = 0$ para todo $u \in W$, o que implica que $u \in W\cap W^{\omega}$, contradizendo a hipótese $W\cap W^{\omega} =0$. Logo $\omega|_{W } $ é não-degenerada e $(W, \omega|_{W})$ é um espaço vetorial simplético.
+			\item Supondo que $\omega|_{W \times W}$ seja degenerada, então existe $0\neq v \in W$ tal que $\omega(v, u ) = 0$ para todo $u \in W$, o que implica que $u \in W\cap W^{\omega}$, contradizendo a hipótese $W\cap W^{\omega} =0$. Logo $\omega|_{W \times W} $ é não-degenerada e $(W, \omega|_{W \times W})$ é um espaço vetorial simplético.
 			
 			\item Dado $0\neq v \in W $ , então $\omega(v,u) = 0$ para todo $u \in W\cap W^{\omega} = W$. Portanto $\omega|_{W\times W}: W\times W \to \reta$ é a aplicação nula.
 			
-			\item  Como $W=W^{\omega}$, então $W\subseteq W^{\omega}$, logo $W$ é isotrópico. Seja $U \subseteq V$ um subespaço isotrópico tal que $W \subseteq U$. Então, pelo item anterior, $\omega|_{U\times U} = 0$, logo dado $v \in W \cap U$ e para todo $u \in U$, temos $\omega(v, u) = 0$, implicando $u \in W^{\omega}$. Portanto, $U = W^{\omega} = W$.
+			\item  Como $W=W^{\omega}$, então $W\subseteq W^{\omega}$, logo $W$ é isotrópico. Seja $U \subseteq V$ um subespaço isotrópico tal que $W \subseteq U$. Então, pelo item anterior, $\omega|_{W \times W} = 0$, logo dado $v \in W \cap U$ e para todo $u \in U$, temos $\omega(v, u) = 0$, implicando $u \in W^{\omega}$. Portanto, $U = W^{\omega} = W$.
 		\end{enumerate}
 	\end{prova}
 	
@@ -1681,14 +1684,14 @@
 	\end{lema}
 	\begin{prova}
 		Dado $v \in V$, temos pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $w^{*}$ é injetora pois, suponha 
-		que exista $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$. Com isso, temos $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Portanto $\omega^{*}$ é injetora. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$ temos pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ devemos ter que $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
+		que exista $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$. Com isso, temos $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Portanto $\omega^{*}$ é injetora. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$, temos pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ devemos ter que $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
 	\end{prova}
 	
 	\begin{proposicao}\label{proposicao_dimensao_subespaco_simpletico}
 		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $\omega^{*}: V \to V^{*}$ tal que $\omega^{*}(v)(u) = \omega(v,u)$. Pelo Lema $\ref{lema_isomorfismo_forma_simpletica}$ $\omega^{*}$ é um isomorfismo.. Seja $W^{\circ}=\{f\in W^{*}: f(v) = 0,\; \forall v\in W \}$ o anulador de $W$. Tomando $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ temos $f(u) = \omega^{*}(v)(u)=\omega(v,u)$, para algum $v \in \espacoSimpleticoOrtogonal{W}$. Se $u\in W$, então $f(u) = 0$. Portanto $f \in W^{\circ}$ e  $\omega^{*}(\espacoSimpleticoOrtogonal{W})\subseteq W^{\circ}$. Por outro lado, seja $f \in W^{\circ}$. Como $\omega^{*}$ é um isomorfismo, então existe $v \in v$ tal que $f = \omega^{*}(v)$, logo $0=f(u) = \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in W$, o que implica que $v \in \espacoSimpleticoOrtogonal{W}$. Portanto, $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ e $W^{\circ} \subseteq \omega^{*}(\espacoSimpleticoOrtogonal{W})$. Logo $W^{\circ} =\omega^{*}(\espacoSimpleticoOrtogonal{W})$.
+		Seja $\omega^{*}: V \to V^{*}$ tal que $\omega^{*}(v)(u) = \omega(v,u)$. Pelo Lema $\ref{lema_isomorfismo_forma_simpletica}$ $\omega^{*}$ é um isomorfismo. Seja $W^{\circ}=\{f\in W^{*}: f(v) = 0,\; \forall v\in W \}$ o anulador de $W$. Tomando $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ temos $f(u) = \omega^{*}(v)(u)=\omega(v,u)$, para algum $v \in \espacoSimpleticoOrtogonal{W}$. Se $u\in W$, então $f(u) = 0$. Portanto $f \in W^{\circ}$ e  $\omega^{*}(\espacoSimpleticoOrtogonal{W})\subseteq W^{\circ}$. Por outro lado, seja $f \in W^{\circ}$. Como $\omega^{*}$ é um isomorfismo, então existe $v \in v$ tal que $f = \omega^{*}(v)$, logo $0=f(u) = \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in W$, o que implica que $v \in \espacoSimpleticoOrtogonal{W}$. Portanto, $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ e $W^{\circ} \subseteq \omega^{*}(\espacoSimpleticoOrtogonal{W})$. Logo $W^{\circ} =\omega^{*}(\espacoSimpleticoOrtogonal{W})$.
 		Como $\omega^{*}$ é um isomorfismo, então $dim(\espacoSimpleticoOrtogonal{W}) = dim(\omega^{*}(\espacoSimpleticoOrtogonal{W}))$. Temos que 
 		$$
 		dim(V) = dim(W)+dim(W^{\circ}) = dim(W)+dim(\omega^{*}(\espacoSimpleticoOrtogonal{W})) = dim(W)+dim(\espacoSimpleticoOrtogonal{W}).
@@ -1705,7 +1708,7 @@
 	\begin{observacao}\label{observacao_existencia_base_simpletica}
 		A existência de uma base simplética garante a existência de uma base em que a forma simpléctica $\omega$ poderá ser representada pela matriz
 		$$
-		(\omega_{ij}) =\left(
+		\left(
 		\begin{array}{cc}
 		0 & Id
 		\\
@@ -1783,7 +1786,7 @@
 		&= \omega^{\wedge n}.
 		\end{aligned} 
 		$$
-		Aplicando esse resultado veremos que
+		Aplicando esse resultado vemos que
 		$$
 		\begin{aligned}
 		\omega^{\wedge n}(e_{1}, \dots,e_{n}, f_{1},\dots, f_{n})
@@ -1876,25 +1879,25 @@
 	
 	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ $\omega$-compatível, temos que $\formaSimpletica{v}{Ju} = g_{J}(v,u)$ é um produto interno em $V$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g_{J}(u,v)$ esta bem-definida e é injetora.
 	
-	A seguinte proposição afirma a reciproca do resultado anterior.
+	A seguinte proposição afirma que vale a recíproca do resultado anterior.
 	
 	\begin{proposicao}
 		Seja $(V, \omega)$ uma 2n-espaço vetorial simplético. Então cada produto interno $g \in \produtosinternos{V}$ define uma estrutura complexa $\omega$-compatível.
 	\end{proposicao}
 	\begin{prova}
 		Seja $g \in \produtosinternos{V}$. Sabe-se que $\hat{g}:V \to V^{*}$, definido por $\hat{g}(v)(u)=g(v,u)$, é um isomorfismo. Além disso, existe um único automorfismo $A:V\to V$ tal que $\formaSimpletica{v}{u} = g(Av,u)$ para todo $v,u \in V$ dado por $A = \hat{g}^{-1}\omega
-		^{*}$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$ podemos escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, temos $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, temos a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
+		^{*}$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$, podemos escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, temos $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, temos a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
 	\end{prova}
 	
 	\begin{proposicao}
 		$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
 	\end{proposicao}
 	\begin{prova}
-		Sejam $F: \produtosinternos{V} \to \estruturascomplexaspadrao$ e $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ dos resultados anteriores. Seja $J \in \estruturascomplexaspadrao$ arbitrário. Então $(F\circ G)(J) = F(g_{J}) =J$, logo $F\circ G = Id_{\estruturascomplexaspadrao}$. Por outro lado, $(G\circ F)(g_{J}) = G(J) = g_{J}$, logo $G\circ F = Id_{\produtosinternos{V}}$. Portanto $F = G^{-1}$. Munindo $\estruturascomplexaspadrao$ com a topologia induzida por $\generalgroupreal{2n}$, então pode-se mostrar que $F$ é contínua. Analogamente, munindo $\produtosinternos{V}$ com a topologia induzida do espaço vetorial de todas as forma simétricas definida em $V$, pode-se mostrar que $G$ é contínua. Portanto $F$ é um homeomorfismo. Pelo Lema $\ref{lema_contratibilidade_produtos_internos}$ temos que $\produtosinternos{V}$ é contrátil, e como a contratibilidade é preservada por homeomorfismos, então $\estruturascomplexaspadrao$ é contrátil.
+		Sejam $F: \produtosinternos{V} \to \estruturascomplexaspadrao$ e $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ dos resultados anteriores. Seja $J \in \estruturascomplexaspadrao$ arbitrário. Então $(F\circ G)(J) = F(g_{J}) =J$, logo $F\circ G = Id_{\estruturascomplexaspadrao}$. Por outro lado, $(G\circ F)(g_{J}) = G(J) = g_{J}$, logo $G\circ F = Id_{\produtosinternos{V}}$. Portanto $F = G^{-1}$. Munindo $\estruturascomplexaspadrao$ com a topologia induzida por $\generalgroupreal{2n}$, então pode-se mostrar que $F$ é contínua. Analogamente, munindo $\produtosinternos{V}$ com a topologia induzida do espaço vetorial de todas as forma simétricas definida em $V$, pode-se mostrar que $G$ é contínua. Portanto $F$ é um homeomorfismo. Pelo Lema $\ref{lema_contratibilidade_produtos_internos}$, temos que $\produtosinternos{V}$ é contrátil, e como a contratibilidade é preservada por homeomorfismos, então $\estruturascomplexaspadrao$ é contrátil.
 	\end{prova}
 	
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
-	Neste capítulo definiremos o grupo fundamental e apresentaremos um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
+	Neste capítulo definiremos o grupo simplético e apresentaremos um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
 	
 	\section{Complexificação de espaços vetoriais}\label{secao_complexificacao_espacos_vetoriais}
 	
@@ -1915,7 +1918,7 @@
 	\end{exemplo}
 	
 	\begin{exemplo}\label{exemplo_complexificacao_matrizes}
-		Analogamente ao exemplo anterior temos que as aplicações $\complexificacao{\real{n}} \ni (x,y) \mapsto x+iy \in \complexo{n}$ e  $\complexificacao{\matrizquadreal{n}} \ni (x,y) \mapsto x+iy \in \matrizquadcomplexa{n}$ também são isomorfismos.
+		Analogamente ao exemplo anterior, temos que as aplicações $\complexificacao{\real{n}} \ni (x,y) \mapsto x+iy \in \complexo{n}$ e  $\complexificacao{\matrizquadreal{n}} \ni (x,y) \mapsto x+iy \in \matrizquadcomplexa{n}$ também são isomorfismos.
 	\end{exemplo}
 	
 	Notemos que os espaços vetoriais $V\oplus\{0\}$ e $\{0\}\oplus V$ são isomorfos a $V$. Com isso, a inclusão $i_{V} :V \hookrightarrow \complexificacao{V}$ definida por $i(v) = (v, 0)$ é chamada de mergulho padrão de $V$ em $\complexificacao{V}$.
@@ -1952,10 +1955,10 @@
 		Portanto $\complexificacao{\varphi}$ é $\complexo{}$-linear. Dado $v \in V$ temos $(i_{W}\circ \varphi)(v) = (\varphi v,0) = \complexificacao{\varphi}(v,0) = (\complexificacao{\varphi} \circ i_{V})(v)$, logo $i_{W}\circ \varphi =\complexificacao{\varphi} \circ i_{V}$. Por fim, suponha que exista $\complexificacao{\varphi'} $ definida por $\complexificacao{\varphi'}(v_{1}, v_{2}) = (\varphi' v_{1}, \varphi' v_{2})$ e tal que $i_{W}\circ \varphi =\complexificacao{\varphi'} \circ i_{V}$, onde $\varphi':V\to W$ é uma aplicação linear. Então para todo $v \in V$ temos $(i_{W}\circ \varphi )(v)=(\complexificacao{\varphi} \circ i_{V})(v) = (\complexificacao{\varphi'} \circ i_{V})(v)$, o que implica em $(\varphi v, 0) = (\varphi' v, 0)$. Como $v \in V$ é arbitrário, então $\varphi = \varphi'$, logo $\complexificacao{\varphi} = \complexificacao{\varphi'}$, demonstrando a unicidade. 
 	\end{prova}
 	
-	Considerando o corpo dos complexos como um espaço vetorial sobre $\reta$, mostraremos que o produto tensorial $\complexificacaotensorial{V}$ é equivalente a construção da complexificação feita anteriormente. Utilizaremos construção na complexificação do 2n-espaço vetorial simplético $(V, \omega)$.
+	Considerando o corpo dos complexos como um espaço vetorial sobre $\reta$, mostraremos que o produto tensorial $\complexificacaotensorial{V}$ é equivalente a construção da complexificação feita anteriormente. Utilizaremos esta construção na complexificação do 2n-espaço vetorial simplético $(V, \omega)$.
 	
 	\begin{teorema}\label{teorema_isomorfismo_complexificacao}
-		Seja $V$ um espaço vetorial real de dimensão finita. A aplicação $f_{V}: \complexificacao{V} \to \complexificacaotensorial{V}$ definida por  $f_{V}(v_{1},v_{2}) = 1\otimes_{\reta} v_{1} + i \otimes_{\reta} v_{2}$ é um isomorfismo entre os espaços vetoriais complexos e comuta o diagrama
+		Seja $V$ um espaço vetorial real de dimensão finita. A aplicação $f_{V}: \complexificacao{V} \to \complexificacaotensorial{V}$ definida por  $f_{V}(v_{1},v_{2}) = 1\otimes_{\reta} v_{1} + i \otimes_{\reta} v_{2}$ é um isomorfismo entre os espaços vetoriais complexos que faz o diagrama
 		$$
 		\xymatrix{
 			& V\ar[dl]_{i_{V}}\ar[rd]^{j} &
@@ -1963,7 +1966,7 @@
 			\complexificacao{V}\ar[rr]_{f_{V}}& & \complexificacaotensorial{V},
 		}
 		$$
-		onde $i_{V}(v) = (v,0)$ (é o mergulho padrão) e $j(v) = 1\otimes_{\reta} v$.
+		comutar, onde $i_{V}(v) = (v,0)$ (é o mergulho padrão) e $j(v) = 1\otimes_{\reta} v$.
 	\end{teorema}
 	\begin{prova}
 		Dados $z=(a+ib) \in \complexo{}$ e $v,u \in \complexificacao{V}$ temos
@@ -1987,7 +1990,7 @@
 	
 	O conjugado de cada $z=(a+ib) \in \complexo{}$ é definido por $\overline{z} = a-ib$. Analogamente, o conjugado de $\complexificacaoelemento{z}{v} \in \complexificacaotensorial{V}$ é definido por $\complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$. Definindo $v_{1} =av$ e $v_{2} = -bv$ temos $f_{V}(v_{1}, v_{2}) =\complexificacaoelemento{1}{v_{1}} +\complexificacaoelemento{i}{v_{2}} = \complexificacaoelemento{a}{v} -\complexificacaoelemento{ib}{v}  =\complexificacaoelemento{\overline{z}}{v}  $. Portanto, temos a identificação entre os conjugados $ \complexificacao{V} \ni (av, -bv) \mapsto \complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$.
 	
-	Sejam $k\geq 1$ um inteiro e $\{V_{j}\}_{j=1}^{k}$ um conjunto de espaços vetoriais de dimensão finita sobre um corpo $\mathbb{K}$. Sabe-se que o produto tensorial $\produtotensorial{V}{k}$ é um espaço vetorial de dimensão finita sobre $\mathbb{K}$. Alem disso, sabe-se que, dado um $W$ espaço vetorial também sobre $\mathbb{K}$, tem-se que $W\otimes_{\mathbb{K}}(\produtotensorial{V}{k}) \cong W\otimes_{\mathbb{K}} \produtotensorial{V}{k}$. 
+	Sejam $k\geq 1$ um inteiro e $\{V_{j}\}_{j=1}^{k}$ um conjunto de espaços vetoriais de dimensão finita sobre um corpo $\mathbb{K}$. Sabe-se que o produto tensorial $\produtotensorial{V}{k}$ é um espaço vetorial de dimensão finita sobre $\mathbb{K}$. Além disso, sabe-se que, dado um $W$ espaço vetorial também sobre $\mathbb{K}$, tem-se que $W\otimes_{\mathbb{K}}(\produtotensorial{V}{k}) \cong W\otimes_{\mathbb{K}} \produtotensorial{V}{k}$. 
 
 	Daqui em diante fixaremos a notação $\complexificado{V} = \complexificacaotensorial{V}$ para a complexificação de $V$ via produto tensorial.
 	
@@ -1995,8 +1998,8 @@
 		Visto como espaço vetorial complexo, temos que $\{1\}$ é uma base de $\complexo{}$, logo temos que $\{1^{*}\}$ é uma base do dual $\complexo{*}$, tal que $1^{*}(1) = 1$. Com isso, dado $z = (a+ib).1 \in \complexo{}$, temos $1^{*}(z) = 1^{*}((a+ib).1) = (a+ib)1^{*}(1) = a+ib$.
 	\end{observacao}
 	
-	Sejam $B = \colecaofinita{e}{n}$ uma base do n-espaço vetorial real $V$ e $B^{*} = \colecaofinita{e^{*}}{n}$ a base de seu dual $V^{*}$ tal que $e^{*}_{j}(e_{k}) =\delta_{jk}$. Defina $1 \otimes B = \colecaofinita{\complexificacaoelemento{1}{e}}{n}$ e
-	$1 \otimes B^{*} = \colecaofinita{\complexificacaoelemento{1^{*}}{e^{*}}}{n}$. Denotando $a_{j}$ e $a^{*}_{j}$ por $\complexificacaoelemento{1}{e_{j}}$ e $\complexificacaoelemento{1^{*}}{e^{*}_{j}}$, respectivamente, temos que $1\otimes B$ gera $\complexificado{V}$. De fato, todo $v \in \complexificado{V}$ pode ser escrito como 
+	Sejam $B = \colecaofinita{e}{n}$ uma base do n-espaço vetorial real $V$ e $B^{*} = \colecaofinita{e^{*}}{n}$ a base de seu dual $V^{*}$ tal que $e^{*}_{j}(e_{k}) =\delta_{jk}$. Definindo $1 \otimes B = \colecaofinita{\complexificacaoelemento{1}{e}}{n}$ e
+	$1^{*} \otimes B^{*} = \colecaofinita{\complexificacaoelemento{1^{*}}{e^{*}}}{n}$, temos que $1\otimes B$ gera $\complexificado{V}$. De fato, todo $v \in \complexificado{V}$ pode ser escrito como 
 	$$
 	\begin{aligned}
 		v &= \sum_{j=1}^{n} \complexificacaoelemento{z_{j}}{v_{j}}
@@ -2014,8 +2017,10 @@
 	
 	
 	\begin{observacao}
-		O elementos $v \in \complexificado{V}$ do tipo $v = \complexificacaoelemento{z}{\alpha}$ são chamados de vetores simples. Vimos anteriormente que os vetores mais gerais são combinações lineares dos vetores simples. Por esse fato, as aplicações lineares e multilineares estudadas nessa seção serão avaliadas apenas nos tensores simples.
+		Os elementos $v \in \complexificado{V}$ do tipo $v = \complexificacaoelemento{z}{\alpha}$ são chamados de vetores simples. Vimos anteriormente que os vetores mais gerais são combinações lineares dos vetores simples. Por esse fato, as aplicações lineares e multilineares estudadas nessa seção serão avaliadas apenas nos tensores simples.
 	\end{observacao}
+	
+	Para simplificar a notação, denotando os elementos das bases $1\otimes B$ e $1^{*}\otimes B^{*}$ por $\{a_{j}\} $ e $\{a^{*}_{j}\}$, respectivamente.
 	
 	\begin{proposicao}\label{proposicao_base_complexificada}
 		$1\otimes B$ e $1^{*}\otimes B^{*}$ são bases de $\complexificado{V}$ e $\complexificado{V}^{*}$, respectivamente, tais que $a^{*}_{j}(a_{k})=\delta_{ik}$.
@@ -2053,14 +2058,14 @@
 	
 	Para estudarmos algumas características dos auto-espaços do grupo simplético precisaremos decompor esse espaço vetorial em soma direta de determinados  auto-espaços. Tal composição será garantida pelo Teorema $\ref{teorema_espectral_jordan}$, que depende de um espaço vetorial complexo como hipótese. Como consequencia desse fato, precisaremos de um espaço vetorial simplético complexo e que seja gerado a partir de um dado espaço vetorial simplético.
 	
-	Na seção anterior vimos que uma das construções da complexificação de $V$ é o espaço vetorial complexo $\complexificado{V}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V^{*}\otimes V^{*}$. Sejam $B = \{e_{j}\}_{j=1}^{2n}$ uma base de $V$ e $\omega^{ij} = \omega(e_{i}, e_{j})$ as componentes da forma simplética nessa base. Dessa definição temos que $\omega^{ij} = -\omega^{ji}$.
+	Nessa seção, vimos que uma das construções da complexificação de $V$ é o espaço vetorial complexo $\complexificado{V}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V^{*}\otimes V^{*}$. Sejam $B = \{e_{j}\}_{j=1}^{2n}$ uma base de $V$ e $\omega^{ij} = \omega(e_{i}, e_{j})$ as componentes da forma simplética nessa base. Dessa definição, temos que $\omega^{ij} = -\omega^{ji}$.
 	
 	Utilizando as notações da Proposição $\ref{proposicao_base_complexificada}$, defina $\Omega=\sum_{i,j}\omega^{ij}a^{*}_{i}\otimes a^{*}_{j} \in \produtotensorialdual$. Temos que
 	
 	\begin{proposicao} $(\complexificado{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
 	\end{proposicao}\label{proposicao_complexificacao_espaco_simpletico}
 	\begin{prova}
-		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$ temos que $\complexificado{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega$ é uma aplicação $\complexo{}$-bilinear. Do fato $\omega^{ij}  = -\omega^{ji} $ temos que $\Omega$ é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, tomando $v, u \in \complexificado{V}$ tal que $v= \complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta} $, temos pelo Exemplo $\ref{exemplo_complexificacao_tensorial}$ que 
+		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$, temos que $\complexificado{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega$ é uma aplicação $\complexo{}$-bilinear. Como $\omega^{ij}  = -\omega^{ji} $, temos que $\Omega$ é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, tomando $v, u \in \complexificado{V}$ tal que $v= \complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta} $, temos, pelo Exemplo $\ref{exemplo_complexificacao_tensorial}$, que 
 		$$
 		\begin{aligned}
 		\Omega(v,u) &= \sum_{i,j = 1}^{2n}
@@ -2247,10 +2252,10 @@
 		\right),
 		\end{aligned}
 		$$
-		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. De forma análoga obtemos as outras identidades.
+		portanto $B^{t}D = D^{t}B = (B^{t}D)^{t}$ (matriz simétrica) e $D^{t}C-B^{t}E = Id$. De forma análoga, obtemos as outras identidades.
 	\end{prova}
 	
-	Dada uma matriz $A \in \generalgroupcomplexo{n}$ podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Com isso, consideremos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
+	Dada uma matriz $A \in \generalgroupcomplexo{n}$, podemos escrever $A = B+iC$ onde $B,C \in \generalgroupreal{n}$. Com isso, consideremos a aplicação $F:\generalgroupcomplexo{n} \to \generalgroupreal{2n}$ tal que 
 	$$
 	F(A)=
 	\left(
@@ -2266,7 +2271,9 @@
 	||F(A) - F(X)|| = max \{|B_{ij} - Y_{ij}|, |C_{ij} - Z_{ij}| \}< \epsilon/2 < \epsilon.
 	$$
 	
-	Seja $\matrizunitaria{n} = \{A\in \generalgroupcomplexo{n}: AA^{*}=Id \}$ o subgrupo das matrizes unitárias, então temos o seguinte lema:
+	Sejam $\matrizunitaria{n} = \{A\in \generalgroupcomplexo{n}: AA^{*}=Id \}$ o subgrupo das matrizes unitárias e $\matrizortogonal{n} = \{A \in \generalgroupreal{n}: AA^{t}  =Id \}$ o subgrupo das matrizes ortogonais, então temos o seguinte lema:
+	
+	
 	
 	\begin{lema}\label{lema_isomorfismo_U}
 		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
@@ -2310,9 +2317,9 @@
 		\right),
 		\end{aligned}
 		$$
-		onde a condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + CC^{t} = DD^{t}+EE^{t} = Id$. 
+		onde a condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + DD^{t} = CC^{t}+EE^{t} = Id$. 
 		
-		Dada $Z \in \matrizunitaria{n}$ temos $Id=F(Id) = F(Z^{*}Z) = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ teremos
+		Dada $Z \in \matrizunitaria{n}$, temos $Id=F(Id) = F(Z^{*}Z) = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ teremos
 		$$
 		F(Z)=
 		\left(
@@ -2335,7 +2342,7 @@
 		\right)	
 		= Id
 		$$
-		o que implica que devemos ter $B^{t}C =C^{t}B$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$ temos que $F(Z) \in \gruposimpletico{2n}$. Portanto $F(Z) \in \matrizSimpleticaOrtogonal $ o que implica que $F(\matrizunitaria{n}) \subseteq \matrizSimpleticaOrtogonal$.
+		o que implica que devemos ter $B^{t}C =C^{t}B$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$ temos que $F(Z) \in \gruposimpletico{2n}$. Portanto $F(Z) \in \matrizSimpleticaOrtogonal $, o que implica que $F(\matrizunitaria{n}) \subseteq \matrizSimpleticaOrtogonal$.
 		
 		Vamos mostrar a inclusão $\matrizSimpleticaOrtogonal \subseteq F(\matrizunitaria{n})$. 
 		
@@ -2399,7 +2406,7 @@
 		\\
 		C & B
 		\end{array}
-		\right),
+		\right).
 		$$
 		
 		Tomando $Z = B+iC \in \matrizunitaria{n}$ temos que $F(Z) = A$, o que implica que $\matrizSimpleticaOrtogonal \subseteq F(\matrizunitaria{n})$. Conclusão, $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$. 
@@ -2413,7 +2420,7 @@
 		Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 	\end{lema}
 	\begin{prova}
-		Temos que $A^{t}\estruturacomplexa A = \estruturacomplexa$. Supondo que $A$ seja invertível, então $A^{t} = \estruturacomplexa A^{-1} \estruturacomplexa^{-1}$. Logo $A^{t}$ é semelhante a $A^{-1}$. Sabe-se que $A$ é semelhante a $A^{t}$, logo $A$ é semelhante a $A^{-1}$. Como matrizes semelhantes possuem o mesmo polinômio característico, então $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
+		Temos que $A^{t}\estruturacomplexa A = \estruturacomplexa$. Supondo que $A$ é invertível, então $A^{t} = \estruturacomplexa A^{-1} \estruturacomplexa^{-1}$. Logo $A^{t}$ é semelhante a $A^{-1}$. Sabe-se que $A$ é semelhante a $A^{t}$, logo $A$ é semelhante a $A^{-1}$. Como matrizes semelhantes possuem o mesmo polinômio característico, então $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 	\end{prova}
 	
 	\begin{observacao}
@@ -2439,16 +2446,18 @@
 		$$
 		Como $\lambda\mu \neq 1$, então $\formaSimpletica{v}{u}=0$ e $P(1, s+1)$ é verdadeira.
 		
-		Concluímos que $P(1, s)$ é verdadeira para todo $s\geq 1$. Analogamente, mostramos por indução que P(r,1) é verdadeira para todo $r\geq 1$. Para mostrar que P(r,s) é verdadeira por indução, assumimos que P(r,s+1) e P(r+1,s) são verdadeiras e, analogamente mostramos que P(r+1,s+1) é verdadeira. Portanto $\omega(E_{\lambda}, E_{\mu}) = 0$ para quaisquer inteiros $r\geq 1$ e $s\geq 1$.
+		Concluímos que $P(1, s)$ é verdadeira para todo $s\geq 1$. Analogamente, mostramos por indução que P(r,1) é verdadeira para todo $r\geq 1$. Para mostrar que P(r,s) é verdadeira por indução, assumimos que P(r,s+1) e P(r+1,s) são verdadeiras e, analogamente mostramos que P(r+1,s+1) é verdadeira. Portanto, $\omega(E_{\lambda}, E_{\mu}) = 0$ para quaisquer inteiros $r\geq 1$ e $s\geq 1$.
 		
 	\end{prova}
 	
 	\begin{corolario}\label{corolario_restricao_forma_simpletica}
-		Sejam $A \in \gruposimpletico{2n}$ e $\lambda, \mu \in \sigma(A)$. Então 
+		Sejam $A \in \gruposimpletico{2n}$ e $\lambda, \mu \in \sigma(A)$. 
 		\begin{enumerate}
 			\item Se $\lambda\mu \neq 1$, então $\formaSimpletica{E_{\lambda}}{E_{\mu}} = 0$.
-			\item As restrições $\omega|_{E_{\pm 1}}$ são não-degeneradas. Além disso, suas multiplicidades $m(\pm 1)$ são pares.
-			\item Se $\lambda \neq \pm 1$, então a restrição $\omega|_{E_{\lambda} \oplus E_{\lambda^{-1}}}$ é não-degenerada.
+			
+			\item As restrições $\omega|_{E_{\pm 1} \times E_{\pm 1}}$ são não-degeneradas. Além disso, suas multiplicidades $m(\pm 1)$ são pares.
+			
+			\item Se $\lambda \neq \pm 1$, então a restrição $\omega|_{W_{\lambda} \times W_{\lambda}}$ é não-degenerada, onde $W_{\lambda } = E_{\lambda} \oplus E_{\lambda^{-1}}$.
 		\end{enumerate}
 	\end{corolario}
 	\begin{prova}
