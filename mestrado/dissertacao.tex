@@ -547,7 +547,7 @@
 	\chapter{Homologia}
 	
 	\section{Homologia singular}
-	Para as próximas definições denotaremos por $X$ como um espaço topológico e $A$ por um anel.
+	Para as próximas definições, considere $X$ um espaço topológico e $A$ um anel.
 	\begin{definicao}
 		(Simplexo singular) Denotaremos por $\Delta_{k}$ o simplexo k-dimesional cujos vértices $e_{0}, \dots, e_{k}$ formam um base canônica de $\real{k+1}$ de modo que $\Delta_{k} = \{(x_{0}, \dots, x_{k}) \in \real{k+1}: x_{j}\geq 0, \;\sum_{j}x_{j}=1\}$. Um k-simplexo singular no espaço topológico $X$ é uma aplicação contínua $\sigma:\Delta_{k} \to X$.
 	\end{definicao}
@@ -561,7 +561,7 @@
 	Como o $k$-operador bordo é um homomorfismo, então $ker(\bordo{k})$ e $Im(\bordo{k+1})$ são subgrupos abelianos de $\cadeia{k}{X}$, os quais denotamos por $\kernelbordo{k}{X}$ e $\imagembordo{k}{X}$, respectivamente.
 	
 	\begin{teorema}
-		A composição $\bordo{k-1}\circ\bordo{k}: \cadeia{k}{x} \to \cadeia{k-2}{X}$ é o homomorfismo trivial para todo $k>0$.
+		A composição $\bordo{k-1}\circ\bordo{k}: \cadeia{k}{X} \to \cadeia{k-2}{X}$ é o homomorfismo trivial para todo $k>0$.
 	\end{teorema}
 	
 	Uma consequência imediata do teorema anterior é que $\imagembordo{k}{X} \subseteq \kernelbordo{k}{X}$, logo $\imagembordo{k}{X}$ é um submódulo normal de $\kernelbordo{k}{X}$ e o quociente $\kernelbordo{k}{X}/\imagembordo{k}{X}$ define um módulo quociente.
@@ -579,7 +579,7 @@
 	f_{k}:G_{k}\to G'_{k+r}.
 	$$
 	
-	Um subgrupo módulo graduado $H\subseteq G$ é um módulo graduado $H=\colecao{H}$, onde $H_{k} \subseteq G_{k}$ é um submódulo para $k \in \inteiros$. Nesse caso, o módulo quociente $G/H$ é o módulo graduado $\{G_{k}/H_{k} \}_{k\in \inteiros}$.
+	Um subgrupo $H\subseteq G$ de um módulo graduado é um módulo graduado $H=\colecao{H}$, onde $H_{k} \subseteq G_{k}$ é um submódulo para $k \in \inteiros$. Nesse caso, o módulo quociente $G/H$ é o módulo graduado $\{G_{k}/H_{k} \}_{k\in \inteiros}$.
 	
 	Notemos que, dado um espaço topológico $X$, as coleções $\cadeia{*}{X} = \colecaoabrev{\cadeia{k}{X}}$, $\kernelbordo{*}{X}=\colecaoabrev{\kernelbordo{k}{X}}$, $\imagembordo{*}{X}=\colecaoabrev{\imagembordo{k}{X}}$ e $\homologia{*}{X}=\colecaoabrev{\homologia{k}{X}}$ são grupos graduados.
 	
@@ -589,19 +589,19 @@
 	$$
 	
 	\begin{definicao}
-		(Complexo de cadeias) Um complexo de cadeias com coeficientes em $A$ é um A-módulo graduado $C_{*} = \colecao{C}$ juntamente com um homomorfismo $\bordo{}:C_{*} \to C_{*}$ (de grau -1)
+		(Complexo de cadeia) Um complexo de cadeia com coeficientes em $A$ é um A-módulo graduado $C_{*} = \colecao{C}$ juntamente com um homomorfismo $\bordo{}:C_{*} \to C_{*}$ (de grau -1)
 		$$
 		\xymatrix{
 			\dots \ar[r]^{\bordo{k+1}}  & C_{k} \ar[r]^{\bordo{k}} & C_{k-1}\ar[r]^{\bordo{k-1}} &\dots
 		}
 		$$
-		tal que a composição $\bordo{k-1}\circ\bordo{k} = 0$ para $k \geq 0$. Denotamos o complexo de cadeia por $(C_{*}, \bordo{*})$ e chamamos o homomorfismo $\bordo{*}$ de operador bordo do complexo de cadeia.
+		tal que a composição $\bordo{k-1}\circ\bordo{k} = 0$ para $k \in \inteiros$. Denotamos o complexo de cadeia por $(C_{*}, \bordo{*})$ e chamamos o homomorfismo $\bordo{*}$ de operador bordo do complexo de cadeia.
 	\end{definicao}
 	
 	Note que o par $(\cadeia{k}{X}, \bordo{*})$, onde $\bordo{*}=\colecaoabrev{\bordo{k}}$, forma um complexo de cadeia.
 	
 	\begin{definicao}
-		(Homologia do complexo de cadeia) Seja $C=(C_{*}, \bordo{*})$ um complexo de cadeias. O $k$-ésimo módulo de homologia do complexo de cadeia $C$ é o módulo quociente
+		(Homologia do complexo de cadeia) Seja $C=(C_{*}, \bordo{*})$ um complexo de cadeia. O $k$-ésimo módulo de homologia do complexo de cadeia $C$ é o módulo quociente
 		$\homologiaabrev{k}{C} = \kernelbordoabrev{k}{C}/\imagembordoabrev{k}{C}$. O módulo graduado $\homologiaabrev{*}{C} = \colecaoabrev{\homologiaabrev{k}{C}}$ é chamado homologia do complexo de cadeia $C$ e é denotado por
 		$$
 		\bigoplus_{k\in \inteiros}\homologiaabrev{k}{C}.
@@ -620,10 +620,10 @@
 		isto é, $\bordo{k}'\circ f_{k} = f_{k-1}\circ \bordo{k}$.
 	\end{definicao}
 	
-	Dada uma aplicação de cadeias $f:C\to C'$, temos que $f(\imagembordoabrev{k}{C})\subseteq \imagembordoabrev{k}{C'}$ e $f(\kernelbordoabrev{k}{C})\subseteq \kernelbordoabrev{k}{C'}$. Logo, induz um homomorfismo $f_{*}:\homologiaabrev{*}{C}  \to \homologiaabrev{*}{C'}$ de grau 0 e definido por $f_{*}(\classe{a}) = \classe{f(a)}$.
+	Dada uma aplicação de cadeias $f:C\to C'$, temos que $f(\imagembordoabrev{k}{C})\subseteq \imagembordoabrev{k}{C'}$ e $f(\kernelbordoabrev{k}{C})\subseteq \kernelbordoabrev{k}{C'}$. Logo, $f$ induz um homomorfismo $f_{*}:\homologiaabrev{*}{C}  \to \homologiaabrev{*}{C'}$ de grau 0 definido por $f_{*}(\classe{a}) = \classe{f(a)}$.
 	
 	\begin{observacao}
-		Note que, dadas as aplicações de cadeia $f:C\to C'$ e $f':C'\to C''$, a composição de aplicações de cadeia $f'\circ f:C\to C''$ é uma aplicação de cadeias.
+		Note que, dadas as aplicações de cadeias $f:C\to C'$ e $f':C'\to C''$, a composição de aplicações de cadeias $f'\circ f:C\to C''$ é uma aplicação de cadeias.
 	\end{observacao}
 	
 	Suponha que $f:X\to Y$ seja uma aplicação contínua entre espaços topológicos. Definimos o homomorfismo induzido por $f$ como sendo a aplicação $\induzida{f}:\cadeia{*}{X}\to \cadeia{*}{Y}$ tal que, dada $\phi \in \cadeia{k}{X}$, temos $\induzida{f}(\phi) = f\circ \phi$, para todo $k \in \inteiros$. Pode-se mostra que $\bordo{}'\induzida{f}=\induzida{f}\bordo{}$, ou seja, $\induzida{f}$ é uma aplicação de cadeias.
@@ -631,10 +631,10 @@
 	O teorema a seguir mostra que a homologia singular é um invariante topológico.
 	
 	\begin{teorema}
-		(Isomorfimo induzido) Sejam $f:X \to Y$ um homeomorfismo entre espaços topológicos e $C = \cadeia{*}{X}$ e $C'=\cadeia{*}{Y}$ os complexos de cadeias de $X$ e $Y$, respectivamente. Então $f_{*}: \homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo.
+		(Isomorfimo induzido) Sejam $f:X \to Y$ um homeomorfismo entre espaços topológicos e $C = \cadeia{*}{X}$ e $C'=\cadeia{*}{Y}$ os complexos de cadeias singulares de $X$ e $Y$, respectivamente. Então $f_{*}: \homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo.
 	\end{teorema}
 	
-	Sejam $f, g: X\to Y$ duas aplicações contínuas entre espaços topológicos. Dizemos que $f$ e $g$ são homotópicas se existe uma aplicação contínua $h:\intervalo\times X \to Y$, tal que $h(0, .) = f$ e $h(1, .) = g$. Com isso, denotamos $f\sim g$ e aplicação $h$ é chamada homotopia entre $f$ e $g$.
+	Sejam $f, g: X\to Y$ duas aplicações contínuas entre espaços topológicos. Dizemos que $f$ e $g$ são homotópicas se existe uma aplicação contínua $h:\intervalo\times X \to Y$, tal que $h(0, .) = f$ e $h(1, .) = g$. Com isso, denotamos $f\sim g$ e a aplicação $h$ é chamada homotopia entre $f$ e $g$.
 	
 	\begin{teorema}
 		Sejam $f, g: X\to Y$ duas aplicações homotópicas entre espaços topológicos. Então $f_{*}=g_{*}: \homologiaabrev{*}{C}\to \homologiaabrev{*}{C'}$, onde $C$ e $C'$ são complexos de cadeia de $X$ e $Y$, respectivamente.
@@ -647,7 +647,7 @@
 	O resultado seguinte mostra que a equivalência de homotopia é condição suficiente para que os módulos de homologia sejam isomorfos.
 	
 	\begin{teorema}
-		Se $f: X \to Y$ é uma equivalência homotópica entre espaços topológicos, então $f_{*}:\homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo, onde $C$ e $C'$ são complexos de cadeia de $X$ e $Y$, respectivamente.
+		Se $f: X \to Y$ é uma equivalência homotópica entre espaços topológicos, então $f_{*}:\homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo, onde $C$ e $C'$ são os complexos de cadeias singulares de $X$ e $Y$, respectivamente.
 	\end{teorema}
 	
 	\section{Sequências exatas}
@@ -656,14 +656,14 @@
 		$$
 		\xymatrix{\dots \ar[r]& G_{1}\ar[r]^{f_{1}} & G_{2}\ar[r]^{f_{2}} & G_{3}\ar[r]^{f_{3}} & \dots \ar[r]\ar[r]^{f_{k-1}} & G_{k}\ar[r]^{f_{k}} &\dots}
 		$$
-		é chamada de sequência exata longa se cada tripla é exata, isto é, $Im(f_{k}) = Ker(f_{k+1})$ para todo $k\in \inteirospos$.
+		é chamada de sequência exata longa se cada tripla é exata, isto é, $Im(f_{k}) = Ker(f_{k+1})$ para todo $k\in \inteiros$.
 	\end{definicao}
 	
-	Dizemos que uma sequência do tipo $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta. Nesse caso, temos que $f$ é um monomorfismo e $g$ é um epimorfismo. Sejam $C, D, E$ são complexos de cadeias. Uma sequência exata curta de complexos de cadeias é uma coleção de sequências exatas
+	Dizemos que uma sequência do tipo $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta. Nesse caso, temos que $f$ é um monomorfismo e $g$ é um epimorfismo. Sejam $C, D, E$ complexos de cadeias. Uma sequência exata curta de complexos de cadeias é uma coleção de sequências exatas
 	$$ 
 	\xymatrix{0 \ar[r] & C_{k}\ar[r]^{f_{k}} & D_{k}\ar[r]^{g_{k}} & E_{k} \ar[r]& 0}
 	$$
-	para todo $k \in \inteirospos$.
+	para todo $k \in \inteiros$.
 	
 	Utilizando a sequência exata curta de complexos de cadeias, um homomorfismo entre as sequências exatas curtas, chamado homomorfismo conectante, será utilizado na construção da sequência exata longa. Considere o diagrama abaixo
 	$$
@@ -677,17 +677,17 @@
 		 & \vdots & \vdots  & \vdots & 
 	}
 	$$
-	Como $g$ é epimorfismo, dado $e \in \kernelbordoabrev{k}{E}$ existe $d \in D_{k}$ tal que $g_{k}(d) = e$. Pela comutatividade do diagrama, temos que $g_{k-1}(\bordo{k}'(d)) = \bordo{k}''(g_{k}(d)) = \bordo{k}''(e) = 0$. Portanto, $\bordo{k}'(d) \in Ker(g_{k}) = Im(f_{k})$, pela exatidão. Com isso, podemos tomar $c \in C_{k-1}$ tal que $f_{k-1}(c)=\bordo{k}'(d)$. Então $f_{k-2}(\bordo{k-1}(c)) = \bordo{k-1}'(f_{k-1}(c)) = \bordo{k-1}'(\bordo{k-1}'(d)) = 0$. Como $f$ é monomorfismo, então $\bordo{k-1}(c) \in \kernelbordoabrev{k-1}{C}$. Logo, temos uma correpondência $\kernelbordoabrev{k}{E} \ni e \mapsto c \in \kernelbordoabrev{k-1 }{C}$, a qual denotaremos por $\delta_{k}(e) = c$. 
+	Como $g$ é epimorfismo, dado $e \in \kernelbordoabrev{k}{E}$ existe $d \in D_{k}$ tal que $g_{k}(d) = e$. Pela comutatividade do diagrama, temos que $g_{k-1}(\bordo{k}'(d)) = \bordo{k}''(g_{k}(d)) = \bordo{k}''(e) = 0$. Portanto, $\bordo{k}'(d) \in Ker(g_{k-1}) = Im(f_{k-1})$, pela exatidão. Com isso, podemos tomar $c \in C_{k-1}$ tal que $f_{k-1}(c)=\bordo{k}'(d)$. Então $f_{k-2}(\bordo{k-1}(c)) = \bordo{k-1}'(f_{k-1}(c)) = \bordo{k-1}'(\bordo{k}'(d)) = 0$. Como $f$ é monomorfismo, então $\bordo{k-1}(c) \in \kernelbordoabrev{k-1}{C}$. Logo, temos uma correpondência $\kernelbordoabrev{k}{E} \ni e \mapsto c \in \kernelbordoabrev{k-1 }{C}$, a qual denotaremos por $\delta_{k}(e) = c$. 
 	
 	\begin{teorema}\label{teorema_homomorfismo_conectante}
-		(Homomorfismo conectante) Se $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta de complexos de cadeias, então a sequência exata longa 
+		(Homomorfismo conectante) Se $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta de complexos de cadeias, então a sequência longa 
 		$$
 		\xymatrix{\dots \ar[r]^{f_{*}} & \homologiaabrev{k}{D}\ar[r]^{g_{*}} & \homologiaabrev{k}{E}\ar[r]^{\delta_{k}}& \homologiaabrev{k-1}{C}\ar[r]^{f_{*}} & \homologiaabrev{k-1}{D} \ar[r]^{g_{*}}& \dots} 
 		$$
 		é exata.
 	\end{teorema}
 	
-	Como consequência do Teorema $\ref{teorema_homomorfismo_conectante}$ temos um importante método de cálculo da homologia de espaços topológicos. Dados $U, V$ subconjuntos abertos de um espaço topológico $X$ tal que $X = U\cup V$, considere a sequência exata curta de complexos de cadeias
+	Como consequência do Teorema $\ref{teorema_homomorfismo_conectante}$, temos um importante método de cálculo da homologia de espaços topológicos. Dados $U, V$ subconjuntos abertos de um espaço topológico $X$ tal que $X = U\cup V$, considere a sequência exata curta de complexos de cadeias
 	$$ 
 	\xymatrix{0 \ar[r] & C_{k}(U\cap V)\ar[r]^{f} & C_{k}(U)\oplus C_{k}(V)\ar[r]^{g} & C_{k}(X) \ar[r]& 0},
 	$$
@@ -705,7 +705,7 @@
 	Seja $U \subseteq X$ um subespaço do espaço topológico $X$ e considere o par topológico $(X, U)$. Caso $U = \emptyset$, identificaremos $(X, \emptyset)$ com $X$. Desse modo, a aplicação de inclusão $U \hookrightarrow X$ induz a aplicação de cadeias $\induzida{i}: \cadeia{*}{U} \to \cadeia{*}{X}$ tal que, para todo $k \in \inteirospos$, $i_{k}$ é um monomorfismo. Assim, podemos identificar $\cadeia{*}{U}$ como um subcomplexo de $\cadeia{*}{X}$ e podemos definir o quociente entre ambos de modo que
 	
 	\begin{definicao}
-		O complexo singular de cadeia do par topológico $(X,U)$ é o complexo de cadeia $(\cadeia{*}{X,U},\bordorel{*} )$ onde 
+		O complexo de cadeia singular do par topológico $(X,U)$ é o complexo de cadeia $(\cadeia{*}{X,U},\bordorel{*} )$ onde 
 		$$
 		\cadeia{*}{X,U} = \frac{\cadeia{*}{X}}{\cadeia{*}{U}}
 		$$
@@ -724,7 +724,7 @@
 	\end{proposicao}
 	
 	\begin{teorema}
-		(Sequência do exata par) Seja $(X, U)$ um par topológico. Então a sequência exata longa desse par é a sequência
+		(Sequência exata do par) Seja $(X, U)$ um par topológico. Então a sequência exata longa desse par é a sequência
 		$$
 		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U}\ar[r]^{i_{*}} & \homologiaabrev{k}{X}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U} \ar[r]^{i_{*}}& \dots},
 		$$
@@ -734,7 +734,7 @@
 	\begin{teorema}
 		(Excisão) Seja $(X, U)$ um par topológico. Se $U' \subset U$ com $\overline{U'} \subset int(U)$, então a inclusão $i : (\complementar{X}{U'}, \complementar{U}{U'}) \hookrightarrow (X, U)$ induz um isomorfismo 
 		$$
-		i_{*}: \homologiaabrev{*}{\complementar{X}{U'}, \complementar{U}{U'}} \to \homologiaabrev{*}{X, A}.
+		i_{*}: \homologiaabrev{*}{\complementar{X}{U'}, \complementar{U}{U'}} \to \homologiaabrev{*}{X, U}.
 		$$
 	\end{teorema}
 	
@@ -742,7 +742,7 @@
 	Sejam $U'\subseteq U \subseteq X$ subespaços do espaço topológico $X$ e considere a tripla topológica $(X, U, U')$. Analogamente ao caso do par, o teorema seguinte garante a existência de uma sequência exata longa da tripla.
 	
 	\begin{teorema}
-		(Sequência exata da tripla) Seja $(X, U, U')$ uma tripla topológica. Então a sequência exata longa da tripla dessa é a sequência
+		(Sequência exata da tripla) Seja $(X, U, U')$ uma tripla topológica. Então a sequência exata longa da tripla é a sequência
 		$$
 		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U, U'}\ar[r]^{i_{*}} & \homologiaabrev{k}{X, U'}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U, U'} \ar[r]^{i_{*}}& \dots},
 		$$
@@ -754,7 +754,7 @@
 	\section{CW-Homologia}\label{secao_cw_complexo}
 	Um CW-complexo é um tipo de espaço topológico introduzido por J. H. C. Whitehead, que teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sucessivas colagens (identificações) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
 	\begin{definicao}
-		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ onde $x \in \partial D^{x} = S^{n-1}$ é identificado com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
+		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ pela identificação de $x \in \partial D^{x} = S^{n-1}$ com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -1358,7 +1358,7 @@
 		$$
 	\end{proposicao}
 
-	 O propósito das definições desse ponto em diante é a construção de um complexo de cadeias associado ao fluxo gradiente de uma função de Morse com uma propriedade adicional, que chamaremos de propriedade de transversalidade entre as variedades instáveis e estáveis.
+	 O propósito das definições desse ponto em diante é a construção de um complexo de cadeia associado ao fluxo gradiente de uma função de Morse com uma propriedade adicional, que chamaremos de propriedade de transversalidade entre as variedades instáveis e estáveis.
 	 
 	 \begin{definicao}
 	 	(Variedade Conectante e o Espaço Moduli) Sejam $f \in \funcoesmorse{M}$ e $p,q \in \pontoscriticos{f}$. A variedade conectante de $p$ e $q$ é definida por $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Se $a = f(q)$, $b = f(p)$ e tomando $c \in (a, b) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é definido por $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
@@ -1444,7 +1444,7 @@
 		$$
 		\partial_{k}(p)=\sum_{q \in \pontoscriticos{f}}n(p,q)q
 		$$
-		é chamado operador bordo de Morse-Smale-Witten e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
+		é chamado operador bordo de Morse-Smale-Witten e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeia de Morse-Smale-Witten  da função $f$.
 		
 	\end{definicao}
 	
@@ -1481,7 +1481,7 @@
 	O seguinte teorema é de grande importância pois afirma o isomorfismo entre a homologia do complexo de Morse-Smale-Witten e a homologia singular da variedade. Sua demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
 	
 	\begin{teorema}
-		(Teorema da Homologia de Morse) Sejam $f \in \funcoesmorsesmale{M}$ e o par $(C_{*}(f), \partial_{*})$ o complexo de cadeias de Morse-Smale-Witten da função $f$. Então $H_{*}((C_{*}(f), \partial_{*})) $ é isomorfo a homologia singular $ H_{*}(M, \inteiros)$.
+		(Teorema da Homologia de Morse) Sejam $f \in \funcoesmorsesmale{M}$ e o par $(C_{*}(f), \partial_{*})$ o complexo de cadeia de Morse-Smale-Witten da função $f$. Então $H_{*}((C_{*}(f), \partial_{*})) $ é isomorfo a homologia singular $ H_{*}(M, \inteiros)$.
 	\end{teorema}
 	
 	O Teorema $\ref{teorema_cw_homologia}$ afirma que a homologia de um $CW$-complexo é isomorfa a sua homologia singular e também sabemos que a homologia de Morse é isomorfa a homologia singular da variedade. Vimos na Seção $\ref{secao_morse_classica}$ que uma n-variedade fechada possui o mesmo tipo de homotopia que de um $CW$-complexo construido a partir dos pontos críticos de uma função de Morse, logo a homologia singular dessa variedade é isomorfa a homologia do $CW$-complexo associado. Com isso, podemos afirmar que as homologias construidas via funções de Morse-Smale e funções de Morse clássicas são isomorfas.
@@ -2453,8 +2453,6 @@
 	\begin{corolario}\label{corolario_restricao_forma_simpletica}
 		Sejam $A \in \gruposimpletico{2n}$ e $\lambda, \mu \in \sigma(A)$. 
 		\begin{enumerate}
-			\item Se $\lambda\mu \neq 1$, então $\formaSimpletica{E_{\lambda}}{E_{\mu}} = 0$.
-			
 			\item As restrições $\omega|_{E_{\pm 1} \times E_{\pm 1}}$ são não-degeneradas. Além disso, suas multiplicidades $m(\pm 1)$ são pares.
 			
 			\item Se $\lambda \neq \pm 1$, então a restrição $\omega|_{W_{\lambda} \times W_{\lambda}}$ é não-degenerada, onde $W_{\lambda } = E_{\lambda} \oplus E_{\lambda^{-1}}$.
@@ -2462,14 +2460,14 @@
 	\end{corolario}
 	\begin{prova}
 		\begin{enumerate}
-			\item Dados $v \in E_{\lambda}$ e $u \in E_{\mu}$, temos pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ que $\formaSimpletica{v}{u} = 0$, então a restrição $\omega|_{E_{\lambda} \oplus E_{\mu}}:E_{\lambda} \oplus E_{\mu}\to \reta$ é identicamente nula. Logo, $\formaSimpletica{E_{\lambda} }{E_{\mu}} = 0$.
+			\item  Faremos primeiro o caso em que $\lambda = \mu =1$. Suponha que $\omega|_{E_{1}}$ seja degenerada. Então existe $v\neq 0 \in E_{1}$ tal que $\omega(v, u) = 0$ para todo $u \in E_{1}$. Seja $\beta \in \complementar{\sigma(A)}{\{1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ temos que $\formaSimpletica{E_{1}}{E_{\beta}} = 0$. Pelo Teorema $\ref{teorema_espectral_jordan}$ podemos escrever $V = E_{1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{1\}  }}E_{\lambda}$. Com isso, $\formaSimpletica{v}{V} = 0$. Logo $\omega$ é degenerada, o que contradiz a hipótese. Portanto, $\omega|_{E_{1} \times E_{1}}$ é não-degenerada. Além disso, como $\lambda = \lambda^{-1}$, então a multiplicidade $m(1)$ é par. Com argumento análogo para $\lambda = \mu = -1$ temos que $\omega|_{E_{-1} \times E_{-1}}$ é não-degenerada e $m(-1)$ é par. 
 			
-			\item  Faremos primeiro o caso em que $\lambda = \mu =1$. Suponha que $\omega|_{E_{1}}$ seja degenerada. Então existe $v\neq 0 \in E_{1}$ tal que $\omega(v, u) = 0$ para todo $u \in E_{1}$. Seja $\beta \in \complementar{\sigma(A)}{\{1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ temos que $\formaSimpletica{E_{1}}{E_{\beta}} = 0$. Pelo Teorema $\ref{teorema_espectral_jordan}$ podemos escrever $V = E_{1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{1\}  }}E_{\lambda}$. Com isso, $\formaSimpletica{v}{V} = 0$. Logo $\omega$ é degenerada, o que contradiz a hipótese. Portanto $\omega|_{E_{1}}$ é não-degenerada. Além disso, como $\lambda = \lambda^{-1}$, então a multiplicidade $m(1)$ é par. Com argumento análogo para $\lambda = \mu = -1$ temos que $\omega|_{E_{-1}}$ é não-degenerada e $m(-1)$ é par. 
-			
-			\item Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ podemos escrever $V = E_{1}  \bigoplus E_{-1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{\pm 1\}  }}E_{\lambda}$. Supondo que $\omega|_{B}$ seja degenerada, onde $E= E_{\lambda} \oplus E_{\lambda^{-1}}$, então $v \neq 0 \in E$ tal que 
+			\item Pelo Teorema $\ref{teorema_espectral_jordan}$ podemos escrever $V = E_{1}  \bigoplus E_{-1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{\pm 1\}  }}E_{\lambda}$. Supondo que $\omega|_{E\times E}$ seja degenerada, onde $E= E_{\lambda} \oplus E_{\lambda^{-1}}$, então $v \neq 0 \in E$ tal que 
 			$\omega(v,a)=0$ para todo $a\in E$. Além disso, pela $\omega$-ortogonalidade,  $\omega(v,E_{\beta})=0$, para todo $\beta\in \complementar{\sigma(A)}{\{1\} }$. Segue do Teorema $\ref{teorema_espectral_jordan}$ analogamente ao item anterior que $\omega(v,V)=0$, o que contradiz a hipótese de $\omega$ ser não degenerada.
 		\end{enumerate}
 	\end{prova}
+	
+	Considere $\matrizsimetricapositiva{2n} \subset \matrizquadreal{2n}$ como sendo o conjunto de todas as matrizes positivas-definidas (veja a Definição $\ref{definicao_matriz_positiva_definida}$).
 	
 	\begin{proposicao}\label{proposicao_potenciacao_grupo_simpletico}
 		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
@@ -2491,7 +2489,7 @@
 		$\matrizSimpleticaOrtogonal$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
-		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável, e $det(A) \in S^{1}$, e pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $det(A) = e^{i(\theta_{1}+\dots+\theta_{n})} \in \circulo$. Definindo o caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Temos que $\gamma$ está bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) \in \matrizunitaria{n}$. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} \in \circulo$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$ temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
+		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável, e $det(A) \in S^{1}$, e pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso temos $det(A) = e^{i(\theta_{1}+\dots+\theta_{n})} \in \circulo$. Definindo o caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, temos $\gamma(0)=Id$ e $\gamma(1)=A$. Temos que $\gamma$ está bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então temos que $\gamma(\lambda) \in \matrizunitaria{n}$. Notemos que $det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} \in \circulo$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$, temos que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
 	\begin{lema}
@@ -2502,7 +2500,7 @@
 	\end{prova}	
 	
 	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
-		Se $A \in \gruposimpletico{2n}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$ tal que $A=PO$.
+		Se $A \in \gruposimpletico{2n}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$ tais que $A=PO$.
 	\end{lema}
 	\begin{prova}
 		Segue do Teorema $\ref{teorema_decomposicao_polar}$ que $A=PO$, onde $P=AA^t$ é positiva definida e O é uma matriz ortogonal. Como $A$ e $A^{t} $ são matrizes simpléticas, então $P=AA^{t}\in \gruposimpletico{2n}$. 
@@ -2521,16 +2519,16 @@
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_decomposicao_Sp2n}
-		No teorema anterior exibimos uma bijeção entre $\gruposimpletico{2n} $ e $\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$, isto é, toda $A \in \gruposimpletico{2n}$ pode ser decomposta unicamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
+		No teorema anterior, exibimos uma bijeção entre $\gruposimpletico{2n} $ e $\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$, isto é, toda $A \in \gruposimpletico{2n}$ pode ser decomposta unicamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Usaremos essa afirmação na demonstração de alguns resultados adiante.
 	\end{observacao}
 	
 	\begin{teorema}
 		O quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$, e ela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ anterior podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Temos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, por fim, tomando $B \in \matrizSimpleticaOrtogonal$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{2n}$ temos $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso temos $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$, e ela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, podemos afirmar que $P^{\alpha} \in \gruposimpletico{2n}$ para todo $\alpha \in \real{}$. Definindo a aplicação $r:\gruposimpletico{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$ é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{2n}$. Temos que $r$ é um retrato de deformação de $\gruposimpletico{2n}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, por fim, tomando $B \in \matrizSimpleticaOrtogonal$ temos $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
 		
-		Por brevidade denotaremos $\mathcal{S} = \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ tal que $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$, temos que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
+		Por brevidade, denotaremos $\mathcal{S} = \gruposimpletico{2n}/\matrizSimpleticaOrtogonal$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ por $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$, temos que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_quociente_grupo_simpletico_contratil}
@@ -2538,7 +2536,7 @@
 	\end{observacao}
 	
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
-		Até o momento demonstramos muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrarmos que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeias nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Para mostrar esse fato precisamos da conexidade.
+		Até o momento, foram demonstrados muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrar que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeia nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado ao grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Para mostrar esse fato precisamos da conexidade.
 	\end{observacao}
 	
 	\begin{teorema}
@@ -2646,11 +2644,11 @@
 	
 	\section{Axiomatização}
 	
-	Originalmente, o índice de Maslov foi definido para associar um caminho fechado $\caminhossempontobase{\gruposimpletico{2n}} \ni \gamma \mapsto z \in \inteiros$. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{2n} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$, pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
+	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V} \times L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
-		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ tal que $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
+		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ definida por $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
 		$$
 		\mu(\gamma) = \mu(\gamma\circ g).
 		$$
@@ -2661,15 +2659,15 @@
 		\item \textbf{\textit{(Aditividade de Caminhos)}} Se $a<b<c$ e $\gamma \in \caminhoslagrangianosV{a}{c}$, então $$
 		\mu(\gamma)=\mu(\gamma|_{[a,b]})+\mu(\gamma|_{[b,c]}).
 		$$
-		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$ dadas por $\gamma(t) = (L_{1}(t), L_{2}(t))$, $\gamma'(t) = (L'_{1}(t), L'_{2}(t))$, respectivamente, onde $L_{j}, L'_{j}: [a,b] \to L_{V}$ são aplicações contínuas por partes. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ tal que $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
+		\item \textbf{\textit{(Aditividade Simplética)}} Sejam $V$ e $V'$ 2n-espaços vetoriais simpléticos, $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\gamma' \in \caminhoslagrangianos{a}{b}{V'}$ dadas por $\gamma(t) = (L_{1}(t), L_{2}(t))$, $\gamma'(t) = (L'_{1}(t), L'_{2}(t))$, respectivamente, onde $L_{j}, L'_{j}: [a,b] \to L_{V}$ são aplicações contínuas por partes. Defina $\gamma\oplus\gamma' \in \caminhoslagrangianos{a}{b}{V\oplus V'}$ por $(\gamma\oplus\gamma' )(t) = (L_{1}(t)\oplus L_{1}'(t), L_{2}(t)\oplus L_{2}'(t))$. Então 
 		$$
 		\mu(\gamma\oplus\gamma' )= \mu(\gamma)+\mu(\gamma' ).
 		$$
-		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}: \caminhoslagrangianosV{a}{b} \to \caminhoslagrangianosV{a}{b}$ tal que $ (\phi_{*}\gamma)(t) = (\phi(t, L_{1}(t)), \phi(t, L_{2}(t)))$. Então 
+		\item \textbf{\textit{(Invariância Simplética)}} Sejam $\gamma \in \caminhoslagrangianosV{a}{b}$ e $\phi:[a,b]\times \gruposimpletico{V} \to \gruposimpletico{V}$ uma família contínua e suave por partes de simplectomorfimos. Defina $\phi_{*}: \caminhoslagrangianosV{a}{b} \to \caminhoslagrangianosV{a}{b}$ por $ (\phi_{*}\gamma)(t) = (\phi(t, L_{1}(t)), \phi(t, L_{2}(t)))$. Então 
 		$$
-		\mu(\phi_{*}\gamma) = \mu(\gamma)).
+		\mu(\phi_{*}\gamma) = \mu(\gamma).
 		$$
-		\item \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=v_{1}+iv_{2},u =u_{1}+iu_{2}\in \complexo{}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ tal que $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
+		\item \textbf{\textit{(Normalização)}} Consideremos o espaço vetorial simplético $\complexo{}$ munido do produto interno $\iprod{v}{u} = v_{1}u_{2}- v_{2}u_{1} = Re(i(v_{1}+iv_{2})\overline{(u_{1}+iu_{2})})$, onde $v=v_{1}+iv_{2},u =u_{1}+iu_{2}\in \complexo{}$. Defina $\gamma \in \caminhoslagrangianos{-\pi/4}{\pi/4}{\complexo{}}$ por $\gamma(t) = (\reta(1), \reta(e^{it}))$. Então
 		\begin{enumerate}
 			\item $\mu(\gamma|_{[-\pi/4, \pi/4]}) = 1;$
 			\item $\mu(\gamma|_{[-\pi/4, 0]}) = 0;$
@@ -2679,8 +2677,8 @@
 	
 	Outros detalhes sobre a axiomatização e demonstração da equivalência entre diferentes construções do índice de Maslov pode ser encontrada em $\cite{cappell_maslov_index_equivalencia}$.
 	
-	\section{Contrução de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ apresentadas na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
+	\section{Construção de $\rho: \gruposimpletico{2n} \to \circulo$}
+	Para a construção do índice de Maslov, vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ apresentadas na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
 	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo transformações simpleticas definidas em $V$. 
 	\begin{teorema}\label{teorema_aplicacao_rho}
@@ -2873,9 +2871,9 @@
 	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
-	Vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
+	Vimos, na Seção $\ref{secao_grupo_simpletico}$, que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
 	
-	Um caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ partindo de uma matriz $A$ pertencente a uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ cruza $\Sigma$ um número finito de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov de $\gamma$. Para efetuar a contagem dos cruzamentos entre $\gamma$ e $\Sigma$ vamos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são ambas conexas por caminhos.
+	Um caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ partindo de uma matriz $A$ pertencente a uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ cruza $\Sigma$ um número finito de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov de $\gamma$. Para efetuar a contagem dos cruzamentos entre $\gamma$ e $\Sigma$, vamos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são ambas conexas por caminhos.
 		
 	\begin{definicao}
 		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
@@ -2891,7 +2889,7 @@
 		$$
 		\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
 		$$
-		Esse número indica quantas vezes a imagem aplicação $\rho$ executa uma meia-volta.
+		Esse número indica quantas vezes a imagem da aplicação $\rho$ executa uma meia-volta.
 	\end{definicao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
@@ -3450,7 +3448,7 @@
 	
 	A não-degenerecência de $\omega$  implica que $\dot{\gamma}(t) - \campohamiltonianoabrev(\gamma(t), t)=0$, isto é, $\gamma \in \lacocontrateis$ é um ponto crítico do funcional Hamiltoniano se, e somente se, $\gamma$ é uma solução 1-periódica e contrátil das equações de Hamilton.
 	
-	Na Seção $\ref{secao_fluxo_gradiente}$ vimos que, dada um função de Morse, construímos um complexo de cadeias com base nas linhas do fluxo do gradiente negativo dessa função. Uma técnica análoga será adotada para a construção de um complexo de cadeias e operador bordo na qual resultará na Homologia de Floer.
+	Na Seção $\ref{secao_fluxo_gradiente}$ vimos que, dada um função de Morse, construímos um complexo de cadeia com base nas linhas do fluxo do gradiente negativo dessa função. Uma técnica análoga será adotada para a construção de um complexo de cadeia e operador bordo na qual resultará na Homologia de Floer.
 	
 	Seja $J \in \estruturascomplexas{M}{\omega}$. Temos então uma metrica Riemanniana $g(X(p), Y(p)) = \formaSimpletica{X(p)}{J(p)Y(p)}$ a qual induz a métrica $\produtointerno{.}{.}:\espacotangenteponto{\gamma}{\lacocontrateis}\times \espacotangenteponto{\gamma}{\lacocontrateis} \to \reta$ definida por
 	$$
@@ -3677,7 +3675,7 @@
 	$$
 	k = ind(F_{u}) = m(y)-m(x).
 	$$
-	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \lacocontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeias, o que permitirá a construção da Homologia de Floer. 
+	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \lacocontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeia, o que permitirá a construção da Homologia de Floer. 
 	
 	\end{comment}
 		
@@ -4114,13 +4112,13 @@
 	$$
 	\partial y = \sum_{m(x)=k} n_{k}(x) x,	
 	$$
-	onde $n_{k}(x)$ é o número de componentes de $\mathcal{M}(y,x)$ módulo 2. Posteriormente Floer demonstra que $\partial^{2}=0$, assim $(C,\partial)$ define um complexo de cadeias e a homologia
+	onde $n_{k}(x)$ é o número de componentes de $\mathcal{M}(y,x)$ módulo 2. Posteriormente Floer demonstra que $\partial^{2}=0$, assim $(C,\partial)$ define um complexo de cadeia e a homologia
 	$$
 	HF_{*}(M, \inteiros_{2}) = \frac{Ker(\partial)}{Im(\partial)}
 	$$
 	é chamada homologia de Floer.
 	
-	\textbf{Observação:} Note que ao se definir o complexo de cadeias não fizemos referência a função Hamiltoniana nem a estrutura quase-complexa J escolhidas, isso porque a homologia de Floer não depende de tais escolhas, seguindo o teorema:
+	\textbf{Observação:} Note que ao se definir o complexo de cadeia não fizemos referência a função Hamiltoniana nem a estrutura quase-complexa J escolhidas, isso porque a homologia de Floer não depende de tais escolhas, seguindo o teorema:
 	
 	\begin{teorema}
 		Sejam $(H,J)$ e $(H',J')$ pares regulares, isto é, $J, J' \in J_{reg}$, respeticamente, então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
@@ -4137,7 +4135,7 @@
 	\appendix
 	\chapter{Preliminares de Álgebra}
 	
-	Nessa seção apresentaremos alguns resultados preliminares necessários para o estudo da topologia de $\gruposimpletico{2n}$ e do conjunto das estruturas complexas $\estruturascomplexas{V}{\omega}$.
+	Nessa seção, apresentaremos alguns resultados preliminares necessários para o estudo da topologia de $\gruposimpletico{2n}$ e do conjunto das estruturas complexas $\estruturascomplexas{V}{\omega}$.
 	
 	
 	Sejam $V$ um n-espaço vetorial real, $B= \{e_{j}\}_{j=1}^{n}$ uma base ordenada e $f:V\times V\to \reta$ uma aplicação bilinear. Definindo $A$ como a matriz de $f$ na base $B$, isto é, $A_{ij} = f(e_{i}, e_{j})$, pode-se mostrar que $f$ é positiva-definida se, e somente se, a função $g_{A}: M_{n\times 1}(\reta)\times M_{n\times 1}(\reta) \to \reta$, definida por $
@@ -4201,7 +4199,7 @@
 	O resultado seguinte é uma caracterização de matrizes normais  utilizando matrizes ortogonais e matrizes positivas definidas. Sua demonstração pode ser encontrada em $\cite{hoffman_kunze}$.
 	
 	\begin{lema}\label{lema_caracterizacao_matriz_normal}
-		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida e uma matriz $O\in \matrizortogonal{n}$ tais que $A=ODO^{t}$. Nesse caso seus auto-valores são positivos. 
+		(Caracterização matriz normal) Seja $A\in \matrizquadreal{n}$ uma matriz normal, isto é, $A^{t}A=AA^{t}$. Então existem uma matriz diagonal $D \in \matrizquadreal{n}$ positiva-definida e uma matriz $O\in \matrizortogonal{n}$ tais que $A=ODO^{t}$. Nesse caso, seus auto-valores são positivos. 
 	\end{lema}
 	
 	\begin{observacao}\label{observacao_caracterizacao_matriz_normal}
@@ -4209,7 +4207,7 @@
 	\end{observacao}
 	
 	\begin{lema}\label{lema_raiz_matriz_normal}
-		(Raíz de matriz normal) Seja $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ uma matriz normal, então existe uma única $P\in \matrizsimetricapositiva{n}$ tal que $A=P^{2}$. 
+		(Raíz de matriz normal) Sejam $V$ um n-espaço vetorial e $A\in \matrizquadreal{n}$ uma matriz normal, então existe uma única $P\in \matrizsimetricapositiva{n}$ tal que $A=P^{2}$. 
 	\end{lema}
 	\begin{prova}
 		Como $A$ é normal, então pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ podemos escrever $A=ODO^{t}$, onde $D=(D_{ii})$ é uma matriz diagonal com entradas positivas e $O\in \matrizortogonal{n}$. Logo podemos definir $C \in \generalgroupreal{n}$ como sendo $C = (\sqrt{D_{ii}})$, o que implica em $C^{2} = D$. Definindo $P = OCO^{t}$ teremos $P^{2} = OCO^{t}OCO^{t} = OC^{2}O^{t} = ODO^{t}=A$. Temos que $P^{t} = (OCO^{t})^{t} = OCO^{t} = P$, pois $C$ é diagonal. Além disso, $P$ é semelhante a uma matriz diagonal, então pelo Teorema $\ref{teorema_matriz_positiva_definida}$ temos que $P \in \matrizsimetricapositiva{n}$. A unicidade vem do fato de que $C^{2} = D$ é única, logo $P$ é única.
@@ -4243,7 +4241,7 @@
 	
 	A diagonalização de um dado operador linear $T:V\to V$ nem sempre é garantida, consequentemente, não teremos a decomposição do espaço vetorial em auto-espaços $\autoespaco{\lambda}$, onde $\lambda\in \espectrooperador{T}$. Para contornar esse dificuldade técnica vamos utilizar a forma canônica de Jordan de $T$ e construir uma generalização de auto-espaços desse operador.
 	
-	\begin{corolario}\label{teorema_espectral_jordan}
+	\begin{teorema}\label{teorema_espectral_jordan}
 		(Teorema Espectral) Sejam $T:V \to V$ um operador linear e $V$ um n-espaço vetorial complexo. Suponha que o polinômio característico de $T$ seja
 		$$
 		p_{T}(\lambda) = (\lambda - \lambda_{1})^{n_{1}}\dots (\lambda - \lambda_{k})^{n_{k}}
@@ -4253,7 +4251,7 @@
 		V = E_{1}\oplus \dots \oplus E_{k}.
 		$$
 		Além disso, $dim(E_{j}) = n_{j}$,  o polinômio de $T|_{E_{j}}$ é $m_{j}(\lambda) = (\lambda - \lambda_{j})^{m_{j}}$ e $E_{j} = Ker(T-\lambda_{j})^{m_{j}}$, em que $1\leq m_{j}\leq n_{j}$ é o comprimento do maior bloco de Jordan associado ao auto-valor $\lambda_{j}$.
-	\end{corolario}
+	\end{teorema}
 	
 	\begin{definicao}\label{definicao_autoespaco_generalizado}
 		(Auto-espaços generalizados) Sejam $A$ como no teorema anterior e $\lambda \in \sigma(A)$. O $\lambda-$auto-espaço de generalizado de $A$ é o conjunto $E_{\lambda} = \bigcup_{r \in \mathbb{N}} Ker(A - \lambda)^{r}$.
