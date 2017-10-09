@@ -39,6 +39,7 @@
 % QUALIFICADORES DOS RESULTADOS: TEOREMAS, LEMAS, COROLARIOS E PROVA %
 \newtheorem{teorema}{Teorema}[section]
 \newtheorem{corolario}[teorema]{Corolário}
+\newtheorem{convensao}[teorema]{Convensão}
 \newtheorem{lema}[teorema]{Lema}
 \newtheorem{definicao}[teorema]{Definição}
 \newtheorem{exemplo}[teorema]{Exemplo}
@@ -97,9 +98,10 @@
 \newcommand{\complementar}[2]{#1 \backslash #2}
 \newcommand{\complexificacao}[1]{#1_{\complexo{}}}
 \newcommand{\complexificacaotensorial}[1]{\complexo{}\otimes_{\reta} #1}
-\newcommand{\complexificado}[1]{\mathcal{V}}
+\newcommand{\complexificado}[1]{\mathcal{#1}}
 \newcommand{\complexificacaoelemento}[2]{#1\otimes_{\reta} #2}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
+\newcommand{\coordenada}[2]{#1_{(#2)}}
 \newcommand{\diferencialfloer}{D\operadorflor}
 \newcommand{\diferencialfloerabrev}{\mathcal{D}}
 \newcommand{\derivada}[2]{\frac{d #1}{d #2}}
@@ -218,8 +220,8 @@
 \newcommand{\orbitaponto}[1]{\mathcal{O}(#1)}
 \newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
 \newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
-\newcommand{\parteImaginaria}[1]{\mathcal{I}m(#1)}
-\newcommand{\parteReal}[1]{\mathcal{R}e(#1)}
+\newcommand{\parteImaginaria}[1]{\Im(#1)}
+\newcommand{\parteReal}[1]{\Re(#1)}
 \newcommand{\pontoscriticos}[1]{\textit{Cr}(#1)}
 \newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
 \newcommand{\produtointernoabrev}{\langle ., .\rangle}
@@ -1635,6 +1637,10 @@
 	
 	Sejam $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ dois espaços vetoriais simpléticos e uma aplicação linear $\varphi: V_{1}\to V_{2}$. O pullback de $\omega_{2}$ por $\varphi$ é a 2-forma $\varphi^{*}\omega_{2}:V_{1} \times V_{1} \to \reta$ definida por $\varphi^{*}\omega_{2}(v,u) = \omega_{2}(\varphi(v), \varphi(u))$.
 	
+	\begin{convensao}\label{convensao_base_simpletica}
+		Quando não houver ambiguidades, denotaremos a base simplética  $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$  de $(V, \omega)$ por  $\{ e ,f\}$, e um dado $v =\sum_{j=1}^{n} v_{j}e_{j} +v_{n+j}f_{j} \in V$ por $v=v_{(1)}e+v_{(2)}f$. 
+	\end{convensao}
+	
 	\begin{definicao}
 		(Simplectomorfismo) Dois espaços vetoriais simpléticos $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ são ditos simplectomorfos se existe um isomorfismo $\varphi:V\to W$ que preserva a forma simplética, isto é, $\varphi^{*}\omega_{2} = \omega_{1}$.
 	\end{definicao}
@@ -2022,13 +2028,13 @@
 		Os elementos $v \in \complexificado{V}$ do tipo $v = \complexificacaoelemento{z}{\alpha}$ são chamados de vetores simples. Vimos anteriormente que os vetores mais gerais são combinações lineares dos vetores simples. Por esse fato, as aplicações lineares e multilineares estudadas nessa seção serão avaliadas apenas nos tensores simples.
 	\end{observacao}
 	
-	Para simplificar a notação, denotando os elementos das bases $1\otimes B$ e $1^{*}\otimes B^{*}$ por $\{a_{j}\} $ e $\{a^{*}_{j}\}$, respectivamente.
+	Para simplificar a notação, denotando os elementos das bases $1\otimes B$ e $1^{*}\otimes B^{*}$ por $\{\textbf{a}_{j}\} $ e $\{\textbf{a}^{*}_{j}\}$, respectivamente.
 	
 	\begin{proposicao}\label{proposicao_base_complexificada}
-		$1\otimes B$ e $1^{*}\otimes B^{*}$ são bases de $\complexificado{V}$ e $\complexificado{V}^{*}$, respectivamente, tais que $a^{*}_{j}(a_{k})=\delta_{ik}$.
+		$1\otimes B$ e $1^{*}\otimes B^{*}$ são bases de $\complexificado{V}$ e $\complexificado{V}^{*}$, respectivamente, tais que $\textbf{a}^{*}_{j}(\textbf{a}_{k})=\delta_{ik}$.
 	\end{proposicao}
 	\begin{prova}
-		 Por construção $1\otimes B$ gera $\complexificado{V}$. Afirmo que $B$ é linearmente independente pois, $0=\sum_{j}z_{j}a_{j} = \sum_{j}z_{j}(1\otimes e_{j}) = \sum_{j}(b_{j} +ic_{j})(1\otimes e_{j}) = 1\otimes \sum_{j}b_{j}e_{j}+i\otimes \sum_{j}c_{j}e_{j}$, o que implica que $\sum_{j}b_{j}e_{j}=\sum_{j}c_{j}e_{j} = 0$. Logo, $b_{j}=c_{j}=0$  e $z_{j} = 0$ para $1\leq j\leq k$. O isomorfismo $\complexificado{V} \mapsto \complexificado{V}^{*}$ garante que $B^{*}$ é base de $\complexificado{V}^{*}$. Por fim, temos que $a^{*}_{j}(a_{k})=(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{1}{e_{k}}) = 1^{*}(1)e^{*}_{j}(e_{k}) = \delta_{ik}$.
+		 Por construção $1\otimes B$ gera $\complexificado{V}$. Afirmo que $B$ é linearmente independente pois, $0=\sum_{j}z_{j}\textbf{a}_{j} = \sum_{j}z_{j}(1\otimes e_{j}) = \sum_{j}(b_{j} +ic_{j})(1\otimes e_{j}) = 1\otimes \sum_{j}b_{j}e_{j}+i\otimes \sum_{j}c_{j}e_{j}$, o que implica que $\sum_{j}b_{j}e_{j}=\sum_{j}c_{j}e_{j} = 0$. Logo, $b_{j}=c_{j}=0$  e $z_{j} = 0$ para $1\leq j\leq k$. O isomorfismo $\complexificado{V} \mapsto \complexificado{V}^{*}$ garante que $B^{*}$ é base de $\complexificado{V}^{*}$. Por fim, temos que $\textbf{a}^{*}_{j}(\textbf{a}_{k})=(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{1}{e_{k}}) = 1^{*}(1)e^{*}_{j}(e_{k}) = \delta_{ik}$.
 	\end{prova}
 	
 	Como o produto tensorial real $\otimes_{j=1}^{k}V_{j}$ é um espaço vetorial real, então sua complexificação será o espaço vetorial complexo $\complexificacaotensorial{(\produtotensorialreal{k}{V})} \cong \complexificacaotensorial{V_{1} \otimes_{\reta} \dots \otimes_{\reta} V_{k}}$, pelo isomorfismo anteriormente citado. Contudo, pode-se se mostrar que essa complexificação é isomorfa ao produto tensorial sobre os complexos $\bigotimes^{k}_{j=1}\complexificado{V}$, a qual denotamos por $\complexificado{V}^{k\otimes}$. 
@@ -2036,14 +2042,14 @@
 	Na seção seguinte vamos utilizar o produto tensorial complexificado $\complexificado{V}^{k\otimes}$ pois ela facilita a demonstração de algumas propriedades da complexificação da forma simplética, que é um tensor de ordem 2.
 	
 	\begin{exemplo}\label{exemplo_complexificacao_tensorial}
-		Sejam $V$ um n-espaço vetorial real e $B = \colecaofinita{e}{n}$ uma base ortonormal. Supondo que $\complexificado{V}$ seja a complexificação de $V$, então pela Proposição $\ref{proposicao_base_complexificada}$ temos que $1\otimes B^{*}$ é uma base de $\complexificado{V}^{*}$. Com isso, dado $T \in \produtotensorialdual$ podemos escrever $T = \sum_{i,j = 1}^{n} T^{ij}a^{*}_{i}\otimes a^{*}_{j}$, onde $T^{ij} \in \complexo{}$. Dados $v, u\in \complexificado{V}$ tais que $v=\complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta}$, temos
+		Sejam $V$ um n-espaço vetorial real e $B = \colecaofinita{e}{n}$ uma base ortonormal. Supondo que $\complexificado{V}$ seja a complexificação de $V$, então pela Proposição $\ref{proposicao_base_complexificada}$ temos que $1\otimes B^{*}$ é uma base de $\complexificado{V}^{*}$. Com isso, dado $T \in \produtotensorialdual$ podemos escrever $T = \sum_{i,j = 1}^{n} T^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}$, onde $T^{ij} \in \complexo{}$. Dados $v, u\in \complexificado{V}$ tais que $v=\complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta}$, temos
 		$$
 		\begin{aligned}
 			T(v,u) &= \sum_{i,j = 1}^{n}
-			 T^{ij}a^{*}_{i}\otimes a^{*}_{j}(v,u)
+			 T^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(v,u)
 			 \\
 			 &= \sum_{i,j = 1}^{n}
-			 T^{ij}a^{*}_{i}(v)a^{*}_{j}(u)
+			 T^{ij}\textbf{a}^{*}_{i}(v)\textbf{a}^{*}_{j}(u)
 			 \\
 			 &= \sum_{i,j = 1}^{n}
 			 T^{ij}(\complexificacaoelemento{1^{*}}{e^{*}_{i}})(\complexificacaoelemento{x}{\alpha})(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{y}{\beta})
@@ -2062,7 +2068,7 @@
 	
 	Nessa seção, vimos que uma das construções da complexificação de $V$ é o espaço vetorial complexo $\complexificado{V}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V^{*}\otimes V^{*}$. Sejam $B = \{e_{j}\}_{j=1}^{2n}$ uma base de $V$ e $\omega^{ij} = \omega(e_{i}, e_{j})$ as componentes da forma simplética nessa base. Dessa definição, temos que $\omega^{ij} = -\omega^{ji}$.
 	
-	Utilizando as notações da Proposição $\ref{proposicao_base_complexificada}$, defina $\Omega=\sum_{i,j}\omega^{ij}a^{*}_{i}\otimes a^{*}_{j} \in \produtotensorialdual$. Temos que
+	Utilizando as notações da Proposição $\ref{proposicao_base_complexificada}$, defina $\Omega=\sum_{i,j}\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j} \in \produtotensorialdual$. Temos que
 	
 	\begin{proposicao} $(\complexificado{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
 	\end{proposicao}\label{proposicao_complexificacao_espaco_simpletico}
@@ -2071,7 +2077,7 @@
 		$$
 		\begin{aligned}
 		\Omega(v,u) &= \sum_{i,j = 1}^{2n}
-		\omega^{ij}a^{*}_{i}\otimes a^{*}_{j}(v,u)
+		\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(v,u)
 		\\
 		&= \sum_{i,j = 1}^{2n}
 		xy\omega^{ij}\alpha_{i}\beta_{j}
@@ -2112,10 +2118,10 @@
 	\end{prova}
 	
 	\begin{proposicao}\label{proposicao_base_simpletica_conjugada}
-		Seja $B=\{a_{j}, f_{j} \}_{j=1}^{n}$ uma base simplética de $\complexificado{V}$, então $\overline{B}=\{\overline{a}_{j}, \overline{f}_{j}  \}_{j=1}^{n}$ é uma base simplética de $\complexificado{V}$.
+		Seja $B=\{\textbf{e}, \textbf{f} \}$ uma base simplética de $\complexificado{V}$. Então $\overline{B}=\{\overline{\textbf{e}}, \overline{\textbf{f}}\}$ é uma base simplética de $\complexificado{V}$.
 	\end{proposicao}
 	\begin{prova}
-		Temos que a aplicação de conjugação $\complexificado{V} \ni z\otimes v \mapsto \overline{z}\otimes  \in \complexificado{V}$ é um isomorfismo. Logo, leva base em base. Como $B$ é uma base simplética, temos $\Omega(a_{i}, a_{j}) = \Omega(f_{i}, f_{j}) =0$ e $\Omega(a_{i}, f_{j}) = \delta_{ij}$. Com isso, fazendo $a_{i} = \complexificacaoelemento{z_{i}}{v_{i}}$, e pela Proposição $\ref{proposicao_complexificacao_espaco_simpletico}$ temos $\Omega(\overline{a}_{i}, \overline{a}_{j}) =	\overline{z_{i}}\overline{z_{j}}\formaSimpletica{v_{i}}{v_{j}}=\overline{z_{i}z_{j}\formaSimpletica{v_{i}}{v_{j}}} = \overline{\Omega(a_{i}, a_{j})} = 0$. Com argumento análogo pode-se ver que $\Omega(\overline{f}_{i}, \overline{f}_{j}) =0$ e $\Omega(\overline{a}_{i}, \overline{f}_{j}) =\delta_{ij}$. Logo, $\overline{B}$ é uma base simplética.
+		Temos que a aplicação de conjugação $\complexificado{V} \ni z\otimes v \mapsto \overline{z}\otimes v \in \complexificado{V}$ é um isomorfismo. Logo, leva base em base. Como $B$ é uma base simplética, temos $\Omega(\textbf{e}_{i}, \textbf{e}_{j}) = \Omega(\textbf{f}_{i}, \textbf{f}_{j}) =0$ e $\Omega(\textbf{e}_{i}, \textbf{f}_{j}) = \delta_{ij}$. Com isso, fazendo $\textbf{e}_{i} = \complexificacaoelemento{z_{i}}{v_{i}}$, e pela Proposição $\ref{proposicao_complexificacao_espaco_simpletico}$ temos $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =	\overline{z_{i}}\overline{z_{j}}\formaSimpletica{v_{i}}{v_{j}}=\overline{z_{i}z_{j}\formaSimpletica{v_{i}}{v_{j}}} = \overline{\Omega(\textbf{e}_{i}, \textbf{e}_{j})} = 0$. Com argumento análogo pode-se ver que $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =0$ e $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =\delta_{ij}$. Logo, $\overline{B}$ é uma base simplética.
 	\end{prova}
 	
 	Um operador linear $T : \complexificado{V} \to \complexificado{V}$ pode ser escrito como $T=\complexificacaoelemento{\lambda}{A}$, tal que $T(v) = \complexificacaoelemento{\lambda}{A}(\complexificacaoelemento{z}{\alpha}) = \complexificacaoelemento{\lambda z}{A\alpha}$, onde $\lambda \in \complexo{}$ e $A$ é um operador linear $A:V \to V$. Com isso, $T$ esta bem-definido.
@@ -2132,11 +2138,11 @@
 	\begin{aligned}
 	\Omega(Tv,Tu)
 	&= \sum_{i,j = 1}^{2n}
-	\omega^{ij}a^{*}_{i}\otimes a^{*}_{j}(Tv,Tu)
+	\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(Tv,Tu)
 	\\
 	&= 
 	\sum_{i,j = 1}^{2n}
-	\omega^{ij}a^{*}_{i}\otimes a^{*}_{j}(\complexificacaoelemento{x}{A\alpha},\complexificacaoelemento{y}{A\beta})
+	\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(\complexificacaoelemento{x}{A\alpha},\complexificacaoelemento{y}{A\beta})
 	\\
 	&= \sum_{i,j = 1}^{2n}
 	xy\omega^{ij}e^{*}_{i}(Au)e^{*}_{j}(Av)
@@ -2148,6 +2154,29 @@
 	Temos que $\formaSimpleticaExtendida{Tu}{Tv} = \formaSimpleticaExtendida{u}{v}$ o que implica que $xy
 	\formaSimpletica{A\alpha}{A\beta} = xy
 	\formaSimpletica{\alpha}{\beta}$. Como $\alpha, \beta \in V$ são arbitrários, então $A$ é uma transformação simplética. A recíproca é imediata.
+	
+	\begin{proposicao}\label{proposicao_forma_simpletica_vetor_conjugado}
+		Seja $\{\textbf{e}, \textbf{f}\}$ uma base simplética de $\complexificado{V}$. Então para um dado $v = v_{(1)}e+v_{(2)}f \in \complexificado{V}$ tem-se que $\formaSimpleticaExtendida{\overline{v}}{v}
+		=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}} \in i\reta$.
+	\end{proposicao}
+	\begin{prova}
+		Seja $B=\{\textbf{e}_{j}, \textbf{f}_{j} \}_{j=1}^{n}$ uma base simplética de $\complexificado{V}$. Tomando $v = \sum_{j=1}^{n} v_{j}\textbf{e}_{j}+ v_{n+j}\textbf{f}_{j}$, e definindo $v_{(1)} = (v_{1}, \dots, v_{n})$ e $v_{(2)} = (v_{n+1}, \dots, v_{2n})$, tem-se
+		$$
+		\begin{aligned}
+			\formaSimpleticaExtendida{\overline{v}}{v} &= \sum_{j=1}^{n}\overline{v}_{j}v_{n+j}\formaSimpleticaExtendida{\textbf{e}_{j}}{\textbf{f}_{k}}+ \sum_{j=1}^{n}\overline{v}_{n+j}v_{j}\formaSimpleticaExtendida{\textbf{f}_{j}}{\textbf{e}_{k}}
+			\\
+			&=\sum_{j=1}^{n}\bigparenteses{\overline{v}_{j}v_{n+j}-\overline{v}_{n+j}v_{j}}
+			\\
+			&=\sum_{j=1}^{n}\bigparenteses{\overline{v}_{j}v_{n+j}-\overline{\overline{v}_{j}v_{n+j}}
+				}
+			\\
+			&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}-\overline{ \produtointerno{\overline{v}_{(1)}}{v_{(2)}}}
+			\\
+			&=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}.
+		\end{aligned}
+		$$
+		Portanto $\formaSimpleticaExtendida{\overline{v}}{v} \in i\reta$.
+	\end{prova}
 	
 	\begin{definicao}
 		(Grupo simplético complexo) O grupo simplético complexo $\gruposimpletico{\complexificado{V}} \subset \generalgroupcomplexo{2n}$ de $\complexificado{V}$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $\complexificado{V}$.
@@ -2631,12 +2660,13 @@
 	\end{prova}
 	
 	\begin{corolario}
-		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais.
+		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais. \vermelho{(Estou revendo onde 
+		esse resultado para a construção do índice de maslov. Aparentemente, ele deve ser feito após a demonstração das propriedades de $\rho$.)}
 	\end{corolario}
 	\begin{prova}
 		
 		Suponha $A \in \gruposimpleticonaodegenerado{*}$ e $\sigma(A) \subset \complexo{}$. Note que, dado um auto-valor $\lambda$, teremos  $\lambda/|\lambda| \in \circulo$. Sejam $\lambda_{j} \in \sigma(A)$ com $1\leq j\leq n $ auto-valores tais que $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ são funções contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
-		onde $\lambda_{j}\neq \pm 1$ \vermelho{ (aqui acho que tenho que usar o argumento da complexificação pois o Salamon diz que os atuo-valores devem ser de primeira ordem)} e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
+		onde $\lambda_{j}\neq \pm 1$ e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ como sendo o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
 		$$
 		\exp\Big( i2\pi \sum_{j=1}^{n}\alpha_{j}(A) \Big) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
 		$$ 
@@ -2691,9 +2721,10 @@
 	Outros detalhes sobre a axiomatização e demonstração da equivalência entre diferentes construções do índice de Maslov pode ser encontrada em $\cite{cappell_maslov_index_equivalencia}$.
 	
 	\section{Construção de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov, vamos adotar as complexificações $(\real{2n}, \formaSimpleticaabrev) \hookrightarrow (\complexo{2n}, \Omega)$ e $\gruposimpleticoreal{2n} \hookrightarrow \gruposimpleticocomplexo{2n}$ apresentadas na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. O primeiro passo é construir uma aplicação $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$.
+	Para a construção do índice de Maslov, vamos adotar as complexificações $(\complexificado, \Omega) $ e $\gruposimpleticocomplexo{2n}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético$\gruposimpletico{2n}$, respectivamente. Os detalhes da complexificação podem ser encontrados na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. 
 	
-	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\gruposimpletico{V}$ o grupo transformações simpleticas definidas em $V$. 
+	O primeiro passo é a construção de uma aplicação contínua $\rho: \gruposimpletico{2n}\to \circulo$ tal que, definido o determinante $det:\matrizSimpleticaOrtogonal\to \circulo$, tem-se que $\rho|_{\matrizSimpleticaOrtogonal} = det$.
+	
 	\begin{teorema}\label{teorema_aplicacao_rho}
 		Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ 2n-espaços vetoriais simpléticos. Existe uma aplicação contínua $\rho:Sp(2n) \to S^{1}$ satisfazendo as seguintes propriedades:
 		\begin{enumerate}
@@ -2725,16 +2756,14 @@
 		\end{enumerate}
 	\end{teorema}
 	
-	\vermelho{	Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ foi mostrado que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$ e dados $v, u \in \complexo{2n}$ temos $\formaSimpleticaExtendida{v}{u}= -iV^{t}U$, onde $V$ e $U$ são as representações matricias de $v$ e $u$, respectivamente. Suponha que $\lambda, \overline{\lambda} \in \circulo$, isto é $\lambda\overline{\lambda} = 1$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, temos que  $\formaSimpleticaExtendida{\overline{v}}{v} =-iV^{t}V=- i\norma{v}^{2}\in i\reta$. 
-		
-		Para construirmos uma aplicação que extenda contínuamente o determinante vamos introduzir uma ordenação nos auto-valores de $A$ de modo que tenhamos algo como $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$. Sabemos que um auto-valor $\lambda$ podemo assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, como são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$, basta analisarmos os casos em que $|\lambda| \leq 1$ pois, supondo $|\lambda|\leq 1$, teremos $|\lambda^{-1}|\geq 1$. O que implica $|\overline{\lambda}|\leq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
-		
-		Todo auto-valor $\lambda \in \complexo{}$ pode ser escrito como $\lambda = |\lambda|\exp(i\theta_{\lambda})$, para algum $\theta_{\lambda} \in [0,2\pi]$. Fixe $\lambda\in \sigma(A)$ tal que $|\lambda|<1$. Então diremos que $\lambda = \lambda_{1}$ se, para qualquer $\exp(i\theta_{\beta}) = \beta\in \sigma(A)$ com $|\beta|<1$ tivermos $|\lambda|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$. Tomando $\lambda \neq \lambda'\in \sigma(A)$, diremos que $\lambda' = \lambda_{2}$ se, para todo $\beta \in \complementar{\sigma(A)}{\{\lambda\} }$ com $|\beta|<1$ tivermos $|\lambda'|\leq  |\beta|$ e $\theta_{\lambda}\leq \theta_{\beta}$.  Repetindo esse procedimento n vezes teremos os conjunto ordenado $\{\lambda_{1} ,\dots,\lambda_{n},\lambda_{n}^{-1},\dots,\lambda_{1}^{-1} \}$.
-	}
+	Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ mostrou-se que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$. Suponha que $\lambda, \overline{\lambda} \in \circulo$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, a Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} garante que  $\formaSimpleticaExtendida{\overline{v}}{v} \in i\reta$.
 	
-	\begin{definicao}
-		Seja $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores são distintos e ordenados de acordo com a descrição anterior.
-	\end{definicao}
+	Para se construir uma aplicação que extenda contínuamente o determinante se introduz uma ordenação nos auto-valores de $A$. Sabe-se que um dado $\lambda \in \espectrooperador{A}$ se pode assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$, além disso, são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$. Com isso, basta analisar os casos em que $|\lambda| \leq 1$, o que implica que $|\overline{\lambda}|\leq 1$, $|\lambda^{-1}|\geq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
+	
+	Tome $\lambda_{1}\in \sigma(A)$ tal que $|\lambda_{1}|<1$ e o escreva como $\lambda_{1} = |\lambda_{1}|\exp(i\theta_{\lambda_{1}})$, para algum $\theta_{\lambda_{1}} \in [0,2\pi]$. Tome um outro auto-valor $\lambda_{2}\neq \lambda_{1}$ tal que $|\lambda_{2}|<1$. Se $|\lambda_{1}| < |\lambda_{2}|$ ou  $|\lambda_{1}|= |\lambda_{2}|$ com $\theta_{\lambda} \leq \theta_{\beta}$, diremos que $\lambda_{1} \leq_{o} \lambda_{2}$. Repetindo esse procedimento n-vezes teremos a sequência $\lambda_{1} \leq_{0} \dots \leq_{0}\lambda_{n} \leq_{0} \lambda_{n}^{-1} \leq_{0} \dots \leq_{0} \lambda_{1}^{-1}$.
+	
+	Sejam $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$  e $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores têm multiplicidade igual a 1.
+	
 	\begin{lema}
 		A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
 		$$
@@ -2745,29 +2774,45 @@
 	\begin{prova}
 		Como os auto-valores de $A$ são não-nulos, então podemos escrever $\lambda/|\lambda| = e^{i\theta}$. Com isso, $\rho(A)=\prod \lambda_{j}/|\lambda_{j}| = \prod e^{i\theta_{j}} = e^{i(\theta_{1}+\dots +\theta_{n})} \in \circulo$, onde $\lambda_{j}/|\lambda_{j}| = e^{i\theta_{j}}$ para $1\leq j \leq n$. Logo $\rho$ esta bem-definida.
 		
-		Pelo Teorema $\ref{teoerma_sp2n_conexo}$ sabemos que $\gruposimpletico{2n}$ é conexo por caminhos. Com isso, na topologia herdada de $\generalgroupcomplexo{2n}$, dado $1>\epsilon >0$ tal que $\norma{A-B}< \epsilon$ as representação diagonal $D_{A}$ e $D_{B}$, respectivamente, também satisfazem $\norma{D_{A}-D_{B}}< \epsilon$, isto é, $sup|\lambda_{j}-\beta_{k}| < \epsilon$, onde $\beta_{k} \in \sigma(B)$. Sejam $\alpha = inf \{|\lambda_{j}|,|\beta_{j}|\}$. Então
+		Considere como a topologia de  $\gruposimpleticoespecial{2n}$ a topologia herdada de $\generalgroupcomplexo{2n}$. Como todos os elementos de $\gruposimpleticoespecial{2n}$ possuem auto-valores distintos, então são diagonalizáveis. Com isso, dados $A, B \in \gruposimpleticoespecial{2n}$ e $\epsilon>0$ tais que $\norma{A-B}< \epsilon$, tem-se $\norma{D_{A}-D_{B}}< \epsilon$, onde $D_{A}, D_{B}$ são as representações diagonais de $A$ e $B$, respectivamente. O que implica que $\max\{|\lambda_{j} - \beta_{j}| \}<\epsilon$, onde $\lambda_{j} \in \espectrooperador{A}$ e $\beta_{j} \in \espectrooperador{B}$ para $1\leq j\leq 2n$.
+		
+		Dados $A \in \gruposimpleticoespecial{2n}$ e $\epsilon>0$. Então para todo $B\in \gruposimpleticoespecial{2n}$ tal que $\norma{A-B}<\epsilon$, tem-se que
 		$$
-		|\rho(A) -\rho(B)| < \Big|\prod_{j=1}^{n} \frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} \Big| <\frac{1}{\alpha}\prod_{j=1}^{n} sup|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon.
+		|\rho(A) -\rho(B)| =\Big|\prod_{j=1}^{n} \bigparenteses{\frac{\lambda_{j}}{|\lambda_{j}|} - \frac{\beta_{j}}{|\beta_{j}|}} \Big|< \Big|\prod_{j=1}^{n} \bigparenteses{\frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} }\Big| <\frac{1}{\alpha}\prod_{j=1}^{n} \max|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon,
 		$$
-		Portanto, $\rho$ é contínua.
+		onde $\alpha = min\{|\lambda_{j}|,|\beta_{j}|\}$. Portanto, $\rho$ é contínua.
 	\end{prova}		
 	
-	Vamos mostrar que $\rho$ pode ser extendida contínuamente para $\gruposimpletico{2n}$.
+	Considere $\{\textbf{e}, \textbf{f} \}$ como sendo uma base simplética de $\complexificado{V}$. Sejam $v, u \in \complexificado{V}$ e $v_{j}, u_{j} \in \complexo{}$ os coeficientes desses vetores nessa base, onde $v_{j} = a_{j}+ib_{j}, u_{j} =c_{j}+id_{j}$. Então
+	
+	$$
+	\begin{aligned}
+	\formaSimpleticaExtendida{\overline{v}}{u} 
+	&= \sum_{j=1}^{n} (\overline{v}_{j}u_{n+j} - \overline{v}_{n+j}u_{j})
+	\\
+	&=\sum_{j=1}^{n} \bigparenteses{(a_{j} - ib_{j})(c_{n+j} +id_{n+j}) - (a_{n+j} - ib_{n+j})(c_{j} +id_{j})}
+	\\
+	&=\underbrace{\sum_{j=1}^{n} \bigparenteses{(a_{j}c_{n+j}+b_{j}d_{n+j})-(a_{n+j}c_{j}+b_{n+j}d_{j})}}_{\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}}}
+	\\
+	&+ i\underbrace{\sum_{j=1}^{n} \bigparenteses{(b_{n+j}c_{j}+a_{j}d_{n+j})-(b_{j}c_{n+j}+a_{n+j}d_{j})}}_{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u} }}
+	\\
+	&=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}}+i\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}.
+	\end{aligned}
+	$$
 	
 	\begin{lema}
-		A aplicação $B:\complexo{2n}\times \complexo{2n} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
+		A aplicação $B:\complexificado\times \complexificado \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
 		$$
 		B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
 		$$
 	\end{lema}
-	\begin{prova}
-		A aplicação $B$ é bilinear pois é a parte imaginária da aplicação bilinear $\omega$. Sejam $v = (v_{1},  v_{2}), u = (u_{1},  u_{2}) \in \real{2n}$. Pela Observação $\ref{observacao_forma_extendida}$ temos as associações $\overline{v}\mapsto v' = (v_{1}, -v_{2})$,  $\overline{u}\mapsto u' = (u_{1}, -u_{2})$ e a identidade $\formaSimpleticaExtendida{\overline{v}}{u} = \formaSimpleticaPadrao{v'}{u} -ic(v',u)$. Além disso, $c(v',u) = v_{1}u_{1} - v_{2}u_{2} = u_{1}v_{1} - u_{2}v_{2} = c(u',v)$. 
+	\begin{prova} 
+		A $\reta$-bilinearidade de $B$ é dada imediatamente pela bilinearidade de $\Omega$. 
 		
-		Afirmo que $B$ é simétrica. De fato,
-		$$B(v,u) =\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} =-c(v',u) = -c(u',v) = \parteImaginaria{\formaSimpleticaExtendida{\overline{u}}{v}} = B(u,v).
-		$$
+		A partir do cálculo anterior da decomposição de $\formaSimpleticaExtendida{\overline{u}}{v} $ em suas partes real e imaginária pode-se concluir que $\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u} } = \parteImaginaria{\formaSimpleticaExtendida{\overline{u}}{v} }$, o que implica que $B(v,u) = B(u,v)$ e $B$ é simétrica.
 		
-		Seja $v \in \complexo{2n}$ tal que $B(v, u) = 0 \; \forall u \in \complexo{2n}$. Tomando $z \in \complexo{2n}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$, logo 
+		Tomando $z \in \complexo{}$, pode-se verificar que $\parteReal{z} = \parteImaginaria{-iz}$. Com isso, escreva Suponha que $B$ seja degenerada, isto é, existe $v \in \complexificado{V}$ com $v\neq 0$ tal que $B(v, u ) = 0$ para todo $u \in \complexificado{V}$. Então
+		
 		$$
 		\begin{aligned}
 		\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
@@ -2779,44 +2824,32 @@
 		&=0.
 		\end{aligned}
 		$$
-		Definindo $v'\in \complexo{2n}$ como anteriormente, temos que $\formaSimpleticaPadrao{v'}{u} = \parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} = 0$. Como $\omega_{0}$ é não degenerada, então $v = 0$ e $B$ é não-degenerada.
+		
+		O que implica que a forma simplética $\Omega$ é degenerada, contradizendo a hipótese. Portanto $B$ é não-degenerada.
 		
 		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
 	\end{prova}
 	
 	\begin{definicao}
-		Seja  $Q: \complexo{2n} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos subespaços de $\complexo{2n}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
+		Seja  $Q: \complexificado{V} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos aiores  subespaços de $\complexificado{V}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
 	\end{definicao}
 	
 	\begin{corolario}\label{corolario_assinatura_forma_quadratica}
 		A forma quadrática $Q$ é não-degenerada e $m(Q) = 0$. \vermelho{Aqui o artigo do Salamon coloca como hipótese que o atuo-valor $\lambda \notin \circulo$.}
 	\end{corolario}
-	\begin{prova} $Q$ é não-degenerada pois $B$ é não-degenerada.
-		Afirmo que $m(Q) = 0$. De fato, pela Observação $\ref{observacao_forma_extendida}$ temos que 
+	\begin{prova} A forma quadrática $Q$ é não-degenerada pois $B$ é não-degenerada.
+		Seja $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$. Afirmo que $m(Q) = 0$. De fato, tome $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f}\in \complexificado{V}$. Pela Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} tem-se que $Q(v)=\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}$. Seja $\complexificado{V}^{+} = \{v \in \complexificado{V}: v_{(1)}=v_{(2)}\}$. Note que $0 \in \complexificado{V}^{+}$ e que, dados $\lambda \in \complexo{}$ e $v, u \in \complexificado{V}^{+}$, tem-se que 
 		$$
-		\begin{aligned}
-		Q(v) 
-		&= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} 
-		\\
-		&= - c(v', v) = -(v'_{1}v_{1} +v'_{2}v_{2}) 
-		\\
-		&= -v_{1}^{2} +v_{2}^{2} 
-		\\
-		&= -\produtointerno{v^{1}}{v^{1}} +\produtointerno{v^{2}}{v^{2}}
-		\\
-		&= \sum_{j=1}^{n}-v_{1j}^{2} +v_{2j}^{2}.
-		\end{aligned}
-		$$ 
+		\lambda v + u  = \lambda v_{(1)}e+v_{(1)}f + u_{(1)}e+u_{(1)}f = (\lambda v_{(1)} + u_{(1)})e+(\lambda v_{(1)} + u_{(1)})f \in \complexificado{V}^{+}.
+		$$
 		
-		Portando, $m_{+}(Q) = m_{-}(Q) = n$ e $m(Q) = 0$.
+		Portanto $\complexificado{V}^{+} $ é um subespaço vetorial de $\complexificado{V}$.  Além disso, $dim(\complexificado{V}^{+}) = n$. Com isso, $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(1)}}} = 2\norma{v_{(1)}}^{2} >0$, para todo $v \in \complementar{\complexificado{V}^{+}}{\{0\}}$. Analogamente, definindo $\complexificado{V}^{-} = \{v \in \complexificado{V}: v_{(1)} =- v_{(2)}\}$, tem-se que $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{-v_{(1)}}} = -2\norma{v_{(1)}}^{2} <0$, para todo $v \in \complementar{\complexificado{V}^{-}}{\{0\}}$. Como $\complexificado{V}^{+}\cap \complexificado{V}^{-} = \{0\}$ e $dim(\complexificado{V}^{+}) = dim(\complexificado{V}^{-}) = n$, então $\complexificado{V}=\complexificado{V}^{+}\oplus\complexificado{V}^{-}$ e ambos os subespaços são máximais com respeito a $Q$ ser positiva ou negativa definida. Logo, $m(Q) = m_{+}(Q) -m_{-}(Q) = n-n = 0$.
 	\end{prova}
 	
-	Sejam $A \in \gruposimpletico{2n}$ e $\lambda\in \sigma(A)$ tal que $\lambda \in \complementar{\circulo}{\{\pm 1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ e pelo Corolário $\ref{corolario_assinatura_forma_quadratica}$ podemos decompor o auto-espaço $E_{\lambda} = E_{\lambda}^{+} \oplus E_{\lambda}^{-}$, onde $E_{\lambda}^{\pm} $ são subespaços vetoriais tais que $Q$ é positivo-definida, ou negativo-definida, respectivamente. Assim, temos a multiplicidade de $\lambda$ dada por $m(\lambda) = m_{+}(\lambda)+m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda})$, onde  $m_{\pm}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{\pm} )$. Definamos a assinatura de $\lambda$ por $\sigma(\lambda)= m_{+}(\lambda) - m_{-}(\lambda)$. 
-	
-	Suponha que $\lambda<0$, então $\lambda^{-1}<0$. Pelo Corolário $\ref{corolario_restricao_forma_simpletica}$ temos que a restrição $\Omega|_{E_{\lambda}\oplus E_{\lambda^{-1}}}$ é não-degenerada, e assim, $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}\oplus E_{\lambda^{-1}}^{+}\oplus E_{\lambda^{-1}}^{-}$, logo $m_{-}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{-})+dim_{\complexo{}}(E_{\lambda^{-1}}^{-})=2dim_{\complexo{}}(E_{\lambda}^{-})$. Portanto, $m_{-}(\lambda) \in 2\mathbb{N}$.
+	Sejam $A \in \gruposimpletico{2n}$ e $\lambda\in \sigma(A)$ tal que $\lambda \in \complementar{\circulo}{\reta}$ \vermelho{(não entendi essa condição...pode ser que envolva a $\omega$-ortogonalidade. Esta no começo das propriedades de $\rho$ do Michelle)}. Realizando a decomposição $E_{\lambda} = E_{\lambda}^{+} \oplus E_{\lambda}^{-}$, onde $E_{\lambda}^{\pm} $ são subespaços vetoriais tais que $Q$ é positivo-definida, ou negativo-definida, respectivamente, tem-se que a multiplicidade de $\lambda$ é dada por $m(\lambda) = m_{+}(\lambda)+m_{-}(\lambda)$, onde  $m_{\pm}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{\pm} )$ e as dimensões de $E_{\lambda}^{\pm}$ são iguais, pela maximalidade. Com isso, $m(\lambda) = 2dim(E_{\lambda}^{+}) \in 2\mathbb{N}$.
 	
 	\begin{lema}\label{lema_identidade_aplicacao_rho}
-		Sejam $A \in \gruposimpletico{2n}$, $m_{0} = \sum_{\lambda \in \sigma(A)} m_{-}(\lambda)$  e $\sigma'(A)=\sigma(A)\cap \complementar{\circulo}{\{ \pm 1 \}}$. Então
+		Sejam $A \in \gruposimpletico{2n}$, $m_{0} = \sum_{\lambda \in \sigma(A)} m_{-}(\lambda)$  e $\sigma'(A)=\sigma(A)\cap \complementar{\circulo}{\real{-}}$ \vermelho{(acredito que aqui tiramos os auto valores negativos para seguir com a ordem $\leq_{o}$)}. Então
 		$$
 		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|} =(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A) }\lambda^{m_{+}(\lambda)} .
 		$$
