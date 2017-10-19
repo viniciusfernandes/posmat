@@ -2447,7 +2447,7 @@
 	
 	Analisaremos agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
 	
-	\begin{lema}
+	\begin{lema}\label{lema-caracterizacao_espectro_semelhante}
 		Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 	\end{lema}
 	\begin{prova}
@@ -2760,11 +2760,11 @@
 	
 	Para se construir uma aplicação que extenda contínuamente o determinante se introduz uma ordenação nos auto-valores de $A$. Sabe-se que um dado $\lambda \in \espectrooperador{A}$ se pode assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$, além disso, são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$. Com isso, basta analisar os casos em que $|\lambda| \leq 1$, o que implica que $|\overline{\lambda}|\leq 1$, $|\lambda^{-1}|\geq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
 	
-	Tome $\lambda_{1}\in \sigma(A)$ tal que $|\lambda_{1}|<1$ e o escreva como $\lambda_{1} = |\lambda_{1}|\exp(i\theta_{\lambda_{1}})$, para algum $\theta_{\lambda_{1}} \in [0,2\pi]$. Tome um outro auto-valor $\lambda_{2}\neq \lambda_{1}$ tal que $|\lambda_{2}|<1$. Se $|\lambda_{1}| < |\lambda_{2}|$ ou  $|\lambda_{1}|= |\lambda_{2}|$ com $\theta_{\lambda} \leq \theta_{\beta}$, diremos que $\lambda_{1} \leq_{o} \lambda_{2}$. Repetindo esse procedimento n-vezes teremos a sequência $\lambda_{1} \leq_{0} \dots \leq_{0}\lambda_{n} \leq_{0} \lambda_{n}^{-1} \leq_{0} \dots \leq_{0} \lambda_{1}^{-1}$.
+	Tome $\lambda_{1}\in \sigma(A)$ tal que $|\lambda_{1}|<1$ e o escreva como $\lambda_{1} = |\lambda_{1}|\exp(i\theta_{\lambda_{1}})$, para algum $\theta_{\lambda_{1}} \in [0,2\pi]$. Tome um outro auto-valor $\lambda_{2}\neq \lambda_{1}$ tal que $|\lambda_{2}|<1$. Se $|\lambda_{1}| < |\lambda_{2}|$ ou  $|\lambda_{1}|= |\lambda_{2}|$ com $\theta_{\lambda} \leq \theta_{\beta}$, diremos que $\lambda_{1} \leq_{o} \lambda_{2}$. Repetindo esse procedimento n-vezes teremos a sequência $\lambda_{1} \leq_{0} \dots \leq_{0}\lambda_{n} \leq_{0} \lambda_{n}^{-1} \leq_{0} \dots \leq_{0} \lambda_{1}^{-1}$. Essa ordenação será chamada de ordem de primeiro tipo.
 	
 	Sejam $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$  e $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores têm multiplicidade igual a 1.
 	
-	\begin{lema}
+	\begin{lema}\label{lema_aplicacao_rho}
 		A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
 		$$
 		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
@@ -2834,69 +2834,75 @@
 		Seja  $Q: \complexificado{V} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos maiores  subespaços de $\complexificado{V}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
 	\end{definicao}
 	
-	\begin{corolario}\label{corolario_assinatura_forma_quadratica}
-		A forma quadrática $Q$ é não-degenerada e $m(Q) = 0$. \vermelho{Aqui o artigo do Salamon coloca como hipótese que o atuo-valor $\lambda \notin \circulo$.}
-	\end{corolario}
-	\begin{prova} A forma quadrática $Q$ é não-degenerada pois $B$ é não-degenerada.
-		Seja $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$. Afirmo que $m(Q) = 0$. De fato, tome $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f}\in \complexificado{V}$. Pela Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} tem-se que $Q(v)=\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}$. Seja $\complexificado{V}^{+} = \{v \in \complexificado{V}: v_{(1)}=v_{(2)}\}$. Note que $0 \in \complexificado{V}^{+}$ e que, dados $\lambda \in \complexo{}$ e $v, u \in \complexificado{V}^{+}$, tem-se que 
-		$$
-		\lambda v + u  = \lambda v_{(1)}e+v_{(1)}f + u_{(1)}e+u_{(1)}f = (\lambda v_{(1)} + u_{(1)})e+(\lambda v_{(1)} + u_{(1)})f \in \complexificado{V}^{+}.
-		$$
-		
-		Portanto $\complexificado{V}^{+} $ é um subespaço vetorial de $\complexificado{V}$.  Além disso, $dim(\complexificado{V}^{+}) = n$. Com isso, $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(1)}}} = 2\norma{v_{(1)}}^{2} \geq 0$, para todo $v \in \complexificado{V}^{+}$. Analogamente, definindo $\complexificado{V}^{-} = \{v \in \complexificado{V}: v_{(1)} =- v_{(2)}\}$, tem-se que $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{-v_{(1)}}} = -2\norma{v_{(1)}}^{2} \leq 0$, para todo $v \in \complexificado{V}^{-}$. Como $\complexificado{V}^{+}\cap \complexificado{V}^{-} = \{0\}$ e $dim(\complexificado{V}^{+}) = dim(\complexificado{V}^{-}) = n$, então $\complexificado{V}=\complexificado{V}^{+}\oplus\complexificado{V}^{-}$ e ambos os subespaços são máximais com respeito a $Q$ ser positiva ou negativa definida. Logo, $m(Q) = m_{+}(Q) -m_{-}(Q) = n-n = 0$.
-	\end{prova}
+	Note que, a forma quadrática $Q$ é não-degenerada pois $B$ é não-degenerada.
 	
-	Sejam $A \in \gruposimpletico{2n}$ e $\lambda\in \sigma(A)$ tal que $\lambda \in \complementar{\circulo}{\reta}$ \vermelho{(não entendi essa condição...pode ser que envolva a $\omega$-ortogonalidade. Esta no começo das propriedades de $\rho$ do Michelle. No Salamon $\complementar{\circulo}{\{\pm 1\}}$ e logo em seguida um resultado da ortoganalidade)}. Realizando a decomposição $E_{\lambda} = E_{\lambda}^{+} \oplus E_{\lambda}^{-}$, onde $E_{\lambda}^{\pm} $ são subespaços vetoriais onde $Q$ é positivo-definida, ou negativo-definida, respectivamente, tem-se que a multiplicidade de $\lambda$ é dada por $m(\lambda) = m_{+}(\lambda)+m_{-}(\lambda)$, onde  $m_{\pm}(\lambda) = dim_{\complexo{}}(E_{\lambda}^{\pm} )$ e as dimensões de $E_{\lambda}^{\pm}$ são iguais, pela maximalidade. Com isso, $m(\lambda) = 2dim(E_{\lambda}^{+}) \in 2\mathbb{N}$.
-	
-	\begin{lema}\label{lema_identidade_aplicacao_rho}
-		Sejam $A \in \gruposimpleticoespecial{2n}$, $m_{0} = \sum_{\lambda \in \sigma(A)} m_{-}(\lambda)$  e $\sigma'(A)=\sigma(A)\cap \complementar{\circulo}{\real{-}}$ \vermelho{(acredito que aqui tiramos os auto valores negativos para seguir com a ordem $\leq_{o}$)}. Então
-		$$
-		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|} =(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A) }\lambda^{m_{+}(\lambda)} .
-		$$
-	\end{lema}
-	\begin{prova}
-
-		Escrevendo a aplicação $\rho$ como
-		$$
-		\rho(A) =\prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|} = 
-		$$
-		$$
+	Seja $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$ e tome $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f}\in \complexificado{V}$. Pela Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} tem-se que $Q(v)=\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}$. Afirmo que o conjunto $\complexificado{V}^{+} = \{v \in \complexificado{V}: v_{(1)}=v_{(2)}\}$ é um subespaço vetorial de $\complexificado{V}$. De fato, é imediato que $0 \in \complexificado{V}^{+}$. Dados $\lambda \in \complexo{}$ e $v, u \in \complexificado{V}^{+}$, tem-se que 
+	$$
 		\begin{aligned}
-		\rho(A)&=\prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
+		\lambda v + u  &= \lambda (v_{(1)}\textbf{e}+v_{(1)}\textbf{f}) + u_{(1)}\textbf{e}+u_{(1)}\textbf{f} 
 		\\
-		&=
-		\frac{\lambda_{1}}{|\lambda_{1}|} \dots \frac{\lambda_{k}}{|\lambda_{k}|}
-		\frac{\lambda_{k+1}}{|\lambda_{k+1}|} \dots  \frac{\lambda_{m}}{|\lambda_{m}|}
-		\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-		\frac{\lambda_{n}}{|\lambda_{n}|}
+		&= (\lambda v_{(1)} + u_{(1)})\textbf{e}+(\lambda v_{(1)} + u_{(1)})\textbf{f} 
 		\\
-		&=
-		\underbrace{\pm 1 \dots \pm 1}_{k-vezes}
-		\underbrace{\lambda_{k+1}\dots  \lambda_{m}}_{\in \complementar{\circulo}{\{\pm 1 \}}}
-		\underbrace{	\frac{\lambda_{m+1}}{|\lambda_{m+1}|} \dots 
-			\frac{\lambda_{n}}{|\lambda_{n}|}}_{\in \complementar{\circulo}{\{\pm 1 \}}}	
-		\\
-		&=
-		(-1)^{m_{0}}\beta_{k+1}\dots \beta_{n}	
-		\\
-		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A) \cap\complementar{\circulo}{\{ \pm 1 \}}} \lambda^{m_{+}(\lambda)}
-		\\
-		&=	(-1)^{m_{0}} \prod_{\lambda \in \sigma'(A)}\lambda^{m_{+}(\lambda)}.
+		&= (\lambda v_{(1)} + u_{(1)})(\textbf{e}+ \textbf{f}) \in \complexificado{V}^{+}.
 		\end{aligned}
-		$$
-		
-		\vermelho{(Ainda não ficou clara o produto sobre todos os autovalores em $\circulo$. Ver novamente o Salamon artigo. Ele afirma algo sobre os auto-valores de primeira ordem e suas multiplicidades)}
-	\end{prova}
+	$$
+	
+	Portanto $\complexificado{V}^{+} $ é um subespaço vetorial de $\complexificado{V}$.  Além disso, $\{\textbf{e}+\textbf{f}\} = \{e_{1}+f_{1}, \dots, e_{n}+f_{n}\}$ é uma base de $\complexificado{V}^{+}$, logo $dim(\complexificado{V}^{+}) = n$. Com isso, $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(1)}}} = 2\norma{v_{(1)}}^{2} \geq 0$, para todo $v \in \complexificado{V}^{+}$. Analogamente, tem-se que $\complexificado{V}^{-} = \{v \in \complexificado{V}: v_{(1)} =- v_{(2)}\}$ também é um subespaço vetorial de $\complexificado{V}$, cuja base é $\{\textbf{e}-\textbf{f}\}$, e portanto $dim(\complexificado{V}^{-}) = n$. Então $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{-v_{(1)}}} = -2\norma{v_{(1)}}^{2} \leq 0$, para todo $v \in \complexificado{V}^{-}$. Como $\complexificado{V}^{+}\cap \complexificado{V}^{-} = \{0\}$ e $dim(\complexificado{V}^{+}) = dim(\complexificado{V}^{-}) = n$, então $\complexificado{V}=\complexificado{V}^{+}\oplus\complexificado{V}^{-}$.
+	
+	Sejam $A \in \gruposimpletico{2n}$, $\lambda\in \sigma(A)$ e $E_{\lambda}$ o auto-espaço generalizado associado a $\lambda$, cuja multiplicidade é denotada por $m(\lambda)$. Suponha que $\lambda \in \complementar{\circulo}{\{\pm 1\} }$ e repita a decomposição $\autoespaco{\lambda} = \autoespaco{\lambda}^{+}\oplus \autoespaco{\lambda}^{-} $ anteriormente feita para $\complexificado{V}$. Pelo Corolário \ref{corolario_restricao_forma_simpletica} tem-se que a restrição $\Omega|_{\autoespaco{\lambda} \oplus \autoespaco{\lambda}}$ é não-degenerada, logo a restrição da forma quadrática $Q|_{\autoespaco{\lambda}}$ é não-degenerada. Além disso, $dim(\autoespaco{\lambda}^{+}) = dim(\autoespaco{\lambda}^{-})$ e $dim(\autoespaco{\lambda})=2dim(\autoespaco{\lambda}^{+})$. Sejam $m_{+}(\lambda) = dim(\autoespaco{\lambda}^{+})$ e $\rho: \gruposimpletico{2n}\to \complexo{}$ definida por
+	$$
+	\rho'(A) = 	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A)\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)},
+	$$
+	onde $m_{0}$ denota o número de pares $(\lambda, \lambda^{-1})$ reais negativos.
+
+	Afirmo que a restrição $\rho|_{\gruposimpleticoespecial{2n}}$ coincide com a aplicação $\rho$ anteriormente definida no Lema \ref{lema_aplicacao_rho}. De fato, tomando $A \in \gruposimpleticoespecial{2n}$ tem-se que $m_{+}(\lambda) = 1$ para todo $\lambda\in \espectrooperador{A}$. Suponha uma ordem de primeiro tipo para os auto-valores de $A$. Com isso, tem-se o produto $\lambda_{1}\dots \lambda_{n} = \lambda_{1}^{m_{+}(\lambda_{1})}\dots \lambda_{1}^{m_{+}(\lambda_{1})}$. Sem perda de generalidade, pode-se supor que $\lambda_{j} \in \reta$ e que $\lambda_{k}\in \circulo$ para $1\leq j \leq r $ e $r \leq k \leq n$ para algum $r \leq k$. Com isso, $\lambda_{j}/|\lambda_{j}|=\pm 1$ e $\lambda_{k}/|\lambda_{k}| = \lambda_{k}$. Seja $m_{0}$ seja a quantidade de auto-valores reais negativos de $A$. Então tem-se o produto 
+	$$
+	\begin{aligned}
+	\rho(A) 
+	&=
+	\frac{\lambda_{1}}{|\lambda_{1}|}\dots \frac{\lambda_{n}}{|\lambda_{n}|}
+	\\
+	&= (-1)^{m_{0}}\frac{\lambda_{r+1}}{|\lambda_{r+1}|}^{m_{+}(\lambda_{r+1})}\dots \frac{\lambda_{k}}{|\lambda_{k}|}^{m_{+}(\lambda_{k})} \underbrace{\frac{\lambda_{k+1}}{|\lambda_{k+1}|}^{m_{+}(\lambda_{k+1})}\dots \frac{\lambda_{n}}{|\lambda_{n}|}^{m_{+}(\lambda_{n})}}_{\vermelho{???}}
+	\\
+	&=(-1)^{m_{0}}\prod_{\lambda\in \espectrooperador{A}\cap\complementar{\circulo}{\reta}}\lambda^{m_{+}(\lambda)}
+	\\
+	&= \rho'(A).
+	\end{aligned}
+	$$
+
+	\vermelho{(Ainda não ficou clara o produto sobre todos os autovalores que não pertencem a $\circulo$. Ver novamente o Salamon artigo. Ele afirma algo sobre os auto-valores de primeira ordem e suas multiplicidades, mas não entendi como eles não contribuirão para o produto acima.)}
+
+	A continuidade da aplicação $\rho'$ é uma propriedade necessária para a construção do Índice de Maslov e tal resultado pode se encontrado em \cite{audi_floer_homology}.
+	
+	\begin{proposicao}
+		A aplicação $\rho': \gruposimpletico{2n}\to \circulo$ é contínua e $\rho'|_{\gruposimpleticoespecial{2n}} = \rho$.
+	\end{proposicao}
+	
+	No restante do texto denotaremos $\rho'$ por $\rho$ para simplificar a notação quando não houver ambiguidades.
 	
 	\subsection*{Demonstração das propriedades de $\rho$}
+	
+	A construção da aplicação $\rho$ depende intrinsecamente do espaço vetorial simplético $(\complexificado{V}, \Omega)$ adotado. Caso se tenha dois espaços vetoriais simpléticos $(\complexificado{V}_{j}, \Omega_{j})$ para $j\in \{1,2\}$, tem-se as aplicações $\rho_{j}:\gruposimpletico{\complexificado{V}_{j}} \to \circulo$. Com um abuso de notação, identificaremos $\rho_{j}$ com $\rho$, onde sua definição dependerá do contexto.
+	
 	\begin{prova}
-		Seja $\rho :\gruposimpletico{2n} \to \circulo$ definida no Lema $\ref{lema_identidade_aplicacao_rho}$.
+		
 		\begin{enumerate}
-			\item \label{item_naturalidade_rho} \textbf{\textit{Naturalidade:}} Sejam $T : \complexo{2n} \to \complexo{2n}$ um isomorfismo simplético, isto é, $T\in \gruposimpletico{2n}$. Então $T$ preserva a $\Omega$-ortogonalidade de $A$. De fato, supondo $E$ e $E'$ subespaços $\Omega$-ortogonais de $A$, então $(T^{*}\Omega)(E, E') = \Omega(T(
-			E), T(E')) = \Omega(E, E') = 0$. Seja $S^{-1}DS$ a representação diagonal de $A$. Então $B = T^{-1}AT = (ST)^{-1}DST$, logo $B$ é similar a matriz diagonal $D$ e possui os mesmo auto-valores de $A$. Além disso, temos que $T^{-1}AT\in \gruposimpletico{2n}$ pois $\gruposimpletico{2n}$ é um grupo. Portanto $\rho(T^{-1}AT) = \rho(B) = \rho(A)$. 
+			\item \label{item_naturalidade_rho} \textbf{\textit{Naturalidade:}} Sejam $T : \complexificado{V}_{1} \to \complexificado{V}_{2}$ um isomorfismo simplético e $A \in \gruposimpletico{\complexificado{V}}$. Pelo Lema \ref{lema-caracterizacao_espectro_semelhante} tem-se que $\espectrooperador{T} = \espectrooperador{T^{-1}}$. Definindo $\sigma'(A) = \lambda\in \espectrooperador{A}\cap\complementar{\circulo}{\reta}$ e analogamente $\sigma'(T)$, tem-se
+			$$
+				\begin{aligned}
+						\rho(TAT^{-1}) 
+						&=(-1)^{m_{0}^{T}} (-1)^{m_{0}^{A}}(-1)^{m_{0}^{T^{-1}}}\prod_{\lambda\in \sigma'(A), \beta\in \sigma'(T) }\beta^{m_{+}(\beta)}\lambda^{m_{+}(\lambda)}(\beta^{-1}) ^{m_{+}(\beta^{-1})}
+						\\
+						&=(-1)^{2m_{0}^{T}} (-1)^{m_{0}^{A}}\prod_{\lambda\in \sigma'(A), \beta\in \sigma'(T) }\beta^{m_{+}(\beta)}(\beta^{-1}) ^{m_{+}(\beta)}\lambda^{m_{+}(\lambda)}
+						\\
+						&=(-1)^{m_{0}^{A}}\prod_{\lambda\in \sigma'(A)}\lambda^{m_{+}(\lambda)}
+						\\
+						&=\rho(A),
+				\end{aligned}
+			$$
+			onde foi usado o fato de que a multiplicidade de $\beta, \beta^{-1} \in \espectrooperador{T}$ são iguais.
 			
-			\item \textbf{\textit{Produto:}} Sejam $(V, \Omega) = (\complexo{2n}\times \complexo{2n}, \Omega_{1}\times \Omega_{2})$ e $A \in \gruposimpletico{V}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\oplus E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, respectivamente. Desse modo, $A = A_{1}\oplus A_{2}$ e $\rho(A) = \rho(A_{1})\rho(A_{2})$.
-			
+			\item \textbf{\textit{Produto:}} Sejam $(\complexificado{V}, \Omega) = (\complexificado{V}_{1}\times \complexificado{V}_{2}, \Omega_{1}\times \Omega_{2})$ um $2k$-espaço vetorial simplético, onde $\complexificado{V}_{1}, \complexificado{V}_{2}$ são $2n_{1}$ e $2n_{2}$-espaços vetoriais simpléticos, respectivamente, e $k=2n_{1}+2n_{2}$. Dado $A \in \gruposimpletico{\complexificado{V}}$ tem-se que $Av = (A_{1}v_{1}, A_{2}v_{2})$, onde $v=(v_{1}, v_{2}) \in \complexificado{V}$, $A_{1}\in \gruposimpletico{\complexificado{V}_{1}}$ e $A_{2}\in \gruposimpletico{\complexificado{V}_{2}}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\times E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, porespectivamente. Desse modo, a aplicação $\hat{\rho}: \gruposimpletico{\complexificado{V}} \to \circulo$ definida por $\hat{\rho}(A) = \rho(A_{1})\rho(A_{2})$ satisfaz o axioma do produto.
 			
 			\item \textbf{\textit{Deteminante:}} Seja $A \in \mathcal{U} = \matrizunitaria{n}$. Com um argumento análogo ao que foi feito na demostração da Item $\ref{item_naturalidade_rho}$, podemos afirmar que $\estruturacomplexa$ presenva a $\Omega$-ortogonalidade dos subespaços de $A$. Como $\estruturacomplexa$ é um isomorfismo simplético, então é diagonalizável  e $\pm i \in \sigma(\estruturacomplexa)$. De fato, seja $v = (u, \pm iu) \in \complexo{2n}$, onde $u \in \complexo{n}$. Então $\estruturacomplexa v = (\pm iu, -u) = \pm i(u,iu) = \pm iv$. Seja $E^{\estruturacomplexa}_{\pm i} = \{(u, \pm i u):u \in \complexo{n} \}$ os auto-espaços de $\estruturacomplexa$ para os auto-valores $\pm i$.
 			Supondo que $v \in E^{\estruturacomplexa}_{ i}$, então $\overline{v} = (\overline{u}, -i \overline{u})$ e $\overline{v} \mapsto v' = Rv = R(u, -u) = (u,u)$. Com isso, $Q(v) = -c(v', v) = -(v'_{1}v_{1}+v'_{2}v_{2}) = -(\norma{v_{1}}^{2}+\norma{v_{2}}^{2}) =-2\norma{u}^{2}<0$. Logo a restrição $Q|_{E^{\estruturacomplexa}_{ i}}$ é negativa-definida. Com um argumento análogo teremos que a restrição $Q|_{E^{\estruturacomplexa}_{-i}}$ é positiva-definida.
