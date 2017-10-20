@@ -1638,8 +1638,16 @@
 	Sejam $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ dois espaços vetoriais simpléticos e uma aplicação linear $\varphi: V_{1}\to V_{2}$. O pullback de $\omega_{2}$ por $\varphi$ é a 2-forma $\varphi^{*}\omega_{2}:V_{1} \times V_{1} \to \reta$ definida por $\varphi^{*}\omega_{2}(v,u) = \omega_{2}(\varphi(v), \varphi(u))$.
 	
 	\begin{convensao}\label{convensao_base_simpletica}
-		Quando não houver ambiguidades, denotaremos a base simplética  $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$  de $(V, \omega)$ por  $\{ e ,f\}$, e um dado $v =\sum_{j=1}^{n} v_{j}e_{j} +v_{n+j}f_{j} \in V$ por $v=v_{(1)}e+v_{(2)}f$. 
+		Quando não houver ambiguidades, denotaremos a base simplética  $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$  de $(V, \omega)$ por  $\{ e ,f\}$, e um dado $v =\sum_{j=1}^{n}( v_{j}e_{j} +v_{n+j}f_{j}) \in V$ por $v=v_{(1)}e+v_{(2)}f$, onde $v_{(1)}=(v_{1}, \dots, v_{n})$ e $v_{(2)}=(v_{n+1}, \dots, v_{2n})$.
 	\end{convensao}
+	
+	\begin{observacao}\label{observacao_convensao_base_simpletica}
+		Dados $v=v_{(1)}e+v_{(2)}f$ e $u=u_{(1)}e+u_{(2)}f$ em $V$, tem-se que 
+		$$
+		\formaSimpletica{v}{u} = \produtointerno{v_{(1)}}{u_{(2)}}-\produtointerno{v_{(2)}}{u_{(1)}}, 
+		$$
+		onde $\produtointerno{v_{(1)}}{u_{(2)}}=\sum_{j=1}^{n}v_{j}u_{n+j}$. O mesmo vale para $\produtointerno{v_{(2)}}{u_{(1)}}$.
+	\end{observacao}
 	
 	\begin{definicao}
 		(Simplectomorfismo) Dois espaços vetoriais simpléticos $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ são ditos simplectomorfos se existe um isomorfismo $\varphi:V\to W$ que preserva a forma simplética, isto é, $\varphi^{*}\omega_{2} = \omega_{1}$.
@@ -2154,28 +2162,28 @@
 	Temos que $\formaSimpleticaExtendida{Tu}{Tv} = \formaSimpleticaExtendida{u}{v}$ o que implica que $xy
 	\formaSimpletica{A\alpha}{A\beta} = xy
 	\formaSimpletica{\alpha}{\beta}$. Como $\alpha, \beta \in V$ são arbitrários, então $A$ é uma transformação simplética. A recíproca é imediata.
+
+	Adotando a notação da Convensão \ref{convensao_base_simpletica}, pode-se enunciar o seguinte resultado:
 	
 	\begin{proposicao}\label{proposicao_forma_simpletica_vetor_conjugado}
-		Seja $\{\textbf{e}, \textbf{f}\}$ uma base simplética de $\complexificado{V}$. Então para um dado $v = v_{(1)}e+v_{(2)}f \in \complexificado{V}$ tem-se que $\formaSimpleticaExtendida{\overline{v}}{v}
+		Seja $\{\textbf{e}, \textbf{f}\}$ uma base simplética de $\complexificado{V}$. Então para um dado $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f} \in \complexificado{V}$ tem-se que $\formaSimpleticaExtendida{\overline{v}}{v}
 		=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}} \in i\reta$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $B=\{\textbf{e}_{j}, \textbf{f}_{j} \}_{j=1}^{n}$ uma base simplética de $\complexificado{V}$. Tomando $v = \sum_{j=1}^{n} v_{j}\textbf{e}_{j}+ v_{n+j}\textbf{f}_{j}$, e definindo $v_{(1)} = (v_{1}, \dots, v_{n})$ e $v_{(2)} = (v_{n+1}, \dots, v_{2n})$, tem-se
+		Seja $\{\textbf{e}, \textbf{f} \}$ uma base simplética de $\complexificado{V}$. Tomando $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f}$, tem-se
 		$$
 		\begin{aligned}
-			\formaSimpleticaExtendida{\overline{v}}{v} &= \sum_{j=1}^{n}\overline{v}_{j}v_{n+j}\formaSimpleticaExtendida{\textbf{e}_{j}}{\textbf{f}_{k}}+ \sum_{j=1}^{n}\overline{v}_{n+j}v_{j}\formaSimpleticaExtendida{\textbf{f}_{j}}{\textbf{e}_{k}}
+			\formaSimpleticaExtendida{\overline{v}}{v} 
+			&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}- \produtointerno{\overline{v}_{(2)}}{v_{(1)}}
 			\\
-			&=\sum_{j=1}^{n}\bigparenteses{\overline{v}_{j}v_{n+j}-\overline{v}_{n+j}v_{j}}
-			\\
-			&=\sum_{j=1}^{n}\bigparenteses{\overline{v}_{j}v_{n+j}-\overline{\overline{v}_{j}v_{n+j}}
-				}
+			&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}- \overline{\produtointerno{v_{(2)}}{\overline{v_{(1)}}}}
 			\\
 			&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}-\overline{ \produtointerno{\overline{v}_{(1)}}{v_{(2)}}}
 			\\
-			&=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}.
+			&=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}\in i\reta,
 		\end{aligned}
 		$$
-		Portanto $\formaSimpleticaExtendida{\overline{v}}{v} \in i\reta$.
+		onde usamos a Observação \ref{observacao_convensao_base_simpletica}.
 	\end{prova}
 	
 	\begin{definicao}
@@ -2830,7 +2838,7 @@
 		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
 	\end{prova}
 	
-	\begin{definicao}
+	\begin{definicao}\label{definicao_forma_quadratica_Q}
 		Seja  $Q: \complexificado{V} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos maiores  subespaços de $\complexificado{V}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
 	\end{definicao}
 	
@@ -2904,12 +2912,52 @@
 			
 			\item \textbf{\textit{Produto:}} Sejam $(\complexificado{V}, \Omega) = (\complexificado{V}_{1}\times \complexificado{V}_{2}, \Omega_{1}\times \Omega_{2})$ um $2k$-espaço vetorial simplético, onde $\complexificado{V}_{1}, \complexificado{V}_{2}$ são $2n_{1}$ e $2n_{2}$-espaços vetoriais simpléticos, respectivamente, e $k=2n_{1}+2n_{2}$. Dado $A \in \gruposimpletico{\complexificado{V}}$ tem-se que $Av = (A_{1}v_{1}, A_{2}v_{2})$, onde $v=(v_{1}, v_{2}) \in \complexificado{V}$, $A_{1}\in \gruposimpletico{\complexificado{V}_{1}}$ e $A_{2}\in \gruposimpletico{\complexificado{V}_{2}}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\times E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, porespectivamente. Desse modo, a aplicação $\hat{\rho}: \gruposimpletico{\complexificado{V}} \to \circulo$ definida por $\hat{\rho}(A) = \rho(A_{1})\rho(A_{2})$ satisfaz o axioma do produto.
 			
-			\item \textbf{\textit{Deteminante:}} Seja $A \in \mathcal{U} = \matrizunitaria{n}$. Com um argumento análogo ao que foi feito na demostração da Item $\ref{item_naturalidade_rho}$, podemos afirmar que $\estruturacomplexa$ presenva a $\Omega$-ortogonalidade dos subespaços de $A$. Como $\estruturacomplexa$ é um isomorfismo simplético, então é diagonalizável  e $\pm i \in \sigma(\estruturacomplexa)$. De fato, seja $v = (u, \pm iu) \in \complexo{2n}$, onde $u \in \complexo{n}$. Então $\estruturacomplexa v = (\pm iu, -u) = \pm i(u,iu) = \pm iv$. Seja $E^{\estruturacomplexa}_{\pm i} = \{(u, \pm i u):u \in \complexo{n} \}$ os auto-espaços de $\estruturacomplexa$ para os auto-valores $\pm i$.
-			Supondo que $v \in E^{\estruturacomplexa}_{ i}$, então $\overline{v} = (\overline{u}, -i \overline{u})$ e $\overline{v} \mapsto v' = Rv = R(u, -u) = (u,u)$. Com isso, $Q(v) = -c(v', v) = -(v'_{1}v_{1}+v'_{2}v_{2}) = -(\norma{v_{1}}^{2}+\norma{v_{2}}^{2}) =-2\norma{u}^{2}<0$. Logo a restrição $Q|_{E^{\estruturacomplexa}_{ i}}$ é negativa-definida. Com um argumento análogo teremos que a restrição $Q|_{E^{\estruturacomplexa}_{-i}}$ é positiva-definida.
+			\item \textbf{\textit{Deteminante:}} Sejam $A \in \mathcal{U}$ e $U \in \matrizunitaria{n}$ com a identificação pelo isomorfismo descrito na Seção \ref{secao_grupo_simpletico} dado por
+			$$
+			\begin{aligned}
+				\real{2n} \ni (x,y) &\mapsto x+iy \in \complexo{n},
+				\\
+				\mathcal{U} \ni 
+				\left(
+					\begin{array}{cc}
+					B & -C
+					\\
+					C & B
+					\end{array}
+				\right) 
+				& \mapsto B+iC \in \matrizunitaria{n}.
+			\end{aligned}
+			$$
+			Se $(x,y) \in \real{2n}$ é um auto-vetor de $A$ com auto-valor $\lambda$ em $\complexo{}$, então, pelo isomorfismo, tem-se que $A(x,y)=\lambda (x,y) \mapsto U(x+iy) = \lambda(x+iy)$. Logo se tem $\espectrooperador{A} \subseteq \espectrooperador{U}$. Analogamente, a identificação dos auto-valores de $U$ com os auto-valores de $A$ em $\complexo{}$ implica que $\espectrooperador{U} \subseteq\espectrooperador{A}$. Portanto $\espectrooperador{A} =\espectrooperador{U}$ em $\complexo{}$.
 			
-			Supondo $\lambda \in \sigma(A)$ e $z \in E_{\lambda}$, então $ A\estruturacomplexa z = \estruturacomplexa A z= \lambda \estruturacomplexa z$, logo $\estruturacomplexa z \in E_{\lambda}$, o que implica $\estruturacomplexa(E_{\lambda}) = E_{\lambda}$. Com isso, temos $E_{\lambda}^{\pm} =E_{\lambda}\cap E^{\estruturacomplexa}_{\pm i}  \neq \emptyset$ e podemos escrever $E_{\lambda} = E_{\lambda}^{+}\oplus E_{\lambda}^{-}$. \vermelho{Enteder melhor a construção do determinante.}
+			Sejam $v$ um auto-vetor de $A$ com auto-valor $\lambda$ e $\autoespaco{\lambda}$ seu auto-espaço. Sabendo que $\estruturacomplexa: \real{2n} \to \real{2n}$ é um endomorfismo, que $A\estruturacomplexa = \estruturacomplexa A$ e que ambos $A$ e $\estruturacomplexa$ são diagonalizáveis, onde $\espectrooperador{\estruturacomplexa} = \{\pm i\}$, então $A\estruturacomplexa v = \estruturacomplexa Av = \lambda \estruturacomplexa v$, logo $\estruturacomplexa v \in \autoespaco{\lambda}$, o que implica que $\estruturacomplexa(\autoespaco{\lambda}) = \autoespaco{\lambda}$. Suponha que $u$ seja um auto-vetor de $\estruturacomplexa$ com auto-valor $\beta\in \espectrooperador{\estruturacomplexa}$. Então $\estruturacomplexa A u = A \estruturacomplexa u = \beta Au$. Logo $Au \in \autoespaco{\beta}^{\estruturacomplexa}$, e pode-se afirmar que $A(\autoespaco{\beta}^{\estruturacomplexa} )=\autoespaco{\beta}^{\estruturacomplexa}$. Como ambos $A$ e $\estruturacomplexa$ são diagonalizáveis, então existe ao menos um $\lambda\in \espectrooperador{A}$ tal que $\autoespaco{\lambda}\cap\autoespaco{\beta}^{\estruturacomplexa} \neq \emptyset$, onde $\beta\in \espectrooperador{\estruturacomplexa}$.
 			
-			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então, pelo Lema $\ref{lema_identidade_aplicacao_rho}$, a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
+			Note que os auto-espaços de $ \pm i \in \espectrooperador{\estruturacomplexa}$ são $\autoespaco{\pm i}^{\estruturacomplexa} = \{u\textbf{e}\pm iu\textbf{f}: u\in \complexo{n} \}$, e que $dim(\autoespaco{\pm i}^{\estruturacomplexa})=n$. Tomando $v \in \autoespaco{i}^{\estruturacomplexa}$, tem-se que 
+			$$
+			\begin{aligned}
+				\formaSimpleticaExtendida{\overline{v}}{v} 
+				&= 2i\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}
+				\\
+				&= 2i\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{iv_{(1)}}}
+				\\
+				&=-2\parteImaginaria{\norma{v_{(1)}}^{2}}
+				\\
+				&=-2\norma{v_{(1)}}^{2} \leq 0.
+			\end{aligned}
+			$$
+			
+			Portanto a restrição da forma quadrática $Q$, dada pela Definição \ref{definicao_forma_quadratica_Q}, ao auto-espaço $\autoespaco{ i}^{\estruturacomplexa}$, é negativa definida. Analogamente pode-se verificar que a restrição de $Q$ ao auto-espaço $\autoespaco{ -i}^{\estruturacomplexa}$ é positiva definida.
+			
+			Com isso, pode-se decompor $\autoespaco{\lambda} = \autoespaco{\lambda}^{+} \oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{\pm} = \autoespaco{\lambda}\cap \autoespaco{\mp i}^{\estruturacomplexa}$. Consequentemente, tem-se
+			$$
+			\autoespaco{\lambda}^{+}=\{v=v_{(1)}\textbf{e}-iv_{(1)}\textbf{f}\in \complexificado{ V} : Av = \lambda v\} \mapsto \{v_{(1)} \in \complexo{n} : Uv_{(1)}=\lambda v_{(1)} \} = \autoespaco{\lambda}^{U}.
+			$$
+			
+			Como os auto-espaços $\autoespaco{\pm i}^{\estruturacomplexa} \subseteq \complexificado{V}$ são maximais em relação a positividade e negatividade definida de $Q$, então os subespaços vetoriais $\autoespaco{\lambda}^{\pm} \subseteq \autoespaco{\lambda}$ também o são. Com isso, $m_{+}(\lambda) = m^{U}(\lambda)$.
+			
+			A aplicação $\rho|_{\mathcal{U}}: \mathcal{U} \to \circulo$ quando avaliada em $A\in \mathcal{U}$ é dada em termos do produto dos auto-valores $\lambda \in \espectrooperador{A}$ e seus respectivos $m_{+}(\lambda)$ e $m_{0}$. Como $\espectrooperador{A} = \espectrooperador{U}$ e $m_{+}(\lambda)  = m_{\lambda}^{U}$, então as multiplicidades dos auto-valores são as mesmas e $\rho(A)=det(U)$.
+			
+			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então pela própria definição a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
 		\end{enumerate}
 	\end{prova}
 	
