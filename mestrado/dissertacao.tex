@@ -2578,7 +2578,7 @@
 		Até o momento, foram demonstrados muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrar que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeia nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado ao grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Para mostrar esse fato precisamos da conexidade.
 	\end{observacao}
 
-	Seja $Det:\caminhossempontobase{\matrizunitaria{n}} \to \circulo$ dada por $Det(\gamma)(t) = \det(\gamma(t))$. Essa aplicação esta bem-definida pois $\det(\matrizunitaria{n}) \subseteq \circulo$, pela Observação \ref{observacao_determinante_matriz_unitaria}. Note que, para um dado $\gamma \in \caminhossempontobase{\matrizunitaria{n}}$, tem-se que $Det(\gamma) \in \caminhossempontobase{\circulo}$. Tome $\gamma, \beta \in\caminhospontobasegeral{p}{\matrizunitaria{n}} $ com $\gamma(0)=\beta(0)$ e $\gamma(1)=\beta(1)$, e defina $h : \intervalo \times \intervalo \to \matrizunitaria{n}$ como sendo uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1)=\beta(t)$.
+	Seja $Det:\caminhossempontobase{\matrizunitaria{n}} \to \caminhossempontobase{\circulo}$ dada por $Det(\gamma)(t) = \det(\gamma(t))$. Essa aplicação esta bem-definida pois $\det(\matrizunitaria{n}) \subseteq \circulo$, pela Observação \ref{observacao_determinante_matriz_unitaria}. Note que, para um dado $\gamma \in \caminhossempontobase{\matrizunitaria{n}}$, tem-se que $Det(\gamma) \in \caminhossempontobase{\circulo}$. Tome $\gamma, \beta \in\caminhospontobasegeral{p}{\matrizunitaria{n}} $ com $\gamma(0)=\beta(0)$ e $\gamma(1)=\beta(1)$, e defina $h : \intervalo \times \intervalo \to \matrizunitaria{n}$ como sendo uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1)=\beta(t)$.
 	
 	Definindo a função contínua $H = Det \circ h:\intervalo \times \intervalo \to \circulo$ por $H(t,s) = Det(h(t,s))$, temos que $H(t,0) = Det(h(t,0)) = Det(\gamma(t)) = Det(\gamma)(t)$ e $H(t,1) = Det(h(t,1)) = Det(\beta(t)) = Det(\beta)(t)$. Logo $H$ é uma homotopia entre $Det(\gamma)$ e $Det(\beta)$. Portanto, se $\gamma \sim \beta$ então $Det(\gamma) \sim Det(\beta)$.
 	
@@ -2587,12 +2587,16 @@
 	(Det(\gamma)*Det(\beta)) (t)= Det(\gamma)(t)*Det(\beta) (t) = Det(\gamma*\beta)) (t).
 	$$
 
-	\begin{lema}
-		$\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
+	\begin{proposicao}\label{proposicao_aplicacao_det_homomorfismo}
+		A aplicação $Det_{*}: \grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ definida por $Det_{*}(\classe{\gamma}) = \classe{Det(\gamma)}$ é um homomorfismo.
+	\end{proposicao}	
+	\begin{prova}
+		De fato, se $\classe{\gamma}, \classe{\beta} \in \grupofundamental{\matrizunitaria{n}}$, então $Det_{*}(\classe{\gamma}.\classe{\beta}) = Det_{*}(\classe{\gamma *\beta}) =\classe{Det(\gamma *\beta)} = \classe{Det(\gamma) *Det(\beta)} = Det_{*}(\classe{\gamma})*Det_{*}(\classe{\beta})$.
+	\end{prova}
+	\begin{lema}\label{lema_isomorfismo_grupo_fundamental_Un}
+		$Det_{*}: \grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ é um isomorfimo, logo $\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 	\end{lema}
 	\begin{prova}
-		Seja $Det_{*}: \grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ a aplicação definida por $Det_{*}(\classe{\gamma}) = \classe{Det(\gamma)}$, onde $Det:\caminhossempontobase{\matrizunitaria{n}} \to \circulo$, foi definida anteriormente. Afirmo que $Det_{*}$ é um homomorfismo. De fato, se $\classe{\gamma}, \classe{\beta} \in \grupofundamental{\matrizunitaria{n}}$, então $Det_{*}(\classe{\gamma}.\classe{\beta}) = Det_{*}(\classe{\gamma *\beta}) =\classe{Det(\gamma *\beta)} = \classe{Det(\gamma) *Det(\beta)} = Det_{*}(\classe{\gamma})*Det_{*}(\classe{\beta})$, portando 
-		
 		Como $Det$ é sobrejetora, por construção, então $Det_{*}$ é sobrejetora. Suponha que $Det_{*}$ não é injetora. Então existem $\classe{\gamma} , \classe{\beta} \in \grupofundamental{\matrizunitaria{n}}$ tais que $\classe{\gamma} \neq \classe{\beta}$ e $Det_{*}(\classe{\gamma})= Det_{*}(\classe{\beta} )$, isto é, $\classe{Det(\gamma)}= \classe{Det(\beta)}$. O que implica que $Det(\gamma) \sim Det(\beta)$ e $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$, contradizendo a hipótese de que $\classe{\gamma} \neq \classe{\beta}$. Portanto $Det_{*}$ é injetora e sobrejetora, logo é um isomorfismo e $\grupofundamental{\matrizunitaria{n}} \cong \grupofundamental{\circulo} \cong \inteiros$.
 	\end{prova}
 	
@@ -2601,86 +2605,6 @@
 	\end{teorema}
 	\begin{prova}
 		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{2n}$, então $\grupofundamental{\gruposimpletico{2n}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. Do Lema $\ref{lema_isomorfismo_U}$ temos que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
-	\end{prova}
-	
-	Defina os conjuntos $\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-}$ e  $\Sigma = \{ A \in \gruposimpletico{2n}: det(Id-A)= 0 \}$, onde $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$. Note que o complementar de $\gruposimpleticonaodegenerado{*} \subset \gruposimpletico{2n}$ é $\Sigma$.
-	
-	O seguinte lema será usado nas próximas demostrações e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
-	
-	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
-		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
-	\end{lema}
-	
-	\begin{lema}
-		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
-	\end{lema}
-	\begin{prova}
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $\{e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}  \}$ a base simplética de $V$. Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupreal{2n}$ por
-		$$
-		W(a) = diag\{\underbrace{a, -1, \dots, -1}_{n}, \underbrace{a^{-1}, -1, \dots , -1}_{n}\}.
-		$$
-		
-		Afirmo que $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$. De fato, $det(Id - W(a)) = (1-a)(1-a^{-1})4^{n-1} \neq 0$, pois $a\neq 1$. De fato, tomando $x,y \in V$ tais que $x=(x_{(1)}, x_{(2)})$, onde $x_{(1)} = (x_{1}, \dots, x_{n})$ e $x_{(2)} = (x_{n+1}, \dots, x_{2n})$ e analogamente para $y$, temos 
-		$$
-		\begin{aligned}	
-		W(a)x &= (ax_{1}, -x_{2}, \dots, -x_{n}, a^{-1}x_{n+1}, -x_{n+2}, \dots, -x_{2n})
-		\\
-		&= ax_{1}e_{1}  -\sum_{j=2}^{n} x_{j}e_{j} + a^{-1}x_{n+1}f_{1} -\sum_{j=2}^{n} x_{n+j}f_{j},
-		\\
-		\formaSimpleticaPadrao{W(a)x}{W(a)y} 
-		&=x_{1}y_{n+1}\formaSimpleticaPadrao{e_{1}}{f_{1}} + \sum_{j=2}^{n}x_{j}y_{n+j}\formaSimpleticaPadrao{e_{j}}{f_{j}}
-		\\
-		&+x_{n+1}y_{1}\formaSimpleticaPadrao{f_{1}}{e_{1}} + \sum_{j=2}^{n} x_{n+j}y_{j}\formaSimpleticaPadrao{f_{j}}{e_{j}}
-		\\
-		&=\sum_{j=1}^{n}\bigparenteses{x_{j}y_{n+j} - 	x_{n+j}y_{j}}
-		\\
-		&= \produtointerno{x_{(1)}}{y_{(2)}} - \produtointerno{x_{(2)}}{y_{(1)}}
-		\\
-		&= \formaSimpleticaPadrao{x}{y}.
-		\end{aligned}
-		$$ 
-		
-		Portanto, $W(a) \in \gruposimpletico{2n}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
-		
-		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Temos que $det(Id - W^{+}) = 4^{n}>0$  e $det(Id - W^{-}) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
-		
-		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Seja $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base simplética de $V$ invariante por conjugação complexa \vermelho{(Ainda não sei a relevância dessa afirmação , isto é, $\{\overline{v}_{\lambda_{1}}, \dots , \overline{v}_{\lambda_{2n}} \}$ também é uma base simplética (veja $\ref{proposicao_base_simpletica_conjugada}$))}, onde $v_{\lambda_{j}}$ auto-vetores de $B$.
-		
-		Sejam $\gamma:[0,1]\to \reta$ um caminho contínuo tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ com $1 \notin \gamma([0,1])$ e $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo definido por
-		$$
-		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
-		$$
-		
-		com $\Gamma(0) = B$. Por abuso de notação, escreveremos $\Gamma(s)v_{\lambda}=\gamma(s)v_{\lambda}$. No caso dos auto-valores $\overline{\lambda}$ e $1/\lambda$ teremos $\overline{\gamma}(s)$ e $1/\gamma(s)$. Com isso, temos $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$. De fato, supondo $\lambda,\lambda' \in \sigma(B)$ tais que $\lambda\lambda' \neq 1$ teremos $\formaSimpleticaPadrao{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaPadrao{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\omega$-ortoganalidade. No caso em que $\lambda\lambda'=1$ teremos $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \omega(v_{\lambda},v_{\lambda'})$. Por fim, caso $\lambda = \lambda'$, teremos $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda}) = \gamma^{2}(s)\omega(v_{\lambda},v_{\lambda}) =0$. Portanto, $\Gamma^{*}(s)\omega = \omega$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $det(Id - \Gamma(s))\neq 0 $, logo $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
-		
-		Por definição de $\gruposimpleticonaodegenerado{*}$ temos que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$. Logo o caminho contínuo $\alpha$ conectando $A$ a $B$ esta em apenas uma dessas componentes, isto é, $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$.
-		
-		Vamos mostrar que ambas componentes são conexas por caminhos. De acordo com o Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ $B$ temos as duas seguintes condições:
-		\begin{enumerate}
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Pela hipótese, temos que $\Gamma(0) = B$ e $\gamma_{\lambda_{j}}(1) = -1$ para $1\leq j\leq 2n$. Com isso, $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. A justaposição $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
-			é um caminho contínuo conectando $A$ a $W^{+}$. Seja $A\neq A' \in \gruposimpleticonaodegenerado{+}$. Então com uma construção análoga a anterior, podemos conectar $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Temos caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente, logo conectamos $A$ a $A'$. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
-			
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda > 0$, então $\lambda^{-1} > 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Podemos reordenar a base simplética tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores positivos. Assim, tem-se que $\Gamma(0) = B$ e $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\}$. Seja $\Gamma': \intervalo \to \gruposimpleticonaodegenerado{-}$ definida por $\Gamma'(t)=diag\{ \theta(t), -1,\dots, -1, 1/\theta(t) ,-1,\dots, -1\}$,
-			onde $\theta(t)=(2- \lambda)t + \lambda$. Note que $\Gamma'$ é um caminho contínuo que conecta $\Gamma(1)$ a $W^{-}$. Com isso, a justaposição $\Gamma'*\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a justaposição $\alpha * \Gamma'*\Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior concluimos que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
-		\end{enumerate}
-		
-		Defina $g:\gruposimpletico{2n}\to \reta$ por $g(A) = det(Id-A)$. Como o determinante é uma função contínua, então $g$ é contínua. Definindo os abertos $\real{\pm} = \{x \in \reta:\pm x >0 \}$, tem-se que $g^{-1}(\real{\pm}) = \gruposimpleticonaodegenerado{\pm}$. Logo, pela continuidade de $g$, tem-se que $\gruposimpleticonaodegenerado{\pm}$ são abertos e $\gruposimpleticonaodegenerado{*} =\gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-}$ é um aberto.
-	\end{prova}
-	
-	\begin{corolario}
-		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais. \vermelho{(Estou revendo onde 
-		esse resultado para a construção do índice de maslov. Aparentemente, ele deve ser feito após a demonstração das propriedades de $\rho$.)}
-	\end{corolario}
-	\begin{prova}
-		
-		Suponha $A \in \gruposimpleticonaodegenerado{*}$ e $\sigma(A) \subset \complexo{}$. Note que, dado um auto-valor $\lambda$, teremos  $\lambda/|\lambda| \in \circulo$. Sejam $\lambda_{j} \in \sigma(A)$ com $1\leq j\leq n $ auto-valores tais que $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ são funções contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
-		onde $\lambda_{j}\neq \pm 1$ e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ como sendo o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
-		$$
-		\exp\Big( i2\pi \sum_{j=1}^{n}\alpha_{j}(A) \Big) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
-		$$ 
-		Dado $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{+})$, então $\rho \circ \gamma$ é um caminho contínuo e periódico. Se $\lambda_{j} \in \complementar{\sigma(A)}{\real{+}}$, então $\alpha_{j}$ estão determinadas unicamente. De fato, suponha que $\lambda_{k}$ e $\lambda_{m}$ são ambos auto-valores reais positivos, então $\alpha_{k}(A) = \lambda_{k}/|\lambda_{k}| =1 = \lambda_{m}/|\lambda_{m}| =\alpha_{m}(A)$. \vermelho{(Não consigo entender o restante dos argumentos do Salamon ne do Michelle).}
-		
-		Portanto, dado  $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{\pm})$ o caminho $i\circ \gamma:[0,1] \to \gruposimpletico{2n}$ é contrátil e a aplicação induzida $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{\pm}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é trivial, isto é, $i_{*} = 0$.
 	\end{prova}
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
@@ -2956,10 +2880,96 @@
 			Como os auto-espaços $\autoespaco{\pm i}^{\estruturacomplexa} \subseteq \complexificado{V}$ são maximais em relação a positividade e negatividade definida de $Q$, então os subespaços vetoriais $\autoespaco{\lambda}^{\pm} \subseteq \autoespaco{\lambda}$ também o são. Com isso, $m_{+}(\lambda) = m^{U}(\lambda)$.
 			
 			A aplicação $\rho|_{\mathcal{U}}: \mathcal{U} \to \circulo$ quando avaliada em $A\in \mathcal{U}$ é dada em termos do produto dos auto-valores $\lambda \in \espectrooperador{A}$ e seus respectivos $m_{+}(\lambda)$ e $m_{0}$. Como $\espectrooperador{A} = \espectrooperador{U}$ e $m_{+}(\lambda)  = m_{\lambda}^{U}$, então as multiplicidades dos auto-valores são as mesmas e $\rho(A)=det(U)$.
+
+			Na Observação \ref{observacao_quociente_grupo_simpletico_contratil} foi mostrado que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, portanto $\grupofundamental{\gruposimpletico{2n}} \cong \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}}$. Mostrou-se que $\rho|_{\matrizSimpleticaOrtogonal} = det: \matrizSimpleticaOrtogonal\to \circulo$, o que implica que $\rho|_{\matrizSimpleticaOrtogonal*} = Det_{*}$, onde $Det_{*}:\grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ é o isomorfismo dado pelo Lema \ref{lema_isomorfismo_grupo_fundamental_Un}. Então $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo}$ é um isomorfismo.
 			
 			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então pela própria definição a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
 		\end{enumerate}
 	\end{prova}
+	
+	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}
+	
+	Defina os conjuntos $\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-}$ e  $\Sigma = \{ A \in \gruposimpletico{2n}: det(Id-A)= 0 \}$, onde $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$. Note que o complementar de $\gruposimpleticonaodegenerado{*} \subset \gruposimpletico{2n}$ é $\Sigma$.
+	
+	O seguinte lema será usado nas próximas demostrações e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	
+	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
+		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
+	\end{lema}
+	
+	\begin{lema}
+		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
+	\end{lema}
+	\begin{prova}
+		Sejam $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético e $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$. Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupcomplexo{2n}$ por
+		$$
+		W(a) = diag\{\underbrace{a, -1, \dots, -1}_{n}, \underbrace{a^{-1}, -1, \dots , -1}_{n}\}.
+		$$
+		
+		Afirmo que $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$. De fato, $det(Id - W(a)) = (1-a)(1-a^{-1})4^{n-1} \neq 0$, pois $a\neq 1$. De fato, tomando $v,u \in \complexificado{V}$ tais que $v=v_{(1)}\textbf{e}+ v_{(2)}\textbf{f}$ e $u=u_{(1)}\textbf{e}+ u_{(2)}\textbf{f}$, temos 
+		$$
+		\begin{aligned}	
+		W(a)v &= (av_{1}, -v_{2}, \dots, -v_{n}, a^{-1}v_{n+1}, -v_{n+2}, \dots, -v_{2n})
+		\\
+		&= av_{1}e_{1}  -\sum_{j=2}^{n} v_{j}e_{j} + a^{-1}v_{n+1}f_{1} -\sum_{j=2}^{n} v_{n+j}f_{j},
+		\\
+		\formaSimpleticaExtendida{W(a)v}{W(a)u} 
+		&=v_{1}u_{n+1}\formaSimpleticaExtendida{e_{1}}{f_{1}} + \sum_{j=2}^{n}v_{j}u_{n+j}\formaSimpleticaExtendida{e_{j}}{f_{j}}
+		\\
+		&+v_{n+1}u_{1}\formaSimpleticaExtendida{f_{1}}{e_{1}} + \sum_{j=2}^{n} v_{n+j}u_{j}\formaSimpleticaExtendida{f_{j}}{e_{j}}
+		\\
+		&=\sum_{j=1}^{n}\bigparenteses{v_{j}u_{n+j} - 	v_{n+j}u_{j}}
+		\\
+		&= \produtointerno{v_{(1)}}{u_{(2)}} - \produtointerno{v_{(2)}}{u_{(1)}}
+		\\
+		&= \formaSimpleticaExtendida{v}{u}.
+		\end{aligned}
+		$$ 
+		
+		Portanto, $W(a) \in \gruposimpletico{2n}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
+		
+		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Temos que $det(Id - W^{+}) = 4^{n}>0$  e $det(Id - W^{-}) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
+		
+		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$. Seja $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base de auto-valores de $B$ 
+		
+		Para cada $\lambda \in \complementar{\espectrooperador{B}}{\real{+}}$ considere um caminho contínuo $\gamma:[0,1]\to \reta$ tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ tal que $1 \notin \gamma([0,1])$. Seja $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ o caminho contínuo definido por
+		$$
+		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
+		$$
+		
+		com $\Gamma(0) = B$. Com um abuso de notação, escreva $\Gamma(s)v_{\lambda}=\gamma(s)v_{\lambda}$. Para os auto-valores $\overline{\lambda}$ e $1/\lambda$ tem-se $\overline{\gamma}(s)$ e $1/\gamma(s)$, respectivamente. É imediato da definição que $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. De fato, supondo $\lambda,\lambda' \in \sigma(B)$ tais que $\lambda\lambda' \neq 1$ tem-se que $\formaSimpleticaExtendida{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaExtendida{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\Omega$-ortoganalidade (veja o Lema \ref{lema_auto_espaco_grupo_simpletico}). No caso em que $\lambda\lambda'=1$ teremos $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \omega(v_{\lambda},v_{\lambda'})$. Por fim, caso $\lambda = \lambda'$, teremos $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda}) = \gamma^{2}(s)\omega(v_{\lambda},v_{\lambda}) =0$. Portanto, $\Gamma^{*}(s)\omega = \omega$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $det(Id - \Gamma(s))\neq 0 $ e $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
+		
+		Seja $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo conectando $A$ a $B$, cuja exitência é garantida pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$.
+		Por definição de $\gruposimpleticonaodegenerado{*}$ temos que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, portanto está em apenas uma dessas componentes, isto é, $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, caso $A \in \gruposimpleticonaodegenerado{+}$, ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, caso $A\in \gruposimpleticonaodegenerado{-}$.
+		
+		Vamos mostrar que ambas as componentes são conexas por caminhos.
+		\begin{enumerate}
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Pela hipótese, temos que $\Gamma(0) = B$ e $\gamma_{\lambda_{j}}(1) = -1$ para $1\leq j\leq 2n$. Com isso, $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. A justaposição $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
+			é um caminho contínuo conectando $A$ a $W^{+}$. Tome $A' \in \gruposimpleticonaodegenerado{+}$ tal que $A'\neq A$. Então com uma construção análoga a anterior, conecta-se $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Tem-se caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente. Logo conecta-se $A$ a $A'$ através de um caminho contínuo. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
+			
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda > 0$, então $\lambda^{-1} > 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Reordene a base de auto-valores de $B$ tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores positivos. Assim, tem-se que $\Gamma(0) = B$ e $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\}$. Seja $\Gamma': \intervalo \to \gruposimpleticonaodegenerado{-}$ o caminho definido por $\Gamma'(t)=diag\{ \theta(t), -1,\dots, -1, 1/\theta(t) ,-1,\dots, -1\}$,
+			onde $\theta(t)=(2- \lambda)t + \lambda$. Note que $\Gamma'$ é um caminho contínuo que conecta $\Gamma(1)$ a $W^{-}$. Com isso, a justaposição $\Gamma'*\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a justaposição $\alpha * \Gamma'*\Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior se pode-se concluir que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
+		\end{enumerate}
+		
+		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{2n}\to \reta$ por $g(A) = det(Id-A)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e existe $V=(a,b)$, onde $a,b>0$, tal que $g(A)\in V$. Pela continuidade $g^{-1}(V)\subset \gruposimpleticonaodegenerado{+}$. Portanto $A \in \gruposimpleticonaodegenerado{+}$ é um ponto interno e $\gruposimpleticonaodegenerado{+}$ é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
+	\end{prova}
+	
+	\begin{corolario}
+		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais. \vermelho{(Estou revendo onde 
+			esse resultado para a construção do índice de maslov. Aparentemente, ele deve ser feito após a demonstração das propriedades de $\rho$.)}
+	\end{corolario}
+	\begin{prova}
+		
+		Suponha $A \in \gruposimpleticonaodegenerado{*}$ e $\sigma(A) \subset \complexo{}$. Note que, dado um auto-valor $\lambda$, teremos  $\lambda/|\lambda| \in \circulo$. Sejam $\lambda_{j} \in \sigma(A)$ com $1\leq j\leq n $ auto-valores tais que $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ são funções contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
+		onde $\lambda_{j}\neq \pm 1$ e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ como sendo o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
+		$$
+		\exp\Big( i2\pi \sum_{j=1}^{n}\alpha_{j}(A) \Big) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
+		$$ 
+		Dado $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{+})$, então $\rho \circ \gamma$ é um caminho contínuo e periódico. Se $\lambda_{j} \in \complementar{\sigma(A)}{\real{+}}$, então $\alpha_{j}$ estão determinadas unicamente. De fato, suponha que $\lambda_{k}$ e $\lambda_{m}$ são ambos auto-valores reais positivos, então $\alpha_{k}(A) = \lambda_{k}/|\lambda_{k}| =1 = \lambda_{m}/|\lambda_{m}| =\alpha_{m}(A)$. \vermelho{(Não consigo entender o restante dos argumentos do Salamon ne do Michelle).}
+		
+		Portanto, dado  $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{\pm})$ o caminho $i\circ \gamma:[0,1] \to \gruposimpletico{2n}$ é contrátil e a aplicação induzida $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{\pm}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é trivial, isto é, $i_{*} = 0$.
+	\end{prova}
+		
 	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
