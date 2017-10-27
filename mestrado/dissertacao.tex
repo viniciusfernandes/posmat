@@ -60,7 +60,9 @@
 \newcommand{\bordorel}[1]{\overline{\partial}_{#1}}
 \newcommand{\cadeia}[2]{C_{#1}(#2; A)}
 \newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
+\newcommand{\caminhosfechadospontobase}[2]{\mathcal{L}^{o}_{#1}(#2)}
 \newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
+\newcommand{\caminhosespeciais}[1]{\mathcal{L}^{*}(#1)}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
 \newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
 \newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
@@ -290,7 +292,7 @@
 	
 	O operador de Floer é um operador linear e limitado definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional Hamiltoniano. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso em que estamos interessados, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui a generalização da Homologia de Morse-Witten.
 	
-	\chapter{Grupo Fundamental}
+	\chapter{Grupo Fundamental}\label{capitulo_grupo_fundamental}
 	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analisar a topologia de um conjunto (um espaço topológico) e seus invariantes. Nesse capítulo abordaremos um caso específico de estrutura algébrica, o grupo fundamental $\grupofundamental{X}$, de um espaço topológico $X$.
 	
 	\section{Definições}
@@ -445,7 +447,7 @@
 	
 	Vamos definir o grau de um caminho como sendo uma aplicação que associa um dado caminho em $\circulo$ a um múltiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior vimos que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, vamos restringir nossas hipóteses a caminhos fechados.
 
-	\begin{definicao}
+	\begin{definicao}\label{definicao_aplicacao_grau}
 		(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. A aplicação $deg$ é chamada de aplicação grau e o valor $deg(\gamma)$ é chamado grau do caminho $\gamma$.
 	\end{definicao}
 	
@@ -1912,285 +1914,8 @@
 		Sejam $F: \produtosinternos{V} \to \estruturascomplexaspadrao$ e $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ dos resultados anteriores. Seja $J \in \estruturascomplexaspadrao$ arbitrário. Então $(F\circ G)(J) = F(g_{J}) =J$, logo $F\circ G = Id_{\estruturascomplexaspadrao}$. Por outro lado, $(G\circ F)(g_{J}) = G(J) = g_{J}$, logo $G\circ F = Id_{\produtosinternos{V}}$. Portanto $F = G^{-1}$. Munindo $\estruturascomplexaspadrao$ com a topologia induzida por $\generalgroupreal{2n}$, então pode-se mostrar que $F$ é contínua. Analogamente, munindo $\produtosinternos{V}$ com a topologia induzida do espaço vetorial de todas as forma simétricas definida em $V$, pode-se mostrar que $G$ é contínua. Portanto $F$ é um homeomorfismo. Pelo Lema $\ref{lema_contratibilidade_produtos_internos}$, temos que $\produtosinternos{V}$ é contrátil, e como a contratibilidade é preservada por homeomorfismos, então $\estruturascomplexaspadrao$ é contrátil.
 	\end{prova}
 	
-	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}
+	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}\label{capitulo_grupo_simpletico}
 	Neste capítulo definiremos o grupo simplético e apresentaremos um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Vamos mostrar que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
-	
-	\section{Complexificação de espaços vetoriais}\label{secao_complexificacao_espacos_vetoriais}
-	
-	Seja $V$ um n-espaço vetorial real. Desejamos construir um espaço vetorial complexo a partir de $V$ e uma forma de realizarmos essa construção é tomando $v \in V $ e $a+ib \in \complexo{}$ e efetuando a multiplicação $(a+ib)v = av+ibv$. Porém, a multiplicação por $i$ não tem sentido nesse contexto, já que estamos tratando de um espaço vetorial real. Podemos contornar essa dificuldade tratando a multiplicação formal $(a+ib)v = av+ibv$ como o par ordenado $(av, bv)$, resultando na seguinte definição de complexificação:
-	
-	\begin{definicao}
-		(Complexificação do n-espaço vetorial real V) A complexificação do n-espaço vetorial real $V$ é o n-espaço vetorial complexo $\complexificacao{V}=V\oplus V$ munido da multiplicação por escalares $(a+ib)(v_{1}, v_{2}) = (av_{1}-bv_{2}, bv_{1}+ av_{2})$, onde $a+ib \in \complexo{}$ e $(v_{1}, v_{2})\in \complexificacao{V}$.
-	\end{definicao}
-	
-	\begin{observacao}
-		Essa definição tem como motivação a seguinte situação: supondo $V$ complexo, então $V \ni (a+ib)v = (a+ib)(v_{1}+iv_{2}) = av_{1}-bv_{2}+i(bv_{2}+av_{1}) \mapsto (av_{1}-bv_{2}, bv_{1}+ av_{2}) \in \complexificacao{V}$.
-	\end{observacao}
-	
-	É possível mostrar que $\complexificacao{V}$ é um espaço vetorial sobre $\complexo{}$. De fato, basta mostrarmos que esse espaço é fechado pela operação de adição e multiplicação por escalares, pois as outras operaçoes são triviais. Dados $a+ib \in \complexo{}$ e $v,u \in \complexificacao{V}$, então $(a+ib )v+u = (av_{1}-bv_{2}, bv_{1}+ av_{2}) + (u_{1}, u_{2}) = (av_{1}-bv_{2} + u_{1}, bv_{1}+ av_{2} + u_{2}) \in \complexificacao{V}$. As demais propriedades dos axiomas de espaços vetoriais resultam imediatamente dessa.
-	
-	\begin{exemplo}\label{exemplo_conjugado_reta_real}
-		(Complexificação de $\reta$) Definindo $V = \reta$ temos que $\complexificacao{\reta}$ é $\reta\oplus \reta$ munido da operação $(a+ib)(x,y) = (ax-by, bx+ay)$. Assim, a identificação $(a+ib)(x, y ) = (ax-by, bx+ay) \mapsto ax-by+i(bx+ay) \in \complexo{}$ nos dá o isomorfimo $\complexificacao{\reta} \ni (x,y)\mapsto x +iy\in \complexo{}$.
-	\end{exemplo}
-	
-	\begin{exemplo}\label{exemplo_complexificacao_matrizes}
-		Analogamente ao exemplo anterior, temos que as aplicações $\complexificacao{\real{n}} \ni (x,y) \mapsto x+iy \in \complexo{n}$ e  $\complexificacao{\matrizquadreal{n}} \ni (x,y) \mapsto x+iy \in \matrizquadcomplexa{n}$ também são isomorfismos.
-	\end{exemplo}
-	
-	Notemos que os espaços vetoriais $V\oplus\{0\}$ e $\{0\}\oplus V$ são isomorfos a $V$. Com isso, a inclusão $i_{V} :V \hookrightarrow \complexificacao{V}$ definida por $i(v) = (v, 0)$ é chamada de mergulho padrão de $V$ em $\complexificacao{V}$.
-	
-	Complexificamos os espaços vetoriais reais, porém, as aplicações lineares entre tais espaços vetoriais são outros tipos de objetos a serem complexificados. O teorema a seguir afirma a unicidade da complexificação de aplicações lineares entre as complexificações de espaços vetoriais reais.
-	
-	\begin{teorema}
-		(Complexificação de aplicações lineares) Seja $\varphi : V \to W$ uma aplicação
-		$\reta$-linear entre espaços vetoriais reais de dimensão finita. Então existe uma única aplicação linear $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ tal que $i_{W}\circ \varphi = \complexificacao{\varphi} \circ i_{V}$, isto é, o diagrama abaixo é comutativo.
-		$$
-		\xymatrix{
-			V\ar[d]_{i_{V}}\ar[r]^{\varphi} & W\ar[d]^{i_{W}} 
-			\\
-			\complexificacao{V} \ar[r]_{\complexificacao{\varphi}}&\complexificacao{W} 
-		}
-		$$
-	\end{teorema}
-	\begin{prova}
-		Defina $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ por $\complexificacao{\varphi}(v_{1}, v_{2}) = (\varphi v_{1}, \varphi v_{2})$. Como $\varphi v_{1}, \varphi v_{2} \in W$, então $(\varphi v_{1}, \varphi v_{2}) \in W\oplus W = \complexificacao{W}$. Além disso, dados $\lambda = (a+ib)\in \complexo{}$ e $(v_{1}, v_{2}), (u_{1}, u_{2})\in \complexificacao{V}$ temos 
-		$$
-		\begin{aligned}
-		\complexificacao{\varphi} (\lambda(v_{1}, v_{2}) + (u_{1}, u_{2})) 
-		&= (\varphi(a v_{1} - bv_{2} + u_{1}), \varphi(b v_{1}+a v_{2} + u_{2}))
-		\\
-		&=(a\varphi v_{1} - b\varphi v_{2} + \varphi u_{1}, b\varphi v_{1}+a\varphi v_{2} + \varphi u_{2})
-		\\
-		&=(a\varphi v_{1} - b\varphi v_{2} , b\varphi v_{1}+a\varphi v_{2} )+(\varphi u_{1},\varphi u_{2})
-		\\
-		&=\lambda(\varphi v_{1},\varphi v_{2})+(\varphi u_{1},\varphi u_{2})
-		\\
-		&=\lambda 	\complexificacao{\varphi} (v_{1},v_{2})+\complexificacao{\varphi} (u_{1},u_{2}).
-		\end{aligned}
-		$$
-		Portanto $\complexificacao{\varphi}$ é $\complexo{}$-linear. Dado $v \in V$ temos $(i_{W}\circ \varphi)(v) = (\varphi v,0) = \complexificacao{\varphi}(v,0) = (\complexificacao{\varphi} \circ i_{V})(v)$, logo $i_{W}\circ \varphi =\complexificacao{\varphi} \circ i_{V}$. Por fim, suponha que exista $\complexificacao{\varphi'} $ definida por $\complexificacao{\varphi'}(v_{1}, v_{2}) = (\varphi' v_{1}, \varphi' v_{2})$ e tal que $i_{W}\circ \varphi =\complexificacao{\varphi'} \circ i_{V}$, onde $\varphi':V\to W$ é uma aplicação linear. Então para todo $v \in V$ temos $(i_{W}\circ \varphi )(v)=(\complexificacao{\varphi} \circ i_{V})(v) = (\complexificacao{\varphi'} \circ i_{V})(v)$, o que implica em $(\varphi v, 0) = (\varphi' v, 0)$. Como $v \in V$ é arbitrário, então $\varphi = \varphi'$, logo $\complexificacao{\varphi} = \complexificacao{\varphi'}$, demonstrando a unicidade. 
-	\end{prova}
-	
-	Considerando o corpo dos complexos como um espaço vetorial sobre $\reta$, mostraremos que o produto tensorial $\complexificacaotensorial{V}$ é equivalente a construção da complexificação feita anteriormente. Utilizaremos esta construção na complexificação do 2n-espaço vetorial simplético $(V, \omega)$.
-	
-	\begin{teorema}\label{teorema_isomorfismo_complexificacao}
-		Seja $V$ um espaço vetorial real de dimensão finita. A aplicação $f_{V}: \complexificacao{V} \to \complexificacaotensorial{V}$ definida por  $f_{V}(v_{1},v_{2}) = 1\otimes_{\reta} v_{1} + i \otimes_{\reta} v_{2}$ é um isomorfismo entre os espaços vetoriais complexos que faz o diagrama
-		$$
-		\xymatrix{
-			& V\ar[dl]_{i_{V}}\ar[rd]^{j} &
-			\\
-			\complexificacao{V}\ar[rr]_{f_{V}}& & \complexificacaotensorial{V},
-		}
-		$$
-		comutar, onde $i_{V}(v) = (v,0)$ (é o mergulho padrão) e $j(v) = 1\otimes_{\reta} v$.
-	\end{teorema}
-	\begin{prova}
-		Dados $z=(a+ib) \in \complexo{}$ e $v,u \in \complexificacao{V}$ temos
-		$$
-		\begin{aligned}
-		f_{V}(zv+u) &= 1\otimes_{\reta} (a v_{1} - bv_{2} + u_{1}) + i \otimes_{\reta} (bv_{1}+av_{2} + u_{2})
-		\\
-		&=1\otimes_{\reta} (a v_{1} - bv_{2}) + i \otimes_{\reta} (bv_{1}+av_{2})+1\otimes_{\reta} u_{1} + i \otimes_{\reta} u_{2}
-		\\
-		&=(a+ib)\otimes_{\reta}v_{1} + (-b+ia)\otimes_{\reta} v_{2}+f_{V}(u)
-		\\
-		&=(a+ib)\otimes_{\reta}v_{1} + (a+ib)i\otimes_{\reta} v_{2}+f_{V}(u)
-		\\
-		&=zf_{V}(v)+f_{V}(u).
-		\end{aligned}
-		$$
-		Portanto $f_{V}$ é $\complexo{}$-linear. Além disso, é injetora pois $f_{V}(u) = 0$ se, e somente se, $u = 0$. Tomando um elemento $w = (a+ib)\otimes_{\reta}v \in \complexificacaotensorial{V} $ e definindo $u = (av, bv) \in \complexificacao{V}$ temos que $f_{V}(u) = \complexificacaoelemento{1}{av} +\complexificacaoelemento{i}{bv} = (a+ib)\otimes_{\reta} v = w$. Portanto $f_{V}$ é sobrejetora. Logo é um isomorfismo.
-		
-		Para todo $v \in V$ temos que $(f_{V}\circ i_{V})(v) = f_{V}(v, 0) = 1\otimes_{\reta} v = j(v)$. Portanto o diagrama é comutativo.
-	\end{prova}
-	
-	O conjugado de cada $z=(a+ib) \in \complexo{}$ é definido por $\overline{z} = a-ib$. Analogamente, o conjugado de $\complexificacaoelemento{z}{v} \in \complexificacaotensorial{V}$ é definido por $\complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$. Definindo $v_{1} =av$ e $v_{2} = -bv$ temos $f_{V}(v_{1}, v_{2}) =\complexificacaoelemento{1}{v_{1}} +\complexificacaoelemento{i}{v_{2}} = \complexificacaoelemento{a}{v} -\complexificacaoelemento{ib}{v}  =\complexificacaoelemento{\overline{z}}{v}  $. Portanto, temos a identificação entre os conjugados $ \complexificacao{V} \ni (av, -bv) \mapsto \complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$.
-	
-	Sejam $k\geq 1$ um inteiro e $\{V_{j}\}_{j=1}^{k}$ um conjunto de espaços vetoriais de dimensão finita sobre um corpo $\mathbb{K}$. Sabe-se que o produto tensorial $\produtotensorial{V}{k}$ é um espaço vetorial de dimensão finita sobre $\mathbb{K}$. Além disso, sabe-se que, dado um $W$ espaço vetorial também sobre $\mathbb{K}$, tem-se que $W\otimes_{\mathbb{K}}(\produtotensorial{V}{k}) \cong W\otimes_{\mathbb{K}} \produtotensorial{V}{k}$. 
-
-	Daqui em diante fixaremos a notação $\complexificado{V} = \complexificacaotensorial{V}$ para a complexificação de $V$ via produto tensorial.
-	
-	\begin{observacao}
-		Visto como espaço vetorial complexo, temos que $\{1\}$ é uma base de $\complexo{}$, logo temos que $\{1^{*}\}$ é uma base do dual $\complexo{*}$, tal que $1^{*}(1) = 1$. Com isso, dado $z = (a+ib).1 \in \complexo{}$, temos $1^{*}(z) = 1^{*}((a+ib).1) = (a+ib)1^{*}(1) = a+ib$.
-	\end{observacao}
-	
-	Sejam $B = \colecaofinita{e}{n}$ uma base do n-espaço vetorial real $V$ e $B^{*} = \colecaofinita{e^{*}}{n}$ a base de seu dual $V^{*}$ tal que $e^{*}_{j}(e_{k}) =\delta_{jk}$. Definindo $1 \otimes B = \colecaofinita{\complexificacaoelemento{1}{e}}{n}$ e
-	$1^{*} \otimes B^{*} = \colecaofinita{\complexificacaoelemento{1^{*}}{e^{*}}}{n}$, temos que $1\otimes B$ gera $\complexificado{V}$. De fato, todo $v \in \complexificado{V}$ pode ser escrito como 
-	$$
-	\begin{aligned}
-		v &= \sum_{j=1}^{n} \complexificacaoelemento{z_{j}}{v_{j}}
-		\\
-		 &= \sum_{j=1}^{n} \complexificacaoelemento{z_{j}}{\bigparenteses{\sum_{i=1}^{n}\alpha_{ji}e_{i}}} 
-		 \\
-		 &= \sum_{j,i=1}^{n}\complexificacaoelemento{z_{j}\alpha_{ji}}{e_{i}}
-		 \\
-		 &= \sum_{i=1}^{n}\complexificacaoelemento{z'_{i}}{e_{i}}
-		 \\
-		 &= \sum_{i=1}^{n}z'_{i}(\complexificacaoelemento{1}{e_{i}}),
-	\end{aligned}
-	$$
-	onde $z'_{i} = \sum_{j=1}^{n}z_{j}\alpha_{ji}$ e $ z_{j}$ estão em $\complexo{}$ e $v_{j} \in V$.
-	
-	
-	\begin{observacao}
-		Os elementos $v \in \complexificado{V}$ do tipo $v = \complexificacaoelemento{z}{\alpha}$ são chamados de vetores simples. Vimos anteriormente que os vetores mais gerais são combinações lineares dos vetores simples. Por esse fato, as aplicações lineares e multilineares estudadas nessa seção serão avaliadas apenas nos tensores simples.
-	\end{observacao}
-	
-	Para simplificar a notação, denotando os elementos das bases $1\otimes B$ e $1^{*}\otimes B^{*}$ por $\{\textbf{a}_{j}\} $ e $\{\textbf{a}^{*}_{j}\}$, respectivamente.
-	
-	\begin{proposicao}\label{proposicao_base_complexificada}
-		$1\otimes B$ e $1^{*}\otimes B^{*}$ são bases de $\complexificado{V}$ e $\complexificado{V}^{*}$, respectivamente, tais que $\textbf{a}^{*}_{j}(\textbf{a}_{k})=\delta_{ik}$.
-	\end{proposicao}
-	\begin{prova}
-		 Por construção $1\otimes B$ gera $\complexificado{V}$. Afirmo que $B$ é linearmente independente pois, $0=\sum_{j}z_{j}\textbf{a}_{j} = \sum_{j}z_{j}(1\otimes e_{j}) = \sum_{j}(b_{j} +ic_{j})(1\otimes e_{j}) = 1\otimes \sum_{j}b_{j}e_{j}+i\otimes \sum_{j}c_{j}e_{j}$, o que implica que $\sum_{j}b_{j}e_{j}=\sum_{j}c_{j}e_{j} = 0$. Logo, $b_{j}=c_{j}=0$  e $z_{j} = 0$ para $1\leq j\leq k$. O isomorfismo $\complexificado{V} \mapsto \complexificado{V}^{*}$ garante que $B^{*}$ é base de $\complexificado{V}^{*}$. Por fim, temos que $\textbf{a}^{*}_{j}(\textbf{a}_{k})=(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{1}{e_{k}}) = 1^{*}(1)e^{*}_{j}(e_{k}) = \delta_{ik}$.
-	\end{prova}
-	
-	Como o produto tensorial real $\otimes_{j=1}^{k}V_{j}$ é um espaço vetorial real, então sua complexificação será o espaço vetorial complexo $\complexificacaotensorial{(\produtotensorialreal{k}{V})} \cong \complexificacaotensorial{V_{1} \otimes_{\reta} \dots \otimes_{\reta} V_{k}}$, pelo isomorfismo anteriormente citado. Contudo, pode-se se mostrar que essa complexificação é isomorfa ao produto tensorial sobre os complexos $\bigotimes^{k}_{j=1}\complexificado{V}$, a qual denotamos por $\complexificado{V}^{k\otimes}$. 
-	
-	Na seção seguinte vamos utilizar o produto tensorial complexificado $\complexificado{V}^{k\otimes}$ pois ela facilita a demonstração de algumas propriedades da complexificação da forma simplética, que é um tensor de ordem 2.
-	
-	\begin{exemplo}\label{exemplo_complexificacao_tensorial}
-		Sejam $V$ um n-espaço vetorial real e $B = \colecaofinita{e}{n}$ uma base ortonormal. Supondo que $\complexificado{V}$ seja a complexificação de $V$, então pela Proposição $\ref{proposicao_base_complexificada}$ temos que $1\otimes B^{*}$ é uma base de $\complexificado{V}^{*}$. Com isso, dado $T \in \produtotensorialdual$ podemos escrever $T = \sum_{i,j = 1}^{n} T^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}$, onde $T^{ij} \in \complexo{}$. Dados $v, u\in \complexificado{V}$ tais que $v=\complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta}$, temos
-		$$
-		\begin{aligned}
-			T(v,u) &= \sum_{i,j = 1}^{n}
-			 T^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(v,u)
-			 \\
-			 &= \sum_{i,j = 1}^{n}
-			 T^{ij}\textbf{a}^{*}_{i}(v)\textbf{a}^{*}_{j}(u)
-			 \\
-			 &= \sum_{i,j = 1}^{n}
-			 T^{ij}(\complexificacaoelemento{1^{*}}{e^{*}_{i}})(\complexificacaoelemento{x}{\alpha})(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{y}{\beta})
-			 \\
-			 &= \sum_{i,j = 1}^{n}
-			 T^{ij}1^{*}(x)e^{*}_{i}(\alpha)1^{*}(y)e^{*}_{i}(\beta)
-			 \\
-			 &= \sum_{i,j = 1}^{n}
-			 xyT^{ij}\alpha_{i}\beta_{j},
-		\end{aligned}
-		$$ 
-		onde $\alpha_{j}$ e $\beta_{j}$ são as $j$-ésimas coordenadas de $\alpha, \beta \in V$. 
-	\end{exemplo}
-	
-	Para estudarmos algumas características dos auto-espaços do grupo simplético precisaremos decompor esse espaço vetorial em soma direta de determinados  auto-espaços. Tal composição será garantida pelo Teorema $\ref{teorema_espectral_jordan}$, que depende de um espaço vetorial complexo como hipótese. Como consequencia desse fato, precisaremos de um espaço vetorial simplético complexo e que seja gerado a partir de um dado espaço vetorial simplético.
-	
-	Nessa seção, vimos que uma das construções da complexificação de $V$ é o espaço vetorial complexo $\complexificado{V}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V^{*}\otimes V^{*}$. Sejam $B = \{e_{j}\}_{j=1}^{2n}$ uma base de $V$ e $\omega^{ij} = \omega(e_{i}, e_{j})$ as componentes da forma simplética nessa base. Dessa definição, temos que $\omega^{ij} = -\omega^{ji}$.
-	
-	Utilizando as notações da Proposição $\ref{proposicao_base_complexificada}$, defina $\Omega=\sum_{i,j}\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j} \in \produtotensorialdual$. Temos que
-	
-	\begin{proposicao} $(\complexificado{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
-	\end{proposicao}\label{proposicao_complexificacao_espaco_simpletico}
-	\begin{prova}
-		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$, temos que $\complexificado{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega$ é uma aplicação $\complexo{}$-bilinear. Como $\omega^{ij}  = -\omega^{ji} $, temos que $\Omega$ é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, tomando $v, u \in \complexificado{V}$ tal que $v= \complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta} $, temos, pelo Exemplo $\ref{exemplo_complexificacao_tensorial}$, que 
-		$$
-		\begin{aligned}
-		\Omega(v,u) &= \sum_{i,j = 1}^{2n}
-		\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(v,u)
-		\\
-		&= \sum_{i,j = 1}^{2n}
-		xy\omega^{ij}\alpha_{i}\beta_{j}
-		\\
-		&= xy\sum_{i,j = 1}^{2n}
-		\formaSimpletica{\alpha_{i}e_{i}}{\alpha_{j}e_{j}}
-		\\
-		&= xy\formaSimpletica{\alpha}{\beta}.
-		\end{aligned}
-		$$
-		Como $\omega$ é não-degenerada, então $\Omega$ é não-degenerada. Portanto, $(\complexificado{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
-	\end{prova}
-	
-	\begin{observacao}
-		Note que $\complexificado{V}_{0} = \{\complexificacaoelemento{1}{v} \in \complexificado{V} \}$ é um subespaço vetorial de $\complexificado{V}$ isomorfo a $\real{2n}$. Além disso, $\Omega|_{\complexificado{V}_{0}} = \omega$ e $\Omega$ é uma extensão contínua de $\omega$.
-	\end{observacao}
-	
-	\begin{proposicao}
-		A complexificação $\Omega$ de $\omega$ pode ser decomposta em $\Omega = g +i k$, onde $g,k$ são ambas formas simpléticas definidas em $V$.
-	\end{proposicao}
-	\begin{prova}
-		
-		O Teorema $\ref{teorema_existencia_base_simpletica}$ garante que $\complexificado{V}$ possui uma base simplética $B$. Pela Observação $\ref{observacao_existencia_base_simpletica}$ temos que a representação matricial de $\Omega$ nessa base simplética é $\estruturacomplexa$. Suponha que $V, U \in \matrizquadcomplexa{2n}$ sejam as representações matriciais de $v,u \in \complexificado{V}$ nessa base. Então podemos escrever $$
-		\begin{aligned}
-		\formaSimpleticaExtendida{v}{u} &= V^{*}\estruturacomplexa^{*} U 
-		\\
-		&= (V_{1}+iV_{2})^{*}\estruturacomplexa^{*} (U_{1}+iU_{2})
-		\\
-		&= \underbrace{V_{1}^{t}\estruturacomplexa^{t} U_{1}}_{\formaSimpletica{v_{1}}{u_{1}}} -V_{2}^{t}\estruturacomplexa^{t} U_{2}+i(\underbrace{ V_{1}^{t}\estruturacomplexa^{t} U_{2}}_{\formaSimpletica{v_{1}}{u_{2}}} - V_{2}^{t}\estruturacomplexa^{t} U_{1})
-		\\
-		&= \underbrace{\formaSimpletica{v_{1}}{u_{1}} -\formaSimpletica{v_{2}}{u_{2}}}_{g(v,u)}+i(\underbrace{ \formaSimpletica{v_{1}}{u_{2}}- \formaSimpletica{v_{2}}{u_{1}}}_{k(v,u)})
-		\\
-		&= g(v,u)+ik(v,u),
-		\end{aligned}
-		$$
-		onde fizemos $v_{j}, u_{j}\in V$ e $V_{j}, U_{j}$ sendo a representação matricial de cada um deles para $j \in \{1,2\}$.
-		Temos que $g,k:\complexificado{V}\times \complexificado{V} \to \reta$ são aplicações $\complexo{}$-bilineares e anti-simétricas pois são combinações lineares de aplicações $\complexo{}$-bilineares anti-simétricas. Pelo mesmo argumento, $g,k$ são não-degeneradas.
-	\end{prova}
-	
-	\begin{proposicao}\label{proposicao_base_simpletica_conjugada}
-		Seja $B=\{\textbf{e}, \textbf{f} \}$ uma base simplética de $\complexificado{V}$. Então $\overline{B}=\{\overline{\textbf{e}}, \overline{\textbf{f}}\}$ é uma base simplética de $\complexificado{V}$.
-	\end{proposicao}
-	\begin{prova}
-		Temos que a aplicação de conjugação $\complexificado{V} \ni z\otimes v \mapsto \overline{z}\otimes v \in \complexificado{V}$ é um isomorfismo. Logo, leva base em base. Como $B$ é uma base simplética, temos $\Omega(\textbf{e}_{i}, \textbf{e}_{j}) = \Omega(\textbf{f}_{i}, \textbf{f}_{j}) =0$ e $\Omega(\textbf{e}_{i}, \textbf{f}_{j}) = \delta_{ij}$. Com isso, fazendo $\textbf{e}_{i} = \complexificacaoelemento{z_{i}}{v_{i}}$, e pela Proposição $\ref{proposicao_complexificacao_espaco_simpletico}$ temos $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =	\overline{z_{i}}\overline{z_{j}}\formaSimpletica{v_{i}}{v_{j}}=\overline{z_{i}z_{j}\formaSimpletica{v_{i}}{v_{j}}} = \overline{\Omega(\textbf{e}_{i}, \textbf{e}_{j})} = 0$. Com argumento análogo pode-se ver que $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =0$ e $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =\delta_{ij}$. Logo, $\overline{B}$ é uma base simplética.
-	\end{prova}
-	
-	Um operador linear $T : \complexificado{V} \to \complexificado{V}$ pode ser escrito como $T=\complexificacaoelemento{\lambda}{A}$, tal que $T(v) = \complexificacaoelemento{\lambda}{A}(\complexificacaoelemento{z}{\alpha}) = \complexificacaoelemento{\lambda z}{A\alpha}$, onde $\lambda \in \complexo{}$ e $A$ é um operador linear $A:V \to V$. Com isso, $T$ esta bem-definido.
-	
-	\begin{definicao}
-		(Transformação simplética) Seja $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético sobre $\complexo{}$. Um operador linear $T: \complexificado{V} \to \complexificado{V}$ é uma transformação simplética se 
-		$$
-		\formaSimpleticaExtendida{Tu}{Tv} = \formaSimpleticaExtendida{u}{v}
-		$$ para todo $u,v\in \complexificado{V}$.
-	\end{definicao}
-	
-	Suponha que $T=\complexificacaoelemento{1}{A}$ para algum operador linear $A:V \to V$. Afirmo que se $T$ é uma transformação simplética, então $A$ é uma transformação simplética. De fato, tomando $u = \complexificacaoelemento{x}{\alpha}$ e $v=\complexificacaoelemento{y}{\beta}$ em $\complexificado{V}$ temos que $Tu = \complexificacaoelemento{x}{A\alpha}$ e $Tv= \complexificacaoelemento{y}{A\beta}$
-	$$
-	\begin{aligned}
-	\Omega(Tv,Tu)
-	&= \sum_{i,j = 1}^{2n}
-	\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(Tv,Tu)
-	\\
-	&= 
-	\sum_{i,j = 1}^{2n}
-	\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(\complexificacaoelemento{x}{A\alpha},\complexificacaoelemento{y}{A\beta})
-	\\
-	&= \sum_{i,j = 1}^{2n}
-	xy\omega^{ij}e^{*}_{i}(Au)e^{*}_{j}(Av)
-	\\
-	&= xy
-	\formaSimpletica{A\alpha}{A\beta}.
-	\end{aligned}
-	$$  
-	Temos que $\formaSimpleticaExtendida{Tu}{Tv} = \formaSimpleticaExtendida{u}{v}$ o que implica que $xy
-	\formaSimpletica{A\alpha}{A\beta} = xy
-	\formaSimpletica{\alpha}{\beta}$. Como $\alpha, \beta \in V$ são arbitrários, então $A$ é uma transformação simplética. A recíproca é imediata.
-
-	Adotando a notação da Convensão \ref{convensao_base_simpletica}, pode-se enunciar o seguinte resultado:
-	
-	\begin{proposicao}\label{proposicao_forma_simpletica_vetor_conjugado}
-		Seja $\{\textbf{e}, \textbf{f}\}$ uma base simplética de $\complexificado{V}$. Então para um dado $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f} \in \complexificado{V}$ tem-se que $\formaSimpleticaExtendida{\overline{v}}{v}
-		=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}} \in i\reta$.
-	\end{proposicao}
-	\begin{prova}
-		Seja $\{\textbf{e}, \textbf{f} \}$ uma base simplética de $\complexificado{V}$. Tomando $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f}$, tem-se
-		$$
-		\begin{aligned}
-			\formaSimpleticaExtendida{\overline{v}}{v} 
-			&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}- \produtointerno{\overline{v}_{(2)}}{v_{(1)}}
-			\\
-			&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}- \overline{\produtointerno{v_{(2)}}{\overline{v_{(1)}}}}
-			\\
-			&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}-\overline{ \produtointerno{\overline{v}_{(1)}}{v_{(2)}}}
-			\\
-			&=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}\in i\reta,
-		\end{aligned}
-		$$
-		onde usamos a Observação \ref{observacao_convensao_base_simpletica}.
-	\end{prova}
-	
-	\begin{definicao}
-		(Grupo simplético complexo) O grupo simplético complexo $\gruposimpletico{\complexificado{V}} \subset \generalgroupcomplexo{2n}$ de $\complexificado{V}$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $\complexificado{V}$.
-	\end{definicao}
-
-	\section{O grupo simplético $\gruposimpletico{2n}$}\label{secao_grupo_simpletico}
 	
 	Daqui em diante vamos denotar por $\gruposimpletico{2n}$ o grupo simplético real $\gruposimpletico{\real{2n}}$.
 	
@@ -2653,7 +2378,7 @@
 	Outros detalhes sobre a axiomatização e demonstração da equivalência entre diferentes construções do índice de Maslov pode ser encontrada em $\cite{cappell_maslov_index_equivalencia}$.
 	
 	\section{Construção de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov, vamos adotar as complexificações $(\complexificado, \Omega) $ e $\gruposimpleticocomplexo{2n}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético$\gruposimpletico{2n}$, respectivamente. Os detalhes da complexificação podem ser encontrados na Seção $\ref{secao_complexificacao_espacos_vetoriais}$. 
+	Para a construção do índice de Maslov, vamos adotar as complexificações $(\complexificado, \Omega) $ e $\gruposimpleticocomplexo{2n}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético$\gruposimpletico{2n}$, respectivamente. Os detalhes da complexificação podem ser encontrados na Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$. 
 	
 	O primeiro passo é a construção de uma aplicação contínua $\rho: \gruposimpletico{2n}\to \circulo$ tal que, definido o determinante $det:\matrizSimpleticaOrtogonal\to \circulo$, tem-se que $\rho|_{\matrizSimpleticaOrtogonal} = det$.
 	
@@ -2682,13 +2407,13 @@
 			\end{array}
 			\right).
 			$$
-			Além disso, a aplicação indizida $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
+			Além disso, a aplicação induzida $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo}$ é um isomorfismo.
 			
 			\item \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
 		\end{enumerate}
 	\end{teorema}
 	
-	Na Seção $\ref{secao_complexificacao_espacos_vetoriais}$ mostrou-se que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$. Suponha que $\lambda, \overline{\lambda} \in \circulo$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, a Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} garante que  $\formaSimpleticaExtendida{\overline{v}}{v} \in i\reta$.
+	Na Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$ mostrou-se que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$. Suponha que $\lambda, \overline{\lambda} \in \circulo$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, a Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} garante que  $\formaSimpleticaExtendida{\overline{v}}{v} \in i\reta$.
 	
 	Para se construir uma aplicação que extenda contínuamente o determinante se introduz uma ordenação nos auto-valores de $A$. Sabe-se que um dado $\lambda \in \espectrooperador{A}$ se pode assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$, além disso, são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$. Com isso, basta analisar os casos em que $|\lambda| \leq 1$, o que implica que $|\overline{\lambda}|\leq 1$, $|\lambda^{-1}|\geq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
 	
@@ -2836,7 +2561,7 @@
 			
 			\item \textbf{\textit{Produto:}} Sejam $(\complexificado{V}, \Omega) = (\complexificado{V}_{1}\times \complexificado{V}_{2}, \Omega_{1}\times \Omega_{2})$ um $2k$-espaço vetorial simplético, onde $\complexificado{V}_{1}, \complexificado{V}_{2}$ são $2n_{1}$ e $2n_{2}$-espaços vetoriais simpléticos, respectivamente, e $k=2n_{1}+2n_{2}$. Dado $A \in \gruposimpletico{\complexificado{V}}$ tem-se que $Av = (A_{1}v_{1}, A_{2}v_{2})$, onde $v=(v_{1}, v_{2}) \in \complexificado{V}$, $A_{1}\in \gruposimpletico{\complexificado{V}_{1}}$ e $A_{2}\in \gruposimpletico{\complexificado{V}_{2}}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\times E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, porespectivamente. Desse modo, a aplicação $\hat{\rho}: \gruposimpletico{\complexificado{V}} \to \circulo$ definida por $\hat{\rho}(A) = \rho(A_{1})\rho(A_{2})$ satisfaz o axioma do produto.
 			
-			\item \textbf{\textit{Deteminante:}} Sejam $A \in \mathcal{U}$ e $U \in \matrizunitaria{n}$ com a identificação pelo isomorfismo descrito na Seção \ref{secao_grupo_simpletico} dado por
+			\item \textbf{\textit{Deteminante:}} Sejam $A \in \mathcal{U}$ e $U \in \matrizunitaria{n}$ com a identificação pelo isomorfismo descrito no Capítulo \ref{capitulo_grupo_simpletico} dado por
 			$$
 			\begin{aligned}
 				\real{2n} \ni (x,y) &\mapsto x+iy \in \complexo{n},
@@ -2954,29 +2679,30 @@
 		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{2n}\to \reta$ por $g(A) = det(Id-A)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e existe $V=(a,b)$, onde $a,b>0$, tal que $g(A)\in V$. Pela continuidade $g^{-1}(V)\subset \gruposimpleticonaodegenerado{+}$. Portanto $A \in \gruposimpleticonaodegenerado{+}$ é um ponto interno e $\gruposimpleticonaodegenerado{+}$ é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
 	\end{prova}
 	
-	\begin{corolario}
-		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais. \vermelho{(Estou revendo onde 
-			esse resultado para a construção do índice de maslov. Aparentemente, ele deve ser feito após a demonstração das propriedades de $\rho$.)}
+	\begin{corolario}\label{corolario_homomorfismo_trivial_grupos_simpletico}
+		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais
 	\end{corolario}
 	\begin{prova}
-		
-		Suponha $A \in \gruposimpleticonaodegenerado{*}$ e $\sigma(A) \subset \complexo{}$. Note que, dado um auto-valor $\lambda$, teremos  $\lambda/|\lambda| \in \circulo$. Sejam $\lambda_{j} \in \sigma(A)$ com $1\leq j\leq n $ auto-valores tais que $\alpha_{j}:\gruposimpleticonaodegenerado{+} \to [0,1]$ são funções contínuas definidas por $\exp(i 2\pi\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ para $0\leq j \leq n$,
-		onde $\lambda_{j}\neq \pm 1$ e $0\leq \alpha_{1}(A) \leq \dots \leq \alpha_{n}(A)\leq 1$. Definindo $\caminhosfechados{\gruposimpleticonaodegenerado{+}} \subset \caminhossempontobase{\gruposimpleticonaodegenerado{+}}$ como sendo o conjunto de caminhos contínuos e periódicos em $\gruposimpleticonaodegenerado{+}$ temos
+		Sabe-se que $\rho(\gruposimpletico{2n})=\circulo$. Então dado $A\in \gruposimpletico{2n}$ tem-se $\rho(A) = \exp(i\theta)$, para algum $\theta\in [0,2\pi]$. Sejam $\gamma\in \caminhosfechados{\gruposimpleticonaodegenerado{+}}$ e $\alpha_{j}:\gruposimpleticonaodegenerado{+}\to [0,2\pi]$ funções contínuas para $1\leq j\leq n$ tais que
 		$$
-		\exp\Big( i2\pi \sum_{j=1}^{n}\alpha_{j}(A) \Big) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}=\rho(A) \in \circulo.
-		$$ 
-		Dado $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{+})$, então $\rho \circ \gamma$ é um caminho contínuo e periódico. Se $\lambda_{j} \in \complementar{\sigma(A)}{\real{+}}$, então $\alpha_{j}$ estão determinadas unicamente. De fato, suponha que $\lambda_{k}$ e $\lambda_{m}$ são ambos auto-valores reais positivos, então $\alpha_{k}(A) = \lambda_{k}/|\lambda_{k}| =1 = \lambda_{m}/|\lambda_{m}| =\alpha_{m}(A)$. \vermelho{(Não consigo entender o restante dos argumentos do Salamon ne do Michelle).}
-		
-		Portanto, dado  $\gamma \in \mathcal{L}(\gruposimpleticonaodegenerado{\pm})$ o caminho $i\circ \gamma:[0,1] \to \gruposimpletico{2n}$ é contrátil e a aplicação induzida $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{\pm}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é trivial, isto é, $i_{*} = 0$.
+		\rho(A)=\exp\bigparenteses{i\sum_{j=1}^{n}\alpha_{j}(A)},
+		$$
+		onde $\alpha_{j}$ é definida do seguinte modo: tome os números reais $\alpha_{j}(A)\in \reta$ tais que $0\leq \alpha_{1}(A)\leq \dots\leq \alpha_{n}(A)\leq 2\pi$, onde $\exp(i\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ e $\lambda_{j}\in \espectrooperador{A}$.
+		 
+		Note que a composição $\alpha\circ\gamma:\intervalo\to [0,2\pi]$ são funções contínuas e periódicas, pois é a composição de funções com essas propriedades. Com isso, o caminho fechado $\rho\circ\gamma:\intervalo \to \circulo$, dado por $\rho(\gamma(t)) = \exp(i\sum_{j}(\alpha_{j}\circ\gamma)(t)) \in \circulo$, é contrátil. Seja $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{+}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ o homomorfismo induzido pela inclusão $i:\gruposimpleticonaodegenerado{+}\hookrightarrow \gruposimpletico{2n}$. Como todo caminho fechado $\gamma\in \caminhosfechados{\gruposimpleticonaodegenerado{+}}$ é contrátil, então $i_{*}(\classe{\gamma}) = \classe{i\circ \gamma} = \classe{0}$. Com uma argumento análogo mostra-se que $i_{*}(\classe{\beta}) = \classe{i\circ \beta} = \classe{0}$ para todo $\beta \in \gruposimpleticonaodegenerado{-}$. Portanto a inclusão $i_{*}(\grupofundamental{\gruposimpleticonaodegenerado{*}}) \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é o homomorfismo trivial.
 	\end{prova}
 		
 	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
 	
-	Vimos, na Seção $\ref{secao_grupo_simpletico}$, que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de  $\gruposimpleticonaodegenerado{*}\subset \gruposimpletico{2n}$, isto é, $\gruposimpleticonaodegenerado{*}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}$. Definindo $\Sigma = \{A \in \gruposimpletico{2n}: det(Id-A)=0 \}$, podemos escrever $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
+	Na seção anterior mostrou-se que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de $\gruposimpleticonaodegenerado{*}$, logo $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
 	
-	Um caminho $\gamma:[0,1]\to \gruposimpletico{2n}$ partindo de uma matriz $A$ pertencente a uma das componentes conexas $\gruposimpleticonaodegenerado{\pm}$ cruza $\Sigma$ um número finito de vezes, sendo que esse número de cruzamentos será determinado pelo índice de Maslov de $\gamma$. Para efetuar a contagem dos cruzamentos entre $\gamma$ e $\Sigma$, vamos fixar dois pontos $W^{\pm} \in \gruposimpleticonaodegenerado{\pm}$. A definição do índice não dependerá dessa escolha, pois vimos na Seção $\ref{secao_grupo_simpletico}$ que $\gruposimpleticonaodegenerado{\pm}$ são ambas conexas por caminhos.
-		
+	Sejam $\caminhosfechadospontobase{Id}{\gruposimpletico{2n}}=\{\gamma\in \caminhossempontobase{\gruposimpletico{2n}}:\gamma(0)=\gamma(1)=Id \}$ e $\caminhospontobase{Id}^{\pm}(\gruposimpletico{2n})=\{\alpha\in \caminhossempontobase{\gruposimpletico{2n}}: \alpha(0) =Id,\; \alpha(1)\in \gruposimpleticonaodegenerado{*}\}$. Defina $\caminhosespeciais{\gruposimpletico{2n}}$ como sendo o conjunto de todos os caminhos $\gamma*\alpha:\intervalo\to\gruposimpletico{2n}$, onde $\gamma \in \caminhosfechadospontobase{Id}{\gruposimpletico{2n}}$ e $\alpha\in \caminhospontobase{Id}^{\pm}(\gruposimpletico{2n})$.
+	
+	\begin{observacao}
+		Note que, um dado $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ é um caminho contínuo, não necessariamente fechado e que conecta a identidade $Id\in\Sigma$ a um elemento de $\gruposimpleticonaodegenerado{\pm}$. Como $\Sigma$ é conexo por caminhos, poderia-se ter escolhido qualquer outro elemento desse conjunto e distinto de $Id$.
+	\end{observacao}
+	
 	\begin{definicao}
 		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
 		$$
@@ -2991,13 +2717,16 @@
 		$$
 		\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
 		$$
-		Esse número indica quantas vezes a imagem da aplicação $\rho$ executa uma meia-volta.
 	\end{definicao}
+	
+	\begin{observacao}
+		O índice de Maslov de um caminho $\psi \in \caminhossempontobase{\circulo}$ esta relacionado com a aplicação grau, definida no Capítulo \ref{capitulo_grupo_fundamental}, do seguinte modo: $\mu(\psi) = 2deg(\rho\circ \psi)$.
+	\end{observacao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
 	
 	\begin{teorema}
-		Seja $\psi\in \caminhossempontobase{\gruposimpletico{2n}} $ um caminho contínuo. Então:
+		Seja $\psi\in \caminhosespeciais{\gruposimpletico{2n}} $. Então:
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
 			\item Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
@@ -3011,13 +2740,10 @@
 	\end{teorema}
 	\begin{prova}
 		\begin{enumerate}
-			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$. Pelo Teorema $\ref{teoerma_sp2n_conexo}$ $\gruposimpletico{2n}$ é conexo por caminhos, logo $\psi$ existe. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ podemos afirmar que existe um caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Seja a composição desses caminhos $\psi_{A}:[0,1]\to \gruposimpleticonaodegenerado{*}$ definida por
-			$\mu(\mathcal{L}(\gruposimpletico{2n})) \subseteq \inteiros$.
-			$$	
-			\funcaocond{\psi_{A}(s)
-			}{\psi(2s)}{0\leq s \leq 1/2}{\gamma(s)}{1/2\leq s \leq 1.}
+			\item Como $\gruposimpletico{2n}$ é conexo por caminhos, então exite $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ tal que $\psi=\gamma*\alpha$, onde $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{\pm}$ e $\alpha(1) = W^{\pm}$. Como $\gruposimpleticonaodegenerado{\pm}$ são contráteis, por consequêcia do Corolário \ref{corolario_homomorfismo_trivial_grupos_simpletico}, então $\alpha$ é homotópicamente equivalente ao caminho constante, portanto $deg(\rho\circ\alpha)=0$. Além disso, da Definição \ref{definicao_aplicacao_grau}, tem-se que o grau da justaposição de caminhos é a soma dos seus graus. Com esse resultado e usando o fato de que $\rho\circ(\gamma*\alpha) = (\rho\circ\gamma)*(\rho\circ\alpha)$, tem-se
 			$$
-			Então, $\mu(\psi) = \varDelta(\psi) - \varDelta(\psi_{A}(1)) = \varDelta(\psi) - \varDelta(W^{\pm})= \varDelta(\psi)$, pois $\rho(W^{\pm})= \exp(i\theta^{\pm})$ para algum $\theta^{\pm} \in \reta$ constante, logo $\varDelta(W^{\pm}) = 0$. Portanto, $\mu(\psi) \in \inteiros$. Como $A$ e $\psi$ são arbitrários, então $\mu (\mathcal{L}(\gruposimpletico{2n})) \subseteq \inteiros$.
+			\mu(\psi)=2deg(\rho\circ\psi)=2deg(\rho\circ(\gamma*\alpha))=2deg(\rho\circ\gamma)+2deg(\rho\circ\alpha) = 2deg(\rho\circ\gamma) \in \inteiros.
+			$$
 			
 			\item Como $\alpha \sim \beta$, então $\classe{\alpha} = \classe{\beta} \in \grupofundamental{\gruposimpletico{2n}}$ e, pelo Teorema $\ref{teorema_aplicacao_rho}$, $\rho_{*}$ é um isomorfismo, com isso $\rho_{*}[\alpha] = \rho_{*}[\beta] \in \grupofundamental{\circulo}$. Pela Proposição $\ref{proposicao_gerador_grupo_fundamental_ciruclo}$ temos $deg(\alpha) = (\theta(1)-\theta(0))/2\pi = \varDelta(\beta)/2$, o que implica em $\varDelta(\alpha) = \varDelta(\beta)$. Portanto
 			$$
@@ -4235,6 +3961,282 @@
 	\end{teorema}
 	
 	\appendix
+	
+	\chapter{Complexificação de espaços vetoriais}\label{apendice_complexificacao_espacos_vetoriais}
+	
+	Seja $V$ um n-espaço vetorial real. Desejamos construir um espaço vetorial complexo a partir de $V$ e uma forma de realizarmos essa construção é tomando $v \in V $ e $a+ib \in \complexo{}$ e efetuando a multiplicação $(a+ib)v = av+ibv$. Porém, a multiplicação por $i$ não tem sentido nesse contexto, já que estamos tratando de um espaço vetorial real. Podemos contornar essa dificuldade tratando a multiplicação formal $(a+ib)v = av+ibv$ como o par ordenado $(av, bv)$, resultando na seguinte definição de complexificação:
+	
+	\begin{definicao}
+		(Complexificação do n-espaço vetorial real V) A complexificação do n-espaço vetorial real $V$ é o n-espaço vetorial complexo $\complexificacao{V}=V\oplus V$ munido da multiplicação por escalares $(a+ib)(v_{1}, v_{2}) = (av_{1}-bv_{2}, bv_{1}+ av_{2})$, onde $a+ib \in \complexo{}$ e $(v_{1}, v_{2})\in \complexificacao{V}$.
+	\end{definicao}
+	
+	\begin{observacao}
+		Essa definição tem como motivação a seguinte situação: supondo $V$ complexo, então $V \ni (a+ib)v = (a+ib)(v_{1}+iv_{2}) = av_{1}-bv_{2}+i(bv_{2}+av_{1}) \mapsto (av_{1}-bv_{2}, bv_{1}+ av_{2}) \in \complexificacao{V}$.
+	\end{observacao}
+	
+	É possível mostrar que $\complexificacao{V}$ é um espaço vetorial sobre $\complexo{}$. De fato, basta mostrarmos que esse espaço é fechado pela operação de adição e multiplicação por escalares, pois as outras operaçoes são triviais. Dados $a+ib \in \complexo{}$ e $v,u \in \complexificacao{V}$, então $(a+ib )v+u = (av_{1}-bv_{2}, bv_{1}+ av_{2}) + (u_{1}, u_{2}) = (av_{1}-bv_{2} + u_{1}, bv_{1}+ av_{2} + u_{2}) \in \complexificacao{V}$. As demais propriedades dos axiomas de espaços vetoriais resultam imediatamente dessa.
+	
+	\begin{exemplo}\label{exemplo_conjugado_reta_real}
+		(Complexificação de $\reta$) Definindo $V = \reta$ temos que $\complexificacao{\reta}$ é $\reta\oplus \reta$ munido da operação $(a+ib)(x,y) = (ax-by, bx+ay)$. Assim, a identificação $(a+ib)(x, y ) = (ax-by, bx+ay) \mapsto ax-by+i(bx+ay) \in \complexo{}$ nos dá o isomorfimo $\complexificacao{\reta} \ni (x,y)\mapsto x +iy\in \complexo{}$.
+	\end{exemplo}
+	
+	\begin{exemplo}\label{exemplo_complexificacao_matrizes}
+		Analogamente ao exemplo anterior, temos que as aplicações $\complexificacao{\real{n}} \ni (x,y) \mapsto x+iy \in \complexo{n}$ e  $\complexificacao{\matrizquadreal{n}} \ni (x,y) \mapsto x+iy \in \matrizquadcomplexa{n}$ também são isomorfismos.
+	\end{exemplo}
+	
+	Notemos que os espaços vetoriais $V\oplus\{0\}$ e $\{0\}\oplus V$ são isomorfos a $V$. Com isso, a inclusão $i_{V} :V \hookrightarrow \complexificacao{V}$ definida por $i(v) = (v, 0)$ é chamada de mergulho padrão de $V$ em $\complexificacao{V}$.
+	
+	Complexificamos os espaços vetoriais reais, porém, as aplicações lineares entre tais espaços vetoriais são outros tipos de objetos a serem complexificados. O teorema a seguir afirma a unicidade da complexificação de aplicações lineares entre as complexificações de espaços vetoriais reais.
+	
+	\begin{teorema}
+		(Complexificação de aplicações lineares) Seja $\varphi : V \to W$ uma aplicação
+		$\reta$-linear entre espaços vetoriais reais de dimensão finita. Então existe uma única aplicação linear $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ tal que $i_{W}\circ \varphi = \complexificacao{\varphi} \circ i_{V}$, isto é, o diagrama abaixo é comutativo.
+		$$
+		\xymatrix{
+			V\ar[d]_{i_{V}}\ar[r]^{\varphi} & W\ar[d]^{i_{W}} 
+			\\
+			\complexificacao{V} \ar[r]_{\complexificacao{\varphi}}&\complexificacao{W} 
+		}
+		$$
+	\end{teorema}
+	\begin{prova}
+		Defina $\complexificacao{\varphi}:\complexificacao{V} \to \complexificacao{W}$ por $\complexificacao{\varphi}(v_{1}, v_{2}) = (\varphi v_{1}, \varphi v_{2})$. Como $\varphi v_{1}, \varphi v_{2} \in W$, então $(\varphi v_{1}, \varphi v_{2}) \in W\oplus W = \complexificacao{W}$. Além disso, dados $\lambda = (a+ib)\in \complexo{}$ e $(v_{1}, v_{2}), (u_{1}, u_{2})\in \complexificacao{V}$ temos 
+		$$
+		\begin{aligned}
+		\complexificacao{\varphi} (\lambda(v_{1}, v_{2}) + (u_{1}, u_{2})) 
+		&= (\varphi(a v_{1} - bv_{2} + u_{1}), \varphi(b v_{1}+a v_{2} + u_{2}))
+		\\
+		&=(a\varphi v_{1} - b\varphi v_{2} + \varphi u_{1}, b\varphi v_{1}+a\varphi v_{2} + \varphi u_{2})
+		\\
+		&=(a\varphi v_{1} - b\varphi v_{2} , b\varphi v_{1}+a\varphi v_{2} )+(\varphi u_{1},\varphi u_{2})
+		\\
+		&=\lambda(\varphi v_{1},\varphi v_{2})+(\varphi u_{1},\varphi u_{2})
+		\\
+		&=\lambda 	\complexificacao{\varphi} (v_{1},v_{2})+\complexificacao{\varphi} (u_{1},u_{2}).
+		\end{aligned}
+		$$
+		Portanto $\complexificacao{\varphi}$ é $\complexo{}$-linear. Dado $v \in V$ temos $(i_{W}\circ \varphi)(v) = (\varphi v,0) = \complexificacao{\varphi}(v,0) = (\complexificacao{\varphi} \circ i_{V})(v)$, logo $i_{W}\circ \varphi =\complexificacao{\varphi} \circ i_{V}$. Por fim, suponha que exista $\complexificacao{\varphi'} $ definida por $\complexificacao{\varphi'}(v_{1}, v_{2}) = (\varphi' v_{1}, \varphi' v_{2})$ e tal que $i_{W}\circ \varphi =\complexificacao{\varphi'} \circ i_{V}$, onde $\varphi':V\to W$ é uma aplicação linear. Então para todo $v \in V$ temos $(i_{W}\circ \varphi )(v)=(\complexificacao{\varphi} \circ i_{V})(v) = (\complexificacao{\varphi'} \circ i_{V})(v)$, o que implica em $(\varphi v, 0) = (\varphi' v, 0)$. Como $v \in V$ é arbitrário, então $\varphi = \varphi'$, logo $\complexificacao{\varphi} = \complexificacao{\varphi'}$, demonstrando a unicidade. 
+	\end{prova}
+	
+	Considerando o corpo dos complexos como um espaço vetorial sobre $\reta$, mostraremos que o produto tensorial $\complexificacaotensorial{V}$ é equivalente a construção da complexificação feita anteriormente. Utilizaremos esta construção na complexificação do 2n-espaço vetorial simplético $(V, \omega)$.
+	
+	\begin{teorema}\label{teorema_isomorfismo_complexificacao}
+		Seja $V$ um espaço vetorial real de dimensão finita. A aplicação $f_{V}: \complexificacao{V} \to \complexificacaotensorial{V}$ definida por  $f_{V}(v_{1},v_{2}) = 1\otimes_{\reta} v_{1} + i \otimes_{\reta} v_{2}$ é um isomorfismo entre os espaços vetoriais complexos que faz o diagrama
+		$$
+		\xymatrix{
+			& V\ar[dl]_{i_{V}}\ar[rd]^{j} &
+			\\
+			\complexificacao{V}\ar[rr]_{f_{V}}& & \complexificacaotensorial{V},
+		}
+		$$
+		comutar, onde $i_{V}(v) = (v,0)$ (é o mergulho padrão) e $j(v) = 1\otimes_{\reta} v$.
+	\end{teorema}
+	\begin{prova}
+		Dados $z=(a+ib) \in \complexo{}$ e $v,u \in \complexificacao{V}$ temos
+		$$
+		\begin{aligned}
+		f_{V}(zv+u) &= 1\otimes_{\reta} (a v_{1} - bv_{2} + u_{1}) + i \otimes_{\reta} (bv_{1}+av_{2} + u_{2})
+		\\
+		&=1\otimes_{\reta} (a v_{1} - bv_{2}) + i \otimes_{\reta} (bv_{1}+av_{2})+1\otimes_{\reta} u_{1} + i \otimes_{\reta} u_{2}
+		\\
+		&=(a+ib)\otimes_{\reta}v_{1} + (-b+ia)\otimes_{\reta} v_{2}+f_{V}(u)
+		\\
+		&=(a+ib)\otimes_{\reta}v_{1} + (a+ib)i\otimes_{\reta} v_{2}+f_{V}(u)
+		\\
+		&=zf_{V}(v)+f_{V}(u).
+		\end{aligned}
+		$$
+		Portanto $f_{V}$ é $\complexo{}$-linear. Além disso, é injetora pois $f_{V}(u) = 0$ se, e somente se, $u = 0$. Tomando um elemento $w = (a+ib)\otimes_{\reta}v \in \complexificacaotensorial{V} $ e definindo $u = (av, bv) \in \complexificacao{V}$ temos que $f_{V}(u) = \complexificacaoelemento{1}{av} +\complexificacaoelemento{i}{bv} = (a+ib)\otimes_{\reta} v = w$. Portanto $f_{V}$ é sobrejetora. Logo é um isomorfismo.
+		
+		Para todo $v \in V$ temos que $(f_{V}\circ i_{V})(v) = f_{V}(v, 0) = 1\otimes_{\reta} v = j(v)$. Portanto o diagrama é comutativo.
+	\end{prova}
+	
+	O conjugado de cada $z=(a+ib) \in \complexo{}$ é definido por $\overline{z} = a-ib$. Analogamente, o conjugado de $\complexificacaoelemento{z}{v} \in \complexificacaotensorial{V}$ é definido por $\complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$. Definindo $v_{1} =av$ e $v_{2} = -bv$ temos $f_{V}(v_{1}, v_{2}) =\complexificacaoelemento{1}{v_{1}} +\complexificacaoelemento{i}{v_{2}} = \complexificacaoelemento{a}{v} -\complexificacaoelemento{ib}{v}  =\complexificacaoelemento{\overline{z}}{v}  $. Portanto, temos a identificação entre os conjugados $ \complexificacao{V} \ni (av, -bv) \mapsto \complexificacaoelemento{\overline{z}}{v} \in \complexificacaotensorial{V}$.
+	
+	Sejam $k\geq 1$ um inteiro e $\{V_{j}\}_{j=1}^{k}$ um conjunto de espaços vetoriais de dimensão finita sobre um corpo $\mathbb{K}$. Sabe-se que o produto tensorial $\produtotensorial{V}{k}$ é um espaço vetorial de dimensão finita sobre $\mathbb{K}$. Além disso, sabe-se que, dado um $W$ espaço vetorial também sobre $\mathbb{K}$, tem-se que $W\otimes_{\mathbb{K}}(\produtotensorial{V}{k}) \cong W\otimes_{\mathbb{K}} \produtotensorial{V}{k}$. 
+	
+	Daqui em diante fixaremos a notação $\complexificado{V} = \complexificacaotensorial{V}$ para a complexificação de $V$ via produto tensorial.
+	
+	\begin{observacao}
+		Visto como espaço vetorial complexo, temos que $\{1\}$ é uma base de $\complexo{}$, logo temos que $\{1^{*}\}$ é uma base do dual $\complexo{*}$, tal que $1^{*}(1) = 1$. Com isso, dado $z = (a+ib).1 \in \complexo{}$, temos $1^{*}(z) = 1^{*}((a+ib).1) = (a+ib)1^{*}(1) = a+ib$.
+	\end{observacao}
+	
+	Sejam $B = \colecaofinita{e}{n}$ uma base do n-espaço vetorial real $V$ e $B^{*} = \colecaofinita{e^{*}}{n}$ a base de seu dual $V^{*}$ tal que $e^{*}_{j}(e_{k}) =\delta_{jk}$. Definindo $1 \otimes B = \colecaofinita{\complexificacaoelemento{1}{e}}{n}$ e
+	$1^{*} \otimes B^{*} = \colecaofinita{\complexificacaoelemento{1^{*}}{e^{*}}}{n}$, temos que $1\otimes B$ gera $\complexificado{V}$. De fato, todo $v \in \complexificado{V}$ pode ser escrito como 
+	$$
+	\begin{aligned}
+	v &= \sum_{j=1}^{n} \complexificacaoelemento{z_{j}}{v_{j}}
+	\\
+	&= \sum_{j=1}^{n} \complexificacaoelemento{z_{j}}{\bigparenteses{\sum_{i=1}^{n}\alpha_{ji}e_{i}}} 
+	\\
+	&= \sum_{j,i=1}^{n}\complexificacaoelemento{z_{j}\alpha_{ji}}{e_{i}}
+	\\
+	&= \sum_{i=1}^{n}\complexificacaoelemento{z'_{i}}{e_{i}}
+	\\
+	&= \sum_{i=1}^{n}z'_{i}(\complexificacaoelemento{1}{e_{i}}),
+	\end{aligned}
+	$$
+	onde $z'_{i} = \sum_{j=1}^{n}z_{j}\alpha_{ji}$ e $ z_{j}$ estão em $\complexo{}$ e $v_{j} \in V$.
+	
+	
+	\begin{observacao}
+		Os elementos $v \in \complexificado{V}$ do tipo $v = \complexificacaoelemento{z}{\alpha}$ são chamados de vetores simples. Vimos anteriormente que os vetores mais gerais são combinações lineares dos vetores simples. Por esse fato, as aplicações lineares e multilineares estudadas nessa seção serão avaliadas apenas nos tensores simples.
+	\end{observacao}
+	
+	Para simplificar a notação, denotando os elementos das bases $1\otimes B$ e $1^{*}\otimes B^{*}$ por $\{\textbf{a}_{j}\} $ e $\{\textbf{a}^{*}_{j}\}$, respectivamente.
+	
+	\begin{proposicao}\label{proposicao_base_complexificada}
+		$1\otimes B$ e $1^{*}\otimes B^{*}$ são bases de $\complexificado{V}$ e $\complexificado{V}^{*}$, respectivamente, tais que $\textbf{a}^{*}_{j}(\textbf{a}_{k})=\delta_{ik}$.
+	\end{proposicao}
+	\begin{prova}
+		Por construção $1\otimes B$ gera $\complexificado{V}$. Afirmo que $B$ é linearmente independente pois, $0=\sum_{j}z_{j}\textbf{a}_{j} = \sum_{j}z_{j}(1\otimes e_{j}) = \sum_{j}(b_{j} +ic_{j})(1\otimes e_{j}) = 1\otimes \sum_{j}b_{j}e_{j}+i\otimes \sum_{j}c_{j}e_{j}$, o que implica que $\sum_{j}b_{j}e_{j}=\sum_{j}c_{j}e_{j} = 0$. Logo, $b_{j}=c_{j}=0$  e $z_{j} = 0$ para $1\leq j\leq k$. O isomorfismo $\complexificado{V} \mapsto \complexificado{V}^{*}$ garante que $B^{*}$ é base de $\complexificado{V}^{*}$. Por fim, temos que $\textbf{a}^{*}_{j}(\textbf{a}_{k})=(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{1}{e_{k}}) = 1^{*}(1)e^{*}_{j}(e_{k}) = \delta_{ik}$.
+	\end{prova}
+	
+	Como o produto tensorial real $\otimes_{j=1}^{k}V_{j}$ é um espaço vetorial real, então sua complexificação será o espaço vetorial complexo $\complexificacaotensorial{(\produtotensorialreal{k}{V})} \cong \complexificacaotensorial{V_{1} \otimes_{\reta} \dots \otimes_{\reta} V_{k}}$, pelo isomorfismo anteriormente citado. Contudo, pode-se se mostrar que essa complexificação é isomorfa ao produto tensorial sobre os complexos $\bigotimes^{k}_{j=1}\complexificado{V}$, a qual denotamos por $\complexificado{V}^{k\otimes}$. 
+	
+	Na seção seguinte vamos utilizar o produto tensorial complexificado $\complexificado{V}^{k\otimes}$ pois ela facilita a demonstração de algumas propriedades da complexificação da forma simplética, que é um tensor de ordem 2.
+	
+	\begin{exemplo}\label{exemplo_complexificacao_tensorial}
+		Sejam $V$ um n-espaço vetorial real e $B = \colecaofinita{e}{n}$ uma base ortonormal. Supondo que $\complexificado{V}$ seja a complexificação de $V$, então pela Proposição $\ref{proposicao_base_complexificada}$ temos que $1\otimes B^{*}$ é uma base de $\complexificado{V}^{*}$. Com isso, dado $T \in \produtotensorialdual$ podemos escrever $T = \sum_{i,j = 1}^{n} T^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}$, onde $T^{ij} \in \complexo{}$. Dados $v, u\in \complexificado{V}$ tais que $v=\complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta}$, temos
+		$$
+		\begin{aligned}
+		T(v,u) &= \sum_{i,j = 1}^{n}
+		T^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(v,u)
+		\\
+		&= \sum_{i,j = 1}^{n}
+		T^{ij}\textbf{a}^{*}_{i}(v)\textbf{a}^{*}_{j}(u)
+		\\
+		&= \sum_{i,j = 1}^{n}
+		T^{ij}(\complexificacaoelemento{1^{*}}{e^{*}_{i}})(\complexificacaoelemento{x}{\alpha})(\complexificacaoelemento{1^{*}}{e^{*}_{j}})(\complexificacaoelemento{y}{\beta})
+		\\
+		&= \sum_{i,j = 1}^{n}
+		T^{ij}1^{*}(x)e^{*}_{i}(\alpha)1^{*}(y)e^{*}_{i}(\beta)
+		\\
+		&= \sum_{i,j = 1}^{n}
+		xyT^{ij}\alpha_{i}\beta_{j},
+		\end{aligned}
+		$$ 
+		onde $\alpha_{j}$ e $\beta_{j}$ são as $j$-ésimas coordenadas de $\alpha, \beta \in V$. 
+	\end{exemplo}
+	
+	Para estudarmos algumas características dos auto-espaços do grupo simplético precisaremos decompor esse espaço vetorial em soma direta de determinados  auto-espaços. Tal composição será garantida pelo Teorema $\ref{teorema_espectral_jordan}$, que depende de um espaço vetorial complexo como hipótese. Como consequencia desse fato, precisaremos de um espaço vetorial simplético complexo e que seja gerado a partir de um dado espaço vetorial simplético.
+	
+	Nessa seção, vimos que uma das construções da complexificação de $V$ é o espaço vetorial complexo $\complexificado{V}$. Dado $(V, \omega)$ um 2n-espaço vetorial simplético real, temos que $\omega \in V^{*}\otimes V^{*}$. Sejam $B = \{e_{j}\}_{j=1}^{2n}$ uma base de $V$ e $\omega^{ij} = \omega(e_{i}, e_{j})$ as componentes da forma simplética nessa base. Dessa definição, temos que $\omega^{ij} = -\omega^{ji}$.
+	
+	Utilizando as notações da Proposição $\ref{proposicao_base_complexificada}$, defina $\Omega=\sum_{i,j}\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j} \in \produtotensorialdual$. Temos que
+	
+	\begin{proposicao} $(\complexificado{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
+	\end{proposicao}\label{proposicao_complexificacao_espaco_simpletico}
+	\begin{prova}
+		Pelo Teorema $\ref{teorema_isomorfismo_complexificacao}$, temos que $\complexificado{V}$ é um 2n-espaço vetorial complexo. Por construção $\Omega$ é uma aplicação $\complexo{}$-bilinear. Como $\omega^{ij}  = -\omega^{ji} $, temos que $\Omega$ é anti-simétrica. Afirmo que $\Omega$ é não degenerada. De fato, tomando $v, u \in \complexificado{V}$ tal que $v= \complexificacaoelemento{x}{\alpha}$ e $u=\complexificacaoelemento{y}{\beta} $, temos, pelo Exemplo $\ref{exemplo_complexificacao_tensorial}$, que 
+		$$
+		\begin{aligned}
+		\Omega(v,u) &= \sum_{i,j = 1}^{2n}
+		\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(v,u)
+		\\
+		&= \sum_{i,j = 1}^{2n}
+		xy\omega^{ij}\alpha_{i}\beta_{j}
+		\\
+		&= xy\sum_{i,j = 1}^{2n}
+		\formaSimpletica{\alpha_{i}e_{i}}{\alpha_{j}e_{j}}
+		\\
+		&= xy\formaSimpletica{\alpha}{\beta}.
+		\end{aligned}
+		$$
+		Como $\omega$ é não-degenerada, então $\Omega$ é não-degenerada. Portanto, $(\complexificado{V}, \Omega)$ é um 2n-espaço vetorial simplético sobre $\complexo{}$.
+	\end{prova}
+	
+	\begin{observacao}
+		Note que $\complexificado{V}_{0} = \{\complexificacaoelemento{1}{v} \in \complexificado{V} \}$ é um subespaço vetorial de $\complexificado{V}$ isomorfo a $\real{2n}$. Além disso, $\Omega|_{\complexificado{V}_{0}} = \omega$ e $\Omega$ é uma extensão contínua de $\omega$.
+	\end{observacao}
+	
+	\begin{proposicao}
+		A complexificação $\Omega$ de $\omega$ pode ser decomposta em $\Omega = g +i k$, onde $g,k$ são ambas formas simpléticas definidas em $V$.
+	\end{proposicao}
+	\begin{prova}
+		
+		O Teorema $\ref{teorema_existencia_base_simpletica}$ garante que $\complexificado{V}$ possui uma base simplética $B$. Pela Observação $\ref{observacao_existencia_base_simpletica}$ temos que a representação matricial de $\Omega$ nessa base simplética é $\estruturacomplexa$. Suponha que $V, U \in \matrizquadcomplexa{2n}$ sejam as representações matriciais de $v,u \in \complexificado{V}$ nessa base. Então podemos escrever $$
+		\begin{aligned}
+		\formaSimpleticaExtendida{v}{u} &= V^{*}\estruturacomplexa^{*} U 
+		\\
+		&= (V_{1}+iV_{2})^{*}\estruturacomplexa^{*} (U_{1}+iU_{2})
+		\\
+		&= \underbrace{V_{1}^{t}\estruturacomplexa^{t} U_{1}}_{\formaSimpletica{v_{1}}{u_{1}}} -V_{2}^{t}\estruturacomplexa^{t} U_{2}+i(\underbrace{ V_{1}^{t}\estruturacomplexa^{t} U_{2}}_{\formaSimpletica{v_{1}}{u_{2}}} - V_{2}^{t}\estruturacomplexa^{t} U_{1})
+		\\
+		&= \underbrace{\formaSimpletica{v_{1}}{u_{1}} -\formaSimpletica{v_{2}}{u_{2}}}_{g(v,u)}+i(\underbrace{ \formaSimpletica{v_{1}}{u_{2}}- \formaSimpletica{v_{2}}{u_{1}}}_{k(v,u)})
+		\\
+		&= g(v,u)+ik(v,u),
+		\end{aligned}
+		$$
+		onde fizemos $v_{j}, u_{j}\in V$ e $V_{j}, U_{j}$ sendo a representação matricial de cada um deles para $j \in \{1,2\}$.
+		Temos que $g,k:\complexificado{V}\times \complexificado{V} \to \reta$ são aplicações $\complexo{}$-bilineares e anti-simétricas pois são combinações lineares de aplicações $\complexo{}$-bilineares anti-simétricas. Pelo mesmo argumento, $g,k$ são não-degeneradas.
+	\end{prova}
+	
+	\begin{proposicao}\label{proposicao_base_simpletica_conjugada}
+		Seja $B=\{\textbf{e}, \textbf{f} \}$ uma base simplética de $\complexificado{V}$. Então $\overline{B}=\{\overline{\textbf{e}}, \overline{\textbf{f}}\}$ é uma base simplética de $\complexificado{V}$.
+	\end{proposicao}
+	\begin{prova}
+		Temos que a aplicação de conjugação $\complexificado{V} \ni z\otimes v \mapsto \overline{z}\otimes v \in \complexificado{V}$ é um isomorfismo. Logo, leva base em base. Como $B$ é uma base simplética, temos $\Omega(\textbf{e}_{i}, \textbf{e}_{j}) = \Omega(\textbf{f}_{i}, \textbf{f}_{j}) =0$ e $\Omega(\textbf{e}_{i}, \textbf{f}_{j}) = \delta_{ij}$. Com isso, fazendo $\textbf{e}_{i} = \complexificacaoelemento{z_{i}}{v_{i}}$, e pela Proposição $\ref{proposicao_complexificacao_espaco_simpletico}$ temos $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =	\overline{z_{i}}\overline{z_{j}}\formaSimpletica{v_{i}}{v_{j}}=\overline{z_{i}z_{j}\formaSimpletica{v_{i}}{v_{j}}} = \overline{\Omega(\textbf{e}_{i}, \textbf{e}_{j})} = 0$. Com argumento análogo pode-se ver que $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =0$ e $\Omega(\overline{\textbf{e}}_{i}, \overline{\textbf{e}}_{j}) =\delta_{ij}$. Logo, $\overline{B}$ é uma base simplética.
+	\end{prova}
+	
+	Um operador linear $T : \complexificado{V} \to \complexificado{V}$ pode ser escrito como $T=\complexificacaoelemento{\lambda}{A}$, tal que $T(v) = \complexificacaoelemento{\lambda}{A}(\complexificacaoelemento{z}{\alpha}) = \complexificacaoelemento{\lambda z}{A\alpha}$, onde $\lambda \in \complexo{}$ e $A$ é um operador linear $A:V \to V$. Com isso, $T$ esta bem-definido.
+	
+	\begin{definicao}
+		(Transformação simplética) Seja $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético sobre $\complexo{}$. Um operador linear $T: \complexificado{V} \to \complexificado{V}$ é uma transformação simplética se 
+		$$
+		\formaSimpleticaExtendida{Tu}{Tv} = \formaSimpleticaExtendida{u}{v}
+		$$ para todo $u,v\in \complexificado{V}$.
+	\end{definicao}
+	
+	Suponha que $T=\complexificacaoelemento{1}{A}$ para algum operador linear $A:V \to V$. Afirmo que se $T$ é uma transformação simplética, então $A$ é uma transformação simplética. De fato, tomando $u = \complexificacaoelemento{x}{\alpha}$ e $v=\complexificacaoelemento{y}{\beta}$ em $\complexificado{V}$ temos que $Tu = \complexificacaoelemento{x}{A\alpha}$ e $Tv= \complexificacaoelemento{y}{A\beta}$
+	$$
+	\begin{aligned}
+	\Omega(Tv,Tu)
+	&= \sum_{i,j = 1}^{2n}
+	\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(Tv,Tu)
+	\\
+	&= 
+	\sum_{i,j = 1}^{2n}
+	\omega^{ij}\textbf{a}^{*}_{i}\otimes \textbf{a}^{*}_{j}(\complexificacaoelemento{x}{A\alpha},\complexificacaoelemento{y}{A\beta})
+	\\
+	&= \sum_{i,j = 1}^{2n}
+	xy\omega^{ij}e^{*}_{i}(Au)e^{*}_{j}(Av)
+	\\
+	&= xy
+	\formaSimpletica{A\alpha}{A\beta}.
+	\end{aligned}
+	$$  
+	Temos que $\formaSimpleticaExtendida{Tu}{Tv} = \formaSimpleticaExtendida{u}{v}$ o que implica que $xy
+	\formaSimpletica{A\alpha}{A\beta} = xy
+	\formaSimpletica{\alpha}{\beta}$. Como $\alpha, \beta \in V$ são arbitrários, então $A$ é uma transformação simplética. A recíproca é imediata.
+	
+	Adotando a notação da Convensão \ref{convensao_base_simpletica}, pode-se enunciar o seguinte resultado:
+	
+	\begin{proposicao}\label{proposicao_forma_simpletica_vetor_conjugado}
+		Seja $\{\textbf{e}, \textbf{f}\}$ uma base simplética de $\complexificado{V}$. Então para um dado $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f} \in \complexificado{V}$ tem-se que $\formaSimpleticaExtendida{\overline{v}}{v}
+		=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}} \in i\reta$.
+	\end{proposicao}
+	\begin{prova}
+		Seja $\{\textbf{e}, \textbf{f} \}$ uma base simplética de $\complexificado{V}$. Tomando $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f}$, tem-se
+		$$
+		\begin{aligned}
+		\formaSimpleticaExtendida{\overline{v}}{v} 
+		&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}- \produtointerno{\overline{v}_{(2)}}{v_{(1)}}
+		\\
+		&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}- \overline{\produtointerno{v_{(2)}}{\overline{v_{(1)}}}}
+		\\
+		&= \produtointerno{\overline{v}_{(1)}}{v_{(2)}}-\overline{ \produtointerno{\overline{v}_{(1)}}{v_{(2)}}}
+		\\
+		&=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}\in i\reta,
+		\end{aligned}
+		$$
+		onde usamos a Observação \ref{observacao_convensao_base_simpletica}.
+	\end{prova}
+	
+	\begin{definicao}
+		(Grupo simplético complexo) O grupo simplético complexo $\gruposimpletico{\complexificado{V}} \subset \generalgroupcomplexo{2n}$ de $\complexificado{V}$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $\complexificado{V}$.
+	\end{definicao}
+	
 	\chapter{Preliminares de Álgebra}
 	
 	Nessa seção, apresentaremos alguns resultados preliminares necessários para o estudo da topologia de $\gruposimpletico{2n}$ e do conjunto das estruturas complexas $\estruturascomplexas{V}{\omega}$.
