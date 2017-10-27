@@ -2704,6 +2704,22 @@
 	\end{observacao}
 	
 	\begin{definicao}
+		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial. Para cada caminho $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ existe um único levantamento $\alpha:[0,1] \to \real{}$ do caminho $\rho_{\psi} = \rho \circ \psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		O índice de Maslov é definido por $\mu(\psi)= 2deg(\rho_{\psi}) = (\alpha(0) - \alpha(1))/\pi$.
+	\end{definicao}
+	
+	\begin{observacao}
+		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=W^{-}$ e $\psi(1)=W^{+}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$ e $\rho_{\psi}(1) =\rho(W^{+}) = (-1)^{n}$. Suponha $n\in 2\mathbb{N}$ (o mesmo vale para $n$ ímpar). Então $\rho_{\psi}(0) =-1$ e $\rho_{\psi}(1)=1 $ e a imagem de $\rho_{\psi}$ envolve ao menos a metade do cícurlo, isto é, $\alpha(1)-\alpha(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
+	\end{observacao}
+	
+	\begin{definicao}
 		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
 		$$
 		\xymatrix{
@@ -2712,16 +2728,12 @@
 			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
 		}
 		$$	
-		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
-		Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
-		$$
-		\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
-		$$
+		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. \vermelho{Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+			Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
+			$$
+			\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
+			$$}
 	\end{definicao}
-	
-	\begin{observacao}
-		O índice de Maslov de um caminho $\psi \in \caminhossempontobase{\circulo}$ esta relacionado com a aplicação grau, definida no Capítulo \ref{capitulo_grupo_fundamental}, do seguinte modo: $\mu(\psi) = 2deg(\rho\circ \psi)$.
-	\end{observacao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
 	
@@ -2729,7 +2741,7 @@
 		Seja $\psi\in \caminhosespeciais{\gruposimpletico{2n}} $. Então:
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
-			\item Dois caminhos $\alpha, \beta \in \caminhossempontobase{\gruposimpletico{2n}} $ com $\alpha(0) = \beta(0)$ e $\alpha(1) = \beta(1)$ são homotópicos se, e somente se, $\mu(\alpha) = \mu(\beta)$.
+			\item Dois caminhos $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}} $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
 			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
 			\item Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
 			$$
@@ -2745,7 +2757,9 @@
 			\mu(\psi)=2deg(\rho\circ\psi)=2deg(\rho\circ(\gamma*\alpha))=2deg(\rho\circ\gamma)+2deg(\rho\circ\alpha) = 2deg(\rho\circ\gamma) \in \inteiros.
 			$$
 			
-			\item Como $\alpha \sim \beta$, então $\classe{\alpha} = \classe{\beta} \in \grupofundamental{\gruposimpletico{2n}}$ e, pelo Teorema $\ref{teorema_aplicacao_rho}$, $\rho_{*}$ é um isomorfismo, com isso $\rho_{*}[\alpha] = \rho_{*}[\beta] \in \grupofundamental{\circulo}$. Pela Proposição $\ref{proposicao_gerador_grupo_fundamental_ciruclo}$ temos $deg(\alpha) = (\theta(1)-\theta(0))/2\pi = \varDelta(\beta)/2$, o que implica em $\varDelta(\alpha) = \varDelta(\beta)$. Portanto
+			\item Sejam $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}}$. Da Proposição \ref{proposicao_grau_aplicacao} tem-se que $\rho\circ\psi_{1} \sim \rho\circ\psi_{2}$ se, e somente se $deg(\rho\circ\psi_{1} )=deg(\rho\circ\psi_{2} )$. Suponha que $\psi_{1}\sim \psi_{2}$. Como $\rho$ é contínua, então $\rho\circ$ o que implica que $\mu(\psi_{1})=\mu(\psi_{2})$. 
+			
+			Como $\alpha \sim \beta$, então $\classe{\alpha} = \classe{\beta} \in \grupofundamental{\gruposimpletico{2n}}$ e, pelo Teorema $\ref{teorema_aplicacao_rho}$, $\rho_{*}$ é um isomorfismo, com isso $\rho_{*}[\alpha] = \rho_{*}[\beta] \in \grupofundamental{\circulo}$. Pela Proposição $\ref{proposicao_gerador_grupo_fundamental_ciruclo}$ temos $deg(\alpha) = (\theta(1)-\theta(0))/2\pi = \varDelta(\beta)/2$, o que implica em $\varDelta(\alpha) = \varDelta(\beta)$. Portanto
 			$$
 			\begin{aligned}
 			\mu(\alpha) 
