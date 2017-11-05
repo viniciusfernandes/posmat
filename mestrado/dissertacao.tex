@@ -2040,7 +2040,7 @@
 	
 	
 	\begin{lema}\label{lema_isomorfismo_U}
-		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
+		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
 	\end{lema}
 	\begin{prova}
 		Temos que $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio, pois a identidade esta na intersecção. Tomando $A \in \matrizSimpleticaOrtogonal $, então $A^{t}A= Id$. Com isso, temos
@@ -2413,11 +2413,11 @@
 		\end{enumerate}
 	\end{teorema}
 	
-	Na Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$ mostrou-se que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$. Suponha que $\lambda, \overline{\lambda} \in \circulo$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, a Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} garante que  $\formaSimpleticaExtendida{\overline{v}}{v} \in i\reta$.
+	No Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$ mostrou-se que, dados $\lambda \in \sigma(A)$, temos que $\lambda, \lambda^{-1}, \overline{\lambda}, \overline{\lambda}^{-1}  \in \sigma(A)$. Suponha que $\lambda, \overline{\lambda} \in \circulo$. Então $0 \neq \formaSimpleticaExtendida{E_{\lambda}}{E_{\overline{\lambda}}} \in i\reta$. De fato, dados $v \in E_{\lambda}$ e $\overline{v} \in E_{\overline{\lambda}}$, a Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} garante que  $\formaSimpleticaExtendida{\overline{v}}{v} \in i\reta$.
 	
-	Para se construir uma aplicação que extenda contínuamente o determinante se introduz uma ordenação nos auto-valores de $A$. Sabe-se que um dado $\lambda \in \espectrooperador{A}$ se pode assumir um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$, além disso, são determimados em quádruplas $\lambda, \overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1}$. Com isso, basta analisar os casos em que $|\lambda| \leq 1$, o que implica que $|\overline{\lambda}|\leq 1$, $|\lambda^{-1}|\geq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
+	Para construir uma aplicação que estenda continuamente o determinante se introduz uma ordenação nos auto-valores de $A$. Sabe-se que um dado $\lambda \in \espectrooperador{A}$ assume um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, se $\lambda \in \espectrooperador{A}$, então $\overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1} \in \espectrooperador{A}$. Com isso, basta analisar os casos em que $|\lambda| \leq 1$, o que implica que $|\overline{\lambda}|\leq 1$, $|\lambda^{-1}|\geq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
 	
-	Tome $\lambda_{1}\in \sigma(A)$ tal que $|\lambda_{1}|<1$ e o escreva como $\lambda_{1} = |\lambda_{1}|\exp(i\theta_{\lambda_{1}})$, para algum $\theta_{\lambda_{1}} \in [0,2\pi]$. Tome um outro auto-valor $\lambda_{2}\neq \lambda_{1}$ tal que $|\lambda_{2}|<1$. Se $|\lambda_{1}| < |\lambda_{2}|$ ou  $|\lambda_{1}|= |\lambda_{2}|$ com $\theta_{\lambda} \leq \theta_{\beta}$, diremos que $\lambda_{1} \leq_{o} \lambda_{2}$. Repetindo esse procedimento n-vezes teremos a sequência $\lambda_{1} \leq_{0} \dots \leq_{0}\lambda_{n} \leq_{0} \lambda_{n}^{-1} \leq_{0} \dots \leq_{0} \lambda_{1}^{-1}$. Essa ordenação será chamada de ordem de primeiro tipo.
+	Tome $\lambda_{1}\in \sigma(A)$ tal que $|\lambda_{1}|<1$ e o escreva como $\lambda_{1} = |\lambda_{1}|\exp(i\theta_{\lambda_{1}})$, para algum $\theta_{\lambda_{1}} \in [0,2\pi]$. Tome um outro auto-valor $\lambda_{2}\neq \lambda_{1}$ tal que $|\lambda_{2}|<1$. Se $|\lambda_{1}| < |\lambda_{2}|$ ou  $|\lambda_{1}|= |\lambda_{2}|$ com $\theta_{\lambda} \leq \theta_{\beta}$, diremos que $\lambda_{1} \prec \lambda_{2}$. Repetindo esse procedimento n-vezes teremos a sequência $\lambda_{1} \prec \dots \prec \lambda_{n} \prec  \lambda_{n}^{-1} \prec \dots \prec \lambda_{1}^{-1}$. Essa ordenação será chamada de ordem de primeiro tipo.
 	
 	Sejam $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$  e $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores têm multiplicidade igual a 1.
 	
@@ -2439,23 +2439,6 @@
 		$$
 		onde $\alpha = min\{|\lambda_{j}|,|\beta_{j}|\}$. Portanto, $\rho$ é contínua.
 	\end{prova}		
-	
-	Considere $\{\textbf{e}, \textbf{f} \}$ como sendo uma base simplética de $\complexificado{V}$. Sejam $v, u \in \complexificado{V}$ e $v_{j}, u_{j} \in \complexo{}$ os coeficientes desses vetores nessa base, onde $v_{j} = a_{j}+ib_{j}, u_{j} =c_{j}+id_{j}$. Então
-	
-	$$
-	\begin{aligned}
-	\formaSimpleticaExtendida{\overline{v}}{u} 
-	&= \sum_{j=1}^{n} (\overline{v}_{j}u_{n+j} - \overline{v}_{n+j}u_{j})
-	\\
-	&=\sum_{j=1}^{n} \bigparenteses{(a_{j} - ib_{j})(c_{n+j} +id_{n+j}) - (a_{n+j} - ib_{n+j})(c_{j} +id_{j})}
-	\\
-	&=\underbrace{\sum_{j=1}^{n} \bigparenteses{(a_{j}c_{n+j}+b_{j}d_{n+j})-(a_{n+j}c_{j}+b_{n+j}d_{j})}}_{\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}}}
-	\\
-	&+ i\underbrace{\sum_{j=1}^{n} \bigparenteses{(b_{n+j}c_{j}+a_{j}d_{n+j})-(b_{j}c_{n+j}+a_{n+j}d_{j})}}_{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u} }}
-	\\
-	&=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}}+i\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}.
-	\end{aligned}
-	$$
 	
 	\begin{lema}
 		A aplicação $B:\complexificado{V}\times \complexificado{V} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
@@ -2487,39 +2470,39 @@
 		Por fim, temos as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
 	\end{prova}
 	
-	\begin{definicao}\label{definicao_forma_quadratica_Q}
-		Seja  $Q: \complexificado{V} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$. Então $m(Q) = m_{+}(Q)-m_{-}(Q)$ é chamada a assinatura de $Q$, onde $m_{\pm}(Q)$ são as dimensões dos maiores  subespaços de $\complexificado{V}$ nos quais $Q$ é positiva-definida ou negativa-definida, respectivamente.
-	\end{definicao}
-	
-	Note que, a forma quadrática $Q$ é não-degenerada pois $B$ é não-degenerada.
-	
-	Seja $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$ e tome $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f}\in \complexificado{V}$. Pela Proposição \ref{proposicao_forma_simpletica_vetor_conjugado} tem-se que $Q(v)=\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{v}} = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}$. Afirmo que o conjunto $\complexificado{V}^{+} = \{v \in \complexificado{V}: v_{(1)}=v_{(2)}\}$ é um subespaço vetorial de $\complexificado{V}$. De fato, é imediato que $0 \in \complexificado{V}^{+}$. Dados $\lambda \in \complexo{}$ e $v, u \in \complexificado{V}^{+}$, tem-se que 
-	$$
+	\begin{proposicao}\label{proposicao_forma_quadratica_Q}
+		Sejam  $Q: \complexificado{V} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$ e $A \in \gruposimpletico{2n}$. Se $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$, então   $\autoespaco{\lambda} = \autoespaco{\lambda}^{+}\oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{\pm}$ são os maiores subespaços do auto-espaço generalizado $\autoespaco{\lambda}$ tais que $Q$ é positiva (negativa) definida.
+	\end{proposicao}
+	\begin{prova}
+		É imediato que $\autoespaco{\lambda}^{+} \cap \autoespaco{\lambda}^{-} = \emptyset$. Além disso, $\autoespaco{\lambda}^{\pm} \subset \autoespaco{\lambda}$ são subespaços vetoriais pois, dados $\beta\in \complexo{}$, $v, u\in \autoespaco{\lambda}^{+}$ tem-se que 
+		$$
 		\begin{aligned}
-		\lambda v + u  &= \lambda (v_{(1)}\textbf{e}+v_{(1)}\textbf{f}) + u_{(1)}\textbf{e}+u_{(1)}\textbf{f} 
+		Q(\beta v +u) &= \parteImaginaria{\overline{\beta}\beta\formaSimpleticaExtendida{\overline{v}}{v}+ \overline{\beta}\formaSimpleticaExtendida{\overline{v}}{u}+ \beta\formaSimpleticaExtendida{\overline{u}}{v}+ \formaSimpleticaExtendida{\overline{u}}{u}}
 		\\
-		&= (\lambda v_{(1)} + u_{(1)})\textbf{e}+(\lambda v_{(1)} + u_{(1)})\textbf{f} 
+		&=\parteImaginaria{\overline{\beta}\beta\formaSimpleticaExtendida{\overline{v}}{v}+ \formaSimpleticaExtendida{\overline{u}}{u}}
 		\\
-		&= (\lambda v_{(1)} + u_{(1)})(\textbf{e}+ \textbf{f}) \in \complexificado{V}^{+}.
+		&=|\beta|^{2}Q(v)+Q(u)
+		\\
+		&\geq0,
 		\end{aligned}
-	$$
+		$$
+		onde usou-se o fato de que $\beta\formaSimpleticaExtendida{\overline{u}}{v}=-\overline{\beta}\formaSimpleticaExtendida{\overline{v}}{u}$. Portanto $\beta v +u \in \autoespaco{\lambda}^{+}$. Com um argumento análogo mostra-se que $\autoespaco{\lambda}^{-}$ é subespaço vetorial de $\autoespaco{\lambda}$. Note que, $\formaSimpleticaExtendida{\overline{v}}{v}=\formaSimpleticaExtendida{\overline{Av}}{Av} =|\lambda|^{2}\formaSimpleticaExtendida{\overline{v}}{v}$. Se $\lambda \notin \complementar{\circulo}{\{\pm 1 \} }$, então $\Omega|_{\autoespaco{\lambda}\times \autoespaco{\lambda}} = 0$.
+	\end{prova}
 	
-	Portanto $\complexificado{V}^{+} $ é um subespaço vetorial de $\complexificado{V}$.  Além disso, $\{\textbf{e}+\textbf{f}\} = \{e_{1}+f_{1}, \dots, e_{n}+f_{n}\}$ é uma base de $\complexificado{V}^{+}$, logo $dim(\complexificado{V}^{+}) = n$. Com isso, $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(1)}}} = 2\norma{v_{(1)}}^{2} \geq 0$, para todo $v \in \complexificado{V}^{+}$. Analogamente, tem-se que $\complexificado{V}^{-} = \{v \in \complexificado{V}: v_{(1)} =- v_{(2)}\}$ também é um subespaço vetorial de $\complexificado{V}$, cuja base é $\{\textbf{e}-\textbf{f}\}$, e portanto $dim(\complexificado{V}^{-}) = n$. Então $Q(v) = 2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{-v_{(1)}}} = -2\norma{v_{(1)}}^{2} \leq 0$, para todo $v \in \complexificado{V}^{-}$. Como $\complexificado{V}^{+}\cap \complexificado{V}^{-} = \{0\}$ e $dim(\complexificado{V}^{+}) = dim(\complexificado{V}^{-}) = n$, então $\complexificado{V}=\complexificado{V}^{+}\oplus\complexificado{V}^{-}$.
-	
-	Sejam $A \in \gruposimpletico{2n}$, $\lambda\in \sigma(A)$ e $E_{\lambda}$ o auto-espaço generalizado associado a $\lambda$, cuja multiplicidade é denotada por $m(\lambda)$. Suponha que $\lambda \in \complementar{\circulo}{\{\pm 1\} }$ e repita a decomposição $\autoespaco{\lambda} = \autoespaco{\lambda}^{+}\oplus \autoespaco{\lambda}^{-} $ anteriormente feita para $\complexificado{V}$. Pelo Corolário \ref{corolario_restricao_forma_simpletica} tem-se que a restrição $\Omega|_{\autoespaco{\lambda} \oplus \autoespaco{\lambda}}$ é não-degenerada, logo a restrição da forma quadrática $Q|_{\autoespaco{\lambda}}$ é não-degenerada. Além disso, $dim(\autoespaco{\lambda}^{+}) = dim(\autoespaco{\lambda}^{-})$ e $dim(\autoespaco{\lambda})=2dim(\autoespaco{\lambda}^{+})$. Sejam $m_{+}(\lambda) = dim(\autoespaco{\lambda}^{+})$ e $\rho: \gruposimpletico{2n}\to \complexo{}$ definida por
+	Denote $dim(\autoespaco{\lambda}^{\pm})$ por $m_{\pm}(\lambda)$, respectivamente.  Seja $\rho: \gruposimpletico{2n}\to \complexo{}$ definida por
 	$$
 	\rho'(A) = 	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A)\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)},
 	$$
 	onde $m_{0}$ denota o número de pares $(\lambda, \lambda^{-1})$ reais negativos.
 
-	Afirmo que a restrição $\rho|_{\gruposimpleticoespecial{2n}}$ coincide com a aplicação $\rho$ anteriormente definida no Lema \ref{lema_aplicacao_rho}. De fato, tomando $A \in \gruposimpleticoespecial{2n}$ tem-se que $m_{+}(\lambda) = 1$ para todo $\lambda\in \espectrooperador{A}$. Suponha uma ordem de primeiro tipo para os auto-valores de $A$. Com isso, tem-se o produto $\lambda_{1}\dots \lambda_{n} = \lambda_{1}^{m_{+}(\lambda_{1})}\dots \lambda_{1}^{m_{+}(\lambda_{1})}$. Sem perda de generalidade, pode-se supor que $\lambda_{j} \in \reta$ e que $\lambda_{k}\in \circulo$ para $1\leq j \leq r $ e $r \leq k \leq n$ para algum $r \leq k$. Com isso, $\lambda_{j}/|\lambda_{j}|=\pm 1$ e $\lambda_{k}/|\lambda_{k}| = \lambda_{k}$. Seja $m_{0}$ seja a quantidade de auto-valores reais negativos de $A$. Então tem-se o produto 
+	Afirmo que a restrição $\rho|_{\gruposimpleticoespecial{2n}}$ coincide com a aplicação $\rho$ anteriormente definida no Lema \ref{lema_aplicacao_rho}. De fato, tomando $A \in \gruposimpleticoespecial{2n}$ tem-se que $m_{+}(\lambda) = 1$ para todo $\lambda\in \espectrooperador{A}$. Suponha uma ordem de primeiro tipo para os auto-valores de $A$. Com isso, tem-se o produto $\lambda_{1}\dots \lambda_{n} = \lambda_{1}^{m_{+}(\lambda_{1})}\dots \lambda_{n}^{m_{+}(\lambda_{n})}$. Sem perda de generalidade, pode-se supor que $\lambda_{j} \in \reta$ e que $\lambda_{k}\in \circulo$ para $1\leq j \leq r $ e $r +1\leq k \leq n$. Com isso, $\lambda_{j}/|\lambda_{j}|=\pm 1$ e $\lambda_{k}/|\lambda_{k}| = \lambda_{k}$. Seja $m_{0}$ seja a quantidade de auto-valores reais negativos de $A$. Então tem-se o produto 
 	$$
 	\begin{aligned}
 	\rho(A) 
 	&=
 	\frac{\lambda_{1}}{|\lambda_{1}|}\dots \frac{\lambda_{n}}{|\lambda_{n}|}
 	\\
-	&= (-1)^{m_{0}}\frac{\lambda_{r+1}}{|\lambda_{r+1}|}^{m_{+}(\lambda_{r+1})}\dots \frac{\lambda_{k}}{|\lambda_{k}|}^{m_{+}(\lambda_{k})} \underbrace{\frac{\lambda_{k+1}}{|\lambda_{k+1}|}^{m_{+}(\lambda_{k+1})}\dots \frac{\lambda_{n}}{|\lambda_{n}|}^{m_{+}(\lambda_{n})}}_{\vermelho{???}}
+	&= (-1)^{m_{0}}\frac{\lambda_{r+1}}{|\lambda_{r+1}|}^{m_{+}(\lambda_{r+1})} \dots \frac{\lambda_{n}}{|\lambda_{n}|}^{m_{+}(\lambda_{n})}
 	\\
 	&=(-1)^{m_{0}}\prod_{\lambda\in \espectrooperador{A}\cap\complementar{\circulo}{\reta}}\lambda^{m_{+}(\lambda)}
 	\\
@@ -2564,7 +2547,7 @@
 			\item \textbf{\textit{Deteminante:}} Sejam $A \in \mathcal{U}$ e $U \in \matrizunitaria{n}$ com a identificação pelo isomorfismo descrito no Capítulo \ref{capitulo_grupo_simpletico} dado por
 			$$
 			\begin{aligned}
-				\real{2n} \ni (x,y) &\mapsto x+iy \in \complexo{n},
+				\real{2n} \ni (v_{(1)},v_{(2)}) &\mapsto v_{(1)}+iv_{(2)} \in \complexo{n},
 				\\
 				\mathcal{U} \ni 
 				\left(
@@ -2577,11 +2560,10 @@
 				& \mapsto B+iC \in \matrizunitaria{n}.
 			\end{aligned}
 			$$
-			Se $(x,y) \in \real{2n}$ é um auto-vetor de $A$ com auto-valor $\lambda$ em $\complexo{}$, então, pelo isomorfismo, tem-se que $A(x,y)=\lambda (x,y) \mapsto U(x+iy) = \lambda(x+iy)$. Logo se tem $\espectrooperador{A} \subseteq \espectrooperador{U}$. Analogamente, a identificação dos auto-valores de $U$ com os auto-valores de $A$ em $\complexo{}$ implica que $\espectrooperador{U} \subseteq\espectrooperador{A}$. Portanto $\espectrooperador{A} =\espectrooperador{U}$ em $\complexo{}$.
+			Se $(v_{(1)},v_{(2)}) \in \real{2n}$ é um auto-vetor de $A$ com auto-valor $\lambda$ em $\complexo{}$, então, pelo isomorfismo, tem-se que $A(v_{(1)},v_{(2)})=\lambda (v_{(1)},v_{(2)}) \mapsto U(v_{(1)}+iv_{(2)}) = \lambda(v_{(1)}+iv_{(2)})$. Logo se tem $\espectrooperador{A} \subseteq \espectrooperador{U}$. Analogamente, a identificação dos auto-valores de $U$ com os auto-valores de $A$ em $\complexo{}$ implica que $\espectrooperador{U} \subseteq\espectrooperador{A}$. Portanto $\espectrooperador{A} =\espectrooperador{U}$ em $\complexo{}$.
 			
-			Sejam $v$ um auto-vetor de $A$ com auto-valor $\lambda$ e $\autoespaco{\lambda}$ seu auto-espaço. Sabendo que $\estruturacomplexa: \real{2n} \to \real{2n}$ é um endomorfismo, que $A\estruturacomplexa = \estruturacomplexa A$ e que ambos $A$ e $\estruturacomplexa$ são diagonalizáveis, onde $\espectrooperador{\estruturacomplexa} = \{\pm i\}$, então $A\estruturacomplexa v = \estruturacomplexa Av = \lambda \estruturacomplexa v$, logo $\estruturacomplexa v \in \autoespaco{\lambda}$, o que implica que $\estruturacomplexa(\autoespaco{\lambda}) = \autoespaco{\lambda}$. Suponha que $u$ seja um auto-vetor de $\estruturacomplexa$ com auto-valor $\beta\in \espectrooperador{\estruturacomplexa}$. Então $\estruturacomplexa A u = A \estruturacomplexa u = \beta Au$. Logo $Au \in \autoespaco{\beta}^{\estruturacomplexa}$, e pode-se afirmar que $A(\autoespaco{\beta}^{\estruturacomplexa} )=\autoespaco{\beta}^{\estruturacomplexa}$. Como ambos $A$ e $\estruturacomplexa$ são diagonalizáveis, então existe ao menos um $\lambda\in \espectrooperador{A}$ tal que $\autoespaco{\lambda}\cap\autoespaco{\beta}^{\estruturacomplexa} \neq \emptyset$, onde $\beta\in \espectrooperador{\estruturacomplexa}$.
-			
-			Note que os auto-espaços de $ \pm i \in \espectrooperador{\estruturacomplexa}$ são $\autoespaco{\pm i}^{\estruturacomplexa} = \{u\textbf{e}\pm iu\textbf{f}: u\in \complexo{n} \}$, e que $dim(\autoespaco{\pm i}^{\estruturacomplexa})=n$. Tomando $v \in \autoespaco{i}^{\estruturacomplexa}$, tem-se que 
+			Sejam $v$ um auto-vetor de $A$ com auto-valor $\lambda$ e $\autoespaco{\lambda}$ seu auto-espaço. Sabendo que $\estruturacomplexa: \real{2n} \to \real{2n}$ é um endomorfismo, que $A\estruturacomplexa = \estruturacomplexa A$ e que ambos $A$ e $\estruturacomplexa$ são diagonalizáveis (matrizes normais são diagonalizáveis, veja o Lema \ref{lema_caracterizacao_matriz_normal}). Além disso, $\espectrooperador{\estruturacomplexa} = \{\pm i\}$, $\autoespaco{\pm i}^{\estruturacomplexa} = \{u\textbf{e} \pm iu\textbf{f}: u \in \complexo{n}\}$ e $dim(\autoespaco{\pm i}^{\estruturacomplexa} )=n$, portanto $\complexificado{V} = \autoespaco{i}^{\estruturacomplexa}\oplus \autoespaco{-i}^{\estruturacomplexa}$. 
+			Tomando $v \in \autoespaco{i}^{\estruturacomplexa}$, tem-se que 
 			$$
 			\begin{aligned}
 				\formaSimpleticaExtendida{\overline{v}}{v} 
@@ -2595,16 +2577,14 @@
 			\end{aligned}
 			$$
 			
-			Portanto a restrição da forma quadrática $Q$, dada pela Definição \ref{definicao_forma_quadratica_Q}, ao auto-espaço $\autoespaco{ i}^{\estruturacomplexa}$, é negativa definida. Analogamente pode-se verificar que a restrição de $Q$ ao auto-espaço $\autoespaco{ -i}^{\estruturacomplexa}$ é positiva definida.
-			
-			Com isso, pode-se decompor $\autoespaco{\lambda} = \autoespaco{\lambda}^{+} \oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{\pm} = \autoespaco{\lambda}\cap \autoespaco{\mp i}^{\estruturacomplexa}$. Consequentemente, tem-se
+			Portanto a restrição da forma quadrática $Q$, dada pela Definição \ref{proposicao_forma_quadratica_Q}, ao auto-espaço $\autoespaco{ i}^{\estruturacomplexa}$, é negativa definida. Analogamente pode-se verificar que a restrição de $Q$ ao auto-espaço $\autoespaco{ -i}^{\estruturacomplexa}$ é positiva definida. Com isso, pode-se decompor o auto-espaço $\autoespaco{\lambda} = \autoespaco{\lambda}^{+} \oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{\pm} = \autoespaco{\lambda}\cap \autoespaco{\mp i}^{\estruturacomplexa} \neq \emptyset$. Pela identificação anterior tem-se
 			$$
-			\autoespaco{\lambda}^{+}=\{v=v_{(1)}\textbf{e}-iv_{(1)}\textbf{f}\in \complexificado{ V} : Av = \lambda v\} \mapsto \{v_{(1)} \in \complexo{n} : Uv_{(1)}=\lambda v_{(1)} \} = \autoespaco{\lambda}^{U}.
+			\autoespaco{\lambda}^{+}=\{v_{(1)}\textbf{e}-iv_{(1)}\textbf{f}\in \autoespaco{\lambda}\} \mapsto \{v_{(1)} \in \complexo{n} : Uv_{(1)}=\lambda v_{(1)} \} = \autoespaco{\lambda}^{U}.
 			$$
 			
 			Como os auto-espaços $\autoespaco{\pm i}^{\estruturacomplexa} \subseteq \complexificado{V}$ são maximais em relação a positividade e negatividade definida de $Q$, então os subespaços vetoriais $\autoespaco{\lambda}^{\pm} \subseteq \autoespaco{\lambda}$ também o são. Com isso, $m_{+}(\lambda) = m^{U}(\lambda)$.
 			
-			A aplicação $\rho|_{\mathcal{U}}: \mathcal{U} \to \circulo$ quando avaliada em $A\in \mathcal{U}$ é dada em termos do produto dos auto-valores $\lambda \in \espectrooperador{A}$ e seus respectivos $m_{+}(\lambda)$ e $m_{0}$. Como $\espectrooperador{A} = \espectrooperador{U}$ e $m_{+}(\lambda)  = m_{\lambda}^{U}$, então as multiplicidades dos auto-valores são as mesmas e $\rho(A)=det(U)$.
+			A aplicação $\rho|_{\mathcal{U}}: \mathcal{U} \to \circulo$ quando avaliada em $A\in \mathcal{U}$ é dada em termos do produto dos auto-valores $\lambda \in \espectrooperador{A}$ e suas multiplicidades $m_{+}(\lambda)$ e $m_{0}$. Como $\espectrooperador{A} = \espectrooperador{U}$ e $m_{+}(\lambda)  = m_{\lambda}^{U}$, então as multiplicidades dos auto-valores são as mesmas e $\rho(A)=det(U)$.
 
 			Na Observação \ref{observacao_quociente_grupo_simpletico_contratil} foi mostrado que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, portanto $\grupofundamental{\gruposimpletico{2n}} \cong \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}}$. Mostrou-se que $\rho|_{\matrizSimpleticaOrtogonal} = det: \matrizSimpleticaOrtogonal\to \circulo$, o que implica que $\rho|_{\matrizSimpleticaOrtogonal*} = Det_{*}$, onde $Det_{*}:\grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ é o isomorfismo dado pelo Lema \ref{lema_isomorfismo_grupo_fundamental_Un}. Então $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo}$ é um isomorfismo.
 			
@@ -2693,56 +2673,40 @@
 	\end{prova}
 		
 	
-	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpletico{2n}} \to \inteiros$}
+	\section{Índice de Maslov $\mu : \caminhosespeciais{\gruposimpletico{2n}} \to \inteiros$}
 	
-	Na seção anterior mostrou-se que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas de $\gruposimpleticonaodegenerado{*}$, logo $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
+	Na seção anterior mostrou-se que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos de $\gruposimpleticonaodegenerado{*}$, logo $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
 	
-	Sejam $\caminhosfechadospontobase{Id}{\gruposimpletico{2n}}=\{\gamma\in \caminhossempontobase{\gruposimpletico{2n}}:\gamma(0)=\gamma(1)=Id \}$ e $\caminhospontobase{Id}^{\pm}(\gruposimpletico{2n})=\{\alpha\in \caminhossempontobase{\gruposimpletico{2n}}: \alpha(0) =Id,\; \alpha(1)\in \gruposimpleticonaodegenerado{*}\}$. Defina $\caminhosespeciais{\gruposimpletico{2n}}$ como sendo o conjunto de todos os caminhos $\gamma*\alpha:\intervalo\to\gruposimpletico{2n}$, onde $\gamma \in \caminhosfechadospontobase{Id}{\gruposimpletico{2n}}$ e $\alpha\in \caminhospontobase{Id}^{\pm}(\gruposimpletico{2n})$.
+	Seja $\caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ o conjunto de todos os caminhos contínuos $\alpha:\intervalo \to \gruposimpleticonaodegenerado{*}$, onde $\alpha(1) = W^{\pm}$, isto é, $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{-}$. Defina $\caminhosespeciais{\gruposimpletico{2n}}$ como sendo o conjunto de todos os caminhos $\psi=\gamma*\phi:\intervalo\to\gruposimpletico{2n}$, onde $\gamma(0)=Id $, $\gamma(1) \in \gruposimpleticonaodegenerado{*}$ e $\phi \in \caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$, onde $\psi(1)=\phi(0)$.
 	
 	\begin{observacao}
 		Note que, um dado $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ é um caminho contínuo, não necessariamente fechado e que conecta a identidade $Id\in\Sigma$ a um elemento de $\gruposimpleticonaodegenerado{\pm}$. Como $\Sigma$ é conexo por caminhos, poderia-se ter escolhido qualquer outro elemento desse conjunto e distinto de $Id$.
 	\end{observacao}
 	
 	\begin{definicao}
-		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial. Para cada caminho $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ existe um único levantamento $\alpha:[0,1] \to \real{}$ do caminho $\rho_{\psi} = \rho \circ \psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
+		(Índice de Maslov) Sejam $\exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial. Para cada caminho $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ existe um único levantamento $\alpha_{\psi}:[0,1] \to \real{}$ do caminho $\rho_{\psi} = \rho \circ \psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
 		$$
 		\xymatrix{
 			& & \real{}\ar[d]\ar[d]^{\text{exp}}
 			\\
-			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+			[0,1 ]\ar[urr]^{\alpha_{\psi}} \ar[r]_{\psi} & Sp(2n) \ar[r]_{\rho} & S^{1}
 		}
 		$$	
-		O índice de Maslov é definido por $\mu(\psi)= 2deg(\rho_{\psi}) = (\alpha(0) - \alpha(1))/\pi$.
+		O índice de Maslov é definido por $\mu(\psi)= 2deg(\rho_{\psi}) = (\alpha_{\psi}(0) - \alpha_{\psi}(1))/\pi$.
 	\end{definicao}
 	
 	\begin{observacao}
 		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=W^{-}$ e $\psi(1)=W^{+}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$ e $\rho_{\psi}(1) =\rho(W^{+}) = (-1)^{n}$. Suponha $n\in 2\mathbb{N}$ (o mesmo vale para $n$ ímpar). Então $\rho_{\psi}(0) =-1$ e $\rho_{\psi}(1)=1 $ e a imagem de $\rho_{\psi}$ envolve ao menos a metade do cícurlo, isto é, $\alpha(1)-\alpha(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
 	\end{observacao}
 	
-	\begin{definicao}
-		(Índice de Maslov) Sejam $exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
-		$$
-		\xymatrix{
-			& & \real{}\ar[d]\ar[d]^{\text{exp}}
-			\\
-			[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
-		}
-		$$	
-		Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. \vermelho{Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, então temos o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
-			Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por
-			$$
-			\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A}).
-			$$}
-	\end{definicao}
-	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
 	
 	\begin{teorema}
-		Seja $\psi\in \caminhosespeciais{\gruposimpletico{2n}} $. Então:
+		Seja $\psi=\gamma*\alpha \in \caminhosespeciais{\gruposimpletico{2n}} $. Então:
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
 			\item Dois caminhos $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}} $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
-			\item $sign(det(Id - A)) = (-1)^{\mu(\psi)-n}$.
+			\item $sign(det(Id-\gamma(1))) = (-1)^{\mu(\psi)-n}$.
 			\item Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
 			$$
 			\mu(\psi) = Ind(S) - n,
@@ -2752,28 +2716,12 @@
 	\end{teorema}
 	\begin{prova}
 		\begin{enumerate}
-			\item Como $\gruposimpletico{2n}$ é conexo por caminhos, então exite $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ tal que $\psi=\gamma*\alpha$, onde $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{\pm}$ e $\alpha(1) = W^{\pm}$. Como $\gruposimpleticonaodegenerado{\pm}$ são contráteis, por consequêcia do Corolário \ref{corolario_homomorfismo_trivial_grupos_simpletico}, então $\alpha$ é homotópicamente equivalente ao caminho constante, portanto $deg(\rho\circ\alpha)=0$. Além disso, da Definição \ref{definicao_aplicacao_grau}, tem-se que o grau da justaposição de caminhos é a soma dos seus graus. Com esse resultado e usando o fato de que $\rho\circ(\gamma*\alpha) = (\rho\circ\gamma)*(\rho\circ\alpha)$, tem-se
-			$$
-			\mu(\psi)=2deg(\rho\circ\psi)=2deg(\rho\circ(\gamma*\alpha))=2deg(\rho\circ\gamma)+2deg(\rho\circ\alpha) = 2deg(\rho\circ\gamma) \in \inteiros.
-			$$
+			\item Para todo $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ tem-se que $\rho_{\psi}(0) = \rho(\psi(0)) = 1$ e $\rho_{\psi}(1) = \rho(\psi(1)) = \rho(W^{\pm})$, onde $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1}$, o que implica em $\rho(W^{\pm}) \in \{ -1,1\}$. Sabe-se que $\rho_{\psi}(t) = \exp(i\alpha_{\psi}(t))$. Afirmo que $\alpha_{\psi}(0)=0$ e $\alpha_{\psi}(1)=k\pi$. De fato, para $t=0$ é imediato que $\alpha_{\psi}(0)=0$. Para $t=1$ tem-se que $\rho(W^{\pm}) = \pm 1$, o que implica que $\alpha(1) = k\pi$, para algum $k\in \inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in \inteiros$.
+						
+			\item Sejam $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}}$ e $h:\intervalo\times \intervalo \to \gruposimpletico{2n}$ uma homotopia entre eles tal que $h(t,0) = \psi_{1}(t)$ e $h(t,1) = \psi_{2}(t)$.
+			Considere a aplicação contínua $H:\intervalo\times \intervalo\to \circulo$ definida por $H(t,s) = (\rho\circ h)(t,s)$. Então $H(t,0) = \rho_{\psi_{1}}(t)$ e $H(t,0) = \rho_{\psi_{2}}(1)$, portanto $H$ é uma homotopia entre os caminhos $\rho_{\psi_{1}}$ e $\rho_{\psi_{2}}$. Da Proposição \ref{proposicao_grau_aplicacao} tem-se que $\rho_{\psi_{1}}\sim \rho_{\psi_{2}}$ se, e somente se $deg(\rho_{\psi_{1}})=deg(\rho_{\psi_{2}})$. Logo $\rho_{\psi_{1}}\sim \rho_{\psi_{2}}$ se, e somente se, $\mu(\psi_{1})=\mu(\psi_{2})$. 
 			
-			\item Sejam $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}}$. Da Proposição \ref{proposicao_grau_aplicacao} tem-se que $\rho\circ\psi_{1} \sim \rho\circ\psi_{2}$ se, e somente se $deg(\rho\circ\psi_{1} )=deg(\rho\circ\psi_{2} )$. Suponha que $\psi_{1}\sim \psi_{2}$. Como $\rho$ é contínua, então $\rho\circ$ o que implica que $\mu(\psi_{1})=\mu(\psi_{2})$. 
-			
-			Como $\alpha \sim \beta$, então $\classe{\alpha} = \classe{\beta} \in \grupofundamental{\gruposimpletico{2n}}$ e, pelo Teorema $\ref{teorema_aplicacao_rho}$, $\rho_{*}$ é um isomorfismo, com isso $\rho_{*}[\alpha] = \rho_{*}[\beta] \in \grupofundamental{\circulo}$. Pela Proposição $\ref{proposicao_gerador_grupo_fundamental_ciruclo}$ temos $deg(\alpha) = (\theta(1)-\theta(0))/2\pi = \varDelta(\beta)/2$, o que implica em $\varDelta(\alpha) = \varDelta(\beta)$. Portanto
-			$$
-			\begin{aligned}
-			\mu(\alpha) 
-			&= \varDelta(\alpha) - \varDelta(\alpha(1)) 
-			\\
-			&= \varDelta(\beta) - \varDelta(\alpha(1)) 
-			\\
-			&= \varDelta(\beta) - \varDelta(\beta(1)) 
-			\\
-			&= \mu(\beta).
-			\end{aligned}
-			$$
-			
-			\item Sejam $A \in \gruposimpletico{2n}$ e $\psi \in \mathcal{L}(\gruposimpletico{2n})$ tal que $\psi(0) = Id $ e $\psi(1) = A$ e o caminho contínuo $\gamma:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\psi(1) = \gamma(0)$ e $\gamma(1)= W^{\pm}$. Se $\psi(1) \in \gruposimpleticonaodegenerado{+}$, então $\gamma(1) = W^{+}$ e \vermelho{$\rho(W^{+}) = (-1)^{n}$}. Com isso $\mu(\psi) - n$ é par \vermelho{(não entendi esse argumento. No michelle e no salamon estão iguais.)}
+			\item Suponha que $det(Id-\gamma(1) )>0$, ou seja, $sign(det(Id-\gamma(1) )) = (-1)^{m}$ para algum $m\in 2\inteiros$. Com isso, $\psi(1)=W^{+}$ e $\rho_{\psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho(W^{+}) =1$, então $n\in 2\inteiros$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros$. Se $\rho(W^{+}) =-1$, então então $n\in 2\inteiros+1$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros+1$. Com argumentos análogos, pode-se mostrar que $sign(det(Id-\gamma(1) )) = (-1)^{\mu(\psi)-n }$ para $det(Id-\gamma(1) )<0$.
 			
 			\item Afirmo que, $\Psi(t)=\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $\Psi(t)^{t}\estruturacomplexa\Psi(t)= \estruturacomplexa$ para todo $t \in \reta$. Note que $(\estruturacomplexa S)^{t} 
 			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ temos a identidade 
@@ -4338,7 +4286,7 @@
 	O seguinte teorema é de grande importância pois é fundamental na caracterização do grupo simplético e investigação de sua topologia. Um caso mais geral que pode ser encontrado em $\cite{hoffman_kunze}$.
 	
 	\begin{teorema}\label{teorema_decomposicao_polar}
-		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ e essa decomposição é única.
+		(Decomposição polar) Se $(V, \produtointerno{}{})$ é um n-espaço vetorial real com um produto interno positivo-definido e $A \in \generalgroupreal{n}$, então podemos escrever $A=PO$ onde $P \in  \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$. Além disso, essa decomposição é única.
 	\end{teorema}
 	\begin{prova}
 		Por construção temos que $AA^{t}$ é normal. Então pelo Lema $\ref{lema_raiz_matriz_normal}$ existe uma única $P \in \matrizsimetricapositiva{n}$ tal que $P^{2} = AA^{t}$, isto é, $P = \sqrt{AA^{t}}$. Como $P$ é invertível, podemos definir $O = P^{-1}A$. Vejamos que $OO^{t} = P^{-1}AA^{t}(P^{-1})^{t} = P^{-1}AA^{t}(P^{t})^{-1} = P^{-1}AA^{t}P^{-1} = P^{-1}P^{2}P^{-1} = Id$, logo $O \in \matrizortogonal{n}$. Pela unicidade de $P$ temos que $O=P^{-1}A$ é única. Portanto $A=PO$, onde $P \in \matrizsimetricapositiva{n}$ e $O \in \matrizortogonal{n}$ são únicas.
