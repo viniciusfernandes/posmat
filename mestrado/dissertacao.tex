@@ -2696,10 +2696,12 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=W^{-}$ e $\psi(1)=W^{+}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$ e $\rho_{\psi}(1) =\rho(W^{+}) = (-1)^{n}$. Suponha $n\in 2\mathbb{N}$ (o mesmo vale para $n$ ímpar). Então $\rho_{\psi}(0) =-1$ e $\rho_{\psi}(1)=1 $ e a imagem de $\rho_{\psi}$ envolve ao menos a metade do cícurlo, isto é, $\alpha(1)-\alpha(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
+		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=W^{-}$ e $\psi(1)=W^{+}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$ e $\rho_{\psi}(1) =\rho(W^{+}) = (-1)^{n}$. Suponha $n\in 2\mathbb{N}$ (o mesmo vale para $n$ ímpar). Então $\rho_{\psi}(0) =-1$ e $\rho_{\psi}(1)=1 $ e a imagem de $\rho_{\psi}$ envolve ao menos a metade do cícurlo, isto é, $\alpha_{\psi}(1)-\alpha_{\psi}(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
 	\end{observacao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
+
+	\vermelho{(Fazer a independecia do índice de maslov na escolha da extensão).}
 	
 	\begin{teorema}
 		Seja $\psi=\gamma*\alpha \in \caminhosespeciais{\gruposimpletico{2n}} $. Então:
@@ -2724,7 +2726,7 @@
 			\item Suponha que $det(Id-\gamma(1) )>0$, ou seja, $sign(det(Id-\gamma(1) )) = (-1)^{m}$ para algum $m\in 2\inteiros$. Com isso, $\psi(1)=W^{+}$ e $\rho_{\psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho(W^{+}) =1$, então $n\in 2\inteiros$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros$. Se $\rho(W^{+}) =-1$, então então $n\in 2\inteiros+1$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros+1$. Com argumentos análogos, pode-se mostrar que $sign(det(Id-\gamma(1) )) = (-1)^{\mu(\psi)-n }$ para $det(Id-\gamma(1) )<0$.
 			
 			\item Afirmo que, $\Psi(t)=\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $\Psi(t)^{t}\estruturacomplexa\Psi(t)= \estruturacomplexa$ para todo $t \in \reta$. Note que $(\estruturacomplexa S)^{t} 
-			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ temos a identidade 
+			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ tem-se a identidade 
 			$$
 			\begin{aligned}
 			\estruturacomplexa (\estruturacomplexa S)^{k} 
@@ -2738,7 +2740,7 @@
 			\end{aligned}
 			$$
 			
-			Sabendo que $((\estruturacomplexa S)^{k})^{t} = (S^{t})^{k}(\estruturacomplexa^{t})^{k}$ temos
+			Sabendo que $((\estruturacomplexa S)^{k})^{t} = (S^{t})^{k}(\estruturacomplexa^{t})^{k}$ segue-se que
 			$$
 			\begin{aligned}
 			\Psi(t)^{t}\estruturacomplexa\Psi(t)
@@ -2756,11 +2758,86 @@
 			&=\estruturacomplexa.
 			\end{aligned}
 			$$
-			Portanto, $\Psi(t) \in \gruposimpletico{2n}$.
+			Portanto, $\Psi(t) \in \gruposimpletico{2n}$ para todo $t\in \reta$.
 			
-			Sejam $P:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $P(0) = Id$. Então a matriz $S(\alpha) = P^{t}(\alpha)SP(\alpha)$ é diagonalizável para todo $\alpha \in [0,1]$, pois é semelhante a $S$, que por hipótese é não-singular e simétrica.
+			Pode-se afirmar que $S$ é diagonalizável pois é uma matriz simétrica. Além disso, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP$ é diagonal (tal resultado pode ser encontrado em \cite{hoffman_kunze}). Seja $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = Id$ e $\mathcal{P}(1)=P$ e $\mathcal{S}:\intervalo\to \matrizquadcomplexa{2n}$ dada por $\mathcal{S}(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$. Do fato de que $\mathcal{P}^{t}(s)=\mathcal{P}^{-1}(s)$ tem-se que $det(\mathcal{S}(s)) =det(\mathcal{P}^{t}(s)S \mathcal{P}(s)) = det(S)$, portanto $\mathcal{S}(s)$ é diagonalizável e $\espectrooperador{\mathcal{S}(s)} = \espectrooperador{S}$ para todo $s \in [0,1]$. Além disso, $\mathcal{S}(s)^{t}$ é simétrica. De fato, $\mathcal{S}(s)^{t} = (\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S^{t}\mathcal{P}(s) = \mathcal{P}^{t}(s)S\mathcal{P}(s) = \mathcal{S}(s)$, o que implica em $\Psi_{s}(t)=\exp(t\estruturacomplexa \mathcal{S}(s)) \in \gruposimpletico{2n}$.
+
+			Dado um inteiro $k\geq 0$ temos que $\estruturacomplexa^{2k} = (-1)^{k}$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$. Com isso tem-se que
+			$$
+			\begin{aligned}
+			\exp(t\estruturacomplexa ) 
+			&= \sum_{k=0}^{\infty}\frac{(t\estruturacomplexa)^{k}}{k!} 
+			\\
+			&= \sum_{k=0}^{\infty}\frac{(t\estruturacomplexa)^{2k}}{(2k)!} + \sum_{k=0}^{\infty}\frac{(t\estruturacomplexa)^{2k+1}}{(2k+1)!}
+			\\
+			&=\sum_{k=0}^{\infty}\frac{(-1)^{k} t^{2k} }{(2k)!} Id+ \sum_{k=0}^{\infty}\frac{(-1)^{k} t^{2k+1}}{(2k+1)!}\estruturacomplexa
+			\\
+			&=\cos(t)Id+\sin(t)\estruturacomplexa
+			\\
+			&=
+			\left(
+			\begin{array}{cc}
+			(\cos(t))Id & (\sin(t))Id
+			\\
+			-(\sin(t))Id & (\cos(t))Id
+			\end{array}
+			\right),
+			\
+			\end{aligned}
+			$$
+			onde $\cos(t)Id$ é a matriz diagonal $n \times n$ cujos elementos são $\cos(t)$. Analogamente vale o mesmo para $\sin(t)Id$.
 			
-			Temos que $S(\alpha)^{t}$ é simétrica, pois $S(\alpha)^{t} = (P^{t}(\alpha)SP(\alpha))^{t} = P^{t}(\alpha)S^{t}P(\alpha) = P^{t}(\alpha)SP(\alpha) = S(\alpha)$, logo $\Psi_{\alpha}(t)=\exp(t\estruturacomplexa S(\alpha)) \in \gruposimpletico{2n}$.
+			Seja $v_{j}$ um auto-vetor de $\mathcal{S}(s)$ com auto-valor $\lambda_{j}$. Então $\Psi_{s}(1)v_{j} = \exp(\estruturacomplexa \mathcal{S}(s))v_{j}=\exp(\lambda_{j}\estruturacomplexa )v_{j} $. Como $\norma{S}<2\pi$ e $\espectrooperador{\mathcal{S}(s)} = \espectrooperador{S}$, então $|\lambda_{j}|<2\pi$ para $1\leq j\leq 2n$. Portanto $det(Id -
+			\exp(\lambda_{j}\estruturacomplexa ) ) \neq 0$, o que implica em $1\notin \espectrooperador{\Psi_{s}(1)}$ e $\Psi_{s}(1) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. Com isso, pode-se afirmar que o caminho contínuo $\Psi(1):\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $\Psi(1)(s) = \Psi_{s}(1)$, é tal que $\Psi(1)(\intervalo)\subseteq \gruposimpleticonaodegenerado{+}$ ou $\Psi(1)(\intervalo)\subseteq \gruposimpleticonaodegenerado{-}$.
+			
+			Como os conjuntos $\gruposimpleticonaodegenerado{\pm}$ são conexos por caminhos e $\grupofundamental{\gruposimpleticonaodegenerado{\pm}} = 0$ quando visto como subgrupo de $\grupofundamental{\gruposimpletico{2n}}$, então todo caminho em $\gruposimpleticonaodegenerado{\pm}$ é homotopicamente equivalente ao caminho $\Psi_{s}(t)=\exp(t\estruturacomplexa S)$, onde $S = diag\{a_{1}, \dots, a_{2n}\}$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{(1)}.a_{(2)} = a_{1}a_{n+1}\dots a_{n}a_{2n}$, tem-se que
+			$$
+			\begin{aligned}
+				(\estruturacomplexa S)^{2j} &=(-a_{(1)}.a_{(2)})^{j} Id
+				\\
+				(\estruturacomplexa S)^{2j+1} 
+				&= (-a_{(1)}.a_{(2)})^{j} 
+				\left(
+				\begin{array}{cc}
+				0 & a_{(2)}Id
+				\\
+				-a_{(1)}Id & 0  
+				\end{array}
+				\right),
+			\end{aligned}
+			$$
+			onde $a_{(1)}Id$ é a matriz $diag=\{a_{1}, \dots, a_{n}\}$. O análogo vale para $a_{(2)}Id$ . Com isso, tem-se a exponencial
+			$$
+			\begin{aligned}
+			\exp(\estruturacomplexa S) &= \sum_{j=0}^{\infty}\bigparenteses{\frac{(\estruturacomplexa S)^{j}}{(2j)!} + \frac{(\estruturacomplexa S)^{2j+1}}{(2j+1)!}}
+			\\
+			&= \sum_{j=0}^{\infty}\frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j)!}Id + \frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j+1)!}	\left(
+			\begin{array}{cc}
+			0 & a_{(2)}Id
+			\\
+			-a_{(1)}Id & 0  
+			\end{array}
+			\right).
+			\end{aligned}
+			$$
+			
+			Como $|a_{j}|<2\pi$, a análise pode ser reduzida ao caso em que  $|a_{j}|=\epsilon \in (0,2\pi)$ para $1\leq j \leq 2n$. Com isso, tem-se
+			\begin{enumerate}
+				\item \textbf{Caso} $a_{(1)} = a_{(2)} = (\epsilon,\dots,\epsilon)$:
+				$$
+					\exp(\estruturacomplexa S) = \cos(\epsilon)Id+ \sin(\epsilon)\estruturacomplexa=	\left(
+					\begin{array}{cc}
+					(\cos(\epsilon))Id & (\sin(\epsilon))Id
+					\\
+					-(\sin(\epsilon))Id & (\cos(\epsilon))Id
+					\end{array}
+					\right).
+					\
+				$$
+			\end{enumerate}
+			
+			Note que, nesse caso, $\exp(\estruturacomplexa S)$ é uma matriz ortogonal, logo $\exp(t\estruturacomplexa S) \in \matrizSimpleticaOrtogonal$. Pela propriedade do determinante da aplicação $\rho:\gruposimpletico{2n}\to \circulo$ tem-se que $\rho(\exp(t\estruturacomplexa S)) = det(\cos(t\epsilon)Id +i\sin(t\epsilon)) = \exp(it\epsilon) \in \circulo$.
+			
 			
 			Por hipótese temos $\norma{S}< 2\pi $ e $S(1) = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$. Com isso, $det(S(1)) = det(P^{t}(1)SP(1)) = det(S)< (2\pi)^{2n}$, logo $\lambda_{1} \dots \lambda_{2n}< \lambda^{2n} < 2\pi^{2n}$, onde $\lambda = \max\{|\lambda_{j}|\}$ e $0\leq j\leq 2n$. Dessa forma, podemos reduzir a análise às matrizes diagonais. Seja $0<\epsilon<2\pi$. Então, sem perda de generalidade, podemos assumir que $S = diag\{\epsilon, \dots, \epsilon, -\epsilon, \dots, -\epsilon \}$, onde temos $m$ termos negativos. Temos os casos $0\leq m\leq 2n$.
 			
