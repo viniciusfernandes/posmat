@@ -2303,11 +2303,11 @@
 		Até o momento, foram demonstrados muitos lemas técnicos afim de examinarmos algumas características da topologia de $\gruposimpletico{2n}$ com o objetivo de mostrar que esse conjunto é conexo. Esse resultado é fundamental para a construção da homologia de Floer, pois, para definirmos um complexo de cadeia nessa homologia devemos ter um homomorfismo graduado. Tal graduação será dada pelo índice de Maslov e este será relacionado ao grupo fundamental $\grupofundamental{\gruposimpletico{2n}}$. Por fim, a estratégia adotada necessita que $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$. Para mostrar esse fato precisamos da conexidade.
 	\end{observacao}
 
-	Seja $Det:\caminhossempontobase{\matrizunitaria{n}} \to \caminhossempontobase{\circulo}$ dada por $Det(\gamma)(t) = \det(\gamma(t))$. Essa aplicação esta bem-definida pois $\det(\matrizunitaria{n}) \subseteq \circulo$, pela Observação \ref{observacao_determinante_matriz_unitaria}. Note que, para um dado $\gamma \in \caminhossempontobase{\matrizunitaria{n}}$, tem-se que $Det(\gamma) \in \caminhossempontobase{\circulo}$. Tome $\gamma, \beta \in\caminhospontobasegeral{p}{\matrizunitaria{n}} $ com $\gamma(0)=\beta(0)$ e $\gamma(1)=\beta(1)$, e defina $h : \intervalo \times \intervalo \to \matrizunitaria{n}$ como sendo uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1)=\beta(t)$.
+	Seja $Det:\caminhossempontobase{\matrizunitaria{n}} \to \caminhossempontobase{\circulo}$ dada por $Det(\gamma)(t) = \det(\gamma(t))$. Essa aplicação esta bem-definida pois, pela Observação \ref{observacao_determinante_matriz_unitaria}, $\det(\matrizunitaria{n}) \subseteq \circulo$. Sejam $\gamma, \beta \in\caminhospontobasegeral{p}{\matrizunitaria{n}} $ tais que $\gamma(0)=\beta(0)$, $\gamma(1)=\beta(1)$, e $h : \intervalo \times \intervalo \to \matrizunitaria{n}$ uma homotopia entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1)=\beta(t)$.
 	
-	Definindo a função contínua $H = Det \circ h:\intervalo \times \intervalo \to \circulo$ por $H(t,s) = Det(h(t,s))$, temos que $H(t,0) = Det(h(t,0)) = Det(\gamma(t)) = Det(\gamma)(t)$ e $H(t,1) = Det(h(t,1)) = Det(\beta(t)) = Det(\beta)(t)$. Logo $H$ é uma homotopia entre $Det(\gamma)$ e $Det(\beta)$. Portanto, se $\gamma \sim \beta$ então $Det(\gamma) \sim Det(\beta)$.
+	Definina a função contínua $H = Det \circ h:\intervalo \times \intervalo \to \circulo$ por $H(t,s) = Det(h(t,s))$. Então $H(t,0) = Det(h(t,0)) = Det(\gamma(t)) = Det(\gamma)(t)$ e $H(t,1) = Det(h(t,1)) = Det(\beta(t)) = Det(\beta)(t)$. Logo $H$ é uma homotopia entre $Det(\gamma)$ e $Det(\beta)$. Portanto, se $\gamma \sim \beta$ então $Det(\gamma) \sim Det(\beta)$.
 	
-	Além disso, temos que a justaposição dos caminhos $Det(\gamma),Det(\beta) \in \caminhossempontobase{\circulo}$ é 
+	Além disso, a justaposição dos caminhos $Det(\gamma),Det(\beta) \in \caminhossempontobase{\circulo}$ é dada por
 	$$
 	(Det(\gamma)*Det(\beta)) (t)= Det(\gamma)(t)*Det(\beta) (t) = Det(\gamma*\beta)) (t).
 	$$
@@ -2322,7 +2322,7 @@
 		$Det_{*}: \grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ é um isomorfimo, logo $\grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 	\end{lema}
 	\begin{prova}
-		Como $Det$ é sobrejetora, por construção, então $Det_{*}$ é sobrejetora. Suponha que $Det_{*}$ não é injetora. Então existem $\classe{\gamma} , \classe{\beta} \in \grupofundamental{\matrizunitaria{n}}$ tais que $\classe{\gamma} \neq \classe{\beta}$ e $Det_{*}(\classe{\gamma})= Det_{*}(\classe{\beta} )$, isto é, $\classe{Det(\gamma)}= \classe{Det(\beta)}$. O que implica que $Det(\gamma) \sim Det(\beta)$ e $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$, contradizendo a hipótese de que $\classe{\gamma} \neq \classe{\beta}$. Portanto $Det_{*}$ é injetora e sobrejetora, logo é um isomorfismo e $\grupofundamental{\matrizunitaria{n}} \cong \grupofundamental{\circulo} \cong \inteiros$.
+		Como $Det$ é sobrejetora, por construção, então $Det_{*}$ é sobrejetora. Suponha que $Det_{*}$ não é injetora. Então existem $\classe{\gamma} , \classe{\beta} \in \grupofundamental{\matrizunitaria{n}}$ tais que $\classe{\gamma} \neq \classe{\beta}$ e $Det_{*}(\classe{\gamma})= Det_{*}(\classe{\beta} )$, isto é, $\classe{Det(\gamma)}= \classe{Det(\beta)}$. Com isso, tem-se que $Det(\gamma) \sim Det(\beta)$ e $\gamma \sim \beta$, logo $\classe{\gamma} = \classe{\beta}$, contradizendo a hipótese de que $\classe{\gamma} \neq \classe{\beta}$. Portanto $Det_{*}$ é injetora e sobrejetora, logo é um isomorfismo e $\grupofundamental{\matrizunitaria{n}} \cong \grupofundamental{\circulo} \cong \inteiros$.
 	\end{prova}
 	
 	\begin{teorema}
@@ -2696,12 +2696,21 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=W^{-}$ e $\psi(1)=W^{+}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$ e $\rho_{\psi}(1) =\rho(W^{+}) = (-1)^{n}$. Suponha $n\in 2\mathbb{N}$ (o mesmo vale para $n$ ímpar). Então $\rho_{\psi}(0) =-1$ e $\rho_{\psi}(1)=1 $ e a imagem de $\rho_{\psi}$ envolve ao menos a metade do cícurlo, isto é, $\alpha_{\psi}(1)-\alpha_{\psi}(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
+		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=Id$ e $\psi(1)=W^{-}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$. Se $n\in 2\mathbb{N}$, então $\rho_{\psi}(0) =1$ e $\rho_{\psi}(1)=-1$. Portanto a imagem de $\rho_{\psi}$ envolve ao menos a metade do cícurlo, isto é, $\alpha_{\psi}(1)-\alpha_{\psi}(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
 	\end{observacao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
 
-	\vermelho{(Fazer a independecia do índice de maslov na escolha da extensão).}
+	\begin{lema}
+		Se $\psi, \psi'\in \caminhosespeciais{\gruposimpletico{2n}}$ tais que $\psi=\gamma*\alpha$ e $\psi'=\gamma*\alpha'$, então $\mu(\psi) = \mu(\psi')$.
+	\end{lema}
+	\begin{prova}
+		Pelo Corolário \ref{corolario_homomorfismo_trivial_grupos_simpletico} tem-se que $\grupofundamental{\gruposimpleticonaodegenerado{*}} = \{\classe{0}\}$, logo $\alpha, \alpha'\in \classe{0}$ e $\alpha\sim \alpha'$. Com isso, $\psi\sim \psi'$ e $\mu(\psi) = 2deg(\rho_{\psi})=2deg(\rho_{\psi'})=\mu(\psi')$, pois caminhos homotopicamente equivalentes possuem o mesmo grau.
+	\end{prova}
+	
+	\begin{observacao}
+		O lema anterior afirma que o índice de Maslov de um caminhos $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ não depende da escolha de $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$.
+	\end{observacao}
 	
 	\begin{teorema}
 		Seja $\psi=\gamma*\alpha \in \caminhosespeciais{\gruposimpletico{2n}} $. Então:
@@ -2809,9 +2818,9 @@
 			onde $a_{(1)}Id$ é a matriz $diag=\{a_{1}, \dots, a_{n}\}$. O análogo vale para $a_{(2)}Id$ . Com isso, tem-se a exponencial
 			$$
 			\begin{aligned}
-			\exp(\estruturacomplexa S) &= \sum_{j=0}^{\infty}\bigparenteses{\frac{(\estruturacomplexa S)^{j}}{(2j)!} + \frac{(\estruturacomplexa S)^{2j+1}}{(2j+1)!}}
+			\exp(\estruturacomplexa S) &= \sum_{j=0}^{\infty}\frac{(\estruturacomplexa S)^{2j}}{(2j)!} + \sum_{j=0}^{\infty} \frac{(\estruturacomplexa S)^{2j+1}}{(2j+1)!}
 			\\
-			&= \sum_{j=0}^{\infty}\frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j)!}Id + \frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j+1)!}	\left(
+			&= \sum_{j=0}^{\infty}\frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j)!}Id + \sum_{j=0}^{\infty} \frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j+1)!}	\left(
 			\begin{array}{cc}
 			0 & a_{(2)}Id
 			\\
@@ -2821,134 +2830,65 @@
 			\end{aligned}
 			$$
 			
-			Como $|a_{j}|<2\pi$, a análise pode ser reduzida ao caso em que  $|a_{j}|=\epsilon \in (0,2\pi)$ para $1\leq j \leq 2n$. Com isso, tem-se
+			A hipótese de que $\norma{S}<2\pi$ implica em $|a_{j}|<2\pi$, o que permite a redução da análise ao caso em que  $|a_{j}|=\epsilon \in (0,2\pi)$ para $1\leq j \leq 2n$. Com isso, tem-se os seguintes casos:
 			\begin{enumerate}
-				\item \textbf{Caso} $a_{(1)} = a_{(2)} = (\epsilon,\dots,\epsilon)$:
+				\item \textbf{Caso $a_{(1)} = a_{(2)} = (\epsilon,\dots,\epsilon)$:}
 				$$
-					\exp(\estruturacomplexa S) = \cos(\epsilon)Id+ \sin(\epsilon)\estruturacomplexa=	\left(
-					\begin{array}{cc}
-					(\cos(\epsilon))Id & (\sin(\epsilon))Id
-					\\
-					-(\sin(\epsilon))Id & (\cos(\epsilon))Id
-					\end{array}
-					\right).
-					\
-				$$
-			\end{enumerate}
-			
-			Note que, nesse caso, $\exp(\estruturacomplexa S)$ é uma matriz ortogonal, logo $\exp(t\estruturacomplexa S) \in \matrizSimpleticaOrtogonal$. Pela propriedade do determinante da aplicação $\rho:\gruposimpletico{2n}\to \circulo$ tem-se que $\rho(\exp(t\estruturacomplexa S)) = det(\cos(t\epsilon)Id +i\sin(t\epsilon)) = \exp(it\epsilon) \in \circulo$.
-			
-			
-			Por hipótese temos $\norma{S}< 2\pi $ e $S(1) = diag\{\lambda_{1}, \dots, \lambda_{2n}\}$. Com isso, $det(S(1)) = det(P^{t}(1)SP(1)) = det(S)< (2\pi)^{2n}$, logo $\lambda_{1} \dots \lambda_{2n}< \lambda^{2n} < 2\pi^{2n}$, onde $\lambda = \max\{|\lambda_{j}|\}$ e $0\leq j\leq 2n$. Dessa forma, podemos reduzir a análise às matrizes diagonais. Seja $0<\epsilon<2\pi$. Então, sem perda de generalidade, podemos assumir que $S = diag\{\epsilon, \dots, \epsilon, -\epsilon, \dots, -\epsilon \}$, onde temos $m$ termos negativos. Temos os casos $0\leq m\leq 2n$.
-			
-			\textbf{Caso $m = 0$:} Nessa condição temo $S = diag\{\epsilon, \dots, \epsilon\}$. Dado um inteiro $k\geq 0$ temos que $\estruturacomplexa^{2k} = (-1)^{k}$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$. Com isso
-			$$
-			\begin{aligned}
-			\exp(\epsilon\estruturacomplexa ) 
-			&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{k}}{k!} 
-			\\
-			&= \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k}}{(2k)!} + \sum_{k=0}^{\infty}\frac{(\epsilon\estruturacomplexa)^{2k+1}}{(2k+1)!}
-			\\
-			&=\sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k} }{(2k)!} Id+ \sum_{k=0}^{\infty}\frac{(-1)^{k} \epsilon^{2k+1}}{(2k+1)!}\estruturacomplexa
-			\\
-			&=\cos(\epsilon)Id+\sin(\epsilon)\estruturacomplexa
-			\\
-			&=
-			\left(
-			\begin{array}{cc}
-			(\cos(\epsilon))_{n\times n} & (\sin(\epsilon))_{n\times n}
-			\\
-			-(\sin(\epsilon))_{n\times n} & (\cos(\epsilon))_{n\times n}
-			\end{array}
-			\right),
-			\
-			\end{aligned}
-			$$
-			onde $(\cos(\epsilon))_{n\times n}$ é a matriz diagonal $n \times n$ cujos elementos são $\cos(\epsilon)$ e o mesmo para $(\sin(\epsilon))_{n\times n}$. Portanto, temos 
-			$$
-			det(Id - \exp(\epsilon\estruturacomplexa ) )=(1-\cos(\epsilon))^{2n}+\sin^{2n}(\epsilon)\neq 0,
-			$$
-			logo $\exp(\epsilon\estruturacomplexa ) \in \gruposimpleticonaodegenerado{*}$. Com isso, dado $v \in \real{2n}$ temos $\exp(t\estruturacomplexa S)v = \exp(t\estruturacomplexa \epsilon)v$. Como $v$ é arbitrário, então $ \exp(t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$. 
-			
-			Vejamos que, permutando as linhas e colunas contendo de $\exp(\epsilon\estruturacomplexa)$ teremos uma matriz cujos blocos diagonais serão rotações do plasno $\real{2}$. Assim, supondo $(\exp(\epsilon\estruturacomplexa)_{ij})$ como sendo a representação matricial de $\exp(\epsilon\estruturacomplexa)$ e fazendo $i \mapsto 2n+1-i$ e $j \mapsto 2n+1-j$ para $n+1\leq i,j\leq 2n$, temos a matriz
-			
-			$$
-			\begin{aligned}
-				\exp(\epsilon\estruturacomplexa) 
-				&=
+				\begin{aligned}
+				\exp(t\estruturacomplexa S) 
+				&= 
+				\cos(t\epsilon)Id+ \sin(t\epsilon)\estruturacomplexa
+				\\
+				&=	
 				\left(
-				\begin{array}{ccccc}
-				\cos(\epsilon) & 0 & \dots & 0 & -\sin(\epsilon)
+				\begin{array}{cc}
+				\cos(t\epsilon)Id & \sin(t\epsilon)Id
 				\\
-				0 & \cos(\epsilon)  & \dots & -\sin(\epsilon) & 0
-				\\
-				\vdots & \vdots & \ddots & \vdots & \vdots 
-				\\
-				0 & \sin(\epsilon) & \dots & \cos(\epsilon) & 0
-				\\
-				\sin(\epsilon) & 0 & \dots & 0 & \cos(\epsilon)
+				-\sin(t\epsilon)Id & \cos(t\epsilon)Id
 				\end{array}
-				\right) 
+				\right)
 				\\
 				&\sim
 				\left(
-				\begin{array}{ccccc}
-				\cos(\epsilon) & -\sin(\epsilon) & \dots & 0 & 0
-				\\
-				\sin(\epsilon) & \cos(\epsilon)  & \dots & 0& 0
-				\\
-				\vdots & \vdots & \ddots & \vdots & \vdots 
-				\\
-				0 & 0& \dots & \cos(\epsilon) & \sin(\epsilon) 
-				\\
-				0 & 0 & \dots & -\sin(\epsilon)  & \cos(\epsilon)
-				\end{array}
-				\right)
-				\\
-				&= 
-				\left(
 				\begin{array}{cccc}
-				r(\epsilon) & 0 &\dots & 0
+				r(-t\epsilon) & 0 &\dots & 0
 				\\
-				0 & r(\epsilon) & \dots & 0
+				0 & r(-t\epsilon) & \dots & 0
 				\\
 				\vdots & \vdots & \ddots & \vdots
 				\\
-				0 & \dots & r(-\epsilon) & 0
+				0 & \dots & r(-t\epsilon) & 0
 				\\
-				0 & \dots & 0 & r(-\epsilon) 
+				0 & \dots & 0 & r(-t\epsilon) 
 				\end{array}
 				\right)
 				\\
-				&=R(\epsilon),
-			\end{aligned}
+				&=R(-t\epsilon),
+				\end{aligned}
+				$$
+			\end{enumerate}
+			onde se permutou as linhas e colunas de $\exp(t\estruturacomplexa S)$ para a obtenção de $R(-t\epsilon)$, que é a matriz com $n$ blocos diagonais $r(-t\epsilon)$, onde 
 			$$
-			onde $r(\epsilon)$ é a matriz de rotação no plano $\real{2}$ por de ângulo $\epsilon$. Com isso, $det(R(\epsilon)) = det(r(\epsilon))^{n}det(r(-\epsilon))^{n} = det(r(\epsilon))^{2n} = 1$. Além disso, temos que $R(\epsilon)^{t} = R(-\epsilon) = R(\epsilon)^{-1}$, portanto $R(\epsilon) \in \matrizortogonal{2n}$. Como $r(\epsilon)$ é uma matriz $2\times 2$ de rotação do plano $\real{2}$, então 
-			
-			 Como $\exp(\epsilon\estruturacomplexa)$ e $R(\epsilon)$ são similares, então $\exp(\epsilon\estruturacomplexa) = det(R(\epsilon)) = 1$$\rho(\exp(t\estruturacomplexa S)) = exp(-it\epsilon)????????????????$
-			
-			\textbf{Caso $m = 2n$:} Nessa condição temos $S = diag\{-\epsilon, \dots, -\epsilon \}$. Com um cálculo análogo ao caso m=0 e fazendo $\epsilon \mapsto -\epsilon$ teremos $\exp(-t\estruturacomplexa S) = \exp(-t\estruturacomplexa \epsilon)$. Então
-			
-			$$
-			\exp(-\epsilon \estruturacomplexa)
-			=\left(
+			r(-t\epsilon) = \left(
 			\begin{array}{cc}
-			\cos(-\epsilon) & \sin(-\epsilon)
+			\cos(t\epsilon) & \sin(t\epsilon)
 			\\
-			-\sin(-\epsilon) & \cos(-\epsilon)
+			-\sin(t\epsilon) & \cos(t\epsilon)
 			\end{array}
 			\right)
-			=\left(
-			\begin{array}{cc}
-			\cos(\epsilon) & -\sin(\epsilon)
-			\\
-			\sin(\epsilon) & \cos(\epsilon)
-			\end{array}
-			\right),
-			$$
-			logo $det(Id - \exp(-\epsilon\estruturacomplexa ) ) \neq 0 $ pois $\epsilon \notin \{0,2\pi \}$. Portanto, $\exp(-t\estruturacomplexa \epsilon) \in \gruposimpleticonaodegenerado{*}$.
+			$$ 
+			é a matriz $2\times 2$ de rotação por um ângulo $-i\epsilon$ no plano $\real{2}$. Realizando as identificações $r(-t\epsilon) \mapsto \exp(-it\epsilon)$ e $R(-t\epsilon)\mapsto \exp(-it\epsilon)Id$, tem-se o determinante $det_{\complexo{}}(R(-t\epsilon)) = \exp(-int\epsilon)\in \circulo$.
 			
-			\textbf{Caso $0<m<2n$:}?????????
+			Note que, $\exp(\estruturacomplexa S)$ é uma matriz ortogonal e, como foi mostrado anteriormente, é uma transformação simplética, logo $\exp(t\estruturacomplexa S) \in \matrizSimpleticaOrtogonal$. Pela propriedade do determinante da aplicação $\rho:\gruposimpletico{2n}\to \circulo$ tem-se que 
+			$$
+			\rho(\exp(t\estruturacomplexa S)) = det_{\complexo{}}(\cos(t\epsilon)Id +i\sin(t\epsilon)\estruturacomplexa)=det_{\complexo{}}(R(-t\epsilon)) = \exp(-int\epsilon).
+			$$
+			
+			Portanto $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = -n$. Como o número de auto-valores negativos de $Ind(S)$ é zero, então  $ Ind(S)-n=\mu(\Psi_{s})$, como desejávamos.
+			
+			\item \textbf{Caso $a_{(1)} = a_{(2)} = (-\epsilon,\dots,-\epsilon)$:} esse caso é análogo ao anterior, contudo, tem-se $R(t\epsilon)$ e $det_{\complexo{}}(R(t\epsilon)) = \exp(int\epsilon)$, o que implica em $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = n$. Como $Ind(S) = 2n$, então $ Ind(S)-n = 2n-n = n = \mu(\Psi_{s})$, como desejávamos.
+			
+			\item \textbf{Caso $a_{(1)}(\epsilon,\dots,\epsilon), \; a_{(2)} = (-\epsilon,\dots,-\epsilon)$:}????????
 		\end{enumerate}
 	\end{prova}
 	
