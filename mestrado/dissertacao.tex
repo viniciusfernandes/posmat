@@ -2348,7 +2348,7 @@
 	
 	Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $L_{V}$ o conjunto dos subespaços Lagrangianos de $V$ e   $\caminhoslagrangianosV{a}{b}= \{\gamma:[a,b]\to L_{V}\times L_{V}\}$ o conjunto de todos os caminhos contínuos e suaves por partes em $L_{V} \times L_{V}$. Como topologia de $\caminhoslagrangianosV{a}{b}$ vamos adotar a topologia compacto-aberta (veja $\cite{munkres_topology}$). Um índice de Maslov é uma aplicação $\mu:\caminhoslagrangianosV{a}{b}\to \inteiros$ satisfazendo as seguintes propriedades:
 	\begin{enumerate}
-		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ definida por $g(t)=at+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
+		\item \textbf{\textit{(Invariância por Translação)}} Seja $g: [a,b] \to [ak+l, bk+l]$ definida por $g(t)=kt+l$, para $k>0$ e $l\geq 0$. Então, dado $\gamma\in \caminhoslagrangianosV{ak+l}{bk+l}$ temos que 
 		$$
 		\mu(\gamma) = \mu(\gamma\circ g).
 		$$
@@ -2712,11 +2712,11 @@
 		O lema anterior afirma que o índice de Maslov de um caminhos $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ não depende da escolha de $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$.
 	\end{observacao}
 	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_indice_maslov}
 		Seja $\psi=\gamma*\alpha \in \caminhosespeciais{\gruposimpletico{2n}} $. Então:
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
-			\item Dois caminhos $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}} $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
+			\item \label{homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}} $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
 			\item $sign(det(Id-\gamma(1))) = (-1)^{\mu(\psi)-n}$.
 			\item Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
 			$$
@@ -2863,32 +2863,45 @@
 				\end{array}
 				\right)
 				\\
-				&=R(-t\epsilon),
+				&=R(t\epsilon),
 				\end{aligned}
 				$$
+				onde se permutou as linhas e colunas de $\exp(t\estruturacomplexa S)$ para a obtenção de $R(t\epsilon)$, que é a matriz com $n$ blocos diagonais $r(-t\epsilon)$, onde 
+				$$
+				r(-t\epsilon) = \left(
+				\begin{array}{cc}
+				\cos(t\epsilon) & \sin(t\epsilon)
+				\\
+				-\sin(t\epsilon) & \cos(t\epsilon)
+				\end{array}
+				\right)
+				$$ 
+				é a matriz $2\times 2$ de rotação por um ângulo $-t\epsilon <0$ no plano $\real{2}$. Realizando as identificações $r(-t\epsilon) \mapsto \exp(-it\epsilon)$ e $R(t\epsilon)\mapsto \exp(-it\epsilon)Id$, tem-se o determinante $det_{\complexo{}}(R(t\epsilon)) = \exp(-int\epsilon)\in \circulo$.
+				
+				Note que, $\exp(t\estruturacomplexa S)$ é uma matriz ortogonal e, como foi mostrado anteriormente, é uma transformação simplética, logo $\exp(t\estruturacomplexa S) \in \matrizSimpleticaOrtogonal$. Pela propriedade do determinante da aplicação $\rho:\gruposimpletico{2n}\to \circulo$ tem-se que 
+				$$
+				\rho(\exp(t\estruturacomplexa S)) = det_{\complexo{}}(\cos(t\epsilon)Id +i\sin(t\epsilon)\estruturacomplexa)=det_{\complexo{}}(R(t\epsilon)) = \exp(-int\epsilon).
+				$$
+				
+				Portanto $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = -n$. Como o número de auto-valores negativos de $Ind(S)$ é zero, então  $ Ind(S)-n=\mu(\Psi_{s})$, como desejávamos.
+				
+				\item \textbf{Caso $a_{(1)} = a_{(2)} = (-\epsilon,\dots,-\epsilon)$:} esse caso é análogo ao anterior, contudo, tem-se que  $R(t\epsilon)$,  $r(t\epsilon)$ é a matriz $2\times 2$ de rotação por um ângulo de $t\epsilon>0$ no plano $\real{2}$ e $det_{\complexo{}}(R(t\epsilon)) = \exp(int\epsilon)$. Isso implica em $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = n$. Como $Ind(S) = 2n$, então $ Ind(S)-n = 2n-n = n = \mu(\Psi_{s})$, como desejávamos.
+				
+				\item \textbf{Caso $a_{(1)}(\epsilon,\dots,\epsilon), \; a_{(2)} = (-\epsilon,\dots,-\epsilon)$:} Nesse caso tem-se
+				$$
+				\exp(t\estruturacomplexa S ) = 
+				\left(
+				\begin{array}{cc}
+				\cosh(t\epsilon)Id & \sinh(t\epsilon)Id
+				\\
+				-\sinh(t\epsilon)Id & \cosh(t\epsilon)Id
+				\end{array}
+				\right).
+				$$
+				
+				Além disso, o sistema $\exp(t\estruturacomplexa S ) v = \lambda(t\epsilon) v$ tem como solução os auto-valores $\lambda \in \{\cosh(t\epsilon)\pm i\sinh(t\epsilon)\}$. Portanto $\exists t\in \intervalo$ tal que $\lambda(t\epsilon) \notin \circulo$ e $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$. Como a aplicação $\rho$ depende apenas dos auto-valores em $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$, então $\mu(\Psi_{s}) = 0$. Como não há auto-valores negativos, então $Ind(S)=0$, logo $Ind(S)=\mu(\Psi_{s})$.
 			\end{enumerate}
-			onde se permutou as linhas e colunas de $\exp(t\estruturacomplexa S)$ para a obtenção de $R(-t\epsilon)$, que é a matriz com $n$ blocos diagonais $r(-t\epsilon)$, onde 
-			$$
-			r(-t\epsilon) = \left(
-			\begin{array}{cc}
-			\cos(t\epsilon) & \sin(t\epsilon)
-			\\
-			-\sin(t\epsilon) & \cos(t\epsilon)
-			\end{array}
-			\right)
-			$$ 
-			é a matriz $2\times 2$ de rotação por um ângulo $-i\epsilon$ no plano $\real{2}$. Realizando as identificações $r(-t\epsilon) \mapsto \exp(-it\epsilon)$ e $R(-t\epsilon)\mapsto \exp(-it\epsilon)Id$, tem-se o determinante $det_{\complexo{}}(R(-t\epsilon)) = \exp(-int\epsilon)\in \circulo$.
 			
-			Note que, $\exp(\estruturacomplexa S)$ é uma matriz ortogonal e, como foi mostrado anteriormente, é uma transformação simplética, logo $\exp(t\estruturacomplexa S) \in \matrizSimpleticaOrtogonal$. Pela propriedade do determinante da aplicação $\rho:\gruposimpletico{2n}\to \circulo$ tem-se que 
-			$$
-			\rho(\exp(t\estruturacomplexa S)) = det_{\complexo{}}(\cos(t\epsilon)Id +i\sin(t\epsilon)\estruturacomplexa)=det_{\complexo{}}(R(-t\epsilon)) = \exp(-int\epsilon).
-			$$
-			
-			Portanto $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = -n$. Como o número de auto-valores negativos de $Ind(S)$ é zero, então  $ Ind(S)-n=\mu(\Psi_{s})$, como desejávamos.
-			
-			\item \textbf{Caso $a_{(1)} = a_{(2)} = (-\epsilon,\dots,-\epsilon)$:} esse caso é análogo ao anterior, contudo, tem-se $R(t\epsilon)$ e $det_{\complexo{}}(R(t\epsilon)) = \exp(int\epsilon)$, o que implica em $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = n$. Como $Ind(S) = 2n$, então $ Ind(S)-n = 2n-n = n = \mu(\Psi_{s})$, como desejávamos.
-			
-			\item \textbf{Caso $a_{(1)}(\epsilon,\dots,\epsilon), \; a_{(2)} = (-\epsilon,\dots,-\epsilon)$:}????????
 		\end{enumerate}
 	\end{prova}
 	
@@ -2900,6 +2913,13 @@
 		\mu(x) = Ind(x) - n.
 		$$
 	\end{corolario}	
+
+	\section{O índice de Maslov $\mu$ satisfaz a axiomatização}
+	\begin{enumerate}
+		\item \textbf{\textit{(Invariância por Translação)}} Sejam $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$, $\rho_{\psi} = \rho \circ \psi:\intervalo \to \circulo$ e $g:\intervalo\to [b, b+1]$ a translação definida por $g(t)=t+b$. Na Proposição \ref{proposicao_gerador_grupo_fundamental_ciruclo} mostrou-se que $\grupofundamental{\circulo} = \gerador{\classe{\gamma}}$, onde $\gamma(t) = \exp(i2\pi t)$. Se para algum $k\in \inteiros$ tem-se que $\rho_{\psi} \in \classe{\gamma^{k}}$, então $\rho_{\psi}  \sim \gamma^{k}$, onde $\gamma^{k}(t) = \exp(i2\pi kt)$ e $deg(\rho_{\psi} ) = deg(\gamma^{k})=k$. Com isso, $(\gamma^{k}\circ g )(t) = \exp(i2\pi kg(t))$, o que implica em $deg(\gamma^{k}\circ g ) = (2\pi kg(1) -2\pi kg(0))/2\pi = k(b+1)-kb = k = deg(\gamma^{k})$. Portanto $\rho_{\psi} \sim \gamma^{k} \sim \gamma^{k}\circ g$, logo o grau de $\rho_{\psi} $ não depende da translação $g$ e $\mu(\psi\circ g) = 2deg(\rho_{\psi} \circ g) = 2deg(\rho_{\psi} ) = \mu(\psi)$.
+		
+		\item \textbf{\textit{(Invariância por Homotopia)}} Foi demonstrado no Item \ref{homotopia_caminhos_teorema_indice_maslov} do Teorema \ref{teorema_indice_maslov}.
+	\end{enumerate}
 	
 	\chapter{Espaços de Sobolev}
 	\section{Distribuições - Motivação e Definições}
