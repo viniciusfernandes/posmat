@@ -2358,7 +2358,7 @@
 			$$
 			para toda $A\in \gruposimpletico{V_{1}}$.
 			
-			\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
+			\item \label{item_produto_rho} \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
 			$$
 			\rho(A) = \rho(A_{1})\rho(A_{2})
 			$$
@@ -2720,12 +2720,23 @@
 			
 			\item \textbf{(Naturalidade)} Pelo Item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Com isso, $\mu(\phi\psi\phi^{-1})= 2deg(\rho_{\phi\psi\phi^{-1}} )=2deg(\rho_{\psi})=\mu(\psi)$.
 			
-			\item \textbf{(Homotopia)} Sejam $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}}$ e $h:\intervalo\times \intervalo \to \gruposimpletico{2n}$ uma homotopia entre eles tal que $h(t,0) = \psi_{1}(t)$ e $h(t,1) = \psi_{2}(t)$.
+			\item \textbf{(Homotopia)} Sejam $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}}$ e $h:\intervalo\times \intervalo \to \gruposimpletico{2n}$ uma homotopia tal que $h(t,0) = \psi_{1}(t)$ e $h(t,1) = \psi_{2}(t)$.
 			Considere a aplicação contínua $H:\intervalo\times \intervalo\to \circulo$ definida por $H(t,s) = (\rho\circ h)(t,s)$. Então $H(t,0) = \rho_{\psi_{1}}(t)$ e $H(t,0) = \rho_{\psi_{2}}(1)$, portanto $H$ é uma homotopia entre os caminhos $\rho_{\psi_{1}}$ e $\rho_{\psi_{2}}$. Da Proposição \ref{proposicao_grau_aplicacao} tem-se que $\rho_{\psi_{1}}\sim \rho_{\psi_{2}}$ se, e somente se $deg(\rho_{\psi_{1}})=deg(\rho_{\psi_{2}})$. Logo $\rho_{\psi_{1}}\sim \rho_{\psi_{2}}$ se, e somente se, $\mu(\psi_{1})=\mu(\psi_{2})$. 
 			
 			\item \textbf{(Nullidade)} Como  $\espectrooperador{\psi(s)}\cap \circulo = \emptyset$ para todo $s\in \intervalo$, então pelo Item \ref{item_normalizacao_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\psi(t)) = \pm 1$ para todo $t\in \intervalo$. Com isso, $deg(\rho_{\psi}) = 0$ e $\mu(\psi) = 0$.
 			
-			\item \textbf{(Produto)} 
+			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{2n} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Se $\Psi=(\psi_{p}, \psi_{q}) \in \caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}}$, então pelo Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que $\rho(\Psi(t))=\rho(\psi_{p}(t))\rho(\psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\psi_{p}(t))=\exp(i\alpha_{\psi_{p}}(t))$ e $\rho(\psi_{q}(t))=\exp(i\alpha_{\psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\psi_{p}}+\alpha_{\psi_{q}})(t))$, e com isso, tem-se que 
+			$$
+			\begin{aligned}
+			\mu(\Psi) &= 2deg(\rho_{\Psi}) 
+			\\
+			&= \frac{1}{2}\big(\alpha_{\psi_{p}}(1)-\alpha_{\psi_{p}}(1) -\alpha_{\psi_{q}}(0)+\alpha_{\psi_{q}}(0) \big) 
+			\\
+			&= 2deg(\rho_{\psi_{p}}) +2deg(\rho_{\psi_{p}}) 
+			\\
+			&=\mu(\psi_{p})+\mu(\psi_{q}).
+			\end{aligned}
+			$$
 			
 			\item \textbf{(Determinante)} Suponha que $det(Id-\gamma(1) )>0$, ou seja, $sign(det(Id-\gamma(1) )) = (-1)^{m}$ para algum $m\in 2\inteiros$. Com isso, $\psi(1)=W^{+}$ e $\rho_{\psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho(W^{+}) =1$, então $n\in 2\inteiros$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros$. Se $\rho(W^{+}) =-1$, então então $n\in 2\inteiros+1$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros+1$. Com argumentos análogos, pode-se mostrar que $sign(det(Id-\gamma(1) )) = (-1)^{\mu(\psi)-n }$ para $det(Id-\gamma(1) )<0$.
 			
@@ -2894,10 +2905,10 @@
 				\right).
 				$$
 				
-				Além disso, o sistema $\exp(t\estruturacomplexa S ) v = \lambda(t\epsilon) v$ tem como solução os auto-valores $\lambda \in \{\cosh(t\epsilon)\pm i\sinh(t\epsilon)\}$. Portanto $\exists t\in \intervalo$ tal que $\lambda(t\epsilon) \notin \circulo$ e $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$. Como a aplicação $\rho$ depende apenas dos auto-valores em $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$, então $\mu(\Psi_{s}) = 0$. Como não há auto-valores negativos, então $Ind(S)=0$, logo $Ind(S)=\mu(\Psi_{s})$.
+				Além disso, o sistema $\exp(t\estruturacomplexa S ) v = \lambda(t\epsilon) v$ tem como solução os auto-valores $\lambda \in \{\cosh(t\epsilon)\pm i\sinh(t\epsilon)\}$. Portanto $\exists t\in \intervalo$ tal que $\lambda(t\epsilon) \notin \circulo$ e $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$. Como a aplicação $\rho$ depende apenas dos auto-valores em $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$, então $\mu(\Psi_{s}) = 0$. Como não há auto-valores negativos, então $Ind(S)=0$ e $Ind(S)=\mu(\Psi_{s})$.
 			\end{enumerate}
 	
-			\item \textbf{(Inverso)} O Lema \ref{lema_inversa_caminho_especial} mostra que $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{2n}}$. Além disso, se $\rho_{\psi}(t) = \exp(i\alpha_{\psi}(t))$, então $\rho_{\psi^{-1}}(t) = (\rho_{\psi}(t))^{-1} = \exp(-i\alpha_{\psi}(t))$. Logo 
+			\item \textbf{(Inverso)} O Lema \ref{lema_inversa_caminho_especial} mostra que $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{2n}}$. Como $\rho_{\psi}(t) = \exp(i\alpha_{\psi}(t))$, então $\rho_{\psi^{-1}}(t) = (\rho_{\psi}(t))^{-1} = \exp(-i\alpha_{\psi}(t))$. Logo 
 			$$
 			\mu(\psi^{-1})=2deg(\rho_{\psi^{-1}}) = (-\alpha_{\psi}(1)+\alpha_{\psi}(0))/\pi = -2deg(\rho_{\psi}) = -\mu(\psi).
 			$$
@@ -2913,12 +2924,6 @@
 		$$
 	\end{corolario}	
 
-	\section{O índice de Maslov $\mu$ satisfaz a axiomatização}
-	\begin{enumerate}
-		\item \textbf{\textit{(Invariância por Translação)}} 
-		\item \textbf{\textit{(Invariância por Homotopia)}} Foi demonstrado no Item \ref{homotopia_caminhos_teorema_indice_maslov} do Teorema \ref{teorema_indice_maslov}.
-	\end{enumerate}
-	
 	\chapter{Espaços de Sobolev}
 	\section{Distribuições - Motivação e Definições}
 	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, na descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
