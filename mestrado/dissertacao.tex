@@ -2685,8 +2685,21 @@
 	\begin{prova}
 		Tem-se que $(\psi^{-1}\psi)(t)=Id$, o que implica em $\psi^{-1}(t)=(\psi(t))^{-1}$ para todo $t\in \intervalo$. Como a inversa de toda transformação simplética é uma transformação simplética, então $\psi^{-1}(\intervalo) \subset \gruposimpletico{2n}$. Pelo Lema \ref{lema_caracterizacao_espectro_semelhante}, tem-se que $\espectrooperador{\psi^{-1}(1)} = \espectrooperador{\psi(1)}$. Como $1\notin \espectrooperador{\psi(1)}$, então $1\notin \espectrooperador{\psi^{-1}(1)}$. Portanto $\psi^{-1}(1)\in \gruposimpleticonaodegenerado{*}$ e $\psi^{-1}\in \caminhosespeciais{\gruposimpletico{2n}}$.
 		
-		Note que, $\rho(\psi^{-1}(t))$ é a produtória do inverso dos auto-valores de $\psi(t)$. Como a produtória do inverso é o inverso da produtória, então $\rho(\psi^{-1}(t)) = \rho(\psi(t))^{-1}$ para todo $t\in \intervalo$, como desejávamos. 
-	\end{prova}
+		Denote os auto-espaços de $\psi(t)$ e $\psi^{-1}(t)$ associados aos seus auto-valores $\lambda$ e $\lambda^{-1}$ por $E_{\lambda}$ e $F_{\lambda^{-1}}$, respectivamente. Dado $v \in E_{\lambda}^{+}$ tem-se que $v\in F_{\lambda^{-1}}^{+}$ pois $\psi^{-1}(t)v=\lambda^{-1}v$ e $Q(v)>0$, portanto $E_{\lambda}^{+}\subseteq F_{\lambda^{-1}}^{+}$. A inclusão $E_{\lambda}^{+}\supseteq F_{\lambda^{-1}}^{+}$ segue de um argumento análogo. Logo $E_{\lambda}^{+} = F_{\lambda^{-1}}^{+}$ e $m_{+}^{\psi}(\lambda) = m_{+}^{\psi^{-1}}(\lambda^{-1})$. Note que, o número de pares de auto-valores negativos $m_{0}$ é igual para $\lambda$ e $\lambda^{-1}$. Então
+		$$
+		\begin{aligned}
+			(\rho(\psi^{-1}(t))) 
+			&= (-1)^{m_{0}}\prod (1/\lambda)^{m_{+}^{\psi^{-1}}(1/\lambda)}
+			\\
+			&=(-1)^{-m_{0}}\prod \lambda^{-m_{+}^{\psi}(\lambda)}
+			\\
+			&=\bigparenteses{(-1)^{m_{0}}\prod \lambda^{m_{+}^{\psi}(\lambda)}}^{-1}
+			\\
+			&	(\rho(\psi(t))) ^{-1},
+		\end{aligned}
+		$$
+		para todo $t \in \intervalo$.
+		\end{prova}
 	
 	
 	\begin{teorema}\label{teorema_indice_maslov}
