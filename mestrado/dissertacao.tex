@@ -2364,7 +2364,7 @@
 			$$
 			para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
 			
-			\item \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
+			\item \label{item_determinante_rho} \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
 			$$
 			\rho(A) = det(X+iY), \text{onde} \;	
 			A=\left(
@@ -2738,12 +2738,12 @@
 			
 			\item \textbf{(Nullidade)} Como  $\espectrooperador{\psi(s)}\cap \circulo = \emptyset$ para todo $s\in \intervalo$, então pelo Item \ref{item_normalizacao_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\psi(t)) = \pm 1$ para todo $t\in \intervalo$. Com isso, $deg(\rho_{\psi}) = 0$ e $\mu(\psi) = 0$.
 			
-			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{2n} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Se $\Psi=(\psi_{p}, \psi_{q}) \in \caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}}$, então pelo Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que $\rho(\Psi(t))=\rho(\psi_{p}(t))\rho(\psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\psi_{p}(t))=\exp(i\alpha_{\psi_{p}}(t))$ e $\rho(\psi_{q}(t))=\exp(i\alpha_{\psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\psi_{p}}+\alpha_{\psi_{q}})(t))$, e com isso, tem-se que 
+			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{2n} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Se $\Psi=(\psi_{p}, \psi_{q}) \in \caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}}$, então pelo Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que $\rho(\Psi(t))=\rho(\psi_{p}(t))\rho(\psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\psi_{p}(t))=\exp(i\alpha_{\psi_{p}}(t))$ e $\rho(\psi_{q}(t))=\exp(i\alpha_{\psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\psi_{p}}+\alpha_{\psi_{q}})(t))$, e com isso tem-se que 
 			$$
 			\begin{aligned}
 			\mu(\Psi) &= 2deg(\rho_{\Psi}) 
 			\\
-			&= \frac{1}{2}\big(\alpha_{\psi_{p}}(1)-\alpha_{\psi_{p}}(1) -\alpha_{\psi_{q}}(0)+\alpha_{\psi_{q}}(0) \big) 
+			&= \frac{1}{2}\big(\alpha_{\psi_{p}}(1)+\alpha_{\psi_{q}}(1) -\alpha_{\psi_{p}}(0)-\alpha_{\psi_{q}}(0) \big) 
 			\\
 			&= 2deg(\rho_{\psi_{p}}) +2deg(\rho_{\psi_{p}}) 
 			\\
@@ -2751,7 +2751,7 @@
 			\end{aligned}
 			$$
 			
-			\item \textbf{(Determinante)} Suponha que $det(Id-\gamma(1) )>0$, ou seja, $sign(det(Id-\gamma(1) )) = (-1)^{m}$ para algum $m\in 2\inteiros$. Com isso, $\psi(1)=W^{+}$ e $\rho_{\psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho(W^{+}) =1$, então $n\in 2\inteiros$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros$. Se $\rho(W^{+}) =-1$, então então $n\in 2\inteiros+1$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$, e podemos definir $m=\mu(\psi)-n \in 2\inteiros+1$. Com argumentos análogos, pode-se mostrar que $sign(det(Id-\gamma(1) )) = (-1)^{\mu(\psi)-n }$ para $det(Id-\gamma(1) )<0$.
+			\item \textbf{(Determinante)} Suponha que $\rho_{\psi}(t)=\exp(i\alpha_{\psi}(t))$ e que $det(Id-\gamma(1) )>0$, o que implica em  $sign(det(Id-\gamma(1) )) = (-1)^{m}$ para algum $m\in 2\inteiros$. Por definição tem-se que $\psi(1)=W^{+}$ e $\rho_{\psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho_{\psi}(1) =1$, então $n\in 2\inteiros$, o que implica em $\alpha_{\psi}(1) = k\pi$ para algum $k\in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$ e $\mu(\psi)-n \in 2\inteiros$. Se $\rho_{\psi}(1) =-1$, então então $n\in 2\inteiros+1$, o que implica em $\alpha_{\psi}(1) = k\pi$ para $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$ e $\mu(\psi)-n \in 2\inteiros$. Portanto $m = \mu(\psi)-n \in 2\inteiros$ esta bem-definido para $det(Id-\gamma(1) )>0$. Com argumentos análogos, pode-se mostrar que  $m = \mu(\psi)-n \in 2\inteiros+1$ para $det(Id-\gamma(1) )<0$, onde $\rho_{\psi}(1) = \rho(W^{-}) = (-1)^{n-1}$.
 			
 			\item \textbf{(Assinatura)} Afirmo que, $\Psi(t)=\exp(t\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $\Psi(t)^{t}\estruturacomplexa\Psi(t)= \estruturacomplexa$ para todo $t \in \reta$. Note que $(\estruturacomplexa S)^{t} 
 			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ tem-se a identidade 
@@ -2760,7 +2760,7 @@
 			\estruturacomplexa (\estruturacomplexa S)^{k} 
 			&= \estruturacomplexa\underbrace{\estruturacomplexa  S\dots \estruturacomplexa S}_{k-vezes} 
 			\\
-			&= -Id  S\estruturacomplexa \dots \estruturacomplexa S (-\estruturacomplexa^{2}) 
+			&= \estruturacomplexa^{2}  S\estruturacomplexa \dots \estruturacomplexa S \underbrace{(-\estruturacomplexa^{2})}_{Id} 
 			\\
 			&=\underbrace{ S\estruturacomplexa \dots  S \estruturacomplexa }_{k-vezes}\estruturacomplexa 
 			\\
@@ -2768,18 +2768,18 @@
 			\end{aligned}
 			$$
 			
-			Sabendo que $((\estruturacomplexa S)^{k})^{t} = (S^{t})^{k}(\estruturacomplexa^{t})^{k}$ segue-se que
+			Além disso, note que $((\estruturacomplexa S)^{k})^{t} = (\estruturacomplexa S)^{t}\dots (\estruturacomplexa S)^{t} = (S^{t}\estruturacomplexa^{t} )^{k} = (-S\estruturacomplexa)^{k}$. Com isso
 			$$
 			\begin{aligned}
 			\Psi(t)^{t}\estruturacomplexa\Psi(t)
 			&=
 			\exp(t\estruturacomplexa S)^{t}\estruturacomplexa\exp(t\estruturacomplexa S)
 			\\
-			&=\sum_{j=0}^{\infty}\frac{t^{j}(S^{t})^{j}(\estruturacomplexa^{t})^{j}}{j!}\estruturacomplexa \sum_{k=0}^{\infty}\frac{t^{k}(\estruturacomplexa S)^{k}}{k!}
+			&=\sum_{j=0}^{\infty}\frac{\big( (t\estruturacomplexa S)^{j}\big)^{t}}{j!}\estruturacomplexa \sum_{k=0}^{\infty}\frac{(t\estruturacomplexa S)^{k}}{k!}
 			\\
-			&=\sum_{k,j=0}^{\infty}\frac{t^{j}S^{j}(-1)^{j}\estruturacomplexa^{j}}{j!} \sum_{k=0}^{\infty}\frac{t^{k}\estruturacomplexa(\estruturacomplexa S)^{k}}{k!}
+			&=\sum_{k,j=0}^{\infty}\frac{(-tS\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{\estruturacomplexa(t\estruturacomplexa S)^{k}}{k!}
 			\\
-			&=\sum_{k,j=0}^{\infty}\frac{(-tS\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{(tS\estruturacomplexa)^{k}\estruturacomplexa}{k!}
+			&=\sum_{j=0}^{\infty}\frac{(-tS\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{(tS\estruturacomplexa)^{k}}{k!}\estruturacomplexa
 			\\
 			&=exp(-tS\estruturacomplexa)exp(tS\estruturacomplexa)\estruturacomplexa
 			\\
@@ -2788,9 +2788,9 @@
 			$$
 			Portanto, $\Psi(t) \in \gruposimpletico{2n}$ para todo $t\in \reta$.
 			
-			Pode-se afirmar que $S$ é diagonalizável pois é uma matriz simétrica. Além disso, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP$ é diagonal (tal resultado pode ser encontrado em \cite{hoffman_kunze}). Seja $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = Id$ e $\mathcal{P}(1)=P$ e $\mathcal{S}:\intervalo\to \matrizquadcomplexa{2n}$ dada por $\mathcal{S}(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$. Do fato de que $\mathcal{P}^{t}(s)=\mathcal{P}^{-1}(s)$ tem-se que $det(\mathcal{S}(s)) =det(\mathcal{P}^{t}(s)S \mathcal{P}(s)) = det(S)$, portanto $\mathcal{S}(s)$ é diagonalizável e $\espectrooperador{\mathcal{S}(s)} = \espectrooperador{S}$ para todo $s \in [0,1]$. Além disso, $\mathcal{S}(s)^{t}$ é simétrica. De fato, $\mathcal{S}(s)^{t} = (\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S^{t}\mathcal{P}(s) = \mathcal{P}^{t}(s)S\mathcal{P}(s) = \mathcal{S}(s)$, o que implica em $\Psi_{s}(t)=\exp(t\estruturacomplexa \mathcal{S}(s)) \in \gruposimpletico{2n}$.
+			Como $S$ é simétrica, então é diagonalizável. Além disso, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP$ é diagonal (tais resultados podem ser encontrados em \cite{hoffman_kunze}). Sejam $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = Id$ e $\mathcal{P}(1)=P$ e $\mathcal{S}:\intervalo\to \generalgroupcomplexo{2n}$ dada por $\mathcal{S}(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$. Do fato de que $\mathcal{P}^{t}(s)=\mathcal{P}^{-1}(s)$ tem-se que $det(\mathcal{S}(s)) =det(\mathcal{P}^{t}(s)S \mathcal{P}(s)) = det(S)$, portanto $\mathcal{S}(s)$ é diagonalizável e $\espectrooperador{\mathcal{S}(s)} = \espectrooperador{S}$ para todo $s \in [0,1]$. Além disso, $\mathcal{S}(s)^{t}$ é simétrica. De fato, $\mathcal{S}(s)^{t} = (\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S^{t}\mathcal{P}(s) = \mathcal{P}^{t}(s)S\mathcal{P}(s) = \mathcal{S}(s)$, o que implica em $\Psi_{s}(t)=\exp(t\estruturacomplexa \mathcal{S}(s)) \in \gruposimpletico{2n}$.
 
-			Dado um inteiro $k\geq 0$ temos que $\estruturacomplexa^{2k} = (-1)^{k}$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$. Com isso tem-se que
+			Dado um inteiro $k\geq 0$ temos que $\estruturacomplexa^{2k} = (-1)^{k}Id$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$. Com isso, tem-se que
 			$$
 			\begin{aligned}
 			\exp(t\estruturacomplexa ) 
@@ -2805,25 +2805,24 @@
 			&=
 			\left(
 			\begin{array}{cc}
-			(\cos(t))Id & (\sin(t))Id
+			\cos(t)Id & \sin(t)Id
 			\\
-			-(\sin(t))Id & (\cos(t))Id
+			-\sin(t)Id & \cos(t)Id
 			\end{array}
 			\right),
 			\
 			\end{aligned}
 			$$
-			onde $\cos(t)Id$ é a matriz diagonal $n \times n$ cujos elementos são $\cos(t)$. Analogamente vale o mesmo para $\sin(t)Id$.
+			onde $\cos(t)Id$ e $\sin(t)Id$ são as matrizes diagonais $n \times n$ cujos elementos são $\cos(t)$ e $\sin(t)$, respectivamente.
 			
-			Seja $v_{j}$ um auto-vetor de $\mathcal{S}(s)$ com auto-valor $\lambda_{j}$. Então $\Psi_{s}(1)v_{j} = \exp(\estruturacomplexa \mathcal{S}(s))v_{j}=\exp(\lambda_{j}\estruturacomplexa )v_{j} $. Como $\norma{S}<2\pi$ e $\espectrooperador{\mathcal{S}(s)} = \espectrooperador{S}$, então $|\lambda_{j}|<2\pi$ para $1\leq j\leq 2n$. Portanto $det(Id -
-			\exp(\lambda_{j}\estruturacomplexa ) ) \neq 0$, o que implica em $1\notin \espectrooperador{\Psi_{s}(1)}$ e $\Psi_{s}(1) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. Com isso, pode-se afirmar que o caminho contínuo $\Psi(1):\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $\Psi(1)(s) = \Psi_{s}(1)$, é tal que $\Psi(1)(\intervalo)\subseteq \gruposimpleticonaodegenerado{+}$ ou $\Psi(1)(\intervalo)\subseteq \gruposimpleticonaodegenerado{-}$.
+			Seja $v_{j}$ um auto-vetor de $\mathcal{S}(s)$ com auto-valor $\lambda_{j}$. Então $\Psi_{s}(1)v_{j} = \exp(\estruturacomplexa \mathcal{S}(s))v_{j}=\exp(\lambda_{j}\estruturacomplexa )v_{j} $. Como $\norma{S}<2\pi$ e $\espectrooperador{\mathcal{S}(s)} = \espectrooperador{S}$, então $|\lambda_{j}|<2\pi$ para $1\leq j\leq 2n$. Além disso, $\exp(\lambda_{j}\estruturacomplexa ) =\cos(\lambda_{j})Id+\sin(\lambda_{j})\estruturacomplexa$. Logo $det(Id-\exp(\lambda_{j}\estruturacomplexa ) ) \neq 0$, o que implica em $1\notin \espectrooperador{\Psi_{s}(1)}$ e $\Psi_{s}(1) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. Com isso, pode-se afirmar que o caminho contínuo $\Psi(1):\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $\Psi(1)(s) = \Psi_{s}(1)$, é tal que $\Psi(1)(\intervalo)\subseteq \gruposimpleticonaodegenerado{+}$ ou $\Psi(1)(\intervalo)\subseteq \gruposimpleticonaodegenerado{-}$.
 			
-			Como os conjuntos $\gruposimpleticonaodegenerado{\pm}$ são conexos por caminhos e $\grupofundamental{\gruposimpleticonaodegenerado{\pm}} = 0$ quando visto como subgrupo de $\grupofundamental{\gruposimpletico{2n}}$, então todo caminho em $\gruposimpleticonaodegenerado{\pm}$ é homotopicamente equivalente ao caminho $\Psi_{s}(t)=\exp(t\estruturacomplexa S)$, onde $S = diag\{a_{1}, \dots, a_{2n}\}$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{(1)}.a_{(2)} = a_{1}a_{n+1}\dots a_{n}a_{2n}$, tem-se que
+			Como os conjuntos $\gruposimpleticonaodegenerado{\pm}$ são conexos por caminhos e $\grupofundamental{\gruposimpleticonaodegenerado{\pm}} = \{\classe{0}\}$, quando visto como subgrupo de $\grupofundamental{\gruposimpletico{2n}}$, então todo caminho em $\gruposimpleticonaodegenerado{\pm}$ é homotopicamente equivalente ao caminho $\Psi_{s}(t)=\exp(t\estruturacomplexa \mathcal{S}(s))$, onde $\mathcal{S}(s)$ é a matriz diagonal $diag\{a_{1}, \dots, a_{2n}\}$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{(1)}.a_{(2)} = a_{1}a_{n+1}\dots a_{n}a_{2n}$, tem-se que
 			$$
 			\begin{aligned}
-				(\estruturacomplexa S)^{2j} &=(-a_{(1)}.a_{(2)})^{j} Id
+				(\estruturacomplexa \mathcal{S}(s))^{2j} &=(-a_{(1)}.a_{(2)})^{j} Id
 				\\
-				(\estruturacomplexa S)^{2j+1} 
+				(\estruturacomplexa \mathcal{S}(s))^{2j+1} 
 				&= (-a_{(1)}.a_{(2)})^{j} 
 				\left(
 				\begin{array}{cc}
@@ -2834,10 +2833,10 @@
 				\right),
 			\end{aligned}
 			$$
-			onde $a_{(1)}Id$ é a matriz $diag=\{a_{1}, \dots, a_{n}\}$. O análogo vale para $a_{(2)}Id$ . Com isso, tem-se a exponencial
+			onde $a_{(1)}Id=diag\{a_{1}, \dots, a_{n}\}$. O análogo vale para $a_{(2)}Id$ . Com isso, tem-se a exponencial
 			$$
 			\begin{aligned}
-			\exp(\estruturacomplexa S) &= \sum_{j=0}^{\infty}\frac{(\estruturacomplexa S)^{2j}}{(2j)!} + \sum_{j=0}^{\infty} \frac{(\estruturacomplexa S)^{2j+1}}{(2j+1)!}
+			\exp(\estruturacomplexa \mathcal{S}(s)) &= \sum_{j=0}^{\infty}\frac{(\estruturacomplexa \mathcal{S}(s))^{2j}}{(2j)!} + \sum_{j=0}^{\infty} \frac{(\estruturacomplexa \mathcal{S}(s))^{2j+1}}{(2j+1)!}
 			\\
 			&= \sum_{j=0}^{\infty}\frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j)!}Id + \sum_{j=0}^{\infty} \frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j+1)!}	\left(
 			\begin{array}{cc}
@@ -2849,12 +2848,12 @@
 			\end{aligned}
 			$$
 			
-			A hipótese de que $\norma{S}<2\pi$ implica em $|a_{j}|<2\pi$, o que permite a redução da análise ao caso em que  $|a_{j}|=\epsilon \in (0,2\pi)$ para $1\leq j \leq 2n$. Com isso, tem-se os seguintes casos:
+			A hipótese de que $\norma{S}<2\pi$ implica em $|a_{j}|<2\pi$ para $0\leq j \leq 2n$, o que permite a redução da análise ao caso em que  $|a_{j}|=\epsilon \in (0,2\pi)$. Com isso, tem-se os seguintes casos:
 			\begin{enumerate}
 				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (\epsilon,\dots,\epsilon)$:}
 				$$
 				\begin{aligned}
-				\exp(t\estruturacomplexa S) 
+				\exp(t\estruturacomplexa \mathcal{S}(s)) 
 				&= 
 				\cos(t\epsilon)Id+ \sin(t\epsilon)\estruturacomplexa
 				\\
@@ -2885,7 +2884,8 @@
 				&=R(t\epsilon),
 				\end{aligned}
 				$$
-				onde se permutou as linhas e colunas de $\exp(t\estruturacomplexa S)$ para a obtenção de $R(t\epsilon)$, que é a matriz com $n$ blocos diagonais $r(-t\epsilon)$, onde 
+				onde $r(-t\epsilon)$
+				é a matriz $2\times 2$ de rotação por um ângulo $-t\epsilon <0$ no plano $\real{2}$ definida por
 				$$
 				r(-t\epsilon) = \left(
 				\begin{array}{cc}
@@ -2893,22 +2893,22 @@
 				\\
 				-\sin(t\epsilon) & \cos(t\epsilon)
 				\end{array}
-				\right)
+				\right),
 				$$ 
-				é a matriz $2\times 2$ de rotação por um ângulo $-t\epsilon <0$ no plano $\real{2}$. Realizando as identificações $r(-t\epsilon) \mapsto \exp(-it\epsilon)$ e $R(t\epsilon)\mapsto \exp(-it\epsilon)Id$, tem-se o determinante $det_{\complexo{}}(R(t\epsilon)) = \exp(-int\epsilon)\in \circulo$.
+				e $R(t\epsilon)$ é uma matriz com $n$ blocos diagonais resultante da permutação das linhas e colunas de $\exp(t\estruturacomplexa S)$. Realizando as identificações $r(-t\epsilon) \mapsto \exp(-it\epsilon)$ e $R(t\epsilon)\mapsto \exp(-it\epsilon)Id$, tem-se o determinante $det_{\complexo{}}(R(t\epsilon)) = \exp(-int\epsilon)\in \circulo$.
 				
-				Note que, $\exp(t\estruturacomplexa S)$ é uma matriz ortogonal e, como foi mostrado anteriormente, é uma transformação simplética, logo $\exp(t\estruturacomplexa S) \in \matrizSimpleticaOrtogonal$. Pela propriedade do determinante da aplicação $\rho:\gruposimpletico{2n}\to \circulo$ tem-se que 
+				Note que, $\exp(t\estruturacomplexa \mathcal{S}(s))$ é uma matriz ortogonal e, como foi mostrado anteriormente, é uma transformação simplética, logo $\exp(t\estruturacomplexa \mathcal{S}(s)) \in \matrizSimpleticaOrtogonal$. Relizando a identificação $\matrizSimpleticaOrtogonal\ni \Psi_{s}(t)=\exp(t\epsilon\estruturacomplexa) \mapsto \cos(t\epsilon)Id+i\sin(t\epsilon)\estruturacomplexa\in \matrizunitaria{n}$, e aplicando o Item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que 
 				$$
-				\rho(\exp(t\estruturacomplexa S)) = det_{\complexo{}}(\cos(t\epsilon)Id +i\sin(t\epsilon)\estruturacomplexa)=det_{\complexo{}}(R(t\epsilon)) = \exp(-int\epsilon).
+				\rho(\Psi_{s}(t)) = det_{\complexo{}}(\cos(t\epsilon)Id +i\sin(t\epsilon)\estruturacomplexa)=det_{\complexo{}}(R(t\epsilon)) = \exp(-int\epsilon).
 				$$
 				
-				Portanto $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = -n$. Como o número de auto-valores negativos de $Ind(S)$ é zero, então  $ Ind(S)-n=\mu(\Psi_{s})$, como desejávamos.
+				Portanto $\mu(\Psi_{s}) = 2deg(\rho_{\Psi(t)}) = -n$. Como o número de auto-valores negativos de $Ind(S)$ é zero, então  $ Ind(S)-n=\mu(\Psi_{s})$ para todo $s\in \intervalo$, como desejávamos.
 				
-				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (-\epsilon,\dots,-\epsilon)$:} esse caso é análogo ao anterior, contudo, tem-se que  $R(t\epsilon)$,  $r(t\epsilon)$ é a matriz $2\times 2$ de rotação por um ângulo de $t\epsilon>0$ no plano $\real{2}$ e $det_{\complexo{}}(R(t\epsilon)) = \exp(int\epsilon)$. Isso implica em $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa S)) = n$. Como $Ind(S) = 2n$, então $ Ind(S)-n = 2n-n = n = \mu(\Psi_{s})$, como desejávamos.
+				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (-\epsilon,\dots,-\epsilon)$:} analogamente ao anterior, tem-se $R(t\epsilon)$,  onde $r(t\epsilon)$ é a matriz $2\times 2$ de rotação por um ângulo de $t\epsilon>0$ no plano $\real{2}$ e $det_{\complexo{}}(R(t\epsilon)) = \exp(int\epsilon)$. Isso implica em $\mu(\Psi_{s}) = 2deg(\exp(t\estruturacomplexa \mathcal{S}(s))) = n$. Como $Ind(S) = 2n$, então $ Ind(S)-n = 2n-n = n = \mu(\Psi_{s})$, como desejávamos.
 				
-				\item \textbf{Caso $a_{(1)}.a_{(2)}<0$ e $a_{(1)}=(\epsilon,\dots,\epsilon), \; a_{(2)} = -a_{(1)}$:} Tem-se
+				\item \textbf{Caso $a_{(1)}.a_{(2)}<0$ e $a_{(1)}=(\epsilon,\dots,\epsilon), \; a_{(2)} = -a_{(1)}$:} tem-se agora as funções hiporbólicas
 				$$
-				\exp(t\estruturacomplexa S ) = 
+				\exp(t\estruturacomplexa \mathcal{S}(s)) = 
 				\left(
 				\begin{array}{cc}
 				\cosh(t\epsilon)Id & \sinh(t\epsilon)Id
@@ -2918,10 +2918,10 @@
 				\right).
 				$$
 				
-				Além disso, o sistema $\exp(t\estruturacomplexa S ) v = \lambda(t\epsilon) v$ tem como solução os auto-valores $\lambda \in \{\cosh(t\epsilon)\pm i\sinh(t\epsilon)\}$. Portanto $\exists t\in \intervalo$ tal que $\lambda(t\epsilon) \notin \circulo$ e $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$. Como a aplicação $\rho$ depende apenas dos auto-valores em $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$, então $\mu(\Psi_{s}) = 0$. Como não há auto-valores negativos, então $Ind(S)=0$ e $Ind(S)=\mu(\Psi_{s})$.
+				O sistema $\exp(t\estruturacomplexa \mathcal{S}(s)) v = \lambda v$ tem como solução os auto-valores $\lambda \in \{\cosh(t\epsilon)\pm i\sinh(t\epsilon)\}$. Portanto para todo $t\in (0,1]$ tem-se que $|\lambda| \neq 1$, logo $\lambda \notin \circulo$ e $\espectrooperador{\Psi_{s}}\cap\circulo = \emptyset$. Como a aplicação $\rho$ depende apenas dos auto-valores em $\espectrooperador{\Psi_{s}}\cap\circulo$, então $\mu(\Psi_{s}) = 0$. Além disso, não há auto-valores negativos, então $Ind(S)=0$ e $Ind(S)=\mu(\Psi_{s})$.
 			\end{enumerate}
 	
-			\item \textbf{(Inverso)} O Lema \ref{lema_inversa_caminho_especial} mostra que $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{2n}}$. Como $\rho_{\psi}(t) = \exp(i\alpha_{\psi}(t))$, então $\rho_{\psi^{-1}}(t) = (\rho_{\psi}(t))^{-1} = \exp(-i\alpha_{\psi}(t))$. Logo 
+			\item \textbf{(Inverso)} Pode-se escrever que $\rho_{\psi}(t) = \exp(i\alpha_{\psi}(t))$. Pelo Lema \ref{lema_inversa_caminho_especial}, tem-se que $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{2n}}$, o que implica em $\rho_{\psi^{-1}}(t) = (\rho_{\psi}(t))^{-1} = \exp(-i\alpha_{\psi}(t))$. Logo 
 			$$
 			\mu(\psi^{-1})=2deg(\rho_{\psi^{-1}}) = (-\alpha_{\psi}(1)+\alpha_{\psi}(0))/\pi = -2deg(\rho_{\psi}) = -\mu(\psi).
 			$$
