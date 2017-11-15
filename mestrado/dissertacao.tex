@@ -1053,12 +1053,16 @@
 	\end{exemplo}	
 	
 	
-	\chapter{Teoria de Morse}
+	\chapter{Teoria de Morse}\label{capitulo_teoria_morse}
 	Na investigação da topologia de variedades o principal objetivo é a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas abordagens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo cuja homologia coincide com a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_complexo}$. O que torna a Teoria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
 	
 	O propósito desse capítulo é de apresentação rápida do formalismo e alguns dos principais resultados para que possamos estender a construção aqui feita para a homologia de variedades de dimensão infinita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
 	
-	De agora em diante $M$ será uma n-variedade Riemanniana diferenciável fechada, onde variedade fechada será uma variedade compacta e sem bordo.
+	\begin{definicao}\label{definicao_variedade_fechada}
+		(Variedade fechada) Seja $M$ uma n-variedade diferencial. Diz-se que $M$ é fechada se é compacta e sem bordo.
+	\end{definicao}
+	
+	De agora em diante $M$ será uma n-variedade Riemanniana diferenciável fechada.
 	
 	\section{Variedades Riemannianas}\label{secao_variedade_riemanniana}
 		
@@ -2939,17 +2943,17 @@
 
 	\chapter{Espaços de Sobolev}
 	\section{Distribuições - Motivação e Definições}
-	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, na descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
+	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
 	$$
 	\nabla.E(x) = \rho(x),
 	$$
-	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, sendo ambos de classe $C^{\infty}$. Um problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade dad por $\rho = q/V$ e $V \to 0$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
+	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, sendo ambos de classe $C^{\infty}$. O problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade de carga dada por $\rho(V) = q/V$ é tomada quando $\lim_{V \to 0}\rho(V)$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
 	$$
 	\rho(x) = \lim_{V\to 0} \frac{q}{V} = q\delta(x - x_{0}),
 	$$
-	onde $x_{0} \in \real{3}$ é o ponto onde esta localizada a carga $q$ e 
+	onde $x,x_{0} \in \real{3}$, $x_{0}$ é o ponto onde esta localizada a carga $q$ e 
 	$$
-	\funcaocond{\delta(x - x_{0})}{\infty}{x=x_{0}}{0}{x\neq x_{0}}\;\; e \;\; \int_{\real{3}} \delta(x) = 1.
+	\funcaocond{\delta(x - x_{0})}{\infty}{x=x_{0}}{0}{x\neq x_{0}}\;\; \text{tal que} \;\; \int_{\real{3}} \delta(x) = 1.
 	$$
 	Note que o símbolo $\delta$ não esta bem-definido em $x_{0}$, portanto não é uma função e o problema 
 	$$
@@ -2957,22 +2961,22 @@
 	$$
 	não esta bem formulado matematicamente. 
 	
-	Em teoria de distribuição essa EDP terá uma solução em um sentido mais geral, o qual chamaremos de sentido distribuicional ou sentido fraco. Aqui vamos apresentar apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
+	Em teoria de distribuição essa EDP terá uma solução em um sentido mais geral, o qual é chamada de solução distribuicional ou solução fraca. Aqui serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
 	
-	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesteste=\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto. Os elementos de tal conjunto receberão o nome de funções de teste.
+	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesteste=\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto e definidas em $\Omega$. Os elementos de tal conjunto são chamados de funções de teste.
 	
 	\begin{observacao}
 		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
 	\end{observacao}
 	
-	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\reta\ni \int_{\Omega}|f(x)| < \infty$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
+	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\int_{\Omega}|f(x)| \in \reta$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
 	$$
-	\norma{f}=\normaLpdefinicao{|f(x)|}{\Omega}
+	\norma{f}=\normaLpdefinicao{|f(x)|}{\Omega},
 	$$
-	forma um espaço de Banach. Porém, o que será útil para o desenvolvimento dos formalismos posteriores é o seguinte quociente.
+	forma um espaço de Banach. Porém, para os resultados a seguir utiliza-se o seguinte quociente:
 	
 	\begin{definicao}\label{definicao_espaco_Lp}
-		(Espaços $\espacoLpGeral{p}{\Omega}$ e $\espacoLpcomp{\Omega}$) Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) = g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula. Assim, definiremos o quociente por $\espacoLpGeral{p}{\Omega} = l^{p}(\Omega)/\sim$.
+		(Espaços $\espacoLpGeral{p}{\Omega}$ e $\espacoLpcomp{\Omega}$) Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula. Assim, o quociente $l^{p}(\Omega)/\sim$ será denotado por $\espacoLpGeral{p}{\Omega}$.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -2980,33 +2984,33 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, sendo que um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
+		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, e um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
 	\end{observacao}
 	
-	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$ denotamos a $j$-ésima derivada parcial por $\derivadaparcialabrev{j}f(x) = \partial f(x)/\partial x_{j}$. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. Definimos o operador multi-diferencial por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
+	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f(x)/\partial x_{j}$ por $\derivadaparcialabrev{j}f(x) $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
 	
 	\begin{definicao}
-		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma forma linear $f:\funcoesteste \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathcal{N}$ tal que 
+		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma forma linear $f:\funcoesteste \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathbb{N}$ tal que 
 		$$
 		|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
 		$$
 		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes$.
 	\end{definicao}
 	
-	Vamos caracterizar alguns tipos de distribuições, as quais serão utilizadas com frequência. Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$ e $\phi \in \funcoesteste$. Defina $\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x)$ e $K = supp(\phi) \subset \Omega$ compacto. Como $f$ é contínua, então a sua restrição a $K$ é limitada, logo $|\produtointerno{f}{\phi}|\leq sup(|\phi|)\int_{K}|f(x)|<\infty$ e $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma estamos aplicação injetora $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que indica uma condição de integrabilidade. Com isso, podemos generalizar um pouco a condição de continuidade e extender essa construção para o espaço $\espacoLpcomp{\Omega}$ e de modo análogo temos a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
+	Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$ e $\phi \in \funcoesteste$. Defina $\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x)$ e $K = supp(\phi) \subset \Omega$ compacto. Como $f$ é contínua, então a sua restrição a $K$ é limitada, logo $|\produtointerno{f}{\phi}|\leq sup(|\phi|)\int_{K}|f(x)|<\infty$ e $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma, a aplicação $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$ é injetora. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que implica na condição de integrabilidade. Com isso, pode-se generalizar para o caso em que $f \in \espacoLpcomp{\Omega}$, de modo que ainda se tenha a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
 	
-	Por fim, pode-se efetuar uma diferenciação das distribuições. Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e $\alpha$ um k-multi-índice, então $\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}$.
+	Por fim, pode-se efetuar a diferenciação das distribuições. Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e $\alpha$ um k-multi-índice, então $\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}$.
 	
 	\begin{definicao}
 		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada de Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
 	\end{definicao}
 	
 	\begin{exemplo}
-		(Função de Heaviside) Seja $\theta:\Omega = \reta \to \reta$, chamada de função de Heaviside, definida por
+		(Função de Heaviside) Seja $\theta:\Omega = \reta \to \reta$, a de função de Heaviside, definida por
 		$$
 		\funcaocond{\theta(x)}{1}{x\geq0}{0}{x<0}.
 		$$
-		Temos que a derivada de $\theta$ é o delta de Dirac. De fato,
+		Afirmo que o diferencial de $\theta$ é o delta de Dirac. De fato,
 		$$
 		\produtointerno{\partial\theta}{\phi} = -		\produtointerno{\theta}{\partial\phi} = -\int_{\reta_{+}}\partial \phi(x) = -\phi(0)\Big|^{\infty}_{0} = \phi(0) = \produtointerno{\delta}{\phi}.
 		$$
@@ -3017,20 +3021,20 @@
 		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
 	\end{observacao}
 	
-	Sejam $\Omega, \Sigma \subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Sigma}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Sigma$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
+	Sejam $\Omega, \Omega'\subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Omega'}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Omega'$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
 	$$
 	\sum_{|\alpha|\leq p}|\partial^{\alpha}(h\phi)|\leq c			\sum_{|\beta|\leq p}|\partial^{\beta}(\phi)|, \text{onde }\; \phi \in \funcoesdiferenciaveissupp{\infty}{K}.
 	$$
 	
 	\begin{definicao}\label{definicao_distribuicao_adjunta}
-		(Distribuição adjunta) Sejam $\Omega, \Sigma$ como descrito anteriormente. O adjunto $h^{*}: \distribuicoesgeral{\Sigma} \to \distribuicoesgeral{\Omega}$é definida por
+		(Distribuição adjunta) Sejam $\Omega, \Omega'\subseteq \real{n}$ dois abertos. O adjunto $h^{*}: \distribuicoesgeral{\Sigma} \to \distribuicoesgeral{\Omega}$é definida por
 		$$
 		\produtointerno{h^{*}\circ f}{\phi} = 		\produtointerno{f}{h\circ\phi}.
 		$$
 	\end{definicao}\label{definicao_espalo_sobolev}
 	\section{Espaço de Sobolev $W^{1,p}$}\label{secao_espaco_sobolev}
-	\begin{definicao}
-		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $\mathbb{N} \ni p\geq 1$. Os espaços de Sobolev são os conjuntos
+	\begin{definicao}\label{definicao_espaco_sobolev}
+		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $p \in \mathbb{N}$ tal que $p\geq 1$. Os espaços de Sobolev são os conjuntos
 		$$
 		W^{k,p} (\Omega)= \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
 		$$
@@ -3038,60 +3042,62 @@
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_espacos_sobolev_distribuicao}
-		Como foi definido, podemos descrever $W^{k,p}$ como um espaço de distribuições.
+		Note que, $W^{k,p}$ pode ser visto como um espaço de distribuições.
 	\end{observacao}
 	
 	\begin{definicao}\label{definicao_espalo_sobolev_generalizado}
-		(Espaço de Sobolev generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então 
-		$\espacoLpcontradominio{\Omega}{\real{k}}$ é o conjunto de todas as aplicações $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ e $f_{j}\in \espacoLp{\Omega}$ com $1\leq j\leq k$. Analogamente, teremos a definição de $\espacosobolevcontradominio{\Omega}{\real{k}}$.
+		(Espaço de Sobolev generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então $\espacosobolevcontradominio{\Omega}{\real{k}}$ é o conjunto das aplicações  $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ tais que $f_{j} \in \espacosobolev{\Omega} $ para $1\leq j \leq k$.
 	\end{definicao}
 	
 	\begin{exemplo}
-		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Então, $f \in \espacoLp{\Omega}$ pois $\normaLp{f} \leq \int_{\Omega}|f(x)|^{p} \leq sup(f)^{p}Vol(\Omega) <\infty$, onde $Vol(\Omega)$ é o volume de $\Omega$. Vamos mostrar que $\partial f \in \espacoLpGeral{p}{\Omega}$. Definindo $g:\Omega\to \reta$ tal que
+		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Como $f$ é limitada em $\Omega$, então é localmente compacta, logo $f \in \espacoLp{\Omega}$. Defina $g:\Omega\to \real{n}$ por
 		$$
-		\funcaocond{g(x)}{\pm 1}{\pm x_{1}>0}{0}{x_{1} = 0},
+		\funcaocond{g(x)}{(\pm 1, 0, \dots, 0)}{\pm x_{1}>0}{(0, 0, \dots, 0)}{x_{1} = 0}.
 		$$
-		temos que $g(x) = \partial f(x)$ para $x \in \complementar{\Omega}{\{0\}}$. Como $\{0\}$ é um conjunto de medida nula, então $\int_{\complementar{\Omega}{\{0\}}}g(x)\phi(x) = \int_{\Omega}g(x)\phi(x) = \int_{\Omega}\partial f(x)\phi(x)$. Como $g$ é limitada em $\Omega$, então $\partial f =g \in \espacoLpGeral{p}{\Omega}$. 
-		
-		Além disso, dado $\phi \in \funcoesteste$ temos 
+		Como $\Omega$ é limitado, então $g_{j}\in \espacoLp{\Omega}$. Dado $\phi \in \funcoesteste$ tem-se que
 		$$
 		\begin{aligned}
-		\produtointerno{\partial f(x)}{\phi} 
-		&= \int_{\Omega}\derivadaparcial{f(x)}{x_{1}}\phi(x)
+		\produtointerno{g_{1}}{\phi} 
+		&= \int_{\Omega}g_{1}(x)\phi(x)
 		\\
-		&= \int_{\Omega}\derivadaparcial{f(x)\phi(x)}{x_{1}}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
+		&=\int_{\Omega^{+}}\phi(x)+\int_{\Omega^{-}}(-1)\phi(x)+\int_{\{0\}}0\phi(x)
+		\\ &=\int_{\Omega^{+}}\derivadaparcial{}{x_{1}}(x_{1}\phi(x)) - \int_{\Omega^{+}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
 		\\
-		&=\underbrace{f(x)\phi(x)\Big|_{\partial \Omega}}_{=0}-\int_{\Omega}f(x)\derivadaparcial{\phi(x)}{x_{1}}
+		&+\int_{\Omega^{-}}\derivadaparcial{}{x_{1}}(-x_{1}\phi(x)) + \int_{\Omega^{-}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
+		\\ 
+		&=
+		\int_{\Omega^{+}\cup \Omega^{-}}\derivadaparcial{}{x_{1}}(|x_{1}|\phi(x)) - \int_{\Omega^{+}\cup \Omega^{-}}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
 		\\
-		&=-\produtointerno{f}{\partial \phi}.
+		&=
+		\underbrace{|x_{1}|\phi(x)\Big|_{\partial(\Omega^{+}\cup \Omega^{-})}}_{=0} - \int_{\Omega}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
+		\\
+		&=
+		-\produtointerno{f}{\derivadaparcialabrev{1}\phi},
 		\end{aligned}
 		$$
-		Onde usamos o fato de que o suporte de $\phi$ é um compacto no interior da bola, logo $\phi$ restrita a borda é nula. Portanto, $f \in \espacosobolevgeral{p}{\Omega}$.
+		onde $\Omega^{\pm} = \{x \in \Omega: \pm x_{1} >0\}$. Além disso, foi usados os fatos de que $supp(\phi) $ é um compacto no interior de $\Omega$ e $\phi$ restrita a $\partial \Omega$ é nula. Pela Definição \ref{definicao_espaco_sobolev} tem-se que $g_{1} = \derivadaparcialabrev{1}f$ (no sentido fraco). Os casos em que $2\leq j\leq n$ são triviais pois $g_{j} = 0$. Portanto $f\in \espacosobolev{\Omega}$.
 	\end{exemplo}
 	
-	De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
-	
-	
+	\begin{observacao}
+		De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
+	\end{observacao}
 	
 	\begin{proposicao}
 		Os espaços de Sobolev $W^{1,p}$ são espaços de Banach separáveis para $1\leq p \leq \infty$.
 	\end{proposicao}
 	
-	Quando $dim(\Omega) = 1$, por exemplo um intervalo da reta, temos que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $dim(\Omega)>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Consequentemente, nem todos os elementos de  $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$  são contínuas. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev), cuja demosntração pode ser encontrada em $\cite{breazis_sobolev_spaces}$, garante a inclusão em $L^{p}$ da seguinte forma:
+	Quando $\Omega\subset\real{n}$ e $n=1$, tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $n>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev) garante a inclusão em $L^{p}$ e uma demonstração pode ser encontrada em $\cite{breazis_sobolev_spaces}$.	
 	
 	\begin{teorema}\label{teorema_sobolev}
-		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $q<np/(n-p)$.
+		(Rellich-Kondrachov ou Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $1/q>1/p -1/n$.
 	\end{teorema}
-	
-	\begin{observacao}
-		A compacidade da inclusão do teorema anterior é um resultado que será encontrado com o nome de Teorema de Rellich-Kondrachov.
-	\end{observacao}
 	
 	\begin{observacao}
 		O teorema implica que existe uma constate $C>0$ tal que 
 		$$
-		\normaLgGeral{\xi}{q}{\Omega} \leq C \normaWpGeralDominio{\xi}{p}{\Omega}.
+		\normaLgGeral{\xi}{q}{\Omega} \leq C \normaWpGeralDominio{\xi}{p}{\Omega},
 		$$
+		para todo $\xi\in \espacosobolev{\Omega}$.
 	\end{observacao}
 	
 	\chapter{Equação de Floer e o Operador de Fredholm}
@@ -3147,13 +3153,13 @@
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_fibrado_vetorial_trivial}
-		Dizemos que um n-fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$, isto é, o espaço total $E(\eta)$ é homeomorfo a $B\times \real{n}$.
+		Dizemos que um n-fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$, isto é, o espaço total $E(\eta)$ é homeomorfo a $B\times \real{n}$, isto é, $E(\eta)\cong B\times \real{n}$.
 	\end{observacao}
 	
-	Daqui em diante definiremos os grupos de estrutura como sendo $G = GL(n,\real{})$ e abreviaremos a notação de um n-fibrado vetorial por $\eta = (E,B,p)$.
+	Daqui em diante o grupo de estrutura será $G = GL(n,\real{})$ e um n-fibrado vetorial será denotado por $\eta = (E,B,p)$.
 	
 	\begin{definicao}
-		(Mapa de fibrados) Sejam $\eta, \xi$ dou fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
+		(Mapa de fibrados) Sejam $\eta, \xi$ dois fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
 		$$
 		\xymatrix{
 			E \ar[r]^{F}\ar[d]^{p} & E'\ar[d]^{p'}
@@ -3167,30 +3173,41 @@
 	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
 	
 	\begin{exemplo}
-		(1-Fibrado vetorial) Sejam como nas definições $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$, então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um espaço vetorial (1-dimensional). Além disso, $\eta$ é um fibrado vetorial trivial pois tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$ então temos as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, consequentemente, $S^{+}\times\real{} \cup S^{-}\times\real{} = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. Seja $f:[0,\pi/2] \to S^{1}$ onde $f(t) = (cos(t), sin(t))$ e definindo $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$.
+		(1-Fibrado vetorial) Sejam $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$. Então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um 1-espaço vetorial. Além disso, $\eta$ é um fibrado vetorial trivial pois, tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$, tem-se as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, e com isso, $(S^{+}\times\real{}) \cup ( S^{-}\times\real{}) = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. 
+		
+		\vermelho{
+		Defina $f:[0,\pi/2] \to S^{1}$ por $f(t) = (cos(t), sin(t))$. Sejam $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$. (Acho que deve ser feito posteriormente)}
 	\end{exemplo}
 	
-	\begin{lema}
-		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $p\in M$ temos as fibras $F_{p} = T_{p}M$ e o espaço total é denotado $TM$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
-	\end{lema}
+	\begin{proposicao}
+		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $q\in M$ temos as fibras $F_{q} = T_{q}M$ e o espaço total é $TM=\{(p, v_{p}): p\in M, v_{q}\in T_{q}M \}$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
+	\end{proposicao}
+	\begin{prova}
+		Note que a projeção $p(q,v_{q}) = q$ é uma aplicação contínua, $p^{-1}(\{q\}) = T_{q}M$ é um n-espaço vetorial em $q\in M$ e  o espaço base $M$ é um espaço topológico pois é uma variedade. Seja $U$ uma vizinhança de $q$. Como $T_{q}M$ é homeomorfo a $\real{n}$, então $p^{-1}(U) = \bigcup_{q\in M}(\{q\}\times T_{q}M)$ é homeomorfo a $U\times \real{n}$ e $\eta$ é localmente trivial. Portanto $\eta$ é um n-fibrado vetorial.
+	\end{prova}
 	
-	Por questões de prática na grande parte das literaturas sobre Variedades Diferenciáveis e Fibrados Vetoriais vamos seguir denotando $TM$ como o fibrado tangente da variedade $M$.
+	\begin{observacao}
+		Os fibrados tangentes $\eta$ serão denotados por $TM$, o que é convencionado por grande parte da literatura.
+	\end{observacao}
 	
 	\begin{definicao}
-		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ um subconjunto consistindo de todos os pares $(b, e)$ com $e\in p'^{-1}(f(b))$. Além disso, definindo o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. Chamamos de pullback de $\eta$ por $f$ a tripla $f^{*}\eta = (E,B, p)$.
+		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in p'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
 	\end{definicao}
 	
 	\begin{lema}\label{pullback_composicao}
 		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
 	\end{lema}
 	\begin{prova}
-		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = p^{-1}((g\circ f)(a))$. Temos $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$ e suas fibras são dadas por $F_{g(b)} = p^{-1}(g(b))$, mas na composicão temos $b=f(a)$, logo  $F_{g(f(a))} = p^{-1}(g(f(a))) = p^{-1}((g \circ f)(a)))$, o que define a mesma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ são as mesmas, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
+		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = p^{-1}((g\circ f)(a))$. Tem-se que $g^{*}\eta=(E_{g}, B, p_{g})$, $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$, onde suas fibras são dadas por $F_{g(b)} = p^{-1}(g(b))$, sendo que $b=f(a)$, logo  $F_{g(f(a))} = p^{-1}(g(f(a))) = p^{-1}((g \circ f)(a))$, que é uma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ coincidem, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
 	\end{prova}
 	\begin{lema}\label{pullback_trivial}
 		(Pullback trivial) Sejam $\eta = (E, B, p)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
 	\end{lema}
 	\begin{prova}
-		Como $\eta$ é trivial, então todas as suas fibras são iguais, isto é, $F=F_{b} = F_{b'} \forall b, b' \in B$. Por definição $f^{*}\eta = (E', A, p')$ onde as fibras são dadas por $F'_{a} = p^{-1}(f(a)) = F$ pois $f(a) \in B$ e todas as fibras de $\eta$ são iguais, logo todas as fibras de $f^{*}\eta$ são iguais, portanto é trivial.
+		Por definição tem-se que $f^{*}\eta = (E_{f}, A, p_{f})$, onde $E_{f}=\{(a, e): a\in A,\; e \in p^{-1}(f(a)) \}$ e $E_{f} \subseteq A\times E$. Como $\eta$ é trivial, então $E \cong B\times \real{n}$ e existe um homeomorfismo $h: A\times E \to A\times B\times \real{n}$. Note que, $h|_{E_{f}}: E_{f}\to A\times f(A)\times \real{n} $ é um homeomorfismo. Como $p_{f}^{-1}(A) = A\times f(A)$ e $p^{-1}_{f}$ é contínua, então $h|_{E_{f}}\circ f\circ p_{f}: E_{f}\to p_{f}^{-1}(A)\times \real{n} $ e portanto $f^{*}\eta$ é trivial.
+		\vermelho{
+			
+			Portanto $E_{f} \subset A\times E \cong f(A)\times \real{n}$ e $E_{f}$ é trivial....concluir essa demonstracao...}
 	\end{prova}
 	
 	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
@@ -3207,31 +3224,30 @@
 	\end{prova}
 	
 	\section{Equação de Floer}
-	No desenvolvimento desse capítulo consideraremos $M$ como sendo uma 2n-variedade diferenciável fechada, isto é, compacta e sem bordo.
+	Nesse capítulo é considerado $M$ como sendo uma 2n-variedade diferenciável fechada (veja a Definição \ref{definicao_variedade_fechada}).
 	
-	Como foi abordado no Capítulo $\ref{capitulo_introducao}$, a conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ e buscamos as soluções 1-periódicas e contráteis do sistema hamiltoniano
+	Como foi abordado na Introdução, a conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ e, para o sistema Hamiltoniano abaixo,
 	$$
 	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t),
 	$$
-	onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$, isto é, procuramos as soluções $\psi: \reta\to M$ tal que $\psi(t+1) = \psi(t)$ para todo $t \in \reta$ e são homotópicas a uma aplicação constante. 
-	
-	Considerando $\lacocontrateis$ como sendo o conjunto das aplicações $\psi : \circulo\to M$ de classe $C^{\infty}$, podemos tratar as soluções do sistema hamiltoniano 1-periódicas como elementos desse conjunto. Note que $\lacocontrateis$ não é conexo pois dois caminhos não-homotópicos não podem estar na mesma componente conexa. Isso nos leva a definição:
+	busca-se as soluções 1-periódicas (isto é, $\psi(t+1)=\psi(t)$) e contráteis, onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$. O que é equivalente a analisar as aplicações $\psi : \circulo\to M$ que satisfazem esse sistema.
 	
 	\begin{definicao}
-		(Laços contráteis) O conjunto dos laços contráteis $\lacocontrateis$ é o conjunto de todas as aplicações $\psi:\circulo \to M$ de classe $C^{\infty}$ e contráteis a aplicação constante.
+		(Laços contráteis) O conjunto das aplicações $\psi:\circulo \to M$ de classe $C^{\infty}$ e contráteis é denotado por $\lacocontrateis$.
 	\end{definicao}
 	
-	Na abordagem variacional que realizaremos adiante construiremos uma aplicação $\funcionalH: \lacocontrateis \to \reta$, chamada funcional Hamiltoniano. Através do método variacional buscamos determinar os pontos críticos desse funcional, isto é, buscamos os pontos $\gamma \in \lacocontrateis$ tais que $d\funcionalHponto{\gamma}(X) = 0$ para todo $X(\gamma)\in \espacotangenteponto{\gamma}{\lacocontrateis}$. Para a definição de vetores tangentes e espaços tangentes é necessário que $\lacocontrateis$ tenho uma estrutura de variedade. No Apêndice $\ref{apendice_estrura_variedade_LM}$ mostra-se que $\lacocontrateis$ é uma variedade de Banach.
+	A construção do complexo de Morse-Witten basea-se na determinação dos pontos críticos de uma função de Morse-Smale $f: M\to \reta$ e como tais pontos são conectados pelas linhas do fluxo do gradiente negativo $-\gradiente$. Para a demonstração da Conjectura de Arnold uma abordagem análoga é realizada. Contudo, em vez de uma variedade de dimensão finita $M$ tem-se um espaço de funções $\lacocontrateis$, e em vez de uma função $f:M\to \reta$ tem-se um funcional $\funcionalH:\lacocontrateis\to \reta$. A seguir é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias baseado nos pontos críticos desse funcional e em como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
 	
-	Uma das formas de se construir um espaço tangente em um ponto de uma variedade é definindo os vetores tangentes como sendo uma classe de equivalência das curvas que passam por esse ponto. Seja $\gamma \in \lacocontrateis$ e considere a curva $u : \reta \to \lacocontrateis$ tal que $u(0) = \gamma$. Note que, com essa descrição temos que as curvas suaves em $\lacocontrateis$ podemos ser vistas como superfícies em $M$, isto é, $u: \retacartesianocirculo\to M$, onde $u(0,t) = \gamma(t)$. Temos
+	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$ é uma variedade, mais especificamente uma variedade de Banach. Com isso, dado $\gamma\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{\gamma}{\lacocontrateis}$ está bem-definido.
+	
+	Sejam $\gamma \in \lacocontrateis$ e $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Considere o caminho $u : \reta \to \lacocontrateis$ como solução do sistema $u'(0)=X $ e $u(0) = \gamma$. Com isso, $u(s)\in \lacocontrateis$ para todo $s\in \reta$, isto é, $u(s):\circulo\to M$, onde $u(0,t) = \gamma(t)$ para todo $t\in \circulo$. Portanto
 	$$
-	\derivadaparcial{}{s}u(s,t)|_{s=0} \in \espacotangenteponto{\gamma(t)}{M}.
+	\derivadaparcial{}{s}u(s,t)|_{s=0}=X(t) \in \espacotangenteponto{\gamma(t)}{M}.
 	$$
 
-	Com isso, dado $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$, temos $X(t) \in \espacotangenteponto{\gamma(t)}{M}$ para todo $t \in \reta$, resultando na identificação $\espacotangenteponto{\gamma}{\lacocontrateis} \cong \pullbackfibradotangente{\gamma}{M}$. 
-	
+	O que resulta na identificação $\espacotangenteponto{\gamma}{\lacocontrateis} \mapsto \pullbackfibradotangente{\gamma}{M}$. Além disso, como $u$ e de classe $C^{\infty}$, então $D_{(s,t)}u:\espacotangenteponto{(s,t)}{(\retacartesianocirculo)} \to \espacotangenteponto{u(s,t)}{M}$ está bem-definido e $2=dim(D_{(s,t)}u) = dim(\retacartesianocirculo)$. Logo $u$ é uma imersão de $\retacartesianocirculo$ em $M$. Como consequência, dado $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$, temos $X(t) \in \espacotangenteponto{\gamma(t)}{M}$ para todo $t \in \reta$, 
 	\begin{definicao}
-		(Funcional Hamiltonianno) O funcional Hamiltoniano é a aplicação $\funcionalH: \lacocontrateis\to \reta$ tal que
+		(Funcional Hamiltonianno) O funcional Hamiltoniano é a aplicação $\funcionalH: \lacocontrateis\to \reta$ definida por
 		$$
 		\funcionalHponto{\gamma} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
 		$$
@@ -4375,6 +4391,9 @@
 	\begin{definicao}\label{definicao_autoespaco_generalizado}
 		(Auto-espaços generalizados) Sejam $A$ como no teorema anterior e $\lambda \in \sigma(A)$. O $\lambda-$auto-espaço de generalizado de $A$ é o conjunto $E_{\lambda} = \bigcup_{r \in \mathbb{N}} Ker(A - \lambda)^{r}$.
 	\end{definicao}
+	
+	\chapter{Variedades de Banach}\label{apendice_variedades_banach}
+	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	
 	\begin{thebibliography}{9}
 		\bibitem{abramovich}
