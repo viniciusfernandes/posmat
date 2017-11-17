@@ -2498,13 +2498,11 @@
 	\begin{prova}
 		
 		\begin{enumerate}
-			\item \label{item_naturalidade_rho} \textbf{\textit{Naturalidade:}} Sejam $T : \complexificado{V}_{1} \to \complexificado{V}_{2}$ um isomorfismo simplético e $A \in \gruposimpletico{\complexificado{V}}$. Pelo Lema \ref{lema_caracterizacao_espectro_semelhante} tem-se que $\espectrooperador{T} = \espectrooperador{T^{-1}}$. Definindo $\sigma'(A) = \lambda\in \espectrooperador{A}\cap\complementar{\circulo}{\reta}$ e analogamente $\sigma'(T)$, tem-se
+			\item \label{item_naturalidade_rho} \textbf{\textit{Naturalidade:}} Sejam $T : \complexificado{V}_{1} \to \complexificado{V}_{2}$ um isomorfismo simplético e $A \in \gruposimpletico{\complexificado{V}_{1}}$. Com isso, $TAT^{-1} \in \gruposimpletico{\complexificado{V}_{1}}$. Pelo Lema \ref{lema_caracterizacao_espectro_semelhante} tem-se que $\espectrooperador{T} = \espectrooperador{T^{-1}}$. Definindo $\sigma'(A) = \espectrooperador{A}\cap\complementar{\circulo}{\reta}$ e analogamente $\sigma'(T)$, tem-se
 			$$
 				\begin{aligned}
 						\rho(TAT^{-1}) 
 						&=(-1)^{m_{0}^{T}} (-1)^{m_{0}^{A}}(-1)^{m_{0}^{T^{-1}}}\prod_{\lambda\in \sigma'(A), \beta\in \sigma'(T) }\beta^{m_{+}(\beta)}\lambda^{m_{+}(\lambda)}(\beta^{-1}) ^{m_{+}(\beta^{-1})}
-						\\
-						&=(-1)^{2m_{0}^{T}} (-1)^{m_{0}^{A}}\prod_{\lambda\in \sigma'(A), \beta\in \sigma'(T) }\beta^{m_{+}(\beta)}(\beta^{-1}) ^{m_{+}(\beta)}\lambda^{m_{+}(\lambda)}
 						\\
 						&=(-1)^{m_{0}^{A}}\prod_{\lambda\in \sigma'(A)}\lambda^{m_{+}(\lambda)}
 						\\
@@ -2513,7 +2511,7 @@
 			$$
 			onde foi usado o fato de que a multiplicidade de $\beta, \beta^{-1} \in \espectrooperador{T}$ são iguais.
 			
-			\item \textbf{\textit{Produto:}} Sejam $(\complexificado{V}, \Omega) = (\complexificado{V}_{1}\times \complexificado{V}_{2}, \Omega_{1}\times \Omega_{2})$ um $2k$-espaço vetorial simplético, onde $\complexificado{V}_{1}, \complexificado{V}_{2}$ são $2n_{1}$ e $2n_{2}$-espaços vetoriais simpléticos, respectivamente, e $k=2n_{1}+2n_{2}$. Dado $A \in \gruposimpletico{\complexificado{V}}$ tem-se que $Av = (A_{1}v_{1}, A_{2}v_{2})$, onde $v=(v_{1}, v_{2}) \in \complexificado{V}$, $A_{1}\in \gruposimpletico{\complexificado{V}_{1}}$ e $A_{2}\in \gruposimpletico{\complexificado{V}_{2}}$. Com isso, um auto-espaço $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\times E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços de $A_{1}$ e $A_{2}$, porespectivamente. Desse modo, a aplicação $\hat{\rho}: \gruposimpletico{\complexificado{V}} \to \circulo$ definida por $\hat{\rho}(A) = \rho(A_{1})\rho(A_{2})$ satisfaz o axioma do produto.
+			\item \textbf{\textit{Produto:}} Sejam $(\complexificado{V}, \Omega) = (\complexificado{V}_{1}\times \complexificado{V}_{2}, \Omega_{1}\times \Omega_{2})$ um $2k$-espaço vetorial simplético, onde $\complexificado{V}_{1}, \complexificado{V}_{2}$ são $2n_{1}$ e $2n_{2}$-espaços vetoriais simpléticos, respectivamente, e $k=2n_{1}+2n_{2}$. Dado $A \in \gruposimpletico{\complexificado{V}}$ tem-se que $Av = (A_{1}v_{1}, A_{2}v_{2})$, onde $v=(v_{1}, v_{2}) \in \complexificado{V}$, $A_{1}\in \gruposimpletico{\complexificado{V}_{1}}$ e $A_{2}\in \gruposimpletico{\complexificado{V}_{2}}$. Com isso, um auto-espaço generalizado $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda_{1}}\times E_{\lambda_{2}}$, onde $E_{\lambda_{1}}$, $E_{\lambda_{2}}$ são auto-espaços generalizados de $A_{1}$ e $A_{2}$, porespectivamente. Desse modo, a aplicação $\hat{\rho}: \gruposimpletico{\complexificado{V}} \to \circulo$ satisfaz $\hat{\rho}(A) = \rho(A_{1})\rho(A_{2})$.
 			
 			\item \textbf{\textit{Deteminante:}} Sejam $A \in \mathcal{U}$ e $U \in \matrizunitaria{n}$ com a identificação pelo isomorfismo descrito no Capítulo \ref{capitulo_grupo_simpletico} dado por
 			$$
@@ -3124,12 +3122,13 @@
 		As soluções dessa equação geram uma família de simplectomorfismos a 1-parametro tal que $\psi_{t}(x(0)) = x(t)$.
 	\end{definicao}
 	Para demonstrar o invariância da forma simplética pelo fluxo Hamiltoniano, vamos usar o seguinte resultado:
-	\begin{lema}
+	\begin{proposicao}\label{proposicao_identidade_cartan}
 		Sejam $M$ uma variedade diferenciável com dimensão finita, $X \in T_{p}M$ e $\alpha \in \Omega^{k}(M)$. Definindo $i_{X}:\Omega^{k} \to \Omega^{k-1}$ por $i_{X}\alpha(Y_{1}, \dots, Y_{k-1}) = \alpha(X, Y_{1}, \dots, Y_{k-1})$ então
 		$$
 		\liederivada{X}\alpha = i_{X}d\alpha + di_{X}\alpha.
 		$$
-	\end{lema}
+	\end{proposicao}
+	
 	\begin{lema}
 		O fluxo hamiltoniano preserva a forma simplectica.
 	\end{lema}
@@ -3240,13 +3239,14 @@
 	
 	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$ é uma variedade, mais especificamente uma variedade de Banach. Com isso, dado $\gamma\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{\gamma}{\lacocontrateis}$ está bem-definido.
 	
-	Sejam $\gamma \in \lacocontrateis$ e $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Considere o caminho $u : \reta \to \lacocontrateis$ como solução do sistema $u'(0)=X $ e $u(0) = \gamma$. Com isso, $u(s)\in \lacocontrateis$ para todo $s\in \reta$, isto é, $u(s):\circulo\to M$, onde $u(0,t) = \gamma(t)$ para todo $t\in \circulo$. Portanto
+	Sejam $\gamma \in \lacocontrateis$ e $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Considere o caminho $u : \reta \to \lacocontrateis$ como solução do sistema $u'(0)=X $ e $u(0) = \gamma$. Com isso, $u(s)\in \lacocontrateis$ para todo $s\in \reta$, isto é, $u(s):\circulo\to M$, onde $u(0,z) = \gamma(z)$ para todo $z\in \circulo$. Portanto
 	$$
-	\derivadaparcial{}{s}u(s,t)|_{s=0}=X(t) \in \espacotangenteponto{\gamma(t)}{M}.
+	\derivadaparcial{}{s}u(s,z)|_{s=0}=X(z) \in \espacotangenteponto{\gamma(z)}{M}.
 	$$
-
-	O que resulta na identificação $\espacotangenteponto{\gamma}{\lacocontrateis} \mapsto \pullbackfibradotangente{\gamma}{M}$. Além disso, como $u$ e de classe $C^{\infty}$, então $D_{(s,t)}u:\espacotangenteponto{(s,t)}{(\retacartesianocirculo)} \to \espacotangenteponto{u(s,t)}{M}$ está bem-definido e $2=dim(D_{(s,t)}u) = dim(\retacartesianocirculo)$. Logo $u$ é uma imersão de $\retacartesianocirculo$ em $M$. Como consequência, dado $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$, temos $X(t) \in \espacotangenteponto{\gamma(t)}{M}$ para todo $t \in \reta$, 
-	\begin{definicao}
+	
+	
+	Dado que $\gamma:\circulo\to M$ é um caminho contínuo, então o pullback $\gamma^{*}TM$ é o $2n$-fibrado vetorial onde as fibras são $\espacotangenteponto{\gamma(t)}{M}$, e com isso, seus elementos são as restrições dos campos vetoriais $X \in \campossuaves{M}$ ao caminho $\gamma$. Essa descrição resulta na identificação $\espacotangenteponto{\gamma}{\lacocontrateis} \ni X \mapsto  X|_{\gamma} \in \pullbackfibradotangente{\gamma}{M}$. 
+	\begin{definicao}\label{definicao_funcional_hamiltoniano}
 		(Funcional Hamiltonianno) O funcional Hamiltoniano é a aplicação $\funcionalH: \lacocontrateis\to \reta$ definida por
 		$$
 		\funcionalHponto{\gamma} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
@@ -3254,66 +3254,100 @@
 		onde $D^{2} \subset \mathbb{C}$ é o disco fechado e $u(e^{i2\pi t})=\gamma(t)$. A aplicação $u:D^{2}\to M$ é chamada extensão de $\gamma$ para o disco.
 	\end{definicao}
 	
-	\begin{observacao}
-		Na definição do funcional a primeira integral, mesmo bem-definida, depende explicitamente da extensão de $\gamma$ escolhida. Seja $v : D^{2}\to M$ uma outra extensão de $\gamma$, então
-		$$
-		\int_{D^{2}}u^{*}\omega - \int_{D^{2}}v^{*}\omega  = \int_{S^{2}}w^{*}\omega, 
-		$$
-		onde $w:S^{2} \to M$ é uma colagem dos dois discos ao longo de seus bordos tal que sua imagem será homotópica a $S^{2}$. Para elimiar a dependencia da escolha da extensão de $\gamma$ vamos que $\int_{S^{2}}w^{*}\omega=0$.
-	\end{observacao}
-	
-	\begin{definicao}\label{definiciao_condicao_aesfericidade}
+	\begin{definicao}\label{definicao_condicao_aesfericidade}
 		(Condição de Aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
 		$$
 		\int_{S^{2}} u^{*}\omega = 0.
 		$$
 	\end{definicao}
 	
-	Vamos agora determinar o gradiente do funcional $d\funcionalH: T\lacocontrateis \to \real{}$. Sejam $\tilde{\gamma}:\intervalo \times S^{1} \to M$  e $\tilde{u}:\intervalo \times D^{2} \to M$ tais que $\tilde{\gamma}(0,t) = \gamma(t)$, $\tilde{u}(0,z) = u(z)$ e $\xi(z) = \derivadaparcial{\tilde{u}}{s}(0,z)$. Temos então o funcional avaliado em
+	\begin{observacao}
+		A primeira integral na Definição \ref{definicao_funcional_hamiltoniano} do funcional Hamiltoniano depende explicitamente da extensão de $\gamma$ escolhida. Supondo que $v : D^{2}\to M$ é outra extensão de $\gamma$, então
+		$$
+		\int_{D^{2}}u^{*}\omega - \int_{D^{2}}v^{*}\omega  = \int_{S^{2}}w^{*}\omega, 
+		$$
+		onde $w:S^{2} \to M$ é uma aplicação contínua e é definida como sendo uma colagem dos dois discos $u(D^{2})$ e $v(D^{2})$ ao longo de seus bordos. A Condição de Aesfericidade \ref{definicao_condicao_aesfericidade} garante que $\int_{S^{2}}w^{*}\omega=0$, logo $\int_{D^{2}}u^{*}\omega = \int_{D^{2}}v^{*}\omega$, eliminando a dependência do funcional $\funcionalH$ da escolha dessas extensões.
+	\end{observacao}
+	
+	\vermelho{(Colocar uma figura islustrando a colagem aqui!!!!)}
+	
+	Seja $T\lacocontrateis$ o fibrado tangente de $\lacocontrateis$. Então o diferencial do funcional Hamiltoniano é a aplicação $d\funcionalH: T\lacocontrateis \to \real{}$ e , em analogia à análise em espaços de dimensão finita, o gradiente é o campo suave $\gradientefuncional\in \campossuaves{\lacocontrateis}$ tal que $d_{\gamma}\funcionalH(X) = \produtointerno{\gradientefuncional(\gamma)}{X(\gamma)}$ para todo $X\in \espacotangenteponto{\gamma}{\lacocontrateis}$, onde $\produtointerno{.}{.}$ é um produto interno definido a seguir.
+	
+	Sejam $Y(t) \in \espacotangenteponto{\gamma(t)}{M}$, $\tilde{\gamma}:(-\epsilon, \epsilon)\times S^{1} \to M$  uma aplicação de classe $C^{1}$ tal que $\tilde{\gamma}(0,t) = \gamma(t)$ e $Y(t) = \derivadaparcial{}{s}\tilde{\gamma}(s,t)|_{s=0}$. Com isso, o diferencial de $\funcionalH$ no ponto $\gamma$ e avaliado em $Y$ é dado por $d_{\gamma}\funcionalH(Y) = \derivadaparcial{}{s}\funcionalH(\tilde{\gamma})|_{s=0}$.
+	
+	Para se determinar o diferencial do funcional defina $\tilde{u}:(-\epsilon, \epsilon)\times D^{2} \to M$ como sendo uma extensão de $u$, tal que $\tilde{u}(0,z) = u(z)$ e $\tilde{u}(s,e^{2i\pi t}) = \tilde{\gamma}(s,t)$, e $\tilde{Y}(z) = \derivadaparcial{}{s}\tilde{u}(s,z)|_{s=0}$, uma extensão de $Y$. Avaliando o funcional nessas extensões, tem-se
+	
 	$$
 	\funcionalHponto{\tilde{\gamma}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{\gamma}(s,t))dt.
 	$$
-	Para derivar o primeiro termo, lembremos a identidade de Cartan onde, dada $\alpha \in \Omega^{k}(M)$ k-forma e $Y \in \campossuaves{M}$ temos $\mathcal{L}_{Y}\alpha = d(i_{Y}\alpha) + i_{Y}d\alpha$, assim:
+	
+	Note que, $	\funcionalHponto{\tilde{\gamma}}$ é uma função de classe $C^{1}$ e que depende explícitamente de $s\in (-\epsilon, \epsilon)$, isto é, $	\funcionalHponto{\tilde{\gamma}}:(-\epsilon,\epsilon)\to \reta$. 
+	
+	Seja $\phi:\retacartesianovariedade\to M$ o fluxo gerado pelo campo $Y\in \campossuaves{M}$. A derivada de Lie no ponto $p\in M $ de uma r-forma $\alpha \in \Omega^{r}(M)$ ao longo do campo $Y$ é definida por 
+	$$
+	\liederivada{Y}\alpha = \derivada{}{t}(\phi^{*}_{p}(t)\alpha)|_{t=0},
+	$$ 
+	o que pode ser encontrado em \cite{nakahara}. Além disso, pode-se mostrar a identidade 
+	$$
+	\liederivada{Y}\alpha= di_{Y}\alpha+i_{Y}d\alpha,
+	$$
+	onde $i_{Y}:\Omega^{r}(M)\to \Omega^{r-1}(M)$ é definida por $i_{Y}(\alpha)(X_{1}, \dots, X_{r-1}) = \alpha(Y, X_{1}, \dots, X_{r-1})$.
+	
+	Seja $Y\in \campossuaves{M}$ o campo gerador do fluxo $\tilde{u}:\intervalo\times D^{2}\to M$. Na determinação do diferencial do funcional deriva-se o primeiro termo
 	$$
 	\begin{aligned}
-	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{D^{2}}\tilde{u}^{*}\omega &=\int_{D^{2}}\frac{d}{ds} (\tilde{u}^{*}\omega)\Bigm\lvert_{s=0}  =\int_{D^{2}}\tilde{u}^{*} \mathcal{L}_{Y(z)}(\omega)
+	-\frac{d}{ds} \Bigm\lvert_{s=0} \int_{D^{2}}\tilde{u}^{*}\omega 
+	&=-\int_{D^{2}}\frac{d}{ds} (\tilde{u}^{*}\omega)\Bigm\lvert_{s=0} \\
+	&=-\int_{D^{2}} \mathcal{L}_{\tilde{Y}(z)}(\omega)
 	\\
-	&=\int_{D^{2}}\tilde{u}^{*} (d(i_{Y}\omega) + i_{Y}d\omega) =\int_{D^{2}}\tilde{u}^{*} d(i_{Y}\omega)
+	&=-\int_{D^{2}}u^{*} \mathcal{L}_{Y}(\omega)\vermelho{?????????}
 	\\
-	&=\int_{\partial D^{2}}	\gamma^{*} (i_{Y(t)}\omega) = \int_{[0,1]} \omega(Y(t), \dot{\gamma}(t))dt.
+	&=-\int_{D^{2}}u^{*} (d(i_{Y}\omega) + i_{Y}d\omega)
+	\\
+	&=-\int_{D^{2}}u^{*} d(i_{Y}\omega)
+	\\
+	&=-\int_{\circulo}	\gamma^{*} (i_{Y(t)}\omega)
+	\\
+	&= \int_{[0,1]} \omega(\dot{\gamma}(t), Y(t))dt.
 	\end{aligned}
 	$$
-	Derivando o segundo termo:
+	
+	Diferenciando o segundo termo:
 	$$
 	\begin{aligned}
 	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{\gamma}(s,t)) 
 	&= \int_{[0,1]} \derivadaparcial{}{s} H(\tilde{\gamma}(s,t)) \Bigm\lvert_{s=0}
 	\\
-	&= \int_{[0,1]} (dH(\tilde{\gamma}(s,t)))_{\tilde{\gamma}(0,t)}(Y(t))dt
+	&= \int_{[0,1]} d_{\gamma}H(Y)dt
 	\\
-	&= \int_{[0,1]} \omega_{\gamma(t)}(Y(t), \campohamiltonianoabrev(\gamma(t), t))dt. 
+	&= \int_{[0,1]} -\omega_{\gamma}(\campohamiltonianoabrev(\gamma, t), Y)dt. 
 	\end{aligned}
 	$$
-	Por fim, somando ambos os termos, temos:
+	Por fim, somando ambos os termos:
 	$$
-	d\funcionalHponto{\gamma}(Y) = \int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev, Y)dt,
+	d_{\gamma}\funcionalH(Y) = \int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev, Y)dt.
 	$$
-	onde imitimos os parâmetros de integração para facilitar a leitura.
 	
-	A condição para que $\gamma \in \lacocontrateis$ seja um ponto crítico é $df_{H}(\gamma)(Y) = 0 $ para todo $Y \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Como o integrando é uma aplicação contínua, então devemos ter 
+	Se $\gamma \in \lacocontrateis$ é um ponto crítico de $\funcionalH$, então $d_{\gamma}\funcionalH(Y) = 0 $ para todo $Y(\gamma) \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Como o integrando de $d_{\gamma}\funcionalH(Y)$ é uma aplicação contínua, então pode-se afirmar que
 	$$
 	\omega(\dot{\gamma} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{\gamma}{\lacocontrateis}.
 	$$
 	
-	A não-degenerecência de $\omega$  implica que $\dot{\gamma}(t) - \campohamiltonianoabrev(\gamma(t), t)=0$, isto é, $\gamma \in \lacocontrateis$ é um ponto crítico do funcional Hamiltoniano se, e somente se, $\gamma$ é uma solução 1-periódica e contrátil das equações de Hamilton.
+	Como $\omega$  é uma forma simplética não-degenerada, então deve-se ter $\dot{\gamma}(t) - \campohamiltonianoabrev(\gamma, t)=0$. Portanto, um dado $\gamma \in \lacocontrateis$ é um ponto crítico do funcional Hamiltoniano $\funcionalH$ se, e somente se, $\gamma$ é uma solução 1-periódica e contrátil das equações de Hamilton.
 	
-	Na Seção $\ref{secao_fluxo_gradiente}$ vimos que, dada um função de Morse, construímos um complexo de cadeia com base nas linhas do fluxo do gradiente negativo dessa função. Uma técnica análoga será adotada para a construção de um complexo de cadeia e operador bordo na qual resultará na Homologia de Floer.
+	Foi determinado o diferencial do funcional Hamiltoniano e foi caracterizado os pontos críticos do mesmo. A seguir será definido o campo gradiente negativo de $\funcionalH$. Sabe-se que, dado $J \in \estruturascomplexas{M}{\omega}$, tem-se que $g_{p}(., .)=\omega_{p}(.,J.):T_{p}M\times T_{p}M \to \reta$, definida por $\omega_{p}(X,JY)$, é uma métrica Riemannian (veja \cite{manfredo_riemannian_geo}).
 	
-	Seja $J \in \estruturascomplexas{M}{\omega}$. Temos então uma metrica Riemanniana $g(X(p), Y(p)) = \formaSimpletica{X(p)}{J(p)Y(p)}$ a qual induz a métrica $\produtointerno{.}{.}:\espacotangenteponto{\gamma}{\lacocontrateis}\times \espacotangenteponto{\gamma}{\lacocontrateis} \to \reta$ definida por
+	Com isso, pode-se munir $\espacotangenteponto{\gamma}{\lacocontrateis}$ com uma métrica $\produtointerno{.}{.}_{\gamma}: \espacotangenteponto{\gamma}{\lacocontrateis} \times \espacotangenteponto{\gamma}{\lacocontrateis} \to \reta$ induzida por $g$ do seguinte modo:
+	
 	$$
-	\produtointerno{X(\gamma)}{Y(\gamma)} = \int_{0}^{1}g(X(\gamma(t)), Y(\gamma(t)))dt.
+	\produtointerno{X}{Y}_{\gamma} = \int_{0}^{1}g_{\gamma(t)}(X, Y)dt,
 	$$
-	
+	onde foi usada a identificação dos fibrados tangentes $\espacotangenteponto{\gamma}{\lacocontrateis} \ni X \mapsto  X|_{\gamma} \in \pullbackfibradotangente{\gamma}{M}$.
+
+	\begin{definicao}
+		(Gradiente de $\funcionalH$) O campo gradiente de $\funcionalH$ é o campo suave denotado por $\gradientefuncional$ tal que $d_{\gamma}\funcionalH(Y) = \produtointerno{\gradientefuncional}{Y}_{\gamma}$ para todo $\gamma \in \lacocontrateis$ e $Y(\gamma) \in \espacotangenteponto{\gamma}{\lacocontrateis}$.
+	\end{definicao}
+
 	Analogamente ao caso de variedades Riemannianas, temos uma função diferenciável $\funcionalH: \lacocontrateis \to \reta$, logo buscamos um campo suave tal que $d\funcionalHponto{\gamma}(Y) = \produtointerno{\gradientefuncional(\gamma)}{Y(\gamma)}$ para todo $Y \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Usando a expressão do diferencial $d\funcionalHponto{\gamma}$ determinanda anteriormente, temos
 	$$
 	\begin{aligned}
@@ -3451,7 +3485,7 @@
 	O teorema a seguir afirma a compacidade de $\energiafinitaM$ sobre determinadas condições. Sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{teorema}
-		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definiciao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
+		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
 	\end{teorema}
 	
 	Temos o teorema a seguir tem sua importância destacada nas demais demonstração de outros resultados, além ser o equivalente ao Lema $\ref{lema_conjunto_limite_funcao_morse}$.
