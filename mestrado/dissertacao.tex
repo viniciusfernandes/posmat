@@ -67,6 +67,7 @@
 \newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
 \newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
+\newcommand{\caminhosexponenciaisSobolev}{\mathcal{L}^{1,p}M}
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhos}{\mathcal{L}}
 \newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
@@ -4446,12 +4447,32 @@ Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\ret
 	Para a construção de um sistema local de cartas em $\lacocontrateis$ será utilizada a aplicação exponencial definida nos espaços tangentes de variedades Riemannianas. Uma breve apresentação pode ser vista no Apêndice \ref{apendice_variedade_riemanniana}.
 	
 	Seja $D \subset TM$ uma vizinhança da seção nula de $TM$. Então a aplicação exponencial $\exp_{\gamma}: \espacosobolev{\gamma^{*}D} \to C^{0}(\circulo;M)$ é definida por $\exp_{\gamma}(Y)(t) = \exp_{\gamma(t)}(Y(t))$.
-	Denote a coleção $\{ (\espacosobolev{\gamma^{*}D}, \exp_{\gamma}) \}_{\gamma \in \lacocontrateis}$ por $\mathcal{A}$.
+	Tome a coleção $\{ (\espacosobolev{\gamma^{*}D}, \exp_{\gamma}) \}_{\gamma \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que existem $\gamma\in \lacocontrateis$ e $Y \in \espacosobolev{\gamma^{*}D}$ com $\beta(t)=\exp_{\gamma(t)}Y(t)$.
 	
 	\begin{proposicao}
-		O conjunto $\cilindrosLM$  dos caminhos de classe $C^{1}$ em $\lacocontrateis$ é uma variedade de Banach.
+		O conjunto $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Além disso, 
+		$$
+		\lacocontrateis = C^{\infty}(\circulo;M) \subset  \caminhosexponenciaisSobolev\subset C^{0}(\circulo;M),
+		$$
+		onde cada um dos conjuntos é denso em seu próximo.
 	\end{proposicao}
-	
+	\begin{prova}
+		Afirmo que $\caminhosexponenciaisSobolev$ satisfaz os axiomas dsa variedades de Banach. De fato,
+		\begin{enumerate}
+			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $\gamma_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{\gamma_{\beta}^{*}D}$ tal que $\beta(t)=\exp_{\gamma_{\beta}(t)}Y_{\beta}(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é injetora. Denotando $\espacosobolev{\gamma_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
+			$$
+			\caminhosexponenciaisSobolev = \bigcup_{\beta \in \caminhosexponenciaisSobolev } \exp_{\gamma_{\beta}}(W_{\beta}).
+			$$
+			
+			\item Pela escolha de $D_{\beta}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\exp_{\gamma_{\beta}}:W_{\beta} \to \exp_{\gamma_{\beta}}(W_{\beta})$ é um difeomorfismo. Logo é um homeomorfismo.
+			
+			\item Como $\exp_{\gamma_{\beta}}$ e $\exp_{\gamma_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\exp_{\gamma_{\beta}}^{-1} \circ \exp_{\gamma_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
+		\end{enumerate}
+		
+		Portanto $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$.
+		
+		Por fim, a demonstração da cadeia de inclusão dos conjuntos e suas densidades podem ser encontrada em \cite{matthias_morse_homology}.
+	\end{prova}
 	
 	
 	\begin{thebibliography}{9}
@@ -4572,6 +4593,12 @@ Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\ret
 		\emph{Lectures on Floer Homology},
 		University of Warnick,
 		1997.
+		
+		\bibitem{matthias_morse_homology}
+		Schwarz, Matthias
+		\emph{Morse Homology},
+		Birkhauser, Boston
+		1993.
 		
 		\bibitem{witten_supersymmetry_morse}
 		Witten, Edward:
