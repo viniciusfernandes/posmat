@@ -3328,22 +3328,24 @@
 		
 	\section{Soluções de Energia Finita $\energiafinitaM$}\label{secao_funcional_energia}
 	
-	No Capítulo \ref{capitulo_teoria_morse} mostrou-se que as linhas de fluxo do gradiente negativo de uma função de Morse, definida em uma variedade fechada, conectam dois pontos críticos (veja o Lema $\ref{lema_conjunto_limite_funcao_morse}$). Entretanto, esse naõ é o caso das construções feitas até aqui. Temos uma variedade de Banach, isto é, estamos em dimensão infinita e a compacidade não esta garantida.
-	
-	Ainda no caso clássico, seja $f \in \funcoesmorse{M}$ e --suponha que $\gamma:\reta \to M$ seja uma solução do sistema de equações diferenciais
+	No Capítulo \ref{capitulo_teoria_morse} mostrou-se que as linhas de fluxo do gradiente negativo de uma função de Morse, definida em uma variedade fechada, conectam dois pontos críticos (veja o Lema $\ref{lema_conjunto_limite_funcao_morse}$). Ainda no caso clássico, suponha que $f \in \funcoesmorsesmale{M}$ e que $\gamma:\reta \to M$ seja uma solução do sistema de equações diferenciais
 	$$
 	\derivada{}{s}\gamma(s)=-\gradiente(\gamma(s)),
 	$$
-	isto é, $\gamma$ é uma trajetoria do gradiente negativo. Defina o funcional energia
+	isto é, $\gamma$ é uma trajetoria do gradiente negativo. A compacidade de $M$ implica que $\gamma(\reta) \subset M$ é, em algum sentido, limitado. Por essa limitação de $\gamma(\reta)$ diz-se que existem $a, b \in M$ tais que $\lim_{s\to -\infty}\gamma(s)=a$ e $\lim_{s\to \infty}\gamma(s)=b$. 
+	
+	Defina o funcional energia por
 	$$
 	E(\gamma)= -\int_{\reta}\gamma^{*} df.
 	$$
-	Se $\gamma$ conecta dois pontos críticos $p,q\in \pontoscriticos{f}$, ou seja, $\lim_{s\to -\infty}\gamma(s)=a$ e $\lim_{s\to \infty}\gamma(s)=b$, então a energia de $\gamma$ é $E(\gamma) = f(a) -f(b)$. Definiremos um funcional energia de modo análogo. 
+	Se $\gamma$ conecta dois pontos críticos $p,q\in \pontoscriticos{f}$, ou seja, $\lim_{s\to -\infty}\gamma(s)=p$ e $\lim_{s\to \infty}\gamma(s)=q$, então a energia de $\gamma$ é dada por $E(\gamma) = f(p) -f(q)$. Como a função de Morse $f$ é decrescente ao longo das linhas de fluxo do campo $-\gradiente$, então $0\leq E(\gamma)<\infty$.
 	
-	Seja $\cilindrosLM$ o conjunto dos caminhos de classe $C^{1}$ em $\lacocontrateis$. Então
+	Um dos objetos de interesse desse capítulo são as soluções da equação de Floer que conectam pontos críticos do funcional $\funcionalH$. Será mostrado adiante que essas soluções residem em um espaço de funções cuja compacidade é dada em certas condições (veja o Teorema \ref{teorema_compacidade_gromov}). Além disso, tais soluções $u:\reta\to \lacocontrateis$, que podem ser vistas como as linhas do fluxo do campo $-\gradientefuncional$, conectam dois pontos críticos $\gamma, \gamma'\in \pontoscriticos{\funcionalH}$ se, e somente se, o funcional energia $E(u)$ é finito.
+	
+	Seja $\cilindrosLM$ o conjunto dos caminhos de classe $C^{1}$ em $\lacocontrateis$.
 	
 	\begin{definicao}
-		(Funcional Energia) O funcional energia é a aplicação $E: \cilindrosLM \to \reta$ definido por
+		(Funcional Energia) O funcional energia é a aplicação $E: \cilindrosLM \to \reta$ definida por
 		$$
 			E(u) = -\int_{\reta}u^{*}d\funcionalH.
 		$$
@@ -3354,12 +3356,7 @@
 		Com isso, dado $u \in \cilindrosLM$, tem-se que $E(u)$ depende explícitamente de $z \in \circulo$ e que $E(u):\circulo\to \reta$ é uma aplicação diferenciável.
 	\end{observacao}
 	
-	Suponha que $u \in \cilindrosLM$ é uma trajetória de $-\gradientefuncional \in T\lacocontrateis$ e que conecte os pontos críticos $\gamma,\gamma' \in \pontoscriticos{\funcionalH}$, isto é, $\lim_{s\to -\infty}u(s)=\gamma'$ e $\lim_{s\to \infty}u(s)=\gamma$. Com isso
-	$$
-	E(u) = \funcionalH(\gamma') - \funcionalH(\gamma).
-	$$
-	
-	Além disso, dado $Y \in T\reta$, tem-se que
+	Dado $Y \in T\reta$, tem-se que
 	$$
 	\begin{aligned}
 		(u^{*}d\funcionalH)_{s}(Y) &= d_{u}\funcionalH(d_{s}u(Y))
@@ -3371,16 +3368,22 @@
 		&=-Y\norma{\gradientefuncional(u(s))}^{2}.
 	\end{aligned}
 	$$
-	Como $Y\in T\reta$ é arbitrário, então $(u^{*}d\funcionalH)_{s} = -\norma{\gradientefuncional(u(s))}^{2}$. Voltando no funcional energia, tem-se
+	Como $Y\in T\reta$ é arbitrário, então $(u^{*}d\funcionalH)_{s} = -\norma{\gradientefuncional(u(s))}^{2}$. Inserindo essa expressão no funcional energia, tem-se
 	$$
 	E(u)=-\int_{\reta}u^{*}d\funcionalH = \int_{\reta}\norma{\gradientefuncional(u(s))}^{2}.
 	$$
 	
 	\begin{observacao}
-		zzz
+		Seguem algumas propriedade do funcional energia:
+		
 		\begin{enumerate}
-			\item Ainda não foi demonstrado a exitência das soluções da equação de Floer.
+			\item Para todo $u \in \cilindrosLM$ tem-se que $E(u)\geq 0$.
+			
+			\item $E(u) = 0$ se, e somente se, $\derivadaparcial{}{s}u(s) = 0$. Isso reduz $u$ a uma solução do sistema Hamiltoniano. Logo $u$ é um ponto crítico de $\funcionalH$.
+			
+			\item Se $u \in \cilindrosLM$ conecta dois pontos $\gamma, \gamma' \in \pontoscriticos{\funcionalH}$, isto é, $\lim_{s\to -\infty}u(s)=\gamma'$ e $\lim_{s\to \infty}u(s)=\gamma$, então $E(u)=\funcionalH(\gamma') - \funcionalH(\gamma)<\infty$.
 		\end{enumerate}
+		
 	\end{observacao}
 	
 	Defina $\energiafinitaM\subset\cilindrosLM$ o conjunto de todas as trajetórias de $\gradientefuncional$ tal que o funcional energia seja finito. Uma importante propriedade de $\energiafinitaM$ é a sua compacidade. Para isso, é necessário munir $\energiafinitaM$ com uma topologia, o que que pode não ser fácil. Para contornar esse problema vamos tratar $M$ como uma variedade mergulhara em $\real{m}$ para algum $m>0$ suficientemente grande, o que é garantido pelo Mergulho de Whitney $\ref{teorema_whitney}$. 
@@ -3405,7 +3408,7 @@
 	
 	O teorema a seguir afirma a compacidade de $\energiafinitaM$ sobre determinadas condições. Sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_compacidade_gromov}
 		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
 	\end{teorema}
 	
@@ -4454,10 +4457,10 @@ Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\ret
 		$$
 		\lacocontrateis = C^{\infty}(\circulo;M) \subset  \caminhosexponenciaisSobolev\subset C^{0}(\circulo;M),
 		$$
-		onde cada um dos conjuntos é denso em seu próximo.
+		onde cada um dos conjuntos da sequência é denso em seu sucessor.
 	\end{proposicao}
 	\begin{prova}
-		Afirmo que $\caminhosexponenciaisSobolev$ satisfaz os axiomas dsa variedades de Banach. De fato,
+		Afirmo que $\caminhosexponenciaisSobolev$ satisfaz os axiomas das variedades de Banach. De fato,
 		\begin{enumerate}
 			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $\gamma_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{\gamma_{\beta}^{*}D}$ tal que $\beta(t)=\exp_{\gamma_{\beta}(t)}Y_{\beta}(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é injetora. Denotando $\espacosobolev{\gamma_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
 			$$
