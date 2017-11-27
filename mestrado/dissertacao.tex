@@ -52,6 +52,7 @@
 \newcommand{\aplicacaoexponencial}[2]{exp_{#1}(#2)}
 \newcommand{\aplicacaoexponencialgeral}[1]{exp_{#1}}
 \newcommand{\aplicaoessuaves}[2]{C^{\infty}(#1, #2)}
+\newcommand{\aplicaoessuavesloc}[2]{C^{\infty}_{\text{loc}}(#1, #2)}
 \newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo, M)}
 \newcommand{\autoespaco}[1]{E_{#1}}
 \newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
@@ -1138,48 +1139,49 @@
 	Caso existam pontos críticos distintos com valores críticos coincidentes a mesma construção pode ser feita perturbando a função de Morse $f$ de modo a obter uma outra $f' \in \funcoesmorse{M}$ com os mesmos pontos críticos agora com valores críticos todos distintos. Essa construção é viabilizada pela densidade das funções de Morse em $\funcoessuaves{M}$.
 	
 	\begin{exemplo}
-		(2-toro) Seja $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização do toro $T^{2}$ dada por
+		(2-toro) Sejam $T^{2} \subset \real{3}$ o toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$ e $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
 		$$
-		\varphi(\theta, \phi) = ((1+2cos\phi)cos\theta, (1+2cos\phi)sin\theta, 2sin\phi).
+		\varphi(\theta, \phi) = ((2+cos\phi)cos\theta, (2+cos\phi)sin\theta, sin\phi).
 		$$
-		Esse é um toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$. Com isso, temos que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
+		
+		Com isso, tem-se que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
 		$$
 		\begin{aligned}
-			\derivadaparcialabrev{\theta} &= -(1+2cos\phi)sin\theta \derivadaparcialabrev{x}+(1+2cos\phi)cos\theta \derivadaparcialabrev{y} 
+			\derivadaparcialabrev{\theta} &= -(2+cos\phi)sin\theta \derivadaparcialabrev{x}+(2+cos\phi)cos\theta \derivadaparcialabrev{y},
 			\\
-			\derivadaparcialabrev{\phi} &=  - 2sin\phi cos\theta 	\derivadaparcialabrev{x} - 2sin\phi sin\theta 	\derivadaparcialabrev{y} +2cos\phi				\derivadaparcialabrev{z}.
+			\derivadaparcialabrev{\phi} &=  - sin\phi cos\theta 	\derivadaparcialabrev{x} - sin\phi sin\theta 	\derivadaparcialabrev{y} +cos\phi				\derivadaparcialabrev{z}.
 			\end{aligned} 
 		$$
 				
-		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Temos que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ temos $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, caso $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$, mas basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e $\pontoscriticos{f} = \{(\pm 3,0,0), (\pm 1,0,0)\}$, de modo que $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
+		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Tem-se que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ tem-se que $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, o caso em que $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$. Com isso, basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e os pontos críticos de $f$ são $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
 			
-		Temos a representação matricial da Hessiana $H_{p}(f)$
+		Assim, a representação matricial da Hessiana $H_{p}(f)$ é
 			$$
-			H(\theta, \phi) = 
+			H(\phi, \theta) = 
 			\left(
 			\begin{array}{cc}
-			-(1+2cos\phi)cos\theta & 2sin\phi sin\theta  
+			-(2+cos\phi)cos\theta & sin\phi sin\theta  
 			\\
-			2sin\phi sin\theta   & -2cos\phi cos\theta  
+			sin\phi sin\theta   & -cos\phi cos\theta  
 			\end{array}
 			\right).
 			$$
-		Avaliando a hessiana nos pontos críticos temos
+		Avaliando a hessiana nos pontos críticos tem-se
 			$$
 			H(0, 0) = 
 			\left(
 			\begin{array}{cc}
 			-3 & 0
 			\\
-			0& -2
+			0& -1
 			\end{array}
 			\right),
 			H(0, \pi) = 
 			\left(
 			\begin{array}{cc}
-			1 & 0
+			3 & 0
 			\\
-			0& 2
+			0& 1
 			\end{array}
 			\right)
 			$$
@@ -1187,24 +1189,26 @@
 			H(\pi, 0) = 
 			\left(
 			\begin{array}{cc}
-			3 & 0
+			-1 & 0
 			\\
-			0& 2
+			0& 1
 			\end{array}
 			\right),
 			H(\pi, \pi) = 
 			\left(
 			\begin{array}{cc}
-			-1 & 0
+			1 & 0
 			\\
-			0& -2
+			0& -1
 			\end{array}
 			\right)
 			$$
-			\vermelho{Não entendo a diferença entre os índices dos pontos críticos....!!!!!!!!!!}
+			
+			Com isso, os índices $\lambda_{(\phi, \theta)}$ dos pontos críticos são: $\lambda_{(0,0)} = 2$, $\lambda_{(0,\pi)} = 0$, $\lambda_{(\pi,0)} = 1$ e $\lambda_{(\pi,\pi)} = 1$.
+			
 	\end{exemplo}
 
-	A relação entre a topologia de $M$ e os pontos críticos de uma função de Morse $f:M \to \reta$, originalmente foi data em termos de desigualdades, chamadas desigualdades de Morse.
+	Originalmente, a relação entre a topologia de $M$ e os pontos críticos de uma função de Morse $f:M \to \reta$, foi dada em termos de desigualdades, chamadas desigualdades de Morse.
 	
 	\begin{definicao}
 		(Números de Betti) O j-ésimo número de Betti de $M$ é o inteiro $\beta_{j}(M) = dim(H_{j}(M))$, onde $H_{j}(M)$ é o j-ésimo grupo de homologia singular de $M$.
@@ -2484,7 +2488,9 @@
 			
 			A aplicação $\rho|_{\mathcal{U}}: \mathcal{U} \to \circulo$ quando avaliada em $A\in \mathcal{U}$ é dada em termos do produto dos auto-valores $\lambda \in \espectrooperador{A}$ e suas multiplicidades $m_{+}(\lambda)$ e $m_{0}$. Como $\espectrooperador{A} = \espectrooperador{U}$ e $m_{+}(\lambda)  = m_{\lambda}^{U}$, então as multiplicidades dos auto-valores são as mesmas e $\rho(A)=det(U)$.
 
-			Na Observação \ref{observacao_quociente_grupo_simpletico_contratil} foi mostrado que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$, portanto $\grupofundamental{\gruposimpletico{2n}} \cong \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}}$. Mostrou-se que $\rho|_{\matrizSimpleticaOrtogonal} = det: \matrizSimpleticaOrtogonal\to \circulo$, o que implica que $\rho|_{\matrizSimpleticaOrtogonal*} = Det_{*}$, onde $Det_{*}:\grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ é o isomorfismo dado pelo Lema \ref{lema_isomorfismo_grupo_fundamental_Un}. Então $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo}$ é um isomorfismo.
+			Como $\matrizSimpleticaOrtogonal \subset \gruposimpletico{2n}$, então $\grupofundamental{\matrizSimpleticaOrtogonal} \subset \grupofundamental{\gruposimpletico{2n}}$. Por outro lado, a Observação \ref{observacao_quociente_grupo_simpletico_contratil} afirma que $\matrizSimpleticaOrtogonal$ é um retrato por deformação de $\gruposimpletico{2n}$. Com isso, todo elemento de $\grupofundamental{\gruposimpletico{2n}} $ é um elemento de $\grupofundamental{\matrizSimpleticaOrtogonal}$, $\grupofundamental{\gruposimpletico{2n}}\subset\grupofundamental{\matrizSimpleticaOrtogonal}$. Portanto $\grupofundamental{\gruposimpletico{2n}}=\grupofundamental{\matrizSimpleticaOrtogonal}$.
+			
+			Mostrou-se que $\rho|_{\matrizSimpleticaOrtogonal} =det$, o que implica que $(\rho|_{\matrizSimpleticaOrtogonal})_{*} = Det_{*}$, onde $Det_{*}:\grupofundamental{\matrizunitaria{n}} \to \grupofundamental{\circulo}$ é o isomorfismo dado pelo Lema \ref{lema_isomorfismo_grupo_fundamental_Un}. Como $\grupofundamental{\gruposimpletico{2n}}=\grupofundamental{\matrizSimpleticaOrtogonal}$, então $\rho_{*}=(\rho|_{\matrizSimpleticaOrtogonal})_{*}$ e $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo}$ é um isomorfismo.
 			
 			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então pela própria definição a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
 			
@@ -2866,165 +2872,6 @@
 		\mu(x) = Ind(x) - n.
 		$$
 	\end{corolario}	
-
-	\chapter{Espaços de Sobolev}
-	\section{Distribuições - Motivação e Definições}
-	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
-	$$
-	\nabla.E(x) = \rho(x),
-	$$
-	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, sendo ambos de classe $C^{\infty}$. O problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade de carga dada por $\rho(V) = q/V$ é tomada quando $\lim_{V \to 0}\rho(V)$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
-	$$
-	\rho(x) = \lim_{V\to 0} \frac{q}{V} = q\delta(x - x_{0}),
-	$$
-	onde $x,x_{0} \in \real{3}$, $x_{0}$ é o ponto onde esta localizada a carga $q$ e 
-	$$
-	\funcaocond{\delta(x - x_{0})}{\infty}{x=x_{0}}{0}{x\neq x_{0}}\;\; \text{tal que} \;\; \int_{\real{3}} \delta(x) = 1.
-	$$
-	Note que o símbolo $\delta$ não esta bem-definido em $x_{0}$, portanto não é uma função e o problema 
-	$$
-	\nabla.E(x) = q\delta(x),
-	$$
-	não esta bem formulado matematicamente. 
-	
-	Em teoria de distribuição essa EDP terá uma solução em um sentido mais geral, o qual é chamada de solução distribuicional ou solução fraca. Aqui serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
-	
-	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesteste=\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto e definidas em $\Omega$. Os elementos de tal conjunto são chamados de funções de teste.
-	
-	\begin{observacao}
-		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
-	\end{observacao}
-	
-	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\int_{\Omega}|f(x)| \in \reta$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
-	$$
-	\norma{f}=\normaLpdefinicao{|f(x)|}{\Omega},
-	$$
-	forma um espaço de Banach. Porém, para os resultados a seguir utiliza-se o seguinte quociente:
-	
-	\begin{definicao}\label{definicao_espaco_Lp}
-		(Espaços $\espacoLpGeral{p}{\Omega}$ e $\espacoLpcomp{\Omega}$) Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula. Assim, o quociente $l^{p}(\Omega)/\sim$ será denotado por $\espacoLpGeral{p}{\Omega}$.
-	\end{definicao}
-	
-	\begin{definicao}
-		(Espaços $\espacoLpcomp{\Omega}$) O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
-	\end{definicao}
-	
-	\begin{observacao}
-		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, e um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
-	\end{observacao}
-	
-	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f(x)/\partial x_{j}$ por $\derivadaparcialabrev{j}f(x) $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
-	
-	\begin{definicao}
-		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma forma linear $f:\funcoesteste \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathbb{N}$ tal que 
-		$$
-		|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
-		$$
-		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes$.
-	\end{definicao}
-	
-	Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$ e $\phi \in \funcoesteste$. Defina $\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x)$ e $K = supp(\phi) \subset \Omega$ compacto. Como $f$ é contínua, então a sua restrição a $K$ é limitada, logo $|\produtointerno{f}{\phi}|\leq sup(|\phi|)\int_{K}|f(x)|<\infty$ e $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma, a aplicação $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$ é injetora. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que implica na condição de integrabilidade. Com isso, pode-se generalizar para o caso em que $f \in \espacoLpcomp{\Omega}$, de modo que ainda se tenha a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
-	
-	Por fim, pode-se efetuar a diferenciação das distribuições. Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e $\alpha$ um k-multi-índice, então $\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}$.
-	
-	\begin{definicao}
-		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada de Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
-	\end{definicao}
-	
-	\begin{exemplo}
-		(Função de Heaviside) Seja $\theta:\Omega = \reta \to \reta$, a de função de Heaviside, definida por
-		$$
-		\funcaocond{\theta(x)}{1}{x\geq0}{0}{x<0}.
-		$$
-		Afirmo que o diferencial de $\theta$ é o delta de Dirac. De fato,
-		$$
-		\produtointerno{\partial\theta}{\phi} = -		\produtointerno{\theta}{\partial\phi} = -\int_{\reta_{+}}\partial \phi(x) = -\phi(0)\Big|^{\infty}_{0} = \phi(0) = \produtointerno{\delta}{\phi}.
-		$$
-		Como $\phi \in \funcoesteste$ é arbitrária, então $\partial \theta = \delta \in \distribuicoes$.
-	\end{exemplo}
-	
-	\begin{observacao}
-		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
-	\end{observacao}
-	
-	Sejam $\Omega, \Omega'\subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Omega'}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Omega'$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
-	$$
-	\sum_{|\alpha|\leq p}|\partial^{\alpha}(h\phi)|\leq c			\sum_{|\beta|\leq p}|\partial^{\beta}(\phi)|, \text{onde }\; \phi \in \funcoesdiferenciaveissupp{\infty}{K}.
-	$$
-	
-	\begin{definicao}\label{definicao_distribuicao_adjunta}
-		(Distribuição adjunta) Sejam $\Omega, \Omega'\subseteq \real{n}$ dois abertos. O adjunto $h^{*}: \distribuicoesgeral{\Sigma} \to \distribuicoesgeral{\Omega}$é definida por
-		$$
-		\produtointerno{h^{*}\circ f}{\phi} = 		\produtointerno{f}{h\circ\phi}.
-		$$
-	\end{definicao}\label{definicao_espalo_sobolev}
-	\section{Espaço de Sobolev $W^{1,p}$}\label{secao_espaco_sobolev}
-	\begin{definicao}\label{definicao_espaco_sobolev}
-		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $p \in \mathbb{N}$ tal que $p\geq 1$. Os espaços de Sobolev são os conjuntos
-		$$
-		W^{k,p} (\Omega)= \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
-		$$
-		Quando existir uma $g \in \espacoLpGeral{p}{\Omega}$ diremos que $g = \partial^{\alpha}f$.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_espacos_sobolev_distribuicao}
-		Note que, $W^{k,p}$ pode ser visto como um espaço de distribuições.
-	\end{observacao}
-	
-	\begin{definicao}\label{definicao_espalo_sobolev_generalizado}
-		(Espaço de Sobolev generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então $\espacosobolevcontradominio{\Omega}{\real{k}}$ é o conjunto das aplicações  $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ tais que $f_{j} \in \espacosobolev{\Omega} $ para $1\leq j \leq k$.
-	\end{definicao}
-	
-	\begin{exemplo}
-		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Como $f$ é limitada em $\Omega$, então é localmente compacta, logo $f \in \espacoLp{\Omega}$. Defina $g:\Omega\to \real{n}$ por
-		$$
-		\funcaocond{g(x)}{(\pm 1, 0, \dots, 0)}{\pm x_{1}>0}{(0, 0, \dots, 0)}{x_{1} = 0}.
-		$$
-		Como $\Omega$ é limitado, então $g_{j}\in \espacoLp{\Omega}$. Dado $\phi \in \funcoesteste$ tem-se que
-		$$
-		\begin{aligned}
-		\produtointerno{g_{1}}{\phi} 
-		&= \int_{\Omega}g_{1}(x)\phi(x)
-		\\
-		&=\int_{\Omega^{+}}\phi(x)+\int_{\Omega^{-}}(-1)\phi(x)+\int_{\{0\}}0\phi(x)
-		\\ &=\int_{\Omega^{+}}\derivadaparcial{}{x_{1}}(x_{1}\phi(x)) - \int_{\Omega^{+}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
-		\\
-		&+\int_{\Omega^{-}}\derivadaparcial{}{x_{1}}(-x_{1}\phi(x)) + \int_{\Omega^{-}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
-		\\ 
-		&=
-		\int_{\Omega^{+}\cup \Omega^{-}}\derivadaparcial{}{x_{1}}(|x_{1}|\phi(x)) - \int_{\Omega^{+}\cup \Omega^{-}}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
-		\\
-		&=
-		\underbrace{|x_{1}|\phi(x)\Big|_{\partial(\Omega^{+}\cup \Omega^{-})}}_{=0} - \int_{\Omega}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
-		\\
-		&=
-		-\produtointerno{f}{\derivadaparcialabrev{1}\phi},
-		\end{aligned}
-		$$
-		onde $\Omega^{\pm} = \{x \in \Omega: \pm x_{1} >0\}$. Além disso, foi usados os fatos de que $supp(\phi) $ é um compacto no interior de $\Omega$ e $\phi$ restrita a $\partial \Omega$ é nula. Pela Definição \ref{definicao_espaco_sobolev} tem-se que $g_{1} = \derivadaparcialabrev{1}f$ (no sentido fraco). Os casos em que $2\leq j\leq n$ são triviais pois $g_{j} = 0$. Portanto $f\in \espacosobolev{\Omega}$.
-	\end{exemplo}
-	
-	\begin{observacao}
-		De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
-	\end{observacao}
-	
-	\begin{proposicao}
-		Os espaços de Sobolev $W^{1,p}$ são espaços de Banach separáveis para $1\leq p \leq \infty$.
-	\end{proposicao}
-	
-	Quando $\Omega\subset\real{n}$ e $n=1$, tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $n>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev) garante a inclusão em $L^{p}$ e uma demonstração pode ser encontrada em $\cite{breazis_sobolev_spaces}$.	
-	
-	\begin{teorema}\label{teorema_sobolev}
-		(Rellich-Kondrachov ou Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $1/q>1/p -1/n$.
-	\end{teorema}
-	
-	\begin{observacao}
-		O teorema implica que existe uma constate $C>0$ tal que 
-		$$
-		\normaLgGeral{\xi}{q}{\Omega} \leq C \normaWpGeralDominio{\xi}{p}{\Omega},
-		$$
-		para todo $\xi\in \espacosobolev{\Omega}$.
-	\end{observacao}
 	
 	\chapter{Variedades Simpléticas e o Operador de Floer}
 	\section{Variedades Simpléticas}
@@ -3386,27 +3233,37 @@
 		
 	\end{observacao}
 	
-	Defina $\energiafinitaM\subset\cilindrosLM$ o conjunto de todas as trajetórias de $\gradientefuncional$ tal que o funcional energia seja finito. Uma importante propriedade de $\energiafinitaM$ é a sua compacidade. Para isso, é necessário munir $\energiafinitaM$ com uma topologia, o que que pode não ser fácil. Para contornar esse problema vamos tratar $M$ como uma variedade mergulhara em $\real{m}$ para algum $m>0$ suficientemente grande, o que é garantido pelo Mergulho de Whitney $\ref{teorema_whitney}$. 
+ 	\begin{definicao}
+ 		(Soluções de energia finita) O conjunto de todas as trajetórias de $\gradientefuncional$ tal que o funcional energia seja finito é denotado por $\energiafinitaM$ 
+ 	\end{definicao}
+ 	
+ 	\begin{observacao}
+ 		Como os elementos de $\lacocontrateis$ são caminhos fechados contráteis, então todo elemento $u$ de $\energiafinitaM$ é contrátil pois $u:\reta\to \lacocontrateis$.
+ 	\end{observacao}
+ 	
+ 	Grande parte da análise feita daqui em diante é baseada em operadores diferenciais definidos em $\energiafinitaM$. Com isso, a definição de uma topologia para esse conjunto é necessária. Para contornar dificuldades adicionais com essa escolha, é usado o fato de que a $2n$-variedade $M$ pode ser mergulhada no espaço euclidiano $\real{m}$, onde $m=4n+1$, o que é garantido pelo Teorema de Whitney \ref{teorema_whitney}. Como $M$ é um compacto, então $M \subset\real{m}$ é um fechado e limitado. Com isso, os elementos $\gamma\in \lacocontrateis$ e $u\in \energiafinitaM$ podem ser vistos como as seguintes aplicações $\gamma:\circulo \to \real{m}$ e $u:\retacartesianocirculo \to \real{m}$. Com essa identificação, tem-se que $\lacocontrateis\subset \aplicaoessuaves{\circulo}{M}\subset \aplicaoessuaves{\circulo}{\real{m}}$ e $\energiafinitaM \subset \aplicaoessuaves{\retacartesianocirculo}{M}\subset \aplicaoessuaves{\retacartesianocirculo}{\real{m}}$. 
 	
 	\begin{definicao}
-		($\cktopologia{k}$) Seja $C^{r}(\real{m}, \real{n})$ o conjunto das aplicações de $\real{m}$ em $\real{n}$ de classe $C^{r}$. Então, dado $k\leq r$, definimos a $\cktopologia{k}$ de $C^{r}(\real{m}, \real{n})$ como sendo a topologia gerada pelo máximo das j-normas
+		($\cktopologia{k}$) Seja $C^{r}(\real{n'}, \real{n})$ o conjunto das aplicações de $\real{n'}$ em $\real{n}$ de classe $C^{r}$. Então, dado $k\leq r$, definimos a $\cktopologia{k}$ de $C^{r}(\real{n'}, \real{n})$ como sendo a topologia gerada pela norma
 		$$
-		\norma{f}_{j} = \sup_{p \in B(1)}\norma{f^{(j)}(p)},
+		\norma{f} = max \{\norma{f}_{j}\}_{j=1}^{r},\; \text{tal que} \;\; \norma{f}_{j} = \sup_{p \in B(1)}\norma{f^{(j)}(p)},
 		$$
-		isto é, $\norma{f} = max \{\norma{f}_{j}\}_{j=1}^{r}$, onde $B(1)$ é a bola unitária centrada na origem e $f^{(j)}(p)$ é a j-ésima diferenciação de $f$ no ponto $p$.
+		onde $B(1)$ é a bola unitária centrada na origem e $f^{(j)}(p)$ é a j-ésima diferenciação de $f$ no ponto $p$.
 	\end{definicao}
+	
+	Daqui em diante assumiremos a $\cktopologia{\infty}$ para $\aplicaoessuaves{\circulo}{\real{m}}$ e a topologia da convegência uniforme para $\aplicaoessuavesloc{\retacartesianocirculo}{\real{m}}$. Além disso, assume-se que a topologia dos subconjuntos acima citados é a topologia induzida por essas normas, respectivamente.
 
 	\begin{observacao}
-		Lembre-se que estamos sob o ponto de vista de que $N $ é um mergulho em algum espaço euclidiano com dimensão suficientemente grande. Além disso, Supondo que $N$ seja separável, então a $\cktopologia{r}$ é metrizável. Um pouco mais pode ser encontrado em $\cite{palis_dynamical_systems}$.
+		Em $\cite{palis_dynamical_systems}$ é demonstrado que, se $M$ é separável, então a $\cktopologia{\infty}$ é metrizável.
 	\end{observacao}
 
-	Sejam $C^{\infty}(\circulo; \real{m})$ e $C^{\infty}_{loc}(\retacartesianocirculo; \real{m})$ munidos da $\cktopologia{k}$ e da topologia da convergência uniforme, respectivamente. Como $M \subset \real{m}$ é um mergulho, então $C^{\infty}(\circulo; M)$ e $C^{\infty}_{loc}(\retacartesianocirculo; M)$ herdam as respectivas topologias.
-
+	\vermelho{
 	\begin{proposicao}
-	Toda solução de classe $C^{1}$ da equação de Floer é de classe $C^{\infty}$. Além disso, em $\energiafinitaM$, as topologias $C^{0}_{loc}$, $C^{1}_{loc}$ e $C^{\infty}_{loc}$ são equivalentes.
+	Toda solução de classe $C^{1}$ da equação de Floer é de classe $C^{\infty}$. Além disso, em $\energiafinitaM$, as topologias $C^{0}_{loc}$, $C^{1}_{loc}$ e $C^{\infty}_{loc}$ são equivalentes.(não sei se é necessário incluir esse resultado)
 	\end{proposicao}
+	}
 	
-	O teorema a seguir afirma a compacidade de $\energiafinitaM$ sobre determinadas condições. Sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	A compacidade de $\energiafinitaM$ exerce um papel importante nos resultados desse capítulo. O teorema a seguir garante que, sob certas hipóteses, essa propriedade pode ser obtida, e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{teorema}\label{teorema_compacidade_gromov}
 		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
@@ -3415,9 +3272,9 @@
 	Temos o teorema a seguir tem sua importância destacada nas demais demonstração de outros resultados, além ser o equivalente ao Lema $\ref{lema_conjunto_limite_funcao_morse}$.
 	
 	\begin{teorema}
-		Suponha que todas as trajetórias de $\campogradientefuncional \in \campossuaves{\lacocontrateis}$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $\gamma, \beta\in \pontoscriticos{\funcionalH}$ tais que
+		Suponha que todas as trajetórias de $-\gradientefuncional \in \campossuaves{\lacocontrateis}$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $\gamma, \gamma'\in \pontoscriticos{\funcionalH}$ tais que
 		$$
-		\lim_{s\to -\infty}u(s)=\gamma,\; \lim_{s\to \infty}u(s)=\beta\;\;
+		\lim_{s\to -\infty}u(s)=\gamma',\; \lim_{s\to \infty}u(s)=\gamma\;\;
 		$$
 		em $C^{\infty}(\circulo;M)$. Além disso, temos que
 		$$
@@ -3428,7 +3285,7 @@
 	
 	O lema a seguir caracterisza o conjunto dos pontos críticos do funcional Hamiltoniano e sua demonstração esta em $\cite{audi_floer_homology}$. 
 	\begin{lema}
-		Supondo as condições de não-degenerecência de das trajetórias periódicas de $\campohamiltonianoabrev$, então o conjunto $\pontoscriticos{\funcionalH}$ é finito. Logo, o conjunto das trajetórias de $\campohamiltonianoabrev$ é finito.
+		Supondo que  trajetórias periódicas do campo Hamiltoniano $\campohamiltonianoabrev$ sejam não-degeneradas, então o conjunto $\pontoscriticos{\funcionalH}$ é finito. Logo, o conjunto das trajetórias de $\campohamiltonianoabrev$ é finito.
 	\end{lema}
 
 	\begin{comment}
@@ -4419,6 +4276,166 @@ Pelo Teorema $\ref{teorema_sobolev}$ temos que $\espacosobolevcontradominio{\ret
 	\chapter{Variedades de Banach}\label{apendice_variedades_banach}
 	
 	Uma variedade de Banach é uma extensão da definição de variedades em dimensão finita para dimensões infinitas. Mais precisamente, tem-se um espaço topológico em que cada ponto possui uma vizinhaça que é homeomorfa a um aberto de um espaço de Banach. Parte desse texto estudo é apoiado em operadores definidos em espaços de funções, que podem não ter dimensão finita. Contudo, pode-se mostrar que alguns desses conjuntos possuem uma estrutura de variedades de Banach, e com isso, defini-se uma noção de espaço tangente nos mesmos. 
+	
+	\section{Distribuições - Motivação e Definições}
+	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
+	$$
+	\nabla.E(x) = \rho(x),
+	$$
+	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, sendo ambos de classe $C^{\infty}$. O problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade de carga dada por $\rho(V) = q/V$ é tomada quando $\lim_{V \to 0}\rho(V)$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
+	$$
+	\rho(x) = \lim_{V\to 0} \frac{q}{V} = q\delta(x - x_{0}),
+	$$
+	onde $x,x_{0} \in \real{3}$, $x_{0}$ é o ponto onde esta localizada a carga $q$ e 
+	$$
+	\funcaocond{\delta(x - x_{0})}{\infty}{x=x_{0}}{0}{x\neq x_{0}}\;\; \text{tal que} \;\; \int_{\real{3}} \delta(x) = 1.
+	$$
+	Note que o símbolo $\delta$ não esta bem-definido em $x_{0}$, portanto não é uma função e o problema 
+	$$
+	\nabla.E(x) = q\delta(x),
+	$$
+	não esta bem formulado matematicamente. 
+	
+	Em teoria de distribuição essa EDP terá uma solução em um sentido mais geral, o qual é chamada de solução distribuicional ou solução fraca. Aqui serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
+	
+	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesteste=\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto e definidas em $\Omega$. Os elementos de tal conjunto são chamados de funções de teste.
+	
+	\begin{observacao}
+		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
+	\end{observacao}
+	
+	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\int_{\Omega}|f(x)| \in \reta$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
+	$$
+	\norma{f}=\normaLpdefinicao{|f(x)|}{\Omega},
+	$$
+	forma um espaço de Banach. Porém, para os resultados a seguir utiliza-se o seguinte quociente:
+	
+	\begin{definicao}\label{definicao_espaco_Lp}
+		(Espaços $\espacoLpGeral{p}{\Omega}$ e $\espacoLpcomp{\Omega}$) Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula. Assim, o quociente $l^{p}(\Omega)/\sim$ será denotado por $\espacoLpGeral{p}{\Omega}$.
+	\end{definicao}
+	
+	\begin{definicao}
+		(Espaços $\espacoLpcomp{\Omega}$) O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
+	\end{definicao}
+	
+	\begin{observacao}
+		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, e um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
+	\end{observacao}
+	
+	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f(x)/\partial x_{j}$ por $\derivadaparcialabrev{j}f(x) $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
+	
+	\begin{definicao}
+		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma forma linear $f:\funcoesteste \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathbb{N}$ tal que 
+		$$
+		|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
+		$$
+		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes$.
+	\end{definicao}
+	
+	Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$ e $\phi \in \funcoesteste$. Defina $\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x)$ e $K = supp(\phi) \subset \Omega$ compacto. Como $f$ é contínua, então a sua restrição a $K$ é limitada, logo $|\produtointerno{f}{\phi}|\leq sup(|\phi|)\int_{K}|f(x)|<\infty$ e $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma, a aplicação $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$ é injetora. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que implica na condição de integrabilidade. Com isso, pode-se generalizar para o caso em que $f \in \espacoLpcomp{\Omega}$, de modo que ainda se tenha a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
+	
+	Por fim, pode-se efetuar a diferenciação das distribuições. Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e $\alpha$ um k-multi-índice, então $\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}$.
+	
+	\begin{definicao}
+		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada de Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
+	\end{definicao}
+	
+	\begin{exemplo}
+		(Função de Heaviside) Seja $\theta:\Omega = \reta \to \reta$, a de função de Heaviside, definida por
+		$$
+		\funcaocond{\theta(x)}{1}{x\geq0}{0}{x<0}.
+		$$
+		Afirmo que o diferencial de $\theta$ é o delta de Dirac. De fato,
+		$$
+		\produtointerno{\partial\theta}{\phi} = -		\produtointerno{\theta}{\partial\phi} = -\int_{\reta_{+}}\partial \phi(x) = -\phi(0)\Big|^{\infty}_{0} = \phi(0) = \produtointerno{\delta}{\phi}.
+		$$
+		Como $\phi \in \funcoesteste$ é arbitrária, então $\partial \theta = \delta \in \distribuicoes$.
+	\end{exemplo}
+	
+	\begin{observacao}
+		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
+	\end{observacao}
+	
+	Sejam $\Omega, \Omega'\subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Omega'}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Omega'$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
+	$$
+	\sum_{|\alpha|\leq p}|\partial^{\alpha}(h\phi)|\leq c			\sum_{|\beta|\leq p}|\partial^{\beta}(\phi)|, \text{onde }\; \phi \in \funcoesdiferenciaveissupp{\infty}{K}.
+	$$
+	
+	\begin{definicao}\label{definicao_distribuicao_adjunta}
+		(Distribuição adjunta) Sejam $\Omega, \Omega'\subseteq \real{n}$ dois abertos. O adjunto $h^{*}: \distribuicoesgeral{\Sigma} \to \distribuicoesgeral{\Omega}$é definida por
+		$$
+		\produtointerno{h^{*}\circ f}{\phi} = 		\produtointerno{f}{h\circ\phi}.
+		$$
+	\end{definicao}\label{definicao_espalo_sobolev}
+	
+	\section{Espaço de Sobolev $W^{1,p}$}\label{secao_espaco_sobolev}
+	\begin{definicao}\label{definicao_espaco_sobolev}
+		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $p \in \mathbb{N}$ tal que $p\geq 1$. Os espaços de Sobolev são os conjuntos
+		$$
+		W^{k,p} (\Omega)= \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
+		$$
+		Quando existir uma $g \in \espacoLpGeral{p}{\Omega}$ diremos que $g = \partial^{\alpha}f$.
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_espacos_sobolev_distribuicao}
+		Note que, $W^{k,p}$ pode ser visto como um espaço de distribuições.
+	\end{observacao}
+	
+	\begin{definicao}\label{definicao_espalo_sobolev_generalizado}
+		(Espaço de Sobolev generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então $\espacosobolevcontradominio{\Omega}{\real{k}}$ é o conjunto das aplicações  $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ tais que $f_{j} \in \espacosobolev{\Omega} $ para $1\leq j \leq k$.
+	\end{definicao}
+	
+	\begin{exemplo}
+		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Como $f$ é limitada em $\Omega$, então é localmente compacta, logo $f \in \espacoLp{\Omega}$. Defina $g:\Omega\to \real{n}$ por
+		$$
+		\funcaocond{g(x)}{(\pm 1, 0, \dots, 0)}{\pm x_{1}>0}{(0, 0, \dots, 0)}{x_{1} = 0}.
+		$$
+		Como $\Omega$ é limitado, então $g_{j}\in \espacoLp{\Omega}$. Dado $\phi \in \funcoesteste$ tem-se que
+		$$
+		\begin{aligned}
+		\produtointerno{g_{1}}{\phi} 
+		&= \int_{\Omega}g_{1}(x)\phi(x)
+		\\
+		&=\int_{\Omega^{+}}\phi(x)+\int_{\Omega^{-}}(-1)\phi(x)+\int_{\{0\}}0\phi(x)
+		\\ &=\int_{\Omega^{+}}\derivadaparcial{}{x_{1}}(x_{1}\phi(x)) - \int_{\Omega^{+}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
+		\\
+		&+\int_{\Omega^{-}}\derivadaparcial{}{x_{1}}(-x_{1}\phi(x)) + \int_{\Omega^{-}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
+		\\ 
+		&=
+		\int_{\Omega^{+}\cup \Omega^{-}}\derivadaparcial{}{x_{1}}(|x_{1}|\phi(x)) - \int_{\Omega^{+}\cup \Omega^{-}}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
+		\\
+		&=
+		\underbrace{|x_{1}|\phi(x)\Big|_{\partial(\Omega^{+}\cup \Omega^{-})}}_{=0} - \int_{\Omega}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
+		\\
+		&=
+		-\produtointerno{f}{\derivadaparcialabrev{1}\phi},
+		\end{aligned}
+		$$
+		onde $\Omega^{\pm} = \{x \in \Omega: \pm x_{1} >0\}$. Além disso, foi usados os fatos de que $supp(\phi) $ é um compacto no interior de $\Omega$ e $\phi$ restrita a $\partial \Omega$ é nula. Pela Definição \ref{definicao_espaco_sobolev} tem-se que $g_{1} = \derivadaparcialabrev{1}f$ (no sentido fraco). Os casos em que $2\leq j\leq n$ são triviais pois $g_{j} = 0$. Portanto $f\in \espacosobolev{\Omega}$.
+	\end{exemplo}
+	
+	\begin{observacao}
+		De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
+	\end{observacao}
+	
+	\begin{proposicao}
+		Os espaços de Sobolev $W^{1,p}$ são espaços de Banach separáveis para $1\leq p \leq \infty$.
+	\end{proposicao}
+	
+	Quando $\Omega\subset\real{n}$ e $n=1$, tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $n>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev) garante a inclusão em $L^{p}$ e uma demonstração pode ser encontrada em $\cite{breazis_sobolev_spaces}$.	
+	
+	\begin{teorema}\label{teorema_sobolev}
+		(Rellich-Kondrachov ou Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $1/q>1/p -1/n$.
+	\end{teorema}
+	
+	\begin{observacao}
+		O teorema implica que existe uma constate $C>0$ tal que 
+		$$
+		\normaLgGeral{\xi}{q}{\Omega} \leq C \normaWpGeralDominio{\xi}{p}{\Omega},
+		$$
+		para todo $\xi\in \espacosobolev{\Omega}$.
+	\end{observacao}
+	
 	
 	\begin{definicao}
 		(Variedade de Banach) Seja N um espaço topologico de Hausdorff. Uma família indexada $\{(U_{i}, \phi_{i})\}_{i \in I}$, cujos pares $(U_{i}, \phi_{i})$ são chamados de cartas, é um k-atlas de N se:
