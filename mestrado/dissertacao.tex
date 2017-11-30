@@ -3478,11 +3478,11 @@
 	Denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$.
 	
 	\begin{definicao}
-		(Operador de Floer) Sejam $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorflor: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantesabrev$ definido por
+		(Operador de Floer) Sejam $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorflor: \caminhosexponenciaisconectantesabrev \to T\caminhosexponenciaisconectantesabrev$ definido por
 		$$
 		\operadorflorparametro{u} =\operadorflordefinicao{u},
 		$$
-		onde $T\caminhosexponenciaisconectantesabrev$ é o fibrado tangente de $\caminhosexponenciaisconectantespadrao$, cujas finbras são os espaços $\espacoLp{\pullbackfibradotangenteM{u}	}$ (veja a Observação \ref{observacao_identificacao_espaco_Lp}).
+		onde $T\caminhosexponenciaisconectantesabrev$ é o fibrado tangente de $\caminhosexponenciaisconectantesabrev$, cujas finbras são os espaços $\espacoLp{\pullbackfibradotangenteM{u}	}$ (veja a Observação \ref{observacao_identificacao_espaco_Lp}).
 	\end{definicao}
 	
 	Seja $u \in \caminhosexponenciaisconectantesabrev$, então
@@ -3501,54 +3501,55 @@
 	$$ 
 	onde 
 	$$
-	\norma{J_{u}}=\sup_{\norma{x}=1, \;\; (s,t)\in \retacartesianocirculo}  \norma{J(u(s,t))x}.
+	\norma{J_{u}}=\sup_{\norma{x}=1, \;\; (s,t)\in \retacartesianocirculo}  \norma{J(u(s,t))x}.\vermelho{(limitado???????)}
 	$$
 	Logo $\operadorflorparametro{u} \in L^{p}(\pullbackfibradotangenteMpadrao)$ e o operador de Floer esta bem-definido.
 	
-	Lembrando que, dado $u \in \caminhosexponenciaisconectantespadrao$, tem-se que $u:\retacartesianocirculo\to M$. Com isso, $\operadorflorparametro{u}$ é tal que $\operadorflorparametro{u}(s, t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t)\in \retacartesianocirculo$. É sob esse sentido que se obterá o diferencial de $\operadorflor$. Como $M$ é uma variedade Riemanniana, a variação de $\operadorflor$ pode ser obtida realizando o transporte paralelo desse campo ao longo de uma dada curva. O campo vetorial resultante é expresso em termos de conexões afins (veja a Definição \ref{definicao_conexao_afim} e a Observação \ref{observacao_transporte_paralelo}) e, de acordo com \cite{salamon_zehnder} e \cite{salamon_lecture}, é dado por
+	Lembrando que, dado $u \in \caminhosexponenciaisconectantesabrev$, tem-se que $u:\retacartesianocirculo\to M$. Com isso, $\operadorflorparametro{u}$ é tal que $\operadorflorparametro{u}(s, t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t)\in \retacartesianocirculo$. É sob esse sentido que se obterá o diferencial de $\operadorflor$. Como $M$ é uma variedade Riemanniana, a variação de $\operadorflor$ pode ser obtida realizando o transporte paralelo desse campo ao longo de uma dada curva. O campo vetorial resultante é expresso em termos de conexões afins (veja a Definição \ref{definicao_conexao_afim} e a Observação \ref{observacao_transporte_paralelo}) e, de acordo com \cite{salamon_zehnder} e \cite{salamon_lecture}, é dado por
 	
 	$$
 	\nabla\operadorflorparametro{u}(\xi) = \nabla_{s}\xi + J(u)\nabla_{t}\xi + dJ(u)(\xi)(\xi - X_{H}(u)) - J(u)(dX_{H})_{u}(\xi),
 	$$
-	onde $\gamma: (-\epsilon, \epsilon) \to M$ é um caminho suave tal que $u(s,t) =\gamma(0)$ e $\derivada{}{\lambda}\gamma(\lambda)|_{\lambda=0}=\xi(u(s,t))$, para $(s,t)$.
+	onde $\gamma: (-\epsilon, \epsilon) \to M$ é um caminho suave tal que $u(s,t) =\gamma(0)$ e $\derivada{}{\lambda}\gamma(\lambda)|_{\lambda=0}=\xi(u(s,t))$, para $(s,t)$. Contudo, analisar as propriedades desse operador com conexões afins adiciona complexidade ao estudo. 
 	
-	Vamos recorrer novamente o Teorema $\ref{teorema_whitney}$ (teorema de Whitney) para simplificar essa análise. Seja $\pullbackfibradotangenteM{w} \subset \real{k}$ o mergulho de Whitney, então todo $(s,t) \in \retacartesianocirculo$ temos $w(s,t) \in \real{k}$, logo  $ w(s,t)+\xi \in \real{k}$ para todo $\xi \in \real{k}$. Com isso:
+	Pelo Teorema $\ref{teorema_whitney}$, a variedade $M$ pode ser mergulhada em $\real{4n+1}$, logo $u(s,t)\in M \subset \real{4n+1}$. Além disso, $\espacoLp{\pullbackfibradotangenteM{u}}$ são as fibras de $T\caminhosexponenciaisconectantesabrev$ e com esse mergilho podem ser identificadas com $\espacoLpcontradominio{\retacartesianocirculo}{\real{4n+1}}$. Seja $\xi(s,t)=(\xi_{1}(s,t), \dots, \xi_{2n}(s,t)) \in \real{2n }\subset \real{4n+1}$. Então, omitindo os parâmetros $(s,t)$ por simplpicidade, tem-se que
+	
 	$$
 	\begin{aligned}
-	\operadorflorparametro{w+\xi}-\operadorflorparametro{w}
-	&= \operadorflordefinicao{w+\xi}
+	\operadorflorparametro{u+\xi}-\operadorflorparametro{u}
+	&= \operadorflordefinicao{u+\xi}
 	\\
-	&\;\;\;\; -\derivadaparcial{w}{s} - J(w)\derivadaparcial{w}{t} + J(w)\campohamiltoniano{w}
+	&\;\;\;\; -\derivadaparcial{u}{s} - J(u)\derivadaparcial{u}{t} + J(u)\campohamiltoniano{u}
 	\\
-	&=\derivadaparcial{\xi}{s}+J(w+\xi)\derivadaparcial{\xi}{t}+\bigparenteses{J(w+\xi)-J(w)}\derivadaparcial{w}{t}
+	&=\derivadaparcial{\xi}{s}+J(u+\xi)\derivadaparcial{\xi}{t}+\bigparenteses{J(u+\xi)-J(u)}\derivadaparcial{u}{t}
 	\\
-	&\;\;\;\;-\bigparenteses{J(w+\xi)-J(w)}\campohamiltoniano{w} 
-	-J(w+\xi)\bigparenteses{\campohamiltoniano{w+\xi}-\campohamiltoniano{w}}
+	&\;\;\;\;-\bigparenteses{J(u+\xi)-J(u)}\campohamiltoniano{u} 
+	-J(u+\xi)\bigparenteses{\campohamiltoniano{u+\xi}-\campohamiltoniano{u}}
 	\\
-	&=\derivadaparcial{\xi}{s} + J(w+\xi)\derivadaparcial{\xi}{t} + \bigparenteses{J(w+\xi)-J(w)}\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)}  
+	&=\derivadaparcial{\xi}{s} + J(u+\xi)\derivadaparcial{\xi}{t} + \bigparenteses{J(u+\xi)-J(u)}\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)}  
 	\\
-	&\;\;\;\; -J(w+\xi)\bigparenteses{X_{H}(w+\xi) - X_{H}(\xi)} 
+	&\;\;\;\; -J(u+\xi)\bigparenteses{X_{H}(u+\xi) - X_{H}(\xi)}.
 	\end{aligned}
 	$$
-	Como os termos $w, \xi, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorflor$ avaliado no ponto $w\in \caminhosexponenciaisconectantesabrev$ é o limite 
+	Como os termos $u, \xi, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorflor$ avaliado no ponto $u\in \caminhosexponenciaisconectantesabrev$ é o limite 
 	$$
 	\begin{aligned}
-	\diferencialfloer_{w}(\xi)
-	&=\lim_{\xi \to 0} \frac{	\operadorflorparametro{w+\xi}-\operadorflorparametro{w}}{\norma{\xi}}
+	\diferencialfloer_{u}(\xi)
+	&=\lim_{\xi \to 0} \frac{	\operadorflorparametro{u+\xi}-\operadorflorparametro{u}}{\norma{\xi}}
 	\\
-	&= \derivadaparcial{\xi}{s} + J(w)\derivadaparcial{\xi}{t}+ dJ_{w}(\xi)\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} - J(w) \diferencialhamiltoniano{w}(\xi)
+	&= \derivadaparcial{\xi}{s} + J(u)\derivadaparcial{\xi}{t}+ dJ_{u}(\xi)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}(\xi)
 	\\
-	&= \underbrace{\Big( \derivadaparcial{}{s} + J(w)\derivadaparcial {}{t}\Big)}_{\overline{\partial}_{w}}(\xi)+ \underbrace{\Big(dJ_{w}(.)\bigparenteses{\derivadaparcial{w}{t} - X_{H}(w)} - J(w) \diferencialhamiltoniano{w}\Big)}_{S_{w}}(\xi)
+	&= \underbrace{\Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)}_{\overline{\partial}_{u}}(\xi)+ \underbrace{\Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)}_{S_{u}}(\xi)
 	\\
-	&= \operadorcauchyabrev{w} \xi + S_{w}\xi
+	&= \operadorcauchyabrev{u} \xi + S_{u}\xi
 	\\
-	&= (\operadorcauchyabrev{w}  + S_{w})(\xi).
+	&= (\operadorcauchyabrev{u}  + S_{u})(\xi).
 	\end{aligned}
 	$$
-	Portanto, temos $ D\operadorflor_{w}= \operadorcauchyabrev{w}  + S_{w}: \espacotangenteponto{w}{\caminhosexponenciaisconectantesabrev} \to \espacotangenteponto{\operadorflor(w)}{\fibradocaminhosexponenciaisabrev}$.
+	Portanto, tem-se $ D\operadorflor_{u}= \operadorcauchyabrev{u}  + S_{u}: \real{2n} \to \real{2n}$.
 	
 	\begin{observacao}
-		Note que, ao mergulharmos a variedade $M$ em um espaço euclidiano com dimensão suficientemente grande, temos que a conexão afim se reduz a operação de parcial, isto é,  $\nabla=\partial$. Com isso, temos uma identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{m}$. Portanto, $\nabla\operadorflor_{w} = \diferencialfloer_{w}$.
+		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorflor_{u} = \diferencialfloer_{u}$.
 	\end{observacao}
 	
 	
