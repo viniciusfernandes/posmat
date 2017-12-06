@@ -188,6 +188,7 @@
 \newcommand{\inteirospos}{\inteiros_{+}}
 \newcommand{\iprod}[2]{\langle #1, #2 \rangle}
 \newcommand{\intervalo}{[0,1]}
+\newcommand{\intervalofechado}[1]{[-#1,#1]}
 \newcommand{\kernelbordo}[2]{Z_{#1}(#2;A)}
 \newcommand{\kernelbordoabrev}[2]{Z_{#1}(#2)}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
@@ -2494,7 +2495,7 @@
 			
 			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então pela própria definição a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
 			
-			\item \textbf{\textit{Inversa:}} 	Pelo Lema \ref{lema_caracterizacao_espectro_semelhante}, tem-se que $\espectrooperador{A^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}$ e $F_{\lambda^{-1}}$ auto-espaços generalizados de $A$ e $A^{-1}$, associados aos auto-valores $\lambda$ e $\lambda^{-1}$, respectivamente. É imediato que $\autoespaco{\lambda} = F_{\lambda^{-1}}$, o que implica que $\autoespaco{\lambda}^{+} = F_{\lambda}^{+}$ e que $m^{A}_{+}(\lambda) = m^{A^{-1}}_{+}(\lambda^{-1})$. Então
+			\item \textbf{\textit{Inversa:}} 	Pelo Lema \ref{lema_caracterizacao_espectro_semelhante}, tem-se que $\espectrooperador{A^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}$ e $F_{\lambda^{-1}}$ auto-espaços generalizados de $A$ e $A^{-1}$, associados aos auto-valores $\lambda$ e $\lambda^{-1}$, respectivamente. É imediato que $\autoespaco{\lambda} = F_{\lambda^{-1}}$, o que implica que $\autoespaco{\lambda}^{+} = F_{\lambda^{-1}}^{+}$ e que $m^{A}_{+}(\lambda) = m^{A^{-1}}_{+}(\lambda^{-1})$. Então
 			$$
 			\begin{aligned}
 			\rho(A^{-1})
@@ -2559,22 +2560,22 @@
 		$$
 		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
 		$$
+		com $\Gamma(0) = B$. 
 		
-		com $\Gamma(0) = B$. Com um abuso de notação, escreva $\Gamma(s)v_{\lambda}=\gamma(s)v_{\lambda}$. Para os auto-valores $\overline{\lambda}$ e $1/\lambda$ tem-se $\overline{\gamma}(s)$ e $1/\gamma(s)$, respectivamente. É imediato da definição que $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. De fato, supondo $\lambda,\lambda' \in \sigma(B)$ tais que $\lambda\lambda' \neq 1$ tem-se que $\formaSimpleticaExtendida{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaExtendida{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\Omega$-ortoganalidade (veja o Lema \ref{lema_auto_espaco_grupo_simpletico}). No caso em que $\lambda\lambda'=1$ teremos $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \omega(v_{\lambda},v_{\lambda'})$. Por fim, caso $\lambda = \lambda'$, teremos $\omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda}) = \gamma^{2}(s)\omega(v_{\lambda},v_{\lambda}) =0$. Portanto, $\Gamma^{*}(s)\omega = \omega$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $det(Id - \Gamma(s))\neq 0 $ e $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
+		Para os auto-valores $\overline{\lambda}$ e $1/\lambda$ tome os caminhos $\overline{\gamma}$ e $1/\gamma$, respectivamente. É imediato da definição que $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. De fato, supondo $\lambda,\lambda' \in \complementar{\sigma(B)}{\real{+}}$ tais que $\lambda\lambda' \neq 1$ tem-se que $\formaSimpleticaExtendida{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaExtendida{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\Omega$-ortoganalidade (veja o Lema \ref{lema_auto_espaco_grupo_simpletico}). No caso em que $\lambda\lambda'=1$ teremos $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\Omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \Omega(v_{\lambda},v_{\lambda'})$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $det(Id - \Gamma(s))\neq 0 $ e $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
 		
 		Seja $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo conectando $A$ a $B$, cuja exitência é garantida pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$.
-		Por definição de $\gruposimpleticonaodegenerado{*}$ temos que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, portanto está em apenas uma dessas componentes, isto é, $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, caso $A \in \gruposimpleticonaodegenerado{+}$, ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, caso $A\in \gruposimpleticonaodegenerado{-}$.
+		Por definição de $\gruposimpleticonaodegenerado{*}$ temos que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, portanto $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, caso $A \in \gruposimpleticonaodegenerado{+}$, ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, caso $A\in \gruposimpleticonaodegenerado{-}$.
 		
-		Vamos mostrar que ambas as componentes são conexas por caminhos.
 		\begin{enumerate}
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Pela hipótese, temos que $\Gamma(0) = B$ e $\gamma_{\lambda_{j}}(1) = -1$ para $1\leq j\leq 2n$. Com isso, $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. A justaposição $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Logo $\Gamma(0) = B$ e $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. A justaposição $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
 			é um caminho contínuo conectando $A$ a $W^{+}$. Tome $A' \in \gruposimpleticonaodegenerado{+}$ tal que $A'\neq A$. Então com uma construção análoga a anterior, conecta-se $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Tem-se caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente. Logo conecta-se $A$ a $A'$ através de um caminho contínuo. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
 			
 			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda > 0$, então $\lambda^{-1} > 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Reordene a base de auto-valores de $B$ tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores positivos. Assim, tem-se que $\Gamma(0) = B$ e $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\}$. Seja $\Gamma': \intervalo \to \gruposimpleticonaodegenerado{-}$ o caminho definido por $\Gamma'(t)=diag\{ \theta(t), -1,\dots, -1, 1/\theta(t) ,-1,\dots, -1\}$,
 			onde $\theta(t)=(2- \lambda)t + \lambda$. Note que $\Gamma'$ é um caminho contínuo que conecta $\Gamma(1)$ a $W^{-}$. Com isso, a justaposição $\Gamma'*\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a justaposição $\alpha * \Gamma'*\Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior se pode-se concluir que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
 		\end{enumerate}
 		
-		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{2n}\to \reta$ por $g(A) = det(Id-A)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e existe $V=(a,b)$, onde $a,b>0$, tal que $g(A)\in V$. Pela continuidade $g^{-1}(V)\subset \gruposimpleticonaodegenerado{+}$. Portanto $A \in \gruposimpleticonaodegenerado{+}$ é um ponto interno e $\gruposimpleticonaodegenerado{+}$ é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
+		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{2n}\to \reta$ por $g(A) = det(Id-A)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e pode-se afirmar que existe um intervalo $(a,b) \subset \real{+}$ onde $g(A)\in (a,b)$. Afirmo que $g^{-1}((a,b))\subset \gruposimpleticonaodegenerado{+}$.  De fato, supondo que $g^{-1}((a,b)) \varsubsetneq \gruposimpleticonaodegenerado{+}$, então existe $A' \in g^{-1}((a,b))$ tal que $g(A')\leq 0$, o que contradiz o fato de que $(a,b) \subset \real{+}$. Portanto $g^{-1}((a,b)) \subset \gruposimpleticonaodegenerado{+}$ e $A$ é um ponto interno de $\gruposimpleticonaodegenerado{+}$, logo esse conjunto é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
 	\end{prova}
 	
 	\begin{corolario}\label{corolario_homomorfismo_trivial_grupos_simpletico}
@@ -3241,8 +3242,18 @@
  		Como os elementos de $\lacocontrateis$ são caminhos fechados contráteis, então todo elemento $u$ de $\energiafinitaM$ é contrátil pois $u:\reta\to \lacocontrateis$.
  	\end{observacao}
  	
+ 	
+ 	\begin{definicao}\label{definicao_mergulho_variedades}
+ 		(Mergulho de variedades) Sejam $M, N$ m,n-variedade s diferenciávei, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Dizemos que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
+ 	\end{definicao}
+ 	
+ 	\begin{teorema}\label{teorema_whitney}
+ 		(Mergulho de Whitney) Toda variedade n-dimensional pode ser mergulhada em $\real{2n+1}$.
+ 	\end{teorema}
+ 	\vermelho{(Não sei se esse é o melhor local para colocar esses resultados e essa observação!!!!!!!!!!)}
+ 	
  	\begin{observacao}\label{observacao_mergulho_variedade}
- 		Grande parte da análise feita daqui em diante é baseada em operadores diferenciais definidos em $\energiafinitaM$. Com isso, a definição de uma topologia para esse conjunto é necessária. Para contornar dificuldades adicionais com essa escolha, é usado o fato de que a $2n$-variedade $M$ pode ser mergulhada no espaço euclidiano $\real{m}$, onde $m=4n+1$, o que é garantido pelo Teorema de Whitney \ref{teorema_whitney}. Como $M$ é um compacto, então $M \subset\real{m}$ é um fechado e limitado. Com isso, os elementos $\gamma\in \lacocontrateis$ e $u\in \energiafinitaM$ podem ser vistos como as seguintes aplicações $\gamma:\circulo \to \real{m}$ e $u:\retacartesianocirculo \to \real{m}$. Com essa identificação, tem-se que $\lacocontrateis\subset \aplicaoessuaves{\circulo}{M}\subset \aplicaoessuaves{\circulo}{\real{m}}$ e $\energiafinitaM \subset \aplicaoessuaves{\retacartesianocirculo}{M}\subset \aplicaoessuaves{\retacartesianocirculo}{\real{m}}$. 
+ 		Grande parte da análise feita daqui em diante é baseada em operadores diferenciais definidos em $\energiafinitaM$. Com isso, a definição de uma topologia para esse conjunto é necessária. Para contornar dificuldades adicionais com essa escolha, é usado o fato de que a $2n$-variedade $M$ pode ser mergulhada no espaço euclidiano $\real{4n+1}$, o que é garantido pelo Teorema de Whitney \ref{teorema_whitney}. Como $M$ é um compacto, então $M \subset\real{m}$ é um fechado e limitado. Com isso, os elementos $\gamma\in \lacocontrateis$ e $u\in \energiafinitaM$ podem ser vistos como as seguintes aplicações $\gamma:\circulo \to \real{4n+1}$ e $u:\retacartesianocirculo \to \real{4n+1}$. Com essa identificação, tem-se que $\lacocontrateis\subset \aplicaoessuaves{\circulo}{M}\subset \aplicaoessuaves{\circulo}{\real{4n+1}}$ e $\energiafinitaM \subset \aplicaoessuaves{\retacartesianocirculo}{M}\subset \aplicaoessuaves{\retacartesianocirculo}{\real{4n+1}}$. 
  	\end{observacao}
  	
 	\begin{definicao}
@@ -3546,7 +3557,7 @@
 	&= (\operadorcauchyabrev{u}  + S_{u})(\xi).
 	\end{aligned}
 	$$
-	Portanto, tem-se $ D\operadorflor_{u}= \operadorcauchyabrev{u}  + S_{u}: \real{2n} \to \real{2n}$.
+	Portanto $ D\operadorflor_{u}= \operadorcauchyabrev{u}  + S_{u}: \real{2n} \to \real{2n}$.
 	
 	\begin{observacao}
 		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorflor_{u} = \diferencialfloer_{u}$.
@@ -3590,22 +3601,6 @@
 	
 	Uma segunda dificuldade técnica é que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial. Para contornar esse problemas vamos adotar como espaço normado os espaços de Sobolev generalizados do que foi feito na Seção $\ref{secao_espaco_sobolev}$. 
 
-	\section{A identificação  $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$}\label{secao_identificacao_pullback_fibrado}
-	
-	\vermelho{(Essa secao podera ser exluido futuramente...!!!!!!!)}
-	Em muitas situações  vamos nos deparar com a necessidade de efetuar diferenciação em variedades com estruturas diferenciais complexas tornando dificultanto muito as técnicas utilizadas na demonstração dos resultados desejado. Para contornar esse dificuldade adicional vamos utilizar o Teorema de Whitney, enunciado aqui, mas demonstrado em $\cite{guillemin_differential_topology}$, e com isso comparar campos vetoriais se torna trivial, já que estamos em um espaço euclidiano e os espaços tangentes estão todos identificados com o próprio $\real{k}$ (para algum k), além disso, as conexões afins (associadas ao transporte paralelo de campos vetoriais em variedades Riemannianas) são reduzidas a derivadas parciais. Veja uma breve descrição na Observação $\ref{observacao_conexao_afim}$.
-	
-	\begin{definicao}\label{definicao_mergulho_variedades}
-		(Mergulho de variedades) Sejam $M, N$ m,n-variedade s diferenciávei, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Dizemos que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
-	\end{definicao}
-	
-	\begin{teorema}\label{teorema_whitney}
-		(Mergulho de Whitney) Toda variedade n-dimensional pode ser mergulhada em $\real{2n+1}$.
-	\end{teorema}
-	
-	Por definição temos que, dado $w : \retacartesianocirculo \to M $ com $w \in C^{\infty}$ temos $\pullbackfibradotangenteM{w} = \{(p, X(p)) : p = w(s,t) \in M, \; X(s,t) \in T_{w(s,t)M} \}$. Pelo Teorema $\ref{teorema_whitney}$ (Whitney) temos que $\pullbackfibradotangenteM{w} \subset T\real{k}$, para algum $k \geq 2 dim(\pullbackfibradotangenteM{w}) +1$. Seja $\psi : \pullbackfibradotangenteM{w} \to \real{k}$ o mergulho, então a composição $\Psi=\psi \circ X:\retacartesianocirculo \to \real{k}$ esta bem-definida, logo $\Psi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{k}}$. 
-
-	
 	\section{$D\operadorflor$ é um operador de Fredholm}
 	A estratégia não é demonstrar diretamente que o diferencial do operador de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o Lema $\ref{lema_desigualdade_operador_compacto}$ abaixo.
 	
@@ -3820,16 +3815,22 @@
 	A seguir enunciaremos alguns resultados importantes de análise funcional os quais serão utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialfloerabrev$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach. Todos podem ser encontrados em $\cite{kreyszig_analise_funcional}$. Por fim, o seguinte lema, que pode ser encontrado em $\cite{audi_floer_homology}$, também será utilizado na demonstração.
 	
 	\begin{lema}\label{lema_desigualdade_inclusao_sobolev}
-		Sejam $p \in \mathbb{N}$ tal que $p\geq 1$. Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialfloer \xi} +\normaLp{\xi})$.
+		Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialfloerabrev \xi} +\normaLp{\xi})$ para todo $p\geq 1$.
 	\end{lema}
 	
+	As demonstrações do teorema que segue e seu corolário, podem ser encontradas em \cite{breazis_sobolev_spaces}.
+	
 	\begin{teorema}\label{teorema_aplicacao_aberta}
-		(Teorema da aplicação aberta) Seja $T : A \to E$ uma aplicação linear limitada e sobrejetora entre os espaços de Banach $A$ e $E$. Se $T$ é uma bijeção, então $T^{-1}$ é contínua e limitada.
+		(Teorema da Aplicação Aberta) Se $T : A \to E$ é um operador linear sobrejetor entre os espaços de Banach $A$ e $E$, então existem uma constante $c>0$ tal que $B_{E}(0,c) \subset T(B_{A}(0,1))$, onde $B_{E}(0,c) $ é a bola aberta de centro no vetor nulo de $E$ e raio $c$.
 	\end{teorema}
 	
-	\begin{observacao}\label{observacao_teorema_aplicacao_aberta}
-		Como consequência do teorema anterior pode-se afirma que, dada a bola aberta centrada na origem $B_{A}(0,1)$, existe uma constante $c>0$ tal que $B_{E}(0,c)\subset T(B_{A}(0,1))$
+	\begin{observacao}
+		Uma consequência imediata desse teorema é que $T$ é uma aplicação aberta, isto é, a imagem de um aberto por $T$ é um aberto.
 	\end{observacao}
+	
+	\begin{corolario}
+		 Se $T : A \to E$ é um operador linear bijetor entre os espaços de Banach $A$ e $E$, então $T^{-1}$ é um operador linear bijetor limitado.
+	\end{corolario}
 	
 	\begin{teorema}
 		(Teorema da representação de Reisz) Seja $f:H \to \reta$ um funcional linear limitado definido em um espaço de Hilbert $H$. Então $f$ pode ser representado em termos de produto interno, isto é, $f(x) = \produtointerno{x}{z}$, onde $z$ depende de $f$, é unicamente determinada por $f$ e sua norma é $\norma{z} = \norma{f}$.
@@ -3841,12 +3842,81 @@
 		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
 	\end{teorema}
 	
+	\begin{lema}\label{lema_operador_limitado_imagem_fechada}
+		Sejam $A,B,C$ espaços de Banach, $D:A \to B$ um operador linear limitado e $K:X \to C$ um operador linear compacto. Se existir uma constante $c>0$ tal que $\norma{\xi}_{A}\leq c(\norma{D\xi}_{B}+\norma{K\xi}_{C})$ para todo $\xi \in X$, então $D(X)\subset Z$ é um fechado e $dim(Ker(D)) < \infty$.
+	\end{lema}
+	
 	\begin{teorema}
-		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador de Fredholm para $1<p<\infty$. Além disso, seu índice de Fredholm é dado por
-		$$
-		ind(\diferencialfloer) = \mu(\Psi^{+}) - \mu(\Psi^{-}).
-		$$
+		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador de Fredholm para $1<p<\infty$.
 	\end{teorema}
+	\begin{prova}
+		Nessa demonstração vamos denotar $\diferencialfloer$ por $\diferencialfloerabrev$. Além disso, ela efetuada feita em duas etapas: na primeira etapa é demonstrado que o kernel de $\diferencialfloerabrev$ tem dimensão finita. Na segunda etapar é demonstrado que o cokernel de $\diferencialfloerabrev$ tem dimensão finita. Logo $\diferencialfloerabrev$ é um operador de Fredholm.
+		
+		\begin{enumerate}
+			\item \textbf{Etapa 1:}
+			Pelo Lema \ref{lema_diferencial_floer_bijecao} tem-se que $\diferencialfloerabrev$ é uma bijeção. Pelo Teorema da Aplicação aberta, tem-se que $\diferencialfloerabrev^{-1}$ é um operador linear contínuo. Com isso, dado $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, tem-se que
+			$$
+			\normaWp{\xi} = \normaWp{(\diferencialfloerabrev^{-1}\circ\diferencialfloerabrev )\xi} \leq \norma{\diferencialfloerabrev^{-1}}\normaLp{\diferencialfloerabrev\xi}= C\normaLp{\diferencialfloerabrev\xi}.
+			$$
+			\vermelho{(Não entendi o argumento do Salamon em Lecture on Floer Homology pag 19 e Michelle pag 284 para essa desigualdade.)}
+			
+			Sejam $T>0$ e $\chi \in \funcoessuaves{\reta}$ definida por $\chi(s)=0$ para $|s|\geq T$ e $\chi(s)=1$ para $|s|\leq T-1$. Com isso, tem-se as seguintes desigualdades
+			$$
+			\begin{aligned}
+			\normaLp{\chi\xi} 
+			&=\normaLpdefinicao{\norma{\chi(s)\xi(s,t)}}{\retacartesianocirculo}
+			\\
+			&\leq m_{\chi} \normaLpdefinicao{\norma{\xi(s,t)}}{\intervalofechado{T}\times \circulo} 
+			\\
+			&\leq m_{\chi} \normaLpDominio{\xi}{\intervalofechado{T}},
+			\end{aligned}
+			$$	
+			onde $ m_{\chi} = \max\{|\chi(s)|: s\in \intervalofechado{T} \}$. Como $\chi$ depende apenas de $s\in \reta$, então
+			$$
+			\diferencialfloerabrev(\chi(s)\xi(s,t)) = \chi(s)\diferencialfloerabrev\xi(s,t) +  \chi'(s)\xi(s,t),
+			$$
+			onde $\chi'(s)=\derivada{}{s}\chi(s)$. Como a derivada de $\chi$ é contínua, pois essa função é suave, então existe podemos definir $m_{\chi'} = \max\{|\chi'(s)|: s\in \intervalofechado{T} \}$. Além disso, $\chi'(s)=0$ para $s \notin 
+			\intervalofechado{T}$. Logo
+			
+			$$
+			\begin{aligned}
+			\normaLp{\diferencialfloerabrev(\chi\xi)} 
+			&\leq \normaLp{\chi\diferencialfloerabrev \xi} +\normaLp{\chi'\xi} 
+			\\
+			&\leq m_{\chi}\normaLp{\diferencialfloerabrev \xi} +	m_{\chi'}\normaLpDominio{\xi}{\intervalofechado{T}}.
+			\end{aligned}
+			$$	
+			
+			Com um argumento análogo, tem-se que
+			$$
+			\normaLp{\diferencialfloerabrev((1-\chi)\xi)} \leq m_{\chi}\normaLp{\diferencialfloerabrev\xi } +	m_{\chi'}\normaLpDominio{\xi}{\intervalofechado{T}}.
+			$$	
+			
+			Aplicando o Lema \ref{lema_desigualdade_inclusao_sobolev} para $\chi\xi$ e a desigualdade anterior para $(1-\chi)\xi$, tem-se
+			$$
+			\begin{aligned}
+			\normaWp{\xi} 
+			&= \normaWp{\xi + \chi\xi - \chi\xi}
+			\\
+			&\leq  \normaWp{\chi\xi }+ \normaWp{(1-\chi)\xi}
+			\\
+			&\leq c_{1}( \normaLp{\chi\xi}+\normaLp{\diferencialfloerabrev (\chi\xi)}) + c_{2}\normaLp{\diferencialfloerabrev((1-\chi)\xi)}
+			\\
+			&\leq c_{3}( \normaLp{\chi\xi}+\normaLp{\diferencialfloerabrev (\chi\xi)} + \normaLp{\diferencialfloerabrev((1-\chi)\xi)})
+			\\
+			&\leq c_{3}(m_{\chi}\normaLpDominio{\xi}{\intervalofechado{T}}+2m_{\chi}\normaLp{\diferencialfloerabrev \xi} + 2m_{\chi'}\normaLpDominio{\xi}{\intervalofechado{T}})  
+			\\
+			&\leq c(\normaLpDominio{\xi}{\intervalofechado{T}}+\normaLp{\diferencialfloerabrev (\xi)}),
+			\end{aligned}
+			$$
+			onde $c>0$ é uma constante que preserva a majoração.
+			
+			Note que, $\normaLpDominio{\xi}{\intervalofechado{T}}\leq \normaLp{\xi}$ para todo $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$, o que implica que $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}} \subset \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$. O Teorema \ref{teorema_sobolev} é válido para o caso em que $p=q$ \vermelho{(ainda não estou seguro sobre essa afirmação)}, logo pode-se afirmar que a inclusão $i: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \hookrightarrow  \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$ é um operador compacto. Nas hipóteses do Lema \ref{lema_operador_limitado_imagem_fechada}, tem-se que $\diferencialfloerabrev: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador linear limitado entre espaços de Banach e $i: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$ é um operador compacto. Com isso, $\diferencialfloerabrev(\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}) \subset \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$ é um fechado e $dim(Ker(\diferencialfloerabrev)) < \infty$.
+			
+			\item \textbf{Etapa 2:}
+		\end{enumerate}
+	
+	\end{prova}
 	
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
@@ -4382,7 +4452,7 @@
 	
 	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\int_{\Omega}|f(x)| \in \reta$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
 	$$
-	\norma{f}=\normaLpdefinicao{|f(x)|}{\Omega},
+	\normaLp{f}=\normaLpdefinicao{|f(x)|}{\Omega},
 	$$
 	forma um espaço de Banach. Porém, para os resultados a seguir utiliza-se o seguinte quociente:
 	
@@ -4491,7 +4561,10 @@
 	\end{exemplo}
 	
 	\begin{observacao}
-		De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos da norma $\normaWp{f} = \normaLp{f}+\sum_{j}\normaLp{\partial_{j} f}$, formam uma espaço de Banach.
+		De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos com a norma 
+		$$
+		\normaWp{f} = \bigparenteses{\normaLp{f}^{p} + \normaLp{\partial f}^{p} }^{1/p},
+		$$ formam uma espaço de Banach. Além disso, $\normaLp{f} \leq \normaWp{f}$.
 	\end{observacao}
 	
 	\begin{proposicao}
