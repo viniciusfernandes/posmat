@@ -122,10 +122,14 @@
 \newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
 \newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
 \newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacoLpadjuntoretacirculo}{L^{q}(\retacartesianocirculo;\real{2n})}
+\newcommand{\espacoLpdual}{(L^{p})^{*}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacomoduli}[2]{\mathcal{M}_{#1#2}}
 \newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
 \newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
 \newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
+\newcommand{\espacosobolevadjuntoretacirculo}{W^{1,q}(\retacartesianocirculo;\real{2n})}
+\newcommand{\espacosobolevdual}{(W^{1,p})^{*}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
 \newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
 \newcommand{\espacotangente}[1]{\espacotangenteponto{p}{#1}}
@@ -3562,81 +3566,39 @@
 	\begin{observacao}
 		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorflor_{u} = \diferencialfloer_{u}$.
 	\end{observacao}
-	
-	
-	\section{As soluções da equação de Floer}
-	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabse-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. De forma equivalente, $T$ é um isomorfismo se, e somente se, $dim(Ker(T)) = 0$ e $dim(T(A)) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de "quanto o operador" se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
-	
-	
-	\begin{definicao}\label{definicao_oeprador_fredholm}
-		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$. 
-	\end{definicao}
-	
-	Os resultados a seguir serão utilizados na construção e demonstração de estabilidade do operador de Fredholm adiante. Vamos denotar $\operadoresfredholm{A}{B}$ o conjunto dos operadores de Fredholm de $A$ em $B$ e $\operadoreslimitados{A}{B}$ o conjunto dos operadores limitados definidos nos mesmo espaços de Banach.
-	
-	\begin{teorema}\label{teorema_estabilidade_fredholm}
-		(Estabilidade de Fredholm) Sejam  $T \in \operadoresfredholm{A}{B}$ e $\epsilon>0$. Dado $K \in \operadoreslimitados{A}{B}$ tal que $||K|| < \epsilon$ temos que $T+K \in \operadoresfredholm{A}{B}$. Além disso, $ind(T+K)=ind(T)$ e $k(T+K) \leq k(T)$.
-	\end{teorema}
-	
-	\begin{definicao}
-		(Mapa de Fredholm) Uma aplicação suave $f: A \to B$ é chamada de mapa de Fredholm se o diferencial $df(p): A \to B$ é um operador de Fredholm para todo $p \in A$.
-	\end{definicao}
-	
-	
-	Pela estabilidade dos operadores de Fredholm, podemos afirmar que o índice de $df(p) \in \operadoresfredholm{A}{B}$ não depende do ponto $p \in A$, com isso podemos definir o índice do mapa de Fredholm como $ind(f)=ind(df(p))$ que é constante e assim esta bem-definido.
-	
-
-	
-	\begin{observacao}
-		$\caminhosdecaimentoexponencialpadrao$ é não-vazio pois as soluções da equação de Floer existem e satisfazem tais condições, logo são elementos desse conjunto. A estimativa do módulo das derivadas parciais pode ser encontrada em $\cite{audi_floer_homology}$. Além disso, essas estimativas indicam que nos limites $s\to \mp \infty$ teremos as soluções das esquações do sistema Hamiltonio.
-	\end{observacao}
-	
-	Um espaço de Banach é um espaço vetorial $B$ munido de uma norma e completo com na métrica definida por essa norma. Contudo, sabe-se que o espaço das funções suaves não é um espaço de Banach, mas sim um espaço de Frechet (uma generalização dos espaços de Banach e é munido de uma semi-norma), portanto $\caminhosdecaimentoexponencialpadrao$ não é um espaço de Banach. Isso é um impedimento pois necessitamos de um espaço normada para as construções seguintes.
-	
-	\begin{comment}
-		\vermelho{(ESTA BEM DIÍCIL JUSTIFICAR ESSA ESCOLHA. ACREDITO QUE SEJA PORQUE AS SOLUÇÕES DAS EQUAÇÕES DE FLOER DEVAM SER DE CLASSE C1).}
-		
-	\end{comment}
-	De acordo com a Definição  $\ref{definicao_espaco_Lp}$ o espaço $L^{p}(\Omega)$ é um espaço de Banach, o que esta demonstrado em $\cite{breazis_sobolev_spaces}$. Como a equação de Floer envolve derivadas de primeira ordem, o espaço de Banach com o qual trabalharemos será munido de uma norma que leva em consideração o comportamento dessas derivadas. Tal espaço normado é chamado por espaço de Sobolev.
-	
-	Uma segunda dificuldade técnica é que $\caminhosdecaimentoexponencialpadrao$ não tem estrutura de espaço vetorial. Para contornar esse problemas vamos adotar como espaço normado os espaços de Sobolev generalizados do que foi feito na Seção $\ref{secao_espaco_sobolev}$. 
 
 	\section{$D\operadorflor$ é um operador de Fredholm}
-	A estratégia não é demonstrar diretamente que o diferencial do operador de Floer é um operador de Fredholm, mas caracterizá-lo indiretamente, sendo que para isso utilizaremos o Lema $\ref{lema_desigualdade_operador_compacto}$ abaixo.
-	
+	\vermelho{(Colocar uma resuma da estratégia da demonstração aqui...)}
 	\begin{definicao}\label{definicao_operador_compacto}
 		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_operador_compacto_limitado}
-		Pode-se mostrar que todo operador compacto entre espaços de Banach é limitado. Veja $\cite{kreyszig_analise_funcional}$.
+		Pode-se mostrar que todo operador compacto entre espaços de Banach é limitado (veja $\cite{kreyszig_analise_funcional}$).
 	\end{observacao}
 	
 	\begin{lema}\label{lema_desigualdade_operador_compacto}
 		Sejam $A,B,C$ espaços de Banach e $D:A\to B$ um operador limitado e $K:A \to C$ um operador compacto. Supondo que exista uma constante $c>0$ tal que $\normasubscrito{\xi}{A} \leq c(\normasubscrito{D\xi}{B} + \normasubscrito{K\xi}{C})$, então $D(A) = \overline{D(A)}$ e $dim(Ker(D)) <\infty$.
 	\end{lema}
 	
-	Para simplificar a notação, definiremos $\diferencialfloerabrev = D\operadorflor_{w}$ para um dado $w\in \caminhosexponenciaisconectantespadrao$.
+	Daqui em diante, quando não houver ambiguidades, denotaremos $D\operadorflor_{u}$ por $\diferencialfloerabrev$, para um dado $u\in \caminhosexponenciaisconectantespadrao$.
 	
-	O seguinte lema afirma a injetividade do operador de Floer $\diferencialfloerabrev$, o que implicará diretamente que $\diferencialfloer$ é um operador compacto. Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$.
+	Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$ \vermelho{(Eu não me lembro em que ponto essa hipótese foi utilizada)}.
+	
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
 		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialfloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
 	\end{lema}
 	\begin{prova}
-		Como $S$ não depende do parametro $s \in \real{}$, então podemos definir $A = \estruturacomplexa \derivadaparcialabrev{t} + S: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$. 
-		\begin{comment}
-			\vermelho{O operador $A$ é auto-adjunto e ilimitado no espaço de Hilbert $H=\espacoLdois{\circulo;\real{2n}}$ (não sei demonstrar isso e acredito que possa ser retirado da demonstração).} 
-		\end{comment}
-		Note que $A\Psi(t) = 0$ se, e somente se, é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$, isto é, $\Psi \in Ker(A)$. Vamos mostrar que $A$ é invertível, e com isso, decomporemos $\espacosobolevgeral{2}{\circulo;\real{2n}} $ em uma soma direta de seus auto-espaços.
+		Considere o operador $A: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$ definido por $A = \estruturacomplexa \derivadaparcialabrev{t} + S$. Com isso, dado $\Psi \in \espacosobolevgeral{2}{\circulo;\real{2n}}$ tem-se que $A\Psi(t) = \diferencialfloerabrev\Psi(t)$ para todo $t \in \circulo$. Logo $A=\diferencialfloerabrev$. Pela Proposição \ref{proposicao_diferencial_floer_adjunto}, tem-se que $A^{*}\Psi(t) = \diferencialfloerabrev^{*}\Psi(t) = \diferencialfloerabrev\Psi(t) = A\Psi(t)$, pois $S$ não depende do parametro $s \in \real{}$. Portanto $A=A^{*}$ e $A$ é um operador auto-adjunto, logo é diagonalizável.
 		
-		Por simplicidade denotaremos $W = \espacosobolevgeral{2}{\circulo;\real{2n}} $. Afirmar que $A$ é invertível é equivalente a determinar um único $\Psi \in W$ para um dado $\zeta \in H$ tal que $A\Psi(t) = \zeta(t)$. Caso $\zeta = 0$, então temos um sistema homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial que determina unicamente a solução, logo $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO $\cite{pontryagin_ode}$ podemos afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema, isto é, $\Psi_{0} \mapsto \Psi$ da forma $\Psi = R\Psi_{0}$ e, analogamente, $\Psi \mapsto \Psi_{0}$ da forma $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $R(t)\Psi_{0}$ temos um sistema de equações para $R$ dado por 
-		$0=A\Psi(t) = A(R(t)\Psi_{0}) = (\estruturacomplexa\derivadaparcialabrev{t}+S)R(t)\Psi_{0}$, o que implica em $\dot{R}(t) = \estruturacomplexa SR(t)$ com $R(0) = Id$. 
+		\textbf{Etapa 1:} Note que $\Psi \in Ker(A)$ se, e somente se, $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Assumindo que $det(Id - \Psi(1)) \neq 0$, então pode-se afirmar que $A$ é invertível, isto é, $0\neq \espectrooperador{A}$ \vermelho{(Não entendi essa implicação...)}. De fato, tomando $\Psi \in Ker(A)$ tem-se um sistema homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial e $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO $\cite{pontryagin_ode}$ pode-se afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema da forma $\Psi = R\Psi_{0}$ e. Pela unicidade da solução, pode-se afirmar que $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $\Psi$ tem-se
+		$0=A\Psi(t) = A(R(t)\Psi_{0}) = (\estruturacomplexa\derivadaparcialabrev{t}+S)R(t)\Psi_{0}$, o que implica em no sistema de equações diferenciais para $\dot{R}(t) = \estruturacomplexa SR(t)$ com $R(0) = Id$. Logo $R \in Ker(A)$.
 		
-		Para determinar a solução da equação mais geral ($\zeta\neq 0$), aplicaremos o método de variação de constantes 
+		Para o caso em que $\Psi \notin Ker(A)$ aplica-se o método de variação de constantes 
 		\begin{comment}
 			\vermelho{(procurar uma referencia)} 
 		\end{comment}
-		que consiste em analisar uma solução mais geral da forma $\Psi(t) = R(t)\Psi_{0}(t)$ para $t \in [0,1]$. Aplicando o operador $A$ na solução $R(t)\Psi_{0}(t)$ e usando o fato de que $\dot{R}(t) = \estruturacomplexa SR(t)$ e $R(t)$ é invertível, teremos a seguinte condição sobre $\Psi_{0}(t)$
+		que consiste em analisar uma solução mais geral da forma $\Psi(t) = R(t)\Psi_{0}(t)$ para $t \in [0,1]$, com $\Psi(0) = \Psi_{0}$ e $R(0) = Id$. Aplicando o operador $A$ na solução $R(t)\Psi_{0}(t)$ e usando os fatos de que $\dot{R}(t) = \estruturacomplexa SR(t)$ e $R(t)$ é invertível, teremos a seguinte condição sobre $\Psi_{0}(t)$
 		$$
 		\begin{aligned}
 		\zeta(t) 
@@ -3648,158 +3610,173 @@
 		\\
 		&= -SR(t)\Psi_{0}(t)+\estruturacomplexa R(t)\dot{\Psi}_{0}(t) + SR(t)\Psi_{0}(t)
 		\\
-		&= \estruturacomplexa R(t)\dot{\Psi}_{0}(t),
-		\\
-		&\therefore 
-		\\
-		\dot{\Psi}_{0}(t) &= -R^{-1}(t)\estruturacomplexa \zeta(t).
+		&= \estruturacomplexa R(t)\dot{\Psi}_{0}(t).
 		\end{aligned}
 		$$
-		
-		Integrando ambos os lados da equação, temos
+		Portanto, $\dot{\Psi}_{0}(t) = -R^{-1}(t)\estruturacomplexa \zeta(t)
+		$. Integrando ambos os lados da equação, tem-se
 		$$
-		\Psi_{0}(t) = \Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)
+		\Psi_{0}(t) = \Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha),
 		$$
-		e
+		e com isso
 		$$
 		\Psi(t) = R(t)\Big(\Psi_{0}(0)-\int_{0}^{t} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big).
 		$$
 		
-		Aplicando a condições de periodicidade $\Psi(1) = \Psi(0)$ temos
+		Como $\Psi$ é uma aplicação 1-periódica, tem-se que $\Psi(0) = \Psi(1)$, logo
 		$$
-		\Psi_{0}(0)=\Psi(0)=\Psi(1)=R(1)\Big(\Psi_{0}(0)-\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big)
+		\Psi(0)=\Psi(1)=R(1)\Big(\Psi_{0}(0)-\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha)\Big).
 		$$
-		o que implica em
+		Inserindo a condição inicial $\Psi(0)=\Psi_{0}(0)$ na equação anterior, tem-se
 		
 		$$
 		(Id - R(1))\Psi_{0}(0) = -R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
 		$$
 		
-		Temos que $R \in Ker(A)$ e pela hipótese $det(Id - R(1))\neq 0$, portanto o operador $Id - R(1)$ é invertível. Com isso a condição inicial $\Psi_{0}(0)$ esta unicamente determinada por
+		Como $R \in Ker(A)$, e pela hipótese $det(Id - R(1))\neq 0$, então o operador $Id - R(1)$ é invertível. Com isso, a condição inicial $\Psi_{0}(0)$ é unicamente determinada e dada por
 		$$
 		\Psi_{0}(0) = -(Id - R(1))^{-1}R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
 		$$
 		
-		O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe $\Psi \in W$ solução do sistema $A\Psi = \zeta$ determinada unicamente pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in H$, existe uma única $\Psi_{0}(0)$, logo $\zeta$ deteremina unicamente a solução $\Psi$ e podemos escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível.
+		O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe uma solução $\Psi \in W$ do sistema $A\Psi = \zeta$ e é unicamente determinada pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in L$, existe uma único valor inicial $\Psi_{0}(0)$. Portanto $\zeta$ determina unicamente a solução $\Psi$ e pode-se escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível e $0 \notin \sigma(A)$.
 		
-		Como $A$ é invertível, então $0 \notin \sigma(A)$, isto é, os auto-valores de $A$ são não-nulos. Sejam $E^{+}, E^{-}$ os auto-espaços de $A$ cujos auto-valores são positivos e negativos, respectivamente. Então temos a decomposição $W = \espacosobolevgeral{2}{\circulo;\real{2n}} = E^{+}\oplus E^{-}$. Definindo $A^{\pm}=A |_{E^{\pm}}$ e $P^{\pm}: W \to E^{\pm}$ as projeções ortogonais, $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(W)$ e $K: \real{}\to \mathcal{L}(W)$.
+		\textbf{Etapa 2:} Em \cite{kreyszig_analise_funcional} esta demonstrado que $ \espacoLdois{\circulo;\real{2n}}$ é um espaço de Hilbert. Com isso, pode-se escrever a decomposição $L=E^{+}\oplus E^{-}$, onde $E^{+}$ e $E^{-}$ são os auto-espaços associados aos auto-valores positivos e negativos, respectivamente. Sejam $A^{+}=A |_{E^{+}}$ e $P^{+}: L \to E^{+}$ a projeção em $E^{+}$, e analogamente, $A^{-}$ e $P^{-}$. Defina a aplicação $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(L)$ e $K: \real{}\to \mathcal{L}(W)$.
 		$$
 		\funcaocond{K(s)}{exp(-s A^{+})P^{+}}{s \geq 0}{-exp(-s 	A^{-})P^{-}}{s<0}.
 		$$
+		\vermelho{
+			Um semi-grupo fortemente contínuo sobre um espaço de Banach $B$ é uma aplicação $T:\real{}_{+}\to B$ tal que:
+			
+			\begin{enumerate}
+				\item $T(0) = Id$,
+				\item $T(s+t) = T(s)T(t), \;\forall s, t \in \real{}_{+}$
+				\item $lim_{t \to 0^{+}}\norma{T(t)x - x } = 0, \; \forall x \in B $.
+			\end{enumerate}
+			Os dois primeiros  axiomas são algébricos, já o último é topológico e caracteriza a contínuidade do operador. Nesse sentido, a aplicação $exp(\mp A^{\pm}):\real{}_{+} \to \mathcal{L}(W)$ é um semi-grupo fortemente contínuo e $K$ é descontínua em $s=0$ pois $lim_{s\to 0^{+}}K(s) = P^{+}$ e $lim_{s\to 0^{-}} K(s)= -P^{-}$, mas é fortemente contínua para $s \in \real{}\backslash\{0\}$. 
+		}
 		
-		Um semi-grupo fortemente contínuo sobre um espaço de Banach $B$ é uma aplicação $T:\real{}_{+}\to B$ tal que:
-		
-		\begin{enumerate}
-			\item $T(0) = Id$,
-			\item $T(s+t) = T(s)T(t), \;\forall s, t \in \real{}_{+}$
-			\item $lim_{t \to 0^{+}}\norma{T(t)x - x } = 0, \; \forall x \in B $.
-		\end{enumerate}
-		Os dois primeiros  axiomas são algébricos, já o último é topológico e caracteriza a contínuidade do operador. Nesse sentido, a aplicação $exp(\mp A^{\pm}):\real{}_{+} \to \mathcal{L}(W)$ é um semi-grupo fortemente contínuo e $K$ é descontínua em $s=0$ pois $lim_{s\to 0^{+}}K(s) = P^{+}$ e $lim_{s\to 0^{-}} K(s)= -P^{-}$, mas é fortemente contínua para $s \in \real{}\backslash\{0\}$. Dado $s \in \real{}$ afirmo que $K(s)$ é um operador linear limitado. De fato, é linear pois é a composição dos operadores lineares $\pm exp(- sA^{\pm})$ e $P^{\pm}$. É limitado pois
+		Dado $s \in \real{}$, afirmo que $K(s)$ é um operador linear limitado. De fato, para $s\geq 0$ é linear pois é a composição dos operadores lineares $exp(- sA^{+})$ e $P^{+}$. É limitado pois
 		$$
 		\begin{aligned}
-		\norma{K(s)}_{\mathcal{L}(W)} &= \sup_{\norma{\xi}=1}\norma{K(s)\xi}
+		\norma{K(s)}_{H} &= \sup_{\norma{\xi}=1}\norma{K(s)\xi}
 		\\
-		&=\sup_{\norma{\xi}=1}\norma{\pm exp(- sA^{\pm})P^{\pm}\xi}
+		&=\sup_{\norma{\xi}=1}\norma{ exp(- sA^{+})P^{+}\xi}
 		\\
-		&=\sup_{\norma{\xi}=1}\norma{exp(- sA^{\pm})\xi^{\pm}}
+		&=\sup_{\norma{\xi}=1}\norma{exp(- sA^{+})\xi^{+}}
 		\\
-		&=\sup_{\norma{\xi}=1}\norma{exp(- s\lambda^{\pm})\xi^{\pm}}
+		&=\sup_{\norma{\xi}=1}\norma{exp(- s\lambda^{+})\xi^{+}}
 		\\
-		&\leq |exp(- s\lambda^{\pm})|\sup_{\norma{\xi}=1}\norma{\xi^{\pm}}
+		&\leq |exp(- s\lambda^{+})|\sup_{\norma{\xi}=1}\norma{\xi^{+}}
 		\\
-		&\leq exp(- s\lambda^{\pm})
+		&\leq exp(- s\lambda^{+})
 		\\
-		&\leq exp(- |s|\lambda),
+		&< \infty.
 		\end{aligned}
 		$$
-		onde fizemos $\xi^{\pm}$ os auto-vetores de $A^{\pm}$ com auto-valores $\lambda^{\pm}$ positivos e negativos, respectivamente. Na ultima desigualdade tivemos dois casos: o primeiro quando $s<0$ implicando em $- s\lambda^{\pm} = - s\lambda^{-} <0$, e o segundo quando $s>0$ implicando em $- s\lambda^{+}<0$. Definindo $\lambda = \inf \{|\alpha|: \alpha \in \sigma(A) \}$, temos a desigualdade desejada.
+		Com um argumento análogo mostra-se que, para $s<0$, $K(s)$ também é um operador linear e limitado.
+		 
+		Defina $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\reta;\real{2n}}\cap \espacoLpGeral{2}{\reta;\real{2n}}$ por
 		
-		Seja $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}} \cap \espacoLdois{\retacartesianocirculo;\real{2n}}$ tal que 
+		
 		$$
-		Q(\eta(s))(t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
+		Q(\eta)(s,t) = \int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha.
 		$$
 		
-		Esse operador esta bem-definido pois, dado $\eta(s) \in \espacoLdois{\reta, H}$ temos
+		Essa aplicação esta bem-definido pois
 		$$
 		\begin{aligned}
-		\norma{Q(\eta(s))(t)}_{\espacoLdois{\retacartesianocirculo}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLdois{\retacartesianocirculo}}
+		\norma{Q(\eta)(s)}_{\espacoLpGeral{2}{\reta;H}} &= \normagrande{\int_{\real{}}K(s-\alpha)\eta(\alpha, t)d\alpha}_{\espacoLpGeral{2}{\reta;H}}
+		\\
+		&= \normagrande{\int_{\real{}}K(-\sigma)\eta(s+\sigma, t)d\sigma}_{\espacoLpGeral{2}{\reta;H}}
 		\\
 		&\leq
-		\int_{\reta}\norma{K(s-\alpha)\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\int_{\reta}\norma{K(-\sigma)\eta(s+\sigma, t)}_{\espacoLpGeral{2}{\retacartesianocirculo}}d\sigma
 		\\
 		&\leq
-		\int_{\reta}\norma{K(s-\alpha)}\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}d\alpha
+		\int_{\reta}\Big(\int_{\reta} \norma{K(-\sigma)\eta(s+\sigma, t)}_{\espacoLdois{\circulo}}^{2}ds\Big)^{1/2}d\sigma
 		\\
 		&\leq
-		\int_{\reta}e^{-\delta|s-\alpha|}  \underbrace{\norma{\eta(\alpha, t)}_{\espacoLdois{\retacartesianocirculo}}}_{N < \infty}d\alpha
+		\int_{\reta}\Big(\int_{\reta}e^{-\delta|\sigma|} \norma{\eta(s+\sigma, t)}_{\espacoLdois{\circulo}}^{2}ds\Big)^{1/2}d\sigma
 		\\
 		&\leq
-		N\int_{\reta}e^{-\delta|s-\alpha|} d\alpha
+		\int_{\reta}e^{-\delta|\sigma|}\norma{\eta}_{\espacoLdois{\retacartesianocirculo}}d\sigma
+		\\
+		&\leq N\int_{\reta}e^{-\delta|\sigma|}d\sigma
 		\\
 		&< \infty,	
 		\end{aligned}
 		$$
+		onde $N=\norma{\eta}_{\espacoLdois{\retacartesianocirculo}}
+		<\infty$. Portanto $Q(\eta) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. 
 		
-		portanto $Q(\eta(s)) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ através do cálculo
+		Resta mostrar que $Q(\eta) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Para isso, defina $Q\eta = \xi$ tal que
 		$$
 		\begin{aligned}
-		Q(\eta(s)) 
-		&= \int_{\reta}K(s-\alpha)\eta(\alpha)
+		Q(\eta)(s,t) 
+		&= \int_{\reta}K(s-\alpha)\eta(\alpha,t)
 		\\
-		&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha)
+		&=\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})P^{+}\eta(\alpha,t)-\int_{s}^{\infty}exp(-(s-\alpha)A^{-})P^{-}\eta(\alpha,t)
 		\\
-		&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha)}_{\xi^{-}}
+		&=\underbrace{\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha,t)}_{\xi^{+}} +\underbrace{\int_{s}^{\infty}-exp(-(s-\alpha)A^{-})\eta^{-}(\alpha,t)}_{\xi^{-}}
 		\\
-		&= \xi^{+}(s)+\xi^{-}(s).
+		&= \xi^{+}(s,t)+\xi^{-}(s,t).
 		\end{aligned}
 		$$
 		
-		Definindo $\xi = \xi^{+} + \xi^{-}$ e realizando a diferenciação de $\xi^{+}$ temos
+		Com isso, pode-se escrever $\xi = \xi^{+} + \xi^{-}$. Realizando a diferenciação de $\xi^{+}$ tem-se
 		$$
 		\begin{aligned}
-		\derivada{\xi^{+}}{s} 
-		&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)
+		\derivada{\xi^{+}}{s}(s,t) 
+		&= \derivada{}{s}\int_{-\infty}^{s}exp(-(s-\alpha)A^{+})\eta^{+}(\alpha,t)
 		\\
-		&= exp(-0A^{+})\eta^{+}(s)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) 
+		&= exp(-A^{+}.0)\eta^{+}(s,t)+\int_{-\infty}^{s} \derivada{}{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha,t) 
 		\\
-		&= \eta^{+}(s)-A^{+}\xi^{+}.
+		&= \eta^{+}(s,t)-A^{+}\xi^{+}(s,t).
 		\end{aligned}
 		$$
-		Realizando o mesmo cáculo para $\xi^{-}$ teremos 
-		$$
-		\eta^{\pm}(s) =\derivada{\xi^{\pm}}{s}+A^{\pm}\xi^{\pm}
-		$$
-		o que implica que
-		$$
-		\eta(s) =\derivada{\xi}{s}+A\xi = (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s) = \diferencialfloerabrev \xi(s) = (\diferencialfloerabrev \circ Q)\eta(s).
-		$$
-		Como $\eta(s) \in \espacoLdois{\reta; H}$ é arbitrário, então mostramos que $\diferencialfloerabrev \circ Q = Id$. Com isso, temos que a imagem de $Q$ é o domínio de $\diferencialfloerabrev$, logo $Q(\eta(s)) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Vamos mostrar que $Q\circ \diferencialfloerabrev = Id$, sendo que para isso vamos calcular diretamente $Q(\diferencialfloerabrev\eta)=Q((\derivadaparcialabrev{s}+A)\eta) = \eta$ para um dado $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Primeiramente, calculemos 
+		Com um procedimento análogo se obtém $\derivada{}{s}\xi^{-} (s,t)= \eta^{-}(s,t)-A^{-}\xi^{-}(s,t)$. Portanto 
 		$$
 		\begin{aligned}
-		Q(\diferencialfloerabrev \eta^{+}(s))
-		&=Q((\derivadaparcialabrev{s}+A)\eta^{+}(s))
+			\eta(s,t) 
+			&= \derivada{\xi^{+}}{s}(s,t)+A^{+}\xi^{+}(s,t)+\derivada{\xi^{-}}{s}(s,t)+A^{-}\xi^{-}(s,t)
+			\\ 
+			&=\derivada{\xi}{s}(s,t)+A\xi(s,t)
+			\\
+			&= (\derivadaparcialabrev{s}+\estruturacomplexa \derivadaparcialabrev{t} + S)\xi(s,t)
+			\\
+			&= \diferencialfloerabrev \xi(s,t) 
+			\\
+			&= (\diferencialfloerabrev \circ Q)\eta(s,t).
+		\end{aligned}
+		$$
+		Como $\eta$ é arbitrário, então $\diferencialfloerabrev \circ Q=Id$. Afirmo que $Q\circ \diferencialfloerabrev = Id$. De fato, tomando $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ e escrevendo a decomposição $\eta=\eta^{+}+\eta^{-}$ tem-se
+		$$
+		\begin{aligned}
+		Q(\diferencialfloerabrev \eta^{+})(s,t)
+		&=Q((\derivada{}{s}+A)\eta^{+})(s,t)
 		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) +Q(A\eta^{+}(s))
+		&=Q(\derivada{}{s}\eta^{+})(s,t) +Q(A\eta^{+})(s,t)
 		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha)
+		&=Q(\derivada{}{s}\eta^{+})(s,t)  + \int_{-\infty}^{s}exp(-(s-\alpha)A^{+})A\eta^{+}(\alpha,t)
 		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s))  - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha)\Big)
+		&=Q(\derivada{}{s}\eta^{+})(s,t) - \int_{-\infty}^{s}\derivadaparcial{}{s}\Big(exp(-(s-\alpha)A^{+})\eta^{+}(\alpha,t)\Big)
 		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
+		&=Q(\derivada{}{s}\eta^{+}(s)) - \derivada{}{s}\int_{-\infty}^{s} exp(-(s-\alpha)A^{+})\eta^{+}(\alpha) + \eta^{+}(s)
 		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \derivadaparcial{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
+		&=Q(\derivada{}{s}\eta^{+}(s)) - \derivada{}{s}\int_{-\infty}^{0} exp(\lambda A^{+})\eta^{+}(s+\lambda) + \eta^{+}(s)
 		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivadaparcial{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
+		&=Q(\derivada{}{s}\eta^{+}(s)) - \int_{-\infty}^{0} exp(\lambda A^{+})\derivada{}{s}\eta^{+}(s+\lambda) + \eta^{+}(s)
 		\\
-		&=Q(\derivadaparcialabrev{s}\eta^{+}(s)) - Q(\derivadaparcialabrev{s}\eta^{+}(s)) + \eta^{+}(s)
+		&=Q(\derivada{}{s}\eta^{+}(s)) - Q(\derivada{}{s}\eta^{+}(s)) + \eta^{+}(s)
 		\\
 		&=\eta^{+}(s).
 		\end{aligned}
 		$$
-		Analogamente teremos $Q(\diferencialfloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Portanto, $Q\circ \diferencialfloerabrev = Id$ pois
+		Com um procedimento análogo, tem-se que $Q(\diferencialfloerabrev \eta^{-}(s)) =\eta^{-}(s)$. Logo
 		$$
-		Q(\diferencialfloerabrev \eta(s)) = Q(\diferencialfloerabrev (\eta^{+}(s)+\eta^{-}(s)))=Q(\diferencialfloerabrev \eta^{+}(s))+Q(\diferencialfloerabrev \eta^{-}(s)) = \eta^{+}(s)+\eta^{-}(s) = \eta(s).
-		$$
+		Q(\diferencialfloerabrev(\eta))(s,t) = Q(\diferencialfloerabrev(\eta^{+}))(s,t)+Q(\diferencialfloerabrev(\eta^{-}))(s,t)=\eta^{+}(s,t)+\eta^{-}(s,t) = \eta(s,t).
+		$$ 
+		Como $\eta$ é arbitrário, então $Q\circ \diferencialfloerabrev = Id$, e com isso, $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo; \real{2n}}$.
 	\end{prova}
 	
 	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do operador de Floer $\diferencialfloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
@@ -3807,18 +3784,8 @@
 	\begin{teorema}
 		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$.
 	\end{teorema} 
-	
-	
-	Foi mostrado na Seção $\ref{secao_identificacao_pullback_fibrado}$ que, dado $u \in \caminhosexponenciaisconectantespadrao$, temos as identificações entre os espaços  $\espacoLp{\pullbackfibradotangenteM{u}} \mapsto \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}} \mapsto \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Sendo que essa identificação foi utilizada para simplificar cálculos e tonar a exposição do assunto menos densa. Na demosntração a seguir esse fato será crucial pois, para aplicarmos o Teorema $\ref{teorema_sobolev}$, necessitamos restrigir o domínio das funções a conjuntos limitados com borda de classe $C^{1}$. Note que $\retacartesianocirculo$ não é limitado. Pelo Teorema $\ref{teorema_whitney}$, temos o mergulho $\caminhosexponenciaisconectantespadrao \subset M\subset \real{k}$, o que já foi feito na Seção $\ref{secao_identificacao_pullback_fibrado}$. Podemos afirmar que $\caminhosexponenciaisconectantespadrao$ é um limitado, pois é um subconjunto da variedade compacta $M$ mergulhada em $\real{k}$. Além disso, seu bordo é dado por $\partial \caminhosexponenciaisconectantesabrev =x^{+}(\circulo) \cup x^{-}(\circulo)$.
-	\vermelho{(aqui devemos ter uma figura ilustrando o bordo ...!!!)}
-	
-	A seguir enunciaremos alguns resultados importantes de análise funcional os quais serão utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialfloerabrev$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach. Todos podem ser encontrados em $\cite{kreyszig_analise_funcional}$. Por fim, o seguinte lema, que pode ser encontrado em $\cite{audi_floer_homology}$, também será utilizado na demonstração.
-	
-	\begin{lema}\label{lema_desigualdade_inclusao_sobolev}
-		Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialfloerabrev \xi} +\normaLp{\xi})$ para todo $p\geq 1$.
-	\end{lema}
-	
-	As demonstrações do teorema que segue e seu corolário, podem ser encontradas em \cite{breazis_sobolev_spaces}.
+		
+	Os resultados a seguir são utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialfloerabrev$ e podem ser encontrados em $\cite{kreyszig_analise_funcional}$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach.
 	
 	\begin{teorema}\label{teorema_aplicacao_aberta}
 		(Teorema da Aplicação Aberta) Se $T : A \to E$ é um operador linear sobrejetor entre os espaços de Banach $A$ e $E$, então existem uma constante $c>0$ tal que $B_{E}(0,c) \subset T(B_{A}(0,1))$, onde $B_{E}(0,c) $ é a bola aberta de centro no vetor nulo de $E$ e raio $c$.
@@ -3832,8 +3799,12 @@
 		 Se $T : A \to E$ é um operador linear bijetor entre os espaços de Banach $A$ e $E$, então $T^{-1}$ é um operador linear bijetor limitado.
 	\end{corolario}
 	
-	\begin{teorema}
-		(Teorema da representação de Reisz) Seja $f:H \to \reta$ um funcional linear limitado definido em um espaço de Hilbert $H$. Então $f$ pode ser representado em termos de produto interno, isto é, $f(x) = \produtointerno{x}{z}$, onde $z$ depende de $f$, é unicamente determinada por $f$ e sua norma é $\norma{z} = \norma{f}$.
+	\begin{teorema}\label{teorema_representacao_reiz}
+		(Teorema da representação de Reisz) Seja $\phi \in \espacoLpdual$ um funcional linear e $1<p<\infty$. Então existe uma única aplicação $Y \in \espacoLpadjuntoretacirculo$ tal que
+		$$
+		\phi(\xi) = \int_{\retacartesianocirculo}\produtointerno{Y(s,t)}{\xi(s,t)},
+		$$
+		para todo $\xi \in \espacoLpretacirculo$.
 	\end{teorema}
 	
 	Seja $f: B \to \reta$ um funcional linear definido no espaço vetorial $B$. Dizemos que $f$ é sublinear se $f(x+y)\leq f(x)+f(y)$ para todos $x,y \in B$.
@@ -3842,12 +3813,90 @@
 		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
 	\end{teorema}
 	
+	
+	A demonstração dos lemas que seguem podem ser encontradas em \cite{breazis_sobolev_spaces}.
+	
 	\begin{lema}\label{lema_operador_limitado_imagem_fechada}
 		Sejam $A,B,C$ espaços de Banach, $D:A \to B$ um operador linear limitado e $K:X \to C$ um operador linear compacto. Se existir uma constante $c>0$ tal que $\norma{\xi}_{A}\leq c(\norma{D\xi}_{B}+\norma{K\xi}_{C})$ para todo $\xi \in X$, então $D(X)\subset Z$ é um fechado e $dim(Ker(D)) < \infty$.
 	\end{lema}
 	
+	\begin{lema}\label{lema_desigualdade_inclusao_sobolev}
+		Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialfloerabrev \xi} +\normaLp{\xi})$ para todo $p\geq 1$.
+	\end{lema}
+	
+	\begin{proposicao}\label{proposicao_diferencial_floer_adjunto}
+		No sentido distribucional, tem-se que $\diferencialfloerabrev^{*} :\espacosobolevadjuntoretacirculo \to \espacoLpadjuntoretacirculo$ e dado por
+		$$
+		\diferencialfloerabrev^{*}=-\derivadaparcial{}{s}+\estruturacomplexa \derivadaparcial{}{t}+S^{t}.
+		$$
+	\end{proposicao}
+	\begin{prova}
+		Pelo Teorema \ref{teorema_representacao_reiz}, dado um funcional linear $\phi \in \espacoLpdual$ existe um único $Y \in \espacoLpadjuntoretacirculo$ tal que $\phi(\beta) = \int_{\retacartesianocirculo}\produtointerno{Y}{\beta}$. Como $\diferencialfloerabrev$ é uma bijeção, então para todo $\beta \in \espacoLpretacirculo$ existe um único $\xi \in \espacosobolevretacirculo$ tal que $\beta = \diferencialfloerabrev\xi$. Com isso, pode-se determinar o operador adjunto $\diferencialfloerabrev^{*}$ que satisfaz a equação (no sentido distribucional) 
+		$$
+		\phi_{\diferencialfloerabrev}(\xi) = \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev\xi} = \int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{\xi}.
+		$$
+		
+		Defina $C^{\infty}_{c}(\retacartesianocirculo;\real{2n})$ como sendo o conjunto das funções suaves e de suporte compacto definidas em $\retacartesianocirculo$ a $\real{2n}$ e suponha que $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Com isso, tem-se
+		$$
+		\begin{aligned}
+		\phi_{\diferencialfloerabrev}(\xi) 
+		&= \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev\xi}
+		\\
+		&=
+		\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{\xi}{s}} + \int_{\retacartesianocirculo}\produtointerno{Y}{\estruturacomplexa\derivadaparcial{\xi}{t}} + \int_{\retacartesianocirculo}\produtointerno{Y}{S\xi}.
+		\end{aligned}
+		$$
+		
+		Efetuando integração por partes de da primeira integral e usando o fato de que $\lim_{s\to \pm \infty}\xi(s,t) = 0$, pois tem suporte compacto, tem-se que
+		$$
+		\begin{aligned}
+		\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{\xi}{s}}
+		&=\int_{\retacartesianocirculo}\derivadaparcial{}{s}\produtointerno{Y}{\xi} - \int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{\xi} 
+		\\
+		&=\int_{\circulo}\produtointerno{Y}{\xi}(s)\Big|_{s=-\infty}^{s=\infty} -\int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{\xi}
+		\\
+		&=-\int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{\xi}.
+		\end{aligned}
+		$$
+		Com um procedimento análogo para a segunda integral, tem-se que
+		$$
+		\int_{\retacartesianocirculo}\produtointerno{Y}{\estruturacomplexa\derivadaparcial{\xi}{t}} = \int_{\retacartesianocirculo}\produtointerno{\estruturacomplexa \derivada{Y}{t}}{\xi}.
+		$$
+		E para a terceira integral
+		$$
+		\int_{\retacartesianocirculo}\produtointerno{Y}{S\xi}= \int_{\retacartesianocirculo}\produtointerno{S^{t}Y}{\xi}.
+		$$
+		Portanto
+		$$
+		\begin{aligned}
+		\phi_{\diferencialfloerabrev}(\xi) 
+		&= \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev\xi}
+		\\
+		&=
+		\int_{\retacartesianocirculo}\produtointerno{-\derivadaparcial{Y}{s}+\estruturacomplexa \derivadaparcial{Y}{s} + S^{t}Y}{\xi}
+		\\
+		&=\int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{\xi}.
+		\end{aligned}
+		$$
+	\end{prova}
+	
+	\begin{corolario}
+		Com as hipóteses da proposição anterior, se $\produtointerno{Y}{\diferencialfloerabrev\xi} = 0$, então $\diferencialfloerabrev^{*}Y = 0$, no sentido distribucional.
+	\end{corolario}
+	\begin{prova}
+		Tem-se que a integral $\int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{\xi}=0$. Por outro lado $ \int_{\retacartesianocirculo}\produtointerno{0}{\xi} =0$, para todo $\xi \in \espacosobolevretacirculo$. Logo $\diferencialfloerabrev^{*}Y = 0$.
+	\end{prova}
+	
+	\begin{definicao}\label{definicao_oeprador_fredholm}
+		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$. 
+	\end{definicao}
+	
+	\begin{observacao}
+		Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabse-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. De forma equivalente, $T$ é um isomorfismo se, e somente se, $dim(Ker(T)) = 0$ e $dim(T(A)) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
+	\end{observacao}
+	
 	\begin{teorema}
-		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador de Fredholm para $1<p<\infty$.
+		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevretacirculo\to \espacoLpretacirculo$ é um operador de Fredholm para $1<p<\infty$.
 	\end{teorema}
 	\begin{prova}
 		Nessa demonstração vamos denotar $\diferencialfloer$ por $\diferencialfloerabrev$. Além disso, ela efetuada feita em duas etapas: na primeira etapa é demonstrado que o kernel de $\diferencialfloerabrev$ tem dimensão finita. Na segunda etapar é demonstrado que o cokernel de $\diferencialfloerabrev$ tem dimensão finita. Logo $\diferencialfloerabrev$ é um operador de Fredholm.
@@ -3913,8 +3962,20 @@
 			
 			Note que, $\normaLpDominio{\xi}{\intervalofechado{T}}\leq \normaLp{\xi}$ para todo $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$, o que implica que $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}} \subset \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$. O Teorema \ref{teorema_sobolev} é válido para o caso em que $p=q$ \vermelho{(ainda não estou seguro sobre essa afirmação)}, logo pode-se afirmar que a inclusão $i: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \hookrightarrow  \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$ é um operador compacto. Nas hipóteses do Lema \ref{lema_operador_limitado_imagem_fechada}, tem-se que $\diferencialfloerabrev: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é um operador linear limitado entre espaços de Banach e $i: \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$ é um operador compacto. Com isso, $\diferencialfloerabrev(\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}) \subset \espacoLpcontradominio{\intervalofechado{T}\times \circulo}{\real{2n}}$ é um fechado e $dim(Ker(\diferencialfloerabrev)) < \infty$.
 			
-			\item \textbf{Etapa 2:}
+			\item \textbf{Etapa 2:} Defina 
+			$
+			F = \{ Y \in \espacoLpadjuntoretacirculo: \produtointerno{\diferencialfloerabrev\xi}{Y}=0,\; \xi \in \espacosobolevretacirculo\}.
+			$ Pela Proposição \ref{proposicao_diferencial_floer_adjunto}  tem-se que $\diferencialfloerabrev^{*}Y=0$ para todo $Y \in F$. Assumindo que $1/p+1/q=1$, e pela regularidade elíptica, pode-se afirmar que $Y \in \espacosobolevadjuntoretacirculo$. Com isso, $F\subset Ker(\diferencialfloerabrev^{*}) \subset \espacosobolevadjuntoretacirculo$. Note que o operador $\diferencialfloerabrev^{*}$ satisfaz as hipóteses do Lema \ref{lema_operador_limitado_imagem_fechada}, logo $dim(Ker(\diferencialfloerabrev^{*}))<\infty$.
+			
+			Defina a aplicação $\varphi:\espacoLpadjuntoretacirculo \to \espacoLpdual$ por $\varphi(Y)(\beta)=\produtointerno{Y}{\beta}$. Se $\beta \in \diferencialfloerabrev(\espacosobolevretacirculo)$ e $\varphi_{Y}(\beta) = 0$, então $Y \in F$. Seja $\classe{\beta} \in Coker(\diferencialfloerabrev)$. Então, para algum $\alpha$ tem-se que $\beta-\alpha=\diferencialfloerabrev\xi$, e com isso, $0= \produtointerno{Y}{\diferencialfloerabrev\xi}=\produtointerno{Y}{\beta-\alpha}$, o que implica que $xx$. \vermelho{(Não entendo o argumento da dimensão finita do Cokernel . Ver no MIchelle pag. 285).}
 		\end{enumerate}
+		
+		\begin{teorema}
+			O índice de Fredholm de $\diferencialfloer$ é 
+			$$
+			ind(\diferencialfloer) = \mu(\gamma^{-}) - \mu(\gamma^{+}).
+			$$
+		\end{teorema}
 	
 	\end{prova}
 	
@@ -4423,7 +4484,7 @@
 	
 	
 	\chapter{Espaços de Sobolev}
-	\section{Distribuições}
+	\section{Distribuições}\label{secao_distribuicoes}
 	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
 	$$
 	\nabla.E(x) = \rho(x),
