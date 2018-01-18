@@ -106,7 +106,7 @@
 \newcommand{\complexificacaoelemento}[2]{#1\otimes_{\reta} #2}
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
 \newcommand{\coordenada}[2]{#1_{(#2)}}
-\newcommand{\diferencialfloer}{D\operadorflor}
+\newcommand{\diferencialfloer}{D\operadorFloer}
 \newcommand{\diferencialfloerabrev}{\mathcal{D}}
 \newcommand{\derivada}[2]{\frac{d #1}{d #2}}
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
@@ -196,10 +196,10 @@
 \newcommand{\kernelbordo}[2]{Z_{#1}(#2;A)}
 \newcommand{\kernelbordoabrev}[2]{Z_{#1}(#2)}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
-\newcommand{\operadorflor}{\mathcal{F}}
-\newcommand{\operadorflordefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
-\newcommand{\operadorflorparametro}[1]{\mathcal{F}(#1)}
-\newcommand{\operadorflorpadrao}{\operadorflorparametro{u}}
+\newcommand{\operadorFloer}{\mathcal{F}}
+\newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
+\newcommand{\operadorFloerParametro}[1]{\mathcal{F}(#1)}
+\newcommand{\operadorFloerPadrao}{\operadorFloerParametro{u}}
 \newcommand{\matrizantisimetrica}[1]{Asym(#1)}
 \newcommand{\matrizortogonal}[1]{O(#1)}
 \newcommand{\matrizquadcomplexa}[1]{M_{#1 \times #1}(\complexo{})}
@@ -223,7 +223,6 @@
 \newcommand{\normaWpGeralDominio}[3]{\norma{#1}_{W^{1,#2}(#3)}}
 \newcommand{\normaWpDominio}[2]{||#1||_{W^{1,p}(#2)}}
 \newcommand{\operadorcauchyabrev}[1]{\overline{\partial}_{#1}}
-\newcommand{\operadorfloer}{\mathfrak{F}}
 \newcommand{\operadoresfredholm}[2]{\mathcal{F}r(#1, #2)}
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
 \newcommand{\orbitaponto}[1]{\mathcal{O}(#1)}
@@ -2598,9 +2597,7 @@
 	
 	\section{Índice de Maslov $\mu : \caminhosespeciais{\gruposimpletico{2n}} \to \inteiros$}\label{secao_indice_maslov}
 	
-	Na seção anterior mostrou-se que $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos de $\gruposimpleticonaodegenerado{*}$, logo $\gruposimpletico{2n}=\gruposimpleticonaodegenerado{+}\cup\gruposimpleticonaodegenerado{-}\cup \Sigma$.
-	
-	Seja $\caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ o conjunto de todos os caminhos contínuos $\alpha:\intervalo \to \gruposimpleticonaodegenerado{*}$, onde $\alpha(1) = W^{\pm}$, isto é, $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{-}$. Defina $\caminhosespeciais{\gruposimpletico{2n}}$ como sendo o conjunto de todos os caminhos $\psi=\gamma*\phi:\intervalo\to\gruposimpletico{2n}$, onde $\gamma(0)=Id $, $\gamma(1) \in \gruposimpleticonaodegenerado{*}$ e $\phi \in \caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$, onde $\psi(1)=\phi(0)$.
+	Sejam $\caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ os conjuntos dos caminhos contínuos $\alpha:\intervalo \to \gruposimpleticonaodegenerado{*}$, onde $\alpha(1) = W^{\pm}$. Logo, dado $\alpha \in \caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ tem-se que $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{-}$. Defina $\caminhosespeciais{\gruposimpletico{2n}}$ como sendo o conjunto de todos os caminhos $\psi=\gamma*\phi:\intervalo\to\gruposimpletico{2n}$, onde $\gamma(0)=Id $, $\gamma(1) \in \gruposimpleticonaodegenerado{*}$ e $\phi \in \caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$.
 	
 	\begin{observacao}
 		Note que, um dado $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ é um caminho contínuo, não necessariamente fechado e que conecta a identidade $Id\in\Sigma$ a um elemento de $\gruposimpleticonaodegenerado{\pm}$. Como $\Sigma$ é conexo por caminhos, poderia-se ter escolhido qualquer outro elemento desse conjunto e distinto de $Id$.
@@ -3372,7 +3369,7 @@
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
 	
-	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $\gamma^{-}, \gamma^{+}$ sejam duas soluções 1-periódicas do sistema Hamiltoniano, isto é, $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, para toda estrutura complexa $J \in \estruturascomplexas{M}{\omega}$ podemos considerar $\energiafinitaMconectante \subset \energiafinitaM$ como sendo o conjunto das soluções da equação de Floer que conectam os pontos críticos $\gamma^{-}$ e $\gamma^{+}$. Vamos demonstrar que $\energiafinitaMconectante$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das soluções $x^{-}$ e $x^{+}$ do seguinte modo $dim(\energiafinitaMconectante) = \mu(x^{-})-\mu(x^{+})$. Para isso vamos descrever o conjunto $\energiafinitaMconectante$ como sendo os zero de uma seção do fibrado vetorial na variedade de Banach $\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são os caminhos de decaimento exponencial que conectam $x^{-}, x^{+}$ de modo que teremos $\energiafinitaMconectante \subset \caminhosexponenciaisconectantespadrao$. Aplicando a versão para dimensões infinitas do Teorema de Sard, chamado de Sard-Smale, mostraremos que $\energiafinitaMconectante$ é a pré-imagem de uma valor regular de uma determinada aplicação, sendo que para isso, deveremos mostrar que o diferencial dessa aplicação é um operador de Fredholm. Esse operador é chamado de operador de Fleor $\operadorflor$ e seu diferencial será denotador por $\diferencialfloer$. Mostraremos que, o índice do operador $\diferencialfloer$ é $\mu(x^{-}) - \mu(x^{+})$, portanto 
+	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $\gamma^{-}, \gamma^{+}$ sejam duas soluções 1-periódicas do sistema Hamiltoniano, isto é, $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, para toda estrutura complexa $J \in \estruturascomplexas{M}{\omega}$ podemos considerar $\energiafinitaMconectante \subset \energiafinitaM$ como sendo o conjunto das soluções da equação de Floer que conectam os pontos críticos $\gamma^{-}$ e $\gamma^{+}$. Vamos demonstrar que $\energiafinitaMconectante$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das soluções $x^{-}$ e $x^{+}$ do seguinte modo $dim(\energiafinitaMconectante) = \mu(x^{-})-\mu(x^{+})$. Para isso vamos descrever o conjunto $\energiafinitaMconectante$ como sendo os zero de uma seção do fibrado vetorial na variedade de Banach $\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são os caminhos de decaimento exponencial que conectam $x^{-}, x^{+}$ de modo que teremos $\energiafinitaMconectante \subset \caminhosexponenciaisconectantespadrao$. Aplicando a versão para dimensões infinitas do Teorema de Sard, chamado de Sard-Smale, mostraremos que $\energiafinitaMconectante$ é a pré-imagem de uma valor regular de uma determinada aplicação, sendo que para isso, deveremos mostrar que o diferencial dessa aplicação é um operador de Fredholm. Esse operador é chamado de operador de Fleor $\operadorFloer$ e seu diferencial será denotador por $\diferencialfloer$. Mostraremos que, o índice do operador $\diferencialfloer$ é $\mu(x^{-}) - \mu(x^{+})$, portanto 
 	$$
 	dim(\energiafinitaMconectante)=ind(\diferencialfloer) <\infty.
 	$$
@@ -3488,14 +3485,14 @@
 		Definindo $W_{u} = \{Y\in \espacosobolev{\pullbackfibradotangenteM{u}}:\normaWp{Y} < r_{0}/K\}$ tem-se que a aplicação exponencial $(u, Y) \mapsto (u, \exp_{u}Y)$ é um difeomorfismo sobre sua imagem, logo é um homeomorfismo. Com uma construção análoga a que foi feita na Proposição \ref{proposicao_caminhos_variedade_banach} pode-se mostrar que $\{(W_{u}, \exp_{u})\}_{u \in \caminhosdecaimentoexponencialpadrao}$ é um atlas suave de $\caminhosexponenciaisconectantespadrao$, portanto esse conjunto é uma variedade de Banach. 
 	\end{prova}
 	
-	\section{O operador de Floer $\operadorflor$ e seu diferencial $\diferencialfloer$}
+	\section{O operador de Floer $\operadorFloer$ e seu diferencial $\diferencialfloer$}\label{secao_operador_floer}
 	
 	Denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$.
 	
-	\begin{definicao}
-		(Operador de Floer) Sejam $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorflor: \caminhosexponenciaisconectantesabrev \to T\caminhosexponenciaisconectantesabrev$ definido por
+	\begin{definicao}\label{definicao_operador_floer}
+		(Operador de Floer) Sejam $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorFloer: \caminhosexponenciaisconectantesabrev \to T\caminhosexponenciaisconectantesabrev$ definido por
 		$$
-		\operadorflorparametro{u} =\operadorflordefinicao{u},
+		\operadorFloerParametro{u} =\operadorFloerDefinicao{u},
 		$$
 		onde $T\caminhosexponenciaisconectantesabrev$ é o fibrado tangente de $\caminhosexponenciaisconectantesabrev$, cujas finbras são os espaços $\espacoLp{\pullbackfibradotangenteM{u}	}$ (veja a Observação \ref{observacao_identificacao_espaco_Lp}).
 	\end{definicao}
@@ -3503,7 +3500,7 @@
 	Seja $u \in \caminhosexponenciaisconectantesabrev$, então
 	$$
 	\begin{aligned}
-	\normaLp{\operadorflorpadrao} &= \normagrandeLpdefinicao{\operadorflordefinicao{u}}{\retacartesianocirculo}
+	\normaLp{\operadorFloerPadrao} &= \normagrandeLpdefinicao{\operadorFloerDefinicao{u}}{\retacartesianocirculo}
 	\\
 	&\leq \normaLpdefinicao{\bigparenteses{\normagrande{\derivadaparcial{u}{s}} +\norma{J_{u}}\normagrande{\derivadaparcial{u}{t} - X_{H}(u)}}}{\retacartesianocirculo}
 	\\
@@ -3518,12 +3515,12 @@
 	$$
 	\norma{J_{u}}=\sup_{\norma{x}=1, \;\; (s,t)\in \retacartesianocirculo}  \norma{J(u(s,t))x}.\vermelho{(limitado???????)}
 	$$
-	Logo $\operadorflorparametro{u} \in L^{p}(\pullbackfibradotangenteMpadrao)$ e o operador de Floer esta bem-definido.
+	Logo $\operadorFloerParametro{u} \in L^{p}(\pullbackfibradotangenteMpadrao)$ e o operador de Floer esta bem-definido.
 	
-	Lembrando que, dado $u \in \caminhosexponenciaisconectantesabrev$, tem-se que $u:\retacartesianocirculo\to M$. Com isso, $\operadorflorparametro{u}$ é tal que $\operadorflorparametro{u}(s, t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t)\in \retacartesianocirculo$. É sob esse sentido que se obterá o diferencial de $\operadorflor$. Como $M$ é uma variedade Riemanniana, a variação de $\operadorflor$ pode ser obtida realizando o transporte paralelo desse campo ao longo de uma dada curva. O campo vetorial resultante é expresso em termos de conexões afins (veja a Definição \ref{definicao_conexao_afim} e a Observação \ref{observacao_transporte_paralelo}) e, de acordo com \cite{salamon_zehnder} e \cite{salamon_lecture}, é dado por
+	Lembrando que, dado $u \in \caminhosexponenciaisconectantesabrev$, tem-se que $u:\retacartesianocirculo\to M$. Com isso, $\operadorFloerParametro{u}$ é tal que $\operadorFloerParametro{u}(s, t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t)\in \retacartesianocirculo$. É sob esse sentido que se obterá o diferencial de $\operadorFloer$. Como $M$ é uma variedade Riemanniana, a variação de $\operadorFloer$ pode ser obtida realizando o transporte paralelo desse campo ao longo de uma dada curva. O campo vetorial resultante é expresso em termos de conexões afins (veja a Definição \ref{definicao_conexao_afim} e a Observação \ref{observacao_transporte_paralelo}) e, de acordo com \cite{salamon_zehnder} e \cite{salamon_lecture}, é dado por
 	
 	$$
-	\nabla\operadorflorparametro{u}(\xi) = \nabla_{s}\xi + J(u)\nabla_{t}\xi + dJ(u)(\xi)(\xi - X_{H}(u)) - J(u)(dX_{H})_{u}(\xi),
+	\nabla\operadorFloerParametro{u}(\xi) = \nabla_{s}\xi + J(u)\nabla_{t}\xi + dJ(u)(\xi)(\xi - X_{H}(u)) - J(u)(dX_{H})_{u}(\xi),
 	$$
 	onde $\gamma: (-\epsilon, \epsilon) \to M$ é um caminho suave tal que $u(s,t) =\gamma(0)$ e $\derivada{}{\lambda}\gamma(\lambda)|_{\lambda=0}=\xi(u(s,t))$, para $(s,t)$. Contudo, analisar as propriedades desse operador com conexões afins adiciona complexidade ao estudo. 
 	
@@ -3531,8 +3528,8 @@
 	
 	$$
 	\begin{aligned}
-	\operadorflorparametro{u+\xi}-\operadorflorparametro{u}
-	&= \operadorflordefinicao{u+\xi}
+	\operadorFloerParametro{u+\xi}-\operadorFloerParametro{u}
+	&= \operadorFloerDefinicao{u+\xi}
 	\\
 	&\;\;\;\; -\derivadaparcial{u}{s} - J(u)\derivadaparcial{u}{t} + J(u)\campohamiltoniano{u}
 	\\
@@ -3546,11 +3543,11 @@
 	&\;\;\;\; -J(u+\xi)\bigparenteses{X_{H}(u+\xi) - X_{H}(\xi)}.
 	\end{aligned}
 	$$
-	Como os termos $u, \xi, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorflor$ avaliado no ponto $u\in \caminhosexponenciaisconectantesabrev$ é o limite 
+	Como os termos $u, \xi, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorFloer$ avaliado no ponto $u\in \caminhosexponenciaisconectantesabrev$ é o limite 
 	$$
 	\begin{aligned}
 	\diferencialfloer_{u}(\xi)
-	&=\lim_{\xi \to 0} \frac{	\operadorflorparametro{u+\xi}-\operadorflorparametro{u}}{\norma{\xi}}
+	&=\lim_{\xi \to 0} \frac{	\operadorFloerParametro{u+\xi}-\operadorFloerParametro{u}}{\norma{\xi}}
 	\\
 	&= \derivadaparcial{\xi}{s} + J(u)\derivadaparcial{\xi}{t}+ dJ_{u}(\xi)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}(\xi)
 	\\
@@ -3561,13 +3558,13 @@
 	&= (\operadorcauchyabrev{u}  + S_{u})(\xi).
 	\end{aligned}
 	$$
-	Portanto $ D\operadorflor_{u}= \operadorcauchyabrev{u}  + S_{u}: \real{2n} \to \real{2n}$.
+	Portanto $ D\operadorFloer_{u}= \operadorcauchyabrev{u}  + S_{u}: \real{2n} \to \real{2n}$.
 	
 	\begin{observacao}
-		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorflor_{u} = \diferencialfloer_{u}$.
+		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorFloer_{u} = \diferencialfloer_{u}$.
 	\end{observacao}
 
-	\section{$D\operadorflor$ é um operador de Fredholm}
+	\section{$D\operadorFloer$ é um operador de Fredholm}
 	\vermelho{(Colocar uma resuma da estratégia da demonstração aqui...)}
 	\begin{definicao}\label{definicao_operador_compacto}
 		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
@@ -3581,7 +3578,7 @@
 		Sejam $A,B,C$ espaços de Banach e $D:A\to B$ um operador limitado e $K:A \to C$ um operador compacto. Supondo que exista uma constante $c>0$ tal que $\normasubscrito{\xi}{A} \leq c(\normasubscrito{D\xi}{B} + \normasubscrito{K\xi}{C})$, então $D(A) = \overline{D(A)}$ e $dim(Ker(D)) <\infty$.
 	\end{lema}
 	
-	Daqui em diante, quando não houver ambiguidades, denotaremos $D\operadorflor_{u}$ por $\diferencialfloerabrev$, para um dado $u\in \caminhosexponenciaisconectantespadrao$.
+	Daqui em diante, quando não houver ambiguidades, denotaremos $D\operadorFloer_{u}$ por $\diferencialfloerabrev$, para um dado $u\in \caminhosexponenciaisconectantespadrao$.
 	
 	Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$ \vermelho{(Eu não me lembro em que ponto essa hipótese foi utilizada)}.
 	
@@ -3971,13 +3968,21 @@
 		\end{enumerate}
 		
 		\begin{teorema}
-			O índice de Fredholm de $\diferencialfloer$ é 
+			O índice de Fredholm de $\diferencialfloer$ é \vermelho{(definir quem são $\gamma^{\pm}$)}
 			$$
 			ind(\diferencialfloer) = \mu(\gamma^{-}) - \mu(\gamma^{+}).
 			$$
 		\end{teorema}
 	
 	\end{prova}
+	
+	\section{A transversalidade de $\operadorFloer$}
+	Na seção \ref{secao_operador_floer} o operador de Floer $\operadorFloer: \caminhosexponenciaisconectantesabrev \to T\caminhosexponenciaisconectantesabrev$  é definido por
+	$$
+	\operadorFloerParametro{u} =\operadorFloerDefinicao{u},
+	$$
+	onde $\caminhosexponenciaisconectantesabrev = \caminhosexponenciaisconectantespadrao$ e $T\caminhosexponenciaisconectantesabrev$ é seu fibrado tangente. Suponha que $u$ seja um zero de $\operadorFloer$, isto é, $\operadorFloer(u) = 0$, então $u$ é uma solução da equação de Floer e $u \in \energiafinitaM$.
+	
 	
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
