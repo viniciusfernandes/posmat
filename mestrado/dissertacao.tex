@@ -2597,22 +2597,16 @@
 	
 	\section{Índice de Maslov $\mu : \caminhosespeciais{\gruposimpletico{2n}} \to \inteiros$}\label{secao_indice_maslov}
 	
-	Sejam $\caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ os conjuntos dos caminhos contínuos $\alpha:\intervalo \to \gruposimpleticonaodegenerado{*}$, onde $\alpha(1) = W^{\pm}$. Logo, dado $\alpha \in \caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ tem-se que $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{+}$ ou $\alpha(\intervalo) \subset \gruposimpleticonaodegenerado{-}$. Defina $\caminhosespeciais{\gruposimpletico{2n}}$ como sendo o conjunto de todos os caminhos $\psi=\gamma*\phi:\intervalo\to\gruposimpletico{2n}$, onde $\gamma(0)=Id $, $\gamma(1) \in \gruposimpleticonaodegenerado{*}$ e $\phi \in \caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$.
+	Sejam $\caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ os conjuntos dos caminhos contínuos $\psi:\intervalo \to \gruposimpleticonaodegenerado{*}$, onde $\psi(1) = W^{\pm}$. Com isso, tem-se que $\psi(\intervalo) \subset \gruposimpleticonaodegenerado{+}$ ou $\psi(\intervalo) \subset \gruposimpleticonaodegenerado{-}$. 
 	
-	\begin{observacao}
-		Note que, um dado $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ é um caminho contínuo, não necessariamente fechado e que conecta a identidade $Id\in\Sigma$ a um elemento de $\gruposimpleticonaodegenerado{\pm}$. Como $\Sigma$ é conexo por caminhos, poderia-se ter escolhido qualquer outro elemento desse conjunto e distinto de $Id$.
-	\end{observacao}
+	
 	
 	\begin{definicao}
-		(Índice de Maslov) Sejam $\exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial. Para cada caminho $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ existe um único levantamento $\alpha_{\psi}:[0,1] \to \real{}$ do caminho $\rho_{\psi} = \rho \circ \psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
+		(Índice de Maslov) 
+		Para um dado caminho $\psi \in \caminhos(\gruposimpleticonaodegenerado{*})$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \caminhos({\gruposimpleticonaodegenerado{*}})$. Considere a composição $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$. Sejam $\exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $\alpha_{\Psi}$ o levantamento de $\Psi$, tal que $\exp(i\alpha_{\Psi}t)$. O índice de Maslov de $\psi$ é definido por
 		$$
-		\xymatrix{
-			& & \real{}\ar[d]\ar[d]^{\text{exp}}
-			\\
-			[0,1 ]\ar[urr]^{\alpha_{\psi}} \ar[r]_{\psi} & Sp(2n) \ar[r]_{\rho} & S^{1}
-		}
-		$$	
-		O índice de Maslov é definido por $\mu(\psi)= 2deg(\rho_{\psi}) = (\alpha_{\psi}(0) - \alpha_{\psi}(1))/\pi$.
+		\mu(\psi)= 2deg(\rho_{\Psi}) = 2deg(\rho_{\psi}) + 2deg(\rho_{\gamma}).
+		$$
 	\end{definicao}
 	
 	\begin{observacao}
@@ -2621,19 +2615,24 @@
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
 
-	\begin{lema}
-		Se $\psi, \psi'\in \caminhosespeciais{\gruposimpletico{2n}}$ tais que $\psi=\gamma*\alpha$ e $\psi'=\gamma*\alpha'$, então $\mu(\psi) = \mu(\psi')$.
+	\begin{lema}\label{lema_independencia_prolongamento}
+		Se $\psi \in  \caminhos({\gruposimpleticonaodegenerado{*}})$, então o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$. Além disso, se $\psi' \in \caminhos{(\gruposimpleticonaodegenerado{*})}$, então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$.
+	\end{lema}
+	\begin{lema}\label{lema_independencia_prolongamento}
+		Sejam $\psi,\psi' \in  \caminhos({\gruposimpleticonaodegenerado{*}})$. Então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$, onde $\Psi$ e $\Psi'$ são prolongamentos de $\psi$ e $\psi'$, respectivamente. Além disso, o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$.
 	\end{lema}
 	\begin{prova}
-		Pelo Corolário \ref{corolario_homomorfismo_trivial_grupos_simpletico} tem-se que $\grupofundamental{\gruposimpleticonaodegenerado{*}} = \{\classe{0}\}$, logo $\alpha, \alpha'\in \classe{0}$ e $\alpha\sim \alpha'$. Com isso, $\psi\sim \psi'$ e $\mu(\psi) = 2deg(\rho_{\psi})=2deg(\rho_{\psi'})=\mu(\psi')$, pois caminhos homotopicamente equivalentes possuem o mesmo grau.
+		Suponha que $\psi \sim \psi'$. Como $\gamma \sim \gamma'$, então pelo Lema \ref{lema_compatibilidade_produto_caminhos} tem-se que $\Psi = \psi*\gamma \sim \psi'*\gamma' = \Psi'$. Por outro lado, suponha que $H: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ seja uma homotopia entre $\Psi $ e $\Psi'$ tal que $H(t,0) = \Psi(t)$ e $H(t,1) = \Psi'(t)$. Pela definição de justaposição tem-se que $\Psi(t) = \psi(2t)$ e $\Psi'(t) = \psi'(2t)$ para $0 \leq t \leq 1/2$. Seja $h: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ definida por $h(t,s) = H(t/2, s)$. Então  $h(t,0) = H(t/2, 0) =  \psi(2t)$ e $h(t,1)=H(t/2,1) = \psi'(2t)$. Portanto $h$ é uma homotopia entre $\psi$ e $\psi'$.
+		
+		Sejam $\Psi=\psi*\gamma$ e $\Psi''=\psi*\gamma''$ são dois prolangamentos de $\psi$. Pelo Corolário \ref{corolario_homomorfismo_trivial_grupos_simpletico} tem-se que $\grupofundamental{\gruposimpleticonaodegenerado{*}} = \{\classe{0}\}$, logo $\gamma, \gamma''\in \classe{0}$ e $\gamma\sim \gamma''$. Com isso, $\Psi\sim \Psi''$ e $2deg(\rho_{\Psi})=2deg(\rho_{\Psi'})=\mu(\psi)$. Logo $\mu(\psi)$ não depende do prolongamento escolhido.
 	\end{prova}
 	
 	\begin{observacao}
-		O lema anterior afirma que o índice de Maslov de um caminhos $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ não depende da escolha de $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$.
+		O lema anterior afirma que o índice de Maslov de um caminho $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ esta bem-definido.
 	\end{observacao}
 	
 	\begin{lema}\label{lema_inversa_caminho_especial}
-		Se $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$, então $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{2n}}$ e é dado por $\psi^{-1}(t)=(\psi(t))^{-1}$ para todo $t\in \intervalo$. Além disso, $\rho(\psi^{-1}(t)) = (\rho(\psi(t)))^{-1}$.
+		Se $\psi \in   \caminhos({\gruposimpleticonaodegenerado{*}}) $, então $\psi^{-1} \in   \caminhos({\gruposimpleticonaodegenerado{*}})$ e é dado por $\psi^{-1}(t)=(\psi(t))^{-1}$ para todo $t\in \intervalo$. Além disso, $\rho(\psi^{-1}(t)) = (\rho(\psi(t)))^{-1}$.
 	\end{lema}
 	\begin{prova}
 		Tem-se que $(\psi^{-1}\psi)(t)=Id$, o que implica em $\psi^{-1}(t)=(\psi(t))^{-1}$ para todo $t\in \intervalo$. Como a inversa de toda transformação simplética é uma transformação simplética, então $\psi^{-1}(\intervalo) \subset \gruposimpletico{2n}$. Pelo Item \ref{item_inversa_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\psi^{-1}(t))= (\rho(\psi(t)))^{-1}$ para todo $t\in \intervalo$.
@@ -2641,13 +2640,13 @@
 	
 	
 	\begin{teorema}\label{teorema_indice_maslov}
-		Seja $\psi=\gamma*\alpha \in \caminhosespeciais{\gruposimpletico{2n}} $. Então o índice de Maslov satisfaz as seguintes propriedades:
+		Se $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$, então o índice de Maslov satisfaz as seguintes propriedades:
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
 			
 			\item \textbf{(Naturalidade)} Para todo $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$ tem-se que $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
 			
-			\item \textbf{(Homotopia)} \label{homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}} $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
+			\item \textbf{(Homotopia)} \label{homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \caminhos({\gruposimpleticonaodegenerado{*}}) $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
 			
 			\item \textbf{(Nullidade)} se $\espectrooperador{\psi(s)}\cap \circulo = \emptyset$ para todo $s\in \intervalo$, então $\mu(\psi) = 0$.
 			
@@ -2666,24 +2665,42 @@
 		\end{enumerate}
 	\end{teorema}
 	\begin{prova}
+		
+		Considere para os itens da demosntração $\psi \in \caminhos{(\gruposimpleticonaodegenerado{*})}$ e $\Psi=\psi * \gamma$ um prologamento de $\psi$.
 		\begin{enumerate}
-			\item Para todo $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ tem-se que $\rho_{\psi}(0) = \rho(\psi(0)) = 1$ e $\rho_{\psi}(1) = \rho(\psi(1)) = \rho(W^{\pm})$, onde $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1}$, o que implica em $\rho(W^{\pm}) \in \{ -1,1\}$. Sabe-se que $\rho_{\psi}(t) = \exp(i\alpha_{\psi}(t))$. Afirmo que $\alpha_{\psi}(0)=0$ e $\alpha_{\psi}(1)=k\pi$. De fato, para $t=0$ é imediato que $\alpha_{\psi}(0)=0$. Para $t=1$ tem-se que $\rho(W^{\pm}) = \pm 1$, o que implica que $\alpha(1) = k\pi$, para algum $k\in \inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in \inteiros$.
+			\item Tem-se que $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$ e $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})$, onde $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1}$, o que implica em $\rho(W^{\pm}) \in \{ -1,1\}$. Sabe-se que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$. Afirmo que $\alpha_{\Psi}(0)=0$ e $\alpha_{\Psi}(1)=k\pi$. De fato, para $t=0$ é imediato que $\alpha_{\Psi}(0)=0$. Para $t=1$ tem-se que $\rho(W^{\pm}) = \pm 1$, o que implica que $\alpha_{\Psi}(1) = k\pi$, para algum $k\in \inteiros$. Logo $\mu(\psi) = 2deg(\rho_{\Psi}) = (k\pi-0)/\pi \in \inteiros$.
 			
-			\item \textbf{(Naturalidade)} Pelo Item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Com isso, $\mu(\phi\psi\phi^{-1})= 2deg(\rho_{\phi\psi\phi^{-1}} )=2deg(\rho_{\psi})=\mu(\psi)$.
-			
-			\item \textbf{(Homotopia)} Sejam $\psi_{1}, \psi_{2}\in \caminhosespeciais{\gruposimpletico{2n}}$ e $h:\intervalo\times \intervalo \to \gruposimpletico{2n}$ uma homotopia tal que $h(t,0) = \psi_{1}(t)$ e $h(t,1) = \psi_{2}(t)$.
-			Considere a aplicação contínua $H:\intervalo\times \intervalo\to \circulo$ definida por $H(t,s) = (\rho\circ h)(t,s)$. Então $H(t,0) = \rho_{\psi_{1}}(t)$ e $H(t,0) = \rho_{\psi_{2}}(1)$, portanto $H$ é uma homotopia entre os caminhos $\rho_{\psi_{1}}$ e $\rho_{\psi_{2}}$. Da Proposição \ref{proposicao_grau_aplicacao} tem-se que $\rho_{\psi_{1}}\sim \rho_{\psi_{2}}$ se, e somente se $deg(\rho_{\psi_{1}})=deg(\rho_{\psi_{2}})$. Logo $\rho_{\psi_{1}}\sim \rho_{\psi_{2}}$ se, e somente se, $\mu(\psi_{1})=\mu(\psi_{2})$. 
-			
-			\item \textbf{(Nullidade)} Como  $\espectrooperador{\psi(s)}\cap \circulo = \emptyset$ para todo $s\in \intervalo$, então pelo Item \ref{item_normalizacao_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\psi(t)) = \pm 1$ para todo $t\in \intervalo$. Com isso, $deg(\rho_{\psi}) = 0$ e $\mu(\psi) = 0$.
-			
-			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{2n} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Se $\Psi=(\psi_{p}, \psi_{q}) \in \caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}}$, então pelo Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que $\rho(\Psi(t))=\rho(\psi_{p}(t))\rho(\psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\psi_{p}(t))=\exp(i\alpha_{\psi_{p}}(t))$ e $\rho(\psi_{q}(t))=\exp(i\alpha_{\psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\psi_{p}}+\alpha_{\psi_{q}})(t))$, e com isso tem-se que 
+			\item \textbf{(Naturalidade)} Pelo Item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Seja $\psi' = \phi\psi\phi^{-1}$ e $\Psi' = \psi'*\gamma$ um prolongamento de $\psi'$. Com isso, tem-se que 
 			$$
 			\begin{aligned}
-			\mu(\Psi) &= 2deg(\rho_{\Psi}) 
+			\mu(\phi\psi\phi^{-1})
+			&=\mu(\psi')
 			\\
-			&= \frac{1}{2}\big(\alpha_{\psi_{p}}(1)+\alpha_{\psi_{q}}(1) -\alpha_{\psi_{p}}(0)-\alpha_{\psi_{q}}(0) \big) 
+			&= 2deg(\rho_{\Psi'})
 			\\
-			&= 2deg(\rho_{\psi_{p}}) +2deg(\rho_{\psi_{p}}) 
+			&= 2deg(\rho_{\phi\psi\phi^{-1}}) + 2deg(\gamma)
+			\\
+			&=2deg(\rho_{\psi}) + 2deg(\gamma)
+			\\
+			&=2deg(\Psi)
+			\\
+			&= \mu(\psi).			
+			\end{aligned}
+			$$
+			
+			\item \textbf{(Homotopia)} Sejam $\Psi_{1}, \Psi_{2}$ prolongamentos de $\psi_{1}, \psi_{2} \in \caminhosespeciais{\gruposimpletico{2n}}$. No Lema \ref{lema_independencia_prolongamento} é demonstrado que $\Psi_{1}\sim \Psi_{2}$ se, e somente se, $\psi_{1}\sim \psi_{2}$. Supondo que $\psi_{1}\sim \psi_{2}$, então $\mu(\psi_{1}) = 2deg(\rho_{\Psi_{1}}) = 2deg(\rho_{\Psi_{2}}) = \mu(\psi_{2})$. A recíproca $\mu(\psi_{1}) = \mu(\psi_{2})$ implica imediatamente que $\Psi_{1}\sim \Psi_{2}$, logo $\psi_{1}\sim \psi_{2}$.
+			
+			\item \textbf{(Nullidade)} Como  $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\in \intervalo$, então pelo Item \ref{item_normalizacao_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\Psi(t)) = \pm 1$ para todo $t\in \intervalo$. Com isso, $deg(\rho_{\Psi}) = 0$ e $\mu(\psi) = 0$. \vermelho{Esse item esta muito estranho pois $\psi(0) = Id$, logo $1 \in \espectrooperador{\psi(0)}$ e com isso $\espectrooperador{\psi(0)}\cap \circulo \neq \emptyset$.}
+			
+			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{2n} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Sejam $\psi=(\psi_{p}, \psi_{q}) \in \caminhos{(\gruposimpleticonaodegenerado{*}\times \gruposimpleticonaodegenerado{*})}$, $\Psi=(\Psi_{p}, \Psi_{q})$ os respectivos prolongamentos de $\psi, \psi_{p}$ e $\psi_{q}$. Então pelo Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que $\rho(\Psi(t))=\rho(\Psi_{p}(t))\rho(\Psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\Psi_{p}(t))=\exp(i\alpha_{\Psi_{p}}(t))$ e $\rho(\Psi_{q}(t))=\exp(i\alpha_{\Psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\Psi_{p}}+\alpha_{\Psi_{q}})(t))$. Com isso, tem-se que 
+			
+			$$
+			\begin{aligned}
+			\mu(\psi) &= 2deg(\rho_{\Psi}) 
+			\\
+			&= \frac{1}{2}\big(\alpha_{\Psi_{p}}(1)+\alpha_{\Psi_{q}}(1) -\alpha_{\Psi_{p}}(0)-\alpha_{\Psi_{q}}(0) \big) 
+			\\
+			&= 2deg(\rho_{\Psi_{p}}) +2deg(\rho_{\Psi_{p}}) 
 			\\
 			&=\mu(\psi_{p})+\mu(\psi_{q}).
 			\end{aligned}
