@@ -2986,14 +2986,59 @@
 	\end{exemplo}
 	
 	\begin{exemplo}
-		(Função hamiltoniana) Com base no exemplo anterior, defina $H:S^{2}\times \reta\to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pode-se verificar que $q(t) = Asent(t)+Bcos(t)$ e $p(t) = Acos(t)-Bsent(t)$ são soluções do sistema Hamiltoniano. Logo, $H$ é uma função Hamiltoniana. Com isso, o fluxo Hamiltoniano é
+		(Função hamiltoniana) Com base no exemplo anterior, defina $H:S^{2}\times \reta\to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pode-se verificar que $q(t) = p_{0}sent(t)+q_{0}cos(t)$ e $p(t) = p_{0}cos(t)-q_{0}sent(t)$ são soluções do sistema Hamiltoniano com a condição inicial $\psi(0) = (q_{0}, p_{0})$. Com isso, para um ponto arbitrário $(q,p) \in S^{2}$, o fluxo Hamiltoniano é
 		$$
-		\psi(t)=(Asent(t)+Bcos(t), Acos(t)-Bsent(t)),
+		\psi_{(q,p)}(t)=(psint(t)+qcos(t), pcos(t)-qsint(t)),
 		$$
 		e o campo Hamiltoniano é 
 		$$
-		\campohamiltonianoabrev(t) = (Acos(t)-Bsent(t))\partial_{q}-(Asent(t)+Bcos(t))\partial_{p}.
+		\campohamiltonianoabrev(t) = (pcos(t)-qsint(t))\partial_{q}-(psint(t)+qcos(t))\partial_{p}.
 		$$
+		Logo $H$ é uma função Hamiltoniana.
+		
+		Note que, dado $t \in \reta$, tem-se que $\psi_{t}:S^{2}\to S^{2}$ é um difeomorfismo. Além disso, tomando $v =v^{q} \partial_{q}+v^{p} \partial_{p}\in T_{(q,p)}S^{2}$, o diferencial $	D_{(q,p)}\psi_{t}:T_{(q,p)}S^{2}\to T_{(q,p)}S^{2}$ é dado por
+		$$
+		\begin{aligned}
+			D_{(q,p)}\psi_{t}(v)
+			&=\left(
+				\begin{array}{cc}
+				cos(t) & sin(t)
+				\\
+				-sin(t)& cos(t)
+				\end{array}
+				\right) \left(
+						\begin{array}{c}
+						v^{q}
+						\\
+						v^{p}
+						\end{array}
+						\right) 
+			\\
+			&=(v^{q}cos(t)+v^{p}sin(t)) \partial_{q}+(-v^{q}sin(t)+v^{p}cos(t)) \partial_{p}
+			\\
+			&=V^{q} \partial_{q}+V^{p} \partial_{p}.		 
+		\end{aligned}
+		$$
+		Com isso, pode-se mostrar que $\psi_{t}$ é um simplectomorfismo. De fato, fazendo $x=(q,p)\in S^{2}$ tem-se que
+		$$
+		\begin{aligned}
+			(\psi^{*}_{t}\omega_{x})(v,u)
+			&=\omega_{x}(D_{x}\psi_{t}(v), D_{x}\psi_{t}(u))
+			\\
+			&=\omega_{x}(V^{q}\partial_{q}, U^{p}\partial_{p} )	+\omega_{x}(V^{p}\partial_{p}, U^{q}\partial_{q} )
+			\\
+			&=V^{q}U^{p}-V^{p}U^{q}
+			\\
+			&=(v^{q}cos(t)+v^{p}sin(t))(-u^{q}sin(t)+u^{p}cos(t))
+			\\
+			&-(-v^{q}sin(t)+v^{p}cos(t))(u^{q}cos(t)+u^{p}sin(t))
+			\\
+			&=v^{q}u^{p}-v^{p}u^{q}
+			\\
+			&=\omega_{x}(v,u).
+		\end{aligned}
+		$$
+		Logo $	(\psi^{*}_{t}\omega_{x}) = \omega_{x}$ para todo $t\in \reta$.
 	\end{exemplo}
 
 	\section{Fibrados Vetoriais - preliminares}
