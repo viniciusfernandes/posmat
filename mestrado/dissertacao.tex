@@ -2902,7 +2902,7 @@
 	No Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} foi abordada parte teoria sobre espaços vetoriais simpléticos. Contudo, nesse capítulo será estendido esse conceito para as variedades diferenciáveis. Sucintamente, uma variedade simplética é uma $2n$-variedade diferenciável $M$ munida de uma 2-forma anti-simétrica não-degenerada, como definido a seguir.
 	
 	\begin{definicao}
-		(Variedade Simplética) Seja M uma $2n$-variedade diferenciável e $\omega \in \Omega^{2}(M)$ uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$. Se  para todo $x \in M$ tem-se que $(T_{x}M, \omega_{x})$ é um espaço vetorial simplético, então o par $(M, \omega)$ é uma $2n$-variedade simplética.
+		(Variedade Simplética) Seja M uma $2n$-variedade diferenciável e $\omega \in \Omega^{2}(M)$ uma 2-forma fechada e não-degenerada. Se  para todo $x \in M$ tem-se que $(T_{x}M, \omega_{x})$ é um espaço vetorial simplético, então o par $(M, \omega)$ é uma $2n$-variedade simplética.
 	\end{definicao}
 	
 	\begin{observacao}
@@ -2921,38 +2921,55 @@
 	é uma métrica Riemanniana.
 	
 	\begin{definicao}
-		(Gradiente simplético) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simplético de $f$ é o único campo vetorial $X \in \mathfrak{X}(M)$ tal que $\omega(X, Y) = df(Y)$ para todo $Y \in \mathfrak{X}(M)$.
+		(Gradiente simplético) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simplético de $f$ é o único campo vetorial $\gradiente \in \mathfrak{X}(M)$ tal que 
+		$$
+		df(x)(Y) = g_{x}(\gradiente(x),Y)
+		$$ 
+		para todo $x \in M$ e todo $Y \in \mathfrak{X}(M)$.
 	\end{definicao}
 	
 	\begin{definicao}
-		(Campo hamiltoniano) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função hamiltoniana se satisfaz as equações diferenciais de Hamilton
+		(Função hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função hamiltoniana dependente do tempo se satisfaz as equações diferenciais de Hamilton
 		$$
 		\frac{\partial q_{j}}{\partial t} = \frac{\partial H}{\partial p_{j}}, \; \frac{\partial p_{j}}{\partial t} = -\frac{\partial H}{\partial p_{j}},
 		$$
 		para $1\leq j \leq n$ e $(q_{1}(t), \dots, q_{n}(t), p_{1}(t), \dots, p_{1}(t)) \in M$.
-		
-		Um campo hamiltoniano é o único campo vetorial $X_{H}\in \campossuaves{M}$ tal que
-		$$
-		\omega_{x}(X_{H}, Y) = -dH_{x}(Y).
-		$$
 	\end{definicao}
-	Ao campo Hamiltoniano $\campohamiltonianoabrev$ pode-se o associar o fluxo $\psi:M\times\reta\to M$, chamado fluxo Hamiltoniano, o qual satisfaz o seguinte sistema de equações diferenciais
+	
+	\begin{definicao}
+		(Campo Hamiltoniano) Um campo hamiltoniano é o único campo vetorial $X_{H}\in \campossuaves{M}$ tal que
+		$$
+		\omega_{x}(X_{H}, Y) = -dH_{x}(Y)
+		$$
+		para todo $x\in M$ e $Y \in \campossuaves{M}$.
+	\end{definicao}
+	
+	\begin{observacao}
+		Note que 
+		$$
+		dH_{x}(Y)=\omega_{x}(-X_{H}, Y) =\omega_{x}(-J_{x}X_{H}, J_{x}Y) =g_{x}(-J_{x}X_{H}, Y),$$
+		onde foi usado o fato de que $J_{x}$ é um simplectomorfismo. Com isso, o gradiente Hamiltoniano é $\nabla H = -JX_{H} \in \campossuaves{M}$.
+	\end{observacao}
+	
+	Ao campo Hamiltoniano $\campohamiltonianoabrev$ pode-se o associar o fluxo $\psi:M\times\reta\to M$ que satisfaz o seguinte sistema de equações diferenciais
 	$$
 	\label{sisHamilt}
 	\derivadaparcial{\psi_{x}(t)}{t} = X_{H}(\psi_{x}(t), t)\;\;\text{e}\;\; \psi_{x}(0) = x.
 	$$
 	
+	O sistema de equações diferenciais acima também é chamado de sistema Hamiltoniano e o fluxo é chamado de fluxo Hamiltoniano.
+	
 	A proposição a seguir afirma que o fluxo Hamiltoniano preserva a forma simplética. Para essa demonstração vamos usar o lema abaixo, cujos detalhes podem ser encontrados em \cite{nakahara}.
 	
 	\begin{lema}\label{proposicao_identidade_cartan}
-		Sejam $M$ uma variedade diferenciável com dimensão finita, $X \in T_{p}M$ e $\alpha \in \Omega^{k}(M)$. Definindo $i_{X}:\Omega^{k} \to \Omega^{k-1}$ por $i_{X}\alpha(Y_{1}, \dots, Y_{k-1}) = \alpha(X, Y_{1}, \dots, Y_{k-1})$ então
+		Sejam $M$ uma variedade diferenciável com dimensão finita, $X \in T_{x}M$ e $\alpha \in \Omega^{k}(M)$. Definindo $i_{X}:\Omega^{k} \to \Omega^{k-1}$ por $i_{X}\alpha(Y_{1}, \dots, Y_{k-1}) = \alpha(X, Y_{1}, \dots, Y_{k-1})$ então
 		$$
 		\liederivada{X}\alpha = i_{X}d\alpha + d(i_{X}\alpha).
 		$$
 	\end{lema}
 	
 	\begin{proposicao}
-		Seja $\psi:M\times\reta\to M$ o fluxo associado a função Hamiltoniana $H:M\times\reta\to M$. Então $\psi_{t}^{*}\omega=\omega$ para todo $t\in \reta$.
+		Seja $\psi:M\times\reta\to M$ um fluxo Hamiltoniano. Então, $\psi_{t}:M \to M$ é uma família de simplectomorfismos.
 	\end{proposicao}
 	\begin{prova}
 		$$
@@ -2965,7 +2982,7 @@
 		&= (\psi_{t})^{*} (-ddH)=0,
 		\end{aligned}
 		$$
-		logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
+		logo $(\psi_{t})^{*} \omega = (\psi_{t'})^{*} \omega$, para quaisquer $t, t' \in \real{}$. Fazendo $t'=0$ e usando o fato de que $\psi_{0} = Id$, tem-se que  $(\psi_{t})^{*} \omega = \omega$.
 	\end{prova}
 	
 	\begin{exemplo}
@@ -3040,90 +3057,6 @@
 		$$
 		Logo $	(\psi^{*}_{t}\omega_{x}) = \omega_{x}$ para todo $t\in \reta$.
 	\end{exemplo}
-
-	\section{Fibrados Vetoriais - preliminares}
-	\begin{definicao}
-		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_fibrado_vetorial_trivial}
-		Dizemos que um n-fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$, isto é, o espaço total $E(\eta)$ é homeomorfo a $B\times \real{n}$, isto é, $E(\eta)\cong B\times \real{n}$.
-	\end{observacao}
-	
-	Daqui em diante o grupo de estrutura será $G = GL(n,\real{})$ e um n-fibrado vetorial será denotado por $\eta = (E,B,p)$.
-	
-	\begin{definicao}
-		(Mapa de fibrados) Sejam $\eta, \xi$ dois fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
-		$$
-		\xymatrix{
-			E \ar[r]^{F}\ar[d]^{p} & E'\ar[d]^{p'}
-			\\
-			B\ar[r]^{f} & B'
-		},
-		$$
-		e tal que $F$ é um isomorfismo entre $p^{-1}(b)$ e $p'^{-1}(f(b))$. A aplicação $f:B\to B'$ é chamada mapa de espaço base.
-	\end{definicao}
-	
-	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
-	
-	\begin{exemplo}
-		(1-Fibrado vetorial) Sejam $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$. Então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um 1-espaço vetorial. Além disso, $\eta$ é um fibrado vetorial trivial pois, tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$, tem-se as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, e com isso, $(S^{+}\times\real{}) \cup ( S^{-}\times\real{}) = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. 
-		
-		\vermelho{
-		Defina $f:[0,\pi/2] \to S^{1}$ por $f(t) = (cos(t), sin(t))$. Sejam $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$. (Acho que deve ser feito posteriormente)}
-	\end{exemplo}
-	
-	\begin{proposicao}
-		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $q\in M$ temos as fibras $F_{q} = T_{q}M$ e o espaço total é $TM=\{(p, v_{p}): p\in M, v_{q}\in T_{q}M \}$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
-	\end{proposicao}
-	\begin{prova}
-		Note que a projeção $p(q,v_{q}) = q$ é uma aplicação contínua, $p^{-1}(\{q\}) = T_{q}M$ é um n-espaço vetorial em $q\in M$ e  o espaço base $M$ é um espaço topológico pois é uma variedade. Seja $U$ uma vizinhança de $q$. Como $T_{q}M$ é homeomorfo a $\real{n}$, então $p^{-1}(U) = \bigcup_{q\in M}(\{q\}\times T_{q}M)$ é homeomorfo a $U\times \real{n}$ e $\eta$ é localmente trivial. Portanto $\eta$ é um n-fibrado vetorial.
-	\end{prova}
-	
-	\begin{observacao}
-		Os fibrados tangentes $\eta$ serão denotados por $TM$, o que é convencionado por grande parte da literatura.
-	\end{observacao}
-	
-	\begin{definicao}
-		(Seção do fibrado tangente) Seja $TM$ um $n$-fibrado tangente de uma $n$-variedade diferenciável $M$. Uma seção de $TM$ é uma aplicação suave $s:M \to TM$ tal que $p\circ s=Id$.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_identificacao_secao_campo_vetorial}
-		Os campos vetoriais definidos em $M$ podem ser identificados com as seções do fibrado tangente $TM$ do seguinte modo: seja $X\in \campossuaves{M}$ e definida $s_{X}$ a seção do fibrado tangente por $s_{X}(q) = (q, X(q))$. tem-se que, $(p\circ s_{X})(q) = q$, logo $p\circ s_{X}=Id$. Com isso, segue-se a identificação $s_{X} \mapsto X$.
-	\end{observacao}
-	
-	\begin{definicao}
-		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in p'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
-	\end{definicao}
-	
-	\begin{lema}\label{pullback_composicao}
-		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
-	\end{lema}
-	\begin{prova}
-		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = p^{-1}((g\circ f)(a))$. Tem-se que $g^{*}\eta=(E_{g}, B, p_{g})$, $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$, onde suas fibras são dadas por $F_{g(b)} = p^{-1}(g(b))$, sendo que $b=f(a)$, logo  $F_{g(f(a))} = p^{-1}(g(f(a))) = p^{-1}((g \circ f)(a))$, que é uma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ coincidem, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
-	\end{prova}
-	\begin{lema}\label{pullback_trivial}
-		(Pullback trivial) Sejam $\eta = (E, B, p)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
-	\end{lema}
-	\begin{prova}
-		Por definição tem-se que $f^{*}\eta = (E_{f}, A, p_{f})$, onde $E_{f}=\{(a, e): a\in A,\; e \in p^{-1}(f(a)) \}$ e $E_{f} \subseteq A\times E$. Como $\eta$ é trivial, então $E \cong B\times \real{n}$ e existe um homeomorfismo $h: A\times E \to A\times B\times \real{n}$. Note que, $h|_{E_{f}}: E_{f}\to A\times f(A)\times \real{n} $ é um homeomorfismo. Como $p_{f}^{-1}(A) = A\times f(A)$ e $p^{-1}_{f}$ é contínua, então $h|_{E_{f}}\circ f\circ p_{f}: E_{f}\to p_{f}^{-1}(A)\times \real{n} $ e portanto $f^{*}\eta$ é trivial.
-		\vermelho{
-			
-			Portanto $E_{f} \subset A\times E \cong f(A)\times \real{n}$ e $E_{f}$ é trivial....concluir essa demonstracao...}
-	\end{prova}
-	
-	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
-	
-	\begin{teorema}\label{pullback_isomorfismo}
-		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, p)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
-	\end{teorema}
-	
-	\begin{corolario}\label{pullback_contratil}
-		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base compacto e contrátil, então $\eta$ é trivial.
-	\end{corolario}
-	\begin{prova}
-		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial.
-	\end{prova}
 	
 	\section{O funcional $\funcionalH$ e a equação de Floer}
 	Nesse capítulo é considerado $M$ como sendo uma 2n-variedade diferenciável fechada (veja a Definição \ref{definicao_variedade_fechada}).
@@ -4541,6 +4474,94 @@
 		(Auto-espaços generalizados) Sejam $A$ como no teorema anterior e $\lambda \in \sigma(A)$. O $\lambda-$auto-espaço de generalizado de $A$ é o conjunto $E_{\lambda} = \bigcup_{r \in \mathbb{N}} Ker(A - \lambda)^{r}$.
 	\end{definicao}
 	
+	\chapter{Fibrados Vetoriais}\label{apendice_fibrados}
+	
+	Mais detalhes sobre fibrados vetoriais podem ser encontrados em \cite{nakahara} e \cite{husemoller_fibrados}.
+	
+	\begin{definicao}
+		(n-Fibrado vetorial) Um fibrado vetorial $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E(\eta), B, p, G)$, onde $E=E(\eta)$ é um espaço topológico chamado espaço total, $p:E\to B$ é uma aplicação contínua chamada mapa de projeção e para cada $p \in B$ temos que $F_{b}=p^{-1}(b)$ é um espaço vetorial real com $dim(F_{b}) = n < \infty$, chamado de fibra de $b$. $G$ é um grupo de Lie, denominado grupo de estrutura, que age a esquerda de $F_{p}$, isto é, $\varphi:G\times F_{p} \to F_{p}$. Além disso, temos a condição de trivialidade local: para cada $b_{0} \in B$ existe uma vizinhança $U$ de $b_{0}$ e um homeomorfismo $h:U\times\real{n} \to p^{-1}(U)$ tal que $h(\{b\} \times \real{n})$ é isomorfo a $\real{n}$.
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_fibrado_vetorial_trivial}
+		Dizemos que um n-fibrado vetorial $\eta$ é trivial quando existe uma trivialização local $(U, h)$ onde $U = B$, isto é, o espaço total $E(\eta)$ é homeomorfo a $B\times \real{n}$, isto é, $E(\eta)\cong B\times \real{n}$.
+	\end{observacao}
+	
+	Daqui em diante o grupo de estrutura será $G = GL(n,\real{})$ e um n-fibrado vetorial será denotado por $\eta = (E,B,p)$.
+	
+	\begin{definicao}
+		(Mapa de fibrados) Sejam $\eta, \xi$ dois fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
+		$$
+		\xymatrix{
+			E \ar[r]^{F}\ar[d]^{p} & E'\ar[d]^{p'}
+			\\
+			B\ar[r]^{f} & B'
+		},
+		$$
+		e tal que $F$ é um isomorfismo entre $p^{-1}(b)$ e $p'^{-1}(f(b))$. A aplicação $f:B\to B'$ é chamada mapa de espaço base.
+	\end{definicao}
+	
+	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
+	
+	\begin{exemplo}
+		(1-Fibrado vetorial) Sejam $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $p:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$. Então $\eta=(S^{1} \times \real{}, S^{1}, p)$ é um fibrado vetorial pois $p$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = p^{-1}(b) = \real{}$ é um 1-espaço vetorial. Além disso, $\eta$ é um fibrado vetorial trivial pois, tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$, tem-se as projeções $p^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, e com isso, $(S^{+}\times\real{}) \cup ( S^{-}\times\real{}) = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. 
+		
+		\vermelho{
+			Defina $f:[0,\pi/2] \to S^{1}$ por $f(t) = (cos(t), sin(t))$. Sejam $B' =[0,\pi/2]$ e $E' \subset [0,\pi/2]\times E$ o conjunto dos pares $(b, e)$ com $e \in p^{-1}(f(b))$, então $p': E'\to B'$ tal que $p'(b, e) = b \in [0,\pi/2]$ temos o pull-back $f^{*}\eta = (E', B', p') = ([0,\pi/2]\times S^{1}\times \real{}, [0,\pi/2], p')$. (Acho que deve ser feito posteriormente)}
+	\end{exemplo}
+	
+	\begin{proposicao}
+		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $q\in M$ temos as fibras $F_{q} = T_{q}M$ e o espaço total é $TM=\{(p, v_{p}): p\in M, v_{q}\in T_{q}M \}$. A tripla $\eta = (TM, M, p)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
+	\end{proposicao}
+	\begin{prova}
+		Note que a projeção $p(q,v_{q}) = q$ é uma aplicação contínua, $p^{-1}(\{q\}) = T_{q}M$ é um n-espaço vetorial em $q\in M$ e  o espaço base $M$ é um espaço topológico pois é uma variedade. Seja $U$ uma vizinhança de $q$. Como $T_{q}M$ é homeomorfo a $\real{n}$, então $p^{-1}(U) = \bigcup_{q\in M}(\{q\}\times T_{q}M)$ é homeomorfo a $U\times \real{n}$ e $\eta$ é localmente trivial. Portanto $\eta$ é um n-fibrado vetorial.
+	\end{prova}
+	
+	\begin{observacao}
+		Os fibrados tangentes $\eta$ serão denotados por $TM$, o que é convencionado por grande parte da literatura.
+	\end{observacao}
+	
+	\begin{definicao}
+		(Seção do fibrado tangente) Seja $TM$ um $n$-fibrado tangente de uma $n$-variedade diferenciável $M$. Uma seção de $TM$ é uma aplicação suave $s:M \to TM$ tal que $p\circ s=Id$.
+	\end{definicao}
+	
+	\begin{observacao}\label{observacao_identificacao_secao_campo_vetorial}
+		Os campos vetoriais definidos em $M$ podem ser identificados com as seções do fibrado tangente $TM$ do seguinte modo: seja $X\in \campossuaves{M}$ e definida $s_{X}$ a seção do fibrado tangente por $s_{X}(q) = (q, X(q))$. tem-se que, $(p\circ s_{X})(q) = q$, logo $p\circ s_{X}=Id$. Com isso, segue-se a identificação $s_{X} \mapsto X$.
+	\end{observacao}
+	
+	\begin{definicao}
+		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in p'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
+	\end{definicao}
+	
+	\begin{lema}\label{pullback_composicao}
+		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
+	\end{lema}
+	\begin{prova}
+		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, p_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = p^{-1}((g\circ f)(a))$. Tem-se que $g^{*}\eta=(E_{g}, B, p_{g})$, $f^{*}(g^{*}\eta) = (E_{f}, A, p_{f})$, onde suas fibras são dadas por $F_{g(b)} = p^{-1}(g(b))$, sendo que $b=f(a)$, logo  $F_{g(f(a))} = p^{-1}(g(f(a))) = p^{-1}((g \circ f)(a))$, que é uma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ coincidem, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
+	\end{prova}
+	\begin{lema}\label{pullback_trivial}
+		(Pullback trivial) Sejam $\eta = (E, B, p)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
+	\end{lema}
+	\begin{prova}
+		Por definição tem-se que $f^{*}\eta = (E_{f}, A, p_{f})$, onde $E_{f}=\{(a, e): a\in A,\; e \in p^{-1}(f(a)) \}$ e $E_{f} \subseteq A\times E$. Como $\eta$ é trivial, então $E \cong B\times \real{n}$ e existe um homeomorfismo $h: A\times E \to A\times B\times \real{n}$. Note que, $h|_{E_{f}}: E_{f}\to A\times f(A)\times \real{n} $ é um homeomorfismo. Como $p_{f}^{-1}(A) = A\times f(A)$ e $p^{-1}_{f}$ é contínua, então $h|_{E_{f}}\circ f\circ p_{f}: E_{f}\to p_{f}^{-1}(A)\times \real{n} $ e portanto $f^{*}\eta$ é trivial.
+		\vermelho{
+			
+			Portanto $E_{f} \subset A\times E \cong f(A)\times \real{n}$ e $E_{f}$ é trivial....concluir essa demonstracao...}
+	\end{prova}
+	
+	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e serão usados adiante na construção dos índices de Maslov.
+	
+	\begin{teorema}\label{pullback_isomorfismo}
+		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, p)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
+	\end{teorema}
+	
+	\begin{corolario}\label{pullback_contratil}
+		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base compacto e contrátil, então $\eta$ é trivial.
+	\end{corolario}
+	\begin{prova}
+		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial.
+	\end{prova}
+	
+	
 	\chapter{Variedades Riemannianas}\label{apendice_variedade_riemanniana}
 	
 	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
@@ -4820,6 +4841,12 @@
 		IMPA, terceira edição,
 		2008.
 		
+		\bibitem{friedlander}
+		Friedlander, F. G.; Joshi, M.
+		\emph{Introduction to Theory of Distributions},
+		Cambridge University Press, 2nd edition
+		1998.
+		
 		\bibitem{guillemin_differential_topology}
 		Guillemin, Victor; Pollack, Alan:
 		\emph{Differential Topolgy},
@@ -4831,16 +4858,17 @@
 		\emph{Linear Algebra},
 		John Wiley and Sons, 2nd edition, 1971.
 		
+		\bibitem{husemoller_fibrados}
+		Husemoller, Dale
+		\emph{Fibre Bundles},
+		Springer-Verlag, third edition
+		1993.
+		
 		\bibitem{kreyszig_analise_funcional}
 		Kreyszig, Erwin
 		\emph{Introduction to Functional Analysis with Applications},
 		John Wiley and Sons, 1978.
 		
-		\bibitem{friedlander}
-		Friedlander, F. G.; Joshi, M.
-		\emph{Introduction to Theory of Distributions},
-		Cambridge University Press, 2nd edition
-		1998.
 		
 		\bibitem{elon_grupo_fundamental}
 		Lima, Elon Lages:
@@ -4906,7 +4934,7 @@
 		1993.
 		
 		\bibitem{warner_manifolds}
-		WArner, Frank W.:
+		Warner, Frank W.:
 		\emph{Foundations of Differentiable Manifolds and Lie Groups},
 		Scott, Foresman and Company.
 			
