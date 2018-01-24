@@ -1155,7 +1155,7 @@
 	Caso existam pontos críticos distintos com valores críticos coincidentes a mesma construção pode ser feita perturbando a função de Morse $f$ de modo a obter uma outra $f' \in \funcoesmorse{M}$ com os mesmos pontos críticos agora com valores críticos todos distintos. Essa construção é viabilizada pela densidade das funções de Morse em $\funcoessuaves{M}$.
 	
 	\begin{exemplo}
-		(2-toro) Sejam $T^{2} \subset \real{3}$ o toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$ e $\phi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
+		(2-toro) Sejam $T^{2} \subset \real{3}$ o toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$ e $\varphi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
 		$$
 		\varphi(\theta, \phi) = ((2+cos\phi)cos\theta, (2+cos\phi)sin\theta, sin\phi).
 		$$
@@ -1456,7 +1456,7 @@
 	O cálculo da homologia singular de uma variedade com certas propriedades nem sempre é algo simples a se fazer. Contudo, podemos aplicar técnicas alternativas para a determinação de homologias isomorfas a homologia singular. Essa é importância dos resultados dos teoremas de isomorfismos anteriormente citados. Um outro ponto a ser comentado é o fato de que as homologias singulares são utilizadas para a descrição de alguns invariantes topológicos, por exemplo, a característica de Euler-Poicaré. Portanto, a demonstração desses isomorfismos garante que ainda estamos diantes dos mesmo invariantes topológicos.
 	
 	
-	\chapter{Espaços Vetoriais Simpléticos}
+	\chapter{Espaços Vetoriais Simpléticos}\label{capitulo_espacos_vetoriais_simpleticos}
 	
 	\section{Origem na Física}
 	
@@ -1724,7 +1724,7 @@
 		Definindo a base dual $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ teremos $\alpha = \sum_{j=1}^{n}e_{j}^{*}\wedge f_{j}^{*}$.
 	\end{prova}
 	
-	\begin{lema}
+	\begin{lema}\label{lema_caracterizacao_forma_simpetica}
 		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula.
 	\end{lema}
 	\begin{prova}
@@ -2358,17 +2358,8 @@
 		$$
 		é contínua.
 	\end{lema}
-	\begin{prova}
-		Como os auto-valores de $A$ são não-nulos, então podemos escrever $\lambda/|\lambda| = e^{i\theta}$. Com isso, $\rho(A)=\prod \lambda_{j}/|\lambda_{j}| = \prod e^{i\theta_{j}} = e^{i(\theta_{1}+\dots +\theta_{n})} \in \circulo$, onde $\lambda_{j}/|\lambda_{j}| = e^{i\theta_{j}}$ para $1\leq j \leq n$. Logo $\rho$ esta bem-definida.
-		
-		Considere como a topologia de  $\gruposimpleticoespecial{2n}$ a topologia herdada de $\generalgroupcomplexo{2n}$. Como todos os elementos de $\gruposimpleticoespecial{2n}$ possuem auto-valores distintos, então são diagonalizáveis. Com isso, dados $A, B \in \gruposimpleticoespecial{2n}$ e $\epsilon>0$ tais que $\norma{A-B}< \epsilon$, tem-se $\norma{D_{A}-D_{B}}< \epsilon$, onde $D_{A}, D_{B}$ são as representações diagonais de $A$ e $B$, respectivamente. O que implica que $\max\{|\lambda_{j} - \beta_{j}| \}<\epsilon$, onde $\lambda_{j} \in \espectrooperador{A}$ e $\beta_{j} \in \espectrooperador{B}$ para $1\leq j\leq 2n$.
-		
-		Dados $A \in \gruposimpleticoespecial{2n}$ e $\epsilon>0$. Então para todo $B\in \gruposimpleticoespecial{2n}$ tal que $\norma{A-B}<\epsilon$, tem-se que
-		$$
-		|\rho(A) -\rho(B)| =\Big|\prod_{j=1}^{n} \bigparenteses{\frac{\lambda_{j}}{|\lambda_{j}|} - \frac{\beta_{j}}{|\beta_{j}|}} \Big|< \Big|\prod_{j=1}^{n} \bigparenteses{\frac{\lambda_{j}}{\alpha} - \frac{\beta_{j}}{\alpha} }\Big| <\frac{1}{\alpha}\prod_{j=1}^{n} \max|\lambda_{j} - \beta_{j}|=\frac{\epsilon^{n}}{\alpha}<\epsilon,
-		$$
-		onde $\alpha = min\{|\lambda_{j}|,|\beta_{j}|\}$. Portanto, $\rho$ é contínua.
-	\end{prova}		
+	
+	Os argumentos para a demonstração do lema anterior pode ser encontrada de forma bem sucinta em \cite{salamon_zehnder}.
 	
 	\begin{lema}
 		A aplicação $B:\complexificado{V}\times \complexificado{V} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
@@ -2439,11 +2430,9 @@
 	\end{aligned}
 	$$
 
-	\vermelho{(Ainda não ficou clara o produto sobre todos os autovalores que não pertencem a $\circulo$. Ver novamente o Salamon artigo. Ele afirma algo sobre os auto-valores de primeira ordem e suas multiplicidades, mas não entendi como eles não contribuirão para o produto acima.)}
-
 	A continuidade da aplicação $\rho'$ é uma propriedade necessária para a construção do Índice de Maslov e tal resultado pode se encontrado em \cite{audi_floer_homology}.
 	
-	\begin{proposicao}
+	\begin{proposicao}\label{proposicao_continuidade_rho}
 		A aplicação $\rho': \gruposimpletico{2n}\to \circulo$ é contínua e $\rho'|_{\gruposimpleticoespecial{2n}} = \rho$.
 	\end{proposicao}
 	
@@ -2527,17 +2516,16 @@
 	\end{prova}
 	
 	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}
+	As transformações simpléticas que estão sendo consideradas são as transformações não-degeneradas, isto é, são os elementos de $\gruposimpletico{2n}$ que não possuem auto-valores iguais a 1. Seja $\gruposimpleticonaodegenerado{*}= \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ o conjunto dessas transformações. Alé disso, defina os conjuntos $\gruposimpleticonaodegenerado{+}= \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e $\gruposimpleticonaodegenerado{-}= \{ A \in \gruposimpletico{2n}: det(Id-A)<0 \}$. É imediato da definição que $\gruposimpleticonaodegenerado{*}= \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-} $.
 	
-	Defina os conjuntos $\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-}$ e  $\Sigma = \{ A \in \gruposimpletico{2n}: det(Id-A)= 0 \}$, onde $\gruposimpleticonaodegenerado{+} = \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e $\gruposimpleticonaodegenerado{-} = \{ A \in \gruposimpletico{2n}: det(Id-A)< 0 \}$. Note que o complementar de $\gruposimpleticonaodegenerado{*} \subset \gruposimpletico{2n}$ é $\Sigma$.
-	
-	O seguinte lema será usado nas próximas demostrações e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	O lema a seguir será usado na demonstração da desconexidade de $\gruposimpleticonaodegenerado{*}$ (Lema \ref{lema_desconexidade_grupo_simpletico_nao_degenerado}) e sua demostração e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
 	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
 		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
 	\end{lema}
 	
-	\begin{lema}
-		$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
+	\begin{lema}\label{lema_desconexidade_grupo_simpletico_nao_degenerado}
+		$ \gruposimpleticonaodegenerado{+}$ e $\gruposimpleticonaodegenerado{-}$ são conexos por caminhos, logo são conexos. Além disso, esse conjuntos são as componentes conexas de $\gruposimpleticonaodegenerado{*} $.
 	\end{lema}
 	\begin{prova}
 		Sejam $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético e $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$. Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupcomplexo{2n}$ por
@@ -2593,21 +2581,15 @@
 		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{2n}\to \reta$ por $g(A) = det(Id-A)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e pode-se afirmar que existe um intervalo $(a,b) \subset \real{+}$ onde $g(A)\in (a,b)$. Afirmo que $g^{-1}((a,b))\subset \gruposimpleticonaodegenerado{+}$.  De fato, supondo que $g^{-1}((a,b)) \varsubsetneq \gruposimpleticonaodegenerado{+}$, então existe $A' \in g^{-1}((a,b))$ tal que $g(A')\leq 0$, o que contradiz o fato de que $(a,b) \subset \real{+}$. Portanto $g^{-1}((a,b)) \subset \gruposimpleticonaodegenerado{+}$ e $A$ é um ponto interno de $\gruposimpleticonaodegenerado{+}$, logo esse conjunto é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
 	\end{prova}
 	
-	\begin{corolario}\label{corolario_homomorfismo_trivial_grupos_simpletico}
-		A inclusão $\gruposimpleticonaodegenerado{*} \hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial entre os grupos fundamentais
-	\end{corolario}
+	\begin{proposicao}\label{proposicao_homomorfismo_trivial_grupos_simpletico}
+		As inclusões $\gruposimpleticonaodegenerado{+} \hookrightarrow \gruposimpletico{2n}$ e $\gruposimpleticonaodegenerado{-} \hookrightarrow \gruposimpletico{2n}$ induzem os homomorfismos triviais entre os grupos fundamentais.
+	\end{proposicao}
 	\begin{prova}
-		Sabe-se que $\rho(\gruposimpletico{2n})=\circulo$. Então dado $A\in \gruposimpletico{2n}$ tem-se $\rho(A) = \exp(i\theta)$, para algum $\theta\in [0,2\pi]$. Sejam $\gamma\in \caminhosfechados{\gruposimpleticonaodegenerado{+}}$ e $\alpha_{j}:\gruposimpleticonaodegenerado{+}\to [0,2\pi]$ funções contínuas para $1\leq j\leq n$ tais que
-		$$
-		\rho(A)=\exp\bigparenteses{i\sum_{j=1}^{n}\alpha_{j}(A)},
-		$$
-		onde $\alpha_{j}$ é definida do seguinte modo: tome os números reais $\alpha_{j}(A)\in \reta$ tais que $0\leq \alpha_{1}(A)\leq \dots\leq \alpha_{n}(A)\leq 2\pi$, onde $\exp(i\alpha_{j}(A)) = \lambda_{j}/|\lambda_{j}|$ e $\lambda_{j}\in \espectrooperador{A}$.
-		 
-		Note que a composição $\alpha\circ\gamma:\intervalo\to [0,2\pi]$ são funções contínuas e periódicas, pois é a composição de funções com essas propriedades. Com isso, o caminho fechado $\rho\circ\gamma:\intervalo \to \circulo$, dado por $\rho(\gamma(t)) = \exp(i\sum_{j}(\alpha_{j}\circ\gamma)(t)) \in \circulo$, é contrátil. Seja $i_{*}:\grupofundamental{\gruposimpleticonaodegenerado{+}} \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ o homomorfismo induzido pela inclusão $i:\gruposimpleticonaodegenerado{+}\hookrightarrow \gruposimpletico{2n}$. Como todo caminho fechado $\gamma\in \caminhosfechados{\gruposimpleticonaodegenerado{+}}$ é contrátil, então $i_{*}(\classe{\gamma}) = \classe{i\circ \gamma} = \classe{0}$. Com uma argumento análogo mostra-se que $i_{*}(\classe{\beta}) = \classe{i\circ \beta} = \classe{0}$ para todo $\beta \in \gruposimpleticonaodegenerado{-}$. Portanto a inclusão $i_{*}(\grupofundamental{\gruposimpleticonaodegenerado{*}}) \hookrightarrow \grupofundamental{\gruposimpletico{2n}}$ é o homomorfismo trivial.
+		Da Proposição \ref{proposicao_continuidade_rho} sabe-se que $\rho: \gruposimpletico{2n}\to \circulo$ é uma aplicação contínua e do Item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que sua induzida $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo}$ é um isomorfismo. Seja $i:\gruposimpleticonaodegenerado{+} \hookrightarrow \gruposimpletico{2n}$ a aplicação de inclusão. Com isso, dado $\gamma\in \gruposimpleticonaodegenerado{+}$, tem-se que $(\rho_{*}\circ i_{*})(\classe{\gamma} )= \rho_{*}(\classe{i(\gamma)}) = \rho_{*}(\classe{0}) = 0$, onde foi usado o fato de que $\gruposimpleticonaodegenerado{*}$ é contrátil em $\gruposimpleticonaodegenerado{*}$, logo o caminho $i\circ\gamma$ é homotopicamente equivalente ao caminho constante. Como $\gamma$ é arbitrário e $\rho_{*}$ é um isomorfismo, então $i_{*}(\grupofundamental{\gruposimpleticonaodegenerado{+}}) = [0]$, logo $i_{*} = 0$. Com um argumento análogo pode-se mostrar que a inclusão $\gruposimpleticonaodegenerado{-} \hookrightarrow \gruposimpletico{2n}$ também induz um homomorfismo trivial.
 	\end{prova}
 		
 	
-	\section{Índice de Maslov $\mu : \caminhosespeciais{\gruposimpletico{2n}} \to \inteiros$}\label{secao_indice_maslov}
+	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpleticonaodegenerado{*}} \to \inteiros$}\label{secao_indice_maslov}
 	
 	Sejam $\caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ os conjuntos dos caminhos contínuos $\psi:\intervalo \to \gruposimpleticonaodegenerado{*}$, onde $\psi(1) = W^{\pm}$. Com isso, tem-se que $\psi(\intervalo) \subset \gruposimpleticonaodegenerado{+}$ ou $\psi(\intervalo) \subset \gruposimpleticonaodegenerado{-}$. 
 	
@@ -2615,17 +2597,26 @@
 	
 	\begin{definicao}
 		(Índice de Maslov) 
-		Para um dado caminho $\psi \in \caminhos(\gruposimpleticonaodegenerado{*})$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \caminhos({\gruposimpleticonaodegenerado{*}})$. Considere a composição $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$. Sejam $\exp:\real{} \to \circulo \subset \mathbb{C}$ a aplicação exponencial e $\alpha_{\Psi}$ o levantamento de $\Psi$, tal que $\exp(i\alpha_{\Psi}t)$. O índice de Maslov de $\psi$ é definido por
+		Para um dado caminho $\psi \in \caminhos(\gruposimpleticonaodegenerado{*})$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \caminhos({\gruposimpleticonaodegenerado{*}})$. Seja $\alpha_{\Psi}: \intervalo \to \reta$ o levantamento do caminho $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha_{\Psi}} \ar[r]_{\Psi} & \gruposimpleticonaodegenerado{*} \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		
+		O índice de Maslov de $\psi$ é definido por
 		$$
 		\mu(\psi)= 2deg(\rho_{\Psi}) = 2deg(\rho_{\psi}) + 2deg(\rho_{\gamma}).
 		$$
 	\end{definicao}
 	
 	\begin{observacao}
-		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=Id$ e $\psi(1)=W^{-}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$. Se $n\in 2\mathbb{N}$, então $\rho_{\psi}(0) =1$ e $\rho_{\psi}(1)=-1$. Portanto a imagem de $\rho_{\psi}$ envolve ao menos a metade do cícurlo, isto é, $\alpha_{\psi}(1)-\alpha_{\psi}(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
+		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=Id$ e $\psi(1)=W^{-}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$. Se $n\in 2\mathbb{N}$, então $\rho_{\psi}(0) =1$ e $\rho_{\psi}(1)=-1$. Portanto a imagem de $\rho_{\psi}$ envolve ao menos a metade do círculo, isto é, $\alpha_{\psi}(1)-\alpha_{\psi}(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
 	\end{observacao}
 	
-	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no cálculo do mesmo.
+	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no Teorema \ref{teorema_indice_maslov}.
 
 	\begin{lema}\label{lema_independencia_prolongamento}
 		Se $\psi \in  \caminhos({\gruposimpleticonaodegenerado{*}})$, então o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$. Além disso, se $\psi' \in \caminhos{(\gruposimpleticonaodegenerado{*})}$, então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$.
@@ -2636,7 +2627,7 @@
 	\begin{prova}
 		Suponha que $\psi \sim \psi'$. Como $\gamma \sim \gamma'$, então pelo Lema \ref{lema_compatibilidade_produto_caminhos} tem-se que $\Psi = \psi*\gamma \sim \psi'*\gamma' = \Psi'$. Por outro lado, suponha que $H: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ seja uma homotopia entre $\Psi $ e $\Psi'$ tal que $H(t,0) = \Psi(t)$ e $H(t,1) = \Psi'(t)$. Pela definição de justaposição tem-se que $\Psi(t) = \psi(2t)$ e $\Psi'(t) = \psi'(2t)$ para $0 \leq t \leq 1/2$. Seja $h: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ definida por $h(t,s) = H(t/2, s)$. Então  $h(t,0) = H(t/2, 0) =  \psi(2t)$ e $h(t,1)=H(t/2,1) = \psi'(2t)$. Portanto $h$ é uma homotopia entre $\psi$ e $\psi'$.
 		
-		Sejam $\Psi=\psi*\gamma$ e $\Psi''=\psi*\gamma''$ são dois prolangamentos de $\psi$. Pelo Corolário \ref{corolario_homomorfismo_trivial_grupos_simpletico} tem-se que $\grupofundamental{\gruposimpleticonaodegenerado{*}} = \{\classe{0}\}$, logo $\gamma, \gamma''\in \classe{0}$ e $\gamma\sim \gamma''$. Com isso, $\Psi\sim \Psi''$ e $2deg(\rho_{\Psi})=2deg(\rho_{\Psi'})=\mu(\psi)$. Logo $\mu(\psi)$ não depende do prolongamento escolhido.
+		Sejam $\Psi=\psi*\gamma$ e $\Psi''=\psi*\gamma''$ são dois prolangamentos de $\psi$. Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico} tem-se que $\grupofundamental{\gruposimpleticonaodegenerado{*}} = \{\classe{0}\}$, logo $\gamma, \gamma''\in \classe{0}$ e $\gamma\sim \gamma''$. Com isso, $\Psi\sim \Psi''$ e $2deg(\rho_{\Psi})=2deg(\rho_{\Psi'})=\mu(\psi)$. Logo $\mu(\psi)$ não depende do prolongamento escolhido.
 	\end{prova}
 	
 	\begin{observacao}
@@ -2656,7 +2647,7 @@
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
 			
-			\item \textbf{(Naturalidade)} Para todo $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$ tem-se que $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
+			\item \textbf{(Naturalidade)} Sejam $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$ e o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpleticonaodegenerado{*}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$. Então $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
 			
 			\item \textbf{(Homotopia)} \label{homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \caminhos({\gruposimpleticonaodegenerado{*}}) $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
 			
@@ -2682,7 +2673,7 @@
 		\begin{enumerate}
 			\item Tem-se que $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$ e $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})$, onde $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1}$, o que implica em $\rho(W^{\pm}) \in \{ -1,1\}$. Sabe-se que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$. Afirmo que $\alpha_{\Psi}(0)=0$ e $\alpha_{\Psi}(1)=k\pi$. De fato, para $t=0$ é imediato que $\alpha_{\Psi}(0)=0$. Para $t=1$ tem-se que $\rho(W^{\pm}) = \pm 1$, o que implica que $\alpha_{\Psi}(1) = k\pi$, para algum $k\in \inteiros$. Logo $\mu(\psi) = 2deg(\rho_{\Psi}) = (k\pi-0)/\pi \in \inteiros$.
 			
-			\item \textbf{(Naturalidade)} Pelo Item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Seja $\psi' = \phi\psi\phi^{-1}$ e $\Psi' = \psi'*\gamma$ um prolongamento de $\psi'$. Com isso, tem-se que 
+			\item \textbf{(Naturalidade)} \vermelho{(Realmente, este item está bem confuso)} Afirmo que o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpleticonaodegenerado{*}$ está bem-definido. De fato, para todo $t\in \intervalo$ tem-se que $det(\phi(t)\psi(t)\phi^{-1}(t)) = det(\phi(t)) = det(\psi(t)) = det(\phi^{-1}(t)) = det(\psi(t)) $Pelo Item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Seja $\psi' = \phi\psi\phi^{-1}$ e $\Psi' = \psi'*\gamma$ um prolongamento de $\psi'$. Com isso, tem-se que 
 			$$
 			\begin{aligned}
 			\mu(\phi\psi\phi^{-1})
@@ -2906,52 +2897,104 @@
 	\end{corolario}	
 	
 	\chapter{O funcional Hamiltoniano $\funcionalH$ e a equação de Floer}
-	\section{Variedades Simpléticas}\vermelho{(Acho que devo remover toda essa seção. Não estou vendo importância alguma dela para o texto.)}
+	\section{Variedades Simpléticas}
+	
+	No Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} foi abordada parte teoria sobre espaços vetoriais simpléticos. Contudo, nesse capítulo será estendido esse conceito para as variedades diferenciáveis. Sucintamente, uma variedade simplética é uma $2n$-variedade diferenciável $M$ munida de uma 2-forma anti-simétrica não-degenerada, como definido a seguir.
+	
 	\begin{definicao}
-		(Variedade Simplética) Uma variedade simplética de dimensão 2m é o par $(M, \omega)$ onde $M$ é uma 2m-variedade diferenciável e $\omega \in \Omega^{2}(M^{m})$ é uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$ e para cada $p \in M$ temos que $(T_{p}M, \omega_{p})$ é um espaço vetorial simplético. Cada $x = (q_{1}, \dots, q_{m}, p_{1}, \dots, p_{m}) \in M$  será abreviado pelo par $(q,p)$.
+		(Variedade Simplética) Seja M uma $2n$-variedade diferenciável e $\omega \in \Omega^{2}(M)$ uma 2-forma fechada e não-degenerada, isto é, $d\omega = 0$. Se  para todo $x \in M$ tem-se que $(T_{x}M, \omega_{x})$ é um espaço vetorial simplético, então o par $(M, \omega)$ é uma $2n$-variedade simplética.
+	\end{definicao}
+	
+	\begin{observacao}
+		Aplicando o Lema \ref{lema_caracterizacao_forma_simpetica}, pode-se mostrar que, se $(M, \omega)$ é uma $2n$-variedade simplética, então $\omega^{\wedge n} \in \Omega^{2n}(M)$ define uma forma-volume em $M$. Logo, $M$ é orientável (veja \cite{warner_manifolds}).
+	\end{observacao}
+	
+	Duas variedades simpléticas $(M_{1}, \omega_{1})$ e $(M_{2}, \omega_{2})$ são simpléctomorfas se existe um difeomorfismo $\varphi: M_{1}\to M_{2}$ que preserva as formas simpléticas, isto é,
+	$$
+	\varphi^{*}\omega_{2}=\omega_{1}.
+	$$
+	
+	Uma estrutura complexa em $M$ é uma automorfismo $J:TM \to TM$ tal que, para todo $(x,v_{x})\in TM$, tem-se $(p, J^{2}_{x}v_{x}) = (p, -v_{x})$, isto é, $J^{2}_{x}=-Id$. Além disso, se $(M, \omega)$ é uma variedade simplética, então $J$ é $\omega$-compatível se $J_{x}$ é $\omega_{x}$-compatível para todo $x\in M$. Com isso, tem-se que $g \in \Omega^{2}(M)$, definida por
+	$$
+	g_{x}(X, Y) =\omega_{x}(X, J_{x}Y),
+	$$
+	é uma métrica Riemanniana.
+	
+	\begin{definicao}
+		(Gradiente simplético) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simplético de $f$ é o único campo vetorial $X \in \mathfrak{X}(M)$ tal que $\omega(X, Y) = df(Y)$ para todo $Y \in \mathfrak{X}(M)$.
 	\end{definicao}
 	
 	\begin{definicao}
-		(Gradiente simplético) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simplético é o único campo vetorial $X \in \mathfrak{X}(M)$ tal que $\omega(X, Y) = df(Y)$ para todo $Y \in \mathfrak{X}(M)$.
-	\end{definicao}
-	
-	\begin{definicao}
-		(Campo hamiltoniano) Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função hamiltoniana se satisfaz as equações diferenciais de Hamilton
+		(Campo hamiltoniano) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função hamiltoniana se satisfaz as equações diferenciais de Hamilton
 		$$
-		\frac{\partial q}{\partial t} = \frac{\partial H}{\partial p}, \; \frac{\partial p}{\partial t} = -\frac{\partial H}{\partial p}. 
+		\frac{\partial q_{j}}{\partial t} = \frac{\partial H}{\partial p_{j}}, \; \frac{\partial p_{j}}{\partial t} = -\frac{\partial H}{\partial p_{j}},
 		$$
-		Um campo hamiltoniano é o único campo vetorial tal que $\omega(X_{H}, Y) = -dH(Y)$. Disso, podemos definir o fluxo hamiltoniano como sendo a solução dos sitema de equações 
-		$$
-		\label{sisHamilt}
-		\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t).
-		$$
+		para $1\leq j \leq n$ e $(q_{1}(t), \dots, q_{n}(t), p_{1}(t), \dots, p_{1}(t)) \in M$.
 		
-		As soluções dessa equação geram uma família de simplectomorfismos a 1-parametro tal que $\psi_{t}(x(0)) = x(t)$.
+		Um campo hamiltoniano é o único campo vetorial $X_{H}\in \campossuaves{M}$ tal que
+		$$
+		\omega_{x}(X_{H}, Y) = -dH_{x}(Y).
+		$$
 	\end{definicao}
-	Para demonstrar o invariância da forma simplética pelo fluxo Hamiltoniano, vamos usar o seguinte resultado:
-	\begin{proposicao}\label{proposicao_identidade_cartan}
+	Ao campo Hamiltoniano $\campohamiltonianoabrev$ pode-se o associar o fluxo $\psi:M\times\reta\to M$, chamado fluxo Hamiltoniano, o qual satisfaz o seguinte sistema de equações diferenciais
+	$$
+	\label{sisHamilt}
+	\derivadaparcial{\psi_{x}(t)}{t} = X_{H}(\psi_{x}(t), t)\;\;\text{e}\;\; \psi_{x}(0) = x.
+	$$
+	
+	A proposição a seguir afirma que o fluxo Hamiltoniano preserva a forma simplética. Para essa demonstração vamos usar o lema abaixo, cujos detalhes podem ser encontrados em \cite{nakahara}.
+	
+	\begin{lema}\label{proposicao_identidade_cartan}
 		Sejam $M$ uma variedade diferenciável com dimensão finita, $X \in T_{p}M$ e $\alpha \in \Omega^{k}(M)$. Definindo $i_{X}:\Omega^{k} \to \Omega^{k-1}$ por $i_{X}\alpha(Y_{1}, \dots, Y_{k-1}) = \alpha(X, Y_{1}, \dots, Y_{k-1})$ então
 		$$
-		\liederivada{X}\alpha = i_{X}d\alpha + di_{X}\alpha.
+		\liederivada{X}\alpha = i_{X}d\alpha + d(i_{X}\alpha).
 		$$
-	\end{proposicao}
-	
-	\begin{lema}
-		O fluxo hamiltoniano preserva a forma simplectica.
 	\end{lema}
-	\begin{prova}\label{fluxo_convervativo}
+	
+	\begin{proposicao}
+		Seja $\psi:M\times\reta\to M$ o fluxo associado a função Hamiltoniana $H:M\times\reta\to M$. Então $\psi_{t}^{*}\omega=\omega$ para todo $t\in \reta$.
+	\end{proposicao}
+	\begin{prova}
 		$$
 		\begin{aligned}
 		\frac{d}{dt}\bigparenteses{(\psi_{t})^{*}\omega} 
 		&= (\psi_{t})^{*} \liederivada{X_{H}}\omega  
 		\\
-		&= (\psi_{t})^{*} i_{X_{H}}\underbrace{d\omega }_ {=0}+ di_{X_{H}}\omega 
+		&= (\psi_{t})^{*} i_{X_{H}}\underbrace{d\omega }_ {=0}+ d(i_{X_{H}}\omega) 
 		\\
 		&= (\psi_{t})^{*} (-ddH)=0,
 		\end{aligned}
 		$$
 		logo $(\psi_{t})^{*} \omega = (\psi_{0})^{*} \omega = \omega$, para qualquer $t \in \real{}$
 	\end{prova}
+	
+	\begin{exemplo}
+		(Variedade simplética 2-esféra) Sejam $S^{2} \subset \real{3}$ a 2-esféra centrada na origem de $\real{3}$ e $\varphi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
+		$$
+		\varphi(q, p) = (cos (p) cos (q), cos (p) sin (q), sin (p)).
+		$$
+		
+		Com isso, tem-se que o espaço tangente $T_{x}S^{2} $ é gerado por $ \{\derivadaparcialabrev{ q}, \derivadaparcialabrev{ p} \}|_{x}$ onde
+		$$
+		\begin{aligned}
+		\derivadaparcialabrev{ q} &= -cos (p)sin (q) \derivadaparcialabrev{x}+ cos (p)cos (q) \derivadaparcialabrev{y},
+		\\
+		\derivadaparcialabrev{ p} &=  - sin (p) cos (q) 	\derivadaparcialabrev{x} - sin (p) sin (q) 	\derivadaparcialabrev{y} +cos (p)				\derivadaparcialabrev{z}.
+		\end{aligned} 
+		$$
+		Seja $\omega\in \Omega^{2}(S^{2})$ definida por $\omega_{x} = dq \wedge dp$. É imediato que $d\omega_{x} = 0$ pois as componentes de $\omega$ são constantes, $\omega$ é fechada. Além disso, suponha que $\omega$ seja degenerada. Então existe um vetor não-nulo $v_{x} = v^{q}_{x}\partial_{q}+v^{p}_{x}\partial_{p} \in T_{x}S^{2}$ tal que $\omega_{x}(v, u)=0$ para todo $u_{x}\in T_{x}S^{2}$. Desse modo, fazendo $u_{x} = \partial_{q}$ tem-se que $0=\omega_{x}(v, \partial_{q}) = v^{q}_{x}$. Logo $v^{q}=0$. Com um argumento análogo pode-se verificar que $v^{p}=0$. Portanto $v=0$, contradizendo a hipótese. Logo $\omega$ é não-degenerada. Como $S^{2}$ é uma 2-variedade diferenciável, então o par $(S^{2}, \omega)$ é uma 2-variedade simplética.
+	\end{exemplo}
+	
+	\begin{exemplo}
+		(Função hamiltoniana) Com base no exemplo anterior, defina $H:S^{2}\times \reta\to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pode-se verificar que $q(t) = Asent(t)+Bcos(t)$ e $p(t) = Acos(t)-Bsent(t)$ são soluções do sistema Hamiltoniano. Logo, $H$ é uma função Hamiltoniana. Com isso, o fluxo Hamiltoniano é
+		$$
+		\psi(t)=(Asent(t)+Bcos(t), Acos(t)-Bsent(t)),
+		$$
+		e o campo Hamiltoniano é 
+		$$
+		\campohamiltonianoabrev(t) = (Acos(t)-Bsent(t))\partial_{q}-(Asent(t)+Bcos(t))\partial_{p}.
+		$$
+	\end{exemplo}
 
 	\section{Fibrados Vetoriais - preliminares}
 	\begin{definicao}
@@ -4817,6 +4860,11 @@
 		Birkhauser, Boston
 		1993.
 		
+		\bibitem{warner_manifolds}
+		WArner, Frank W.:
+		\emph{Foundations of Differentiable Manifolds and Lie Groups},
+		Scott, Foresman and Company.
+			
 		\bibitem{witten_supersymmetry_morse}
 		Witten, Edward:
 		\emph{Supersymmetry and Morse Theory},
