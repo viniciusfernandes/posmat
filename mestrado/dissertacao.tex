@@ -798,10 +798,22 @@
 	
 	\begin{exemplo}
 		(n-esfera) Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=5cm,height=3cm]{imagem/cw_esfera.pdf}
+			\caption{Estrutura de CW-complexo de $S^{2 }$}
+		\end{figure}
 	\end{exemplo}
+
 	
 	\begin{exemplo}
-		(Disco com alça) Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.   
+		(Disco com alça) Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=5cm,height=3cm]{imagem/disco_alca.pdf}
+			\caption{Estrutura de CW-complexo do disco com alça.}
+		\end{figure}   
 	\end{exemplo}
 	
 	\begin{exemplo}
@@ -1169,7 +1181,7 @@
 			\end{aligned} 
 		$$
 				
-		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Tem-se que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ tem-se que $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, o caso em que $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$. Com isso, basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e os pontos críticos de $f$ são $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$.
+		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Tem-se que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ tem-se que $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, o caso em que $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$. Com isso, basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e os pontos críticos de $f$ são $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$, os quais estão ilustrados na Figura \ref{figura_toro_funcao_altura}.
 			
 		Assim, a representação matricial da Hessiana $H_{p}(f)$ é
 			$$
@@ -1222,6 +1234,11 @@
 			
 			Com isso, os índices $\lambda_{(\phi, \theta)}$ dos pontos críticos são: $\lambda_{(0,0)} = 2$, $\lambda_{(0,\pi)} = 0$, $\lambda_{(\pi,0)} = 1$ e $\lambda_{(\pi,\pi)} = 1$.
 			
+			\begin{figure}[!h]\label{figura_toro_funcao_altura}
+				\centering
+				\includegraphics[width=8cm,height=7cm]{imagem/toro_funcao_altura.pdf}
+				\caption{Pontos críticos da função altura em $T^{2}$.}
+			\end{figure}
 	\end{exemplo}
 
 	Originalmente, a relação entre a topologia de $M$ e os pontos críticos de uma função de Morse $f:M \to \reta$, foi dada em termos de desigualdades, chamadas desigualdades de Morse.
@@ -1326,7 +1343,7 @@
 	 O propósito das definições desse ponto em diante é a construção de um complexo de cadeia associado ao fluxo gradiente de uma função de Morse com uma propriedade adicional, que chamaremos de propriedade de transversalidade entre as variedades instáveis e estáveis.
 	 
 	 \begin{definicao}
-	 	(Variedade Conectante e o Espaço Moduli) Sejam $f \in \funcoesmorse{M}$ e $p,q \in \pontoscriticos{f}$. A variedade conectante de $p$ e $q$ é definida por $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Se $a = f(q)$, $b = f(p)$ e tomando $c \in (a, b) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é definido por $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
+	 	(Variedade Conectante e o Espaço Moduli) Sejam $f \in \funcoesmorse{M}$ e $p,q \in \pontoscriticos{f}$. A variedade conectante de $p$ e $q$ é definida por $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Seja $c \in (f(q), f(p)) \subset \reta$ um valor regular de $f$. Então o espaço moduli de $p$ e $q$ é definido por $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
 	 \end{definicao}
 	 
 	 Sejam $f: N\to M$ e $g: Z \to M$ duas aplicações suaves entre variedades diferenciáveis. Dizemos que $f$ é transversal a $g$ e denotemos $f \pitchfork g$ sempre que $f(x) = g(z) = y$ tem-se $df_{x}(\espacotangenteponto{x}{N}) + dg_{z}(\espacotangenteponto{z}{Z}) = \espacotangenteponto{y}{M} $. Se $Z \subseteq M$ e $g$ é a aplicação de inclusão, então denotaremos a transversalidade por $f\pitchfork Z$. Trataremos constatemente os casos em que $N, Z \subseteq M$ e $f$ e $g$ são as inclusões e denotaremos a transversalidade por $N \pitchfork Z$.
@@ -1416,13 +1433,11 @@
 	\begin{exemplo}
 		(Complexo de Morse-Witten) Considere variedade 2-dimensional $M$ mergulhada em $\real{3}$ e representada pela Figura \ref{figura_fluxo_morse_smale}. Seja $F:\real{3} \to \reta$ a função definida por $F(x, y, z) = z$. Pode-se mostrar que $f=F|_{M} \in \funcoesmorsesmale{M}$,  $\pontoscriticos{f} = \{p,q,r,s\}$ e que os índices de Morse dos pontos críticos de $f$ são $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
 		
-		\vermelho{(Devo inserir uma figura ilustrando as variedades instável/estável para facilitar a identificação de tais conjuntos.)}
+		Pela Figura \ref{figura_variedade_estavel_instavel} pode-se notar que $\variedadeestavel{p}$ é a imagem do caminho conectando os ponto críticos $r$ e $s$ com esses pontos removidos. Com isso, temos que $\variedadeestavel{q} = \complementar{M}{\variedadeestavel{p}}$ e  $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$, o que está de acordo com a Proposição $\ref{proposicao_uniao_variedade_instavel_estavel}$. Examinando a Figura \ref{figura_fluxo_morse_smale} pode-se verificar que $\variedadeinstavel{p}$ é a imagem dos caminhos conectando $p$ a $q$ com o ponto $p$ removido, e que $\variedadeestavel{q} = \variedadeinstavel{p}$. Com isso,  $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap\variedadeestavel{q} = \variedadeinstavel{p}$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
 		
-		Definindo $A$ como sendo a imagem do caminho conectando os ponto críticos $r$ e $s$, temos que $\variedadeestavel{q} = \complementar{M}{A}$. Além disso, $\variedadeestavel{p} = A$ e $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$, o que está de acordo com a Proposição $\ref{proposicao_uniao_variedade_instavel_estavel}$. Seja $B$ a imagem dos caminhos conectando $p$ a $q$, então $\variedadeinstavel{p} = B$. Com isso, temos $\variedadeconectantepontos{p}{q} = B$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
+		Na Figura \ref{figura_variedade_estavel_instavel} esta identificada a variedade instável $\variedadeinstavel{r}$ de $r$. Com isso, $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap\variedadeestavel{p}$ é o caminho que conecta os pontos $r$ a $p$ com o ponto $r$ removido e o espaço moduli $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um argumento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
 		
-		Seja $D$ a imagem do caminho conectando $r$ a $p$. Temos que $\variedadeinstavel{r}$ é a região da figura colorida em azul. $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap A = D$. Com isso, $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um procedimento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
-		
-		Pela orientação escolhida para a variedade instável $\variedadeinstavel{p}$, temos os sinais característicos $n_{x_{1}}=1$, $n_{x_{2}} = -1$. E a orientação escolhida para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$ nos dá $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
+		Na Figura \ref{figura_fluxo_morse_smale} as linhas de fluxo de $f$ estão representadas pelas linhas roxas, e as orientações das variendades instáveis, em linhas cinzas. Adotadas essas orentações para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$, temos os índices $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
 		$$
 		n(p,q) = n_{x_{1}}+n_{x_{2}} = 0,\; n(r,p) = n(s,p)=n_{x_{3}}= 1. 
 		$$
@@ -1436,11 +1451,19 @@
 		\bordo{0}\gerador{q} =0,\; \bordo{1}\gerador{p}=n(p,q)\gerador{q} = 0,\; \bordo{2}\gerador{r}=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
 		$$
 		
-		\begin{figure}
+		\begin{figure}[!h]
 			\centering
-			\includegraphics[width=5cm,height=3cm]{imagem/fluxoesfera}
-			\caption{Linhas do fluxo de $-\gradiente$.}
+			\includegraphics[width=8cm,height=6cm]{imagem/pontos_cristicos_morse_smale.pdf}
+			\caption{Linhas do fluxo de $-\gradiente$ e as orientações das variedades instáveis $W^{u}(s), W^{u}(p)$ e $W^{u}(r)$.}
 			\label{figura_fluxo_morse_smale}
+		\end{figure}
+		
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=12cm,height=6cm]{imagem/variedade_estavel_instavel.pdf}
+			\caption{Variedades instáveis $W^{u}(s)$ e $W^{u}(r)$ de $s$ e $r$. Variedade estável $W^{s}(q)$ de $q$.}
+			\label{figura_variedade_estavel_instavel}
 		\end{figure}
 	\end{exemplo}
 
@@ -2999,7 +3022,7 @@
 		\derivadaparcialabrev{ p} &=  - sin (p) cos (q) 	\derivadaparcialabrev{x} - sin (p) sin (q) 	\derivadaparcialabrev{y} +cos (p)				\derivadaparcialabrev{z}.
 		\end{aligned} 
 		$$
-		Seja $\omega\in \Omega^{2}(S^{2})$ definida por $\omega_{x} = dq \wedge dp$. É imediato que $d\omega_{x} = 0$ pois as componentes de $\omega$ são constantes, $\omega$ é fechada. Além disso, suponha que $\omega$ seja degenerada. Então existe um vetor não-nulo $v_{x} = v^{q}_{x}\partial_{q}+v^{p}_{x}\partial_{p} \in T_{x}S^{2}$ tal que $\omega_{x}(v, u)=0$ para todo $u_{x}\in T_{x}S^{2}$. Desse modo, fazendo $u_{x} = \partial_{q}$ tem-se que $0=\omega_{x}(v, \partial_{q}) = v^{q}_{x}$. Logo $v^{q}=0$. Com um argumento análogo pode-se verificar que $v^{p}=0$. Portanto $v=0$, contradizendo a hipótese. Logo $\omega$ é não-degenerada. Como $S^{2}$ é uma 2-variedade diferenciável, então o par $(S^{2}, \omega)$ é uma 2-variedade simplética.
+		Seja $\omega\in \Omega^{2}(S^{2})$ definida por $\omega_{x} = dq \wedge dp$. É imediato que $d\omega_{x} = 0$ pois as componentes de $\omega$ são constantes, $\omega$ é fechada. Além disso, suponha que $\omega$ seja degenerada. Então existe um vetor não-nulo $v_{x} = v^{q}_{x}\partial_{q}+v^{p}_{x}\partial_{p} \in T_{x}S^{2}$ tal que $\omega_{x}(v, u)=0$ para todo $u_{x}\in T_{x}S^{2}$. Desse modo, fazendo $u_{x} = \partial_{q}$ tem-se que $0=\omega_{x}(v, \partial_{q}) = v^{q}_{x}$. Logo $v^{q}_{x}=0$. Com um argumento análogo pode-se verificar que $v^{p}=0$. Portanto $v=0$, contradizendo a hipótese. Logo $\omega$ é não-degenerada. Como $S^{2}$ é uma 2-variedade diferenciável, então o par $(S^{2}, \omega)$ é uma 2-variedade simplética.
 	\end{exemplo}
 	
 	\begin{exemplo}
