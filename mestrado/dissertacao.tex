@@ -280,7 +280,7 @@
 	
 	Posteriormente, trabalhando em particularizações do problema, tais como $T^{2}$ e $S^{2}$, Arnold observou que, se a função Hamiltoniana $H$ depende periodicamente no tempo, isto é, $H:\circulovariedade\to \reta$ tem período 1, então as soluções 1-periódicas do campo Hamiltoniano estão em bijeção com os pontos fixos da função Hamiltoniana. Com isso, ao invés de determinar diretamente os pontos fixos da aplicação Hamiltoniana $\phi$, basta determinar as soluções 1-periódicas do sistema Hamiltoniano. O que resultou na seguinte reformulação da conjectura
 	
-	\textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{} \to \reta$ uma função hamiltoniana 1-periódica e suponha que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado inferiormente pela soma dos números de Betti de M, isto é:
+	\textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{} \to \reta$ uma função Hamiltoniana 1-periódica e suponha que as soluções 1-periódicas do sistema Hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado inferiormente pela soma dos números de Betti de M, isto é:
 		$$
 		\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
 		$$
@@ -2329,7 +2329,7 @@
 	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{2n} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$, pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
 	\section{Construção de $\rho: \gruposimpletico{2n} \to \circulo$}
-	Para a construção do índice de Maslov, vamos adotar as complexificações $(\complexificado{V}, \Omega) $ e $\gruposimpleticocomplexo{2n}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético $\gruposimpletico{2n}$, respectivamente. Os detalhes da complexificação podem ser encontrados na Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$. 
+	Para a construção do índice de Maslov, vamos adotar as complexificações $(\complexificado{V}, \Omega) $ e $\gruposimpleticocomplexo{2n}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético $\gruposimpletico{2n}$, respectivamente. Os detalhes da complexificação podem ser encontrados no Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$. 
 	
 	O primeiro passo é a construção de uma aplicação contínua $\rho: \gruposimpletico{2n}\to \circulo$ satisfazendo determinadas propriedades, as quais serão herdadas pelo índice de Maslov e serão aplicadas nas demonstrações de sua caracterização, como está feito na Seção \ref{secao_indice_maslov}.
 	
@@ -2374,15 +2374,12 @@
 	
 	Sejam $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$  e $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{2n} : m(\lambda) = 1,\;\forall \lambda\in \sigma(A) \}$ o conjunto das matrizes simpléticas cujos auto-valores têm multiplicidade igual a 1.
 	
-	\begin{lema}\label{lema_aplicacao_rho}
-		A aplicação $\rho:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
-		$$
-		\rho(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
-		$$
-		é contínua.
-	\end{lema}
+	Considere a aplicação $\hat{\rho}:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
+	$$
+		\hat{\rho}(A) = \prod_{j=1}^{n}\frac{\lambda_{j}}{|\lambda_{j}|}
+	$$
 	
-	Os argumentos para a demonstração do lema anterior pode ser encontrada de forma bem sucinta em \cite{salamon_zehnder}.
+	A seguir será construída uma extensão contínua dessa aplicação para $\gruposimpletico{2n}$.
 	
 	\begin{lema}
 		A aplicação $B:\complexificado{V}\times \complexificado{V} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
@@ -2434,14 +2431,14 @@
 	
 	Denote $dim(\autoespaco{\lambda}^{\pm})$ por $m_{\pm}(\lambda)$, respectivamente.  Seja $\rho: \gruposimpletico{2n}\to \complexo{}$ definida por
 	$$
-	\rho'(A) = 	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A)\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)},
+	\rho(A) = 	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A)\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)},
 	$$
 	onde $m_{0}$ denota o número de pares $(\lambda, \lambda^{-1})$ reais negativos.
 
-	Afirmo que a restrição $\rho|_{\gruposimpleticoespecial{2n}}$ coincide com a aplicação $\rho$ anteriormente definida no Lema \ref{lema_aplicacao_rho}. De fato, tomando $A \in \gruposimpleticoespecial{2n}$ tem-se que $m_{+}(\lambda) = 1$ para todo $\lambda\in \espectrooperador{A}$. Suponha uma ordem de primeiro tipo para os auto-valores de $A$. Com isso, tem-se o produto $\lambda_{1}\dots \lambda_{n} = \lambda_{1}^{m_{+}(\lambda_{1})}\dots \lambda_{n}^{m_{+}(\lambda_{n})}$. Sem perda de generalidade, pode-se supor que $\lambda_{j} \in \reta$ e que $\lambda_{k}\in \circulo$ para $1\leq j \leq r $ e $r +1\leq k \leq n$. Com isso, $\lambda_{j}/|\lambda_{j}|=\pm 1$ e $\lambda_{k}/|\lambda_{k}| = \lambda_{k}$. Seja $m_{0}$ seja a quantidade de auto-valores reais negativos de $A$. Então tem-se o produto 
+	Afirmo que a restrição $\rho|_{\gruposimpleticoespecial{2n}}$ coincide com a aplicação $\hat{\rho}$ anteriormente definida. De fato, tomando $A \in \gruposimpleticoespecial{2n}$ tem-se que $m_{+}(\lambda) = 1$ para todo $\lambda\in \espectrooperador{A}$. Suponha uma ordem de primeiro tipo para os auto-valores de $A$. Com isso, tem-se o produto $\lambda_{1}\dots \lambda_{n} = \lambda_{1}^{m_{+}(\lambda_{1})}\dots \lambda_{n}^{m_{+}(\lambda_{n})}$. Sem perda de generalidade, pode-se supor que $\lambda_{j} \in \reta$ e que $\lambda_{k}\in \circulo$ para $1\leq j \leq r $ e $r +1\leq k \leq n$. Com isso, $\lambda_{j}/|\lambda_{j}|=\pm 1$ e $\lambda_{k}/|\lambda_{k}| = \lambda_{k}$. Seja $m_{0}$ seja a quantidade de auto-valores reais negativos de $A$. Então tem-se o produto 
 	$$
 	\begin{aligned}
-	\rho(A) 
+	\hat{\rho}(A) 
 	&=
 	\frac{\lambda_{1}}{|\lambda_{1}|}\dots \frac{\lambda_{n}}{|\lambda_{n}|}
 	\\
@@ -2449,17 +2446,15 @@
 	\\
 	&=(-1)^{m_{0}}\prod_{\lambda\in \espectrooperador{A}\cap\complementar{\circulo}{\reta}}\lambda^{m_{+}(\lambda)}
 	\\
-	&= \rho'(A).
+	&= \rho(A).
 	\end{aligned}
 	$$
 
-	A continuidade da aplicação $\rho'$ é uma propriedade necessária para a construção do Índice de Maslov e tal resultado pode se encontrado em \cite{audi_floer_homology}.
+	A continuidade da aplicação $\rho$ é uma propriedade necessária para a construção do Índice de Maslov e tal resultado pode se encontrado em \cite{audi_floer_homology}.
 	
 	\begin{proposicao}\label{proposicao_continuidade_rho}
-		A aplicação $\rho': \gruposimpletico{2n}\to \circulo$ é contínua e $\rho'|_{\gruposimpleticoespecial{2n}} = \rho$.
+		A aplicação $\rho: \gruposimpletico{2n}\to \circulo$ é contínua e $\rho|_{\gruposimpleticoespecial{2n}} = \hat{\rho}$.
 	\end{proposicao}
-	
-	No restante do texto denotaremos $\rho'$ por $\rho$ para simplificar a notação quando não houver ambiguidades.
 	
 	\subsection*{Demonstração das propriedades de $\rho$}
 	
@@ -2539,9 +2534,10 @@
 	\end{prova}
 	
 	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}
-	As transformações simpléticas que estão sendo consideradas são as transformações não-degeneradas, isto é, são os elementos de $\gruposimpletico{2n}$ que não possuem auto-valores iguais a 1. Seja $\gruposimpleticonaodegenerado{*}= \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ o conjunto dessas transformações. Alé disso, defina os conjuntos $\gruposimpleticonaodegenerado{+}= \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e $\gruposimpleticonaodegenerado{-}= \{ A \in \gruposimpletico{2n}: det(Id-A)<0 \}$. É imediato da definição que $\gruposimpleticonaodegenerado{*}= \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-} $.
 	
-	O lema a seguir será usado na demonstração da desconexidade de $\gruposimpleticonaodegenerado{*}$ (Lema \ref{lema_desconexidade_grupo_simpletico_nao_degenerado}) e sua demostração e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	Veremos na Seção \ref{secao_funcional_hamiltoniano} que as transformações simpléticas de interesse em construções posteriores a esse capítulo são aquelas correspondentes aos elementos de $\gruposimpletico{2n}$ que não possuem auto-valores iguais a 1. Considere então $\gruposimpleticonaodegenerado{*}= \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$ o conjunto dessas transformações. Alé disso, defina os conjuntos $\gruposimpleticonaodegenerado{+}= \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e $\gruposimpleticonaodegenerado{-}= \{ A \in \gruposimpletico{2n}: det(Id-A)<0 \}$. É imediato da definição que $\gruposimpleticonaodegenerado{*}= \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-} $.
+	
+	Será demonstrado agora que $\gruposimpleticonaodegenerado{+}$ e  $\gruposimpleticonaodegenerado{-}$ são as duas componentes conexas de Sp(2n). Para isso, utilizaremos o lema técnico a seguir, cuja demonstração pode ser encontrada em  $\cite{audi_floer_homology}$.
 	
 	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
 		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos com uma das seguintes condições: 1) se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos ou 2) se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
@@ -2604,19 +2600,36 @@
 		Afirmo que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{2n}\to \reta$ por $g(A) = det(Id-A)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e pode-se afirmar que existe um intervalo $(a,b) \subset \real{+}$ onde $g(A)\in (a,b)$. Afirmo que $g^{-1}((a,b))\subset \gruposimpleticonaodegenerado{+}$.  De fato, supondo que $g^{-1}((a,b)) \varsubsetneq \gruposimpleticonaodegenerado{+}$, então existe $A' \in g^{-1}((a,b))$ tal que $g(A')\leq 0$, o que contradiz o fato de que $(a,b) \subset \real{+}$. Portanto $g^{-1}((a,b)) \subset \gruposimpleticonaodegenerado{+}$ e $A$ é um ponto interno de $\gruposimpleticonaodegenerado{+}$, logo esse conjunto é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
 	\end{prova}
 	
+	Pode-se mostrar que as inclusões $\gruposimpleticonaodegenerado{\pm} \hookrightarrow \gruposimpletico{2n}$ induzem os homomorfismos triviais nos grupos fundamentais. Para isso, considere o seguinte lema, o qual esta demonstrado em \cite{audi_floer_homology}.
+	
+	\begin{lema}\label{lema_levantamento_rho}
+		Existe duas aplicações contínuas $\alpha^{\pm}_{\rho}: \gruposimpleticonaodegenerado{\pm}\to \reta$ que realizam a comutação do diagrama abaixo:
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			\gruposimpleticonaodegenerado{\pm}\ar[urr]^{\alpha^{\pm}_{\rho}} \ar[r]_{i} & \gruposimpletico{2n} \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		
+	\end{lema}
+	
 	\begin{proposicao}\label{proposicao_homomorfismo_trivial_grupos_simpletico}
 		As inclusões $\gruposimpleticonaodegenerado{+} \hookrightarrow \gruposimpletico{2n}$ e $\gruposimpleticonaodegenerado{-} \hookrightarrow \gruposimpletico{2n}$ induzem os homomorfismos triviais entre os grupos fundamentais.
 	\end{proposicao}
 	\begin{prova}
-		Da Proposição \ref{proposicao_continuidade_rho} sabe-se que $\rho: \gruposimpletico{2n}\to \circulo$ é uma aplicação contínua e do Item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que sua induzida $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo}$ é um isomorfismo. Seja $i:\gruposimpleticonaodegenerado{+} \hookrightarrow \gruposimpletico{2n}$ a aplicação de inclusão. Com isso, dado $\gamma\in \gruposimpleticonaodegenerado{+}$, tem-se que $(\rho_{*}\circ i_{*})(\classe{\gamma} )= \rho_{*}(\classe{i(\gamma)}) = \rho_{*}(\classe{0}) = 0$, onde foi usado o fato de que $\gruposimpleticonaodegenerado{*}$ é contrátil em $\gruposimpleticonaodegenerado{*}$, logo o caminho $i\circ\gamma$ é homotopicamente equivalente ao caminho constante. Como $\gamma$ é arbitrário e $\rho_{*}$ é um isomorfismo, então $i_{*}(\grupofundamental{\gruposimpleticonaodegenerado{+}}) = [0]$, logo $i_{*} = 0$. Com um argumento análogo pode-se mostrar que a inclusão $\gruposimpleticonaodegenerado{-} \hookrightarrow \gruposimpletico{2n}$ também induz um homomorfismo trivial.
+		Pelo Lema \ref{lema_levantamento_rho} pode-se afirmar que $\rho\circ i = \exp\circ \alpha^{+}$. Como ambas as composições são aplicações contínuas (pela Proposição \ref{proposicao_continuidade_rho} sabe-se que $\rho$ é contínua), então $\rho_{*}\circ i_{*} = \exp_{*}\circ \alpha^{+}_{*}$. Usando o fato de que $\grupofundamental{\reta}=\{\classe{0}\}$ e tomando $\classe{\gamma}\in \grupofundamental{\gruposimpleticonaodegenerado{+}}$ verifica-se que 
+		$$
+		(\rho_{*}\circ i_{*})(\classe{\gamma}) = (\exp_{*}\circ \alpha^{+}_{*})(\classe{\gamma}) = \exp_{*}(\classe{0})=\classe{0}.
+		$$
+		
+		Do Item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que sua induzida $\rho_{*}$ é um isomorfismo. Logo, $	i_{*}(\classe{\gamma})=\classe{0}$. Como $\classe{\gamma}\in \gruposimpleticonaodegenerado{+}$ é arbitrário, então $i_{*} = 0$.
+		
+		Com um argumento análogo pode-se mostrar que a inclusão $\gruposimpleticonaodegenerado{-}\hookrightarrow \gruposimpletico{2n}$ induz o homomorfismo trivial no grupo fundamental.
 	\end{prova}
 		
 	
 	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpleticonaodegenerado{*}} \to \inteiros$}\label{secao_indice_maslov}
-	
-	Sejam $\caminhos^{\pm}(\gruposimpleticonaodegenerado{*})$ os conjuntos dos caminhos contínuos $\psi:\intervalo \to \gruposimpleticonaodegenerado{*}$, onde $\psi(1) = W^{\pm}$. Com isso, tem-se que $\psi(\intervalo) \subset \gruposimpleticonaodegenerado{+}$ ou $\psi(\intervalo) \subset \gruposimpleticonaodegenerado{-}$. 
-	
-	
 	
 	\begin{definicao}
 		(Índice de Maslov) 
@@ -2696,7 +2709,7 @@
 		\begin{enumerate}
 			\item Tem-se que $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$ e $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})$, onde $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1}$, o que implica em $\rho(W^{\pm}) \in \{ -1,1\}$. Sabe-se que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$. Afirmo que $\alpha_{\Psi}(0)=0$ e $\alpha_{\Psi}(1)=k\pi$. De fato, para $t=0$ é imediato que $\alpha_{\Psi}(0)=0$. Para $t=1$ tem-se que $\rho(W^{\pm}) = \pm 1$, o que implica que $\alpha_{\Psi}(1) = k\pi$, para algum $k\in \inteiros$. Logo $\mu(\psi) = 2deg(\rho_{\Psi}) = (k\pi-0)/\pi \in \inteiros$.
 			
-			\item \textbf{(Naturalidade)} \vermelho{(Realmente, este item está bem confuso)} Afirmo que o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpleticonaodegenerado{*}$ está bem-definido. De fato, para todo $t\in \intervalo$ tem-se que $det(\phi(t)\psi(t)\phi^{-1}(t)) = det(\phi(t)) = det(\psi(t)) = det(\phi^{-1}(t)) = det(\psi(t)) $Pelo Item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Seja $\psi' = \phi\psi\phi^{-1}$ e $\Psi' = \psi'*\gamma$ um prolongamento de $\psi'$. Com isso, tem-se que 
+			\item \textbf{(Naturalidade)} \vermelho{(Realmente, este item está bem confuso. As demosntrações que encontrei no Michelle, Salamon e Jean Gutt (Conley Zehnder Index), não mostram que $\phi\psi\phi^{-1} \in \gruposimpleticonaodegenerado{*}$)} Afirmo que o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpleticonaodegenerado{*}$ está bem-definido. De fato, para todo $t\in \intervalo$ tem-se que $det(\phi(t)\psi(t)\phi^{-1}(t)) = det(\phi(t)) = det(\psi(t)) = det(\phi^{-1}(t)) = det(\psi(t)) $Pelo Item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Seja $\psi' = \phi\psi\phi^{-1}$ e $\Psi' = \psi'*\gamma$ um prolongamento de $\psi'$. Com isso, tem-se que 
 			$$
 			\begin{aligned}
 			\mu(\phi\psi\phi^{-1})
@@ -2952,15 +2965,19 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		(Função hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função hamiltoniana dependente do tempo se satisfaz as equações diferenciais de Hamilton
+		(Função Hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função Hamiltoniana dependente do tempo se satisfaz as equações diferenciais de Hamilton
 		$$
 		\frac{\partial q_{j}}{\partial t} = \frac{\partial H}{\partial p_{j}}, \; \frac{\partial p_{j}}{\partial t} = -\frac{\partial H}{\partial p_{j}},
 		$$
-		para $1\leq j \leq n$ e $(q_{1}(t), \dots, q_{n}(t), p_{1}(t), \dots, p_{1}(t)) \in M$.
+		para $1\leq j \leq n$ e $(q_{1}(t), \dots, q_{n}(t), p_{1}(t), \dots, p_{1}(t)) \in M$. Se a função hamiltoniana não depende do tempo, então diz-se que ela é uma função Hamiltoniana autônoma, isto é, $H(x(t), t) = H(x(t))$. 
 	\end{definicao}
+
+	\begin{observacao}
+		Se $H$ é uma função Hamiltoniana autônoma, então $dH/dt = 0$, o que caracteriza um sistema conservativo.
+	\end{observacao}
 	
 	\begin{definicao}
-		(Campo Hamiltoniano) Um campo hamiltoniano é o único campo vetorial $X_{H}\in \campossuaves{M}$ tal que
+		(Campo Hamiltoniano) Um campo Hamiltoniano é o único campo vetorial $X_{H}\in \campossuaves{M}$ tal que
 		$$
 		\omega_{x}(X_{H}, Y) = -dH_{x}(Y)
 		$$
@@ -2974,13 +2991,28 @@
 		onde foi usado o fato de que $J_{x}$ é um simplectomorfismo. Com isso, o gradiente Hamiltoniano é $\nabla H = -JX_{H} \in \campossuaves{M}$.
 	\end{observacao}
 	
-	Ao campo Hamiltoniano $\campohamiltonianoabrev$ pode-se o associar o fluxo $\psi:M\times\reta\to M$ que satisfaz o seguinte sistema de equações diferenciais
-	$$
-	\label{sisHamilt}
-	\derivadaparcial{\psi_{x}(t)}{t} = X_{H}(\psi_{x}(t), t)\;\;\text{e}\;\; \psi_{x}(0) = x.
-	$$
+	\begin{proposicao}
+		Seja $x\in M$. Então, $x\in \pontoscriticos{H}$ se, e somente se, $\campohamiltoniano{x}=0$.
+	\end{proposicao}
+	\begin{prova}
+		Se $x\in \pontoscriticos{H}$, então pela não-degeneracidade da forma simpética tem-se que, $0=dH_{x}(Y)=\omega_{x}(\campohamiltonianoabrev, Y)$ para todo $Y\in T_{x}M$. Logo, $\campohamiltoniano{x} =0$. Por outro lado, se $\campohamiltoniano{x} =0$, então $\omega_{x}(\campohamiltonianoabrev, Y)=0$ para todo $Y\in T_{x}M$. Logo $dH_{x}=0$ e $x\in \pontoscriticos{H}$.
+	\end{prova}
 	
-	O sistema de equações diferenciais acima também é chamado de sistema Hamiltoniano e o fluxo é chamado de fluxo Hamiltoniano.
+	O sistema de equaçoes diferenciais abaixo é chamado de Hamiltoniano, 
+	$$
+	\derivada{x(t)}{t}=\campohamiltoniano{x(t), t},
+	$$
+	e suas soluções determinam uma família de difeomorfismos $\psi_{t}:M\to M$ que satisfazem a as relações 
+	$$
+	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
+	$$
+	A aplicação $\psi: M\times \reta\to M$ acima é chamada de fluxo Hamiltoniano.
+		
+	Uma solução $\tau$-periódica do sistema Hamiltoniano é um caminho $x:\reta\to M$ tal que $x(t) = x(t+\tau)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{\tau}(x(0)) = x(\tau) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{\tau}:M\to M$. Supondo que a função Hamiltoniana $H$ também é $\tau$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $\tau$-perídicas do sistema Hamiltoniano.
+	
+	\begin{definicao}(Soluções $\tau$-periódicas não-degeneradas)
+		Uma solução $\tau$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $det(Id - D_{x(0)}\psi_{\tau})\neq 0$, onde $D_{x(0)}\psi_{\tau}:T_{x(0)}M \to T_{x(0)}M$.
+	\end{definicao}
 	
 	A proposição a seguir afirma que o fluxo Hamiltoniano preserva a forma simplética. Para essa demonstração vamos usar o lema abaixo, cujos detalhes podem ser encontrados em \cite{nakahara}.
 	
@@ -3009,7 +3041,7 @@
 	\end{prova}
 	
 	\begin{exemplo}
-		(Variedade simplética 2-esféra) Sejam $S^{2} \subset \real{3}$ a 2-esféra centrada na origem de $\real{3}$ e $\varphi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
+		(Variedade simplética 2-esfera) Sejam $S^{2} \subset \real{3}$ a 2-esfera centrada na origem de $\real{3}$ e $\varphi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
 		$$
 		\varphi(q, p) = (cos (p) cos (q), cos (p) sin (q), sin (p)).
 		$$
@@ -3026,9 +3058,13 @@
 	\end{exemplo}
 	
 	\begin{exemplo}
-		(Função hamiltoniana) Com base no exemplo anterior, defina $H:S^{2}\times \reta\to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pode-se verificar que $q(t) = p_{0}sent(t)+q_{0}cos(t)$ e $p(t) = p_{0}cos(t)-q_{0}sent(t)$ são soluções do sistema Hamiltoniano com a condição inicial $\psi(0) = (q_{0}, p_{0})$. Com isso, para um ponto arbitrário $(q,p) \in S^{2}$, o fluxo Hamiltoniano é
+		(Função Hamiltoniana) Com base no exemplo anterior, defina $H:S^{2}\times \reta\to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pelas equações de Hamilton, pode-se verificar que 
 		$$
-		\psi_{(q,p)}(t)=(psint(t)+qcos(t), pcos(t)-qsint(t)),
+		x(t)=(p_{0}sent(t)+q_{0}cos(t), p_{0}cos(t)-q_{0}sent(t))
+		$$ 
+		é a solução do sistema Hamiltoniano para a condição inicial $x(0) = (q_{0}, p_{0})$. Com isso, para um ponto arbitrário $(q,p) \in S^{2}$, o fluxo Hamiltoniano é
+		$$
+		\psi_{t}(q,p)=(psint(t)+qcos(t), pcos(t)-qsint(t)),
 		$$
 		e o campo Hamiltoniano é 
 		$$
@@ -3079,9 +3115,11 @@
 		\end{aligned}
 		$$
 		Logo $	(\psi^{*}_{t}\omega_{x}) = \omega_{x}$ para todo $t\in \reta$.
+		
+	Note que o solução $x$ para a condição inicial  $x(0) = (q_{0}, p_{0})$ é $2\pi$-periódica, pois $x(0)\neq x(2\pi)$. Contudo, $x$ é uma solução degenerada pois $det(Id-D_{x(0)}\psi_{2\pi}) = 0$.
 	\end{exemplo}
 	
-	\section{O funcional $\funcionalH$ e a equação de Floer}
+	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
 	Nesse capítulo é considerado $M$ como sendo uma 2n-variedade diferenciável fechada (veja a Definição \ref{definicao_variedade_fechada}).
 	
 	Como foi abordado na Introdução, a conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ e, para o sistema Hamiltoniano abaixo,
@@ -3126,10 +3164,14 @@
 		\int_{D^{2}}u^{*}\omega - \int_{D^{2}}v^{*}\omega  = \int_{S^{2}}w^{*}\omega, 
 		$$
 		onde $w:S^{2} \to M$ é uma aplicação contínua e é definida como sendo uma colagem dos dois discos $u(D^{2})$ e $v(D^{2})$ ao longo de seus bordos. A Condição de Aesfericidade \ref{definicao_condicao_aesfericidade} garante que $\int_{S^{2}}w^{*}\omega=0$, logo $\int_{D^{2}}u^{*}\omega = \int_{D^{2}}v^{*}\omega$, eliminando a dependência do funcional $\funcionalH$ da escolha dessas extensões.
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=5cm,height=3cm]{imagem/colagem_discos.pdf}
+			\caption{Colagem dos bordos de $v(D^{2})$ e $u(D^{2})$.}
+		\end{figure}
 	\end{observacao}
-	
-	\vermelho{(Colocar uma figura islustrando a colagem aqui!!!!)}
-	
+
 	Seja $T\lacocontrateis$ o fibrado tangente de $\lacocontrateis$. Então o diferencial do funcional Hamiltoniano é a aplicação $d\funcionalH: T\lacocontrateis \to \real{}$ e , em analogia à análise em espaços de dimensão finita, o gradiente é o campo suave $\gradientefuncional\in \campossuaves{\lacocontrateis}$ tal que $d_{\gamma}\funcionalH(X) = \produtointerno{\gradientefuncional(\gamma)}{X(\gamma)}$ para todo $X\in \espacotangenteponto{\gamma}{\lacocontrateis}$, onde $\produtointerno{.}{.}$ é um produto interno definido a seguir.
 	
 	Sejam $Y(t) \in \espacotangenteponto{\gamma(t)}{M}$, $\tilde{\gamma}:(-\epsilon, \epsilon)\times S^{1} \to M$  uma aplicação de classe $C^{1}$ tal que $\tilde{\gamma}(0,t) = \gamma(t)$ e $Y(t) = \derivadaparcial{}{s}\tilde{\gamma}(s,t)|_{s=0}$. Com isso, o diferencial de $\funcionalH$ no ponto $\gamma$ e avaliado em $Y$ é dado por $d_{\gamma}\funcionalH(Y) = \derivadaparcial{}{s}\funcionalH(\tilde{\gamma})|_{s=0}$.
