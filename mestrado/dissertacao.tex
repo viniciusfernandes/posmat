@@ -114,6 +114,7 @@
 \newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
 \newcommand{\distribuicoes}{\distribuicoesgeral{\Omega}}
 \newcommand{\distribuicoesgeral}[1]{\mathcal{D'}(#1)}
+\newcommand{\dominioMaslov}{\caminhos^{*}(\gruposimpletico{2n})}
 \newcommand{\energiafinitaM}{\mathcal{E}M}
 \newcommand{\energiafinitaMconectante}{\energiafinitaM(\gamma^{-}, \gamma^{+})}
 \newcommand{\espacoLdois}[1]{L^{2}(#1)}
@@ -2629,11 +2630,15 @@
 	\end{prova}
 		
 	
-	\section{Índice de Maslov $\mu : \caminhossempontobase{\gruposimpleticonaodegenerado{*}} \to \inteiros$}\label{secao_indice_maslov}
+	\section{Índice de Maslov $\mu : \dominioMaslov \to \inteiros$}\label{secao_indice_maslov}
 	
 	\begin{definicao}
 		(Índice de Maslov) 
-		Para um dado caminho $\psi \in \caminhos(\gruposimpleticonaodegenerado{*})$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \caminhos({\gruposimpleticonaodegenerado{*}})$. Seja $\alpha_{\Psi}: \intervalo \to \reta$ o levantamento do caminho $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
+		Seja 
+		$$
+		\dominioMaslov=\{ \psi: \intervalo\to \gruposimpletico{2n}: \psi(0)=Id \;\; \text{e}\;\; \psi(1)\in \gruposimpleticonaodegenerado{*}\}.
+		$$
+		Para um dado caminho $\psi \in \dominioMaslov$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \caminhos({\gruposimpleticonaodegenerado{*}})$. Suponha que $\alpha_{\Psi}: \intervalo \to \reta$ é levantamento do caminho $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
 		$$
 		\xymatrix{
 			& & \real{}\ar[d]\ar[d]^{\text{exp}}
@@ -2641,6 +2646,7 @@
 			[0,1 ]\ar[urr]^{\alpha_{\Psi}} \ar[r]_{\Psi} & \gruposimpleticonaodegenerado{*} \ar[r]_{\rho} & S^{1}
 		}
 		$$	
+		Então o grau de $\rho_{\psi}$ é definido por $deg(\rho_{\psi}) = (\alpha_{\Psi}(1)-\alpha_{\Psi}(0))/2\pi$. 
 		
 		O índice de Maslov de $\psi$ é definido por
 		$$
@@ -2649,25 +2655,24 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=Id$ e $\psi(1)=W^{-}$. Com isso, tem-se $\rho_{\psi}(0) =\rho(W^{-}) = (-1)^{n-1}$. Se $n\in 2\mathbb{N}$, então $\rho_{\psi}(0) =1$ e $\rho_{\psi}(1)=-1$. Portanto a imagem de $\rho_{\psi}$ envolve ao menos a metade do círculo, isto é, $\alpha_{\psi}(1)-\alpha_{\psi}(0) = k\pi$, para algum $k\in \inteiros$. Por esse fato defini-se o índice de Maslov com sendo $2deg(\rho_{\psi})$.
+		Seja $\psi:\intervalo\to \gruposimpletico{2n}$ um caminho tal que $\psi(0)=Id$ e $\psi(1)=W^{-}$. Com isso, tem-se $\rho_{\psi}(1) =\rho(W^{-}) = (-1)^{n-1}$ e  $\alpha_{\psi}(1)-\alpha_{\psi}(0) = k\pi$, para algum $k\in \inteiros$.
 	\end{observacao}
 	
 	Os dois próximos resultados são importantes propriedades do índice de Maslov que são úteis no Teorema \ref{teorema_indice_maslov}.
 
 	\begin{lema}\label{lema_independencia_prolongamento}
-		Se $\psi \in  \caminhos({\gruposimpleticonaodegenerado{*}})$, então o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$. Além disso, se $\psi' \in \caminhos{(\gruposimpleticonaodegenerado{*})}$, então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$.
-	\end{lema}
-	\begin{lema}\label{lema_independencia_prolongamento}
-		Sejam $\psi,\psi' \in  \caminhos({\gruposimpleticonaodegenerado{*}})$. Então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$, onde $\Psi$ e $\Psi'$ são prolongamentos de $\psi$ e $\psi'$, respectivamente. Além disso, o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$.
+		Sejam $\psi,\psi' \in  \dominioMaslov$. Então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$, onde $\Psi$ e $\Psi'$ são prolongamentos de $\psi$ e $\psi'$, respectivamente. Além disso, o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$.
 	\end{lema}
 	\begin{prova}
-		Suponha que $\psi \sim \psi'$. Como $\gamma \sim \gamma'$, então pelo Lema \ref{lema_compatibilidade_produto_caminhos} tem-se que $\Psi = \psi*\gamma \sim \psi'*\gamma' = \Psi'$. Por outro lado, suponha que $H: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ seja uma homotopia entre $\Psi $ e $\Psi'$ tal que $H(t,0) = \Psi(t)$ e $H(t,1) = \Psi'(t)$. Pela definição de justaposição tem-se que $\Psi(t) = \psi(2t)$ e $\Psi'(t) = \psi'(2t)$ para $0 \leq t \leq 1/2$. Seja $h: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ definida por $h(t,s) = H(t/2, s)$. Então  $h(t,0) = H(t/2, 0) =  \psi(2t)$ e $h(t,1)=H(t/2,1) = \psi'(2t)$. Portanto $h$ é uma homotopia entre $\psi$ e $\psi'$.
+		Suponha que $\psi \sim \psi'$. Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico} tem-se que $\grupofundamental{\gruposimpleticonaodegenerado{\pm}} = \{ \classe{0} \}$. Logo, dados $\gamma,\gamma'\in \gruposimpleticonaodegenerado{\pm}$ tem-se que $\gamma\sim \gamma'$. Portanto, $\Psi = \psi*\gamma \sim \psi'*\gamma' = \Psi'$, o que é demonstrado no Lema \ref{lema_compatibilidade_produto_caminhos}. 
 		
-		Sejam $\Psi=\psi*\gamma$ e $\Psi''=\psi*\gamma''$ são dois prolangamentos de $\psi$. Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico} tem-se que $\grupofundamental{\gruposimpleticonaodegenerado{*}} = \{\classe{0}\}$, logo $\gamma, \gamma''\in \classe{0}$ e $\gamma\sim \gamma''$. Com isso, $\Psi\sim \Psi''$ e $2deg(\rho_{\Psi})=2deg(\rho_{\Psi'})=\mu(\psi)$. Logo $\mu(\psi)$ não depende do prolongamento escolhido.
+		Por outro lado, suponha que $H: \intervalo \times \intervalo \to \gruposimpletico{2n}$ seja uma homotopia entre $\Psi $ e $\Psi'$ tal que $H(t,0) = \Psi(t)$ e $H(t,1) = \Psi'(t)$. Pela definição de justaposição tem-se que $\Psi(t) = \psi(2t)$ e $\Psi'(t) = \psi'(2t)$ para $0 \leq t \leq 1/2$. Seja $h: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ definida por $h(t,s) = H(t/2, s)$. Então  $h(t,0) = H(t/2, 0) =  \psi(2t)$ e $h(t,1)=H(t/2,1) = \psi'(2t)$. Portanto $h$ é uma homotopia entre $\psi$ e $\psi'$.
+		
+		Sejam $\Psi=\psi*\gamma$ e $\Psi''=\psi*\gamma''$ são dois prolangamentos de $\psi$, onde $\gamma, \gamma''\in \caminhos(\gruposimpleticonaodegenerado{\pm})$. A Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico} permite afirmar que $\gamma\sim \gamma''$. Com isso, $\Psi\sim \Psi''$ e $\mu2deg(\rho_{\Psi})=2deg(\rho_{\Psi'})=\mu(\psi)$. Logo $\mu(\psi)$ não depende do prolongamento escolhido.
 	\end{prova}
 	
 	\begin{observacao}
-		O lema anterior afirma que o índice de Maslov de um caminho $\psi\in \caminhosespeciais{\gruposimpletico{2n}}$ esta bem-definido.
+		O lema anterior demonstra que o índice de Maslov de um caminho $\psi\in \dominioMaslov$ esta bem-definido.
 	\end{observacao}
 	
 	\begin{lema}\label{lema_inversa_caminho_especial}
