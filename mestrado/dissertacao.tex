@@ -191,6 +191,7 @@
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
 \newcommand{\imagembordo}[2]{B_{#1}(#2;A)}
 \newcommand{\imagembordoabrev}[2]{B_{#1}(#2)}
+\newcommand{\ind}{\text{ind}}
 \newcommand{\induzida}[1]{#1_{\#}}
 \newcommand{\inteiros}{\mathbb{Z}}
 \newcommand{\inteirospos}{\inteiros_{+}}
@@ -268,7 +269,7 @@
 
 \begin{document}
 	
-	\title{Homologia de Floer, Índice de Maslov e a Conjectura de Arnold}
+	\title{O Índice de Maslov e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
 	
 	\author{Vinicius Fernandes}
 	
@@ -3580,7 +3581,7 @@
 	
 	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $\gamma^{-}, \gamma^{+}$ sejam duas soluções 1-periódicas do sistema Hamiltoniano, isto é, $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, para toda estrutura complexa $J \in \estruturascomplexas{M}{\omega}$ podemos considerar $\energiafinitaMconectante \subset \energiafinitaM$ como sendo o conjunto das soluções da equação de Floer que conectam os pontos críticos $\gamma^{-}$ e $\gamma^{+}$. Vamos demonstrar que $\energiafinitaMconectante$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das soluções $x^{-}$ e $x^{+}$ do seguinte modo $dim(\energiafinitaMconectante) = \mu(x^{-})-\mu(x^{+})$. Para isso vamos descrever o conjunto $\energiafinitaMconectante$ como sendo os zero de uma seção do fibrado vetorial na variedade de Banach $\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são os caminhos de decaimento exponencial que conectam $x^{-}, x^{+}$ de modo que teremos $\energiafinitaMconectante \subset \caminhosexponenciaisconectantespadrao$. Aplicando a versão para dimensões infinitas do Teorema de Sard, chamado de Sard-Smale, mostraremos que $\energiafinitaMconectante$ é a pré-imagem de uma valor regular de uma determinada aplicação, sendo que para isso, deveremos mostrar que o diferencial dessa aplicação é um operador de Fredholm. Esse operador é chamado de operador de Fleor $\operadorFloer$ e seu diferencial será denotador por $\diferencialfloer$. Mostraremos que, o índice do operador $\diferencialfloer$ é $\mu(x^{-}) - \mu(x^{+})$, portanto 
 	$$
-	dim(\energiafinitaMconectante)=ind(\diferencialfloer) <\infty.
+	dim(\energiafinitaMconectante)=\ind(\diferencialfloer) <\infty.
 	$$
 	\vermelho{(Melhorar o texto acima...!!!!!!!!)}
 	
@@ -4105,7 +4106,7 @@
 	\end{prova}
 	
 	\begin{definicao}\label{definicao_oeprador_fredholm}
-		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $ind(T) = k(T) - c(T)$. 
+		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $\ind(T) = k(T) - c(T)$. 
 	\end{definicao}
 	
 	\begin{observacao}
@@ -4187,16 +4188,25 @@
 			Defina a aplicação $\varphi:\espacoLpadjuntoretacirculo \to \espacoLpdual$ por $\varphi(Y)(\beta)=\produtointerno{Y}{\beta}$. Se $\beta \in \diferencialfloerabrev(\espacosobolevretacirculo)$ e $\varphi_{Y}(\beta) = 0$, então $Y \in F$. Seja $\classe{\beta} \in Coker(\diferencialfloerabrev)$. Então, para algum $\alpha$ tem-se que $\beta-\alpha=\diferencialfloerabrev\xi$, e com isso, $0= \produtointerno{Y}{\diferencialfloerabrev\xi}=\produtointerno{Y}{\beta-\alpha}$, o que implica que $xx$. \vermelho{(Não entendo o argumento da dimensão finita do Cokernel . Ver no MIchelle pag. 285).}
 		\end{enumerate}
 		
-		\begin{teorema}
+		\begin{teorema}\label{teorema_indice_diferencial_operador_floer}
 			O índice de Fredholm de $\diferencialfloer$ é \vermelho{(definir quem são $\gamma^{\pm}$)}
 			$$
-			ind(\diferencialfloer) = \mu(\gamma^{-}) - \mu(\gamma^{+}).
+			\ind(\diferencialfloer) = \mu(\gamma^{-}) - \mu(\gamma^{+}).
 			$$
 		\end{teorema}
 	
 	\end{prova}
 	
 	\section{A transversalidade de $\operadorFloer$}
+	
+	
+	
+	A transversalidade do operador de Floer tem sua importância na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional Hamiltoniano $\energiafinitaMconectante$ é uma variedade de dimensão finita e é dada por $\mu(\gamma^{-})-\mu(\gamma^{-})$, onde $\gamma^{+}, \gamma^{-}\in \pontoscriticos{\funcionalH}$ que, de acordo com o Teorema \ref{teorema_indice_diferencial_operador_floer},  coincide com o índice do operdador de Fredholm $\ind(\diferencialfloer)$.
+	
+	Sabe-se que $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach (veja na Seção \ref{secao_variedade_banach_P}). Com isso, é construída uma seção do fibrado tangente dessa variedade, tal que $\energiafinitaMconectante\subset \caminhosexponenciaisconectantespadrao$ é o conjunto de todos zeros dessa seção. Assim, é demonstrado que $\energiafinitaMconectante$ é a pré-imagem de um valor regular de uma determinada aplicação, e com isso, aplicando a generalização para espaços de dimensão infinita do Teorama de Sard, pode-se concluir que $\energiafinitaMconectante$ é uma variedade de dimensão finita. Nesse ponto é utilizada a propriedade de Fredholm do diferencial do operador de Floer $\diferencialfloer$ para se afirmar a finitude da dimensão dessa variedade.
+	
+	\vermelho{(Inserir uma justificativa para a não demonstração dos teoremas desse capítulo...!!!)}
+	
 	Sejam $\gamma^{+},\gamma^{-}\in \pontoscriticos{\funcionalH}$, e considere o operador de Floer 
 	$$
 	\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao
@@ -4210,25 +4220,21 @@
 	\diferencialfloer_{u}(\xi)= \Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)(\xi)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)(\xi).
 	$$
 	
-	Foi demonstrado na Seção \ref{secao_variedade_banach_P} que $\caminhosexponenciaisconectantespadrao$ é uma variedade e $T\caminhosexponenciaisconectantespadrao$ é seu fibrado tangente. 
-	
-	Seja $s	: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$ a seção nula de $T\caminhosexponenciaisconectantespadrao$. Pela Definição \ref{definicao_aplicao_transversal} tem-se $\operadorFloer \pitchfork s$ se, e somente se, $\diferencialfloer_{u}$ é sobrejetor para todo $u\in \caminhosexponenciaisconectantespadrao$. De fato, como $s_{u} = 0$, então $Ds_{u} = 0$. Supondo que $\operadorFloer \pitchfork s$, então  
+	A Proposição \ref{proposicao_variedade_banach} afirma que $\caminhosexponenciaisconectantespadrao$ é uma variedade, portanto seu fibrado tangente $T\caminhosexponenciaisconectantespadrao$ esta bem definido. Suponha que $X:\caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$ seja seção nula de $T\caminhosexponenciaisconectantespadrao$. Afirmo que $\operadorFloer \pitchfork X$ se, e somente se, $\diferencialfloer_{u}$ é sobrejetor para todo $u\in \caminhosexponenciaisconectantespadrao$ (veja a Definição \ref{definicao_aplicao_transversal} sobre a transversalidade de aplicações entre variedades). De fato, suponha que $\operadorFloer$ e $X$ sejam aplicações transversas. Como $X_{u} = 0$ para todo $u \in \caminhosexponenciaisconectantespadrao$, então $DX_{u} = 0$, o que implica em
 	$$
-	\pullbackfibradotangenteM{u}=\diferencialfloer_{u}(\pullbackfibradotangenteM{u})+Ds_{u}(\pullbackfibradotangenteM{u}) = \diferencialfloer_{u}(\pullbackfibradotangenteM{u}).$$ 
+	\pullbackfibradotangenteM{u}=\diferencialfloer_{u}(\pullbackfibradotangenteM{u})+DX_{u}(\pullbackfibradotangenteM{u}) = \diferencialfloer_{u}(\pullbackfibradotangenteM{u}).$$ 
 	Logo, $\diferencialfloer_{u}$ é sobrejetor. A recíproca é imediata.
 	
 	As soluções da equação de Floer dependem da escolha da estrutura quase-complexa $J$ e da função Hamiltoniana $H$. Pode-se mostrar que, fixando a estrutura quase-complexa $J$ e para algumas perturbações da função Hamiltoniana, a transversalidade é mantida. \vermelho{(Comentar um pouco mais sobre o propósito dessas definições.)}
 	
 	Um par $(H, J)$ é chamado de regular se satisfaz a condição de transversalidade, e o conjunto dos pares regulares é denotado por $\paresregulares$.
 	
-	\vermelho{
-		Pode-se mostrar que, dada uma função Hamiltoniana $H:M\times \reta\to \reta$, existe uma função Hamiltoniana $H_{0} $ suficientemente próxima a $H$, no sentido da $\cktopologia{\infty}$. Além disso, ambas têm as mesmas órbitas periódicas e para as quais $\energiafinitaMconectante$ são variedades com dimensão determinada.
-		}
-	
+		
 	Seja $h :M\times \reta\to \reta$ uma função suave, fixe uma sequência $\epsilon=(\epsilon_{j})$ tais que $\epsilon_{j}\in \real{+}$ e defina
 	$$
-	\norma{h}_{\epsilon} = \sum_{k\geq 0}\epsilon_{k}\sup_{(x,t)\in M\times \reta}\max_{|\alpha|=k}|\partial^{\alpha}h(x,t)|.
+	\norma{h}_{\epsilon} = \sum_{k\geq 0}\epsilon_{k}\max_{|\alpha|=k} \sup_{(x,t)\in M\times \reta}|\partial^{\alpha}h(x,t)|,
 	$$
+	onde $\partial^{\alpha}$ é a derivada parcial com multi-índice $\alpha$, veja a definição na Seção \ref{secao_distribuicoes}.
 	
 	Pode-se mostrar que o conjunto $C^{\infty}_{\epsilon} = \{f\in \funcoessuaves{M\times \circulo}: \norma{f}_{\epsilon}<\infty \}$ munido da norma $\norma{.}_{\epsilon}$ é um espaço de Banach. Além disso, ele é denso em $\funcoessuaves{M\times\circulo}$, como afirma proposição a seguir.
 	
@@ -4237,11 +4243,13 @@
 	\end{proposicao}
 
 	\begin{definicao}
-		(Espaço das Perturbação Hamiltoniana) Seja $H :M\times \reta\to \reta$ uma função Hamiltoniana. O conjunto $\perturbacaoHamiltoniana{H}$ é o conjunto das funções $h \in C^{\infty}_{\epsilon}$ tal que $h(x,t) = 0$ em alguma vizinhança das órbitas $1$-periódicas de $H$.
+		(Espaço das Perturbação Hamiltoniana) Seja $H :M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo. O conjunto $\perturbacaoHamiltoniana{H}$ é o conjunto das funções $h \in C^{\infty}_{\epsilon}$ tal que $h(x,t) = 0$ em alguma vizinhança das órbitas $1$-periódicas de $H$.
 	\end{definicao}
 
+	Não há garantias de que, escolhida a Hamiltoniana $H$, tenha-se a tranversalidade satisfeita. Contudo, pode-se encontrar uma outra função Hamiltoniana suficientemente próxima a $H$, no sentido $\cktopologia{\infty}$, tal que valha essa propriedade. O teorema a seguir afirma essa resultado em termos da sobrejetividade do diferencial do operador de Floer, como foi discutido anteriormente.
+
 	\begin{teorema}
-		Fixe uma função Hamiltoniana não-degenerada $H$. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de abertos densos de $\paresregulares$ $\hamiltonianasRegulares$ nessa vizinhança tal que, se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloer_{u}$ é sobrejetor para todo $u \in \energiafinitaM(H+h; J)$\vermelho{(Não sei onde o Michelle introduziu essa notação. Devo rever isso!!!)}.
+		Fixe uma função Hamiltoniana não-degenerada $H$. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de abertos densos de $\hamiltonianasRegulares$ nessa vizinhança tal que, se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloer_{u}$ é sobrejetor para todo $u \in \energiafinitaM(H+h; J)$\vermelho{(Não sei onde o Michelle introduziu essa notação. Devo rever isso!!!)}.
 	\end{teorema}
 	
 	\begin{teorema}
@@ -4250,11 +4258,9 @@
 	
 	Seja 
 	$
-	\orbitasConectantesZ = \{ (u, H+h):h\in \perturbacaoHamiltoniana{H} \;\;\text{e}\;\; u \in  \energiafinitaM(\gamma^{+}, \gamma^{-}, J, H)\}.
-	$
+	\orbitasConectantesZ = \{ (u, H+h):h\in \perturbacaoHamiltoniana{H} \;\;\text{e}\;\; u \in  \energiafinitaM(\gamma^{+}, \gamma^{-}, J, H)\}
+	$ o conjunto de todas as soluções da equação de Floer conectando $\gamma^{-}$ a $\gamma^{+}$ de todas as perturbações da função Hamiltoniana $H$.
 
-	Anteriormente, foi mostrado que a propriedade de transversalidade do operador de Floer esta diretamente relacionada a sobrejetividade de seu diferencial $\diferencialfloer$.
-	
 	\begin{proposicao}
 		Se $(u, H+h) \in \orbitasConectantesZ$, então a aplicação 
 		$$
@@ -4275,7 +4281,7 @@
 	Para todos $\gamma^{+},\gamma^{-}\in \pontoscriticos{\funcionalH}$ com $\gamma^{+}\neq  \gamma^{-}$ tem-se que $\mathcal{Z}(\gamma^{+}, \gamma^{-}, J)$ é uma variedade (de Banach). 
 	\end{proposicao}
 	
-	Considere o conjunto $\caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$, que é uma variedade, pois é o produto cartesiano de variedades. Defina o fibrado vetorial $\mathcal{E} \to \caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$, onde 
+	Note que o conjunto $\caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$ é uma variedade, pois é o produto cartesiano de variedades. Considere o fibrado vetorial $\mathcal{E} \to \caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$, onde 
 	$$
 	\mathcal{E} = \{(u, h, Y): (u, h)\in \caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H},\;\;Y\in \pullbackfibradotangenteM{u}\}
 	$$
@@ -4283,15 +4289,19 @@
 	
 	A aplicação $\sigma:\caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}\to \mathcal{E}$ dada por 
 	$$
-	\sigma(u,h)=\derivadaparcial{u}{s}+J\derivadaparcial{u}{t}+\nabla_{u}(H+h)\in \espacoLp{\pullbackfibradotangenteM{u}}, 
+	(u,h) \mapsto (u,h,\sigma(u,h)),
 	$$
-	é uma seção do fibrado vetorial e esta bem definida, o que pode ser visto na Seção \ref{secao_operador_floer}. Note que as singularidades da seção $\sigma$ são os elementos de $\orbitasConectantesZ$. Com isso, dado $(u,H+h)\in \orbitasConectantesZ$, tem-se que $\sigma(u,H+h) = 0$. Além disso, pode-se mostrar que 
+	onde 
 	$$
-	D_{(u,H+h)}\sigma(Y,\eta) = \diferencialfloer_{u}Y+\nabla_{u}\eta,
+	\sigma(u,h) =\derivadaparcial{u}{s}+J\derivadaparcial{u}{t}+\nabla_{u}(H+h)
 	$$
-	\vermelho{(Pq $\eta $ e não h???)} pois a seção $\sigma$ é um operador linear em $h$.
+	é uma seção do fibrado vetorial. Além disso, pode ser visto na Seção \ref{secao_operador_floer} que $\sigma(u,h)\in \espacoLp{\pullbackfibradotangenteM{u}}$. Note que, se $u \in \caminhosexponenciaisconectantespadrao$ é uma solução da equação de Floer para a perturbação Hamiltoniana $h$, então $\sigma(u, h) = 0$. A recíproca é imediada. Com isso, pode-se afirmar que os elementos de $\orbitasConectantesZ$ são as singularidades da seção $\sigma$. 
 	
-	Note que $\Gamma(Y, h) = $
+	Para mostrar que a aplicação $\sigma$ é transversa a seção nula do fibrado $\mathcal{E}$, basta mostrar que o diferencial $D\sigma_{(u,h)}$ é sobrejetor para todos os pontos em que $\sigma(u,h) = 0$. Note que \ aplicação $\sigma$ é linear no segundo parâmetro $h$ e que seu diferencial está relacionado com o diferencial do operador de Floer do seguinte modo
+	
+	$$
+	D\sigma_{(u,h)}(Y,\eta) = \diferencialfloer_{u}(Y)+\nabla_{u}\eta.
+	$$
 	
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
