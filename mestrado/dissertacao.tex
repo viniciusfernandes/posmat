@@ -133,6 +133,7 @@
 \newcommand{\espacosobolevadjuntoretacirculo}{W^{1,q}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacosobolevdual}{(W^{1,p})^{*}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacosobolevdois}[2]{\espacosobolevgeral{2}{#1, #2}}
 \newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
 \newcommand{\espacotangente}[1]{\espacotangenteponto{p}{#1}}
 \newcommand{\espacotangentevariedadeestavel}{T^{s}_{p}M}
@@ -201,6 +202,7 @@
 \newcommand{\kernelbordo}[2]{Z_{#1}(#2;A)}
 \newcommand{\kernelbordoabrev}[2]{Z_{#1}(#2)}
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
+\newcommand{\operadoreslimitadosauto}[1]{\mathcal{B}(#1)}
 \newcommand{\operadorFloer}{\mathcal{F}}
 \newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
 \newcommand{\operadorFloerParametro}[1]{\mathcal{F}(#1)}
@@ -216,6 +218,7 @@
 \newcommand{\matrizunitaria}[1]{U(#1)}
 \newcommand{\norma}[1]{||#1||}
 \newcommand{\normagrande}[1]{\Big|\Big|#1\Big|\Big|}
+\newcommand{\normaLdois}[1]{||#1||_{L^{2}}}
 \newcommand{\normaLp}[1]{||#1||_{L^{p}}}
 \newcommand{\normaLpdefinicao}[2]{ \Big(\int_{#2}#1^{p}\Big)^{1/p}}
 \newcommand{\normaLpDominio}[2]{||#1||_{L^{p}(#2)}}
@@ -450,18 +453,20 @@
 	
 	A proposição a seguir é necessária para a definição e também para o estudo das propriedades da aplicação grau e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
 	
+	Defina a aplicação exponencial $\Exp: \reta\to \circulo$ por $\Exp(t) = \exp(it)$.
+	
 	\begin{proposicao}\label{proposicao_levantamento_curvas}
 		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Então existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
 		$$
 		\xymatrix{
-			& \real{}\ar[d]\ar[d]^{\text{exp}}
+			& \real{}\ar[d]\ar[d]^{\Exp}
 			\\
 			[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
 		}
 		$$
 	\end{proposicao}
 	
-	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = \exp(i\alpha(t))$, onde $\alpha(t) \in \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
+	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = \exp(i\alpha(t))$, onde $\alpha:[a,b]\to \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
 	
 	Vamos definir o grau de um caminho como sendo uma aplicação que associa um dado caminho em $\circulo$ a um múltiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior vimos que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, vamos restringir nossas hipóteses a caminhos fechados.
 
@@ -2349,59 +2354,68 @@
 	\chapter{O funcional Hamiltoniano $\funcionalH$ e a equação de Floer}
 	\section{Variedades Simpléticas}
 	
-	No Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} foi abordada parte teoria sobre espaços vetoriais simpléticos. Contudo, nesse capítulo será estendido esse conceito para as variedades diferenciáveis. Sucintamente, uma variedade simplética é uma $2n$-variedade diferenciável $M$ munida de uma 2-forma anti-simétrica não-degenerada, como definido a seguir.
+	Nessa seção parte dos conceitos introduzidos no Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} sobre espaços vetoriais simpléticos serão estendidos para as variedades diferenciáveis.
+	
+	Seja M uma $2n$-variedade diferenciável. Uma 2-forma $\omega \in \Omega^{2}(M)$ é não-degenerada se o par $(T_{x}M, \omega_{x})$ é um espaço vetorial simplético para todo $x \in M$.
 	
 	\begin{definicao}
-		(Variedade Simplética) Seja M uma $2n$-variedade diferenciável e $\omega \in \Omega^{2}(M)$ uma 2-forma fechada e não-degenerada. Se  para todo $x \in M$ tem-se que $(T_{x}M, \omega_{x})$ é um espaço vetorial simplético, então o par $(M, \omega)$ é uma $2n$-variedade simplética.
+		(Variedade Simplética) Uma estrutura simplética em uma 2n-variedade diferenciável $M$ é uma 2-forma não-degenerada $\omega\in \Omega^{2}(M)$ tal que $d\omega=0$. O par $(M, \omega)$ é uma 2n-variedade simplética.
 	\end{definicao}
 	
 	\begin{observacao}
 		Aplicando o Lema \ref{lema_caracterizacao_forma_simpetica}, pode-se mostrar que, se $(M, \omega)$ é uma $2n$-variedade simplética, então $\omega^{\wedge n} \in \Omega^{2n}(M)$ define uma forma-volume em $M$. Logo, $M$ é orientável (veja \cite{warner_manifolds}).
 	\end{observacao}
 	
-	Duas variedades simpléticas $(M_{1}, \omega_{1})$ e $(M_{2}, \omega_{2})$ são simpléctomorfas se existe um difeomorfismo $\varphi: M_{1}\to M_{2}$ que preserva as formas simpléticas, isto é,
+	\begin{exemplo}\label{exemplo_variedade_simpletica_esfera}
+		(Variedade simplética 2-esfera) Sejam $S^{2} \subset \real{3}$ a 2-esfera centrada na origem de $\real{3}$ e $\varphi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
+		$$
+		\varphi(q, p) = (\cos (p) \cos (q), \cos (p) \sin (q), \sin (p)).
+		$$
+		
+		Com isso, tem-se que o espaço tangente $T_{x}S^{2} $ é gerado por $ \{\derivadaparcialabrev{ q}, \derivadaparcialabrev{ p} \}|_{x}$ onde
+		$$
+		\begin{aligned}
+		\derivadaparcialabrev{ q} &= -\cos (p)\sin (q) \derivadaparcialabrev{x}+ \cos (p)\cos (q) \derivadaparcialabrev{y},
+		\\
+		\derivadaparcialabrev{ p} &=  - \sin (p) \cos (q) 	\derivadaparcialabrev{x} - \sin (p) \sin (q) 	\derivadaparcialabrev{y} +\cos (p)				\derivadaparcialabrev{z}.
+		\end{aligned} 
+		$$
+		Seja $\omega\in \Omega^{2}(S^{2})$ definida por $\omega_{x} = dq \wedge dp$. É imediato que $d\omega_{x} = 0$ pois as componentes de $\omega$ são constantes, $\omega$ é fechada. Além disso, suponha que $\omega$ seja degenerada. Então existe um vetor não-nulo $v_{x} = v^{q}_{x}\partial_{q}+v^{p}_{x}\partial_{p} \in T_{x}S^{2}$ tal que $\omega_{x}(v, u)=0$ para todo $u_{x}\in T_{x}S^{2}$. Desse modo, fazendo $u_{x} = \partial_{q}$ tem-se que $0=\omega_{x}(v, \partial_{q}) = v^{q}_{x}$. Logo $v^{q}_{x}=0$. Com um argumento análogo pode-se verificar que $v^{p}=0$. Portanto $v=0$, contradizendo a hipótese. Logo $\omega$ é não-degenerada. Como $S^{2}$ é uma 2-variedade diferenciável, então o par $(S^{2}, \omega)$ é uma 2-variedade simplética.
+	\end{exemplo}
+	
+	Duas variedades simpléticas $(M_{1}, \omega_{1})$ e $(M_{2}, \omega_{2})$ são simplectomorfas se existe um difeomorfismo $\varphi: M_{1}\to M_{2}$ que preserva as formas simpléticas, isto é,
 	$$
 	\varphi^{*}\omega_{2}=\omega_{1}.
 	$$
+	
+	A aplicação $\varphi$ é chamado simplectomorfismo entre $M_{1}$ e $M_{2}$.
 	
 	Uma estrutura complexa em $M$ é uma automorfismo $J:TM \to TM$ tal que, para todo $(x,v_{x})\in TM$, tem-se $(p, J^{2}_{x}v_{x}) = (p, -v_{x})$, isto é, $J^{2}_{x}=-Id$. Além disso, se $(M, \omega)$ é uma variedade simplética, então $J$ é $\omega$-compatível se $J_{x}$ é $\omega_{x}$-compatível para todo $x\in M$. Com isso, tem-se que $g \in \Omega^{2}(M)$, definida por
 	$$
 	g_{x}(X, Y) =\omega_{x}(X, J_{x}Y),
 	$$
 	é uma métrica Riemanniana.
-	
+
 	\begin{definicao}
-		(Gradiente simplético) Seja $f : M \times \real{} \to \real{}$ uma função suave, então o gradiente simplético de $f$ é o único campo vetorial $\gradiente \in \mathfrak{X}(M)$ tal que 
-		$$
-		df(x)(Y) = g_{x}(\gradiente(x),Y)
-		$$ 
-		para todo $x \in M$ e todo $Y \in \mathfrak{X}(M)$.
-	\end{definicao}
-	
-	\begin{definicao}
-		(Função Hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times \real{} \to \real{}$ é chamada uma função Hamiltoniana dependente do tempo se satisfaz as equações diferenciais de Hamilton
+		(Função Hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times  \to \real{}$ é chamada uma função Hamiltoniana dependente do tempo se satisfaz as equações diferenciais de Hamilton
 		$$
 		\frac{\partial q_{j}}{\partial t} = \frac{\partial H}{\partial p_{j}}, \; \frac{\partial p_{j}}{\partial t} = -\frac{\partial H}{\partial p_{j}},
 		$$
-		para $1\leq j \leq n$ e $(q_{1}(t), \dots, q_{n}(t), p_{1}(t), \dots, p_{1}(t)) \in M$. Se a função hamiltoniana não depende do tempo, então diz-se que ela é uma função Hamiltoniana autônoma, isto é, $H(x(t), t) = H(x(t))$. 
+		para $1\leq j \leq n$ e $(q_{1}(t), \dots, q_{n}(t), p_{1}(t), \dots, p_{1}(t)) \in M$.
 	\end{definicao}
-	
-	\begin{observacao}
-		Se $H$ é uma função Hamiltoniana autônoma, então $dH/dt = 0$, o que caracteriza um sistema conservativo.
-	\end{observacao}
 	
 	\begin{definicao}
 		(Campo Hamiltoniano) Um campo Hamiltoniano é o único campo vetorial $X_{H}\in \campossuaves{M}$ tal que
 		$$
 		\omega_{x}(X_{H}, Y) = -dH_{x}(Y)
 		$$
-		para todo $x\in M$ e $Y \in \campossuaves{M}$.
+		para todo $x\in M$ e todo $Y_{x} \in \espacotangenteponto{x}{M}$.
 	\end{definicao}
 	
 	\begin{observacao}
 		Note que 
 		$$
-		dH_{x}(Y)=\omega_{x}(-X_{H}, Y) =\omega_{x}(-J_{x}X_{H}, J_{x}Y) =g_{x}(-J_{x}X_{H}, Y),$$
+		dH_{x}(Y)=\omega_{x}(-X_{H}(x), Y_{x}) =\omega_{x}(-J_{x}X_{H}(x), J_{x}Y_{x}) =g_{x}(-J_{x}X_{H}(x), Y_{x}),$$
 		onde foi usado o fato de que $J_{x}$ é um simplectomorfismo. Com isso, o gradiente Hamiltoniano é $\nabla H = -JX_{H} \in \campossuaves{M}$.
 	\end{observacao}
 	
@@ -2409,14 +2423,14 @@
 		Seja $x\in M$. Então, $x\in \pontoscriticos{H}$ se, e somente se, $\campohamiltoniano{x}=0$.
 	\end{proposicao}
 	\begin{prova}
-		Se $x\in \pontoscriticos{H}$, então pela não-degeneracidade da forma simpética tem-se que, $0=dH_{x}(Y)=\omega_{x}(\campohamiltonianoabrev, Y)$ para todo $Y\in T_{x}M$. Logo, $\campohamiltoniano{x} =0$. Por outro lado, se $\campohamiltoniano{x} =0$, então $\omega_{x}(\campohamiltonianoabrev, Y)=0$ para todo $Y\in T_{x}M$. Logo $dH_{x}=0$ e $x\in \pontoscriticos{H}$.
+		Se $x\in \pontoscriticos{H}$, então pela não-degeneracidade da forma simpética tem-se que, $0=dH_{x}(Y_{x})=\omega_{x}(\campohamiltonianoabrev(x), Y_{x})$ para todo $Y_{x}\in T_{x}M$. Logo, $\campohamiltoniano{x} =0$. Por outro lado, se $\campohamiltoniano{x} =0$, então $\omega_{x}(\campohamiltonianoabrev(x), Y_{x})=0$ para todo $Y_{x}\in T_{x}M$. Logo $dH_{x}=0$ e $x\in \pontoscriticos{H}$.
 	\end{prova}
 	
-	O sistema de equaçoes diferenciais abaixo é chamado de Hamiltoniano, 
+	O sistema de equaçoes diferenciais abaixo
 	$$
-	\derivada{x(t)}{t}=\campohamiltoniano{x(t), t},
+		\dot{x}(t)=\campohamiltoniano{x(t), t},
 	$$
-	e suas soluções determinam uma família de difeomorfismos $\psi_{t}:M\to M$ que satisfazem a as relações 
+	é chamado sistema Hamiltoniano, e suas soluções determinam uma família de difeomorfismos $\psi_{t}:M\to M$ que satisfazem a as relações 
 	$$
 	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
 	$$
@@ -2425,22 +2439,24 @@
 	Uma solução $\tau$-periódica do sistema Hamiltoniano é um caminho $x:\reta\to M$ tal que $x(t) = x(t+\tau)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{\tau}(x(0)) = x(\tau) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{\tau}:M\to M$. Supondo que a função Hamiltoniana $H$ também é $\tau$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $\tau$-perídicas do sistema Hamiltoniano.
 	
 	\begin{definicao}(Soluções $\tau$-periódicas não-degeneradas)
-		Uma solução $\tau$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(Id - D_{x(0)}\psi_{\tau})\neq 0$, onde $D_{x(0)}\psi_{\tau}:T_{x(0)}M \to T_{x(0)}M$.
+		Uma solução $\tau$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{\tau} - Id)\neq 0$, onde $D_{x(0)}\psi_{\tau}:T_{x(0)}M \to T_{x(0)}M$.
 	\end{definicao}
 	
-	A proposição a seguir afirma que o fluxo Hamiltoniano preserva a forma simplética. Para essa demonstração vamos usar o lema abaixo, cujos detalhes podem ser encontrados em \cite{nakahara}.
+	A proposição a seguir afirma que o fluxo Hamiltoniano preserva a forma simplética.
 	
-	\begin{lema}\label{proposicao_identidade_cartan}
+	\begin{proposicao}\label{proposicao_familia_simplectomorfismos}
+		As aplicações $\psi_{t}:M\to M$ dadas pelo campo Hamiltoniano são difeomorfismos que preservam a forma simplética.
+	\end{proposicao}
+	\begin{prova}
+		Nessa demostração é utilizado o resultado a seguir, cujos detalhes podem ser encontrados em \cite{nakahara}.
+		
 		Sejam $M$ uma variedade diferenciável com dimensão finita, $X \in T_{x}M$ e $\alpha \in \Omega^{k}(M)$. Definindo $i_{X}:\Omega^{k} \to \Omega^{k-1}$ por $i_{X}\alpha(Y_{1}, \dots, Y_{k-1}) = \alpha(X, Y_{1}, \dots, Y_{k-1})$ então
 		$$
 		\liederivada{X}\alpha = i_{X}d\alpha + d(i_{X}\alpha).
 		$$
-	\end{lema}
-	
-	\begin{proposicao}
-		Seja $\psi:M\times\reta\to M$ um fluxo Hamiltoniano. Então, $\psi_{t}:M \to M$ é uma família de simplectomorfismos.
-	\end{proposicao}
-	\begin{prova}
+		
+		Com isso, tem-se que
+		
 		$$
 		\begin{aligned}
 		\frac{d}{dt}\bigparenteses{(\psi_{t})^{*}\omega} 
@@ -2454,126 +2470,159 @@
 		logo $(\psi_{t})^{*} \omega = (\psi_{t'})^{*} \omega$, para quaisquer $t, t' \in \real{}$. Fazendo $t'=0$ e usando o fato de que $\psi_{0} = Id$, tem-se que  $(\psi_{t})^{*} \omega = \omega$.
 	\end{prova}
 	
-	\begin{exemplo}
-		(Variedade simplética 2-esfera) Sejam $S^{2} \subset \real{3}$ a 2-esfera centrada na origem de $\real{3}$ e $\varphi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
-		$$
-		\varphi(q, p) = (cos (p) cos (q), cos (p) sin (q), sin (p)).
-		$$
-		
-		Com isso, tem-se que o espaço tangente $T_{x}S^{2} $ é gerado por $ \{\derivadaparcialabrev{ q}, \derivadaparcialabrev{ p} \}|_{x}$ onde
-		$$
-		\begin{aligned}
-		\derivadaparcialabrev{ q} &= -cos (p)sin (q) \derivadaparcialabrev{x}+ cos (p)cos (q) \derivadaparcialabrev{y},
-		\\
-		\derivadaparcialabrev{ p} &=  - sin (p) cos (q) 	\derivadaparcialabrev{x} - sin (p) sin (q) 	\derivadaparcialabrev{y} +cos (p)				\derivadaparcialabrev{z}.
-		\end{aligned} 
-		$$
-		Seja $\omega\in \Omega^{2}(S^{2})$ definida por $\omega_{x} = dq \wedge dp$. É imediato que $d\omega_{x} = 0$ pois as componentes de $\omega$ são constantes, $\omega$ é fechada. Além disso, suponha que $\omega$ seja degenerada. Então existe um vetor não-nulo $v_{x} = v^{q}_{x}\partial_{q}+v^{p}_{x}\partial_{p} \in T_{x}S^{2}$ tal que $\omega_{x}(v, u)=0$ para todo $u_{x}\in T_{x}S^{2}$. Desse modo, fazendo $u_{x} = \partial_{q}$ tem-se que $0=\omega_{x}(v, \partial_{q}) = v^{q}_{x}$. Logo $v^{q}_{x}=0$. Com um argumento análogo pode-se verificar que $v^{p}=0$. Portanto $v=0$, contradizendo a hipótese. Logo $\omega$ é não-degenerada. Como $S^{2}$ é uma 2-variedade diferenciável, então o par $(S^{2}, \omega)$ é uma 2-variedade simplética.
-	\end{exemplo}
+	
 	
 	\begin{exemplo}
-		(Função Hamiltoniana) Com base no exemplo anterior, defina $H:S^{2}\times \reta\to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pelas equações de Hamilton, pode-se verificar que 
+		(Função Hamiltoniana) Seja $H:\real{2} \to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pelas equações de Hamilton, pode-se verificar que 
 		$$
-		x(t)=(p_{0}sent(t)+q_{0}\cos(t), p_{0}\cos(t)-q_{0}sent(t))
-		$$ 
-		é a solução do sistema Hamiltoniano para a condição inicial $x(0) = (q_{0}, p_{0})$. Com isso, para um ponto arbitrário $(q,p) \in S^{2}$, o fluxo Hamiltoniano é
+			\left(
+			\begin{array}{c}
+			\dot{q}
+			\\
+			\dot{p}
+			\end{array}
+			\right) = 
+			\left(
+			\begin{array}{c}
+			p
+			\\
+			-q
+			\end{array}
+			\right)
+			=\estruturacomplexa
+			\left(
+			\begin{array}{c}
+			q
+			\\
+			p
+			\end{array}
+			\right).
 		$$
-		\psi_{t}(q,p)=(psint(t)+q\cos(t), p\cos(t)-qsint(t)),
-		$$
-		e o campo Hamiltoniano é 
-		$$
-		\campohamiltonianoabrev(t) = (p\cos(t)-qsint(t))\partial_{q}-(psint(t)+q\cos(t))\partial_{p}.
-		$$
-		Logo $H$ é uma função Hamiltoniana.
-		
-		Note que, dado $t \in \reta$, tem-se que $\psi_{t}:S^{2}\to S^{2}$ é um difeomorfismo. Além disso, tomando $v =v^{q} \partial_{q}+v^{p} \partial_{p}\in T_{(q,p)}S^{2}$, o diferencial $	D_{(q,p)}\psi_{t}:T_{(q,p)}S^{2}\to T_{(q,p)}S^{2}$ é dado por
+		E o campo Hamiltoniano é $\campohamiltoniano{q,p} = p\partial_{q}-q\partial_{p}$. Com isso, a linha de fluxo que passa pelo ponto $(q,p)$ é dada por $\psi_{t}(q,p) = (q(t), p(t))$, onde $(q(0), p(0)) = (q, p)$. Então o sistema de equações diferenciais $\dot{\psi_{t}}(q,p) = \campohamiltoniano{\psi_{t}(q,p)}$ pode ser escrito em termos matriciais
 		$$
 		\begin{aligned}
-		D_{(q,p)}\psi_{t}(v)
-		&=\left(
-		\begin{array}{cc}
-		\cos(t) & \sin(t)
+		\dot{\psi_{t}}(q,p) &=  \campohamiltoniano{\psi_{t}(q,p)}
 		\\
-		-\sin(t)& \cos(t)
-		\end{array}
-		\right) \left(
+		\derivada{}{t}\left(
 		\begin{array}{c}
-		v^{q}
+		q(t)
 		\\
-		v^{p}
+		p(t)
 		\end{array}
-		\right) 
+		\right)
+		&=
+		\estruturacomplexa
+		\left(
+		\begin{array}{c}
+		q(t)
 		\\
-		&=(v^{q}\cos(t)+v^{p}\sin(t)) \partial_{q}+(-v^{q}\sin(t)+v^{p}\cos(t)) \partial_{p}
-		\\
-		&=V^{q} \partial_{q}+V^{p} \partial_{p}.		 
+		p(t)
+		\end{array}
+		\right),
 		\end{aligned}
+		$$ 
+		que tem como solução $\psi_{t}=e^{t\estruturacomplexa}$. Portanto, o fluxo do campo $\campohamiltonianoabrev$ é
 		$$
-		Com isso, pode-se mostrar que $\psi_{t}$ é um simplectomorfismo. De fato, fazendo $x=(q,p)\in S^{2}$ tem-se que
+		\psi_{t}(q,p) = e^{t\estruturacomplexa}
+		\left(
+		\begin{array}{c}
+		q
+		\\
+		p
+		\end{array}
+		\right).
+		$$
+		Note que, em $t=0$ tem-se que $Hess(H) = \estruturacomplexa$. Logo, a hessiana de $H$ é não-degenerada e os pontos críticos de $H$ são pontos críticos não-degenerados, portanto $H$ é uma função de Morse.
+		
+		A aplicação $\psi_{t}:\real{2}\to \real{2}$ é um difeomorfismo para todo $t\in \reta$. De fato, o diferencial $	D_{(q,p)}\psi_{t}:T_{(q,p)}\real{2}\to T_{\psi_{t}(q,p)}\real{2}$ é dado por $	D_{(q,p)}\psi_{t} = e^{t\estruturacomplexa}Id$. Usando o fato de que $(e^{t\estruturacomplexa}Id)^{*} = e^{-t\estruturacomplexa}Id$, tem-se que
+		
 		$$
 		\begin{aligned}
 		(\psi^{*}_{t}\omega_{x})(v,u)
 		&=\omega_{x}(D_{x}\psi_{t}(v), D_{x}\psi_{t}(u))
 		\\
-		&=\omega_{x}(V^{q}\partial_{q}, U^{p}\partial_{p} )	+\omega_{x}(V^{p}\partial_{p}, U^{q}\partial_{q} )
+		&=\omega_{x}(e^{t\estruturacomplexa}v,e^{t\estruturacomplexa}u)
 		\\
-		&=V^{q}U^{p}-V^{p}U^{q}
+		&=\omega_{x}(e^{t\estruturacomplexa}(e^{t\estruturacomplexa})^{*}v,u)
 		\\
-		&=(v^{q}\cos(t)+v^{p}\sin(t))(-u^{q}\sin(t)+u^{p}\cos(t))
+		&=\omega_{x}(e^{t\estruturacomplexa}e^{-t\estruturacomplexa}v,u)
 		\\
-		&-(-v^{q}\sin(t)+v^{p}\cos(t))(u^{q}\cos(t)+u^{p}\sin(t))
-		\\
-		&=v^{q}u^{p}-v^{p}u^{q}
-		\\
-		&=\omega_{x}(v,u).
+		&=\omega_{x}(v,u)
 		\end{aligned}
 		$$
 		Logo $	(\psi^{*}_{t}\omega_{x}) = \omega_{x}$ para todo $t\in \reta$.
-		
-		Note que o solução $x$ para a condição inicial  $x(0) = (q_{0}, p_{0})$ é $2\pi$-periódica, pois $x(0)\neq x(2\pi)$. Contudo, $x$ é uma solução degenerada pois $\det(D_{x(0)}\psi_{2\pi}-Id) = 0$.
 	\end{exemplo}
 	
-	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
-	Nesse capítulo é considerado $M$ como sendo uma 2n-variedade diferenciável fechada (veja a Definição \ref{definicao_variedade_fechada}).
+	Os conceitos desenvovidos nas próximas seções são baseados em uma função Hamiltoniana dependente do tempo, isto é, uma Hamiltoniana $H:M\times \reta\to \reta$ associada ao campo Hamiltoniano $\campohamiltonianoabrev$ e que satisfaz as equações
+	$$
+	\dot{x}(t) = \campohamiltoniano{x(t),t}.
+	$$
 	
-	Como foi abordado na Introdução, a conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ e, para o sistema Hamiltoniano abaixo,
+	\begin{observacao}
+		A função Hamiltoniana que não tem dependência temporal, isto é, $H(x(t), t) = H(x(t))$, é chamada função Hamiltoniana autônoma.
+	\end{observacao}
+	
+	Bem como ao caso autônomo, as soluções do sistema Hamiltoniana dependente do tempo podem ser associadas a uma família de difeomorfismos $\psi_{t}:M \to M$ tal que
 	$$
-	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t),
+	\dot{\psi_{t}}(x) = \campohamiltoniano{\psi_{t}(x), t}\; \text{e} \; \psi_{0}=Id. 
+	$$ 
+	
+	Analogamente ao que foi feito na Proposição \ref{proposicao_familia_simplectomorfismos}, pode-se mostrar que essa família de difeomorfismos é uma família de simplectomorfismos.
+	
+	
+		
+	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
+	Nesse capítulo é considerado $M$ como sendo uma 2n-variedade diferenciável fechada e $(M, \omega)$ uma variedade simplética.
+	
+	A conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ e, para o sistema Hamiltoniano,
 	$$
-	busca-se as soluções 1-periódicas (isto é, $\psi(t+1)=\psi(t)$) e contráteis, onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$. O que é equivalente a analisar as aplicações $\psi : \circulo\to M$ que satisfazem esse sistema.
+	\derivada{\psi}{t}(t) = X_{H}(\psi(t), t),
+	$$
+	busca-se as soluções 1-periódicas (isto é, $\psi(t+1)=\psi(t)$) e contráteis, onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$. Isto é equivalente a analisar as aplicações $\psi : \circulo\to M$ que satisfazem esse sistema.
 	
 	\begin{definicao}
 		(Laços contráteis) O conjunto das aplicações $\psi:\circulo \to M$ de classe $C^{\infty}$ e contráteis é denotado por $\lacocontrateis$.
 	\end{definicao}
 	
-	A construção do complexo de Morse-Witten basea-se na determinação dos pontos críticos de uma função de Morse-Smale $f: M\to \reta$ e como tais pontos são conectados pelas linhas do fluxo do gradiente negativo $-\gradiente$. Para a demonstração da Conjectura de Arnold uma abordagem análoga é realizada. Contudo, em vez de uma variedade de dimensão finita $M$ tem-se um espaço de funções $\lacocontrateis$, e em vez de uma função $f:M\to \reta$ tem-se um funcional $\funcionalH:\lacocontrateis\to \reta$. A seguir é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias baseado nos pontos críticos desse funcional e em como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
+	Para demonstrar as desigualdades de Morse, foi construído o complexo de Morse-Witten de uma função de Morse-Smale $f: M\to \reta$ e a diferencial desse complexo descreve como os pontos críticos de $f$ pontos são conectados pelas linhas do fluxo do gradiente negativo $-\gradiente$. Para a demonstração da Conjectura de Arnold uma abordagem análoga é realizada. Contudo, o invés de uma variedade de dimensão finita $M$ tem-se um espaço de funções $\lacocontrateis$, e ao invés de uma função $f:M\to \reta$ tem-se um funcional $\funcionalH:\lacocontrateis\to \reta$.
 	
-	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$ é uma variedade, mais especificamente uma variedade de Banach. Com isso, dado $\gamma\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{\gamma}{\lacocontrateis}$ está bem-definido.
+	Nesta seção é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias cujo grupo graduado é gerado pelos pontos críticos desse funcional cujo diferencial descreve como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
 	
-	Sejam $\gamma \in \lacocontrateis$ e $X \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Considere o caminho $u : \reta \to \lacocontrateis$ como solução do sistema $u'(0)=X $ e $u(0) = \gamma$. Com isso, $u(s)\in \lacocontrateis$ para todo $s\in \reta$, isto é, $u(s):\circulo\to M$, onde $u(0,z) = \gamma(z)$ para todo $z\in \circulo$. Portanto
+	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $\gamma\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{\gamma}{\lacocontrateis}$ está bem-definido.
+
+	Seja $\gamma:\circulo\to M$ um caminho contínuo, então o pullback $\gamma^{*}TM$ é o conjunto $\{(\gamma(t), Y(\gamma(t)): Y\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. é o $2n$-fibrado vetorial onde as fibras são $\espacotangenteponto{\gamma(t)}{M}$. Dado $(x, Y(x)) \in TM$, então 
+	
+	isto é, 
+	
+	e com isso, seus elementos são as restrições dos campos vetoriais $X \in \campossuaves{M}$ ao caminho $\gamma$. Essa descrição resulta na identificação 
 	$$
-	\derivadaparcial{}{s}u(s,z)|_{s=0}=X(z) \in \espacotangenteponto{\gamma(z)}{M}.
+	\espacotangenteponto{\gamma}{\lacocontrateis} \ni X \Rightarrow  X|_{\gamma} \in \pullbackfibradotangente{\gamma}{M}.
 	$$
 	
+	Tome $\gamma \in \lacocontrateis$ e considere o caminho $u : \reta \to \lacocontrateis$ solução do sistema $u'(0)=X $ e $u(0) = \gamma$. Com isso, $u(s)\in \lacocontrateis$ para todo $s\in \reta$, isto é, $u(s):\circulo\to M$, onde $u(0,z) = \gamma(z)$ para todo $z\in \circulo$. Portanto
+	$$
+	\derivadaparcial{u}{s}(s,z)|_{s=0} \in \espacotangenteponto{\gamma(z)}{M}.
+	$$
 	
-	Dado que $\gamma:\circulo\to M$ é um caminho contínuo, então o pullback $\gamma^{*}TM$ é o $2n$-fibrado vetorial onde as fibras são $\espacotangenteponto{\gamma(t)}{M}$, e com isso, seus elementos são as restrições dos campos vetoriais $X \in \campossuaves{M}$ ao caminho $\gamma$. Essa descrição resulta na identificação $\espacotangenteponto{\gamma}{\lacocontrateis} \ni X \mapsto  X|_{\gamma} \in \pullbackfibradotangente{\gamma}{M}$. 
 	\begin{definicao}\label{definicao_funcional_hamiltoniano}
-		(Funcional Hamiltonianno) O funcional Hamiltoniano é a aplicação $\funcionalH: \lacocontrateis\to \reta$ definida por
+		(Funcional de Ação) O funcional de ação é a aplicação $\funcionalH: \lacocontrateis\to \reta$ definida por
 		$$
 		\funcionalHponto{\gamma} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
 		$$
 		onde $D^{2} \subset \mathbb{C}$ é o disco fechado e $u(e^{i2\pi t})=\gamma(t)$. A aplicação $u:D^{2}\to M$ é chamada extensão de $\gamma$ para o disco.
 	\end{definicao}
 	
+	Vamos assumir que a variedade $M$ satisfaz a seguinte condição, conhecida como aesfericidade simplética.
+	
 	\begin{definicao}\label{definicao_condicao_aesfericidade}
-		(Condição de Aesfericidades) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
+		(Condição de \vermelho{Aesfericidades (ver a tradução do termo para o português)}) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
 		$$
 		\int_{S^{2}} u^{*}\omega = 0.
 		$$
 	\end{definicao}
 	
 	\begin{observacao}
-		A primeira integral na Definição \ref{definicao_funcional_hamiltoniano} do funcional Hamiltoniano depende explicitamente da extensão de $\gamma$ escolhida. Supondo que $v : D^{2}\to M$ é outra extensão de $\gamma$, então
+		A primeira integral na Definição \ref{definicao_funcional_hamiltoniano} do funcional de ação depende explicitamente da extensão de $\gamma$ escolhida. Supondo que $v : D^{2}\to M$ é outra extensão de $\gamma$, então
 		$$
 		\int_{D^{2}}u^{*}\omega - \int_{D^{2}}v^{*}\omega  = \int_{S^{2}}w^{*}\omega, 
 		$$
@@ -2586,7 +2635,7 @@
 		\end{figure}
 	\end{observacao}
 	
-	Seja $T\lacocontrateis$ o fibrado tangente de $\lacocontrateis$. Então o diferencial do funcional Hamiltoniano é a aplicação $d\funcionalH: T\lacocontrateis \to \real{}$ e , em analogia à análise em espaços de dimensão finita, o gradiente é o campo suave $\gradientefuncional\in \campossuaves{\lacocontrateis}$ tal que $d_{\gamma}\funcionalH(X) = \produtointerno{\gradientefuncional(\gamma)}{X(\gamma)}$ para todo $X\in \espacotangenteponto{\gamma}{\lacocontrateis}$, onde $\produtointerno{.}{.}$ é um produto interno definido a seguir.
+	Seja $T\lacocontrateis$ o fibrado tangente de $\lacocontrateis$. Então o diferencial do funcional de ação é a aplicação $d\funcionalH: T\lacocontrateis \to \real{}$ e , em analogia à análise em espaços de dimensão finita, o gradiente é o campo suave $\gradientefuncional\in \campossuaves{\lacocontrateis}$ tal que $d_{\gamma}\funcionalH(X) = \produtointerno{\gradientefuncional(\gamma)}{X(\gamma)}$ para todo $X\in \espacotangenteponto{\gamma}{\lacocontrateis}$, onde $\produtointerno{.}{.}$ é um produto interno definido a seguir.
 	
 	Sejam $Y(t) \in \espacotangenteponto{\gamma(t)}{M}$, $\tilde{\gamma}:(-\epsilon, \epsilon)\times S^{1} \to M$  uma aplicação de classe $C^{1}$ tal que $\tilde{\gamma}(0,t) = \gamma(t)$ e $Y(t) = \derivadaparcial{}{s}\tilde{\gamma}(s,t)|_{s=0}$. Com isso, o diferencial de $\funcionalH$ no ponto $\gamma$ e avaliado em $Y$ é dado por $d_{\gamma}\funcionalH(Y) = \derivadaparcial{}{s}\funcionalH(\tilde{\gamma})|_{s=0}$.
 	
@@ -2650,9 +2699,9 @@
 	\omega(\dot{\gamma} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{\gamma}{\lacocontrateis}.
 	$$
 	
-	Como $\omega$  é uma forma simplética não-degenerada, então deve-se ter $\dot{\gamma}(t) - \campohamiltonianoabrev(\gamma, t)=0$. Portanto, um dado $\gamma \in \lacocontrateis$ é um ponto crítico do funcional Hamiltoniano $\funcionalH$ se, e somente se, $\gamma$ é uma solução 1-periódica e contrátil das equações de Hamilton.
+	Como $\omega$  é uma forma simplética não-degenerada, então deve-se ter $\dot{\gamma}(t) - \campohamiltonianoabrev(\gamma, t)=0$. Portanto, um dado $\gamma \in \lacocontrateis$ é um ponto crítico do funcional de ação $\funcionalH$ se, e somente se, $\gamma$ é uma solução 1-periódica e contrátil das equações de Hamilton.
 	
-	Foi determinado o diferencial do funcional Hamiltoniano e foi caracterizado os pontos críticos do mesmo. A seguir será definido o campo gradiente negativo de $\funcionalH$. Sabe-se que, dado $J \in \estruturascomplexas{M}{\omega}$, tem-se que $g_{p}(., .)=\omega_{p}(.,J.):T_{p}M\times T_{p}M \to \reta$, definida por $\omega_{p}(X,JY)$, é uma métrica Riemannian (veja \cite{manfredo_riemannian_geo}).
+	Foi determinado o diferencial do funcional de ação e foi caracterizado os pontos críticos do mesmo. A seguir será definido o campo gradiente negativo de $\funcionalH$. Sabe-se que, dado $J \in \estruturascomplexas{M}{\omega}$, tem-se que $g_{p}(., .)=\omega_{p}(.,J.):T_{p}M\times T_{p}M \to \reta$, definida por $\omega_{p}(X,JY)$, é uma métrica Riemannian (veja \cite{manfredo_riemannian_geo}).
 	
 	Com isso, pode-se munir $\lacocontrateis$ com uma métrica $\produtointerno{.}{.}_{\gamma}: \espacotangenteponto{\gamma}{\lacocontrateis} \times \espacotangenteponto{\gamma}{\lacocontrateis} \to \reta$, a qual é induzida por $g$ do seguinte modo:
 	
@@ -2829,7 +2878,7 @@
 		converge uniformemente em $t\in \circulo$.
 	\end{teorema}
 	
-	O lema a seguir caracterisza o conjunto dos pontos críticos do funcional Hamiltoniano e sua demonstração esta em $\cite{audi_floer_homology}$. 
+	O lema a seguir caracterisza o conjunto dos pontos críticos do funcional de ação e sua demonstração esta em $\cite{audi_floer_homology}$. 
 	\begin{lema}
 		Supondo que  trajetórias periódicas do campo Hamiltoniano $\campohamiltonianoabrev$ sejam não-degeneradas, então o conjunto $\pontoscriticos{\funcionalH}$ é finito. Logo, o conjunto das trajetórias de $\campohamiltonianoabrev$ é finito.
 	\end{lema}
@@ -3787,6 +3836,17 @@
 
 	\section{$D\operadorFloer$ é um operador de Fredholm}
 	\vermelho{(Colocar uma resuma da estratégia da demonstração aqui...)}
+	
+	\vermelho{(Acho que essas definições devem ser inserirdas em um apêndice dentro do próprio capítulo.)}
+	
+	\begin{definicao}
+		Sejam $A,B$ espaços normados. Um operador linear $T:A\to B$ é um operador linear limitado se 
+		$$
+		\norma{T} = \sup_{\norma{\xi}_{A}=1}\norma{T\xi}_{B}<\infty.
+		$$
+		O conjunto dos operadores limitados de $A$ em $B$ é denotado por $\operadoreslimitados{A}{B}$.
+	\end{definicao}
+	
 	\begin{definicao}\label{definicao_operador_compacto}
 		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
 	\end{definicao}
@@ -3799,17 +3859,32 @@
 		Sejam $A,B,C$ espaços de Banach e $D:A\to B$ um operador limitado e $K:A \to C$ um operador compacto. Supondo que exista uma constante $c>0$ tal que $\normasubscrito{\xi}{A} \leq c(\normasubscrito{D\xi}{B} + \normasubscrito{K\xi}{C})$, então $D(A) = \overline{D(A)}$ e $dim(Ker(D)) <\infty$.
 	\end{lema}
 	
+	\begin{definicao} (Semi-grupo fortemente contínuo)
+		Seja $\mathcal{B}(B)$ o conjunto dos operador lineares limitados definidos no espaço de Banach $B$. Uma aplicação $T:\real{}_{+}\to \mathcal{B}(B)$ é um semi-grupo fortemente contínuo se satasifaz as seguintes propriedades:
+			
+			\begin{enumerate}
+				\item $T(0) = Id$ e $T(s+t) = T(s)T(t), \;\forall s, t \in \real{}_{+}$
+				
+				\item Para cada $x\in B$ a aplicação $T_{x}: \reta_{+}\to B$ definida por $T_{x}(t) = T(t)x$ é contínua.
+			\end{enumerate}
+	
+	\end{definicao}
+	
+	\begin{observacao}
+		A primeira propriedade é chamada de  propriedade de semi-grupo, já a segunda, é chamada de proriedade de continuidade forte.
+	\end{observacao}
+	
 	Daqui em diante, quando não houver ambiguidades, denotaremos $D\operadorFloer_{u}$ por $\diferencialfloerabrev$, para um dado $u\in \caminhosexponenciaisconectantespadrao$.
 	
-	Aqui vamos demonstrar apenas particularização $p=2$. O caso geral em que $p\geq 2$ pode ser encontrado em $\cite{salamon_lecture}$ \vermelho{(Eu não me lembro em que ponto essa hipótese foi utilizada)}.
-	\vermelho{(Alterar para de p => 2 nos índices dos espaços normados pois estamos fazendo um caso particular.)}
+	O seguinte lema é utilizado na demonstração da propriedade de Fredholm do diferencial do operador de Floer. Contudo, no texto será demonstrado apenas o caso particular em que $p=2$, já o caso em que $1 <p<\infty$ pode ser encontrado em \cite{salamon_lecture} e \cite{audi_floer_homology}.
+	
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
-		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $\det(id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do distema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialfloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1 < p <\infty$.
+		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $\det(Id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialfloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1<p<\infty$.
 	\end{lema}
 	\begin{prova}
-		Considere o operador $A: \espacosobolevgeral{2}{\circulo;\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$ definido por $A = \estruturacomplexa \derivadaparcialabrev{t} + S$. Com isso, dado $\Psi \in \espacosobolevgeral{2}{\circulo;\real{2n}}$ tem-se que $A\Psi(t) = \diferencialfloerabrev\Psi(t)$ para todo $t \in \circulo$. Logo $A=\diferencialfloerabrev$. Pela Proposição \ref{proposicao_diferencial_floer_adjunto}, tem-se que $A^{*}\Psi(t) = \diferencialfloerabrev^{*}\Psi(t) = \diferencialfloerabrev\Psi(t) = A\Psi(t)$, pois $S$ não depende do parametro $s \in \real{}$. Portanto $A=A^{*}$ e $A$ é um operador auto-adjunto, logo é diagonalizável.
+		Fixe $p=2$ e considere o operador $A: \espacosobolevdois{\circulo}{\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$ definido por $A = \estruturacomplexa \derivadaparcialabrev{t} + S$. Com isso, dado $\Psi \in \espacosobolevdois{\circulo}{\real{2n}}$ tem-se que $A\Psi(t) = \diferencialfloerabrev\Psi(t)$ para todo $t \in \circulo$. Logo $A=\diferencialfloerabrev$. Pela Proposição \ref{proposicao_diferencial_floer_adjunto}, tem-se que $A^{*}\Psi(t) = \diferencialfloerabrev^{*}\Psi(t) = \diferencialfloerabrev\Psi(t) = A\Psi(t)$, pois $S$ não depende do parametro $s \in \real{}$. Portanto $A=A^{*}$ e $A$ é um operador auto-adjunto.
 		
-		\textbf{Etapa 1:} Note que $\Psi \in Ker(A)$ se, e somente se, $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Assumindo que $\det(Id - \Psi(1)) \neq 0$, então pode-se afirmar que $A$ é invertível, isto é, $0\neq \espectrooperador{A}$ \vermelho{(Não entendi essa implicação...)}. De fato, tomando $\Psi \in Ker(A)$ tem-se um sistema homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial e $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO $\cite{pontryagin_ode}$ pode-se afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema da forma $\Psi = R\Psi_{0}$ e. Pela unicidade da solução, pode-se afirmar que $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $\Psi$ tem-se
+		\textbf{Etapa 1:} Tomando $\Psi \in Ker(A)$, tem-se um sistema de equações diferenciais homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial e $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO $\cite{pontryagin_ode}$ pode-se afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema da forma $\Psi = R\Psi_{0}$ e. Pela unicidade da solução, pode-se afirmar que $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $\Psi$ tem-se
 		$0=A\Psi(t) = A(R(t)\Psi_{0}) = (\estruturacomplexa\derivadaparcialabrev{t}+S)R(t)\Psi_{0}$, o que implica em no sistema de equações diferenciais para $\dot{R}(t) = \estruturacomplexa SR(t)$ com $R(0) = Id$. Logo $R \in Ker(A)$.
 		
 		Para o caso em que $\Psi \notin Ker(A)$ aplica-se o método de variação de constantes 
@@ -3856,44 +3931,47 @@
 		\Psi_{0}(0) = -(Id - R(1))^{-1}R(1)\int_{0}^{1} R^{-1}(\alpha)\estruturacomplexa \zeta(\alpha).
 		$$
 		
-		O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe uma solução $\Psi \in W$ do sistema $A\Psi = \zeta$ e é unicamente determinada pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in L$, existe uma único valor inicial $\Psi_{0}(0)$. Portanto $\zeta$ determina unicamente a solução $\Psi$ e pode-se escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível e $0 \notin \sigma(A)$.
+		O Teorema Funcamental de Existência e Unicidade das soluções de EDO (veja em $\cite{pontryagin_ode}$ ou $\cite{doering_ode}$) garante que existe uma solução $\Psi \in W$ do sistema $A\Psi = \zeta$ e é unicamente determinada pela condição inicial $\Psi(0) = \Psi_{0}(0)$. A equação anterior afirma que, para uma dada $\zeta \in L$, existe uma único valor inicial $\Psi_{0}(0)$. Portanto $\zeta$ determina unicamente a solução $\Psi$ e pode-se escrever $A^{-1}\zeta(t)=\Psi(t)$, ou seja, $A$ é invertível.
 		
-		\textbf{Etapa 2:} Em \cite{kreyszig_analise_funcional} esta demonstrado que $ \espacoLdois{\circulo;\real{2n}}$ é um espaço de Hilbert. Com isso, pode-se escrever a decomposição $L=E^{+}\oplus E^{-}$, onde $E^{+}$ e $E^{-}$ são os auto-espaços associados aos auto-valores positivos e negativos, respectivamente. Sejam $A^{+}=A |_{E^{+}}$ e $P^{+}: L \to E^{+}$ a projeção em $E^{+}$, e analogamente, $A^{-}$ e $P^{-}$. Defina a aplicação $\real{}_{+} \ni s \mapsto exp(\mp s A^{\pm}) \in \mathcal{L}(L)$ e $K: \real{}\to \mathcal{L}(W)$.
-		$$
-		\funcaocond{K(s)}{exp(-s A^{+})P^{+}}{s \geq 0}{-exp(-s 	A^{-})P^{-}}{s<0}.
-		$$
-		\vermelho{
-			Um semi-grupo fortemente contínuo sobre um espaço de Banach $B$ é uma aplicação $T:\real{}_{+}\to B$ tal que:
-			
-			\begin{enumerate}
-				\item $T(0) = Id$,
-				\item $T(s+t) = T(s)T(t), \;\forall s, t \in \real{}_{+}$
-				\item $lim_{t \to 0^{+}}\norma{T(t)x - x } = 0, \; \forall x \in B $.
-			\end{enumerate}
-			Os dois primeiros  axiomas são algébricos, já o último é topológico e caracteriza a contínuidade do operador. Nesse sentido, a aplicação $exp(\mp A^{\pm}):\real{}_{+} \to \mathcal{L}(W)$ é um semi-grupo fortemente contínuo e $K$ é descontínua em $s=0$ pois $lim_{s\to 0^{+}}K(s) = P^{+}$ e $lim_{s\to 0^{-}} K(s)= -P^{-}$, mas é fortemente contínua para $s \in \real{}\backslash\{0\}$. 
-		}
+		\textbf{Etapa 2:} Por simplicidade, denote $\espacoLdois{\circulo;\reta}$ por $\mathcal{H}$ e $\espacosobolevdois{\circulo}{\reta}$ por $\mathcal{W}$. Além disso, a inclusão $\espacosobolevdois{\circulo}{\real{2n}} \hookrightarrow \espacoLdois{\circulo;\real{2n}}$ é um compacto (veja \ref{teorema_sobolev}). Em \cite{breazis_sobolev_spaces} é demonstrado que $C^{\infty}(\circulo;\real{2n})$ é denso em $\espacosobolevdois{\circulo}{\real{2n}}$ e em $\espacoLdois{\circulo;\real{2n}}$. Logo, $\espacosobolevdois{\circulo}{\real{2n}}$ é denso em  $\espacoLdois{\circulo;\real{2n}}$.
 		
-		Dado $s \in \real{}$, afirmo que $K(s)$ é um operador linear limitado. De fato, para $s\geq 0$ é linear pois é a composição dos operadores lineares $exp(- sA^{+})$ e $P^{+}$. É limitado pois
+		\textbf{Etapa 3:} Em \cite{kreyszig_analise_funcional} é demonstrado $ \espacoLdois{\circulo;\real{2n}}$ é um espaço de Hilbert e que os auto-valores de operadores auto-adjunto são reais, portanto $\espectrooperador{A}\subset \reta$. Suponha que $0 \in \espectrooperador{A}$. Então existe um auto-vetor não-nulo $v$ de $0$ tal que $Av=0.v=0$, o que contradiz o fato de que $A$ é injetor. Logo, $0\notin \espectrooperador{A}$. Com isso, pode-se escrever a decomposição $\espacoLdois{\circulo;\real{2n}}=E^{+}\oplus E^{-}$, onde $E^{+}$ e $E^{-}$ são os auto-espaços associados aos auto-valores positivos e negativos, respectivamente. Defina $A^{+}=A |_{E^{+}}$ e $P^{+}: \espacoLdois{\circulo;\real{2n}} \to E^{+}$ a projeção em $E^{+}$, e analogamente, $A^{-}$ e $P^{-}$. Sejam $\Exp_{A^{+}}, \Exp_{A^{-}}: \real{}_{+} \to  \mathcal{B}(\espacoLdois{\circulo;\real{2n}})$ as aplicações definidas por $\Exp_{A^{+}}(s) = e^{(-A^{+}s)}$, $\Exp_{A^{-}}(s) = e^{(A^{-}s)}$ e $K: \real{}\to \mathcal{L}(W)$ definida por
+		$$
+		\funcaocond{K(s)}{\Exp_{A^{+}}(s)P^{+}}{s \geq 0}{-\Exp_{A^{-}}(-s)P^{-}}{s<0}.
+		$$
+	
+		Dado $s \in \real{}$, afirmo que $K(s)$ é um operador linear limitado. De fato, para $s\geq 0$ é limitado pois
 		$$
 		\begin{aligned}
-		\norma{K(s)}_{H} &= \sup_{\norma{\xi}=1}\norma{K(s)\xi}
+		\norma{K(s)} &= \sup_{\norma{\xi}=1}\normaLdois{K(s)\xi}
 		\\
-		&=\sup_{\norma{\xi}=1}\norma{ exp(- sA^{+})P^{+}\xi}
+		&=\sup_{\norma{\xi}=1}\normaLdois{ \Exp_{A^{+}}(s)P^{+}\xi}
 		\\
-		&=\sup_{\norma{\xi}=1}\norma{exp(- sA^{+})\xi^{+}}
+		&=\sup_{\norma{\xi}=1}\normaLdois{\Exp_{A^{+}}(s)\xi^{+}}
 		\\
-		&=\sup_{\norma{\xi}=1}\norma{exp(- s\lambda^{+})\xi^{+}}
+		&=\sup_{\norma{\xi}=1}\normaLdois{e^{( -s\lambda^{+})}\xi^{+}}
 		\\
-		&\leq |exp(- s\lambda^{+})|\sup_{\norma{\xi}=1}\norma{\xi^{+}}
+		&\leq |e^{( -s\lambda^{+})}|\sup_{\norma{\xi}=1}\normaLdois{\xi^{+}}
 		\\
-		&\leq exp(- s\lambda^{+})
+		&\leq e^{( -s\lambda^{+})}
 		\\
 		&< \infty.
 		\end{aligned}
 		$$
+		Sejam $v,u\in \espacosobolevdois{\circulo}{\real{2n}} $ e $\alpha\in \reta$. Então 
+		$$
+		\begin{aligned}
+			K(s)(\alpha v+u) &= \bigparenteses{\sum_{j=0}^{\infty}\frac{(-sA^{+})^{j}}{j!}}(\alpha v+u)
+			\\
+			&=\sum_{j=0}^{\infty}\frac{\alpha(-sA^{+})^{j}v}{j!}+ \sum_{j=0}^{\infty}\frac{(-sA^{+})^{j}u}{j!}
+			\\
+			&=\alpha K(s)v+K(s)u.
+		\end{aligned}
+		$$
+		Portanto, $K(s) \in \operadoreslimitados{ \espacosobolevdois{\circulo}{\real{2n}} }{ \espacoLdois{\circulo;\real{2n}}}$ para todo $s\geq 0$.
 		Com um argumento análogo mostra-se que, para $s<0$, $K(s)$ também é um operador linear e limitado.
 		 
-		Defina $Q: \espacoLdois{\real{};H} \to \espacosobolevgeral{2}{\reta;\real{2n}}\cap \espacoLpGeral{2}{\reta;\real{2n}}$ por
+		Defina $Q: \espacoLdois{\real{};H} \to \espacosobolevdois{\circulo}{\real{2n}}\cap \espacoLpGeral{2}{\reta;\real{2n}}$ por
 		
 		
 		$$
@@ -3927,7 +4005,7 @@
 		onde $N=\norma{\eta}_{\espacoLdois{\retacartesianocirculo}}
 		<\infty$. Portanto $Q(\eta) \in \espacoLdois{\retacartesianocirculo;\real{2n}}$. 
 		
-		Resta mostrar que $Q(\eta) \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$. Para isso, defina $Q\eta = \xi$ tal que
+		Resta mostrar que $Q(\eta) \in \espacosobolevdois{\retacartesianocirculo}{\real{2n}}$. Para isso, defina $Q\eta = \xi$ tal que
 		$$
 		\begin{aligned}
 		Q(\eta)(s,t) 
@@ -3967,7 +4045,7 @@
 			&= (\diferencialfloerabrev \circ Q)\eta(s,t).
 		\end{aligned}
 		$$
-		Como $\eta$ é arbitrário, então $\diferencialfloerabrev \circ Q=Id$. Afirmo que $Q\circ \diferencialfloerabrev = Id$. De fato, tomando $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo;\real{2n}}$ e escrevendo a decomposição $\eta=\eta^{+}+\eta^{-}$ tem-se
+		Como $\eta$ é arbitrário, então $\diferencialfloerabrev \circ Q=Id$. Afirmo que $Q\circ \diferencialfloerabrev = Id$. De fato, tomando $\eta \in \espacosobolevdois{\retacartesianocirculo}{\real{2n}}$ e escrevendo a decomposição $\eta=\eta^{+}+\eta^{-}$ tem-se
 		$$
 		\begin{aligned}
 		Q(\diferencialfloerabrev \eta^{+})(s,t)
@@ -3994,7 +4072,7 @@
 		$$
 		Q(\diferencialfloerabrev(\eta))(s,t) = Q(\diferencialfloerabrev(\eta^{+}))(s,t)+Q(\diferencialfloerabrev(\eta^{-}))(s,t)=\eta^{+}(s,t)+\eta^{-}(s,t) = \eta(s,t).
 		$$ 
-		Como $\eta$ é arbitrário, então $Q\circ \diferencialfloerabrev = Id$, e com isso, $\eta \in \espacosobolevgeral{2}{\retacartesianocirculo; \real{2n}}$.
+		Como $\eta$ é arbitrário, então $Q\circ \diferencialfloerabrev = Id$, e com isso, $\eta \in \espacosobolevdois{\retacartesianocirculo}{\real{2n}}$.
 	\end{prova}
 	
 	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do operador de Floer $\diferencialfloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
@@ -4201,7 +4279,7 @@
 	
 	
 	
-	A transversalidade do operador de Floer tem sua importância na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional Hamiltoniano $\energiafinitaMconectante$ é uma variedade de dimensão finita e é dada por $\mu(\gamma^{-})-\mu(\gamma^{-})$, onde $\gamma^{+}, \gamma^{-}\in \pontoscriticos{\funcionalH}$ que, de acordo com o Teorema \ref{teorema_indice_diferencial_operador_floer},  coincide com o índice do operdador de Fredholm $\ind(\diferencialfloer)$.
+	A transversalidade do operador de Floer tem sua importância na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\energiafinitaMconectante$ é uma variedade de dimensão finita e é dada por $\mu(\gamma^{-})-\mu(\gamma^{-})$, onde $\gamma^{+}, \gamma^{-}\in \pontoscriticos{\funcionalH}$ que, de acordo com o Teorema \ref{teorema_indice_diferencial_operador_floer},  coincide com o índice do operdador de Fredholm $\ind(\diferencialfloer)$.
 	
 	Sabe-se que $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach (veja na Seção \ref{secao_variedade_banach_P}). Com isso, é construída uma seção do fibrado tangente dessa variedade, tal que $\energiafinitaMconectante\subset \caminhosexponenciaisconectantespadrao$ é o conjunto de todos zeros dessa seção. Assim, é demonstrado que $\energiafinitaMconectante$ é a pré-imagem de um valor regular de uma determinada aplicação, e com isso, aplicando a generalização para espaços de dimensão infinita do Teorama de Sard, pode-se concluir que $\energiafinitaMconectante$ é uma variedade de dimensão finita. Nesse ponto é utilizada a propriedade de Fredholm do diferencial do operador de Floer $\diferencialfloer$ para se afirmar a finitude da dimensão dessa variedade.
 	
@@ -4238,7 +4316,7 @@
 	
 	Pode-se mostrar que o conjunto $C^{\infty}_{\epsilon} = \{f\in \funcoessuaves{M\times \circulo}: \norma{f}_{\epsilon}<\infty \}$ munido da norma $\norma{.}_{\epsilon}$ é um espaço de Banach. Além disso, ele é denso em $\funcoessuaves{M\times\circulo}$, como afirma proposição a seguir.
 	
-	\begin{proposicao}
+	\begin{proposicao}\label{proposicao_densidade_perturbacao_hamiltoniana}
 		Existe uma sequência de números reais positivos $\epsilon=(\epsilon_{j})$ tal que $C^{\infty}_{\epsilon}$ é denso em $\funcoessuaves{M\times\circulo}$ na topologia $\cktopologia{1}$.
 	\end{proposicao}
 
@@ -4251,6 +4329,10 @@
 	\begin{teorema}
 		Fixe uma função Hamiltoniana não-degenerada $H$. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de abertos densos de $\hamiltonianasRegulares$ nessa vizinhança tal que, se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloer_{u}$ é sobrejetor para todo $u \in \energiafinitaM(H+h; J)$\vermelho{(Não sei onde o Michelle introduziu essa notação. Devo rever isso!!!)}.
 	\end{teorema}
+
+	\begin{observacao}
+		A escolha de uma Hamiltoniana perturbada para a análise do problema não é restriviva, pois a Proposição \ref{proposicao_densidade_perturbacao_hamiltoniana} garante que, dada uma função Hamiltoniana $H$, existe uma perturbação $h\in C^{\infty}_{\epsilon}$ tal que $H+h$ é suficientemente próxima a $H$, na $\cktopologia{1}$.
+	\end{observacao}
 	
 	\begin{teorema}
 		Para cada $h \in \perturbacaoHamiltoniana{H}$ e para toda solução contrátil 1-periódica $\gamma^{+}, \gamma^{-}$ de $H$, $\energiafinitaM(\gamma^{+}, \gamma^{-}, H+h)$ é uma variedade de dimensão $\mu(\gamma^{+})-\mu(\gamma^{-})$.
@@ -4258,18 +4340,18 @@
 	
 	Seja 
 	$
-	\orbitasConectantesZ = \{ (u, H+h):h\in \perturbacaoHamiltoniana{H} \;\;\text{e}\;\; u \in  \energiafinitaM(\gamma^{+}, \gamma^{-}, J, H)\}
+	\orbitasConectantesZ = \{ (u, \vermelho{H+h}): u \in  \energiafinitaM(\gamma^{+}, \gamma^{-}, J, H) \;\;\text{e}\;\; h\in \perturbacaoHamiltoniana{H} \}
 	$ o conjunto de todas as soluções da equação de Floer conectando $\gamma^{-}$ a $\gamma^{+}$ de todas as perturbações da função Hamiltoniana $H$.
 
-	\begin{proposicao}
+	\begin{proposicao}\label{proposicao_gamma_sobrejetora}
 		Se $(u, H+h) \in \orbitasConectantesZ$, então a aplicação 
 		$$
 		\begin{aligned}
-			\Gamma:\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}\times \perturbacaoHamiltoniana{H} 
-			&\to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}
+			\Gamma:\espacosobolev{\pullbackfibradotangenteM{u}}\times \perturbacaoHamiltoniana{H} 
+			&\to \espacoLp{\pullbackfibradotangenteM{u}}
 			\\
 			(Y, h) 
-			&\mapsto \diferencialfloer^{H+h}_{u}(Y) + \nabla_{u}h
+			&\mapsto \diferencialfloer^{\vermelho{H+h}}_{u}(Y) + \nabla_{u}h
 		\end{aligned}
 		$$
 		é sobrejetora e admite uma inversa contínua a direita.
@@ -4303,6 +4385,28 @@
 	D\sigma_{(u,h)}(Y,\eta) = \diferencialfloer_{u}(Y)+\nabla_{u}\eta.
 	$$
 	
+	\vermelho{(Falta argumentar que é pre-imagem de valor regular, logo é variedade.)}
+	
+	Seja $\pi:\orbitasConectantesZ: \to \perturbacaoHamiltoniana{H}$ a projeção definida por $\pi(u, H+h) = h$ e seu diferencial
+	$$
+	\begin{aligned}
+	D\pi_{(u,H+h)}: T_{(u,H+h)}\orbitasConectantesZ 
+	&\to T_{h}\perturbacaoHamiltoniana{H}=\perturbacaoHamiltoniana{H}
+	\\
+	(Y,\eta) &\mapsto \eta,
+	\end{aligned}
+	$$
+	que por definição é uma aplicação suave. Além disso, $\ker(D\pi_{(u, H+h)})=\diferencialfloer_{u}(\espacosobolev{\pullbackfibradotangenteM{u}})$. De fato, como a aplicação $\Gamma$ definida na Proposição \ref{proposicao_gamma_sobrejetora} é uma sobrejeção, então todo $X\in \espacoLp{\pullbackfibradotangenteM{u}}$ pode ser escrito como $X=\diferencialfloer^{\vermelho{H+h}}_{u}(Y) + \nabla_{u}h$, para algum $(Y, h )\in \espacosobolev{\pullbackfibradotangenteM{u}}\times \perturbacaoHamiltoniana{H} $.
+	
+	Supondo $D\pi_{(u,H+h)}(Y,\eta) = 0$, então $\eta=0$, o que implica em 
+	
+	
+	existe $(Y, \eta) \in \espacosobolev{\pullbackfibradotangenteM{u}}\times \perturbacaoHamiltoniana{H}$ tal que $\Gamma(Y, \eta) =  \diferencialfloer^{\vermelho{H+h}}_{u}(Y) + \nabla_{u}\eta = 0$, o que implica em $\diferencialfloer^{\vermelho{H+h}}_{u}(Y) =-\nabla_{u}\eta$. Como $(u,H+h) \in \orbitasConectantesZ$ é uma solução da equação de Floer para a Hamiltoniana perturbada $H+h$, então 
+	$$
+		D\pi_{(u,H+h)}(Y,\eta) = \eta = -\diferencialfloer^{\vermelho{H+h}}_{u}(Y) = 0.
+	$$
+	Portanto, $\diferencialfloer_{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \ker(D\pi_{(u, H+h)})$. Por outro lado, se $(Y,\eta) \in \ker(D\pi_{(u, H+h)})$, então 
+
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
 	
@@ -4811,6 +4915,10 @@
 		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in p'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
 	\end{definicao}
 	
+	\begin{observacao}
+		Seja $\gamma:\reta \to M$ um caminho contínuo na variedade $M$. Então o pullback $\pullbackfibradotangenteM{\gamma}$ é o conjunto $\{(\gamma(t), X(\gamma(t)): X\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. Note que, $\pullbackfibradotangenteM{\gamma}$ é o $2n$-fibrado vetorial cujas fibras são $\espacotangenteponto{\gamma(t)}{M}$ para cada $t\in \reta$ e o espaço base é $\gamma(\reta)\subset M$. De fato, se $p: \pullbackfibradotangenteM{\gamma} \to B$ e o mapa de projeção desse fibrado, então $p(\gamma(t), Y(\gamma(t))) = \gamma(t)$ e $p^{-1}(\gamma(t)) = \espacotangenteponto{\gamma(t)}{M}$ para todo $t\in \reta$. Com isso, toda seção os vetores tangentes 
+	\end{observacao}
+	
 	\begin{lema}\label{pullback_composicao}
 		(Composição de pullbacks) Sejam $\eta =(E, C, p)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
 	\end{lema}
@@ -5058,7 +5166,7 @@
 	Quando $\Omega\subset\real{n}$ e $n=1$, tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $n>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev) garante a inclusão em $L^{p}$ e uma demonstração pode ser encontrada em $\cite{breazis_sobolev_spaces}$.	
 	
 	\begin{teorema}\label{teorema_sobolev}
-		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a injeção é um operador compacto para $1/q>1/p -1/n$.
+		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a inclusão é um operador compacto para $1/q>1/p -1/n$.
 	\end{teorema}
 	
 	\begin{teorema}\label{teorema_rellich}
