@@ -2434,14 +2434,9 @@
 	$$
 	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
 	$$
-	A aplicação $\psi: M\times \reta\to M$ acima é chamada de fluxo Hamiltoniano.
+	A aplicação $\psi: M\to M$ acima é chamada de fluxo Hamiltoniano.
 	
-	Uma solução $\tau$-periódica do sistema Hamiltoniano é um caminho $x:\reta\to M$ tal que $x(t) = x(t+\tau)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{\tau}(x(0)) = x(\tau) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{\tau}:M\to M$. Supondo que a função Hamiltoniana $H$ também é $\tau$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $\tau$-perídicas do sistema Hamiltoniano.
-	
-	\begin{definicao}(Soluções $\tau$-periódicas não-degeneradas)
-		Uma solução $\tau$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{\tau} - Id)\neq 0$, onde $D_{x(0)}\psi_{\tau}:T_{x(0)}M \to T_{x(0)}M$.
-	\end{definicao}
-	
+
 	A proposição a seguir afirma que o fluxo Hamiltoniano preserva a forma simplética.
 	
 	\begin{proposicao}\label{proposicao_familia_simplectomorfismos}
@@ -2569,6 +2564,11 @@
 	
 	Analogamente ao que foi feito na Proposição \ref{proposicao_familia_simplectomorfismos}, pode-se mostrar que essa família de difeomorfismos é uma família de simplectomorfismos.
 	
+	Uma solução do sistema Hamiltoniano $x:\reta\to M$ é chamada de solução 1-periódica se $x(t) = x(t+1)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{1}(x(0)) = x(1) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{1}:M\to M$. Será visto adiante que, supondo que a função Hamiltoniana $H$ também é $1$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $1$-perídicas do sistema Hamiltoniano (esse resultado está realcionado diretamente com a Conjectura de Arnold, a qual veremos adiante).
+	
+	\begin{definicao}(Soluções $1$-periódicas não-degeneradas)
+		Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(0)}M$.
+	\end{definicao}
 	
 		
 	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
@@ -2588,7 +2588,7 @@
 	
 	Nesta seção é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias cujo grupo graduado é gerado pelos pontos críticos desse funcional cujo diferencial descreve como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
 	
-	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $x\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{x}{\lacocontrateis}$ está bem-definido e pode ser caracterizado da seguinte forma: o espaço tangente em $x \in \lacocontrateis$ pode ser definido como o conjunto dos vetores tangentes de cada caminho $u':\reta\to \lacocontrateis$ de classe $C^{\infty}$ tal que $u'(0)=x$. Desse modo, pode-se associar cada $u'$ pode ser visto como uma aplicação $u: \retacartesianocirculo \to M$ tal que $u(0,t) = x(t)$. Então, para todo $t\in \circulo$ tem-se que
+	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $x\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{x}{\lacocontrateis}$ está bem-definido e pode ser caracterizado da seguinte forma: o espaço tangente em $x \in \lacocontrateis$ pode ser definido como o conjunto dos vetores tangentes de cada caminho $u':\reta\to \lacocontrateis$ de classe $C^{\infty}$ tal que $u'(0)=x$. Desse modo, cada $u'$ pode ser visto como uma aplicação $u: \retacartesianocirculo \to M$ tal que $u'(s)(t) = u(s,t)$ e $u(0,t) = x(t)$ (veja a Figura \ref{figura_caminho_espaco_laco_contrateis}). Então, para cada $t\in \circulo$ tem-se que
 	$$
 	\derivadaparcial{}{s}u(s,t)|_{s=0} \in \espacotangenteponto{x(t)}{M}.
 	$$
@@ -2599,26 +2599,19 @@
 	$$
 	que é a caracterização de uma seção $Y$ do fibrado $\pullbackfibradotangenteM{x}$ (mais detalhes podem ser encontrados na Observação \ref{observacao_pullback_fibrado_tangente}). 
 	
-	Seja $\gamma:\circulo\to M$ um caminho contínuo, então o pullback $\gamma^{*}TM$ é o conjunto $\{(\gamma(t), Y(\gamma(t)): Y\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. é o $2n$-fibrado vetorial onde as fibras são $\espacotangenteponto{\gamma(t)}{M}$. Dado $(x, Y(x)) \in TM$, então 
-	
-	isto é, 
-	
-	e com isso, seus elementos são as restrições dos campos vetoriais $X \in \campossuaves{M}$ ao caminho $\gamma$. Essa descrição resulta na identificação 
-	$$
-	\espacotangenteponto{\gamma}{\lacocontrateis} \ni X \Rightarrow  X|_{\gamma} \in \pullbackfibradotangente{\gamma}{M}.
-	$$
-	
-	Tome $\gamma \in \lacocontrateis$ e considere o caminho $u : \reta \to \lacocontrateis$ solução do sistema $u'(0)=X $ e $u(0) = \gamma$. Com isso, $u(s)\in \lacocontrateis$ para todo $s\in \reta$, isto é, $u(s):\circulo\to M$, onde $u(0,z) = \gamma(z)$ para todo $z\in \circulo$. Portanto
-	$$
-	\derivadaparcial{u}{s}(s,z)|_{s=0} \in \espacotangenteponto{\gamma(z)}{M}.
-	$$
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=9cm,height=5cm]{imagem/caminho_espaco_laco.pdf}
+		\caption{Caminhos no espaço de laços contráteis $\lacocontrateis$.}
+		\label{figura_caminho_espaco_laco_contrateis}
+	\end{figure} 
 	
 	\begin{definicao}\label{definicao_funcional_hamiltoniano}
-		(Funcional de Ação) O funcional de ação é a aplicação $\funcionalH: \lacocontrateis\to \reta$ definida por
+		(Funcional de Ação) O funcional de ação é a aplicação $\funcionalH: \lacocontrateis\to \reta$ dada por
 		$$
-		\funcionalHponto{\gamma} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(\gamma(t), t)dt,
+		\funcionalHponto{x} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(x(t), t)dt,
 		$$
-		onde $D^{2} \subset \mathbb{C}$ é o disco fechado e $u(e^{i2\pi t})=\gamma(t)$. A aplicação $u:D^{2}\to M$ é chamada extensão de $\gamma$ para o disco.
+		onde $D^{2} \subset \mathbb{C}$ é o disco fechado e $u(e^{i2\pi t})=x(t)$. A aplicação $u:D^{2}\to M$ é chamada extensão de $x$ para o disco.
 	\end{definicao}
 	
 	Vamos assumir que a variedade $M$ satisfaz a seguinte condição, conhecida como aesfericidade simplética.
@@ -2631,7 +2624,7 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		A primeira integral na Definição \ref{definicao_funcional_hamiltoniano} do funcional de ação depende explicitamente da extensão de $\gamma$ escolhida. Supondo que $v : D^{2}\to M$ é outra extensão de $\gamma$, então
+		A primeira integral na Definição \ref{definicao_funcional_hamiltoniano} do funcional de ação depende explicitamente da extensão de $x$ escolhida. Supondo que $v : D^{2}\to M$ é outra extensão de $x$, então
 		$$
 		\int_{D^{2}}u^{*}\omega - \int_{D^{2}}v^{*}\omega  = \int_{S^{2}}w^{*}\omega, 
 		$$
@@ -2644,18 +2637,18 @@
 		\end{figure}
 	\end{observacao}
 	
-	Seja $T\lacocontrateis$ o fibrado tangente de $\lacocontrateis$. Então o diferencial do funcional de ação é a aplicação $d\funcionalH: T\lacocontrateis \to \real{}$ e , em analogia à análise em espaços de dimensão finita, o gradiente é o campo suave $\gradientefuncional\in \campossuaves{\lacocontrateis}$ tal que $d_{\gamma}\funcionalH(X) = \produtointerno{\gradientefuncional(\gamma)}{X(\gamma)}$ para todo $X\in \espacotangenteponto{\gamma}{\lacocontrateis}$, onde $\produtointerno{.}{.}$ é um produto interno definido a seguir.
+	Seja $T\lacocontrateis$ o fibrado tangente de $\lacocontrateis$. Então o diferencial do funcional de ação é a aplicação $D\funcionalH: T\lacocontrateis \to \real{}$ e , em analogia à análise em espaços de dimensão finita, o gradiente é o campo suave $\gradientefuncional\in \campossuaves{\lacocontrateis}$ tal que $D_{x}\funcionalH(X) = \produtointerno{\gradientefuncional(x)}{X(x)}$ para todo $X\in \espacotangenteponto{x}{\lacocontrateis}$, onde $\produtointerno{.}{.}$ é um produto interno definido a seguir.
 	
-	Sejam $Y(t) \in \espacotangenteponto{\gamma(t)}{M}$, $\tilde{\gamma}:(-\epsilon, \epsilon)\times S^{1} \to M$  uma aplicação de classe $C^{1}$ tal que $\tilde{\gamma}(0,t) = \gamma(t)$ e $Y(t) = \derivadaparcial{}{s}\tilde{\gamma}(s,t)|_{s=0}$. Com isso, o diferencial de $\funcionalH$ no ponto $\gamma$ e avaliado em $Y$ é dado por $d_{\gamma}\funcionalH(Y) = \derivadaparcial{}{s}\funcionalH(\tilde{\gamma})|_{s=0}$.
+	Sejam $Y(t) \in \espacotangenteponto{x(t)}{M}$, $\tilde{x}:(-\epsilon, \epsilon)\times S^{1} \to M$  uma aplicação de classe $C^{1}$ tal que $\tilde{x}(0,t) = x(t)$ e $Y(t) = \derivadaparcial{}{s}\tilde{x}(s,t)|_{s=0}$. Com isso, o diferencial de $\funcionalH$ no ponto $x$ e avaliado em $Y$ é dado por $D_{x}\funcionalH(Y) = \derivadaparcial{}{s}\funcionalH(\tilde{x})|_{s=0}$.
 	
-	Para se determinar o diferencial do funcional defina $\tilde{u}:(-\epsilon, \epsilon)\times D^{2} \to M$ como sendo uma extensão de $u$, tal que $\tilde{u}(0,z) = u(z)$ e $\tilde{u}(s,e^{2i\pi t}) = \tilde{\gamma}(s,t)$, e $\tilde{Y}(z) = \derivadaparcial{}{s}\tilde{u}(s,z)|_{s=0}$, uma extensão de $Y$. Avaliando o funcional nessas extensões, tem-se
+	Para se determinar o diferencial do funcional defina $\tilde{u}:(-\epsilon, \epsilon)\times D^{2} \to M$ como sendo uma extensão de $u$, tal que $\tilde{u}(0,z) = u(z)$ e $\tilde{u}(s,e^{2i\pi t}) = \tilde{x}(s,t)$, e $\tilde{Y}(z) = \derivadaparcial{}{s}\tilde{u}(s,z)|_{s=0}$, uma extensão de $Y$. Avaliando o funcional nessas extensões, tem-se
 	
 	$$
-	\funcionalHponto{\tilde{\gamma}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{\gamma}(s,t))dt.
+	\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t))dt.
 	$$
 	
 	\begin{observacao}
-		Note que, $	\funcionalHponto{\tilde{\gamma}}$ é uma função de classe $C^{1}$ e que depende explícitamente de $s\in (-\epsilon, \epsilon)$, isto é, $	\funcionalHponto{\tilde{\gamma}}:(-\epsilon,\epsilon)\to \reta$. 
+		Note que, $	\funcionalHponto{\tilde{x}}$ é uma função de classe $C^{1}$ e que depende explícitamente de $s\in (-\epsilon, \epsilon)$, isto é, $	\funcionalHponto{\tilde{x}}:(-\epsilon,\epsilon)\to \reta$. 
 	\end{observacao}
 	
 	Seja $\phi:\retacartesianovariedade\to M$ o fluxo gerado pelo campo $Y\in \campossuaves{M}$. A derivada de Lie no ponto $p\in M $ de uma r-forma $\alpha \in \Omega^{r}(M)$ ao longo do campo $Y$ é definida por 
@@ -2681,79 +2674,79 @@
 	\\
 	&=-\int_{D^{2}}u^{*} d(i_{Y}\omega)
 	\\
-	&=-\int_{\circulo}	\gamma^{*} (i_{Y(t)}\omega)
+	&=-\int_{\circulo}	x^{*} (i_{Y(t)}\omega)
 	\\
-	&= \int_{[0,1]} \omega(\dot{\gamma}(t), Y(t))dt.
+	&= \int_{[0,1]} \omega(\dot{x}(t), Y(t))dt.
 	\end{aligned}
 	$$
 	
 	Diferenciando o segundo termo:
 	$$
 	\begin{aligned}
-	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{\gamma}(s,t)) 
-	&= \int_{[0,1]} \derivadaparcial{}{s} H(\tilde{\gamma}(s,t)) \Bigm\lvert_{s=0}
+	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{x}(s,t)) 
+	&= \int_{[0,1]} \derivadaparcial{}{s} H(\tilde{x}(s,t)) \Bigm\lvert_{s=0}
 	\\
-	&= \int_{[0,1]} d_{\gamma}H(Y)dt
+	&= \int_{[0,1]} d_{x}H(Y)dt
 	\\
-	&= \int_{[0,1]} -\omega_{\gamma}(\campohamiltonianoabrev(\gamma, t), Y)dt. 
+	&= \int_{[0,1]} -\omega_{x}(\campohamiltonianoabrev(x, t), Y)dt. 
 	\end{aligned}
 	$$
 	Por fim, somando ambos os termos:
 	$$
-	d_{\gamma}\funcionalH(Y) = \int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev, Y)dt.
+	D_{x}\funcionalH(Y) = \int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev, Y)dt.
 	$$
 	
-	Se $\gamma \in \lacocontrateis$ é um ponto crítico de $\funcionalH$, então $d_{\gamma}\funcionalH(Y) = 0 $ para todo $Y(\gamma) \in \espacotangenteponto{\gamma}{\lacocontrateis}$. Como o integrando de $d_{\gamma}\funcionalH(Y)$ é uma aplicação contínua, então pode-se afirmar que
+	Se $x \in \lacocontrateis$ é um ponto crítico de $\funcionalH$, então $D_{x}\funcionalH(Y) = 0 $ para todo $Y(x) \in \espacotangenteponto{x}{\lacocontrateis}$. Como o integrando de $D_{x}\funcionalH(Y)$ é uma aplicação contínua, então pode-se afirmar que
 	$$
-	\omega(\dot{\gamma} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{\gamma}{\lacocontrateis}.
+	\omega(\dot{x} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{x}{\lacocontrateis}.
 	$$
 	
-	Como $\omega$  é uma forma simplética não-degenerada, então deve-se ter $\dot{\gamma}(t) - \campohamiltonianoabrev(\gamma, t)=0$. Portanto, um dado $\gamma \in \lacocontrateis$ é um ponto crítico do funcional de ação $\funcionalH$ se, e somente se, $\gamma$ é uma solução 1-periódica e contrátil das equações de Hamilton.
+	Como $\omega$  é uma forma simplética não-degenerada, então deve-se ter $\dot{x}(t) - \campohamiltonianoabrev(x, t)=0$. Portanto, um dado $x \in \lacocontrateis$ é um ponto crítico do funcional de ação $\funcionalH$ se, e somente se, $x$ é uma solução 1-periódica e contrátil das equações de Hamilton.
 	
 	Foi determinado o diferencial do funcional de ação e foi caracterizado os pontos críticos do mesmo. A seguir será definido o campo gradiente negativo de $\funcionalH$. Sabe-se que, dado $J \in \estruturascomplexas{M}{\omega}$, tem-se que $g_{p}(., .)=\omega_{p}(.,J.):T_{p}M\times T_{p}M \to \reta$, definida por $\omega_{p}(X,JY)$, é uma métrica Riemannian (veja \cite{manfredo_riemannian_geo}).
 	
-	Com isso, pode-se munir $\lacocontrateis$ com uma métrica $\produtointerno{.}{.}_{\gamma}: \espacotangenteponto{\gamma}{\lacocontrateis} \times \espacotangenteponto{\gamma}{\lacocontrateis} \to \reta$, a qual é induzida por $g$ do seguinte modo:
+	Com isso, pode-se munir $\lacocontrateis$ com uma métrica $\produtointerno{.}{.}_{x}: \espacotangenteponto{x}{\lacocontrateis} \times \espacotangenteponto{x}{\lacocontrateis} \to \reta$, a qual é induzida por $g$ do seguinte modo:
 	
 	$$
-	\produtointerno{X}{Y}_{\gamma} = \int_{0}^{1}g_{\gamma(t)}(X, Y)dt.
+	\produtointerno{X}{Y}_{x} = \int_{0}^{1}g_{x(t)}(X, Y)dt.
 	$$
 	
-	Note que, na definição da métrica induzida foi usada a identificação dos fibrados tangentes $\espacotangenteponto{\gamma}{\lacocontrateis} \ni X \mapsto  X|_{\gamma} \in \pullbackfibradotangente{\gamma}{M}$. De fato é uma métrica. Como $g$ é bilinear e a integração é uma operação linear, então $\produtointerno{.}{.}_{\gamma}$ é bilinear. Além disso, como $g$ é positiva-definida e a integral preserva essa positividade, então $\produtointerno{.}{.}_{\gamma}$ herda essa propriedade.
+	Note que, na definição da métrica induzida foi usada a identificação dos fibrados tangentes $\espacotangenteponto{x}{\lacocontrateis} \ni X \mapsto  X|_{x} \in \pullbackfibradotangente{x}{M}$. De fato é uma métrica. Como $g$ é bilinear e a integração é uma operação linear, então $\produtointerno{.}{.}_{x}$ é bilinear. Além disso, como $g$ é positiva-definida e a integral preserva essa positividade, então $\produtointerno{.}{.}_{x}$ herda essa propriedade.
 	
 	\begin{definicao}
-		(Gradiente de $\funcionalH$) O campo gradiente de $\funcionalH$ é o campo suave denotado por $\gradientefuncional$ tal que $d_{\gamma}\funcionalH(Y) = \produtointerno{\gradientefuncional}{Y}_{\gamma}$ para todo $\gamma \in \lacocontrateis$ e $Y(\gamma) \in \espacotangenteponto{\gamma}{\lacocontrateis}$.
+		(Gradiente de $\funcionalH$) O campo gradiente de $\funcionalH$ é o campo suave denotado por $\gradientefuncional$ tal que $D_{x}\funcionalH(Y) = \produtointerno{\gradientefuncional}{Y}_{x}$ para todo $x \in \lacocontrateis$ e $Y_{x} \in \espacotangenteponto{x}{\lacocontrateis}$.
 	\end{definicao}
 	
-	Usando a expressão do diferencial $d\funcionalHponto{\gamma}$ determinanda anteriormente e a definição do campo gradiente, tem-se que
+	Usando a expressão do diferencial $D_{x}\funcionalH$ determinanda anteriormente e a definição do campo gradiente, tem-se que
 	$$
 	\begin{aligned}
-	\int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev, Y)dt&=
-	d_{\gamma}\funcionalH(Y)
+	\int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev, Y)dt&=
+	D_{x}\funcionalH(Y)
 	\\ 
-	&= \iprod{\gradientefuncional}{Y}_{\gamma}
+	&= \iprod{\gradientefuncional}{Y}_{x}
 	\\
-	&= \int_{[0,1]}g_{\gamma(t)}(\gradientefuncional, Y)dt
+	&= \int_{[0,1]}g_{x(t)}(\gradientefuncional, Y)dt
 	\\
-	&=\int_{[0,1]} \omega_{\gamma(t)}(\gradientefuncional, JY)dt
+	&=\int_{[0,1]} \omega_{x(t)}(\gradientefuncional, JY)dt
 	\\
-	&=\int_{[0,1]} \omega_{\gamma(t)}(-J\gradientefuncional, Y)dt.
+	&=\int_{[0,1]} \omega_{x(t)}(-J\gradientefuncional, Y)dt.
 	\end{aligned}.
 	$$
 	Subtraindo ambos os lados identidade, tem-se que
 	$$
-	\int_{[0,1]} \omega(\dot{\gamma} - \campohamiltonianoabrev + J\gradientefuncional, Y)dt = 0.
+	\int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev + J\gradientefuncional, Y)dt = 0.
 	$$
 	
-	Como a igualdade vale para todo $Y \in \espacotangenteponto{\gamma}{\lacocontrateis}$ e o integrando é uma função contínua, então $\omega(\dot{\gamma} - \campohamiltonianoabrev + J\gradientefuncional, Y)=0$. Além disso, a não-degenerecência da forma simplética $\omega$ implica que
+	Como a igualdade vale para todo $Y \in \espacotangenteponto{x}{\lacocontrateis}$ e o integrando é uma função contínua, então $\omega(\dot{x} - \campohamiltonianoabrev + J\gradientefuncional, Y)=0$. Além disso, a não-degenerecência da forma simplética $\omega$ implica que
 	$$
-	J\gradientefuncional(\gamma(t)) +\dot{\gamma}(t)-\campohamiltoniano{\gamma(t), t} = 0, \; \forall t \in \intervalo.
+	J\gradientefuncional(x(t)) +\dot{x}(t)-\campohamiltoniano{x(t), t} = 0, \; \forall t \in \intervalo.
 	$$
 	Portanto, o campo gradiente de $\funcionalH$ é dado por
 	$$
-	\gradientefuncional(\gamma(t))= J(\gamma(t))\dot{\gamma}(t)-J(\gamma(t))\campohamiltoniano{\gamma(t), t}.
+	\gradientefuncional(x(t))= J(x(t))\dot{x}(t)-J(x(t))\campohamiltoniano{x(t), t}.
 	$$
 	
-	Suponha que $u :\reta\to \lacocontrateis$ seja uma solução do sistema $\derivada{}{s}u(s)|_{s=0} = -\gradientefuncional(\gamma)$ e $u(0)=\gamma$. Com isso, pode-se afirmar que tais soluções são as trajetórias em $\lacocontrateis$ do campo gradiente negativo $-\gradientefuncional$. Note que, para casa $s\in \reta$ tem-se que $u(s):\circulo\to M$ é um caminho contínuo e fechado. Portanto as trajetórias de $-\gradientefuncional$ podem ser vistas como aplicações $u:\retacartesianocirculo \to M$ de classe $C^{1}$. Substituindo essa expressão na equação do gradiente de $\funcionalH$ tem-se a Equação de Floer
+	Suponha que $u :\reta\to \lacocontrateis$ seja uma solução do sistema $\derivada{}{s}u(s)|_{s=0} = -\gradientefuncional(x)$ e $u(0)=x$. Com isso, pode-se afirmar que tais soluções são as trajetórias em $\lacocontrateis$ do campo gradiente negativo $-\gradientefuncional$. Note que, para casa $s\in \reta$ tem-se que $u(s):\circulo\to M$ é um caminho contínuo e fechado. Portanto as trajetórias de $-\gradientefuncional$ podem ser vistas como aplicações $u:\retacartesianocirculo \to M$ de classe $C^{1}$. Substituindo essa expressão na equação do gradiente de $\funcionalH$ tem-se a Equação de Floer
 	
 	$$
 	\derivadaparcial{}{s}u(s,t) + J(u(s,t))\derivadaparcial{}{t}u(s,t) -J(u(s,t)) \campohamiltoniano{u(s,t)}=0. 
