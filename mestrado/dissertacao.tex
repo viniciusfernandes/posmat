@@ -258,7 +258,7 @@
 \newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
 \newcommand{\reta}{\real{}}
 \newcommand{\subespacoslagrangianos}{L(V)}
-\newcommand{\lacocontrateis}{\mathcal{L}M}
+\newcommand{\lacocontrateis}{\mathcal{L}^{o}M}
 \newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
 \newcommand{\cilindrosLM}{\mathcal{C}M}
 \newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
@@ -2576,20 +2576,29 @@
 	
 	A conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: M\times \reta \to \reta$ e, para o sistema Hamiltoniano,
 	$$
-	\derivada{\psi}{t}(t) = X_{H}(\psi(t), t),
+	\dot{x}(t) = X_{H}(x(t), t),
 	$$
-	busca-se as soluções 1-periódicas (isto é, $\psi(t+1)=\psi(t)$) e contráteis, onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$. Isto é equivalente a analisar as aplicações $\psi : \circulo\to M$ que satisfazem esse sistema.
+	busca-se as soluções 1-periódicas (isto é, $x(t+1)=x(t)$) e contráteis, onde $\campohamiltonianoabrev$ é o único campo vetorial tal que $\formaSimpletica{\campohamiltonianoabrev}{\xi} = -dH(\xi)$ para todo $\xi \in \campossuaves{M}$. Isto é equivalente a analisar as aplicações $x : \circulo\to M$ que satisfazem esse sistema.
 	
 	\begin{definicao}
-		(Laços contráteis) O conjunto das aplicações $\psi:\circulo \to M$ de classe $C^{\infty}$ e contráteis é denotado por $\lacocontrateis$.
+		(Laços contráteis) O conjunto das aplicações $x:\circulo \to M$ de classe $C^{\infty}$ e contráteis é denotado por $\lacocontrateis$.
 	\end{definicao}
 	
 	Para demonstrar as desigualdades de Morse, foi construído o complexo de Morse-Witten de uma função de Morse-Smale $f: M\to \reta$ e a diferencial desse complexo descreve como os pontos críticos de $f$ pontos são conectados pelas linhas do fluxo do gradiente negativo $-\gradiente$. Para a demonstração da Conjectura de Arnold uma abordagem análoga é realizada. Contudo, o invés de uma variedade de dimensão finita $M$ tem-se um espaço de funções $\lacocontrateis$, e ao invés de uma função $f:M\to \reta$ tem-se um funcional $\funcionalH:\lacocontrateis\to \reta$.
 	
 	Nesta seção é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias cujo grupo graduado é gerado pelos pontos críticos desse funcional cujo diferencial descreve como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
 	
-	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $\gamma\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{\gamma}{\lacocontrateis}$ está bem-definido.
-
+	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $x\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{x}{\lacocontrateis}$ está bem-definido e pode ser caracterizado da seguinte forma: o espaço tangente em $x \in \lacocontrateis$ pode ser definido como o conjunto dos vetores tangentes de cada caminho $u':\reta\to \lacocontrateis$ de classe $C^{\infty}$ tal que $u'(0)=x$. Desse modo, pode-se associar cada $u'$ pode ser visto como uma aplicação $u: \retacartesianocirculo \to M$ tal que $u(0,t) = x(t)$. Então, para todo $t\in \circulo$ tem-se que
+	$$
+	\derivadaparcial{}{s}u(s,t)|_{s=0} \in \espacotangenteponto{x(t)}{M}.
+	$$
+	
+	Assim, é natural ver um vetor tangente em $x\in \lacocontrateis$ como sendo um campo vetorial definido ao longo de $x$, ou seja, 
+	$$
+	Y_{x(t)}\in \espacotangenteponto{x(t)}{M} \;\text{para todo  }\; t\in \circulo,
+	$$
+	que é a caracterização de uma seção $Y$ do fibrado $\pullbackfibradotangenteM{x}$ (mais detalhes podem ser encontrados na Observação \ref{observacao_pullback_fibrado_tangente}). 
+	
 	Seja $\gamma:\circulo\to M$ um caminho contínuo, então o pullback $\gamma^{*}TM$ é o conjunto $\{(\gamma(t), Y(\gamma(t)): Y\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. é o $2n$-fibrado vetorial onde as fibras são $\espacotangenteponto{\gamma(t)}{M}$. Dado $(x, Y(x)) \in TM$, então 
 	
 	isto é, 
@@ -3560,71 +3569,6 @@
 			$$
 		\end{enumerate}
 	\end{prova}
-	
-	\begin{comment}
-		\begin{lema}
-		(Floer) $\mathcal{M} = \bigcup \mathcal{M}(y,x)$, onde a união dos pares $y,x \in \lacocontrateis$, além disso, supondo a condição de aesfericidade, $\mathcal{M}$ será compacta.
-		\end{lema}
-		
-		O lema abaixo é equivalente as condições de transversalidade em teoria finita de Morse, isto é, dada um função de Morse, o subconjunto de funções de Morse-Smale é um conjunto denso.
-		
-		\begin{lema}
-		(Floer) Suponha que as soluções do sistema hamiltoniano sejam não-degenerados, então exite um conjunto denso $J_{reg} \subset C^{\infty}(End(TM))$ de estruturas quase-complexas tais que dado $J \in J_{reg}$ e cada par $y,x \in \lacocontrateis$ o espaço $\mathcal{M}(y,x)$ é uma variedade de dimensão finita.
-		\end{lema}
-		
-		\textbf{Observação:} o lema acima afirma que, dada uma métrica gerada pelo par $\omega$ e J, teremos um conjunto denso de métricas geradas por outras estruturas complexas. Como o gradiente $\nabla f_{H}$ depende da métrica que adotamos então, como consequencia do lema, dado um gradiente sempre conseguimos construir um outro gradiente suficientemente proximo.
-		
-	
-	A estratéria dada por Floer para a demonstração desse lema 
-	é a utilização de operadores diferenciais lineares  definidos por 
-	$$
-	F_{u} \xi = \nabla_{s}\xi+J(u)(\nabla_{t}\xi - \nabla_{s}X_{H}(u,t))+\nabla_{\xi}J(u)\Big(\derivadaparcial{u}{t}-X_{H}(u,t)\Big),
-	$$
-	onde $\xi \in C^{\infty}(u^{*}TM)$, $u \in \mathcal{M}$ e $\nabla$ é a conexão riemanniana definida pela métrica anterior. Sendo que sua forma adjunta, de acordo com a mesma métrica, será dada por:
-	$$
-	F_{u}^{*} \beta = -\nabla_{s}\beta+J(u)(\nabla_{t}\beta - \nabla_{s}X_{H}(u,t))+\nabla_{\beta}J(u)\Big(\derivadaparcial{u}{t}-X_{H}(u,t)\Big).
-	$$
-	Podemos então definir 	os campos vetorias de quadrado integrável localmente como sendo a solução fraca da equação $F_{u}\xi = \beta$ se 
-	$$
-	\int_{\real{}} \int_{S{^{1}}} \iprod{F_{u}^{*}\beta}{\xi} dsdt= 
-	\int_{\real{}} \int_{S{^{1}}} \iprod{\beta}{F_{u}\xi} dsdt.
-	$$
-	Defininindo o espaço de Hilbert $L^{2}(u) = \{\xi \in u^{*}TM: \int_{\real{}} \int_{S{^{1}}}|\xi|^{2} dsdt < \infty\}$ e o espaço $W^{1,2}(u) = \{\xi \in L^{2}(u):\nabla_{s} \xi,\nabla_{t} \xi \in L^{2}(u) \}$, podemos ver que $F_{u}: W^{1,2}(u) \to L^{2}(u)$ é um operador linear. \vermelho{Então a regularidade local dos operadores elípticos nos fornece a seguinte estimativa:}
-	
-	\begin{definicao}
-		$L^{2}_{loc} = \{\xi \in u^{*}TM: \int_{K} |\xi(s,t)|^{2}dsdt <\infty, \; \text{compacto K} \subseteq M \}$ é é o conjunto de todos os campos vetoriais de quadrado integrável localmente.
-	\end{definicao}
-	
-	\begin{lema}
-		Sejam $\xi, \beta \in L^{2}_{loc}$, então $\nabla_{s}\xi, \nabla_{s}\xi \in L^{2}_{loc}$ (no sentido distribucional) e além disso
-		$$
-		\int_{-T}^{T}\int_{S^{1}}(|\xi|^{2}+|\nabla_{s}\xi|^{2}+|\nabla_{t}\xi|^{2})dsdt \leq c \int_{-T}^{T}\int_{S^{1}}(|\xi|^{2}+|F_{u}\xi|^{2})dsdt,
-		$$
-		onde c depende do parâmetro T e não de $\xi$.
-	\end{lema}
-	
-	\begin{definicao}
-		Um operador de Fredholm $F: A\to B$ é um operador linear limitado entre dois espaços de Banach com as dimensões finitas do $dim(Ker(F))< \infty$, $dim(Coker(F))< \infty$ e imagem fechada ($Im(F)=\overline{Im(F)}$). Chamamos de índice do operador de $ind (F)  = dim(Ker(F)) - dim(Coker(F))$.
-	\end{definicao}
-	
-	\begin{lema}
-		(Operador de Fredholm) Supondo que todas as soluções das equações de Hamilton sejam não-degeneradas, então dado $u \in \mathcal{M}(y,x)$ temos que $F_{u}$ é um operador de Fredholm. Além disso, $F_{u}$ é sobrejetor para quaisquer $J \in J_{reg}$ e $u \in \mathcal{M}(y,x)$.
-	\end{lema}
-	
-	\textbf{Observação:} Para se definir o conceito de índice de Morse relativo vamos utilizar a definição de índice de $F_{u}$, o que dará origem a homologia de Floer. Sabemos que $\mathcal{M}(y,x)$ é uma variedade diferenciável, e que $F_{u}$ é sobrejetor, então existe uma vizinhaça de $u \in \mathcal{M}(y,x)$ que é difeomorfa a uma vizinhança de $0 \in Ker(F_{u})$, logo nessa vizinhança teremos $dim(\mathcal{M}(y,x)) = ind(F_{u})$.
-	
-	\begin{lema}\label{indice_ponto_critico} Sejam $z,y,x \in \lacocontrateis$ então $\mu(y,x) = ind(F_{u})$ é independente de $u \in \mathcal{M}(y,x)$. Além disso
-		$$
-		\mu(z,y) + \mu(y,x) = \mu(y,x), \; \mu(x,x) = 0.   
-		$$
-	\end{lema}
-	Em Teoria de Morse clássica temos uma função de Morse $f:M\to \real{}$ e seus conjunto de pontos críticos não-degenerados $Crit(f)$, sendo que a cada ponto $x \in Crit(f)$ definimos uma aplicação $m:Crit(f) \to \inteiros$ tal que $m(x)$ é chamado índice de Morse de $x$.	O Lema $\ref{indice_ponto_critico}$ nos dá um candidato a índice dos pontos críticos pois, assim como o índice de Morse, $ind(F_{u}) \in \inteiros$ é um invariante topológico. Por outro lado vimos que $\mu(y,x) = ind(F_{u})$ é uma função que depende do par $(y, x)$ que define a variedade de conexão $\mathcal{M}(y, x)$. Então podemos afirmar que existe uma função $m : \lacocontrateis \to \inteiros$ definida a menos de um inteiro, tal que, dado $u \in \mathcal{M}(y,x)$ o índice do operador será 
-	$$
-	k = ind(F_{u}) = m(y)-m(x).
-	$$
-	Note que dessa definição surge uma abiguidade na função que determina o índice de cada ponto $y,x \in \lacocontrateis$ pois podemos escrever $m(y) = k+m(x)$, isto é, para se obter o índide de $y$ devemos ter o índice de $x$, e vice-versa. A seguir vamos definir uma função com as características necessárias para removermos essa ambiguidade. Tal função será chamada de índice de Maslov e a utilizaremos para graduarmos o complexo de cadeia, o que permitirá a construção da Homologia de Floer. 
-	
-	\end{comment}
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
 	
@@ -4915,8 +4859,8 @@
 		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in p'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $p:E\to B$ tal que $p(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
 	\end{definicao}
 	
-	\begin{observacao}
-		Seja $\gamma:\reta \to M$ um caminho contínuo na variedade $M$. Então o pullback $\pullbackfibradotangenteM{\gamma}$ é o conjunto $\{(\gamma(t), X(\gamma(t)): X\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. Note que, $\pullbackfibradotangenteM{\gamma}$ é o $2n$-fibrado vetorial cujas fibras são $\espacotangenteponto{\gamma(t)}{M}$ para cada $t\in \reta$ e o espaço base é $\gamma(\reta)\subset M$. De fato, se $p: \pullbackfibradotangenteM{\gamma} \to B$ e o mapa de projeção desse fibrado, então $p(\gamma(t), Y(\gamma(t))) = \gamma(t)$ e $p^{-1}(\gamma(t)) = \espacotangenteponto{\gamma(t)}{M}$ para todo $t\in \reta$. Com isso, toda seção $s_{X}: \gamma(\reta)\to \pullbackfibradotangenteM{\gamma}$ dada por $(s_{x})(\gamma(t)) = (\gamma(t), X(\gamma(t)))$, pode ser vista como a restricao de alguma seção $s_{X'}: M\to TM$ restrita ao subconjunto $\gamma(\reta) \subset M$, isto é, $s_{X} = s_{X'}|_{\gamma}$.
+	\begin{observacao}\label{observacao_pullback_fibrado_tangente}
+		Seja $\gamma:\reta \to M$ um caminho contínuo na variedade $M$. Então o pullback $\pullbackfibradotangenteM{\gamma}$ é o conjunto $\{(\gamma(t), X(\gamma(t)): X\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. Note que, $\pullbackfibradotangenteM{\gamma}$ é o $2n$-fibrado vetorial cujas fibras são $\espacotangenteponto{\gamma(t)}{M}$ para cada $t\in \reta$ e o espaço base é $\gamma(\reta)\subset M$. De fato, se $p: \pullbackfibradotangenteM{\gamma} \to B$ e o mapa de projeção desse fibrado, então $p(\gamma(t), Y(\gamma(t))) = \gamma(t)$ e $p^{-1}(\gamma(t)) = \espacotangenteponto{\gamma(t)}{M}$ para todo $t\in \reta$. Com isso, toda seção $X: \gamma(\reta)\to \pullbackfibradotangenteM{\gamma}$ dada por $X(\gamma(t)) = (\gamma(t), X(\gamma(t)))$, pode ser vista como a restricao de alguma seção $X': M\to TM$ restrita ao subconjunto $\gamma(\reta) \subset M$, isto é, $X= X'|_{\gamma}$.
 	\end{observacao}
 	
 	\begin{lema}\label{pullback_composicao}
