@@ -107,6 +107,7 @@
 \newcommand{\complexo}[1]{\mathbb{C}^{#1}}
 \newcommand{\coordenada}[2]{#1_{(#2)}}
 \newcommand{\diferencialfloer}{D\operadorFloer}
+\newcommand{\diferencialfloerponto}[1]{D_{#1}\operadorFloer}
 \newcommand{\diferencialfloerabrev}{\mathcal{D}}
 \newcommand{\derivada}[2]{\frac{d #1}{d #2}}
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
@@ -2860,12 +2861,6 @@
 		\end{proposicao}
 	}
 	
-	A compacidade de $\energiafinitaM$ exerce um papel importante nos resultados desse capítulo. O teorema a seguir garante que, sob certas hipóteses, essa propriedade pode ser obtida, e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
-	
-	\begin{teorema}\label{teorema_compacidade_gromov}
-		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
-	\end{teorema}
-	
 	Temos o teorema a seguir tem sua importância destacada nas demais demonstração de outros resultados, além ser o equivalente ao Lema $\ref{lema_conjunto_limite_funcao_morse}$.
 	
 	\begin{teorema}
@@ -3666,7 +3661,7 @@
 	Seja $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s,t) =\gamma^{\pm}(t)\; \forall t\in \reta \}$, onde $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$.
 	Em \cite{audi_floer_homology} é mostrada a proposição a seguir
 	
-	\begin{proposicao}
+	\begin{proposicao}\label{proposicao_cadeia_caminhos_conectantes}
 		$\energiafinitaMconectante \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
 	\end{proposicao}
 	
@@ -3742,7 +3737,7 @@
 	Como os termos $u, \xi, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorFloer$ avaliado no ponto $u\in \caminhosexponenciaisconectantesabrev$ é o limite 
 	$$
 	\begin{aligned}
-	\diferencialfloer_{u}(\xi)
+	\diferencialfloerponto{u}(\xi)
 	&=\lim_{\xi \to 0} \frac{	\operadorFloerParametro{u+\xi}-\operadorFloerParametro{u}}{\norma{\xi}}
 	\\
 	&= \derivadaparcial{\xi}{s} + J(u)\derivadaparcial{\xi}{t}+ dJ_{u}(\xi)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}(\xi)
@@ -3757,18 +3752,18 @@
 	Portanto $ D\operadorFloer_{u}= \operadorcauchyabrev{u}  + S_{u}: \real{2n} \to \real{2n}$.
 
 	\begin{definicao}
-		(O diferencial do operador de Floer) Seja $\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao $ o operador de Floer. Então o diferencial $\diferencialfloer_{u}: \espacosobolev{\pullbackfibradotangenteM{u}}\to \espacoLp{\pullbackfibradotangenteM{u}}$ é dado por
+		(O diferencial do operador de Floer) Seja $\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao $ o operador de Floer. Então o diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}}\to \espacoLp{\pullbackfibradotangenteM{u}}$ é dado por
 		$$
-		\diferencialfloer_{u}(\xi)= \Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)(\xi)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)(\xi).
+		\diferencialfloerponto{u}(\xi)= \Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)(\xi)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)(\xi).
 		$$
 	\end{definicao}
 	
 	\begin{observacao}
-		Na próxima seção é demonstrado que $\diferencialfloer_{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \espacoLp{\pullbackfibradotangenteM{u}}$, e portanto o diferencial de $\operadorFloer$  está bem definido.
+		Na próxima seção é demonstrado que $\diferencialfloerponto{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \espacoLp{\pullbackfibradotangenteM{u}}$, e portanto o diferencial de $\operadorFloer$  está bem definido.
 	\end{observacao}
 	
 	\begin{observacao}
-		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorFloer_{u} = \diferencialfloer_{u}$.
+		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorFloer_{u} = \diferencialfloerponto{u}$.
 	\end{observacao}
 
 	\section{$D\operadorFloer$ é um operador de Fredholm}
@@ -4014,8 +4009,8 @@
 	
 	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do operador de Floer $\diferencialfloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
 	
-	\begin{teorema}
-		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$.
+	\begin{teorema}\label{teorema_regularidade_eliptica}
+		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$. Logo, $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset C^{\infty}(\retacartesianocirculo;\real{2n})$.
 	\end{teorema} 
 		
 	Os resultados a seguir são utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialfloerabrev$ e podem ser encontrados em $\cite{kreyszig_analise_funcional}$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Han-Banach.
@@ -4120,7 +4115,7 @@
 		Tem-se que a integral $\int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{\xi}=0$. Por outro lado $ \int_{\retacartesianocirculo}\produtointerno{0}{\xi} =0$, para todo $\xi \in \espacosobolevretacirculo$. Logo $\diferencialfloerabrev^{*}Y = 0$.
 	\end{prova}
 	
-	\begin{definicao}\label{definicao_oeprador_fredholm}
+	\begin{definicao}\label{definicao_operador_fredholm}
 		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $\ind(T) = k(T) - c(T)$. 
 	\end{definicao}
 	
@@ -4230,15 +4225,15 @@
 	$$
 	\operadorFloerParametro{u} =\operadorFloerDefinicao{u}
 	$$
-	e seu diferencial $\diferencialfloer_{u}: \espacosobolev{\pullbackfibradotangenteM{u}} \to \espacoLp{\pullbackfibradotangenteM{u}}$ definido por
+	e seu diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}} \to \espacoLp{\pullbackfibradotangenteM{u}}$ definido por
 	$$
-	\diferencialfloer_{u}(\xi)= \Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)(\xi)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)(\xi).
+	\diferencialfloerponto{u}(\xi)= \Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)(\xi)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)(\xi).
 	$$
 	
-	A Proposição \ref{proposicao_variedade_banach} afirma que $\caminhosexponenciaisconectantespadrao$ é uma variedade, portanto seu fibrado tangente $T\caminhosexponenciaisconectantespadrao$ esta bem definido. Suponha que $X:\caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$ seja seção nula de $T\caminhosexponenciaisconectantespadrao$. Afirmo que $\operadorFloer \pitchfork X$ se, e somente se, $\diferencialfloer_{u}$ é sobrejetor para todo $u\in \caminhosexponenciaisconectantespadrao$ (veja a Definição \ref{definicao_aplicao_transversal} sobre a transversalidade de aplicações entre variedades). De fato, suponha que $\operadorFloer$ e $X$ sejam aplicações transversas. Como $X_{u} = 0$ para todo $u \in \caminhosexponenciaisconectantespadrao$, então $DX_{u} = 0$, o que implica em
+	A Proposição \ref{proposicao_variedade_banach} afirma que $\caminhosexponenciaisconectantespadrao$ é uma variedade, portanto seu fibrado tangente $T\caminhosexponenciaisconectantespadrao$ esta bem definido. Suponha que $X:\caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$ seja seção nula de $T\caminhosexponenciaisconectantespadrao$. Afirmo que $\operadorFloer \pitchfork X$ se, e somente se, $\diferencialfloerponto{u}$ é sobrejetor para todo $u\in \caminhosexponenciaisconectantespadrao$ (veja a Definição \ref{definicao_aplicao_transversal} sobre a transversalidade de aplicações entre variedades). De fato, suponha que $\operadorFloer$ e $X$ sejam aplicações transversas. Como $X_{u} = 0$ para todo $u \in \caminhosexponenciaisconectantespadrao$, então $DX_{u} = 0$, o que implica em
 	$$
-	\pullbackfibradotangenteM{u}=\diferencialfloer_{u}(\pullbackfibradotangenteM{u})+DX_{u}(\pullbackfibradotangenteM{u}) = \diferencialfloer_{u}(\pullbackfibradotangenteM{u}).$$ 
-	Logo, $\diferencialfloer_{u}$ é sobrejetor. A recíproca é imediata.
+	\pullbackfibradotangenteM{u}=\diferencialfloerponto{u}(\pullbackfibradotangenteM{u})+DX_{u}(\pullbackfibradotangenteM{u}) = \diferencialfloerponto{u}(\pullbackfibradotangenteM{u}).$$ 
+	Logo, $\diferencialfloerponto{u}$ é sobrejetor. A recíproca é imediata.
 	
 	As soluções da equação de Floer dependem da escolha da estrutura quase-complexa $J$ e da função Hamiltoniana $H$. Pode-se mostrar que, fixando a estrutura quase-complexa $J$ e para algumas perturbações da função Hamiltoniana, a transversalidade é mantida. \vermelho{(Comentar um pouco mais sobre o propósito dessas definições.)}
 	
@@ -4264,17 +4259,14 @@
 	Não há garantias de que, escolhida a Hamiltoniana $H$, tenha-se a tranversalidade satisfeita. Contudo, pode-se encontrar uma outra função Hamiltoniana suficientemente próxima a $H$, no sentido $\cktopologia{\infty}$, tal que valha essa propriedade. O teorema a seguir afirma essa resultado em termos da sobrejetividade do diferencial do operador de Floer, como foi discutido anteriormente.
 
 	\begin{teorema}
-		Fixe uma função Hamiltoniana não-degenerada $H$. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de abertos densos de $\hamiltonianasRegulares$ nessa vizinhança tal que, se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloer_{u}$ é sobrejetor para todo $u \in \energiafinitaM(H+h; J)$\vermelho{(Não sei onde o Michelle introduziu essa notação. Devo rever isso!!!)}.
+		\vermelho{(Acho que esse teorema pe o resultado final e deve ser removido.)} Fixe uma função Hamiltoniana não-degenerada $H$. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de abertos densos de $\hamiltonianasRegulares$ nessa vizinhança tal que, se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloerponto{u}$ é sobrejetor para todo $u \in \energiafinitaM(H+h; J)$\vermelho{(Não sei onde o Michelle introduziu essa notação. Devo rever isso!!!)}.
 	\end{teorema}
 
 	\begin{observacao}
 		A escolha de uma Hamiltoniana perturbada para a análise do problema não é restriviva, pois a Proposição \ref{proposicao_densidade_perturbacao_hamiltoniana} garante que, dada uma função Hamiltoniana $H$, existe uma perturbação $h\in C^{\infty}_{\epsilon}$ tal que $H+h$ é suficientemente próxima a $H$, na $\cktopologia{1}$.
 	\end{observacao}
 	
-	\begin{teorema}
-		Para cada $h \in \perturbacaoHamiltoniana{H}$ e para toda solução contrátil 1-periódica $\gamma^{+}, \gamma^{-}$ de $H$, $\energiafinitaM(\gamma^{+}, \gamma^{-}, H+h)$ é uma variedade de dimensão $\mu(\gamma^{+})-\mu(\gamma^{-})$.
-	\end{teorema} 
-	
+
 	Seja 
 	$
 	\orbitasConectantesZ = \{ (u, \vermelho{H+h}): u \in  \energiafinitaM(\gamma^{+}, \gamma^{-}, J, H) \;\;\text{e}\;\; h\in \perturbacaoHamiltoniana{H} \}
@@ -4319,7 +4311,7 @@
 	Para mostrar que a aplicação $\sigma$ é transversa a seção nula do fibrado $\mathcal{E}$, basta mostrar que o diferencial $D\sigma_{(u,h)}$ é sobrejetor para todos os pontos em que $\sigma(u,h) = 0$. Note que \ aplicação $\sigma$ é linear no segundo parâmetro $h$ e que seu diferencial está relacionado com o diferencial do operador de Floer do seguinte modo
 	
 	$$
-	D\sigma_{(u,h)}(Y,\eta) = \diferencialfloer_{u}(Y)+\nabla_{u}\eta.
+	D\sigma_{(u,h)}(Y,\eta) = \diferencialfloerponto{u}(Y)+\nabla_{u}\eta.
 	$$
 	
 	\vermelho{(Falta argumentar que é pre-imagem de valor regular, logo é variedade.)}
@@ -4333,17 +4325,53 @@
 	(Y,\eta) &\mapsto \eta,
 	\end{aligned}
 	$$
-	que por definição é uma aplicação suave. Além disso, $\ker(D\pi_{(u, H+h)})=\diferencialfloer_{u}(\espacosobolev{\pullbackfibradotangenteM{u}})$. De fato, como a aplicação $\Gamma$ definida na Proposição \ref{proposicao_gamma_sobrejetora} é uma sobrejeção, então todo $X\in \espacoLp{\pullbackfibradotangenteM{u}}$ pode ser escrito como $X=\diferencialfloer^{\vermelho{H+h}}_{u}(Y) + \nabla_{u}h$, para algum $(Y, h )\in \espacosobolev{\pullbackfibradotangenteM{u}}\times \perturbacaoHamiltoniana{H} $.
-	
-	Supondo $D\pi_{(u,H+h)}(Y,\eta) = 0$, então $\eta=0$, o que implica em 
-	
-	
-	existe $(Y, \eta) \in \espacosobolev{\pullbackfibradotangenteM{u}}\times \perturbacaoHamiltoniana{H}$ tal que $\Gamma(Y, \eta) =  \diferencialfloer^{\vermelho{H+h}}_{u}(Y) + \nabla_{u}\eta = 0$, o que implica em $\diferencialfloer^{\vermelho{H+h}}_{u}(Y) =-\nabla_{u}\eta$. Como $(u,H+h) \in \orbitasConectantesZ$ é uma solução da equação de Floer para a Hamiltoniana perturbada $H+h$, então 
+	que por definição é uma aplicação suave. Além disso, pode-se mostrar que 
 	$$
-		D\pi_{(u,H+h)}(Y,\eta) = \eta = -\diferencialfloer^{\vermelho{H+h}}_{u}(Y) = 0.
-	$$
-	Portanto, $\diferencialfloer_{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \ker(D\pi_{(u, H+h)})$. Por outro lado, se $(Y,\eta) \in \ker(D\pi_{(u, H+h)})$, então 
+	\ker(D\pi_{(u, H+h)})=\diferencialfloerponto{u}(\espacosobolev{\pullbackfibradotangenteM{u}}),
+	$$ 
+	
+	e que
+	
+	\begin{lema}
+		Os valores regulares de $\pi$ são os elementos $h$ de $\perturbacaoHamiltoniana{H}$ tais que $u\in \energiafinitaM(H+h, J)$ e $\diferencialfloerponto{u}$ é sobrejetor.
+	\end{lema}
 
+	Assumindo os resultados anteriores, tem-se que $\pi^{-1}$ é uma variedade e sua dimensão é dada por
+	$$
+	\begin{aligned}
+	\dim(\ker(D_{(u, H+h)}\pi)) &= \dim(\ker(\diferencialfloerponto{u}))
+	\\
+	&=\ind{\diferencialfloerponto{u}}
+	\\
+	&=\mu(\gamma^{-})-\mu(\gamma^{+}).
+	\end{aligned}
+	$$
+	
+	Note que, os elementos de $\pi^{-1}$ são as soluções em $\caminhosexponenciaisconectantespadrao$ da equação de Floer para o par $(H+h, J)$. Pela Proposição \ref{proposicao_cadeia_caminhos_conectantes}, pode-se afirmar que 
+	$$
+	\energiafinitaM(\gamma^{-}, \gamma^{+}; H+h) \subset\pi^{-1}(h).
+	$$
+	
+	Do Teorema da Regularidade Elíptica \ref{teorema_regularidade_eliptica}, pode-se concluir que 
+	$$
+	\pi^{-1}(h) \subset\energiafinitaM(\gamma^{-}, \gamma^{+}; H+h),
+	$$
+	e portanto $\energiafinitaM(\gamma^{-}, \gamma^{+}; H+h)=\pi^{-1}(h)$.
+	
+	\begin{teorema}
+		Para cada $h \in \perturbacaoHamiltoniana{H}$ e para toda solução contrátil 1-periódica $\gamma^{-}, \gamma^{+}$ de $H$, $\energiafinitaM(\gamma^{-}, \gamma^{+}, H+h)$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$.
+	\end{teorema} 
+	
+	A compacidade de $\energiafinitaM$ exerce um papel importante nos resultados na definição da homologia de Floer. O teorema a seguir garante que, sob certas hipóteses, essa propriedade pode ser obtida, e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$. \vermelho{(Ainda tenho que ver como encaixar esse resultado com os resultados dessa seção)}
+	
+	\begin{teorema}\label{teorema_compacidade_gromov}
+		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
+	\end{teorema}
+	
+	\begin{teorema}
+		Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$.
+	\end{teorema}
+		
 	\chapter{Homologia de Floer}
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
 	
