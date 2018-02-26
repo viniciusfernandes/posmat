@@ -191,6 +191,8 @@
 \newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
 \newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
 \newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
+\newcommand{\iconley}[1]{\iconleyabrev(#1)}
+\newcommand{\iconleyabrev}{\mu_{CZ}}
 \newcommand{\imagembordo}[2]{B_{#1}(#2;A)}
 \newcommand{\imagembordoabrev}[2]{B_{#1}(#2)}
 \newcommand{\ind}{\text{ind}}
@@ -273,7 +275,7 @@
 
 \begin{document}
 	
-	\title{O Índice de Maslov e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
+	\title{Os Índices de Maslov e Conely-Zehnder, e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
 	
 	\author{Vinicius Fernandes}
 	
@@ -1459,7 +1461,7 @@
 	\begin{definicao}
 		(Complexo de Morse-Smale-Witten) Seja $f \in \funcoesmorsesmale{M}$. Para cada $p \in \pontoscriticos{f}$ assuma uma orientação $o(\variedadeinstavel{p})$. Sejam $C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ e $C_{*}(f) =\bigoplus^{m}_{k=0}C_{k}(f)$. O homomorfismo $\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido em cada gerador p de $C_{k}$
 		$$
-		\partial_{k}(p)=\sum_{q \in \pontoscriticos{f}}n(p,q)q
+		\partial_{k}(\gerador{p})=\sum_{q \in \pontoscriticos{f}}n(p,q)\gerador{q}
 		$$
 		é chamado operador bordo de Morse-Smale-Witten e o par $(C_{*}(f), \partial_{*})$ é o complexo de cadeia de Morse-Smale-Witten  da função $f$.
 		
@@ -2468,7 +2470,7 @@
 	
 	
 	
-	\begin{exemplo}
+	\begin{exemplo}\label{exemplo_funcao_hamiltoniana}
 		(Função Hamiltoniana) Seja $H:\real{2} \to \reta$ por $H(q,p) = q^{2}/2+p^{2}/2$. Pelas equações de Hamilton, pode-se verificar que 
 		$$
 			\left(
@@ -2570,6 +2572,8 @@
 	\begin{definicao}(Soluções $1$-periódicas não-degeneradas)
 		Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(0)}M$.
 	\end{definicao}
+	
+	No caso em que a função Hamiltoniana $H$ dependente do tempo se reduz a uma Hamiltoniana autônoma, tem-se que os pontos críticos de $H$ são as soluções constantes dos sistema Hamiltoniano, o que está feito no Exemplo \ref{exemplo_funcao_hamiltoniana}.
 	
 		
 	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
@@ -2820,11 +2824,7 @@
 	\begin{definicao}
 		(Soluções de energia finita) O conjunto de todas as trajetórias de $\gradientefuncional$ tal que o funcional energia seja finito é denotado por $\energiafinitaM$ 
 	\end{definicao}
-	
-	\begin{observacao}
-		Como os elementos de $\lacocontrateis$ são caminhos fechados contráteis, então todo elemento $u$ de $\energiafinitaM$ é contrátil pois $u:\reta\to \lacocontrateis$.
-	\end{observacao}
-	
+
 	\vermelho{(Acho que devo colocar esses resultado em outra seção!!!!!!!!)
 		\begin{definicao}\label{definicao_mergulho_variedades}
 			(Mergulho de variedades) Sejam $M, N$ m,n-variedade s diferenciávei, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Dizemos que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
@@ -2851,9 +2851,9 @@
 	
 	Daqui em diante assumiremos a $\cktopologia{\infty}$ para $\aplicaoessuaves{\circulo}{\real{m}}$ e a topologia da convegência uniforme para $\aplicaoessuavesloc{\retacartesianocirculo}{\real{m}}$. Além disso, assume-se que a topologia dos subconjuntos acima citados é a topologia induzida por essas normas, respectivamente.
 	
-	\begin{observacao}
-		Em $\cite{palis_dynamical_systems}$ é demonstrado que, se $M$ é separável, então a $\cktopologia{\infty}$ é metrizável.
-	\end{observacao}
+	\vermelho{\begin{observacao}
+			Em $\cite{palis_dynamical_systems}$ é demonstrado que, se $M$ é separável, então a $\cktopologia{\infty}$ é metrizável.
+		\end{observacao}(Não sei se é necessário esse resultado).}
 	
 	\vermelho{
 		\begin{proposicao}
@@ -2863,7 +2863,7 @@
 	
 	Temos o teorema a seguir tem sua importância destacada nas demais demonstração de outros resultados, além ser o equivalente ao Lema $\ref{lema_conjunto_limite_funcao_morse}$.
 	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_limite_solucoes_energia_finita}
 		Suponha que todas as trajetórias de $-\gradientefuncional \in \campossuaves{\lacocontrateis}$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$ tais que
 		$$
 		\lim_{s\to -\infty}u(s)=\gamma^{-},\; \lim_{s\to \infty}u(s)=\gamma^{+}\;\;
@@ -2874,11 +2874,6 @@
 		$$
 		converge uniformemente em $t\in \circulo$.
 	\end{teorema}
-	
-	O lema a seguir caracterisza o conjunto dos pontos críticos do funcional de ação e sua demonstração esta em $\cite{audi_floer_homology}$. 
-	\begin{lema}
-		Supondo que  trajetórias periódicas do campo Hamiltoniano $\campohamiltonianoabrev$ sejam não-degeneradas, então o conjunto $\pontoscriticos{\funcionalH}$ é finito. Logo, o conjunto das trajetórias de $\campohamiltonianoabrev$ é finito.
-	\end{lema}
 	
 	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
 	\section{Motivação}
@@ -3259,9 +3254,9 @@
 		\begin{enumerate}
 			\item $\mu(\psi) \in \inteiros$.
 			
-			\item \textbf{(Naturalidade)} Se $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
+			\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
 			
-			\item \textbf{(Homotopia)} \label{homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \dominioMaslov $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
+			\item \textbf{(Homotopia)} \label{item_homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \dominioMaslov $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotopicamente equivalentes se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
 			
 			\item \textbf{(Nullidade)} se $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $\mu(\psi) = 0$.
 			
@@ -3319,7 +3314,7 @@
 			
 			\begin{figure}[!h]
 				\centering
-				\includegraphics[width=10cm,height=4cm]{imagem/caminho_naturalidade.pdf}
+				\includegraphics[width=13cm,height=6cm]{imagem/caminho_naturalidade.pdf}
 				\caption{Os prolongamentos $\Psi=\psi*\gamma$ de $\psi$ e $\Psi'  = \psi'*\gamma'$ de $\psi'$.}
 			\end{figure}
 			
@@ -3557,6 +3552,31 @@
 			$$
 		\end{enumerate}
 	\end{prova}
+	
+	\section{Índice de Conley-Zehnder $\iconleyabrev: \pontoscriticos{\funcionalH}\to \inteiros$}
+	
+	Na tentativa de se construir invariantes topológicos para uma 2n-variedade simplética $(M, \omega)$, e que contenham informações da estrutura simplética $\omega$, foi utilizada uma abordagem variacional, na qual busca-se atribuir um número inteiro para cada ponto crítico do funcional de ação $\funcionalH$, onde $H: M\times \reta\to \reta$ é uma função Hamiltoniana depedente do tempo. Foi mostrado que as soluções 1-periódicas não-degeneradas e contráteis do sistema Hamiltonino $\dot{x} = \campohamiltoniano{x, t}$ são os pontos críticos do funcional de ação. Além disso, ao campo Hamiltoniano $\campohamiltonianoabrev$ existe um fluxo associado $\psi_{t}:M\to M$ que satisfaz $\dot{\psi_{t}} =\campohamiltonianoabrev\circ\psi_{t}$ e $\psi_{0}=Id$.
+	
+	Fixe $x $ uma solução 1-periódica não degenerada e contrátil do sistema Hamiltoniano, tal que $x(t) = \psi_{t}(x(0))$. Escolha uma base simplética $B(0) = \{e_{1}(0),\dots,e_{2n}(0)\}$ de $\espacotangenteponto{x(0)}{M}$. Como $\psi_{t}$ é uma simplectomorfismo para todo $t\in \reta$, então pode-se afirmar que $B(t) = \{e_{1}(t), \dots, e_{2n}(t)\}$ é uma base simplética de $\espacotangenteponto{x(t)}{M}$, onde $e_{j}(t) = D_{x(0)}\psi_{t}(e_{j}(0))$ para $1\leq j \leq 2n$ e $D_{x(0)}\psi_{t}: \espacotangenteponto{x(0)}{M}\to \espacotangenteponto{x(t)}{M}$.
+	
+	Afirmo que a aplicação contínua $A:\reta \to \caminhosespeciais{\gruposimpletico{2n}}$ dada por $A(t) = D_{x(0)}\psi_{t}$ está bem definida. De fato, $A(0) = D_{x(0)}\psi_{0}=Id$, pois $\psi_{0}=Id$. Como $x$ é uma solução não-degenerada, então $\det(D_{x(0)}\psi_{1}-Id) \neq 0$, o que implica em $A(1)\in \gruposimpleticonaodegenerado{*}$. Além disso, escolhida uma outra base simplética $B'(t) = \{e'_{1}(t), \dots, e'_{2n}(t)\}$, tem-se que $A'(t)$ é a representação matricial de $D_{x(0)}\psi_{t}$ na base $B'(t)$ e é homotópicamente equivalente a $A(t)$, para todo $t \in \reta$. Seja $T:\reta \to \generalgroupreal{2}$ uma família de isomorfismos tal que $T(t)e_{j}(t) = e'_{j}(t)$. Então, supondo que $\omega_{x(t)}(e'_{j}(t), e'_{k}(t))=\omega_{x(t)}(e_{j}(t), e_{k}(t))=\delta_{jk}$, tem-se que
+	$$
+	\begin{aligned}
+			((T(t))^{*}\omega_{x(t)})(e_{j}(t), e_{k}(t))
+		&=
+		\omega_{x(t)}(T(t)e_{j}(t), T(t)e_{k}(t))
+		\\
+		&=\omega_{x(t)}(e'_{j}(t), e'_{k}(t)) 
+		\\
+		&=\delta_{jk}
+		\\
+		&=\omega_{x(t)}(e_{j}(t), e_{k}(t)). 
+	\end{aligned}
+	$$
+	O mesmo vale para os elementos das bases $B(t)$ e $B'(t)$ que são $\omega$-ortogonais. Portanto, $T(t)\in \gruposimpletico{2n}$ para todo $t\in \reta$. Com isso, pode-se escrever $A(t) = (T(t))^{-1}A'(t)T(t)$, e pela propriedade de homotopia dsecrita no Item \ref{item_naturalidade_maslov}, tem-se que 
+	$$
+	\mu(A) = \mu(T^{-1}A'T) = \mu(A').
+	$$
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
 	
@@ -4207,17 +4227,17 @@
 	
 	\end{prova}
 	
-	\section{A transversalidade de $\operadorFloer$}
+	\section{A transversalidade de $\operadorFloer$ e a Compacidade de $\energiafinitaM$}\label{secao_transversalidade_compacidade_M}
 	
+	\vermelho{(O nome da seção não parece ser adequado, pois não foi mostrado a transversalidade de $\operadorFloer$)}
 	
-	
-	A transversalidade do operador de Floer tem sua importância na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\energiafinitaMconectante$ é uma variedade de dimensão finita e é dada por $\mu(\gamma^{-})-\mu(\gamma^{-})$, onde $\gamma^{+}, \gamma^{-}\in \pontoscriticos{\funcionalH}$ que, de acordo com o Teorema \ref{teorema_indice_diferencial_operador_floer},  coincide com o índice do operdador de Fredholm $\ind(\diferencialfloer)$.
+	A transversalidade do operador de Floer tem sua importância na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\energiafinitaMconectante$ é uma variedade de dimensão finita e é dada por $\mu(\gamma^{-})-\mu(\gamma^{+})$, onde $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$ que, de acordo com o Teorema \ref{teorema_indice_diferencial_operador_floer},  coincide com o índice do operdador de Fredholm $\ind(\diferencialfloer)$.
 	
 	Sabe-se que $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach (veja na Seção \ref{secao_variedade_banach_P}). Com isso, é construída uma seção do fibrado tangente dessa variedade, tal que $\energiafinitaMconectante\subset \caminhosexponenciaisconectantespadrao$ é o conjunto de todos zeros dessa seção. Assim, é demonstrado que $\energiafinitaMconectante$ é a pré-imagem de um valor regular de uma determinada aplicação, e com isso, aplicando a generalização para espaços de dimensão infinita do Teorama de Sard, pode-se concluir que $\energiafinitaMconectante$ é uma variedade de dimensão finita. Nesse ponto é utilizada a propriedade de Fredholm do diferencial do operador de Floer $\diferencialfloer$ para se afirmar a finitude da dimensão dessa variedade.
 	
 	\vermelho{(Inserir uma justificativa para a não demonstração dos teoremas desse capítulo...!!!)}
 	
-	Sejam $\gamma^{+},\gamma^{-}\in \pontoscriticos{\funcionalH}$, e considere o operador de Floer 
+	Sejam $\gamma^{-},\gamma^{+}\in \pontoscriticos{\funcionalH}$, e considere o operador de Floer 
 	$$
 	\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao
 	$$  
@@ -4368,11 +4388,30 @@
 		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
 	\end{teorema}
 	
-	\begin{teorema}
-		Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$.
+	O Teorema \ref{teorema_limite_solucoes_energia_finita} afirma que, para todo $u\in \energiafinitaM$, existem $\gamma^{+}, \gamma^{-}\in \pontoscriticos{\funcionalH}$ tais que 
+	$$
+	\lim_{s\to -\infty}u(s)=\gamma^{-}\; \text{e} \; \lim_{s\to \infty}u(s)=\gamma^{+}.
+	$$
+	Com isso, pode-se afirmar que $u\in \energiafinitaMconectante$ e 
+	$$
+	\energiafinitaM = \bigcup_{\gamma^{+}, \gamma^{-}\in  \pontoscriticos{\funcionalH}}\energiafinitaMconectante.
+	$$
+
+	Do fato de que $\energiafinitaM$ é um espaço topológico compacto e que pode ser escrito como a união dos espaços das órbitas conectantes $\energiafinitaMconectante$, tem-se que $\pontoscriticos{\funcionalH}$ é um conjunto finito.
+	
+	\begin{teorema}\label{teorema_orbitas_conectantes_finitas}
+		Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$ e possui finitos elementos \vermelho{(ainda não achei a referência para essa afirmação....)}.
 	\end{teorema}
+	
+	Note que, se $\mu(\gamma^{-}) = \mu(\gamma^{+})$, então $\energiafinitaMconectante$ é uma variedade 0-dimensional e é dada pelos dois casos: 
+	\begin{enumerate}
+		\item Caso $\gamma^{-} =\gamma^{+}$: tem-se que $\energiafinitaM(\gamma^{-}, \gamma^{-}) =\{u\}$, onde $u(s) = \gamma^{-}$ para todo $s\in \reta$.
 		
-	\chapter{Homologia de Floer}
+		\item Caso $\gamma^{-} \neq \gamma^{+}$: tem-se que $\energiafinitaMconectante = \emptyset$.
+	\end{enumerate}
+		
+	\chapter{Aplicações: Homologia de Floer e a Conjectura de Arnold}
+	
 	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
 	
 	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pontos fixos que um simplectomorfismo definido em uma variedade simplética possui e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
@@ -4382,7 +4421,20 @@
 	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica analoga a  Morse clássica que se deparou com algumas barreiras técnicas, tais como: variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades. Floer utiliza como função de Morse um funcional definido nesse espaço, que é um espaço de funções, e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
 	
 	\section{Definições}
-	Seja $C = C(M, \inteiros_{2})$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos de $\lacocontrateis$. Esse espaço é graduado pela função $m$, de modo que
+	Seja $(M,\omega)$ uma 2n-variedade simpletica e $H: M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo genérica, isto é, $H$ pode ser um elemento do conjunto de perturbações $\perturbacaoHamiltoniana{H_{0}}$, para alguma função Hamiltoniana $H_{0}:M\times \reta \to \reta$.
+	
+	O Teorema \ref{teorema_orbitas_conectantes_finitas} afirma que, dados $\gamma^{-},\gamma^{+} \in \pontoscriticos{\funcionalH}$, tem-se que $\energiafinitaMconectante$ possui um número finito de órbitas conectantes. Com isso, defina o total de elementos de $\energiafinitaMconectante$ módulo 2 por $n(\gamma^{-},\gamma^{+})$.
+
+	\begin{observacao}
+		xxxxxxxxxxxxxx
+	\end{observacao}
+	
+	 Seja $x\in \pontoscriticos{\funcionalH}$ e defina $Cr(x;k) = \{ y \in \pontoscriticos{\funcionalH}: \mu(u)=k,\; u\in \energiafinitaM(x,y)\}$. Considere $C_{k}(M, \inteiros_{2}; H)$ um espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \lacocontrateis$, isto é
+	$$
+	C_{k}(M, \inteiros_{2}; H) = \bigoplus_{x\in \pontoscriticos{\funcionalH}}n_{x}\gerador{x}.
+	$$
+	\vermelho{(Aqui devemos entender melhor em quais elementos estamos avaliando o índice de Maslov...!!!)}
+	
 	$$
 	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \inteiros_{2}) = \text{span}\{x \in \lacocontrateis:m(x)=k \}.
 	$$
@@ -5272,6 +5324,13 @@
 		\emph{Lectures on Floer Homology},
 		University of Warnick,
 		1997.
+
+
+		\bibitem{salamon_conley_index}
+		Salamon, Dietmar
+		\emph{Morse Theory, the Conley Index and Floer Homology},
+		LMS 22, 113-140
+		1990.
 
 		\bibitem{salamon_zehnder}
 		Salamon, Dietmar; Zehnder Eduard:
