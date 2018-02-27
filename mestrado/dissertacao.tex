@@ -195,7 +195,7 @@
 \newcommand{\iconleyabrev}{\mu_{CZ}}
 \newcommand{\imagembordo}[2]{B_{#1}(#2;A)}
 \newcommand{\imagembordoabrev}[2]{B_{#1}(#2)}
-\newcommand{\ind}{\text{ind}}
+\newcommand{\ind}{\text{Ind}}
 \newcommand{\induzida}[1]{#1_{\#}}
 \newcommand{\inteiros}{\mathbb{Z}}
 \newcommand{\inteirospos}{\inteiros_{+}}
@@ -3371,68 +3371,22 @@
 			&=\estruturacomplexa.
 			\end{aligned}
 			$$
-			Portanto, $\exp(S\estruturacomplexa) \in \gruposimpletico{2n}$. Além disso, pode-se mostrar que $1\notin\espectrooperador{\exp(S\estruturacomplexa) }$. De fato, como $S$ é simétrica, então é diagonalizável. Seja $v$ um auto-vetores de $S$ assosiado ao auto-valor $\lambda \in \espectrooperador{S}$. \vermelho{ Então $\exp(\estruturacomplexa S)v = \exp(\lambda\estruturacomplexa )v$ 
-						
-			Dado um inteiro $k\geq 0$ tem-se que $\estruturacomplexa^{2k} = (-1)^{k}Id$ e $\estruturacomplexa^{2k+1} = (-1)^{k}\estruturacomplexa$, o que implica em
+			Portanto, $\exp(S\estruturacomplexa) \in \gruposimpletico{2n}$. 
+			
+			O seguinte fato será utilizado nessa em argumentos a seguir: Sejam $A \in \generalgroupcomplexo{2n}$ e $\epsilon>0$ tal que $\norma{A}<\epsilon$. Suponha $u$ um auto-vetor naõ-nulo de $A$ associado ao auto-valor $\lambda\in \espectrooperador{A}$. Então 
 			$$
-			\begin{aligned}
-			\exp(\lambda\estruturacomplexa ) 
-			&= \sum_{k=0}^{\infty}\frac{(\lambda\estruturacomplexa)^{k}}{k!} 
-			\\
-			&= \sum_{k=0}^{\infty}\frac{(\lambda\estruturacomplexa)^{2k}}{(2k)!} + \sum_{k=0}^{\infty}\frac{(\lambda\estruturacomplexa)^{2k+1}}{(2k+1)!}
-			\\
-			&=\sum_{k=0}^{\infty}\frac{(-1)^{k} \lambda^{2k} }{(2k)!} Id+ \sum_{k=0}^{\infty}\frac{(-1)^{k} \lambda^{2k+1}}{(2k+1)!}\estruturacomplexa
-			\\
-			&=\cos(\lambda)Id+\sin(\lambda)\estruturacomplexa
-			\\
-			&=
-			\left(
-			\begin{array}{cc}
-			\cos(\lambda)Id & \sin(\lambda)Id
-			\\
-			-\sin(\lambda)Id & \cos(\lambda)Id
-			\end{array}
-			\right),
-			\
-			\end{aligned}
+				|\lambda|=\normagrande{A\bigparenteses{\frac{u}{\norma{u}}} }\leq \sup_{\norma{v}=1 } \norma{Av} = \norma{A}<\epsilon.
 			$$
-			onde $\cos(\lambda)Id$ e $\sin(\lambda)Id$ são as matrizes diagonais $n \times n$ cujos elementos são $\cos(\lambda)$ e $\sin(\lambda)$, respectivamente.
-
-			Note que, permutando as linhas e colunas de $\exp(\lambda\estruturacomplexa)$, tem-se a matriz $2n\times 2n$
+				
+			
+			Seja $v$ um auto-vetor de $\estruturacomplexa S$ associado ao auto-valor $\lambda \in \espectrooperador{\estruturacomplexa S}$. Então 
 			$$
-				R(\lambda)=\left(
-				\begin{array}{cccc}
-				r(\lambda) & 0 &\dots & 0
-				\\
-				0 & r(\lambda) & \dots & 0
-				\\
-				\vdots & \vdots & \ddots & \vdots
-				\\
-				0 & \dots & r(\lambda) & 0
-				\\
-				0 & \dots & 0 & r(\lambda) 
-				\end{array}
-				\right),
-			$$
-			onde 
-			$$
-				r(\lambda) = \left(
-				\begin{array}{cc}
-					\cos(\lambda) & -\sin(\lambda) 
-					\\
-					\sin(\lambda) & \cos(\lambda) 
-				\end{array}
-				\right)
-			$$
-			é a matriz $2\times 2$ de rotação no plano $\real{2}$.
-			Como $\exp(\lambda\estruturacomplexa)$ é semelhante a $R(\lambda)$, então 
-			$$
-			\det(\exp(\lambda\estruturacomplexa)-Id) = \det(R(\lambda)-Id)= \big((1-cos(\lambda))^{2}+sin^{2}(\lambda)\big)^{n} \neq 0.
+			\exp(\estruturacomplexa S)v = e^{\lambda}v.
 			$$
 			
-			(Essa conta é usada para afirmar que o valor 1 não pertence ao espectro da aplicação exponencial, mas esta errada. Não entendo o que o Michelle e o Salamon fazem...!!!!!!!!!!!!!!!!!).}
+			Além disso, note que $\norma{\estruturacomplexa S}\leq \norma{\estruturacomplexa}\norma{S} = \norma{S} <2\pi$, o que implica em $|\lambda|<2\pi$, conforme o fato anteriormente descrito.
 			
-			Portanto, $1\notin\espectrooperador{\exp(\estruturacomplexa S)}$ e $\exp(\estruturacomplexa S)\in \gruposimpleticonaodegenerado{*}$.
+			Afirmo que $1\notin \espectrooperador{\exp(S\estruturacomplexa)}$. De fato, escreva $\lambda = a+ib\in \complexo{}$. Supondo $e^{\lambda} = 1$, tem-se que $a=0$ e $b \in 2\pi k$ para algum $k\in \inteiros$, o que contradiz o fato de que $|\lambda| <2\pi$. Portanto, $1\notin\espectrooperador{\exp(\estruturacomplexa S)}$ e $\exp(\estruturacomplexa S)\in \gruposimpleticonaodegenerado{*}$.
 			
 			Como $S$ é simétrica, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP=\diag(a_{1},\dots,a_{2n})$ (tais resultados podem ser encontrados em \cite{hoffman_kunze}). Sejam $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = P$ e $\mathcal{P}(1)=Id$. 
 			Então o caminhos contínuo $\mathcal{P}^{t}S\mathcal{P}:\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $(\mathcal{P}^{t}S\mathcal{P})(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$, conecta a matriz diagonal $P^{t}SP$ a $S$. Como $ ((\mathcal{P}^{t}S\mathcal{P})(s))^{t} =(\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S\mathcal{P}(s) =(\mathcal{P}^{t}S\mathcal{P})(s)$, então $(\mathcal{P}^{t}S\mathcal{P})(s)$ é simétrica para todo $s\in \intervalo$, e com os argumentos análogos aos anteriores, pode-se afirmar que $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s)) \in \gruposimpleticonaodegenerado{*}$. Como $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ é contínuo e não contém auto-valores iguais a 1, então $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ está na mesma componente conexa de $\gruposimpleticonaodegenerado{*}$ que a matriz $\exp(\estruturacomplexa S)$ para todo $s\in \intervalo$.
@@ -3464,43 +3418,114 @@
 			\\
 			-a_{(1)}Id & 0  
 			\end{array}
+			\right)
+			\\
+			&= \cos\big((a_{(1)}.a_{(2)})^{1/2}\big)Id +\sin\big((a_{(1)}.a_{(2)})^{1/2}\big)
+			\left(
+			\begin{array}{cc}
+			0 & a_{(2)}Id
+			\\
+			-a_{(1)}Id & 0  
+			\end{array}
 			\right).
 			\end{aligned}
 			$$
 
-			Afirmo que, para todo $\lambda\in \espectrooperador{S}$, tem-se que $|\lambda|<2\pi$. De fato, seja $u$ um auto-vetor de $S$ associado ao auto-valor $\lambda\in \espectrooperador{S}$. Então 
-			$$
-			|\lambda|=\normagrande{S\bigparenteses{\frac{u}{\norma{u}}} }\leq \sup_{\norma{v}=1 } \norma{Sv} = \norma{S}<2\pi.
-			$$
-			
-			Por esse fato, pode-se escolher $0<\epsilon <2\pi$ e, sem perda de generalidade, reduzir a análise ao caso em que $|a_{j}|=\epsilon$ para $1\leq j\leq 2n$ para os seguintes casos:
+
+			Como $\norma{S}<2\pi$, então pode-se escolher $0<|a_{j}|<2\pi$ e, sem perda de generalidade, reduzir a análise ao caso em que $|a_{j}|=\pi$ para $1\leq j\leq 2n$ para os seguintes casos:
 			
 			\begin{enumerate}
-				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (\epsilon,\dots,\epsilon)$:}
+				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (\pi,\dots,\pi)$:}
 				$$
 				\exp(t\estruturacomplexa S) 
 				= 
-				\cos(t\epsilon)Id+ \sin(t\epsilon)\estruturacomplexa
-				\sim R(t\epsilon).
+				\cos(t\pi)Id+ \sin(t\pi)\estruturacomplexa.
 				$$
 				
-				Nesse caso, aplica-se a propriedade produto de $\rho$ descrita no Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho}. Note que, $r(t\epsilon) \in \gruposimpletico{2}$ é uma matriz otogonal, logo pode ser identificada com uma matriz unitária em $\exp(i\epsilon) \in U(1)$ (veja o Lema \ref{lema_isomorfismo_U}). Pela propriedade do determinante de $\rho$ descrita no Item \ref{item_determinante_rho}, tem-se que $\rho(r(t\epsilon)) = \det_{\complexo{}}(\exp(i\epsilon)) = \exp(\epsilon)$. Com isso, $\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\epsilon)))^{n} = \exp(n\epsilon)$. 
+				Decompondo o espaço $\real{2n}$ no produto de n espaços $\real{2}$, a exponencial de $t\estruturacomplexa S$ é representada por n blocos diagonais de matrizes $2\times 2$.
 				
-				Seja $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ definido por $\psi(t) = \exp(t\estruturacomplexa S)$. Portanto $\mu(\psi) = 2\deg(\rho_{\psi}) = -n$. Como o número de auto-valores negativos de $Ind(S)$ é zero, então  $ Ind(S)-n=\mu(E_{\estruturacomplexa S})$ para todo $s\in \intervalo$.
-				
-				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (-\epsilon,\dots,-\epsilon)$:} tem-se que
 				$$
 				\begin{aligned}
-				\exp(t\estruturacomplexa S) 
-				&= \cos(t\epsilon)Id- \sin(t\epsilon)\estruturacomplexa
-				\\
-				&= \cos(-t\epsilon)Id+ \sin(-t\epsilon)\estruturacomplexa
-				\\
-				&\sim R(-t\epsilon).
+					\exp(t\estruturacomplexa S) 
+					&=
+					\left(
+					\begin{array}{ccccccc}
+					\cos(t\pi) & \sin(t\pi) & 0 & 0 & 0 & \dots & 0
+					\\
+					-\sin(t\pi) & \cos(t\pi) & 0 & 0 & 0 & \dots & 0  
+					\\
+					0 & 0 & \cos(t\pi) & \sin(t\pi) & 0 & \dots & 0
+					\\
+					0 & 0 & -\sin(t\pi) & \cos(t\pi) & 0 & \dots & 0
+					\\
+					\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots
+					\\
+					0 & 0 & 0 & 0 & 0 & \cos(t\pi) & \sin(t\pi)
+					\\
+					0 & 0 & 0 & 0 & 0 & -\sin(t\pi) & \cos(t\pi)
+					\end{array}
+					\right)
+					\\
+					&=
+					\left(
+					\begin{array}{ccccc}
+					r(-t\pi) & 0 &\dots & 0 
+					\\
+					0 & r(-t\pi) &\dots & 0 
+					\\
+					\vdots & \vdots & \ddots & \vdots 
+					\\
+					0 & 0 & \dots & r(-t\pi)
+					\end{array}
+					\right),
 				\end{aligned}
 				$$
+				onde $r(-t\pi)$ é a matriz de rotação no plano $\real{2}$ por um ângulo $-t\pi \in \reta$. Note que, $r(-t\pi) \in \gruposimpletico{2}$ é uma matriz otogonal, logo pode ser identificada com uma matriz unitária em $e^{-i\pi}\in U(1)$ (veja o Lema \ref{lema_isomorfismo_U}). Pela propriedade do determinante de $\rho$ descrita no Item \ref{item_determinante_rho} e pela propriedade produto de $\rho$ descrita no Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que 
+				$$
+				\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\pi)))^{n} = e^{-itn\pi}.
+				$$ 
 				
-				Analogamente ao caso anterior, tem-se a matriz de rotação no plano $r(-t\epsilon)$ por um ângulo de $-t\epsilon<0$. Com isso, Com isso, $\rho(\exp(t\estruturacomplexa S)) = (\rho(r(-t\epsilon)))^{n} = \exp(-n\epsilon)$, o que implica em $\mu(E_{\estruturacomplexa S}) = 2\deg(\rho_{E_{\estruturacomplexa S}}) = n$. Como $Ind(S) = 2n$, então $ Ind(S)-n = 2n-n = n = \mu(A_{s})$, como desejávamos.
+				Defina $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Com isso, 
+				$$
+				\mu(\psi) = 2\deg(\rho_{\psi}) = \frac{2(-n\pi +0)}{2\pi}=-n.
+				$$. Como o número de auto-valores negativos de $\ind(S)$ é zero, então  
+				$$
+				\ind(S)-n=\mu(\psi).
+				$$
+				
+				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (-\pi,\dots,-\pi)$:} tem-se que
+				$$
+				\exp(t\estruturacomplexa S) = \cos(t\pi)Id- \sin(t\pi)\estruturacomplexa.
+				$$
+				
+				Analogamente ao item anterior, 	decomponha o espaço $\real{2n}$ no produto de n espaços $\real{2}$. Então a exponencial de $t\estruturacomplexa S$ é representada por n blocos diagonais de matrizes $2\times 2$
+				
+				$$
+				\exp(t\estruturacomplexa S) =
+				\left(
+				\begin{array}{ccccc}
+				r(t\pi) & 0 &\dots & 0 
+				\\
+				0 & r(t\pi) &\dots & 0 
+				\\
+				\vdots & \vdots & \ddots & \vdots 
+				\\
+				0 & 0 & \dots & r(t\pi)
+				\end{array}
+				\right),
+				$$
+				onde $r(t\pi)$ é uma rotação no plano $\real{2}$ de um ângulo $t\pi\in \reta$.
+				
+				Com isso, identificando $r(t\pi)$ com a matriz $e^{i\pi }\in U(1)$, aplicando a propriedade do determinante e a propriedade do produto da aplicação $\rho$, tem-se que 
+				$$
+				\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\pi)))^{n} = e^{itn\pi}.
+				$$
+				
+				
+				Defina $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Com isso, $\mu(\psi) = n $, e como $\ind(S) = 2n$, então 
+				$$ 
+				\ind(S)-n = n = \mu(\psi).
+				$$
 				
 				\item \textbf{Caso $a_{(1)}.a_{(2)}<0$ e $a_{(1)}=(\epsilon,\dots,\epsilon), \; a_{(2)} = -a_{(1)}$:} tem-se agora as funções hiporbólicas
 				$$
@@ -4411,15 +4436,8 @@
 	Do fato de que $\energiafinitaM$ é um espaço topológico compacto e que pode ser escrito como a união dos espaços das órbitas conectantes $\energiafinitaMconectante$, tem-se que $\pontoscriticos{\funcionalH}$ é um conjunto finito.
 	
 	\begin{teorema}\label{teorema_orbitas_conectantes_finitas}
-		Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$ e possui finitos elementos \vermelho{(ainda não achei a referência para essa afirmação....)}.
+		Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$ e possui finitos elementos.
 	\end{teorema}
-	
-	Note que, se $\mu(\gamma^{-}) = \mu(\gamma^{+})$, então $\energiafinitaMconectante$ é uma variedade 0-dimensional e é dada pelos dois casos: 
-	\begin{enumerate}
-		\item Caso $\gamma^{-} =\gamma^{+}$: tem-se que $\energiafinitaM(\gamma^{-}, \gamma^{-}) =\{u\}$, onde $u(s) = \gamma^{-}$ para todo $s\in \reta$.
-		
-		\item Caso $\gamma^{-} \neq \gamma^{+}$: tem-se que $\energiafinitaMconectante = \emptyset$.
-	\end{enumerate}
 		
 	\chapter{Aplicações: Homologia de Floer e a Conjectura de Arnold}
 	
@@ -4456,7 +4474,7 @@
 	
 	Portanto é $\partial^{F}_{k}$ realmente um operador de bordo e $(C^{F}_{*}(H,J), \partial^{F})$ é um complexo de cadeia e a Homologia de Floer da variedade $M$ é definido por 
 	$$
-	H^{F}_{*}(M;H,J)=\bigoplus_{k=0}^{2n}H_{k}(C^{F}_{*}(H,J), \partial^{F}),
+	H^{F}_{*}(M;H,J)=\bigoplus_{k=0}^{2n}H^{F}_{k}(C^{F}_{*}(H,J), \partial^{F}),
 	$$
 	onde $H^{F}_{k}(C^{F}_{*}(H,J))$ é o k-ésimo grupo de homologia do complexo $C^{F}_{*}(H,J)$ da variedade $M$ dado por
 	
