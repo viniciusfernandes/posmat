@@ -3527,19 +3527,49 @@
 				\ind(S)-n = n = \mu(\psi).
 				$$
 				
-				\item \textbf{Caso $a_{(1)}.a_{(2)}<0$ e $a_{(1)}=(\epsilon,\dots,\epsilon), \; a_{(2)} = -a_{(1)}$:} tem-se agora as funções hiporbólicas
+				\item \textbf{Caso $a_{(1)}.a_{(2)}<0$ e $a_{(1)}=(\pi,\dots,\pi), \; a_{(2)} = -a_{(1)}$:} usando o fato que $\sin(it\epsilon)=\sinh(t\epsilon)$ e $\cos(it\epsilon)=\cosh(t\epsilon)$, tem-se que
 				$$
-				\exp(t\estruturacomplexa \mathcal{S}(s)) = 
+				\begin{aligned}
+					\exp(t\estruturacomplexa S) 
+					&= \cosh(t\pi)Id- \sinh(t\pi)\left(
+					\begin{array}{cc}
+					0 & Id
+					\\
+					Id & 0  
+					\end{array}
+					\right)
+					\\
+					&=	
+					\left(
+					\begin{array}{ccccc}
+					h(t\pi) & 0 &\dots & 0 
+					\\
+					0 & h(t\pi) &\dots & 0 
+					\\
+					\vdots & \vdots & \ddots & \vdots 
+					\\
+					0 & 0 & \dots & h(t\pi)
+					\end{array}
+					\right),
+				\end{aligned}
+				$$
+				onde foi usado o fato que 
+				$$
+				h(t\pi) = 
 				\left(
 				\begin{array}{cc}
-				\cosh(t\epsilon)Id & \sinh(t\epsilon)Id
+				\cosh(t\pi) & -\sinh(t\pi)
 				\\
-				-\sinh(t\epsilon)Id & \cosh(t\epsilon)Id
+				-\sinh(t\pi) & \cosh(t\pi)
 				\end{array}
 				\right).
 				$$
 				
-				O sistema $\exp(t\estruturacomplexa \mathcal{S}(s)) v = \lambda v$ tem como solução os auto-valores $\lambda \in \{\cosh(t\epsilon)\pm i\sinh(t\epsilon)\}$. Portanto para todo $t\in (0,1]$ tem-se que $|\lambda| \neq 1$, logo $\lambda \notin \circulo$ e $\espectrooperador{A_{s}}\cap\circulo = \emptyset$. Como a aplicação $\rho$ depende apenas dos auto-valores em $\espectrooperador{A_{s}}\cap\circulo$, então $\mu(A_{s}) = 0$. Além disso, não há auto-valores negativos, então $Ind(S)=0$ e $Ind(S)=\mu(A_{s})$.
+				Defina $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Note que, $\espectrooperador{\psi}= \espectrooperador{h(t\pi)} $, onde $\espectrooperador{h(t\pi)} = \{e^{t\pi} , e^{-t\pi}\}$. Como os auto-valores $\lambda(t)$ de $\psi(t)$ são números reais positivos, então $\lambda(t)$ estão no primeiro quadrante do plano complexo. Com isso, caminho $\rho_{\psi}:\intervalo\to \circulo$ não chega a envolver $\circulo$, e portanto $\deg(\rho_{\psi}) = 0$. Logo, $\mu(\psi) = 0$. Como $\ind(S) = n$, então
+				$$
+				\ind(S) - n = 0 =\mu(\psi).
+				$$
+			
 			\end{enumerate}
 	
 			\item \textbf{(Inverso)} Pelo Lema \ref{lema_inversa_caminho_especial}, tem-se que $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{2n}}$. Afirmo que $\Psi^{-1}= \psi^{-1}*\gamma^{-1} \in \caminhosespeciais{\gruposimpletico{2n}}$. De fato, se $\lambda(t)$ é um auto-valore de $\gamma(t)$, então $1/\lambda(t)$ é um auto-valore de $\gamma^{-1}(t)$. Como $1 \notin\espectrooperador{\gamma(t)}$, então $1 \notin\espectrooperador{\gamma^{-1}(t)}$
