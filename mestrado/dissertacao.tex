@@ -245,6 +245,7 @@
 \newcommand{\parteReal}[1]{\Re(#1)}
 \newcommand{\perturbacaoHamiltoniana}[1]{C^{\infty}_{\epsilon}(#1)}
 \newcommand{\pontoscriticos}[1]{\textit{Cr}(#1)}
+\newcommand{\pontoscriticosordem}[2]{\textit{Cr}^{(#1)}(#2)}
 \newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
 \newcommand{\produtointernoabrev}{\langle ., .\rangle}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
@@ -2573,9 +2574,9 @@
 		Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(0)}M$.
 	\end{definicao}
 	
-	No caso em que a função Hamiltoniana $H$ dependente do tempo se reduz a uma Hamiltoniana autônoma, tem-se que os pontos críticos de $H$ são as soluções constantes dos sistema Hamiltoniano, o que está feito no Exemplo \ref{exemplo_funcao_hamiltoniana}.
+\vermelho{	No caso em que a função Hamiltoniana $H$ dependente do tempo se reduz a uma Hamiltoniana autônoma, tem-se que os pontos críticos de $H$ são as soluções constantes dos sistema Hamiltoniano, o que está feito no Exemplo \ref{exemplo_funcao_hamiltoniana}.
 	
-		
+	(Incluir aqui a observacao de que a derivada do jacobiano do fluxo é a exponencial da hessiana de H. além disso , \ norma da hessiana for menor do que $2\pi$, então $\estruturacomplexa S$ não tem auto valores iguais a $2i\pi k$ e consequentemente $e^{\estruturacomplexa S}$ não tem auto valores iguais a 1. Usar essa observacao da demonstracao da construção do indice de Maslov)}
 	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
 	Nesse capítulo é considerado $M$ como sendo uma 2n-variedade diferenciável fechada e $(M, \omega)$ uma variedade simplética.
 	
@@ -3559,7 +3560,7 @@
 	
 	Fixe $x $ uma solução 1-periódica não degenerada e contrátil do sistema Hamiltoniano, tal que $x(t) = \psi_{t}(x(0))$. Escolha uma base simplética $B(0) = \{e_{1}(0),\dots,e_{2n}(0)\}$ de $\espacotangenteponto{x(0)}{M}$. Como $\psi_{t}$ é uma simplectomorfismo para todo $t\in \reta$, então pode-se afirmar que $B(t) = \{e_{1}(t), \dots, e_{2n}(t)\}$ é uma base simplética de $\espacotangenteponto{x(t)}{M}$, onde $e_{j}(t) = D_{x(0)}\psi_{t}(e_{j}(0))$ para $1\leq j \leq 2n$ e $D_{x(0)}\psi_{t}: \espacotangenteponto{x(0)}{M}\to \espacotangenteponto{x(t)}{M}$.
 	
-	Afirmo que a aplicação contínua $A:\reta \to \caminhosespeciais{\gruposimpletico{2n}}$ dada por $A(t) = D_{x(0)}\psi_{t}$ está bem definida. De fato, $A(0) = D_{x(0)}\psi_{0}=Id$, pois $\psi_{0}=Id$. Como $x$ é uma solução não-degenerada, então $\det(D_{x(0)}\psi_{1}-Id) \neq 0$, o que implica em $A(1)\in \gruposimpleticonaodegenerado{*}$. Além disso, escolhida uma outra base simplética $B'(t) = \{e'_{1}(t), \dots, e'_{2n}(t)\}$, tem-se que $A'(t)$ é a representação matricial de $D_{x(0)}\psi_{t}$ na base $B'(t)$ e é homotópicamente equivalente a $A(t)$, para todo $t \in \reta$. Seja $T:\reta \to \generalgroupreal{2}$ uma família de isomorfismos tal que $T(t)e_{j}(t) = e'_{j}(t)$. Então, supondo que $\omega_{x(t)}(e'_{j}(t), e'_{k}(t))=\omega_{x(t)}(e_{j}(t), e_{k}(t))=\delta_{jk}$, tem-se que
+	Seja a aplicação contínua $A_{x}:\reta \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$. Note que, $A_{x}(0) = D_{x(0)}\psi_{0}=Id$, pois $\psi_{0}=Id$. Como $x$ é uma solução não-degenerada, então $\det(D_{x(0)}\psi_{1}-Id) \neq 0$, o que implica em $A_{x}(1)\in \gruposimpleticonaodegenerado{*}$. Além disso, escolhida uma outra base simplética $B'(t) = \{e'_{1}(t), \dots, e'_{2n}(t)\}$, tem-se que $A_{x}'(t)$ é a representação matricial de $D_{x(0)}\psi_{t}$ na base $B'(t)$ e é homotópicamente equivalente a $A_{x}(t)$, para todo $t \in \reta$. Seja $T:\reta \to \generalgroupreal{2}$ uma família de isomorfismos tal que $T(t)e_{j}(t) = e'_{j}(t)$. Então, supondo que $\omega_{x(t)}(e'_{j}(t), e'_{k}(t))=\omega_{x(t)}(e_{j}(t), e_{k}(t))=\delta_{jk}$, tem-se que
 	$$
 	\begin{aligned}
 			((T(t))^{*}\omega_{x(t)})(e_{j}(t), e_{k}(t))
@@ -3573,10 +3574,20 @@
 		&=\omega_{x(t)}(e_{j}(t), e_{k}(t)). 
 	\end{aligned}
 	$$
-	O mesmo vale para os elementos das bases $B(t)$ e $B'(t)$ que são $\omega$-ortogonais. Portanto, $T(t)\in \gruposimpletico{2n}$ para todo $t\in \reta$. Com isso, pode-se escrever $A(t) = (T(t))^{-1}A'(t)T(t)$, e pela propriedade de homotopia dsecrita no Item \ref{item_naturalidade_maslov}, tem-se que 
+	O mesmo vale para os elementos das bases $B(t)$ e $B'(t)$ que são $\omega$-ortogonais. Portanto, $T(t)\in \gruposimpletico{2n}$ para todo $t\in \reta$. Com isso, pode-se escrever $A_{x}(t) = (T(t))^{-1}A'_{x}(t)T(t)$, e pela propriedade de homotopia dsecrita no Item \ref{item_naturalidade_maslov}, tem-se que 
 	$$
-	\mu(A) = \mu(T^{-1}A'T) = \mu(A').
+	\mu(A_{x}) = \mu(T^{-1}A'_{x}T) = \mu(A'_{x}).
 	$$
+
+	Com isso, a aplicação $A: \pontoscriticos{\funcionalH} \to \caminhosespeciais{\gruposimpletico{2n}}$ dada por $A(x)(t) =A_{x}(t)= D_{x(0)}\psi_{t}$, onde $t \in \reta$, está bem definida.
+	
+	\begin{definicao}
+		O índice de Conley-Zehnder $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$ é dado por 
+		$$
+		\iconley{x} = \mu(A_{x}).
+		$$
+	\end{definicao}
+	
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
 	
@@ -4420,58 +4431,60 @@
 	
 	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica analoga a  Morse clássica que se deparou com algumas barreiras técnicas, tais como: variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades. Floer utiliza como função de Morse um funcional definido nesse espaço, que é um espaço de funções, e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
 	
-	\section{Definições}
+	
 	Seja $(M,\omega)$ uma 2n-variedade simpletica e $H: M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo genérica, isto é, $H$ pode ser um elemento do conjunto de perturbações $\perturbacaoHamiltoniana{H_{0}}$, para alguma função Hamiltoniana $H_{0}:M\times \reta \to \reta$.
 	
 	O Teorema \ref{teorema_orbitas_conectantes_finitas} afirma que, dados $\gamma^{-},\gamma^{+} \in \pontoscriticos{\funcionalH}$, tem-se que $\energiafinitaMconectante$ possui um número finito de órbitas conectantes. Com isso, defina o total de elementos de $\energiafinitaMconectante$ módulo 2 por $n(\gamma^{-},\gamma^{+})$.
+	
+	 Seja $\pontoscriticosordem{k}{\funcionalH} = \{ y \in \pontoscriticos{\funcionalH}: \iconley{y}=k\}$. Considere $C^{F}_{k}(H,J)=C^{F}_{k}(M, \inteiros_{2}; H,J)$ um espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \pontoscriticosordem{k}{\funcionalH} $, isto é
+	$$
+		C^{F}_{k}(H,J) = \bigoplus_{x\in \pontoscriticosordem{k}{\funcionalH} }n_{x}\gerador{x}.
+	$$
+	Com isso, $C^{F}_{*}(H,J)=\bigoplus_{k}C^{F}_{k}(H,J)$ é um espaço vetorial sobre o corpo $\inteiros_{2}$ e graduado pelo índice de Conley-Zehnder $\iconleyabrev$.
 
-	\begin{observacao}
-		xxxxxxxxxxxxxx
-	\end{observacao}
+	Considere o homomorfismo $\bordo{k}^{F}: C^{F}_{k}(H,J)\to C^{F}_{k-1}(H,J)$ de grau -1 e definido por
+	$$
+	\bordo{k}^{F}(\gerador{x}) = \sum_{\iconley{y}=k-1}n(x,y)\gerador{y}.
+	$$
+	\vermelho{(Nesse ponto o Michelle define a somatoria utilizando o índice $Ind(y)$.)}
 	
-	 Seja $x\in \pontoscriticos{\funcionalH}$ e defina $Cr(x;k) = \{ y \in \pontoscriticos{\funcionalH}: \mu(u)=k,\; u\in \energiafinitaM(x,y)\}$. Considere $C_{k}(M, \inteiros_{2}; H)$ um espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \lacocontrateis$, isto é
-	$$
-	C_{k}(M, \inteiros_{2}; H) = \bigoplus_{x\in \pontoscriticos{\funcionalH}}n_{x}\gerador{x}.
-	$$
-	\vermelho{(Aqui devemos entender melhor em quais elementos estamos avaliando o índice de Maslov...!!!)}
-	
-	$$
-	C = \bigoplus_{k}C_{k}, \; C_{k}(M, \inteiros_{2}) = \text{span}\{x \in \lacocontrateis:m(x)=k \}.
-	$$
-	Segue-se da compacidade e da estruta de variedade diferenciável que $\mathcal{M}(y,x)$ possui um número finito de elementos sempre que $ m(y)-m(x)=1 = dim(\mathcal{M}(y,x))$. Com esse fato podemos construir o operador bordo $\partial : C_{k+1} \to C_{k}$ tal que
-	$$
-	\partial y = \sum_{m(x)=k} n_{k}(x) x,	
-	$$
-	onde $n_{k}(x)$ é o número de componentes de $\mathcal{M}(y,x)$ módulo 2. Posteriormente Floer demonstra que $\partial^{2}=0$, assim $(C,\partial)$ define um complexo de cadeia e a homologia
-	$$
-	HF_{*}(M, \inteiros_{2}) = \frac{Ker(\partial)}{Im(\partial)}
-	$$
-	é chamada homologia de Floer.
-	
-	\textbf{Observação:} Note que ao se definir o complexo de cadeia não fizemos referência a função Hamiltoniana nem a estrutura quase-complexa J escolhidas, isso porque a homologia de Floer não depende de tais escolhas, seguindo o teorema:
+	Em \cite{audi_floer_homology} é demonstrado que 
 	
 	\begin{teorema}
-		Sejam $(H,J)$ e $(H',J')$ pares regulares, isto é, $J, J' \in J_{reg}$, respeticamente, então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
+		Se $(H,J)\in \hamiltonianasRegulares$, então $\partial^{F}_{k-1}\circ \partial^{F}_{k} = 0$.
+	\end{teorema}
+	
+	Portanto é $\partial^{F}_{k}$ realmente um operador de bordo e $(C^{F}_{*}(H,J), \partial^{F})$ é um complexo de cadeia e a Homologia de Floer da variedade $M$ é definido por 
+	$$
+	H^{F}_{*}(M;H,J)=\bigoplus_{k=0}^{2n}H_{k}(C^{F}_{*}(H,J), \partial^{F}),
+	$$
+	onde $H_{k}(C^{F}_{*}(H,J))$ é o k-ésimo grupo de homologia do complexo $C^{F}_{*}(H,J)$ da variedade $M$ dado por
+	
+	$$
+	H_{k}(C^{F}_{*}(H,J)) = \frac{\ker(\partial^{F}_{k})}{\text{im}(\partial^{F}_{k+1})}.
+	$$ 
+	
+	Note que, nas definições do complexo de cadeia e da homologia foram mantidas as referências a função Hamiltoniana $H$ escolhida para se realizar a construção desses conjuntos. Contudo,  pode-se mostrar que a homologia de Floer não depende de tal escolha, confirme o seguinte resultado.
+	
+	\begin{teorema}
+		Sejam $(H,J), (H',J') \in \hamiltonianasRegulares$. Então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
 		$$
-		HF_{*}(M,\inteiros_{2};H,J) \cong HF_{*}(M,\inteiros_{2};H',J'). 
+		H^{F}_{*}(M; H,J) \cong H^{F}_{*}(M; H',J'). 
 		$$
-		Além disso, existe um isomorfismo natural entre a homologia de Floer e a homologia singular de $M$
+	\end{teorema}
+	
+	As definições e resultados obtidos até aqui tiveram como objetivo a construção de um invariante topológico que fornecesse informações sobre a topologia da 2n-variedade $M$ e que, ao mesmo tempo, de sua estrutura simplética $\omega$. O resultado de todos esses esforços culmina na definição da Homologia de Floer.
+	
+	O próximo resultado, que pode ser encontrado em \cite{salamon_zehnder}, permite que se recupere a homologia singular da variedade a partir da homologia de Floer.
+	
+	\begin{teorema}
+		Se $(H,J) \in \hamiltonianasRegulares$, então 
+		existe um isomorfismo natural entre a homologia de Floer e a homologia singular de $M$
 		$$
-		HF_{*}(M,\inteiros_{2};H,J) \cong H_{*}(M;\inteiros_{2}). 
+		H^{F}_{*}(M;H,J) \cong H_{*}(M;\inteiros_{2}). 
 		$$
 		
 	\end{teorema}
-	
-	\vermelho{	O caso de sistemas Hamiltonianos autônomos fica reduzido ao caso de uma função de Morse $H:M\to \real{}$ cujo conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$. Com isso, o índice de Maslov terá uma relação direta com índice de Morse da seguinte forma: (Verificar o melhor local do texto para inserir esse resultado!!!)}
-	
-	O caso de sistemas Hamiltonianos autônomos fica reduzido ao caso de uma função de Morse $H:M\to \real{}$ cujo conjunto de soluções 1-periódicas $\lacocontrateis$ será o conjunto de pontos críticos isolados de $H$. Com isso, o índice de Maslov terá uma relação direta com índice de Morse da seguinte forma:
-	
-	\begin{corolario}
-		Sejam $(M, \omega)$ uma 2n-variedade simplética, $H : M \to \real{}$ uma função hamiltoniana autônoma e $x \in Crit(H)$. Assumindo que $||Hess_{x}(H)|| < 2\pi$, então o índice de Maslov $\mu(x)$ da solução periódica $x$ do sistema hamiltoniano $\dot{x}(t) = X_{H}(x(t))$ pode ser relacionado o índice de Morse $Ind(x)$ do ponto crítico da função $H$ da seguinte forma:
-		$$
-		\mu(x) = Ind(x) - n.
-		$$
-	\end{corolario}	
 	
 	\appendix
 	
