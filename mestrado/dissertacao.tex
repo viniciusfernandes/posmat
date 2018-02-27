@@ -4458,10 +4458,10 @@
 	$$
 	H^{F}_{*}(M;H,J)=\bigoplus_{k=0}^{2n}H_{k}(C^{F}_{*}(H,J), \partial^{F}),
 	$$
-	onde $H_{k}(C^{F}_{*}(H,J))$ é o k-ésimo grupo de homologia do complexo $C^{F}_{*}(H,J)$ da variedade $M$ dado por
+	onde $H^{F}_{k}(C^{F}_{*}(H,J))$ é o k-ésimo grupo de homologia do complexo $C^{F}_{*}(H,J)$ da variedade $M$ dado por
 	
 	$$
-	H_{k}(C^{F}_{*}(H,J)) = \frac{\ker(\partial^{F}_{k})}{\text{im}(\partial^{F}_{k+1})}.
+	H^{F}_{k}(C^{F}_{*}(H,J)) = \frac{\ker(\partial^{F}_{k})}{\text{im}(\partial^{F}_{k+1})}.
 	$$ 
 	
 	Note que, nas definições do complexo de cadeia e da homologia foram mantidas as referências a função Hamiltoniana $H$ escolhida para se realizar a construção desses conjuntos. Contudo,  pode-se mostrar que a homologia de Floer não depende de tal escolha, confirme o seguinte resultado.
@@ -4469,7 +4469,7 @@
 	\begin{teorema}
 		Sejam $(H,J), (H',J') \in \hamiltonianasRegulares$. Então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
 		$$
-		H^{F}_{*}(M; H,J) \cong H^{F}_{*}(M; H',J'). 
+		H^{F}_{*}(C^{F}_{*}(H,J)) \cong H^{F}_{*}(M; H',J'). 
 		$$
 	\end{teorema}
 	
@@ -4477,7 +4477,7 @@
 	
 	O próximo resultado, que pode ser encontrado em \cite{salamon_zehnder}, permite que se recupere a homologia singular da variedade a partir da homologia de Floer.
 	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_isomorfismo_homologia_floer}
 		Se $(H,J) \in \hamiltonianasRegulares$, então 
 		existe um isomorfismo natural entre a homologia de Floer e a homologia singular de $M$
 		$$
@@ -4485,6 +4485,26 @@
 		$$
 		
 	\end{teorema}
+	
+	\begin{observacao}\label{observacao_ordem_homologia_floer}
+		Sabe-se que, para uma 2n-variedade compacta, a ordem inferior dos grupos de homologia é 0 e a ordem superior é 2n. Pelo isomormorfismo anterior, pode-se afirmar que o grupo de homologia de Floer do complexo de cadeia definido na 2n-variedade compacta $M$ de menor ordem é $	H^{F}_{0}(C^{F}_{*}(H,J))$ e o de maior ordem é $H^{F}_{2n}(C^{F}_{*}(H,J))$.
+	\end{observacao}
+	
+	Com a definição da homologia de Floer e com o isomorfismo dessa com a homologia singular da 2n-variedade, é imediata a demonstração da Conjectura de Arnold.
+	
+	\begin{teorema}
+			(Conjectura de Arnold) Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{} \to \reta$ uma função Hamiltoniana 1-periódica e suponha que as soluções 1-periódicas do sistema Hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado inferiormente pela soma dos números de Betti de M, isto é:
+				$$
+				\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
+				$$
+				onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.
+	\end{teorema}
+	\begin{prova}
+		Na Seção \ref{secao_transversalidade_compacidade_M} foi mostrado que $\pontoscriticos{\funcionalH}$ é um conjunto finito, logo $\pontoscriticosordem{k}{\funcionalH} \subset \pontoscriticos{\funcionalH}$ é finito. Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso, $\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j}$ é o total de ponstos críticos do funcional de ação (os limites dos índices dessa somatória estão justificados na Observação \ref{observacao_ordem_homologia_floer}). Como $C^{F}_{k}(H,J)$ é gerado por todos os pontos críticos de ordem $k$, e ao realizar o quociente para a construção do k-ésimo grupo de homologia, o total de geradores pode ser reduzido. Portanto, $\mathcal{N}_{k}\geq \dim(	H^{F}_{k}(C^{F}_{*}(H,J)))$. Como os grupos de homologia de Floer e de homologia singular são isomorfos (veja o Teorema \ref{teorema_isomorfismo_homologia_floer}), então $\dim(	H^{F}_{k}(C^{F}_{*}(H,J)))  = \dim(	H_{k}(M;\inteiros_{2}) = \beta_{k}(M)$. Portanto
+		$$
+		\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j} \geq \sum_{j=0}^{2n} \beta_{j}(M).
+		$$ 
+	\end{prova}
 	
 	\appendix
 	
