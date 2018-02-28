@@ -111,6 +111,8 @@
 \newcommand{\diferencialfloerabrev}{\mathcal{D}}
 \newcommand{\derivada}[2]{\frac{d #1}{d #2}}
 \newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\derivadaparcialdois}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\derivadaparcialdoisdois}[3]{\frac{\partial^{2} #1}{\partial #2 \partial#3}}
 \newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
 \newcommand{\diag}{\text{diag}}
 \newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
@@ -184,7 +186,8 @@
 \newcommand{\gruposimpleticonaodegenerado}[1]{Sp^{#1}(2n)}
 \newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
 \newcommand{\hamiltonianasRegulares}{\mathcal{H}_{reg}}
-\newcommand{\hessiana}{H_{p}(f)}
+\newcommand{\hessiana}{\text{Hess}_{p}(f)}
+\newcommand{\hessianaponto}[2]{\text{Hess}_{#1}(#2)}
 \newcommand{\homologia}[2]{H_{#1}(#2;A)}
 \newcommand{\homologiaabrev}[2]{H_{#1}(#2)}
 \newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
@@ -2356,7 +2359,7 @@
 	
 	
 	\chapter{O funcional Hamiltoniano $\funcionalH$ e a equação de Floer}
-	\section{Variedades Simpléticas}
+	\section{Variedades Simpléticas}\label{secao_variedade_simpletica}
 	
 	Nessa seção parte dos conceitos introduzidos no Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} sobre espaços vetoriais simpléticos serão estendidos para as variedades diferenciáveis.
 	
@@ -3339,7 +3342,7 @@
 			
 			\item \textbf{(Determinante)} Suponha que  $\det(\psi(1)- Id)>0$. Por definição $\Psi(1)=W^{+}$ e $\rho_{\Psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho_{\Psi}(1) =1$, então $n\in 2\inteiros$. Sabendo que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$, e dos fatos $\rho_{\Psi}(1) = 1$ e $\alpha_{\Psi}(0) = 0$, pode-se concluir que $\alpha_{\Psi}(1)=k\pi$ para algum $k \in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$ e $\mu(\psi)-n \in 2\inteiros$. Se $\rho_{\Psi}(1) =-1$, então $n\in 2\inteiros+1$. Com argumentos análogos ao caso anterior, tem-se que $\alpha_{\Psi}(1) = k\pi$ para algum $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$ e $\mu(\psi)-n \in 2\inteiros$. Com argumentos análogos pode-se mostrar que, para $\det(\psi(1)- Id)<0$, tem-se  $\rho_{\Psi}(1) = \rho(W^{-}) = (-1)^{n-1}$ e portanto $\mu(\psi)-n \in 2\inteiros +1$.
 			
-			\item \textbf{(Assinatura)} Afirmo que, $\exp(\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $(\exp(\estruturacomplexa S))^{t}\estruturacomplexa \exp(\estruturacomplexa S)= \estruturacomplexa$. Note que $(\estruturacomplexa S)^{t} 
+			\item \textbf{(Assinatura)}\label{item_assinatura_maslov} Afirmo que, $\exp(\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $(\exp(\estruturacomplexa S))^{t}\estruturacomplexa \exp(\estruturacomplexa S)= \estruturacomplexa$. Note que $(\estruturacomplexa S)^{t} 
 			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ tem-se a identidade 
 			$$
 			\begin{aligned}
@@ -3643,6 +3646,86 @@
 		$$
 	\end{definicao}
 	
+	Sob algumas condições, uma função Hamiltoniana pode ser vista como um função de Morse, e com isso, é natural se questionar sobre a relação entre o índice de Conley-Zehnder e o índice de Morse. O seguinte resultado esclarece essa questão.
+	
+	Seja $H:M \to \reta$ uma função Hamiltoniana autônoma. Na Seção \ref{secao_variedade_simpletica} estão definidos o campo Hamiltoniano $\campohamiltonianoabrev\in \campossuaves{M}$, onde $\campohamiltonianoabrev=-\estruturacomplexa\nabla H$, e o fluxo associado a ele $\Psi_{t}:M\to M$ é dado por $\dot{\psi}_{t}(x)=\campohamiltoniano{\psi_{t}(x)}$.
+	
+	Seja $x=(q_{1}, \dots, q_{n},p_{1}, \dots, p_{n})\in M$ um ponto crítico não-degenerado de da Hamiltoniana autônoma $H:M \to \reta$. Fixe $V$ uma vizinhança corrdenada de $x$ tal que o diferencial do fluxo $D_{x}\psi_{t}:\espacotangenteponto{x(0)}{M} \to \espacotangenteponto{x(t)}{M}$ é associado a matriz $2n\times 1$
+	$$
+	D_{x}\psi_{t} = 
+	\left(
+		\begin{array}{cc}
+		\derivadaparcial{H}{\textbf{q}} &\derivadaparcial{H}{\textbf{p}}
+		\end{array}
+	\right),
+	$$
+	onde $\derivadaparcial{H}{\textbf{q}}$ denota a $n$-upla $(	\derivadaparcial{H}{q_{1}} \dots \derivadaparcial{H}{q_{n}})$, e o mesmo para $\derivadaparcial{H}{\textbf{p}}$.
+	
+	Com isso, o diferencial $D_{x}\psi_{t}$ pode ser visto como um caminho de matrizes. Logo, seu vetori tangente é dado por
+	$$
+	\begin{aligned}
+		\derivada{}{t}(D_{x}\psi_{t})
+		&=
+		\left(
+		\begin{array}{cc}
+		-(\derivadaparcialdoisdois{H}{\textbf{q}}{\textbf{p}}\dot{\textbf{q}}+\derivadaparcialdois{H}{\textbf{p}}\dot{\textbf{p}}) & 
+		(\derivadaparcialdois{H}{\textbf{q}}\dot{\textbf{q}}+\derivadaparcialdoisdois{H}{\textbf{p}}{\textbf{q}}\dot{\textbf{p}})
+		\end{array}
+		\right)
+		\\
+		&=
+		\left(
+			\begin{array}{c}
+			\left(
+			\begin{array}{cc}
+			0& -Id
+			\\
+			Id & 0
+			\end{array}
+			\right)
+			\left(
+			\begin{array}{cc}
+			\derivadaparcialdois{H}{\textbf{q}} & 
+			\derivadaparcialdoisdois{H}{\textbf{q}}{\textbf{p}}
+			\\
+			\derivadaparcialdoisdois{H}{\textbf{p}}{\textbf{q}} & \derivadaparcialdois{H}{\textbf{p}}
+			\end{array}
+			\right)
+			\end{array}
+		\right)
+		\left(
+		\begin{array}{c}
+		\dot{\textbf{q}}
+		\\
+		\dot{\textbf{p}}
+		\end{array}
+		\right)
+		\\
+		&= -(\estruturacomplexa\circ \hessianaponto{x}{H})(	D_{x}\psi_{t}).
+	\end{aligned}
+	$$
+	Portanto, esse sistema de equanções diferenciais tem como solução
+	$$
+		D_{x}\psi_{t} = e^{-t\estruturacomplexa \hessianaponto{x}{H}}.
+	$$
+	
+	Note que, $\hessianaponto{x}{H}$ é uma matriz simétrica, e se $\norma{\hessianaponto{x}{H}}<2\pi$, então 
+	$$
+	\exp(-\estruturacomplexa \hessianaponto{x}{H}) \in \caminhosespeciais{\gruposimpletico{2n}},
+	$$o que pode ser encontrado na demonstração do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov}.
+	
+	\begin{corolario}
+		Sejam $(M,\omega)$ uma 2n-variedade simplética, $H:M\to \reta$ uma função Hamiltoniana autônoma e $x \in \pontoscriticos{H}$. Se $\norma{\hessianaponto{x}{H}}<2\pi$ (assumindo a $\cktopologia{2}$), então o índice de Conley-Zender $\iconley{x}$ de $x$ como uma solução periódica do sistema Hamiltoniano e seu índice $\ind(x)$ como ponto crítico da função $H$ são relacionados por
+		$$
+		\iconley{x} = \ind(x)-n.
+		$$
+	\end{corolario}
+	\begin{prova}
+		Segue da hipótese de que $x\in \pontoscriticos{H}$ é um ponto crítico não-degenerado. Note que, $S=\hessianaponto{x}{H}$ é uma matriz simétrica, e portanto é diagonalizável. Além disso, do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov} tem-se que $\ind(S)$ é a multiplicidade de auto-valores negativos de $S$. Logo, $\ind(S)$ coincide com o índice de Morse $\ind(x)$ de $x$, e tem-se que
+		$$
+		\iconley{x} = \ind(S)-n = \ind(x)-n.
+		$$
+	\end{prova}
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
 	
@@ -4293,7 +4376,7 @@
 	
 	\end{prova}
 	
-	\section{A transversalidade de $\operadorFloer$ e a Compacidade de $\energiafinitaM$}\label{secao_transversalidade_compacidade_M}
+	\section{A transversalidade e a Compacidade de $\energiafinitaMconectante$}\label{secao_transversalidade_compacidade_M}
 	
 	\vermelho{(O nome da seção não parece ser adequado, pois não foi mostrado a transversalidade de $\operadorFloer$)}
 	
