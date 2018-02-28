@@ -65,11 +65,11 @@
 \newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{2n})}
 \newcommand{\caminhosespeciais}[1]{\mathcal{L}^{*}(#1)}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
-\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{\gamma^{-}}{\gamma^{+}}}
+\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
 \newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
 \newcommand{\caminhosexponenciaisSobolev}{\mathcal{L}^{1,p}M}
-\newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{\gamma^{-}}{\gamma^{+}}}
+\newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
 \newcommand{\caminhos}{\mathcal{L}}
 \newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
 \newcommand{\caminhoslagrangianos}[3]{\caminhos_{#3}(#1,#2)}
@@ -118,7 +118,7 @@
 \newcommand{\distribuicoesgeral}[1]{\mathcal{D'}(#1)}
 \newcommand{\dominioMaslov}{\caminhos^{*}(\gruposimpletico{2n})}
 \newcommand{\energiafinitaM}{\mathcal{M}}
-\newcommand{\energiafinitaMconectante}{\energiafinitaM(\gamma^{-}, \gamma^{+})}
+\newcommand{\energiafinitaMconectante}{\energiafinitaM(x^{-}, x^{+})}
 \newcommand{\espacoLdois}[1]{L^{2}(#1)}
 \newcommand{\espacoLp}[1]{L^{p}(#1)}
 \newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
@@ -238,7 +238,7 @@
 \newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
 \newcommand{\orbitaponto}[1]{\mathcal{O}(#1)}
 \newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
-\newcommand{\orbitasConectantesZ}{\mathcal{Z}(\gamma^{+}, \gamma^{-}, J)}
+\newcommand{\orbitasConectantesZ}{\mathcal{Z}(x^{-}, x^{+}, J)}
 \newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
 \newcommand{\paresregulares}{\mathcal{H}_{reg}}
 \newcommand{\parteImaginaria}[1]{\Im(#1)}
@@ -276,7 +276,7 @@
 
 \begin{document}
 	
-	\title{Os Índices de Maslov e Conely-Zehnder, e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
+	\title{Os Índices de Maslov, o Índice de Conely-Zehnder e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
 	
 	\author{Vinicius Fernandes}
 	
@@ -2817,7 +2817,7 @@
 			
 			\item $E(u) = 0$ se, e somente se, $\derivadaparcial{}{s}u(s) = 0$. Isso reduz $u$ a uma solução do sistema Hamiltoniano. Logo $u$ é um ponto crítico de $\funcionalH$.
 			
-			\item Se $u \in \cilindrosLM$ conecta dois pontos $\gamma, \gamma' \in \pontoscriticos{\funcionalH}$, isto é, $\lim_{s\to -\infty}u(s)=\gamma'$ e $\lim_{s\to \infty}u(s)=\gamma$, então $E(u)=\funcionalH(\gamma') - \funcionalH(\gamma)<\infty$.
+			\item Se $u \in \cilindrosLM$ conecta dois pontos $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, isto é, $\lim_{s\to -\infty}u(s)=x^{-}$ e $\lim_{s\to \infty}u(s)=x^{+}$, então $E(u)=\funcionalH(x^{-}) - \funcionalH(x^{+})<\infty$.
 		\end{enumerate}
 		
 	\end{observacao}
@@ -2865,9 +2865,9 @@
 	Temos o teorema a seguir tem sua importância destacada nas demais demonstração de outros resultados, além ser o equivalente ao Lema $\ref{lema_conjunto_limite_funcao_morse}$.
 	
 	\begin{teorema}\label{teorema_limite_solucoes_energia_finita}
-		Suponha que todas as trajetórias de $-\gradientefuncional \in \campossuaves{\lacocontrateis}$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$ tais que
+		Suponha que todas as trajetórias de $-\gradientefuncional \in \campossuaves{\lacocontrateis}$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ tais que
 		$$
-		\lim_{s\to -\infty}u(s)=\gamma^{-},\; \lim_{s\to \infty}u(s)=\gamma^{+}\;\;
+		\lim_{s\to -\infty}u(s)=x^{-},\; \lim_{s\to \infty}u(s)=x^{+}\;\;
 		$$
 		em $C^{\infty}(\circulo;M)$. Além disso, temos que
 		$$
@@ -2876,7 +2876,7 @@
 		converge uniformemente em $t\in \circulo$.
 	\end{teorema}
 	
-	\chapter{Índice de Maslov - A Construção de Conley-Zehnder}
+	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}
 	\section{Motivação}
 	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
 	$$
@@ -2884,7 +2884,7 @@
 	$$
 	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a uma curva constante. Elas são pontos críticos do funcional de ação $f_{H}$. Analogamente a Teoria de Morse vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
 	
-	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $\det(Id - A(t))\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
+	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $\det(A(t)- Id)\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
 	
 	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{2n} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$, pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
 	
@@ -3646,7 +3646,7 @@
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
 	
-	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $\gamma^{-}, \gamma^{+}$ sejam duas soluções 1-periódicas do sistema Hamiltoniano, isto é, $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, para toda estrutura complexa $J \in \estruturascomplexas{M}{\omega}$ podemos considerar $\energiafinitaMconectante \subset \energiafinitaM$ como sendo o conjunto das soluções da equação de Floer que conectam os pontos críticos $\gamma^{-}$ e $\gamma^{+}$. Vamos demonstrar que $\energiafinitaMconectante$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das soluções $x^{-}$ e $x^{+}$ do seguinte modo $dim(\energiafinitaMconectante) = \mu(x^{-})-\mu(x^{+})$. Para isso vamos descrever o conjunto $\energiafinitaMconectante$ como sendo os zero de uma seção do fibrado vetorial na variedade de Banach $\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são os caminhos de decaimento exponencial que conectam $x^{-}, x^{+}$ de modo que teremos $\energiafinitaMconectante \subset \caminhosexponenciaisconectantespadrao$. Aplicando a versão para dimensões infinitas do Teorema de Sard, chamado de Sard-Smale, mostraremos que $\energiafinitaMconectante$ é a pré-imagem de uma valor regular de uma determinada aplicação, sendo que para isso, deveremos mostrar que o diferencial dessa aplicação é um operador de Fredholm. Esse operador é chamado de operador de Fleor $\operadorFloer$ e seu diferencial será denotador por $\diferencialfloer$. Mostraremos que, o índice do operador $\diferencialfloer$ é $\mu(x^{-}) - \mu(x^{+})$, portanto 
+	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x^{-}, x^{+}$ sejam duas soluções 1-periódicas do sistema Hamiltoniano, isto é, $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então, para toda estrutura complexa $J \in \estruturascomplexas{M}{\omega}$ podemos considerar $\energiafinitaMconectante \subset \energiafinitaM$ como sendo o conjunto das soluções da equação de Floer que conectam os pontos críticos $x^{-}$ e $x^{+}$. Vamos demonstrar que $\energiafinitaMconectante$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das soluções $x^{-}$ e $x^{+}$ do seguinte modo $dim(\energiafinitaMconectante) = \mu(x^{-})-\mu(x^{+})$. Para isso vamos descrever o conjunto $\energiafinitaMconectante$ como sendo os zero de uma seção do fibrado vetorial na variedade de Banach $\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são os caminhos de decaimento exponencial que conectam $x^{-}, x^{+}$ de modo que teremos $\energiafinitaMconectante \subset \caminhosexponenciaisconectantespadrao$. Aplicando a versão para dimensões infinitas do Teorema de Sard, chamado de Sard-Smale, mostraremos que $\energiafinitaMconectante$ é a pré-imagem de uma valor regular de uma determinada aplicação, sendo que para isso, deveremos mostrar que o diferencial dessa aplicação é um operador de Fredholm. Esse operador é chamado de operador de Fleor $\operadorFloer$ e seu diferencial será denotador por $\diferencialfloer$. Mostraremos que, o índice do operador $\diferencialfloer$ é $\mu(x^{-}) - \mu(x^{+})$, portanto 
 	$$
 	dim(\energiafinitaMconectante)=\ind(\diferencialfloer) <\infty.
 	$$
@@ -3665,28 +3665,28 @@
 		\end{enumerate}
 	\end{definicao}
 	
-	Foi demonstrado \vermelho{(??? Fazer um exemplo no capitulo de fibrados)} que todo fibrado vetorial cujo espaço base é $\circulo$ é trivializável. Portanto, dado $\gamma\in\lacocontrateis$, tem-se que $\pullbackfibradotangenteM{\gamma} \cong \circulo\times \real{2n}$. Suponha que $h:\pullbackfibradotangenteM{\gamma} \to \circulo\times \real{2n}$ é uma trivialização e que, de acordo com a identifição realizada na Observação \ref{observacao_identificacao_secao_campo_vetorial}, $X \in \campossuaves{M}$ é uma seção de $TM$. 
+	Foi demonstrado \vermelho{(??? Fazer um exemplo no capitulo de fibrados)} que todo fibrado vetorial cujo espaço base é $\circulo$ é trivializável. Portanto, dado $x\in\lacocontrateis$, tem-se que $\pullbackfibradotangenteM{x} \cong \circulo\times \real{2n}$. Suponha que $h:\pullbackfibradotangenteM{x} \to \circulo\times \real{2n}$ é uma trivialização e que, de acordo com a identifição realizada na Observação \ref{observacao_identificacao_secao_campo_vetorial}, $X \in \campossuaves{M}$ é uma seção de $TM$. 
 	
-	Seja $hX$ uma seção do fibrado trivial $\circulo\times \real{2n}$ associada a seção $X$ de $\pullbackfibradotangenteM{\gamma}$, e defina 
+	Seja $hX$ uma seção do fibrado trivial $\circulo\times \real{2n}$ associada a seção $X$ de $\pullbackfibradotangenteM{x}$, e defina 
 	$$
-	\espacosobolev{\pullbackfibradotangenteM{\gamma}} = \{Y \in \campossuaves{M} : hY\in \espacosobolevcontradominio{\circulo}{\real{2n}}\},
+	\espacosobolev{\pullbackfibradotangenteM{x}} = \{Y \in \campossuaves{M} : hY\in \espacosobolevcontradominio{\circulo}{\real{2n}}\},
 	$$ 
 	onde $W^{1,p}$ são os espaços de Sobolev definidos na Seção \ref{secao_espaco_sobolev}.
 	
-	Suponha que $h':\pullbackfibradotangenteM{\gamma} \to \circulo\times \real{2n}$ é uma outra trivialização. Então existe uma aplicação $f:\circulo\to \generalgroupreal{2n}$ tal que $(h'Y)(z) = f(z)(hY)(z)$. De fato, sejam $B'(z)$ e $B(z)$ 
+	Suponha que $h':\pullbackfibradotangenteM{x} \to \circulo\times \real{2n}$ é uma outra trivialização. Então existe uma aplicação $f:\circulo\to \generalgroupreal{2n}$ tal que $(h'Y)(z) = f(z)(hY)(z)$. De fato, sejam $B'(z)$ e $B(z)$ 
 	bases de $\real{2n}$ em $z\in \circulo$, respectivamente. Defina as aplicações $A:\circulo \to \generalgroupreal{2n}$ por $B'(z)=A(z)B(z)$ e $f_{A}:\circulo\times \real{2n}\to \circulo\times \real{2n}$ por $f_{A}(x, X(x))=(x, A(x)X(x))$.  Sem perda de generalidade, pode-se supor que $(h'Y)(z) = (z, Y'(z))$ e $(hY)(z) = (z, Y(z))$ e que $Y'(z)$ e $Y(z)$ estão nas bases $B'(z)$ e $B(z)$, respectivamente. Com isso, tem-se que $f_{A}((hY)(z)) = f_{A}(z, Y(z)) = (z, A(z)Y(z)) = (h'Y)(z)$. Portanto, $h'Y = f_{A}\circ hY$ e as trivializações $h$ e $h'$ definem as mesmas secões no fibrado $\circulo\times \real{2n}$, a menos de um isomorfismo.
 	
-	Desse resultado, pode-se afirmar que, para todo $Y \in \espacosobolev{\pullbackfibradotangente{\gamma}{M}}$, tem-se
+	Desse resultado, pode-se afirmar que, para todo $Y \in \espacosobolev{\pullbackfibradotangente{x}{M}}$, tem-se
 	$$
 	\normaWp{h'Y} \leq c(A)\normaWp{hY},
 	$$
 	onde $c(A) = \norma{A}\geq 0$.
-	Logo, $h$ e $h'$ definem a mesma topologia para $\espacosobolev{\pullbackfibradotangenteM{\gamma}}$.
+	Logo, $h$ e $h'$ definem a mesma topologia para $\espacosobolev{\pullbackfibradotangenteM{x}}$.
 	
 	Para a construção de um sistema local de cartas em $\lacocontrateis$ será utilizada a aplicação exponencial definida nos espaços tangentes de variedades Riemannianas. Uma breve apresentação pode ser vista no Apêndice \ref{apendice_variedade_riemanniana}.
 	
-	Seja $D \subset TM$ uma vizinhança da seção nula de $TM$. Então a aplicação exponencial $\exp_{\gamma}: \espacosobolev{\gamma^{*}D} \to C^{0}(\circulo;M)$ é definida por $\exp_{\gamma}(Y)(t) = \exp_{\gamma(t)}(Y(t))$.
-	Tome a coleção $\{ (\espacosobolev{\gamma^{*}D}, \exp_{\gamma}) \}_{\gamma \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que existem $\gamma\in \lacocontrateis$ e $Y \in \espacosobolev{\gamma^{*}D}$ com $\beta(t)=\exp_{\gamma(t)}Y(t)$.
+	Seja $D \subset TM$ uma vizinhança da seção nula de $TM$. Então a aplicação exponencial $\exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ é definida por $\exp_{x}(Y)(t) = \exp_{x(t)}(Y(t))$.
+	Tome a coleção $\{ (\espacosobolev{x^{*}D}, \exp_{x}) \}_{x \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que existem $x\in \lacocontrateis$ e $Y \in \espacosobolev{x^{*}D}$ com $\beta(t)=\exp_{x(t)}Y(t)$.
 	
 	\begin{proposicao}\label{proposicao_caminhos_variedade_banach}
 		O conjunto $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Além disso, 
@@ -3698,17 +3698,17 @@
 	\begin{prova}
 		Afirmo que $\caminhosexponenciaisSobolev$ satisfaz os axiomas das variedades de Banach. De fato,
 		\begin{enumerate}
-			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $\gamma_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{\gamma_{\beta}^{*}D}$ tal que $\beta(t)=\exp_{\gamma_{\beta}(t)}Y_{\beta}(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é injetora. Denotando $\espacosobolev{\gamma_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
+			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $x_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{x_{\beta}^{*}D}$ tal que $\beta(t)=\exp_{x_{\beta}(t)}Y_{\beta}(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é injetora. Denotando $\espacosobolev{x_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
 			$$
 			\caminhosexponenciaisSobolev = \bigcup_{\beta \in \caminhosexponenciaisSobolev } W_{\beta}.
 			$$
 			
-			\item Pela escolha de $D_{\beta}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\exp_{\gamma_{\beta}}:W_{\beta} \to \exp_{\gamma_{\beta}}(W_{\beta})$ é um difeomorfismo sobre sua imagem. Logo é um homeomorfismo.
+			\item Pela escolha de $D_{\beta}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\exp_{x_{\beta}}:W_{\beta} \to \exp_{x_{\beta}}(W_{\beta})$ é um difeomorfismo sobre sua imagem. Logo é um homeomorfismo.
 			
-			\item Como $\exp_{\gamma_{\beta}}$ e $\exp_{\gamma_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\exp_{\gamma_{\beta}}^{-1} \circ \exp_{\gamma_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
+			\item Como $\exp_{x_{\beta}}$ e $\exp_{x_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\exp_{x_{\beta}}^{-1} \circ \exp_{x_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
 		\end{enumerate}
 		
-		Portanto $\{(W_{\beta}, \exp_{\gamma_{\beta}}) \}_{\beta \in \caminhosexponenciaisSobolev}$ é um atlas suave e $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Por fim, a demonstração da cadeia de inclusão dos conjuntos e suas densidades podem ser encontrada em \cite{matthias_morse_homology}.
+		Portanto $\{(W_{\beta}, \exp_{x_{\beta}}) \}_{\beta \in \caminhosexponenciaisSobolev}$ é um atlas suave e $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Por fim, a demonstração da cadeia de inclusão dos conjuntos e suas densidades podem ser encontrada em \cite{matthias_morse_homology}.
 	\end{prova}
 	
 	Como discutido na Observação \ref{observacao_mergulho_variedade}, a variedade $M$ esta sendo tratada como um mergulho em um $\real{4n+1}$. Com isso, as aplicacões $u \in \energiafinitaM$ podem ser vistas como $u:\retacartesianocirculo\to M \subset \real{4n+1}$. Assim, a topologia de $\espacosobolevcontradominio{\retacartesianocirculo}{M}$ é induzida pela topologia de $\espacosobolevcontradominio{\retacartesianocirculo}{\real{4n+1}}$. 
@@ -3730,9 +3730,9 @@
 	\end{observacao}
 	
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
-		(Caminhos de decaimentos exponenciais) Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $\gamma^{-}$ a $\gamma^{+}, $ por
+		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
 		$$
-		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \pm \infty} u(s,t) = \gamma^{\pm}(t),\;\;\forall t\in \circulo \},
+		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \pm \infty} u(s,t) = x^{\pm}(t),\;\;\forall t\in \circulo \},
 		$$
 		tal que
 		$$
@@ -3741,10 +3741,10 @@
 	\end{definicao}
 	
 	\begin{definicao}
-		(Exponenciais conectantes) Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$, $u \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ das aplicações $Exp(u,X):\retacartesianocirculo \to M$ tal que $Exp(u,X)(s,t) = \aplicacaoexponencial{u(s,t)}{X(s,t)}$.
+		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, $u \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ das aplicações $Exp(u,X):\retacartesianocirculo \to M$ tal que $Exp(u,X)(s,t) = \aplicacaoexponencial{u(s,t)}{X(s,t)}$.
 	\end{definicao}
 	
-	Seja $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s,t) =\gamma^{\pm}(t)\; \forall t\in \reta \}$, onde $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$.
+	Seja $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s,t) =x^{\pm}(t)\; \forall t\in \reta \}$, onde $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$.
 	Em \cite{audi_floer_homology} é mostrada a proposição a seguir
 	
 	\begin{proposicao}\label{proposicao_cadeia_caminhos_conectantes}
@@ -3753,7 +3753,7 @@
 	
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
-		Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
 	\end{proposicao}
 	
 	\begin{prova}
@@ -3767,7 +3767,7 @@
 	Denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$.
 	
 	\begin{definicao}\label{definicao_operador_floer}
-		(Operador de Floer) Sejam $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorFloer: \caminhosexponenciaisconectantesabrev \to T\caminhosexponenciaisconectantesabrev$ definido por
+		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorFloer: \caminhosexponenciaisconectantesabrev \to T\caminhosexponenciaisconectantesabrev$ definido por
 		$$
 		\operadorFloerParametro{u} =\operadorFloerDefinicao{u},
 		$$
@@ -4285,9 +4285,9 @@
 		\end{enumerate}
 		
 		\begin{teorema}\label{teorema_indice_diferencial_operador_floer}
-			O índice de Fredholm de $\diferencialfloer$ é \vermelho{(definir quem são $\gamma^{\pm}$)}
+			O índice de Fredholm de $\diferencialfloer$ é \vermelho{(definir quem são $x^{\pm}$)}
 			$$
-			\ind(\diferencialfloer) = \mu(\gamma^{-}) - \mu(\gamma^{+}).
+			\ind(\diferencialfloer) = \mu(x^{-}) - \mu(x^{+}).
 			$$
 		\end{teorema}
 	
@@ -4297,13 +4297,13 @@
 	
 	\vermelho{(O nome da seção não parece ser adequado, pois não foi mostrado a transversalidade de $\operadorFloer$)}
 	
-	A transversalidade do operador de Floer tem sua importância na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\energiafinitaMconectante$ é uma variedade de dimensão finita e é dada por $\mu(\gamma^{-})-\mu(\gamma^{+})$, onde $\gamma^{-}, \gamma^{+}\in \pontoscriticos{\funcionalH}$ que, de acordo com o Teorema \ref{teorema_indice_diferencial_operador_floer},  coincide com o índice do operdador de Fredholm $\ind(\diferencialfloer)$.
+	A transversalidade do operador de Floer tem sua importância na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\energiafinitaMconectante$ é uma variedade de dimensão finita e é dada por $\mu(x^{-})-\mu(x^{+})$, onde $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ que, de acordo com o Teorema \ref{teorema_indice_diferencial_operador_floer},  coincide com o índice do operdador de Fredholm $\ind(\diferencialfloer)$.
 	
 	Sabe-se que $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach (veja na Seção \ref{secao_variedade_banach_P}). Com isso, é construída uma seção do fibrado tangente dessa variedade, tal que $\energiafinitaMconectante\subset \caminhosexponenciaisconectantespadrao$ é o conjunto de todos zeros dessa seção. Assim, é demonstrado que $\energiafinitaMconectante$ é a pré-imagem de um valor regular de uma determinada aplicação, e com isso, aplicando a generalização para espaços de dimensão infinita do Teorama de Sard, pode-se concluir que $\energiafinitaMconectante$ é uma variedade de dimensão finita. Nesse ponto é utilizada a propriedade de Fredholm do diferencial do operador de Floer $\diferencialfloer$ para se afirmar a finitude da dimensão dessa variedade.
 	
 	\vermelho{(Inserir uma justificativa para a não demonstração dos teoremas desse capítulo...!!!)}
 	
-	Sejam $\gamma^{-},\gamma^{+}\in \pontoscriticos{\funcionalH}$, e considere o operador de Floer 
+	Sejam $x^{-},x^{+}\in \pontoscriticos{\funcionalH}$, e considere o operador de Floer 
 	$$
 	\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao
 	$$  
@@ -4355,8 +4355,8 @@
 
 	Seja 
 	$
-	\orbitasConectantesZ = \{ (u, \vermelho{H+h}): u \in  \energiafinitaM(\gamma^{+}, \gamma^{-}, J, H) \;\;\text{e}\;\; h\in \perturbacaoHamiltoniana{H} \}
-	$ o conjunto de todas as soluções da equação de Floer conectando $\gamma^{-}$ a $\gamma^{+}$ de todas as perturbações da função Hamiltoniana $H$.
+	\orbitasConectantesZ = \{ (u, \vermelho{H+h}): u \in  \energiafinitaM(x^{-}, x^{+}, J, H) \;\;\text{e}\;\; h\in \perturbacaoHamiltoniana{H} \}
+	$ o conjunto de todas as soluções da equação de Floer conectando $x^{-}$ a $x^{+}$ de todas as perturbações da função Hamiltoniana $H$.
 
 	\begin{proposicao}\label{proposicao_gamma_sobrejetora}
 		Se $(u, H+h) \in \orbitasConectantesZ$, então a aplicação 
@@ -4375,7 +4375,7 @@
 	Como consequência da proposição anterior, e via o teorema da função implícita, pode-se mostrar que
 	
 	\begin{proposicao}
-	Para todos $\gamma^{+},\gamma^{-}\in \pontoscriticos{\funcionalH}$ com $\gamma^{+}\neq  \gamma^{-}$ tem-se que $\mathcal{Z}(\gamma^{+}, \gamma^{-}, J)$ é uma variedade (de Banach). 
+	Para todos $x^{-},x^{+}\in \pontoscriticos{\funcionalH}$ com $x^{+}\neq  x^{-}$ tem-se que $\mathcal{Z}(x^{-}, x^{+}, J)$ é uma variedade (de Banach). 
 	\end{proposicao}
 	
 	Note que o conjunto $\caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$ é uma variedade, pois é o produto cartesiano de variedades. Considere o fibrado vetorial $\mathcal{E} \to \caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$, onde 
@@ -4429,23 +4429,23 @@
 	\\
 	&=\ind{\diferencialfloerponto{u}}
 	\\
-	&=\mu(\gamma^{-})-\mu(\gamma^{+}).
+	&=\mu(x^{-})-\mu(x^{+}).
 	\end{aligned}
 	$$
 	
 	Note que, os elementos de $\pi^{-1}$ são as soluções em $\caminhosexponenciaisconectantespadrao$ da equação de Floer para o par $(H+h, J)$. Pela Proposição \ref{proposicao_cadeia_caminhos_conectantes}, pode-se afirmar que 
 	$$
-	\energiafinitaM(\gamma^{-}, \gamma^{+}; H+h) \subset\pi^{-1}(h).
+	\energiafinitaM(x^{-}, x^{+}; H+h) \subset\pi^{-1}(h).
 	$$
 	
 	Do Teorema da Regularidade Elíptica \ref{teorema_regularidade_eliptica}, pode-se concluir que 
 	$$
-	\pi^{-1}(h) \subset\energiafinitaM(\gamma^{-}, \gamma^{+}; H+h),
+	\pi^{-1}(h) \subset\energiafinitaM(x^{-}, x^{+}; H+h),
 	$$
-	e portanto $\energiafinitaM(\gamma^{-}, \gamma^{+}; H+h)=\pi^{-1}(h)$.
+	e portanto $\energiafinitaM(x^{-}, x^{+}; H+h)=\pi^{-1}(h)$.
 	
 	\begin{teorema}
-		Para cada $h \in \perturbacaoHamiltoniana{H}$ e para toda solução contrátil 1-periódica $\gamma^{-}, \gamma^{+}$ de $H$, $\energiafinitaM(\gamma^{-}, \gamma^{+}, H+h)$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$.
+		Para cada $h \in \perturbacaoHamiltoniana{H}$ e para toda solução contrátil 1-periódica $x^{-}, x^{+}$ de $H$, $\energiafinitaM(x^{-}, x^{+}, H+h)$ é uma variedade de dimensão $\mu(x^{-})-\mu(x^{+})$.
 	\end{teorema} 
 	
 	A compacidade de $\energiafinitaM$ exerce um papel importante nos resultados na definição da homologia de Floer. O teorema a seguir garante que, sob certas hipóteses, essa propriedade pode ser obtida, e sua demonstração pode ser encontrada em $\cite{audi_floer_homology}$. \vermelho{(Ainda tenho que ver como encaixar esse resultado com os resultados dessa seção)}
@@ -4454,19 +4454,19 @@
 		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
 	\end{teorema}
 	
-	O Teorema \ref{teorema_limite_solucoes_energia_finita} afirma que, para todo $u\in \energiafinitaM$, existem $\gamma^{+}, \gamma^{-}\in \pontoscriticos{\funcionalH}$ tais que 
+	O Teorema \ref{teorema_limite_solucoes_energia_finita} afirma que, para todo $u\in \energiafinitaM$, existem $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ tais que 
 	$$
-	\lim_{s\to -\infty}u(s)=\gamma^{-}\; \text{e} \; \lim_{s\to \infty}u(s)=\gamma^{+}.
+	\lim_{s\to -\infty}u(s)=x^{-}\; \text{e} \; \lim_{s\to \infty}u(s)=x^{+}.
 	$$
 	Com isso, pode-se afirmar que $u\in \energiafinitaMconectante$ e 
 	$$
-	\energiafinitaM = \bigcup_{\gamma^{+}, \gamma^{-}\in  \pontoscriticos{\funcionalH}}\energiafinitaMconectante.
+	\energiafinitaM = \bigcup_{x^{-}, x^{+}\in  \pontoscriticos{\funcionalH}}\energiafinitaMconectante.
 	$$
 
 	Do fato de que $\energiafinitaM$ é um espaço topológico compacto e que pode ser escrito como a união dos espaços das órbitas conectantes $\energiafinitaMconectante$, tem-se que $\pontoscriticos{\funcionalH}$ é um conjunto finito.
 	
 	\begin{teorema}\label{teorema_orbitas_conectantes_finitas}
-		Sejam $\gamma^{-}, \gamma^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(\gamma^{-})-\mu(\gamma^{+})$ e possui finitos elementos.
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(x^{-})-\mu(x^{+})$ e possui finitos elementos.
 	\end{teorema}
 		
 	\chapter{Aplicações: Homologia de Floer e a Conjectura de Arnold}
@@ -4482,7 +4482,7 @@
 	
 	Seja $(M,\omega)$ uma 2n-variedade simpletica e $H: M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo genérica, isto é, $H$ pode ser um elemento do conjunto de perturbações $\perturbacaoHamiltoniana{H_{0}}$, para alguma função Hamiltoniana $H_{0}:M\times \reta \to \reta$.
 	
-	O Teorema \ref{teorema_orbitas_conectantes_finitas} afirma que, dados $\gamma^{-},\gamma^{+} \in \pontoscriticos{\funcionalH}$, tem-se que $\energiafinitaMconectante$ possui um número finito de órbitas conectantes. Com isso, defina o total de elementos de $\energiafinitaMconectante$ módulo 2 por $n(\gamma^{-},\gamma^{+})$.
+	O Teorema \ref{teorema_orbitas_conectantes_finitas} afirma que, dados $x^{-},x^{+} \in \pontoscriticos{\funcionalH}$, tem-se que $\energiafinitaMconectante$ possui um número finito de órbitas conectantes. Com isso, defina o total de elementos de $\energiafinitaMconectante$ módulo 2 por $n(x^{-},x^{+})$.
 	
 	 Seja $\pontoscriticosordem{k}{\funcionalH} = \{ y \in \pontoscriticos{\funcionalH}: \iconley{y}=k\}$. Considere $C^{F}_{k}(H,J)=C^{F}_{k}(M, \inteiros_{2}; H,J)$ um espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \pontoscriticosordem{k}{\funcionalH} $, isto é
 	$$
