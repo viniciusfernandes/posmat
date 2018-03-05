@@ -2362,11 +2362,13 @@
 	
 	Nessa seção parte dos conceitos introduzidos no Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} sobre espaços vetoriais simpléticos serão estendidos para as variedades diferenciáveis.
 	
-	Seja M uma $2n$-variedade diferenciável. Uma 2-forma $\omega \in \Omega^{2}(M)$ é não-degenerada se o par $(T_{x}M, \omega_{x})$ é um espaço vetorial simplético para todo $x \in M$.
-	
 	\begin{definicao}
 		(Variedade Simplética) Uma estrutura simplética em uma 2n-variedade diferenciável $M$ é uma 2-forma não-degenerada $\omega\in \Omega^{2}(M)$ tal que $d\omega=0$. O par $(M, \omega)$ é uma 2n-variedade simplética.
 	\end{definicao}
+	
+	\begin{observacao}
+		Note que, se $(M, \omega)$ é uma $2n$-variedade simplética, então para todo $x \in M$ o par $(T_{x}M, \omega_{x})$ é um $2n$-espaço vetorial simplético.
+	\end{observacao}
 	
 	\begin{observacao}
 		Aplicando o Lema \ref{lema_caracterizacao_forma_simpetica}, pode-se mostrar que, se $(M, \omega)$ é uma $2n$-variedade simplética, então $\omega^{\wedge n} \in \Omega^{2n}(M)$ define uma forma-volume em $M$. Logo, $M$ é orientável (veja \cite{warner_manifolds}).
@@ -2394,7 +2396,7 @@
 	\varphi^{*}\omega_{2}=\omega_{1}.
 	$$
 	
-	A aplicação $\varphi$ é chamado simplectomorfismo entre $M_{1}$ e $M_{2}$.
+	A aplicação $\varphi$ é chamada simplectomorfismo entre $M_{1}$ e $M_{2}$.
 	
 	Uma estrutura complexa em $M$ é uma automorfismo $J:TM \to TM$ tal que, para todo $(x,v_{x})\in TM$, tem-se $(p, J^{2}_{x}v_{x}) = (p, -v_{x})$, isto é, $J^{2}_{x}=-Id$. Além disso, se $(M, \omega)$ é uma variedade simplética, então $J$ é $\omega$-compatível se $J_{x}$ é $\omega_{x}$-compatível para todo $x\in M$. Com isso, tem-se que $g \in \Omega^{2}(M)$, definida por
 	$$
@@ -2403,25 +2405,25 @@
 	é uma métrica Riemanniana.
 
 	\begin{definicao}
-		(Função Hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \times  \to \real{}$ é chamada uma função Hamiltoniana dependente do tempo se satisfaz as equações diferenciais de Hamilton
+		(Função Hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \to \real{}$ é chamada uma função Hamiltoniana se satisfaz as equações diferenciais de Hamilton
 		$$
 		\frac{\partial q_{j}}{\partial t} = \frac{\partial H}{\partial p_{j}}, \; \frac{\partial p_{j}}{\partial t} = -\frac{\partial H}{\partial p_{j}},
 		$$
-		para $1\leq j \leq n$ e $(q_{1}(t), \dots, q_{n}(t), p_{1}(t), \dots, p_{1}(t)) \in M$.
+		para $1\leq j \leq n$ e $(q_{1}, \dots, q_{n}, p_{1}, \dots, p_{n}) \in M$.
 	\end{definicao}
 	
 	\begin{definicao}
 		(Campo Hamiltoniano) Um campo Hamiltoniano é o único campo vetorial $X_{H}\in \campossuaves{M}$ tal que
 		$$
-		\omega_{x}(X_{H}, Y) = -dH_{x}(Y)
+		\omega_{x}(X_{H}(x), Y) = -dH_{x}(Y)
 		$$
-		para todo $x\in M$ e todo $Y_{x} \in \espacotangenteponto{x}{M}$.
+		para todo $x\in M$ e todo $Y \in \espacotangenteponto{x}{M}$.
 	\end{definicao}
 	
 	\begin{observacao}
 		Note que 
 		$$
-		dH_{x}(Y)=\omega_{x}(-X_{H}(x), Y_{x}) =\omega_{x}(-J_{x}X_{H}(x), J_{x}Y_{x}) =g_{x}(-J_{x}X_{H}(x), Y_{x}),$$
+		dH_{x}(Y)=\omega_{x}(-X_{H}(x), Y) =\omega_{x}(-J_{x}X_{H}(x), J_{x}Y) =g_{x}(-J_{x}X_{H}(x), Y),$$
 		onde foi usado o fato de que $J_{x}$ é um simplectomorfismo. Com isso, o gradiente Hamiltoniano é $\nabla H = -JX_{H} \in \campossuaves{M}$.
 	\end{observacao}
 	
@@ -2429,18 +2431,18 @@
 		Seja $x\in M$. Então, $x\in \pontoscriticos{H}$ se, e somente se, $\campohamiltoniano{x}=0$.
 	\end{proposicao}
 	\begin{prova}
-		Se $x\in \pontoscriticos{H}$, então pela não-degeneracidade da forma simpética tem-se que, $0=dH_{x}(Y_{x})=\omega_{x}(\campohamiltonianoabrev(x), Y_{x})$ para todo $Y_{x}\in T_{x}M$. Logo, $\campohamiltoniano{x} =0$. Por outro lado, se $\campohamiltoniano{x} =0$, então $\omega_{x}(\campohamiltonianoabrev(x), Y_{x})=0$ para todo $Y_{x}\in T_{x}M$. Logo $dH_{x}=0$ e $x\in \pontoscriticos{H}$.
+		Se $x\in \pontoscriticos{H}$, então pela não-degeneracidade da forma simpética tem-se que, $0=dH_{x}(Y)=\omega_{x}(\campohamiltonianoabrev(x), Y)$ para todo $Y\in T_{x}M$. Logo, $\campohamiltoniano{x} =0$. Por outro lado, se $\campohamiltoniano{x} =0$, então $\omega_{x}(\campohamiltonianoabrev(x), Y)=0$ para todo $Y\in T_{x}M$. Logo $dH_{x}=0$ e $x\in \pontoscriticos{H}$.
 	\end{prova}
 	
-	O sistema de equaçoes diferenciais abaixo
+	O sistema de equaçoes diferenciais
 	$$
-		\dot{x}(t)=\campohamiltoniano{x(t), t},
+		\dot{x}(t)=\campohamiltoniano{x(t)},
 	$$
 	é chamado sistema Hamiltoniano, e suas soluções determinam uma família de difeomorfismos $\psi_{t}:M\to M$ que satisfazem a as relações 
 	$$
 	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
 	$$
-	A aplicação $\psi: M\to M$ acima é chamada de fluxo Hamiltoniano.
+	Essa aplicação $\psi: M\times \reta \to M$ é chamada de fluxo do campo Hamiltoniano $\campohamiltonianoabrev$.
 	
 
 	A proposição a seguir afirma que o fluxo Hamiltoniano preserva a forma simplética.
@@ -2560,29 +2562,42 @@
 	$$
 	
 	\begin{observacao}
-		A função Hamiltoniana que não tem dependência temporal, isto é, $H(x(t), t) = H(x(t))$, é chamada função Hamiltoniana autônoma.
+		A função Hamiltoniana que não tem dependência temporal 	é chamada função Hamiltoniana autônoma.
 	\end{observacao}
 	
-	Bem como ao caso autônomo, as soluções do sistema Hamiltoniana dependente do tempo podem ser associadas a uma família de difeomorfismos $\psi_{t}:M \to M$ tal que
+	Bem como ao caso autônomo, as soluções do sistema Hamiltoniano dependente do tempo podem ser associadas a uma família de difeomorfismos $\psi_{t}:M \to M$ tal que
 	$$
 	\dot{\psi_{t}}(x) = \campohamiltoniano{\psi_{t}(x), t}\; \text{e} \; \psi_{0}=Id. 
 	$$ 
 	
 	Analogamente ao que foi feito na Proposição \ref{proposicao_familia_simplectomorfismos}, pode-se mostrar que essa família de difeomorfismos é uma família de simplectomorfismos.
 	
-	Uma solução do sistema Hamiltoniano $x:\reta\to M$ é chamada de solução 1-periódica se $x(t) = x(t+1)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{1}(x(0)) = x(1) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{1}:M\to M$. Será visto adiante que, supondo que a função Hamiltoniana $H$ também é $1$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $1$-perídicas do sistema Hamiltoniano (esse resultado está realcionado diretamente com a Conjectura de Arnold, a qual veremos adiante).
+	Uma solução do sistema Hamiltoniano $x:\reta\to M$ é chamada de solução 1-periódica se $x(t) = x(t+1)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{1}(x(0)) = x(1) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{1}:M\to M$. Será visto adiante que, supondo que a função Hamiltoniana $H$ também é $1$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $1$-perídicas do sistema Hamiltoniano (esse resultado está relacionado diretamente com a Conjectura de Arnold, a qual veremos adiante).
 	
 	\begin{definicao}(Soluções $1$-periódicas não-degeneradas)
-		Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(0)}M$.
+		Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(1)}M$.
 	\end{definicao}
 	
-\vermelho{	No caso em que a função Hamiltoniana $H$ dependente do tempo se reduz a uma Hamiltoniana autônoma, tem-se que os pontos críticos de $H$ são as soluções constantes dos sistema Hamiltoniano, o que está feito no Exemplo \ref{exemplo_funcao_hamiltoniana}.
+	Se uma Hamiltoniana $H:M\times \reta\to \reta$ se reduz ao caso de uma Hamiltoniana autônoma, então todo ponto $x\in \pontoscriticos{H}$ é uma solução 1-periódica do sistema Hamiltoniano, em particular é uma solução de constante. A seguinte proposição formaliza esse resultado, e sua demonstração pode ser encontrada em \cite{audi_floer_homology}.
 	
-	(Incluir aqui a observacao de que a derivada do jacobiano do fluxo é a exponencial da hessiana de H. além disso , \ norma da hessiana for menor do que $2\pi$, então $\estruturacomplexa S$ não tem auto valores iguais a $2i\pi k$ e consequentemente $e^{\estruturacomplexa S}$ não tem auto valores iguais a 1. Usar essa observacao da demonstracao da construção do indice de Maslov)}
+	\begin{proposicao}
+		Se $x \in \pontoscriticos{H}$ é não-degenerado como uma solução periódica do sistema Hamiltoniano, então é não-degenerado como ponto crítico de $H$.
+	\end{proposicao}
+	
+	\begin{observacao}
+		Esta demonstrado em \ref{secao_indice_conley} que no caso autônomo tem-se que $D_{x}\psi^{1} = e^{\estruturacomplexa \hessianaponto{x}{H}}$. Além disso, se $x$ é uma solução não-degenerada do sistema Hamiltoniano, então $e^{\estruturacomplexa \hessianaponto{x}{H}} \in \gruposimpletico{2n}$ e, se $\norma{\hessianaponto{x}{H}}<2\pi$, então $1\notin \espectrooperador{e^{\estruturacomplexa \hessianaponto{x}{H}}}$.
+	\end{observacao}
+	
+	\begin{observacao}
+		Uma consequência imediata da proposição anterior é que, se $x$ é uma solução não-degenerada do sistema Hamiltoniano autônomo, então pode ser vista como um ponto crítico de $H$. Logo, pode-se afirmar que $x$ é uma solução isolada do sistema, isto é, não existe uma outra solução infinitesimalmente próxima a ela.
+	\end{observacao}
+	
+	
 	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
+	
 	Nesse capítulo é considerado $M$ como sendo uma 2n-variedade diferenciável fechada e $(M, \omega)$ uma variedade simplética.
 	
-	A conjectura de Arnold tem como hipótese uma hamiltoniana dependente do tempo $H: M\times \reta \to \reta$ e, para o sistema Hamiltoniano,
+	A conjectura de Arnold tem como hipótese uma Hamiltoniana dependente do tempo $H: M\times \reta \to \reta$ e, para o sistema Hamiltoniano,
 	$$
 	\dot{x}(t) = X_{H}(x(t), t),
 	$$
@@ -2594,9 +2609,9 @@
 	
 	Para demonstrar as desigualdades de Morse, foi construído o complexo de Morse-Witten de uma função de Morse-Smale $f: M\to \reta$ e a diferencial desse complexo descreve como os pontos críticos de $f$ pontos são conectados pelas linhas do fluxo do gradiente negativo $-\gradiente$. Para a demonstração da Conjectura de Arnold uma abordagem análoga é realizada. Contudo, o invés de uma variedade de dimensão finita $M$ tem-se um espaço de funções $\lacocontrateis$, e ao invés de uma função $f:M\to \reta$ tem-se um funcional $\funcionalH:\lacocontrateis\to \reta$.
 	
-	Nesta seção é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias cujo grupo graduado é gerado pelos pontos críticos desse funcional cujo diferencial descreve como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
+	Nesta seção é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias cujo grupo graduado é gerado pelos pontos críticos desse funcional e cuja diferencial descreve como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
 	
-	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $x\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{x}{\lacocontrateis}$ está bem-definido e pode ser caracterizado da seguinte forma: o espaço tangente em $x \in \lacocontrateis$ pode ser definido como o conjunto dos vetores tangentes de cada caminho $u':\reta\to \lacocontrateis$ de classe $C^{\infty}$ tal que $u'(0)=x$. Desse modo, cada $u'$ pode ser visto como uma aplicação $u: \retacartesianocirculo \to M$ tal que $u'(s)(t) = u(s,t)$ e $u(0,t) = x(t)$ (veja a Figura \ref{figura_caminho_espaco_laco_contrateis}). Então, para cada $t\in \circulo$ tem-se que
+	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $x\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{x}{\lacocontrateis}$ está bem-definido e pode ser caracterizado da seguinte forma: o espaço tangente em $x \in \lacocontrateis$ pode ser definido como o conjunto dos vetores tangentes de cada caminho $\tilde{u}:\reta\to \lacocontrateis$ de classe $C^{\infty}$ tal que $\tilde{u}(0)=x$. Desse modo, cada $\tilde{u}$ pode ser visto como uma aplicação $u: \retacartesianocirculo \to M$ tal que $\tilde{u}(s)(t) = u(s,t)$ e $u(0,t) = x(t)$ (veja a Figura \ref{figura_caminho_espaco_laco_contrateis}). Então, para cada $t\in \circulo$ tem-se que
 	$$
 	\derivadaparcial{}{s}u(s,t)|_{s=0} \in \espacotangenteponto{x(t)}{M}.
 	$$
@@ -2652,11 +2667,11 @@
 	Para se determinar o diferencial do funcional defina $\tilde{u}:(-\epsilon, \epsilon)\times D^{2} \to M$ como sendo uma extensão de $u$, tal que $\tilde{u}(0,z) = u(z)$ e $\tilde{u}(s,e^{2i\pi t}) = \tilde{x}(s,t)$, e $\tilde{Y}(z) = \derivadaparcial{}{s}\tilde{u}(s,z)|_{s=0}$, uma extensão de $Y$. Avaliando o funcional nessas extensões, tem-se
 	
 	$$
-	\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t))dt.
+	\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t),t)dt.
 	$$
 	
 	\begin{observacao}
-		Note que, $	\funcionalHponto{\tilde{x}}$ é uma função de classe $C^{1}$ e que depende explícitamente de $s\in (-\epsilon, \epsilon)$, isto é, $	\funcionalHponto{\tilde{x}}:(-\epsilon,\epsilon)\to \reta$. 
+		Note que, $	\funcionalHponto{\tilde{x}}$ é uma função de classe $C^{1}$ e que depende explicitamente de $s\in (-\epsilon, \epsilon)$, isto é, $	\funcionalHponto{\tilde{x}}:(-\epsilon,\epsilon)\to \reta$. 
 	\end{observacao}
 	
 	Seja $\phi:\retacartesianovariedade\to M$ o fluxo gerado pelo campo $Y\in \campossuaves{M}$. A derivada de Lie no ponto $p\in M $ de uma r-forma $\alpha \in \Omega^{r}(M)$ ao longo do campo $Y$ é definida por 
@@ -2691,12 +2706,12 @@
 	Diferenciando o segundo termo:
 	$$
 	\begin{aligned}
-	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{x}(s,t)) 
-	&= \int_{[0,1]} \derivadaparcial{}{s} H(\tilde{x}(s,t)) \Bigm\lvert_{s=0}
+	\frac{d}{ds} \Bigm\lvert_{s=0} \int_{[0,1]} H(\tilde{x}(s,t),t)dt 
+	&= \int_{[0,1]} \derivadaparcial{}{s} H(\tilde{x}(s,t),t)dt \Bigm\lvert_{s=0}
 	\\
-	&= \int_{[0,1]} d_{x}H(Y)dt
+	&= \int_{[0,1]} d_{\tilde{x}(0,t)}H(Y(t),t)dt
 	\\
-	&= \int_{[0,1]} -\omega_{x}(\campohamiltonianoabrev(x, t), Y)dt. 
+	&= \int_{[0,1]} -\omega_{x(t)}(\campohamiltonianoabrev(x(t), t), Y(t))dt. 
 	\end{aligned}
 	$$
 	Por fim, somando ambos os termos:
@@ -2709,9 +2724,9 @@
 	\omega(\dot{x} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{x}{\lacocontrateis}.
 	$$
 	
-	Como $\omega$  é uma forma simplética não-degenerada, então deve-se ter $\dot{x}(t) - \campohamiltonianoabrev(x, t)=0$. Portanto, um dado $x \in \lacocontrateis$ é um ponto crítico do funcional de ação $\funcionalH$ se, e somente se, $x$ é uma solução 1-periódica e contrátil das equações de Hamilton.
+	Como $\omega$  é uma forma simplética não-degenerada, então deve-se ter $\dot{x}(t) - \campohamiltonianoabrev(x, t)=0$. Portanto, um dado $x \in \lacocontrateis$ é um ponto crítico do funcional de ação $\funcionalH$ se, e somente se, $x$ é uma solução 1-periódica e contrátil do sistema Hamiltoniano.
 	
-	Foi determinado o diferencial do funcional de ação e foi caracterizado os pontos críticos do mesmo. A seguir será definido o campo gradiente negativo de $\funcionalH$. Sabe-se que, dado $J \in \estruturascomplexas{M}{\omega}$, tem-se que $g_{p}(., .)=\omega_{p}(.,J.):T_{p}M\times T_{p}M \to \reta$, definida por $\omega_{p}(X,JY)$, é uma métrica Riemannian (veja \cite{manfredo_riemannian_geo}).
+	O próximo passo é definir o campo gradiente negativo de $\funcionalH$. Sabe-se que, dado $J \in \estruturascomplexas{M}{\omega}$, tem-se que $g_{x}(., .)=\omega_{x}(.,J_{x}.):T_{x}M\times T_{x}M \to \reta$, definida por $\omega_{x}(X,J_{x}Y)$, é uma métrica Riemannian.
 	
 	Com isso, pode-se munir $\lacocontrateis$ com uma métrica $\produtointerno{.}{.}_{x}: \espacotangenteponto{x}{\lacocontrateis} \times \espacotangenteponto{x}{\lacocontrateis} \to \reta$, a qual é induzida por $g$ do seguinte modo:
 	
@@ -2722,7 +2737,7 @@
 	Note que, na definição da métrica induzida foi usada a identificação dos fibrados tangentes $\espacotangenteponto{x}{\lacocontrateis} \ni X \mapsto  X|_{x} \in \pullbackfibradotangente{x}{M}$. De fato é uma métrica. Como $g$ é bilinear e a integração é uma operação linear, então $\produtointerno{.}{.}_{x}$ é bilinear. Além disso, como $g$ é positiva-definida e a integral preserva essa positividade, então $\produtointerno{.}{.}_{x}$ herda essa propriedade.
 	
 	\begin{definicao}
-		(Gradiente de $\funcionalH$) O campo gradiente de $\funcionalH$ é o campo suave denotado por $\gradientefuncional$ tal que $D_{x}\funcionalH(Y) = \produtointerno{\gradientefuncional}{Y}_{x}$ para todo $x \in \lacocontrateis$ e $Y_{x} \in \espacotangenteponto{x}{\lacocontrateis}$.
+		(Gradiente de $\funcionalH$) O campo gradiente de $\funcionalH$ é o campo suave denotado por $\gradientefuncional$ tal que $D_{x}\funcionalH(Y) = \produtointerno{\gradientefuncional(x)}{Y}_{x}$ para todo $x \in \lacocontrateis$ e $Y \in \espacotangenteponto{x}{\lacocontrateis}$.
 	\end{definicao}
 	
 	Usando a expressão do diferencial $D_{x}\funcionalH$ determinanda anteriormente e a definição do campo gradiente, tem-se que
@@ -2740,7 +2755,8 @@
 	&=\int_{[0,1]} \omega_{x(t)}(-J\gradientefuncional, Y)dt.
 	\end{aligned}.
 	$$
-	Subtraindo ambos os lados identidade, tem-se que
+	
+	Logo
 	$$
 	\int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev + J\gradientefuncional, Y)dt = 0.
 	$$
@@ -2751,7 +2767,7 @@
 	$$
 	Portanto, o campo gradiente de $\funcionalH$ é dado por
 	$$
-	\gradientefuncional(x(t))= J(x(t))\dot{x}(t)-J(x(t))\campohamiltoniano{x(t), t}.
+	\gradientefuncional(x(t))= J_{x(t)}\dot{x}(t)-J_{x(t)}\campohamiltoniano{x(t), t}.
 	$$
 	
 	Suponha que $u :\reta\to \lacocontrateis$ seja uma solução do sistema $\derivada{}{s}u(s)|_{s=0} = -\gradientefuncional(x)$ e $u(0)=x$. Com isso, pode-se afirmar que tais soluções são as trajetórias em $\lacocontrateis$ do campo gradiente negativo $-\gradientefuncional$. Note que, para casa $s\in \reta$ tem-se que $u(s):\circulo\to M$ é um caminho contínuo e fechado. Portanto as trajetórias de $-\gradientefuncional$ podem ser vistas como aplicações $u:\retacartesianocirculo \to M$ de classe $C^{1}$. Substituindo essa expressão na equação do gradiente de $\funcionalH$ tem-se a Equação de Floer
@@ -2880,15 +2896,30 @@
 	
 	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}
 	\section{Motivação}
-	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ ao qual associamos o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano, e definido pela equação $\formaSimpletica{\campohamiltoniano{t}}{Y} = -dH(Y)$, cujo fluxo $\psi:M\times \reta \to M$ é solução do sistema Hamiltoniano
-	$$
-	\derivadaparcial{\psi(t)}{t} = X_{H}(\psi(t), t)
-	$$
-	satisfazendo as condições periódicas de contorno $\psi(t+1) = \psi(t)$, $\psi(0) = \psi_{0}$ e $\dot{\psi}(0) = \campohamiltoniano{0}$. Tais soluções são chamadas de soluções 1-periódicas das equações de Hamilton. Além disso, buscamos as soluções 1-periódicas que são contráteis, isto é, homotópicas a uma curva constante. Elas são pontos críticos do funcional de ação $f_{H}$. Analogamente a Teoria de Morse vamos atribuir um índice (um número inteiro) a cada um desses pontos críticos, o qual denominaremos por índice de Maslov.
+	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ a qual é associado o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano e único campo vetorial que sataisfaz a equação $\omega_{x}(\campohamiltoniano{x}, Y) = -d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$. 
 	
-	Vamos realizar a associação $\reta/\mathbb{Z} \ni t \mapsto A(t) \in \gruposimpletico{2n}$, onde $A$ é um caminho contínuo tal que $A(0) = Id$ e $\det(A(t)- Id)\neq 0$. Para cada um desses caminhos teremos a associação $\gruposimpletico{2n} \ni A(t) \mapsto \rho(A) \in \circulo$. Por fim, teremos o índice de Maslov $A \mapsto \mu(A) \in \inteiros$.
+	As soluções do sistema Hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$ que satisfazem as condições periódicas $x(t+1) = x(t)$ para todo $t\in \reta$, são chamadas de soluções 1-periódicas das equações de Hamilton. Tais soluções determinam uma família de simplectomorfismos $\psi_{t}:M \to M$ (difeomorfismos que preservam a forma simpletica) que satisfazema a relação 
+	$$
+	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
+	$$
+	Contudo, as soluções de interesse são aquelas 1-periódicas contráteis e não-degeneradas, pois elas são os pontos críticos do funcional de ação $\funcionalH$, onde uma solução não-degenerada é aquela em que 
+	$$
+	\det(D_{x(0)}\psi_{t} -Id)\neq 0.
+	$$
 	
-	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{2n} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$, pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	
+	Analogamente ao que é feito em Teoria de Morse, a aplicação $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$, chamada índice de Conley-Zehnder, atribui um índice a cada um desses pontos críticos. Tal aplicação é definida a partir do índice de Maslov $\mu:\caminhosespeciais{\gruposimpletico{2n}} \to \inteiros$, onde $\caminhosespeciais{\gruposimpletico{2n}}$ é o conjunto dos caminhos contínuos $\psi:\intervalo \to \gruposimpletico{2n}$ tais que 
+	$$
+	\psi(0)=Id\;\;\text{e}\;\det(\psi(1)-Id)\neq 0.
+	$$
+	
+	Para cada solução não-degenerada $x \in \pontoscriticos{\funcionalH}$ tem-se que o caminho $A_{x}:\intervalo \to \gruposimpletico{2n}$, definido por $A_{x}(t) = D_{x(0)}\psi_{t} $, é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$. Com isso, os índices de Conley-Zender e o de Maslov estão relacionados pela equação
+	$$
+	\iconley{x} = \mu(A_{x})-n.
+	$$
+	
+	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{2n} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	
 	
 	\section{Construção de $\rho: \gruposimpletico{2n} \to \circulo$}
 	Para a construção do índice de Maslov, vamos adotar as complexificações $(\complexificado{V}, \Omega) $ e $\gruposimpleticocomplexo{2n}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético $\gruposimpletico{2n}$, respectivamente. Os detalhes da complexificação podem ser encontrados no Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$. 
@@ -3323,7 +3354,12 @@
 			
 			\item \textbf{(Homotopia)} Sejam $\Psi_{1}, \Psi_{2}$ prolongamentos de $\psi_{1}, \psi_{2} \in \caminhosespeciais{\gruposimpletico{2n}}$. No Lema \ref{lema_independencia_prolongamento} é demonstrado que $\Psi_{1}\sim \Psi_{2}$ se, e somente se, $\psi_{1}\sim \psi_{2}$. Supondo que $\psi_{1}\sim \psi_{2}$, então $\mu(\psi_{1}) = 2\deg(\rho_{\Psi_{1}}) = 2\deg(\rho_{\Psi_{2}}) = \mu(\psi_{2})$. A recíproca $\mu(\psi_{1}) = \mu(\psi_{2})$ implica imediatamente que $\Psi_{1}\sim \Psi_{2}$, logo $\psi_{1}\sim \psi_{2}$.
 			
-			\item \textbf{(Nullidade)} Como  $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então pelo Item \ref{item_normalizacao_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\Psi(t)) = \pm 1$. Com isso, $\deg(\rho_{\Psi}) = 0$ e $\mu(\psi) = 0$. \vermelho{Esse item esta muito estranho pois $\psi(0) = Id$, logo $1 \in \espectrooperador{\psi(0)}$ e com isso $\espectrooperador{\psi(0)}\cap \circulo \neq \emptyset$.}
+			\item \textbf{(Nullidade)} Por definição tem-se que 
+			$$
+			\rho(\psi(t)) = (-1)^{m_{0}} \prod_{\lambda \in \sigma(\psi(t))\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)}.
+			$$
+			
+			Como  $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $	\rho(\psi(t))=\pm 1$. Resta avaliar os seguintes casos: $\espectrooperador{\psi(0)}\cap \circulo = \emptyset$ e $\espectrooperador{\psi(0)}\cap \circulo \neq \emptyset$. No primeiro caso tem-se que $	\rho(\psi(0))=\pm 1$, logo o caminho  $\rho\circ\psi$ não é sobrejetor, o que implica em $\deg(\rho_{\Psi}) = 0$ e $\mu(\psi) = 0$. No segundo caso tem-se que $	\rho(\psi(0))=e^{i\theta}$, para alguma constante $\theta \in \reta$ e, analogamente ao caso anterior, o caminho $\rho\circ\psi$ não é sobrejetor. Logo $\mu(\psi)=0$. 
 			
 			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{2n} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Sejam $\psi=(\psi_{p}, \psi_{q}) \in \caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}}$, $\Psi=(\Psi_{p}, \Psi_{q})$ os respectivos prolongamentos de $\psi, \psi_{p}$ e $\psi_{q}$. Então pelo Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que $\rho(\Psi(t))=\rho(\Psi_{p}(t))\rho(\Psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\Psi_{p}(t))=\exp(i\alpha_{\Psi_{p}}(t))$ e $\rho(\Psi_{q}(t))=\exp(i\alpha_{\Psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\Psi_{p}}+\alpha_{\Psi_{q}})(t))$. Com isso, tem-se que 
 			
@@ -3375,7 +3411,7 @@
 			$$
 			Portanto, $\exp(S\estruturacomplexa) \in \gruposimpletico{2n}$. 
 			
-			O seguinte fato será utilizado nessa em argumentos a seguir: Sejam $A \in \generalgroupcomplexo{2n}$ e $\epsilon>0$ tal que $\norma{A}<\epsilon$. Suponha $u$ um auto-vetor naõ-nulo de $A$ associado ao auto-valor $\lambda\in \espectrooperador{A}$. Então 
+			O seguinte fato será utilizado nessa em argumentos a seguir: Sejam $A \in \generalgroupcomplexo{2n}$ e $\epsilon>0$ tal que $\norma{A}<\epsilon$. Suponha $u$ um auto-vetor não-nulo de $A$ associado ao auto-valor $\lambda\in \espectrooperador{A}$. Então 
 			$$
 				|\lambda|=\normagrande{A\bigparenteses{\frac{u}{\norma{u}}} }\leq \sup_{\norma{v}=1 } \norma{Av} = \norma{A}<\epsilon.
 			$$
@@ -3391,9 +3427,9 @@
 			Afirmo que $1\notin \espectrooperador{\exp(S\estruturacomplexa)}$. De fato, escreva $\lambda = a+ib\in \complexo{}$. Supondo $e^{\lambda} = 1$, tem-se que $a=0$ e $b \in 2\pi k$ para algum $k\in \inteiros$, o que contradiz o fato de que $|\lambda| <2\pi$. Portanto, $1\notin\espectrooperador{\exp(\estruturacomplexa S)}$ e $\exp(\estruturacomplexa S)\in \gruposimpleticonaodegenerado{*}$.
 			
 			Como $S$ é simétrica, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP=\diag(a_{1},\dots,a_{2n})$ (tais resultados podem ser encontrados em \cite{hoffman_kunze}). Sejam $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = P$ e $\mathcal{P}(1)=Id$. 
-			Então o caminhos contínuo $\mathcal{P}^{t}S\mathcal{P}:\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $(\mathcal{P}^{t}S\mathcal{P})(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$, conecta a matriz diagonal $P^{t}SP$ a $S$. Como $ ((\mathcal{P}^{t}S\mathcal{P})(s))^{t} =(\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S\mathcal{P}(s) =(\mathcal{P}^{t}S\mathcal{P})(s)$, então $(\mathcal{P}^{t}S\mathcal{P})(s)$ é simétrica para todo $s\in \intervalo$, e com os argumentos análogos aos anteriores, pode-se afirmar que $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s)) \in \gruposimpleticonaodegenerado{*}$. Como $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ é contínuo e não contém auto-valores iguais a 1, então $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ está na mesma componente conexa de $\gruposimpleticonaodegenerado{*}$ que a matriz $\exp(\estruturacomplexa S)$ para todo $s\in \intervalo$.
+			Então o caminho contínuo $\mathcal{P}^{t}S\mathcal{P}:\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $(\mathcal{P}^{t}S\mathcal{P})(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$, conecta a matriz diagonal $P^{t}SP$ a $S$. Como $ ((\mathcal{P}^{t}S\mathcal{P})(s))^{t} =(\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S\mathcal{P}(s) =(\mathcal{P}^{t}S\mathcal{P})(s)$, então $(\mathcal{P}^{t}S\mathcal{P})(s)$ é simétrica para todo $s\in \intervalo$, e com os argumentos análogos aos anteriores, pode-se afirmar que $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s)) \in \gruposimpleticonaodegenerado{*}$. Como $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ é contínuo e não contém auto-valores iguais a 1, então $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ está na mesma componente conexa de $\gruposimpleticonaodegenerado{*}$ que a matriz $\exp(\estruturacomplexa S)$ para todo $s\in \intervalo$.
 			
-			Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, pode-se assumir, pela invariância homotópica do índice de Maslov, que $S$ é a matriz diagonal $\diag(a_{1},\dots,a_{2n})$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{(1)}.a_{(2)} = a_{1}a_{n+1}\dots a_{n}a_{2n}$, tem-se que
+			Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, pode-se assumir, pela invariância homotópica do índice de Maslov, que $S$ é a matriz diagonal $\diag(a_{1},\dots,a_{2n})$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{1}a_{n+1}\dots a_{n}a_{2n}$ por $a_{(1)}.a_{(2)}$, tem-se que
 			$$
 			\begin{aligned}
 			(\estruturacomplexa S)^{2j} &=(-a_{(1)}.a_{(2)})^{j} Id
@@ -3434,7 +3470,7 @@
 			$$
 
 
-			Como $\norma{S}<2\pi$, então pode-se escolher $0<|a_{j}|<2\pi$ e, sem perda de generalidade, reduzir a análise ao caso em que $|a_{j}|=\pi$ para $1\leq j\leq 2n$ para os seguintes casos:
+			Como $\norma{S}<2\pi$, então $0<|a_{j}|<2\pi$. Tomando uma aplicação contínua $f_{j}:\intervalo \to [0,\pi]$ tal que $f_{j}(0) = a_{j}$ e $f_{j}(1) = \pi$ para cada $1\leq j \leq 2n$ e definindo $D_{\pi} = \diag\{\pi, \dots, \pi\}$, pode-se afirmar que os caminhos $t\mapsto \exp(t\estruturacomplexa S)$ e $t\mapsto \exp(t\estruturacomplexa D_{\pi})$ são homotopicamente equivalentes, e portanto possuem o mesmo índice de Maslov. Esse fato  permite reduzir a análise a condição em que $|a_{j}|=\pi$ para $1\leq j\leq 2n$. Assim, tem-se os seguintes casos:
 			
 			\begin{enumerate}
 				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (\pi,\dots,\pi)$:}
@@ -3490,7 +3526,9 @@
 				Defina $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Com isso, 
 				$$
 				\mu(\psi) = 2\deg(\rho_{\psi}) = \frac{2(-n\pi +0)}{2\pi}=-n.
-				$$. Como o número de auto-valores negativos de $\ind(S)$ é zero, então  
+				$$
+				
+				Como o número de auto-valores negativos de $\ind(S)$ é zero, então  
 				$$
 				\ind(S)-n=\mu(\psi).
 				$$
@@ -3611,13 +3649,25 @@
 		\end{enumerate}
 	\end{prova}
 	
-	\section{Índice de Conley-Zehnder $\iconleyabrev: \pontoscriticos{\funcionalH}\to \inteiros$}
+	\section{Índice de Conley-Zehnder $\iconleyabrev: \pontoscriticos{\funcionalH}\to \inteiros$}\label{secao_indice_conley}
 	
 	Na tentativa de se construir invariantes topológicos para uma 2n-variedade simplética $(M, \omega)$, e que contenham informações da estrutura simplética $\omega$, foi utilizada uma abordagem variacional, na qual busca-se atribuir um número inteiro para cada ponto crítico do funcional de ação $\funcionalH$, onde $H: M\times \reta\to \reta$ é uma função Hamiltoniana depedente do tempo. Foi mostrado que as soluções 1-periódicas não-degeneradas e contráteis do sistema Hamiltonino $\dot{x} = \campohamiltoniano{x, t}$ são os pontos críticos do funcional de ação. Além disso, ao campo Hamiltoniano $\campohamiltonianoabrev$ existe um fluxo associado $\psi_{t}:M\to M$ que satisfaz $\dot{\psi_{t}} =\campohamiltonianoabrev\circ\psi_{t}$ e $\psi_{0}=Id$.
 	
-	Fixe $x $ uma solução 1-periódica não degenerada e contrátil do sistema Hamiltoniano, tal que $x(t) = \psi_{t}(x(0))$. Escolha uma base simplética $B(0) = \{e_{1}(0),\dots,e_{2n}(0)\}$ de $\espacotangenteponto{x(0)}{M}$. Como $\psi_{t}$ é uma simplectomorfismo para todo $t\in \reta$, então pode-se afirmar que $B(t) = \{e_{1}(t), \dots, e_{2n}(t)\}$ é uma base simplética de $\espacotangenteponto{x(t)}{M}$, onde $e_{j}(t) = D_{x(0)}\psi_{t}(e_{j}(0))$ para $1\leq j \leq 2n$ e $D_{x(0)}\psi_{t}: \espacotangenteponto{x(0)}{M}\to \espacotangenteponto{x(t)}{M}$.
+	Fixe $x $ uma solução 1-periódica não degenerada e contrátil do sistema Hamiltoniano. Escolha uma base simplética $B(0) = \{e_{1}(0),\dots,e_{2n}(0)\}$ de $\espacotangenteponto{x(0)}{M}$. Como $\psi_{t}$ é uma simplectomorfismo para todo $t\in \reta$, então pode-se afirmar que $B(t) = \{e_{1}(t), \dots, e_{2n}(t)\}$ é uma base simplética de $\espacotangenteponto{x(t)}{M}$, onde $e_{j}(t) = D_{x(0)}\psi_{t}(e_{j}(0))$ para $1\leq j \leq 2n$ e $D_{x(0)}\psi_{t}: \espacotangenteponto{x(0)}{M}\to \espacotangenteponto{x(t)}{M}$. Esse fato segue da seguinte identidade:
+	$$
+	\begin{aligned}
+	\omega_{x(t)}(e_{j}(t), e_{k}(t))
+	&=
+	\omega_{x(t)}(D_{x(0)}\psi_{t}(e_{j}(0)), D_{x(0)}\psi_{t}(e_{k}(0)))
+	\\
+	&=	(\psi^{*}_{t}\omega_{x(0)})(e_{j}(0), e_{k}(0))
+	\\
+	&=	\omega_{x(0)}(e_{j}(0), e_{k}(0)).
+	\end{aligned}
+	$$
+	Com isso, a $\omega$-ortogonalidade de $e_{j}(t)$ e $e_{k}(t)$ decorre da $\omega$-ortogonalidade de $e_{j}(0)$ e $e_{k}(0)$. Portanto $B(t)$ é uma base simplética para todo $t\in \reta$.
 	
-	Seja a aplicação contínua $A_{x}:\reta \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$. Note que, $A_{x}(0) = D_{x(0)}\psi_{0}=Id$, pois $\psi_{0}=Id$. Como $x$ é uma solução não-degenerada, então $\det(D_{x(0)}\psi_{1}-Id) \neq 0$, o que implica em $A_{x}(1)\in \gruposimpleticonaodegenerado{*}$. Além disso, escolhida uma outra base simplética $B'(t) = \{e'_{1}(t), \dots, e'_{2n}(t)\}$, tem-se que $A_{x}'(t)$ é a representação matricial de $D_{x(0)}\psi_{t}$ na base $B'(t)$ e é homotópicamente equivalente a $A_{x}(t)$, para todo $t \in \reta$. Seja $T:\reta \to \generalgroupreal{2}$ uma família de isomorfismos tal que $T(t)e_{j}(t) = e'_{j}(t)$. Então, supondo que $\omega_{x(t)}(e'_{j}(t), e'_{k}(t))=\omega_{x(t)}(e_{j}(t), e_{k}(t))=\delta_{jk}$, tem-se que
+	Seja a aplicação contínua $A_{x}:\reta \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$. Note que, $A_{x}(0) = D_{x(0)}\psi_{0}=Id$, pois $\psi_{0}=Id$. Como $x$ é uma solução não-degenerada, então $\det(D_{x(0)}\psi_{1}-Id) \neq 0$, o que implica em $A_{x}(1)\in \gruposimpleticonaodegenerado{*}$. Além disso, escolhida uma outra base simplética $B'(t) = \{e'_{1}(t), \dots, e'_{2n}(t)\}$ a representação matricial $A_{x}'(t)$ de $D_{x(0)}\psi_{t}$ na base $B'(t)$ é homotópicamente equivalente a $A_{x}(t)$, para todo $t \in \reta$. De fato, seja $T:\reta \to \generalgroupreal{2}$ um caminho de isomorfismos tal que $T(t)e_{j}(t) = e'_{j}(t)$. Então, supondo que $\omega_{x(t)}(e'_{j}(t), e'_{k}(t))=\omega_{x(t)}(e_{j}(t), e_{k}(t))=\delta_{jk}$, tem-se que
 	$$
 	\begin{aligned}
 			((T(t))^{*}\omega_{x(t)})(e_{j}(t), e_{k}(t))
@@ -3631,7 +3681,8 @@
 		&=\omega_{x(t)}(e_{j}(t), e_{k}(t)). 
 	\end{aligned}
 	$$
-	O mesmo vale para os elementos das bases $B(t)$ e $B'(t)$ que são $\omega$-ortogonais. Portanto, $T(t)\in \gruposimpletico{2n}$ para todo $t\in \reta$. Com isso, pode-se escrever $A_{x}(t) = (T(t))^{-1}A'_{x}(t)T(t)$, e pela propriedade de homotopia dsecrita no Item \ref{item_naturalidade_maslov}, tem-se que 
+	
+	Portanto, $T(t)\in \gruposimpletico{2n}$ para todo $t\in \reta$. Com isso, pode-se escrever $A_{x}(t) = (T(t))^{-1}A'_{x}(t)T(t)$, e pela propriedade de homotopia dsecrita no Item \ref{item_naturalidade_maslov}, tem-se que 
 	$$
 	\mu(A_{x}) = \mu(T^{-1}A'_{x}T) = \mu(A'_{x}).
 	$$
@@ -3660,7 +3711,7 @@
 	$$
 	onde $\derivadaparcial{H}{\textbf{q}}$ denota a $n$-upla $(	\derivadaparcial{H}{q_{1}} \dots \derivadaparcial{H}{q_{n}})$, e o mesmo para $\derivadaparcial{H}{\textbf{p}}$.
 	
-	Com isso, o diferencial $D_{x}\psi_{t}$ pode ser visto como um caminho de matrizes. Logo, seu vetori tangente é dado por
+	Com isso, o diferencial $D_{x}\psi_{t}$ pode ser visto como um caminho de matrizes. Logo, seu vetor tangente é dado por
 	$$
 	\begin{aligned}
 		\derivada{}{t}(D_{x}\psi_{t})
@@ -3710,8 +3761,13 @@
 	
 	Note que, $\hessianaponto{x}{H}$ é uma matriz simétrica, e se $\norma{\hessianaponto{x}{H}}<2\pi$, então 
 	$$
-	\exp(-\estruturacomplexa \hessianaponto{x}{H}) \in \caminhosespeciais{\gruposimpletico{2n}},
-	$$o que pode ser encontrado na demonstração do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov}.
+	\exp(-\estruturacomplexa \hessianaponto{x}{H}) \in \gruposimpletico{2n}
+	$$
+	e
+	$$ 
+	A_{x}\in \caminhosespeciais{\gruposimpletico{2n}},\;\text{onde}\; A(t) = D_{x}\psi_{t}.
+	$$ 
+	Tal resultado pode ser encontrado na demonstração do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov}.
 	
 	\begin{corolario}
 		Sejam $(M,\omega)$ uma 2n-variedade simplética, $H:M\to \reta$ uma função Hamiltoniana autônoma e $x \in \pontoscriticos{H}$. Se $\norma{\hessianaponto{x}{H}}<2\pi$ (assumindo a $\cktopologia{2}$), então o índice de Conley-Zender $\iconley{x}$ de $x$ como uma solução periódica do sistema Hamiltoniano e seu índice $\ind(x)$ como ponto crítico da função $H$ são relacionados por
