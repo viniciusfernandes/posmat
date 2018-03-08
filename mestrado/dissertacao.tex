@@ -528,7 +528,7 @@
 		O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = \gerador{\classe{\gamma}} $.
 	\end{proposicao}
 	\begin{prova}
-		Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, então pela Proposição $\ref{proposicao_grau_aplicacao}$ podemos escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $\deg(\gamma) = 1$, logo 
+		Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, pela Proposição $\ref{proposicao_grau_aplicacao}$ podemos escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $\deg(\gamma) = 1$, logo 
 		$$
 		\deg(\beta) = k = \underbrace{1+\dots+1}_{k-vezes} = \deg(\gamma)+\dots+\deg(\gamma) = \deg(\gamma *\dots *\gamma) = \deg(\gamma^{k}).
 		$$
@@ -2537,13 +2537,17 @@
 	
 	Analogamente ao que foi feito na Proposição \ref{proposicao_familia_simplectomorfismos}, pode-se mostrar que essa família de difeomorfismos é uma família de simplectomorfismos.
 	
-	Uma solução do sistema Hamiltoniano $x:\reta\to M$ é chamada de solução 1-periódica se $x(t) = x(t+1)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{1}(x(0)) = x(1) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{1}:M\to M$. Será visto adiante que, supondo que a função Hamiltoniana $H$ também é $1$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $1$-perídicas do sistema Hamiltoniano (esse resultado está relacionado diretamente com a Conjectura de Arnold, a qual veremos adiante).
+	Uma solução do sistema Hamiltoniano $x:\reta\to M$ é chamada de solução 1-periódica se $x(t) = x(t+1)$ para todo $t\in \reta$. Desse modo, pode-se verificar que $\psi_{1}(x(0)) = x(1) = x(0)$. Portanto, $x(0)\in M$ é um ponto fixo do difeomorfismo $\psi_{1}:M\to M$. Será visto adiante que, supondo que a função Hamiltoniana $H$ também é $1$-periódica, então os difeomorfismos tem como pontos fixos, no mínimo, o total de soluções $1$-periódicas do sistema Hamiltoniano (esse resultado está relacionado diretamente com a Conjectura de Arnold, a qual veremos adiante).
 	
 	\begin{definicao}(Soluções $1$-periódicas não-degeneradas)
 		Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(1)}M$.
 	\end{definicao}
 	
 	Se uma Hamiltoniana $H:M\times \reta\to \reta$ se reduz ao caso de uma Hamiltoniana autônoma, então todo ponto $x\in \pontoscriticos{H}$ é uma solução 1-periódica do sistema Hamiltoniano, em particular é uma solução de constante. A seguinte proposição formaliza esse resultado, e sua demonstração pode ser encontrada em \cite{audi_floer_homology}.
+	
+	\begin{teorema}
+		(Darboux) Toda 2n-variedade simplética e localmente simplectomorfa a $(\real{2n}, \omega_{0})$.
+	\end{teorema}
 	
 	\begin{proposicao}
 		Se $x \in \pontoscriticos{H}$ é não-degenerado como uma solução periódica do sistema Hamiltoniano, então é não-degenerado como ponto crítico de $H$.
@@ -2595,7 +2599,7 @@
 	\end{figure} 
 	
 	\begin{definicao}\label{definicao_funcional_hamiltoniano}
-		(Funcional de Ação) O funcional de ação é a aplicação $\funcionalH: \lacocontrateis\to \reta$ dada por
+		(Funcional de Ação) O funcional de ação é a aplicação $\funcionalH: \lacocontrateis\to \reta$ definida por
 		$$
 		\funcionalHponto{x} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(x(t), t)dt,
 		$$
@@ -2861,9 +2865,9 @@
 	
 	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}
 	\section{Motivação}
-	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ a qual é associado o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano e único campo vetorial que sataisfaz a equação $\omega_{x}(\campohamiltoniano{x}, Y) = -d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$. 
+	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ a qual é associado o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano e único campo vetorial que satisfaz a equação $\omega_{x}(\campohamiltoniano{x}, Y) = -d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$. 
 	
-	As soluções do sistema Hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$ que satisfazem as condições periódicas $x(t+1) = x(t)$ para todo $t\in \reta$, são chamadas de soluções 1-periódicas das equações de Hamilton. Tais soluções determinam uma família de simplectomorfismos $\psi_{t}:M \to M$ (difeomorfismos que preservam a forma simpletica) que satisfazema a relação 
+	As soluções do sistema Hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$ que satisfazem as condições periódicas $x(t+1) = x(t)$ para todo $t\in \reta$ são chamadas de soluções 1-periódicas das equações de Hamilton. Tais soluções determinam uma família de simplectomorfismos $\psi_{t}:M \to M$ (difeomorfismos que preservam a forma simplética) que satisfazem a relação 
 	$$
 	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
 	$$
@@ -2873,14 +2877,14 @@
 	$$
 	
 	
-	Analogamente ao que é feito em Teoria de Morse, a aplicação $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$, chamada índice de Conley-Zehnder, atribui um índice a cada um desses pontos críticos. Tal aplicação é definida a partir do índice de Maslov $\mu:\caminhosespeciais{\gruposimpletico{2n}} \to \inteiros$, onde $\caminhosespeciais{\gruposimpletico{2n}}$ é o conjunto dos caminhos contínuos $\psi:\intervalo \to \gruposimpletico{2n}$ tais que 
+	Nesse novo contexto, será feito o análogo ao que foi feito para o caso Morse. A aplicação $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$, chamada índice de Conley-Zehnder, atribui um índice a cada um desses pontos críticos. Tal aplicação é definida a partir do índice de Maslov $\mu:\caminhosespeciais{\gruposimpletico{2n}} \to \inteiros$, onde $\caminhosespeciais{\gruposimpletico{2n}}$ é o conjunto dos caminhos contínuos $\psi:\intervalo \to \gruposimpletico{2n}$ tais que 
 	$$
 	\psi(0)=Id\;\;\text{e}\;\det(\psi(1)-Id)\neq 0.
 	$$
 	
 	Para cada solução não-degenerada $x \in \pontoscriticos{\funcionalH}$ tem-se que o caminho $A_{x}:\intervalo \to \gruposimpletico{2n}$, definido por $A_{x}(t) = D_{x(0)}\psi_{t} $, é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$. Com isso, os índices de Conley-Zender e o de Maslov estão relacionados pela equação
 	$$
-	\iconley{x} = \mu(A_{x})-n.
+	\iconley{x} = \mu(A_{x}).
 	$$
 	
 	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{2n} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
@@ -3263,7 +3267,7 @@
 			
 			\item \textbf{(Determinante)} $sign(\det(\psi(1)-Id)) = (-1)^{\mu(\psi)-n}$.
 			
-			\item \textbf{(Assinatura)} Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+			\item \textbf{(Assinatura)}\label{item_assinatura_maslov} Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
 			$$
 			\mu(\psi) = Ind(S) - n,
 			$$
@@ -3342,7 +3346,7 @@
 			
 			\item \textbf{(Determinante)} Suponha que  $\det(\psi(1)- Id)>0$. Por definição $\Psi(1)=W^{+}$ e $\rho_{\Psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho_{\Psi}(1) =1$, então $n\in 2\inteiros$. Sabendo que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$, e dos fatos $\rho_{\Psi}(1) = 1$ e $\alpha_{\Psi}(0) = 0$, pode-se concluir que $\alpha_{\Psi}(1)=k\pi$ para algum $k \in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$ e $\mu(\psi)-n \in 2\inteiros$. Se $\rho_{\Psi}(1) =-1$, então $n\in 2\inteiros+1$. Com argumentos análogos ao caso anterior, tem-se que $\alpha_{\Psi}(1) = k\pi$ para algum $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$ e $\mu(\psi)-n \in 2\inteiros$. Com argumentos análogos pode-se mostrar que, para $\det(\psi(1)- Id)<0$, tem-se  $\rho_{\Psi}(1) = \rho(W^{-}) = (-1)^{n-1}$ e portanto $\mu(\psi)-n \in 2\inteiros +1$.
 			
-			\item \textbf{(Assinatura)}\label{item_assinatura_maslov} Afirmo que, $\exp(\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $(\exp(\estruturacomplexa S))^{t}\estruturacomplexa \exp(\estruturacomplexa S)= \estruturacomplexa$. Note que $(\estruturacomplexa S)^{t} 
+			\item \textbf{(Assinatura)} Afirmo que, $\exp(\estruturacomplexa S) \in\gruposimpletico{2n}$. Para isso é suficiente mostrar que $(\exp(\estruturacomplexa S))^{t}\estruturacomplexa \exp(\estruturacomplexa S)= \estruturacomplexa$. Note que $(\estruturacomplexa S)^{t} 
 			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ tem-se a identidade 
 			$$
 			\begin{aligned}
@@ -3651,7 +3655,7 @@
 	\end{aligned}
 	$$
 	
-	Portanto, $T(t)\in \gruposimpletico{2n}$ para todo $t\in \reta$. Com isso, pode-se escrever $A_{x}(t) = (T(t))^{-1}A'_{x}(t)T(t)$, e pela propriedade de homotopia dsecrita no Item \ref{item_naturalidade_maslov}, tem-se que 
+	Portanto, $T(t)\in \gruposimpletico{2n}$ para todo $t\in \reta$. Com isso, pode-se escrever $A_{x}(t) = (T(t))^{-1}A'_{x}(t)T(t)$, e pela propriedade de homotopia descrita no Item \ref{item_naturalidade_maslov}, tem-se que 
 	$$
 	\mu(A_{x}) = \mu(T^{-1}A'_{x}T) = \mu(A'_{x}).
 	$$
@@ -3667,9 +3671,7 @@
 	
 	No caso em que a Hamiltoniana é uma função de Morse é natural questionar-se sobre a relação entre o índice de Conley-Zehnder e o índice de Morse. O seguinte resultado esclarece essa questão.
 	
-	Seja $H:M \to \reta$ uma função Hamiltoniana autônoma. Na Seção \ref{secao_variedade_simpletica} estão definidos o campo Hamiltoniano $\campohamiltonianoabrev\in \campossuaves{M}$, onde $\campohamiltonianoabrev=-\estruturacomplexa\nabla H$, e o fluxo associado a ele $\Psi_{t}:M\to M$ é dado por $\dot{\psi}_{t}(x)=\campohamiltoniano{\psi_{t}(x)}$.
-	
-	Seja $x=(q_{1}, \dots, q_{n},p_{1}, \dots, p_{n})\in M$ um ponto crítico não-degenerado de da Hamiltoniana autônoma $H:M \to \reta$. Fixe $V$ uma vizinhança corrdenada de $x$ tal que o diferencial do fluxo $D_{x}\psi_{t}:\espacotangenteponto{x(0)}{M} \to \espacotangenteponto{x(t)}{M}$ é associado a matriz $2n\times 1$
+	Sejam $H:M \to \reta$ uma função Hamiltoniana autônoma e $x\in M$ um ponto crítico não-degenerado de $H$. Fixe $V$ uma vizinhança corrdenada de $x$ e  $(q_{1}\dots, q_{n}, p_{1}\dots, p_{n})$ as coordenadas locais de $V$. Então o diferencial $D_{x}\psi_{t}:\espacotangenteponto{x(0)}{M} \to \espacotangenteponto{x(t)}{M}$ é associado a matriz $2n\times 1$
 	$$
 	D_{x}\psi_{t} = 
 	\left(
@@ -3680,7 +3682,7 @@
 	$$
 	onde $\derivadaparcial{H}{\textbf{q}}$ denota a $n$-upla $(	\derivadaparcial{H}{q_{1}} \dots \derivadaparcial{H}{q_{n}})$, e o mesmo para $\derivadaparcial{H}{\textbf{p}}$.
 	
-	Com isso, o diferencial $D_{x}\psi_{t}$ pode ser visto como um caminho de matrizes. Logo, seu vetor tangente é dado por
+	Com isso, o diferencial $D_{x}\psi_{t}$ pode ser visto como um caminho de matrizes. Logo,
 	$$
 	\begin{aligned}
 		\derivada{}{t}(D_{x}\psi_{t})
@@ -3723,12 +3725,12 @@
 		&= -(\estruturacomplexa\circ \hessianaponto{x}{H})(	D_{x}\psi_{t}).
 	\end{aligned}
 	$$
-	Portanto, esse sistema de equanções diferenciais tem como solução
+	Portanto,
 	$$
 		D_{x}\psi_{t} = e^{-t\estruturacomplexa \hessianaponto{x}{H}}.
 	$$
 	
-	Note que, $\hessianaponto{x}{H}$ é uma matriz simétrica, e se $\norma{\hessianaponto{x}{H}}<2\pi$, então 
+	Note que $\hessianaponto{x}{H}$ é uma matriz simétrica. Segue da demonstração do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov} que se $\norma{\hessianaponto{x}{H}}<2\pi$, então 
 	$$
 	\exp(-\estruturacomplexa \hessianaponto{x}{H}) \in \gruposimpletico{2n}
 	$$
@@ -3736,7 +3738,7 @@
 	$$ 
 	A_{x}\in \caminhosespeciais{\gruposimpletico{2n}},\;\text{onde}\; A(t) = D_{x}\psi_{t}.
 	$$ 
-	Tal resultado pode ser encontrado na demonstração do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov}.
+	
 	
 	\begin{corolario}
 		Sejam $(M,\omega)$ uma 2n-variedade simplética, $H:M\to \reta$ uma função Hamiltoniana autônoma e $x \in \pontoscriticos{H}$. Se $\norma{\hessianaponto{x}{H}}<2\pi$ (assumindo a $\cktopologia{2}$), então o índice de Conley-Zender $\iconley{x}$ de $x$ como uma solução periódica do sistema Hamiltoniano e seu índice $\ind(x)$ como ponto crítico da função $H$ são relacionados por
@@ -3745,7 +3747,7 @@
 		$$
 	\end{corolario}
 	\begin{prova}
-		Segue da hipótese de que $x\in \pontoscriticos{H}$ é um ponto crítico não-degenerado. Note que, $S=\hessianaponto{x}{H}$ é uma matriz simétrica, e portanto é diagonalizável. Além disso, do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov} tem-se que $\ind(S)$ é a multiplicidade de auto-valores negativos de $S$. Logo, $\ind(S)$ coincide com o índice de Morse $\ind(x)$ de $x$, e tem-se que
+		Segue da hipótese de que $x\in \pontoscriticos{H}$ é um ponto crítico não-degenerado. Note que, $S=\hessianaponto{x}{H}$ é uma matriz simétrica, e portanto é diagonalizável. Além disso, do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov} tem-se que $\ind(S)$ é o número de auto-valores negativos de $S$ contados com a multiplicidade. Logo, $\ind(S)$ coincide com o índice de Morse $\ind(x)$ de $x$ e tem-se que
 		$$
 		\iconley{x} = \ind(S)-n = \ind(x)-n.
 		$$
@@ -4594,30 +4596,29 @@
 		
 	\chapter{Aplicações: Homologia de Floer e a Conjectura de Arnold}\label{capitulo_homologia_floer}
 	
-	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Por fim, calcula-se a homologia da variedade.
+	A Teoria de Morse clássica é uma estrátegia de se estudar a topologia de variedades diferenciáveis de dimensão finita através da análise do comportamento de funções suaves definidas na dada variedade, chamadas funções de Morse. Tal estratégia resume-se em determinar os pontos críticos dessas funções, e a eles associar invariantes topológicos (os índices de Morse). Constrói-se então um complexo graduado pelo índice de Morse, o qual recupera o homologia singular da variedade.
 	
-	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pontos fixos que um simplectomorfismo definido em uma variedade simplética possui e o número de pontos crísticos de uma função de Morse, que deu origem a seguinte generalização:
+	Em 1966 em um congresso em Moscou, o matemático russo Vladimir Igorevich Arnold, nos estudos de sistemas Hamiltonianos e topologia do 2-toro, formulou uma conjectura a respeito do número de pontos fixos que um simplectomorfismo definido em uma variedade simplética possui e o número de pontos críticos de uma função de Morse, que deu origem a seguinte generalização:
 	
-	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de ponstos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
+	\textit{\textbf{(Conjectura de Arnold):} Sejam $(M, \omega)$ uma variedade simplética 2n-dimensioanl e $\psi : M \to M $ um simplectomorfismo Hamiltoniano, então $\psi$ deve ter tantos pontos fixos quanto uma função suave em $M$ deve ter de pontos críticos. Se os pontos fixos forem não-degenerados, então os número de pontos fixos é, no mínimo, o mesmo número de pontos críticos de uma função de Morse em $M$.}
 	
-	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica analoga a  Morse clássica que se deparou com algumas barreiras técnicas, tais como: variedades infinitas e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados nessas variedades. Floer utiliza como função de Morse um funcional definido nesse espaço, que é um espaço de funções, e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
+	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica análoga àquela utilizada no caso Morse-Witten deparou-se com algumas barreiras técnicas, tais como: variedades de dimensão infinita e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados de um funcional de ação definido nessas variedades. Floer utiliza um funcional de ação definido no espaço dos laços em M e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
 	
 	
-	Seja $(M,\omega)$ uma 2n-variedade simpletica e $H: M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo genérica, isto é, $H$ pode ser um elemento do conjunto de perturbações $\perturbacaoHamiltoniana{H_{0}}$, para alguma função Hamiltoniana $H_{0}:M\times \reta \to \reta$.
+	Seja $(M,\omega)$ uma 2n-variedade simplética e $H: M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo genérica, isto é, $H$ pode ser um elemento do conjunto de perturbações $\perturbacaoHamiltoniana{H_{0}}$, para alguma função Hamiltoniana $H_{0}:M\times \reta \to \reta$.
 	
-	O Teorema \ref{teorema_orbitas_conectantes_finitas} afirma que, dados $x^{-},x^{+} \in \pontoscriticos{\funcionalH}$, tem-se que $\energiafinitaMconectante$ possui um número finito de órbitas conectantes. Com isso, defina o total de elementos de $\energiafinitaMconectante$ módulo 2 por $n(x^{-},x^{+})$.
+	O Teorema \ref{teorema_orbitas_conectantes_finitas} afirma que, dados $x^{-},x^{+} \in \pontoscriticos{\funcionalH}$, tem-se que $\energiafinitaMconectante$ possui um número finito de órbitas conectantes. Com isso, denote o total de elementos de $\energiafinitaMconectante$ módulo 2 por $n(x^{-},x^{+})$.
 	
-	 Seja $\pontoscriticosordem{k}{\funcionalH} = \{ y \in \pontoscriticos{\funcionalH}: \iconley{y}=k\}$. Considere $C^{F}_{k}(H,J)=C^{F}_{k}(M, \inteiros_{2}; H,J)$ um espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \pontoscriticosordem{k}{\funcionalH} $, isto é
+	 Seja $\pontoscriticosordem{k}{\funcionalH} = \{ y \in \pontoscriticos{\funcionalH}: \iconley{y}=k\}$. Considere $C^{F}_{k}(H,J)=C^{F}_{k}(M, \inteiros_{2}; H,J)$ um espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \pontoscriticosordem{k}{\funcionalH} $, isto é, os elementos de $C^{F}_{k}(H,J)$ são da forma
 	$$
-		C^{F}_{k}(H,J) = \bigoplus_{x\in \pontoscriticosordem{k}{\funcionalH} }n_{x}\gerador{x}.
+		\sum_{x\in \pontoscriticosordem{k}{\funcionalH} }n_{x}\gerador{x},
 	$$
-	Com isso, $C^{F}_{*}(H,J)=\bigoplus_{k}C^{F}_{k}(H,J)$ é um espaço vetorial sobre o corpo $\inteiros_{2}$ e graduado pelo índice de Conley-Zehnder $\iconleyabrev$.
+	onde $n_{x}\in \inteiros_{2}$. Com isso, $C^{F}_{*}(H,J)=\bigoplus_{k}C^{F}_{k}(H,J)$ é um espaço vetorial sobre o corpo $\inteiros_{2}$ e graduado pelo índice de Conley-Zehnder $\iconleyabrev$.
 
 	Considere o homomorfismo $\bordo{k}^{F}: C^{F}_{k}(H,J)\to C^{F}_{k-1}(H,J)$ de grau -1 e definido por
 	$$
 	\bordo{k}^{F}(\gerador{x}) = \sum_{\iconley{y}=k-1}n(x,y)\gerador{y}.
 	$$
-	\alerta{(Nesse ponto o Michelle define a somatoria utilizando o índice $Ind(y)$.)}
 	
 	Em \cite{audi_floer_homology} é demonstrado que 
 	
@@ -4625,17 +4626,21 @@
 		Se $(H,J)\in \hamiltonianasRegulares$, então $\partial^{F}_{k-1}\circ \partial^{F}_{k} = 0$.
 	\end{teorema}
 	
-	Portanto é $\partial^{F}_{k}$ realmente um operador de bordo e $(C^{F}_{*}(H,J), \partial^{F})$ é um complexo de cadeia e a Homologia de Floer da variedade $M$ é definido por 
-	$$
-	H^{F}_{*}(M;H,J)=\bigoplus_{k=0}^{2n}H^{F}_{k}(C^{F}_{*}(H,J), \partial^{F}),
-	$$
-	onde $H^{F}_{k}(C^{F}_{*}(H,J))$ é o k-ésimo grupo de homologia do complexo $C^{F}_{*}(H,J)$ da variedade $M$ dado por
+	Portanto é $\partial^{F}_{k}$ realmente um operador bordo e $(C^{F}_{*}(H,J), \partial^{F})$ é um complexo de cadeia.
 	
-	$$
-	H^{F}_{k}(C^{F}_{*}(H,J)) = \frac{\ker(\partial^{F}_{k})}{\text{im}(\partial^{F}_{k+1})}.
-	$$ 
+	\begin{definicao}
+			A Homologia de Floer da 2n-variedade simplética $(M,\omega)$ é definida por 
+			$$
+			H^{F}_{*}(M;H,J)=\bigoplus_{k=0}^{2n}H^{F}_{k}(C^{F}_{*}(H,J), \partial^{F}),
+			$$
+			onde $H^{F}_{k}(C^{F}_{*}(H,J))$ é o k-ésimo grupo de homologia do complexo $C^{F}_{*}(H,J)$ da variedade $M$, ou seja,
+			
+			$$
+			H^{F}_{k}(C^{F}_{*}(H,J)) = \frac{\ker(\partial^{F}_{k})}{\text{im}(\partial^{F}_{k+1})}.
+			$$ 
+	\end{definicao}
 	
-	Note que, nas definições do complexo de cadeia e da homologia foram mantidas as referências a função Hamiltoniana $H$ escolhida para se realizar a construção desses conjuntos. Contudo,  pode-se mostrar que a homologia de Floer não depende de tal escolha, confirme o seguinte resultado.
+	Note que nas definições do complexo de cadeia e da homologia de Floer foram mantidas as referências a função Hamiltoniana $H$ escolhida para se realizar sua construção. Contudo,  pode-se mostrar que a homologia de Floer não depende de tal escolha, conforme o seguinte resultado.
 	
 	\begin{teorema}
 		Sejam $(H,J), (H',J') \in \hamiltonianasRegulares$. Então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
@@ -4644,7 +4649,7 @@
 		$$
 	\end{teorema}
 	
-	As definições e resultados obtidos até aqui tiveram como objetivo a construção de um invariante topológico que fornecesse informações sobre a topologia da 2n-variedade $M$ e que, ao mesmo tempo, de sua estrutura simplética $\omega$. O resultado de todos esses esforços culmina na definição da Homologia de Floer.
+	As definições e resultados obtidos até aqui tiveram como objetivo a construção de um invariante topológico que fornecesse informações sobre a topologia da 2n-variedade $M$ e, ao mesmo tempo, de sua estrutura simplética $\omega$.
 	
 	O próximo resultado, que pode ser encontrado em \cite{salamon_zehnder}, permite que se recupere a homologia singular da variedade a partir da homologia de Floer.
 	
@@ -4657,21 +4662,17 @@
 		
 	\end{teorema}
 	
-	\begin{observacao}\label{observacao_ordem_homologia_floer}
-		Sabe-se que, para uma 2n-variedade compacta, a ordem inferior dos grupos de homologia é 0 e a ordem superior é 2n. Pelo isomormorfismo anterior, pode-se afirmar que o grupo de homologia de Floer do complexo de cadeia definido na 2n-variedade compacta $M$ de menor ordem é $	H^{F}_{0}(C^{F}_{*}(H,J))$ e o de maior ordem é $H^{F}_{2n}(C^{F}_{*}(H,J))$.
-	\end{observacao}
-	
 	Com a definição da homologia de Floer e com o isomorfismo dessa com a homologia singular da 2n-variedade, é imediata a demonstração da Conjectura de Arnold.
 	
 	\begin{teorema}
-			(Conjectura de Arnold) Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{} \to \reta$ uma função Hamiltoniana 1-periódica e suponha que as soluções 1-periódicas do sistema Hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado inferiormente pela soma dos números de Betti de M, isto é:
+			(Conjectura de Arnold) Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{} \to \reta$ uma função Hamiltoniana 1-periódica e suponha que as soluções 1-periódicas do sistema Hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema é limitado inferiormente pela soma dos números de Betti de M, isto é:
 				$$
 				\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
 				$$
 				onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.
 	\end{teorema}
 	\begin{prova}
-		Na Seção \ref{secao_transversalidade_compacidade_M} foi mostrado que $\pontoscriticos{\funcionalH}$ é um conjunto finito, logo $\pontoscriticosordem{k}{\funcionalH} \subset \pontoscriticos{\funcionalH}$ é finito. Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso, $\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j}$ é o total de ponstos críticos do funcional de ação (os limites dos índices dessa somatória estão justificados na Observação \ref{observacao_ordem_homologia_floer}). Como $C^{F}_{k}(H,J)$ é gerado por todos os pontos críticos de ordem $k$, e ao realizar o quociente para a construção do k-ésimo grupo de homologia, o total de geradores pode ser reduzido. Portanto, $\mathcal{N}_{k}\geq \dim(	H^{F}_{k}(C^{F}_{*}(H,J)))$. Como os grupos de homologia de Floer e de homologia singular são isomorfos (veja o Teorema \ref{teorema_isomorfismo_homologia_floer}), então $\dim(	H^{F}_{k}(C^{F}_{*}(H,J)))  = \dim(	H_{k}(M;\inteiros_{2}) = \beta_{k}(M)$. Portanto
+		Na Seção \ref{secao_transversalidade_compacidade_M} foi mostrado que $\pontoscriticos{\funcionalH}$ é um conjunto finito, logo $\pontoscriticosordem{k}{\funcionalH} \subset \pontoscriticos{\funcionalH}$ é finito. Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso, $\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j}$ é o total de ponstos críticos do funcional de ação. Como $C^{F}_{k}(H,J)$ é gerado por todos os pontos críticos de ordem $k$, então $\mathcal{N}_{k}\geq \dim(	H^{F}_{k}(C^{F}_{*}(H,J)))$. Como os grupos de homologia de Floer e de homologia singular são isomorfos (veja o Teorema \ref{teorema_isomorfismo_homologia_floer}), então $\dim(	H^{F}_{k}(C^{F}_{*}(H,J)))  = \dim(	H_{k}(M;\inteiros_{2}) = \beta_{k}(M)$. Portanto
 		$$
 		\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j} \geq \sum_{j=0}^{2n} \beta_{j}(M).
 		$$ 
