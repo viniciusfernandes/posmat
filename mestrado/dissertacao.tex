@@ -281,7 +281,7 @@
 
 \begin{document}
 	
-	\title{O Índice de Maslov, o Índice de Conely-Zehnder e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
+	\title{O Índice de Maslov e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
 	
 	\author{Vinicius Fernandes}
 	
@@ -290,11 +290,14 @@
 	\tableofcontents
 	
 	\chapter*{Introdução}\label{capitulo_introducao}
-	Como muitas das construções desenvolvidas na matemática a Homologia de Floer teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalentes a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podem ser desenvolvidos em uma 2n-variedade diferenciável $M$ munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: \retacartesianovariedade \to \reta$ satisfazendo a equação geométrica $\omega(\campohamiltonianoabrev(t), v) = dH_{t}(v)$, onde o campo vetorial $\campohamiltonianoabrev(t) \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. As equações de movimento são as soluções do fluxo
+	Como muitas das construções desenvolvidas na matemática a Homologia de Floer teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalentes a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podem ser desenvolvidos em uma 2n-variedade diferenciável $M$ munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: M\times \reta\to \reta$ satisfazendo a equação geométrica $\omega_{x}(\campohamiltonianoabrev(x,t), Y) = d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$, onde o campo vetorial $\campohamiltonianoabrev \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. O sistema de equações diferenciais $\dot{x} = \campohamiltoniano{(x,t)}$ é chamado sistema Hamiltoniano e suas soluções dão origem a uma família de difeomorfismos $\psi_{t}:M\to M$, onde $t\in \reta$, que satisfaz a equação diferencial
 	$$
-	\derivada{\psi(t)}{t} = \campohamiltoniano{\psi(t)}.
-	$$ 
-	Foi estudando sistemas dinâmicos Hamiltonianos que V. I. Arnold formulou a primeira versão da conjectura que atualmente leva seu nome. Sejam $(M, \omega )$ uma 2n-variedade simplética e $\phi:M \to M$ um difeomorfismo tal que $\phi^{*}\omega = \omega$. Então $\phi$ é chamado de simplectomorfismo. Pode-se mostrar que $\psi(t):M\to M$ é um simplectomorfismo e o conjunto $G=\{\psi(t): t \in \reta\}$ forma um grupo de difeomorfismos com a operação de composição, chamado grupo de aplicações Hamiltonianas (ou grupo a 1-parâmetro de difeomorfismos). De acordo com a Teoria de Lefschetz toda aplicação Hamiltoniana possui ao menos um ponto fixo, quando a característica de Euler de $M$ é não-nula. A ideia de Arnold era generalizar esse resultado, o que levou a seguinte versão da conjectura:
+	\dot{\psi}_{t}(x) = \campohamiltoniano{\psi_{t}(x),t}.
+	$$
+	
+	Sejam $(M, \omega )$ uma 2n-variedade simplética e $\psi:M \to M$ um difeomorfismo tal que $\psi^{*}\omega = \omega$. Então $\psi$ é chamado de simplectomorfismo. Pode-se mostrar que $\psi_{t}:M\to M$ é um simplectomorfismo e o conjunto $G=\{\psi_{t}: t \in \reta\}$ forma um grupo de difeomorfismos com a operação de composição, chamado grupo de aplicações Hamiltonianas (ou grupo a 1-parâmetro de difeomorfismos).
+	
+	Foi estudando sistemas dinâmicos Hamiltonianos que V. I. Arnold formulou a primeira versão da conjectura que atualmente leva seu nome. De acordo com a Teoria de Lefschetz toda aplicação Hamiltoniana possui ao menos um ponto fixo, quando a característica de Euler de $M$ é não-nula. A ideia de Arnold era generalizar esse resultado, o que levou a seguinte versão da conjectura:
 	
 	\textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de pontos críticos de uma função Hamiltoniana em $M$.}
 	
@@ -312,16 +315,22 @@
 	
 	A construção de Witten traz um entendimento geométrico do operador bordo do complexo de cadeias. Munindo a variedade $M$ com uma métrica Riemanniana, determina-se os pontos críticos de função de Morse $f: M \to \reta$ e mostra-se que, para cada par de pontos críticos com índices consecutivos, existe um número finito de linhas do fluxo gradiente conectando-os. O conjunto de tais linhas são subvariedades de $M$ chamadas variedades de conexão. Escolhemos  uma orientação para a variedade de conexão. Witten definiu o grupo das $k$-cadeias como sendo o grupo abeliano gerado pelos pontos críticos com índice de Morse igual a $k$. Já o operador bordo, quando avaliado em uma k-cadeia, é a soma sob todas as $(k-1)$-cadeias, sendo que os coeficientes dessa soma são inteiros cujo sinal esta relacionado com a orientação da variedade de conexão e com a orientação da variedade instável da k-cadeia. Essa é uma metodologia simples e elegante de cálculo da homologia da variedade que permite o estudo dos aspectos topológicos das variedades via sistemas dinâmicos, sendo que a dinâmica é materializada no gradiente da função de Morse $f$.
 	
-	É tentador nos enveredarmos na demonstração da conjectura de Arnold via construção de Witten. Contudo, dificuldades técnicas fizeram com que uma abordagem ligeiramente diferente fosse realizada por Floer. Em vez de estudar o gradiente de uma função Hamiltoniana definida na variedade $M$ a estratégia foi analisar o comportamento de um funcional, chamado funcional Hamiltoniano, definido no espaço de curvas 1-periódicas e contráteis em $M$. Aplicando o princípio variacional clássico, determina-se que as soluções 1-periódicas e contráteis do sistema Hamiltoniano são os pontos críticos do funcional Hamiltoniano. Essa técnica é conhecido como abdordagem variacional. Uma das grandes dificuldades nesse cenário é que o conjunto de curvas 1-periódicas e contráteis forma uma variedade de dimensão infinita, com isso, estabelecer uma análogo ao índice de Morse para os pontos críticos do funcional é uma tarefa árdua. Foi necessária a construção de um operador de Fredholm e de um índice de Maslov, que generaliza o ideia do índice de Morse para dimensão infinita.
+	É tentador nos enveredarmos na demonstração da conjectura de Arnold via construção de Witten. Contudo, dificuldades técnicas fizeram com que uma abordagem ligeiramente diferente fosse realizada por Floer. Em vez de estudar o gradiente de uma função Hamiltoniana definida na variedade $M$ a estratégia foi analisar o comportamento do funcional $\funcionalH$, chamado funcional de ação, definido no espaço de curvas 1-periódicas e contráteis em $M$. Aplicando o princípio variacional clássico, determina-se que as soluções 1-periódicas e contráteis do sistema Hamiltoniano são os pontos críticos do funcional de ação $\pontoscriticos{\funcionalH}$. Essa técnica é conhecido como abdordagem variacional. Uma das grandes dificuldades nesse cenário é que o conjunto de curvas 1-periódicas e contráteis forma uma variedade de dimensão infinita, com isso, estabelecer uma análogo ao índice de Morse para os pontos críticos do funcional é uma tarefa árdua. Foi necessária a construção de um operador de Fredholm e de um índice de Maslov, que generaliza o ideia do índice de Morse para dimensão infinita.
 	
-	O princípio variacional aplicado no funcional Hamiltoniano resulta na determinação das solução de um sistema de equações diferenciais parciais de primeira ordem. A esse sistema de equações diferenciais é associado um operador diferencial, chamado operador de Floer, cujas soluções são as curvas integrais que conectam os pontos críticos do funcional Hamiltoniano, situação análoga a determinação das linhas de fluxo do gradiente negativo.
+	O princípio variacional aplicado no funcional de ação resulta na determinação das solução de um sistema de equações diferenciais parciais de primeira ordem. A esse sistema de equações diferenciais é associado um operador diferencial, chamado operador de Floer, cujas soluções são as curvas integrais que conectam os pontos críticos do funcional de ação, situação análoga a determinação das linhas de fluxo do gradiente negativo.
 	
-	O operador de Floer é um operador linear e limitado definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional Hamiltoniano. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso em que estamos interessados, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui a generalização da Homologia de Morse-Witten.
+	O operador de Floer é um operador linear e limitado definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional de ação. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso em que estamos interessados, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui uma generalização da Homologia de Morse-Witten.
 	
-	\chapter{Grupo Fundamental}\label{capitulo_grupo_fundamental}
-	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analisar a topologia de um conjunto (um espaço topológico) e seus invariantes. Nesse capítulo abordaremos um caso específico de estrutura algébrica, o grupo fundamental $\grupofundamental{X}$, de um espaço topológico $X$.
+	Essa generalização é uma consequência da definição do complexo de Floer e sua homologia. Analogamente ao complexo de Morse-Witten, as k-cadeias do complexo de Floer são geradas pelos pontos críticos do funcional de ação $\funcionalH$ de índice $k \in \inteiros_{+}$. A indexação dos pontos críticos do funcional de ação é dada pelo índice de Conley-Zehnder $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$, e é um dos pontos de maior complexidade do texto, e tal dificuldade se dá pelo fato de que os pontos críticos são caminhos na variedade $M$. Com isso, o k-ésimo operador bordo do complexo é um homomorfismo que tem como imagem uma (k-1)-cadeia gerada pelos pontos críticos do fincional de ação $\funcionalH$ com índice $k-1 \in \inteiros_{+}$.
 	
-	\section{Definições}
+	
+	\chapter{Preliminares de Topologia Algébrica}
+	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analisar a topologia de um conjunto (um espaço topológico) e seus invariantes. 
+	
+	\section{Grupo Fundamental e a Aplicação Grau}\label{capitulo_grupo_fundamental}
+	Nessa seção abordaremos um caso específico de estrutura algébrica, o grupo fundamental $\grupofundamental{X}$, de um espaço topológico $X$.
+	
+	\subsection{Grupo Fundamental}
 	
 	Sejam $X$ um espaço topológico e $\caminhossempontobase{X}$ o conjunto dos caminhos contínuos $\gamma:[0,1]\to X$. Tome $\gamma, \beta \in \caminhossempontobase{X}$ tais que $\gamma(1) = \beta(0)$. Definimos a justaposição $*:\caminhossempontobase{X}\times \caminhossempontobase{X} \to \caminhossempontobase{X}$ entre $\gamma$ e $\beta$ por
 	$$
@@ -347,7 +356,7 @@
 	\end{observacao}
 	
 	\begin{observacao}
-		A definição de caminhos homotópicos não depende da homotopia escolhida, pois, dadas $F,G$ homotopias entre $\gamma$ e $\gamma'$, podemos definir uma aplicação contínua $H: [0,1] \times [0,1] \times [0,1] \to X$ tal que $H(t,s ,0) = F(t,s)$ e $H(t,s, 1) = G(t,s)$ que é uma homotopia entre as homotopias, logo será uma homotopia entre ambas as curvas.
+		A definição de caminhos homotópicos não depende da homotopia escolhida, pois, dadas $F,G$ homotopias entre $\gamma$ e $\gamma'$, podemos definir uma aplicação contínua $H: [0,1] \times [0,1] \times [0,1] \to X$ tal que $H(t,s ,0) = F(t,s)$ e $H(t,s, 1) = G(t,s)$ que é uma homotopia entre as homotopias, logo será uma homotopia entre ambas as famílias de caminhos.
 	\end{observacao}
 	
 	O próximo lema demonstra a compatibilidade entre a justaposição de caminhos e a relação de homotopia.
@@ -356,54 +365,34 @@
 		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhos$, onde $\gamma(1) = \alpha(0), \gamma'(1) = \alpha'(0) $, tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
 	\end{lema}
 	\begin{prova}
-		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, $H(s) :\intervalo\to X$ é uma curva contínua pois é a justaposição de caminhos contínuos para todo $s \in \intervalo$. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
+		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, $H$. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
 	\end{prova}
 	
 	A justaposição de caminhos em $\caminhos$ nem sempre é associativo. Contudo, o seguinte lema afirma que tal associatividade vale a menos de uma homotopia. Sua demonstração pode ser encontrada em $\cite{massey}$.
 	
 	\begin{lema}\label{lema_associatividade_produto_caminhos}
-		Dados $\alpha, \beta, \gamma\in \caminhos$, então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
+		Dados $\alpha, \beta, \gamma\in \caminhos$ tais que $\alpha(1)=\beta(0)$ e $\beta(1)=\gamma(0)$, então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
 	\end{lema}
 	
 	\begin{lema}\label{lema_caminho_inverso}
-		Sejam $\gamma, \hat{\gamma} , c \in \caminhos$ tais que $c(t) = \gamma(0)$ para todo $t\in \intervalo$ (c é o caminho constante) e $\hat{\gamma} (t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma}  \sim \hat{\gamma} *\gamma \sim c$.
+		Sejam $\gamma, \hat{\gamma} , c,c' \in \caminhos$ tais que $c(t) = \gamma(0)$, $c'(t) = \gamma(1)$ para todo $t\in \intervalo$ e $\hat{\gamma} (t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma}  \sim c$ e $\hat{\gamma}  *\gamma\sim c'$.
 	\end{lema} 	
-	\begin{prova}
-		Seja a aplicação contínua $F:[0,1]\times [0,1]\to X$ tal que
-		$$
-		F(t,s) = 
-		\left\{
-		\begin{array}{cc}
-		\gamma(2t), & 0\leq t \leq s/2\\
-		\gamma(s), & s/2 \leq t \leq 1-s/2\\
-		\gamma(2-2t), & 1-s/2 \leq t \leq 1\\
-		\end{array}
-		\right.
-		$$
-		Temos que $F(t,1) = (\gamma*\hat{\gamma} )(t)$ e $F(t,0) = c(t) = p$, logo $\gamma*\hat{\gamma} \sim c$ pois $F$ deforma continuamente a justaposição de $\gamma$ e $\gamma'$ no caminho constante. Podemos definir uma homotopia $\hat{F}$ análoga a $F$ substituindo $\gamma$ por $\hat{\gamma} $, consequentemente teremos $\hat{\gamma} *\gamma \sim c$, logo $\gamma*\hat{\gamma}  \sim \hat{\gamma} *\gamma \sim c$.
-	\end{prova}
 	
 	Seja $\caminhospontobasegeral{p}{X} = \{\gamma\in \caminhossempontobase{X}: \gamma(0)=\gamma(1)=p \}$ o conjunto dos caminhos contínuos e fechados com o ponto base $p$. Denote o quociente $\{ \classe{\gamma} : \gamma' \in \caminhospontobasegeral{p}{X},\;\;\gamma \sim \gamma'\}$ por $\caminhospontobasegeral{p}{X}/\sim $. Então, o produto definido por $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha}$ esta bem-definido. De fato, tomando $\gamma, \gamma',\alpha, \alpha' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha} = \classe{\gamma'*\alpha'} = \classe{\gamma'}.\classe{\alpha'}$.
 	
 	\begin{definicao}
-		(Grupo Fundamental) Dado um espaço topológico $X$, o grupo fundamental é
+		(Grupo Fundamental) Dado um espaço topológico $X$, o conjunto é
 		$$
-		\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}/\sim, .).
+		\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}/\sim, .)
 		$$
+		é chamado grupo fundamental de $X$.
 	\end{definicao}
 	
 	\begin{teorema}
-		O grupo fundamental $\grupofundamentalpontobase{X}{p}$ é um grupo.
+		O grupo fundamental $\grupofundamentalpontobase{X}{p}$ é de fato um grupo.
 	\end{teorema}
 	\begin{prova}
-		Sejam $\classe{\alpha}, \classe{\beta}, \classe{\gamma} \in  \grupofundamentalpontobase{X}{p}$ e $c\in \caminhospontobase{p}$ o caminho constante.
-		\begin{enumerate}
-			\item \textit{(Operação fechada)} Pelas construções anteriores de produto entre caminhos e pela construções da equivalência homotópica, temos que $\classe{\alpha}.\classe{\beta} \in \grupofundamentalpontobase{X}{p}$, logo é fechada.
-			\item \textit{(Associatividade)} Segue do Lema $\ref{lema_associatividade_produto_caminhos}$ $(\classe{\alpha}. \classe{\beta}). \classe{\gamma} = \classe{\alpha*\beta}. \classe{\gamma} = \classe{(\alpha*\beta)*\gamma} = \classe{\alpha*(\beta*\gamma)} = \classe{\alpha}. (\classe{\beta}. \classe{\gamma} )$.
-			\item \textit{(Elemento neutro)} Pela definição de produto temos $(\gamma*c)(t) = \gamma(2t)$ para $0\leq t \leq 1/2$ e  $(\gamma*c)(t) = c(2t-1) = p$ para $1/2 \leq t \leq 1$, logo $(\gamma*c)(t) = \gamma(t)$ para todo $t \in \intervalo$. Com isso, podemos afirmar que $\classe{\gamma}.\classe{c} = \classe{\gamma*c} = \classe{\gamma}$, portanto $\classe{c}$ é o elemento neutro $Id_{p}$.
-			\item \textit{(Elemento inverso)} Pelo Lema $\ref{lema_caminho_inverso}$, vimos que $\gamma *\hat{\gamma}  \sim \hat{\gamma}  *\gamma \sim c$, logo $Id_{p} =\classe{c} =  \classe{\gamma*\hat{\gamma} } = \classe{\gamma}.\classe{\hat{\gamma} }$, portanto $\classe{\hat{\gamma} }$ é o elemento inverso de $\classe{\gamma}$.
-		\end{enumerate}
-		Portanto $\grupofundamentalpontobase{X}{p}$ é um grupo.
+	A associatividade segue do Lema \ref{lema_associatividade_produto_caminhos} e a existência do elemento neutro e do elemento inverso  seguem do Lema \ref{lema_caminho_inverso}. Portanto, $\grupofundamentalpontobase{X}{p}$ é um grupo. 
 	\end{prova}
 	
 	Na definição de grupo fundamental se mantém a escolha do ponto base, contudo, pode-se mostrar que, para espaços topológicos conexos por caminhos, a definição de grupo fundamental independe da escolha do ponto base. A demonstração do teorema a seguir pode ser encontrado em $\cite{massey}$.
@@ -414,22 +403,10 @@
 	
 	No caso em que $X$ é um espaço espaços topológico conexo por caminhos denotaremos $\grupofundamental{X}=\grupofundamentalpontobase{X}{p}$ e $\caminhossempontobase{X}=\caminhospontobasegeral{p}{X}$.
 	
-	\section{Homomorfismos induzidos}
+	
 	Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então temos a composição $\beta=f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Suponha que $\gamma' \in \caminhospontobasegeral{p}{X}$ seja tal que $\gamma \sim \gamma'$. Se $F$ é a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $G=f\circ F$ é uma homotopia entre $\beta=f\circ \gamma$ e $\beta' = f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$, assim, $\beta \sim \beta'$.
 	
-	\begin{lema}
-		(Homomorfismo induzido) Seja $f:X\to Y$ uma aplicação contínua entre espaços topológicos, então a aplicação $f_{*}:\grupofundamentalpontobase{X}{p} \to \grupofundamentalpontobase{Y}{f(p)}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo.
-	\end{lema}
-	\begin{prova}
-		Seja $\gamma \in \caminhospontobasegeral{p}{X}$ uma curva constante, então $\classe{\gamma} = Id_{p}$, logo $f_{*}Id_{p} = f_{*}\classe{\gamma} = \classe{f\circ\gamma} = Id_{f(p)}$, pois a composição $f\circ\gamma$ é uma curva constante em $Y$ com $(f\circ\gamma)(t) = f(p)$.
-		
-		Se $\classe{\gamma}, \classe{\gamma'}\in \grupofundamentalpontobase{p}{X}$, então 
-		$$
-		f_{*}(\classe{\gamma}.\classe{\gamma'}) = f_{*}(\classe{\gamma*\gamma'}) = \classe{f\circ(\gamma*\gamma')} = \classe{f\circ\gamma*f\circ\gamma'} =
-		\classe{f\circ\gamma}.\classe{f\circ\gamma'}=	f_{*}\classe{\gamma}.f_{*}\classe{\gamma'}.
-		$$
-		Portanto $f_{*}$ é um homomorfismo de grupos.
-	\end{prova}
+	Dada $f:X\to Y$ uma aplicação contínua entre espaços topológicos, é imediato que a aplicação $f_{*}:\grupofundamentalpontobase{X}{p} \to \grupofundamentalpontobase{Y}{f(p)}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo.
 	
 	Como consequência do lema anterior o seguinte resultado mostra que o grupo fundamental é um invariante topológico.
 	\begin{teorema}
@@ -441,9 +418,6 @@
 	\begin{proposicao}\label{proposicao_produto_grupo_fundamental}
 		Se $X, Y$ são espaços topológicos, $p\in X$ e $q\in Y$ são os respectivos pontos base, então $\grupofundamentalpontobase{X\times Y}{(p,q)} \cong \grupofundamentalpontobase{X}{p}\times \grupofundamentalpontobase{Y}{q}$
 	\end{proposicao}
-	\begin{prova}
-		Dado o caminho $\Gamma \in \caminhospontobasegeral{(p,q)}{X\times Y}$ podemos escrever $\Gamma(t) = (\alpha(t), \beta(t)) \in X\times Y$ onde $\alpha \in \caminhospontobasegeral{p}{X}$ e $\beta \in \caminhospontobasegeral{q}{Y}$. Seja $\Gamma' \in \caminhospontobasegeral{(p,q)}{X\times Y}$. Então $\Gamma \sim \Gamma'$ implica que $ (\alpha, \beta) \sim (\alpha', \beta')$, logo $\alpha \sim \alpha'$ e $\beta \sim \beta'$. Portanto, temos a bijeção $I(\classe{ (\alpha, \beta)}) =  (\classe{\alpha}, \classe{\beta}) \in \grupofundamentalpontobase{p}{X}\times \grupofundamentalpontobase{q}{Y}$. Tomando $\classe{(\gamma, \lambda)} \in \grupofundamentalpontobase{X\times Y}{(p,q)}$, então $I(\classe{(\alpha, \beta)} .\classe{(\gamma, \lambda)} ) = I(\classe{(\alpha*\gamma, \beta*\lambda)} ) = (\classe{\alpha*\gamma}, \classe{\beta*\lambda})=(\classe{\alpha}, \classe{\beta}) .(\classe{\gamma}, \classe{\lambda}) = I(\classe{(\alpha, \beta)} ).I(\classe{(\gamma, \lambda)} )$, portanto é um isomorfismo.
-	\end{prova}
 	
 	\begin{definicao}
 		Seja $X$ um espaço topológico e
@@ -453,16 +427,13 @@
 	\begin{proposicao}\label{proposicao_grupo_fundamental_simplesmente_conexo}
 		Se $X$ é um espaço topológico simplesmente conexo, então $\grupofundamental{X}$ é trivial.
 	\end{proposicao}
-	\begin{prova}
-		Sejam $\gamma, c \in \caminhospontobase{p}$, onde $c(t)=p$ para todo $t\in \intervalo$. Como $X$ é simplesmente conexo, então toda curva pode ser deformada continuamente em $p=c(t)$, logo $\gamma \sim c$ e $\classe{\gamma} = \classe{c} = Id_{p}$. Portanto $\grupofundamental{X}$ é trivial.
-	\end{prova}
 	
-	\section{Aplicação Grau e o Grupo Fundamental de $\circulo$}
-	Nesta seção mostraremos que o grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Para demonstrar este fato, a cada caminho fechado $\gamma:[0,1] \to S^{1}$, associa-se um número $\deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $\deg(\gamma) = \deg(\beta)$ (possuem o mesmo grau). Finalmente, mostraremos que induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
+	\subsection{Aplicação Grau e o Grupo Fundamental de $\circulo$}
+	Nesta seção mostraremos que o grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Para demonstrar este fato, a cada caminho fechado $\gamma:[0,1] \to S^{1}$, associa-se um número $\deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $\deg(\gamma) = \deg(\beta)$ (possuem o mesmo grau). Finalmente, mostraremos que a aplicação grau induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
 	
 	A proposição a seguir é necessária para a definição e também para o estudo das propriedades da aplicação grau e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
 	
-	Defina a aplicação exponencial $\Exp: \reta\to \circulo$ por $\Exp(t) = \exp(it)$.
+	Defina a aplicação exponencial $\Exp: \reta\to \circulo$ por $\Exp(t) = e^{it}$.
 	
 	\begin{proposicao}\label{proposicao_levantamento_curvas}
 		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Então existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
@@ -475,15 +446,15 @@
 		$$
 	\end{proposicao}
 	
-	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = \exp(i\alpha(t))$, onde $\alpha:[a,b]\to \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
+	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = e^{i\alpha(t)}$, onde $\alpha:[a,b]\to \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
 	
 	Vamos definir o grau de um caminho como sendo uma aplicação que associa um dado caminho em $\circulo$ a um múltiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior vimos que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, vamos restringir nossas hipóteses a caminhos fechados.
 
 	\begin{definicao}\label{definicao_aplicacao_grau}
-		(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ da Proposição $\ref{proposicao_levantamento_curvas}$. A aplicação $deg$ é chamada de aplicação grau e o valor $\deg(\gamma)$ é chamado grau do caminho $\gamma$.
+		(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ dado pela Proposição $\ref{proposicao_levantamento_curvas}$. A aplicação $deg$ é chamada de aplicação grau e o valor $\deg(\gamma)$ é chamado grau do caminho $\gamma$.
 	\end{definicao}
 	
-	Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$ pela proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \inteiros$. Portanto, $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \inteiros$ e $deg$ está bem-definida.
+	Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$ pela Proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \inteiros$. Portanto, $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \inteiros$ e $deg$ está bem-definida. Além disso, a aplicação grau possui as seguintes propriedades.
 	
 	\begin{proposicao}\label{proposicao_grau_aplicacao}
 		(Propriedades da aplicação grau) Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
@@ -572,10 +543,7 @@
 		Da proposição anterior temos que $\grupofundamental{\circulo} = \gerador{\classe{\gamma}}$. É evidente que aplicação $\grupofundamental{\circulo}  \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo.
 	\end{prova}
 	
-	\section{Exemplos}
-	\begin{exemplo}
-		(Grupo fundamental de $\real{n}$) O espaço $\real{n}$ é simplesmente conexo, então pela Proposição $\ref{proposicao_grupo_fundamental_simplesmente_conexo}$ temos que $\grupofundamental{\real{n}}$ é trivial.
-	\end{exemplo}
+	
 	\begin{exemplo}
 		(Grupo fundamental de $T^{2}$) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \inteiros \times \inteiros$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
 	\end{exemplo}
@@ -583,14 +551,9 @@
 	\begin{exemplo}\label{exemplo_grupo_fundamental_plano_furo}
 		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Sejam $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por definição $\deg(\gamma) = 1$ e $\deg(c) =0$, o que implica que $0= \deg(c)=\deg(\gamma*\hat{\gamma} ) = 1 +\deg(\hat{\gamma} )$, portanto $\deg(\hat{\gamma} )=-1$. Com isso, dado $k \in \inteiros$ tem-se que $\deg(\gamma^{k}) = \deg(\gamma)\dots \deg(\gamma) = k$. Seja $\beta \in \caminhospontobasegeral{p}{X}$ tal que $\deg(\beta)=n$. Então $\deg(\beta) = \deg(\gamma^{n})$, e $\beta \sim \gamma^{n}$, pela Proposição $\ref{proposicao_grau_aplicacao}$. Portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo infinito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = \gerador{\classe{\gamma}}$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
 	\end{exemplo}
-	
-	\begin{exemplo}
-		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p,q\}}$) Sejam $X = \real{2}\backslash\{p,q\}$ e $p ,q \in \real{2}$ tais que $p = (-1,0)$ e $q=(1,0)$. Defina $r=(0,0)\in \real{2}$ e $\gamma_{1}, \gamma_{2}, c \in \caminhospontobase{r}$, onde $c$ é a curva constante, $\gamma_{1}$ e $\gamma_{2}$ são os círculos unitários de centro em $p$ e $q$, respectivamente. Seja $\gamma \in \caminhospontobase{r}$, tal que $\deg(\gamma) = 1$. Então teremos as seguintes possibildiades para $\classe{\gamma}$: 1) se $\gamma$ não envolve nenhum dos pontos $p,q$, então $\gamma$ pode ser deformada continuamente ao ponto $r$, logo $\gamma \sim c$ e $\classe{\gamma} =\classe{c}= Id_{r}$. 2) se $\gamma$ envolver apenas $p$ ou apenas $q$, então $\gamma \sim \gamma_{1}$ ou $\gamma \sim \gamma_{2}$, logo $\classe{\gamma }=\classe{\gamma_{1}}$ ou $\classe{\gamma }=\classe{\gamma_{2}}$. 3) se $\gamma$ envolver $p$ e $q$, então $\gamma$ pode ser deformada continuamente no laço em formato de "8" que passa pela origem, mas esse laço pode ser deformado na justaposição $\gamma_{1}*\gamma_{2}$, ou seja, $\gamma \sim \gamma_{1}*\gamma_{2}$ e $\classe{\gamma} = \classe{\gamma_{1}}.\classe{\gamma_{2}}$. Analogamente ao Exemplo $\ref{exemplo_grupo_fundamental_plano_furo}$, qualquer classe de $\grupofundamental{X}$ pode ser escrita como $\classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m}$, para dados $n,m \in \inteiros$. Com isso, o grupo fundamental de $X$ é um grupo cíclico infinito gerado por $\classe{\gamma_{1}}$ e $\classe{\gamma_{2}}$, isto é, $\grupofundamental{X} = \gerador{\classe{\gamma_{1}}, \classe{\gamma_{2}}}$. A aplicação $\grupofundamental{X} \ni \classe{\gamma_{1}}^{n} \classe{\gamma_{2}}^{m} \mapsto (n,m) \in \inteiros\times\inteiros$ é um isomorfismo, portanto $\grupofundamental{X}  \cong \inteiros\times\inteiros$.
-	\end{exemplo}
 		
-	\chapter{Homologia}
-	
-	\section{Homologia singular}
+	\section{Homologia}
+	\subsection{Homologia Singular}
 	Para as próximas definições, considere $X$ um espaço topológico e $A$ um anel.
 	\begin{definicao}
 		(Simplexo singular) Denotaremos por $\Delta_{k}$ o simplexo k-dimesional cujos vértices $e_{0}, \dots, e_{k}$ formam um base canônica de $\real{k+1}$ de modo que $\Delta_{k} = \{(x_{0}, \dots, x_{k}) \in \real{k+1}: x_{j}\geq 0, \;\sum_{j}x_{j}=1\}$. Um k-simplexo singular no espaço topológico $X$ é uma aplicação contínua $\sigma:\Delta_{k} \to X$.
@@ -694,7 +657,6 @@
 		Se $f: X \to Y$ é uma equivalência homotópica entre espaços topológicos, então $f_{*}:\homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo, onde $C$ e $C'$ são os complexos de cadeias singulares de $X$ e $Y$, respectivamente.
 	\end{teorema}
 	
-	\section{Sequências exatas}
 	\begin{definicao}
 		Uma tripla $\xymatrix{C\ar[r]^{f} & D\ar[r]^{g} & E }$ de módulos abelianos e homomorfismos é chamada exata se $Im(f) = Ker(g)$. Uma sequência de módulos abelianos e homomorfismos
 		$$
@@ -793,9 +755,7 @@
 		onde $\delta_{k}$ é o homomorfismo conectante para $k \in \inteirospos$.
 	\end{teorema}
 	
-	
-	
-	\section{CW-Homologia}\label{secao_cw_complexo}
+	\subsection{CW-Homologia}\label{secao_cw_complexo}
 	Um CW-complexo é um tipo de espaço topológico introduzido por J. H. C. Whitehead, que teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sucessivas colagens (identificações) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
 	\begin{definicao}
 		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ pela identificação de $x \in \partial D^{n} = S^{n-1}$ com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
@@ -1205,28 +1165,28 @@
 	\begin{exemplo}
 		(2-toro) Sejam $T^{2} \subset \real{3}$ o toro centrado na origem do plano $Oy\times Ox = \{(x, y ,0) \in \real{3}\}$ e $\varphi:[0,2\pi]\times [0,2\pi] \to \real{3}$ uma parametrização dada por 
 		$$
-		\varphi(\theta, \phi) = ((2+cos\phi)cos\theta, (2+cos\phi)sin\theta, sin\phi).
+		\varphi(\theta, \phi) = ((2+\cos\phi)\cos\theta, (2+\cos\phi)\sin\theta, \sin\phi).
 		$$
 		
 		Com isso, tem-se que o espaço tangente $T_{p}T^{2} $ é gerado por $ \{\derivadaparcialabrev{\theta}, \derivadaparcialabrev{\phi} \}|_{p}$ onde
 		$$
 		\begin{aligned}
-			\derivadaparcialabrev{\theta} &= -(2+cos\phi)sin\theta \derivadaparcialabrev{x}+(2+cos\phi)cos\theta \derivadaparcialabrev{y},
+			\derivadaparcialabrev{\theta} &= -(2+\cos\phi)\sin\theta \derivadaparcialabrev{x}+(2+\cos\phi)\cos\theta \derivadaparcialabrev{y},
 			\\
-			\derivadaparcialabrev{\phi} &=  - sin\phi cos\theta 	\derivadaparcialabrev{x} - sin\phi sin\theta 	\derivadaparcialabrev{y} +cos\phi				\derivadaparcialabrev{z}.
+			\derivadaparcialabrev{\phi} &=  - \sin\phi \cos\theta 	\derivadaparcialabrev{x} - \sin\phi \sin\theta 	\derivadaparcialabrev{y} +\cos\phi				\derivadaparcialabrev{z}.
 			\end{aligned} 
 		$$
 				
-		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Tem-se que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ tem-se que $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, o caso em que $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$. Com isso, basta que os elementos da base não o tenham, isto é, $sin\phi = sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e os pontos críticos de $f$ são $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$, os quais estão ilustrados na Figura \ref{figura_toro_funcao_altura}.
+		Seja $f:T^{2} \to \reta$ a função largura $f(x,y,z)=x$. Tem-se que o diferencial de $f$ e $df_{p} = \derivadaparcialabrev{x}$. Com isso, dado $v \in \real{3}$ tem-se que $df_{p}(v) = \produtointerno{\nabla f(p)}{v}  = \produtointerno{(1,0,0)}{(v_{x}, v_{y}, v_{z})} =v_{x}$. Assim, o caso em que $df_{p}(v) = 0$ implica que $v_{x} = 0$, ou seja, os vetores dos espaços tangentes não podem ter componentes na direção $Ox$. Com isso, basta que os elementos da base não o tenham, isto é, $\sin\phi = \sin\theta = 0$. Portanto, $\phi, \theta \in \{0, \pi\}$ e os pontos críticos de $f$ são $\varphi(0,0) = (3,0,0)$, $\varphi(0,\pi) = (-1,0,0)$, $\varphi(\pi,0) = (-3,0,0)$ e $\varphi(\pi,\pi) = (1,0,0)$, os quais estão ilustrados na Figura \ref{figura_toro_funcao_altura}.
 			
 		Assim, a representação matricial da Hessiana $H_{p}(f)$ é
 			$$
 			H(\phi, \theta) = 
 			\left(
 			\begin{array}{cc}
-			-(2+cos\phi)cos\theta & sin\phi sin\theta  
+			-(2+\cos\phi)\cos\theta & \sin\phi \sin\theta  
 			\\
-			sin\phi sin\theta   & -cos\phi cos\theta  
+			\sin\phi \sin\theta   & -\cos\phi \cos\theta  
 			\end{array}
 			\right).
 			$$
@@ -1301,7 +1261,9 @@
 		No caso da igualdade do segundo item do teorema temos a característica de Euler-Poincaré $\chi(M) = \sum_{j = 0}^{n}(-1)^{n-j}\beta_{j}(M)$, que também é um invariante topológico e é a generalização do teorema de Euler para poliedros convexos $V-A+F = 2$, onde $V$ é o número de vértices, $A$ é o número de arestas e $F$ é o número de faces.
 	\end{observacao}
 	
-	\section{Fluxos Gradiente e Variedades de Conexão}\label{secao_fluxo_gradiente}
+	
+	\section{Teoria de Morse-Witten}
+	\subsection{Fluxos Gradiente e Variedades de Conexão}\label{secao_fluxo_gradiente}
 	Sejam $X \in \campossuaves{M}$ um campo vetorial suave em $M$ e $p \in M$. Sabe-se que existe uma curva $\gamma: \reta\to M$ que é solução do sistema de equações diferenciais 
 	$$
 	\derivada{\gamma(t)}{t} = X(\gamma(t)), \; \gamma(0) = p.
@@ -1420,7 +1382,7 @@
 		Sejam $f \in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$ de índice relativo 1, isto é, $\lambda_{p} - \lambda_{q} = 1$. Então $\overline{\variedadeconectantepontos{p}{q}} = \variedadeconectantepontos{p}{q} \cup \{p,q\}$. Além disso, o número de órbitas conectando $p$ a $q$ é finito.
 	\end{proposicao}
 
-	\section{Complexo de Morse-Smale-Witten}
+	\subsection{Complexo de Morse-Smale-Witten}
 	
 	Sejam $V$ um n-espaço vetorial, $B=\{e_{j}\}_{j=1}^{n}$ e $B'=\{e'_{j}\}_{j=1}^{n}$ duas bases ordenadas de $V$. Dizemos que $B$ e $B'$ possuem a mesma orientação se o determinante da matriz de mudança de base, $A: B \to B'$, definida por $e_{j} = \sum_{i=1}^{n}A_{ji}e'_{i}$, possui determinante positivo. 
 	
@@ -2360,7 +2322,7 @@
 	\end{prova}
 	
 	
-	\chapter{O funcional Hamiltoniano $\funcionalH$ e a equação de Floer}
+	\chapter{O funcional de ação $\funcionalH$ e a equação de Floer}
 	\section{Variedades Simpléticas}\label{secao_variedade_simpletica}
 	
 	Nessa seção parte dos conceitos introduzidos no Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} sobre espaços vetoriais simpléticos serão estendidos para as variedades diferenciáveis.
@@ -2612,7 +2574,7 @@
 	
 	Para demonstrar as desigualdades de Morse, foi construído o complexo de Morse-Witten de uma função de Morse-Smale $f: M\to \reta$ e a diferencial desse complexo descreve como os pontos críticos de $f$ pontos são conectados pelas linhas do fluxo do gradiente negativo $-\gradiente$. Para a demonstração da Conjectura de Arnold uma abordagem análoga é realizada. Contudo, o invés de uma variedade de dimensão finita $M$ tem-se um espaço de funções $\lacocontrateis$, e ao invés de uma função $f:M\to \reta$ tem-se um funcional $\funcionalH:\lacocontrateis\to \reta$.
 	
-	Nesta seção é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional Hamiltoniano. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias cujo grupo graduado é gerado pelos pontos críticos desse funcional e cuja diferencial descreve como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
+	Nesta seção é mostrado que os pontos críticos desse funcional são as soluções 1-periódicas do sistema Hamiltoniano, e por isso, $\funcionalH$ é chamado funcional de ação. Por fim, a conjectura de Arnold é demonstrada construindo-se um complexo de cadeias cujo grupo graduado é gerado pelos pontos críticos desse funcional e cuja diferencial descreve como tais pontos são conectados pelas linhas de fluxo do gradiente negativo $-\gradientefuncional$. A homologia desse complexo é chamada de Homologia de Floer.
 	
 	No Apêndice \ref{apendice_variedades_banach} mostra-se que $\lacocontrateis$, munido da $\cktopologia{\infty}$, é uma variedade conexa por caminhos, mais especificamente uma variedade de Banach. Com isso, dado $x\in \lacocontrateis$ o espaço tangente $\espacotangenteponto{x}{\lacocontrateis}$ está bem-definido e pode ser caracterizado da seguinte forma: o espaço tangente em $x \in \lacocontrateis$ pode ser definido como o conjunto dos vetores tangentes de cada caminho $\tilde{u}:\reta\to \lacocontrateis$ de classe $C^{\infty}$ tal que $\tilde{u}(0)=x$. Desse modo, cada $\tilde{u}$ pode ser visto como uma aplicação $u: \retacartesianocirculo \to M$ tal que $\tilde{u}(s)(t) = u(s,t)$ e $u(0,t) = x(t)$ (veja a Figura \ref{figura_caminho_espaco_laco_contrateis}). Então, para cada $t\in \circulo$ tem-se que
 	$$
@@ -3432,7 +3394,11 @@
 			Como $S$ é simétrica, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP=\diag(a_{1},\dots,a_{2n})$ (tais resultados podem ser encontrados em \cite{hoffman_kunze}). Sejam $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = P$ e $\mathcal{P}(1)=Id$. 
 			Então o caminho contínuo $\mathcal{P}^{t}S\mathcal{P}:\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $(\mathcal{P}^{t}S\mathcal{P})(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$, conecta a matriz diagonal $P^{t}SP$ a $S$. Como $ ((\mathcal{P}^{t}S\mathcal{P})(s))^{t} =(\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S\mathcal{P}(s) =(\mathcal{P}^{t}S\mathcal{P})(s)$, então $(\mathcal{P}^{t}S\mathcal{P})(s)$ é simétrica para todo $s\in \intervalo$, e com os argumentos análogos aos anteriores, pode-se afirmar que $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s)) \in \gruposimpleticonaodegenerado{*}$. Como $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ é contínuo e não contém auto-valores iguais a 1, então $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ está na mesma componente conexa de $\gruposimpleticonaodegenerado{*}$ que a matriz $\exp(\estruturacomplexa S)$ para todo $s\in \intervalo$.
 			
-			Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, pode-se assumir, pela invariância homotópica do índice de Maslov, que $S$ é a matriz diagonal $\diag(a_{1},\dots,a_{2n})$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{1}a_{n+1}\dots a_{n}a_{2n}$ por $a_{(1)}.a_{(2)}$, tem-se que
+			Note que, o índice da matriz simétrica $(\mathcal{P}^{t}S\mathcal{P})(s)$ independe de s. De fato, 
+			$$
+			\det(Id-(\mathcal{P}^{t}S\mathcal{P})(s)) = 			\det(\mathcal{P}^{t}(Id-S)\mathcal{P}) = \det(S).
+			$$ 
+			Portanto, $\ind((\mathcal{P}^{t}S\mathcal{P})(s)) = \ind(S)$ para todo $s \in \reta$. Além disso pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, pode-se assumir, pela invariância homotópica do índice de Maslov, que $S$ é a matriz diagonal $\diag(a_{1},\dots,a_{2n})$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{1}a_{n+1}\dots a_{n}a_{2n}$ por $a_{(1)}.a_{(2)}$, tem-se que
 			$$
 			\begin{aligned}
 			(\estruturacomplexa S)^{2j} &=(-a_{(1)}.a_{(2)})^{j} Id
@@ -3608,7 +3574,7 @@
 				\right).
 				$$
 				
-				Defina $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Note que, $\espectrooperador{\psi}= \espectrooperador{h(t\pi)} $, onde $\espectrooperador{h(t\pi)} = \{e^{t\pi} , e^{-t\pi}\}$. Como os auto-valores $\lambda(t)$ de $\psi(t)$ são números reais positivos, então $\lambda(t)$ estão no primeiro quadrante do plano complexo. Com isso, caminho $\rho_{\psi}:\intervalo\to \circulo$ não chega a envolver $\circulo$, e portanto $\deg(\rho_{\psi}) = 0$. Logo, $\mu(\psi) = 0$. Como $\ind(S) = n$, então
+				Defina $\psi \in \caminhosespeciais{\gruposimpletico{2n}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Note que, $\espectrooperador{\psi}= \espectrooperador{h(t\pi)} $, onde $\espectrooperador{h(t\pi)} = \{e^{t\pi} , e^{-t\pi}\}$. Como os auto-valores $\lambda(t)$ de $\psi(t)$ são números reais positivos, então $\lambda(t)$ estão no primeiro quadrante do plano complexo. Com isso, caminho $\rho_{\psi}:\intervalo\to \circulo$ não é sobrejetor em $\circulo$, e portanto $\deg(\rho_{\psi}) = 0$. Logo, $\mu(\psi) = 0$. Como $\ind(S) = n$, então
 				$$
 				\ind(S) - n = 0 =\mu(\psi).
 				$$
@@ -3670,7 +3636,7 @@
 	$$
 	Com isso, a $\omega$-ortogonalidade de $e_{j}(t)$ e $e_{k}(t)$ decorre da $\omega$-ortogonalidade de $e_{j}(0)$ e $e_{k}(0)$. Portanto $B(t)$ é uma base simplética para todo $t\in \reta$.
 	
-	Seja a aplicação contínua $A_{x}:\reta \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$. Note que, $A_{x}(0) = D_{x(0)}\psi_{0}=Id$, pois $\psi_{0}=Id$. Como $x$ é uma solução não-degenerada, então $\det(D_{x(0)}\psi_{1}-Id) \neq 0$, o que implica em $A_{x}(1)\in \gruposimpleticonaodegenerado{*}$. Além disso, escolhida uma outra base simplética $B'(t) = \{e'_{1}(t), \dots, e'_{2n}(t)\}$ a representação matricial $A_{x}'(t)$ de $D_{x(0)}\psi_{t}$ na base $B'(t)$ é homotópicamente equivalente a $A_{x}(t)$, para todo $t \in \reta$. De fato, seja $T:\reta \to \generalgroupreal{2}$ um caminho de isomorfismos tal que $T(t)e_{j}(t) = e'_{j}(t)$. Então, supondo que $\omega_{x(t)}(e'_{j}(t), e'_{k}(t))=\omega_{x(t)}(e_{j}(t), e_{k}(t))=\delta_{jk}$, tem-se que
+	Seja a aplicação contínua $A_{x}:\reta \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$. Note que, $A_{x}(0) = D_{x(0)}\psi_{0}=Id$, pois $\psi_{0}=Id$. Como $x$ é uma solução não-degenerada, então $\det(D_{x(0)}\psi_{1}-Id) \neq 0$, o que implica em $A_{x}(1)\in \gruposimpleticonaodegenerado{*}$. Além disso, escolhida uma outra base simplética $B'(t) = \{e'_{1}(t), \dots, e'_{2n}(t)\}$ a representação matricial $A_{x}'(t)$ de $D_{x(0)}\psi_{t}$ na base $B'(t)$ é homotopicamente equivalente a $A_{x}(t)$, para todo $t \in \reta$. De fato, seja $T:\reta \to \generalgroupreal{2}$ um caminho de isomorfismos tal que $T(t)e_{j}(t) = e'_{j}(t)$. Então, supondo que $\omega_{x(t)}(e'_{j}(t), e'_{k}(t))=\omega_{x(t)}(e_{j}(t), e_{k}(t))=\delta_{jk}$, tem-se que
 	$$
 	\begin{aligned}
 			((T(t))^{*}\omega_{x(t)})(e_{j}(t), e_{k}(t))
@@ -3699,7 +3665,7 @@
 		$$
 	\end{definicao}
 	
-	Sob algumas condições, uma função Hamiltoniana pode ser vista como um função de Morse, e com isso, é natural se questionar sobre a relação entre o índice de Conley-Zehnder e o índice de Morse. O seguinte resultado esclarece essa questão.
+	No caso em que a Hamiltoniana é uma função de Morse é natural questionar-se sobre a relação entre o índice de Conley-Zehnder e o índice de Morse. O seguinte resultado esclarece essa questão.
 	
 	Seja $H:M \to \reta$ uma função Hamiltoniana autônoma. Na Seção \ref{secao_variedade_simpletica} estão definidos o campo Hamiltoniano $\campohamiltonianoabrev\in \campossuaves{M}$, onde $\campohamiltonianoabrev=-\estruturacomplexa\nabla H$, e o fluxo associado a ele $\Psi_{t}:M\to M$ é dado por $\dot{\psi}_{t}(x)=\campohamiltoniano{\psi_{t}(x)}$.
 	
@@ -5363,20 +5329,34 @@
 	
 	\section{Espaço de Sobolev $W^{k,p}$}\label{secao_espaco_sobolev}
 	\begin{definicao}\label{definicao_espaco_sobolev}
-		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto limitado com bordo suave e $p \in \mathbb{N}$ tal que $p\geq 1$. Os espaços de Sobolev são os conjuntos
-		$$
-		W^{k,p} (\Omega)= \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
-		$$
-		Quando existir uma $g \in \espacoLpGeral{p}{\Omega}$ diremos que $g = \partial^{\alpha}f$.
+		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto e fixe $k, p\in \inteiros$, onde $1\leq p \leq \infty$ e $0\leq k$. O espaço de Sobolev $W^{k,p} (\Omega)$ é o conjunto das funções $f:U\to \reta$ tais que $D^{\alpha}f$ existe no sentido fraco e $\partial^{\alpha}f \in \espacoLp{\Omega}$ para todos os multi-índices $\alpha$ com $|\alpha|\leq k$.
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_espacos_sobolev_distribuicao}
-		Note que, $W^{k,p}$ pode ser visto como um espaço de distribuições.
+		De outra forma, tem-se que
+		$$
+		W^{k,p} (\Omega)	= \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
+		$$
+		Quando existir uma $g \in \espacoLpGeral{p}{\Omega}$ diremos que $g = \partial^{\alpha}f$. Logo $W^{k,p}$ pode ser visto como um espaço de distribuições.
 	\end{observacao}
 	
 	\begin{definicao}\label{definicao_espalo_sobolev_generalizado}
-		(Espaço de Sobolev generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então $\espacosobolevcontradominio{\Omega}{\real{k}}$ é o conjunto das aplicações  $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ tais que $f_{j} \in \espacosobolev{\Omega} $ para $1\leq j \leq k$.
+		(Espaço de Sobolev Generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então $\espacosobolevcontradominio{\Omega}{\reta}$ é o conjunto das aplicações  $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ tais que $f_{j} \in \espacosobolev{\Omega} $ para $1\leq j \leq k$.
 	\end{definicao}
+	
+	A importante proposição a seguir esta demonstrada em \cite{breazis_sobolev_spaces}.
+	
+	\begin{proposicao}
+		O espaço de Sobolev $\espacosobolev{\Omega}$, munido da norma 
+		$$
+		\normaWp{f} = \normaLp{f}+\sum_{j=0}^{n}\normagrande{\derivadaparcial{f}{x_{j}}}_{L^{p}},
+		$$
+		é uma espaço de Banach.
+	\end{proposicao}
+	
+	\begin{observacao}
+		Da proposição anterior, é imediato que $\normaLp{f} \leq \normaWp{f}$. Logo, $\espacosobolev{\Omega} \subset\espacoLp{\Omega}$.
+	\end{observacao}
 	
 	\begin{exemplo}
 		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Como $f$ é limitada em $\Omega$, então é localmente compacta, logo $f \in \espacoLp{\Omega}$. Defina $g:\Omega\to \real{n}$ por
@@ -5407,12 +5387,6 @@
 		onde $\Omega^{\pm} = \{x \in \Omega: \pm x_{1} >0\}$. Além disso, foi usados os fatos de que $supp(\phi) $ é um compacto no interior de $\Omega$ e $\phi$ restrita a $\partial \Omega$ é nula. Pela Definição \ref{definicao_espaco_sobolev} tem-se que $g_{1} = \derivadaparcialabrev{1}f$ (no sentido fraco). Os casos em que $2\leq j\leq n$ são triviais pois $g_{j} = 0$. Portanto $f\in \espacosobolev{\Omega}$.
 	\end{exemplo}
 	
-	\begin{observacao}
-		De acordo com a proposição a seguir, e demonstrada em $\cite{breazis_sobolev_spaces}$, os espaços de Sobolev $W^{1,p}$ munidos com a norma 
-		$$
-		\normaWp{f} = \bigparenteses{\normaLp{f}^{p} + \normaLp{\partial f}^{p} }^{1/p},
-		$$ formam uma espaço de Banach. Além disso, $\normaLp{f} \leq \normaWp{f}$.
-	\end{observacao}
 	
 	\begin{proposicao}
 		Os espaços de Sobolev $W^{1,p}$ são espaços de Banach separáveis para $1\leq p \leq \infty$.
