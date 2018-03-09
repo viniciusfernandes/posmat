@@ -172,7 +172,8 @@
 \newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
 \newcommand{\funcoesmorsesmale}[1]{\mathcal{M}^{S}_{o}(#1)}
 \newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
-\newcommand{\funcoesteste}{\mathcal{D}(\Omega)}
+\newcommand{\funcoesteste}{\funcoestestegeral{\Omega}}
+\newcommand{\funcoestestegeral}[1]{\mathcal{D}(#1)}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
 \newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
 \newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
@@ -2500,9 +2501,11 @@
 		\end{array}
 		\right).
 		$$
-		Note que, em $t=0$ tem-se que $Hess(H) = \estruturacomplexa$. Logo, a hessiana de $H$ é não-degenerada e os pontos críticos de $H$ são pontos críticos não-degenerados, portanto $H$ é uma função de Morse.
+		Expandindo a exponencial $e^{t\estruturacomplexa}$ em série de Taylor, tem-se $e^{t\estruturacomplexa}=\cos(t)Id+\sin(t)\estruturacomplexa$. Com isso, $		\psi_{t}(q,p)=(q\cos(t)+p\sin(t), p\cos(t)-q\sin(t))$.
 		
-		A aplicação $\psi_{t}:\real{2}\to \real{2}$ é um difeomorfismo para todo $t\in \reta$. De fato, o diferencial $	D_{(q,p)}\psi_{t}:T_{(q,p)}\real{2}\to T_{\psi_{t}(q,p)}\real{2}$ é dado por $	D_{(q,p)}\psi_{t} = e^{t\estruturacomplexa}Id$. Usando o fato de que $(e^{t\estruturacomplexa}Id)^{*} = e^{-t\estruturacomplexa}Id$, tem-se que
+		Note que $\hessianaponto{(q,p)}{H} = Id$. Logo, a hessiana de $H$ é não-degenerada e os pontos críticos de $H$ são pontos críticos não-degenerados, portanto $H$ é uma função de Morse.
+		
+		Usando as identidades $D_{(q,p)}\psi_{t} = e^{t\estruturacomplexa}$ e $(e^{t\estruturacomplexa})^{*} = e^{-t\estruturacomplexa}$, tem-se que $\psi_{t}:\real{2}\to \real{2}$ é um simplectomorfismo para todo $t\in \reta$. De fato, a aplicação $\psi_{t}$ é um difeomorfismo. Além disso,
 		
 		$$
 		\begin{aligned}
@@ -2543,15 +2546,81 @@
 		Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(1)}M$.
 	\end{definicao}
 	
-	Se uma Hamiltoniana $H:M\times \reta\to \reta$ se reduz ao caso de uma Hamiltoniana autônoma, então todo ponto $x\in \pontoscriticos{H}$ é uma solução 1-periódica do sistema Hamiltoniano, em particular é uma solução de constante. A seguinte proposição formaliza esse resultado, e sua demonstração pode ser encontrada em \cite{audi_floer_homology}.
-	
-	\begin{teorema}
-		(Darboux) Toda 2n-variedade simplética e localmente simplectomorfa a $(\real{2n}, \omega_{0})$.
-	\end{teorema}
+	\begin{proposicao}\label{proposicao_exponencial_hessiana}
+		Sejam $x \in M$ um ponto crítico não-degenerado da Hamiltoniana autônoma e $\psi:M\times \reta\to M$ o fluxo de $\campohamiltonianoabrev$. Então 
+		$$
+		D_{x}\psi_{t} = e^{-t\estruturacomplexa \hessianaponto{x}{H}}
+		$$
+		em um sistema local de coordenadas de $x$.
+	\end{proposicao}
+	\begin{prova}
+		Fixe $V$ uma vizinhança coordenada de $x$ e  $(q_{1}\dots, q_{n}, p_{1}\dots, p_{n})$ as coordenadas locais de $V$. Então o diferencial $D_{x}\psi_{t}:\espacotangenteponto{x(0)}{M} \to \espacotangenteponto{x(t)}{M}$ é associado a matriz $2n\times 1$
+		$$
+		D_{x}\psi_{t} = 
+		\left(
+		\begin{array}{cc}
+		\derivadaparcial{H}{\textbf{q}} &\derivadaparcial{H}{\textbf{p}}
+		\end{array}
+		\right),
+		$$
+		onde $\derivadaparcial{H}{\textbf{q}}$ denota a $n$-upla $(	\derivadaparcial{H}{q_{1}} \dots \derivadaparcial{H}{q_{n}})$, e o mesmo para $\derivadaparcial{H}{\textbf{p}}$.
+		
+		Com isso, o diferencial $D_{x}\psi_{t}$ pode ser visto como um caminho de matrizes. Logo,
+		$$
+		\begin{aligned}
+		\derivada{}{t}(D_{x}\psi_{t})
+		&=
+		\left(
+		\begin{array}{cc}
+		-(\derivadaparcialdoisdois{H}{\textbf{q}}{\textbf{p}}\dot{\textbf{q}}+\derivadaparcialdois{H}{\textbf{p}}\dot{\textbf{p}}) & 
+		(\derivadaparcialdois{H}{\textbf{q}}\dot{\textbf{q}}+\derivadaparcialdoisdois{H}{\textbf{p}}{\textbf{q}}\dot{\textbf{p}})
+		\end{array}
+		\right)
+		\\
+		&=
+		\left(
+		\begin{array}{c}
+		\left(
+		\begin{array}{cc}
+		0& -Id
+		\\
+		Id & 0
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{cc}
+		\derivadaparcialdois{H}{\textbf{q}} & 
+		\derivadaparcialdoisdois{H}{\textbf{q}}{\textbf{p}}
+		\\
+		\derivadaparcialdoisdois{H}{\textbf{p}}{\textbf{q}} & \derivadaparcialdois{H}{\textbf{p}}
+		\end{array}
+		\right)
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{c}
+		\dot{\textbf{q}}
+		\\
+		\dot{\textbf{p}}
+		\end{array}
+		\right)
+		\\
+		&= -(\estruturacomplexa\circ \hessianaponto{x}{H})(	D_{x}\psi_{t}).
+		\end{aligned}
+		$$
+		Portanto,
+		$$
+		D_{x}\psi_{t} = e^{-t\estruturacomplexa \hessianaponto{x}{H}},
+		$$
+		para todo $t\in \reta$ tal que $\psi_{t}(x(0))=x(t)\in V$.
+	\end{prova}
 	
 	\begin{proposicao}
 		Se $x \in \pontoscriticos{H}$ é não-degenerado como uma solução periódica do sistema Hamiltoniano, então é não-degenerado como ponto crítico de $H$.
 	\end{proposicao}
+	\begin{prova}
+		Seja $\psi:M\times \reta\to M$ o fluxo do campo Hamiltoniano. Se $x\in \pontoscriticos{H}$ é uma solução 1-periódica do sistema Hamiltoniano, então pela Proposição \ref{proposicao_exponencial_hessiana} tem-se que $D_{x}\psi_{1}=e^{-\estruturacomplexa \hessianaponto{x}{H}}$ em uma vizinhança coordenada $V$ de $x$. Seja $v\in \espacotangenteponto{x}{M}$ um auto-vetor de $D_{x}\psi_{1}$, então $e^{-\estruturacomplexa \hessianaponto{x}{H}}v=\lambda v = e^{\alpha Id}v$ para algum $\alpha \in \complexo{}$, o que implica em $-\estruturacomplexa \hessianaponto{x}{H} = \alpha Id$. Como $1\notin \espectrooperador{D_{x}\psi_{1}}$, então $\lambda \neq 1 $ e $\alpha\neq 0$. Logo, $\hessianaponto{x}{H} =\alpha\estruturacomplexa \neq 0$ e $\hessianaponto{x}{H}$ é não-degenerada.
+	\end{prova}
 	
 	\begin{observacao}
 		Esta demonstrado em \ref{secao_indice_conley} que no caso autônomo tem-se que $D_{x}\psi^{1} = e^{\estruturacomplexa \hessianaponto{x}{H}}$. Além disso, se $x$ é uma solução não-degenerada do sistema Hamiltoniano, então $e^{\estruturacomplexa \hessianaponto{x}{H}} \in \gruposimpletico{2n}$ e, se $\norma{\hessianaponto{x}{H}}<2\pi$, então $1\notin \espectrooperador{e^{\estruturacomplexa \hessianaponto{x}{H}}}$.
@@ -3671,72 +3740,13 @@
 	
 	No caso em que a Hamiltoniana é uma função de Morse é natural questionar-se sobre a relação entre o índice de Conley-Zehnder e o índice de Morse. O seguinte resultado esclarece essa questão.
 	
-	Sejam $H:M \to \reta$ uma função Hamiltoniana autônoma e $x\in M$ um ponto crítico não-degenerado de $H$. Fixe $V$ uma vizinhança corrdenada de $x$ e  $(q_{1}\dots, q_{n}, p_{1}\dots, p_{n})$ as coordenadas locais de $V$. Então o diferencial $D_{x}\psi_{t}:\espacotangenteponto{x(0)}{M} \to \espacotangenteponto{x(t)}{M}$ é associado a matriz $2n\times 1$
-	$$
-	D_{x}\psi_{t} = 
-	\left(
-		\begin{array}{cc}
-		\derivadaparcial{H}{\textbf{q}} &\derivadaparcial{H}{\textbf{p}}
-		\end{array}
-	\right),
-	$$
-	onde $\derivadaparcial{H}{\textbf{q}}$ denota a $n$-upla $(	\derivadaparcial{H}{q_{1}} \dots \derivadaparcial{H}{q_{n}})$, e o mesmo para $\derivadaparcial{H}{\textbf{p}}$.
-	
-	Com isso, o diferencial $D_{x}\psi_{t}$ pode ser visto como um caminho de matrizes. Logo,
-	$$
-	\begin{aligned}
-		\derivada{}{t}(D_{x}\psi_{t})
-		&=
-		\left(
-		\begin{array}{cc}
-		-(\derivadaparcialdoisdois{H}{\textbf{q}}{\textbf{p}}\dot{\textbf{q}}+\derivadaparcialdois{H}{\textbf{p}}\dot{\textbf{p}}) & 
-		(\derivadaparcialdois{H}{\textbf{q}}\dot{\textbf{q}}+\derivadaparcialdoisdois{H}{\textbf{p}}{\textbf{q}}\dot{\textbf{p}})
-		\end{array}
-		\right)
-		\\
-		&=
-		\left(
-			\begin{array}{c}
-			\left(
-			\begin{array}{cc}
-			0& -Id
-			\\
-			Id & 0
-			\end{array}
-			\right)
-			\left(
-			\begin{array}{cc}
-			\derivadaparcialdois{H}{\textbf{q}} & 
-			\derivadaparcialdoisdois{H}{\textbf{q}}{\textbf{p}}
-			\\
-			\derivadaparcialdoisdois{H}{\textbf{p}}{\textbf{q}} & \derivadaparcialdois{H}{\textbf{p}}
-			\end{array}
-			\right)
-			\end{array}
-		\right)
-		\left(
-		\begin{array}{c}
-		\dot{\textbf{q}}
-		\\
-		\dot{\textbf{p}}
-		\end{array}
-		\right)
-		\\
-		&= -(\estruturacomplexa\circ \hessianaponto{x}{H})(	D_{x}\psi_{t}).
-	\end{aligned}
-	$$
-	Portanto,
-	$$
-		D_{x}\psi_{t} = e^{-t\estruturacomplexa \hessianaponto{x}{H}}.
-	$$
-	
-	Note que $\hessianaponto{x}{H}$ é uma matriz simétrica. Segue da demonstração do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov} que se $\norma{\hessianaponto{x}{H}}<2\pi$, então 
+	Note que $\hessianaponto{x(0)}{H}$ é uma matriz simétrica. Além disso, pela Proposição \ref{proposicao_exponencial_hessiana} tem-se que $D_{x(0)}\psi_{1}= e^{-\estruturacomplexa \hessianaponto{x(0)}{H}}$. Segue da demonstração do Item \ref{item_assinatura_maslov} do Teorema \ref{teorema_indice_maslov} que se $\norma{\hessianaponto{x}{H}}<2\pi$, então 
 	$$
 	\exp(-\estruturacomplexa \hessianaponto{x}{H}) \in \gruposimpletico{2n}
 	$$
 	e
 	$$ 
-	A_{x}\in \caminhosespeciais{\gruposimpletico{2n}},\;\text{onde}\; A(t) = D_{x}\psi_{t}.
+	A_{x}\in \caminhosespeciais{\gruposimpletico{2n}},\;\text{onde}\; A_{x}(t) = D_{x(0)}\psi_{t}.
 	$$ 
 	
 	
@@ -5238,27 +5248,27 @@
 	
 	\chapter{Espaços de Sobolev}
 	\section{Distribuições}\label{secao_distribuicoes}
-	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como, a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
+	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como: a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
 	$$
 	\nabla.E(x) = \rho(x),
 	$$
-	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, sendo ambos de classe $C^{\infty}$. O problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade de carga dada por $\rho(V) = q/V$ é tomada quando $\lim_{V \to 0}\rho(V)$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
+	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, ambas aplicações de classe $C^{\infty}$. O problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade de carga dada por $\rho(V) = q/V$ é tomada quando $\lim_{V \to 0}\rho(V)$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
 	$$
 	\rho(x) = \lim_{V\to 0} \frac{q}{V} = q\delta(x - x_{0}),
 	$$
-	onde $x,x_{0} \in \real{3}$, $x_{0}$ é o ponto onde esta localizada a carga $q$ e 
+	onde $x,x_{0} \in \real{3}$ e $x_{0}$ é o ponto onde esta localizada a carga $q$. Com isso, o símbolo $\delta$ é expresso por
 	$$
 	\funcaocond{\delta(x - x_{0})}{\infty}{x=x_{0}}{0}{x\neq x_{0}}\;\; \text{tal que} \;\; \int_{\real{3}} \delta(x) = 1.
 	$$
-	Note que o símbolo $\delta$ não esta bem definido em $x_{0}$, portanto não é uma função e o problema 
+	Note que $\delta$ não esta bem definido em $x_{0}$, portanto não é uma função e o problema de EDP
 	$$
 	\nabla.E(x) = q\delta(x),
 	$$
-	não esta bem formulado matematicamente. 
+	não está bem formulado matematicamente. 
 	
-	Em teoria de distribuição essa EDP terá uma solução em um sentido mais geral, o qual é chamada de solução distribuicional ou solução fraca. Aqui serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
+	Em teoria de distribuição essa EDP tem solução em um sentido mais geral, o qual é chamada de solução distribuicional ou solução fraca. Nessa seção serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
 	
-	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Denotaremos por $\funcoesteste=\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto de todas as funções de classe $C^{k}$ com suporte compacto e definidas em $\Omega$. Os elementos de tal conjunto são chamados de funções de teste.
+	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Seja  $\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto das funções de classe $C^{k}$ e com suporte compacto em $\Omega$. Esse conjunto é chamado de espaço de funções teste e é denotado por $\funcoesteste$.
 	
 	\begin{observacao}
 		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
@@ -5268,66 +5278,76 @@
 	$$
 	\normaLp{f}=\normaLpdefinicao{|f(x)|}{\Omega},
 	$$
-	forma um espaço de Banach. Porém, para os resultados a seguir utiliza-se o seguinte quociente:
+	forma um espaço de Banach. Porém, para os resultados a seguir utiliza-se o seguinte quociente: sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula.
 	
 	\begin{definicao}\label{definicao_espaco_Lp}
-		(Espaços $\espacoLpGeral{p}{\Omega}$ e $\espacoLpcomp{\Omega}$) Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula. Assim, o quociente $l^{p}(\Omega)/\sim$ será denotado por $\espacoLpGeral{p}{\Omega}$.
-	\end{definicao}
-	
-	\begin{definicao}
-		(Espaços $\espacoLpcomp{\Omega}$) O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
+		(Espaços $\espacoLpGeral{p}{\Omega}$ O conjunto $\espacoLpGeral{p}{\Omega}$, definido pelo quociente $l^{p}(\Omega)/\sim$, é chamado funções p-integráveis. O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
 	\end{definicao}
 	
 	\begin{observacao}
-		No caso em quem $p=2$ teremos que $L^{2}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, e um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
+		No caso em que $p=2$ tem-se que $\espacoLdois{\Omega}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, onde um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
 	\end{observacao}
 	
-	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f(x)/\partial x_{j}$ por $\derivadaparcialabrev{j}f(x) $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
+	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f/\partial x_{j}$ por $\derivadaparcialabrev{j}f $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
 	
 	\begin{definicao}
-		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. Uma forma linear $f:\funcoesteste \to \reta$ é chamada de distribuição se, para cada compacto $K\subset \Omega$, existe $c\geq 0$ e $m \in \mathbb{N}$ tal que 
+		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. O espaço das distribuições $\distribuicoesgeral{\Omega}$ é o dual de $\funcoesteste$. Mais precisamente, é o conjunto dos funcionais lineares $f:\funcoesteste \to \reta$ que são contínuos no sentido que, 	para todo compacto $K\subset \Omega$ existe um inteiro $p$ e uma constante $C$ tal que, para todo $\phi\in \funcoesteste$ com suporte em $K$, tem-se que
 		$$
-		|\produtointerno{f}{\phi}| \leq c \sum_{|\alpha|\leq m} \sup|\partial^{\alpha}\phi|,
+		|\produtointerno{f}{\phi}| \leq C \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|.
 		$$
-		para todo $\phi \in \funcoesdiferenciaveissupp{\infty}{\Omega}$ com $supp (\phi) \subseteq K$. O espaço das distribuições é denotado por $\distribuicoes$.
 	\end{definicao}
 	
-	Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$ e $\phi \in \funcoesteste$. Defina $\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x)$ e $K = supp(\phi) \subset \Omega$ compacto. Como $f$ é contínua, então a sua restrição a $K$ é limitada, logo $|\produtointerno{f}{\phi}|\leq sup(|\phi|)\int_{K}|f(x)|<\infty$ e $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma, a aplicação $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$ é injetora. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que implica na condição de integrabilidade. Com isso, pode-se generalizar para o caso em que $f \in \espacoLpcomp{\Omega}$, de modo que ainda se tenha a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
+	Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$, $\phi \in \funcoesteste$ e o compacto $K = supp(\phi) \subset \Omega$. Defina 
+	$$
+	\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x).
+	$$
+	Como $f$ é contínua, então $f|_{K}$ é limitada e
+	$$
+	|\produtointerno{f}{\phi}|
+	\leq \int_{K}|f(x)||\phi(x)|
+	\leq \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|\int_{K}|f(x)|<\infty.
+	$$
+	Portanto, $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma, a aplicação $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$ é injetora. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que implica na condição de integrabilidade. Com isso, pode-se generalizar para o caso em que $f \in \espacoLpcomp{\Omega}$, de modo que ainda se tenha a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
 	
-	Por fim, pode-se efetuar a diferenciação das distribuições. Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e $\alpha$ um k-multi-índice, então $\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}$.
+	Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e um k-multi-índice $\alpha$, então
+	$$
+	\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}.
+	$$
 	
 	\begin{definicao}
-		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada de Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
+		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
 	\end{definicao}
 	
 	\begin{exemplo}
-		(Função de Heaviside) Seja $\theta:\Omega = \reta \to \reta$, a de função de Heaviside, definida por
+		(Função de Heaviside)  A de função de HeavisideSeja $\theta:\reta \to \reta$ é definida por
 		$$
 		\funcaocond{\theta(x)}{1}{x\geq0}{0}{x<0}.
 		$$
+		Dado $\phi \in \funcoestestegeral{\reta}$, tem-se que 
+		$$
+		\begin{aligned}
+			|\produtointerno{\theta}{\phi}| 
+			&\leq \int_{\reta}|\theta(x)\phi(x)| 
+			\\
+			&= \int_{K\cap\reta_{+}}|\phi(x)| 
+			\\
+			&\leq \sup\limits_{x\in K, |\alpha|\leq p}|d^{\alpha}\phi(x)|\underbrace{\int_{K\cap\reta_{+}}dx}_{<\infty}
+			\\
+			&=C\sup\limits_{x\in K, |\alpha|\leq p}|d^{\alpha}\phi(x)|.
+		\end{aligned}
+		$$ 
+		Portanto, $\theta\in \distribuicoesgeral{\reta}$.
 		Afirmo que o diferencial de $\theta$ é o delta de Dirac. De fato,
 		$$
-		\produtointerno{\partial\theta}{\phi} = -		\produtointerno{\theta}{\partial\phi} = -\int_{\reta_{+}}\partial \phi(x) = -\phi(0)\Big|^{\infty}_{0} = \phi(0) = \produtointerno{\delta}{\phi}.
+		\produtointerno{d\theta}{\phi} = -		\produtointerno{\theta}{d\phi} = -\int_{K\cap\reta_{+}}  d\phi(x) = -\phi(0)\Big|^{\infty}_{0} = \phi(0) = \produtointerno{\delta}{\phi}.
 		$$
-		Como $\phi \in \funcoesteste$ é arbitrária, então $\partial \theta = \delta \in \distribuicoes$.
+		Como $\phi \in \funcoestestegeral{\reta}$ é arbitrária, então $d \theta = \delta \in \distribuicoesgeral{\reta}$.
 	\end{exemplo}
 	
 	\begin{observacao}
-		No exemplo anterior determinamos que a diferencial da função de Heaviside é o delta de Dirac e escrevemos $\partial \theta = \delta$. Note que essa não é uma identidade no sentido usual, mas no sentido distribucional, ou seja, é uma identificação que tem sentido sob a operação de integração. Mais precisamente, dados $f,g \in \distribuicoes$ tais que $\produtointerno{f}{\phi}=\produtointerno{g}{\phi}$ para todo $\phi \in \funcoesteste$, então escreveremos $f=g$ no sentido distribucional ou sentido fraco. Com isso, sistematizamos o problema da física $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$, logo $\nabla.E = q\delta$, no sentido fraco.
+		O exemplo anterior permite sistematizar o problema físico da distribuição puntual de carga, o qual é solução da equação $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$. Portanto, $\nabla.E = q\delta$, no sentido fraco.
 	\end{observacao}
-	
-	Sejam $\Omega, \Omega'\subset \real{n}$ subconjuntos abertos. Um homomorfismo $h : \funcoesdiferenciaveissupp{\infty}{\Omega} \to \funcoesdiferenciaveissupp{\infty}{\Omega'}$ é chamado contínuo se, para todo compacto $K \subset \Omega$ existe um compacto $K' \subset \Omega'$ tal que $supp(h \circ \phi ) \subset K'$ se $supp(\phi) \subset K$, e também, para todo compacto $K \subset \Omega$ e todo $p \in \mathbb{N}$ existem $c = c(K,p), m = m(k,p) \in \mathbb{N}$ tais que 
-	$$
-	\sum_{|\alpha|\leq p}|\partial^{\alpha}(h\phi)|\leq c			\sum_{|\beta|\leq p}|\partial^{\beta}(\phi)|, \text{onde }\; \phi \in \funcoesdiferenciaveissupp{\infty}{K}.
-	$$
-	
-	\begin{definicao}\label{definicao_distribuicao_adjunta}
-		(Distribuição adjunta) Sejam $\Omega, \Omega'\subseteq \real{n}$ dois abertos. O adjunto $h^{*}: \distribuicoesgeral{\Sigma} \to \distribuicoesgeral{\Omega}$é definida por
-		$$
-		\produtointerno{h^{*}\circ f}{\phi} = 		\produtointerno{f}{h\circ\phi}.
-		$$
-	\end{definicao}\label{definicao_espalo_sobolev}
-	
+
 	\section{Espaço de Sobolev $W^{k,p}$}\label{secao_espaco_sobolev}
 	\begin{definicao}\label{definicao_espaco_sobolev}
 		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto e fixe $k, p\in \inteiros$, onde $1\leq p \leq \infty$ e $0\leq k$. O espaço de Sobolev $W^{k,p} (\Omega)$ é o conjunto das funções $f:U\to \reta$ tais que $D^{\alpha}f$ existe no sentido fraco e $\partial^{\alpha}f \in \espacoLp{\Omega}$ para todos os multi-índices $\alpha$ com $|\alpha|\leq k$.
