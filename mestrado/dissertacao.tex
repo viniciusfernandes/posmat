@@ -137,6 +137,7 @@
 \newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
 \newcommand{\espacosobolevadjuntoretacirculo}{W^{1,q}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacosobolevdual}{(W^{1,p})^{*}(\retacartesianocirculo;\real{2n})}
+\newcommand{\espacosobolevgeneralizado}[2]{W^{k,p}(#1; #2)}
 \newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
 \newcommand{\espacosobolevdois}[2]{\espacosobolevgeral{2}{#1, #2}}
 \newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
@@ -235,6 +236,7 @@
 \newcommand{\normagrandeLpdefinicao}[2]{ \normaLpdefinicao{\normagrande{#1}}{#2}}
 \newcommand{\normasubscrito}[2]{\norma{#1}_{#2}}
 \newcommand{\normaWp}[1]{||#1||_{W^{1,p}}}
+\newcommand{\normaWpgeneralizado}[1]{||#1||_{W^{k,p}}}
 \newcommand{\normaWpgeral}[2]{||#1||_{W^{1,#2}}}
 \newcommand{\normaWpGeralDominio}[3]{\norma{#1}_{W^{1,#2}(#3)}}
 \newcommand{\normaWpDominio}[2]{||#1||_{W^{1,p}(#2)}}
@@ -5274,15 +5276,22 @@
 		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
 	\end{observacao}
 	
-	Seja $l^{p}(\Omega)$ o conjunto das funções cujos módulos são Riemann integráveis em $\Omega$, isto é, $\int_{\Omega}|f(x)| \in \reta$. É possível mostrar que $l^{p}(\Omega)$ é um espaço vetorial real e, munido da norma
+	Seja $l^{p}(\Omega)$ o conjunto das funções Riemann integráveis em $\Omega$ tais que 
+	$$
+	\int_{\Omega}|f(x)|^{p} <\infty.$$ 
+	
+	Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. É dito que $f \sim g$ se $\Omega(f,g)$ possui medida nula.
+	
+	\begin{definicao}\label{definicao_espaco_Lp}
+		(Espaços $\espacoLpGeral{p}{\Omega}$) O quociente $\espacoLpGeral{p}{\Omega}=l^{p}(\Omega)/\sim$ é chamado funções p-integráveis. O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
+	\end{definicao}
+	
+	
+	É possível mostrar que $\espacoLpGeral{p}{\Omega}$ é um espaço vetorial real e, munido da norma
 	$$
 	\normaLp{f}=\normaLpdefinicao{|f(x)|}{\Omega},
 	$$
-	forma um espaço de Banach. Porém, para os resultados a seguir utiliza-se o seguinte quociente: sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. Diremos que $f \sim g$ se $\Omega(f,g)$ possui medida nula.
-	
-	\begin{definicao}\label{definicao_espaco_Lp}
-		(Espaços $\espacoLpGeral{p}{\Omega}$ O conjunto $\espacoLpGeral{p}{\Omega}$, definido pelo quociente $l^{p}(\Omega)/\sim$, é chamado funções p-integráveis. O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
-	\end{definicao}
+	forma um espaço de Banach para $1\leq p\leq \infty$ (veja em \cite{breazis_sobolev_spaces}). 
 	
 	\begin{observacao}
 		No caso em que $p=2$ tem-se que $\espacoLdois{\Omega}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, onde um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
@@ -5349,48 +5358,74 @@
 	\end{observacao}
 
 	\section{Espaço de Sobolev $W^{k,p}$}\label{secao_espaco_sobolev}
+	
 	\begin{definicao}\label{definicao_espaco_sobolev}
-		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto e fixe $k, p\in \inteiros$, onde $1\leq p \leq \infty$ e $0\leq k$. O espaço de Sobolev $W^{k,p} (\Omega)$ é o conjunto das funções $f:U\to \reta$ tais que $D^{\alpha}f$ existe no sentido fraco e $\partial^{\alpha}f \in \espacoLp{\Omega}$ para todos os multi-índices $\alpha$ com $|\alpha|\leq k$.
+		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto e fixe $k, p\in \inteiros$, onde $1\leq p \leq \infty$ e $0\leq k$. O espaço de Sobolev $W^{k,p} (\Omega)$ é o conjunto das funções $f:\Omega\to \reta$ tais que $D^{\alpha}f$ existe no sentido fraco e $\partial^{\alpha}f \in \espacoLp{\Omega}$ para todos os multi-índices $\alpha$ com $|\alpha|\leq k$.
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_espacos_sobolev_distribuicao}
 		De outra forma, tem-se que
 		$$
-		W^{k,p} (\Omega)	= \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
+		W^{k,p} (\Omega) = \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
 		$$
 		Quando existir uma $g \in \espacoLpGeral{p}{\Omega}$ diremos que $g = \partial^{\alpha}f$. Logo $W^{k,p}$ pode ser visto como um espaço de distribuições.
 	\end{observacao}
 	
+	\begin{definicao}
+		(Espaços de aplicações p-integráveis) Seja $\Omega$ é um aberto de $\real{n}$. O espaço de $\espacoLpcontradominio{\Omega}{\real{m}}$ é o conjunto das aplicações 
+		$$
+		\begin{aligned}
+		f:\Omega \subset\real{n} &\to \real{m}
+		\\
+		x &\mapsto (f_{1}(x), \dots, f_{k}(x))
+		\end{aligned}
+		$$ 
+		tais que $f_{j} \in \espacoLpcontradominio{\Omega}{\reta}$ para $1\leq j \leq k$.
+ 	\end{definicao}
+	
 	\begin{definicao}\label{definicao_espalo_sobolev_generalizado}
-		(Espaço de Sobolev Generalizado) Seja $\Omega\subset \real{n}$ um aberto. Então $\espacosobolevcontradominio{\Omega}{\reta}$ é o conjunto das aplicações  $f:\Omega \to \real{k}$ onde $f(x) = (f_{1}(x), \dots, f_{k}(x))$ tais que $f_{j} \in \espacosobolev{\Omega} $ para $1\leq j \leq k$.
+		(Espaço de Sobolev Generalizado) Seja $\Omega$ é um aberto de $\real{n}$. O espaço de Sobolev $\espacosobolevgeneralizado{\Omega}{\real{m}}$ é o conjunto das aplicações  
+		$$
+		\begin{aligned}
+		f:\Omega \subset\real{n} &\to \real{m}
+		\\
+		x &\mapsto (f_{1}(x), \dots, f_{k}(x))
+		\end{aligned}
+		$$ 
+		tais que $f_{j} \in \espacosobolevgeneralizado{\Omega}{\reta}$ para $1\leq j \leq k$.
 	\end{definicao}
 	
 	A importante proposição a seguir esta demonstrada em \cite{breazis_sobolev_spaces}.
 	
 	\begin{proposicao}
-		O espaço de Sobolev $\espacosobolev{\Omega}$, munido da norma 
+		Os espaços $\espacoLpcontradominio{\Omega}{\real{m}}$ e $\espacosobolevgeneralizado{\Omega}{\real{m}}$, munidos das normas 
 		$$
-		\normaWp{f} = \normaLp{f}+\sum_{j=0}^{n}\normagrande{\derivadaparcial{f}{x_{j}}}_{L^{p}},
+		\normaLp{f} =\normaLpdefinicao{\sum_{j=1}^{m} |f_{j}(x)|}{\Omega},
 		$$
-		é uma espaço de Banach.
+		e
+		$$
+		\normaWpgeneralizado{f} =\normaLpdefinicao{\sum_{j=1}^{m} \sum_{|\alpha|\leq k}|\partial^{\alpha}f_{j}(x)|}{\Omega},
+		$$
+		respectivamente, são espaços de Banach.
 	\end{proposicao}
 	
+	
 	\begin{observacao}
-		Da proposição anterior, é imediato que $\normaLp{f} \leq \normaWp{f}$. Logo, $\espacosobolev{\Omega} \subset\espacoLp{\Omega}$.
+		Da proposição anterior é imediato que $\normaLp{f} \leq \normaWpgeneralizado{f}$. Logo, $\espacosobolevgeneralizado{\Omega}{\real{m}} \subset\espacoLpcontradominio{\Omega}{\real{m}}$.
 	\end{observacao}
 	
 	\begin{exemplo}
-		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Como $f$ é limitada em $\Omega$, então é localmente compacta, logo $f \in \espacoLp{\Omega}$. Defina $g:\Omega\to \real{n}$ por
+		(O espaço $\espacosobolevgeral{p}{\Omega}$) Sejam $\Omega \{(x_{1}, \dots, x_{n})=x \in \real{n}: \norma{x}<1 \}$ e $f:\Omega\to \reta$ definida por $f(x) = |x_{1}|$. Como $f$ é contínua e limitada na bola unitária centrada na origem $B$, então a integral $\int_{B}f(x)$ existe. Como $\int_{\Omega}|x_{1}|^{p}\leq \int_{\Omega}|x_{1}|$ e $\int_{\Omega}|x_{1}|\leq \int_{B}|x_{1}|$, entãp $f \in \espacoLp{\Omega}$. Defina $g:\Omega\to \real{n}$ por
 		$$
 		\funcaocond{g(x)}{(\pm 1, 0, \dots, 0)}{\pm x_{1}>0}{(0, 0, \dots, 0)}{x_{1} = 0}.
 		$$
-		Como $\Omega$ é limitado, então $g_{j}\in \espacoLp{\Omega}$. Dado $\phi \in \funcoesteste$ tem-se que
+		Como $\Omega$ é limitado, então $g_{j}\in \espacoLp{\Omega}$. Defina $\Omega^{\pm} = \{x \in \Omega: \pm x_{1} >0\}$. Dado $\phi \in \funcoesteste$ tem-se que
 		$$
 		\begin{aligned}
 		\produtointerno{g_{1}}{\phi} 
 		&= \int_{\Omega}g_{1}(x)\phi(x)
 		\\
-		&=\int_{\Omega^{+}}\phi(x)+\int_{\Omega^{-}}(-1)\phi(x)+\int_{\{0\}}0\phi(x)
+		&=\int_{\Omega^{+}}\phi(x)+\int_{\Omega^{-}}(-1)\phi(x)
 		\\ &=\int_{\Omega^{+}}\derivadaparcial{}{x_{1}}(x_{1}\phi(x)) - \int_{\Omega^{+}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
 		\\
 		&+\int_{\Omega^{-}}\derivadaparcial{}{x_{1}}(-x_{1}\phi(x)) + \int_{\Omega^{-}}x_{1}\derivadaparcial{\phi(x)}{x_{1}}
@@ -5399,29 +5434,33 @@
 		\int_{\Omega^{+}\cup \Omega^{-}}\derivadaparcial{}{x_{1}}(|x_{1}|\phi(x)) - \int_{\Omega^{+}\cup \Omega^{-}}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
 		\\
 		&=
-		\underbrace{|x_{1}|\phi(x)\Big|_{\partial(\Omega^{+}\cup \Omega^{-})}}_{=0} - \int_{\Omega}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
+		|x_{1}|\phi(x)\Big|_{0}^{\infty}+|x_{1}|\phi(x)\Big|_{-\infty}^{0}- \int_{\Omega}|x_{1}|\derivadaparcial{\phi(x)}{x_{1}}
 		\\
 		&=
 		-\produtointerno{f}{\derivadaparcialabrev{1}\phi},
 		\end{aligned}
 		$$
-		onde $\Omega^{\pm} = \{x \in \Omega: \pm x_{1} >0\}$. Além disso, foi usados os fatos de que $supp(\phi) $ é um compacto no interior de $\Omega$ e $\phi$ restrita a $\partial \Omega$ é nula. Pela Definição \ref{definicao_espaco_sobolev} tem-se que $g_{1} = \derivadaparcialabrev{1}f$ (no sentido fraco). Os casos em que $2\leq j\leq n$ são triviais pois $g_{j} = 0$. Portanto $f\in \espacosobolev{\Omega}$.
+		Foi usado o fato de que $\lim_{x_{1}\to \pm \infty}\phi(x) = 0$, pois $supp(\phi) $ é um compacto no interior de $\Omega$. Logo, $g_{1} = \derivadaparcialabrev{1}f$ no sentido fraco. Os casos em que $2\leq j\leq n$ são triviais pois $g_{j} = 0$. Portanto $f\in \espacosobolev{\Omega}$.
 	\end{exemplo}
 	
+	\alerta{
 	
 	\begin{proposicao}
 		Os espaços de Sobolev $W^{1,p}$ são espaços de Banach separáveis para $1\leq p \leq \infty$.
+		(Não sei onde esse resultado é usado.)
 	\end{proposicao}
-	
-	Quando $\Omega\subset\real{n}$ e $n=1$, tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$, isto é, os elementos de $\espacosobolev{\Omega}$ são funções contínuas para $p \geq 1$. Por outro lado, quando $n>1$ teremos $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Contudo, o Teorema de mergulho de Sobolev (ou Teorema de Sobolev) garante a inclusão em $L^{p}$ e uma demonstração pode ser encontrada em $\cite{breazis_sobolev_spaces}$.	
+	}
+	No caso em que $\Omega\subset\real{n}$ e $n=1$, tem-se $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ para $p \geq 1$. E no caso em que $n>1$ tem-se $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ apenas para $p>n$. Contudo, o Teorema do Mergulho de Sobolev (ou Teorema de Sobolev) garante que a inclusão em $\espacosobolev{\Omega}\hookrightarrow \espacoLp{\Omega}$ é um operador compacto, o que pode ser encontrado em $\cite{breazis_sobolev_spaces}$.	
 	
 	\begin{teorema}\label{teorema_sobolev}
 		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a inclusão é um operador compacto para $1/q>1/p -1/n$.
 	\end{teorema}
 	
-	\begin{teorema}\label{teorema_rellich}
-		(Rellich) Sejam $\Omega \subseteq \real{n}$ um subconjunto aberto limitado. Se $p>n$, então $\espacosobolevcontradominio{\Omega}{\real{m}} \subset C^{0}(\Omega;\real{m})$ e tal inclusão é um operador compacto.
-	\end{teorema}
+	\alerta{	
+		\begin{teorema}\label{teorema_rellich}
+			(Rellich) Sejam $\Omega \subseteq \real{n}$ um subconjunto aberto limitado. Se $p>n$, então $\espacosobolevcontradominio{\Omega}{\real{m}} \subset C^{0}(\Omega;\real{m})$ e tal inclusão é um operador compacto. (Acho que posso remover esse resultado.)
+		\end{teorema}
+	}
 	
 	
 	\begin{observacao}
