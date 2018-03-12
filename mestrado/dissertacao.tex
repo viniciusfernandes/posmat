@@ -149,6 +149,7 @@
 \newcommand{\espectrooperador}[1]{\sigma(#1)}
 \newcommand{\estruturacomplexa}{J_{0}}
 \newcommand{\estruturascomplexas}[2]{\mathcal{J}(#1, #2)}
+\newcommand{\estruturascomplexasM}{\mathcal{J}(M)}
 \newcommand{\estruturascomplexaspadrao}{\mathcal{J}(V, \omega)}
 \newcommand{\Exp}{\text{Exp}}
 \newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-}, x^{+})}
@@ -2366,11 +2367,13 @@
 	
 	A aplicação $\varphi$ é chamada simplectomorfismo entre $M_{1}$ e $M_{2}$.
 	
-	Uma estrutura complexa em $M$ é uma automorfismo $J:TM \to TM$ tal que, para todo $(x,v_{x})\in TM$, tem-se $(p, J^{2}_{x}v_{x}) = (p, -v_{x})$, isto é, $J^{2}_{x}=-Id$. Além disso, se $(M, \omega)$ é uma variedade simplética, então $J$ é $\omega$-compatível se $J_{x}$ é $\omega_{x}$-compatível para todo $x\in M$. Com isso, tem-se que $g \in \Omega^{2}(M)$, definida por
+	Uma estrutura complexa em $M$ é uma automorfismo $J:TM \to TM$ tal que, para todo $(x,v_{x})\in TM$, tem-se $(x, J^{2}_{x}v_{x}) = (x, -v_{x})$, isto é, $J^{2}_{x}=-Id$. Além disso, se $(M, \omega)$ é uma variedade simplética, então $J$ é $\omega$-compatível se $J_{x}$ é $\omega_{x}$-compatível para todo $x\in M$. Com isso, tem-se que $g \in \Omega^{2}(M)$, definida por
 	$$
 	g_{x}(X, Y) =\omega_{x}(X, J_{x}Y),
 	$$
 	é uma métrica Riemanniana.
+
+	O conjunto das estruturas complexas definidas em $M$ é denotado por $\estruturascomplexasM$.
 
 	\begin{definicao}
 		(Função Hamiltoniana) Seja $(M, \omega)$ uma $2n$-variedade simplética. Uma função suave $H : M \to \real{}$ é chamada uma função Hamiltoniana se satisfaz as equações diferenciais de Hamilton
@@ -3766,23 +3769,32 @@
 	\end{prova}
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
+		
+	Sejam $H:M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo e o conjunto de soluções da equação de Floer e de energia finita $\energiafinitaM$. Dadas duas soluções 1-periódicas do sistema Hamiltoniano $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, será demonstrado que o conjunto $\energiafinitaMconectante$ das soluções da equação de Floer que conecta $x^{-}$ a $x^{+}$, é uma variedade de dimensão finita e que esta relacionada ao índices de Conley-Zehnder de cada uma das soluções.
 	
-	Suponha que $H$ seja uma função Hamiltoniana dependente do tempo e $x^{-}, x^{+}$ sejam duas soluções 1-periódicas do sistema Hamiltoniano, isto é, $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então, para toda estrutura complexa $J \in \estruturascomplexas{M}{\omega}$ podemos considerar $\energiafinitaMconectante \subset \energiafinitaM$ como sendo o conjunto das soluções da equação de Floer que conectam os pontos críticos $x^{-}$ e $x^{+}$. Vamos demonstrar que $\energiafinitaMconectante$ é uma variedade cuja dimensão esta relacionada com os índices de Maslov de cada uma das soluções $x^{-}$ e $x^{+}$ do seguinte modo $dim(\energiafinitaMconectante) = \mu(x^{-})-\mu(x^{+})$. Para isso vamos descrever o conjunto $\energiafinitaMconectante$ como sendo os zero de uma seção do fibrado vetorial na variedade de Banach $\caminhosexponenciaisconectantespadrao$, onde $\caminhosexponenciaisconectantespadrao$ são os caminhos de decaimento exponencial que conectam $x^{-}, x^{+}$ de modo que teremos $\energiafinitaMconectante \subset \caminhosexponenciaisconectantespadrao$. Aplicando a versão para dimensões infinitas do Teorema de Sard, chamado de Sard-Smale, mostraremos que $\energiafinitaMconectante$ é a pré-imagem de uma valor regular de uma determinada aplicação, sendo que para isso, deveremos mostrar que o diferencial dessa aplicação é um operador de Fredholm. Esse operador é chamado de operador de Fleor $\operadorFloer$ e seu diferencial será denotador por $\diferencialfloer$. Mostraremos que, o índice do operador $\diferencialfloer$ é $\mu(x^{-}) - \mu(x^{+})$, portanto 
+	A estratégia é mostrar que $\energiafinitaMconectante$ pode ser visto como o conjunto de zeros de uma seção de um fibrado vetorial sobre a variedade de Banach $\caminhosexponenciaisconectantespadrao$. Para uma estrutura complexa fixa $J \in \estruturascomplexasM$ e uma perturbação da Hamiltoniana $h\in \perturbacaoHamiltoniana{H}$, será demonstrado que $\energiafinitaMconectanteHamiltoniana$ é a pré-imagem de um valor regular de uma determinada aplicação. Pelo teorem análogo ao Teorema de Sard para dimensões infinitas, conclui-se que $\energiafinitaMconectante$ é uma variedade. Contudo, esse resultado tem como hipótese que os diferenciais definidos nos espaços tangentes sejam operadores de Fredholm. Com isso, parte desse capítulo envolve uma grande quantidade de análise para demonstrar que o diferencial do operador de Floer $\diferencialfloerponto{u}$ satisfaz essa propriedade para todo $u\in \energiafinitaMconectanteHamiltoniana$. Além disso, o índice desse operador está relacionado com os índices de Conley-Zehnder dos pontos críticos $x^{-}$ e $x^{+}$ pela equação
 	$$
-	dim(\energiafinitaMconectante)=\ind(\diferencialfloer) <\infty.
+	\ind(\diferencialfloerponto{u})=\iconley{x^{-}}-\iconley{x^{+}}.
 	$$
-	\alerta{(Melhorar o texto acima...!!!!!!!!)}
+	A transversalidade do operador de Floer é necessária para a demonstração de que a dimensão da variedade $\energiafinitaMconectanteHamiltoniana$ coincide com o índice do diferencial do operador de Floer, e consequentemente, é dada pelos índices de Conley-Zehnder dos pontos críticos $x^{-}$ e $x^{+}$, isto é,
+	$$
+	\dim(\energiafinitaMconectante)= \ind(\diferencialfloerponto{u}) = \iconley{x^{-}}-\iconley{x^{+}}.
+	$$
+	
+	Por fim, alguns resultados que afirmam a compacidade de $\energiafinitaM$ e $\energiafinitaMconectante$ são mencionados. A compacidade de $\energiafinitaMconectante$ é uma propriedade essencial para a definição do complexo de Floer e sua homologia, ambas feitas no Capítulo \ref{capitulo_homologia_floer}.
 	
 	\section{A Variedade de Banach $\caminhosexponenciaisconectantespadrao$}\label{secao_variedade_banach_P}
 	
-	Uma variedade de Banach é uma extensão da definição de variedades em dimensão finita para dimensões infinitas. Mais precisamente, tem-se um espaço topológico em que cada ponto possui uma vizinhaça que é homeomorfa a um aberto de um espaço de Banach. Parte desse texto estudo é apoiado em operadores definidos em espaços de funções, que podem não ter dimensão finita. Contudo, pode-se mostrar que alguns desses conjuntos possuem uma estrutura de variedades de Banach, e com isso, defini-se uma noção de espaço tangente nos mesmos. 
+	Uma variedade de Banach é uma extensão da definição de variedades em dimensão finita para dimensões infinitas. Mais precisamente, tem-se um espaço topológico em que cada ponto possui uma vizinhaça que é homeomorfa a um aberto de um espaço de Banach. Parte dos resultados desse trabalho está apoiado em operadores definidos em espaços de funções que, mesmo não sendo de dimensão finita, possuem uma estrutura de variedades, chamadas variedades de Banach, e com isso, pode-se definir uma noção de espaço tangente nos mesmos. Um versão da definição aqui feita pode ser encontrada em \cite{chang_morse_infinito}.
 	
 	\begin{definicao}
 		(Variedade de Banach) Seja N um espaço topologico de Hausdorff. Uma família indexada $\{(U_{i}, \phi_{i})\}_{i \in I}$, cujos pares $(U_{i}, \phi_{i})$ são chamados de cartas, é um k-atlas de N se:
 		\begin{enumerate}
-			\item $N=\bigcup_{i\in I} U_{i}$
-			\item $\phi_{i}:U_{i} \to \phi_{i}(U_{i})$ é um homeomorfismo
-			\item $\phi_{i}\circ \phi_{j}^{-1}: \phi_{j}(U_{j}\cap U_{i}) \to \phi_{i}(U_{j}\cap U_{i}) $ é uma aplicação de classe $C^{k}$
+			\item $U_{i}\subset N$ para todo $i\in I$ e $N=\bigcup_{i\in I} U_{i}$.
+			
+			\item $\phi_{i}(U_{i})$ é um subconjunto aberto de algum espaço de Banach $E_{i}$, $\phi_{i}:U_{i} \to \phi_{i}(U_{i})$ é um homeomorfismo e para todos $i,j\in I$ tem-se que $\phi_{i}(U_{i}\cap U_{j})$ é um aberto de $E_{i}$.
+			
+			\item $\phi_{j}\circ \phi_{i}^{-1}: \phi_{i}(U_{i}\cap U_{j}) \to \phi_{j}(U_{i}\cap U_{j}) $ é uma aplicação de classe $C^{k}$ (no sentido de derivadas de Fréchet).
 		\end{enumerate}
 	\end{definicao}
 	
@@ -5504,6 +5516,11 @@
 		\bibitem{cappell_maslov_index_equivalencia}
 		Cappell, Sylvain E.; Lee, Ronnie; Miller, Edward Y.
 		\emph{On Maslov Index}, Communication on Pure and Applied Mathematics, Vol. XLVII, 121-186 (1994).
+		
+		\bibitem{chang_morse_infinito}
+		Chang, Kung-Ching.
+		\emph{Infinite Dimensional Morse Theory and Multiple Solutions Problems}, Birkhauser, Progress in nonlinear differential equations and
+		their applications, vol.6 (1993).
 		
 		\bibitem{manfredo_riemannian_geo}
 		Do Carmo, Manfredo P.:
