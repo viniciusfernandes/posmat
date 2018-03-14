@@ -3798,27 +3798,18 @@
 		\end{enumerate}
 	\end{definicao}
 	
-	Foi demonstrado \alerta{(??? Fazer um exemplo no capitulo de fibrados)} que todo fibrado vetorial cujo espaço base é $\circulo$ é trivializável. Portanto, dado $x\in\lacocontrateis$, tem-se que $\pullbackfibradotangenteM{x} \cong \circulo\times \real{2n}$. Suponha que $h:\pullbackfibradotangenteM{x} \to \circulo\times \real{2n}$ é uma trivialização e que, de acordo com a identifição realizada na Observação \ref{observacao_identificacao_secao_campo_vetorial}, $X \in \campossuaves{M}$ é uma seção de $TM$. 
+	A seguir serão definidos alguns espaços de Sobolev, os quais serão utilizados como base para a construção de um sistema local cartas para o conjunto $\caminhosexponenciaisconectantespadrao$, e como homeomorfismo local será utilizada a aplicação exponencial definida nos espaços tangentes de variedades Riemannianas (veja o Apêndice \ref{apendice_variedade_riemanniana}). Com isso, demonstra-se que esse conjunto possui um atlas e que satisfaz as propriedades de uma variedade de Banach. As definições de espaços de Sobolev podem ser encontradas na Seção \ref{secao_espaco_sobolev}.
 	
-	Seja $hX$ uma seção do fibrado trivial $\circulo\times \real{2n}$ associada a seção $X$ de $\pullbackfibradotangenteM{x}$, e defina 
+	Foi demonstrado no Exemplo \ref{exemplo_fibrado_circulo} que todo fibrado vetorial cujo espaço base é $\circulo$ é um fibrado  trivial. Portanto, tomando $x\in\lacocontrateis$ e usando a Observação \ref{observacao_pullback_fibrado_tangente}, tem-se que $\pullbackfibradotangenteM{x} \cong \circulo\times \real{2n}$. As seções do fibrado $\pullbackfibradotangenteM{x}$ são as seções de $TM$ restritas a $x(\reta )\subset M$ (veja a Observação \ref{observacao_pullback_fibrado_tangente}). Com isso, tem-se o espaço de Sobolev 
 	$$
-	\espacosobolev{\pullbackfibradotangenteM{x}} = \{Y \in \campossuaves{M} : hY\in \espacosobolevcontradominio{\circulo}{\real{2n}}\},
-	$$ 
-	onde $W^{1,p}$ são os espaços de Sobolev definidos na Seção \ref{secao_espaco_sobolev}.
-	
-	Suponha que $h':\pullbackfibradotangenteM{x} \to \circulo\times \real{2n}$ é uma outra trivialização. Então existe uma aplicação $f:\circulo\to \generalgroupreal{2n}$ tal que $(h'Y)(z) = f(z)(hY)(z)$. De fato, sejam $B'(z)$ e $B(z)$ 
-	bases de $\real{2n}$ em $z\in \circulo$, respectivamente. Defina as aplicações $A:\circulo \to \generalgroupreal{2n}$ por $B'(z)=A(z)B(z)$ e $f_{A}:\circulo\times \real{2n}\to \circulo\times \real{2n}$ por $f_{A}(x, X(x))=(x, A(x)X(x))$.  Sem perda de generalidade, pode-se supor que $(h'Y)(z) = (z, Y'(z))$ e $(hY)(z) = (z, Y(z))$ e que $Y'(z)$ e $Y(z)$ estão nas bases $B'(z)$ e $B(z)$, respectivamente. Com isso, tem-se que $f_{A}((hY)(z)) = f_{A}(z, Y(z)) = (z, A(z)Y(z)) = (h'Y)(z)$. Portanto, $h'Y = f_{A}\circ hY$ e as trivializações $h$ e $h'$ definem as mesmas secões no fibrado $\circulo\times \real{2n}$, a menos de um isomorfismo.
-	
-	Desse resultado, pode-se afirmar que, para todo $Y \in \espacosobolev{\pullbackfibradotangente{x}{M}}$, tem-se
+	\espacosobolev{\circulo;\pullbackfibradotangenteM{x}}=
+	\{X\in \campossuaves{x(\reta)}: \exists\; Y\in \campossuaves{M}, \; X=Y|_{x}\;\text{e}\;  X_{i}\in \espacosobolev{\circulo} \},
 	$$
-	\normaWp{h'Y} \leq c(A)\normaWp{hY},
-	$$
-	onde $c(A) = \norma{A}\geq 0$.
-	Logo, $h$ e $h'$ definem a mesma topologia para $\espacosobolev{\pullbackfibradotangenteM{x}}$.
+	onde $X_{i} \in \funcoessuaves{\circulo}$ são os componentes do campo vetorial $X$. Por simplicidade esse espaço de Sobolev será denotado por $\espacosobolev{\pullbackfibradotangenteM{x}}$. Em \cite{audi_floer_homology} pode ser encontrado que esse definição permite associar $\espacosobolev{\pullbackfibradotangenteM{x}}$ com o espaço de Sobolev $\espacosobolevcontradominio{\circulo}{\real{2n}}$.
 	
-	Para a construção de um sistema local de cartas em $\lacocontrateis$ será utilizada a aplicação exponencial definida nos espaços tangentes de variedades Riemannianas. Uma breve apresentação pode ser vista no Apêndice \ref{apendice_variedade_riemanniana}.
+	Com argumentos análogos aos anteriores, para um dado $u \in \energiafinitaM$, o espaço de Sobolev $\espacosobolevcontradominio{\retacartesianocirculo}{\pullbackfibradotangenteM{u}}$ é denotado por $\espacosobolev{\pullbackfibradotangenteM{u}}$ e é identificado com $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$.
 	
-	Seja $D \subset TM$ uma vizinhança da seção nula de $TM$. Então a aplicação exponencial $\exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ é definida por $\exp_{x}(Y)(t) = \exp_{x(t)}(Y(t))$.
+	Seja $D \subset TM$ uma vizinhança da seção nula de $TM$. Então a aplicação exponencial $\exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ é dada por $\exp_{x}(Y)(t) = \exp_{x(t)}(Y(t))$.
 	Tome a coleção $\{ (\espacosobolev{x^{*}D}, \exp_{x}) \}_{x \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que existem $x\in \lacocontrateis$ e $Y \in \espacosobolev{x^{*}D}$ com $\beta(t)=\exp_{x(t)}Y(t)$.
 	
 	\begin{proposicao}\label{proposicao_caminhos_variedade_banach}
@@ -3844,19 +3835,9 @@
 		Portanto $\{(W_{\beta}, \exp_{x_{\beta}}) \}_{\beta \in \caminhosexponenciaisSobolev}$ é um atlas suave e $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Por fim, a demonstração da cadeia de inclusão dos conjuntos e suas densidades podem ser encontrada em \cite{matthias_morse_homology}.
 	\end{prova}
 	
-	Como discutido na Observação \ref{observacao_mergulho_variedade}, a variedade $M$ esta sendo tratada como um mergulho em um $\real{4n+1}$. Com isso, as aplicacões $u \in \energiafinitaM$ podem ser vistas como $u:\retacartesianocirculo\to M \subset \real{4n+1}$. Assim, a topologia de $\espacosobolevcontradominio{\retacartesianocirculo}{M}$ é induzida pela topologia de $\espacosobolevcontradominio{\retacartesianocirculo}{\real{4n+1}}$. 
-	
-	\begin{observacao}
-		Seja $I\subseteq \reta$ um intervalo, então $\espacosobolev{I} \subset C^{0}(\overline{I})$ para todo $p\geq 1$. Contudo, para um dado $\Omega \in \real{m}$ tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ para $p>m$ (veja em \cite{audi_floer_homology}). Note que, $\retacartesianocirculo \subset \real{3}$ é uma variedade de dimensão 2, portanto não se pode afirmar que os elementos de $\espacosobolev{\retacartesianocirculo}$ são aplicações contínuas. Contudo, no caso em que $p>2$, o Teorema \ref{teorema_rellich} garante que as soluções dos das EDPs serão contínuas. Com isso, será assumido que $p>2$ no restante do texto. 
-	\end{observacao}
-	
-	\begin{definicao}
-		O espaço de Sobolev $\espacosobolev{\pullbackfibradotangenteM{u}} $ é o conjunto de todas as aplicações $Y:\retacartesianocirculo\to TM$ tais que $Y(s,t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t) \in \retacartesianocirculo$ e $(p\circ Y) \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{4n+1}}$, onde $p:T\real{4n+1} \to \real{4n+1}$ é a projeção desse fibrado tangente. 
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_identificacao_espaco_sobolev}
-		Pode-se mostrar que existe uma identificação entre  $\espacosobolev{\pullbackfibradotangenteM{u}}$ e $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Sejam $e_{j} \in \pullbackfibradotangenteM{u}$ com $1\leq j\leq 2n$ tais que $\{e_{j} \}_{j=1}^{2n}$ é um referencial ortonormal ao longo de $u$. Se $Y \in \espacosobolev{\pullbackfibradotangenteM{u}}$, então $Y(u(s,t)) = \sum_{j} Y_{j}(u(s,t))e_{j}(u(s,t))$ para todo $(s,t) \in \retacartesianocirculo$. Em $\cite{audi_floer_homology}$ é mostrado que essa condição implica que $Y_{j}(u(s,t)) \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Além disso, a recíproca também é verdadeira.
-	\end{observacao}
+\alerta{	\begin{observacao}
+		Seja $I\subseteq \reta$ um intervalo, então $\espacosobolev{I} \subset C^{0}(\overline{I})$ para todo $p\geq 1$. Contudo, para um dado $\Omega \in \real{m}$ tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ para $p>m$ (veja em \cite{audi_floer_homology}). Note que, $\retacartesianocirculo \subset \real{3}$ é uma variedade de dimensão 2, portanto não se pode afirmar que os elementos de $\espacosobolev{\retacartesianocirculo}$ são aplicações contínuas. Contudo, no caso em que $p>2$, o Teorema \ref{teorema_rellich} garante que as soluções dos das EDPs serão contínuas. Com isso, será assumido que $p>2$ no restante do texto. (tenho que rever essa afirmação pois estamos demonstrando fredholm para p=2.)
+	\end{observacao}}
 	
 	\begin{observacao}\label{observacao_identificacao_espaco_Lp}
 		Analogamente à observação anterior, o espaço $\espacoLp{\pullbackfibradotangenteM{u}}$ é identificado com $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$.
@@ -3927,7 +3908,7 @@
 	$$
 	Logo $\operadorFloerParametro{u} \in L^{p}(\pullbackfibradotangenteMpadrao)$ e o operador de Floer esta bem-definido.
 	
-	Lembrando que, dado $u \in \caminhosexponenciaisconectantesabrev$, tem-se que $u:\retacartesianocirculo\to M$. Com isso, $\operadorFloerParametro{u}$ é tal que $\operadorFloerParametro{u}(s, t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t)\in \retacartesianocirculo$. É sob esse sentido que se obterá o diferencial de $\operadorFloer$. Como $M$ é uma variedade Riemanniana, a variação de $\operadorFloer$ pode ser obtida realizando o transporte paralelo desse campo ao longo de uma dada curva. O campo vetorial resultante é expresso em termos de conexões afins (veja a Definição \ref{definicao_conexao_afim} e a Observação \ref{observacao_transporte_paralelo}) e, de acordo com \cite{salamon_zehnder} e \cite{salamon_lecture}, é dado por
+	Lembrando que, dado $u \in \caminhosexponenciaisconectantesabrev$, tem-se que $u:\retacartesianocirculo\to M$. Com isso, $\operadorFloerParametro{u}$ é tal que $\operadorFloerParametro{u}(s, t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t)\in \retacartesianocirculo$. É sob esse sentido que se obterá o diferencial de $\operadorFloer$. Como $M$ é uma variedade Riemanniana, a variação de $\operadorFloer$ pode ser obtida realizando o transporte paralelo desse campo ao longo de uma dada curva. O campo vetorial resultante é expresso em termos de conexões afins (veja o Apêndice \ref{apendice_variedade_riemanniana}) e, de acordo com \cite{salamon_zehnder} e \cite{salamon_lecture}, é dado por
 	
 	$$
 	\nabla\operadorFloerParametro{u}(\xi) = \nabla_{s}\xi + J(u)\nabla_{t}\xi + dJ(u)(\xi)(\xi - X_{H}(u)) - J(u)(dX_{H})_{u}(\xi),
@@ -5130,7 +5111,7 @@
 	
 	Um n-fibrado vetorial diferenciável $\eta$ é um fibrado trivial quando todas as funções de transição se reduzem a aplicação identidade. Com isso, o fibrado pode ser escrito como o produto $B\times F$, isto é, o fibrado $\eta$ é homeomorfo a $B\times F$.
 	
-	\begin{exemplo}
+	\begin{exemplo}\label{exemplo_fibrado_circulo}
 		Seja $\eta=(E, \circulo,\pi, G)$ um 1-fibrado vetorial com as fibras $F=\reta$ e $G$ é o grupos das transformações lineares em $\reta$ que preservam sua orientação. Sejam $U_{1} = (0,2\pi)$ e $U_{1} = (-\pi,\pi)$ uma cobertura de $\circulo$. Então $U_{1}\cap U_{2} =(0,\pi)\cup(\pi,2\pi)$. As trivializações locais são 
 		$$
 		\phi^{-1}_{1}(b) = (\theta, t),\; 		\phi^{-1}_{2}(b) = (\theta, t)
@@ -5220,16 +5201,16 @@
 	
 	\chapter{Variedades Riemannianas}\label{apendice_variedade_riemanniana}
 	
-	Parte das construções adiante utilizarão a definição de aplicação exponencial para exibir um atlas, e consequentemente, uma estrutura de variedade, para espaços de funções. Já as definições de métricas riemannianas e conexões afins aparecerão em um determinado momento, mas apenas sua citaçao será feita, portanto, caso tenha familiaridade com esse conceitos, o capítulo não se faz necessário.
+	Essa seção contém algumas definições e resultados em geometria Riemanniana que serão utilizados em diferentes pontos do trabalho. Uma explanação detalhada pode ser encontrada em \cite{manfredo_riemannian_geo}.
 	
 	\begin{definicao}\label{definicao_variedade_riemanniana}
-		(Variedade Riemanniana) Sejam $M$ uma n-variedade diferenciável e $g:T_{p}M \times T_{p}M \to \real{}$, um produto interno positivo-definido para todo $p \in M$, então o par $g$ é chamada de métrica Riemanniana e o par $(M, g)$ é chamado de n-variedade Riemanniana.
+		(Variedade Riemanniana) Seja $M$ uma n-variedade diferenciável. Uma métrica Riemanniana é uma 2-forma simétrica $g \in \Omega^{2}(M)$ tal que $g_{p}:T_{p}M \times T_{p}M \to \real{}$ é um produto interno positivo-definido para todo $p \in M$. O par $(M, g)$ é chamado n-variedade Riemanniana.
 	\end{definicao}
 	
-	O conceito de conexão afim esta intimamente relacionado com a forma de comparar um campo vetorial avaliado em pontos distintos da variedade. Uma das estratégias de se efetuar essa comparação é chamada de transporte paralelo e uma boa discussão pode ser encontrada em \cite{nakahara}. Por fim, veremos que a conexão afim é uma generalização do conceito de diferenciação de uma aplicação definida no espaço euclidiano.
+	O conceito de conexão afim esta intimamente relacionado com a forma de comparar um campo vetorial avaliado em pontos distintos da variedade. Uma das estratégias de se efetuar essa comparação é chamada de transporte paralelo e uma boa discussão pode ser encontrada em \cite{nakahara}. Além disso, pode-se mostrar que a conexão afim é uma generalização do conceito de diferenciação ordinária.
 	
 	\begin{definicao}\label{definicao_conexao_afim}
-		(Conexão afim) Uma conexão afim $\nabla$ em uma n-variedade diferenciável é a aplicação $\nabla: \campossuaves{M} \times \campossuaves{M} \to \campossuaves{M}$ tal que, dadas $f,h \in \funcoessuaves{M}$ e $X,Y,Z \in \campossuaves{M}$:
+		(Conexão afim) Uma conexão afim $\nabla$ definida em uma n-variedade diferenciável é a aplicação $\nabla: \campossuaves{M} \times \campossuaves{M} \to \campossuaves{M}$ tal que, dadas $f,h \in \funcoessuaves{M}$ e $X,Y,Z \in \campossuaves{M}$:
 		\begin{enumerate}
 			\item $\nabla_{fX+hY}Z = f\nabla_{X}Z+h\nabla_{Y}Z$
 			\item $\nabla_{X}(Y+Z) = \nabla_{X}Y+ \nabla_{X}Z$
@@ -5238,7 +5219,7 @@
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_conexao_afim}
-		Seja $\{\partial_{j}(p)\}$ uma base ortonormal de $T_{p}M$ onde $\partial_{j} = \partial/\partial x_{j}$. Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in T_{p}M$, temos:
+		Sejam $(U, \phi)$ uma carta local de $p\in M$, onde $(x_{1}(q), \dots, x_{n}(q))$ é a parametrização local, e $\{\partial_{1}, \dots, \partial_{n}\}$ refeferncial ortonormal local, onde $\partial_{j} = \partial/\partial x_{j}$. Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in \campossuaves{M}$, tem-se que
 		$$
 		\begin{aligned}
 		\nabla_{X}Y &= 
@@ -5251,35 +5232,32 @@
 		\end{aligned} 
 		$$
 		
-		Temos o operador linear $\nabla_{\partial_{i}}: \campossuaves{M} \to \campossuaves{M}$ tal que $\nabla_{\partial_{i}}Y = \sum_{j}  (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\partial_{k} $. Pode-se mostrar que no caso em que a n-variedade seja o $\real{n}$, então $\Gamma_{ij}^{k}=0$ para todos $1\leq i,j,k \leq n$. Suponha que $\campossuaves{\real{n}} \ni Y = f\partial_{j}$ para algum $0 \leq j \leq n$ e todas as outras componentes nula, então $\nabla_{\partial_{i}}Y = \partial_{i}(f)\partial_{j} $, isto é, a conexão afim se reduz a derivada direcional em $\real{n}$.
+		Com isso, tomando $X = \partial_{i}$, o operador linear $\nabla_{\partial_{i}}: \campossuaves{M} \to \campossuaves{M}$, dado por $\nabla_{\partial_{i}}Y = \sum_{j}  (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\partial_{k}$, generaliza o conceito de derivada direcional em espaços euclidianos. De fato, supondo $M=\real{n}$, pode-se mostrar que os símbolos $\Gamma^{k}_{ij}$ são funções suaves e $\Gamma^{k}_{ij}(p)=0$ para todo $p \in \real{n}$ (veja em \cite{manfredo_riemannian_geo}). Portanto, $\nabla_{\partial_{i}}Y = \sum_{j}  \partial_{i}(Y_{k})\partial_{k}$.
 	\end{observacao}
 	
-	\begin{observacao}\label{observacao_transporte_paralelo}
-		(Transporte paralelo) Um meio de comparar campos vetoriais em espaços tangentes distintos de $M$ é através do transporte paralelo. Suponha que $\gamma:[0,1] \to N$ uma curva suave e $Y \in TN$. Então o transporte paralelo de $Y \in TM$ ao longo de $\gamma$ é dado por 
-		$\nabla_{\frac{d\gamma}{dt}}Y$. Mais detalhes sobre podem ser encontrados em $\cite{nakahara}$.
-	\end{observacao}
+	O transporte paralelo de um campo $X \in \campossuaves{M}$ ao longo de um caminho suave $\gamma:\reta\to M$ é dado por $\nabla_{\frac{d\gamma}{dt}}X$, e $X $ é dito paralelamente transportado ao longo do caminho $\gamma$ se $\nabla_{v}X=0$, onde $v=\derivada{\gamma}{t}\in \campossuaves{M}$ é seu campo de velocidades. O caminho $\gamma$ é chamado geodésica se o seu campo de velocidades é paralelamente transportado ao logo dele mesmo, isto é, $\nabla_{v}v=0$, o que implica que $\norma{v}$ é constante.
+	Mais detalhes sobre podem ser encontrados em $\cite{nakahara}$.
 	
-	Dizemos um campo $X \in \campossuaves{M}$ é paralelamente transportado ao longo de uma curva $\gamma:\real{} \to M$ se $\nabla_{\gamma'}X=0$. Uma curva na variedade é chamada de geodésica se o seu campo de velocidades $v(t) = \gamma'(t)$ é paralelamente transportado ao logo dela, isto é, $\nabla_{v}v=0$, o que implica que $\norma{v}$ constante.
+	O comprimento de arco de um caminho suave $\gamma:\intervalo\to M$ é definido por 
+	$$
+	L(\gamma) =  \int_{0}^{1}\normagrande{\derivada{\gamma}{t}(t)}dt.
+	$$
+	Se o caminho $\gamma$ é uma geodésica, então $L(\gamma) =\norma{v}$.
 	
-	Seja $\gamma:[0,1] \to M$ a geodésica definida por $\gamma(t,p,v)$ tal que $\gamma(0,p,v) = p$ e $\gamma'(0,p,v) = v(p)$ com $\norma{v}$ constante. Então o comprimento de arco de $\gamma$ é definido por 
-	$$
-	L(\gamma) =  \int_{0}^{1}\norma{\gamma'}dt = \int_{0}^{1}\norma{v}dt = \norma{v},
-	$$
-	logo $\gamma([0,1]) \subset M$ é um arco iniciado em $p \in M$ cujo comprimento é $\norma{v}$.
 	\begin{definicao}\label{definicao_aplicacao_exponencial}
-		(Aplicação exponencial) Definimos $exp:U \subset TM \to M$ tal que $exp(p,v) = \gamma(1, p, v)$, onde $\gamma$ é a geodésica definida anteriormente. Essa aplicação é chamada aplicação exponencial.
+		(Aplicação exponencial) Seja $U$ um aberto de $TM$. A aplicação exponencial $\exp:U \to M$ é definida por $\exp(p,v) = \gamma_{p, v}(1)$, onde $\gamma_{p, v}(1):\intervalo\to M$ é uma geodésica tal que $\gamma_{p, v}(0) = p$ e $v(p) = \derivada{}{t}\gamma_{p, v}(p)$.
 	\end{definicao}
 	
-	Restringindo a aplicação expoencial a um ponto $p \in M$ arbitrário temos $exp_{p}:T_{p}M \to M$, isto é, $exp_{p}(v)$ é um ponto de $M$ conectado a $p$ por uma geodésica cujo comprimento de arco é $\norma{v}$. 
+	Dado um ponto $p \in M$, defina $\exp_{p}:T_{p}M \to M$ por $\exp_{p}(v) = \exp(p,v)$. Com isso, a imagem de $\exp_{p}$ é o conjunto dos pontos que são conectados a $p$ por uma geodésica com comprimento de arco igual a $\norma{v}$.
 	
 	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, será utilizada na definição de uma aplicação exponencial para construirmos estruturas de variedade de dimensão infinita (variedade de Banach).
 	
 	\begin{proposicao}\label{proposicao_difeomorfismo_exponencial}
-		(Difeomorfismo exponencial) Seja  $exp_{p}:T_{p}M \to M$ a aplicação exponencial anteriormente definida. Então existem $\epsilon>0$ e uma vizinhança aberta $B_{\epsilon}(0)$ do vetor nulo $0 \in T_{p}M$ tal que a restrição $exp_{p}|_{B_{\epsilon}(0)}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
+		(Difeomorfismo exponencial) Seja  $\exp_{p}:T_{p}M \to M$ a aplicação exponencial anteriormente definida. Então existe uma bola aberta $B_{\epsilon}(0) \subset \espacotangenteponto{p}{M}$ de raio $\epsilon>0$ e centro em $0 \in T_{p}M$ tal que a restrição $\exp_{p}|_{B_{\epsilon}(0)}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
 	\end{proposicao}
 	
 	\begin{definicao}\label{definicao_gradiente_hessiana}
-		(campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $df_{p}(v) = g(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = d\gradiente(p)$.
+		(campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
 	\end{definicao}
 	
 	
