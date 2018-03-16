@@ -137,7 +137,8 @@
 \newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
 \newcommand{\espacosobolevadjuntoretacirculo}{W^{1,q}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacosobolevdual}{(W^{1,p})^{*}(\retacartesianocirculo;\real{2n})}
-\newcommand{\espacosobolevgeneralizado}[2]{W^{k,p}(#1; #2)}
+\newcommand{\espacosobolevgeneralizadocontra}[2]{W^{k,p}(#1; #2)}
+\newcommand{\espacosobolevgeneralizado}[1]{W^{k,p}(#1)}
 \newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
 \newcommand{\espacosobolevdois}[2]{\espacosobolevgeral{2}{#1, #2}}
 \newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
@@ -332,7 +333,7 @@
 	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analisar a topologia de um conjunto (um espaço topológico) e seus invariantes. 
 	
 	\section{Grupo Fundamental e a Aplicação Grau}\label{capitulo_grupo_fundamental}
-	Nessa seção abordaremos um caso específico de estrutura algébrica, o grupo fundamental $\grupofundamental{X}$, de um espaço topológico $X$.
+	Nessa seção será abordada um caso específico de estrutura algébrica de um espaço topológico $X$, chamado grupo fundamental de $X$. Mais detalhes dos resultados aqui enunciados podem ser encontrados em \cite{elon_grupo_fundamental} e \cite{massey}.
 	
 	\subsection{Grupo Fundamental}
 	
@@ -369,23 +370,23 @@
 		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhos$, onde $\gamma(1) = \alpha(0), \gamma'(1) = \alpha'(0) $, tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
 	\end{lema}
 	\begin{prova}
-		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, $H$. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
+		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, a continuidade de $H$ é imediata. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
 	\end{prova}
 	
 	A justaposição de caminhos em $\caminhos$ nem sempre é associativo. Contudo, o seguinte lema afirma que tal associatividade vale a menos de uma homotopia. Sua demonstração pode ser encontrada em $\cite{massey}$.
 	
 	\begin{lema}\label{lema_associatividade_produto_caminhos}
-		Dados $\alpha, \beta, \gamma\in \caminhos$ tais que $\alpha(1)=\beta(0)$ e $\beta(1)=\gamma(0)$, então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
+		Sejam $\alpha, \beta, \gamma\in \caminhos$ tais que $\alpha(1)=\beta(0)$ e $\beta(1)=\gamma(0)$. Então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
 	\end{lema}
 	
 	\begin{lema}\label{lema_caminho_inverso}
-		Sejam $\gamma, \hat{\gamma} , c,c' \in \caminhos$ tais que $c(t) = \gamma(0)$, $c'(t) = \gamma(1)$ para todo $t\in \intervalo$ e $\hat{\gamma} (t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma}  \sim c$ e $\hat{\gamma}  *\gamma\sim c'$.
+		Sejam $\gamma, \hat{\gamma} , c,c' \in \caminhos$ tais que $c(t) = \gamma(0)$, $c'(t) = \gamma(1)$ para todo $t\in \intervalo$ e $\hat{\gamma} (t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma}  \sim c$ e $\hat{\gamma}  *\gamma\sim c'$. Além disso, $\gamma * c' \sim\gamma$ e $c * \gamma \sim \gamma$.
 	\end{lema} 	
 	
 	Seja $\caminhospontobasegeral{p}{X} = \{\gamma\in \caminhossempontobase{X}: \gamma(0)=\gamma(1)=p \}$ o conjunto dos caminhos contínuos e fechados com o ponto base $p$. Denote o quociente $\{ \classe{\gamma} : \gamma' \in \caminhospontobasegeral{p}{X},\;\;\gamma \sim \gamma'\}$ por $\caminhospontobasegeral{p}{X}/\sim $. Então, o produto definido por $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha}$ esta bem-definido. De fato, tomando $\gamma, \gamma',\alpha, \alpha' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha} = \classe{\gamma'*\alpha'} = \classe{\gamma'}.\classe{\alpha'}$.
 	
 	\begin{definicao}
-		(Grupo Fundamental) Dado um espaço topológico $X$, o conjunto é
+		(Grupo Fundamental) Sejam $X$ um espaço topológico $X$ e $p\in X$. O conjunto
 		$$
 		\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}/\sim, .)
 		$$
@@ -408,7 +409,7 @@
 	No caso em que $X$ é um espaço espaços topológico conexo por caminhos denotaremos $\grupofundamental{X}=\grupofundamentalpontobase{X}{p}$ e $\caminhossempontobase{X}=\caminhospontobasegeral{p}{X}$.
 	
 	
-	Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então temos a composição $\beta=f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Suponha que $\gamma' \in \caminhospontobasegeral{p}{X}$ seja tal que $\gamma \sim \gamma'$. Se $F$ é a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $G=f\circ F$ é uma homotopia entre $\beta=f\circ \gamma$ e $\beta' = f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$, assim, $\beta \sim \beta'$.
+	Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então tem-se a composição $f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Suponha que $\gamma' \in \caminhospontobasegeral{p}{X}$ seja tal que $\gamma \sim \gamma'$. Se $F$ é a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $f\circ F$ é uma homotopia entre $f\circ \gamma$ e $f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$.
 	
 	Dada $f:X\to Y$ uma aplicação contínua entre espaços topológicos, é imediato que a aplicação $f_{*}:\grupofundamentalpontobase{X}{p} \to \grupofundamentalpontobase{Y}{f(p)}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo.
 	
@@ -433,7 +434,7 @@
 	\end{proposicao}
 	
 	\subsection{Aplicação Grau e o Grupo Fundamental de $\circulo$}
-	Nesta seção mostraremos que o grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Para demonstrar este fato, a cada caminho fechado $\gamma:[0,1] \to S^{1}$, associa-se um número $\deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $\deg(\gamma) = \deg(\beta)$ (possuem o mesmo grau). Finalmente, mostraremos que a aplicação grau induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
+	Nesta seção será mostrado que o grupo fundamental de $S^{1}$ é um grupo cíclico infinito pois é isomorfo a $\inteiros$. Para demonstrar este fato, a cada caminho fechado $\gamma:[0,1] \to S^{1}$, associa-se um número $\deg(\gamma) \in \inteiros$, chamado de \textit{grau de $\gamma$}, de modo que dois caminhos $\gamma, \beta$ em $S^{1}$ são homotópicos se, e somente se, $\deg(\gamma) = \deg(\beta)$ (possuem o mesmo grau). Finalmente, será demonstrado que a aplicação grau induz um isomorfismo entre $\pi_{1}(S^{1})$ e $\inteiros$.
 	
 	A proposição a seguir é necessária para a definição e também para o estudo das propriedades da aplicação grau e sua demonstração pode ser encontrada em $\cite{elon_grupo_fundamental}$.
 	
@@ -543,10 +544,6 @@
 	\begin{teorema}\label{teorema_grupo_fundamental_circulo}
 		(Grupo fundamental de $\circulo$) $\grupofundamental{\circulo} \cong \inteiros$.
 	\end{teorema}
-	\begin{prova}
-		Da proposição anterior temos que $\grupofundamental{\circulo} = \gerador{\classe{\gamma}}$. É evidente que aplicação $\grupofundamental{\circulo}  \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo.
-	\end{prova}
-	
 	
 	\begin{exemplo}
 		(Grupo fundamental de $T^{2}$) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo temos $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \inteiros \times \inteiros$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
@@ -3800,17 +3797,31 @@
 	
 	A seguir serão definidos alguns espaços de Sobolev, os quais serão utilizados como base para a construção de um sistema local cartas para o conjunto $\caminhosexponenciaisconectantespadrao$, e como homeomorfismo local será utilizada a aplicação exponencial definida nos espaços tangentes de variedades Riemannianas (veja o Apêndice \ref{apendice_variedade_riemanniana}). Com isso, demonstra-se que esse conjunto possui um atlas e que satisfaz as propriedades de uma variedade de Banach. As definições de espaços de Sobolev podem ser encontradas na Seção \ref{secao_espaco_sobolev}.
 	
-	Foi demonstrado no Exemplo \ref{exemplo_fibrado_circulo} que todo fibrado vetorial cujo espaço base é $\circulo$ é um fibrado  trivial. Portanto, tomando $x\in\lacocontrateis$ e usando a Observação \ref{observacao_pullback_fibrado_tangente}, tem-se que $\pullbackfibradotangenteM{x} \cong \circulo\times \real{2n}$. As seções do fibrado $\pullbackfibradotangenteM{x}$ são as seções de $TM$ restritas a $x(\reta )\subset M$ (veja a Observação \ref{observacao_pullback_fibrado_tangente}). Com isso, tem-se o espaço de Sobolev 
+	Lembrando que $x\in\lacocontrateis$ e $u \in \energiafinitaM$ são as aplicações 
 	$$
-	\espacosobolev{\circulo;\pullbackfibradotangenteM{x}}=
+	\circulo \ni t \mapsto x(t) \in M\; \text{e}\;\;\retacartesianocirculo \ni (s,t)\mapsto u(s,t) \in M.
+	$$ 
+	As seções dos fibrados $\pullbackfibradotangenteM{x}$ e $\pullbackfibradotangenteM{u}$ são as seções de $TM$ restritas aos subconjuntos $x(\reta )$ e  $u(\retacartesianocirculo )$ de $M$, respectivamente (veja a Observação \ref{observacao_pullback_fibrado_tangente}). Com isso, os espaços de Sobolev $\espacosobolevcontradominio{\circulo}{\pullbackfibradotangenteM{x}}$ e $\espacosobolevcontradominio{\retacartesianocirculo}{\pullbackfibradotangenteM{u}}$, denotados por $\espacosobolev{\pullbackfibradotangenteM{x}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}}$, respectivamente, são definidos por
+	$$
+	\espacosobolev{\pullbackfibradotangenteM{x}}=
 	\{X\in \campossuaves{x(\reta)}: \exists\; Y\in \campossuaves{M}, \; X=Y|_{x}\;\text{e}\;  X_{i}\in \espacosobolev{\circulo} \},
 	$$
-	onde $X_{i} \in \funcoessuaves{\circulo}$ são os componentes do campo vetorial $X$. Por simplicidade esse espaço de Sobolev será denotado por $\espacosobolev{\pullbackfibradotangenteM{x}}$. Em \cite{audi_floer_homology} pode ser encontrado que esse definição permite associar $\espacosobolev{\pullbackfibradotangenteM{x}}$ com o espaço de Sobolev $\espacosobolevcontradominio{\circulo}{\real{2n}}$.
+	e
+	$$
+	\espacosobolev{\pullbackfibradotangenteM{u}}=
+	\{X\in \campossuaves{u(\retacartesianocirculo)}: \exists\; Y\in \campossuaves{M}, \; X=Y|_{u}\;\text{e}\;  X_{i}\in \espacosobolev{\retacartesianocirculo} \},
+	$$
+	onde $X_{i} \in \funcoessuaves{\circulo}$ são os componentes do campo vetorial $X$. 
 	
-	Com argumentos análogos aos anteriores, para um dado $u \in \energiafinitaM$, o espaço de Sobolev $\espacosobolevcontradominio{\retacartesianocirculo}{\pullbackfibradotangenteM{u}}$ é denotado por $\espacosobolev{\pullbackfibradotangenteM{u}}$ e é identificado com $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$.
+	\begin{observacao}
+		parte da análise realizada nessa ao longo dessa seção ganha simplicidade ao se adotar um equivalente aos espaços de Sobolev $\espacosobolev{\pullbackfibradotangenteM{x}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}}$. Em \cite{audi_floer_homology} pode ser encontrado que esses espaços são equivalentes as espaços de Banach $\espacosobolevcontradominio{\circulo}{\real{2n}}$ e $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente.
+	\end{observacao}
 	
-	Seja $D \subset TM$ uma vizinhança da seção nula de $TM$. Então a aplicação exponencial $\exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ é dada por $\exp_{x}(Y)(t) = \exp_{x(t)}(Y(t))$.
-	Tome a coleção $\{ (\espacosobolev{x^{*}D}, \exp_{x}) \}_{x \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que existem $x\in \lacocontrateis$ e $Y \in \espacosobolev{x^{*}D}$ com $\beta(t)=\exp_{x(t)}Y(t)$.
+	Com argumentos análogos aos anteriores, defini-se os espaços de Banach $\espacoLp{\pullbackfibradotangenteM{x}}$, $\espacoLp{\pullbackfibradotangenteM{u}}$ e seus  equivalentes $\espacoLpcontradominio{\circulo}{\real{2n}}$ e $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente.
+	
+	Sejam $D \subset TM$ uma vizinhança aberta da seção nula de $TM$ e $\exp:D\to M$ a aplicação exponencial definida no Apêndice \ref{apendice_variedade_riemanniana}.
+	Fixado $x\in \lacocontrateis$, tem-se que $\Exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ dada por $\Exp_{x}(Y)(t) = \exp(x(t),Y(t))$ está bem-definida.
+	Tome a coleção $\{ (\espacosobolev{x^{*}D}, \Exp_{x}) \}_{x \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que existem $x\in \lacocontrateis$ e $Y \in \espacosobolev{x^{*}D}$ com $\beta(t)=\Exp_{x}(Y)(t)$.
 	
 	\begin{proposicao}\label{proposicao_caminhos_variedade_banach}
 		O conjunto $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Além disso, 
@@ -3822,14 +3833,14 @@
 	\begin{prova}
 		Afirmo que $\caminhosexponenciaisSobolev$ satisfaz os axiomas das variedades de Banach. De fato,
 		\begin{enumerate}
-			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $x_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{x_{\beta}^{*}D}$ tal que $\beta(t)=\exp_{x_{\beta}(t)}Y_{\beta}(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é injetora. Denotando $\espacosobolev{x_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
+			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $x_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{x_{\beta}^{*}D}$ tal que $\beta(t)=\Exp_{x_{\beta}}(Y_{\beta})(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é injetora. Denotando $\espacosobolev{x_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
 			$$
 			\caminhosexponenciaisSobolev = \bigcup_{\beta \in \caminhosexponenciaisSobolev } W_{\beta}.
 			$$
 			
-			\item Pela escolha de $D_{\beta}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\exp_{x_{\beta}}:W_{\beta} \to \exp_{x_{\beta}}(W_{\beta})$ é um difeomorfismo sobre sua imagem. Logo é um homeomorfismo.
+			\item Pela escolha de $D_{\beta}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\Exp_{x_{\beta}}:W_{\beta} \to \Exp_{x_{\beta}}(W_{\beta})$ é um difeomorfismo sobre sua imagem. Logo é um homeomorfismo.
 			
-			\item Como $\exp_{x_{\beta}}$ e $\exp_{x_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\exp_{x_{\beta}}^{-1} \circ \exp_{x_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
+			\item Como $\Exp_{x_{\beta}}$ e $\Exp_{x_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\exp_{x_{\beta}}^{-1} \circ \exp_{x_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
 		\end{enumerate}
 		
 		Portanto $\{(W_{\beta}, \exp_{x_{\beta}}) \}_{\beta \in \caminhosexponenciaisSobolev}$ é um atlas suave e $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Por fim, a demonstração da cadeia de inclusão dos conjuntos e suas densidades podem ser encontrada em \cite{matthias_morse_homology}.
@@ -3839,42 +3850,41 @@
 		Seja $I\subseteq \reta$ um intervalo, então $\espacosobolev{I} \subset C^{0}(\overline{I})$ para todo $p\geq 1$. Contudo, para um dado $\Omega \in \real{m}$ tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ para $p>m$ (veja em \cite{audi_floer_homology}). Note que, $\retacartesianocirculo \subset \real{3}$ é uma variedade de dimensão 2, portanto não se pode afirmar que os elementos de $\espacosobolev{\retacartesianocirculo}$ são aplicações contínuas. Contudo, no caso em que $p>2$, o Teorema \ref{teorema_rellich} garante que as soluções dos das EDPs serão contínuas. Com isso, será assumido que $p>2$ no restante do texto. (tenho que rever essa afirmação pois estamos demonstrando fredholm para p=2.)
 	\end{observacao}}
 	
-	\begin{observacao}\label{observacao_identificacao_espaco_Lp}
-		Analogamente à observação anterior, o espaço $\espacoLp{\pullbackfibradotangenteM{u}}$ é identificado com $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$.
-	\end{observacao}
-	
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
-		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Denotamos o conjunto dos caminhos suaves com decaimento exponencial conectando $x^{-}$ a $x^{+}, $ por
+		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. O conjunto das aplicações $u \in \aplicaoessuavesreatacirculo$ tais que $\lim_{s \to \pm \infty} u(s,t) = x^{\pm}(t)$ para todo  $t\in \circulo $ e que 
 		$$
-		\caminhosdecaimentoexponencialpadrao = \{u \in \aplicaoessuavesreatacirculo: \lim_{s \to \pm \infty} u(s,t) = x^{\pm}(t),\;\;\forall t\in \circulo \},
+		\normagrande{\derivadaparcial{u}{s}(s,t)} \leq Ke^{-\delta|s|} \;\; \text{e} \;\; \normagrande{\derivadaparcial{u}{t}(s,t) -X_{H}(u)} \leq Ke^{-\delta|s|}
 		$$
-		tal que
-		$$
-		\normagrande{\derivadaparcial{u}{s}(s,t)} \leq Ke^{-\delta|s|} \;\; \text{e} \;\; \normagrande{\derivadaparcial{u}{t}(s,t) -X_{H}(u)} \leq Ke^{-\delta|s|}.
-		$$
+		para algum $K\in \reta_{+}$, é chamado de conjunto dos caminhos com decaimento exponencial conectando $x^{-}$ a $x^{+}$ e é denotado por $\caminhosdecaimentoexponencialpadrao$.
 	\end{definicao}
 	
 	\begin{definicao}
-		(Exponenciais conectantes) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, $u \in \caminhosdecaimentoexponencialpadrao$ e $X \in \espacosobolev{\pullbackfibradotangenteM{u}}$. Denotamos por exponenciais conectantes  o conjunto $\caminhosexponenciaisconectantespadrao$ das aplicações $Exp(u,X):\retacartesianocirculo \to M$ tal que $Exp(u,X)(s,t) = \aplicacaoexponencial{u(s,t)}{X(s,t)}$.
+		(Exponenciais conectantes) \alerta{(Para $p>2$ tenho que rever esse ponto. Veja Michele pag 227)} O conjunto das aplicações 
+		$$
+		\retacartesianocirculo \ni (s,t) \mapsto \exp_{u(s,t)}(Y(s,t)) \in M,
+		$$
+		onde $u \in \caminhosdecaimentoexponencialpadrao$ e $Y\in \espacosobolev{\pullbackfibradotangenteM{u}}$ é chamado conjunto das exponenciais conectantes e é denotado por $\caminhosexponenciaisconectantespadrao$.
 	\end{definicao}
-	
-	Seja $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s,t) =x^{\pm}(t)\; \forall t\in \reta \}$, onde $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$.
-	Em \cite{audi_floer_homology} é mostrada a proposição a seguir
-	
-	\begin{proposicao}\label{proposicao_cadeia_caminhos_conectantes}
-		$\energiafinitaMconectante \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
-	\end{proposicao}
-	
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
 		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
 	\end{proposicao}
 	
 	\begin{prova}
-		Considere $u \in \caminhosdecaimentoexponencialpadrao$ e $\{e_{j}\}_{j=1}^{2n}$ um referencial ortonormal ao longo de $u$.  Realizando a identificação de  $\espacosobolev{\pullbackfibradotangenteM{u}}$ com $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, mencionada na Observação \ref{observacao_identificacao_espaco_sobolev}. Pela inclusão $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \hookrightarrow L^{\infty}(\retacartesianocirculo, \real{2n})$, pode-se afirmar que, para todo $Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, existe uma constante $K\geq 0$ tal que $\norma{Y}_{L^{\infty}} \leq K\normaWp{Y}$. Seja o disco-fibrado $D_{p}=\{(p, Y(p))\in TM: \norma{Y(p)}<r_{p} \}$, onde $r_{p}>0$. Como $M $ é um compacto, então pode-se escolher uma cobertura finita de $M$ por discos-fibrados tal que, para cada $p \in M$, a aplicação exponencial $(p,Y(p))\mapsto (p, \exp_{p}Y(p)))$ é um difeomorfismo local (veja \ref{proposicao_difeomorfismo_exponencial}). Seja $r_{0}$ o supremo dos raios $r_{p}$ da subcobertura finita escolhida. 
+		Considere $u \in \caminhosdecaimentoexponencialpadrao$ e $\{e_{j}\}_{j=1}^{2n}$ um referencial ortonormal ao longo de $u$. Pelo Teorema \ref{teorema_inclusao_sobolev} a inclusão $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \hookrightarrow L^{\infty}(\retacartesianocirculo, \real{2n})$ é continua, e pelo Teorema \ref{teorema_rellich} existe uma constante $C\geq 0$ tal que $\norma{Y}_{L^{\infty}} \leq K\normaWp{Y}$ para todo $Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. 
+		
+		Seja o disco $D_{p}=\{(p, Y(p))\in TM: \norma{Y(p)}<r_{p} \}$, onde $r_{p}>0$. Como $M $ é um compacto, então pode-se escolher uma cobertura finita de $M$ por discos tal que, para cada $p \in M$, a aplicação exponencial $(p,Y(p))\mapsto (p, \exp_{p}Y(p)))$ é um difeomorfismo local (veja \ref{proposicao_difeomorfismo_exponencial}). Seja $r_{0}$ o supremo dos raios $r_{p}$ da subcobertura finita escolhida. 
 		
 		Definindo $W_{u} = \{Y\in \espacosobolev{\pullbackfibradotangenteM{u}}:\normaWp{Y} < r_{0}/K\}$ tem-se que a aplicação exponencial $(u, Y) \mapsto (u, \exp_{u}Y)$ é um difeomorfismo sobre sua imagem, logo é um homeomorfismo. Com uma construção análoga a que foi feita na Proposição \ref{proposicao_caminhos_variedade_banach} pode-se mostrar que $\{(W_{u}, \exp_{u})\}_{u \in \caminhosdecaimentoexponencialpadrao}$ é um atlas suave de $\caminhosexponenciaisconectantespadrao$, portanto esse conjunto é uma variedade de Banach. 
 	\end{prova}
+	
+		Seja $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s,t) =x^{\pm}(t)\; \forall t\in \reta \}$, onde $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$.
+		Em \cite{audi_floer_homology} é mostrada a proposição a seguir
+		
+		\begin{proposicao}\label{proposicao_cadeia_caminhos_conectantes}
+			$\energiafinitaMconectante \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
+		\end{proposicao}
+		
 	
 	\section{O operador de Floer $\operadorFloer$ e seu diferencial $\diferencialfloer$}\label{secao_operador_floer}
 	
@@ -5257,7 +5267,7 @@
 	\end{proposicao}
 	
 	\begin{definicao}\label{definicao_gradiente_hessiana}
-		(campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
+		(Campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
 	\end{definicao}
 	
 	
@@ -5397,7 +5407,7 @@
  	\end{definicao}
 	
 	\begin{definicao}\label{definicao_espalo_sobolev_generalizado}
-		(Espaço de Sobolev Generalizado) Seja $\Omega$ é um aberto de $\real{n}$. O espaço de Sobolev $\espacosobolevgeneralizado{\Omega}{\real{m}}$ é o conjunto das aplicações  
+		(Espaço de Sobolev Generalizado) Seja $\Omega$ é um aberto de $\real{n}$. O espaço de Sobolev $\espacosobolevgeneralizadocontra{\Omega}{\real{m}}$ é o conjunto das aplicações  
 		$$
 		\begin{aligned}
 		f:\Omega \subset\real{n} &\to \real{m}
@@ -5405,13 +5415,13 @@
 		x &\mapsto (f_{1}(x), \dots, f_{k}(x))
 		\end{aligned}
 		$$ 
-		tais que $f_{j} \in \espacosobolevgeneralizado{\Omega}{\reta}$ para $1\leq j \leq k$.
+		tais que $f_{j} \in \espacosobolevgeneralizadocontra{\Omega}{\reta}$ para $1\leq j \leq k$.
 	\end{definicao}
 	
 	A importante proposição a seguir esta demonstrada em \cite{breazis_sobolev_spaces}.
 	
 	\begin{proposicao}
-		Os espaços $\espacoLpcontradominio{\Omega}{\real{m}}$ e $\espacosobolevgeneralizado{\Omega}{\real{m}}$, munidos das normas 
+		Os espaços $\espacoLpcontradominio{\Omega}{\real{m}}$ e $\espacosobolevgeneralizadocontra{\Omega}{\real{m}}$, munidos das normas 
 		$$
 		\normaLp{f} =\normaLpdefinicao{\sum_{j=1}^{m} |f_{j}(x)|}{\Omega},
 		$$
@@ -5424,7 +5434,7 @@
 	
 	
 	\begin{observacao}
-		Da proposição anterior é imediato que $\normaLp{f} \leq \normaWpgeneralizado{f}$. Logo, $\espacosobolevgeneralizado{\Omega}{\real{m}} \subset\espacoLpcontradominio{\Omega}{\real{m}}$.
+		Da proposição anterior é imediato que $\normaLp{f} \leq \normaWpgeneralizado{f}$. Logo, $\espacosobolevgeneralizadocontra{\Omega}{\real{m}} \subset\espacoLpcontradominio{\Omega}{\real{m}}$.
 	\end{observacao}
 	
 	\begin{exemplo}
@@ -5469,20 +5479,35 @@
 		(Mergulho de Sobolev) Sejam $\Omega \subseteq \real{n}$ e $1 \leq p < n$. Então $\espacosobolev{\Omega} \hookrightarrow L^{q}(\Omega)$ é uma inclusão contínua, onde $1/q = 1/p -1/n$. Além disso, se $\Omega$ for limitado com bordo $\partial\Omega$ de classe $C^{1}$, então a inclusão é um operador compacto para $1/q>1/p -1/n$.
 	\end{teorema}
 	
-	\alerta{	
-		\begin{teorema}\label{teorema_rellich}
-			(Rellich) Sejam $\Omega \subseteq \real{n}$ um subconjunto aberto limitado. Se $p>n$, então $\espacosobolevcontradominio{\Omega}{\real{m}} \subset C^{0}(\Omega;\real{m})$ e tal inclusão é um operador compacto. (Acho que posso remover esse resultado.)
-		\end{teorema}
-	}
-	
-	
+
 	\begin{observacao}
 		O teorema implica que existe uma constate $C>0$ tal que 
-		$$
-		\normaLgGeral{\xi}{q}{\Omega} \leq C \normaWpGeralDominio{\xi}{p}{\Omega},
-		$$
+	
 		para todo $\xi\in \espacosobolev{\Omega}$.
 	\end{observacao}
+	
+	O seguinte resultado podem ser encontrados em \cite{audi_floer_homology}.
+	
+	
+	
+	\begin{teorema}\label{teorema_inclusao_sobolev}
+		Sejam $\Omega \subset\real{n}$ um aberto limitado com fronteira de classe $C^{1}$, $k\in \inteiros$ tal que $k\geq 1$ e $1<p <\infty$. Então todas as inclusão a seguir são contínuas:
+		\begin{enumerate}
+			\item Se $p<n/k$, então $\espacosobolevgeneralizado{\Omega}\subset \espacoLpGeral{q}{\Omega} $ com $1/q=1/p - k/n$.
+			
+			\item Se $p=n/k$, então $\espacosobolevgeneralizado{\Omega}\subset \espacoLpGeral{q}{\Omega} $ para todo $q\geq p$.
+			
+			\item Se $p>n/k$, então $\espacosobolevgeneralizado{\Omega}\subset \espacoLpGeral{\infty}{\Omega} $.
+		\end{enumerate}
+	\end{teorema}
+	
+	\begin{teorema}\label{teorema_rellich}
+		(Rellich-Kondrachov) Sejam $\Omega \subseteq \real{n}$ um aberto limitado e $p<n$. Então existe uma constante $C=C(p,\Omega)>0$ tal que, para cada $\xi: \Omega \to \real{n}$, tem-se 
+		$$
+		\normaLgGeral{\xi}{q}{\Omega} \leq C \normaWpGeralDominio{\xi}{p}{\Omega}\;\;\text{para cada}\; q\leq \frac{n}{n-p}.
+		$$
+		Além disso, para $q<np/(n-p)$, a inclusão $\espacosobolevcontradominio{\Omega}{\real{m}} \hookrightarrow \espacoLpGeral{q}{\Omega;\real{m}}$ é um operador compacto.
+	\end{teorema}
 	
 	\begin{thebibliography}{9}
 		\bibitem{abramovich}
