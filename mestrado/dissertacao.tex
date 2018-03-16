@@ -5096,10 +5096,10 @@
 	
 	\chapter{Fibrados Vetoriais}\label{apendice_fibrados}
 	
-	Mais detalhes sobre fibrados vetoriais podem ser encontrados em \cite{nakahara} e \cite{husemoller_fibrados}.
+	Mais detalhes sobre fibrados vetoriais podem ser encontrados em \cite{husemoller_fibrados}, \cite{nakahara} e \cite{steenrod_fibre_bundles}.
 	
 	\begin{definicao}
-		Um n-fibrado vetorial diferenciável $\eta$ sobre um espaço topológico $B$ é denotado por $\eta = (E, B, p, G)$ e consiste das seguinte propriedades
+		Um n-fibrado vetorial diferenciável $\eta$ sobre um espaço topológico $B$ é a quíntupla $\eta = (E, B, \pi, F, G)$ em que
 		
 		\begin{enumerate}
 			\item Uma variedade diferenciável $E$ chamada espaço total.
@@ -5108,21 +5108,21 @@
 			
 			\item Um n-espaço vetorial $F$ chamado fibra.
 			
-			\item Uma aplicação sobrejetora $\pi: E\to M$ chamada projeção. A pré-imagem $\pi^{-1}(b) = F_{b} \cong F$ chamada fibra em $b\in B$. 
+			\item Uma aplicação sobrejetora $\pi: E\to B$ chamada projeção. A pré-imagem $\pi^{-1}(b) = F_{b} \cong F$ chamada fibra em $b\in B$. 
 			
-			\item Um grupo de Lie $G$ chamado grupo de estrutura, o qual age a esquerda em $F$.
+			\item Um grupo de Lie $G$ chamado grupo de estrutura, o qual age à esquerda em $F$.
 			
-			\item Uma conjunto de abertos $\{U_{i}\}_{i\in I}$ que cobrem $B$ com um difeomorfismo $\phi_{i}: U_{i}\times F\to \pi^{-1}(U_{i})$ tal que $(\pi\circ \phi_{i})(b,f) = p$. A aplicação $\phi_{i}$ é chamada trivialização local se $\phi^{-1}: \pi^{-1}(U_{i}) \to U_{i}\times F$ é sobrejetora.
+			\item Existe uma cobertura por abertos $\{U_{i}\}_{i\in I}$ de $B$ e uma família de difeomorfismos $\phi_{i}: U_{i}\times F\to \pi^{-1}(U_{i})$ tal que $(\pi\circ \phi_{i})(b,f) = b$. A aplicação $\phi_{i}$ é chamada trivialização local.
 			
-			\item A aplicação $\phi_{i,b}: F\to F_{b}$ definida por $\phi_{i,b}(f) = \phi_{i}(b,f)$ é um difeomorfismo. Na intersecção $U_{i}\cap U_{j}\neq \emptyset$ e exigido que $t_{ij}(b)=\phi_{i,b}^{-1}\circ \phi_{i,b}:F\to F$ é um elemento de $G$. Então $\phi_{i}$ e $\phi_{j}$ estão relacionados pela aplicação suave $t_{ij}: U_{i}\cap U_{j}\to G$ por $\phi_{j}(b, f) = \phi_{i}(b, t_{ij}(b)f)$. As aplicações $t_{ij}$ são chamadas funções de transição.
+			\item A aplicação $\phi_{i,b}: F\to F_{b}$ definida por $\phi_{i,b}(f) = \phi_{i}(b,f)$ é um difeomorfismo. Na intersecção $U_{i}\cap U_{j}\neq \emptyset$ é exigido que $t_{ij}(b)=\phi_{i,b}^{-1}\circ \phi_{j,b}:F\to F$ é um elemento de $G$. Então $\phi_{i}$ e $\phi_{j}$ estão relacionados pela aplicação suave $t_{ij}: U_{i}\cap U_{j}\to G$ por $\phi_{j}(b, f) = \phi_{i}(b, t_{ij}(b)f)$. As aplicações $t_{ij}$ são chamadas funções de transição.
 		\end{enumerate}
 		
 	\end{definicao}
 	
-	Um n-fibrado vetorial diferenciável $\eta$ é um fibrado trivial quando todas as funções de transição se reduzem a aplicação identidade. Com isso, o fibrado pode ser escrito como o produto $B\times F$, isto é, o fibrado $\eta$ é homeomorfo a $B\times F$.
+	Um n-fibrado vetorial diferenciável $\eta$ é um fibrado trivial quando todas as funções de transição coincidem com a aplicação identidade. Nesse caso o espaço total $E$ é homeomorfo a $B\times F$.
 	
 	\begin{exemplo}\label{exemplo_fibrado_circulo}
-		Seja $\eta=(E, \circulo,\pi, G)$ um 1-fibrado vetorial com as fibras $F=\reta$ e $G$ é o grupos das transformações lineares em $\reta$ que preservam sua orientação. Sejam $U_{1} = (0,2\pi)$ e $U_{1} = (-\pi,\pi)$ uma cobertura de $\circulo$. Então $U_{1}\cap U_{2} =(0,\pi)\cup(\pi,2\pi)$. As trivializações locais são 
+		Seja $\eta=(E, \circulo,\pi, G)$ um 1-fibrado vetorial com as fibras $F=\reta$ e $G$ o grupos das transformações lineares em $\reta$ que preservam sua orientação. Sejam $U_{1} = (0,2\pi)$ e $U_{2} = (-\pi,\pi)$ uma cobertura de $\circulo$. Então $U_{1}\cap U_{2} =(0,\pi)\cup(\pi,2\pi)$. As trivializações locais são 
 		$$
 		\phi^{-1}_{1}(b) = (\theta, t),\; 		\phi^{-1}_{2}(b) = (\theta, t)
 		$$
@@ -5131,84 +5131,55 @@
 	
 	Daqui em diante o grupo de estrutura será $G = GL(n,\real{})$ e um n-fibrado vetorial será denotado por $\eta = (E,B,\pi)$.
 	
-	\begin{definicao}
-		(Mapa de fibrados) Sejam $\eta, \xi$ dois fibrados vetoriais. Chamamos de mapa de fibrados o par $(F, f)$ tal que comute o diagrama
-		$$
-		\xymatrix{
-			E \ar[r]^{F}\ar[d]^{\pi} & E'\ar[d]^{\pi'}
-			\\
-			B\ar[r]^{f} & B'
-		},
-		$$
-		e tal que $F$ é um isomorfismo entre $\pi^{-1}(b)$ e $\pi'^{-1}(f(b))$. A aplicação $f:B\to B'$ é chamada mapa de espaço base.
-	\end{definicao}
-	
-	Pode-se mostrar que, nas condições da definição anterior, $f^{*}\eta$ satisfaz a condição de trivialidade local, logo é um n-fibrado vetorial.
-	
 	\begin{exemplo}
-		(1-Fibrado vetorial) Sejam $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $\pi:S^{1} \times \real{}\to S^{1}$ tal que $p(b, e)=p \in S^{1}$. Então $\eta=(S^{1} \times \real{}, S^{1}, \pi)$ é um fibrado vetorial pois $\pi$ é uma aplicação contínua, $E, B$ são espaços topológicos e $F_{b} = \pi^{-1}(b) = \real{}$ é um 1-espaço vetorial. Além disso, $\eta$ é um fibrado vetorial trivial pois, tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$, tem-se as projeções $\pi^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, e com isso, $(S^{+}\times\real{}) \cup ( S^{-}\times\real{}) = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$, logo $\eta$ é trivial. 
+		(1-Fibrado vetorial) Sejam $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $\pi:S^{1} \times \real{}\to S^{1}$ tal que $\pi(b, e)=b \in S^{1}$. Então $\eta=(S^{1} \times \real{}, S^{1}, \pi)$ é um fibrado vetorial. Além disso, $\eta$ é um fibrado vetorial trivial pois, tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$, tem-se as projeções $\pi^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, e com isso, $(S^{+}\times\real{}) \cup ( S^{-}\times\real{}) = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$.
 	\end{exemplo}
 	
 	\begin{proposicao}
-		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $q\in M$ temos as fibras $F_{q} = T_{q}M$ e o espaço total é $TM=\{(q, v): q\in M, v\in T_{q}M \}$. A tripla $\eta = (TM, M, \pi)$, denominado fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
+		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $q\in M$ temos as fibras $F_{q} = T_{q}M$ e o espaço total é $TM=\{(q, v): q\in M, v\in T_{q}M \}$. A tripla $\eta = (TM, M, \pi)$, denominada fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
 	\end{proposicao}
-	\begin{prova}
-		Note que a projeção $\pi(q,v_{q}) = q$ é uma aplicação contínua, $\pi^{-1}(\{q\}) = T_{q}M$ é um n-espaço vetorial em $q\in M$ e  o espaço base $M$ é um espaço topológico pois é uma variedade. Seja $U$ uma vizinhança de $q$. Como $T_{q}M$ é homeomorfo a $\real{n}$, então $\pi^{-1}(U) = \bigcup_{q\in M}(\{q\}\times T_{q}M)$ é homeomorfo a $U\times \real{n}$ e $\eta$ é localmente trivial. Portanto $\eta$ é um n-fibrado vetorial.
-	\end{prova}
+
+	Os fibrados tangentes $\eta$ serão denotados por $TM$.
+ 
+ 	Seja $TM$ um $n$-fibrado tangente de uma $n$-variedade diferenciável $M$. Uma seção de $TM$ é uma aplicação suave $s:M \to TM$ tal que $\pi\circ s=Id$.
 	
-	\begin{observacao}
-		Os fibrados tangentes $\eta$ serão denotados por $TM$, o que é convencionado em grande parte da literatura.
-	\end{observacao}
-	
-	\begin{definicao}
-		(Seção do fibrado tangente) Seja $TM$ um $n$-fibrado tangente de uma $n$-variedade diferenciável $M$. Uma seção de $TM$ é uma aplicação suave $s:M \to TM$ tal que $p\circ s=Id$.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_identificacao_secao_campo_vetorial}
-		Os campos vetoriais definidos em $M$ podem ser identificados com as seções do fibrado tangente $TM$ do seguinte modo: seja $X\in \campossuaves{M}$ e definida $s_{X}$ a seção do fibrado tangente por $s_{X}(q) = (q, X(q))$. tem-se que, $(\pi\circ s_{X})(q) = q$, logo $\pi\circ s_{X}=Id$. Com isso, segue-se a identificação $s_{X} \mapsto X$.
-	\end{observacao}
+	Os campos vetoriais definidos em $M$ podem ser vistos seções do fibrado tangente $TM$ do seguinte modo: tome $X\in \campossuaves{M}$ e defina $s_{X}$ a seção do fibrado tangente por $s_{X}(b) = (b, X(b))$.
 	
 	\begin{definicao}
-		(Pullback de um fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', p')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in \pi'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $\pi:E\to B$ tal que $\pi(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
+		(Pullback de fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', \pi')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in \pi'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $\pi:E\to B$ tal que $\pi(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_pullback_fibrado_tangente}
-		Seja $\gamma:\reta \to M$ um caminho contínuo na variedade $M$. Então o pullback $\pullbackfibradotangenteM{\gamma}$ é o conjunto $\{(\gamma(t), X(\gamma(t)): X\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. Note que, $\pullbackfibradotangenteM{\gamma}$ é o $2n$-fibrado vetorial cujas fibras são $\espacotangenteponto{\gamma(t)}{M}$ para cada $t\in \reta$ e o espaço base é $\gamma(\reta)\subset M$. De fato, se $\pi: \pullbackfibradotangenteM{\gamma} \to B$ e o mapa de projeção desse fibrado, então $\pi(\gamma(t), Y(\gamma(t))) = \gamma(t)$ e $\pi^{-1}(\gamma(t)) = \espacotangenteponto{\gamma(t)}{M}$ para todo $t\in \reta$. Com isso, toda seção $X: \gamma(\reta)\to \pullbackfibradotangenteM{\gamma}$ dada por $X(\gamma(t)) = (\gamma(t), X(\gamma(t)))$, pode ser vista como a restricao de alguma seção $X': M\to TM$ restrita ao subconjunto $\gamma(\reta) \subset M$, isto é, $X= X'|_{\gamma}$.
+		Seja $\gamma:\reta \to M$ um caminho contínuo na variedade $M$. Então o pullback $\pullbackfibradotangenteM{\gamma}$ é o conjunto $\{(\gamma(t), X(\gamma(t)): X\in \campossuaves{M} \; \text{e}\; t \in \reta \}$. Note que, $\pullbackfibradotangenteM{\gamma}$ é o $2n$-fibrado vetorial cujas fibras são $\espacotangenteponto{\gamma(t)}{M}$ para cada $t\in \reta$ e o espaço base é $\gamma(\reta)\subset M$. De fato, se $\pi: \pullbackfibradotangenteM{\gamma} \to \gamma(\reta)$ e o mapa de projeção desse fibrado, então $\pi(\gamma(t), Y(\gamma(t))) = \gamma(t)$ e $\pi^{-1}(\gamma(t)) = \espacotangenteponto{\gamma(t)}{M}$ para todo $t\in \reta$. Com isso, toda seção $s_{X}: \gamma(\reta)\to \pullbackfibradotangenteM{\gamma}$ dada por $s_{X}(\gamma(t)) = (\gamma(t), X(\gamma(t)))$, pode ser vista como a restrição de alguma seção $s_{X'}: M\to TM$ ao subconjunto $\gamma(\reta) \subset M$, isto é, $s_{X}= s_{X'}|_{\gamma}$. Logo, $X=X'|_{\gamma}$.
 	\end{observacao}
 	
 	\begin{lema}\label{pullback_composicao}
 		(Composição de pullbacks) Sejam $\eta =(E, C, \pi)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
 	\end{lema}
 	\begin{prova}
-		Como $f, g$ são contínuas, então $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, \pi_{g\circ f})$ é um n-fibrado vetorial onde dado as fibradas são dadas por $F_{(g\circ f)(a)} = \pi^{-1}((g\circ f)(a))$. Tem-se que $g^{*}\eta=(E_{g}, B, \pi_{g})$, $f^{*}(g^{*}\eta) = (E_{f}, A, \pi_{f})$, onde suas fibras são dadas por $F_{g(b)} = \pi^{-1}(g(b))$, sendo que $b=f(a)$, logo  $F_{g(f(a))} = \pi^{-1}(g(f(a))) = \pi^{-1}((g \circ f)(a))$, que é uma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ coincidem, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
+		Como $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, \pi_{g\circ f})$ é um n-fibrado vetorial onde as fibras são dadas por $F_{(g\circ f)(a)} = \pi^{-1}((g\circ f)(a))$. Tem-se que $g^{*}\eta=(E_{g}, B, \pi_{g})$, $f^{*}(g^{*}\eta) = (E_{f}, A, \pi_{f})$, e suas fibras são dadas por $F_{g(b)} = \pi^{-1}(g(b))$, sendo que $b=f(a)$, logo  $F_{g(f(a))} = \pi^{-1}(g(f(a))) = \pi^{-1}((g \circ f)(a))$, que é uma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ coincidem, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
 	\end{prova}
 	\begin{lema}\label{pullback_trivial}
 		(Pullback trivial) Sejam $\eta = (E, B, \pi)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
 	\end{lema}
-	\begin{prova}
-		Por definição tem-se que $f^{*}\eta = (E_{f}, A, \pi_{f})$, onde $E_{f}=\{(a, e): a\in A,\; e \in \pi^{-1}(f(a)) \}$ e $E_{f} \subseteq A\times E$. Como $\eta$ é trivial, então existe um homeomorfismo $h: E \to B\times \real{n}$. Com isso, tem-se que $E_{f}\subseteq A\times f(A)\times \real{n} \subseteq A\times B\times \real{n}$. Afirmo que existe um homeomorfismo $E_{f}\mapsto A\times f(A)\times \real{n}$. De fato, defina $H:A\times E \to A\times B\times \real{n}$ por $H(a,e) = (a, h(e))$. É imediato que $H$ é um homeomorfismo. Note que, para um dado $(a, f(a), F_{f(a)}) \in A\times f(A)\times \real{n}$ existe $(a, e)\in E_{f}$ tal que $H(a,e)=(a, h(e))=(a,f(a), F_{f(a)})$. Logo a restrição de $H$ ao conjunto $E_{f}$ é sobrejetora em $A\times f(A)\times \real{n}$ e $H|_{E_{f}}:E_{f}\to A\times f(A)\times \real{n}$ é um homoeomorfismo. Portanto, $f^{*}\eta$ é trivial.
-	\end{prova}
 	
-	Os seguintes resultados nos dão informação sobre a homotopia dos fibrados vetoriais e podemo ser encontrados em \cite{nakahara} e \cite{steenrod_fibre_bundles}.
+	Os seguintes resultados nos dão a relação entre os fibrados vetoriais obtidos pelo pullback de aplicações homotópicas e podem ser encontrados em \cite{nakahara} e \cite{steenrod_fibre_bundles}.
 	
 	\begin{teorema}\label{pullback_isomorfismo}
-		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, \pi)$ um n-fibrado vetorial e $f,g: A\to B$ duas apliações homotópicas, então $f^{*}\eta \cong g^{*}\eta$.
+		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, \pi)$ um n-fibrado vetorial e $f,g: A\to B$ duas aplicações homotópicas. Então $f^{*}\eta \cong g^{*}\eta$.
 	\end{teorema}
 	
 	\begin{corolario}\label{pullback_contratil}
-		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base contrátil, então $\eta$ é trivial.
+		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base contrátil. Então $\eta$ é trivial.
 	\end{corolario}
 	\begin{prova}
-		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Definindo $f:B\to \{*\}$ e $g:\{*\}\to B$ teremos $f\circ g : \{*\} \to \{*\}$ e $g\circ f:B\to B$, logo $f\circ g = Id_{\{*\}}$ e pela hipótese da contratibilidade de $B$ temos $g\circ f \simeq Id_{B}$. Pela definição temos que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ teremos $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial.
+		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Como $B$ é contrátil, então existem $f:B\to \{*\}$ e $g:\{*\}\to B$ tais que $f\circ g = Id_{\{*\}}$ e $g\circ f \simeq Id_{B}$. Pela definição tem-se que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ tem-se $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial.
 	\end{prova}
 	
 	\begin{corolario}
 		Se $\eta$ é um n-fibrado vetorial sobre $D^{n} = \{ x\in \real{n}:\norma{x}\leq 1\}$, então $\eta$ é trivial.
 	\end{corolario}
-	\begin{prova}
-		Como $D^{n}$ é contrátil, então a aplicação identidade $i:D^{n}\to D^{n}$ é homotópica a aplicação constante $c:D^{n}\to \{p\}$, para um dado $p\in D^{n}$. Pelo Teorema \ref{pullback_isomorfismo} tem-se que $i^{*}\eta  \cong c^{*}\eta$. Como $c^{*}\eta =(E ,\{p\}, F) \cong \{p\}\times F$, então $\eta =i^{*}\eta \cong \{p\}\times F$. 
-	\end{prova}
-	
+
 	\chapter{Variedades Riemannianas}\label{apendice_variedade_riemanniana}
 	
 	Essa seção contém algumas definições e resultados em geometria Riemanniana que serão utilizados em diferentes pontos do trabalho. Uma explanação detalhada pode ser encontrada em \cite{manfredo_riemannian_geo}.
