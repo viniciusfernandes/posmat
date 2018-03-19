@@ -5188,7 +5188,7 @@
 		(Variedade Riemanniana) Seja $M$ uma n-variedade diferenciável. Uma métrica Riemanniana é uma 2-forma simétrica $g \in \Omega^{2}(M)$ tal que $g_{p}:T_{p}M \times T_{p}M \to \real{}$ é um produto interno positivo-definido para todo $p \in M$. O par $(M, g)$ é chamado n-variedade Riemanniana.
 	\end{definicao}
 	
-	O conceito de conexão afim esta intimamente relacionado com a forma de comparar um campo vetorial avaliado em pontos distintos da variedade. Uma das estratégias de se efetuar essa comparação é chamada de transporte paralelo e uma boa discussão pode ser encontrada em \cite{nakahara}. Além disso, pode-se mostrar que a conexão afim é uma generalização do conceito de diferenciação ordinária.
+	O conceito de conexão afim está intimamente relacionado com a forma de comparar um campo vetorial avaliado em pontos distintos da variedade. Uma das estratégias de se efetuar essa comparação é chamada de transporte paralelo e uma boa discussão pode ser encontrada em \cite{nakahara}. Além disso, pode-se mostrar que a conexão afim é uma generalização do conceito de diferenciação usual.
 	
 	\begin{definicao}\label{definicao_conexao_afim}
 		(Conexão afim) Uma conexão afim $\nabla$ definida em uma n-variedade diferenciável é a aplicação $\nabla: \campossuaves{M} \times \campossuaves{M} \to \campossuaves{M}$ tal que, dadas $f,h \in \funcoessuaves{M}$ e $X,Y,Z \in \campossuaves{M}$:
@@ -5200,24 +5200,31 @@
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_conexao_afim}
-		Sejam $(U, \phi)$ uma carta local de $p\in M$, onde $(x_{1}(q), \dots, x_{n}(q))$ é a parametrização local, e $\{\partial_{1}, \dots, \partial_{n}\}$ refeferncial ortonormal local, onde $\partial_{j} = \partial/\partial x_{j}$. Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in \campossuaves{M}$, tem-se que
+		Sejam $(U, \phi)$ uma carta local em $p\in M$, onde $(x_{1}(q), \dots, x_{n}(q))$ é a parametrização local, e $\{\partial_{1}, \dots, \partial_{n}\}$ referencial ortonormal local, onde $\partial_{j} = \partial/\partial x_{j}$. Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in \campossuaves{M}$, tem-se que
 		$$
 		\begin{aligned}
 		\nabla_{X}Y &= 
-		\sum_{k} \Big( \sum_{ij} X(Y_{k}) + X_{i}Y_{j} \Gamma^{k}_{ij}\Big)\partial_{k} 
+		\sum_{k=1}^{n} \Big( \sum_{i,j=1}^{n} X(Y_{k}) + X_{i}Y_{j} \Gamma^{k}_{ij}\Big)\partial_{k} 
 		\\
 		&= 
-		\sum_{k} \Big( \sum_{ij} X_{i} (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\Big)\partial_{k} 
+		\sum_{k=1}^{n} \Big( \sum_{i,j=1}^{n} X_{i} (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\Big)\partial_{k} 
 		\\
-		&= \sum_{k} (\nabla_{X}Y)^{k}\partial_{k}.
+		&= \sum_{k=1}^{n} (\nabla_{X}Y)^{k}\partial_{k}.
 		\end{aligned} 
 		$$
 		
-		Com isso, tomando $X = \partial_{i}$, o operador linear $\nabla_{\partial_{i}}: \campossuaves{M} \to \campossuaves{M}$, dado por $\nabla_{\partial_{i}}Y = \sum_{j}  (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\partial_{k}$, generaliza o conceito de derivada direcional em espaços euclidianos. De fato, supondo $M=\real{n}$, pode-se mostrar que os símbolos $\Gamma^{k}_{ij}$ são funções suaves e $\Gamma^{k}_{ij}(p)=0$ para todo $p \in \real{n}$ (veja em \cite{manfredo_riemannian_geo}). Portanto, $\nabla_{\partial_{i}}Y = \sum_{j}  \partial_{i}(Y_{k})\partial_{k}$.
+		Com isso, tomando $X = \partial_{i}$, o operador linear $\nabla_{\partial_{i}}: \campossuaves{M} \to \campossuaves{M}$, dado por 
+		$$
+		\nabla_{\partial_{i}}Y = \sum_{k,j=1}^{n}  (\partial_{i}(Y_{k}) + Y_{j} \Gamma^{k}_{ij})\partial_{k},
+		$$
+		generaliza o conceito de derivada direcional em espaços euclidianos. De fato, supondo $M=\real{n}$, pode-se mostrar que os símbolos $\Gamma^{k}_{ij}$ são funções suaves e $\Gamma^{k}_{ij}(p)=0$ para todo $p \in \real{n}$ (veja em \cite{manfredo_riemannian_geo}). Portanto, 
+		$$
+		\nabla_{\partial_{i}}Y = \sum_{k=1}^{n}  \partial_{i}(Y_{k})\partial_{k}.
+		$$
 	\end{observacao}
 	
-	O transporte paralelo de um campo $X \in \campossuaves{M}$ ao longo de um caminho suave $\gamma:\reta\to M$ é dado por $\nabla_{\frac{d\gamma}{dt}}X$, e $X $ é dito paralelamente transportado ao longo do caminho $\gamma$ se $\nabla_{v}X=0$, onde $v=\derivada{\gamma}{t}\in \campossuaves{M}$ é seu campo de velocidades. O caminho $\gamma$ é chamado geodésica se o seu campo de velocidades é paralelamente transportado ao logo dele mesmo, isto é, $\nabla_{v}v=0$, o que implica que $\norma{v}$ é constante.
-	Mais detalhes sobre podem ser encontrados em $\cite{nakahara}$.
+	Sejam um $\gamma:I\subset\reta\to M$ caminho suave definido no intervalo $I$ e $v=\derivada{\gamma}{t}\in \campossuaves{M}$ seu campo de velocidades. Um campo $X \in \campossuaves{M}$ é dito paralelamente transportado ao longo de $\gamma$ se $\nabla_{v}X=0$. Além disso, o caminho $\gamma$ é chamado geodésica em $t_{0} \in \reta$ se o seu campo de velocidades é paralelamente transportado ao logo dele mesmo no ponto $t=t_{0}$, isto é, $\nabla_{v}v=0$. Se $\gamma$ é uma geodésica em todo $t\in \reta$, então diz-se que $\gamma$ é uma geodésica. Pode-se mostrar que se $\gamma$ é uma geodésica, então $\norma{v(t)} = \sqrt{g_{\gamma(t)}(v(t), v(t))}$ é constante.
+	Mais detalhes sobre podem ser encontrados em \cite{manfredo_riemannian_geo} e \cite{nakahara}.
 	
 	O comprimento de arco de um caminho suave $\gamma:\intervalo\to M$ é definido por 
 	$$
@@ -5225,20 +5232,26 @@
 	$$
 	Se o caminho $\gamma$ é uma geodésica, então $L(\gamma) =\norma{v}$.
 	
+	A seguinte proposição é necessária para a definição da aplicação exponencial e pode ser encontrada em \cite{manfredo_riemannian_geo}.
+	
+	\begin{proposicao}\label{proposicao_existencia_geodesica}
+		Dado $p\in M$, existem uma vizinhança $V$ de $p$ em $M$, um número $\epsilon>0$ e uma aplicação suave $\gamma:(-2,2)\times U \to M$, $U=\{(q, v) \in TM: q\in V,\;v\in \espacotangenteponto{q}{Y}\;\text{e}\;\norma{v}<\epsilon \}$ tal que $t\mapsto \gamma(t, q, v)$ com $t\in (-2,2)$, é a única geodésica de $M$ onde $\gamma(0, q, v)=y$, $v=\derivada{}{t}\gamma(0,q,v)$ para todo $q\in V$ e todo $v\in \espacotangenteponto{y}{M}$ com $\norma{v}<\epsilon$.
+	\end{proposicao}
+	
 	\begin{definicao}\label{definicao_aplicacao_exponencial}
-		(Aplicação exponencial) Seja $U$ um aberto de $TM$. A aplicação exponencial $\exp:U \to M$ é definida por $\exp(p,v) = \gamma_{p, v}(1)$, onde $\gamma_{p, v}(1):\intervalo\to M$ é uma geodésica tal que $\gamma_{p, v}(0) = p$ e $v(p) = \derivada{}{t}\gamma_{p, v}(p)$.
+		(Aplicação exponencial) Seja $U$ um aberto de $TM$ conforme a Proposição \ref{proposicao_existencia_geodesica}. A aplicação $\exp:U \to M$ definida por $\exp(p,v) = \gamma(1, p,v)$ é chamada aplicação exponencial em $U$.
 	\end{definicao}
 	
-	Dado um ponto $p \in M$, defina $\exp_{p}:T_{p}M \to M$ por $\exp_{p}(v) = \exp(p,v)$. Com isso, a imagem de $\exp_{p}$ é o conjunto dos pontos que são conectados a $p$ por uma geodésica com comprimento de arco igual a $\norma{v}$.
+	Fixado um ponto $p \in M$, defina $\exp_{p}:T_{p}M \to M$ por $\exp_{p}(v) = \exp(p,v)$. Com isso, $\exp_{p}(v)$ é o ponto de $M$ que é conectado a $p$ por uma geodésica com comprimento de arco igual a $\norma{v}$ e tem como direção $v$.
 	
-	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, será utilizada na definição de uma aplicação exponencial para construirmos estruturas de variedade de dimensão infinita (variedade de Banach).
+	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, tem sua importância na demonstração de outros resultados do texto.
 	
 	\begin{proposicao}\label{proposicao_difeomorfismo_exponencial}
-		(Difeomorfismo exponencial) Seja  $\exp_{p}:T_{p}M \to M$ a aplicação exponencial anteriormente definida. Então existe uma bola aberta $B_{\epsilon}(0) \subset \espacotangenteponto{p}{M}$ de raio $\epsilon>0$ e centro em $0 \in T_{p}M$ tal que a restrição $\exp_{p}|_{B_{\epsilon}(0)}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
+		(Difeomorfismo exponencial) Seja  $\exp_{p}:T_{p}M \to M$ a aplicação exponencial. Então existe uma bola aberta $B_{\epsilon}(0) \subset \espacotangenteponto{p}{M}$ de raio $\epsilon>0$ e centro em $0 \in T_{p}M$ tal que a restrição $\exp_{p}|_{B_{\epsilon}(0)}:B_{\epsilon}(0) \to W \subset M$ é um difeomorfismo sobre algum aberto $W \subset M$.
 	\end{proposicao}
 	
 	\begin{definicao}\label{definicao_gradiente_hessiana}
-		(Campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente, v)$ para todo $v \in T_{p}M$. A Hessiana de $f$ e a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
+		(Campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente(p), v)$ para todo $p\in M$ e todo $v \in T_{p}M$. A Hessiana de $f$ é a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
 	\end{definicao}
 	
 	
