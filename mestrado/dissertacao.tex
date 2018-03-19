@@ -5257,27 +5257,36 @@
 	
 	\chapter{Espaços de Sobolev}
 	\section{Distribuições}\label{secao_distribuicoes}
-	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como: a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico. Sendo esse campo elétrico a solução de uma das equações de Maxwell expressa por
+	Muitos problemas de análise clássica tiveram suas origens na modelagem de sistemas físicos, tais como: a dinâmica de uma corda vibrante, a propagação do calor em um meio condutor, a descrição de um oscilador com uma força externa, etc. Contudo, em alguns desses modelos surgiram objetos matemáticos cuja definição não fora sistematizada. Por exemplo, sabe-se que uma distribuição de carga elétrica é a fonte de um campo elétrico, sendo esse campo a solução de uma das equações de Maxwell expressa por
 	$$
 	\nabla.E(x) = \rho(x),
 	$$
-	onde $E:\real{3} \to \real{3}$ é o campo elétrico, $\rho:\real{3}\to \reta$ é a densidade de carga, ambas aplicações de classe $C^{\infty}$. O problema surge quando se tem uma distribuição puntual de carga, isto é, quando a densidade de carga dada por $\rho(V) = q/V$ é tomada quando $\lim_{V \to 0}\rho(V)$, onde $q$ é a carga total do sistema e $V$ o volume que a envolve. Essa situação é comum na Física e para modelá-la foi introduzido o símbolo
-	$$
-	\rho(x) = \lim_{V\to 0} \frac{q}{V} = q\delta(x - x_{0}),
-	$$
-	onde $x,x_{0} \in \real{3}$ e $x_{0}$ é o ponto onde esta localizada a carga $q$. Com isso, o símbolo $\delta$ é expresso por
-	$$
-	\funcaocond{\delta(x - x_{0})}{\infty}{x=x_{0}}{0}{x\neq x_{0}}\;\; \text{tal que} \;\; \int_{\real{3}} \delta(x) = 1.
-	$$
-	Note que $\delta$ não esta bem definido em $x_{0}$, portanto não é uma função e o problema de EDP
-	$$
-	\nabla.E(x) = q\delta(x),
-	$$
-	não está bem formulado matematicamente. 
+	onde $E:\real{3} \to \real{3} $ é o campo elétrico, $\nabla.E$ é o divergente de $E$ e $\rho:\real{3}\to \reta$ é a densidade de carga, ambas aplicações de classe $C^{\infty}$. Sejam $q:\overline{B_{\epsilon}(x_{0})} \subset \real{3}\to \reta$ a função carga elétrica definida na bola fechada de raio $\epsilon>0$ centrada em $x_{0}\in \real{3}$, tal que $q|_{\partial B} = 0$, onde $\partial B$ é a fronteira de $B=\overline{B_{\epsilon}(x_{0})}$. A função de distribuição da carga é definida por $\rho(x)=q(x)/V(\epsilon)$, onde $V(\epsilon)=\int_{B}dx$ é o volume de $B$.
 	
-	Em teoria de distribuição essa EDP tem solução em um sentido mais geral, o qual é chamada de solução distribuicional ou solução fraca. Nessa seção serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
+	O problema surge em modelos físicos em que a se toma o limite $\lim\limits_{\epsilon\to 0}V(\epsilon)=0$, para descrever uma densidade de carga puntual. Para modelar esse sistema foi introduzido o símbolo $\delta$ que satisfaz as seguintes propriedades:
+	$$
+	\int_{\real{3}}\delta(x-x_{0}) = 1\;\;\text{e}\;\; 	f(x_{0})=\int_{\real{3}}f(x)\delta(x-x_{0})
+	$$
+	para toda função não-nula em um compacto de $\real{3}$. Com isso, pode-se escrever a densidade de carga elétrica como
 	
-	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. Seja  $\funcoesdiferenciaveissupp{k}{\Omega} \subset \funcoesdiferenciaveis{k}{\Omega}$ o conjunto das funções de classe $C^{k}$ e com suporte compacto em $\Omega$. Esse conjunto é chamado de espaço de funções teste e é denotado por $\funcoesteste$.
+	$$
+	\rho(x) = \lim_{\epsilon\to 0} \frac{q(x)}{V(\epsilon)} = q_{0}\delta(x - x_{0}),
+	$$
+	onde $q_{0} =\int_{\real{3}}q(x)$ é a carga total do sistema. Definida dessa forma, $\rho$ é de fato uma densidade de carga pois
+	$$
+	\int_{\real{3}}\rho(x) = \int_{\real{3}}q_{0}\delta(x-x_{0}) = q_{0}.
+	$$
+	
+	Portanto, tem-se o problema de EDP
+	$$
+	\nabla.E(x) = q_{0}\delta(x-x_{0}),
+	$$
+	cujas soluções podem não existir no sentido usual, mas podem ser determinadas usando o formalismo de distribuições, como será mostrado a seguir.
+	
+
+	Nessa seção serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definirmos os espaços de Sobolev.
+	
+	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. O conjunto $\funcoesteste \subset \funcoesdiferenciaveis{k}{\Omega}$ das funções de classe $C^{k}$ e com suporte compacto em $\Omega$ é chamado de espaço de funções teste.
 	
 	\begin{observacao}
 		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
@@ -5290,7 +5299,7 @@
 	Sejam $f,g \in l^{p}(\Omega)$ e $\Omega(f,g) = \{x\in \Omega: f(x) \neq g(x)\}$. É dito que $f \sim g$ se $\Omega(f,g)$ possui medida nula.
 	
 	\begin{definicao}\label{definicao_espaco_Lp}
-		(Espaços $\espacoLpGeral{p}{\Omega}$) O quociente $\espacoLpGeral{p}{\Omega}=l^{p}(\Omega)/\sim$ é chamado funções p-integráveis. O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
+		(Espaços $\espacoLpGeral{p}{\Omega}$) O quociente $\espacoLpGeral{p}{\Omega}=l^{p}(\Omega)/\sim$ é chamado espaço das funções p-integráveis. O conjunto $\espacoLpcomp{\Omega} = \{f:\Omega\to \reta: f \in \espacoLp{K}, \forall K \subset \Omega \;\text{compacto}\}$ é chamado espaço das funções localmente p-integráveis.
 	\end{definicao}
 	
 	
@@ -5301,31 +5310,41 @@
 	forma um espaço de Banach para $1\leq p\leq \infty$ (veja em \cite{breazis_sobolev_spaces}). 
 	
 	\begin{observacao}
-		No caso em que $p=2$ tem-se que $\espacoLdois{\Omega}$ é um espaço de Hilbert, o que esta demonstrado em $\cite{kreyszig_analise_funcional}$, onde um espaço de Hilbert é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
+		No caso em que $p=2$ tem-se que $\espacoLdois{\Omega}$ é um espaço de Hilbert, o que está demonstrado em $\cite{kreyszig_analise_funcional}$, ou seja, é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
 	\end{observacao}
 	
 	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f/\partial x_{j}$ por $\derivadaparcialabrev{j}f $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
 	
 	\begin{definicao}
-		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. O espaço das distribuições $\distribuicoesgeral{\Omega}$ é o dual de $\funcoesteste$. Mais precisamente, é o conjunto dos funcionais lineares $f:\funcoesteste \to \reta$ que são contínuos no sentido que, 	para todo compacto $K\subset \Omega$ existe um inteiro $p$ e uma constante $C$ tal que, para todo $\phi\in \funcoesteste$ com suporte em $K$, tem-se que
+		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. O espaço das distribuições $\distribuicoesgeral{\Omega}$ é o espaço dual de $\funcoesteste$. Mais precisamente, é o conjunto dos funcionais lineares $f:\funcoesteste \to \reta$ que são contínuos no sentido que, 	para todo compacto $K\subset \Omega$ existe um inteiro $p$ e uma constante $C$ tal que, para todo $\phi\in \funcoesteste$ com suporte em $K$, tem-se que
 		$$
-		|\produtointerno{f}{\phi}| \leq C \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|.
+		|f(\phi)| \leq C \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|.
 		$$
 	\end{definicao}
 	
-	Sejam $f \in \funcoesdiferenciaveis{0}{\Omega}$, $\phi \in \funcoesteste$ e o compacto $K = supp(\phi) \subset \Omega$. Defina 
+	Pode-se identificar uma função localmente integrável com uma elemento de $\distribuicoes$ do seguinte modo: seja $f \in \espacoLpcomp{\Omega}$ e defina o funcional linear $g_{f}:\distribuicoes \to \reta$ por 
 	$$
-	\produtointerno{f}{\phi}=\int_{\Omega}f(x)\phi(x).
+	g_{f}(\phi)=\int_{\Omega}f(x)\phi(x).
 	$$
-	Como $f$ é contínua, então $f|_{K}$ é limitada e
-	$$
-	|\produtointerno{f}{\phi}|
-	\leq \int_{K}|f(x)||\phi(x)|
-	\leq \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|\int_{K}|f(x)|<\infty.
-	$$
-	Portanto, $f \in \distribuicoes$. Além disso, é possível se mostrar que, se $\produtointerno{f}{\phi}= 0$, então $f=0$. Dessa forma, a aplicação $\funcoesdiferenciaveis{0}{\Omega}\ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$ é injetora. Note que a condição para essa identificação foi $\int_{K}|f(x)|<\infty$, o que implica na condição de integrabilidade. Com isso, pode-se generalizar para o caso em que $f \in \espacoLpcomp{\Omega}$, de modo que ainda se tenha a injetividade $\espacoLpcomp{\Omega} \ni f \mapsto \produtointerno{f}{.} \in \distribuicoes$.
 	
-	Em $\cite{friedlander}$ mostra-se que, dados $f \in \distribuicoes$ e um k-multi-índice $\alpha$, então
+	Sejam $\phi \in \funcoesteste$ e $K = supp(\phi) \subset \Omega$. Então, para $p=0$ tem-se a cota superior $|\phi(x)|\leq \sup\limits_{x\in K, |\alpha|\leq 0}|\partial^{\alpha}\phi(x)| = \sup\limits_{x\in K}|\phi(x)|$, e usando o fato que $\int_{K}|f(x)|<\infty$, tem-se
+	$$
+	\begin{aligned}
+	|g_{f}(\phi)|
+	&=\Big|\int_{\Omega}f(x)\phi(x)\Big|
+	\\
+	&=\Big|\int_{K}f(x)\phi(x)\Big|
+	\\
+	&\leq \int_{K}|f(x)||\phi(x)|
+	\\
+	&\leq \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|\underbrace{\int_{K}|f(x)|}_{=C}
+	\\
+	&< C\sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|.
+	\end{aligned}
+	$$
+	Portanto, $g_{f} \in \distribuicoes$. Com isso, pode-se mostrar que a aplicação $g:\espacoLpcomp{\Omega}\to \distribuicoesgeral{\Omega}$ definida por $g(f)(\phi) = g_{f}(\phi)$, é um operador linear injetor. Logo, a identificação $f \mapsto g_{f}$ está bem definida. 
+	
+	Denote a aplicação $g:\espacoLpcomp{\Omega}\to \distribuicoesgeral{\Omega}$ por $g(f)=\produtointerno{f}{.}$. Em $\cite{friedlander}$ está demonstrado que, dados $\produtointerno{f}{.} \in \distribuicoes$ e um k-multi-índice $\alpha$, então
 	$$
 	\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}.
 	$$
@@ -5335,33 +5354,36 @@
 	\end{definicao}
 	
 	\begin{exemplo}
-		(Função de Heaviside)  A de função de HeavisideSeja $\theta:\reta \to \reta$ é definida por
+		(Função de Heaviside) A função $\theta:\reta \to \reta$ definida por
 		$$
-		\funcaocond{\theta(x)}{1}{x\geq0}{0}{x<0}.
+		\funcaocond{\theta(x)}{1}{x\geq0}{0}{x<0},
 		$$
-		Dado $\phi \in \funcoestestegeral{\reta}$, tem-se que 
+		é chamada  função de Heaviside.
+		
+		Afirmo que $\partial\theta = \delta \in \distribuicoes$. De fato, é imediato que $\theta$ é localmente integrável, logo $\theta \in \distribuicoesgeral{\reta}$. Dado $\phi \in \funcoestestegeral{\reta}$ e definindo $K=supp(\phi)$, tem-se que 
+		
 		$$
 		\begin{aligned}
-			|\produtointerno{\theta}{\phi}| 
-			&\leq \int_{\reta}|\theta(x)\phi(x)| 
-			\\
-			&= \int_{K\cap\reta_{+}}|\phi(x)| 
-			\\
-			&\leq \sup\limits_{x\in K, |\alpha|\leq p}|d^{\alpha}\phi(x)|\underbrace{\int_{K\cap\reta_{+}}dx}_{<\infty}
-			\\
-			&=C\sup\limits_{x\in K, |\alpha|\leq p}|d^{\alpha}\phi(x)|.
+		\produtointerno{\partial\theta}{\phi} 
+		&= -\produtointerno{\theta}{\partial\phi} 
+		\\
+		&=-\int_{\reta}\theta(x)d\phi(x)
+		\\
+		&= -\int_{K\cap\reta_{+}}  d\phi(x) 
+		\\
+		&= -\phi(x)\Big|^{\infty}_{0} 
+		\\
+		&= \phi(0) 
+		\\
+		&= \produtointerno{\delta}{\phi},
 		\end{aligned}
-		$$ 
-		Portanto, $\theta\in \distribuicoesgeral{\reta}$.
-		Afirmo que o diferencial de $\theta$ é o delta de Dirac. De fato,
 		$$
-		\produtointerno{d\theta}{\phi} = -		\produtointerno{\theta}{d\phi} = -\int_{K\cap\reta_{+}}  d\phi(x) = -\phi(0)\Big|^{\infty}_{0} = \phi(0) = \produtointerno{\delta}{\phi}.
-		$$
-		Como $\phi \in \funcoestestegeral{\reta}$ é arbitrária, então $d \theta = \delta \in \distribuicoesgeral{\reta}$.
+		onde foi usado o fato que, por ter o suporte compacto, então $\lim_{x\to \infty}\theta(x)=0$.
+		Como $\phi \in \funcoestestegeral{\reta}$ é arbitrária, então $\partial \theta = \delta \in \distribuicoesgeral{\reta}$.
 	\end{exemplo}
 	
 	\begin{observacao}
-		O exemplo anterior permite sistematizar o problema físico da distribuição puntual de carga, o qual é solução da equação $\produtointerno{\nabla.E}{\phi} = \produtointerno{q\delta}{\phi}$. Portanto, $\nabla.E = q\delta$, no sentido fraco.
+		O exemplo anterior permite sistematizar o problema físico da densidade puntual de carga escrevendo $\produtointerno{\nabla.E}{.} = \produtointerno{q_{0}\delta}{.} \in \distribuicoesgeral{\real{3}}$, onde a solução dos sistema é um elemento $E\in \espacoLpcomp{\real{3};\real{3}}$. As soluções de EDPs nesse contexto são chamadas soluções fracas.
 	\end{observacao}
 
 	\section{Espaço de Sobolev $W^{k,p}$}\label{secao_espaco_sobolev}
