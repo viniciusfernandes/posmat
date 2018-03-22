@@ -66,7 +66,7 @@
 \newcommand{\caminhosespeciais}[1]{\mathcal{L}^{*}(#1)}
 \newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
 \newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
-\newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}}
+\newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}(x^{-},x^{+})}
 \newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
 \newcommand{\caminhosexponenciaisSobolev}{\mathcal{L}^{1,p}M}
 \newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
@@ -215,7 +215,7 @@
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
 \newcommand{\operadoreslimitadosauto}[1]{\mathcal{B}(#1)}
 \newcommand{\operadorFloer}{\mathcal{F}}
-\newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{#1}{s} + J(#1)\derivadaparcial{#1}{t} - J(#1)X_{H}(#1)}
+\newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{}{s}#1 + J_{#1}\derivadaparcial{}{t}#1 - J_{#1}X_{H}(#1)}
 \newcommand{\operadorFloerParametro}[1]{\mathcal{F}(#1)}
 \newcommand{\operadorFloerPadrao}{\operadorFloerParametro{u}}
 \newcommand{\matrizantisimetrica}[1]{Asym(#1)}
@@ -2811,11 +2811,10 @@
 	$$
 	
 	Suponha que $u :\reta\to \lacocontrateis$ seja uma solução do sistema $\derivada{}{s}u(s)|_{s=0} = -\gradientefuncional(x)$ e $u(0)=x$. Com isso, pode-se afirmar que tais soluções são as trajetórias em $\lacocontrateis$ do campo gradiente negativo $-\gradientefuncional$. Note que, para casa $s\in \reta$ tem-se que $u(s):\circulo\to M$ é um caminho contínuo e fechado. Portanto as trajetórias de $-\gradientefuncional$ podem ser vistas como aplicações $u:\retacartesianocirculo \to M$ de classe $C^{1}$. Substituindo essa expressão na equação do gradiente de $\funcionalH$ tem-se a Equação de Floer
-	
 	$$
-	\derivadaparcial{}{s}u(s,t) + J(u(s,t))\derivadaparcial{}{t}u(s,t) -J(u(s,t)) \campohamiltoniano{u(s,t)}=0. 
+	\operadorFloerDefinicao{u(s,t)}=0.
 	$$
-	
+
 	\begin{observacao}
 		Note que, na determinação das soluções da equação de Floer não estamos diante de um problema de Cauchy, pois não temos condições de contorno nessa formulação.
 	\end{observacao}
@@ -3814,14 +3813,14 @@
 	onde $X_{i} \in \funcoessuaves{\circulo}$ são os componentes do campo vetorial $X$. 
 	
 	\begin{observacao}
-		parte da análise realizada nessa ao longo dessa seção ganha simplicidade ao se adotar um equivalente aos espaços de Sobolev $\espacosobolev{\pullbackfibradotangenteM{x}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}}$. Em \cite{audi_floer_homology} pode ser encontrado que esses espaços são equivalentes as espaços de Banach $\espacosobolevcontradominio{\circulo}{\real{2n}}$ e $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente.
+		parte da análise realizada nessa ao longo dessa seção ganha simplicidade ao se adotar um equivalente aos espaços de Sobolev $\espacosobolev{\pullbackfibradotangenteM{x}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}}$. Em \cite{audi_floer_homology} pode ser encontrada a identificados desses espaços com os espaços de Sobolev $\espacosobolevcontradominio{\circulo}{\real{2n}}$ e $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente.
 	\end{observacao}
 	
 	Com argumentos análogos aos anteriores, defini-se os espaços de Banach $\espacoLp{\pullbackfibradotangenteM{x}}$, $\espacoLp{\pullbackfibradotangenteM{u}}$ e seus  equivalentes $\espacoLpcontradominio{\circulo}{\real{2n}}$ e $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente.
 	
 	Sejam $D \subset TM$ uma vizinhança aberta da seção nula de $TM$ e $\exp:D\to M$ a aplicação exponencial definida no Apêndice \ref{apendice_variedade_riemanniana}.
 	Fixado $x\in \lacocontrateis$, tem-se que $\Exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ dada por $\Exp_{x}(Y)(t) = \exp(x(t),Y(t))$ está bem-definida.
-	Tome a coleção $\{ (\espacosobolev{x^{*}D}, \Exp_{x}) \}_{x \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que existem $x\in \lacocontrateis$ e $Y \in \espacosobolev{x^{*}D}$ com $\beta(t)=\Exp_{x}(Y)(t)$.
+	Tome a coleção $\{ (\espacosobolev{x^{*}D}, \Exp_{x}) \}_{x \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que $\beta=\Exp_{x}(Y)$ para algum $x\in \lacocontrateis$ e algum $Y \in \espacosobolev{x^{*}D}$.
 	
 	\begin{proposicao}\label{proposicao_caminhos_variedade_banach}
 		O conjunto $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Além disso, 
@@ -3833,27 +3832,28 @@
 	\begin{prova}
 		Afirmo que $\caminhosexponenciaisSobolev$ satisfaz os axiomas das variedades de Banach. De fato,
 		\begin{enumerate}
-			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $x_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{x_{\beta}^{*}D}$ tal que $\beta(t)=\Exp_{x_{\beta}}(Y_{\beta})(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é injetora. Denotando $\espacosobolev{x_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
+			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $x_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{x_{\beta}^{*}D}$ tal que $\beta(t)=\Exp_{x_{\beta}}(Y_{\beta})(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é difeomorfa sobre a sua imagem. Denotando $\espacosobolev{x_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
 			$$
 			\caminhosexponenciaisSobolev = \bigcup_{\beta \in \caminhosexponenciaisSobolev } W_{\beta}.
 			$$
 			
 			\item Pela escolha de $D_{\beta}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\Exp_{x_{\beta}}:W_{\beta} \to \Exp_{x_{\beta}}(W_{\beta})$ é um difeomorfismo sobre sua imagem. Logo é um homeomorfismo.
 			
-			\item Como $\Exp_{x_{\beta}}$ e $\Exp_{x_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\exp_{x_{\beta}}^{-1} \circ \exp_{x_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
+			\item Como $\Exp_{x_{\beta}}$ e $\Exp_{x_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\Exp_{x_{\beta}}^{-1} \circ \Exp_{x_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
 		\end{enumerate}
 		
 		Portanto $\{(W_{\beta}, \exp_{x_{\beta}}) \}_{\beta \in \caminhosexponenciaisSobolev}$ é um atlas suave e $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Por fim, a demonstração da cadeia de inclusão dos conjuntos e suas densidades podem ser encontrada em \cite{matthias_morse_homology}.
 	\end{prova}
 	
-\alerta{	\begin{observacao}
+\alerta{	\begin{observacao} (Não sei onde colocar essa observação...!!!!)
 		Seja $I\subseteq \reta$ um intervalo, então $\espacosobolev{I} \subset C^{0}(\overline{I})$ para todo $p\geq 1$. Contudo, para um dado $\Omega \in \real{m}$ tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ para $p>m$ (veja em \cite{audi_floer_homology}). Note que, $\retacartesianocirculo \subset \real{3}$ é uma variedade de dimensão 2, portanto não se pode afirmar que os elementos de $\espacosobolev{\retacartesianocirculo}$ são aplicações contínuas. Contudo, no caso em que $p>2$, o Teorema \ref{teorema_rellich} garante que as soluções dos das EDPs serão contínuas. Com isso, será assumido que $p>2$ no restante do texto. (tenho que rever essa afirmação pois estamos demonstrando fredholm para p=2.)
-	\end{observacao}}
-	
+	\end{observacao}
+}
+	\aviso{ver Michele 226, 227}
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
-		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. O conjunto das aplicações $u \in \aplicaoessuavesreatacirculo$ tais que $\lim_{s \to \pm \infty} u(s,t) = x^{\pm}(t)$ para todo  $t\in \circulo $ e que 
+		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. O conjunto das aplicações $w \in \aplicaoessuavesreatacirculo$ tais que $\lim_{s \to \pm \infty} w(s,t) = x^{\pm}(t)$ para todo  $t\in \circulo $ e que 
 		$$
-		\normagrande{\derivadaparcial{u}{s}(s,t)} \leq Ke^{-\delta|s|} \;\; \text{e} \;\; \normagrande{\derivadaparcial{u}{t}(s,t) -X_{H}(u)} \leq Ke^{-\delta|s|}
+		\normagrande{\derivadaparcial{}{s}w(s,t)} \leq Ke^{-\delta|s|} \;\; \text{e} \;\; \normagrande{\derivadaparcial{}{t}w(s,t) -X_{H}(w(s,t))} \leq Ke^{-\delta|s|}
 		$$
 		para algum $K\in \reta_{+}$, é chamado de conjunto dos caminhos com decaimento exponencial conectando $x^{-}$ a $x^{+}$ e é denotado por $\caminhosdecaimentoexponencialpadrao$.
 	\end{definicao}
@@ -3861,9 +3861,9 @@
 	\begin{definicao}
 		(Exponenciais conectantes) \alerta{(Para $p>2$ tenho que rever esse ponto. Veja Michele pag 227)} O conjunto das aplicações 
 		$$
-		\retacartesianocirculo \ni (s,t) \mapsto \exp_{u(s,t)}(Y(s,t)) \in M,
+		\retacartesianocirculo \ni (s,t) \mapsto \exp(w(s,t), Y(s,t)) \in M,
 		$$
-		onde $u \in \caminhosdecaimentoexponencialpadrao$ e $Y\in \espacosobolev{\pullbackfibradotangenteM{u}}$ é chamado conjunto das exponenciais conectantes e é denotado por $\caminhosexponenciaisconectantespadrao$.
+		onde $w \in \caminhosdecaimentoexponencialpadrao$ e $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$ é chamado conjunto das exponenciais conectantes e é denotado por $\caminhosexponenciaisconectantespadrao$.
 	\end{definicao}
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
@@ -3871,15 +3871,17 @@
 	\end{proposicao}
 	
 	\begin{prova}
-		Considere $u \in \caminhosdecaimentoexponencialpadrao$ e $\{e_{j}\}_{j=1}^{2n}$ um referencial ortonormal ao longo de $u$. Pelo Teorema \ref{teorema_inclusao_sobolev} a inclusão $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \hookrightarrow L^{\infty}(\retacartesianocirculo, \real{2n})$ é continua, e pelo Teorema \ref{teorema_rellich} existe uma constante $C\geq 0$ tal que $\norma{Y}_{L^{\infty}} \leq K\normaWp{Y}$ para todo $Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. 
+		Sejam $w \in \caminhosdecaimentoexponencialpadrao$, um número $r_{w}>0$ e o disco $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{x} \}$. Além disso, suponha que $r_{x}$ seja um raio tal que a aplicação 
+		$$
+		D_{w}\ni Y\mapsto \Exp_{w}(Y) \in \caminhosexponenciaisconectantespadrao
+		$$ 
+		é um difeomorfismo sobre sua imagem (veja \ref{proposicao_difeomorfismo_exponencial}). 
 		
-		Seja o disco $D_{p}=\{(p, Y(p))\in TM: \norma{Y(p)}<r_{p} \}$, onde $r_{p}>0$. Como $M $ é um compacto, então pode-se escolher uma cobertura finita de $M$ por discos tal que, para cada $p \in M$, a aplicação exponencial $(p,Y(p))\mapsto (p, \exp_{p}Y(p)))$ é um difeomorfismo local (veja \ref{proposicao_difeomorfismo_exponencial}). Seja $r_{0}$ o supremo dos raios $r_{p}$ da subcobertura finita escolhida. 
-		
-		Definindo $W_{u} = \{Y\in \espacosobolev{\pullbackfibradotangenteM{u}}:\normaWp{Y} < r_{0}/K\}$ tem-se que a aplicação exponencial $(u, Y) \mapsto (u, \exp_{u}Y)$ é um difeomorfismo sobre sua imagem, logo é um homeomorfismo. Com uma construção análoga a que foi feita na Proposição \ref{proposicao_caminhos_variedade_banach} pode-se mostrar que $\{(W_{u}, \exp_{u})\}_{u \in \caminhosdecaimentoexponencialpadrao}$ é um atlas suave de $\caminhosexponenciaisconectantespadrao$, portanto esse conjunto é uma variedade de Banach. 
+		Com argumentos análogos aos utilizandos na demonstração da Proposição \ref{proposicao_caminhos_variedade_banach}, pode-se afirmar que $\{(D_{w}, \Exp_{w})\}_{w\in \caminhosdecaimentoexponencialpadrao} $ é um atlas de $\caminhosexponenciaisconectantespadrao$ e este conjunto é uma variedade de Banach.
 	\end{prova}
 	
-		Seja $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s,t) =x^{\pm}(t)\; \forall t\in \reta \}$, onde $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$.
-		Em \cite{audi_floer_homology} é mostrada a proposição a seguir
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$ e $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s) =x^{\pm}\}$.
+		A seguinte proposição, que está demonstrada em \cite{audi_floer_homology}, afirma que todo solução de energia finita $u \in \energiafinitaMconectante$ satisfaz as condições de decaimento exponencial e, além disso, pode ser escrita como $u=\Exp(w,Y)$ para algum $w\in \caminhosdecaimentoexponencialpadrao$ e algum $Y\in \espacoLp{\pullbackfibradotangenteM{w}}$.
 		
 		\begin{proposicao}\label{proposicao_cadeia_caminhos_conectantes}
 			$\energiafinitaMconectante \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
@@ -3888,44 +3890,43 @@
 	
 	\section{O operador de Floer $\operadorFloer$ e seu diferencial $\diferencialfloer$}\label{secao_operador_floer}
 	
-	Denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$.
+	Por simplicidade, denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$.
 	
 	\begin{definicao}\label{definicao_operador_floer}
-		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorFloer: \caminhosexponenciaisconectantesabrev \to T\caminhosexponenciaisconectantesabrev$ definido por
+		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorFloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciais$ definido por
 		$$
 		\operadorFloerParametro{u} =\operadorFloerDefinicao{u},
 		$$
-		onde $T\caminhosexponenciaisconectantesabrev$ é o fibrado tangente de $\caminhosexponenciaisconectantesabrev$, cujas finbras são os espaços $\espacoLp{\pullbackfibradotangenteM{u}	}$ (veja a Observação \ref{observacao_identificacao_espaco_Lp}).
+		onde $\fibradocaminhosexponenciais$ é o fibrado vetorial em $\caminhosexponenciaisconectantesabrev$, cuja fibra em $u\in \caminhosexponenciaisconectantesabrev$ é o espaço $\espacoLp{\pullbackfibradotangenteM{u}	}$.
 	\end{definicao}
 	
-	Seja $u \in \caminhosexponenciaisconectantesabrev$, então
+	Dado $\exp(w,Y) \in \caminhosexponenciaisconectantesabrev$, pode-se mostrar que, identificando a fibra $\espacoLp{\pullbackfibradotangenteM{u}}$ com $\espacoLp{\retacartesianocirculo;\real{2n}}$, tem-se que $\operadorFloerParametro{\exp(w,Y)}\in \espacoLp{\retacartesianocirculo;\real{2n}}$ (veja \cite{audi_floer_homology}). Logo, o operador de Floer esta bem-definido.
+	
+	\aviso{lecture Salamon 15}
+	
+	Seja $w \in \caminhosexponenciaisconectantespadrao$ e tome $Y $ um vetor da fibra $ \espacoLp{\retacartesianocirculo;\real{2n}}$. Então $Y$ pode ser visto como uma aplicação suave $Y:\retacartesianocirculo\to TM$ tal que $Y(s,t)\in \espacotangenteponto{w(s,t)}{M}$. Além disso, existe uma vizinhança $V$ de $w$ em $\caminhosexponenciaisconectantespadrao$ onde todo $w' \in V$ é dado unicamente por $w'=\exp(w, Y')$ para algum $Y'\in \espacoLp{\pullbackfibradotangenteM{w}}$. Como $M$ pode ser vista como uma variedade Riemanniana, então o diferencial de $\diferencialfloerponto{u}$ avaliado no vetor $Y$ é dado via o transporte paralelo de $\operadorFloerParametro{u}$ ao longo da geodésica $\tau \mapsto \exp_{w}(tY)$, é dado em termos das conexões afins $\nabla:\campossuaves{M}\times \campossuaves{M} \to \campossuaves{M}$ e é expresso em por
+	$$
+	\diferencialfloerponto{w}(Y) = \nabla_{s}Y + J_{w}\nabla_{t}Y + dJ_{w}(Y)(Y - X_{H}(w)) - J_{w}d_{w}X_{H}(Y).
+	$$
+	
+	Mais detalhes dessa descrição podem ser encontrados em \cite{salamon_lecture}. Contudo, analisar as propriedades desse operador com conexões afins adiciona complexidade ao estudo, e nesse texto é adotada uma abordagem via mergulho de variedades em espaços euclidianos.
+	
+	\aviso{Michele 234}
+	
+	Pelo Teorema $\ref{teorema_whitney}$, a variedade $M$ pode ser mergulhada em $\real{m}$ para $m\geq 4n+1$. Fixando $m$, tem-se o mergulho de $i: TM \hookrightarrow \real{m}\times\real{m}$, e com isso, os campos tangentes a $M$ ao longo de todo $u \in \caminhosexponenciaisconectantespadrao$ podem ser vistos como vetores em $\real{m}$ da seguinte forma
 	$$
 	\begin{aligned}
-	\normaLp{\operadorFloerPadrao} &= \normagrandeLpdefinicao{\operadorFloerDefinicao{u}}{\retacartesianocirculo}
+	\pi_{2}\circ i : TM &\to \real{m}
 	\\
-	&\leq \normaLpdefinicao{\bigparenteses{\normagrande{\derivadaparcial{u}{s}} +\norma{J_{u}}\normagrande{\derivadaparcial{u}{t} - X_{H}(u)}}}{\retacartesianocirculo}
-	\\
-	&\leq \normaLpdefinicao{\bigparenteses{(Ke^{-\delta|s|} +\norma{J_{u}}Ke^{-\delta|s|})}}{\retacartesianocirculo}
-	\\
-	&\leq G \int_{\retacartesianocirculo}e^{-\delta|s|p}
-	\\
-	&< \infty,
-	\end{aligned}	
-	$$ 
-	onde 
+	(x, Y(x)) &\mapsto Y(x),
+	\end{aligned}
 	$$
-	\norma{J_{u}}=\sup_{\norma{x}=1, \;\; (s,t)\in \retacartesianocirculo}  \norma{J(u(s,t))x}.\alerta{(limitado???????)}
+	onde $\pi_{2}:\real{m}\times \real{m}\to \real{m} 
+	$ é definida por $\pi_{2}(a,b) = b$.
+	Logo, o operador de Floer $\operadorFloer$ pode ser tratado como uma aplicação $\operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$. Para calcular o diferencial de $\operadorFloer$ em $u \in \caminhosexponenciaisconectantespadrao$, tome uma  deve-se calcular o limite
 	$$
-	Logo $\operadorFloerParametro{u} \in L^{p}(\pullbackfibradotangenteMpadrao)$ e o operador de Floer esta bem-definido.
-	
-	Lembrando que, dado $u \in \caminhosexponenciaisconectantesabrev$, tem-se que $u:\retacartesianocirculo\to M$. Com isso, $\operadorFloerParametro{u}$ é tal que $\operadorFloerParametro{u}(s, t) \in \espacotangenteponto{u(s,t)}{M}$ para todo $(s,t)\in \retacartesianocirculo$. É sob esse sentido que se obterá o diferencial de $\operadorFloer$. Como $M$ é uma variedade Riemanniana, a variação de $\operadorFloer$ pode ser obtida realizando o transporte paralelo desse campo ao longo de uma dada curva. O campo vetorial resultante é expresso em termos de conexões afins (veja o Apêndice \ref{apendice_variedade_riemanniana}) e, de acordo com \cite{salamon_zehnder} e \cite{salamon_lecture}, é dado por
-	
+	\lim\limits_{\tau\to 0}\frac{\operadorFloerParametro{\exp(w, \tau Y)}-\operadorFloerParametro{u}}{\normaLp{\tau Y}}.
 	$$
-	\nabla\operadorFloerParametro{u}(\xi) = \nabla_{s}\xi + J(u)\nabla_{t}\xi + dJ(u)(\xi)(\xi - X_{H}(u)) - J(u)(dX_{H})_{u}(\xi),
-	$$
-	onde $\gamma: (-\epsilon, \epsilon) \to M$ é um caminho suave tal que $u(s,t) =\gamma(0)$ e $\derivada{}{\lambda}\gamma(\lambda)|_{\lambda=0}=\xi(u(s,t))$, para $(s,t)$. Contudo, analisar as propriedades desse operador com conexões afins adiciona complexidade ao estudo. 
-	
-	Pelo Teorema $\ref{teorema_whitney}$, a variedade $M$ pode ser mergulhada em $\real{4n+1}$, logo $u(s,t)\in M \subset \real{4n+1}$. Além disso, $\espacoLp{\pullbackfibradotangenteM{u}}$ são as fibras de $T\caminhosexponenciaisconectantesabrev$ e com esse mergilho podem ser identificadas com $\espacoLpcontradominio{\retacartesianocirculo}{\real{4n+1}}$. Seja $\xi(s,t)=(\xi_{1}(s,t), \dots, \xi_{2n}(s,t)) \in \real{2n }\subset \real{4n+1}$. Então, omitindo os parâmetros $(s,t)$ por simplpicidade, tem-se que
 	
 	$$
 	\begin{aligned}
