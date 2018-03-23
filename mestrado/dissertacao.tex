@@ -3871,7 +3871,7 @@
 	\end{proposicao}
 	
 	\begin{prova}
-		Sejam $w \in \caminhosdecaimentoexponencialpadrao$, um número $r_{w}>0$ e o disco $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{x} \}$. Além disso, suponha que $r_{x}$ seja um raio tal que a aplicação 
+		Sejam $w \in \caminhosdecaimentoexponencialpadrao$, um número $r_{w}>0$ e o disco $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$. Além disso, suponha que $r_{w}$ seja um raio tal que a aplicação 
 		$$
 		D_{w}\ni Y\mapsto \Exp_{w}(Y) \in \caminhosexponenciaisconectantespadrao
 		$$ 
@@ -3890,17 +3890,22 @@
 	
 	\section{O operador de Floer $\operadorFloer$ e seu diferencial $\diferencialfloer$}\label{secao_operador_floer}
 	
-	Por simplicidade, denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$.
+	Por simplicidade, denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$. Seja $\fibradocaminhosexponenciais$ um fibrado vetorial sobre $\caminhosexponenciaisconectantespadrao$ cujas fibras em $u \in \caminhosexponenciaisconectantespadrao$ é $\espacoLp{\pullbackfibradotangenteM{u}}$.
 	
 	\begin{definicao}\label{definicao_operador_floer}
-		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é o operador diferencial $\operadorFloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciais$ definido por
+		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é a seção do fibrado $\operadorFloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciais$ definida por
 		$$
-		\operadorFloerParametro{u} =\operadorFloerDefinicao{u},
+		\operadorFloerParametro{u} = \bigparenteses{u,\operadorFloerDefinicao{u}}.
 		$$
-		onde $\fibradocaminhosexponenciais$ é o fibrado vetorial em $\caminhosexponenciaisconectantesabrev$, cuja fibra em $u\in \caminhosexponenciaisconectantesabrev$ é o espaço $\espacoLp{\pullbackfibradotangenteM{u}	}$.
 	\end{definicao}
 	
-	Dado $\exp(w,Y) \in \caminhosexponenciaisconectantesabrev$, pode-se mostrar que, identificando a fibra $\espacoLp{\pullbackfibradotangenteM{u}}$ com $\espacoLp{\retacartesianocirculo;\real{2n}}$, tem-se que $\operadorFloerParametro{\exp(w,Y)}\in \espacoLp{\retacartesianocirculo;\real{2n}}$ (veja \cite{audi_floer_homology}). Logo, o operador de Floer esta bem-definido.
+	Daqui em diante adotaremos a identificação da seção $\operadorFloer$ como operador diferencial $\partial_{s}+J\partial_{t}-J\campohamiltonianoabrev$ (veja o Apêndice \ref{apendice_fibrados}).
+	
+	\begin{observacao}
+		 Com essa identificação o operador de Floer pode ser visto como um elemento de $\campossuaves{\caminhosexponenciaisconectantespadrao}$.
+	\end{observacao}
+	
+	Dado $\exp(w,Y) \in \caminhosexponenciaisconectantesabrev$, pode-se mostrar que, identificando a fibra $\espacoLp{\pullbackfibradotangenteM{u}}$ com $\espacoLp{\retacartesianocirculo;\real{2n}}$, tem-se que $\operadorFloerParametro{\exp(w,Y)}\in \espacoLp{\retacartesianocirculo;\real{2n}}$ (veja \cite{audi_floer_homology}) \alerta{(se a próxima seção permanecer não precisarei dessa referência)}. Logo, o operador de Floer esta bem-definido.
 	
 	\aviso{lecture Salamon 15}
 	
@@ -3924,12 +3929,50 @@
 	onde $\pi_{2}:\real{m}\times \real{m}\to \real{m} 
 	$ é definida por $\pi_{2}(a,b) = b$.
 
-	Logo, o operador de Floer $\operadorFloer$ pode ser tratado como uma aplicação $\operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{TM}$. 
+	Realizando a composição $\pi_{2}\circ i \circ \operadorFloer$, o operador de Floer $\operadorFloer$ pode ser visto como uma aplicação $\operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$. Essa composição permite que se calcule do diferencial de $\operadorFloer$ de forma análoga ao que se faz em análise em espaços euclidianos, pois $u(s,t)$ pode ser visto como elemento de $\real{m}$ para todo $(s,t)\in \retacartesianocirculo$ e todo $u\in \caminhosexponenciaisconectantespadrao$.
 	
-	Tome uma carta $(D_{w}, \Exp_{w})$ em $u$ com raio $r_{w}>0$. Note que, todo $\tilde{u} \in D_{w}$ e suficientemente próximo a $u$ pode ser escrito como $\tilde{u}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$ e que $\Exp_{w}(0)=w$. Seja $\epsilon>0$ tal que $\tilde{u}(\tau) = \Exp(w, \tau Y) \in D_{w}$ para todo $\tau \in (-\epsilon, \epsilon)$. O diferencial diferencial de $\operadorFloer$ em $u \in \caminhosexponenciaisconectantespadrao$ é determinado tomando o limite
+	Fixe $u \in \caminhosexponenciaisconectantespadrao$ e tome uma carta $(D_{w}, \Exp_{w})$ em $u$, onde $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$ (veja a Proposição \ref{proposicao_variedade_banach}). Com isso, todo $u_{0} \in D_{w}$ suficientemente próximo a $u$ pode ser escrito como $u_{0}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$. Seja o caminho $\tilde{u}:\intervalo\to \caminhosexponenciaisconectantespadrao$ definido por $\tilde{u}(\tau)=\Exp_{w}(\tau Y)$ tal que $\tilde{u}(0) = u$ e $\tilde{u}(1) = u_{0}$. Usando o fato que $\derivada{\tilde{u}}{\tau}=Y$, o diferencial diferencial de $\operadorFloer$ em $u \in \caminhosexponenciaisconectantespadrao$ é dado por
 	$$
-		\lim\limits_{\tau\to 0}\frac{\operadorFloerParametro{\tilde{u}(\tau)} - \operadorFloerParametro{u}}{\tau}.
+	\begin{aligned}
+	\diferencialfloerponto{u}(Y)
+	&=	\lim\limits_{\tau\to 0}\frac{\operadorFloerParametro{\tilde{u}(\tau)} - \operadorFloerParametro{u}}{\tau}
+	\\
+	&=\lim\limits_{\tau\to 0}\frac{1}{\tau}
+	\bigparenteses{
+		\derivadaparcial{\tilde{u}}{s} + J_{\tilde{u}}\derivadaparcial{\tilde{u}}{t}-J_{\tilde{u}}\campohamiltoniano{\tilde{u}}
+		-\derivadaparcial{u}{s} - J_{u}\derivadaparcial{u}{t} + J_{u}\campohamiltoniano{u}
+	}
+	\\
+	&=
+	\lim\limits_{\tau\to 0}\frac{1}{\tau}
+	\bigparenteses{
+		\derivadaparcial{(\tilde{u}-u)}{s}
+		+(J_{\tilde{u}}-J_{u})\derivadaparcial{\tilde{u}}{t}
+		+J_{u}\Big(\derivadaparcial{\tilde{u}}{t}-\derivadaparcial{u}{t}\Big)
+		\\
+		&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;-J_{\tilde{u}}\campohamiltoniano{\tilde{u}}+J_{u}\campohamiltoniano{\tilde{u}}
+		-J_{u}(\campohamiltoniano{\tilde{u}}-\campohamiltoniano{u})}
+		\\
+		&=\lim\limits_{\tau\to 0}
+		\bigparenteses{
+			\derivadaparcial{}{s}\bigparenteses{\frac{\tilde{u}-u}{\tau}}
+			+\bigparenteses{\frac{J_{\tilde{u}}-J_{u}}{\tau}}\derivadaparcial{\tilde{u}}{t} + J_{u}\derivadaparcial{}{t}\bigparenteses{\frac{\tilde{u}-u}{\tau}}
+			\\&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;-\bigparenteses{\frac{J_{\tilde{u}}-J_{u}}{\tau}}\campohamiltoniano{\tilde{u}}-J_{u}\bigparenteses{\frac{\campohamiltoniano{\tilde{u}}-\campohamiltoniano{u} }{\tau}}
+		}
+		\\
+		&=\derivadaparcial{Y}{s}+(d_{u}J)(Y)\derivadaparcial{u}{t}+J_{u}\derivadaparcial{Y}{t} -(d_{u}J)(Y)\campohamiltoniano{u}-J_{u}(d_{u}\campohamiltonianoabrev)(Y)
+		\\
+		&=\bigparenteses{\derivadaparcial{}{s}+J_{u}\derivadaparcial{}{t}}(Y)+(d_{u}J)(Y)\bigparenteses{ \derivadaparcial{u}{t} - \campohamiltoniano{u}}-J_{u}(d_{u}\campohamiltonianoabrev)(Y)
+		\\
+		&=\underbrace{\bigparenteses{\derivadaparcial{}{s}+J_{u}\derivadaparcial{}{t}}}_{\overline{\partial}_{u}}(Y) 
+		+ 
+		\underbrace{\bigparenteses{(d_{u}J)(.)\bigparenteses{ \derivadaparcial{u}{t} - \campohamiltoniano{u}}-J_{u}(d_{u}\campohamiltonianoabrev)}}_{S_{u}}(Y)
+		\\
+		&=(\overline{\partial}_{u}+ S_{u})(Y).
+		\end{aligned}
 	$$
+	
+	
 	
 	Sejam $\tilde{x}^{-}:D^{2}\subset \complexo{} \to M$ uma extensão suave de $x^{-}$ ao disco unitário $D^{2}$ tal que  $\tilde{x}^{-}|_{\circulo} = x^{-}$ e, de forma análoga,  $\tilde{x}^{+}:D^{2}\subset \complexo{} \to M$ é uma extensão de suave de $x^{+}$. Defina uma extensão contínua $\tilde{u}:S^{2}\to M$ do cilíndro $u:\retacartesianocirculo\to M$ para a esfera $S^{2}$ como ilutrado na Figura \ref{figura_colagem_disco_cilindro}. Como $\tilde{u}(S^{2})$ é homotópico a $S^{2}$ e todo fibrado vetorial sobre $S^{2}$ é trivial, então $\pullbackfibradotangenteM{\tilde{u}}$ é um $2n$-fibrado vetorial trivial (veja o Apêndice \ref{apendice_fibrados}).
 	
@@ -3950,36 +3993,26 @@
 	\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \ni (y_{1}, \dots ,y_{2n})\mapsto \Exp_{u}\Big(\sum_{j=1}^{2n}y_{j}e_{j}\Big) \in \caminhosexponenciaisconectantespadrao.
 	$$
 	
-	Considere a aplicação $\pi_{2}\circ i \circ \operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ dada por 
-	$$
-	(\pi_{2}\circ i \circ \operadorFloer)(u)=\operadorFloerDefinicao{u},
-	$$
-	que por um abuso de notação será denotado $\pi_{2}\circ i \circ \operadorFloer$ por $\operadorFloer$. Seja $Y(s,t) = (y_{1}(s,t), \dots , y_{2n}(s,t)) \in \real{2n}\subset \real{m}$, que pode ser visto como um campo vetorial $Y=\sum y_{j}e_{j}$ em $\real{m}$.
+
+	Seja $Y(s,t) = (y_{1}(s,t), \dots , y_{2n}(s,t)) \in \real{2n}\subset \real{m}$, que pode ser visto como um campo vetorial $Y=\sum y_{j}e_{j}$ em $\real{m}$ e tangente a $u(\retacartesianocirculo)\subset M$.
 	
 	\alerta{Comentar a escolha desse Y...ver como foram construidas as cartas em u!!!}
 		
-	Considere a aplicação $\pi_{2} \circ i \circ \operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ definida por 
-	$$
-	(\pi_{2} \circ i \circ \operadorFloer)(u)=\operadorFloerDefinicao{u},
-	$$
-	onde $i$ é a a composição do mergulho $TM\hookrightarrow \real{m}\times \real{m}$ com a projeção $\pi_{2}$ anteriomente definida. Por um abuso de notação será denotado $\pi_{2} \circ i \circ \operadorFloer$ por $\operadorFloer$.
-
-	
 	$$
 	\begin{aligned}
 	\operadorFloerParametro{u+Y}-\operadorFloerParametro{u}
 	&= \operadorFloerDefinicao{u+Y}
 	\\
-	&\;\;\;\; -\derivadaparcial{u}{s} - J(u)\derivadaparcial{u}{t} + J(u)\campohamiltoniano{u}
+	&\;\;\;\; -\derivadaparcial{u}{s} - J_{u}\derivadaparcial{u}{t} + J_{u}\campohamiltoniano{u}
 	\\
-	&=\derivadaparcial{Y}{s}+J(u+Y)\derivadaparcial{Y}{t}+\bigparenteses{J(u+Y)-J(u)}\derivadaparcial{u}{t}
+	&=\derivadaparcial{Y}{s}+J_{u+Y}\derivadaparcial{Y}{t}+\bigparenteses{J_{u+Y}-J_{u}}\derivadaparcial{u}{t}
 	\\
-	&\;\;\;\;-\bigparenteses{J(u+Y)-J(u)}\campohamiltoniano{u} 
-	-J(u+Y)\bigparenteses{\campohamiltoniano{u+Y}-\campohamiltoniano{u}}
+	&\;\;\;\;-\bigparenteses{J_{u+Y}-J_{u}}\campohamiltoniano{u} 
+	-J_{u+Y}\bigparenteses{\campohamiltoniano{u+Y}-\campohamiltoniano{u}}
 	\\
-	&=\derivadaparcial{Y}{s} + J(u+Y)\derivadaparcial{Y}{t} + \bigparenteses{J(u+Y)-J(u)}\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)}  
+	&=\derivadaparcial{Y}{s} + J_{u+Y}\derivadaparcial{Y}{t} + \bigparenteses{J_{u+Y}-J_{u}}\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)}  
 	\\
-	&\;\;\;\; -J(u+Y)\bigparenteses{X_{H}(u+Y) - X_{H}(Y)}.
+	&\;\;\;\; -J_{u+Y}\bigparenteses{X_{H}(u+Y) - X_{H}(Y)}.
 	\end{aligned}
 	$$
 	Como os termos $u, Y, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorFloer$ avaliado no ponto $u\in \caminhosexponenciaisconectantesabrev$ é o limite 
@@ -3988,9 +4021,9 @@
 	\diferencialfloerponto{u}(Y)
 	&=\lim_{Y \to 0} \frac{	\operadorFloerParametro{u+Y}-\operadorFloerParametro{u}}{\norma{Y}}
 	\\
-	&= \derivadaparcial{Y}{s} + J(u)\derivadaparcial{Y}{t}+ dJ_{u}(Y)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}(Y)
+	&= \derivadaparcial{Y}{s} + J_{u}\derivadaparcial{Y}{t}+ dJ_{u}(Y)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}(Y)
 	\\
-	&= \underbrace{\Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)}_{\overline{\partial}_{u}}(Y)+ \underbrace{\Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)}_{S_{u}}(Y)
+	&= \underbrace{\Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)}_{\overline{\partial}_{u}}(Y)+ \underbrace{\Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)}_{S_{u}}(Y)
 	\\
 	&= \operadorcauchyabrev{u} Y + S_{u}Y
 	\\
@@ -4002,7 +4035,7 @@
 	\begin{definicao}
 		(O diferencial do operador de Floer) Seja $\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao $ o operador de Floer. Então o diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}}\to \espacoLp{\pullbackfibradotangenteM{u}}$ é dado por
 		$$
-		\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)(Y).
+		\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y).
 		$$
 	\end{definicao}
 	
@@ -4475,7 +4508,7 @@
 	$$
 	e seu diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}} \to \espacoLp{\pullbackfibradotangenteM{u}}$ definido por
 	$$
-	\diferencialfloerponto{u}(\xi)= \Big( \derivadaparcial{}{s} + J(u)\derivadaparcial {}{t}\Big)(\xi)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J(u) \diferencialhamiltoniano{u}\Big)(\xi).
+	\diferencialfloerponto{u}(\xi)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(\xi)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(\xi).
 	$$
 	
 	A Proposição \ref{proposicao_variedade_banach} afirma que $\caminhosexponenciaisconectantespadrao$ é uma variedade, portanto seu fibrado tangente $T\caminhosexponenciaisconectantespadrao$ esta bem definido. Suponha que $X:\caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$ seja seção nula de $T\caminhosexponenciaisconectantespadrao$. Afirmo que $\operadorFloer \pitchfork X$ se, e somente se, $\diferencialfloerponto{u}$ é sobrejetor para todo $u\in \caminhosexponenciaisconectantespadrao$ (veja a Definição \ref{definicao_aplicao_transversal} sobre a transversalidade de aplicações entre variedades). De fato, suponha que $\operadorFloer$ e $X$ sejam aplicações transversas. Como $X_{u} = 0$ para todo $u \in \caminhosexponenciaisconectantespadrao$, então $DX_{u} = 0$, o que implica em
