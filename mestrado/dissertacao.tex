@@ -3931,7 +3931,11 @@
 
 	Realizando a composição $\pi_{2}\circ i \circ \operadorFloer$, o operador de Floer $\operadorFloer$ pode ser visto como uma aplicação $\operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$. Essa composição permite que se calcule do diferencial de $\operadorFloer$ de forma análoga ao que se faz em análise em espaços euclidianos, pois $u(s,t)$ pode ser visto como elemento de $\real{m}$ para todo $(s,t)\in \retacartesianocirculo$ e todo $u\in \caminhosexponenciaisconectantespadrao$.
 	
-	Fixe $u \in \caminhosexponenciaisconectantespadrao$ e tome uma carta $(D_{w}, \Exp_{w})$ em $u$, onde $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$ (veja a Proposição \ref{proposicao_variedade_banach}). Com isso, todo $u_{0} \in D_{w}$ suficientemente próximo a $u$ pode ser escrito como $u_{0}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$. Seja o caminho $\tilde{u}:\intervalo\to \caminhosexponenciaisconectantespadrao$ definido por $\tilde{u}(\tau)=\Exp_{w}(\tau Y)$ tal que $\tilde{u}(0) = u$ e $\tilde{u}(1) = u_{0}$. Usando o fato que $\derivada{\tilde{u}}{\tau}=Y$, o diferencial diferencial de $\operadorFloer$ em $u \in \caminhosexponenciaisconectantespadrao$ é dado por
+	
+	\aviso{Michele 235, mas eu fiz um pouco diferente.}
+	
+	
+	Fixe $u \in \caminhosexponenciaisconectantespadrao$ e tome uma carta $(D_{w}, \Exp_{w})$ em $u$, onde $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$ (veja a Proposição \ref{proposicao_variedade_banach}). Com isso, todo $u_{0} \in D_{w}$ suficientemente próximo a $u$ pode ser escrito como $u_{0}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$. Seja o caminho $\tilde{u}:\intervalo\to \caminhosexponenciaisconectantespadrao$ definido por $\tilde{u}(\tau)=\Exp_{w}(\tau Y)$ tal que $\tilde{u}(0) = u$ e $\tilde{u}(1) = u_{0}$. Usando o fato que $\derivada{\tilde{u}}{\tau}|_{\tau=0}=Y$, o diferencial diferencial de $\operadorFloer$ em $u \in \caminhosexponenciaisconectantespadrao$ é dado por
 	$$
 	\begin{aligned}
 	\diferencialfloerponto{u}(Y)
@@ -3962,17 +3966,24 @@
 		\\
 		&=\derivadaparcial{Y}{s}+(d_{u}J)(Y)\derivadaparcial{u}{t}+J_{u}\derivadaparcial{Y}{t} -(d_{u}J)(Y)\campohamiltoniano{u}-J_{u}(d_{u}\campohamiltonianoabrev)(Y)
 		\\
-		&=\bigparenteses{\derivadaparcial{}{s}+J_{u}\derivadaparcial{}{t}}(Y)+(d_{u}J)(Y)\bigparenteses{ \derivadaparcial{u}{t} - \campohamiltoniano{u}}-J_{u}(d_{u}\campohamiltonianoabrev)(Y)
-		\\
-		&=\underbrace{\bigparenteses{\derivadaparcial{}{s}+J_{u}\derivadaparcial{}{t}}}_{\overline{\partial}_{u}}(Y) 
-		+ 
-		\underbrace{\bigparenteses{(d_{u}J)(.)\bigparenteses{ \derivadaparcial{u}{t} - \campohamiltoniano{u}}-J_{u}(d_{u}\campohamiltonianoabrev)}}_{S_{u}}(Y)
-		\\
-		&=(\overline{\partial}_{u}+ S_{u})(Y).
+		&=\bigparenteses{\derivadaparcial{}{s}+J_{u}\derivadaparcial{}{t}}(Y)+(d_{u}J)(Y)\bigparenteses{ \derivadaparcial{u}{t} - \campohamiltoniano{u}}-J_{u}(d_{u}\campohamiltonianoabrev)(Y).
 		\end{aligned}
 	$$
 	
+	\begin{definicao}
+		(O diferencial do operador de Floer) Seja $\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao $ o operador de Floer. Então o diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}}\to \espacoLp{\pullbackfibradotangenteM{u}}$ é dado por
+		$$
+		\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y).
+		$$
+	\end{definicao}
+
+	Na próxima seção é demonstrado que $\diferencialfloerponto{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \espacoLp{\pullbackfibradotangenteM{u}}$, e portanto o diferencial de $\operadorFloer$  está bem definido.
 	
+	\begin{observacao}
+		Note que, ao se mergulhar a variedade $M$ em $\real{m}$, a conexão afim coincide com a operação de diferenciação usual, isto é,  $\nabla=\partial$. Assim, identificando $\nabla_{s}$ e $\nabla_{t}$ com os operadores de diferenciação $\derivadaparcial{}{s}$ e $\derivadaparcial{}{t}$, respectivamente, e voltando na equação de Floer escrita em termos da conexão afim, pode-se verificar que ela coincide com a equação obtida via mergulho.
+	\end{observacao}
+	
+	A seguir o diferencial $\diferencialfloer$ será escrito como a soma de dois operadores lineares e tal decomposição é utilizada na demonstração de que $\diferencialfloer$ é uma bijeção de $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ em $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$.
 	
 	Sejam $\tilde{x}^{-}:D^{2}\subset \complexo{} \to M$ uma extensão suave de $x^{-}$ ao disco unitário $D^{2}$ tal que  $\tilde{x}^{-}|_{\circulo} = x^{-}$ e, de forma análoga,  $\tilde{x}^{+}:D^{2}\subset \complexo{} \to M$ é uma extensão de suave de $x^{+}$. Defina uma extensão contínua $\tilde{u}:S^{2}\to M$ do cilíndro $u:\retacartesianocirculo\to M$ para a esfera $S^{2}$ como ilutrado na Figura \ref{figura_colagem_disco_cilindro}. Como $\tilde{u}(S^{2})$ é homotópico a $S^{2}$ e todo fibrado vetorial sobre $S^{2}$ é trivial, então $\pullbackfibradotangenteM{\tilde{u}}$ é um $2n$-fibrado vetorial trivial (veja o Apêndice \ref{apendice_fibrados}).
 	
@@ -3992,61 +4003,24 @@
 	$$
 	\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \ni (y_{1}, \dots ,y_{2n})\mapsto \Exp_{u}\Big(\sum_{j=1}^{2n}y_{j}e_{j}\Big) \in \caminhosexponenciaisconectantespadrao.
 	$$
-	
 
-	Seja $Y(s,t) = (y_{1}(s,t), \dots , y_{2n}(s,t)) \in \real{2n}\subset \real{m}$, que pode ser visto como um campo vetorial $Y=\sum y_{j}e_{j}$ em $\real{m}$ e tangente a $u(\retacartesianocirculo)\subset M$.
+	Nessa carta o diferencial de $\diferencialfloerponto{u}$ avaliado em $Y=\sum_{j=1}^{2n}y_{j}e_{j}$ é escrito como
 	
-	\alerta{Comentar a escolha desse Y...ver como foram construidas as cartas em u!!!}
-		
-	$$
-	\begin{aligned}
-	\operadorFloerParametro{u+Y}-\operadorFloerParametro{u}
-	&= \operadorFloerDefinicao{u+Y}
-	\\
-	&\;\;\;\; -\derivadaparcial{u}{s} - J_{u}\derivadaparcial{u}{t} + J_{u}\campohamiltoniano{u}
-	\\
-	&=\derivadaparcial{Y}{s}+J_{u+Y}\derivadaparcial{Y}{t}+\bigparenteses{J_{u+Y}-J_{u}}\derivadaparcial{u}{t}
-	\\
-	&\;\;\;\;-\bigparenteses{J_{u+Y}-J_{u}}\campohamiltoniano{u} 
-	-J_{u+Y}\bigparenteses{\campohamiltoniano{u+Y}-\campohamiltoniano{u}}
-	\\
-	&=\derivadaparcial{Y}{s} + J_{u+Y}\derivadaparcial{Y}{t} + \bigparenteses{J_{u+Y}-J_{u}}\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)}  
-	\\
-	&\;\;\;\; -J_{u+Y}\bigparenteses{X_{H}(u+Y) - X_{H}(Y)}.
-	\end{aligned}
-	$$
-	Como os termos $u, Y, J, X_{H}$ são de classe $C^{\infty}$, então o diferencial de $\operadorFloer$ avaliado no ponto $u\in \caminhosexponenciaisconectantesabrev$ é o limite 
 	$$
 	\begin{aligned}
 	\diferencialfloerponto{u}(Y)
-	&=\lim_{Y \to 0} \frac{	\operadorFloerParametro{u+Y}-\operadorFloerParametro{u}}{\norma{Y}}
+	&=\underbrace{
+		\sum_{j=1}^{2n}\bigparenteses{\derivadaparcial{y_{j}}{s}+J_{u}\derivadaparcial{y_{j}}{t}}(e_{j}) }_{	\overline{\partial}_{u}(Y)}
+	+ \underbrace{\sum_{j=1}^{2n}
+		y_{j}\bigparenteses{(d_{u}J)(e_{j})\bigparenteses{ \derivadaparcial{u}{t} - \campohamiltoniano{u}}-J_{u}(d_{u}\campohamiltonianoabrev)(e_{j})}}_{S_{u}(Y)}
 	\\
-	&= \derivadaparcial{Y}{s} + J_{u}\derivadaparcial{Y}{t}+ dJ_{u}(Y)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}(Y)
-	\\
-	&= \underbrace{\Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)}_{\overline{\partial}_{u}}(Y)+ \underbrace{\Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)}_{S_{u}}(Y)
-	\\
-	&= \operadorcauchyabrev{u} Y + S_{u}Y
-	\\
-	&= (\operadorcauchyabrev{u}  + S_{u})(Y).
+	&=
+	\overline{\partial}_{u}(Y)+S_{u}(Y).
 	\end{aligned}
 	$$
-	Portanto $ D\operadorFloer_{u}= \operadorcauchyabrev{u}  + S_{u}: \real{2n} \to \real{2n}$.
 
-	\begin{definicao}
-		(O diferencial do operador de Floer) Seja $\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao $ o operador de Floer. Então o diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}}\to \espacoLp{\pullbackfibradotangenteM{u}}$ é dado por
-		$$
-		\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y).
-		$$
-	\end{definicao}
+	Como $\{e_{1}, \dots,e_{2n} \}$ é um referencial simplético, então $J_{u}$ coincide com a estrutura complexa $\estruturacomplexa$ nessa carta. Logo, $	\overline{\partial}_{u}(Y) =\sum_{j=1}^{2n}\big( \derivadaparcial{y_{j}}{s}+\estruturacomplexa \derivadaparcial{y_{j}}{t}\big)(e_{j})$.
 	
-	\begin{observacao}
-		Na próxima seção é demonstrado que $\diferencialfloerponto{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \espacoLp{\pullbackfibradotangenteM{u}}$, e portanto o diferencial de $\operadorFloer$  está bem definido.
-	\end{observacao}
-	
-	\begin{observacao}
-		Note que, ao se mergulhar a variedade $M$ em $\real{4n+1}$, tem-se que a conexão afim se reduz a operação de derivada direcional ordinária, isto é,  $\nabla=\partial$. Com isso, tem-se a identidade entre a equação escrita em termos das conexões afins e a e equação obtida via mergulho em $\real{4n+1}$. Logo, $\nabla\operadorFloer_{u} = \diferencialfloerponto{u}$.
-	\end{observacao}
-
 	\section{$D\operadorFloer$ é um operador de Fredholm}
 	\alerta{(Colocar uma resuma da estratégia da demonstração aqui...)}
 	
