@@ -124,6 +124,7 @@
 \newcommand{\energiafinitaMconectante}{\energiafinitaM(x^{-}, x^{+})}
 \newcommand{\energiafinitaMconectanteHamiltoniana}{\energiafinitaM(x^{-}, x^{+},H+h,J)}
 \newcommand{\espacoLdois}[1]{L^{2}(#1)}
+\newcommand{\espacoLdoiscontradom}[2]{L^{2}(#1, #2)}
 \newcommand{\espacoLp}[1]{L^{p}(#1)}
 \newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
 \newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
@@ -131,6 +132,7 @@
 \newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
 \newcommand{\espacoLpadjuntoretacirculo}{L^{q}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacoLpdual}{(L^{p})^{*}(\retacartesianocirculo;\real{2n})}
+\newcommand{\espacoLpdualdois}{(L^{2})^{*}(\retacartesianocirculo;\real{2n})}
 \newcommand{\espacomoduli}[2]{\mathcal{M}_{#1#2}}
 \newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
 \newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
@@ -175,6 +177,8 @@
 \newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
 \newcommand{\funcoesmorsesmale}[1]{\mathcal{M}^{S}_{o}(#1)}
 \newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
+\newcommand{\funcoessupcompact}[1]{C^{\infty}_{c}(#1)}
+\newcommand{\funcoessupcompactcontradom}[2]{C^{\infty}_{c}(#1, #2)}
 \newcommand{\funcoesteste}{\funcoestestegeral{\Omega}}
 \newcommand{\funcoestestegeral}[1]{\mathcal{D}(#1)}
 \newcommand{\generalgroup}[2]{GL(#1, #2)}
@@ -237,6 +241,7 @@
 \newcommand{\normapequenaLpdefinicao}[2]{ \normaLpdefinicao{\norma{#1}}{#2}}
 \newcommand{\normagrandeLpdefinicao}[2]{ \normaLpdefinicao{\normagrande{#1}}{#2}}
 \newcommand{\normasubscrito}[2]{\norma{#1}_{#2}}
+\newcommand{\normaWdois}[1]{||#1||_{W^{1,2}}}
 \newcommand{\normaWp}[1]{||#1||_{W^{1,p}}}
 \newcommand{\normaWpgeneralizado}[1]{||#1||_{W^{k,p}}}
 \newcommand{\normaWpgeral}[2]{||#1||_{W^{1,#2}}}
@@ -256,6 +261,8 @@
 \newcommand{\pontoscriticos}[1]{\textit{Cr}(#1)}
 \newcommand{\pontoscriticosordem}[2]{\textit{Cr}^{(#1)}(#2)}
 \newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
+\newcommand{\produtointernoLdois}[2]{\langle #1, #2 \rangle_{L^{2}}}
+\newcommand{\produtointernoWdois}[2]{\langle #1, #2 \rangle_{W^{1,2}}}
 \newcommand{\produtointernoabrev}{\langle ., .\rangle}
 \newcommand{\produtosinternos}[1]{Riem(#1)}
 \newcommand{\produtotensorial}[2]{ #1_{1} \otimes_{\mathbb{K}} \dots \otimes_{\mathbb{K}} #1_{#2}}
@@ -3971,17 +3978,19 @@
 	$$
 	
 	\begin{definicao}
-		(O diferencial do operador de Floer) Seja $\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao $ o operador de Floer. Então o diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}}\to \espacoLp{\pullbackfibradotangenteM{u}}$ é dado por
+		(O diferencial do operador de Floer) Seja $\operadorFloer: \caminhosexponenciaisconectantespadrao \to \fibradocaminhosexponenciais$ o operador de Floer. Então o diferencial $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}}\to \espacoLp{\pullbackfibradotangenteM{u}}$ é dado por
 		$$
 		\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y).
 		$$
 	\end{definicao}
 
-	Na próxima seção é demonstrado que $\diferencialfloerponto{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \espacoLp{\pullbackfibradotangenteM{u}}$, e portanto o diferencial de $\operadorFloer$  está bem definido.
+	Em \cite{audi_floer_homology} é demonstrado que $\diferencialfloerponto{u}(\espacosobolev{\pullbackfibradotangenteM{u}})\subset \espacoLp{\pullbackfibradotangenteM{u}}$, e portanto o diferencial de $\operadorFloer$  está bem definido.
 	
 	\begin{observacao}
 		Note que, ao se mergulhar a variedade $M$ em $\real{m}$, a conexão afim coincide com a operação de diferenciação usual, isto é,  $\nabla=\partial$. Assim, identificando $\nabla_{s}$ e $\nabla_{t}$ com os operadores de diferenciação $\derivadaparcial{}{s}$ e $\derivadaparcial{}{t}$, respectivamente, e voltando na equação de Floer escrita em termos da conexão afim, pode-se verificar que ela coincide com a equação obtida via mergulho.
 	\end{observacao}
+	
+	
 	
 	A seguir o diferencial $\diferencialfloer$ será escrito como a soma de dois operadores lineares e tal decomposição é utilizada na demonstração de que $\diferencialfloer$ é uma bijeção de $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ em $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$.
 	
@@ -4026,6 +4035,7 @@
 	
 	\alerta{(Acho que essas definições devem ser inserirdas em um apêndice dentro do próprio capítulo.)}
 	
+\alerta{
 	\begin{definicao}
 		Sejam $A,B$ espaços normados. Um operador linear $T:A\to B$ é um operador linear limitado se 
 		$$
@@ -4060,13 +4070,123 @@
 	\begin{observacao}
 		A primeira propriedade é chamada de  propriedade de semi-grupo, já a segunda, é chamada de proriedade de continuidade forte.
 	\end{observacao}
+}
+	Como o diferencial $\diferencialfloerponto{u}$ está definido de $\espacosobolev{\pullbackfibradotangenteM{u}}$ em $\espacoLp{\pullbackfibradotangenteM{u}}$, e esses espaços podem ser identificados com $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente, então o diferencial do operador de Floer pode ser visto como uma aplicação
+	$$
+	\diferencialfloerponto{u}:\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}\to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}},
+	$$
+	onde $\diferencialfloerponto{u}=\overline{\partial}+ S$. Seja  $\text{Endo}(\real{2n})$ o conjunto dos endomorfismos de $\real{2n}$ em $\real{2n}$, então $S$ pode ser vista como um uma aplicação de $\retacartesianocirculo$ em $\text{Endo}(\real{2n})$. Por uma questão de simplicidade, o operador $\diferencialfloerponto{u}$ será denotado por $\diferencialfloerabrev$. 
 	
-	Daqui em diante, quando não houver ambiguidades, denotaremos $D\operadorFloer_{u}$ por $\diferencialfloerabrev$, para um dado $u\in \caminhosexponenciaisconectantespadrao$.
+	Os resultados dessa seção serão demonstrados para o caso particular em que $p=2$, isto é, os espaços $\espacosobolevdois{\retacartesianocirculo}{\real{2n}}$ e $\espacoLdoiscontradom{\retacartesianocirculo}{\real{2n}}$. O caso geral em que $1 <p<\infty$ pode ser encontrados em \cite{audi_floer_homology} e \cite{salamon_lecture}.
 	
-	O seguinte lema é utilizado na demonstração da propriedade de Fredholm do diferencial do operador de Floer. Contudo, no texto será demonstrado apenas o caso particular em que $p=2$, já o caso em que $1 <p<\infty$ pode ser encontrado em \cite{salamon_lecture} e \cite{audi_floer_homology}.
+\aviso{Brezis pag 203}
 	
+	Os espaços  $\espacoLdoiscontradom{\retacartesianocirculo}{\real{2n}}$ e $\espacosobolevdois{\retacartesianocirculo}{\real{2n}}$ munidos dos produtos internos 
+	$$
+	\produtointernoLdois{Y}{X}=\int_{\retacartesianocirculo}\produtointerno{Y(s,t)}{X(s,t)}
+	$$
+	e
+	$$
+	\produtointernoWdois{Y}{X}=\int_{\retacartesianocirculo}\bigparenteses{\produtointerno{Y(s,t)}{X(s,t)} + \produtointerno{\derivadaparcial{Y}{s}(s,t)}{\derivadaparcial{X}{s}X(s,t)} + \produtointerno{\derivadaparcial{Y}{t}(s,t)}{\derivadaparcial{X}{t}X(s,t)}},
+	$$
+	onde $\produtointernoabrev$ é o produto interno usual do espaço euclidiano $\real{2n}$, são espaços de Hilbert. Além disso, $\espacosobolevdois{\circulo}{\real{2n}}$ é denso em  $\espacoLdois{\circulo;\real{2n}}$ (tais resultados podem ser encontrados em \cite{breazis_sobolev_spaces}).
+
+	O seguinte resultado, que é uma particularização do teorema de Reisz (veja \cite{kreyszig_analise_funcional}) ao espaços das aplicações p-integráveis e pode ser encontrado em \cite{breazis_sobolev_spaces}.
+	
+	\begin{teorema}\label{teorema_representacao_reiz}
+		Sejam $1<p<\infty$ e $f \in \espacoLpdual$. Então existe uma único elemento $Y \in \espacoLpGeral{q}{\retacartesianocirculo;\real{2n}}$ 
+		tal que 
+		$$
+		f(X) = \produtointernoLdois{Y}{X}
+		$$
+		para todo $X \in \espacoLpretacirculo$. Além disso, $\norma{f}_{(L^{p})^{*}} = \norma{Y}_{L^{q}}$.
+	\end{teorema}
+
+	\begin{observacao}
+		No caso $p=2$ todo elemento de $\espacoLdoiscontradom{\retacartesianocirculo}{\real{2n}}$ pode ser visto como um único elemento de $\espacoLpdualdois$.
+	\end{observacao}
+	
+	Um operador $T:D(T)\subset H_{1}\to H_{2}$ entre espaços de Hilbert é dito densamente definito se seu domínio $D(T)$ é denso em $H_{1}$. 
+	
+	\begin{definicao}
+		Sejam $H_{1}, H_{2}$ espaços de Hilbert e $T:D(T)\subset H_{1}\to H_{2}$ um operador linear densamente definido. O operador Hilbert-adjunto de $T$ é o operador linear $T^{*}:D(T^{*})\subset H_{2}\to H_{1}$ tal que
+		$$
+		\produtointerno{TX}{Y}_{H_{2}} = \produtointerno{X}{T^{*}Y}_{H_{1}}
+		$$ 
+		para todo $X\in H_{1}$ e todo $Y\in H_{2}$. O operador $T^{*}$.
+	\end{definicao}
+	
+	\begin{proposicao}\label{proposicao_diferencial_floer_adjunto}
+		Em termos de sitribuição, o operador $\diferencialfloerabrev^{*} :\espacoLdoiscontradom{\retacartesianocirculo}{\real{2n}} \to \espacosobolevdois{\retacartesianocirculo}{\real{2n}}$ é dado por
+		$$
+		\diferencialfloerabrev^{*}=-\derivadaparcial{}{s}+\estruturacomplexa \derivadaparcial{}{t}+S^{t}.
+		$$
+	\end{proposicao}
+	\begin{prova} Tome $f \in \espacoLpdualdois$ tal que $f=\produtointernoLdois{Y}{.}$ para algum $Y\in \espacoLdoiscontradom{\retacartesianocirculo}{\real{2n}}$, de acordo com o Teorema \ref{teorema_representacao_reiz}. Denote sua restrição a imagem do operador $\diferencialfloerabrev$ por $f|_{\diferencialfloerabrev}$. Seja $\funcoessupcompactcontradom{\retacartesianocirculo}{\real{2n}}$ o conjunto das aplicações suaves e de suporte compacto de $\retacartesianocirculo$ em $\real{2n}$ e defina o espaço de funções teste $\mathcal{W}=\espacosobolevdois{\retacartesianocirculo}{\real{2n}} \cap \funcoessupcompactcontradom{\retacartesianocirculo}{\real{2n}}$ e os espaço de distribuições  $\mathcal{W}'=\espacoLpdualdois$. Então $		f|_{\diferencialfloerabrev}$ pode ser visto como um elemento de $\mathcal{W}'$, e com isso
+		$$
+		\begin{aligned}
+		f|_{\diferencialfloerabrev}(X)
+		&=
+		\produtointernoLdois{Y}{\diferencialfloerabrev X}
+		\\
+		&= \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev X}
+		\\
+		&=\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{ X}{s}+\estruturacomplexa\derivadaparcial{ X}{t}+S X}
+		\\
+		&=
+		\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{ X}{s}} + \int_{\retacartesianocirculo}\produtointerno{Y}{\estruturacomplexa\derivadaparcial{ X}{t}} + \int_{\retacartesianocirculo}\produtointerno{Y}{S X}.
+		\end{aligned}
+		$$
+		
+		Efetuando integração por partes da primeira integral e usando o fato de que $\lim_{s\to \pm \infty} X(s,t) = 0$, pois tem suporte compacto, tem-se que
+		$$
+		\begin{aligned}
+		\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{ X}{s}}
+		&=\int_{\retacartesianocirculo}\derivadaparcial{}{s}\produtointerno{Y}{ X} - \int_{\retacartesianocirculo}\produtointerno{\derivadaparcial{Y}{s}}{ X} 
+		\\
+		&=\int_{\circulo}\bigparenteses{\produtointerno{Y(s,t)}{ X(s,t)}\Big|_{s=-\infty}^{s=\infty}}dt -\int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{ X}
+		\\
+		&=-\int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{ X}.
+		\end{aligned}
+		$$
+		
+		Usando o fato que $X(s, 0)=X(s, 1)$ para todo $s\in \reta$, e aplicando integração por parte na segunda integral, tem-se que
+		$$
+		\begin{aligned}
+			\int_{\retacartesianocirculo}\produtointerno{Y}{\estruturacomplexa\derivadaparcial{ X}{t}} 
+			&= \int_{\retacartesianocirculo}\bigparenteses{\derivadaparcial{}{t}\produtointerno{Y}{ \estruturacomplexa X}-\produtointerno{\derivadaparcial{Y}{t} }{\estruturacomplexa X}}
+			\\
+			&= \int_{\reta}\bigparenteses{\produtointerno{Y(s,t)}{\estruturacomplexa X(s,t)}\Big|_{0}^{1}}ds + \int_{\retacartesianocirculo}\produtointerno{\estruturacomplexa \derivadaparcial{Y}{t}}{ X}
+			\\
+			&=\int_{\retacartesianocirculo}\produtointerno{\estruturacomplexa \derivadaparcial{Y}{t}}{ X}.
+		\end{aligned}
+		$$
+		E para a terceira integral
+		$$
+		\int_{\retacartesianocirculo}\produtointerno{Y}{S X}= \int_{\retacartesianocirculo}\produtointerno{S^{t}Y}{ X}.
+		$$
+		Portanto
+		$$
+		\begin{aligned}
+		\produtointernoLdois{Y}{\diferencialfloerabrev X}
+		&= \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev X}
+		\\
+		&=
+		\int_{\retacartesianocirculo}\produtointerno{-\derivadaparcial{Y}{s}+\estruturacomplexa \derivadaparcial{Y}{t} + S^{t}Y}{ X}
+		\\
+		&=\int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{ X}
+		\\
+		&=\produtointernoLdois{\diferencialfloerabrev^{*}Y}{X}.
+		\end{aligned}
+		$$
+	\end{prova}
+
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
-		Suponha que $S(s,t) = S(t)$, ou seja, não dependa de $s$, e que $\det(Id - \Psi(1)) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então $\diferencialfloerabrev = \operadorcauchyabrev{w} + S_{w}: \espacosobolevretacirculo \to \espacoLpretacirculo$ é bijetor para $1<p<\infty$.
+		Suponha que $S(s,t) = S(t)$ e que $\det(\Psi(1) - Id) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então 
+		$$
+		\diferencialfloerabrev : \espacosobolevretacirculo \to \espacoLpretacirculo
+		$$
+		é bijetor para $1<p<\infty$.
 	\end{lema}
 	\begin{prova}
 		Fixe $p=2$ e considere o operador $A: \espacosobolevdois{\circulo}{\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$ definido por $A = \estruturacomplexa \derivadaparcialabrev{t} + S$. Com isso, dado $\Psi \in \espacosobolevdois{\circulo}{\real{2n}}$ tem-se que $A\Psi(t) = \diferencialfloerabrev\Psi(t)$ para todo $t \in \circulo$. Logo $A=\diferencialfloerabrev$. Pela Proposição \ref{proposicao_diferencial_floer_adjunto}, tem-se que $A^{*}\Psi(t) = \diferencialfloerabrev^{*}\Psi(t) = \diferencialfloerabrev\Psi(t) = A\Psi(t)$, pois $S$ não depende do parametro $s \in \real{}$. Portanto $A=A^{*}$ e $A$ é um operador auto-adjunto.
@@ -4262,7 +4382,7 @@
 		Como $\eta$ é arbitrário, então $Q\circ \diferencialfloerabrev = Id$, e com isso, $\eta \in \espacosobolevdois{\retacartesianocirculo}{\real{2n}}$.
 	\end{prova}
 	
-	Vamos utilizar a regularidade elíptica para garantir a continuidade do diferencial do operador de Floer $\diferencialfloerabrev$ cuja demonstração pode ser encontrada em $\cite{audi_floer_homology}$.
+	Aplicando a regularidade elíptica, que pode ser encontrada em $\cite{audi_floer_homology}$, pode-se mostrar a continuidade do diferencial do operador de Floer $\diferencialfloerabrev$.
 	
 	\begin{teorema}\label{teorema_regularidade_eliptica}
 		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$. Logo, $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset C^{\infty}(\retacartesianocirculo;\real{2n})$.
@@ -4282,14 +4402,7 @@
 		 Se $T : A \to E$ é um operador linear bijetor entre os espaços de Banach $A$ e $E$, então $T^{-1}$ é um operador linear bijetor limitado.
 	\end{corolario}
 	
-	\begin{teorema}\label{teorema_representacao_reiz}
-		(Teorema da representação de Reisz) Seja $\phi \in \espacoLpdual$ um funcional linear e $1<p<\infty$. Então existe uma única aplicação $Y \in \espacoLpadjuntoretacirculo$ tal que
-		$$
-		\phi(\xi) = \int_{\retacartesianocirculo}\produtointerno{Y(s,t)}{\xi(s,t)},
-		$$
-		para todo $\xi \in \espacoLpretacirculo$.
-	\end{teorema}
-	
+
 	Seja $f: B \to \reta$ um funcional linear definido no espaço vetorial $B$. Dizemos que $f$ é sublinear se $f(x+y)\leq f(x)+f(y)$ para todos $x,y \in B$.
 	
 	\begin{teorema}
@@ -4307,61 +4420,7 @@
 		Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialfloerabrev \xi} +\normaLp{\xi})$ para todo $p\geq 1$.
 	\end{lema}
 	
-	\begin{proposicao}\label{proposicao_diferencial_floer_adjunto}
-		No sentido distribucional, tem-se que $\diferencialfloerabrev^{*} :\espacosobolevadjuntoretacirculo \to \espacoLpadjuntoretacirculo$ e dado por
-		$$
-		\diferencialfloerabrev^{*}=-\derivadaparcial{}{s}+\estruturacomplexa \derivadaparcial{}{t}+S^{t}.
-		$$
-	\end{proposicao}
-	\begin{prova}
-		Pelo Teorema \ref{teorema_representacao_reiz}, dado um funcional linear $\phi \in \espacoLpdual$ existe um único $Y \in \espacoLpadjuntoretacirculo$ tal que $\phi(\beta) = \int_{\retacartesianocirculo}\produtointerno{Y}{\beta}$. Como $\diferencialfloerabrev$ é uma bijeção, então para todo $\beta \in \espacoLpretacirculo$ existe um único $\xi \in \espacosobolevretacirculo$ tal que $\beta = \diferencialfloerabrev\xi$. Com isso, pode-se determinar o operador adjunto $\diferencialfloerabrev^{*}$ que satisfaz a equação (no sentido distribucional) 
-		$$
-		\phi_{\diferencialfloerabrev}(\xi) = \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev\xi} = \int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{\xi}.
-		$$
-		
-		Defina $C^{\infty}_{c}(\retacartesianocirculo;\real{2n})$ como sendo o conjunto das funções suaves e de suporte compacto definidas em $\retacartesianocirculo$ a $\real{2n}$ e suponha que $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$. Com isso, tem-se
-		$$
-		\begin{aligned}
-		\phi_{\diferencialfloerabrev}(\xi) 
-		&= \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev\xi}
-		\\
-		&=
-		\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{\xi}{s}} + \int_{\retacartesianocirculo}\produtointerno{Y}{\estruturacomplexa\derivadaparcial{\xi}{t}} + \int_{\retacartesianocirculo}\produtointerno{Y}{S\xi}.
-		\end{aligned}
-		$$
-		
-		Efetuando integração por partes de da primeira integral e usando o fato de que $\lim_{s\to \pm \infty}\xi(s,t) = 0$, pois tem suporte compacto, tem-se que
-		$$
-		\begin{aligned}
-		\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{\xi}{s}}
-		&=\int_{\retacartesianocirculo}\derivadaparcial{}{s}\produtointerno{Y}{\xi} - \int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{\xi} 
-		\\
-		&=\int_{\circulo}\produtointerno{Y}{\xi}(s)\Big|_{s=-\infty}^{s=\infty} -\int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{\xi}
-		\\
-		&=-\int_{\retacartesianocirculo}\produtointerno{\derivada{Y}{s}}{\xi}.
-		\end{aligned}
-		$$
-		Com um procedimento análogo para a segunda integral, tem-se que
-		$$
-		\int_{\retacartesianocirculo}\produtointerno{Y}{\estruturacomplexa\derivadaparcial{\xi}{t}} = \int_{\retacartesianocirculo}\produtointerno{\estruturacomplexa \derivada{Y}{t}}{\xi}.
-		$$
-		E para a terceira integral
-		$$
-		\int_{\retacartesianocirculo}\produtointerno{Y}{S\xi}= \int_{\retacartesianocirculo}\produtointerno{S^{t}Y}{\xi}.
-		$$
-		Portanto
-		$$
-		\begin{aligned}
-		\phi_{\diferencialfloerabrev}(\xi) 
-		&= \int_{\retacartesianocirculo}\produtointerno{Y}{\diferencialfloerabrev\xi}
-		\\
-		&=
-		\int_{\retacartesianocirculo}\produtointerno{-\derivadaparcial{Y}{s}+\estruturacomplexa \derivadaparcial{Y}{s} + S^{t}Y}{\xi}
-		\\
-		&=\int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{\xi}.
-		\end{aligned}
-		$$
-	\end{prova}
+	
 	
 	\begin{corolario}
 		Com as hipóteses da proposição anterior, se $\produtointerno{Y}{\diferencialfloerabrev\xi} = 0$, então $\diferencialfloerabrev^{*}Y = 0$, no sentido distribucional.
@@ -5159,7 +5218,7 @@
 			
 			\item Existe uma cobertura por abertos $\{U_{i}\}_{i\in I}$ de $B$ e uma família de difeomorfismos $\phi_{i}: U_{i}\times F\to \pi^{-1}(U_{i})$ tal que $(\pi\circ \phi_{i})(b,f) = b$. A aplicação $\phi_{i}$ é chamada trivialização local.
 			
-			\item A aplicação $\phi_{i,b}: F\to F_{b}$ definida por $\phi_{i,b}(f) = \phi_{i}(b,f)$ é um difeomorfismo. Na intersecção $U_{i}\cap U_{j}\neq \emptyset$ é exigido que $t_{ij}(b)=\phi_{i,b}^{-1}\circ \phi_{j,b}:F\to F$ é um elemento de $G$. Então $\phi_{i}$ e $\phi_{j}$ estão relacionados pela aplicação suave $t_{ij}: U_{i}\cap U_{j}\to G$ por $\phi_{j}(b, f) = \phi_{i}(b, t_{ij}(b)f)$. As aplicações $t_{ij}$ são chamadas funções de transição.
+			\item A aplicação $\phi_{i,b}: F\to F_{b}$ definida tal que $\phi_{i,b}(f) = \phi_{i}(b,f)$ é um difeomorfismo. Na intersecção $U_{i}\cap U_{j}\neq \emptyset$ é exigido que $t_{ij}(b)=\phi_{i,b}^{-1}\circ \phi_{j,b}:F\to F$ é um elemento de $G$. Então $\phi_{i}$ e $\phi_{j}$ estão relacionados pela aplicação suave $t_{ij}: U_{i}\cap U_{j}\to G$ tal que $\phi_{j}(b, f) = \phi_{i}(b, t_{ij}(b)f)$. As aplicações $t_{ij}$ são chamadas funções de transição.
 		\end{enumerate}
 		
 	\end{definicao}
@@ -5167,7 +5226,7 @@
 	Um n-fibrado vetorial diferenciável $\eta$ é um fibrado trivial quando todas as funções de transição coincidem com a aplicação identidade. Nesse caso o espaço total $E$ é homeomorfo a $B\times F$.
 	
 	\begin{exemplo}\label{exemplo_fibrado_circulo}
-		Seja $\eta=(E, \circulo,\pi, G)$ um 1-fibrado vetorial com as fibras $F=\reta$ e $G$ o grupos das transformações lineares em $\reta$ que preservam sua orientação. Sejam $U_{1} = (0,2\pi)$ e $U_{2} = (-\pi,\pi)$ uma cobertura de $\circulo$. Então $U_{1}\cap U_{2} =(0,\pi)\cup(\pi,2\pi)$. As trivializações locais são 
+		Seja $\eta=(E, \circulo,\pi, G \reta)$ um 1-fibrado vetorial com as fibras sendo a reta $\reta$ e $G$ o grupos das transformações lineares em $\reta$ que preservam sua orientação. Sejam $U_{1} = (0,2\pi)$ e $U_{2} = (-\pi,\pi)$ uma cobertura de $\circulo$. Então $U_{1}\cap U_{2} =(0,\pi)\cup(\pi,2\pi)$. As trivializações locais são 
 		$$
 		\phi^{-1}_{1}(b) = (\theta, t),\; 		\phi^{-1}_{2}(b) = (\theta, t)
 		$$
@@ -5180,18 +5239,18 @@
 		(1-Fibrado vetorial) Sejam $E=S^{1} \times \real{}$, $B=S^{1}$, $F_{b} = \real{}$ para qualquer $b \in S^{1}\subset \real{2}$ e $\pi:S^{1} \times \real{}\to S^{1}$ tal que $\pi(b, e)=b \in S^{1}$. Então $\eta=(S^{1} \times \real{}, S^{1}, \pi)$ é um fibrado vetorial. Além disso, $\eta$ é um fibrado vetorial trivial pois, tomando os abertos $S^{+} = S^{1} \backslash \{(0,1)\}$ e $S^{-} = S^{1} \backslash \{(0,-1)\}$, tem-se as projeções $\pi^{-1}(S^{\pm}) = S^{\pm} \times \real{} \subset E$, e com isso, $(S^{+}\times\real{}) \cup ( S^{-}\times\real{}) = (S^{+}\cup S^{-})\times\real{} = S^{1} \times\real{} =E$.
 	\end{exemplo}
 	
-	\begin{proposicao}
+	\begin{exemplo}
 		(Fibrado tangente) Sejam $M$ uma variedade suave n-dimensional. Definindo $B=M$, dado $q\in M$ temos as fibras $F_{q} = T_{q}M$ e o espaço total é $TM=\{(q, v): q\in M, v\in T_{q}M \}$. A tripla $\eta = (TM, M, \pi)$, denominada fibrado tangente de $M$, é localmente trivial, portanto é um fibrado vetorial.
-	\end{proposicao}
+	\end{exemplo}
 
 	Os fibrados tangentes $\eta$ serão denotados por $TM$.
  
  	Seja $TM$ um $n$-fibrado tangente de uma $n$-variedade diferenciável $M$. Uma seção de $TM$ é uma aplicação suave $s:M \to TM$ tal que $\pi\circ s=Id$.
 	
-	Os campos vetoriais definidos em $M$ podem ser vistos seções do fibrado tangente $TM$ do seguinte modo: tome $X\in \campossuaves{M}$ e defina $s_{X}$ a seção do fibrado tangente por $s_{X}(b) = (b, X(b))$.
+	Os campos vetoriais definidos em $M$ podem ser vistos como seções do fibrado tangente $TM$ do seguinte modo: tome $X\in \campossuaves{M}$ e defina $s_{X}$ a seção do fibrado tangente por $s_{X}(b) = (b, X(b))$.
 	
 	\begin{definicao}
-		(Pullback de fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', \pi')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in \pi'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $\pi:E\to B$ tal que $\pi(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, p)$.
+		(Pullback de fibrado) Sejam $B, B'$ dois espaços topológicos, $\eta=(E', B', \pi')$ um n-fibrado vetorial e $f:B\to B'$ uma aplicação contínua. Defina $E \subseteq B\times E'$ como sendo o conjunto $\{(b, e): b \in B,\; e \in \pi'^{-1}(f(b)) \}$. Além disso, defina o mapa de projeção $\pi:E\to B$ tal que $\pi(b,e) = b$. O pullback de $\eta$ por $f$ é a tripla $f^{*}\eta = (E,B, \pi)$.
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_pullback_fibrado_tangente}
@@ -5202,23 +5261,35 @@
 		(Composição de pullbacks) Sejam $\eta =(E, C, \pi)$ um n-fibrado vetorial, $A, B, C$ espaços topológicos, $f:A\to B$ e $g:B\to C$ funções contínuas. Então $(g\circ f)^{*} \eta= f^{*}(g^{*}\eta)$.
 	\end{lema}
 	\begin{prova}
-		Como $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, \pi_{g\circ f})$ é um n-fibrado vetorial onde as fibras são dadas por $F_{(g\circ f)(a)} = \pi^{-1}((g\circ f)(a))$. Tem-se que $g^{*}\eta=(E_{g}, B, \pi_{g})$, $f^{*}(g^{*}\eta) = (E_{f}, A, \pi_{f})$, e suas fibras são dadas por $F_{g(b)} = \pi^{-1}(g(b))$, sendo que $b=f(a)$, logo  $F_{g(f(a))} = \pi^{-1}(g(f(a))) = \pi^{-1}((g \circ f)(a))$, que é uma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ coincidem, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
+		Como $g\circ f:A\to C$ é contínua, logo $(g\circ f)^{*}\eta = (E_{g\circ f}, A, \pi_{g\circ f})$ é um n-fibrado vetorial onde as fibras são dadas por $F_{(g\circ f)(a)} = \pi^{-1}((g\circ f)(a))$. Tem-se que $g^{*}\eta=(E_{g}, B, \pi_{g})$, $f^{*}(g^{*}\eta) = (E_{f}, A, \pi_{f})$, e suas fibras são dadas por $F_{g(b)} = \pi^{-1}(g(b))$, sendo que $b=f(a)$, logo  $F_{g(f(a))} = \pi^{-1}((g \circ f)(a))$, que é uma fibra de $(g\circ f)^{*}\eta$. Como o espaço base, as fibras e as projeções de $(g\circ f)^{*}\eta$ e $f^{*}(g^{*}\eta)$ coincidem, então $f^{*}(g^{*}\eta) = (g\circ f)^{*}\eta$.
 	\end{prova}
 	\begin{lema}\label{pullback_trivial}
-		(Pullback trivial) Sejam $\eta = (E, B, \pi)$ um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
+		(Pullback trivial) Se $\eta = (E, B, \pi)$ é um n-fibrado vetorial trivial, $A$ um espaço topológico e $f:A\to B$ uma função contínua, então $f^{*}\eta$ é trivial.
 	\end{lema}
 	
 	Os seguintes resultados nos dão a relação entre os fibrados vetoriais obtidos pelo pullback de aplicações homotópicas e podem ser encontrados em \cite{nakahara} e \cite{steenrod_fibre_bundles}.
 	
+	Sejam $ \eta'=(E',B',\pi'), \eta=(E,B,\pi)$ dois fibrados vetoriais.  Uma aplicação suave $\overline{f}:E'\to E$ é chamada mapa de fibrados se $\overline{f}$ é uma sobrejeção de cada fibra $F'_{p}$ de $\eta'$ em cada fibra $F_{q}$ de $\eta$. Então $\overline{f}$ induz uma aplicação suave $f:B'\to B$ tal que $f(p)=q$. Com isso, tem-se a comutatividade $\pi\circ \overline{f} = f\circ\pi'$, ilustrado no diagrama a seguir. 
+	$$
+	\xymatrix{
+		E'\ar[d]_{\pi'}\ar[r]^{\overline{f}} & E\ar[d]^{\pi}
+		\\
+		B'\ar[r]^{f} & B
+	}
+	$$
+	
+	
+	Sejam $\eta'$ e $\eta$ dois fibrados vetoriais sobre o mesmo espaço base $B$. Então $\eta'$ e $\eta$ são ditos fibrados vetoriais equivalentes se a aplicação induzida pelo mapa de fibrados $\overline{f}$ é a identidade, isto é, $f=Id_{B}$.
+	
 	\begin{teorema}\label{pullback_isomorfismo}
-		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, \pi)$ um n-fibrado vetorial e $f,g: A\to B$ duas aplicações homotópicas. Então $f^{*}\eta \cong g^{*}\eta$.
+		Sejam $A, B$ dois espaços topológicos, $\eta=(E, B, \pi)$ um n-fibrado vetorial e $f,g: A\to B$ duas aplicações homotópicas. Então $f^{*}\eta $ e $g^{*}\eta$ são fibrados vetoriais equivalentes sobre $A$.
 	\end{teorema}
 	
 	\begin{corolario}\label{pullback_contratil}
 		Sejam $\eta$ um n-fibrado vetorial sobre um espaço base contrátil. Então $\eta$ é trivial.
 	\end{corolario}
 	\begin{prova}
-		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Como $B$ é contrátil, então existem $f:B\to \{*\}$ e $g:\{*\}\to B$ tais que $f\circ g = Id_{\{*\}}$ e $g\circ f \simeq Id_{B}$. Pela definição tem-se que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ tem-se $(g\circ f)^{*}\eta \cong Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta \cong f^{*}(g^{*}\eta)$ é trivial.
+		Sejam $B$ um compacto contrátil, $\eta=(E, B, p)$ um n-fibrado vetorial e $\{*\} \subset B$ um conjunto unitário. Como $B$ é contrátil, então existem $f:B\to \{*\}$ e $g:\{*\}\to B$ tais que $f\circ g = Id_{\{*\}}$ e $g\circ f \simeq Id_{B}$. Pela definição tem-se que $g^{*}\eta = (E', \{*\}, p')$ é um n-fibrado trivial e pelo Teorema $\ref{pullback_isomorfismo}$ tem-se $(g\circ f)^{*}\eta $ é equivalente a $ Id_{B}^{*}\eta = \eta$. Pelo Lema $\ref{pullback_composicao}$ $(g\circ f)^{*}\eta = f^{*}(g^{*}\eta) $ é trivial pois $g^{*}\eta$ é trivial pelo Lema $\ref{pullback_trivial}$, logo $ \eta $ é equivalente a $f^{*}(g^{*}\eta)$ e $\eta$ é trivial.
 	\end{prova}
 	
 	\begin{corolario}
@@ -5277,17 +5348,17 @@
 	$$
 	Se o caminho $\gamma$ é uma geodésica, então $L(\gamma) =\norma{v}$.
 	
-	A seguinte proposição é necessária para a definição da aplicação exponencial e pode ser encontrada em \cite{manfredo_riemannian_geo}.
+	A seguinte proposição é necessária para a definição da aplicação exponencial que será apresentada a seguir e pode ser encontrada em \cite{manfredo_riemannian_geo}.
 	
 	\begin{proposicao}\label{proposicao_existencia_geodesica}
-		Dado $p\in M$, existem uma vizinhança $V$ de $p$ em $M$, um número $\epsilon>0$ e uma aplicação suave $\gamma:(-2,2)\times U \to M$, $U=\{(q, v) \in TM: q\in V,\;v\in \espacotangenteponto{q}{Y}\;\text{e}\;\norma{v}<\epsilon \}$ tal que $t\mapsto \gamma(t, q, v)$ com $t\in (-2,2)$, é a única geodésica de $M$ onde $\gamma(0, q, v)=y$, $v=\derivada{}{t}\gamma(0,q,v)$ para todo $q\in V$ e todo $v\in \espacotangenteponto{y}{M}$ com $\norma{v}<\epsilon$.
+		Dado $p\in M$, existem uma vizinhança $V$ de $p$ em $M$, um número $\epsilon>0$, $U=\{(q, v) \in TM: q\in V,\;v\in \espacotangenteponto{q}{Y}\;\text{e}\;\norma{v}<\epsilon \}$ e uma aplicação suave $\gamma:(-2,2)\times U \to M$ tal que $t\mapsto \gamma(t, q, v)$, é a única geodésica de $M$ onde $\gamma(0, q, v)=q$, $v=\derivada{}{t}\gamma(0,q,v)$ para todo $q\in V$ e todo $v\in \espacotangenteponto{q}{M}$ com $\norma{v}<\epsilon$.
 	\end{proposicao}
 	
 	\begin{definicao}\label{definicao_aplicacao_exponencial}
 		(Aplicação exponencial) Seja $U$ um aberto de $TM$ conforme a Proposição \ref{proposicao_existencia_geodesica}. A aplicação $\exp:U \to M$ definida por $\exp(p,v) = \gamma(1, p,v)$ é chamada aplicação exponencial em $U$.
 	\end{definicao}
 	
-	Fixado um ponto $p \in M$, defina $\exp_{p}:T_{p}M \to M$ por $\exp_{p}(v) = \exp(p,v)$. Com isso, $\exp_{p}(v)$ é o ponto de $M$ que é conectado a $p$ por uma geodésica com comprimento de arco igual a $\norma{v}$ e tem como direção $v$.
+	Fixado um ponto $p \in M$, defina $\exp_{p}:T_{p}M \to M$ por $\exp_{p}(v) = \exp(p,v)$. Com isso, $\exp_{p}(v)$ é o ponto de $M$ que é conectado a $p$ por uma geodésica com comprimento de arco igual a $\norma{v}$ e tem a direção de $v$.
 	
 	A proposição a seguir, que pode ser encontrada em $\cite{manfredo_riemannian_geo}$, tem sua importância na demonstração de outros resultados do texto.
 	
@@ -5308,7 +5379,7 @@
 	$$
 	onde $E:\real{3} \to \real{3} $ é o campo elétrico, $\nabla.E$ é o divergente de $E$ e $\rho:\real{3}\to \reta$ é a densidade de carga, ambas aplicações de classe $C^{\infty}$. Sejam $q:\overline{B_{\epsilon}(x_{0})} \subset \real{3}\to \reta$ a função carga elétrica definida na bola fechada de raio $\epsilon>0$ centrada em $x_{0}\in \real{3}$, tal que $q|_{\partial B} = 0$, onde $\partial B$ é a fronteira de $B=\overline{B_{\epsilon}(x_{0})}$. A função de distribuição da carga é definida por $\rho(x)=q(x)/V(\epsilon)$, onde $V(\epsilon)=\int_{B}dx$ é o volume de $B$.
 	
-	O problema surge em modelos físicos em que a se toma o limite $\lim\limits_{\epsilon\to 0}V(\epsilon)=0$, para descrever uma densidade de carga puntual. Para modelar esse sistema foi introduzido o símbolo $\delta$ que satisfaz as seguintes propriedades:
+	O problema surge em modelos físicos em que se toma o limite $\lim\limits_{\epsilon\to 0}V(\epsilon)=0$, para descrever uma densidade de carga puntual. Para modelar esse sistema foi introduzido o símbolo $\delta$ que satisfaz as seguintes propriedades:
 	$$
 	\int_{\real{3}}\delta(x-x_{0}) = 1\;\;\text{e}\;\; 	f(x_{0})=\int_{\real{3}}f(x)\delta(x-x_{0})
 	$$
@@ -5358,7 +5429,11 @@
 		No caso em que $p=2$ tem-se que $\espacoLdois{\Omega}$ é um espaço de Hilbert, o que está demonstrado em $\cite{kreyszig_analise_funcional}$, ou seja, é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
 	\end{observacao}
 	
-	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f/\partial x_{j}$ por $\derivadaparcialabrev{j}f $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por $\partial^{\alpha} f(x) = \partial^{|\alpha|}f(x)/\partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}}$, onde $|\alpha|\leq k$.
+	Dada $f \in \funcoesdiferenciaveis{k}{\Omega}$, denote a $j$-ésima derivada parcial $\partial f/\partial x_{j}$ por $\derivadaparcialabrev{j}f $. Um q-multi-índice é uma q-tupla $\alpha = (\alpha_{1}, \dots, \alpha_{q})$, onde $\alpha_{i} \in \mathbb{N}$ para $0\leq i \leq q$ e seu comprimento é definido por $|\alpha| = \sum_{i}\alpha_{i}$. Sendo $\beta$ um q-multi-índice, então $\alpha+\beta=(\alpha_{1}+\beta_{1}, \dots, \alpha_{q}+\beta_{q})$ e $\alpha\leq \beta$ se $\alpha_{i}\leq\beta_{i}$ para todo $0\leq i \leq q$. O operador multi-diferencial é definido por 
+	$$
+	\partial^{\alpha} f(x) = \frac{\partial^{|\alpha|} f}{ \partial{x^{\alpha_{1}}_{1}} \dots \partial{x^{\alpha_{q}}_{q}} }(x),
+	$$
+	onde $|\alpha|\leq k$.
 	
 	\begin{definicao}
 		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. O espaço das distribuições $\distribuicoesgeral{\Omega}$ é o espaço dual de $\funcoesteste$. Mais precisamente, é o conjunto dos funcionais lineares $f:\funcoesteste \to \reta$ que são contínuos no sentido que, 	para todo compacto $K\subset \Omega$ existe um inteiro $p$ e uma constante $C$ tal que, para todo $\phi\in \funcoesteste$ com suporte em $K$, tem-se que
@@ -5367,12 +5442,12 @@
 		$$
 	\end{definicao}
 	
-	Pode-se identificar uma função localmente integrável com uma elemento de $\distribuicoes$ do seguinte modo: seja $f \in \espacoLpcomp{\Omega}$ e defina o funcional linear $g_{f}:\distribuicoes \to \reta$ por 
+	Pode-se identificar uma função localmente integrável com um elemento de $\distribuicoes$ do seguinte modo: seja $f \in \espacoLpcomp{\Omega}$ e tome funcional linear
 	$$
 	g_{f}(\phi)=\int_{\Omega}f(x)\phi(x).
 	$$
 	
-	Sejam $\phi \in \funcoesteste$ e $K = supp(\phi) \subset \Omega$. Então, para $p=0$ tem-se a cota superior $|\phi(x)|\leq \sup\limits_{x\in K, |\alpha|\leq 0}|\partial^{\alpha}\phi(x)| = \sup\limits_{x\in K}|\phi(x)|$, e usando o fato que $\int_{K}|f(x)|<\infty$, tem-se
+	Sejam $\phi \in \funcoesteste$ e $K = supp(\phi) \subset \Omega$. É imediata a cota superior $|\phi(x)|\leq \sup\limits_{x\in K, |\alpha|\leq 0}|\partial^{\alpha}\phi(x)| = \sup\limits_{x\in K}|\phi(x)|$. Usando o fato que $C=\int_{K}|f(x)|<\infty$, tem-se
 	$$
 	\begin{aligned}
 	|g_{f}(\phi)|
@@ -5382,18 +5457,24 @@
 	\\
 	&\leq \int_{K}|f(x)||\phi(x)|
 	\\
-	&\leq \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|\underbrace{\int_{K}|f(x)|}_{=C}
+	&\leq \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)| \int_{K}|f(x)|
 	\\
 	&< C\sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|.
 	\end{aligned}
 	$$
-	Portanto, $g_{f} \in \distribuicoes$. Com isso, pode-se mostrar que a aplicação $g:\espacoLpcomp{\Omega}\to \distribuicoesgeral{\Omega}$ definida por $g(f)(\phi) = g_{f}(\phi)$, é um operador linear injetor. Logo, a identificação $f \mapsto g_{f}$ está bem definida. 
+	Portanto, $g_{f} \in \distribuicoes$. Com isso, pode-se mostrar que a aplicação $g:\espacoLpcomp{\Omega}\to \distribuicoesgeral{\Omega}$ definida por $g(f)(\phi) = g_{f}(\phi)$ é um operador linear injetor.
 	
-	Denote a aplicação $g:\espacoLpcomp{\Omega}\to \distribuicoesgeral{\Omega}$ por $g(f)=\produtointerno{f}{.}$. Em $\cite{friedlander}$ está demonstrado que, dados $\produtointerno{f}{.} \in \distribuicoes$ e um k-multi-índice $\alpha$, então
-	$$
-	\produtointerno{\partial^{\alpha}f}{\phi} = (-1)^{|\alpha|}\produtointerno{f}{\partial^{\alpha}\phi}.
-	$$
+	Denote a aplicação $g:\espacoLpcomp{\Omega}\to \distribuicoesgeral{\Omega}$ por $g(f)=\produtointerno{f}{.}$.
 	
+	\begin{definicao}
+		Sejam $g_{f}\in \distribuicoes$ e $\alpha$ um k-multi-índice. A $\alpha$-diferenciação de $g_{f}$ é definida por 
+		
+		$$
+		\partial^{\alpha}g_{f}(\phi)=\produtointerno{\partial^{\alpha}f}{\phi}=(-1)^{|\alpha|}		\produtointerno{f}{\partial^{\alpha}\phi}		$$
+		para todo $\phi \in \funcoesteste$. Quando existir $\partial^{\alpha}f \in \espacoLpcomp{\Omega}$ satisfazendo a equação anterior diz-se que a derivada da distribuição existe no sentido fraco (ou sentido distribucional).
+	\end{definicao}
+		
+	 
 	\begin{definicao}
 		(Delta de Dirac) A distribuição $\delta \in \distribuicoes$, chamada Delta de Dirac, é definida por $\produtointerno{\delta}{\phi} = \phi(0)$, para todo $\phi \in \funcoesteste$.
 	\end{definicao}
@@ -5423,7 +5504,7 @@
 		&= \produtointerno{\delta}{\phi},
 		\end{aligned}
 		$$
-		onde foi usado o fato que, por ter o suporte compacto, então $\lim_{x\to \infty}\theta(x)=0$.
+		onde foi usado o fato que, por ter o suporte compacto, então $\lim_{x\to \infty}\phi(x)=0$.
 		Como $\phi \in \funcoestestegeral{\reta}$ é arbitrária, então $\partial \theta = \delta \in \distribuicoesgeral{\reta}$.
 	\end{exemplo}
 	
@@ -5436,11 +5517,6 @@
 	\begin{definicao}\label{definicao_espaco_sobolev}
 		(Espaço de Sobolev) Seja $\Omega \subset \real{n}$ um aberto e fixe $k, p\in \inteiros$, onde $1\leq p \leq \infty$ e $0\leq k$. O espaço de Sobolev $W^{k,p} (\Omega)$ é o conjunto das funções $f:\Omega\to \reta$ tais que $\partial^{\alpha}f$ existe no sentido fraco e $\partial^{\alpha}f \in \espacoLp{\Omega}$ para todos os multi-índices $\alpha$ com $|\alpha|\leq k$.
 	\end{definicao}
-	
-	Equivalentemente, tem-se que
-	$$
-	W^{k,p} (\Omega) = \{ f\in \espacoLp{\Omega}: \exists g \in \espacoLp{\Omega} \; e \;\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}\; \forall \phi \in \funcoesteste \; e\; |\alpha|\leq k\}.
-	$$
 	
 	Quando existe g em $\espacoLp{\Omega}$ satisfazendo a equação $\produtointerno{f}{\partial^{\alpha}\phi} = (-1)^{|\alpha|}\produtointerno{g}{\phi}$ para todo $\phi\in \funcoesteste$ diz-se que $g = \partial^{\alpha}f$. Logo $W^{k,p}$ pode ser visto como um espaço de distribuições.
 	
@@ -5469,7 +5545,7 @@
 		tais que $f_{j} \in \espacosobolev{\Omega}$ para $1\leq j \leq k$.
 	\end{definicao}
 	
-	A importante proposição a seguir esta demonstrada em \cite{breazis_sobolev_spaces}.
+	A importante proposição a seguir está demonstrada em \cite{breazis_sobolev_spaces}.
 	
 	\begin{proposicao}
 		Os espaços $\espacoLpcontradominio{\Omega}{\real{m}}$ e $\espacosobolevgeneralizadocontra{\Omega}{\real{m}}$, munidos das normas 
@@ -5489,7 +5565,7 @@
 	\end{observacao}
 	
 	\begin{exemplo}
-		(O espaço $\espacosobolevgeral{p}{B_{1}(0)}$) Sejam $B_{1}(0)\subset \real{n}$ a bola centrada na origem e $f:B_{1}(0) \to \reta$ definida por $f(x) = |x_{1}|$, onde $x = (x_{1}, \dots, x_{n})$. Deve-se mostrar que $\partial^{0}f, \partial^{1}f $ existem e são elementos de $\espacoLp{B_{1}(0)}$. Como $f$ é contínua e limitada na bola $B_{1}(0)$, então a integral $\int_{B_{1}(0)}f(x)$ existe. Note que $f(x)<1$ para todo $x\in B_{1}(0)$. Com isso, $\int_{B_{1}(0)}(f(x))^{p}\leq \int_{B_{1}(0)}f(x)<\infty$ e 
+		(O espaço $\espacosobolevgeral{p}{B_{1}(0)}$) Sejam $B_{1}(0)\subset \real{n}$ a bola aberta centrada na origem e $f:B_{1}(0) \to \reta$ definida por $f(x) = |x_{1}|$, onde $x = (x_{1}, \dots, x_{n})$. Afirmo que $\partial^{0}f, \partial^{1}f $ existem e são elementos de $\espacoLp{B_{1}(0)}$. De fato, como $f$ é contínua e limitada na bola $B_{1}(0)$, então a integral $\int_{B_{1}(0)}f(x)$ existe. Note que $f(x)<1$ para todo $x\in B_{1}(0)$. Com isso, $\int_{B_{1}(0)}(f(x))^{p}\leq \int_{B_{1}(0)}f(x)<\infty$ e 
 		$$
 		\normaLp{f}=\normaLpdefinicao{|f(x)|}{B_{1}(0)}=\normaLpdefinicao{|x_{1}|}{B_{1}(0)}<\infty.
 		$$
