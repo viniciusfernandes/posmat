@@ -219,7 +219,8 @@
 \newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
 \newcommand{\operadoreslimitadosauto}[1]{\mathcal{B}(#1)}
 \newcommand{\operadorFloer}{\mathcal{F}}
-\newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{}{s}#1 + J_{#1}\derivadaparcial{}{t}#1 - J_{#1}X_{H}(#1)}
+\newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{#1}{s} + J_{#1}\derivadaparcial{#1}{t} - J_{#1}X_{H}(#1)}
+\newcommand{\operadorFloerDefParametros}[1]{\derivadaparcial{#1}{s}(s,t) + J_{#1}\derivadaparcial{#1}{t}(s,t) - J_{#1}X_{H}(#1(s,t))}
 \newcommand{\operadorFloerParametro}[1]{\mathcal{F}(#1)}
 \newcommand{\operadorFloerPadrao}{\operadorFloerParametro{u}}
 \newcommand{\matrizantisimetrica}[1]{Asym(#1)}
@@ -2819,7 +2820,7 @@
 	
 	Suponha que $u :\reta\to \lacocontrateis$ seja uma solução do sistema $\derivada{}{s}u(s)|_{s=0} = -\gradientefuncional(x)$ e $u(0)=x$. Com isso, pode-se afirmar que tais soluções são as trajetórias em $\lacocontrateis$ do campo gradiente negativo $-\gradientefuncional$. Note que, para casa $s\in \reta$ tem-se que $u(s):\circulo\to M$ é um caminho contínuo e fechado. Portanto as trajetórias de $-\gradientefuncional$ podem ser vistas como aplicações $u:\retacartesianocirculo \to M$ de classe $C^{1}$. Substituindo essa expressão na equação do gradiente de $\funcionalH$ tem-se a Equação de Floer
 	$$
-	\operadorFloerDefinicao{u(s,t)}=0.
+	\operadorFloerDefParametros{u}=0.
 	$$
 
 	\begin{observacao}
@@ -2847,7 +2848,7 @@
 	\begin{definicao}
 		(Funcional Energia) O funcional energia é a aplicação $E: \cilindrosLM \to \reta$ definida por
 		$$
-		E(u) = -\int_{\reta}u^{*}d\funcionalH.
+		E(u) = -\frac{1}{2}\int_{\reta}u^{*}d\funcionalH.
 		$$
 	\end{definicao}
 	
@@ -2870,9 +2871,20 @@
 	$$
 	Como $Y\in T\reta$ é arbitrário, então $(u^{*}d\funcionalH)_{s} = -\norma{\gradientefuncional(u(s))}^{2}$. Inserindo essa expressão no funcional energia, tem-se
 	$$
-	E(u)=-\int_{\reta}u^{*}d\funcionalH = \int_{\reta}\norma{\gradientefuncional(u(s))}^{2}.
+	\begin{aligned}
+			E(u)
+			&=-\frac{1}{2}\int_{\reta}u^{*}d\funcionalH 
+			\\
+			&= -\frac{1}{2}\int_{\reta}-\norma{\gradientefuncional(u(s))}^{2}
+			\\
+			&= \frac{1}{2}\int_{\reta}\bigparenteses{ \int_{\circulo} \bigparenteses{\normagrande{\derivadaparcial{u}{s}(s,t)}^{2} + \normagrande{\derivadaparcial{u}{t}(s,t) - \campohamiltoniano{u(s,t)}}^{2}} dt }ds.
+	\end{aligned}
 	$$
 	
+	Se $u$ é uma solução da equação de Floer, então
+	$$
+	E(u)=\int_{\retacartesianocirculo}\normagrande{\derivadaparcial{u}{s}(s,t)}^{2}.
+	$$
 	\begin{observacao}
 		Seguem algumas propriedade do funcional energia:
 		
@@ -2889,16 +2901,6 @@
 	\begin{definicao}
 		(Soluções de energia finita) O conjunto de todas as trajetórias de $\gradientefuncional$ tal que o funcional energia seja finito é denotado por $\energiafinitaM$ 
 	\end{definicao}
-
-	\alerta{(Acho que devo colocar esses resultado em outra seção!!!!!!!!)
-		\begin{definicao}\label{definicao_mergulho_variedades}
-			(Mergulho de variedades) Sejam $M, N$ m,n-variedade s diferenciávei, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Dizemos que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
-		\end{definicao}
-		
-		\begin{teorema}\label{teorema_whitney}
-			(Mergulho de Whitney) Toda variedade n-dimensional pode ser mergulhada em $\real{2n+1}$.
-		\end{teorema}
-	}
 	
 	\alerta{(Não sei se esse é o melhor local para colocar esses resultados e essa observação!!!!!!!!!!)}
 	
@@ -3773,9 +3775,9 @@
 	
 	\chapter{Espaços de Trajetórias}\label{apendice_variedades_banach}
 		
-	Sejam $H:M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo e o conjunto de soluções da equação de Floer e de energia finita $\energiafinitaM$. Dadas duas soluções 1-periódicas do sistema Hamiltoniano $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, será demonstrado que o conjunto $\energiafinitaMconectante$ das soluções da equação de Floer que conecta $x^{-}$ a $x^{+}$, é uma variedade de dimensão finita e que esta relacionada ao índices de Conley-Zehnder de cada uma das soluções.
+	Sejam $H:M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo e $\energiafinitaM$ o conjunto de soluções da equação de Floer e de energia finita. Dadas duas soluções 1-periódicas do sistema Hamiltoniano $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, será demonstrado que o conjunto $\energiafinitaMconectante$ das soluções da equação de Floer que conectam $x^{-}$ a $x^{+}$ é uma variedade de dimensão finita igual a diferença entre os índices de Conley-Zehnder de cada uma das soluções.
 	
-	A estratégia é mostrar que $\energiafinitaMconectante$ pode ser visto como o conjunto de zeros de uma seção de um fibrado vetorial sobre a variedade de Banach $\caminhosexponenciaisconectantespadrao$. Para uma estrutura complexa fixa $J \in \estruturascomplexasM$ e uma perturbação da Hamiltoniana $h\in \perturbacaoHamiltoniana{H}$, será demonstrado que $\energiafinitaMconectanteHamiltoniana$ é a pré-imagem de um valor regular de uma determinada aplicação. Pelo teorem análogo ao Teorema de Sard para dimensões infinitas, conclui-se que $\energiafinitaMconectante$ é uma variedade. Contudo, esse resultado tem como hipótese que os diferenciais definidos nos espaços tangentes sejam operadores de Fredholm. Com isso, parte desse capítulo envolve uma grande quantidade de análise para demonstrar que o diferencial do operador de Floer $\diferencialfloerponto{u}$ satisfaz essa propriedade para todo $u\in \energiafinitaMconectanteHamiltoniana$. Além disso, o índice desse operador está relacionado com os índices de Conley-Zehnder dos pontos críticos $x^{-}$ e $x^{+}$ pela equação
+	A estratégia é mostrar que $\energiafinitaMconectante$ pode ser visto como o conjunto de zeros de uma seção de um fibrado vetorial sobre a variedade de Banach $\caminhosexponenciaisconectantespadrao$. Para uma estrutura complexa fixa $J \in \estruturascomplexasM$ e uma perturbação da Hamiltoniana $h\in \perturbacaoHamiltoniana{H}$, será demonstrado que $\energiafinitaMconectanteHamiltoniana$ é a pré-imagem de um valor regular de uma determinada aplicação. Pelo teorem análogo ao Teorema de Sard para dimensões infinitas, conclui-se que $\energiafinitaMconectante$ é uma variedade. Contudo, esse resultado tem como hipótese que os diferenciais definidos nos espaços tangentes sejam operadores de Fredholm. Com isso, parte desse capítulo envolve uma grande quantidade de análise para demonstrar que o diferencial do operador de Floer $\diferencialfloerponto{u}$ satisfaz essa propriedade para todo $u\in \energiafinitaMconectanteHamiltoniana$. Além disso, o índice desse operador é a diferença entre os índices de Conley-Zehnder dos pontos críticos $x^{-}$ e $x^{+}$
 	$$
 	\ind(\diferencialfloerponto{u})=\iconley{x^{-}}-\iconley{x^{+}}.
 	$$
@@ -3784,53 +3786,50 @@
 	\dim(\energiafinitaMconectante)= \ind(\diferencialfloerponto{u}) = \iconley{x^{-}}-\iconley{x^{+}}.
 	$$
 	
-	Por fim, alguns resultados que afirmam a compacidade de $\energiafinitaM$ e $\energiafinitaMconectante$ são mencionados. A compacidade de $\energiafinitaMconectante$ é uma propriedade essencial para a definição do complexo de Floer e sua homologia, ambas feitas no Capítulo \ref{capitulo_homologia_floer}.
+	Por fim, alguns resultados necessários para a demonstração da compacidade de $\energiafinitaM$ e $\energiafinitaMconectante$ são apresentados. A compacidade de $\energiafinitaMconectante$ é uma propriedade essencial para a definição do complexo de Floer e sua homologia, ambas feitas no Capítulo \ref{capitulo_homologia_floer}.
 	
 	\section{A Variedade de Banach $\caminhosexponenciaisconectantespadrao$}\label{secao_variedade_banach_P}
 	
-	Uma variedade de Banach é uma extensão da definição de variedades em dimensão finita para dimensões infinitas. Mais precisamente, tem-se um espaço topológico em que cada ponto possui uma vizinhaça que é homeomorfa a um aberto de um espaço de Banach. Parte dos resultados desse trabalho está apoiado em operadores definidos em espaços de funções que, mesmo não sendo de dimensão finita, possuem uma estrutura de variedades, chamadas variedades de Banach, e com isso, pode-se definir uma noção de espaço tangente nos mesmos. Um versão da definição aqui feita pode ser encontrada em \cite{chang_morse_infinito}.
+	Uma variedade de Banach é uma generalização do conceito de variedade em dimensão finita para dimensão infinita. Mais precisamente, tem-se um espaço topológico em que cada ponto possui uma vizinhaça que é homeomorfa a um aberto de um espaço de Banach. Parte dos resultados desse trabalho está apoiado em operadores definidos em espaços de funções que, mesmo não sendo de dimensão finita, possuem uma estrutura de variedades de Banach, e com isso, pode-se definir uma noção de espaço tangente nos mesmos. A referência utilizada nessa seção foi \cite{chang_morse_infinito}.
 	
 	\begin{definicao}
-		(Variedade de Banach) Seja N um espaço topologico de Hausdorff. Uma família indexada $\{(U_{i}, \phi_{i})\}_{i \in I}$, cujos pares $(U_{i}, \phi_{i})$ são chamados de cartas, é um k-atlas de N se:
+		(Variedade de Banach) Sejam $B$ um espaço de banach e $M$ um espaço topológico conexo de Hausdorff. Diz-se que $M$ é uma variedade de Banach de classe $C^{r}$ sobre $B$ se
+		
 		\begin{enumerate}
-			\item $U_{i}\subset N$ para todo $i\in I$ e $N=\bigcup_{i\in I} U_{i}$.
+			\item existe uma família de abertos $\{U_{i}\}_{i\in I}$ de $N$ tal que $N=\bigcup_{i\in I}U_{i}$,
 			
-			\item $\phi_{i}(U_{i})$ é um subconjunto aberto de algum espaço de Banach $E_{i}$, $\phi_{i}:U_{i} \to \phi_{i}(U_{i})$ é um homeomorfismo e para todos $i,j\in I$ tem-se que $\phi_{i}(U_{i}\cap U_{j})$ é um aberto de $E_{i}$.
+			\item existe uma família de homeomorfismos $ \phi_{i}:U_{i}\to \phi_{i}(U_{i})\subset X $ onde $i\in I$,
 			
-			\item $\phi_{j}\circ \phi_{i}^{-1}: \phi_{i}(U_{i}\cap U_{j}) \to \phi_{j}(U_{i}\cap U_{j}) $ é uma aplicação de classe $C^{k}$ (no sentido de derivadas de Fréchet).
+			\item $\phi_{j}\circ \phi_{i}^{-1}: \phi_{i}(U_{i}\cap U_{j}) \to \phi_{j}(U_{i}\cap U_{j}) $ é um difeomorfismo de classe $C^{r}$ (no sentido de derivadas de Fréchet) para todo $i,j \in I$.
 		\end{enumerate}
+		
+		Cada par $(U_{i}, \phi_{i})$ é chamado carta de $M$ e  o conjunto $\{(U_{i}, \phi_{i})\}_{i\in I}$ e chamado atlas de $M$.
 	\end{definicao}
 	
-	A seguir serão definidos alguns espaços de Sobolev, os quais serão utilizados como base para a construção de um sistema local cartas para o conjunto $\caminhosexponenciaisconectantespadrao$, e como homeomorfismo local será utilizada a aplicação exponencial definida nos espaços tangentes de variedades Riemannianas (veja o Apêndice \ref{apendice_variedade_riemanniana}). Com isso, demonstra-se que esse conjunto possui um atlas e que satisfaz as propriedades de uma variedade de Banach. As definições de espaços de Sobolev podem ser encontradas na Seção \ref{secao_espaco_sobolev}.
+	A seguir serão definidos alguns espaços de Sobolev, os quais serão utilizados como base para a construção de um sistema local cartas para o conjunto $\caminhosexponenciaisconectantespadrao$, e como homeomorfismo local será utilizada a aplicação exponencial (veja o Apêndice \ref{apendice_variedade_riemanniana}). Com isso, demonstra-se que esse conjunto possui um atlas e que satisfaz as propriedades de uma variedade de Banach. Os espaços de Sobolev são apresentados no Apêndice \ref{secao_espaco_sobolev}.
 	
-	Lembrando que $x\in\lacocontrateis$ e $u \in \energiafinitaM$ são as aplicações 
+	Considere as aplicações $x\in\lacocontrateis$ e $u \in \energiafinitaM$ dadas por
 	$$
 	\circulo \ni t \mapsto x(t) \in M\; \text{e}\;\;\retacartesianocirculo \ni (s,t)\mapsto u(s,t) \in M.
 	$$ 
-	As seções dos fibrados $\pullbackfibradotangenteM{x}$ e $\pullbackfibradotangenteM{u}$ são as seções de $TM$ restritas aos subconjuntos $x(\reta )$ e  $u(\retacartesianocirculo )$ de $M$, respectivamente (veja a Observação \ref{observacao_pullback_fibrado_tangente}). Com isso, os espaços de Sobolev $\espacosobolevcontradominio{\circulo}{\pullbackfibradotangenteM{x}}$ e $\espacosobolevcontradominio{\retacartesianocirculo}{\pullbackfibradotangenteM{u}}$, denotados por $\espacosobolev{\pullbackfibradotangenteM{x}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}}$, respectivamente, são definidos por
-	$$
-	\espacosobolev{\pullbackfibradotangenteM{x}}=
-	\{X\in \campossuaves{x(\reta)}: \exists\; Y\in \campossuaves{M}, \; X=Y|_{x}\;\text{e}\;  X_{i}\in \espacosobolev{\circulo} \},
-	$$
-	e
-	$$
-	\espacosobolev{\pullbackfibradotangenteM{u}}=
-	\{X\in \campossuaves{u(\retacartesianocirculo)}: \exists\; Y\in \campossuaves{M}, \; X=Y|_{u}\;\text{e}\;  X_{i}\in \espacosobolev{\retacartesianocirculo} \},
-	$$
-	onde $X_{i} \in \funcoessuaves{\circulo}$ são os componentes do campo vetorial $X$. 
-	
+	As seções dos fibrados $\pullbackfibradotangenteM{x}$ e $\pullbackfibradotangenteM{u}$ são as seções de $TM$ restritas aos subconjuntos $x(\circulo )$ e  $u(\retacartesianocirculo )$ de $M$, respectivamente (veja a Observação \ref{observacao_pullback_fibrado_tangente}). Com isso, os espaços de Sobolev $\espacosobolevcontradominio{\retacartesianocirculo}{\pullbackfibradotangenteM{u}}$ e $\espacosobolevcontradominio{\circulo}{\pullbackfibradotangenteM{x}}$, também denotados por  $\espacosobolev{\pullbackfibradotangenteM{u}}$ e $\espacosobolev{\pullbackfibradotangenteM{x}}$, respectivamente, são definidos do seguinte modo: a variedade $M$ pode ser mergulhada em um espaço euclidiano $\real{m}$ para $m\geq 4n+1$ (veja o Teorema \ref{teorema_whitney}). Com isso, tem-se o mergulho $i:TM \hookrightarrow T\real{m} = \real{m} \times \real{m}$. Diz-se que $Y\in \espacosobolev{\pullbackfibradotangenteM{u}}$ se $Y$ é uma aplicação contínua $Y:\retacartesianocirculo\to TM$ tal que $Y(s,t)\in \espacotangenteponto{u(s,t)}{M}$ para cada composição $\pi_{2}\circ i\circ Y:\retacartesianocirculo\to \real{m}$ é um elemento de $\espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}$, onde $\pi_{2}$ é a projeção do fibrado $T\real{m}$. Analogamente, diz-se que $X \in \espacosobolev{\pullbackfibradotangenteM{x}}$ se a composição $\pi_{2}\circ i\circ X:\circulo \to \real{m}$ é um elemento de $\espacosobolevcontradominio{\circulo}{\real{m}}$.
+
 	\begin{observacao}
-		parte da análise realizada nessa ao longo dessa seção ganha simplicidade ao se adotar um equivalente aos espaços de Sobolev $\espacosobolev{\pullbackfibradotangenteM{x}}$ e $\espacosobolev{\pullbackfibradotangenteM{u}}$. Em \cite{audi_floer_homology} pode ser encontrada a identificados desses espaços com os espaços de Sobolev $\espacosobolevcontradominio{\circulo}{\real{2n}}$ e $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente.
+	A análise realizada nesta seção fica simplificada se identificarmos os espaços de Sobolev $\espacosobolev{\pullbackfibradotangenteM{u}}$ e $\espacosobolev{\pullbackfibradotangenteM{x}}$. Em \cite{audi_floer_homology} pode ser encontrada a identificados desses espaços com os espaços de Sobolev $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e  $\espacosobolevcontradominio{\circulo}{\real{2n}}$, respectivamente. Para detalhes desta identificação, veja \cite{audi_floer_homology}.
 	\end{observacao}
 	
-	Com argumentos análogos aos anteriores, defini-se os espaços de Banach $\espacoLp{\pullbackfibradotangenteM{x}}$, $\espacoLp{\pullbackfibradotangenteM{u}}$ e seus  equivalentes $\espacoLpcontradominio{\circulo}{\real{2n}}$ e $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente.
+	Os espaços de Banach  $\espacoLp{\pullbackfibradotangenteM{u}}$, $\espacoLp{\pullbackfibradotangenteM{x}}$ e seus  equivalentes  $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacoLpcontradominio{\circulo}{\real{2n}}$, são definidos de forma análoga às construções anteriores.
 	
 	Sejam $D \subset TM$ uma vizinhança aberta da seção nula de $TM$ e $\exp:D\to M$ a aplicação exponencial definida no Apêndice \ref{apendice_variedade_riemanniana}.
-	Fixado $x\in \lacocontrateis$, tem-se que $\Exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ dada por $\Exp_{x}(Y)(t) = \exp(x(t),Y(t))$ está bem-definida.
+	Fixado $x\in \lacocontrateis$, tem-se que $\Exp_{x}: \espacosobolev{x^{*}D} \to C^{0}(\circulo;M)$ dada por $\Exp_{x}(Y)(t) = \exp(x(t),Y(t))$ está bem-definida. Além disso, $\Exp_{x}(0)(t) = \exp(x(t),0) = x(t)$ para todo $t\in \circulo$, logo $\Exp_{x}(0)=x$.
 	Tome a coleção $\{ (\espacosobolev{x^{*}D}, \Exp_{x}) \}_{x \in \lacocontrateis}$ e defina $\caminhosexponenciaisSobolev$ como sendo o conjunto das aplicações $\beta:\circulo\to M$ tais que $\beta=\Exp_{x}(Y)$ para algum $x\in \lacocontrateis$ e algum $Y \in \espacosobolev{x^{*}D}$.
 	
+	\begin{observacao}\label{observacao_inclusao_lacoescontrateis}
+		Note que, dado $x\in \lacocontrateis$, tem-se que $x=\Exp_{x}(0)$. Logo $x\in \caminhosexponenciaisSobolev$ e $\lacocontrateis \subset \caminhosexponenciaisSobolev$.
+	\end{observacao}
+	
 	\begin{proposicao}\label{proposicao_caminhos_variedade_banach}
-		O conjunto $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Além disso, 
+		O conjunto $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$ munida com o atlas $\{(\espacosobolev{x^{*}D_{x}}, \Exp_{x})\}_{x \in \lacocontrateis }$, onde $D_{x} \subset TM$ é uma vizinhança aberta da seção nula de $TM$. Além disso, 
 		$$
 		\lacocontrateis = C^{\infty}(\circulo;M) \subset  \caminhosexponenciaisSobolev\subset C^{0}(\circulo;M),
 		$$
@@ -3839,34 +3838,39 @@
 	\begin{prova}
 		Afirmo que $\caminhosexponenciaisSobolev$ satisfaz os axiomas das variedades de Banach. De fato,
 		\begin{enumerate}
-			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $x_{\beta} \in \lacocontrateis$ e $Y_{\beta} \in \espacosobolev{x_{\beta}^{*}D}$ tal que $\beta(t)=\Exp_{x_{\beta}}(Y_{\beta})(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{\beta} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é difeomorfa sobre a sua imagem. Denotando $\espacosobolev{x_{\beta}^{*}D_{\beta}}$ por $W_{\beta}$, tem-se que
+			\item Para todo $\beta \in \caminhosexponenciaisSobolev $ existem $x \in \lacocontrateis$ e $Y \in \espacosobolev{x^{*}D_{x}}$ tal que $\beta(t)=\Exp_{x}(Y)(t)$. A Proposição \ref{proposicao_difeomorfismo_exponencial} garante a existência de uma vizinhança aberta $D_{x} \subset TM$ da seção nula de $TM$ onde a aplicação exponencial é difeomorfa sobre a sua imagem. Denotando $\espacosobolev{x^{*}D_{x}}$ por $W_{x}$, tem-se que
 			$$
-			\caminhosexponenciaisSobolev = \bigcup_{\beta \in \caminhosexponenciaisSobolev } W_{\beta}.
+			\caminhosexponenciaisSobolev = \bigcup_{x \in \lacocontrateis} W_{x}.
 			$$
 			
-			\item Pela escolha de $D_{\beta}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\Exp_{x_{\beta}}:W_{\beta} \to \Exp_{x_{\beta}}(W_{\beta})$ é um difeomorfismo sobre sua imagem. Logo é um homeomorfismo.
+			\item Pela escolha de $D_{x}$ do item anterior e pela Proposição \ref{proposicao_difeomorfismo_exponencial}, pode-se afirmar que $\Exp_{x}:W_{x} \to \Exp_{x}(W_{x})$ é um difeomorfismo sobre sua imagem. Logo é um homeomorfismo.
 			
-			\item Como $\Exp_{x_{\beta}}$ e $\Exp_{x_{\alpha}}$ são difeomorfismos sobre suas imagens, então a composição $\Exp_{x_{\beta}}^{-1} \circ \Exp_{x_{\alpha}} :W_{\beta} \cap W_{\alpha} \to W_{\beta} \cap W_{\alpha}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
+			\item Como $\Exp_{x}$ e $\Exp_{y}$ são difeomorfismos sobre suas imagens, então a composição $\Exp_{x}^{-1} \circ \Exp_{y} :W_{x} \cap W_{y} \to W_{x} \cap W_{y}$ é um difeomorfismo. Além disso, como as aplicações exponenciais são de classe $C^{\infty}$, então a composição anterior também o é.
 		\end{enumerate}
 		
-		Portanto $\{(W_{\beta}, \exp_{x_{\beta}}) \}_{\beta \in \caminhosexponenciaisSobolev}$ é um atlas suave e $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. Por fim, a demonstração da cadeia de inclusão dos conjuntos e suas densidades podem ser encontrada em \cite{matthias_morse_homology}.
+		Portanto $\{(W_{x}, \Exp_{x}) \}_{x \in \lacocontrateis}$ é um atlas suave e $\caminhosexponenciaisSobolev$ é uma variedade de Banach de classe $C^{\infty}$. 
+		
+		Por definição tem-se que $\caminhosexponenciaisSobolev\subset C^{0}(\circulo;M)$ e pela Observação \ref{observacao_inclusao_lacoescontrateis} $\aplicaoessuaves{\circulo}{M} \subset \caminhosexponenciaisSobolev$. Sabe-se que $\aplicaoessuaves{\circulo}{M}$ é denso em $C^{0}(\circulo;M)$. Logo, $\caminhosexponenciaisSobolev$ é denso em $C^{0}(\circulo;M)$.
 	\end{prova}
 	
-\alerta{	\begin{observacao} (Não sei onde colocar essa observação...!!!!)
-		Seja $I\subseteq \reta$ um intervalo, então $\espacosobolev{I} \subset C^{0}(\overline{I})$ para todo $p\geq 1$. Contudo, para um dado $\Omega \in \real{m}$ tem-se que $\espacosobolev{\Omega} \subset C^{0}(\overline{\Omega})$ para $p>m$ (veja em \cite{audi_floer_homology}). Note que, $\retacartesianocirculo \subset \real{3}$ é uma variedade de dimensão 2, portanto não se pode afirmar que os elementos de $\espacosobolev{\retacartesianocirculo}$ são aplicações contínuas. Contudo, no caso em que $p>2$, o Teorema \ref{teorema_rellich} garante que as soluções dos das EDPs serão contínuas. Com isso, será assumido que $p>2$ no restante do texto. (tenho que rever essa afirmação pois estamos demonstrando fredholm para p=2.)
+	\begin{observacao}
+		Uma consequência da construção anterior é que o espaço tangente a $x\in \caminhosexponenciaisSobolev$ da variedade de banach $\caminhosexponenciaisSobolev$ é
+		$$
+		\espacotangenteponto{x}{\caminhosexponenciaisSobolev} = \espacosobolev{\pullbackfibradotangenteM{x}}.
+		$$
 	\end{observacao}
-}
+	
 	\aviso{ver Michele 226, 227}
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
 		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. O conjunto das aplicações $w \in \aplicaoessuavesreatacirculo$ tais que $\lim_{s \to \pm \infty} w(s,t) = x^{\pm}(t)$ para todo  $t\in \circulo $ e que 
 		$$
-		\normagrande{\derivadaparcial{}{s}w(s,t)} \leq Ke^{-\delta|s|} \;\; \text{e} \;\; \normagrande{\derivadaparcial{}{t}w(s,t) -X_{H}(w(s,t))} \leq Ke^{-\delta|s|}
+		\normagrande{\derivadaparcial{w}{s}w(s,t)} \leq Ke^{-\delta|s|} \;\; \text{e} \;\; \normagrande{\derivadaparcial{w}{t}(s,t) -X_{H}(w(s,t))} \leq Ke^{-\delta|s|}
 		$$
-		para algum $K\in \reta_{+}$, é chamado de conjunto dos caminhos com decaimento exponencial conectando $x^{-}$ a $x^{+}$ e é denotado por $\caminhosdecaimentoexponencialpadrao$.
+		para $\delta \in \reta_{+}$, é chamado de conjunto dos caminhos com decaimento exponencial conectando $x^{-}$ a $x^{+}$ e é denotado por $\caminhosdecaimentoexponencialpadrao$.
 	\end{definicao}
 	
 	\begin{definicao}
-		(Exponenciais conectantes) \alerta{(Para $p>2$ tenho que rever esse ponto. Veja Michele pag 227)} O conjunto das aplicações 
+		(Exponenciais conectantes) O conjunto das aplicações 
 		$$
 		\retacartesianocirculo \ni (s,t) \mapsto \exp(w(s,t), Y(s,t)) \in M,
 		$$
@@ -3874,7 +3878,7 @@
 	\end{definicao}
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
-		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach.
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach para $p>2$ \alerta{(acho que a condição de p>2 é utilizada na demonstração de algum outro teorema)}.
 	\end{proposicao}
 	
 	\begin{prova}
@@ -3887,8 +3891,29 @@
 		Com argumentos análogos aos utilizandos na demonstração da Proposição \ref{proposicao_caminhos_variedade_banach}, pode-se afirmar que $\{(D_{w}, \Exp_{w})\}_{w\in \caminhosdecaimentoexponencialpadrao} $ é um atlas de $\caminhosexponenciaisconectantespadrao$ e este conjunto é uma variedade de Banach.
 	\end{prova}
 	
+	O seguinte teorema e sua observação caracterizam o comportamento assintótico das soluções da equação de Floer
+	
+	\begin{teorema}\label{teorema_decaimento_exponencial_solucao_floer}
+		Se $Y \in \ker(\diferencialfloerponto{u})$ é uma aplicação de classe $C^{2}$ e $u \in \energiafinitaM$, então 
+		$$
+		\lim\limits_{a\to \infty}\int_{-a}^{a}\int_{\circulo}\norma{Y(s,t)}^{2} = \infty \;\;\text{ou}\;\; \norma{Y(s,t)} \leq Ce^{-\delta|s|},
+		$$
+		onde $\delta$ e $C>0$ são constantes.
+	\end{teorema}
+	
+	\begin{observacao}\label{observacao_decaimento_exponencial_solucao_floer}
+		Se $u \in \energiafinitaM$ é uma solução da equação de Floer, então $Y=\derivadaparcial{u}{s}$ decai exponencialmente, e em particular, $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ para cada $p>1$. De fato, 
+		$$
+		\int_{\retacartesianocirculo}\normagrande{Y(s,t)}^{2} = \int_{\retacartesianocirculo}\normagrande{\derivadaparcial{u}{s}(s,t) }^{2}=E(u)<\infty.
+		$$
+		Portanto, pelo teorema anterior, as soluções da equação de Floer possuem decaimento exponencial. Além disso, 
+		$$
+		\normaLpdefinicao{\norma{Y}}{\retacartesianocirculo} \leq C\bigparenteses{\int_{\retacartesianocirculo}e^{-\delta|s|p}dsdt}^{1/p} = 2\pi C\bigparenteses{\int_{\reta}e^{-\delta|s|p}ds }^{1/p}<\infty.
+		$$ 
+		Logo $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ para $p>1$.
+	\end{observacao}
 		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$ e $\energiafinitaMconectante =\{u\in \energiafinitaM: \lim_{s\to \pm \infty}u(s) =x^{\pm}\}$.
-		A seguinte proposição, que está demonstrada em \cite{audi_floer_homology}, afirma que todo solução de energia finita $u \in \energiafinitaMconectante$ satisfaz as condições de decaimento exponencial e, além disso, pode ser escrita como $u=\Exp(w,Y)$ para algum $w\in \caminhosdecaimentoexponencialpadrao$ e algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$.
+		A seguinte proposição, que é consequência co Teorema \ref{teorema_decaimento_exponencial_solucao_floer} e da Observacao \ref{observacao_decaimento_exponencial_solucao_floer}, afirma que todo solução de energia finita $u \in \energiafinitaMconectante$ satisfaz as condições de decaimento exponencial e, além disso, pode ser escrita como $u=\Exp(w,Y)$ para algum $w\in \caminhosdecaimentoexponencialpadrao$ e algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$.
 		
 		\begin{proposicao}\label{proposicao_cadeia_caminhos_conectantes}
 			$\energiafinitaMconectante \subset \caminhosdecaimentoexponencialpadrao \subset  \caminhosexponenciaisconectantespadrao$.
@@ -3897,31 +3922,32 @@
 	
 	\section{O operador de Floer $\operadorFloer$ e seu diferencial $\diferencialfloer$}\label{secao_operador_floer}
 	
-	Por simplicidade, denote $\caminhosexponenciaisconectantespadrao$ por $\caminhosexponenciaisconectantesabrev$. Seja $\fibradocaminhosexponenciais$ um fibrado vetorial sobre $\caminhosexponenciaisconectantespadrao$ cujas fibras em $u \in \caminhosexponenciaisconectantespadrao$ é $\espacoLp{\pullbackfibradotangenteM{u}}$.
+	Seja $\fibradocaminhosexponenciais$ um fibrado vetorial sobre $\caminhosexponenciaisconectantespadrao$ cuja fibra em $u \in \caminhosexponenciaisconectantespadrao$ é $\espacoLp{\pullbackfibradotangenteM{u}}$.
 	
 	\begin{definicao}\label{definicao_operador_floer}
-		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é a seção do fibrado $\operadorFloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciais$ definida por
+		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é a seção $\operadorFloer: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciais$ definida por
 		$$
 		\operadorFloerParametro{u} = \bigparenteses{u,\operadorFloerDefinicao{u}}.
 		$$
 	\end{definicao}
 	
-	Daqui em diante adotaremos a identificação da seção $\operadorFloer$ como operador diferencial $\partial_{s}+J\partial_{t}-J\campohamiltonianoabrev$ (veja o Apêndice \ref{apendice_fibrados}).
+	Daqui em diante adotaremos a identificação da seção $\operadorFloer$ com o operador diferencial $\partial_{s}+J\partial_{t}-J\campohamiltonianoabrev$ (veja o Apêndice \ref{apendice_fibrados}).
 	
 	\begin{observacao}
 		 Com essa identificação o operador de Floer pode ser visto como um elemento de $\campossuaves{\caminhosexponenciaisconectantespadrao}$.
 	\end{observacao}
 	
-	Dado $\exp(w,Y) \in \caminhosexponenciaisconectantesabrev$, pode-se mostrar que, identificando a fibra $\espacoLp{\pullbackfibradotangenteM{u}}$ com $\espacoLp{\retacartesianocirculo;\real{2n}}$, tem-se que $\operadorFloerParametro{\exp(w,Y)}\in \espacoLp{\retacartesianocirculo;\real{2n}}$ (veja \cite{audi_floer_homology}) \alerta{(se a próxima seção permanecer não precisarei dessa referência)}. Logo, o operador de Floer esta bem-definido.
+	Dado $\exp(w,Y) \in \caminhosexponenciaisconectantesabrev$, pode-se mostrar que, identificando a fibra $\espacoLp{\pullbackfibradotangenteM{u}}$ com $\espacoLp{\retacartesianocirculo;\real{2n}}$, tem-se que $\operadorFloerParametro{\exp(w,Y)}\in \espacoLp{\retacartesianocirculo;\real{2n}}$ (veja \cite{audi_floer_homology}). Logo, o operador de Floer esta bem-definido.
 	
 	\aviso{lecture Salamon 15}
 	
-	Seja $w \in \caminhosexponenciaisconectantespadrao$ e tome $Y $ um vetor da fibra $ \espacoLp{\retacartesianocirculo;\real{2n}}$. Então $Y$ pode ser visto como uma aplicação suave $Y:\retacartesianocirculo\to TM$ tal que $Y(s,t)\in \espacotangenteponto{w(s,t)}{M}$. Além disso, existe uma vizinhança $V$ de $w$ em $\caminhosexponenciaisconectantespadrao$ onde todo $w' \in V$ é dado unicamente por $w'=\exp(w, Y')$ para algum $Y'\in \espacoLp{\pullbackfibradotangenteM{w}}$. Como $M$ pode ser vista como uma variedade Riemanniana, então o diferencial de $\diferencialfloerponto{u}$ avaliado no vetor $Y$ é dado via o transporte paralelo de $\operadorFloerParametro{u}$ ao longo da geodésica $\tau \mapsto \exp_{w}(tY)$, é dado em termos das conexões afins $\nabla:\campossuaves{M}\times \campossuaves{M} \to \campossuaves{M}$ e é expresso em por
+	Seja $w \in \caminhosexponenciaisconectantespadrao$ e tome $Y $ um vetor da fibra $ \espacoLp{\retacartesianocirculo;\real{2n}}$. Então $Y$ pode ser visto como uma aplicação suave $Y:\retacartesianocirculo\to TM$ tal que $Y(s,t)\in \espacotangenteponto{w(s,t)}{M}$. Além disso, existe uma vizinhança $V$ de $w$ em $\caminhosexponenciaisconectantespadrao$ onde todo $w' \in V$ é dado unicamente por $w'=\exp(w, Y')$ para algum $Y'\in \espacoLp{\pullbackfibradotangenteM{w}}$. Como $M$ é uma variedade Riemanniana, então o diferencial de $\diferencialfloerponto{u}$ avaliado no vetor $Y$ é dado via o transporte paralelo de $\operadorFloerParametro{u}$ ao longo da geodésica $\tau \mapsto \exp_{w}(tY)$ por 
 	$$
-	\diferencialfloerponto{w}(Y) = \nabla_{s}Y + J_{w}\nabla_{t}Y + dJ_{w}(Y)(Y - X_{H}(w)) - J_{w}d_{w}X_{H}(Y).
+	\diferencialfloerponto{w}(Y) = \nabla_{s}Y + J_{w}\nabla_{t}Y + dJ_{w}(Y)(Y - X_{H}(w)) - J_{w}d_{w}X_{H}(Y),
 	$$
+	onde $\nabla:\campossuaves{M}\times \campossuaves{M} \to \campossuaves{M}$ é a conexão afim. Mais detalhes dessa descrição podem ser encontrados em \cite{salamon_lecture}. 
 	
-	Mais detalhes dessa descrição podem ser encontrados em \cite{salamon_lecture}. Contudo, analisar as propriedades desse operador com conexões afins adiciona complexidade ao estudo, e nesse texto é adotada uma abordagem via mergulho de variedades em espaços euclidianos.
+	Contudo, analisar as propriedades desse operador com conexões afins adiciona complexidade ao estudo, e por isso nesse texto é adotada uma abordagem via mergulho de variedades em espaços euclidianos.
 	
 	\aviso{Michele 234}
 	
@@ -4182,14 +4208,22 @@
 	\end{prova}
 
 	\begin{lema}\label{lema_diferencial_floer_bijecao}
-		Suponha que $S(s,t) = S(t)$ e que $\det(\Psi(1) - Id) \neq 0 $, onde $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$. Então 
+		Suponha que $S(s,t) = S(t)$. Se $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$ com $\Psi(0)=Id$, tal que $\det(\Psi(1) - Id) \neq 0 $, então 
 		$$
-		\diferencialfloerabrev : \espacosobolevretacirculo \to \espacoLpretacirculo
+		\diferencialfloerabrev : \espacosobolevdois{\retacartesianocirculo}{\real{2n}} \to \espacoLdoiscontradom{\retacartesianocirculo}{\real{2n}}
 		$$
-		é bijetor para $1<p<\infty$.
+		é bijetor.
 	\end{lema}
 	\begin{prova}
-		Fixe $p=2$ e considere o operador $A: \espacosobolevdois{\circulo}{\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$ definido por $A = \estruturacomplexa \derivadaparcialabrev{t} + S$. Com isso, dado $\Psi \in \espacosobolevdois{\circulo}{\real{2n}}$ tem-se que $A\Psi(t) = \diferencialfloerabrev\Psi(t)$ para todo $t \in \circulo$. Logo $A=\diferencialfloerabrev$. Pela Proposição \ref{proposicao_diferencial_floer_adjunto}, tem-se que $A^{*}\Psi(t) = \diferencialfloerabrev^{*}\Psi(t) = \diferencialfloerabrev\Psi(t) = A\Psi(t)$, pois $S$ não depende do parametro $s \in \real{}$. Portanto $A=A^{*}$ e $A$ é um operador auto-adjunto.
+		Considere o operador $A: \espacosobolevdois{\circulo}{\real{2n}} \to \espacoLdois{\circulo;\real{2n}}$ definido por $A = \estruturacomplexa \derivadaparcialabrev{t} + S$. Tomando $\Psi \in \espacosobolevdois{\circulo}{\real{2n}}$ tem-se que 
+		$$
+		\diferencialfloerabrev\Psi  = \derivadaparcial{\Psi}{s}+A\Psi = A\Psi
+		$$
+		e
+		$$
+		\diferencialfloerabrev^{*}\Psi  = -\derivadaparcial{\Psi}{s}+A^{*}\Psi = A^{*}\Psi.
+		$$
+		Como $S$ não depende do parâmetro $s$, então $S^{t} = S$.
 		
 		\textbf{Etapa 1:} Tomando $\Psi \in Ker(A)$, tem-se um sistema de equações diferenciais homogêneo cuja solução é da forma $\Psi(t) = R(t)\Psi_{0}$, onde $\Psi(0)=\Psi_{0}$ é a condição inicial e $R(0) = Id$. Pelo Teorema Fundamental de existência e unicidade das soluções de EDO $\cite{pontryagin_ode}$ pode-se afirmar que, para um dado $\Psi_{0}$ existe um único $R$ tal que $\Psi$ seja solução do sistema da forma $\Psi = R\Psi_{0}$ e. Pela unicidade da solução, pode-se afirmar que $\Psi_{0}=R^{-1}\Psi$. Aplicando $A$ na solução $\Psi$ tem-se
 		$0=A\Psi(t) = A(R(t)\Psi_{0}) = (\estruturacomplexa\derivadaparcialabrev{t}+S)R(t)\Psi_{0}$, o que implica em no sistema de equações diferenciais para $\dot{R}(t) = \estruturacomplexa SR(t)$ com $R(0) = Id$. Logo $R \in Ker(A)$.
@@ -4513,9 +4547,9 @@
 		\end{enumerate}
 		
 		\begin{teorema}\label{teorema_indice_diferencial_operador_floer}
-			O índice de Fredholm de $\diferencialfloer$ é \alerta{(definir quem são $x^{\pm}$)}
+			Sejam $ x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$ e $u\in \caminhosexponenciaisconectantespadrao$. O índice de Fredholm de $\diferencialfloerponto{u}$ é
 			$$
-			\ind(\diferencialfloer) = \mu(x^{-}) - \mu(x^{+}).
+			\ind(\diferencialfloerponto{u}) = \mu(x^{-}) - \mu(x^{+}).
 			$$
 		\end{teorema}
 	
@@ -5369,6 +5403,16 @@
 	\begin{definicao}\label{definicao_gradiente_hessiana}
 		(Campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente(p), v)$ para todo $p\in M$ e todo $v \in T_{p}M$. A Hessiana de $f$ é a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
 	\end{definicao}
+	
+	\begin{definicao}\label{definicao_mergulho_variedades}
+			(Mergulho de variedades) Sejam $M, N$ m,n-variedade s diferenciávei, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Dizemos que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
+	\end{definicao}
+	
+	O seguinte teorema permite tratar uma variedade diferenciável como um subconjunto de algum espaço euclidiano de dimensão suficientemente grande. Sua demonstração pode ser encontrada em \cite{guillemin_differential_topology}.
+	
+	\begin{teorema}\label{teorema_whitney}
+			(Mergulho de Whitney) Toda variedade n-dimensional pode ser mergulhada em $\real{2n+1}$.
+	\end{teorema}
 	
 	
 	\chapter{Espaços de Sobolev}
