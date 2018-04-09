@@ -3878,7 +3878,7 @@
 	\end{definicao}
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
-		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach para $p>2$ \alerta{(acho que a condição de p>2 é utilizada na demonstração de algum outro teorema)}.
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach para $p>2$ \alerta{(acho que a condição de $p>2$ é utilizada na demonstração de algum outro teorema)}.
 	\end{proposicao}
 	
 	\begin{prova}
@@ -4056,52 +4056,21 @@
 
 	Como $\{e_{1}, \dots,e_{2n} \}$ é um referencial simplético, então $J_{u}$ coincide com a estrutura complexa $\estruturacomplexa$ nessa carta. Logo, $	\overline{\partial}_{u}(Y) =\sum_{j=1}^{2n}\big( \derivadaparcial{y_{j}}{s}+\estruturacomplexa \derivadaparcial{y_{j}}{t}\big)(e_{j})$.
 	
-	\section{$D\operadorFloer$ é um operador de Fredholm}
-	\alerta{(Colocar uma resuma da estratégia da demonstração aqui...)}
+	\section{A propriedade de Fredholm de $D\operadorFloer$ e seu operador dual.}
 	
-	\alerta{(Acho que essas definições devem ser inserirdas em um apêndice dentro do próprio capítulo.)}
-	
-\alerta{
-	\begin{definicao}
-		Sejam $A,B$ espaços normados. Um operador linear $T:A\to B$ é um operador linear limitado se 
-		$$
-		\norma{T} = \sup_{\norma{\xi}_{A}=1}\norma{T\xi}_{B}<\infty.
-		$$
-		O conjunto dos operadores limitados de $A$ em $B$ é denotado por $\operadoreslimitados{A}{B}$.
-	\end{definicao}
-	
-	\begin{definicao}\label{definicao_operador_compacto}
-		(Operador Compacto) Sejam $A, B$ espaços normados. Então um operador linear $T:A\to B$ é chamdado de operador linear compactor se, para cada $W \subset A$ limitado, $T(W)$ é relativamente compacto, isto é, $\overline{T(W)} $ é um compacto.
-	\end{definicao}
-	
-	\begin{observacao}\label{observacao_operador_compacto_limitado}
-		Pode-se mostrar que todo operador compacto entre espaços de Banach é limitado (veja $\cite{kreyszig_analise_funcional}$).
-	\end{observacao}
-	
-	\begin{lema}\label{lema_desigualdade_operador_compacto}
-		Sejam $A,B,C$ espaços de Banach e $D:A\to B$ um operador limitado e $K:A \to C$ um operador compacto. Supondo que exista uma constante $c>0$ tal que $\normasubscrito{\xi}{A} \leq c(\normasubscrito{D\xi}{B} + \normasubscrito{K\xi}{C})$, então $D(A) = \overline{D(A)}$ e $dim(Ker(D)) <\infty$.
-	\end{lema}
-	
-	\begin{definicao} (Semi-grupo fortemente contínuo)
-		Seja $\mathcal{B}(B)$ o conjunto dos operador lineares limitados definidos no espaço de Banach $B$. Uma aplicação $T:\real{}_{+}\to \mathcal{B}(B)$ é um semi-grupo fortemente contínuo se satasifaz as seguintes propriedades:
-			
-			\begin{enumerate}
-				\item $T(0) = Id$ e $T(s+t) = T(s)T(t), \;\forall s, t \in \real{}_{+}$
-				
-				\item Para cada $x\in B$ a aplicação $T_{x}: \reta_{+}\to B$ definida por $T_{x}(t) = T(t)x$ é contínua.
-			\end{enumerate}
-	
-	\end{definicao}
-	
-	\begin{observacao}
-		A primeira propriedade é chamada de  propriedade de semi-grupo, já a segunda, é chamada de proriedade de continuidade forte.
-	\end{observacao}
-}
 	Como o diferencial $\diferencialfloerponto{u}$ está definido de $\espacosobolev{\pullbackfibradotangenteM{u}}$ em $\espacoLp{\pullbackfibradotangenteM{u}}$, e esses espaços podem ser identificados com $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$, respectivamente, então o diferencial do operador de Floer pode ser visto como uma aplicação
 	$$
 	\diferencialfloerponto{u}:\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}\to \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}},
 	$$
 	onde $\diferencialfloerponto{u}=\overline{\partial}+ S$. Seja  $\text{Endo}(\real{2n})$ o conjunto dos endomorfismos de $\real{2n}$ em $\real{2n}$, então $S$ pode ser vista como um uma aplicação de $\retacartesianocirculo$ em $\text{Endo}(\real{2n})$. Por uma questão de simplicidade, o operador $\diferencialfloerponto{u}$ será denotado por $\diferencialfloerabrev$. 
+	
+	\begin{definicao}
+		Sejam $A,B$ espaços normados. Um operador linear $T:A\to B$ é um operador linear limitado se existe uma constante $C>0$ tal que
+		$$
+		\norma{T\xi} \leq C\norma{\xi}\;\;\forall \xi \in A.
+		$$
+		Caso contrário, é dito que $T$ é um operador não-limitado.
+	\end{definicao}
 	
 	\begin{teorema}\label{teorema_hahn_banach}
 		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
@@ -4206,65 +4175,21 @@
 		$$
 	\end{prova}
 
-	\begin{lema}\label{lema_diferencial_floer_bijecao}
-		Suponha que $S(s,t) = S(t)$. Se $\Psi:[0,1] \to \gruposimpletico{2n}$ é solução do sistema $\dot{\Psi}(t)=\estruturacomplexa S(t)\Psi(t)$ com $\Psi(0)=Id$, tal que $\det(\Psi(1) - Id) \neq 0 $, então 
-		$$
-		\diferencialfloerabrev : \espacosobolevdois{\retacartesianocirculo}{\real{2n}} \to \espacoLdoiscontradom{\retacartesianocirculo}{\real{2n}}
-		$$
-		é bijetor.
-	\end{lema}
-	
-	
 	Aplicando a regularidade elíptica, que pode ser encontrada em $\cite{audi_floer_homology}$, pode-se mostrar a continuidade do diferencial do operador de Floer $\diferencialfloerabrev$.
 	
 	\begin{teorema}\label{teorema_regularidade_eliptica}
-		(Regularidade Elíptica) Seja $p> 1$. Se $\xi \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev\xi =0$, então $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ e $\xi \in C^{\infty}$. Logo, $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \subset C^{\infty}(\retacartesianocirculo;\real{2n})$.
+		(Regularidade Elíptica) Seja $p> 1$. Se $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev Y =0$, então 
+		$$
+		Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \cap C^{\infty}(\retacartesianocirculo;\real{2n}).$$
 	\end{teorema} 
 		
-	Os resultados a seguir são utilizados diretamente na demonstração da propriedade de Fredholm do operador $\diferencialfloerabrev$ e podem ser encontrados em $\cite{kreyszig_analise_funcional}$. São eles: o Teorema da Aplicação Aberta, o Teorema da Representação de Reiz e o Teorema de Hahn-Banach.
-	
-	\begin{teorema}\label{teorema_aplicacao_aberta}
-		(Teorema da Aplicação Aberta) Se $T : A \to E$ é um operador linear sobrejetor entre os espaços de Banach $A$ e $E$, então existem uma constante $c>0$ tal que $B_{E}(0,c) \subset T(B_{A}(0,1))$, onde $B_{E}(0,c) $ é a bola aberta de centro no vetor nulo de $E$ e raio $c$.
-	\end{teorema}
-	
-	\begin{observacao}
-		Uma consequência imediata desse teorema é que $T$ é uma aplicação aberta, isto é, a imagem de um aberto por $T$ é um aberto.
-	\end{observacao}
-	
-	\begin{corolario}
-		 Se $T : A \to E$ é um operador linear bijetor entre os espaços de Banach $A$ e $E$, então $T^{-1}$ é um operador linear bijetor limitado.
-	\end{corolario}
-	
-
-	Seja $f: B \to \reta$ um funcional linear definido no espaço vetorial $B$. Dizemos que $f$ é sublinear se $f(x+y)\leq f(x)+f(y)$ para todos $x,y \in B$.
-	
-
-	A demonstração dos lemas que seguem podem ser encontradas em \cite{breazis_sobolev_spaces}.
-	
-	\begin{lema}\label{lema_operador_limitado_imagem_fechada}
-		Sejam $A,B,C$ espaços de Banach, $D:A \to B$ um operador linear limitado e $K:X \to C$ um operador linear compacto. Se existir uma constante $c>0$ tal que $\norma{\xi}_{A}\leq c(\norma{D\xi}_{B}+\norma{K\xi}_{C})$ para todo $\xi \in X$, então $D(X)\subset Z$ é um fechado e $dim(Ker(D)) < \infty$.
-	\end{lema}
-	
-	\begin{lema}\label{lema_desigualdade_inclusao_sobolev}
-		Se $\xi \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$, então existe uma constante $c>0$ tal que $\normaWp{\xi}\leq c(\normaLp{\diferencialfloerabrev \xi} +\normaLp{\xi})$ para todo $p\geq 1$.
-	\end{lema}
-	
-	
-	
-	\begin{corolario}
-		Com as hipóteses da proposição anterior, se $\produtointerno{Y}{\diferencialfloerabrev\xi} = 0$, então $\diferencialfloerabrev^{*}Y = 0$, no sentido distribucional.
-	\end{corolario}
-	\begin{prova}
-		Tem-se que a integral $\int_{\retacartesianocirculo}\produtointerno{\diferencialfloerabrev^{*}Y}{\xi}=0$. Por outro lado $ \int_{\retacartesianocirculo}\produtointerno{0}{\xi} =0$, para todo $\xi \in \espacosobolevretacirculo$. Logo $\diferencialfloerabrev^{*}Y = 0$.
-	\end{prova}
+	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabe-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação defini-se os operadores de Fredholm.
 	
 	\begin{definicao}\label{definicao_operador_fredholm}
 		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada) e $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $\ind(T) = k(T) - c(T)$. 
 	\end{definicao}
 	
-	\begin{observacao}
-		Seja $T:A\to B$ um operador linear entre espaços vetoriais. Sabse-se que $T$ é um isomorfimos se, e somente se, $Ker(T) = 0$ e $T(A) = B$, isto é, $B/T(A) = 0$. De forma equivalente, $T$ é um isomorfismo se, e somente se, $dim(Ker(T)) = 0$ e $dim(T(A)) = 0$. Suponha que $T$ sejá limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Pode-se mostrar que $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
-	\end{observacao}
+	O teorema a seguir afirma que o diferencial $\diferencialfloerponto{u}$ é um operador de Fredholm, e seu subsequente, que o índice de Fredholm de $\diferencialfloerponto{u}$ é dado pela diferença dos índices de Maslov dos pontos críticos $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$ que são conectados por $u$. Esse resultado é utilizado na demonstração da transversalidade do operador de Floer $\operadorFloer$, e como consequência, no fato de que $\energiafinitaMconectante$ é uma variedade de dimensão finita e igual ao índice de Fredholm $\ind(\diferencialfloerponto{u})$. Ambos os resultados podem ser encontrados em \cite{audi_floer_homology} e \cite{salamon_zehnder}.
 	
 	\begin{teorema}
 		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $\det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevretacirculo\to \espacoLpretacirculo$ é um operador de Fredholm para $1<p<\infty$.
