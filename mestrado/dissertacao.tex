@@ -144,9 +144,9 @@
 \newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
 \newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
 \newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
-\newcommand{\espacoLpadjuntoretacirculo}{L^{q}(\retacartesianocirculo;\real{2n})}
-\newcommand{\espacoLpdual}{(L^{p})^{*}(\retacartesianocirculo;\real{2n})}
-\newcommand{\espacoLpdualdois}{(L^{2})^{*}(\retacartesianocirculo;\real{2n})}
+\newcommand{\espacoLpadjuntoretacirculo}{L^{q}(\retacartesianocirculo;\real{m})}
+\newcommand{\espacoLpdual}{(L^{p})^{*}(\retacartesianocirculo;\real{m})}
+\newcommand{\espacoLpdualdois}{(L^{2})^{*}(\retacartesianocirculo;\real{m})}
 \newcommand{\espacomoduli}[2]{\mathcal{M}_{#1#2}}
 \newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
 \newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
@@ -1073,7 +1073,7 @@
 	
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=13cm,height=7cm]{imagem/cw_2_toro.pdf}
+		\includegraphics[width=16.5cm,height=8.5cm]{imagem/cw_2_toro_refeito.pdf}
 		\caption{Estrutura de CW-complexo do 2-toro $T^{2}$.}
 		\label{figura_cw_2_toro}
 	\end{figure} 
@@ -1255,8 +1255,8 @@
 			
 			\begin{figure}[!h]
 				\centering
-				\includegraphics[width=8cm,height=7cm]{imagem/toro_funcao_altura.pdf}
-				\caption{Pontos críticos da função altura em $T^{2}$.}
+				\includegraphics[width=8cm,height=7cm]{imagem/toro_funcao_largura.pdf}
+				\caption{Pontos críticos da função largura em $T^{2}$.}
 				\label{figura_toro_funcao_altura}
 			\end{figure}
 	\end{exemplo}
@@ -3890,15 +3890,27 @@
 	\end{definicao}
 	
 	\begin{proposicao}\label{proposicao_variedade_banach}
-		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach para $p>2$ \alerta{(acho que a condição de $p>2$ é utilizada na demonstração de algum outro teorema)}.
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então $\caminhosexponenciaisconectantespadrao$ é uma variedade de Banach para $p>2$.
 	\end{proposicao}
 	
 	\begin{prova}
-		Sejam $w \in \caminhosdecaimentoexponencialpadrao$, um número $r_{w}>0$ e o disco $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$. Além disso, suponha que $r_{w}$ seja um raio tal que a aplicação 
+		Sejam $w \in \caminhosdecaimentoexponencialpadrao$, um número $r_{w}>0$ e o disco $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$. Pelo Item \ref{item_tres_teorema_inclusao_sobolev} do Teorema \ref{teorema_inclusao_sobolev} tem-se que a inclusão $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \hookrightarrow \espacoLpGeral{\infty}{\retacartesianocirculo;\real{2n}}$ é um operador contínuo para $p>2$. Com isso, existe uma constante $K\in \reta_{+}$ tal que 
+		$$
+		\norma{Y}_{L^{\infty}}\leq (K+1)\normaWp{Y}\;\forall Y\in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}.
+		$$
+		Note que 
+		$$
+		\norma{Y(s,t)}\leq \sup_{(s,t)\in \retacartesianocirculo}\norma{Y(s,t)} = \norma{Y}_{L^{\infty}}.
+		$$
+		Seja $\epsilon\in \reta_{+}$ um raio da bola aberta $B_{\epsilon}(0)$ centrada em $0\in \espacotangenteponto{w(s,t)}{M}$ tal que valha o difeomorfismo da Proposição \ref{proposicao_difeomorfismo_exponencial}. Suponha que $r_{w}< \epsilon/(K+1)$. Logo, para todo $Y \in D_{w}$ tem-se que
+		$$
+		\norma{Y(s,t)} \leq (K+1)\normaWp{Y} < \epsilon.
+		$$
+		Com isso, $r_{w}$ é um raio tal que a aplicação 
 		$$
 		D_{w}\ni Y\mapsto \Exp_{w}(Y) \in \caminhosexponenciaisconectantespadrao
 		$$ 
-		é um difeomorfismo sobre sua imagem (veja \ref{proposicao_difeomorfismo_exponencial}). 
+		é um difeomorfismo sobre sua imagem. 
 		
 		Com argumentos análogos aos utilizandos na demonstração da Proposição \ref{proposicao_caminhos_variedade_banach}, pode-se afirmar que $\{(D_{w}, \Exp_{w})\}_{w\in \caminhosdecaimentoexponencialpadrao} $ é um atlas de $\caminhosexponenciaisconectantespadrao$ e este conjunto é uma variedade de Banach.
 	\end{prova}
@@ -4044,7 +4056,7 @@
 	\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \ni (y_{1}, \dots ,y_{2n})\mapsto \Exp_{u}\Big(\sum_{j=1}^{2n}y_{j}e_{j}\Big) \in \caminhosexponenciaisconectantespadrao.
 	$$
 	
-	Nessa carta o diferencial de $\diferencialfloerponto{u}$ avaliado em $Y=\sum_{j=1}^{2n}y_{j}e_{j}$ é escrito como
+	Nessa carta o diferencial de $\diferencialfloerponto{u}$ avaliado em $Y=\sum_{j=1}^{2n}y_{j}e_{j} \in \real{2n} \subset \real{m}$ é escrito como
 	
 	$$
 	\begin{aligned}
@@ -4061,58 +4073,20 @@
 	
 	Como $\{e_{1}, \dots,e_{2n} \}$ é um referencial simplético, então $J_{u}$ coincide com a estrutura complexa $\estruturacomplexa$ nessa carta. Logo, $	\overline{\partial}_{u}(Y) =\sum_{j=1}^{2n}\big( \derivadaparcial{y_{j}}{s}+\estruturacomplexa \derivadaparcial{y_{j}}{t}\big)(e_{j})$.
 	
-	\begin{definicao}
-		Sejam $A,B$ espaços normados. Um operador linear $T:A\to B$ é um operador linear limitado se existe uma constante $C>0$ tal que
-		$$
-		\norma{T\xi} \leq C\norma{\xi}\;\;\forall \xi \in A.
-		$$
-		Caso contrário, é dito que $T$ é um operador não-limitado.
-	\end{definicao}
-	
-	\begin{teorema}\label{teorema_hahn_banach}
-		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
-	\end{teorema}
-	
-	
-	\aviso{Brezis pag 43}
-	
-	Sejam $E$ e $F$ espaços de Banach e $E^{*}$ e $F^{*}$ seus respectivos espaços duais. Suponha que $A: D(A)\subset E\to F$ com o domínio $D(A)$ denso em $E$. Defina o conjunto 
-	$$
-	D(A^{*})\{ f\in F^{*}: \exists\;c\geq 0\;\;\text{tal que }\;\; |f(Au)|\leq c\norma{u}\;\forall u\in D(A)\}.
-	$$
-	Pode-se mostrar que $D(A^{*})$ é um subespaço vetorial de $F^{*}$.
-	
-	Dado $f\in D(A^{*})$, considere a aplicação $g:D(A)\to \reta$ definida por $g(u) = f(Au)$. Com isso, $|g(u)|\leq c\norma{u}$ para todo $u\in D(A)$. Pelo Teorema \ref{teorema_hahn_banach} existe uma única aplicação linear $h\in E^{*}$ tal que 
-	$$
-	|h(u)|\leq c\norma{u} \;\forall u \in E \;\;\text{e }\;\; g=h|_{D(A)}.
-	$$
-	
-	O operador linear não-limitado $A^{*}:D(A^{*})\subset F^{*}\to E^{*}$ definido por $A^{*}f=f'$ é chamado adjunto de $A$ e satisfaz a relação
-	$$
-	f(Au) = (A^{*}f)(u).
-	$$
-	
-	\aviso{Brezis pag 97}
-	
-	\begin{teorema}\label{teorema_representacao_reiz}
-		(Teorema da representação de Reisz) Seja $f \in \espacoLpdual$ um funcional linear e $1<p<\infty$. Então existe uma única aplicação $Y \in \espacoLpadjuntoretacirculo$ tal que
-		$$
-		f(X) = \int_{\retacartesianocirculo}\produtointerno{Y(s,t)}{X(s,t)},
-		$$
-		para todo $X \in \espacoLpretacirculo$, onde $\produtointerno{.}{.}$ é o produto interno canônico de $\real{2n}$.
-	\end{teorema}
-	
+	A seguir será calculado o operador dual de $\diferencialfloer$ no contexto distribucional, e os objetos utilizados nessa demonstração estão no Apêndice \ref{apendice_preliminares_analise}.
+
+
 	\begin{proposicao}\label{proposicao_diferencial_floer_adjunto}
-		Em termos de distribuição, o operador $\diferencialfloeradjponto{u}:\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}} \to \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}$ é dado por
+		Em termos de distribuição, o operador adjunto $\diferencialfloeradjponto{u}:\espacoLpcontradominio{\retacartesianocirculo}{\real{m}} \to \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}$ de $\diferencialfloer$ é dado por
 		$$
 		\diferencialfloeradjponto{u}=-\derivadaparcial{}{s}+\estruturacomplexa \derivadaparcial{}{t}+S^{t}.
 		$$
 	\end{proposicao}
-	\begin{prova} Tome $f \in \espacoLpdual$ e $Y \in \espacoLpGeral{q}{\retacartesianocirculo;\real{2n}}$ tal que 
+	\begin{prova} Tome $f \in \espacoLpdual$ e $Y \in \espacoLpGeral{q}{\retacartesianocirculo;\real{m}}$ tal que 
 		$$
 		f(.) = \int_{\retacartesianocirculo}\produtointerno{Y}{.},
 		$$
-		de acordo com o Teorema \ref{teorema_representacao_reiz}. Seja  $\funcoessupcompactcontradom{\retacartesianocirculo}{\real{2n}}$ o conjunto das aplicações suaves e de suporte compacto de $\retacartesianocirculo$ em $\real{2n}$. Por simplicidade, denote $\diferencialfloerponto{u}$ por $\diferencialfloerabrev$. Então, para todo $X$ no espaço de funções teste $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \cap \funcoessupcompactcontradom{\retacartesianocirculo}{\real{2n}}$ tem-se que
+		de acordo com o Teorema \ref{teorema_representacao_reiz}. Seja  $\funcoessupcompactcontradom{\retacartesianocirculo}{\real{m}}$ o conjunto das aplicações suaves e de suporte compacto de $\retacartesianocirculo$ em $\real{m}$. Por simplicidade, denote $\diferencialfloerponto{u}$ por $\diferencialfloerabrev$. Então, para todo $X$ no espaço de funções teste $\espacosobolevcontradominio{\retacartesianocirculo}{\real{m}} \cap \funcoessupcompactcontradom{\retacartesianocirculo}{\real{m}}$ tem-se que
 		$$
 		\begin{aligned}
 		f(\diferencialfloerabrev X)
@@ -4166,7 +4140,7 @@
 		&=(\diferencialfloerabrev^{*}f)(X).
 		\end{aligned}
 		$$
-		Como o domínio $\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} $ de $\diferencialfloerabrev$ é denso em $\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ (veja em \cite{breazis_sobolev_spaces}), então o operador adjunto de $\diferencialfloerabrev$ é dado em termos de distribuição por
+		Como o domínio $\espacosobolevcontradominio{\retacartesianocirculo}{\real{m}} $ de $\diferencialfloerabrev$ é denso em $\espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ (veja em \cite{breazis_sobolev_spaces}), então o operador adjunto de $\diferencialfloerabrev$ é dado em termos de distribuição por
 		$$
 		\diferencialfloeradjponto{u}=\diferencialfloerabrev^{*}=-\derivadaparcial{}{s}+\estruturacomplexa \derivadaparcial{}{t}+S^{t}.
 		$$
@@ -4175,9 +4149,9 @@
 	Aplicando a regularidade elíptica, que pode ser encontrada em $\cite{audi_floer_homology}$, pode-se mostrar a continuidade do diferencial do operador de Floer $\diferencialfloerponto{u}$.
 	
 	\begin{teorema}\label{teorema_regularidade_eliptica}
-		(Regularidade Elíptica) Seja $p> 1$. Se $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev Y =0$, então 
+		(Regularidade Elíptica) Seja $p> 1$. Se $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev Y =0$, então 
 		$$
-		Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}} \cap C^{\infty}(\retacartesianocirculo;\real{2n}).$$
+		Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}} \cap C^{\infty}(\retacartesianocirculo;\real{m}).$$
 	\end{teorema} 
 	
 	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Suponha que $T$ seja limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Então $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação defini-se os operadores de Fredholm.
@@ -4189,7 +4163,7 @@
 	O teorema a seguir afirma que o diferencial $\diferencialfloerponto{u}$ é um operador de Fredholm, e seu subsequente, que o índice de Fredholm de $\diferencialfloerponto{u}$ é dado pela diferença dos índices de Maslov dos pontos críticos $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$ que são conectados por $u$. Esse resultado é utilizado na demonstração da transversalidade do operador de Floer $\operadorFloer$, e como consequência, no fato de que $\energiafinitaMconectante$ é uma variedade de dimensão finita e igual ao índice de Fredholm $\ind(\diferencialfloerponto{u})$. Ambos os resultados podem ser encontrados em \cite{audi_floer_homology} e \cite{salamon_zehnder}.
 	
 	\begin{teorema}
-		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $\det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevretacirculo\to \espacoLpretacirculo$ é um operador de Fredholm para $1<p<\infty$.
+		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $\det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é um operador de Fredholm para $1<p<\infty$.
 	\end{teorema}
 	
 	\begin{teorema}\label{teorema_indice_diferencial_operador_floer}
@@ -4198,7 +4172,6 @@
 		\ind(\diferencialfloerponto{u}) = \iconley{x^{-}}-\iconley{x^{+}}.
 		$$
 	\end{teorema}
-	
 	
 	\subsection{A Transversalidade do Operador $\operadorFloer$ e a Compacidade de $\energiafinitaMconectante$}\label{secao_transversalidade_compacidade_M}
 	
@@ -5299,7 +5272,7 @@
 			
 			\item Se $p=n/k$, então $\espacosobolevgeneralizado{\Omega}\subset \espacoLpGeral{q}{\Omega} $ para todo $q\geq p$.
 			
-			\item Se $p>n/k$, então $\espacosobolevgeneralizado{\Omega}\subset \espacoLpGeral{\infty}{\Omega} $.
+			\item\label{item_tres_teorema_inclusao_sobolev} Se $p>n/k$, então $\espacosobolevgeneralizado{\Omega}\subset \espacoLpGeral{\infty}{\Omega} $.
 		\end{enumerate}
 	\end{teorema}
 	
@@ -5310,6 +5283,49 @@
 		$$
 		Além disso, para $q<np/(n-p)$, a inclusão $\espacosobolevcontradominio{\Omega}{\real{m}} \hookrightarrow \espacoLpGeral{q}{\Omega;\real{m}}$ é um operador compacto.
 	\end{teorema}
+	
+	\section{Preliminares de Análise}\label{apendice_preliminares_analise}
+	\begin{definicao}
+		Sejam $A,B$ espaços normados. Um operador linear $T:A\to B$ é um operador linear limitado se existe uma constante $C>0$ tal que
+		$$
+		\norma{T\xi} \leq C\norma{\xi}\;\;\forall \xi \in A.
+		$$
+		Caso contrário, é dito que $T$ é um operador não-limitado.
+	\end{definicao}
+	
+	\begin{teorema}\label{teorema_hahn_banach}
+		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
+	\end{teorema}
+	
+	
+	\aviso{Brezis pag 43}
+	
+	Sejam $E$ e $F$ espaços de Banach e $E^{*}$ e $F^{*}$ seus respectivos espaços duais. Suponha que $A: D(A)\subset E\to F$ com o domínio $D(A)$ denso em $E$. Defina o conjunto 
+	$$
+	D(A^{*})\{ f\in F^{*}: \exists\;c\geq 0\;\;\text{tal que }\;\; |f(Au)|\leq c\norma{u}\;\forall u\in D(A)\}.
+	$$
+	Pode-se mostrar que $D(A^{*})$ é um subespaço vetorial de $F^{*}$.
+	
+	Dado $f\in D(A^{*})$, considere a aplicação $g:D(A)\to \reta$ definida por $g(u) = f(Au)$. Com isso, $|g(u)|\leq c\norma{u}$ para todo $u\in D(A)$. Pelo Teorema \ref{teorema_hahn_banach} existe uma única aplicação linear $h\in E^{*}$ tal que 
+	$$
+	|h(u)|\leq c\norma{u} \;\forall u \in E \;\;\text{e }\;\; g=h|_{D(A)}.
+	$$
+	
+	O operador linear não-limitado $A^{*}:D(A^{*})\subset F^{*}\to E^{*}$ definido por $A^{*}f=f'$ é chamado adjunto de $A$ e satisfaz a relação
+	$$
+	f(Au) = (A^{*}f)(u).
+	$$
+	
+	\aviso{Brezis pag 97}
+	
+	\begin{teorema}\label{teorema_representacao_reiz}
+		(Teorema da representação de Reisz) Seja $f \in \espacoLpdual$ um funcional linear e $1<p<\infty$. Então existe uma única aplicação $Y \in \espacoLpadjuntoretacirculo$ tal que
+		$$
+		f(X) = \int_{\retacartesianocirculo}\produtointerno{Y(s,t)}{X(s,t)},
+		$$
+		para todo $X \in \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$, onde $\produtointerno{.}{.}$ é o produto interno canônico de $\real{m}$.
+	\end{teorema}
+	
 	
 	\begin{thebibliography}{9}
 		\bibitem{abramovich}
