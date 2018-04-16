@@ -342,7 +342,7 @@
 	
 	A construção de Witten traz um entendimento geométrico do operador bordo do complexo de cadeias. Munindo a variedade $M$ com uma métrica Riemanniana, determina-se os pontos críticos de função de Morse $f: M \to \reta$ e mostra-se que, para cada par de pontos críticos com índices consecutivos, existe um número finito de linhas do fluxo gradiente conectando-os. O conjunto de tais linhas são subvariedades de $M$ chamadas variedades de conexão. Escolhemos  uma orientação para a variedade de conexão. Witten definiu o grupo das $k$-cadeias como sendo o grupo abeliano gerado pelos pontos críticos com índice de Morse igual a $k$. Já o operador bordo, quando avaliado em uma k-cadeia, é a soma sob todas as $(k-1)$-cadeias, sendo que os coeficientes dessa soma são inteiros cujo sinal esta relacionado com a orientação da variedade de conexão e com a orientação da variedade instável da k-cadeia. Essa é uma metodologia simples e elegante de cálculo da homologia da variedade que permite o estudo dos aspectos topológicos das variedades via sistemas dinâmicos, sendo que a dinâmica é materializada no gradiente da função de Morse $f$.
 	
-	É tentador nos enveredarmos na demonstração da conjectura de Arnold via construção de Witten. Contudo, dificuldades técnicas fizeram com que uma abordagem ligeiramente diferente fosse realizada por Floer. Em vez de estudar o gradiente de uma função Hamiltoniana definida na variedade $M$ a estratégia foi analisar o comportamento do funcional $\funcionalH$, chamado funcional de ação, definido no espaço de curvas 1-periódicas e contráteis em $M$. Aplicando o princípio variacional clássico, determina-se que as soluções 1-periódicas e contráteis do sistema Hamiltoniano são os pontos críticos do funcional de ação $\pontoscriticos{\funcionalH}$. Essa técnica é conhecido como abdordagem variacional. Uma das grandes dificuldades nesse cenário é que o conjunto de curvas 1-periódicas e contráteis forma uma variedade de dimensão infinita, com isso, estabelecer uma análogo ao índice de Morse para os pontos críticos do funcional é uma tarefa árdua. Foi necessária a construção de um operador de Fredholm e de um índice de Maslov, que generaliza o ideia do índice de Morse para dimensão infinita.
+	É tentador enveredar-se na demonstração da conjectura de Arnold via construção de Witten. Contudo, dificuldades técnicas fizeram com que uma abordagem ligeiramente diferente fosse realizada por Floer. Em vez de estudar o gradiente de uma função Hamiltoniana definida na variedade $M$ a estratégia foi analisar o comportamento do funcional $\funcionalH$, chamado funcional de ação, definido no espaço de curvas 1-periódicas e contráteis em $M$. Aplicando o princípio variacional clássico, determina-se que as soluções 1-periódicas e contráteis do sistema Hamiltoniano são os pontos críticos do funcional de ação $\pontoscriticos{\funcionalH}$. Essa técnica é conhecido como abdordagem variacional. Uma das grandes dificuldades nesse cenário é que o conjunto de curvas 1-periódicas e contráteis forma uma variedade de dimensão infinita, com isso, estabelecer uma análogo ao índice de Morse para os pontos críticos do funcional é uma tarefa árdua. Foi necessária a construção de um operador de Fredholm e de um índice de Maslov, que generaliza o ideia do índice de Morse para dimensão infinita.
 	
 	O princípio variacional aplicado no funcional de ação resulta na determinação das solução de um sistema de equações diferenciais parciais de primeira ordem. A esse sistema de equações diferenciais é associado um operador diferencial, chamado operador de Floer, cujas soluções são as curvas integrais que conectam os pontos críticos do funcional de ação, situação análoga a determinação das linhas de fluxo do gradiente negativo.
 	
@@ -359,27 +359,24 @@
 	
 	\subsection{Grupo Fundamental}
 	
-	Sejam $X$ um espaço topológico e $\caminhossempontobase{X}$ o conjunto dos caminhos contínuos $\gamma:[0,1]\to X$. Tome $\gamma, \beta \in \caminhossempontobase{X}$ tais que $\gamma(1) = \beta(0)$. Definimos a justaposição $*:\caminhossempontobase{X}\times \caminhossempontobase{X} \to \caminhossempontobase{X}$ entre $\gamma$ e $\beta$ por
+	Sejam $X$ um espaço topológico e $\caminhossempontobase{X}$ o conjunto dos caminhos contínuos $\gamma:[0,1]\to X$. Tome $\gamma, \beta \in \caminhossempontobase{X}$ tais que $\gamma(1) = \beta(0)$. A justaposição $*:\caminhossempontobase{X}\times \caminhossempontobase{X} \to \caminhossempontobase{X}$ entre $\gamma$ e $\beta$ é definida por
 	$$
 	\funcaocond{(\gamma*\beta)(t)}{\gamma(2t)}{0\leq t \leq 1/2}{\beta(2t-1)}{1/2 \leq t \leq 1}.
 	$$
 	
 	Dado um caminho $\gamma\in \caminhossempontobase{X}$, seu caminho inverso $\hat{\gamma} \in \caminhossempontobase{X}$ é definido por $\hat{\gamma} (t) = \gamma(1-t)$.
 	
-	\begin{observacao}
-		Quando não houver ambiguidades denotaremos por simplicidade $\caminhos=\caminhossempontobase{X}$.
-	\end{observacao}
 	
 	\begin{definicao}\label{definicao_caminhos_homotopicos}
-		(Homotopia entre caminhos) Sejam $\gamma, \gamma' \in \caminhos$ tais que $\gamma(0)=\gamma'(0)$ e $\gamma(1)=\gamma'(1)$. Uma aplicação contínua $F:\intervalo \times \intervalo \to X$ é chamada homotopia entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \intervalo$. Dizemos que  $\gamma$ e $\gamma'$ são homotópicos se, e somente se, existe uma homotopia entre eles. Nesse caso denotaremos $\gamma \sim \gamma'$. 
+		(Homotopia entre caminhos) Sejam $\gamma, \gamma' \in \caminhossempontobase{X}$ tais que $\gamma(0)=\gamma'(0)$ e $\gamma(1)=\gamma'(1)$. Uma aplicação contínua $F:\intervalo \times \intervalo \to X$ é chamada homotopia entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \intervalo$. Diz-se que  $\gamma$ e $\gamma'$ são homotópicos se, e somente se, existe uma homotopia entre eles. Nesse caso denotaremos $\gamma \sim \gamma'$. 
 	\end{definicao}
 	
 	\begin{definicao}\label{definicao_homotopia_extremos_fixos}
-		(Homotopia de extremos fixos entre caminhos) Suponha as condições da definição anterior. Dizemos que a homotopia entre os caminhos $\gamma$ e $\gamma'$ é uma homotopia de extremos fixos se $F(0,s) = \gamma(0) = \gamma'(0)$ e $F(1,s) = \gamma(1) = \gamma'(1)$ para todo $s\in \intervalo$.
+		(Homotopia de extremos fixos entre caminhos) Suponha as condições da definição anterior. Diz-se que a homotopia entre os caminhos $\gamma$ e $\gamma'$ é uma homotopia de extremos fixos se $F(0,s) = \gamma(0) = \gamma'(0)$ e $F(1,s) = \gamma(1) = \gamma'(1)$ para todo $s\in \intervalo$.
 	\end{definicao}
 	
 	\begin{observacao}
-		Por definição, toda homotopia de extremos fixos entre caminhos é uma homotopia entre caminhos. Portanto, também diremos que dois caminhos são homotópicos quando existir uma homotopia de extremos fixos entre ambos.
+		Por definição, toda homotopia de extremos fixos entre caminhos é uma homotopia entre caminhos. Portanto, também é dito que dois caminhos são homotópicos quando existir uma homotopia de extremos fixos entre ambos.
 	\end{observacao}
 	
 	\begin{observacao}
@@ -389,20 +386,20 @@
 	O próximo lema demonstra a compatibilidade entre a justaposição de caminhos e a relação de homotopia.
 	
 	\begin{lema}\label{lema_compatibilidade_produto_caminhos}
-		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhos$, onde $\gamma(1) = \alpha(0), \gamma'(1) = \alpha'(0) $, tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
+		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhossempontobase{X}$, onde $\gamma(1) = \alpha(0), \gamma'(1) = \alpha'(0) $, tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
 	\end{lema}
 	\begin{prova}
 		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, a continuidade de $H$ é imediata. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
 	\end{prova}
 	
-	A justaposição de caminhos em $\caminhos$ nem sempre é associativo. Contudo, o seguinte lema afirma que tal associatividade vale a menos de uma homotopia. Sua demonstração pode ser encontrada em $\cite{massey}$.
+	A justaposição de caminhos em $\caminhossempontobase{X}$ nem sempre é associativo. Contudo, o seguinte lema afirma que tal associatividade vale a menos de uma homotopia. Sua demonstração pode ser encontrada em $\cite{massey}$.
 	
 	\begin{lema}\label{lema_associatividade_produto_caminhos}
-		Sejam $\alpha, \beta, \gamma\in \caminhos$ tais que $\alpha(1)=\beta(0)$ e $\beta(1)=\gamma(0)$. Então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
+		Sejam $\alpha, \beta, \gamma\in \caminhossempontobase{X}$ tais que $\alpha(1)=\beta(0)$ e $\beta(1)=\gamma(0)$. Então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
 	\end{lema}
 	
 	\begin{lema}\label{lema_caminho_inverso}
-		Sejam $\gamma, \hat{\gamma} , c,c' \in \caminhos$ tais que $c(t) = \gamma(0)$, $c'(t) = \gamma(1)$ para todo $t\in \intervalo$ e $\hat{\gamma} (t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma}  \sim c$ e $\hat{\gamma}  *\gamma\sim c'$. Além disso, $\gamma * c' \sim\gamma$ e $c * \gamma \sim \gamma$.
+		Sejam $\gamma, \hat{\gamma} , c,c' \in \caminhossempontobase{X}$ tais que $c(t) = \gamma(0)$, $c'(t) = \gamma(1)$ para todo $t\in \intervalo$ e $\hat{\gamma} (t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma}  \sim c$ e $\hat{\gamma}  *\gamma\sim c'$. Além disso, $\gamma * c' \sim\gamma$ e $c * \gamma \sim \gamma$.
 	\end{lema} 	
 	
 	Seja $\caminhospontobasegeral{p}{X} = \{\gamma\in \caminhossempontobase{X}: \gamma(0)=\gamma(1)=p \}$ o conjunto dos caminhos contínuos e fechados com o ponto base $p$. Denote o quociente $\{ \classe{\gamma} : \gamma' \in \caminhospontobasegeral{p}{X},\;\;\gamma \sim \gamma'\}$ por $\caminhospontobasegeral{p}{X}/\sim $. Então, o produto definido por $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha}$ esta bem-definido. De fato, tomando $\gamma, \gamma',\alpha, \alpha' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha} = \classe{\gamma'*\alpha'} = \classe{\gamma'}.\classe{\alpha'}$.
@@ -410,7 +407,7 @@
 	\begin{definicao}
 		(Grupo Fundamental) Sejam $X$ um espaço topológico $X$ e $p\in X$. O conjunto
 		$$
-		\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}/\sim, .)
+		\grupofundamentalpontobase{X}{p} = (\caminhospontobase{p}(X)/\sim, .)
 		$$
 		é chamado grupo fundamental de $X$.
 	\end{definicao}
@@ -440,7 +437,7 @@
 		Seja $f:X\to Y$ um homeomorfismo entre espaços topológicos. Então $\grupofundamentalpontobase{X}{p}$ e $\grupofundamentalpontobase{Y}{f(p)}$ são isomorfos.
 	\end{teorema}
 	
-	Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então podemos construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
+	Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então pode-se construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
 	
 	\begin{proposicao}\label{proposicao_produto_grupo_fundamental}
 		Se $X, Y$ são espaços topológicos, $p\in X$ e $q\in Y$ são os respectivos pontos base, então $\grupofundamentalpontobase{X\times Y}{(p,q)} \cong \grupofundamentalpontobase{X}{p}\times \grupofundamentalpontobase{Y}{q}$
@@ -448,7 +445,7 @@
 	
 	\begin{definicao}
 		Seja $X$ um espaço topológico e
-		$c \in \caminhospontobasegeral{p}{X}$ o caminho constante tal que $c(t) = p$ para todo $t \in \intervalo$. Se para todo $\gamma \in \caminhospontobasegeral{p}{X}$ tem-se que $\gamma \sim c$, então dizemos que $X$ é simplesmente conexo.
+		$c \in \caminhospontobasegeral{p}{X}$ o caminho constante tal que $c(t) = p$ para todo $t \in \intervalo$. Se para todo $\gamma \in \caminhospontobasegeral{p}{X}$ tem-se que $\gamma \sim c$, então é dito que $X$ é simplesmente conexo.
 	\end{definicao}
 	
 	\begin{proposicao}\label{proposicao_grupo_fundamental_simplesmente_conexo}
@@ -473,15 +470,15 @@
 		$$
 	\end{proposicao}
 	
-	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então podemos escrever $\gamma(t) = e^{i\alpha(t)}$, onde $\alpha:[a,b]\to \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
+	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então pode-se escrever $\gamma(t) = e^{i\alpha(t)}$, onde $\alpha:[a,b]\to \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, podemos escrever $\gamma = \gamma_{0}*\gamma_{1}$. Temos que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
 	
-	Vamos definir o grau de um caminho como sendo uma aplicação que associa um dado caminho em $\circulo$ a um múltiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior vimos que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, vamos restringir nossas hipóteses a caminhos fechados.
+	O grau de um caminho será definido como uma aplicação que associa um dado caminho em $\circulo$ a um múltiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior foi visto que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, as hipóteses serão restritas aos caminhos fechados.
 
 	\begin{definicao}\label{definicao_aplicacao_grau}
 		(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ dado pela Proposição $\ref{proposicao_levantamento_curvas}$. A aplicação $deg$ é chamada de aplicação grau e o valor $\deg(\gamma)$ é chamado grau do caminho $\gamma$.
 	\end{definicao}
 	
-	Temos que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$ pela Proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \inteiros$. Portanto, $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \inteiros$ e $deg$ está bem-definida. Além disso, a aplicação grau possui as seguintes propriedades.
+	Tem-se que $\gamma(0) = \gamma(1)$, o que é equivalente a $e^{i\alpha(0)} = e^{i\alpha(1)}$ pela Proposição $\ref{proposicao_levantamento_curvas}$. Com isso, $e^{i(\alpha(1)-\alpha(0))} = 1$ e teremos $\alpha(1)-\alpha(0) = 2\pi k$ para algum $k \in \inteiros$. Portanto, $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi \in \inteiros$ e $deg$ está bem-definida. Além disso, a aplicação grau possui as seguintes propriedades.
 	
 	\begin{proposicao}\label{proposicao_grau_aplicacao}
 		(Propriedades da aplicação grau) Sejam $\gamma, \beta \in \caminhospontobasegeral{p}{\circulo}$, então
@@ -512,7 +509,7 @@
 			\end{aligned}
 			$$  
 						
-			\item Suponha que $h:[0,1]\times [0,1]\to S^{1}$ seja uma homotopia de extremos fixos entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1) = \beta(t)$. Então, para cada $s \in [0,1]$ fixo temos $h_{s}(0) = h_{s}(1)$, portanto $h_{s} \in \caminhospontobasegeral{p}{\circulo}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ podemos escrever $h_{s}(t) = e^{i\alpha_{s}t}$. Com isso, podemos escolher $s, s_{0 }\in [0,1]$ tais que $\norma{h_{s}(t)-h_{s_{0}}(t)} =\norma{e^{i\alpha_{s}(t)} - e^{i\alpha_{s_{0}}(t)}} <2$, ou seja, $h_{s}(t), h_{s_{0}}(t) \in \circulo$ não são anti-podais, logo $|\alpha_{s}(t)-\alpha_{s_{0}}(t)| <\pi$ para todo $t\in [0,1]$. Seja $0=s_{0}<s_{1}<s_{2}\dots s_{m-1}<s_{m} = 1$ uma partição do intervalo $[0,1]$, tal que $\norma{h_{s_{j+1}}(t)-h_{s_{j}}(t)}<2$ para $0\leq j \leq m-1$. A partição escolhida implica em $|\alpha_{s_{j+1}}(t)-\alpha_{s_{j}}(t)| <\pi$. Então
+			\item Suponha que $h:[0,1]\times [0,1]\to S^{1}$ seja uma homotopia de extremos fixos entre $\gamma$ e $\beta$ tal que $h(t,0) = \gamma(t)$ e $h(t,1) = \beta(t)$. Então, para cada $s \in [0,1]$ fixo tem-se $h_{s}(0) = h_{s}(1)$, portanto $h_{s} \in \caminhospontobasegeral{p}{\circulo}$. Pela Proposição $\ref{proposicao_levantamento_curvas}$ é possível escrever $h_{s}(t) = e^{i\alpha_{s}t}$. Com isso, pode-se escolher $s, s_{0 }\in [0,1]$ tais que $\norma{h_{s}(t)-h_{s_{0}}(t)} =\norma{e^{i\alpha_{s}(t)} - e^{i\alpha_{s_{0}}(t)}} <2$, ou seja, $h_{s}(t), h_{s_{0}}(t) \in \circulo$ não são anti-podais, logo $|\alpha_{s}(t)-\alpha_{s_{0}}(t)| <\pi$ para todo $t\in [0,1]$. Seja $0=s_{0}<s_{1}<s_{2}\dots s_{m-1}<s_{m} = 1$ uma partição do intervalo $[0,1]$, tal que $\norma{h_{s_{j+1}}(t)-h_{s_{j}}(t)}<2$ para $0\leq j \leq m-1$. A partição escolhida implica em $|\alpha_{s_{j+1}}(t)-\alpha_{s_{j}}(t)| <\pi$. Então
 			$$
 			\begin{aligned}
 			2\pi|\deg(h_{s_{j+1}})-\deg(h_{s_{j}})| 
@@ -527,7 +524,7 @@
 			$$
 			\deg(\beta) = \deg(h_{s_{m}})=\deg(h_{s_{m-1}})=\dots=\deg(h_{s_{0}}) = \deg(\gamma).
 			$$
-			Por outro lado, vamos supor que $n = \deg(\gamma)=\deg(\beta)$. Considere os levantamentos $\alpha$ e $\lambda$ dos caminhos $\gamma$ e $\beta$, respectivamente. Seja $H:[0,1]\times [0,1] \to \real{}$ definida por $H(t,s) = (1-s)\alpha(t) + s\lambda(t)$. Então $H(t,0)=\alpha(t)$ e $H(t,1)=\lambda(t)$, logo $H$ é uma homotopia entre $\alpha$ e $\lambda$. Além disso, 
+			Por outro lado, suponha que $n = \deg(\gamma)=\deg(\beta)$. Considere os levantamentos $\alpha$ e $\lambda$ dos caminhos $\gamma$ e $\beta$, respectivamente. Seja $H:[0,1]\times [0,1] \to \real{}$ definida por $H(t,s) = (1-s)\alpha(t) + s\lambda(t)$. Então $H(t,0)=\alpha(t)$ e $H(t,1)=\lambda(t)$, logo $H$ é uma homotopia entre $\alpha$ e $\lambda$. Além disso, 
 			$$
 			\begin{aligned}
 			H(1,s) - H(0,s) 
@@ -541,13 +538,13 @@
 			\end{aligned}
 			$$ 
 			
-			Seja a aplicação contínua $G(t, s) = e^{iH(t,s)}$. Então, para $s \in [0,1]$ fixo temos que $G_{s} \in \caminhospontobasegeral{p}{\circulo}$ com $\deg(G_{s}) = n$. Além disso, $G(t,0) = e^{i\alpha(t)} = \gamma(t)$ e $G(t,1) = e^{i\lambda(t)} = \beta(t)$, logo $G$ é uma homotopia entre $\gamma$ e $\beta$, portanto $\gamma \sim \beta$.
+			Seja a aplicação contínua $G(t, s) = e^{iH(t,s)}$. Então, para $s \in [0,1]$ fixo tem-se que $G_{s} \in \caminhospontobasegeral{p}{\circulo}$ com $\deg(G_{s}) = n$. Além disso, $G(t,0) = e^{i\alpha(t)} = \gamma(t)$ e $G(t,1) = e^{i\lambda(t)} = \beta(t)$, logo $G$ é uma homotopia entre $\gamma$ e $\beta$, portanto $\gamma \sim \beta$.
 			
-			\item Sejam $p=\gamma(0)$ e $c\in \caminhossempontobase{X}$, onde $c$ é o caminho constante tal que $c(t)=p$ para todo $t\in \intervalo$. É imediato que $\gamma*\hat{\gamma}  \sim c$. Logo, pelos itens anteriores, temos que $0=\deg(c) = \deg(\gamma*\hat{\gamma} ) = \deg(\gamma) + \deg(\hat{\gamma} )$. Portanto, $\deg(\hat{\gamma} ) = -\deg(\gamma) $.
+			\item Sejam $p=\gamma(0)$ e $c\in \caminhossempontobase{X}$, onde $c$ é o caminho constante tal que $c(t)=p$ para todo $t\in \intervalo$. É imediato que $\gamma*\hat{\gamma}  \sim c$. Logo, pelos itens anteriores, tem-se que $0=\deg(c) = \deg(\gamma*\hat{\gamma} ) = \deg(\gamma) + \deg(\hat{\gamma} )$. Portanto, $\deg(\hat{\gamma} ) = -\deg(\gamma) $.
 		\end{enumerate}
 	\end{prova}
 	
-	Dados $\gamma \in \caminhospontobasegeral{p}{X}$ e $k \in \mathbb{N}$, denotaremos a k-justaposição $\gamma*\dots * \gamma$ por $\gamma^{k}$.
+	Dados $\gamma \in \caminhospontobasegeral{p}{X}$ e $k \in \mathbb{N}$, será denotado a k-justaposição $\gamma*\dots * \gamma$ por $\gamma^{k}$.
 	
 	O seguinte resultado é uma consequência imediata da da aplicação grau e mostra que o grupo fundamental de $\circulo$ é um grupo abeliano cíclico infinito.
 	
@@ -555,7 +552,7 @@
 		O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = \gerador{\classe{\gamma}} $.
 	\end{proposicao}
 	\begin{prova}
-		Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, pela Proposição $\ref{proposicao_grau_aplicacao}$ podemos escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $\deg(\gamma) = 1$, logo 
+		Supondo $\beta \in \caminhospontobasegeral{p}{\circulo}$, pela Proposição $\ref{proposicao_grau_aplicacao}$ é possível escrever $\beta(t)=e^{i2\pi \alpha(t)}$ e $\deg(\gamma) = 1$, logo 
 		$$
 		\deg(\beta) = k = \underbrace{1+\dots+1}_{k-vezes} = \deg(\gamma)+\dots+\deg(\gamma) = \deg(\gamma *\dots *\gamma) = \deg(\gamma^{k}).
 		$$
@@ -579,16 +576,16 @@
 	\subsection{Homologia Singular}
 	Para as próximas definições, considere $X$ um espaço topológico e $A$ um anel.
 	\begin{definicao}
-		(Simplexo singular) Denotaremos por $\Delta_{k}$ o simplexo k-dimesional cujos vértices $e_{0}, \dots, e_{k}$ formam um base canônica de $\real{k+1}$ de modo que $\Delta_{k} = \{(x_{0}, \dots, x_{k}) \in \real{k+1}: x_{j}\geq 0, \;\sum_{j}x_{j}=1\}$. Um k-simplexo singular no espaço topológico $X$ é uma aplicação contínua $\sigma:\Delta_{k} \to X$.
+		(Simplexo singular) Seja $\Delta_{k}$ o simplexo k-dimesional cujos vértices $e_{0}, \dots, e_{k}$ formam um base canônica de $\real{k+1}$ de modo que $\Delta_{k} = \{(x_{0}, \dots, x_{k}) \in \real{k+1}: x_{j}\geq 0, \;\sum_{j}x_{j}=1\}$. Um k-simplexo singular no espaço topológico $X$ é uma aplicação contínua $\sigma:\Delta_{k} \to X$.
 	\end{definicao}
 	
-	Denotaremos por $\cadeia{k}{X}$ o A-módulo livre gerado pelas k-cadeias singulares de $X$. Consequentemente, cada um dos seus elementos é uma soma formal finita $\alpha = \sum_{\sigma} \alpha_{\sigma}.\sigma $ de k-simplexos singulares $\sigma$, onde $\alpha_{\sigma} \in A$.
+	O A-módulo livre gerado pelas k-cadeias singulares de $X$ é denotado por $\cadeia{k}{X}$. Consequentemente, cada um dos seus elementos é uma soma formal finita $\alpha = \sum_{\sigma} \alpha_{\sigma}.\sigma $ de k-simplexos singulares $\sigma$, onde $\alpha_{\sigma} \in A$.
 	
 	\begin{definicao}
 		(Operador bordo) A i-ésima face do k-simplexo singular $\sigma: \Delta_{k} \to X$ é o (k-1)-simplexo singular $\partial^{i}\sigma:\Delta_{k-1} \to X$ onde $\partial^{i}\sigma = \sigma(t_{0}, \dots, t_{i-1},0,t_{i+1}, \dots, t_{k-1})$. O k-operador bordo é o homomorfismo denotado por $\bordo{k}: \cadeia{k}{X} \to \cadeia{k-1}{X}$ onde $\bordo{k}\sigma = \sum_{i} (-1)^{i}\partial^{i}\sigma$.
 	\end{definicao}
 	
-	Como o $k$-operador bordo é um homomorfismo, então $ker(\bordo{k})$ e $Im(\bordo{k+1})$ são subgrupos abelianos de $\cadeia{k}{X}$, os quais denotamos por $\kernelbordo{k}{X}$ e $\imagembordo{k}{X}$, respectivamente.
+	Como o $k$-operador bordo é um homomorfismo, então $ker(\bordo{k})$ e $Im(\bordo{k+1})$ são subgrupos abelianos de $\cadeia{k}{X}$, os quais são denotados por $\kernelbordo{k}{X}$ e $\imagembordo{k}{X}$, respectivamente.
 	
 	\begin{teorema}
 		A composição $\bordo{k-1}\circ\bordo{k}: \cadeia{k}{X} \to \cadeia{k-2}{X}$ é o homomorfismo trivial para todo $k>0$.
@@ -611,7 +608,7 @@
 	
 	Um subgrupo $H\subseteq G$ de um módulo graduado é um módulo graduado $H=\colecao{H}$, onde $H_{k} \subseteq G_{k}$ é um submódulo para $k \in \inteiros$. Nesse caso, o módulo quociente $G/H$ é o módulo graduado $\{G_{k}/H_{k} \}_{k\in \inteiros}$.
 	
-	Notemos que, dado um espaço topológico $X$, as coleções $\cadeia{*}{X} = \colecaoabrev{\cadeia{k}{X}}$, $\kernelbordo{*}{X}=\colecaoabrev{\kernelbordo{k}{X}}$, $\imagembordo{*}{X}=\colecaoabrev{\imagembordo{k}{X}}$ e $\homologia{*}{X}=\colecaoabrev{\homologia{k}{X}}$ são grupos graduados.
+	Note que, dado um espaço topológico $X$, as coleções $\cadeia{*}{X} = \colecaoabrev{\cadeia{k}{X}}$, $\kernelbordo{*}{X}=\colecaoabrev{\kernelbordo{k}{X}}$, $\imagembordo{*}{X}=\colecaoabrev{\imagembordo{k}{X}}$ e $\homologia{*}{X}=\colecaoabrev{\homologia{k}{X}}$ são grupos graduados.
 	
 	O módulo graduado $\homologia{*}{X}$ é chamado de homologia singular do espaço $X$ e é denotado por
 	$$
@@ -625,7 +622,7 @@
 			\dots \ar[r]^{\bordo{k+1}}  & C_{k} \ar[r]^{\bordo{k}} & C_{k-1}\ar[r]^{\bordo{k-1}} &\dots
 		}
 		$$
-		tal que a composição $\bordo{k-1}\circ\bordo{k} = 0$ para $k \in \inteiros$. Denotamos o complexo de cadeia por $(C_{*}, \bordo{*})$ e chamamos o homomorfismo $\bordo{*}$ de operador bordo do complexo de cadeia.
+		tal que a composição $\bordo{k-1}\circ\bordo{k} = 0$ para $k \in \inteiros$. Denota-se o complexo de cadeia por $(C_{*}, \bordo{*})$ e o homomorfismo $\bordo{*}$ é chamado operador bordo do complexo de cadeia.
 	\end{definicao}
 	
 	Note que o par $(\cadeia{k}{X}, \bordo{*})$, onde $\bordo{*}=\colecaoabrev{\bordo{k}}$, forma um complexo de cadeia.
@@ -664,14 +661,14 @@
 		(Isomorfimo induzido) Sejam $f:X \to Y$ um homeomorfismo entre espaços topológicos e $C = \cadeia{*}{X}$ e $C'=\cadeia{*}{Y}$ os complexos de cadeias singulares de $X$ e $Y$, respectivamente. Então $f_{*}: \homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo.
 	\end{teorema}
 	
-	Sejam $f, g: X\to Y$ duas aplicações contínuas entre espaços topológicos. Dizemos que $f$ e $g$ são homotópicas se existe uma aplicação contínua $h:\intervalo\times X \to Y$, tal que $h(0, .) = f$ e $h(1, .) = g$. Com isso, denotamos $f\sim g$ e a aplicação $h$ é chamada homotopia entre $f$ e $g$.
+	Sejam $f, g: X\to Y$ duas aplicações contínuas entre espaços topológicos. Diz-se que $f$ e $g$ são homotópicas se existe uma aplicação contínua $h:\intervalo\times X \to Y$, tal que $h(0, .) = f$ e $h(1, .) = g$. Com isso, a aplicação $h$ é chamada homotopia entre $f$ e $g$ e denota-se essa propriedade por $f\sim g$.
 	
 	\begin{teorema}
 		Sejam $f, g: X\to Y$ duas aplicações homotópicas entre espaços topológicos. Então $f_{*}=g_{*}: \homologiaabrev{*}{C}\to \homologiaabrev{*}{C'}$, onde $C$ e $C'$ são complexos de cadeia de $X$ e $Y$, respectivamente.
 	\end{teorema}
 	
 	\begin{definicao}
-		(Equivalência homotópica) Seja $f:X\to Y$ uma aplicação entre espaços topológicos. Dizemos que $f$ é uma equivalência homotópica se existe uma aplicação $g:Y \to X$ tal que $f\circ g \sim Id_{Y}$ e $g\circ f \sim Id_{X}$. Neste caso, dizemos que $X$ e $Y$ são homotopicamente equivalentes e denotamos por $X\sim Y$.
+		(Equivalência homotópica) Seja $f:X\to Y$ uma aplicação entre espaços topológicos. Diz-se que $f$ é uma equivalência homotópica se existe uma aplicação $g:Y \to X$ tal que $f\circ g \sim Id_{Y}$ e $g\circ f \sim Id_{X}$. Neste caso, é dito que $X$ e $Y$ são homotopicamente equivalentes e essa propriedade é por $X\sim Y$.
 	\end{definicao}
 	
 	O resultado seguinte mostra que a equivalência de homotopia é condição suficiente para que os módulos de homologia sejam isomorfos.
@@ -688,7 +685,7 @@
 		é chamada de sequência exata longa se cada tripla é exata, isto é, $Im(f_{k}) = Ker(f_{k+1})$ para todo $k\in \inteiros$.
 	\end{definicao}
 	
-	Dizemos que uma sequência do tipo $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta. Nesse caso, temos que $f$ é um monomorfismo e $g$ é um epimorfismo. Sejam $C, D, E$ complexos de cadeias. Uma sequência exata curta de complexos de cadeias é uma coleção de sequências exatas
+	Diz-se que uma sequência do tipo $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta. Nesse caso, temos que $f$ é um monomorfismo e $g$ é um epimorfismo. Sejam $C, D, E$ complexos de cadeias. Uma sequência exata curta de complexos de cadeias é uma coleção de sequências exatas
 	$$ 
 	\xymatrix{0 \ar[r] & C_{k}\ar[r]^{f_{k}} & D_{k}\ar[r]^{g_{k}} & E_{k} \ar[r]& 0}
 	$$
@@ -706,7 +703,7 @@
 		 & \vdots & \vdots  & \vdots & 
 	}
 	$$
-	Como $g$ é epimorfismo, dado $e \in \kernelbordoabrev{k}{E}$ existe $d \in D_{k}$ tal que $g_{k}(d) = e$. Pela comutatividade do diagrama, temos que $g_{k-1}(\bordo{k}'(d)) = \bordo{k}''(g_{k}(d)) = \bordo{k}''(e) = 0$. Portanto, $\bordo{k}'(d) \in Ker(g_{k-1}) = Im(f_{k-1})$, pela exatidão. Com isso, podemos tomar $c \in C_{k-1}$ tal que $f_{k-1}(c)=\bordo{k}'(d)$. Então $f_{k-2}(\bordo{k-1}(c)) = \bordo{k-1}'(f_{k-1}(c)) = \bordo{k-1}'(\bordo{k}'(d)) = 0$. Como $f$ é monomorfismo, então $\bordo{k-1}(c) \in \kernelbordoabrev{k-1}{C}$. Logo, temos uma correpondência $\kernelbordoabrev{k}{E} \ni e \mapsto c \in \kernelbordoabrev{k-1 }{C}$, a qual denotaremos por $\delta_{k}(e) = c$. 
+	Como $g$ é epimorfismo, dado $e \in \kernelbordoabrev{k}{E}$ existe $d \in D_{k}$ tal que $g_{k}(d) = e$. Pela comutatividade do diagrama, temos que $g_{k-1}(\bordo{k}'(d)) = \bordo{k}''(g_{k}(d)) = \bordo{k}''(e) = 0$. Portanto, $\bordo{k}'(d) \in Ker(g_{k-1}) = Im(f_{k-1})$, pela exatidão. Com isso, pode-se tomar $c \in C_{k-1}$ tal que $f_{k-1}(c)=\bordo{k}'(d)$. Então $f_{k-2}(\bordo{k-1}(c)) = \bordo{k-1}'(f_{k-1}(c)) = \bordo{k-1}'(\bordo{k}'(d)) = 0$. Como $f$ é monomorfismo, então $\bordo{k-1}(c) \in \kernelbordoabrev{k-1}{C}$. Logo, tem-se uma correpondência $\kernelbordoabrev{k}{E} \ni e \mapsto c \in \kernelbordoabrev{k-1 }{C}$, a qual é denotada por $\delta_{k}(e) = c$. 
 	
 	\begin{teorema}\label{teorema_homomorfismo_conectante}
 		(Homomorfismo conectante) Se $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta de complexos de cadeias, então a sequência longa 
@@ -716,7 +713,7 @@
 		é exata.
 	\end{teorema}
 	
-	Como consequência do Teorema $\ref{teorema_homomorfismo_conectante}$, temos um importante método de cálculo da homologia de espaços topológicos. Dados $U, V$ subconjuntos abertos de um espaço topológico $X$ tal que $X = U\cup V$, considere a sequência exata curta de complexos de cadeias
+	Como consequência do Teorema $\ref{teorema_homomorfismo_conectante}$, obtêm-se um importante método de cálculo da homologia de espaços topológicos. Dados $U, V$ subconjuntos abertos de um espaço topológico $X$ tal que $X = U\cup V$, considere a sequência exata curta de complexos de cadeias
 	$$ 
 	\xymatrix{0 \ar[r] & C_{k}(U\cap V)\ar[r]^{f} & C_{k}(U)\oplus C_{k}(V)\ar[r]^{g} & C_{k}(X) \ar[r]& 0},
 	$$
@@ -731,7 +728,7 @@
 		\]
 	\end{teorema}
 	
-	Seja $U \subseteq X$ um subespaço do espaço topológico $X$ e considere o par topológico $(X, U)$. Caso $U = \emptyset$, identificaremos $(X, \emptyset)$ com $X$. Desse modo, a aplicação de inclusão $U \hookrightarrow X$ induz a aplicação de cadeias $\induzida{i}: \cadeia{*}{U} \to \cadeia{*}{X}$ tal que, para todo $k \in \inteirospos$, $i_{k}$ é um monomorfismo. Assim, podemos identificar $\cadeia{*}{U}$ como um subcomplexo de $\cadeia{*}{X}$ e podemos definir o quociente entre ambos de modo que
+	Seja $U \subseteq X$ um subespaço do espaço topológico $X$ e considere o par topológico $(X, U)$. Caso $U = \emptyset$, identifica-se $(X, \emptyset)$ com $X$. Desse modo, a aplicação de inclusão $U \hookrightarrow X$ induz a aplicação de cadeias $\induzida{i}: \cadeia{*}{U} \to \cadeia{*}{X}$ tal que, para todo $k \in \inteirospos$, $i_{k}$ é um monomorfismo. Assim, é possível identificar $\cadeia{*}{U}$ com um subcomplexo de $\cadeia{*}{X}$ e se pode definir o quociente entre ambos de modo que
 	
 	\begin{definicao}
 		O complexo de cadeia singular do par topológico $(X,U)$ é o complexo de cadeia $(\cadeia{*}{X,U},\bordorel{*} )$ onde 
@@ -781,11 +778,11 @@
 	\subsection{CW-Homologia}\label{secao_cw_complexo}
 	Um CW-complexo é um tipo de espaço topológico introduzido por J. H. C. Whitehead, que teve como objetivo inicial facilitar alguns cálculos em teoria de homotopia. A ideia é que um CW-complexo é construído com sucessivas colagens (identificações) de outros espaços mais simples (células), de modo que, para se determinar a homologia do todo basta determinar a homologia das partes mais simples, as células.
 	\begin{definicao}
-		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denotaremos por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ pela identificação de $x \in \partial D^{n} = S^{n-1}$ com $f_{\partial}(x) \in X$. Diremos que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
+		(Colagem de célula) Sejam $X$ um espaço topológico, $D^{n}=\{x\in \mathbb{R}^{n} : ||x|| \leq 1\}$ e $S^{n-1} = \partial D^{n}=\{x\in \mathbb{R}^{n} : ||x|| = 1\}$. Se $f_{\partial}:S^{n-1} \to X$ é uma função contínua, denota-se por $X\cup_{f_{\partial}}D^{n}$ o espaço quociente da união disjunta $X \coprod D^{n}$ pela identificação de $x \in \partial D^{n} = S^{n-1}$ com $f_{\partial}(x) \in X$. Diz-se que $X\cup_{f_{\partial}}D^{n}$ é obtido a partir de $X$ colando uma $n-$célula e $f_{\partial}$ é chamado de mapa de colagem.
 	\end{definicao}
 	
 	\begin{definicao}
-		(CW-complexo) Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
+		(CW-complexo) Diz-se que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
 		$$
 		\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
 		$$ 
@@ -799,10 +796,10 @@
 		\end{enumerate}
 	\end{definicao}
 	
-	Um espaço $X$ com uma CW-estrutura é chamado de CW-complexo e cada subespaço $\skeleton{n}$ é chamado $n-$esqueleto do CW-complexo $X$. Uma aplicação $f_{\partial}:S^{n-1} \to \skeleton{n-1}$ estende a uma aplicação $f:D^{n} \to \skeleton{n}$ chamada aplicação característica. Chamaremos a imagem de $D^{n}$ por $f$ de célula fechada em $X$, e a imagem de $\complementar{D^{n}}{\partial D^{n}} $ de célula aberta em $X$.
+	Um espaço $X$ com uma CW-estrutura é chamado de CW-complexo e cada subespaço $\skeleton{n}$ é chamado $n-$esqueleto do CW-complexo $X$. Uma aplicação $f_{\partial}:S^{n-1} \to \skeleton{n-1}$ estende a uma aplicação $f:D^{n} \to \skeleton{n}$ chamada aplicação característica. A imagem de $D^{n}$ por $f$ é chamada célula fechada em $X$ e a imagem de $\complementar{D^{n}}{\partial D^{n}} $ por $f$ é chamada célula aberta em $X$.
 	
 	\begin{exemplo}
-		(n-esfera) Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Fixemos um ponto-base $p \in S^{n}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $(n+1)-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{n+1} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+		(n-esfera) Será exibida uma estrutura de CW-complexo para $S^{n}$. Fixe um ponto-base $p \in S^{n}$ e defina o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $(n+1)-$célula a $\skeleton{0}$ tem-se $f_{\partial}: \partial D^{n+1} \to \skeleton{0}$, isto é, $S^{n} \approx \skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
 		\begin{figure}[!h]
 			\centering
 			\includegraphics[width=5cm,height=3cm]{imagem/cw_esfera.pdf}
@@ -812,7 +809,7 @@
 
 	
 	\begin{exemplo}
-		(Disco com alça) Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Temos $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ teremos o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.
+		(Disco com alça) Sejam $p=(1,0), q=(-1,0) \in D^{2}$ e $I=[a,b] \subset \reta$. Tem-se $\partial I=\{a,b\}$. Definindo $f_{\partial_{0}}: \partial I \to D^{2}$ tal que $f_{\partial_{0}}(a)=p$ e $f_{\partial_{0}}(b)=q$ se obtêm o disco com alça $X=D^{2}\cup_{f_{\partial_{0}}}I$.
 		
 		\begin{figure}[!h]
 			\centering
@@ -822,11 +819,11 @@
 	\end{exemplo}
 	
 	\begin{exemplo}
-		(2-toro) Vamos exibir uma estrutura de CW-complexo para $T^{2}$. Representando o toro como o quadrado cujos os lados opostos estão identificados preservando a orientação, todos os vértices do quadrado serão identificados a um único ponto $p \in T^{2}$. Definamos o $0-$esqueleto como sendo $\skeleton{0} = \{p\}$. As arestas horizontais representam o mesmo $S^{1}$ no toro. Isso equivale a colar uma 1-célula ao 0-esqueleto, ou seja, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}$. Analogamente, as faces verticais também representam o mesmo $S^{1}$ no toro, o que indica que devemos anexar uma outra 1-célula o espaço anexado anteriormente, isto é, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$. Por fim, temos que anexar um 2-célula para cobrir o interior do quadrado. Então $T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}$.
+		(2-toro) Será exibida uma estrutura de CW-complexo para $T^{2}$. Representando o toro como o quadrado cujos os lados opostos estão identificados preservando a orientação, todos os vértices do quadrado serão identificados a um único ponto $p \in T^{2}$. Defina o $0-$esqueleto como sendo $\skeleton{0} = \{p\}$. As arestas horizontais representam o mesmo $S^{1}$ no toro. Isso equivale a colar uma 1-célula ao 0-esqueleto, ou seja, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}$. Analogamente, as faces verticais também representam o mesmo $S^{1}$ no toro, o que indica que deves-se anexar uma outra 1-célula o espaço anexado anteriormente, isto é, $\skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$. Por fim, tem-se que anexar um 2-célula para cobrir o interior do quadrado. Então $T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}$.
 	\end{exemplo}
 	
 	\begin{exemplo}
-		(n-espaço projetivo) Vamos exibir uma estrutura de CW-complexo para $\realprojetivo{n}$. Para $n=0$ temos que $\realprojetivo{0} = \{\classe{p}\}$, para um determinado $p \in \real{}$. Já para $n=1$, sabemos que existe um homeomorfismo $\realprojetivo{1} \approx S^{1}_{\sim} = \{\classe{p}: p \in S^{1},\; p \sim -p\}$. Note esse espaço quociente já possui, naturalmente, uma CW-estrutura pois, na passagem ao quociente, identificamos todos os pontos do equador com um único ponto desse conjunto. Digamos este ponto $p_{0} = (1,0)$, sem perda de generalidade. Isso quer dizer que ao colarmos uma 1-célula no ponto $p_{0}$ teremos $S^{1}_{\sim} \approx \{[p_{0}]\} \cup_{f}D^{1} \approx \realprojetivo{0}\cup_{f}D^{1} $ pois $\realprojetivo{0} \approx \{[p_{0}]\}$, portanto $ \realprojetivo{1} \approx \realprojetivo{0}\cup_{f}D^{1}$. Repetindo o procedimento anterior para $\realprojetivo{n} \approx S^{n}_{\sim} $ onde $p_{0} = (1,0,\dots, 0)$, teremos $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f_{\partial}}D^{n}$. Assim, temos a CW-estrutura $\realprojetivo{j-1} \subseteq \realprojetivo{j}$ e $\realprojetivo{j} = \skeleton{j} \approx \skeleton{j-1}\cup_{f_{j\partial}}D^{j}$ para $1\leq j \leq n$.
+		(n-espaço projetivo) Será exibida uma estrutura de CW-complexo para $\realprojetivo{n}$. Para $n=0$ tem-se que $\realprojetivo{0} = \{\classe{p}\}$, para um determinado $p \in \real{}$. Já para $n=1$, sabe-se que existe um homeomorfismo $\realprojetivo{1} \approx S^{1}_{\sim} = \{\classe{p}: p \in S^{1},\; p \sim -p\}$. Note esse espaço quociente já possui, naturalmente, uma CW-estrutura pois, na passagem ao quociente, identifica-se todos os pontos do equador com um único ponto desse conjunto. Seja este ponto $p_{0} = (1,0)$, sem perda de generalidade. Isso quer dizer que ao se colar uma 1-célula no ponto $p_{0}$ obtêm-se $S^{1}_{\sim} \approx \{[p_{0}]\} \cup_{f}D^{1} \approx \realprojetivo{0}\cup_{f}D^{1} $ pois $\realprojetivo{0} \approx \{[p_{0}]\}$, portanto $ \realprojetivo{1} \approx \realprojetivo{0}\cup_{f}D^{1}$. Repetindo o procedimento anterior para $\realprojetivo{n} \approx S^{n}_{\sim} $ onde $p_{0} = (1,0,\dots, 0)$, tem-se $\realprojetivo{n} \approx \realprojetivo{n-1} \cup_{f_{\partial}}D^{n}$. Assim, tem-se a CW-estrutura $\realprojetivo{j-1} \subseteq \realprojetivo{j}$ e $\realprojetivo{j} = \skeleton{j} \approx \skeleton{j-1}\cup_{f_{j\partial}}D^{j}$ para $1\leq j \leq n$.
 	\end{exemplo}
 	
 	\begin{lema}\label{homologiacelular}
@@ -851,7 +848,7 @@
 		denota o isomorfismo descrito.
 	\end{lema}
 	\begin{prova}
-		Por definição, temos  $\skeleton{n} = \skeleton{n-1} \bigcup_{f_{\partial \sigma} } \celula{n}{\sigma}$ e também $\celula{n}{\sigma} \subset \skeleton{n}$, onde $f_{\sigma}:\celula{n}{\sigma} \to \skeleton{n}$ é a aplicação característica. Sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, contendo o hemisfério norte de $f_{\sigma}(\celula{n}{\sigma})$. Definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ temos $\overline{N_{\sigma}} \subset M_{\sigma}$, e considerando $U = \skeleton{n} - \bigcup C_{\sigma}$, $Y = \skeleton{n} - \bigcup A_{\sigma}$ temos $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato de deformação de $Y$, logo, pela invariância homotópica temos $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Como $\skeleton{n} - U = \bigcup C_{\sigma}$ e $Y - U $ é homotópico a $\bigcup S^{n}_{\sigma}$, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$. Portanto $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \homologiarel{k}{\bigcup C_{\sigma}}{\bigcup S^{n}_{\sigma}} \cong \homologia{k}{\bigcup (\celula{n}{\sigma}, \celulabordo{n}{\sigma})} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$, pois $C_{\sigma} \approx \celula{n}{\sigma}$ e $S^{n}_{\sigma} = \celulabordo{n}{\sigma}$. Enfim, temos o diagrama comutativo:
+		Por definição, temos  $\skeleton{n} = \skeleton{n-1} \bigcup_{f_{\partial \sigma} } \celula{n}{\sigma}$ e também $\celula{n}{\sigma} \subset \skeleton{n}$, onde $f_{\sigma}:\celula{n}{\sigma} \to \skeleton{n}$ é a aplicação característica. Sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, contendo o hemisfério norte de $f_{\sigma}(\celula{n}{\sigma})$. Definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ temos $\overline{N_{\sigma}} \subset M_{\sigma}$, e considerando $U = \skeleton{n} - \bigcup C_{\sigma}$, $Y = \skeleton{n} - \bigcup A_{\sigma}$ temos $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato de deformação de $Y$, logo, pela invariância homotópica tem-se $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Como $\skeleton{n} - U = \bigcup C_{\sigma}$ e $Y - U $ é homotópico a $\bigcup S^{n}_{\sigma}$, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$. Portanto $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \homologiarel{k}{\bigcup C_{\sigma}}{\bigcup S^{n}_{\sigma}} \cong \homologia{k}{\bigcup (\celula{n}{\sigma}, \celulabordo{n}{\sigma})} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$, pois $C_{\sigma} \approx \celula{n}{\sigma}$ e $S^{n}_{\sigma} = \celulabordo{n}{\sigma}$. Enfim, tem-se o diagrama comutativo:
 		\[
 		\xymatrix{
 			\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[r]^{id_{*}} \ar[d]^{\cong} & 
@@ -862,11 +859,11 @@
 			\homologiarelskelesimpl{k}{n}.
 		}
 		\]
-		Por fim, sabemos que $\homologiarelcel{k}{n}{\sigma} \cong A$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior temos $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} A$ se $k=n$ e é trivial caso $k\neq n$, como desejávamos.
+		Por fim, sabe-se que $\homologiarelcel{k}{n}{\sigma} \cong A$ para $k=n$ e é trivial para $k\neq n$, então pela sequência anterior tem-se $\homologiarelskelesimpl{k}{n} \cong \somadir{\sigma}\homologiarelcel{k}{n}{\sigma} \cong \somadir{\sigma} A$ se $k=n$ e é trivial caso $k\neq n$.
 	\end{prova} 
 	
 	\begin{definicao}
-		(Aplicação de Pares) Seja $X = \skeleton{n}$ um CW-complexo e tome $p \in \skeleton{n-1}$ como um ponto-base. Identificaremos um dado $q \in \skeleton{n}$ com o ponto-base se $q \in \skeleton{n-1}$, e diremos que $q \sim p$. Definimos $\skeleton{n}/\skeleton{n-1} = \{[q]: q \in \skeleton{n}, \; q \nsim p\}$ e a aplicação quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ por:
+		(Aplicação de Pares) Seja $X = \skeleton{n}$ um CW-complexo e tome $p \in \skeleton{n-1}$ como um ponto-base. Será identificado um dado $q \in \skeleton{n}$ com o ponto-base se $q \in \skeleton{n-1}$, e diz-se que $q \sim p$. Defina $\skeleton{n}/\skeleton{n-1} = \{[q]: q \in \skeleton{n}, \; q \nsim p\}$ e a aplicação quociente $\pi : \skeleton{n} \to \skeleton{n}/\skeleton{n-1}$ por:
 		$$
 		\pi(q) = 
 		\left\{
@@ -876,14 +873,15 @@
 		\end{array}
 		\right..
 		$$
-		Seja $\bigvee_{\sigma} S^{n}_{\sigma}$ o buquet de $n-$esferas com o ponto-base $p$, então $\skeleton{n}/\skeleton{n-1} \approx \bigvee_{\sigma} S^{n}_{\sigma}$. Agora, definindo $s_{\sigma} : \skeleton{n}/\skeleton{n-1} \to S^{n}_{\sigma}$ por 
+		Seja $\bigvee_{\sigma} S^{n}_{\sigma}$ o buquet de $n-$esferas com o ponto-base $p$, então $\skeleton{n}/\skeleton{n-1} \approx \bigvee_{\sigma} S^{n}_{\sigma}$. Agora, definina $s_{\sigma} : \skeleton{n}/\skeleton{n-1} \to S^{n}_{\sigma}$ por 
 		$$
-		\funcaocond{s_{\sigma}([q])}{q}{q \in \celula{n}{\sigma}}{p}{q \notin \celula{n}{\sigma}}
+		\funcaocond{s_{\sigma}([q])}{q}{q \in \celula{n}{\sigma}}{p}{q \notin \celula{n}{\sigma}}.
 		$$
-		chamamos de $\sigma-$aplicação de pares $p_{\sigma} = s_{\sigma} \circ \pi : (\skeleton{n}, \skeleton{n-1}) \to (S^{n}_{\sigma}, \{p\})$.
+		
+		A aplicação $p_{\sigma} = s_{\sigma} \circ \pi : (\skeleton{n}, \skeleton{n-1}) \to (S^{n}_{\sigma}, \{p\})$ é chamada $\sigma-$aplicação de pares.
 	\end{definicao}
 	
-	Denotaremos por $\Psi_{n}:\mathcal{C}_{k}(X) \to \homologiarelskelesimpl{k}{n}$ o isomorfismo definido no lema anterior dado por 
+	Seja $\Psi_{n}:\mathcal{C}_{k}(X) \to \homologiarelskelesimpl{k}{n}$ o isomorfismo definido no lema anterior e dado por 
 	$$
 	\Psi(\sum_{\sigma} n_{\sigma} \sigma) = \sum_{\sigma} n_{\sigma} f_{\sigma *}[D^{n}],
 	$$
@@ -897,7 +895,7 @@
 		onde $\phi_{n}: \homologiarel{n}{S^{n}}{\{p\}} \to \Lambda$ é o único homomorfismo tal que $\phi_{n}([S^{n}])=1$ e $[S^{n}]$ é a classe fundamental do par $(S^{n}, \{p\})$.
 	\end{lema}
 	\begin{prova}
-		Mostremos a unicidade do homomorfismo. Sabemos que o grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabemos o que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$. Tomando $\sigma$ uma $n-$célula geradora de $\mathcal{C}_{n}(X)$,
+		Será demonstrada a unicidade do homomorfismo. Sabe-se que o grupo $\homologiarel{n}{S^{n}}{\{p\}}$ tem como geradores as classes $\{[S^{n}], [0]\}$ e como $\phi_{n}$ é homomorfismo, então $\phi_{n}([0]) = 0$. Definindo $\phi_{n}([S^{n}]) = 1$ e supondo que exista outro homomorfismo tal que $\phi_{n}^{'} ([S^{n}]) = 1$, então ambos homomorfismos coincidem quando avaliados nos geradores, logo $\phi_{n}^{'}=\phi_{n}$ o que é uma contradição, portanto $\phi_{n}$ é único. Sabe-se que $\Psi_{n}$ é um isomorfismo, então existe uma única aplicação $\Phi_{n}$ tal que $\Phi_{n} \circ \Psi_{n} = 1$. Tomando $\sigma$ uma $n-$célula geradora de $\mathcal{C}_{n}(X)$,
 		$$
 		\begin{aligned}
 		\Phi_{n}(\Psi_{n}(\sigma)) 
@@ -914,11 +912,11 @@
 		&= \sigma	
 		\end{aligned},
 		$$
-		e como $\sigma \in \mathcal{C}_{n}(X)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$, como desejávamos.
+		e como $\sigma \in \mathcal{C}_{n}(X)$ é arbitrário, então $\Phi_{n} \circ \Psi_{n} = 1$.
 	\end{prova}
 	
 	\begin{definicao}
-		(Grau homológico) Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{n}{S^{n}} \to \homologia{n}{S^{n}}$ o homomorfismo induzindo. Seja $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador não-trivial desse grupo, então $f_{*}[S^{n}] = k[S^{n}]$ para algum $k \in \Lambda$. Denominamos $k=\deg(f)$ o grau homológico da aplicação $f$.
+		(Grau homológico) Seja $f: S^{n} \to S^{n}$ uma aplicação contínua e $f_{*}: \homologia{n}{S^{n}} \to \homologia{n}{S^{n}}$ o homomorfismo induzindo. Seja $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador não-trivial desse grupo, então $f_{*}[S^{n}] = k[S^{n}]$ para algum $k \in \Lambda$. Denomina-se por $k=\deg(f)$ o grau homológico da aplicação $f$.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -931,7 +929,7 @@
 			\mathcal{C}_{n-1}(X)
 		}
 		\]
-		onde $\delta_{*}$ é o homomorfismo de conexão da sequência da tripla. Denominamos por operador CW-bordo o homomorfismo $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} : \mathcal{C}_{n}(X) \to \mathcal{C}_{n-1}(X)$.
+		onde $\delta_{*}$ é o homomorfismo de conexão da sequência da tripla. O homomorfismo $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} : \mathcal{C}_{n}(X) \to \mathcal{C}_{n-1}(X)$ é chamado operador CW-bordo.
 	\end{definicao}
 	
 	\begin{teorema}
@@ -942,9 +940,9 @@
 		onde $[\beta:\sigma]$ é o grau homológico da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.
 	\end{teorema}
 	\begin{prova}
-		Por definição temos que $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, logo é um homomorfismo.
+		Por definição tem-se $\partial_{n} = \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n}$, logo é um homomorfismo.
 		
-		Consideremos o diagrama comutativo tal que na vertical temos a sequência exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
+		Considere o diagrama comutativo tal que na vertical temos a sequência exata longa do par $(\skeleton{n-1}, \skeleton{n-2})$
 		$$
 		\xymatrix{
 			& \homologiaabrev{n-2}{\skeleton{n-2}}\ar[rd]^{j_{*}}
@@ -956,9 +954,16 @@
 			& \homologiaabrev{n-1}{\skeleton{n-1}}\ar[u]^{j_{*}}
 		}
 		$$
-		Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical temos $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, temos o composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$.
+		Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical tem-se $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, tem-se a composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$.
 		
-		Por definição temos $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim temos o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, temos o homomorfismo $f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}$ e o homomorfismo conectante $\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador. Por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$. Como sempre podemos escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, temos $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n}$ então $f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, temos o operador CW-bordo
+		Por definição $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim tem-se o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, tem-se o homomorfismo 
+		$$
+		f_{\sigma*}:\homologiarelcel{n}{n}{\sigma} \to \homologiarelskelesimpl{n}{n}
+		$$ 
+		e o homomorfismo conectante 
+		$$
+		\delta_{n} : \homologiarelcel{n}{n}{\sigma} \to \homologia{n-1}{\celulabordo{n}{\sigma}}
+		$$ de modo que, tomanto $[\celula{n}{\sigma}] \in \homologiarelcel{n}{n}{\sigma}$ como um elemento gerador, então $\delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ é um elemento gerador. Por outro lado $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] \in \homologia{n-1}{\skeleton{n-1}}$ também é um elemento gerador, logo $f_{\partial\sigma*}\circ \delta_{n}[\celula{n}{\sigma}] = \lambda \delta_{n}\circ f_{\sigma*}[\celula{n}{\sigma}]$, para algum $\lambda \in \Lambda$. É possível escolher um mapa caracteristico $f_{\sigma *}$ tal que $\lambda = 1$, tem-se $f_{\partial\sigma*}\circ \delta_{n} = \delta_{n}\circ f_{\partial\sigma*}$, e como $\delta_{*} = j_{*}\circ\delta_{n}$ então $f_{\partial\sigma*}\circ \delta_{*} = \delta_{*}\circ f_{\partial\sigma*}$. Assim, tem-se o operador CW-bordo
 		$$
 		\begin{aligned}
 		\partial_{n}(\sigma) &= \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}(\sigma)
@@ -979,10 +984,9 @@
 		\\
 		&= \sum_{\beta} \deg(p_{\beta}\circ f_{\partial\sigma})\phi_{n-1}([S^{n-1}])\beta
 		\\
-		&= \sum_{\beta} \deg(p_{\beta}\circ f_{\partial\sigma})\beta,
+		&= \sum_{\beta} \deg(p_{\beta}\circ f_{\partial\sigma})\beta.
 		\end{aligned}
 		$$
-		como desejávamos.
 	\end{prova}
 	
 	\begin{teorema}\label{teorema_cw_homologia}
@@ -992,19 +996,19 @@
 		$$
 	\end{teorema}
 	\begin{proof}
-		Para a demonstração desse resultado vamos considerar a sequência 
+		Para a demonstração desse resultado será considerada a sequência 
 		$$
 		\xymatrix{
 			\mathcal{C}_{k+1}(X) \ar[r]^{\partial_{k+1}} & \mathcal{C}_{k}(X) \ar[r]^{\partial_{k}} & \mathcal{C}_{k-1}(X).
 		}
 		$$
-		Por definição temos $\homologia{k}{\mathcal{C}_{*}(X)} = Ker(\partial_{k})/Im(\partial_{k+1})$, e com isso provaremos que 
+		Por definição tem-se $\homologia{k}{\mathcal{C}_{*}(X)} = Ker(\partial_{k})/Im(\partial_{k+1})$, e com isso será provado que 
 		$$
-		Ker(\partial_{k})/Im(\partial_{k+1}) \cong \homologia{k}{X}
+		Ker(\partial_{k})/Im(\partial_{k+1}) \cong \homologia{k}{X}.
 		$$ 
-		e então concluir a equivalência entre a CW-homologia e a homologia singular do espaço topológico $X$.
+		Então pode-se concluir a equivalência entre a CW-homologia e a homologia singular do espaço topológico $X$.
 		
-		Tomemos a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
+		Tome a sequência longa exata vertical da tripla $(\skeleton{k+1}, \skeleton{k-1}, \skeleton{k-2})$ e a sequência longa exata horizontal da tripla $(\skeleton{k+1}, \skeleton{k}, \skeleton{k-1})$  no diagrama abaixo:
 		$$
 		\xymatrix{
 			& & \homologiarelskele{k}{k-1}{k-2}= 0 \ar[d]^{i_{*}} &
@@ -1018,13 +1022,13 @@
 		$$
 		onde $i_{*}, \; j_{*}$ e $\delta_{*}$ são as inclusões induzidas e o homomorfismo conectante, respectivamente. Seja $\classe{\alpha} \in \homologiarelskelesimpl{k}{k}$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha}$.
 		
-		Vamos agora caracterizar $Ker(\delta_{2*})$. Dado $[\alpha] \in Ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
+		Será caracterizado conjunto $Ker(\delta_{2*})$. Dado $[\alpha] \in Ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
 		
 		Afirmo que $\phi: Ker(\delta_{2*}) \to \homologiarelskele{k}{k+1}{k-2}$ dado por $\phi(\classe{\alpha}) = \classe{\beta}$ é um epimorfismo. Seja $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, então existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$. Com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0$ pois $Im(j_{*}) = Ker(\delta_{3*})$, logo $\classe{\alpha'} \in Ker(\delta_{2*})$ e $\phi$ é epimorfismo.
 		
-		Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$. Pela comutatividade do diagrama temos $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e, pela exatidão, temos $Ker(i_{*})=Im(\delta_{1*})$, logo $\classe{\alpha} \in Im(\delta_{1*})$. Com isso podemos concluir que $Ker(\phi) = Im(\delta_{1*})$. Pelo teorema fundamental do isomorfismo de grupos temos que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-2}$.
+		Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$. Pela comutatividade do diagrama tem-se que $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e, pela exatidão, temos $Ker(i_{*})=Im(\delta_{1*})$, logo $\classe{\alpha} \in Im(\delta_{1*})$. Com isso se conclui que $Ker(\phi) = Im(\delta_{1*})$. Pelo teorema fundamental do isomorfismo de grupos temos que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-2}$.
 		
-		Sem perda de generalidade, vamos assumir que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$. Fixemos um $0 \leq j \leq n$ e tomemos o $j-$ésimo esqueleto $\skeleton{j}$ e definamos $\skeleton{-1}$. Com isso, podemos escrever a sequência de homomorfismos de inclusão de pares:
+		Sem perda de generalidade, assumi-se que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$. Fixe um $0 \leq j \leq n$ e tome o $j-$ésimo esqueleto $\skeleton{j}$ e defina $\skeleton{-1}$. Com isso, é possível escrever a sequência de homomorfismos de inclusão de pares:
 		$$
 		\xymatrix{
 			\homologia{k}{\skeleton{j}} = \homologiarel{k}{\skeleton{j}}{\skeleton{-1}}\ar[r]& \homologiarel{k}{\skeleton{j}}{\skeleton{0}} \ar[r] & \dots \ar[r] & \homologiarel{k}{\skeleton{j}}{\skeleton{k-2}}
@@ -1042,7 +1046,7 @@
 			\homologiarelskele{k-1}{i-1}{i-2}=0& \homologiarel{k-1}{\skeleton{i}}{\skeleton{i-1}}=0 &  \homologiarel{k}{\skeleton{i+1}}{\skeleton{i}}=0. &		
 		}
 		$$
-		Do Lema \ref{homologiacelular} temos que $\homologiarelskele{k}{i}{i-1} =0$ caso $k \neq i$, logo os grupos nas extemidades verticais do diagrama serão os triviais. Pela exatidão das sequências verticais temos $Im(h_{i}) = Ker(\delta_{i*})$, mas como $Im(\delta_{i*}) = 0 \Rightarrow Ker(\delta_{i*}) = \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, logo $h_{i}$ é um epimorfismo, portanto um isomorfismo, isto é, $\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, o que nos pertmite escrever a cadeia de isomorfismos 
+		Do Lema \ref{homologiacelular} tem-se que $\homologiarelskele{k}{i}{i-1} =0$ caso $k \neq i$. Logo os grupos nas extemidades verticais do diagrama serão os triviais. Pela exatidão das sequências verticais temos $Im(h_{i}) = Ker(\delta_{i*})$, mas como $Im(\delta_{i*}) = 0 \Rightarrow Ker(\delta_{i*}) = \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, logo $h_{i}$ é um epimorfismo, portanto um isomorfismo, isto é, $\homologiarel{k}{\skeleton{n}}{\skeleton{i-1}} \cong \homologiarel{k}{\skeleton{n}}{\skeleton{i}}$, permitindo escrever a cadeia de isomorfismos 
 		$$
 		\begin{aligned}
 		\homologia{k}{\skeleton{j}} &= \homologiarel{k}{\skeleton{j}}{\skeleton{-1}} 
@@ -1052,14 +1056,14 @@
 		$$
 		logo $\homologia{k}{\skeleton{j}} \cong \homologiarel{k}{\skeleton{j}}{\skeleton{i}}$.
 		
-		Por fim, como supusemos que $X = \skeleton{n}$ e a construção anterior vale para $j = n$, então $\homologia{k}{X} = \homologia{k}{\skeleton{n}} \cong \homologiarelskele{k}{n}{i}$.
+		Por fim, como foi suposto que $X = \skeleton{n}$, e a construção anterior vale para $j = n$, então $\homologia{k}{X} = \homologia{k}{\skeleton{n}} \cong \homologiarelskele{k}{n}{i}$.
 		
-		Assim, $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*})$. Mas como $\partial_{k} = \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}$, então $Ker(\delta_{2*}) \cong Ker(\partial_{k})$ e $Im(\delta_{1*}) \cong Im(\partial_{k+1})$, logo $Ker(\delta_{2*})/Im(\delta_{1*}) \cong Ker(\partial_{k})/Im(\partial_{k+1}) = \homologia{k}{\mathcal{C}_{*}}$, logo $\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}}$ que é a equivalência entre as homologias, como desejávamos.
+		Assim, $\homologia{k}{X} \cong \homologiarel{k}{\skeleton{k+1}}{\skeleton{k-2}} \cong Ker(\delta_{2*})/Im(\delta_{1*})$. Mas como $\partial_{k} = \Phi_{n-1}\circ\delta_{*}\circ\Psi_{n}$, então $Ker(\delta_{2*}) \cong Ker(\partial_{k})$ e $Im(\delta_{1*}) \cong Im(\partial_{k+1})$, logo $Ker(\delta_{2*})/Im(\delta_{1*}) \cong Ker(\partial_{k})/Im(\partial_{k+1}) = \homologia{k}{\mathcal{C}_{*}}$, logo $\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}}$ que é a equivalência entre as homologias.
 	\end{proof}
 	
 	\begin{exemplo}
 		(CW-homologia da n-esfera)
-		Vamos exibir uma estrutura de CW-complexo para $S^{n}$. Para isso tomemos um ponto $p \in S^{n}$ e definamos o $0-$skeleton $\skeleton{0}=\{p\}$. Em seguida, anexemos uma $n-$célula a $\skeleton{0}$ onde $f_{\partial}: \celulabordo{n}{} \to \skeleton{0}$, isto é, $\skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$ (veja a Figura \ref{figura_cw_n_esfera}). Pelo teorema da CW-homologia temos que $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{k}$, logo $\homologia{0}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \cong \Lambda$, $\homologia{n}{S^{n}} \cong \homologiarelskelesimpl{n}{n} \cong \Lambda$ e $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{j} =0$ caso $k \neq j$, logo
+		Será exibida uma estrutura de CW-complexo para $S^{n}$. Para isso tome um ponto $p \in S^{n}$ e defina o $0-$skeleton $\skeleton{0}=\{p\}$. Em seguida, anexe uma $n-$célula a $\skeleton{0}$ onde $f_{\partial}: \celulabordo{n}{} \to \skeleton{0}$, isto é, $\skeleton{n} = \{p\}\cup_{f_{\partial}} \celula{n}{}$ (veja a Figura \ref{figura_cw_n_esfera}). Pelo teorema da CW-homologia tem-se que $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{k}$, logo $\homologia{0}{S^{n}} \cong \homologiarelskelesimpl{0}{0} \cong \Lambda$, $\homologia{n}{S^{n}} \cong \homologiarelskelesimpl{n}{n} \cong \Lambda$ e $\homologia{k}{S^{n}} \cong \homologiarelskelesimpl{k}{j} =0$ caso $k \neq j$, logo
 		$$
 		\homologia{*}{S^{n}} = \homologia{0}{S^{n}}\oplus\homologia{n}{S^{n}} \cong \Lambda\oplus\Lambda.
 		$$
@@ -1079,7 +1083,7 @@
 	\end{figure} 
 	
 	\begin{exemplo}
-		(CW-homologia do 2-toro) Vamos exibir uma estrutura de CW-complexo para $T^{2}$. Para isso tomemos a identificação do toro com o quadrado cujo os lados opostos serão identificados, assim os vertices do quadrado serão um ponto $p \in T^{2}$ e definindo o $0-$skeleton $\skeleton{0} = \{p\}$, agora vamos anexar às faces do quadrado duas $1-$células, isto é, $\skeleton{1} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$, e por fim, cobrir o centro do quandrado anexando um $2-$célula, com isso, $\skeleton{2} = \skeleton{1}\cup_{f_{3\partial}}\celula{2}{3}$ (veja a Figura \ref{figura_cw_2_toro}). Então
+		(CW-homologia do 2-toro) Será exibida uma estrutura de CW-complexo para $T^{2}$. Para isso tome a identificação do toro com o quadrado cujo os lados opostos serão identificados, assim os vertices do quadrado serão um ponto $p \in T^{2}$ e definindo o $0-$skeleton $\skeleton{0} = \{p\}$. Agora será anexadas as faces do quadrado duas $1-$células, isto é, $\skeleton{1} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}$. Por fim, deve-se cobrir o centro do quandrado anexando um $2-$célula. Com isso, $\skeleton{2} = \skeleton{1}\cup_{f_{3\partial}}\celula{2}{3}$ (veja a Figura \ref{figura_cw_2_toro}). Então
 		$$
 		T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}.
 		$$
