@@ -1088,7 +1088,7 @@
 		T^{2} =\skeleton{2} = \skeleton{0}\cup_{f_{1\partial}}\celula{1}{1}\cup_{f_{2\partial}}\celula{1}{2}\cup_{f_{3\partial}}\celula{2}{3}.
 		$$
 		
-		Teremos os grupos de homologia não-triviais:
+		Tem-se os grupos de homologia não-triviais:
 		$$
 		\begin{aligned}
 		\homologia{0}{T^{2}} &\cong \homologiarelskele{0}{0}{-1} \cong \Lambda,
@@ -1109,7 +1109,7 @@
 	\chapter{Teoria de Morse}\label{capitulo_teoria_morse}
 	Na investigação da topologia de variedades o principal objetivo é a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas abordagens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo cuja homologia coincide com a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_complexo}$. O que torna a Teoria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
 	
-	O propósito desse capítulo é de apresentação rápida do formalismo e alguns dos principais resultados para que possamos estender a construção aqui feita para a homologia de variedades de dimensão infinita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
+	O propósito desse capítulo é de apresentação rápida do formalismo e alguns dos principais resultados para que se possa estender a construção aqui feita para a homologia de variedades de dimensão infinita (Homologia de Floer). Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{milnor}$ e $\cite{banyaga_morse_homology}$.
 	
 	\begin{definicao}\label{definicao_variedade_fechada}
 		(Variedade fechada) Seja $M$ uma n-variedade diferencial. Diz-se que $M$ é fechada se é compacta e sem bordo.
@@ -1123,7 +1123,7 @@
 		(Função de Morse) Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjunto dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
 	\end{definicao}
 
-	O índice de Morse de um dado $p \in \pontoscriticos{f}$ é a dimensão do maior subespaço $V\subset T_{p}M $ tal que \ hessiana é negativa-definita, isto é, $H_{p}(f)(v,u)<0$ para todo $v,u \in V$. Denotaremos esse índice por $\lambda_{p} = dim(V)$. Como a hessiana é não-degenerada, então $H_{p}(f)$ é diagonalizável e o número de auto-valores negativos é o índice $\lambda_{p}$.
+	O índice de Morse de um dado $p \in \pontoscriticos{f}$ é a dimensão do maior subespaço $V\subset T_{p}M $ tal que \ hessiana é negativa-definita, isto é, $H_{p}(f)(v,u)<0$ para todo $v,u \in V$. Esse índice é denotado por $\lambda_{p} = dim(V)$. Como a hessiana é não-degenerada, então $H_{p}(f)$ é diagonalizável e o número de auto-valores negativos é o índice $\lambda_{p}$.
 	
 	\begin{lema}
 		(Lema de Morse) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$ com índice de Morse $\lambda_{p}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
@@ -1154,7 +1154,7 @@
 		Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
 	\end{teorema} 
 	
-	Dado $a \in \reta$, definimos o conjunto $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o conjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+	Dado $a \in \reta$, defina $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ como sendo o subconjunto em $M$ de nível $a$. Uma consequência imediata é que, dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
 	
 	\begin{teorema}
 		Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ não contenha pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
@@ -1163,7 +1163,7 @@
 	O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, se $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro.
 	
 	\begin{teorema}\label{teorema cw_complexo_ponto_critico_morse}
-		Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = c$. Suponhamos que$f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
+		Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = c$. Suponha que$f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
 	\end{teorema}
 	
 	\begin{observacao}
@@ -1174,7 +1174,7 @@
 		Uma consequência imediata do teorema anterior é que, supondo $p \in \pontoscriticos{f}$ e tomando $a = f(p)$, temos que $M^{a}$ é um $CW$-complexo. 
 	\end{observacao}
 	
-	Supondo que $M$ seja compacto e conexo, então $f(M) = [a,b] \subset \reta$ é um compacto. Suponha que $\pontoscriticos{f} = \{p_{j}\}_{j=1}^{k}$, $\lambda_{j}$ seja o índice do j-ésimo ponto crítico e que exista uma partição $t_{1} = a < t_{2}< \dots< t_{k+1} = b$ tal que $f^{-1}((t_{k}, t_{k+1})) \cap \pontoscriticos{f} = \{p_{k}\}$. Ao variarmos $t \in [a,b]$ teremos a construção do $CW$-complexo
+	Supondo que $M$ seja compacto e conexo, então $f(M) = [a,b] \subset \reta$ é um compacto. Suponha que $\pontoscriticos{f} = \{p_{j}\}_{j=1}^{k}$, $\lambda_{j}$ seja o índice do j-ésimo ponto crítico e que exista uma partição $t_{1} = a < t_{2}< \dots< t_{k+1} = b$ tal que $f^{-1}((t_{k}, t_{k+1})) \cap \pontoscriticos{f} = \{p_{k}\}$. Ao se tomar $t \in [a,b]$ obtêm-se a construção do $CW$-complexo
 	$$
 	\begin{aligned}
 	M^{t_{1}} &\simeq \{p_{1}\}
@@ -1314,7 +1314,7 @@
 		Sejam $M$ uma variedade compacta e $X\in \campossuaves{M}$. Então para $p \in M$ tem-se, que $\alpha(p)$ e $\omega(p)$ são fechados, conexos e invariantes pelo fluxo de $X$, isto é, são uniões de órbitas de $X$.
 	\end{proposicao}
 	
-	Vamos trabalhar com o campo gradiente da função de Morse $f$ pois dele podemos extrair informações sobre o comportamento dessa função. Munindo $M$ com uma métrica Riemanniana $g: T_{p}M \times T_{p}M \to \reta$, temos que $df_{p}(v) = g(\nabla f(p), v)$, onde $v \in T_{p}M$. Sejam $-\gradiente \in \campossuaves{M}$ e $\gamma$ a curva integral de $-\gradiente $ tal que $\gamma(0) = p\in M$. Então
+	Será escolhido o campo gradiente da função de Morse $f$ para os estudos seguintes pois dele é possível extrair informações sobre o comportamento dessa função. Munindo $M$ com uma métrica Riemanniana $g: T_{p}M \times T_{p}M \to \reta$, tem-se que $df_{p}(v) = g(\nabla f(p), v)$, onde $v \in T_{p}M$. Sejam $-\gradiente \in \campossuaves{M}$ e $\gamma$ a curva integral de $-\gradiente $ tal que $\gamma(0) = p\in M$. Então
 	$$
 	\begin{aligned}
 	\derivada{}{t}(f \circ \gamma)(t) &= g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
@@ -1330,7 +1330,7 @@
 	
 	Isso mostra que a função de Morse $f$ é decrescente ao longo das linhas de fluxo do campo gradiente negativo. Além disso, supondo que $\gamma(0) =p\in \pontoscriticos{f}$, então a desigualdade acima atinge seu maior valor em $t=0$, pois $df_{p }= 0$. Como $f$ é decrescente e atinge seu máximo em $t=0$, então a órbita $\orbitaponto{p}$ é regular e não-fechada. Em $\cite{palis_dynamical_systems}$ mostra-se que, para todo $q \in M$ tem-se que $\orbitaponto{q}$ intersecta $f^{-1}(f(q))$ transversalmente. Além disso, os pontos limites das órbitas são pontos críticos, ou seja, $\alpha(q)\cup\omega(q) \subset \pontoscriticos{f}$.
 	
-	Sabemos que, se $f \in \funcoesmorse{M}$, então $\pontoscriticos{f}$ é um conjunto finito. Com isso, pode-se mostrar, 
+	Sabe-se que, se $f \in \funcoesmorse{M}$, então $\pontoscriticos{f}$ é um conjunto finito. Com isso, pode-se mostrar que 
 	
 	\begin{lema}\label{lema_conjunto_limite_funcao_morse}
 		Se 
@@ -1345,19 +1345,19 @@
 		Em termos de pontos limite, podemos reescrever as variedades instáveis e estáveis de $p \in \pontoscriticos{f}$ como sendo $\variedadeinstavel{p} = \{q\in M: \alpha(q)=p\}$ e $\variedadeestavel{p} = \{q\in M: \omega(q)=p\}$.
 	\end{observacao}
 	
-	Da observação anterior, podemos afirmar que ambas as variedades instável e estável dos pontos críticos são contráteis. De fato, defina $Id: M\to M$ como sendo a aplicação identidade e $c:M\to M$ como sendo a aplicação constante $c(M) =\{p\} $, onde $p \in \pontoscriticos{f}$. Então $h:\intervalo\times \variedadeinstavel{p} \to \variedadeinstavel{p}$ tal que $h(t,q) = \phi(t/(1-t), q)$ é uma homotopia entre $Id$ e $c$, pois é contínua e $h(0, q) = Id(q)$ e $\lim_{t \to 1}h(t, q) = c(q)$, logo a variedade instável é contrátil. Com uma argumento análogo mostra-se que $\variedadeestavel{p}$ é contrátil.
+	Da observação anterior, afirma-se que ambas as variedades instável e estável dos pontos críticos são contráteis. De fato, defina $Id: M\to M$ como sendo a aplicação identidade e $c:M\to M$ como sendo a aplicação constante $c(M) =\{p\} $, onde $p \in \pontoscriticos{f}$. Então $h:\intervalo\times \variedadeinstavel{p} \to \variedadeinstavel{p}$ tal que $h(t,q) = \phi(t/(1-t), q)$ é uma homotopia entre $Id$ e $c$, pois é contínua e $h(0, q) = Id(q)$ e $\lim_{t \to 1}h(t, q) = c(q)$, logo a variedade instável é contrátil. Com uma argumento análogo mostra-se que $\variedadeestavel{p}$ é contrátil.
 	
-	Definimos o espaço tangente instável como sendo o subespaço $\espacotangentevariedadeinstavel\subset \espacotangentevariedade$ tal que a restrição da Hessiana $\hessianaponto{p}{f}$ a $\espacotangentevariedadeinstavel$ é negativa-definida. Analogamente temos o espaço tangente estável $\espacotangentevariedadeestavel \subset \espacotangentevariedade$, onde a Hessiana é positiva-definida. Com isso, segue o teorema da variedade estável, cuja demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
+	Foi definido o espaço tangente instável como sendo o subespaço $\espacotangentevariedadeinstavel\subset \espacotangentevariedade$ tal que a restrição da Hessiana $\hessianaponto{p}{f}$ a $\espacotangentevariedadeinstavel$ é negativa-definida. Analogamente se tem o espaço tangente estável $\espacotangentevariedadeestavel \subset \espacotangentevariedade$, onde a Hessiana é positiva-definida. Com isso, segue o teorema da variedade estável, cuja demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
 	
 	\begin{teorema}\label{teorema_variedade_instavel_estavel}
 		(Teorema da variedade instável/estável) Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
 	\end{teorema}
 	
 	\begin{observacao}
-		Do mergulho dado pelo teorema anterior temos, que as variedades instável e estável possuem o mesmo tipo de homotopia de um disco aberto cujas dimensões são $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
+		Do mergulho dado pelo teorema anterior tem-se que as variedades instável e estável possuem o mesmo tipo de homotopia de um disco aberto cujas dimensões são $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
 	\end{observacao}
 
-	Podemos decompor a variedade $M$ como a união disjunta das variedades instáveis ou união disjunta da variedades estáveis, o que é garantido pelo resultado a seguir.
+	A variedade $M$ pode ser decomposta como a união disjunta das variedades instáveis ou união disjunta da variedades estáveis, o que é garantido pelo resultado a seguir.
 	
 	\begin{proposicao}\label{proposicao_uniao_variedade_instavel_estavel}
 		Se $f \in \funcoesmorse{M}$, então
@@ -1366,7 +1366,7 @@
 		$$
 	\end{proposicao}
 
-	 O propósito das definições desse ponto em diante é a construção de um complexo de cadeia associado ao fluxo gradiente de uma função de Morse com uma propriedade adicional, que chamaremos de propriedade de transversalidade entre as variedades instáveis e estáveis.
+	 O propósito das definições desse ponto em diante é a construção de um complexo de cadeia associado ao fluxo gradiente de uma função de Morse com uma propriedade adicional, que se chama propriedade de transversalidade entre as variedades instáveis e estáveis.
 	 
 	 \begin{definicao}
 	 	(Variedade Conectante e o Espaço Moduli) Sejam $f \in \funcoesmorse{M}$ e $p,q \in \pontoscriticos{f}$. A variedade conectante de $p$ e $q$ é definida por $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Seja $c \in (f(q), f(p)) \subset \reta$ um valor regular de $f$. Então o espaço moduli de $p$ e $q$ é definido por $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
@@ -1377,11 +1377,11 @@
 	 \end{definicao}
 	 
 	 \begin{observacao}
-	 	Se $Z \subseteq M$ e $g$ é a aplicação de inclusão, então denotaremos a transversalidade por $f\pitchfork Z$. Trataremos constatemente os casos em que $N, Z \subseteq M$ e $f$ e $g$ são as inclusões e denotaremos a transversalidade por $N \pitchfork Z$.
+	 	Se $Z \subseteq M$ e $g$ é a aplicação de inclusão, então a transversalidade é denotada por $f\pitchfork Z$. A transversalidade nos casos em que $N, Z \subseteq M$ e $f$ e $g$ são as inclusões é denotada por $N \pitchfork Z$.
 	 \end{observacao}
 	 
 	 \begin{definicao}
-	 	(Funções de Morse-Smale) Dizemos que o gradiente negativo de $f \in \funcoesmorse{M}$ satisfaz a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
+	 	(Funções de Morse-Smale) Diz-se que o gradiente negativo de $f \in \funcoesmorse{M}$ satisfaz a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
 	 \end{definicao}
 	 
 	 \begin{teorema}
@@ -1411,14 +1411,14 @@
 
 	\subsection{Complexo de Morse-Smale-Witten}
 	
-	Sejam $V$ um n-espaço vetorial, $B=\{e_{j}\}_{j=1}^{n}$ e $B'=\{e'_{j}\}_{j=1}^{n}$ duas bases ordenadas de $V$. Dizemos que $B$ e $B'$ possuem a mesma orientação se o determinante da matriz de mudança de base, $A: B \to B'$, definida por $e_{j} = \sum_{i=1}^{n}A_{ji}e'_{i}$, possui determinante positivo. 
+	Sejam $V$ um n-espaço vetorial, $B=\{e_{j}\}_{j=1}^{n}$ e $B'=\{e'_{j}\}_{j=1}^{n}$ duas bases ordenadas de $V$. Diz-se que $B$ e $B'$ possuem a mesma orientação se o determinante da matriz de mudança de base, $A: B \to B'$, definida por $e_{j} = \sum_{i=1}^{n}A_{ji}e'_{i}$, possui determinante positivo. 
 	
 	Uma orientação em um n-espaço vetorial $V$ é uma classe de equivalência entre bases ordenadas de $V$. Um espaço vetorial munido de um orientação é um espaço vetorial orientado. Tal orientação pode ser positiva ou negativa, de acordo com o determinante da matriz de mudança de base for positiva ou negativa.
 	
-	Sejam $M$ uma n-variedade diferenciável. A n-upla ordenada $B=\{e_{j}\}_{j=1}^{n}$ é um referencial local se $B(p)=\{e_{j}(p)\}_{j=1}^{n}$ é uma base para $\espacotangenteponto{p}{M}$ ordenada para todo $p \in M$. Dizemos que $B$ é um referencial positivamente orientado se $B(p)$ é positivamente orientado para todo $p \in M$. Seja $A: B \to B'$ uma aplicação onde $A(p)$ é a matriz de mudança de base $B(p) $ para $B'(p)$. Se $\det(A):M \to \reta$ for uma aplicação contínua tal que $\det(A)(p) = \det(A(p))>0$ para todo $p \in M$, então dizemos que $B$ possui orientação continuamente positiva. Analogamente, se tivermos $\det(A)(p)<0$ diremos que $B$ possui uma orientação continuamente negativa.
+	Sejam $M$ uma n-variedade diferenciável. A n-upla ordenada $B=\{e_{j}\}_{j=1}^{n}$ é um referencial local se $B(p)=\{e_{j}(p)\}_{j=1}^{n}$ é uma base para $\espacotangenteponto{p}{M}$ ordenada para todo $p \in M$. Diz-se que $B$ é um referencial positivamente orientado se $B(p)$ é positivamente orientado para todo $p \in M$. Seja $A: B \to B'$ uma aplicação onde $A(p)$ é a matriz de mudança de base $B(p) $ para $B'(p)$. Se $\det(A):M \to \reta$ for uma aplicação contínua tal que $\det(A)(p) = \det(A(p))>0$ para todo $p \in M$, então é dito que $B$ possui orientação continuamente positiva. Analogamente, se $\det(A)(p)<0$ diz-se que $B$ possui uma orientação continuamente negativa.
 	
 	\begin{definicao}
-		(Variedade orientável) Seja $M$ uma n-variedade diferenciável com um referencial $B$ continuamente orientado. Então a classe de equivalência desses referenciais $o(M)$ é chamada de orientação de $M$ e dizemos que a variedade é orientável se existe uma orientção $o(M)$.
+		(Variedade orientável) Seja $M$ uma n-variedade diferenciável com um referencial $B$ continuamente orientado. Então a classe de equivalência desses referenciais $o(M)$ é chamada de orientação de $M$ e é dito que a variedade é orientável se existe uma orientção $o(M)$.
 	\end{definicao}
 	
 	A questão de orientação de variedades e subvariedades é crucial no processo de construção do complexo de Morse-Smale-Witten.
@@ -1442,7 +1442,7 @@
 	$$
 	\derivada{}{t}\gamma(t) = -\gradiente(\gamma(t)), \; \lim_{t \to -\infty}\gamma(t) = p\;\;\text{e}\; \lim_{t \to \infty}\gamma(t) = q.
 	$$
-	Tome um ponto $x \in \gamma(\reta) \subset \variedadeconectantepontos{p}{q}$. Como a variedade instável $\variedadeinstavel{p}$ é orientável, podemos fixar $o(\variedadeinstavel{p})$ como sendo sua orientação. Então existe um referencial $B^{u}$ nessa variedade tal que, juntamente com o campo $-\gradiente$, tem-se que $B(x) = \{-\gradiente(x), B^{u}(x)\}$ é uma base de $\espacotangenteponto{x}{\variedadeinstavel{p}}$.
+	Tome um ponto $x \in \gamma(\reta) \subset \variedadeconectantepontos{p}{q}$. Como a variedade instável $\variedadeinstavel{p}$ é orientável, fixe $o(\variedadeinstavel{p})$ como sendo sua orientação. Então existe um referencial $B^{u}$ nessa variedade tal que, juntamente com o campo $-\gradiente$, tem-se que $B(x) = \{-\gradiente(x), B^{u}(x)\}$ é uma base de $\espacotangenteponto{x}{\variedadeinstavel{p}}$.
 	
 	\begin{definicao}
 		(Número de intersecção) Com as hipóteses descritas anteriormente, o sinal característico da órbita $\orbitaponto{x}$ é o índice $n_{x} \in \{\pm 1\}$ que assume os valores $1$, caso a orientação $o(B(x))$ seja equivalente a $o(\variedadeinstavel{p})$, e assume $-1$ caso contrário. O número de intersecção é definido por 
@@ -1465,11 +1465,11 @@
 	\begin{exemplo}
 		(Complexo de Morse-Witten) Considere variedade 2-dimensional $M$ mergulhada em $\real{3}$ e representada pela Figura \ref{figura_fluxo_morse_smale}. Seja $F:\real{3} \to \reta$ a função definida por $F(x, y, z) = z$. Pode-se mostrar que $f=F|_{M} \in \funcoesmorsesmale{M}$,  $\pontoscriticos{f} = \{p,q,r,s\}$ e que os índices de Morse dos pontos críticos de $f$ são $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
 		
-		Pela Figura \ref{figura_variedade_estavel_instavel} pode-se notar que $\variedadeestavel{p}$ é a imagem do caminho conectando os ponto críticos $r$ e $s$ com esses pontos removidos. Com isso, temos que $\variedadeestavel{q} = \complementar{M}{\variedadeestavel{p}}$ e  $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$, o que está de acordo com a Proposição $\ref{proposicao_uniao_variedade_instavel_estavel}$. Examinando a Figura \ref{figura_fluxo_morse_smale} pode-se verificar que $\variedadeinstavel{p}$ é a imagem dos caminhos conectando $p$ a $q$ com o ponto $p$ removido, e que $\variedadeestavel{q} = \variedadeinstavel{p}$. Com isso,  $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap\variedadeestavel{q} = \variedadeinstavel{p}$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
+		Pela Figura \ref{figura_variedade_estavel_instavel} pode-se notar que $\variedadeestavel{p}$ é a imagem do caminho conectando os ponto críticos $r$ e $s$ com esses pontos removidos. Com isso, tem-se que $\variedadeestavel{q} = \complementar{M}{\variedadeestavel{p}}$ e  $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$, o que está de acordo com a Proposição $\ref{proposicao_uniao_variedade_instavel_estavel}$. Examinando a Figura \ref{figura_fluxo_morse_smale} pode-se verificar que $\variedadeinstavel{p}$ é a imagem dos caminhos conectando $p$ a $q$ com o ponto $p$ removido, e que $\variedadeestavel{q} = \variedadeinstavel{p}$. Com isso,  $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap\variedadeestavel{q} = \variedadeinstavel{p}$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
 		
-		Na Figura \ref{figura_variedade_estavel_instavel} esta identificada a variedade instável $\variedadeinstavel{r}$ de $r$. Com isso, $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap\variedadeestavel{p}$ é o caminho que conecta os pontos $r$ a $p$ com o ponto $r$ removido e o espaço moduli $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um argumento análogo concluimos que $\espacomoduli{s}{p} = \{x_{4} \}$.
+		Na Figura \ref{figura_variedade_estavel_instavel} esta identificada a variedade instável $\variedadeinstavel{r}$ de $r$. Com isso, $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap\variedadeestavel{p}$ é o caminho que conecta os pontos $r$ a $p$ com o ponto $r$ removido e o espaço moduli $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um argumento análogo conclui-se que $\espacomoduli{s}{p} = \{x_{4} \}$.
 		
-		Na Figura \ref{figura_fluxo_morse_smale} as linhas de fluxo de $f$ estão representadas pelas linhas roxas, e as orientações das variendades instáveis, em linhas cinzas. Adotadas essas orentações para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$, temos os índices $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
+		Na Figura \ref{figura_fluxo_morse_smale} as linhas de fluxo de $f$ estão representadas pelas linhas roxas, e as orientações das variendades instáveis, em linhas cinzas. Adotadas essas orentações para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$, tem-se os índices $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
 		$$
 		n(p,q) = n_{x_{1}}+n_{x_{2}} = 0,\; n(r,p) = n(s,p)=n_{x_{3}}= 1. 
 		$$
@@ -1506,9 +1506,9 @@
 		(Teorema da Homologia de Morse) Sejam $f \in \funcoesmorsesmale{M}$ e o par $(C_{*}(f), \partial_{*})$ o complexo de cadeia de Morse-Smale-Witten da função $f$. Então $H_{*}((C_{*}(f), \partial_{*})) $ é isomorfo a homologia singular $ H_{*}(M, \inteiros)$.
 	\end{teorema}
 	
-	O Teorema $\ref{teorema_cw_homologia}$ afirma que a homologia de um $CW$-complexo é isomorfa a sua homologia singular e também sabemos que a homologia de Morse é isomorfa a homologia singular da variedade. Vimos na Seção $\ref{secao_morse_classica}$ que uma n-variedade fechada possui o mesmo tipo de homotopia que de um $CW$-complexo construido a partir dos pontos críticos de uma função de Morse, logo a homologia singular dessa variedade é isomorfa a homologia do $CW$-complexo associado. Com isso, podemos afirmar que as homologias construidas via funções de Morse-Smale e funções de Morse clássicas são isomorfas.
+	O Teorema $\ref{teorema_cw_homologia}$ afirma que a homologia de um $CW$-complexo é isomorfa a sua homologia singular e também é sabido que a homologia de Morse é isomorfa a homologia singular da variedade. Foi visto na Seção $\ref{secao_morse_classica}$ que uma n-variedade fechada possui o mesmo tipo de homotopia que de um $CW$-complexo construido a partir dos pontos críticos de uma função de Morse, logo a homologia singular dessa variedade é isomorfa a homologia do $CW$-complexo associado. Com isso, pode-se afirmar que as homologias construidas via funções de Morse-Smale e funções de Morse clássicas são isomorfas.
 	
-	O cálculo da homologia singular de uma variedade com certas propriedades nem sempre é algo simples a se fazer. Contudo, podemos aplicar técnicas alternativas para a determinação de homologias isomorfas a homologia singular. Essa é importância dos resultados dos teoremas de isomorfismos anteriormente citados. Um outro ponto a ser comentado é o fato de que as homologias singulares são utilizadas para a descrição de alguns invariantes topológicos, por exemplo, a característica de Euler-Poicaré. Portanto, a demonstração desses isomorfismos garante que ainda estamos diantes dos mesmo invariantes topológicos.
+	O cálculo da homologia singular de uma variedade com certas propriedades nem sempre é algo simples a se fazer. Contudo, é possível aplicar técnicas alternativas para a determinação de homologias isomorfas a homologia singular. Essa é importância dos resultados dos teoremas de isomorfismos anteriormente citados. Um outro ponto a ser comentado é o fato de que as homologias singulares são utilizadas para a descrição de alguns invariantes topológicos, por exemplo, a característica de Euler-Poicaré. Portanto, a demonstração desses isomorfismos garante que ainda se está diante dos mesmos invariantes topológicos.
 	
 	
 	\chapter{Espaços Vetoriais Simpléticos}\label{capitulo_espacos_vetoriais_simpleticos}
