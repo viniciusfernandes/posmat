@@ -1526,7 +1526,7 @@
 	$$
 	F(t) = m\derivada{v(t)}{t} = \derivada{p(t)}{t},
 	$$
-	onde $v = \gamma'(t)$, $m\geq0$ constante e $p(t) = m\gamma'(t)$, este último chamado de momento linear. Suponha agora que exista uma função, chamada de energia potencial, de classe $C^{2}$ tal que $U:\real{3}\to \reta$ e $F = -\nabla U$. Tomando $q=(q_{1},q_{2}, q_{3})\in \real{3}$, então $\gamma(t)=(q_{1}(t),q_{2}(t), q_{3}(t)) = q(t)$ e podemos escrever $F(q(t)) =m \ddot{q}(t)= -\nabla U(q(t))$. Temos um sistema de 3 equações de segunda ordem, contudo, realizando uma mudança de variáveis, podemos reduzir o problema de segunda ordem para um problema de primeira ordem, do seguinte modo
+	onde $v = \gamma'(t)$, $m\geq0$ constante e $p(t) = m\gamma'(t)$, este último chamado de momento linear. Suponha agora que exista uma função, chamada de energia potencial, de classe $C^{2}$ tal que $U:\real{3}\to \reta$ e $F = -\nabla U$. Tomando $q=(q_{1},q_{2}, q_{3})\in \real{3}$, então $\gamma(t)=(q_{1}(t),q_{2}(t), q_{3}(t)) = q(t)$ e pode-se escrever $F(q(t)) =m \ddot{q}(t)= -\nabla U(q(t))$. Tem-se um sistema de 3 equações de segunda ordem, contudo, realizando uma mudança de variáveis, podemos reduzir o problema de segunda ordem para um problema de primeira ordem, do seguinte modo
 	$$
 	\dot{q} = \frac{p}{m} \;\; e \;\;\dot{p} = -\nabla U(q).
 	$$
@@ -1538,27 +1538,27 @@
 	\dot{q} = \derivadaparcial{H}{p} \;\; e \;\; \dot{p} = -\derivadaparcial{H}{q}.
 	$$
 	
-	O sistema de equações acima é chamado de equações de Hamilton. Sabe-se que a energia total de um sistema físico conservativo é a soma das energias pontecial $E_{p} = U$ e cinética $E_{c} = p^{2}/2m$ (veja $\cite{nussenzveig}$), onde $p^{2} = \produtointerno{p}{p}$. Definamos a função Hamiltoniana associada a energia total do sistema por
+	O sistema de equações acima é chamado de equações de Hamilton. Sabe-se que a energia total de um sistema físico conservativo é a soma das energias pontecial $E_{p} = U$ e cinética $E_{c} = p^{2}/2m$ (veja $\cite{nussenzveig}$), onde $p^{2} = \produtointerno{p}{p}$. Defina a função Hamiltoniana associada a energia total do sistema por
 	$$
 	H(q,p) = E_{c} +E_{p} = \frac{p^{2}}{2m}+U(q). 
 	$$
 	
 	Note que a função $H$ definida acima satisfaz as equações de Hamilton, logo é uma função Hamiltoniana e, por estar associada a energia total do sistema, é amplamente aplicada em modelos dinâmicos físicos.
 	
-	As equações de Hamilton nos dizem que, dada uma função Hamiltoniana, podemos recuperar as equações de Newton. Portanto, temos uma compatibilidade entre ambas as descrições de um problema físico.
+	As equações de Hamilton nos dizem que, dada uma função Hamiltoniana, é possível recuperar as equações de Newton. Portanto, tem-se uma compatibilidade entre ambas as descrições de um problema físico.
 	
 	\section{Geometrização}
 	
-	A geometrização de problemas em física nos permite estudar os resultados obtidos sobre outro ponto de vista, e com isso, generalizar e analisar novos aspectos. Faremos o mesmo com a descrição Hamiltoniana, de modo que definiremos objetos utilizados adiante na análise da topologia de uma categoria específica de variedades diferenciáveis.
+	A geometrização de problemas em física permite estudar os resultados obtidos sobre outro ponto de vista, e com isso, generalizar e analisar novos aspectos. Será feito o mesmo com a descrição Hamiltoniana, de modo que serão definidos objetos utilizados adiante na análise da topologia de uma categoria específica de variedades diferenciáveis.
 	
-	Sejam $Q= \real{n}$ e $P=\real{2n}$ os espaços de configurações e fase, respectivamente. Por simplicidade vamos utilizar a notação $(q, p ) = (q_{1}, \dots ,q_{n}, p_{1}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  temos que $B(q_{0}, p_{0})=\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}= \{\partial_{q}, \partial_{p}\} $ é uma base do espaço tangente $T_{(q_{0},p_{0})} P $, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
+	Sejam $Q= \real{n}$ e $P=\real{2n}$ os espaços de configurações e fase, respectivamente. Por simplicidade será adotada a notação $(q, p ) = (q_{1}, \dots ,q_{n}, p_{1}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  tem-se que $B(q_{0}, p_{0})=\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}= \{\partial_{q}, \partial_{p}\} $ é uma base do espaço tangente $T_{(q_{0},p_{0})} P $, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
 	
 	Seja $H:P \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$. O gradiente Hamiltoniano é dado por
 	$$
 	\nabla H =\sum_{j=1}^{n} \bigparenteses{\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} }= \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
 	$$
 	
-	Definimos o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
+	Define-se o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
 	$$
 	\campohamiltonianoabrev = -\estruturacomplexa \nabla H = \sum_{j=1}^{n}\bigparenteses{\derivadaparcial{H}{p_{j}}\derivadaparcial{}{q_{j}} - \derivadaparcial{H}{q_{j}}\derivadaparcial{}{p_{j}} } = \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
 	$$
@@ -1575,7 +1575,7 @@
 	$$
 	e $Id$ a matriz identidade $n\times n$. Com isso, $\estruturacomplexa \derivadaparcialabrev{q} = \derivadaparcialabrev{p}$ e $\estruturacomplexa \derivadaparcialabrev{p} = -\derivadaparcialabrev{q}$.
 	
-	Vejamos que o campo Hamiltoniano representa um campo conservativo. Seja $\psi:\reta \to P$ a curva integral do campo $\campohamiltonianoabrev$. Então as equações de Hamilton podem ser reescritas como 
+	Veja que o campo Hamiltoniano representa um campo conservativo. Seja $\psi:\reta \to P$ a curva integral do campo $\campohamiltonianoabrev$. Então as equações de Hamilton podem ser reescritas como 
 	$$
 	\begin{aligned}
 	\dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
@@ -1622,7 +1622,7 @@
 	\end{aligned}
 	$$
 	
-	Tome a 2-forma $\formaSimpleticaabrev :T_{(q,p)} P \times T_{(q,p)} P \to \reta$ definida por $\formaSimpleticaabrev = \sum_{j}  dq_{j}\wedge dp_{j}$. Com isso, temos a geometrização das equações de Hamilton
+	Tome a 2-forma $\formaSimpleticaabrev :T_{(q,p)} P \times T_{(q,p)} P \to \reta$ definida por $\formaSimpleticaabrev = \sum_{j}  dq_{j}\wedge dp_{j}$. Com isso, obtêm-se a geometrização das equações de Hamilton
 	
 	$$
 	\begin{aligned}
@@ -1639,11 +1639,11 @@
 	\end{aligned}
 	$$
 	
-	Definimos um espaço de fase $P$ e em cada ponto do espaço tangente de $P$ temos uma forma bilinear anti-simétrica e não-degenerada $\formaSimpleticaabrev$, chamada forma simplética. Com isso, o par $(T_{(q,p)}P, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético, onde $dim(T_{(q,p)}P) = 2n$. A seção seguinte é dedicada ao estudo de espaços vetoriais simpléticos reais.
+	Define-se um espaço de fase $P$ e em cada ponto do espaço tangente de $P$ tem-se uma forma bilinear anti-simétrica e não-degenerada $\formaSimpleticaabrev$, chamada forma simplética. Com isso, o par $(T_{(q,p)}P, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético, onde $dim(T_{(q,p)}P) = 2n$. A seção seguinte é dedicada ao estudo de espaços vetoriais simpléticos reais.
 	
 	\section{Espaços Vetoriais Simpléticos}
 	\begin{definicao}
-		(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
+		(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então é dito que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -1656,7 +1656,7 @@
 	Sejam $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ dois espaços vetoriais simpléticos e uma aplicação linear $\varphi: V_{1}\to V_{2}$. O pullback de $\omega_{2}$ por $\varphi$ é a 2-forma $\varphi^{*}\omega_{2}:V_{1} \times V_{1} \to \reta$ definida por $\varphi^{*}\omega_{2}(v,u) = \omega_{2}(\varphi(v), \varphi(u))$.
 	
 	\begin{convensao}\label{convensao_base_simpletica}
-		Quando não houver ambiguidades, denotaremos a base simplética  $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$  de $(V, \omega)$ por  $\{ e ,f\}$, e um dado $v =\sum_{j=1}^{n}( v_{j}e_{j} +v_{n+j}f_{j}) \in V$ por $v=v_{(1)}e+v_{(2)}f$, onde $v_{(1)}=(v_{1}, \dots, v_{n})$ e $v_{(2)}=(v_{n+1}, \dots, v_{2n})$.
+		Quando não houver ambiguidades, a base simplética  $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$  de $(V, \omega)$ será denotada por  $\{ e ,f\}$, e um dado $v =\sum_{j=1}^{n}( v_{j}e_{j} +v_{n+j}f_{j}) \in V$ por $v=v_{(1)}e+v_{(2)}f$, onde $v_{(1)}=(v_{1}, \dots, v_{n})$ e $v_{(2)}=(v_{n+1}, \dots, v_{2n})$.
 	\end{convensao}
 	
 	\begin{observacao}\label{observacao_convensao_base_simpletica}
@@ -1711,14 +1711,14 @@
 		\end{enumerate}
 	\end{prova}
 	
-	Não há garantias de que sempre tenhamos $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir nos dá uma relação entre as dimensões desses dois espaços vetoriais.
+	Não há garantias de que sempre se tenha $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir dá uma relação entre as dimensões desses dois espaços vetoriais.
 	
 	\begin{lema}\label{lema_isomorfismo_forma_simpletica}
 		Seja $(V,\omega)$ um 2n-espaço vetorial simplético. A aplicação $\omega^{*}:V\to V^{*}$ definida por $\omega^{*}(v)(u) = \omega(v,u)$ é um isomorfismo.
 	\end{lema}
 	\begin{prova}
-		Dado $v \in V$, temos pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $w^{*}$ é injetora pois, suponha 
-		que exista $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$. Com isso, temos $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Portanto $\omega^{*}$ é injetora. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$, temos pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ devemos ter que $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
+		Dado $v \in V$, tem-se pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $w^{*}$ é injetora pois, suponha 
+		que exista $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$. Com isso, tem-se $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Portanto $\omega^{*}$ é injetora. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$, tem-se pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ deve-se ter $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
 	\end{prova}
 	
 	\begin{proposicao}\label{proposicao_dimensao_subespaco_simpletico}
@@ -1736,7 +1736,7 @@
 		(Existência de base simplética) Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
 	\end{teorema}
 	\begin{prova}
-		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $e_{1} \neq 0\in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, podemos afirmar que $V_{1}$ é simplético, ou seja, $V_{1}\cap V_{1}^{\omega} = \{0\}$. Com isso e com a Proposição $\ref{proposicao_dimensao_subespaco_simpletico}$, podemos afirmar que $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes teremos $V = V_{1}\oplus \dots \oplus V_{n}$, onde $V_{i}$ é gerado por $e_{i}$ e $\omega(e_{i}, f_{i}) = 1$. Por construção temos $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
+		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $e_{1} \neq 0\in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, podemos afirmar que $V_{1}$ é simplético, ou seja, $V_{1}\cap V_{1}^{\omega} = \{0\}$. Com isso e com a Proposição $\ref{proposicao_dimensao_subespaco_simpletico}$, pode-se afirmar que $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes tem-se $V = V_{1}\oplus \dots \oplus V_{n}$, onde $V_{i}$ é gerado por $e_{i}$ e $\omega(e_{i}, f_{i}) = 1$. Por construção, tem-se $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_existencia_base_simpletica}
@@ -1756,7 +1756,7 @@
 		Seja $V$ um 2n-espaço vetorial, então existe uma base $\{ e_{1},\dots, e_{n}, f_{1},\dots, f_{n}\}$ de $V$ e uma base $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ tal que dado $\alpha \in \Lambda^{2}(V)$ pode-se escrever $\alpha = \sum_{i=1}^{n} e^{*}_{i}\wedge f^{*}_{i}$.
 	\end{teorema}
 	\begin{prova}
-		Seja $\alpha\neq 0\in \Lambda^{2}(V) $, então existem $ a_{1}, a_{1+n} \in V $ tais que $\alpha(a_{1}, a_{1+n}) = \alpha_{1} \neq 0$. Definindo $e_{1} = a_{1}/\alpha_{1}$ e $a_{1+n} = f_{1}$ teremos $\alpha(e_{1}, f_{1}) = 1$, e pela anti-simetria temos $\alpha(e_{1}, e_{1}) = \alpha(f_{1}, f_{1}) = 0$. Definindo $B_{1}=span \{e_{1}, f_{1}\}$, então a matriz $(\alpha_{ij})$ de $\alpha|_{B_{1}}$ é
+		Seja $\alpha\neq 0\in \Lambda^{2}(V) $, então existem $ a_{1}, a_{1+n} \in V $ tais que $\alpha(a_{1}, a_{1+n}) = \alpha_{1} \neq 0$. Definindo $e_{1} = a_{1}/\alpha_{1}$ e $a_{1+n} = f_{1}$ tem-se $\alpha(e_{1}, f_{1}) = 1$, e pela anti-simetria tem-se $\alpha(e_{1}, e_{1}) = \alpha(f_{1}, f_{1}) = 0$. Definindo $B_{1}=span \{e_{1}, f_{1}\}$, então a matriz $(\alpha_{ij})$ de $\alpha|_{B_{1}}$ é
 		$$
 		\left(
 		\begin{array}{cc}
@@ -1766,7 +1766,7 @@
 		\end{array}
 		\right)
 		$$
-		Seja  $V_{2} = \{v \in V: \alpha(v, b) = 0,\; b \in B_{1}\}$, então por construção temos $B_{1} \cap V_{2} = 0$. Como $B_{1}, V_{2} \subseteq V$ são subespaços vetoriais então $V = B_{1}\oplus V_{2}$. Dado $v \in V$ temos $v_{2} =v- \alpha(v,f_{1})e_{1} +\alpha(v,e_{1})f_{1} \in V_{2}$ pois $\alpha(v_{2}, e_{1}) = \alpha(v_{2}, f_{1}) = 0$. Repetindo a construção para $V_{2}$ podemos afirmar que existem $e_{2}, f_{2} \in V_{2}$ tais que $\alpha(e_{2}, f_{2}) = 1$, $\alpha(e_{2}, e_{2}) = \alpha(f_{2}, f_{2}) = 0$, $B_{2} = span\{e_{2}, f_{2} \}$ e $V_{3} \subset V_{2}$ tal que $B_{2}\cap V_{3}=0$, onde a matriz $(\alpha_{ij})$ de $\alpha|_{B_{2}}$ é da mesma forma que a matriz de $\alpha|_{B_{1}}$. Realizando uma indução finita na construção dos planos $B_{j}$ teremos $V = \bigoplus_{j=1}^{n}B_{j}$, logo a matriz de $\alpha$ na base  $\{ e_{1},\dots, e_{n}, f_{1},\dots, f_{n}\}$ é
+		Seja  $V_{2} = \{v \in V: \alpha(v, b) = 0,\; b \in B_{1}\}$, então por construção tem-se $B_{1} \cap V_{2} = 0$. Como $B_{1}, V_{2} \subseteq V$ são subespaços vetoriais então $V = B_{1}\oplus V_{2}$. Dado $v \in V$ tem-se $v_{2} =v- \alpha(v,f_{1})e_{1} +\alpha(v,e_{1})f_{1} \in V_{2}$ pois $\alpha(v_{2}, e_{1}) = \alpha(v_{2}, f_{1}) = 0$. Repetindo a construção para $V_{2}$ se pode afirmar que existem $e_{2}, f_{2} \in V_{2}$ tais que $\alpha(e_{2}, f_{2}) = 1$, $\alpha(e_{2}, e_{2}) = \alpha(f_{2}, f_{2}) = 0$, $B_{2} = span\{e_{2}, f_{2} \}$ e $V_{3} \subset V_{2}$ tal que $B_{2}\cap V_{3}=0$, onde a matriz $(\alpha_{ij})$ de $\alpha|_{B_{2}}$ é da mesma forma que a matriz de $\alpha|_{B_{1}}$. Realizando uma indução finita na construção dos planos $B_{j}$ tem-se $V = \bigoplus_{j=1}^{n}B_{j}$, logo a matriz de $\alpha$ na base  $\{ e_{1},\dots, e_{n}, f_{1},\dots, f_{n}\}$ é
 		$$
 		\left(
 		\begin{array}{cc}
@@ -1776,14 +1776,14 @@
 		\end{array}
 		\right)
 		$$
-		Definindo a base dual $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ teremos $\alpha = \sum_{j=1}^{n}e_{j}^{*}\wedge f_{j}^{*}$.
+		Definindo a base dual $\{e_{1}^{*}, \dots, e_{n}^{*}, f_{1}^{*}, \dots,f_{n}^{*}\}$ de $V^{*}$ se tem $\alpha = \sum_{j=1}^{n}e_{j}^{*}\wedge f_{j}^{*}$.
 	\end{prova}
 	
 	\begin{lema}\label{lema_caracterizacao_forma_simpetica}
 		(Caracterização da forma simplética) Sejam $V$ um 2n-espaço vetorial, então $\omega \in \Lambda^{2}(V)$ é uma forma simplética se, e somente se, $\omega^{\wedge n} = \omega\wedge \dots \wedge \omega \in \Lambda^{2n}(V)$ é não-nula.
 	\end{lema}
 	\begin{prova}
-		Suponha $\omega$ uma forma simplética. O Teorema $\ref{teorema_existencia_base_simpletica}$ garante a existência de uma base simplética $\{e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}\}$ de $V$. Pela bilinearidade de $\omega$ basta analisarmos $\omega$ nos elementos dessa base. Considerando $\sigma$ no conjunto das permutações de $\{1, 2, \dots , 2n\}$ temos
+		Suponha $\omega$ uma forma simplética. O Teorema $\ref{teorema_existencia_base_simpletica}$ garante a existência de uma base simplética $\{e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}\}$ de $V$. Pela bilinearidade de $\omega$ basta analisarmos $\omega$ nos elementos dessa base. Considerando $\sigma$ no conjunto das permutações de $\{1, 2, \dots , 2n\}$ tem-se
 		$$		
 		\begin{aligned}
 		\omega^{\wedge n}(e_{1}, \dots, e_{n}, f_{1}, \dots, f_{n}) &=\sum_{\sigma} \omega(e_{1}, f_{\sigma(1)})...\omega(e_{n}, f_{\sigma(n)})
@@ -1848,7 +1848,7 @@
 	\end{definicao}
 	
 	\begin{exemplo}
-		(Rotações em $\real{2}$) Vimos no Exemplo $\ref{exemplo_espaco_simpletico_real}$ que $(\real{2}, \omega)$ é um espaço vetorial simpletico, onde $\omega = dx\wedge dy$ e a base canônica $\{e_{x}, e_{y}\}$ é uma base simplética. Seja $R(\theta):\real{2}\to \real{2}$ uma rotação de um ângulo $\theta$, isto é, dado $v= v_{x}e_{x}+v_{y}e_{y} \in V$, temos $R(\theta)v = (v_{x}\cos(\theta)-v_{y}\sin(\theta))e_{x}+(v_{x}\sin(\theta)+v_{y}\cos(\theta))e_{y} = v'_{x}e_{x}+v'_{y}e_{y}$. Então
+		(Rotações em $\real{2}$) Vimos no Exemplo $\ref{exemplo_espaco_simpletico_real}$ que $(\real{2}, \omega)$ é um espaço vetorial simpletico, onde $\omega = dx\wedge dy$ e a base canônica $\{e_{x}, e_{y}\}$ é uma base simplética. Seja $R(\theta):\real{2}\to \real{2}$ uma rotação de um ângulo $\theta$, isto é, dado $v= v_{x}e_{x}+v_{y}e_{y} \in V$, tem-se $R(\theta)v = (v_{x}\cos(\theta)-v_{y}\sin(\theta))e_{x}+(v_{x}\sin(\theta)+v_{y}\cos(\theta))e_{y} = v'_{x}e_{x}+v'_{y}e_{y}$. Então
 		$$
 		\begin{aligned}
 			\formaSimpletica{R(\theta)u}{R(\theta)v}&=
@@ -1873,11 +1873,11 @@
 	\section{$\estruturascomplexaspadrao$ e sua topologia}
 	
 	\begin{definicao}\label{definicao_estrutura_complexa}
-		(Estrutura complexa) Uma estrutura complexa em um espaço vetorial $V$ é um endomorfismo linear $J: V \to V$, onde $J^{2} = -Id$. Dizemos que uma estrutura complexa em $V$ é compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$. Denotaremos por $\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas em $V$ que sejam $\omega$-compatíveis.
+		(Estrutura complexa) Uma estrutura complexa em um espaço vetorial $V$ é um endomorfismo linear $J: V \to V$, onde $J^{2} = -Id$. Diz-se que uma estrutura complexa em $V$ é compatível com a forma simplética (ou $\omega$-compatível) se $g(u,v):=\omega(u, Jv)$ define um produto interno em $V$. O conjunto de todas as estruturas complexas em $V$ que sejam $\omega$-compatíveis é denotado por $\estruturascomplexaspadrao$.
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_estrutura_complexa}
-		Fixaremos a notação $\estruturacomplexa \in \estruturascomplexaspadrao$ como sendo o caso em que
+		Será fixada notação $\estruturacomplexa \in \estruturascomplexaspadrao$ como sendo o caso em que
 		$$
 		\estruturacomplexa=
 		\left(
@@ -1890,10 +1890,10 @@
 		$$
 	\end{observacao}
 	
-	Vamos mostrar que todo produto interno em $V$ pode ser associado a um elemento de $\estruturascomplexaspadrao$ e vice-versa, sendo que dessa associação vamos retirar informações sobre sua topologia.
+	Será demosntrado que todo produto interno em $V$ pode ser associado a um elemento de $\estruturascomplexaspadrao$ e vice-versa, sendo que dessa associação vamos retirar informações sobre sua topologia.
 	
 	\begin{observacao}\label{observacao_conjunto_estrutura_complexa}
-		Ao tratarmos $\estruturascomplexaspadrao$ como espaço topológico adotaremos sua topologia induzida pela topologia de $\generalgroupreal{V}$ gerada pela norma da convergência uniforme (ou norma do sup).
+		Ao se tratar $\estruturascomplexaspadrao$ como espaço topológico adotaremos sua topologia induzida pela topologia de $\generalgroupreal{V}$ gerada pela norma da convergência uniforme (ou norma do sup).
 	\end{observacao}
 	
 	\begin{definicao}
@@ -1901,17 +1901,17 @@
 	\end{definicao}
 	
 	\begin{observacao}
-		Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$. Com isso, podemos muni-lo com a toplogia induzida por $\mathcal{L}(V \times V; \real{})$.
+		Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$. Com isso, pode-se muni-lo com a toplogia induzida por $\mathcal{L}(V \times V; \real{})$.
 	\end{observacao} 
 	
 	\begin{lema}\label{lema_contratibilidade_produtos_internos}
 		Seja $V$ um n-espaço vetorial com produto interno positivo-definido. Então $\produtosinternos{V}$ é contrátil.
 	\end{lema}
 	\begin{prova}
-		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta-nos mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ teremos $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, e $d$ é uma reta, então $\produtosinternos{V}$ é convexo, logo é contrátil.
+		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ tem-se $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, e $d$ é uma reta, então $\produtosinternos{V}$ é convexo, logo é contrátil.
 	\end{prova}
 	
-	Vimos que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ $\omega$-compatível, temos que $\formaSimpletica{v}{Ju} = g_{J}(v,u)$ é um produto interno em $V$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g_{J}(u,v)$ esta bem-definida e é injetora.
+	Foi visto que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ $\omega$-compatível, temos que $\formaSimpletica{v}{Ju} = g_{J}(v,u)$ é um produto interno em $V$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g_{J}(u,v)$ esta bem definida e é injetora.
 	
 	A seguinte proposição afirma que vale a recíproca do resultado anterior.
 	
@@ -1920,7 +1920,7 @@
 	\end{proposicao}
 	\begin{prova}
 		Seja $g \in \produtosinternos{V}$. Sabe-se que $\hat{g}:V \to V^{*}$, definido por $\hat{g}(v)(u)=g(v,u)$, é um isomorfismo. Além disso, existe um único automorfismo $A:V\to V$ tal que $\formaSimpletica{v}{u} = g(Av,u)$ para todo $v,u \in V$ dado por $A = \hat{g}^{-1}\omega
-		^{*}$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$, podemos escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, temos $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, temos a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
+		^{*}$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$, pode-se escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, tem-se $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, tem-se a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
 	\end{prova}
 	
 	\begin{proposicao}
