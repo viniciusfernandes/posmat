@@ -1073,7 +1073,7 @@
 	
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=16.5cm,height=8.5cm]{imagem/cw_2_toro_refeito.pdf}
+		\includegraphics[width=15cm,height=7cm]{imagem/cw_2_toro_refeito.pdf}
 		\caption{Estrutura de CW-complexo do 2-toro $T^{2}$.}
 		\label{figura_cw_2_toro}
 	\end{figure} 
@@ -1255,7 +1255,7 @@
 			
 			\begin{figure}[!h]
 				\centering
-				\includegraphics[width=8cm,height=7cm]{imagem/toro_funcao_largura.pdf}
+				\includegraphics[width=8.5cm,height=5.2cm]{imagem/2_toro_funcao_largura.pdf}
 				\caption{Pontos críticos da função largura em $T^{2}$.}
 				\label{figura_toro_funcao_altura}
 			\end{figure}
@@ -1489,7 +1489,7 @@
 		
 		\begin{figure}[!h]
 			\centering
-			\includegraphics[width=12cm,height=6cm]{imagem/variedade_estavel_instavel.pdf}
+			\includegraphics[width=12cm,height=5cm]{imagem/variedade_estavel_instavel.pdf}
 			\caption{Variedades instáveis $W^{u}(s)$ e $W^{u}(r)$ de $s$ e $r$. Variedade estável $W^{s}(q)$ de $q$.}
 			\label{figura_variedade_estavel_instavel}
 		\end{figure}
@@ -2726,14 +2726,22 @@
 	
 	Sejam $Y(t) \in \espacotangenteponto{x(t)}{M}$, $\tilde{x}:(-\epsilon, \epsilon)\times S^{1} \to M$  uma aplicação de classe $C^{1}$ tal que $\tilde{x}(0,t) = x(t)$ e $Y(t) = \derivadaparcial{}{s}\tilde{x}(s,t)|_{s=0}$. Com isso, o diferencial de $\funcionalH$ no ponto $x$ e avaliado em $Y$ é dado por $D_{x}\funcionalH(Y) = \derivadaparcial{}{s}\funcionalH(\tilde{x})|_{s=0}$.
 	
-	Para se determinar o diferencial do funcional defina $\tilde{u}:(-\epsilon, \epsilon)\times D^{2} \to M$ como sendo uma extensão de $u$, tal que $\tilde{u}(0,z) = u(z)$ e $\tilde{u}(s,e^{2i\pi t}) = \tilde{x}(s,t)$, e $\tilde{Y}(z) = \derivadaparcial{}{s}\tilde{u}(s,z)|_{s=0}$, uma extensão de $Y$. Avaliando o funcional nessas extensões, tem-se
+	Para se determinar o diferencial do funcional defina $\tilde{u}:(-\epsilon, \epsilon)\times D^{2} \to M$ como sendo uma extensão de $u$, tal que $\tilde{u}(0,z) = u(z)$ e $\tilde{u}(s,e^{2i\pi t}) = \tilde{x}(s,t)$, e $\tilde{Y}(z) = \derivadaparcial{}{s}\tilde{u}(s,z)|_{s=0}$, uma extensão de $Y$, veja a Figura \ref{figura_extensao_solucao}. 
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=8.5cm,height=7cm]{imagem/extensao_solucao.pdf}
+		\caption{As aplicações $x$ e $u$ e suas variações $\tilde{x}$ e $\tilde{u}$.}
+		\label{figura_extensao_solucao}
+	\end{figure}
+	
+	Avaliando o funcional nessas extensões, tem-se
 	
 	$$
 	\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t),t)dt.
 	$$
 	
 	\begin{observacao}
-		Note que, $	\funcionalHponto{\tilde{x}}$ é uma função de classe $C^{1}$ e que depende explicitamente de $s\in (-\epsilon, \epsilon)$, isto é, $	\funcionalHponto{\tilde{x}}:(-\epsilon,\epsilon)\to \reta$. 
+		Note que, $	\funcionalHponto{\tilde{x}}$ é uma função de classe $C^{1}$ e rue depende explicitamente de $s\in (-\epsilon, \epsilon)$, isto é, $	\funcionalHponto{\tilde{x}}:(-\epsilon,\epsilon)\to \reta$. 
 	\end{observacao}
 	
 	Seja $\phi:\retacartesianovariedade\to M$ o fluxo gerado pelo campo $Y\in \campossuaves{M}$. A derivada de Lie no ponto $p\in M $ de uma r-forma $\alpha \in \Omega^{r}(M)$ ao longo do campo $Y$ é definida por 
@@ -3780,6 +3788,7 @@
 	
 	Foi no contexto de sua demonstração que nasceu a Homologia de Floer, quando na tentativa de se construir uma técnica análoga àquela utilizada no caso Morse-Witten deparou-se com algumas barreiras técnicas, tais como: variedades de dimensão infinita e a definição de um análogo ao índice de Morse dos pontos críticos não-degenerados de um funcional de ação definido nessas variedades. Floer utiliza um funcional de ação definido no espaço dos laços em M e estuda seus pontos críticos e linhas de fluxo de seu gradiente para a construção da homologia da variedade simplética. Ao final, mostra que essa homologia é isomorfa a homologia singular da variedade.
 	
+	Esse capítulo é constituído de duas parte: a primeira é dedicada a construção do diferencial do operador de Floer e a apresentação de algumas de suas propriedades necessárias para a definição do complexo de Floer e seu operador bordo. A segunda parte é dedicada a construção desse complexo e a demonstração da conjectura de Arnold como aplicação direta da homologia de Floer.
 	
 	\section{O Operador de Floer e o seu Diferencial $\diferencialfloer$}\label{apendice_variedades_banach}
 	
@@ -4146,10 +4155,14 @@
 		$$
 	\end{prova}
 	
-	Aplicando a regularidade elíptica, que pode ser encontrada em $\cite{audi_floer_homology}$, pode-se mostrar a continuidade do diferencial do operador de Floer $\diferencialfloerponto{u}$.
+	A priori, as soluções da equação $\diferencialfloerponto{u}(Y)=0$ são dadas em termos distribucionais. Contudo, o seguinte resultado afirma sob quais hipóteses esse essas soluções na verdade soluções de classe $C^{\infty}$. Mais detalhes sobre a caracterização das soluções desse sistema e das soluções da equação de Floer $\operadorFloerParametro{u}=0$ podem ser encontradas em \cite{audi_floer_homology}.
 	
 	\begin{teorema}\label{teorema_regularidade_eliptica}
-		(Regularidade Elíptica) Seja $p> 1$. Se $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é uma solução fraca (no sentido distribuicional) da equação $\diferencialfloerabrev Y =0$, então 
+		(Regularidade Elíptica) Seja o operador $\diferencialfloerponto{u}=\bar{\partial}+S$ com $S \in \aplicaoessuaves{\retacartesianocirculo}{\text{End}(\real{2n})}$, onde $\text{End}(\real{2n})$ é o conjunto dos endomorfismos de $\real{2n}$. Suponha que 
+		$$
+		\lim\limits_{s\to \pm \infty}S(s,t) = S^{\pm}(t)\;\;\text{e}\;\; \lim\limits_{s\to \pm \infty}\derivadaparcial{S}{s}(s,t) = 0,
+		$$
+		onde $S^{+}, S^{-} \in \aplicaoessuaves{\circulo}{\text{End}(\real{2n})}$. Se $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é uma solução fraca (no sentido distribucional) da equação $\diferencialfloerponto{u}(Y) =0$, então 
 		$$
 		Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}} \cap C^{\infty}(\retacartesianocirculo;\real{m}).$$
 	\end{teorema} 
@@ -4357,7 +4370,7 @@
 	Do fato de que $\energiafinitaM$ é um espaço topológico compacto e que pode ser escrito como a união dos espaços das órbitas conectantes $\energiafinitaMconectante$, tem-se que $\pontoscriticos{\funcionalH}$ é um conjunto finito.
 	
 	\begin{teorema}\label{teorema_orbitas_conectantes_finitas}
-		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(x^{-})-\mu(x^{+})$ e possui finitos elementos.
+		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(x^{-})-\mu(x^{+})$ e possui um número finito de elementos.
 	\end{teorema}
 	
 	\section{O Complexo de Floer e a Conjectura de Arnold}
