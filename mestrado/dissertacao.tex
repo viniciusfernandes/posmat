@@ -3794,18 +3794,16 @@
 	
 	\section{O Operador de Floer e o Espaço de Trajetórias}\label{apendice_variedades_banach}
 	
-	Sejam $H:M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo e $\energiafinitaM$ o conjunto de soluções da equação de Floer e de energia finita. Dadas duas soluções 1-periódicas do sistema Hamiltoniano $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, o objetivo desta seção é apresentar uma ideia da demonstração de que o conjunto $\energiafinitaMconectante$ das soluções da equação de Floer que conectam $x^{-}$ a $x^{+}$ é uma variedade de dimensão finita igual a diferença entre os índices de Conley-Zehnder de cada uma das soluções.
-	
-	A estratégia é mostrar que $\energiafinitaMconectante$ pode ser visto como o conjunto de zeros de uma seção de um fibrado vetorial sobre a variedade de Banach $\caminhosexponenciaisconectantespadrao$. Para uma estrutura complexa fixa $J \in \estruturascomplexasM$ e uma perturbação da Hamiltoniana $h\in \perturbacaoHamiltoniana{H}$, será demonstrado que $\energiafinitaMconectanteHamiltoniana$ é a pré-imagem de um valor regular de uma determinada aplicação. Pelo Teorema de Sard-Smale, análogo ao Teorema de Sard para dimensões infinitas, conclui-se o conjunto dos valores regulares do operador de Floer é um subconjunto denso de seu contra-domínio, e perturbando a função Hamiltoniana, o conjunto $\energiafinitaMconectante$ é a pré-imagem de do valor regular de uma aplicação, logo é uma variedade. Contudo, esse resultado tem como hipótese que os diferenciais definidos nos espaços tangentes sejam operadores de Fredholm. Com isso, parte desse capítulo envolve uma análise do diferencial do operador de Floer $\diferencialfloerponto{u}$ para concluir que o mesmo satisfaz essa propriedade para todo $u\in \energiafinitaMconectanteHamiltoniana$. Além disso, o índice desse operador é a diferença entre os índices de Conley-Zehnder dos pontos críticos $x^{-}$ e $x^{+}$
+	Sejam $H:M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo e $\energiafinitaM$ o conjunto das trajetórias de energia finita. Dadas duas soluções 1-periódicas do sistema Hamiltoniano $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$, o objetivo desta seção é apresentar uma ideia da demonstração de que o conjunto $\energiafinitaMconectante \subset \energiafinitaM$ das soluções da equação de Floer que conectam $x^{-}$ a $x^{+}$ é uma variedade de dimensão finita igual a diferença entre os índices de Conley-Zehnder de cada uma das soluções. A estratégia é a seguinte: pelo Teorema de Sard-Smale, o análogo ao Teorema de Sard para dimensões infinitas, conclui-se o conjunto dos valores regulares do operador de Floer é um subconjunto denso de seu contra-domínio, e escolhendo uma perturbação da função Hamiltoniana, o conjunto $\energiafinitaMconectante$ é a pré-imagem de do valor regular de uma determinada aplicação, logo é uma variedade. Contudo, esse resultado tem como hipótese de que o diferencial do operador de Floer satisfaz as propriedades de um operador de Fredholm. Com isso, parte desse capítulo envolve uma análise do diferencial do operador de Floer $\diferencialfloerponto{u}$ para concluir que o mesmo satisfaz essas propriedades para todo $u\in \energiafinitaMconectanteHamiltoniana$ e que o índice de Fredholm desse operador é a diferença entre os índices de Conley-Zehnder dos pontos críticos $x^{-}$ e $x^{+}$
 	$$
 	\ind(\diferencialfloerponto{u})=\iconley{x^{-}}-\iconley{x^{+}}.
 	$$
-	A transversalidade do operador de Floer é necessária para a demonstração de que $\energiafinitaMconectanteHamiltoniana$ é uma variedade e sua dimensão coincide com o índice do diferencial do operador de Floer, e consequentemente, é dada pelos índices de Conley-Zehnder dos pontos críticos $x^{-}$ e $x^{+}$, isto é,
+	A transversalidade do operador de Floer é necessária para a demonstração de que o conjunto  $\energiafinitaMconectanteHamiltoniana$ é uma variedade e sua dimensão coincide com o índice de Fredholm de $\diferencialfloerponto{u}$
 	$$
 	\dim(\energiafinitaMconectante)= \ind(\diferencialfloerponto{u}) = \iconley{x^{-}}-\iconley{x^{+}}.
 	$$
 	
-	Por fim, alguns resultados necessários para a demonstração da compacidade de $\energiafinitaM$ e $\energiafinitaMconectante$ são apresentados. A compacidade de $\energiafinitaMconectante$ é uma propriedade essencial para a definição do complexo de Floer e sua homologia, ambas feitas no Seção \ref{secao_complexo_floer}.
+	Por fim, alguns resultados necessários para a demonstração da compacidade de $\energiafinitaMconectante$ são apresentados. Essa propriedade é essencial para a definição do operador bordo do complexo de Floer e, consequentemente, de sua homologia (veja a Seção \ref{secao_complexo_floer}). Tais resultados podem ser encontrados na Subseção \ref{secao_transversalidade_compacidade_M}.
 	
 	\subsection{O Operador de Floer $\operadorFloer$ e a Variedade de Banach $\caminhosexponenciaisconectantespadrao$}\label{secao_variedade_banach_P}
 	
@@ -3883,7 +3881,6 @@
 		$$
 	\end{observacao}
 	
-	\aviso{ver Michele 226, 227}
 	\begin{definicao}\label{definicao_caminhos_decaimentos_exponenciais}
 		(Caminhos de decaimentos exponenciais) Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. O conjunto das aplicações $w \in \aplicaoessuavesreatacirculo$ tais que $\lim_{s \to \pm \infty} w(s,t) = x^{\pm}(t)$ para todo  $t\in \circulo $ e que 
 		$$
@@ -3926,7 +3923,7 @@
 		Com argumentos análogos aos utilizandos na demonstração da Proposição \ref{proposicao_caminhos_variedade_banach}, pode-se afirmar que $\{(D_{w}, \Exp_{w})\}_{w\in \caminhosdecaimentoexponencialpadrao} $ é um atlas de $\caminhosexponenciaisconectantespadrao$ e este conjunto é uma variedade de Banach.
 	\end{prova}
 	
-	Seja $\fibradocaminhosexponenciais$ um fibrado vetorial sobre $\caminhosexponenciaisconectantespadrao$ cuja fibra em $u \in \caminhosexponenciaisconectantespadrao$ é $\espacoLp{\pullbackfibradotangenteM{u}}$.
+	Seja $(\fibradocaminhosexponenciais, \caminhosexponenciaisconectantespadrao, \pi_{\mathcal{E}})$ um fibrado vetorial cuja fibra em $u \in \caminhosexponenciaisconectantespadrao$ é $\espacoLp{\pullbackfibradotangenteM{u}}$.
 	
 	\begin{definicao}\label{definicao_operador_floer}
 		(Operador de Floer) Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O operador de Floer é a seção $s_{\operadorFloer}: \caminhosexponenciaisconectantesabrev \to \fibradocaminhosexponenciais$ definida por
@@ -3964,7 +3961,11 @@
 	
 	Logo, o operador de Floer $\operadorFloer$ pode ser visto como uma aplicação $\operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$. Essa identificação permite que se calcule o diferencial de $\operadorFloer$ de forma análoga ao que se faz em análise em espaços euclidianos, pois $u(s,t)$ pode ser visto como elemento de $\real{m}$ para todo $(s,t)\in \retacartesianocirculo$ e todo $u\in \caminhosexponenciaisconectantespadrao$.
 	
-	Fixe $u \in \caminhosexponenciaisconectantespadrao$ e tome uma carta $(D_{w}, \Exp_{w})$ em $u$, onde $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$ (veja a Proposição \ref{proposicao_variedade_banach}). Com isso, todo $u_{0} \in D_{w}$ suficientemente próximo a $u$ pode ser escrito como $u_{0}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$. Seja o caminho $\tilde{u}:\intervalo\to \caminhosexponenciaisconectantespadrao$ definido por $\tilde{u}(\tau)=\Exp_{w}((1+\tau )Y)$. Usando o fato que $\tilde{u}(0) = u$ e $\derivada{\tilde{u}}{\tau}|_{\tau=0}=Y$ (veja o Apêndice \ref{apendice_variedade_riemanniana}), o diferencial diferencial de $\operadorFloer$ em $u \in \caminhosexponenciaisconectantespadrao$ é dado por
+	Fixe $u \in \caminhosexponenciaisconectantespadrao$ e tome uma carta $(D_{w}, \Exp_{w})$ em $u$, onde $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$ (veja a Proposição \ref{proposicao_variedade_banach}). Com isso, todo $u_{0} \in D_{w}$ suficientemente próximo a $u$ pode ser escrito como $u_{0}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$. Seja o caminho $\tilde{u}:\intervalo\to \caminhosexponenciaisconectantespadrao$ definido por $\tilde{u}(\tau)=\Exp_{w}((1+\tau )Y)$. Usando os fatos que 
+	$$
+	\tilde{u}(0) = u \;\;\text{e}\;\; \lim\limits_{\tau\to 0}\frac{\tilde{u}(\tau)-u}{\tau}=\derivada{\tilde{u}}{\tau}(0)=Y
+	$$ 
+	(veja o Apêndice \ref{apendice_variedade_riemanniana}), o diferencial diferencial de $\operadorFloer$ em $u \in \caminhosexponenciaisconectantespadrao$ é dado por
 	$$
 	\begin{aligned}
 	\diferencialfloerponto{u}(Y)
@@ -4148,28 +4149,44 @@
 		$$
 	\end{prova}
 	
-	A priori, as soluções da equação $\diferencialfloerponto{u}(Y)=0$ são dadas em termos distribucionais. Contudo, o seguinte resultado afirma sob quais hipóteses essas soluções são na verdade soluções de classe $C^{\infty}$. Mais detalhes sobre a caracterização das soluções desse sistema e das soluções da equação de Floer $\operadorFloerParametro{u}=0$ podem ser encontradas em \cite{audi_floer_homology}.
+	A priori, as soluções da equação $\diferencialfloerponto{u}(Y)=0$ são dadas em termos distribucionais. Contudo, os dois seguintes resultados afirmam sob quais hipóteses essas soluções são na verdade soluções de classe $C^{\infty}$. Mais detalhes sobre a caracterização das soluções desse sistema e das soluções da equação de Floer $\operadorFloerParametro{u}=0$ podem ser encontradas em \cite{audi_floer_homology}.
 	
 	\begin{teorema}\label{teorema_regularidade_eliptica}
-		(Regularidade Elíptica) Seja o operador $\diferencialfloerponto{u}=\bar{\partial}+S$ com $S \in \aplicaoessuaves{\retacartesianocirculo}{\text{End}(\real{2n})}$, onde $\text{End}(\real{2n})$ é o conjunto dos endomorfismos de $\real{2n}$. Suponha que 
+		(Regularidade Elíptica) Seja o operador $\diferencialfloerponto{u}=\bar{\partial}+S$ com $S \in \aplicaoessuaves{\retacartesianocirculo}{\text{End}(\real{2n})}$, onde $\text{End}(\real{m})$ é o conjunto dos endomorfismos de $\real{m}$. Suponha que 
 		$$
 		\lim\limits_{s\to \pm \infty}S(s,t) = S^{\pm}(t)\;\;\text{e}\;\; \lim\limits_{s\to \pm \infty}\derivadaparcial{S}{s}(s,t) = 0,
 		$$
-		onde $S^{+}, S^{-} \in \aplicaoessuaves{\circulo}{\text{End}(\real{2n})}$. Se $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é uma solução fraca (no sentido distribucional) da equação $\diferencialfloerponto{u}(Y) =0$, então 
+		onde $S^{+}, S^{-} \in \aplicaoessuaves{\circulo}{\text{End}(\real{m})}$. Se $Y \in \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é uma solução fraca (no sentido distribucional) da equação $\diferencialfloerponto{u}(Y) =0$, então 
 		$$
-		Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}} \cap C^{\infty}(\retacartesianocirculo;\real{m}).$$
+		Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}} \cap C^{\infty}(\retacartesianocirculo;\real{m}).
+		$$
+		Além disso, se $p>2$, então $Y \in \espacosobolevgeral{q}{\retacartesianocirculo;\realprojetivo{m}}$ para todo $q>1$.
 	\end{teorema} 
 	
-	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Suponha que $T$ seja limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Então $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação defini-se os operadores de Fredholm.
+	Suponha que $\Psi^{\pm}$ sejam soluções do sistema $\dot{\Psi}(t) = \estruturacomplexa S^{\pm}(t)\Psi(t)$ tais que $\Psi(0)=Id$ e $\det(Id-\Psi^{\pm}(1))\neq 0$. Aplicando o teorema da regularidade elíptica acima, pode-se mostrar que $\diferencialfloerponto{u}$ é um operador de Fredholm para $p>1$. Além disso, valem as Proposições \ref{proposicao_gamma_sobrejetora} e \ref{proposicao_orbitasConectantesZ}.
+	
+	\begin{proposicao}
+		Para $p>2$, as soluções $u\in W^{1,p}_{loc}(\retacartesianocirculo;M)$ da equação de Floer são de classe $C^{\infty}$. No espaço de soluções $W^{1,p}_{loc}(\retacartesianocirculo;M)$ as topologias \alerta{(não entendi essa afirmação sobre o espaço de soluções)} $W^{1,p}_{loc}$ e $C^{\infty}_{loc}$ coincidem.
+	\end{proposicao}
+	
+	A proposição acima é usada para se mostrar que as soluções de classe $C^{1}$ da equação de Floer são de classe $C^{\infty}$ e que em $\energiafinitaM$ as topologias $C^{0}_{loc}$, $C^{1}_{loc}$ e $C^{\infty}_{loc}$ coincidem.
+	Um consequência imediata desse resultado é que a topologia da variedade $\caminhosexponenciaisconectantespadrao$ coincide com a topologia de $\energiafinitaM$, isto é, a $C^{\infty}_{loc}-topologia$.
+	
+	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Suponha que $T$ seja limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Então $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
 	
 	\begin{definicao}\label{definicao_operador_fredholm}
 		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada), $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $\ind(T) = k(T) - c(T)$. 
 	\end{definicao}
 	
+	\begin{definicao}
+		(Aplicação de Fredholm) Uma aplicação diferenciável entre espaços de Banach é uma aplicação de Fredholm se o seu diferencial é um operador de Fredholm em todos os pontos de seu domínio.
+	\end{definicao}
+	
+	
 	O teorema a seguir afirma que o diferencial $\diferencialfloerponto{u}$ é um operador de Fredholm, e seu subsequente, que o índice de Fredholm de $\diferencialfloerponto{u}$ é dado pela diferença dos índices de Maslov dos pontos críticos $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$ que são conectados por $u$. Esse resultado é utilizado na demonstração da transversalidade do operador de Floer $\operadorFloer$, e como consequência, no fato de que $\energiafinitaMconectante$ é uma variedade de dimensão finita e igual ao índice de Fredholm $\ind(\diferencialfloerponto{u})$. Ambos os resultados podem ser encontrados em \cite{audi_floer_homology} e \cite{salamon_zehnder}.
 	
 	\begin{teorema}
-		(Propriedade de Fredholm de $\diferencialfloer$) Suponha que $\det(Id - \Psi^{\pm}(1)) \neq 0$. Então o operador $\diferencialfloer: \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é um operador de Fredholm para $1<p<\infty$.
+		(Propriedade de Fredholm de $\diferencialfloerponto{u}$) Sejam $S^{\pm}$ operadores de acordo com o Teorema \ref{teorema_regularidade_eliptica}. Suponha que $\Psi^{\pm}$ sejam soluções do sistema $\dot{\Psi}(t) = \estruturacomplexa S^{\pm}(t)\Psi(t)$, onde $\Psi(0)=Id$ tal que $\det(Id-\Psi^{\pm}(1))\neq 0$. Então o operador $\diferencialfloerponto{u}: \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$ é um operador de Fredholm para $1<p<\infty$.
 	\end{teorema}
 	
 	\begin{teorema}\label{teorema_indice_diferencial_operador_floer}
@@ -4181,8 +4198,6 @@
 	
 	\subsection{A Transversalidade do Operador $\operadorFloer$ e a Compacidade de $\energiafinitaMconectante$}\label{secao_transversalidade_compacidade_M}
 	
-	Dados $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$, sabe-se que $\caminhosexponenciaisconectantespadrao$ é uma variedade (mais do que isso, é uma variedade de Banach, veja na Seção \ref{secao_variedade_banach_P}). Com isso, pode-se construir uma seção do fibrado tangente $T\caminhosexponenciaisconectantespadrao$, tal que $\energiafinitaMconectante\subset \caminhosexponenciaisconectantespadrao$ é o conjunto de todos zeros dessa seção. Assim, demonstra-se que $\energiafinitaMconectante$ é a pré-imagem de um valor regular de uma determinada aplicação que, pelo Teorama de Sard para espaços de dimensão infinita, conclui-se que é uma variedade de Banach.
-	
 	A propriedade da transversalidade do operador de Floer é utilizada na demonstração de que o espaço das soluções da equação de Floer que conectam esse dois pontos $\energiafinitaMconectante$ é uma variedade com dimensão igual a $\iconley{x^{-}}-\iconley{x^{+}}$ 
 	
 	Por fim, a compacidade de $\energiafinitaMconectante$ implica que esse conjunto possui um número finito de elementos. Esse resultado é fundamental na definição do operador bordo do complexo de cadeia de Floer e sua homologia (veja o Capítulo \ref{secao_complexo_floer}).
@@ -4191,7 +4206,7 @@
 	
 	Tome $x^{-},x^{+}\in \pontoscriticos{\funcionalH}$, e considere o operador de Floer 
 	$$
-	\operadorFloer: \caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao
+	\operadorFloer: \caminhosexponenciaisconectantespadrao \to \fibradocaminhosexponenciais
 	$$  
 	definido por
 	$$
@@ -4202,44 +4217,26 @@
 	\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y).
 	$$
 	
-	A Proposição \ref{proposicao_variedade_banach} afirma que $\caminhosexponenciaisconectantespadrao$ é uma variedade, portanto seu fibrado tangente $T\caminhosexponenciaisconectantespadrao$ esta bem definido. Suponha que $X:\caminhosexponenciaisconectantespadrao \to T\caminhosexponenciaisconectantespadrao$ seja seção nula de $T\caminhosexponenciaisconectantespadrao$. Afirmo que $\operadorFloer \pitchfork X$ se, e somente se, $\diferencialfloerponto{u}$ é sobrejetor para todo $u\in \caminhosexponenciaisconectantespadrao$. De fato, suponha que $\operadorFloer$ e $X$ sejam aplicações transversais. Como $X_{u} = 0$ para todo $u \in \caminhosexponenciaisconectantespadrao$, então $DX_{u} = 0$, o que implica em
+	Suponha que $X:\caminhosexponenciaisconectantespadrao \to \fibradocaminhosexponenciais$ seja seção nula de $\fibradocaminhosexponenciais$. Afirmo que $\operadorFloer \pitchfork X$ se, e somente se, $\diferencialfloerponto{u}$ é sobrejetor para todo $u\in \caminhosexponenciaisconectantespadrao$. De fato, suponha que $\operadorFloer$ e $X$ sejam aplicações transversais. Como $X_{u} = 0$ para todo $u \in \caminhosexponenciaisconectantespadrao$, então $DX_{u} = 0$, o que implica em
 	$$
-	\pullbackfibradotangenteM{u}=\diferencialfloerponto{u}(\pullbackfibradotangenteM{u})+DX_{u}(\pullbackfibradotangenteM{u}) = \diferencialfloerponto{u}(\pullbackfibradotangenteM{u}).$$ 
+	\espacoLp{\pullbackfibradotangenteM{u}} = (\pi_{\mathcal{E}}\circ \diferencialfloerponto{u})(\pullbackfibradotangenteM{u}) + (\pi_{\mathcal{E}}\circ DX_{u})(\pullbackfibradotangenteM{u}) = (\pi_{\mathcal{E}}\circ \diferencialfloerponto{u})(\pullbackfibradotangenteM{u}).$$ 
 	Logo, $\diferencialfloerponto{u}$ é sobrejetor. A recíproca é imediata.
 	
-	\aviso{Ver pag. 221 - 223 do Michele.}
-	
-	As soluções da equação de Floer dependem da escolha da estrutura complexa $J$ e da função Hamiltoniana $H$. Pode-se mostrar que, fixando a estrutura complexa $J$, e para algumas perturbações da função Hamiltoniana, a transversalidade é mantida.
+	As soluções da equação de Floer dependem da escolha da estrutura complexa $J$ e da função Hamiltoniana $H$, e com isso a transversalidade de $\operadorFloer$ não é garantida. Porém, pode-se mostrar que arbitrariamente próximo de $H$ existe uma outra função Hamiltoniana com as mesmas orbitas periódicas, satisfazendo a propriedade da transversalidade.  Mais especificamente, será instroduzido o espaço de Banach $\perturbacaoHamiltoniana{H}$ das perturbações de $H$ satisfazendo essa propriedade e que é denso em $\aplicaoessuaves{\retacartesianocirculo}{\real{m}}$ na $\cktopologia{1}$ (veja em \cite{audi_floer_homology}).
 	
 	Um par $(H, J)$ é chamado de regular se satisfaz a condição de transversalidade, e o conjunto dos pares regulares é denotado por $\paresregulares$.
-	
-	\aviso{veja pag 230 Michele}
-	
-	Seja $h :M\times \reta\to \reta$ uma função suave e fixe uma sequência $\epsilon=(\epsilon_{j})$ tais que $\epsilon_{j}\in \real{+}$. Defina
-	$$
-	\norma{h}_{\epsilon} = \sum_{k\geq 0}\epsilon_{k}\max_{|\alpha|=k} \sup_{(x,t)\in M\times \reta}|\partial^{\alpha}h(x,t)|,
-	$$
-	onde $\partial^{\alpha}$ é a derivada parcial com multi-índice $\alpha$ (veja a definição na Seção \ref{secao_distribuicoes}).
-	
-	Pode-se mostrar que o conjunto $C^{\infty}_{\epsilon} = \{h\in \funcoessuaves{M\times \circulo}: \norma{h}_{\epsilon}<\infty \}$ munido da norma $\norma{.}_{\epsilon}$ é um espaço de Banach. Além disso, ele é denso em $\funcoessuaves{M\times\circulo}$, como afirma proposição a seguir.
-	
-	\begin{proposicao}\label{proposicao_densidade_perturbacao_hamiltoniana}
-		Existe uma sequência de números reais positivos $\epsilon=(\epsilon_{j})$ tal que $C^{\infty}_{\epsilon}$ é denso em $\funcoessuaves{M\times\circulo}$ na topologia $\cktopologia{1}$.
-	\end{proposicao}
-	
+
 	\begin{definicao}
 		(Espaço das Perturbação da Hamiltoniana) Seja $H :M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo. O conjunto $\perturbacaoHamiltoniana{H}$ é o conjunto das funções $h \in C^{\infty}_{\epsilon}$ tal que $h(x,t) = 0$ em alguma vizinhança das órbitas $1$-periódicas de $H$.
 	\end{definicao}
 	
-	Não há garantias de que, dada função Hamiltoniana $H$, a transversalidade sempre será satisfeita. Contudo, fixada a Hamiltoniana $H$, pode-se encontrar uma outra função Hamiltoniana suficientemente próxima a $H$, no sentido $\cktopologia{\infty}$, tal que valha essa propriedade. 
+	Não há garantias de que, dada função Hamiltoniana $H$, a transversalidade sempre será satisfeita. Contudo, fixada a Hamiltoniana $H$, pode-se encontrar uma outra função Hamiltoniana suficientemente próxima a $H$, no sentido $\cktopologia{1}$, tal que valha essa propriedade. 
 	
 	Dado um par $(H+h, J)$, denote o operador de Floer associado a função Hamiltoniana $H+h:M\times \reta \to \reta$ por $\operadorFloer^{H+h}$. Sejam $\energiafinitaMHamiltoniana{H+h}$ o conjunto das soluções da equação de Floer $\operadorFloer^{H+h}(u)=0$ e  $\energiafinitaMconectanteHamiltoniana \subset \energiafinitaMHamiltoniana{H+h}$ o conjunto das soluções de Floer que conectam os pontos $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$.
 	
-	O teorema a seguir formaliza esse resultado em termos da sobrejetividade do diferencial do operador de Floer, como foi discutido anteriormente.
+	O teorema a seguir, que é consequência da Proposição \ref{proposicao_gamma_sobrejetora}, formaliza esse resultado em termos da sobrejetividade do diferencial do operador de Floer, como foi discutido anteriormente.
 	
-	\aviso{pag 223 Michele}
-	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_sobrejetividade_DF_todo_u}
 		Fixe uma função Hamiltoniana não-degenerada $H:M\times \reta\to \reta$ dependente do tempo. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de subconjuntos abertos densos de $\hamiltonianasRegulares$ com essa vizinhança tal que se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloerponto{u}$ é sobrejetor para todo $u \in \energiafinitaMHamiltoniana{H+h}$.
 	\end{teorema}
 	
@@ -4252,6 +4249,10 @@
 	\orbitasConectantesZ = \{ (u, H+h): u \in  \energiafinitaMconectanteHamiltoniana \;\;\text{e}\;\; h\in \perturbacaoHamiltoniana{H} \}
 	$$
 	como sendo o conjunto das soluções da equação de Floer conectando $x^{-}$ a $x^{+}$ de todas as perturbações da função Hamiltoniana $H$.
+	
+	\begin{proposicao}\label{proposicao_orbitasConectantesZ}
+		O conjunto $\orbitasConectantesZ$ é uma variedade de Banach.
+	\end{proposicao}
 	
 	\begin{proposicao}\label{proposicao_gamma_sobrejetora}
 		(Propriedade de transversalidade) Se $(u, H+h) \in \orbitasConectantesZ$, então a aplicação 
@@ -4269,13 +4270,9 @@
 	
 	Como consequência da proposição anterior, e via o teorema da função implícita, pode-se mostrar que
 	
-	\aviso{pag 223 Michele}
-	
 	\begin{proposicao}
 		Dados $x^{-},x^{+}\in \pontoscriticos{\funcionalH}$ com $x^{+}\neq  x^{-}$ tem-se que $\orbitasConectantesZ$ é uma variedade (de Banach). 
 	\end{proposicao}
-	
-	\aviso{pag 242 Michele}
 	
 	Note que o conjunto $\caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$ é uma variedade, pois é o produto cartesiano de variedades \alerta{(não sei se $\perturbacaoHamiltoniana{H}$ é variedade. O Michele afirma que esse produto cartesiano é apenas um conjunto.)}. Considere o fibrado vetorial $\mathcal{E} $
 	$$
@@ -4309,7 +4306,6 @@
 	(Y,\eta) &\mapsto \eta.
 	\end{aligned}
 	$$
-	\aviso{pag 252 - 254 Michele}
 	
 	Pode-se mostrar que $
 	\ker(D_{(u,H+h)}\pi)=\diferencialfloerponto{u}(\espacosobolev{\pullbackfibradotangenteM{u}})$. Além disso 
@@ -5309,9 +5305,6 @@
 		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
 	\end{teorema}
 	
-	
-	\aviso{Brezis pag 43}
-	
 	Sejam $E$ e $F$ espaços de Banach e $E^{*}$ e $F^{*}$ seus respectivos espaços duais. Suponha que $A: D(A)\subset E\to F$ com o domínio $D(A)$ denso em $E$. Defina o conjunto 
 	$$
 	D(A^{*})\{ f\in F^{*}: \exists\;c\geq 0\;\;\text{tal que }\;\; |f(Au)|\leq c\norma{u}\;\forall u\in D(A)\}.
@@ -5327,8 +5320,6 @@
 	$$
 	f(Au) = (A^{*}f)(u).
 	$$
-	
-	\aviso{Brezis pag 97}
 	
 	\begin{teorema}\label{teorema_representacao_reiz}
 		(Teorema da representação de Reisz) Seja $f \in \espacoLpdual$ um funcional linear e $1<p<\infty$. Então existe uma única aplicação $Y \in \espacoLpadjuntoretacirculo$ tal que
