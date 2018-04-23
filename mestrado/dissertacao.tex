@@ -287,6 +287,7 @@
 \newcommand{\pullbackfibradotangente}[2]{#1^{*}T#2}
 \newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
 \newcommand{\pullbackfibradotangenteMpadrao}{\pullbackfibradotangente{u}{M}}
+\newcommand{\quocientetrajetorias}{\widehat{\energiafinitaM}(x^{-}, x^{+}, H, J)}
 \newcommand{\retacartesianocirculo}{\real{} \times \circulo}
 \newcommand{\retacartesianovariedade}{\real{} \times M}
 \newcommand{\real}[1]{\mathbb{R}^{#1}}
@@ -2923,7 +2924,7 @@
 	\end{observacao}
 	
 	\begin{definicao}
-		(Soluções de energia finita) O conjunto de todas as trajetórias de $\gradientefuncional$ tal que o funcional energia seja finito é denotado por $\energiafinitaM$ 
+		(Soluções de energia finita) O conjunto das soluções contráteis e de energia finita da equações de Floer é denotado por $\energiafinitaM$.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -2939,16 +2940,23 @@
 	O teorema a seguir tem sua importância destacada nas demais demonstração de outros resultados, além ser o equivalente ao Lema $\ref{lema_conjunto_limite_funcao_morse}$.
 	
 	\begin{teorema}\label{teorema_limite_solucoes_energia_finita}
-		Suponha que todas as trajetórias de $-\gradientefuncional \in \campossuaves{\lacocontrateis}$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ tais que
+		Suponha que todas as trajetórias 1-periódicas do campo Hamiltoniano $\campohamiltonianoabrev$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ tais que
 		$$
 		\lim_{s\to -\infty}u(s)=x^{-},\; \lim_{s\to \infty}u(s)=x^{+}\;\;
 		$$
 		em $C^{\infty}(\circulo;M)$. Além disso, tem-se que
 		$$
-		\lim_{s\to \pm \infty}\derivadaparcial{}{s}u(s,t) = 0,
+		\lim_{s\to \pm \infty}\derivadaparcial{u}{s}(s,t) = 0,
 		$$
 		converge uniformemente em $t\in \circulo$.
 	\end{teorema}
+
+	\begin{observacao}\label{observacao_uniao_orbitas_conectantes}
+		Uma consequência imediata do teorema anterior é que 
+		$$
+		\energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.
+		$$
+	\end{observacao}
 	
 	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}
 	\section{Motivação}
@@ -3823,7 +3831,7 @@
 		Cada par $(U_{i}, \phi_{i})$ é chamado carta de $M$ e  o conjunto $\{(U_{i}, \phi_{i})\}_{i\in I}$ e chamado atlas de $M$.
 	\end{definicao}
 	
-	Seja $\operadorFloer \aplicaoessuaves{\retacartesianocirculo}{\real{2n}}\to \aplicaoessuaves{\retacartesianocirculo}{\real{2n}}$ o operador de Floer definido por 
+	Seja $\operadorFloer :\aplicaoessuaves{\retacartesianocirculo}{\real{2n}}\to \aplicaoessuaves{\retacartesianocirculo}{\real{2n}}$ o operador de Floer definido por 
 	$$
 	\operadorFloerParametro{u}(s,t)=\operadorFloerDefParametros{u}
 	$$
@@ -3961,7 +3969,7 @@
 	
 	Logo, o operador de Floer $\operadorFloer$ pode ser visto como uma aplicação $\operadorFloer: \caminhosexponenciaisconectantespadrao\to \espacoLpcontradominio{\retacartesianocirculo}{\real{m}}$. Essa identificação permite que se calcule o diferencial de $\operadorFloer$ de forma análoga ao que se faz em análise em espaços euclidianos, pois $u(s,t)$ pode ser visto como elemento de $\real{m}$ para todo $(s,t)\in \retacartesianocirculo$ e todo $u\in \caminhosexponenciaisconectantespadrao$.
 	
-	Fixe $u \in \caminhosexponenciaisconectantespadrao$ e tome uma carta $(D_{w}, \Exp_{w})$ em $u$, onde $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$ (veja a Proposição \ref{proposicao_variedade_banach}). Com isso, todo $u_{0} \in D_{w}$ suficientemente próximo a $u$ pode ser escrito como $u_{0}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$. Seja o caminho $\tilde{u}:\intervalo\to \caminhosexponenciaisconectantespadrao$ definido por $\tilde{u}(\tau)=\Exp_{w}((1+\tau )Y)$. Usando os fatos que 
+	Fixe $u \in \caminhosexponenciaisconectantespadrao$ e tome uma carta $(D_{w}, \Exp_{w})$ em $u$, onde $D_{w}=\{Y \in \espacosobolev{\pullbackfibradotangenteM{w}}: \normaWp{Y}<r_{w} \}$ (veja a Proposição \ref{proposicao_variedade_banach}). Com isso, todo $u_{0} \in D_{w}$ suficientemente próximo a $u$ pode ser escrito como $u_{0}=\Exp_{w}(Y)$ para algum $Y\in \espacosobolev{\pullbackfibradotangenteM{w}}$. Sejam $\epsilon>0$ e o caminho $\tilde{u}:(-\epsilon, \epsilon)\to \caminhosexponenciaisconectantespadrao$ definido por $\tilde{u}(\tau)=\Exp_{w}((1+\tau )Y)$. Usando os fatos que 
 	$$
 	\tilde{u}(0) = u \;\;\text{e}\;\; \lim\limits_{\tau\to 0}\frac{\tilde{u}(\tau)-u}{\tau}=\derivada{\tilde{u}}{\tau}(0)=Y
 	$$ 
@@ -4163,14 +4171,20 @@
 		Além disso, se $p>2$, então $Y \in \espacosobolevgeral{q}{\retacartesianocirculo;\realprojetivo{m}}$ para todo $q>1$.
 	\end{teorema} 
 	
-	Suponha que $\Psi^{\pm}$ sejam soluções do sistema $\dot{\Psi}(t) = \estruturacomplexa S^{\pm}(t)\Psi(t)$ tais que $\Psi(0)=Id$ e $\det(Id-\Psi^{\pm}(1))\neq 0$. Aplicando o teorema da regularidade elíptica acima, pode-se mostrar que $\diferencialfloerponto{u}$ é um operador de Fredholm para $p>1$. Além disso, valem as Proposições \ref{proposicao_gamma_sobrejetora} e \ref{proposicao_orbitasConectantesZ}.
+	\begin{observacao}
+		Suponha que $\Psi^{\pm}$ sejam soluções do sistema $\dot{\Psi}(t) = \estruturacomplexa S^{\pm}(t)\Psi(t)$ tais que $\Psi(0)=Id$ e $\det(Id-\Psi^{\pm}(1))\neq 0$. Aplicando o teorema da regularidade elíptica acima, pode-se mostrar que $\diferencialfloerponto{u}$ é um operador de Fredholm para $p>1$. Além disso, valem as Proposições  \ref{proposicao_orbitasConectantesZ},  \ref{proposicao_gamma_sobrejetora} e o Teorema \ref{teorema_variedade_espaco_trajetoria}.
+	\end{observacao}
+	
+	O conjunto das aplicações de Sobolev localmente integráveis $W^{1,p}_{loc}(\retacartesianocirculo;\real{m})$ é o conjunto dos elementos $Y \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}$ integráveis em todo compacto de $\retacartesianocirculo$. Análogamente define-se o conjunto $C^{\infty}_{loc}(\retacartesianocirculo;\real{m})$.
 	
 	\begin{proposicao}
 		Para $p>2$, as soluções $u\in W^{1,p}_{loc}(\retacartesianocirculo;M)$ da equação de Floer são de classe $C^{\infty}$. No espaço de soluções $W^{1,p}_{loc}(\retacartesianocirculo;M)$ as topologias \alerta{(não entendi essa afirmação sobre o espaço de soluções)} $W^{1,p}_{loc}$ e $C^{\infty}_{loc}$ coincidem.
 	\end{proposicao}
 	
-	A proposição acima é usada para se mostrar que as soluções de classe $C^{1}$ da equação de Floer são de classe $C^{\infty}$ e que em $\energiafinitaM$ as topologias $C^{0}_{loc}$, $C^{1}_{loc}$ e $C^{\infty}_{loc}$ coincidem.
-	Um consequência imediata desse resultado é que a topologia da variedade $\caminhosexponenciaisconectantespadrao$ coincide com a topologia de $\energiafinitaM$, isto é, a $C^{\infty}_{loc}-topologia$.
+	\begin{observacao}
+		A proposição acima é usada para se mostrar que as soluções de classe $C^{1}$ da equação de Floer são de classe $C^{\infty}$ e que em $\energiafinitaM$ as topologias $C^{0}_{loc}$, $C^{1}_{loc}$ e $C^{\infty}_{loc}$ coincidem.
+		Um consequência imediata desse resultado é que a topologia da variedade $\caminhosexponenciaisconectantespadrao$ coincide com a topologia de $\energiafinitaM$, isto é, a $C^{\infty}_{loc}-topologia$.
+	\end{observacao}
 	
 	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Suponha que $T$ seja limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Então $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
 	
@@ -4234,25 +4248,11 @@
 	
 	Dado um par $(H+h, J)$, denote o operador de Floer associado a função Hamiltoniana $H+h:M\times \reta \to \reta$ por $\operadorFloer^{H+h}$. Sejam $\energiafinitaMHamiltoniana{H+h}$ o conjunto das soluções da equação de Floer $\operadorFloer^{H+h}(u)=0$ e  $\energiafinitaMconectanteHamiltoniana \subset \energiafinitaMHamiltoniana{H+h}$ o conjunto das soluções de Floer que conectam os pontos $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$.
 	
-	O teorema a seguir, que é consequência da Proposição \ref{proposicao_gamma_sobrejetora}, formaliza esse resultado em termos da sobrejetividade do diferencial do operador de Floer, como foi discutido anteriormente.
-	
-	\begin{teorema}\label{teorema_sobrejetividade_DF_todo_u}
-		Fixe uma função Hamiltoniana não-degenerada $H:M\times \reta\to \reta$ dependente do tempo. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de subconjuntos abertos densos de $\hamiltonianasRegulares$ com essa vizinhança tal que se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloerponto{u}$ é sobrejetor para todo $u \in \energiafinitaMHamiltoniana{H+h}$.
-	\end{teorema}
-	
-	\begin{observacao}
-		Como $\diferencialfloerponto{u}$ é sobrejetor para todo $u \in \energiafinitaMHamiltoniana{H+h}$, então o operador de Floer $\operadorFloer$ satisfaz a propriedade de transversalidade, o que foi demonstrado no início da seção.
-	\end{observacao}
-	
-	Defina 
+	Seja 
 	$$
 	\orbitasConectantesZ = \{ (u, H+h): u \in  \energiafinitaMconectanteHamiltoniana \;\;\text{e}\;\; h\in \perturbacaoHamiltoniana{H} \}
 	$$
-	como sendo o conjunto das soluções da equação de Floer conectando $x^{-}$ a $x^{+}$ de todas as perturbações da função Hamiltoniana $H$.
-	
-	\begin{proposicao}\label{proposicao_orbitasConectantesZ}
-		O conjunto $\orbitasConectantesZ$ é uma variedade de Banach.
-	\end{proposicao}
+	o conjunto das soluções da equação de Floer conectando $x^{-}$ a $x^{+}$ de todas as perturbações da função Hamiltoniana $H$.
 	
 	\begin{proposicao}\label{proposicao_gamma_sobrejetora}
 		(Propriedade de transversalidade) Se $(u, H+h) \in \orbitasConectantesZ$, então a aplicação 
@@ -4270,10 +4270,10 @@
 	
 	Como consequência da proposição anterior, e via o teorema da função implícita, pode-se mostrar que
 	
-	\begin{proposicao}
+	\begin{proposicao}\label{proposicao_orbitasConectantesZ}
 		Dados $x^{-},x^{+}\in \pontoscriticos{\funcionalH}$ com $x^{+}\neq  x^{-}$ tem-se que $\orbitasConectantesZ$ é uma variedade (de Banach). 
 	\end{proposicao}
-	
+
 	Note que o conjunto $\caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}$ é uma variedade, pois é o produto cartesiano de variedades \alerta{(não sei se $\perturbacaoHamiltoniana{H}$ é variedade. O Michele afirma que esse produto cartesiano é apenas um conjunto.)}. Considere o fibrado vetorial $\mathcal{E} $
 	$$
 	\mathcal{E} = \{(u, h, Y): (u, h)\in \caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H},\;\;Y\in \pullbackfibradotangenteM{u}\},
@@ -4283,19 +4283,37 @@
 	A aplicação $\sigma:\caminhosexponenciaisconectantespadrao\times \perturbacaoHamiltoniana{H}\to \mathcal{E}$ dada por 
 	$$
 	\begin{aligned}
-	\sigma(u,h) &=\derivadaparcial{u}{s}+J\derivadaparcial{u}{t}+\nabla_{u}(H+h)\\
-	&= \operadorFloer(u) +\nabla_{u}h.
+	\sigma(u,h) &=((u,h),\derivadaparcial{u}{s}+J\derivadaparcial{u}{t}+\nabla_{u}(H+h))\\
+	&= ((u,h),\operadorFloer(u) +\nabla_{u}h).
 	\end{aligned}
 	$$
-	é uma seção do fibrado vetorial $\mathcal{E}$. Além disso, pode ser visto na Seção \ref{secao_operador_floer} que $\sigma(u,h)\in \espacoLp{\pullbackfibradotangenteM{u}}$.
+	é uma seção do fibrado vetorial $\mathcal{E}$. Além disso, pode ser visto na Seção \ref{secao_operador_floer} que $\pi^{-1}(u,h)\subset \espacoLp{\pullbackfibradotangenteM{u}}$.
 	
-	Se $u \in \caminhosexponenciaisconectantespadrao$ é uma solução da equação de Floer para a perturbação Hamiltoniana perturbada $H+h$, então $\sigma(u, h) = 0$. A recíproca é imediada. Com isso, pode-se afirmar que os elementos de $\orbitasConectantesZ$ são as singularidades da seção $\sigma$. 
+	Se $u \in \caminhosexponenciaisconectantespadrao$ é uma solução da equação de Floer para a perturbação Hamiltoniana perturbada $H+h$, então $\sigma(u, h) = ((u, h), 0)$. A recíproca é imediada. Com isso, pode-se afirmar que os elementos de $\orbitasConectantesZ$ são as singularidades da seção $\sigma$. 
 	
-	Para mostrar que a aplicação $\sigma$ é transversa a seção nula do fibrado $\mathcal{E}$, basta mostrar que o diferencial $D\sigma_{(u,h)}$ é sobrejetor para todos os pontos em que $\sigma(u,h) = 0$. Note que \ aplicação $\sigma$ é linear no segundo parâmetro $h$ e que seu diferencial está relacionado com o diferencial do operador de Floer do seguinte modo
+	Para mostrar que a aplicação $\sigma$ é transversal a seção nula do fibrado $\mathcal{E}$, basta mostrar que o diferencial $D\sigma_{(u,h)}$ é sobrejetor para todos os pontos em que $\sigma(u,h) = 0$. Note que \ aplicação $\sigma$ é linear no segundo parâmetro $h$ e que seu diferencial está relacionado com o diferencial do operador de Floer do seguinte modo
 	
 	$$
-	D\sigma_{(u,h)}(Y,\eta) = \diferencialfloerponto{u}(Y)+\nabla_{u}\eta.
+	D_{(u,h)}\sigma(Y,\eta) = ((u,h), \diferencialfloerponto{u}(Y)+\nabla_{u}\eta).
 	$$
+
+	O teorema a seguir, que é consequência da Proposição \ref{proposicao_gamma_sobrejetora}, formaliza esse resultado em termos da sobrejetividade do diferencial do operador de Floer, como foi discutido anteriormente.
+	
+	\begin{teorema}\label{teorema_sobrejetividade_DF_todo_u}
+		Fixe uma função Hamiltoniana não-degenerada $H:M\times \reta\to \reta$ dependente do tempo. Então existe uma vizinhança de $0 \in \perturbacaoHamiltoniana{H}$ e uma intersecção enumerável de subconjuntos abertos densos de $\hamiltonianasRegulares$ com essa vizinhança tal que se $h\in \paresregulares$, então $H+h$ é não-degenerada e o diferencial $\diferencialfloerponto{u}$ é sobrejetor para todo $u \in \energiafinitaMHamiltoniana{H+h}$.
+	\end{teorema}
+	
+	Como $\diferencialfloerponto{u}$ é sobrejetor para todo $u \in \energiafinitaMHamiltoniana{H+h}$, então o operador de Floer $\operadorFloer$ satisfaz a propriedade de transversalidade.
+
+	O teorema de Sard-Smale afirma que o conjunto de valores regulares de um mapa de Floer entre espaços de Banach separáveis é um subconjunto denso (mais detalhes podem ser encontrados em \cite{audi_floer_homology}). O seguinte corolário é uma particularização desse resultado.  
+	
+	\begin{corolario}
+		(Corolário de Sard-Smale) O conjunto 
+		$$
+		\{u \in \espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}:  \diferencialfloerponto{u} \;\text{é sobrejetor}\}
+		$$
+		é denso em  $\espacosobolevcontradominio{\retacartesianocirculo}{\real{m}}$.
+	\end{corolario}
 	
 	Seja $\pi:\orbitasConectantesZ \to \perturbacaoHamiltoniana{H}$ a projeção definida por $\pi(u, H+h) = h$ e seu diferencial
 	$$
@@ -4312,8 +4330,6 @@
 	\begin{lema}
 		Os valores regulares de $\pi$ são os elementos $h$ de $\perturbacaoHamiltoniana{H}$ tais que $u\in \energiafinitaM(H+h, J)$ e $\diferencialfloerponto{u}$ é sobrejetor.
 	\end{lema}
-	
-	\alerta{(Falta argumentar que é pre-imagem de valor regular, logo é variedade. Encontrei referencias para dimensão inifita, mas não me lembro onde foi, apenas no wikipedia...rs)}
 	
 	Assumindo os resultados anteriores, tem-se que $\pi^{-1}$ é uma variedade e sua dimensão é dada por
 	$$
@@ -4337,7 +4353,7 @@
 	$$
 	Portanto $\energiafinitaMconectanteHamiltoniana =\pi^{-1}(h)$. Os resultados anteriores são formalizados no seguinte teorema:
 	
-	\begin{teorema}
+	\begin{teorema}\label{teorema_variedade_espaco_trajetoria}
 		Para cada $h \in \perturbacaoHamiltoniana{H}$ e para todos $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ com $x^{-}\neq x^{+}$, $\energiafinitaM(x^{-}, x^{+}, H+h)$ é uma variedade de dimensão $\mu(x^{-})-\mu(x^{+})$.
 	\end{teorema} 
 	
@@ -4347,34 +4363,39 @@
 		(Teorema da Compacidade de Gromov) Supondo a Condição de Aesfericidade $\ref{definicao_condicao_aesfericidade}$, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
 	\end{teorema}
 	
-	O Teorema \ref{teorema_limite_solucoes_energia_finita} afirma que, para todo $u\in \energiafinitaM$, existem $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ tais que 
-	$$
-	\lim_{s\to -\infty}u(s)=x^{-}\; \text{e} \; \lim_{s\to \infty}u(s)=x^{+}.
-	$$
-	Com isso, pode-se afirmar que $u\in \energiafinitaMconectante$ e 
-	$$
-	\energiafinitaM = \bigcup_{x^{-}, x^{+}\in  \pontoscriticos{\funcionalH}}\energiafinitaMconectante.
-	$$
-	
-	Do fato de que $\energiafinitaM$ é um espaço topológico compacto e que pode ser escrito como a união dos espaços das órbitas conectantes $\energiafinitaMconectante$, tem-se que $\pontoscriticos{\funcionalH}$ é um conjunto finito.
-	
 	\begin{teorema}\label{teorema_orbitas_conectantes_finitas}
-		Sejam $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$. Então, $\energiafinitaMconectante$ é uma variedade de dimensão $\mu(x^{-})-\mu(x^{+})$ e possui um número finito de elementos.
+		Para cada $h \in \hamiltonianasRegulares$ e para todas as soluções $x$ e $y$ contráteis 1-periódicas de $H$, $\energiafinitaM(x^{-}, x^{+}, H+h)$ é uma variedade de dimensão $\iconley{x^{-}}-\iconley{x^{+}}$.
 	\end{teorema}
+	
+	Note que, tomando $\alpha\in \reta$, tem-se que $\tilde{u}:\retacartesianocirculo\to M$ definido por $ \tilde{u}(s,t)=u(s+\alpha,t)$, também é solução da equação de Floer. Com isso, pode-se afirmar que o grupo aditivo $\reta$ age a direita em $\energiafinitaM$ pela operação $*:\energiafinitaM\times \reta\to \energiafinitaM$ definida por $*(u,\alpha)(s,t) = u(s+\alpha,t)$ para todo $s,t$. Essa operação será denotada por $u*\alpha$. A $\reta-$órbita de $u \in \energiafinitaM$ é o conjunto $u*\reta = \{u*\alpha  : \alpha\in \reta\}$ e o quociente $\energiafinitaM/\reta$ é o conjunto das $\reta$-óbitas.
+	
+	Defina o quociente 
+	$$\quocientetrajetorias=
+	\{u \in \energiafinitaM(x^{-},x^{+}, H, J) : \iconley{x^{-}}-\iconley{x^{+}}=1\}/\reta.
+	$$
+
+	Em \cite{audi_floer_homology} e \cite{salamon_lecture} é demonstrado que o quociente $\quocientetrajetorias$ é uma variedade compacta de dimensão zero, e portanto é um conjunto finito. Esse resultado é formalizado na proposição a seguir.
+
+	\begin{proposicao}\label{proposicao_quociente_orbitas_finitas}
+		Se $(H,J)\in \hamiltonianasRegulares$, então o quociente $\widehat{\energiafinitaM}(x^{-},x^{+}, H, J)$ é um conjunto finito para cada par $x^{-}, x^{+} \in \pontoscriticos{\funcionalH}$.
+	\end{proposicao}
 	
 	\section{O Complexo de Floer e a Conjectura de Arnold}\label{secao_complexo_floer}
 	
-	Seja $(M,\omega)$ uma 2n-variedade simplética e $H: M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo genérica, isto é, $H$ pode ser um elemento do conjunto de perturbações $\perturbacaoHamiltoniana{H_{0}}$, para alguma função Hamiltoniana $H_{0}:M\times \reta \to \reta$.
+	Seja $(M,\omega)$ uma 2n-variedade simplética e $H: M\times \reta\to \reta$ uma função Hamiltoniana dependente do tempo genérica de acordo com o Teorema \ref{teorema_sobrejetividade_DF_todo_u} e defina
+	$$
+	\pontoscriticosordem{k}{\funcionalH} = \{ y \in \pontoscriticos{\funcionalH}: \iconley{y} \ =	 k\}.
+	$$
 	
-	O Teorema \ref{teorema_orbitas_conectantes_finitas} afirma que, dados $x^{-},x^{+} \in \pontoscriticos{\funcionalH}$, tem-se que $\energiafinitaMconectante$ possui um número finito de órbitas conectantes. Com isso, denote o total de elementos de $\energiafinitaMconectante$ módulo 2 por $n(x^{-},x^{+})$.
-	
-	 Seja $\pontoscriticosordem{k}{\funcionalH} = \{ y \in \pontoscriticos{\funcionalH}: \iconley{y}=k\}$. Considere $C^{F}_{k}(H,J)=C^{F}_{k}(M, \inteiros_{2}; H,J)$ um espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \pontoscriticosordem{k}{\funcionalH} $, isto é, os elementos de $C^{F}_{k}(H,J)$ são da forma
+	Considere $C^{F}_{k}(M, \inteiros_{2}; H,J)$ o espaço vetorial sobre o corpo $\inteiros_{2}$ e gerado pelos elementos $x \in \pontoscriticosordem{k}{\funcionalH} $, isto é, o espaço cujos elementos são da forma
 	$$
 		\sum_{x\in \pontoscriticosordem{k}{\funcionalH} }n_{x}\gerador{x},
 	$$
-	onde $n_{x}\in \inteiros_{2}$. Com isso, $C^{F}_{*}(H,J)=\bigoplus_{k}C^{F}_{k}(H,J)$ é um espaço vetorial sobre o corpo $\inteiros_{2}$ e graduado pelo índice de Conley-Zehnder $\iconleyabrev$.
+	onde $n_{x}\in \inteiros_{2}$. Por simplicidade, denote $C^{F}_{k}(M, \inteiros_{2}, H,J)$ por $C^{F}_{k}(H,J)$. Com isso, $C^{F}_{*}(H,J)=\bigoplus_{k}C^{F}_{k}(H,J)$ é um espaço vetorial sobre o corpo $\inteiros_{2}$ e graduado pelo índice de Conley-Zehnder $\iconleyabrev$.
 
-	Considere o homomorfismo $\bordo{k}^{F}: C^{F}_{k}(H,J)\to C^{F}_{k-1}(H,J)$ de grau -1 e definido por
+	A Proposição \ref{proposicao_quociente_orbitas_finitas} afirma que, dados $x^{-},x^{+} \in \pontoscriticos{\funcionalH}$, o conjunto $\quocientetrajetorias$ é finito. Com isso, denote o total de elementos de $\quocientetrajetorias$ módulo 2 por $n(x^{-},x^{+})$.
+	
+	Considere o homomorfismo $\bordo{k}^{F}: C^{F}_{k}(H,J)\to C^{F}_{k-1}(H,J)$ de grau -1 definido por
 	$$
 	\bordo{k}^{F}(\gerador{x}) = \sum_{\iconley{y}=k-1}n(x,y)\gerador{y}.
 	$$
@@ -4385,7 +4406,7 @@
 		Se $(H,J)\in \hamiltonianasRegulares$, então $\partial^{F}_{k-1}\circ \partial^{F}_{k} = 0$.
 	\end{teorema}
 	
-	Portanto é $\partial^{F}_{k}$ realmente um operador bordo e $(C^{F}_{*}(H,J), \partial^{F})$ é um complexo de cadeia.
+	Portanto $\partial^{F}_{k}$ é um operador bordo e $(C^{F}_{*}(H,J), \partial^{F})$ é um complexo de cadeia.
 	
 	\begin{definicao}
 			A Homologia de Floer da 2n-variedade simplética $(M,\omega)$ é definida por 
