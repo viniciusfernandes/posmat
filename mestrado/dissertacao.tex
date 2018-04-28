@@ -2427,7 +2427,7 @@
 		Se $x\in \pontoscriticos{H}$, então pela não-degeneracidade da forma simpética tem-se que, $0=dH_{x}(Y)=\omega_{x}(\campohamiltonianoabrev(x), Y)$ para todo $Y\in T_{x}M$. Logo, $\campohamiltoniano{x} =0$. Por outro lado, se $\campohamiltoniano{x} =0$, então $\omega_{x}(\campohamiltonianoabrev(x), Y)=0$ para todo $Y\in T_{x}M$. Logo $dH_{x}=0$ e $x\in \pontoscriticos{H}$.
 	\end{prova}
 	
-	O sistema de equaçoes diferenciais
+	O sistema de equações diferenciais
 	$$
 		\dot{x}(t)=\campohamiltoniano{x(t)},
 	$$
@@ -2643,7 +2643,7 @@
 	\end{prova}
 	
 	\begin{proposicao}
-		Se $x \in \pontoscriticos{H}$ é não-degenerado como uma solução periódica do sistema Hamiltoniano, então é não-degenerado como ponto crítico de $H$.
+		Seja $H$ uma função Hamiltoniana autônoma. Se $x \in \pontoscriticos{H}$ é não-degenerado como uma solução periódica do sistema Hamiltoniano, então é não-degenerado como ponto crítico de $H$.
 	\end{proposicao}
 	\begin{prova}
 		Seja $\psi:M\times \reta\to M$ o fluxo do campo Hamiltoniano. Se $x\in \pontoscriticos{H}$ é uma solução 1-periódica do sistema Hamiltoniano, então pela Proposição \ref{proposicao_exponencial_hessiana} tem-se que $D_{x}\psi_{1}=e^{-\estruturacomplexa \hessianaponto{x}{H}}$ em uma vizinhança coordenada $V$ de $x$. Seja $v\in \espacotangenteponto{x}{M}$ um auto-vetor de $D_{x}\psi_{1}$, então $e^{-\estruturacomplexa \hessianaponto{x}{H}}v=\lambda v = e^{\alpha Id}v$ para algum $\alpha \in \complexo{}$, o que implica em $-\estruturacomplexa \hessianaponto{x}{H} = \alpha Id$. Como $1\notin \espectrooperador{D_{x}\psi_{1}}$, então $\lambda \neq 1 $ e $\alpha\neq 0$. Logo, $\hessianaponto{x}{H} =\alpha\estruturacomplexa \neq 0$ e $\hessianaponto{x}{H}$ é não-degenerada.
@@ -2657,6 +2657,19 @@
 		Uma consequência imediata da proposição anterior é que, se $x$ é uma solução não-degenerada do sistema Hamiltoniano autônomo, então pode ser vista como um ponto crítico de $H$. Logo, pode-se afirmar que $x$ é uma solução isolada do sistema, isto é, não existe uma outra solução infinitesimalmente próxima a ela.
 	\end{observacao}
 	
+	\begin{proposicao}\label{proposicao_solucao_hamiltoniana_finita}
+		Seja $H:M\times\circulo\to \reta$ uma função Hamiltoniana. Suponha que todas as soluções $1-$periódicas do sistema Hamiltoniano são não-degeneradas. Então o conjunto dessas soluções é finito.
+	\end{proposicao}
+	\begin{prova}
+		Como $M$ é uma $2n$-variedade compacta, então $M\times M$ é uma $4n$-variedade compacta. Sejam $\psi_{t}: M\to M$ a família de difeomorfismos gerados pelo fluxo do campo Hamiltoniano $\campohamiltonianoabrev$, $A =\{(x, x):x\in M\}$ o gráfico da aplicação identidade e $B=\{(x, \psi_{1}(x)) :x\in M \}$ o gráfico do difeomorfismo $\psi_{1}$. Para todo $x \in M$ tem-se os espaços tangentes 
+		$$\espacotangenteponto{(x,x)}{A} = \{(Y,Y):Y\in \espacotangenteponto{x}{M}\}\;\; \text{e}\;\; \espacotangenteponto{(x,x)}{B} = \{(Y,D_{x}\psi_{1}(Y)):Y\in \espacotangenteponto{x}{M}\}.
+		$$
+		Seja $S_{H}$ o conjunto das soluções $1-$periódica do sistema Hamiltoniano. Se $x\in S_{H}$, então $\psi_{1}(x(t)) = x(t)$ para todo $t\in \circulo$, e portanto $x(t)\in A\cap B$. Seja $S=\{(x(0), x(0)):x\in S_{H} \}$. Note que $S\subset A\cap B$. Além disso, $\espacotangenteponto{(x(0), x(0))}{S}=\{(Y,D_{x(0)}\psi_{1}(Y)):Y\in \espacotangenteponto{x}{M}\}$, onde $D_{x(0)}\psi_{1}(Y)\neq Y$, pois $x\in S_{H}$ é não-degenerada. Como 
+		$$
+		\espacotangenteponto{(x(0), x(0))}{S} \subset \espacotangenteponto{(x(0), x(0))}{A} \cap \espacotangenteponto{(x(0), x(0))}{B},
+		$$
+		então $D_{x(0)}\psi_{1}(Y) = Y$ se, e somente se, $Y=0$. Com isso, $\espacotangenteponto{(x(0), x(0))}{S}=\{(0,0)\}$ para todo $x \in S_{H}$. Logo $S$ é uma subvariedade de dimensão zero, e portanto é um conjunto de pontos isolados. A compacidade de $M\times M$ implica que $S$ é finito. Como os elementos de $S$ são distintos, então $S_{H}$ é finito.
+	\end{prova}
 	
 	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
 	
@@ -4413,7 +4426,7 @@
 				onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.
 	\end{teorema}
 	\begin{prova}
-		Na Seção \ref{secao_transversalidade_compacidade_M} foi mostrado que $\pontoscriticos{\funcionalH}$ é um conjunto finito, logo $\pontoscriticosordem{k}{\funcionalH} \subset \pontoscriticos{\funcionalH}$ é finito. Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso, $\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j}$ é o total de ponstos críticos do funcional de ação. Como $C^{F}_{k}(H,J)$ é gerado por todos os pontos críticos de ordem $k$, então $\mathcal{N}_{k}\geq \dim(	H^{F}_{k}(C^{F}_{*}(H,J)))$. Como os grupos de homologia de Floer e de homologia singular são isomorfos (veja o Teorema \ref{teorema_isomorfismo_homologia_floer}), então $\dim(	H^{F}_{k}(C^{F}_{*}(H,J)))  = \dim(	H_{k}(M;\inteiros_{2}) = \beta_{k}(M)$. Portanto
+		Pela Proposição \ref{proposicao_solucao_hamiltoniana_finita} pode-se afirmar que $\pontoscriticos{\funcionalH}$ é um conjunto finito, logo $\pontoscriticosordem{k}{\funcionalH} \subset \pontoscriticos{\funcionalH}$ também o é. Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso, $\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j}$ é o total de pontos críticos do funcional de ação. Como $C^{F}_{k}(H,J)$ é gerado por todos os pontos críticos de ordem $k$, então $\mathcal{N}_{k}\geq \dim(	H^{F}_{k}(C^{F}_{*}(H,J)))$. Como os grupos de homologia de Floer e de homologia singular são isomorfos (veja o Teorema \ref{teorema_isomorfismo_homologia_floer}), então $\dim(	H^{F}_{k}(C^{F}_{*}(H,J)))  = \dim(	H_{k}(M;\inteiros_{2}) = \beta_{k}(M)$. Portanto
 		$$
 		\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j} \geq \sum_{j=0}^{2n} \beta_{j}(M).
 		$$ 
@@ -5251,7 +5264,7 @@
 		para todo $\xi\in \espacosobolev{\Omega}$.
 	\end{observacao}
 	
-	O seguinte resultado podem ser encontrados em \cite{audi_floer_homology}.
+	Os seguintes resultados podem ser encontrados em \cite{audi_floer_homology}.
 	
 	
 	
