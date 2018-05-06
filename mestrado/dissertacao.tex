@@ -316,6 +316,28 @@
 	\maketitle
 	
 	\tableofcontents
+	\chapter*{Agradecimentos}
+	Seja $\mathcal{A}$ o conjunto dos objetos passíveis de meus agradecimentos. Um agradecimento direto por esse trabalho é uma sequência $(a_{n})$ em $\mathcal{A}$ tal que
+	$$
+	\lim\limits_{n\to \infty} a_{n} \in \{\text{Mariana R. Silveira}\} \cup \{http://gen.lib.rus.ec/ \} \subset \mathcal{A}.
+	$$
+	
+	
+	\chapter*{Resumo}
+	Nesse trabalho é apresentada uma construção do índice de Conley-Zum estudo das Teorias de Morse e Morse-Bott no contexto
+	de sistemas dinâmicos. Consideramos uma variedade Riemanniana suave e fechada M
+	
+	
+	\textbf{Palavras-chave:} Desigualdades de Morse, Desigualdades de Morse-Bott, Homologia
+	de Morse, Homologia de Morse-Bott, Teoria de Morse, Teoria de Morse-Bott.
+	
+	\chapter*{Abstract}
+	Neste trabalho apresentamos um estudo das Teorias de Morse e Morse-Bott no contexto
+	de sistemas dinâmicos. Consideramos uma variedade Riemanniana suave e fechada M
+
+
+	\textbf{Palavras-chave:} Desigualdades de Morse, Desigualdades de Morse-Bott, Homologia
+	de Morse, Homologia de Morse-Bott, Teoria de Morse, Teoria de Morse-Bott.
 	
 	\chapter*{Introdução}\label{capitulo_introducao}
 	Como muitas das construções desenvolvidas na matemática a Homologia de Floer teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalentes a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podem ser desenvolvidos em uma 2n-variedade diferenciável $M$ munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: M\times \reta\to \reta$ satisfazendo a equação geométrica $\omega_{x}(\campohamiltonianoabrev(x,t), Y) = d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$, onde o campo vetorial $\campohamiltonianoabrev \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. O sistema de equações diferenciais $\dot{x} = \campohamiltoniano{(x,t)}$ é chamado sistema Hamiltoniano e suas soluções dão origem a uma família de difeomorfismos $\psi_{t}:M\to M$, onde $t\in \reta$, que satisfaz a equação diferencial
@@ -347,16 +369,19 @@
 	
 	O princípio variacional aplicado no funcional de ação resulta na determinação das solução de um sistema de equações diferenciais parciais de primeira ordem. A esse sistema de equações diferenciais é associado um operador diferencial, chamado operador de Floer, cujas soluções são as curvas integrais que conectam os pontos críticos do funcional de ação, situação análoga a determinação das linhas de fluxo do gradiente negativo.
 	
-	O operador de Floer é um operador linear e limitado definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional de ação. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso de interesse, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui uma generalização da Homologia de Morse-Witten.
+	O operador de Floer é um operador linear e limitado 
+	definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional de ação. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso de interesse, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui uma generalização da Homologia de Morse-Witten.
 	
 	Essa generalização é uma consequência da definição do complexo de Floer e sua homologia. Analogamente ao complexo de Morse-Witten, as k-cadeias do complexo de Floer são geradas pelos pontos críticos do funcional de ação $\funcionalH$ de índice $k \in \inteiros_{+}$. A indexação dos pontos críticos do funcional de ação é dada pelo índice de Conley-Zehnder $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$, e é um dos pontos de maior complexidade do texto, e tal dificuldade se dá pelo fato de que os pontos críticos são caminhos na variedade $M$. Com isso, o k-ésimo operador bordo do complexo é um homomorfismo que tem como imagem uma (k-1)-cadeia gerada pelos pontos críticos do fincional de ação $\funcionalH$ com índice $k-1 \in \inteiros_{+}$.
 	
 	
 	\chapter{Preliminares de Topologia Algébrica}
-	A topologia algébrica é o ramo da matemática no qual se utiliza estruturas algébricas para se analisar a topologia de um conjunto (um espaço topológico) e seus invariantes. 
+	A topologia algébrica é o ramo da matemática que utiliza ferramentas algébricas para analisar a topologia de um conjunto (um espaço topológico) associando a ele invariantes topológicos que são estruturas algébricas.
 	
+	Neste capítulo, são apresentados dois destes invariantes: o grupo fundamental e os grupos de homologia.
+		
 	\section{Grupo Fundamental e a Aplicação Grau}\label{capitulo_grupo_fundamental}
-	Nessa seção será abordada um caso específico de estrutura algébrica de um espaço topológico $X$, chamado grupo fundamental de $X$. Mais detalhes dos resultados aqui enunciados podem ser encontrados em \cite{elon_grupo_fundamental} e \cite{massey}.
+	Nessa seção será abordada um caso específico de estrutura algébrica associada a um espaço topológico $X$, chamado grupo fundamental de $X$. Mais detalhes dos resultados aqui enunciados podem ser encontrados em \cite{elon_grupo_fundamental} e \cite{massey}.
 	
 	\subsection{Grupo Fundamental}
 	
@@ -369,16 +394,14 @@
 	
 	
 	\begin{definicao}\label{definicao_caminhos_homotopicos}
-		(Homotopia entre caminhos) Sejam $\gamma, \gamma' \in \caminhossempontobase{X}$ tais que $\gamma(0)=\gamma'(0)$ e $\gamma(1)=\gamma'(1)$. Uma aplicação contínua $F:\intervalo \times \intervalo \to X$ é chamada homotopia entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \intervalo$. Diz-se que  $\gamma$ e $\gamma'$ são homotópicos se, e somente se, existe uma homotopia entre eles. Nesse caso é denotado $\gamma \sim \gamma'$. 
+		(Homotopia entre caminhos) Sejam $\gamma, \gamma' \in \caminhossempontobase{X}$ tais que $\gamma(0)=\gamma'(0)$ e $\gamma(1)=\gamma'(1)$. Uma aplicação contínua $F:\intervalo \times \intervalo \to X$ é chamada homotopia entre $\gamma$ e $\gamma'$ se $F(t, 0) = \gamma(t)$ e $F(t, 1) = \gamma'(t)$ para qualquer $t\in \intervalo$. Diz-se que  $\gamma$ e $\gamma'$ são homotópicos se existe uma homotopia entre eles.
 	\end{definicao}
 	
 	\begin{definicao}\label{definicao_homotopia_extremos_fixos}
 		(Homotopia de extremos fixos entre caminhos) Suponha as condições da definição anterior. Diz-se que a homotopia entre os caminhos $\gamma$ e $\gamma'$ é uma homotopia de extremos fixos se $F(0,s) = \gamma(0) = \gamma'(0)$ e $F(1,s) = \gamma(1) = \gamma'(1)$ para todo $s\in \intervalo$.
 	\end{definicao}
 	
-	\begin{observacao}
-		Por definição, toda homotopia de extremos fixos entre caminhos é uma homotopia entre caminhos. Portanto, também é dito que dois caminhos são homotópicos quando existir uma homotopia de extremos fixos entre ambos.
-	\end{observacao}
+	Diz-se que dois caminhos são homotópicos com extremos fixos (ou apenas homotópicos quando não houver perigo de confusão) quando existir uma homotopia de extremos fixos entre ambos. Nesse utilizaremos a notação $\gamma \sim \gamma'$.
 	
 	\begin{observacao}
 		A definição de caminhos homotópicos não depende da homotopia escolhida, pois, dadas $F,G$ homotopias entre $\gamma$ e $\gamma'$, pode-se definir uma aplicação contínua $H: [0,1] \times [0,1] \times [0,1] \to X$ tal que $H(t,s ,0) = F(t,s)$ e $H(t,s, 1) = G(t,s)$ que é uma homotopia entre as homotopias, logo será uma homotopia entre ambas as famílias de caminhos.
@@ -390,20 +413,23 @@
 		Sejam $\gamma, \gamma', \alpha, \alpha' \in \caminhossempontobase{X}$, onde $\gamma(1) = \alpha(0), \gamma'(1) = \alpha'(0) $, tais que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\gamma * \alpha \sim \gamma' * \alpha'$.
 	\end{lema}
 	\begin{prova}
-		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, a continuidade de $H$ é imediata. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
+		Sejam  $F, G:[0,1] \times [0,1] \to X$ homotopias com extremos fixos entre caminhos tais que $F(t,0)=\gamma(t)$, $F(t,1)=\gamma'(t)$, $G(t,0)=\alpha(t)$, $G(t,1)=\alpha'(t)$. Então, $F_{s}, G_{s}:\intervalo \to X$, definidas por $F_{s}(t) = F(s,t)$ e $G_{s}(t) = G(s,t)$, são curvas contínuas para todo $s \in \intervalo$ tais que $F_{s}(1) = G_{s}(0)$. Com isso, $H :\intervalo\times \intervalo\to X$ tal que $H(t, s)=(F_{s}*G_{s})(t)$ é uma homotopia de extremos fixos entre $\gamma*\alpha$ e $\gamma'*\alpha'$. De fato, a continuidade de $H$ é imediata. Além disso, $H(t, 0) = (\gamma*\alpha)(t)$ e $H(t, 1) = (\gamma'*\alpha')(t)$. Como F e G mantém os extremos fixos, então H também é homotopia de extremos fixos. Logo, $\gamma*\alpha \sim \gamma'*\alpha'$.
 	\end{prova}
 	
-	A justaposição de caminhos em $\caminhossempontobase{X}$ nem sempre é associativo. Contudo, o seguinte lema afirma que tal associatividade vale a menos de uma homotopia. Sua demonstração pode ser encontrada em $\cite{massey}$.
+	A justaposição de caminhos em $\caminhossempontobase{X}$ não é associativo. Contudo, o seguinte lema afirma que tal associatividade vale a menos de uma homotopia. Sua demonstração pode ser encontrada em $\cite{massey}$.
 	
 	\begin{lema}\label{lema_associatividade_produto_caminhos}
 		Sejam $\alpha, \beta, \gamma\in \caminhossempontobase{X}$ tais que $\alpha(1)=\beta(0)$ e $\beta(1)=\gamma(0)$. Então $(\alpha*\beta)*\gamma \sim \alpha*(\beta*\gamma)$.
 	\end{lema}
+	
+	Note que em geral $\gamma*\hat{\gamma}\neq \hat{\gamma}*\gamma$ e $\gamma*c\neq \gamma$, mas o lema seguinte mostra tais caminhos são homotópicos.
 	
 	\begin{lema}\label{lema_caminho_inverso}
 		Sejam $\gamma, \hat{\gamma} , c,c' \in \caminhossempontobase{X}$ tais que $c(t) = \gamma(0)$, $c'(t) = \gamma(1)$ para todo $t\in \intervalo$ e $\hat{\gamma} (t) = \gamma(1-t)$. Então $\gamma*\hat{\gamma}  \sim c$ e $\hat{\gamma}  *\gamma\sim c'$. Além disso, $\gamma * c' \sim\gamma$ e $c * \gamma \sim \gamma$.
 	\end{lema} 	
 	
 	Seja $\caminhospontobasegeral{p}{X} = \{\gamma\in \caminhossempontobase{X}: \gamma(0)=\gamma(1)=p \}$ o conjunto dos caminhos contínuos e fechados com o ponto base $p$. Denote o quociente $\{ \classe{\gamma} : \gamma' \in \caminhospontobasegeral{p}{X},\;\;\gamma \sim \gamma'\}$ por $\caminhospontobasegeral{p}{X}/\sim $. Então, o produto definido por $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha}$ esta bem-definido. De fato, tomando $\gamma, \gamma',\alpha, \alpha' \in \caminhospontobasegeral{p}{X}$ tal que $\gamma \sim \gamma'$ e $\alpha \sim \alpha'$, então $\classe{\gamma}.\classe{\alpha} = \classe{\gamma*\alpha} = \classe{\gamma'*\alpha'} = \classe{\gamma'}.\classe{\alpha'}$.
+	
 	
 	\begin{definicao}
 		(Grupo Fundamental) Sejam $X$ um espaço topológico $X$ e $p\in X$. O conjunto
@@ -429,11 +455,10 @@
 	No caso em que $X$ é um espaço espaços topológico conexo por caminhos $\grupofundamentalpontobase{X}{p}$ é denotado por $\grupofundamental{X}$ e $\caminhospontobasegeral{p}{X}$ é denotado por $\caminhossempontobase{X}$.
 	
 	
-	Sejam $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então tem-se a composição $f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Suponha que $\gamma' \in \caminhospontobasegeral{p}{X}$ seja tal que $\gamma \sim \gamma'$. Se $F$ é a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $f\circ F$ é uma homotopia entre $f\circ \gamma$ e $f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$.
+	Seja $f:X\to Y$ uma aplicação contínua entre espaços topológicos e $\gamma \in \caminhospontobasegeral{p}{X}$, então tem-se a composição $f\circ \gamma \in \caminhospontobasegeral{f(p)}{Y}$. Suponha que $\gamma' \in \caminhospontobasegeral{p}{X}$ seja tal que $\gamma \sim \gamma'$. Se $F$ é a homotopia entre ambas, então $(f\circ F)(t,0) =  f(\gamma(t))$ e $(f\circ F)(t,1) =  f(\gamma'(t)) $, logo $f\circ F$ é uma homotopia entre $f\circ \gamma$ e $f\circ \gamma'$ em $\caminhospontobasegeral{f(p)}{Y}$.
 	
-	Dada $f:X\to Y$ uma aplicação contínua entre espaços topológicos, é imediato que a aplicação $f_{*}:\grupofundamentalpontobase{X}{p} \to \grupofundamentalpontobase{Y}{f(p)}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo.
+	Dada $f:X\to Y$ uma aplicação contínua entre espaços topológicos, é imediato que a aplicação $f_{*}:\grupofundamentalpontobase{X}{p} \to \grupofundamentalpontobase{Y}{f(p)}$ dada por $f_{*}\classe{\gamma} = \classe{f\circ\gamma}$ é um homomorfismo. Como consequência, o seguinte resultado mostra que o grupo fundamental é um invariante topológico.
 	
-	Como consequência do lema anterior o seguinte resultado mostra que o grupo fundamental é um invariante topológico.
 	\begin{teorema}
 		Seja $f:X\to Y$ um homeomorfismo entre espaços topológicos. Então $\grupofundamentalpontobase{X}{p}$ e $\grupofundamentalpontobase{Y}{f(p)}$ são isomorfos.
 	\end{teorema}
@@ -441,11 +466,11 @@
 	Dados $X, Y$ espaços topológicos, $p\in X$ e $q\in Y$ pontos base, então pode-se construir o espaço topológico $X\times Y$ com o ponto base $(p,q)$.
 	
 	\begin{proposicao}\label{proposicao_produto_grupo_fundamental}
-		Se $X, Y$ são espaços topológicos, $p\in X$ e $q\in Y$ são os respectivos pontos base, então $\grupofundamentalpontobase{X\times Y}{(p,q)} \cong \grupofundamentalpontobase{X}{p}\times \grupofundamentalpontobase{Y}{q}$
+		Se $X, Y$ são espaços topológicos, $p\in X$ e $q\in Y$ são os respectivos pontos base, então $\grupofundamentalpontobase{X\times Y}{(p,q)}$ é isomorfo ao produto direto $\grupofundamentalpontobase{X}{p}\otimes \grupofundamentalpontobase{Y}{q}$.
 	\end{proposicao}
 	
 	\begin{definicao}
-		Seja $X$ um espaço topológico e
+		Seja $X$ um espaço topológico conxo por caminhos e
 		$c \in \caminhospontobasegeral{p}{X}$ o caminho constante tal que $c(t) = p$ para todo $t \in \intervalo$. Se para todo $\gamma \in \caminhospontobasegeral{p}{X}$ tem-se que $\gamma \sim c$, então é dito que $X$ é simplesmente conexo.
 	\end{definicao}
 	
@@ -461,19 +486,19 @@
 	Defina a aplicação exponencial $\Exp: \reta\to \circulo$ por $\Exp(t) = e^{it}$.
 	
 	\begin{proposicao}\label{proposicao_levantamento_curvas}
-		(Levantamento de caminhos) Seja $\gamma:[a,b] \to S^{1}$ uma aplicação contínua e $t_{a}\in \real{}$ tal que $\gamma(a) = e^{it_{a}}$. Então existe uma única aplicação contínua $\alpha:[a,b] \to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in [a,b]$ e $\alpha(a) = t_{a}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
+		(Levantamento de caminhos) Seja $\gamma:\intervalo \to S^{1}$ uma aplicação contínua e $t_{0}\in \real{}$ tal que $\gamma(0) = e^{it_{0}}$. Então existe uma única aplicação contínua $\alpha:\intervalo\to \real{}$ tal que $\gamma(t) = e^{i\alpha(t)}$ para todo $t\in \intervalo$ e $\alpha(0) = t_{0}$. A aplicação $\alpha$ é chamada de levantamento do caminho $\gamma$ e faz com que o diagrama abaixo comute:
 		$$
 		\xymatrix{
 			& \real{}\ar[d]\ar[d]^{\Exp}
 			\\
-			[a,b]\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
+			\intervalo\ar[ur]^{\alpha} \ar[r]_{\gamma} & S^{1}
 		}
 		$$
 	\end{proposicao}
 	
-	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então pode-se escrever $\gamma(t) = e^{i\alpha(t)}$, onde $\alpha:[a,b]\to \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, pode-se escrever $\gamma = \gamma_{0}*\gamma_{1}$. Tem-se que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1} \sim \gamma_{0}$. Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
+	Seja $\gamma \in \caminhossempontobase{\circulo}$. Então pode-se escrever $\gamma(t) = e^{i\alpha(t)}$, onde $\alpha:\intervalo \to \reta$ é uma aplicação contínua. Como $\hat{\gamma} (\{1\})$ é um subconjunto fechado do compacto $\intervalo$, então é um compacto, e com isso, finito. Denote $t_{\gamma} = \max\{t \in \hat{\gamma} (\{0\})\}$ e defina os caminhos $\gamma_{0}(t) = \gamma(t_{\gamma}t)$ e $\gamma_{1}(t) = \gamma((1-t_{\gamma})t+t_{\gamma})$. Com isso, pode-se escrever $\gamma = \gamma_{0}*\gamma_{1}$. Tem-se que $\gamma_{0}$ é um caminho fechado pois $\gamma_{0}(0) = \gamma_{0}(1)$ e $\gamma_{1}$ um caminho aberto. Além disso, $\gamma_{1}$ é contrátil e $\gamma = \gamma_{0}*\gamma_{1}$. Logo gamma é homotópico a $\gamma_{0}$ (homotopia sem extremo fixos). Portanto, qualquer $\gamma \in \caminhos(\circulo)$ é homotópico a um caminho fechado $\gamma_{0} \in \caminhos(\circulo)$.
 	
-	O grau de um caminho será definido como uma aplicação que associa um dado caminho em $\circulo$ a um múltiplo de $2\pi$, isto é, o número de vezes que o tal caminho envolve $\circulo$. Na construção anterior foi visto que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, as hipóteses serão restritas aos caminhos fechados.
+	O grau de um caminho será definido como uma aplicação que associa um dado caminho em $\circulo$ a um número inteiro. Na construção anterior foi visto que todo caminho em $\circulo$ é homotópico a um caminho fechado. Assim, as hipóteses serão restritas aos caminhos fechados.
 
 	\begin{definicao}\label{definicao_aplicacao_grau}
 		(Aplicação grau) Sejam $p \in \circulo$ um ponto base e $deg: \caminhospontobasegeral{p}{\circulo} \to \inteiros$ a aplicação dada por $\deg(\gamma) = (\alpha(1)-\alpha(0))/2\pi$, onde $\alpha:[0,1] \to \real{}$ é o levantamento de $\gamma$ dado pela Proposição $\ref{proposicao_levantamento_curvas}$. A aplicação $deg$ é chamada de aplicação grau e o valor $\deg(\gamma)$ é chamado grau do caminho $\gamma$.
@@ -541,13 +566,17 @@
 			
 			Seja a aplicação contínua $G(t, s) = e^{iH(t,s)}$. Então, para $s \in [0,1]$ fixo tem-se que $G_{s} \in \caminhospontobasegeral{p}{\circulo}$ com $\deg(G_{s}) = n$. Além disso, $G(t,0) = e^{i\alpha(t)} = \gamma(t)$ e $G(t,1) = e^{i\lambda(t)} = \beta(t)$, logo $G$ é uma homotopia entre $\gamma$ e $\beta$, portanto $\gamma \sim \beta$.
 			
-			\item Sejam $p=\gamma(0)$ e $c\in \caminhossempontobase{X}$, onde $c$ é o caminho constante tal que $c(t)=p$ para todo $t\in \intervalo$. É imediato que $\gamma*\hat{\gamma}  \sim c$. Logo, pelos itens anteriores, tem-se que $0=\deg(c) = \deg(\gamma*\hat{\gamma} ) = \deg(\gamma) + \deg(\hat{\gamma} )$. Portanto, $\deg(\hat{\gamma} ) = -\deg(\gamma) $.
+			\item Sejam $p=\gamma(0)$ e $c\in \caminhossempontobase{X}$ o caminho constante tal que $c(t)=p$ para todo $t\in \intervalo$. Como $\gamma*\hat{\gamma}  \sim c$. Logo, então $0=\deg(c) = \deg(\gamma*\hat{\gamma} ) = \deg(\gamma) + \deg(\hat{\gamma} )$. Portanto, $\deg(\hat{\gamma} ) = -\deg(\gamma) $.
 		\end{enumerate}
 	\end{prova}
 	
-	Dados $\gamma \in \caminhospontobasegeral{p}{X}$ e $k \in \mathbb{N}$, será denotado a k-justaposição $\gamma*\dots * \gamma$ por $\gamma^{k}$.
+	É fácil mostrar que a aplicação $\phi:\grupofundamental{\circulo}\to  \inteiros$ dada por $\phi (\classe{\gamma})=\deg(\gamma)$ é um isomorfismo de grupos. Com isso, segue-se que
 	
-	O seguinte resultado é uma consequência imediata da da aplicação grau e mostra que o grupo fundamental de $\circulo$ é um grupo abeliano cíclico infinito.
+	\begin{teorema}\label{teorema_grupo_fundamental_circulo}
+		(Grupo fundamental de $\circulo$) $\grupofundamental{\circulo} \cong \inteiros$.
+	\end{teorema}
+	
+	Dados $\gamma \in \caminhospontobasegeral{p}{X}$ e $k \in \mathbb{N}$, a k-justaposição $\gamma*\dots * \gamma$ é denotada por $\gamma^{k}$. O seguinte resultado é uma consequência da aplicação grau.
 	
 	\begin{proposicao}\label{proposicao_gerador_grupo_fundamental_ciruclo}
 		O grupo $\grupofundamental{\circulo}$ é gerado por $\gamma(t) = e^{i2\pi t}$, onde $t \in [0,1]$, isto é, $\grupofundamental{\circulo} = \gerador{\classe{\gamma}} $.
@@ -561,19 +590,17 @@
 		Portanto $\beta \sim \gamma^{n}$ e $\classe{\beta} = \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo $\grupofundamental{\circulo} = \gerador{\classe{\gamma}}$.
 	\end{prova}
 	
-	\begin{teorema}\label{teorema_grupo_fundamental_circulo}
-		(Grupo fundamental de $\circulo$) $\grupofundamental{\circulo} \cong \inteiros$.
-	\end{teorema}
-	
 	\begin{exemplo}
 		(Grupo fundamental de $T^{2}$) Seja $T^{2}=\circulo \times \circulo$ o 2-toro. Como $T^{2}$ é conexo por caminhos, então o grupo fundamental não depende do ponto base escolhido, logo tem-se $\grupofundamental{T^{2}} \cong \grupofundamental{\circulo} \times \grupofundamental{\circulo} \cong \inteiros \times \inteiros$, pelo Lema $\ref{proposicao_produto_grupo_fundamental}$ e o Teorema $\ref{teorema_grupo_fundamental_circulo}$. 
 	\end{exemplo}
 	
 	\begin{exemplo}\label{exemplo_grupo_fundamental_plano_furo}
-		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Sejam $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por definição $\deg(\gamma) = 1$ e $\deg(c) =0$, o que implica que $0= \deg(c)=\deg(\gamma*\hat{\gamma} ) = 1 +\deg(\hat{\gamma} )$, portanto $\deg(\hat{\gamma} )=-1$. Com isso, dado $k \in \inteiros$ tem-se que $\deg(\gamma^{k}) = \deg(\gamma)\dots \deg(\gamma) = k$. Seja $\beta \in \caminhospontobasegeral{p}{X}$ tal que $\deg(\beta)=n$. Então $\deg(\beta) = \deg(\gamma^{n})$, e $\beta \sim \gamma^{n}$, pela Proposição $\ref{proposicao_grau_aplicacao}$. Portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo infinito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = \gerador{\classe{\gamma}}$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
+		(Grupo fundamental $\grupofundamental{\real{2}\backslash\{p\}}$) Sejam $X = \real{2}\backslash \{(0,0)\}$, $p=(1,0) \in X$ o ponto base e $\gamma,c \in \caminhospontobase{p}$ onde $\gamma$ é o círculo envolvendo a origem e $c$ a curva constante. Se $\alpha \in \caminhospontobase{p}$ é um caminho fechado que não envolve a origem, então $\alpha$ pode ser deformada contínuamente para $p$, logo $\alpha \sim c$ e $\classe{\alpha} = Id$. Por definição $\deg(\gamma) = 1$ e $\deg(c) =0$, o que implica que $0= \deg(c)=\deg(\gamma*\hat{\gamma} ) = 1 +\deg(\hat{\gamma} )$, portanto $\deg(\hat{\gamma} )=-1$. Com isso, dado $k \in \inteiros$ tem-se que $\deg(\gamma^{k}) = \deg(\gamma)+\dots +\deg(\gamma) = k$. Seja $\beta \in \caminhospontobasegeral{p}{X}$ tal que $\deg(\beta)=n$. Então $\deg(\beta) = \deg(\gamma^{n})$, e $\beta \sim \gamma^{n}$, pela Proposição $\ref{proposicao_grau_aplicacao}$. Portanto $\classe{\beta} =  \classe{\gamma^{n}}=\classe{\gamma}^{n}$. Logo, o grupo fundamental de $X$ é um grupo infinito cíclico gerado por $\classe{\gamma}$, isto é, $\grupofundamental{X} = \gerador{\classe{\gamma}}$. A aplicação $\grupofundamental{X} \ni \classe{\gamma}^{n} \mapsto n \in \inteiros$ é um isomorfismo, portanto $\grupofundamental{X} \cong \inteiros$.
 	\end{exemplo}
 		
 	\section{Homologia}
+	Nesta seção serão apresentados os grupos de homologia singular de um espaço topológico e depois os grupos de homologia celular de um CW-complexo, e as referências utilizadas são \cite{banyaga_morse_homology}, \cite{elon_homologia}, \cite{massey} e \cite{vick_homology}. 
+	
 	\subsection{Homologia Singular}
 	Para as próximas definições, considere $X$ um espaço topológico e $A$ um anel.
 	\begin{definicao}
@@ -609,7 +636,7 @@
 	
 	Um subgrupo $H\subseteq G$ de um módulo graduado é um módulo graduado $H=\colecao{H}$, onde $H_{k} \subseteq G_{k}$ é um submódulo para $k \in \inteiros$. Nesse caso, o módulo quociente $G/H$ é o módulo graduado $\{G_{k}/H_{k} \}_{k\in \inteiros}$.
 	
-	Note que, dado um espaço topológico $X$, as coleções $\cadeia{*}{X} = \colecaoabrev{\cadeia{k}{X}}$, $\kernelbordo{*}{X}=\colecaoabrev{\kernelbordo{k}{X}}$, $\imagembordo{*}{X}=\colecaoabrev{\imagembordo{k}{X}}$ e $\homologia{*}{X}=\colecaoabrev{\homologia{k}{X}}$ são grupos graduados.
+	Note que, dado um espaço topológico $X$, as coleções $\cadeia{*}{X} = \colecaoabrev{\cadeia{k}{X}}$, $\kernelbordo{*}{X}=\colecaoabrev{\kernelbordo{k}{X}}$, $\imagembordo{*}{X}=\colecaoabrev{\imagembordo{k}{X}}$ e $\homologia{*}{X}=\colecaoabrev{\homologia{k}{X}}$ são A-módulos graduados.
 	
 	O módulo graduado $\homologia{*}{X}$ é chamado de homologia singular do espaço $X$ e é denotado por
 	$$
@@ -662,14 +689,14 @@
 		(Isomorfimo induzido) Sejam $f:X \to Y$ um homeomorfismo entre espaços topológicos e $C = \cadeia{*}{X}$ e $C'=\cadeia{*}{Y}$ os complexos de cadeias singulares de $X$ e $Y$, respectivamente. Então $f_{*}: \homologiaabrev{*}{C} \to \homologiaabrev{*}{C'}$ é um isomorfismo.
 	\end{teorema}
 	
-	Sejam $f, g: X\to Y$ duas aplicações contínuas entre espaços topológicos. Diz-se que $f$ e $g$ são homotópicas se existe uma aplicação contínua $h:\intervalo\times X \to Y$, tal que $h(0, .) = f$ e $h(1, .) = g$. Com isso, a aplicação $h$ é chamada homotopia entre $f$ e $g$ e denota-se essa propriedade por $f\sim g$.
+	Analogamente a homotopia de caminhos definida na seção anterior, é possível definir homotopia entre quaisquer duas funções contínuas. Sejam $f, g: X\to Y$ duas aplicações contínuas entre espaços topológicos. Diz-se que $f$ e $g$ são homotópicas se existe uma aplicação contínua $h:\intervalo\times X \to Y$, tal que $h(0, .) = f$ e $h(1, .) = g$. A aplicação $h$ é chamada homotopia entre $f$ e $g$ e denota-se essa propriedade por $f\sim g$.
 	
 	\begin{teorema}
-		Sejam $f, g: X\to Y$ duas aplicações homotópicas entre espaços topológicos. Então $f_{*}=g_{*}: \homologiaabrev{*}{C}\to \homologiaabrev{*}{C'}$, onde $C$ e $C'$ são complexos de cadeia de $X$ e $Y$, respectivamente.
+		Sejam $f, g: X\to Y$ duas aplicações contínuas e homotópicas entre espaços topológicos. Então $f_{*}=g_{*}$.
 	\end{teorema}
 	
 	\begin{definicao}
-		(Equivalência homotópica) Seja $f:X\to Y$ uma aplicação entre espaços topológicos. Diz-se que $f$ é uma equivalência homotópica se existe uma aplicação $g:Y \to X$ tal que $f\circ g \sim Id_{Y}$ e $g\circ f \sim Id_{X}$. Neste caso, é dito que $X$ e $Y$ são homotopicamente equivalentes e essa propriedade é por $X\sim Y$.
+		(Equivalência homotópica) Seja $f:X\to Y$ uma aplicação contínua entre espaços topológicos. Diz-se que $f$ é uma equivalência homotópica se existe uma aplicação contínua $g:Y \to X$ tal que $f\circ g \sim Id_{Y}$ e $g\circ f \sim Id_{X}$. Neste caso, é dito que $X$ e $Y$ são homotopicamente equivalentes e essa propriedade é denotada por $X\sim Y$.
 	\end{definicao}
 	
 	O resultado seguinte mostra que a equivalência de homotopia é condição suficiente para que os módulos de homologia sejam isomorfos.
@@ -679,14 +706,14 @@
 	\end{teorema}
 	
 	\begin{definicao}
-		Uma tripla $\xymatrix{C\ar[r]^{f} & D\ar[r]^{g} & E }$ de módulos abelianos e homomorfismos é chamada exata se $Im(f) = Ker(g)$. Uma sequência de módulos abelianos e homomorfismos
+		Uma tripla $\xymatrix{C\ar[r]^{f} & D\ar[r]^{g} & E }$ de módulos e homomorfismos é chamada exata se $Im(f) = Ker(g)$. Uma sequência de módulos e homomorfismos
 		$$
 		\xymatrix{\dots \ar[r]& G_{1}\ar[r]^{f_{1}} & G_{2}\ar[r]^{f_{2}} & G_{3}\ar[r]^{f_{3}} & \dots \ar[r]\ar[r]^{f_{k-1}} & G_{k}\ar[r]^{f_{k}} &\dots}
 		$$
 		é chamada de sequência exata longa se cada tripla é exata, isto é, $Im(f_{k}) = Ker(f_{k+1})$ para todo $k\in \inteiros$.
 	\end{definicao}
 	
-	Diz-se que uma sequência do tipo $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta. Nesse caso, tem-se que $f$ é um monomorfismo e $g$ é um epimorfismo. Sejam $C, D, E$ complexos de cadeias. Uma sequência exata curta de complexos de cadeias é uma coleção de sequências exatas
+	Uma sequência do tipo $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é chamada sequência exata curta. Nesse caso, $f$ é um monomorfismo e $g$ é um epimorfismo. Sejam $C, D, E$ complexos de cadeias. Uma sequência exata curta de complexos de cadeias é uma coleção de sequências exatas
 	$$ 
 	\xymatrix{0 \ar[r] & C_{k}\ar[r]^{f_{k}} & D_{k}\ar[r]^{g_{k}} & E_{k} \ar[r]& 0}
 	$$
@@ -729,7 +756,7 @@
 		\]
 	\end{teorema}
 	
-	Seja $U \subseteq X$ um subespaço do espaço topológico $X$ e considere o par topológico $(X, U)$. Caso $U = \emptyset$, identifica-se $(X, \emptyset)$ com $X$. Desse modo, a aplicação de inclusão $U \hookrightarrow X$ induz a aplicação de cadeias $\induzida{i}: \cadeia{*}{U} \to \cadeia{*}{X}$ tal que, para todo $k \in \inteirospos$, $i_{k}$ é um monomorfismo. Assim, é possível identificar $\cadeia{*}{U}$ com um subcomplexo de $\cadeia{*}{X}$ e se pode definir o quociente entre ambos de modo que
+	Seja $U \subseteq X$ um subespaço do espaço topológico $X$ e considere o par topológico $(X, U)$. Caso $U = \emptyset$, identifica-se $(X, \emptyset)$ com $X$. Desse modo, a aplicação de inclusão $U \hookrightarrow X$ induz a aplicação de cadeias $\induzida{i}: \cadeia{*}{U} \to \cadeia{*}{X}$ tal que, para todo $k \in \inteirospos$, $i_{k}$ é um monomorfismo. Assim, é possível identificar $\cadeia{*}{U}$ com um subcomplexo de $\cadeia{*}{X}$ e se pode definir o quociente entre ambos.
 	
 	\begin{definicao}
 		O complexo de cadeia singular do par topológico $(X,U)$ é o complexo de cadeia $(\cadeia{*}{X,U},\bordorel{*} )$ onde 
@@ -1116,7 +1143,7 @@
 		(Variedade fechada) Seja $M$ uma n-variedade diferencial. Diz-se que $M$ é fechada se é compacta e sem bordo.
 	\end{definicao}
 	
-	De agora em diante $M$ será uma $n$-variedade Riemanniana diferenciável fechada, cujas definições podem ser encontradas no Apêndice \ref{apendice_variedade_riemanniana}.
+	De agora em diante $M$ será uma $n$-variedade Riemanniana diferenciável fechada. Conceitos e propriedades importantes sobre variedades diferenciáveis que serão utilizados neste trabalho podem ser encontrados no Apêndice \ref{apendice_variedade_riemanniana}.
 	
 	\section{Teoria de Morse Clássica}\label{secao_morse_classica}
 	
@@ -1290,7 +1317,7 @@
 	\end{observacao}
 	
 	
-	\section{Teoria de Morse-Witten}
+	\section{Homologia de Morse-Witten}
 	\subsection{Fluxos Gradiente e Variedades de Conexão}\label{secao_fluxo_gradiente}
 	Sejam $X \in \campossuaves{M}$ um campo vetorial suave em $M$ e $p \in M$. Sabe-se que existe uma curva $\gamma: \reta\to M$ que é solução do sistema de equações diferenciais 
 	$$
@@ -1466,9 +1493,9 @@
 	\begin{exemplo}
 		(Complexo de Morse-Witten) Considere variedade 2-dimensional $M$ mergulhada em $\real{3}$ e representada pela Figura \ref{figura_fluxo_morse_smale}. Seja $F:\real{3} \to \reta$ a função definida por $F(x, y, z) = z$. Pode-se mostrar que $f=F|_{M} \in \funcoesmorsesmale{M}$,  $\pontoscriticos{f} = \{p,q,r,s\}$ e que os índices de Morse dos pontos críticos de $f$ são $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
 		
-		Pela Figura \ref{figura_variedade_estavel_instavel} pode-se notar que $\variedadeestavel{p}$ é a imagem do caminho conectando os ponto críticos $r$ e $s$ com esses pontos removidos. Com isso, tem-se que $\variedadeestavel{q} = \complementar{M}{\variedadeestavel{p}}$ e  $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$, o que está de acordo com a Proposição $\ref{proposicao_uniao_variedade_instavel_estavel}$. Examinando a Figura \ref{figura_fluxo_morse_smale} pode-se verificar que $\variedadeinstavel{p}$ é a imagem dos caminhos conectando $p$ a $q$ com o ponto $p$ removido, e que $\variedadeestavel{q} = \variedadeinstavel{p}$. Com isso,  $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap\variedadeestavel{q} = \variedadeinstavel{p}$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
+		Pela Figura \ref{figura_variedade_estavel_instavel} note  que $\variedadeestavel{p}$ é composto por duas linhas de fluxo: a linha conectando $r$ a $p$ e a linha conectando $s$ a $p$. Com isso, tem-se que $\variedadeestavel{q} = \complementar{M}{\variedadeestavel{p}}$ e  $\variedadeestavel{r} = \variedadeestavel{s} = \emptyset$. Logo, $M = \variedadeestavel{p}\dot{\cup} \variedadeestavel{q}$, o que está de acordo com a Proposição $\ref{proposicao_uniao_variedade_instavel_estavel}$. Examinando a Figura \ref{figura_fluxo_morse_smale} pode-se verificar que $\variedadeinstavel{p}$ é composto das linhas de fluxo que conectam $p$ a $q$, e que $\variedadeestavel{q} = \variedadeinstavel{p}$. Com isso,  $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap\variedadeestavel{q} = \variedadeinstavel{p}$ e $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$. 
 		
-		Na Figura \ref{figura_variedade_estavel_instavel} esta identificada a variedade instável $\variedadeinstavel{r}$ de $r$. Com isso, $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap\variedadeestavel{p}$ é o caminho que conecta os pontos $r$ a $p$ com o ponto $r$ removido e o espaço moduli $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um argumento análogo conclui-se que $\espacomoduli{s}{p} = \{x_{4} \}$.
+		Na Figura \ref{figura_variedade_estavel_instavel} está identificada a variedade instável $\variedadeinstavel{r}$ de $r$. Com isso, $\variedadeconectantepontos{r}{p} = \variedadeinstavel{r} \cap\variedadeestavel{p}$ é o caminho que conecta os pontos $r$ a $p$ com o ponto $r$ removido e o espaço moduli $\espacomoduli{r}{p} = \{ x_{3}\}$. Com um argumento análogo conclui-se que $\espacomoduli{s}{p} = \{x_{4} \}$.
 		
 		Na Figura \ref{figura_fluxo_morse_smale} as linhas de fluxo de $f$ estão representadas pelas linhas roxas, e as orientações das variendades instáveis, em linhas cinzas. Adotadas essas orentações para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$, tem-se os índices $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
 		$$
@@ -1509,7 +1536,7 @@
 	
 	O Teorema $\ref{teorema_cw_homologia}$ afirma que a homologia de um $CW$-complexo é isomorfa a sua homologia singular e também é sabido que a homologia de Morse é isomorfa a homologia singular da variedade. Foi visto na Seção $\ref{secao_morse_classica}$ que uma n-variedade fechada possui o mesmo tipo de homotopia que de um $CW$-complexo construido a partir dos pontos críticos de uma função de Morse, logo a homologia singular dessa variedade é isomorfa a homologia do $CW$-complexo associado. Com isso, pode-se afirmar que as homologias construidas via funções de Morse-Smale e funções de Morse clássicas são isomorfas.
 	
-	O cálculo da homologia singular de uma variedade com certas propriedades nem sempre é algo simples a se fazer. Contudo, é possível aplicar técnicas alternativas para a determinação de homologias isomorfas a homologia singular. Essa é importância dos resultados dos teoremas de isomorfismos anteriormente citados. Um outro ponto a ser comentado é o fato de que as homologias singulares são utilizadas para a descrição de alguns invariantes topológicos, por exemplo, a característica de Euler-Poicaré. Portanto, a demonstração desses isomorfismos garante que ainda se está diante dos mesmos invariantes topológicos.
+	O cálculo da homologia singular de uma variedade com certas propriedades nem sempre é algo simples a se fazer. Contudo, é possível aplicar técnicas alternativas para a determinação de homologias isomorfas a homologia singular. Um outro ponto a ser comentado é o fato de que o complexo de Morse é utilizado para a obtenção de alguns invariantes topológicos e outras propriedades  da variedade, por exemplo, a característica de Euler-Poicaré. Portanto, a demonstração desses isomorfismos garante que ainda se está diante dos mesmos invariantes topológicos.
 	
 	
 	\chapter{Espaços Vetoriais Simpléticos}\label{capitulo_espacos_vetoriais_simpleticos}
@@ -1527,19 +1554,19 @@
 	$$
 	F(t) = m\derivada{v(t)}{t} = \derivada{p(t)}{t},
 	$$
-	onde $v = \gamma'(t)$, $m\geq0$ constante e $p(t) = m\gamma'(t)$, este último chamado de momento linear. Suponha agora que exista uma função, chamada de energia potencial, de classe $C^{2}$ tal que $U:\real{3}\to \reta$ e $F = -\nabla U$. Tomando $q=(q_{1},q_{2}, q_{3})\in \real{3}$, então $\gamma(t)=(q_{1}(t),q_{2}(t), q_{3}(t)) = q(t)$ e pode-se escrever $F(q(t)) =m \ddot{q}(t)= -\nabla U(q(t))$. Tem-se um sistema de 3 equações de segunda ordem, contudo, realizando uma mudança de variáveis, pode-se reduzir o problema de segunda ordem para um problema de primeira ordem, do seguinte modo
+	onde $v = \gamma'(t)$, $m\geq0$ é a massa da partículo e $p(t) = m\gamma'(t)$ é o seu momento linear. Suponha agora que $F = -\nabla U$, onde a energia potencial $U:\real{3}\to \reta$ é de classe $C^{2}$. Tomando $q=(q_{1},q_{2}, q_{3})\in \real{3}$, pode-se escrever $F(q(t)) =m \ddot{q}(t)= -\nabla U(q(t))$. Tem-se um sistema de 3 equações de segunda ordem, contudo, realizando uma mudança de variáveis, pode-se reduzir o problema de segunda ordem para um problema de primeira ordem, do seguinte modo
 	$$
 	\dot{q} = \frac{p}{m} \;\; e \;\;\dot{p} = -\nabla U(q).
 	$$
 	
-	O conjunto $Q$ das posições $q$ do sistema anterior é chamado espaço de configurações e o conjunto $P=\{(q,p): q,p\in \real{3}\}$ dos pares posição e momento linear é chamado de espaço de fases. No exemplo se tem $Q=\real{3}$ e $P = \real{6}$, porém ambos podem ser outras variedades diferenciáveis.
+	O conjunto $Q$ das possíveis posições $q$ da partícula do sistema anterior é chamado espaço de configurações e o conjunto $P=\{(q,p): q,p\in \real{3}\}$ dos pares posição e momento linear é chamado de espaço de fases. No exemplo, $Q=\real{3}$ e $P = \real{6}$, porém ambos podem ser outras variedades diferenciáveis.
 	
 	Uma função Hamiltoniana é uma função $H:P \to \reta$ de classe $C^{1}$ tal que 
 	$$
 	\dot{q} = \derivadaparcial{H}{p} \;\; e \;\; \dot{p} = -\derivadaparcial{H}{q}.
 	$$
 	
-	O sistema de equações acima é chamado de equações de Hamilton. Sabe-se que a energia total de um sistema físico conservativo é a soma das energias pontecial $E_{p} = U$ e cinética $E_{c} = p^{2}/2m$ (veja $\cite{nussenzveig}$), onde $p^{2} = \produtointerno{p}{p}$. Defina a função Hamiltoniana associada a energia total do sistema por
+	O sistema de equações acima é chamado sistema equações de Hamilton. Sabe-se que a energia total de um sistema físico conservativo é a soma das energias pontecial $E_{p} = U$ e cinética $E_{c} = p^{2}/2m$ (veja $\cite{nussenzveig}$), onde $p^{2} = \produtointerno{p}{p}$. Defina a função Hamiltoniana associada a energia total do sistema por
 	$$
 	H(q,p) = E_{c} +E_{p} = \frac{p^{2}}{2m}+U(q). 
 	$$
@@ -1550,16 +1577,18 @@
 	
 	\section{Geometrização}
 	
-	A geometrização de problemas em física permite estudar os resultados obtidos sobre outro ponto de vista, e com isso, generalizar e analisar novos aspectos. Será feito o mesmo com a descrição Hamiltoniana, de modo que serão definidos objetos utilizados adiante na análise da topologia de uma categoria específica de variedades diferenciáveis.
+	A geometrização de problemas em física permite estudar os resultados obtidos sobre outro ponto de vista, e com isso, generalizar e analisar novos aspectos. A Hamiltoniana e as equações de Hamilton serão abordadas em um contexto geométrico, o que permitirá a apresentação dos sistemas hamiltonianos em variedades diferenciáveis.
 	
-	Sejam $Q= \real{n}$ e $P=\real{2n}$ os espaços de configurações e fase, respectivamente. Por simplicidade será adotada a notação $(q, p ) = (q_{1}, \dots ,q_{n}, p_{1}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  tem-se que $B(q_{0}, p_{0})=\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}= \{\partial_{q}, \partial_{p}\} $ é uma base do espaço tangente $T_{(q_{0},p_{0})} P $, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
-	
-	Seja $H:P \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$. O gradiente Hamiltoniano é dado por
+	Sejam $Q= \real{n}$ e $P=\real{2n}$ os espaços de configurações e fase, respectivamente. Com coordenadas $(q, p ) = (q_{1}, \dots ,q_{n}, p_{1}, \dots ,p_{n}) \in \real{2n}$. Desse modo,  
 	$$
-	\nabla H =\sum_{j=1}^{n} \bigparenteses{\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} }= \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p}.
-	$$
+	B(q_{0}, p_{0})=\{\partial_{q_{1}}, \dots, \partial_{q_{n}}, \partial_{p_{1}}, \dots, \partial_{p_{n}}\}= \{\partial_{q}, \partial_{p}\} $$ 
+	é uma base do espaço tangente $T_{(q_{0},p_{0})} P $, onde $\partial_{q_{j}} = \partial/\partial_{q_{j}}$ e $\partial_{p_{j}} = \partial/\partial_{p_{j}}$ avaliados no ponto $(q_{0}, p_{0})$. 
 	
-	Define-se o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ por 
+	Seja $H:P \to \reta$ uma função Hamiltoniana de classe $C^{\infty}$. Dado o gradiente Hamiltoniano
+	$$
+	\nabla H =\sum_{j=1}^{n} \bigparenteses{\derivadaparcial{H}{q_{j}}\derivadaparcial{}{q_{j}} + \derivadaparcial{H}{p_{j}}\derivadaparcial{}{p_{j}} }= \derivadaparcial{H}{q}\derivadaparcialabrev{q} + \derivadaparcial{H}{p}\derivadaparcialabrev{p},
+	$$
+	o campo Hamiltoniano $\campohamiltonianoabrev \in \campossuaves{\real{2n}}$ é definido por 
 	$$
 	\campohamiltonianoabrev = -\estruturacomplexa \nabla H = \sum_{j=1}^{n}\bigparenteses{\derivadaparcial{H}{p_{j}}\derivadaparcial{}{q_{j}} - \derivadaparcial{H}{q_{j}}\derivadaparcial{}{p_{j}} } = \derivadaparcial{H}{p}\derivadaparcialabrev{q} - \derivadaparcial{H}{q}\derivadaparcialabrev{p}, 
 	$$
@@ -1576,7 +1605,7 @@
 	$$
 	e $Id$ a matriz identidade $n\times n$. Com isso, $\estruturacomplexa \derivadaparcialabrev{q} = \derivadaparcialabrev{p}$ e $\estruturacomplexa \derivadaparcialabrev{p} = -\derivadaparcialabrev{q}$.
 	
-	Veja que o campo Hamiltoniano representa um campo conservativo. Seja $\psi:\reta \to P$ a curva integral do campo $\campohamiltonianoabrev$. Então as equações de Hamilton podem ser reescritas como 
+	Seja $\psi:\reta \to P$ a curva integral do campo $\campohamiltonianoabrev$. Então as equações de Hamilton podem ser reescritas como 
 	$$
 	\begin{aligned}
 	\dot{\psi}(t) &= \campohamiltoniano{\psi(t)}
@@ -1604,9 +1633,9 @@
 	$$
 	\begin{aligned}
 	\derivada{}{t}H(\psi(t)) 
-	&= \produtointerno{\nabla H}{\dot{\psi}(t)} 
+	&= \produtointerno{\nabla H(\psi(t))}{\dot{\psi}(t)} 
 	\\
-	&= \produtointerno{\nabla H}{\campohamiltoniano{\psi(t)}} 
+	&= \produtointerno{\nabla H(\psi(t))}{\campohamiltoniano{\psi(t)}} 
 	\\
 	&= 
 	\produtointerno{\nabla H}{-\estruturacomplexa \nabla H(t)} 
@@ -1642,9 +1671,9 @@
 	
 	Define-se um espaço de fase $P$ e em cada ponto do espaço tangente de $P$ tem-se uma forma bilinear anti-simétrica e não-degenerada $\formaSimpleticaabrev$, chamada forma simplética. Com isso, o par $(T_{(q,p)}P, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético, onde $dim(T_{(q,p)}P) = 2n$. A seção seguinte é dedicada ao estudo de espaços vetoriais simpléticos reais.
 	
-	\section{Espaços Vetoriais Simpléticos}
+	\section{Espaços Vetoriais Simpléticos}\label{secao_espacos_vetoriais_simpleticos}
 	\begin{definicao}
-		(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então é dito que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
+		(Espaço vetorial simplético) Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega$ é não-degenerada, ou seja, $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. O par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
 	\end{definicao}
 	
 	\begin{definicao}
@@ -1656,31 +1685,29 @@
 	
 	Sejam $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ dois espaços vetoriais simpléticos e uma aplicação linear $\varphi: V_{1}\to V_{2}$. O pullback de $\omega_{2}$ por $\varphi$ é a 2-forma $\varphi^{*}\omega_{2}:V_{1} \times V_{1} \to \reta$ definida por $\varphi^{*}\omega_{2}(v,u) = \omega_{2}(\varphi(v), \varphi(u))$.
 	
-	\begin{convensao}\label{convensao_base_simpletica}
-		Quando não houver ambiguidades, a base simplética  $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$  de $(V, \omega)$ será denotada por  $\{ e ,f\}$, e um dado $v =\sum_{j=1}^{n}( v_{j}e_{j} +v_{n+j}f_{j}) \in V$ por $v=v_{(1)}e+v_{(2)}f$, onde $v_{(1)}=(v_{1}, \dots, v_{n})$ e $v_{(2)}=(v_{n+1}, \dots, v_{2n})$.
-	\end{convensao}
-	
-	\begin{observacao}\label{observacao_convensao_base_simpletica}
-		Dados $v=v_{(1)}e+v_{(2)}f$ e $u=u_{(1)}e+u_{(2)}f$ em $V$, tem-se que 
-		$$
+	Será provada mais adiante a existência da base Simplética. \label{convensao_base_simpletica} Quando não houver ambiguidades, a base simplética  $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$  de $(V, \omega)$ será denotada por  $\{ e ,f\}$, e um dado $v =\sum_{j=1}^{n}( v_{j}e_{j} +v_{n+j}f_{j}) \in V$ por $v=v_{(1)}e+v_{(2)}f$, onde $v_{(1)}=(v_{1}, \dots, v_{n})$ e $v_{(2)}=(v_{n+1}, \dots, v_{2n})$.
+
+
+	Dados $v=v_{(1)}e+v_{(2)}f$ e $u=u_{(1)}e+u_{(2)}f$ em $V$, tem-se que 
+	$$
 		\formaSimpletica{v}{u} = \produtointerno{v_{(1)}}{u_{(2)}}-\produtointerno{v_{(2)}}{u_{(1)}}, 
-		$$
-		onde $\produtointerno{v_{(1)}}{u_{(2)}}=\sum_{j=1}^{n}v_{j}u_{n+j}$. O mesmo vale para $\produtointerno{v_{(2)}}{u_{(1)}}$.
-	\end{observacao}
+	$$
+	onde $\produtointerno{v_{(1)}}{u_{(2)}}=\sum_{j=1}^{n}v_{j}u_{n+j}$ e  $\produtointerno{v_{(2)}}{u_{(1)}}=\sum_{j=1}^{n}v_{n+j}u_{j}$.
 	
 	\begin{definicao}
 		(Simplectomorfismo) Dois espaços vetoriais simpléticos $(V_{1}, \omega_{1}), (V_{2}, \omega_{2})$ são ditos simplectomorfos se existe um isomorfismo $\varphi:V\to W$ que preserva a forma simplética, isto é, $\varphi^{*}\omega_{2} = \omega_{1}$.
 	\end{definicao}
 	\begin{exemplo}\label{exemplo_espaco_simpletico_real}
-		Seja $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $w=dx \wedge dy$. Então $\omega(e_{x}, e_{y}) = (dx \wedge dy)(e_{x}, e_{y}) = dx\otimes dy(e_{x}, e_{y})-dy\otimes dx(e_{x}, e_{y}) =dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1$. Por outro lado, $\omega(e_{y}, e_{x}) =dx(e_{y}) dy(e_{x}) - dx(e_{x}) dy(e_{y}) =-1 =-\omega(e_{x}, e_{y})$, logo é anti-simetrica. Além disso, $\omega(e_{x}, e_{x}) = \omega(e_{y}, e_{y}) = 0$. Fixando $v \in V$ e para qualquer $u \in V$ tem-se que $\omega(v, u) = \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y}) = v_{x}u_{y}\omega(e_{x}, e_{y}) +v_{y}u_{x}\omega(e_{y}, e_{x}) = v_{x}u_{y} -v_{y}u_{x} = 0$ se, e somente se, $v_{x}=v_{y}=0$, logo $\omega$ é não-degenerada. Para ver isso basta tomar $u_{x} = 1$ e $u_{y} = 0$, isso implica que $v_{y} = 0$. Fazendo $u_{x} = 0$ e $u_{y} = 1$ se tem $v_{x} = 0$, logo $v=0$. Seja $\varphi:V \to V$ tal que $\varphi(v) = -v$. É imediato que $\varphi$ é um isomorfismo. Então $\varphi^{*}\omega(v, u) = \omega(\varphi v, \varphi u)=\omega(-v, -u)=\omega(v, u)$, logo $\varphi^{*}\omega = \omega$ e $\varphi$ é um simplectomorfismo.
+		Seja $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $w=dx \wedge dy$. Então $\omega(e_{x}, e_{y}) = (dx \wedge dy)(e_{x}, e_{y}) = dx\otimes dy(e_{x}, e_{y})-dy\otimes dx(e_{x}, e_{y}) =dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1$. Por outro lado, $\omega(e_{y}, e_{x}) =dx(e_{y}) dy(e_{x}) - dx(e_{x}) dy(e_{y}) =-1 =-\omega(e_{x}, e_{y})$, logo é anti-simétrica. Além disso, $\omega(e_{x}, e_{x}) = \omega(e_{y}, e_{y}) = 0$. Fixando $v \in V$ e para qualquer $u \in V$ tem-se que $\omega(v, u) = \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y}) = v_{x}u_{y}\omega(e_{x}, e_{y}) +v_{y}u_{x}\omega(e_{y}, e_{x}) = v_{x}u_{y} -v_{y}u_{x} = 0$ se, e somente se, $v_{x}=v_{y}=0$, logo $\omega$ é não-degenerada. Para ver isso basta tomar $u_{x} = 1$ e $u_{y} = 0$, isso implica que $v_{y} = 0$. Fazendo $u_{x} = 0$ e $u_{y} = 1$, $v_{x} = 0$, logo $v=0$. Dado $\varphi:V \to V$ tal que $\varphi(v) = -v$, então $\varphi^{*}\omega(v, u) = \omega(\varphi v, \varphi u)=\omega(-v, -u)=\omega(v, u)$. Portanto $\varphi^{*}\omega = \omega$ e $\varphi$ é um simplectomorfismo.
 	\end{exemplo}
 	
 	\begin{definicao}\label{definicao_subespaco_simpletico_ortogonais}
-		(Espaços $\omega$-ortogonais) Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial simplético. Então o complemento $\omega$-ortogonal de $W$ é o subespaço vetorial simplético
+		(Espaços $\omega$-ortogonais) Seja $(V, \omega)$ um 2n-espaço vetorial simplético e $W\subseteq V$ um subespaço vetorial. Então o complemento $\omega$-ortogonal de $W$ é o subespaço
 		$$
 		W^{\omega} = \{v\in V: \omega(v,u) = 0,\;\forall u\in W \}.
 		$$
-		Além disso, $W$ pode ser classificado de acordo com as seguintes características
+		O subespaço $W$ é chamado
+		
 		\begin{enumerate}
 			\item \text{Simplético}, se $W\cap \espacoSimpleticoOrtogonal{W} = \{0\}$;
 			
@@ -1692,41 +1719,40 @@
 		\end{enumerate}
 	\end{definicao}
 	
-	\begin{lema}\label{lema_subespaco_simpletico_ortogonal}
-		(Caracterização de subespaço simplético)
+	\begin{proposicao}\label{proposicao_subespaco_simpletico_ortogonal}
+		(Caracterização de subespaços)
 		\begin{enumerate}
-			\item Se $W$ for simplético, então $(W, \omega|_{W \times W})$ é um espaço vetorial simplético.
+			\item $W$ é simplético se, e somente se, então $(W, \omega|_{W \times W})$ é um espaço vetorial simplético.
 			
-			\item Se $W$ for isotrópico, então $\omega|_{W\times W} = 0$.
+			\item $W$ é isotrópico se, e somente se, então $\omega|_{W\times W} = 0$.
 			
-			\item Se $W$ for lagrangiano, então $W$ é isotrópico e máximal, isto é, $W$ não está contido propriamente em nenhum outro subespaço isotrópico. 
+			\item $W$ é lagrangiano se, e somente se, então $W$ é isotrópico e máximal, isto é, $W$ não está contido propriamente em nenhum outro subespaço isotrópico. 
 		\end{enumerate}
-	\end{lema}
+	\end{proposicao}
 	\begin{prova}
 		\begin{enumerate}
-			\item Supondo que $\omega|_{W \times W}$ seja degenerada, então existe $0\neq v \in W$ tal que $\omega(v, u ) = 0$ para todo $u \in W$, o que implica que $u \in W\cap W^{\omega}$, contradizendo a hipótese $W\cap W^{\omega} =0$. Logo $\omega|_{W \times W} $ é não-degenerada e $(W, \omega|_{W \times W})$ é um espaço vetorial simplético.
+			\item Supondo que $\omega|_{W \times W}$ seja degenerada, então existe $0\neq v \in W$ tal que $\omega(v, u ) = 0$ para todo $u \in W$, o que implica que $v \in W\cap W^{\omega}$, contradizendo a hipótese $W\cap W^{\omega} =0$. Logo $\omega|_{W \times W} $ é não-degenerada e $(W, \omega|_{W \times W})$ é um espaço vetorial simplético. A recíproca é imediata.
 			
-			\item Dado $0\neq v \in W $ , então $\omega(v,u) = 0$ para todo $u \in W\cap W^{\omega} = W$. Portanto $\omega|_{W\times W}: W\times W \to \reta$ é a aplicação nula.
+			\item Dado $0\neq v \in W $ , então $\omega(v,u) = 0$ para todo $u \in W\cap W^{\omega} = W$. Portanto $\omega|_{W\times W}: W\times W \to \reta$ é a aplicação nula. A recíproca é imediata.
 			
-			\item  Como $W=W^{\omega}$, então $W\subseteq W^{\omega}$, logo $W$ é isotrópico. Seja $U \subseteq V$ um subespaço isotrópico tal que $W \subseteq U$. Então, pelo item anterior, $\omega|_{W \times W} = 0$, logo dado $v \in W \cap U$ e para todo $u \in U$, tem-se $\omega(v, u) = 0$, implicando $u \in W^{\omega}$. Portanto, $U = W^{\omega} = W$.
+			\item  Como $W=W^{\omega}$, então $W\subseteq W^{\omega}$, logo $W$ é isotrópico. Seja $U \subseteq V$ um subespaço isotrópico tal que $W \subseteq U$. Então, pelo item anterior, $\omega|_{W \times W} = 0$, logo dado $v \in W \cap U$ e para todo $u \in U$, tem-se $\omega(v, u) = 0$, implicando $u \in W^{\omega}$. Portanto, $U = W^{\omega} = W$. A recíproca é imediata.
 		\end{enumerate}
 	\end{prova}
 	
 	Não há garantias de que sempre se tenha $V = W + \espacoSimpleticoOrtogonal{W}$. Contudo, a proposição a seguir dá uma relação entre as dimensões desses dois espaços vetoriais.
 	
-	\begin{lema}\label{lema_isomorfismo_forma_simpletica}
+	\begin{proposicao}\label{proposicao_isomorfismo_forma_simpletica}
 		Seja $(V,\omega)$ um 2n-espaço vetorial simplético. A aplicação $\omega^{*}:V\to V^{*}$ definida por $\omega^{*}(v)(u) = \omega(v,u)$ é um isomorfismo.
-	\end{lema}
+	\end{proposicao}
 	\begin{prova}
-		Dado $v \in V$, tem-se pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $w^{*}$ é injetora pois, suponha 
-		que exista $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$. Com isso, tem-se $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Portanto $\omega^{*}$ é injetora. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$, tem-se pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ deve-se ter $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
+		Dado $v \in V$, tem-se pela bilinearidade de $\omega$ que $\omega^{*}(v)$ é linear, logo $\omega^{*}(v) \in V^{*}$. Além disso, $\omega^{*}$ é injetora pois, se $v\neq 0 \in V$ tal que $\omega^{*}(v) = 0$, então $0= \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in V$, o que é contradição, pois $\omega$ é não-degenerada, logo $v =0$ e $\omega^{*}(0) = 0$. Seja $\colecaofinita{e}{2n}$ uma base de $V$. Denotando $b^{*}_{j}$ por $\omega^{*}(e_{j}) \in V^{*}$, tem-se pela injetividade que $b^{*}_{j} \neq b^{*}_{i}$ para todos $1\leq j,i\leq 2n$. Suponha que $\colecaofinita{b^{*}}{2n}$ seja linearmente dependente. Com isso, existem $\colecaofinita{\lambda}{2n} \subset \reta$ nem todos nulos tais que $0=\sum_{j=1}^{2n}\lambda_{j}b^{*}_{j} = \sum_{j=1}^{2n}\lambda_{j}\omega^{*}(e_{j}) = \omega^{*}(\sum_{j=1}^{2n}\lambda_{j}e_{j})$. Pela injetividade de $\omega^{*}$ deve-se ter $\sum_{j=1}^{2n}\lambda_{j}e_{j} = 0$, contradizendo a hipótese de que $\colecaofinita{e}{2n}$ é uma base de $V$. Portanto, $\colecaofinita{b^{*}}{2n}$ é uma base de $V^{*}$ e $\omega^{*}$ é sobrejetor, logo é um isomorfismo.
 	\end{prova}
 	
 	\begin{proposicao}\label{proposicao_dimensao_subespaco_simpletico}
 		Sejam $(V,\omega)$ um 2-espaço vetorial simplético e $W \subseteq V$ um subespaço vetorial. Então $dim(V) = dim(W) + dim(\espacoSimpleticoOrtogonal{W})$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $\omega^{*}: V \to V^{*}$ tal que $\omega^{*}(v)(u) = \omega(v,u)$. Pelo Lema $\ref{lema_isomorfismo_forma_simpletica}$ $\omega^{*}$ é um isomorfismo. Seja $W^{\circ}=\{f\in W^{*}: f(v) = 0,\; \forall v\in W \}$ o anulador de $W$. Tomando $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ tem-se $f(u) = \omega^{*}(v)(u)=\omega(v,u)$, para algum $v \in \espacoSimpleticoOrtogonal{W}$. Se $u\in W$, então $f(u) = 0$. Portanto $f \in W^{\circ}$ e  $\omega^{*}(\espacoSimpleticoOrtogonal{W})\subseteq W^{\circ}$. Por outro lado, seja $f \in W^{\circ}$. Como $\omega^{*}$ é um isomorfismo, então existe $v \in v$ tal que $f = \omega^{*}(v)$, logo $0=f(u) = \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in W$, o que implica que $v \in \espacoSimpleticoOrtogonal{W}$. Portanto, $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ e $W^{\circ} \subseteq \omega^{*}(\espacoSimpleticoOrtogonal{W})$. Logo $W^{\circ} =\omega^{*}(\espacoSimpleticoOrtogonal{W})$.
+		Seja $\omega^{*}: V \to V^{*}$ tal que $\omega^{*}(v)(u) = \omega(v,u)$. Pela Proposição $\ref{proposicao_isomorfismo_forma_simpletica}$ $\omega^{*}$ é um isomorfismo. Seja $W^{\circ}=\{f\in W^{*}: f(v) = 0,\; \forall v\in W \}$ o anulador de $W$. Tomando $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ tem-se $f(u) = \omega^{*}(v)(u)=\omega(v,u)$, para algum $v \in \espacoSimpleticoOrtogonal{W}$. Se $u\in W$, então $f(u) = 0$. Portanto $f \in W^{\circ}$ e  $\omega^{*}(\espacoSimpleticoOrtogonal{W})\subseteq W^{\circ}$. Por outro lado, seja $f \in W^{\circ}$. Como $\omega^{*}$ é um isomorfismo, então existe $v \in v$ tal que $f = \omega^{*}(v)$, logo $0=f(u) = \omega^{*}(v)(u) = \omega(v,u)$ para todo $u \in W$, o que implica que $v \in \espacoSimpleticoOrtogonal{W}$. Portanto, $f \in \omega^{*}(\espacoSimpleticoOrtogonal{W})$ e $W^{\circ} \subseteq \omega^{*}(\espacoSimpleticoOrtogonal{W})$. Logo $W^{\circ} =\omega^{*}(\espacoSimpleticoOrtogonal{W})$.
 		Como $\omega^{*}$ é um isomorfismo, então $dim(\espacoSimpleticoOrtogonal{W}) = dim(\omega^{*}(\espacoSimpleticoOrtogonal{W}))$. Tem-se que 
 		$$
 		dim(V) = dim(W)+dim(W^{\circ}) = dim(W)+dim(\omega^{*}(\espacoSimpleticoOrtogonal{W})) = dim(W)+dim(\espacoSimpleticoOrtogonal{W}).
@@ -1739,6 +1765,11 @@
 	\begin{prova}
 		Sejam $(V, \omega)$ um 2n-espaço vetorial simplético e $e_{1} \neq 0\in V$. Como $\omega$ é não-degenerada, então existe $f_{1} \in V$ tal que $\omega(e_{1}, f_{1}) = 1$. Definindo $V_{1} = span\{e_{1}, f_{1}\}$, pode-se afirmar que $V_{1}$ é simplético, ou seja, $V_{1}\cap V_{1}^{\omega} = \{0\}$. Com isso e com a Proposição $\ref{proposicao_dimensao_subespaco_simpletico}$, pode-se afirmar que $V = V_{1}\oplus V_{1}^{\omega}$. Efetuando o mesmo procedimento n vezes tem-se $V = V_{1}\oplus \dots \oplus V_{n}$, onde $V_{i}$ é gerado por $e_{i}$ e $\omega(e_{i}, f_{i}) = 1$. Por construção, tem-se $\omega(e_{i}, e_{j})=\omega(f_{i}, f_{j}) =0$ e $\omega(e_{i}, f_{j}) = \delta_{ij}$. Portanto, $\{e_{1}, \dots e_{n}, f_{1}, \dots f_{n}\}$ é uma base simplética.
 	\end{prova}
+	
+	\begin{corolario}
+		
+		Todo espaço vetorial simplético é simplectomorfo a $(\real{2n}, \omega_{0})$ para algum $n$, onde $\formaSimpleticaPadrao{u}{v}=-U^t\estruturacomplexa V$ e $U$, $V$ são as matrizes de $u$ e $v$ na base canônica, respectivamente.
+	\end{corolario}
 	
 	\begin{observacao}\label{observacao_existencia_base_simpletica}
 		A existência de uma base simplética garante a existência de uma base em que a forma simpléctica $\omega$ poderá ser representada pela matriz
@@ -1849,7 +1880,7 @@
 	\end{definicao}
 	
 	\begin{exemplo}
-		(Rotações em $\real{2}$) Foi visto no Exemplo $\ref{exemplo_espaco_simpletico_real}$ que $(\real{2}, \omega)$ é um espaço vetorial simpletico, onde $\omega = dx\wedge dy$ e a base canônica $\{e_{x}, e_{y}\}$ é uma base simplética. Seja $R(\theta):\real{2}\to \real{2}$ uma rotação de um ângulo $\theta$, isto é, dado $v= v_{x}e_{x}+v_{y}e_{y} \in V$, tem-se $R(\theta)v = (v_{x}\cos(\theta)-v_{y}\sin(\theta))e_{x}+(v_{x}\sin(\theta)+v_{y}\cos(\theta))e_{y} = v'_{x}e_{x}+v'_{y}e_{y}$. Então
+		(Rotações em $\real{2}$) Foi visto no Exemplo $\ref{exemplo_espaco_simpletico_real}$ que $(\real{2}, \omega)$ é um espaço vetorial simplético, onde $\omega = dx\wedge dy$ e a base canônica $\{e_{x}, e_{y}\}$ é uma base simplética. Seja $R(\theta):\real{2}\to \real{2}$ uma rotação de um ângulo $\theta$, isto é, dado $v= v_{x}e_{x}+v_{y}e_{y} \in V$, tem-se $R(\theta)v = (v_{x}\cos(\theta)-v_{y}\sin(\theta))e_{x}+(v_{x}\sin(\theta)+v_{y}\cos(\theta))e_{y} = v'_{x}e_{x}+v'_{y}e_{y}$. Então
 		$$
 		\begin{aligned}
 			\formaSimpletica{R(\theta)u}{R(\theta)v}&=
@@ -1878,7 +1909,7 @@
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_estrutura_complexa}
-		Será fixada notação $\estruturacomplexa \in \estruturascomplexaspadrao$ como sendo o caso em que
+		Será fixada notação
 		$$
 		\estruturacomplexa=
 		\left(
@@ -1897,30 +1928,25 @@
 		Ao se tratar $\estruturascomplexaspadrao$ como espaço topológico será adotada sua topologia induzida pela topologia de $\generalgroupreal{V}$ gerada pela norma da convergência uniforme (ou norma do sup).
 	\end{observacao}
 	
-	\begin{definicao}
-		Seja $V$ um n-espaço vetorial real munido de um produto interno positivo-definido, então $\produtosinternos{V}$ é o conjunto de todos os produtos internos positivos-definidos em $V$.
-	\end{definicao}
 	
-	\begin{observacao}
-		Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$. Com isso, pode-se muni-lo com a toplogia induzida por $\mathcal{L}(V \times V; \real{})$.
-	\end{observacao} 
+	Seja $V$ um n-espaço vetorial real munido de um produto interno positivo-definido. O conjunto dos produtos internos positivos-definidos em $V$ é denotado por $\produtosinternos{V}$.
+	
+	Seja $\mathcal{L}(V \times V; \real{})$ o conjunto das aplicações bilineares de $V\times V$ em $\reta$. Por definição $\produtosinternos{V} \subseteq \mathcal{L}(V \times V; \real{})$. Com isso, pode-se munir $\produtosinternos{V}$ com a topologia induzida por $\mathcal{L}(V \times V; \real{})$.
 	
 	\begin{lema}\label{lema_contratibilidade_produtos_internos}
 		Seja $V$ um n-espaço vetorial com produto interno positivo-definido. Então $\produtosinternos{V}$ é contrátil.
 	\end{lema}
 	\begin{prova}
-		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ tem-se $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, e $d$ é uma reta, então $\produtosinternos{V}$ é convexo, logo é contrátil.
+		Sejam $d_{1},d_{2} \in \produtosinternos{V}$ e $d:\intervalo\to \produtosinternos{V}$ tal que $d(s) = (1-s)d_{1}+ s d_{2}$. Afirmo que $d(s)$ é um produto interno. De fato, é bilinear e simétrico, pois é uma combinação linear de aplicações bilineares e simétricas. Resta mostrar que $d(s)$ é positivo-definido. Supondo que $v =0$ tem-se $d(s)(v,v)=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  =0$, pois $d_{1}, d_{2}$ são positivos-definidos. Suponha que $v\neq 0$ e $d(s)(v,v) = 0$. Então $0=(1-s)d_{1}(v,v)+ s d_{2}(v,v)  $ o que é um absurdo pois $(1-s)d_{1}(v,v)>0 $ e $sd_{2}(v,v)> 0$. Logo $d(s)$ é positiva-definida para todo $s \in \intervalo$. Como $d_{1}, d_{2} \in \produtosinternos{V}$ são arbitrários, então $\produtosinternos{V}$ é convexo, logo é contrátil.
 	\end{prova}
 	
-	Foi visto que, dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ $\omega$-compatível, tem-se que $\formaSimpletica{v}{Ju} = g_{J}(v,u)$ é um produto interno em $V$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g_{J}(u,v)$ esta bem definida e é injetora.
-	
-	A seguinte proposição afirma que vale a recíproca do resultado anterior.
+ 	Dados $(V, \omega)$ n-espaço vetorial simplético e uma estrutura complexa $J$ $\omega$-compatível, tem-se que $\formaSimpletica{v}{Ju} = g_{J}(v,u)$ é um produto interno em $V$. Com isso, a aplicação $G:\estruturascomplexaspadrao \to \produtosinternos{V}$ onde $G(J)(u,v) = \omega(u,Jv) = g_{J}(u,v)$ está bem definida e é injetora. A seguinte proposição afirma que vale a recíproca desse resultado.
 	
 	\begin{proposicao}
 		Seja $(V, \omega)$ uma 2n-espaço vetorial simplético. Então cada produto interno $g \in \produtosinternos{V}$ define uma estrutura complexa $\omega$-compatível.
 	\end{proposicao}
 	\begin{prova}
-		Seja $g \in \produtosinternos{V}$. Sabe-se que $\hat{g}:V \to V^{*}$, definido por $\hat{g}(v)(u)=g(v,u)$, é um isomorfismo. Além disso, existe um único automorfismo $A:V\to V$ tal que $\formaSimpletica{v}{u} = g(Av,u)$ para todo $v,u \in V$ dado por $A = \hat{g}^{-1}\omega
+		Seja $g \in \produtosinternos{V}$. Sabe-se que $\hat{g}:V \to V^{*}$, definido por $\hat{g}(v)(u)=g(v,u)$, é um isomorfismo. Segue que, existe um único automorfismo $A:V\to V$ tal que $\formaSimpletica{v}{u} = g(Av,u)$ para todo $v,u \in V$ dado por $A = \hat{g}^{-1}\omega
 		^{*}$. Note que $g(Av,u) = \formaSimpletica{v}{u} = -\formaSimpletica{u}{v} = -g(Au,v) = g(-A^{t}v,u)$, portanto $A$ é anti-simétrico. Pelo Corolário $\ref{corolario_decomposicao_matriz_antisimetrica}$, pode-se escrever $A=PJ$, onde $P = (-A^{2})^{1/2}$ é positiva-definida, $J$ é ortogonal tal que $J^{2} = -Id$ e $J^{t} = J^{-1}$. Com isso, tem-se $\formaSimpletica{v}{Ju} = g(Av, Ju) = g(J^{t}Av, u)  = g(J^{-1}Av, u) = g(Pv, u) = g_{P}(v,u)$, o que é um produto interno positivo-definido pois $P$ é positivo-definido. Portanto, $J$ é $\omega$-compatível. Assim, tem-se a aplicação injetora $F: \produtosinternos{V} \to \estruturascomplexas{V}{\omega}$ definida por $F(g) = J$.
 	\end{prova}
 	
@@ -1932,9 +1958,9 @@
 	\end{prova}
 	
 	\chapter{O Grupo Simplético $\gruposimpletico{2n}$}\label{capitulo_grupo_simpletico}
-	Neste capítulo será definido o grupo simplético e será apresentado um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov. Será demonstrado que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
+	Neste capítulo o grupo simplético será introduzido e será apresentado um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção dos índices de Maslov no Capítulo \ref{capitulo_indice_maslov}. Será demonstrado que o grupo fundamental de $Sp(2n)$ é isomorfo aos inteiros e tal isomorfismo será dado pelo índice de Maslov.
 	
-	Daqui em diante será denotado por $\gruposimpletico{2n}$ o grupo simplético real $\gruposimpletico{\real{2n}}$.
+	O grupo simplético $\gruposimpletico{\real{2n}}$ será denotado por $\gruposimpletico{2n}$.
 	
 	\begin{proposicao}\label{proposicao_grupo_simpletico_estrutura_grupo}
 		$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
@@ -1946,20 +1972,18 @@
 			
 			\item \textit{(Associatividade)} $\gruposimpletico{2n}$ é associativo pois a operação de multiplicação de matrizes reais é associativa.
 			
-			\item \textit{(Elemento neutro)} o elementro neutro de $\gruposimpletico{2n}$ é a identidade.
+			\item \textit{(Elemento neutro)} O elementro neutro de $\gruposimpletico{2n}$ é a identidade.
 			
 			\item \textit{(Elemento inverso)} Se $A \in \gruposimpletico{2n}$, então $\omega(u, v)=\omega(AA^{-1}u, AA^{-1}v) = \omega(A^{-1}u, A^{-1}v)$, logo $A^{-1} \in \gruposimpletico{2n}$. 
 		\end{enumerate}
 		Portanto $\gruposimpletico{2n}$ é um grupo.
 	\end{prova}
 	
-	\begin{observacao}
-		Ao se tratar $\gruposimpletico{2n}$ como espaço topológico será adotado que sua topologia é induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
-	\end{observacao}
+	A topologia considerada em $\gruposimpletico{2n}$ é a induzida pela topologia de $\generalgroupreal{2n}$ gerada pela norma da convergência uniforme.
 	
-	Veja a seguinte caracterização do grupo simplético e sua relação com a estrutura complexa:
+	O seguinte resultado é uma caracterização do grupo simplético e sua relação com a estrutura complexa:
 	
-	\begin{lema}\label{lema_caracterizacao_Sp2n}
+	\begin{proposicao}\label{proposicao_caracterizacao_Sp2n}
 		(Caracterização de $Sp(2n)$) Se $(V, \omega)$ é um 2n-espaço vetorial simplético e $J \in \estruturascomplexaspadrao$ uma estrutura complexa $\omega$-compatível, então $A\in Sp(2n)$ se, e somente se, $A^{t}JA = J$. Além disso, pode-se escrever 
 		$$
 		A=
@@ -1972,7 +1996,7 @@
 		\right)
 		$$
 		onde $B^{t}D, C^{t}E, BC^{t}, DE^{t} $ são matrizes simétricas e $B^{t}E - D^{t}C = Id$ e $BE^{t} - CD^{t} = Id$.
-	\end{lema}
+	\end{proposicao}
 	\begin{prova}
 		Suponha $A \in Sp(2n)$, então:
 		$$
@@ -2052,13 +2076,13 @@
 	||F(A) - F(X)|| = max \{|B_{ij} - Y_{ij}|, |C_{ij} - Z_{ij}| \}< \epsilon/2 < \epsilon.
 	$$
 	
-	Sejam $\matrizunitaria{n} = \{A\in \generalgroupcomplexo{n}: AA^{*}=Id \}$ o subgrupo das matrizes unitárias e $\matrizortogonal{n} = \{A \in \generalgroupreal{n}: AA^{t}  =Id \}$ o subgrupo das matrizes ortogonais, então tem-se o seguinte lema:
+	Sejam $\matrizunitaria{n} = \{A\in \generalgroupcomplexo{n}: AA^{*}=Id \}$ o subgrupo das matrizes unitárias e $\matrizortogonal{n} = \{A \in \generalgroupreal{n}: AA^{t}  =Id \}$ o subgrupo das matrizes ortogonais. Então vale a seguinte proposição:
 	
-	\begin{lema}\label{lema_isomorfismo_U}
+	\begin{proposicao}\label{proposicao_isomorfismo_U}
 		Seja $F$ a aplicação contínua definida anteriormente. Então a restrição $F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$, é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ tem-se $A\estruturacomplexa=\estruturacomplexa A$.
-	\end{lema}
+	\end{proposicao}
 	\begin{prova}
-		Tem-se que $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio, pois a identidade esta na intersecção. Tomando $A \in \matrizSimpleticaOrtogonal $, então $A^{t}A= Id$. Com isso,
+		Note que $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n} \cap \matrizortogonal{2n}$ é não-vazio, pois a identidade está na intersecção. Tomando $A \in \matrizSimpleticaOrtogonal $, então $A^{t}A= Id$. Com isso,
 		$$
 		\begin{aligned}
 		Id=A^{t}A &=
@@ -2093,12 +2117,12 @@
 		\\
 		0 & CC^{t}+EE^{t}
 		\end{array}
-		\right),
+		\right).
 		\end{aligned}
 		$$
-		onde a condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + DD^{t} = CC^{t}+EE^{t} = Id$. 
+		Tal condição é satisfeita quando $C^{t}B =- E^{t}D$, $B^{t}C =- D^{t}E$ e $BB^{t} + DD^{t} = CC^{t}+EE^{t} = Id$. 
 		
-		Dada $Z \in \matrizunitaria{n}$, tem-se $Id=F(Id) = F(Z^{*}Z) = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Fazendo $Z= B+iC$ se terá
+		Dada $Z \in \matrizunitaria{n}$, tem-se $Id=F(Id) = F(Z^{*}Z) = F(Z^{*})F(Z) = F(Z)^{t}F(Z)$, portanto $F(Z) \in \matrizortogonal{2n}$. Se $Z= B+iC$, então
 		$$
 		F(Z)=
 		\left(
@@ -2121,9 +2145,9 @@
 		\right)	
 		= Id
 		$$
-		o que implica que deve-se ter $B^{t}C =C^{t}B$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$ se tem que $F(Z) \in \gruposimpletico{2n}$. Portanto $F(Z) \in \matrizSimpleticaOrtogonal $, o que implica que $F(\matrizunitaria{n}) \subseteq \matrizSimpleticaOrtogonal$.
+		o que implica que $B^{t}C =C^{t}B$. Pela Proposição $\ref{proposicao_caracterizacao_Sp2n}$, $F(Z) \in \gruposimpletico{2n}$. Portanto $F(Z) \in \matrizSimpleticaOrtogonal $, o que implica que $F(\matrizunitaria{n}) \subseteq \matrizSimpleticaOrtogonal$.
 		
-		Será demonstrada a inclusão $\matrizSimpleticaOrtogonal \subseteq F(\matrizunitaria{n})$. 
+		Finalmente, será demonstrada a inclusão $\matrizSimpleticaOrtogonal \subseteq F(\matrizunitaria{n})$. 
 		
 		Se $A \in \matrizSimpleticaOrtogonal$, então $A^{t}=A^{-1}$ e $\estruturacomplexa=A^{t}\estruturacomplexa  A=A^{-1}\estruturacomplexa A$, o que implica que $A\estruturacomplexa=\estruturacomplexa A$. Assim:
 		$$
@@ -2193,24 +2217,24 @@
 		Como $F$ é monomorfismo, então $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é sobrejetora sobre sua imagem, portanto é um isomorfismo.
 	\end{prova}
 	
-	Será analizado agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ de um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
+	Será analizado agora o espectro $\espectrooperador{A}$ de um simplectomorfismo $A \in \gruposimpletico{2n}$ em um determinado espaço vetorial. Tal resultado será usado na demonstração da contratibilidade do quociente $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$, que por sua vez será utilizado na construção do índice de Maslov.
 	
-	\begin{lema}\label{lema_caracterizacao_espectro_semelhante}
+	\begin{proposicao}\label{proposicao_caracterizacao_espectro_semelhante}
 		Seja $A \in \gruposimpletico{2n}$. Então, $A, A^{-1}, A^{t}$ são semelhantes. Com isso, $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
-	\end{lema}
+	\end{proposicao}
 	\begin{prova}
 		Tem-se que $A^{t}\estruturacomplexa A = \estruturacomplexa$. Supondo que $A$ é invertível, então $A^{t} = \estruturacomplexa A^{-1} \estruturacomplexa^{-1}$. Logo $A^{t}$ é semelhante a $A^{-1}$. Sabe-se que $A$ é semelhante a $A^{t}$, logo $A$ é semelhante a $A^{-1}$. Como matrizes semelhantes possuem o mesmo polinômio característico, então $\sigma(A) = \sigma(A^{-1}) = \sigma(A^{t}) $.
 	\end{prova}
 	
 	\begin{observacao}
-		$\lambda \in \sigma(A)$ se , e somente se, $\lambda^{-1}\in \sigma(A)$.
+		$\lambda \in \sigma(A)$ se , e somente se, $\lambda^{-1}\in \sigma(A)$. Além disso, pode-se mostrar que $\lambda$,  $\bar{\lambda}$, $\lambda^{-1}$ e $\bar{\lambda}^{-1}$ possuem as mesmas multiplicidades. 
 	\end{observacao}
 	
-	\begin{lema}\label{lema_auto_espaco_grupo_simpletico}
+	\begin{proposicao}\label{proposicao_auto_espaco_grupo_simpletico}
 		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
-	\end{lema}
+	\end{proposicao}
 	\begin{prova}
-		Seja $P(r,s)$ a propriedade que se quer mostrar. Por indução finita, veja que $P(1,1)$ é verdadeira. Dados $v\in E_{\lambda}$ e $u\in E_{\mu}$ tem-se que $\formaSimpletica{v}{u} = \formaSimpletica{Av}{Au} = \lambda\mu\formaSimpletica{v}{u}$, o que implica que $\formaSimpletica{v}{u} = 0$, pois $\lambda\mu\neq 1$. Aplicando a hipótese de indução no índice $s$, pode-se assumir que $P(1,s)$ é verdadeira e que $u \in Ker(A-\mu Id)^{s+1}$. Com isso, $0=(A-\mu Id)^{s+1}u = (A-\mu Id)^{s}(A-\mu Id)u $, logo $(A-\mu Id)u \in Ker(A-\mu Id)^{s}$, o que implica em
+		Seja $P(r,s)$ a propriedade que se quer mostrar. Note que $P(1,1)$ é verdadeira. De fato, Dados $v\in E_{\lambda}$ e $u\in E_{\mu}$ tem-se que $\formaSimpletica{v}{u} = \formaSimpletica{Av}{Au} = \lambda\mu\formaSimpletica{v}{u}$, o que implica que $\formaSimpletica{v}{u} = 0$, pois $\lambda\mu\neq 1$. Por indução será mostrado que $P(r,s)$ é verdadeira para quaisquer $r,s$. Para aplicar a hipótese de indução no índice $s$, assuma que $P(1,s)$ é verdadeira e que $u \in Ker(A-\mu Id)^{s+1}$. Com isso, $0=(A-\mu Id)^{s+1}u = (A-\mu Id)^{s}(A-\mu Id)u $, logo $(A-\mu Id)u \in Ker(A-\mu Id)^{s}$, o que implica em
 		$$
 		\begin{aligned}
 		\formaSimpletica{v}{u}
@@ -2225,7 +2249,7 @@
 		$$
 		Como $\lambda\mu \neq 1$, então $\formaSimpletica{v}{u}=0$ e $P(1, s+1)$ é verdadeira.
 		
-		Conclui-se que $P(1, s)$ é verdadeira para todo $s\geq 1$. Analogamente, será demonstrado por indução que P(r,1) é verdadeira para todo $r\geq 1$. Para mostrar que P(r,s) é verdadeira por indução, é assumido que P(r,s+1) e P(r+1,s) são verdadeiras e, analogamente mostra-se que P(r+1,s+1) é verdadeira. Portanto, $\omega(E_{\lambda}, E_{\mu}) = 0$ para quaisquer inteiros $r\geq 1$ e $s\geq 1$.
+		Conclui-se que $P(1, s)$ é verdadeira para todo $s\geq 1$. Analogamente, $P(r,1)$ é verdadeira para todo $r\geq 1$. Para mostrar que $P(r,s)$ é verdadeira por indução, basta assumir que $P(r,s+1)$ e $P(r+1,s)$ são verdadeiras e, analogamente mostra-se que $P(r+1,s+1)$ é verdadeira. Portanto, $\omega(E_{\lambda}, E_{\mu}) = 0$ para quaisquer inteiros $r\geq 1$ e $s\geq 1$.
 		
 	\end{prova}
 	
@@ -2239,9 +2263,9 @@
 	\end{corolario}
 	\begin{prova}
 		\begin{enumerate}
-			\item  Será feito primeiro o caso em que $\lambda = \mu =1$. Suponha que $\omega|_{E_{1}}$ seja degenerada. Então existe $v\neq 0 \in E_{1}$ tal que $\omega(v, u) = 0$ para todo $u \in E_{1}$. Seja $\beta \in \complementar{\sigma(A)}{\{1 \}}$. Pelo Lema $\ref{lema_auto_espaco_grupo_simpletico}$ se tem que $\formaSimpletica{E_{1}}{E_{\beta}} = 0$. Pelo Teorema $\ref{teorema_espectral_jordan}$ é possível escrever $V = E_{1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{1\}  }}E_{\lambda}$. Com isso, $\formaSimpletica{v}{V} = 0$. Logo $\omega$ é degenerada, o que contradiz a hipótese. Portanto, $\omega|_{E_{1} \times E_{1}}$ é não-degenerada. Além disso, como $\lambda = \lambda^{-1}$, então a multiplicidade $m(1)$ é par. Com argumento análogo para $\lambda = \mu = -1$ tem-se que $\omega|_{E_{-1} \times E_{-1}}$ é não-degenerada e $m(-1)$ é par. 
+			\item  Será feito primeiro o caso em que $\lambda = \mu =1$. Suponha que $\omega|_{E_{1}\times E_{1}}$ seja degenerada. Então existe $v\neq 0 \in E_{1}$ tal que $\omega(v, u) = 0$ para todo $u \in E_{1}$. Seja $\beta \in \complementar{\sigma(A)}{\{1 \}}$. Pela Proposição $\ref{proposicao_auto_espaco_grupo_simpletico}$ se tem que $\formaSimpletica{E_{1}}{E_{\beta}} = 0$. Pelo Teorema $\ref{teorema_espectral_jordan}$ é possível escrever $V = E_{1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{1\}  }}E_{\lambda}$. Com isso, $\formaSimpletica{v}{V} = 0$. Logo $\omega$ é degenerada, o que contradiz a hipótese. Portanto, $\omega|_{E_{1} \times E_{1}}$ é não-degenerada. Além disso, como $\lambda = \lambda^{-1}$, então a multiplicidade $m(1)$ é par. Com um argumento análogo $\omega|_{E_{-1} \times E_{-1}}$ é não-degenerada e $m(-1)$ é par. 
 			
-			\item Pelo Teorema $\ref{teorema_espectral_jordan}$ pode-se escrever $V = E_{1}  \bigoplus E_{-1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{\pm 1\}  }}E_{\lambda}$. Supondo que $\omega|_{E\times E}$ seja degenerada, onde $E= E_{\lambda} \oplus E_{\lambda^{-1}}$, então $v \neq 0 \in E$ tal que 
+			\item Pelo Teorema $\ref{teorema_espectral_jordan}$ pode-se escrever $V = E_{1}  \bigoplus E_{-1}  \bigoplus_{\lambda \in \complementar{\sigma(A)}{ \{\pm 1\}  }}E_{\lambda}$. Supondo que $\omega|_{E\times E}$ seja degenerada, onde $E= E_{\lambda} \oplus E_{\lambda^{-1}}$, então existe $v \neq 0 \in E$ tal que 
 			$\omega(v,a)=0$ para todo $a\in E$. Além disso, pela $\omega$-ortogonalidade,  $\omega(v,E_{\beta})=0$, para todo $\beta\in \complementar{\sigma(A)}{\{1\} }$. Segue do Teorema $\ref{teorema_espectral_jordan}$ analogamente ao item anterior que $\omega(v,V)=0$, o que contradiz a hipótese de $\omega$ ser não degenerada.
 		\end{enumerate}
 	\end{prova}
@@ -2252,7 +2276,7 @@
 		(Potênciação em $\gruposimpletico{2n}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{2n} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{2n}$ para qualquer $\alpha \in \real{}$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $A \in \gruposimpleticopositivo{2n}$, então $A$ é simétrica, logo é normal, e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável. Além disso, pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Pode-se decompôr $V$ na soma direta de seus auto-espaços $E_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Se $u \in E_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então
+		Se $A \in \gruposimpleticopositivo{2n}$, então $A$ é simétrica, logo é normal, e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável. Além disso, pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Pode-se decompor $V$ na soma direta de seus auto-espaços $E_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Se $u \in E_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então
 		$$
 		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v).
 		$$
@@ -2268,14 +2292,14 @@
 		$\matrizSimpleticaOrtogonal$ é conexo por caminhos, logo é conexo.
 	\end{lema}
 	\begin{prova}
-		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável, e $\det(A) \in S^{1}$, e pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso tem-se $\det(A) = e^{i(\theta_{1}+\dots+\theta_{n})} \in \circulo$. Definindo o caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, tem-se $\gamma(0)=Id$ e $\gamma(1)=A$. Tem-se que $\gamma$ está bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então $\gamma(\lambda) \in \matrizunitaria{n}$. Note que $\det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} \in \circulo$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pelo Lema $\ref{lema_isomorfismo_U}$, tem-se que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
+		Seja $A \in \matrizunitaria{n}$. Então $A$ é diagonalizável, e $\det(A) \in S^{1}$, e pela Observação $\ref{observacao_caracterizacao_matriz_normal}$ existe uma matriz unitária $U$ tal que $A=U^{*}diag\{e^{i\theta_{1}}, \dots, e^{i\theta_{n}}\}U$, com isso tem-se $\det(A) = e^{i(\theta_{1}+\dots+\theta_{n})} \in \circulo$. Definindo o caminho contínuo $\gamma:[0,1] \to \matrizunitaria{n}$ tal que $\gamma(\lambda)=U^{*}diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}U$, tem-se $\gamma(0)=Id$ e $\gamma(1)=A$. Note que $\gamma$ está bem-definida pois $D=diag\{e^{i\theta_{1}\lambda}, \dots, e^{i\theta_{n}\lambda}\}$ é tal que $D^{*}D = Id$, logo $D \in \matrizunitaria{n}$. Além disso, $U^{*}, U \in \matrizunitaria{n}$, por construção. Então $\gamma(\lambda) \in \matrizunitaria{n}$. Note que $\det(\gamma(\lambda)) = e^{i\lambda(\theta_{1}+\dots+\theta_{n})} \in \circulo$, logo $\gamma([0,1]) \subset \matrizunitaria{n}$. Com isso, toda $A \in \matrizunitaria{n}$ pode ser conectada a $Id$ por um caminho contínuo, logo $\matrizunitaria{n}$ é conexo por caminhos, portanto é conexo. Pela Proposição $\ref{proposicao_isomorfismo_U}$, tem-se que $F|_{\matrizunitaria{n}}:\matrizunitaria{n} \to \matrizSimpleticaOrtogonal$ é um isomorfismo contínuo, logo é um homeomorfimo. Como $\matrizunitaria{n}$ é conexo e a conexidade é preservada por aplicações contínuas, então $\matrizSimpleticaOrtogonal = F(\matrizunitaria{n})$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
-	\begin{lema}
+	\begin{proposicao}
 		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
-	\end{lema}
+	\end{proposicao}
 	\begin{prova}
-		Seja a aplicação contínua $\gamma:\gruposimpleticopositivo{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $\gamma(A,\lambda) = A^{\lambda}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, a aplicação $\gamma$ está bem-definida e é contínua. Fixando $A \in \gruposimpleticopositivo{2n}$ se tem a curva $\gamma_{A}:[0,1]\to \gruposimpletico{2n}$ tal que $\gamma_{A}(0) = Id$ e $\gamma_{A}(1) = A$, ou seja, é um caminho contínuo que conecta a identidade a matriz $A$. Como $A=A^{t}$, segue da Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ que $\gamma_{A}(\lambda)^{t} = (A^{\lambda})^{t} = (A^{t})^{\lambda} = (A)^{\lambda} = \gamma_{A}(\lambda)$. Além disso, os k-subdeterminantes $det_{k}(\gamma_{A}(\lambda)) = det_{k}(A^{\lambda}) > 0$ para $1\leq k \leq 2n$. Pelo fato de que $\gamma_{A}(\lambda)$ é simétrica e pelo Teorema $\ref{teorema_matriz_positiva_definida}$ tem-se que $\gamma_{A}(\lambda)$ é positiva-definida, logo $\gamma_{A}([0,1]) \subset \gruposimpleticopositivo{2n}$. Como $A \in \gruposimpleticopositivo{2n}$ é arbitrária, então a construção anterior vale para quaisquer elementos de $\gruposimpleticopositivo{2n}$. Com isso, dados $A, B \in \gruposimpleticopositivo{2n}$, é possível conectar $A$ a $B$ por uma curva contínua que passa pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
+		Seja a aplicação contínua $\gamma:\gruposimpleticopositivo{2n}\times [0,1] \to \gruposimpletico{2n}$ tal que $\gamma(A,\lambda) = A^{\lambda}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, a aplicação $\gamma$ está bem-definida e é contínua. Fixando $A \in \gruposimpleticopositivo{2n}$, 	a curva $\gamma_{A}:[0,1]\to \gruposimpletico{2n}$ tal que $\gamma_{A}(0) = Id$ e $\gamma_{A}(1) = A$, é um caminho contínuo que conecta a identidade a matriz $A$. Como $A=A^{t}$, segue da Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ que $\gamma_{A}(\lambda)^{t} = (A^{\lambda})^{t} = (A^{t})^{\lambda} = (A)^{\lambda} = \gamma_{A}(\lambda)$. Além disso, os k-subdeterminantes $det_{k}(\gamma_{A}(\lambda)) = det_{k}(A^{\lambda}) > 0$ para $1\leq k \leq 2n$. Pelo fato de que $\gamma_{A}(\lambda)$ é simétrica e pelo Teorema $\ref{teorema_matriz_positiva_definida}$ tem-se que $\gamma_{A}(\lambda)$ é positiva-definida, logo $\gamma_{A}([0,1]) \subset \gruposimpleticopositivo{2n}$. Como $A \in \gruposimpleticopositivo{2n}$ é arbitrária, então a construção anterior vale para quaisquer elementos de $\gruposimpleticopositivo{2n}$. Com isso, dados $A, B \in \gruposimpleticopositivo{2n}$, é possível conectar $A$ a $B$ por uma curva contínua que passa pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
 	\end{prova}	
 	
 	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
@@ -2290,7 +2314,7 @@
 		$\gruposimpletico{2n}$ é conexo por caminhos, logo é conexo.
 	\end{teorema}
 	\begin{prova}
-		Se $A \in \gruposimpletico{2n}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ é possível escrever $A=PO$ onde $P \in \gruposimpleticopositivo{2n}$ e $O\in \matrizSimpleticaOrtogonal$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ tem-se $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pelo Lema $\ref{lema_caracterizacao_Sp2n}$, tem-se $PO \in \gruposimpletico{2n}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{2n}$ tem-se que $G(A) = (P,O)$. Portanto $G$ é bijetora. 
+		Se $A \in \gruposimpletico{2n}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ é possível escrever $A=PO$ onde $P \in \gruposimpleticopositivo{2n}$ e $O\in \matrizSimpleticaOrtogonal$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{2n} \to \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ tem-se $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pela Proposição $\ref{proposicao_caracterizacao_Sp2n}$, tem-se $PO \in \gruposimpletico{2n}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{2n}$ tem-se que $G(A) = (P,O)$. Portanto $G$ é bijetora. 
 		
 		Denotando $G^{-1}:\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal\to \gruposimpletico{2n}$ pela inversa de $G$, tem-se que $G^{-1}(P,O) = PO$, o que implica que $G^{-1}$ é contínua, pois o produto de matrizes é uma operação contínua.
 		
@@ -2344,7 +2368,7 @@
 		$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{teorema}
 	\begin{prova}
-		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{2n}$, então $\grupofundamental{\gruposimpletico{2n}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. Do Lema $\ref{lema_isomorfismo_U}$ tem-se que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{2n}$, então $\grupofundamental{\gruposimpletico{2n}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. Do Proposição $\ref{proposicao_isomorfismo_U}$ tem-se que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, logo $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 	\end{prova}
 	
 	
@@ -2661,14 +2685,14 @@
 		Seja $H:M\times\circulo\to \reta$ uma função Hamiltoniana. Suponha que todas as soluções $1-$periódicas do sistema Hamiltoniano são não-degeneradas. Então o conjunto dessas soluções é finito.
 	\end{proposicao}
 	\begin{prova}
-		Como $M$ é uma $2n$-variedade compacta, então $M\times M$ é uma $4n$-variedade compacta. Sejam $\psi_{t}: M\to M$ a família de difeomorfismos gerados pelo fluxo do campo Hamiltoniano $\campohamiltonianoabrev$, $A =\{(x, x):x\in M\}$ o gráfico da aplicação identidade e $B=\{(x, \psi_{1}(x)) :x\in M \}$ o gráfico do difeomorfismo $\psi_{1}$. Para todo $x \in M$ tem-se os espaços tangentes 
+		Sejam $\psi_{t}: M\to M$ a família de difeomorfismos gerados pelo fluxo do campo Hamiltoniano $\campohamiltonianoabrev$, $A =\{(x, x):x\in M\}$ o gráfico da aplicação identidade e $B=\{(x, \psi_{1}(x)) :x\in M \}$ o gráfico do difeomorfismo $\psi_{1}$. Dado $x \in M$ tem-se os espaços tangentes 
 		$$\espacotangenteponto{(x,x)}{A} = \{(Y,Y):Y\in \espacotangenteponto{x}{M}\}\;\; \text{e}\;\; \espacotangenteponto{(x,x)}{B} = \{(Y,D_{x}\psi_{1}(Y)):Y\in \espacotangenteponto{x}{M}\}.
 		$$
-		Seja $S_{H}$ o conjunto das soluções $1-$periódica do sistema Hamiltoniano. Se $x\in S_{H}$, então $\psi_{1}(x(t)) = x(t)$ para todo $t\in \circulo$, e portanto $x(t)\in A\cap B$. Seja $S=\{(x(0), x(0)):x\in S_{H} \}$. Note que $S\subset A\cap B$. Além disso, $\espacotangenteponto{(x(0), x(0))}{S}=\{(Y,D_{x(0)}\psi_{1}(Y)):Y\in \espacotangenteponto{x}{M}\}$, onde $D_{x(0)}\psi_{1}(Y)\neq Y$, pois $x\in S_{H}$ é não-degenerada. Como 
+		Seja $S_{H}$ o conjunto das soluções $1-$periódica do sistema Hamiltoniano. Se $x\in S_{H}$, então $\psi_{1}(x(t)) = x(t)$ para todo $t\in \circulo$, e portanto $x(t)\in A\cap B$. Seja $S=\{(x(0), x(0)):x\in S_{H} \}$. Note que $S\subset A\cap B$. Com isso, $\espacotangenteponto{(x(0), x(0))}{S}=\{(Y,D_{x(0)}\psi_{1}(Y)):Y\in \espacotangenteponto{x}{M}\}$, onde $D_{x(0)}\psi_{1}(Y)\neq Y$, pois $x\in S_{H}$ é não-degenerada. Como 
 		$$
 		\espacotangenteponto{(x(0), x(0))}{S} \subset \espacotangenteponto{(x(0), x(0))}{A} \cap \espacotangenteponto{(x(0), x(0))}{B},
 		$$
-		então $D_{x(0)}\psi_{1}(Y) = Y$ se, e somente se, $Y=0$. Com isso, $\espacotangenteponto{(x(0), x(0))}{S}=\{(0,0)\}$ para todo $x \in S_{H}$. Logo $S$ é uma subvariedade de dimensão zero, e portanto é um conjunto de pontos isolados. A compacidade de $M\times M$ implica que $S$ é finito. Como os elementos de $S$ são distintos, então $S_{H}$ é finito.
+		então $D_{x(0)}\psi_{1}(Y) = Y$ se, e somente se, $Y=0$. Com isso, $\espacotangenteponto{(x(0), x(0))}{S}=\{(0,0)\}$ para todo $(x(0), x(0)) \in S$. Logo $S$ é uma subvariedade de dimensão zero, e portanto é um conjunto de pontos isolados. Como $M\times M$ é um compacto, o que implica que $S$ é finito. Como os elementos de $S$ são distintos, então $S_{H}$ é finito.
 	\end{prova}
 	
 	\section{O funcional $\funcionalH$ e a equação de Floer}\label{secao_funcional_hamiltoniano}
@@ -2971,7 +2995,7 @@
 		$$
 	\end{observacao}
 	
-	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}
+	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}\label{capitulo_indice_maslov}
 	\section{Motivação}
 	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ a qual é associado o campo vetorial $X_{H} \in \campossuaves{M}$, chamado campo Hamiltoniano e único campo vetorial que satisfaz a equação $\omega_{x}(\campohamiltoniano{x}, Y) = -d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$. 
 	
@@ -3187,7 +3211,7 @@
 			
 			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$. Então pela própria definição a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
 			
-			\item \textbf{\textit{Inversa:}} 	Pelo Lema \ref{lema_caracterizacao_espectro_semelhante}, tem-se que $\espectrooperador{A^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}$ e $F_{\lambda^{-1}}$ auto-espaços generalizados de $A$ e $A^{-1}$, associados aos auto-valores $\lambda$ e $\lambda^{-1}$, respectivamente. É imediato que $\autoespaco{\lambda} = F_{\lambda^{-1}}$, o que implica que $\autoespaco{\lambda}^{+} = F_{\lambda^{-1}}^{+}$ e que $m^{A}_{+}(\lambda) = m^{A^{-1}}_{+}(\lambda^{-1})$. Então
+			\item \textbf{\textit{Inversa:}} Pela Proposição  \ref{proposicao_caracterizacao_espectro_semelhante}, tem-se que $\espectrooperador{A^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}$ e $F_{\lambda^{-1}}$ auto-espaços generalizados de $A$ e $A^{-1}$, associados aos auto-valores $\lambda$ e $\lambda^{-1}$, respectivamente. É imediato que $\autoespaco{\lambda} = F_{\lambda^{-1}}$, o que implica que $\autoespaco{\lambda}^{+} = F_{\lambda^{-1}}^{+}$ e que $m^{A}_{+}(\lambda) = m^{A^{-1}}_{+}(\lambda^{-1})$. Então
 			$$
 			\begin{aligned}
 			\rho(A^{-1})
@@ -3254,7 +3278,7 @@
 		$$
 		com $\Gamma(0) = B$. 
 		
-		Para os auto-valores $\overline{\lambda}$ e $1/\lambda$ tome os caminhos $\overline{\gamma}$ e $1/\gamma$, respectivamente. É imediato da definição que $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. De fato, supondo $\lambda,\lambda' \in \complementar{\sigma(B)}{\real{+}}$ tais que $\lambda\lambda' \neq 1$ tem-se que $\formaSimpleticaExtendida{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaExtendida{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\Omega$-ortoganalidade (veja o Lema \ref{lema_auto_espaco_grupo_simpletico}). No caso em que $\lambda\lambda'=1$ se tem  $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\Omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \Omega(v_{\lambda},v_{\lambda'})$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $\det(Id - \Gamma(s))\neq 0 $ e $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
+		Para os auto-valores $\overline{\lambda}$ e $1/\lambda$ tome os caminhos $\overline{\gamma}$ e $1/\gamma$, respectivamente. É imediato da definição que $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. De fato, supondo $\lambda,\lambda' \in \complementar{\sigma(B)}{\real{+}}$ tais que $\lambda\lambda' \neq 1$ tem-se que $\formaSimpleticaExtendida{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaExtendida{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\Omega$-ortoganalidade (veja a Proposição \ref{proposicao_auto_espaco_grupo_simpletico}). No caso em que $\lambda\lambda'=1$ se tem  $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\Omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \Omega(v_{\lambda},v_{\lambda'})$ e $\Gamma(s) \in \gruposimpletico{2n}$. Como $1 \notin \gamma(\intervalo)$, então $\det(Id - \Gamma(s))\neq 0 $ e $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
 		
 		Seja $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo conectando $A$ a $B$, cuja exitência é garantida pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$.
 		Por definição de $\gruposimpleticonaodegenerado{*}$ tem-se que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, portanto $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, caso $A \in \gruposimpleticonaodegenerado{+}$, ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, caso $A\in \gruposimpleticonaodegenerado{-}$.
@@ -3598,7 +3622,7 @@
 					\right),
 				\end{aligned}
 				$$
-				onde $r(-t\pi)$ é a matriz de rotação no plano $\real{2}$ por um ângulo $-t\pi \in \reta$. Note que, $r(-t\pi) \in \gruposimpletico{2}$ é uma matriz otogonal, logo pode ser identificada com uma matriz unitária em $e^{-i\pi}\in U(1)$ (veja o Lema \ref{lema_isomorfismo_U}). Pela propriedade do determinante de $\rho$ descrita no Item \ref{item_determinante_rho} e pela propriedade produto de $\rho$ descrita no Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que 
+				onde $r(-t\pi)$ é a matriz de rotação no plano $\real{2}$ por um ângulo $-t\pi \in \reta$. Note que, $r(-t\pi) \in \gruposimpletico{2}$ é uma matriz otogonal, logo pode ser identificada com uma matriz unitária em $e^{-i\pi}\in U(1)$ (veja o Proposição \ref{proposicao_isomorfismo_U}). Pela propriedade do determinante de $\rho$ descrita no Item \ref{item_determinante_rho} e pela propriedade produto de $\rho$ descrita no Item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que 
 				$$
 				\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\pi)))^{n} = e^{-itn\pi}.
 				$$ 
@@ -4681,7 +4705,7 @@
 	\formaSimpletica{A\alpha}{A\beta} = xy
 	\formaSimpletica{\alpha}{\beta}$. Como $\alpha, \beta \in V$ são arbitrários, então $A$ é uma transformação simplética. A recíproca é imediata.
 	
-	Adotando a notação da Convensão \ref{convensao_base_simpletica}, pode-se enunciar o seguinte resultado:
+	Adotando a notação da convencionada na Seção \ref{secao_espacos_vetoriais_simpleticos}, pode-se enunciar o seguinte resultado:
 	
 	\begin{proposicao}\label{proposicao_forma_simpletica_vetor_conjugado}
 		Seja $\{\textbf{e}, \textbf{f}\}$ uma base simplética de $\complexificado{V}$. Então para um dado $v = v_{(1)}\textbf{e}+v_{(2)}\textbf{f} \in \complexificado{V}$ tem-se que $\formaSimpleticaExtendida{\overline{v}}{v}
@@ -4701,7 +4725,7 @@
 		&=i2\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}\in i\reta,
 		\end{aligned}
 		$$
-		onde foi usada a Observação \ref{observacao_convensao_base_simpletica}.
+		onde foi usada a notação da Seção \ref{secao_espacos_vetoriais_simpleticos}.
 	\end{prova}
 	
 	\begin{definicao}
@@ -5409,6 +5433,11 @@
 		Lima, Elon Lages:
 		\emph{Fundamental Group and Covering Spaces},
 		A K Peters, 2003.
+
+		\bibitem{elon_homologia}
+		Lima, Elon Lages:
+		\emph{Homologia Básica},
+		IMPA, 2012, segunda edição.
 		
 		\bibitem{massey}
 		Massey, William S.:
@@ -5480,6 +5509,11 @@
 		\emph{The Topology of Fibre Bundles},
 		Princeton University Press, third printing, 
 		1960.
+		
+		\bibitem{vick_homology}
+		Vick, James W.:
+		\emph{Homology Theory - An Introduction to Algebraic Topology},
+		Academic Press, 1973.
 		
 		\bibitem{warner_manifolds}
 		Warner, Frank W.:
