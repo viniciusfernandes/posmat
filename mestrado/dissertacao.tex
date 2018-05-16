@@ -329,13 +329,13 @@
 	Nesse trabalho é apresentada uma construção do índice de Conley-Zehnder $\iconleyabrev$, que é uma generalização do índice de Morse para variedades de dimensão infinita, chamadas Variedades de Banach. Considerada uma variedade fechada $M$ e uma função Hamiltoniana dependente do tempo $H:M\times \reta \to \reta$, é demonstrado que as  soluções 1-periódicas do sistema Hamiltoniano associado a $H$ são os pontos críticos do funcional de ação $\funcionalH$. É construído o complexo de Floer, que é graduado pelo índice de Conley-Zehnder, e cujos geradores são os pontos críticos de $\funcionalH$. Com isso, é definida a homologia desse complexo de cadeias, chamada Homologia de Floer. Como consequência imediata dessa construção, é demonstrada a Conjectura de Arnold.
 	\\
 	\\	
-	\textbf{Palavras-chave:} Complexificação, Conjectura de Arnold, Equação de Floer, Espaços de Sobolev, Espaços Vetoriais Simpléticos, Fibrados Vetoriais, Funcional de Ação, Grupo Fundamental, Grupo Simplético, Homologia Celular, Homologia de Floer, Homologia Singular, Índice de Maslov, Índice de Conley-Zehnder, Sistemas Hamiltonianos, Teoria de Morse-Witten, Topologia Simplética, Variedade de Banach, Variedade Simplética.
+	\textbf{Palavras-chave:} Complexificação, Conjectura de Arnold, Equação de Floer, Espaços Vetoriais Simpléticos, Grupo Simplético, Homologia de Floer, Índice de Maslov, Índice de Conley-Zehnder, Sistemas Hamiltonianos, Teoria de Morse-Witten, Topologia Simplética, Variedade Simplética.
 	
 	\chapter*{Abstract}
 	In this text, a construction of Conley-Zehnder index $\iconleyabrev$ it has been done, which is a Morse index generalization to infinity dimensional manifolds, called Banach Manifolds. Considering a closed manifold $M$ and a time-dependent Hamiltonian function $H:M\times \reta\to \reta$, we demonstrate each solutions of Hamiltonian system associated with $H$ is a critical point of the action functional $\funcionalH$. The Floer Chain Complex has been defined, which has its degrees given by the Conley-Zehnder index, and its generators are critical points of $\funcionalH$. Done it, the homology of this complex has been defined, called Floer Homology. We demonstrate the Arnold Conjecture as an a immediate consequence of this constructions.
 	\\
 	\\
-	\textbf{Keywords:}  Complexification, Arnold Conjecture, Floer Equation, Sobolev Spaces, Symplectic Vector Spaces, Vector Bundle, Action Functional, Fundamental Group, Symplectic Group, Celular Homology, Floer Homology, Singular Homology, Maslov Index, Conley-Zehnder Index, Hamiltonian Systems, Morse-Witten Theory, Symplectic Topology, Banach Manifold, Symplectic  Manifold.
+	\textbf{Keywords:}  Complexification, Arnold Conjecture, Floer Equation, Symplectic Vector Spaces, Symplectic Group, Floer Homology, Maslov Index, Conley-Zehnder Index, Hamiltonian Systems, Morse-Witten Theory, Symplectic Topology, Symplectic  Manifold.
 	
 	\chapter*{Introdução}\label{capitulo_introducao}
 	Como muitas das construções desenvolvidas na matemática a Homologia de Floer teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalentes a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podem ser desenvolvidos em uma 2n-variedade diferenciável $M$ munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: M\times \reta\to \reta$ satisfazendo a equação geométrica $\omega_{x}(\campohamiltonianoabrev(x,t), Y) = d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$, onde o campo vetorial $\campohamiltonianoabrev \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. O sistema de equações diferenciais $\dot{x} = \campohamiltoniano{(x,t)}$ é chamado sistema Hamiltoniano e suas soluções dão origem a uma família de difeomorfismos $\psi_{t}:M\to M$, onde $t\in \reta$, que satisfaz a equação diferencial
@@ -1912,9 +1912,9 @@
 		\estruturacomplexa=
 		\left(
 		\begin{array}{cc}
-		0 & Id
+		0 & -Id
 		\\
-		-Id & 0
+		Id & 0
 		\end{array}
 		\right).
 		$$
@@ -2228,8 +2228,10 @@
 		$\lambda \in \sigma(A)$ se , e somente se, $\lambda^{-1}\in \sigma(A)$. Além disso, pode-se mostrar que $\lambda$,  $\bar{\lambda}$, $\lambda^{-1}$ e $\bar{\lambda}^{-1}$ possuem as mesmas multiplicidades. 
 	\end{observacao}
 	
+	Para estudar os auto-valores de $A \in \gruposimpleticoreal{2n}$ será realizada a complexificação do espaço vetorial simplético $(V,\omega)$ e de seu grupo de transformações simpléticas $\gruposimpleticoreal{2n}$.	Essas complexificações são denotadas por $(\complexificado{V}, \Omega)$ e $\gruposimpleticocomplexo{2n}$. Mais detalhes podem ser encontrados no Apêndice \ref{apendice_complexificacao_espacos_vetoriais}.
+	
 	\begin{proposicao}\label{proposicao_auto_espaco_grupo_simpletico}
-		(Auto-espaços de $\gruposimpletico{2n}$) Sejam $(V, \omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
+		(Auto-espaços de $\gruposimpleticocomplexo{2n}$) Sejam $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético, $A \in \gruposimpletico{2n}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
 	\end{proposicao}
 	\begin{prova}
 		Seja $P(r,s)$ a propriedade que se quer mostrar. Note que $P(1,1)$ é verdadeira. De fato, Dados $v\in E_{\lambda}$ e $u\in E_{\mu}$ tem-se que $\formaSimpletica{v}{u} = \formaSimpletica{Av}{Au} = \lambda\mu\formaSimpletica{v}{u}$, o que implica que $\formaSimpletica{v}{u} = 0$, pois $\lambda\mu\neq 1$. Por indução será mostrado que $P(r,s)$ é verdadeira para quaisquer $r,s$. Para aplicar a hipótese de indução no índice $s$, assuma que $P(1,s)$ é verdadeira e que $u \in Ker(A-\mu Id)^{s+1}$. Com isso, $0=(A-\mu Id)^{s+1}u = (A-\mu Id)^{s}(A-\mu Id)u $, logo $(A-\mu Id)u \in Ker(A-\mu Id)^{s}$, o que implica em
@@ -2649,17 +2651,36 @@
 		Seja $H$ uma função Hamiltoniana autônoma. Se $x \in \pontoscriticos{H}$ é não-degenerado como uma solução periódica do sistema Hamiltoniano, então é não-degenerado como ponto crítico de $H$.
 	\end{proposicao}
 	\begin{prova}
-		Seja $\psi:M\times \reta\to M$ o fluxo do campo Hamiltoniano. Se $x\in \pontoscriticos{H}$ é uma solução 1-periódica do sistema Hamiltoniano, então pela Proposição \ref{proposicao_exponencial_hessiana} tem-se que $D_{x}\psi_{1}=e^{-\estruturacomplexa \hessianaponto{x}{H}}$ em uma vizinhança coordenada $V$ de $x$. Seja $v\in \espacotangenteponto{x}{M}$ um auto-vetor de $D_{x}\psi_{1}$, então 
+		Seja $\psi:M\times \reta\to M$ o fluxo do campo Hamiltoniano. Se $x\in \pontoscriticos{H}$ é uma solução 1-periódica do sistema Hamiltoniano, então pela Proposição \ref{proposicao_exponencial_hessiana} tem-se que $D_{x}\psi_{1}=e^{-\estruturacomplexa \hessianaponto{x}{H}}$ em uma vizinhança coordenada $V$ de $x$. Sejam $(\complexificado{V}, \Omega)$ a complexificação do espaço vetorial simplético $(\espacotangenteponto{x}{M}, \omega_{x})$ e $E_{\lambda}$ o auto-espaço generalizado associado ao auto-valor $\lambda \in \espectrooperador{D_{x}\psi_{1}}$. Para todo $v\in \autoespaco{\lambda}$ tem-se que
 		$$
-		\lambda v=
-		D_{x}\psi_{1}v=e^{-\estruturacomplexa \hessianaponto{x}{H}}v.
+		D_{x}\psi_{1}v=\lambda v.
 		$$
-		Escrevendo $\lambda v=e^{\alpha Id}v$ para algum $\alpha \in \complexo{}$, segue que 
+		Como $1\notin \espectrooperador{D_{x}\psi_{1}}$, então $\lambda \neq 1$. Com isso, $e^{-\estruturacomplexa \hessianaponto{x}{H}}v = D_{x}\psi_{1}v \neq v$, o que implica que
+		$\hessianaponto{x}{H}|_{\autoespaco{\lambda}}\neq 0$. Com um argumento análogo, pode-se mostrar que $\hessianaponto{x}{H}|_{\autoespaco{\lambda'}} \neq 0$ para todo auto-valor $\lambda'\neq \lambda$. Como $\complexificado{V} = \bigoplus_{j=1}^{k} \autoespaco{\lambda_{j}}$, para algum $1\leq k\leq2n$, então o operador $e^{-\estruturacomplexa \hessianaponto{x}{H} }$ é a matriz com blocos diagonais
 		$$
-		e^{-(\estruturacomplexa \hessianaponto{x}{H} + \alpha)}v=v,
+			e^{-\estruturacomplexa \hessianaponto{x}{H}}=
+			\left(
+			\begin{array}{ccccc}
+			e^{-\estruturacomplexa \hessianaponto{x}{H}|_{\autoespaco{\lambda_{1} }} } & 0 &\dots & 0 
+			\\
+			0 & e^{-\estruturacomplexa \hessianaponto{x}{H}|_{\autoespaco{\lambda_{2}}}} &\dots & 0 
+			\\
+			\vdots & \vdots & \ddots & \vdots 
+			\\
+			0 & 0 & \dots & e^{-\estruturacomplexa \hessianaponto{x}{H}|_{\autoespaco{\lambda_{k}}}}
+			\end{array}
+			\right).
 		$$
-		o que implica que $\hessianaponto{x}{H} = \alpha \estruturacomplexa$. Como $1\notin \espectrooperador{D_{x}\psi_{1}}$, então $\lambda \neq 1$, e portanto $\alpha\neq 0$. Com isso, $\hessianaponto{x}{H} =\alpha\estruturacomplexa \neq 0$ e $\hessianaponto{x}{H}$ é não-degenerada.
+		Como cada bloco diagonal é não-degenerado, então $	e^{-\estruturacomplexa \hessianaponto{x}{H}}$ é não-degenerada e 
+		$$
+		\hessianaponto{x}{H}\neq 0.
+		$$
+		Logo $x\in \pontoscriticos{H}$ é um ponto crítico não-degenerado de $H$.
 	\end{prova}
+	
+	\begin{observacao}
+		Uma solução $x$ do sistema Hamiltoniano é não-degenerada se, e só se, 1 não é autovalor de $e^{\estruturacomplexa \hessianaponto{x}{H}}$, o que equivale a dizer que a hessiana não tem autovalores em $2\pi \inteiros$. Em particular, se $\norma{\hessianaponto{x}{H}}<2\pi$, vale a resíproca da proposição anterior e as duas noções de não degeneracidade coincidem.
+	\end{observacao}
 	
 	\begin{proposicao}\label{proposicao_solucao_hamiltoniana_finita}
 		Seja $H:M\times\circulo\to \reta$ uma função Hamiltoniana. Suponha que todas as soluções $1-$periódicas do sistema Hamiltoniano são não-degeneradas. Então o conjunto dessas soluções é finito.
@@ -3833,9 +3854,9 @@
 	\dim(\energiafinitaMconectante)= \ind(\diferencialfloerponto{u}) = \iconley{x^{-}}-\iconley{x^{+}}.
 	$$
 	
-	Por fim, alguns resultados necessários para a demonstração da compacidade de $\energiafinitaMconectante$ são apresentados. Essa propriedade é essencial para a definição do operador bordo do complexo de Floer e, consequentemente, de sua homologia (veja a Seção \ref{secao_complexo_floer}). Tais resultados podem ser encontrados na Subseção \ref{secao_transversalidade_compacidade_M}.
+	Por fim, são apresentados alguns resultados necessários para a demonstração da compacidade de $\energiafinitaMconectante$. Essa propriedade é essencial para a definição do operador bordo do complexo de Floer e, consequentemente, de sua homologia (veja a Seção \ref{secao_complexo_floer}). Tais resultados podem ser encontrados na Subseção \ref{secao_transversalidade_compacidade_M}.
 	
-	\subsection{O Operador de Floer $\operadorFloer$ e a Variedade de Banach $\caminhosexponenciaisconectantespadrao$}\label{secao_variedade_banach_P}
+	\subsection{Operador de Floer $\operadorFloer$ e a Variedade de Banach $\caminhosexponenciaisconectantespadrao$}\label{secao_variedade_banach_P}
 	
 	Uma variedade de Banach é uma generalização do conceito de variedade em dimensão finita para dimensão infinita. Mais precisamente, tem-se um espaço topológico em que cada ponto possui uma vizinhaça que é homeomorfa a um aberto de um espaço de Banach. Parte dos resultados desse trabalho está apoiado em operadores definidos em espaços de funções que, mesmo não sendo de dimensão finita, possuem uma estrutura de variedades de Banach, e com isso, pode-se definir uma noção de espaço tangente nos mesmos. A referência utilizada nessa subseção foi \cite{chang_morse_infinito}.
 	
@@ -4132,7 +4153,7 @@
 		\end{aligned}
 		$$
 		
-		Efetuando integração por partes da primeira integral e usando o fato de que $\lim_{s\to \pm \infty} X(s,t) = 0$, pois tem suporte compacto, tem-se
+		Efetuando integração por partes da primeira integral e usando o fato de que $ X(s,t) \to  0$ quanto $s \to \infty$, pois tem suporte compacto, tem-se
 		$$
 		\begin{aligned}
 		\int_{\retacartesianocirculo}\produtointerno{Y}{\derivadaparcial{ X}{s}}
@@ -5338,13 +5359,13 @@
 		American Mathematical Society, 2002.
 		
 		\bibitem{amyia_diff_topology}
-		Amyia, Mukherjee:
+		Amyia, Mukherjee.
 		\emph{Topics in Differential Topology},
 		Texts and Reading in Mathematics 34,
 		2005.
 		
 		\bibitem{audi_floer_homology}
-		Audi, Michèlle; Damian, Mihai:
+		Audi, Michèlle; Damian, Mihai.
 		\emph{Morse Theory and Floer Homology},
 		Springer, first edition,
 		2010.
@@ -5356,7 +5377,7 @@
 		2004.
 		
 		\bibitem{breazis_sobolev_spaces}
-		Brezis, Haim:
+		Brezis, Haim.
 		\emph{Functional Analysis, Sobolev Spaces and Partial Differential Equantions},
 		Springer, first edition,
 		2011.
@@ -5371,13 +5392,13 @@
 		their applications, vol.6 (1993).
 		
 		\bibitem{manfredo_riemannian_geo}
-		Do Carmo, Manfredo P.:
+		Do Carmo, Manfredo P.
 		\emph{Riemannian Geometry},
 		Birkhauser, 2nd edition,
 		1992.
 		
 		\bibitem{doering_ode}
-		Doering, Claus I.; Lopes, Artur O.:
+		Doering, Claus I.; Lopes, Artur O.
 		\emph{Equações Diferenciais Ordinárias - Coleção Matemática Universitária},
 		IMPA, terceira edição,
 		2008.
@@ -5389,126 +5410,126 @@
 		1998.
 		
 		\bibitem{guillemin_differential_topology}
-		Guillemin, Victor; Pollack, Alan:
+		Guillemin, Victor; Pollack, Alan.
 		\emph{Differential Topolgy},
 		Prentice-Hall,
 		1974.	
 		
 		\bibitem{hatcher}
-		Hatcher, Allen
+		Hatcher, Allen.
 		\emph{Algebraic Topology},
 		Cambridge University Press, 2001.
 		
 		\bibitem{hoffman_kunze}
-		Hoffman, Kenneth; Kunze, Ray
+		Hoffman, Kenneth; Kunze, Ray.
 		\emph{Linear Algebra},
 		John Wiley and Sons, 2nd edition, 1971.
 		
 		\bibitem{husemoller_fibrados}
-		Husemoller, Dale
+		Husemoller, Dale.
 		\emph{Fibre Bundles},
 		Springer-Verlag, third edition
 		1993.
 		
 		\bibitem{kreyszig_analise_funcional}
-		Kreyszig, Erwin
+		Kreyszig, Erwin.
 		\emph{Introduction to Functional Analysis with Applications},
 		John Wiley and Sons, 1978.
 		
 		
 		\bibitem{elon_grupo_fundamental}
-		Lima, Elon Lages:
+		Lima, Elon Lages.
 		\emph{Fundamental Group and Covering Spaces},
 		A K Peters, 2003.
 
 		\bibitem{elon_homologia}
-		Lima, Elon Lages:
+		Lima, Elon Lages.
 		\emph{Homologia Básica},
 		IMPA, 2012, segunda edição.
 		
 		\bibitem{massey}
-		Massey, William S.:
+		Massey, William S.
 		\emph{A Basic Course in Algebraic Topology},
 		Springer-Verlag, first edition,
 		1991.
 		
 		\bibitem{milnor}
-		Milnor, J.:
+		Milnor, J.
 		\emph{Morse Theory},
 		Princeton University Press, 1963.
 
 		\bibitem{munkres_topology}
-		Munkres, James R.:
+		Munkres, James R.
 		\emph{Topology},
 		Prentice Hall Inc., 2000.
 				
 		\bibitem{nakahara}
-		Nakahara, Mikio:
+		Nakahara, Mikio.
 		\emph{Geometry, Topology and Physics},
 		Graduate Student Series in Physics, 2nd edition,
 		2003.
 		
 		\bibitem{nussenzveig}
-		Nussenzveig, Moyses:
+		Nussenzveig, Moyses.
 		\emph{Mecânica - Curso de Física Básica Vol 1},
 		Edgard Blucher, 4 edição,
 		2002.
 		
 		\bibitem{palis_dynamical_systems}
-		Palis, Jaboc; Melo, Welington:
+		Palis, Jaboc; Melo, Welington.
 		\emph{Geometric Theory od Dynamical Systems},
 		Springer-Verlag,
 		1982.
 		
 		\bibitem{pontryagin_ode}
-		Pontryagin, L.S.:
+		Pontryagin, L.S.
 		\emph{Ordinary Differential Equations},
 		Addison-Wesley Publishing Company,
 		1962.
 		
 		\bibitem{salamon_lecture}
-		Salamon, Dietmar:
+		Salamon, Dietmar.
 		\emph{Lectures on Floer Homology},
 		University of Warnick,
 		1997.
 
 
 		\bibitem{salamon_conley_index}
-		Salamon, Dietmar
+		Salamon, Dietmar.
 		\emph{Morse Theory, the Conley Index and Floer Homology},
 		LMS 22, 113-140
 		1990.
 
 		\bibitem{salamon_zehnder}
-		Salamon, Dietmar; Zehnder Eduard:
+		Salamon, Dietmar; Zehnder Eduard.
 		\emph{Morse Theory for Periodic Solutions of Hamiltonian Systems and Maslov Index},
 		Communications on Pure and Applied Mathematics, Vol. XLV, 1303-1360
 		1992.
 		
 		\bibitem{matthias_morse_homology}
-		Schwarz, Matthias:
+		Schwarz, Matthias.
 		\emph{Morse Homology},
 		Birkhauser, Boston
 		1993.
 		
 		\bibitem{steenrod_fibre_bundles}
-		Steenrod, Norman:
+		Steenrod, Norman.
 		\emph{The Topology of Fibre Bundles},
 		Princeton University Press, third printing, 
 		1960.
 		
 		\bibitem{vick_homology}
-		Vick, James W.:
+		Vick, James W..
 		\emph{Homology Theory - An Introduction to Algebraic Topology},
 		Academic Press, 1973.
 		
 		\bibitem{warner_manifolds}
-		Warner, Frank W.:
+		Warner, Frank W.
 		\emph{Foundations of Differentiable Manifolds and Lie Groups},
 		Scott, Foresman and Company.
 			
 		\bibitem{witten_supersymmetry_morse}
-		Witten, Edward:
+		Witten, Edward.
 		\emph{Supersymmetry and Morse Theory},
 		J. Differential Geometry 17,
 		1982.
