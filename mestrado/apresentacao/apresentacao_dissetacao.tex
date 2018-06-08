@@ -1,0 +1,943 @@
+\documentclass{beamer}
+\mode<presentation>{
+	\usetheme{Madrid}
+	\setbeamercovered{transparent}
+}
+
+\input{macros}
+
+\definecolor{azul}{rgb}{0,0,0.8}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[all]{xy}
+
+
+\setbeamercovered{highly dynamic}
+
+\title[Short title]{Main Topic } % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Vinicius Fernandes}
+\title{O Índice de Maslov e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
+\institute{Universidade Federal do ABC}
+\date{18 de Junho de 2018}
+\begin{document}
+	
+	\begin{frame}
+		\titlepage % Print the title page as the first slide
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{
+			A motivação.}
+		\textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de pontos críticos de uma função Hamiltoniana em $M$.}
+		\\~\\
+		
+		\pause	
+		\textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina  $H:M\times \real{} \to \reta$  uma função hamiltonia 1-periódica e suponha que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
+			$$
+			\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
+			$$
+			onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		
+		\begin{definicao}[Colagem de célula]
+			Sejam $X$ um espaço topológico, $D^{k}$ o n-disco e $f_{\partial}:\partial D^{k} \to X$ contínua. Denotaremos a colagem da $k$-célula por $X\cup_{f_{\partial}}D^{k}$.
+		\end{definicao}
+		
+		\begin{definicao}[CW-complexo]
+			Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
+			$$
+			\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
+			$$ 
+			tais que:
+			\begin{itemize}
+				\item $\skeleton{0}$ é um conjunto discreto de pontos.
+				
+				\item $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$.
+				
+				\item $X$ tem uma topologia fraca, ou seja, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$.
+			\end{itemize}
+		\end{definicao}
+	\end{frame}
+	
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		\begin{exemplo}[2-esfera]
+			Fixemos um ponto-base $p \in S^{2}$ e definamos o $0-$esqueleto $\skeleton{0}=\{p\}$. Anexando uma $n-$célula a $\skeleton{0}$ teremos $f_{\partial}: \partial D^{2} \to \skeleton{0}$, isto é, $S^{2} \approx \skeleton{2} = \{p\}\cup_{f_{\partial}} \celula{n}{}$.
+		\end{exemplo}
+		
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		
+		\begin{lema}[Homologia celular]
+			$\mathcal{C}_{k}(X)$ é um $A-$módulo livre e finitamente gerado pelas $k-$células de $X$ tal que 
+			$$
+			\mathcal{C}_{k}(X) \cong 
+			\homologiarelskelesimpl{k}{k} \cong \somadir{\sigma} A.
+			$$
+		\end{lema}
+		
+		\begin{definicao}[Grau homológico]
+			Sejam $f: S^{n} \to S^{n}$ é contínua e $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador, então $f_{*}[S^{n}] = deg(f)[S^{n}]$, onde $deg(f) \in A$.
+		\end{definicao}
+		
+		\pause
+		\begin{teorema}[CW-bordo]
+			É o homomorfismo $\partial_{k}:\mathcal{C}_{k}(X)\to \mathcal{C}_{k-1}(X)$ definido por
+			$$
+			\partial_{k}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
+			$$
+			onde $[\beta:\sigma]$ é o grau homológico da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.
+		\end{teorema}
+		
+	\end{frame}
+
+	\begin{frame}
+		\begin{teorema}[CW-homologia]
+			Seja $X$ um CW-complexo, então existe uma identificação natural entre a CW-homologia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
+			$$
+			\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
+			$$
+		\end{teorema}
+		
+	\end{frame}
+
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		\frametitle{Teoria de Morse}
+		\begin{definicao}[Função de Morse]
+			Sejam $M$ uma n-variedade fechada, $f \in \funcoessuaves{M}$ e $\pontoscriticos{f} = \{p \in M: df_{p} = 0\}$ o conjuntos dos pontos críticos de $f$. Dizemos que $f$ é uma função de Morse se a hessiana $H_{p}(f)$ é não-degenerada para todo $p \in \pontoscriticos{f}$. O conjunto das funções de Morse definidas em $M$ será denotado por $\funcoesmorse{M}$. 
+		\end{definicao}
+		\begin{lema}[Lema de Morse]
+			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então existe uma carta $\{U, \phi\}$ de $p$ com $\phi(p)=0 \in \real{n}$ tal que 
+			$$
+			(f\circ \phi^{-1})(x_{1}, \dots, x_{n}) = f(p)-x_{1}^{2}-\dots -x^{2}_{\lambda_{p}}+x^{2}_{\lambda_{p}+1}+\dots + x^{2}_{n}.
+			$$
+		\end{lema}
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		
+		\begin{definicao}
+			O inteiro $\lambda_{p}$ no Lema anterior é chamado índice de Morse.
+		\end{definicao}
+		
+		\pause
+		\begin{teorema}
+			Seja $g\in \funcoessuaves{M}$. Então existe $f \in \funcoesmorse{M}$ suficientemente próxima a $g$, isto é, $\funcoesmorse{M}$ é denso em $\funcoessuaves{M}$.
+		\end{teorema}
+	\end{frame}
+	
+	\begin{frame}
+			\begin{itemize}
+				\item $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ o conjunto de nível $a$. 
+				
+				\item Dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+			\end{itemize}
+			
+			\pause
+			\begin{teorema}
+				Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+			\end{teorema}
+			
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, se $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro.
+		
+		\begin{teorema}
+			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
+		\end{teorema}
+		
+		\pause
+		\begin{observacao}
+			O teorema anterior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([c-\epsilon,c+\epsilon])$. No caso em que $f^{-1}([c-\epsilon,c+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$, teremos $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$.
+		\end{observacao}
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		
+		\frametitle{Fluxos Gradiente e Variedades de Conexão}
+		\begin{tiny}
+			Para construirmos o operador bordo vamos olhar com os pontos críticos estão conectados.
+		\end{tiny}
+		
+		\begin{definicao}[Gradiente negativo]
+				$$
+				\derivada{\gamma(t)}{t} = -\gradiente(\gamma(t)), \; \gamma(0) = p.
+				$$
+		\end{definicao}
+		
+		$$
+		\derivada{}{t}(f \circ \gamma)(t) = g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
+		=-\norma{\gradiente(\gamma(t))}^{2}
+		\leq 0.
+		$$
+		\begin{tiny}
+			Isso mostra que o fluxo sai de um ponto crítico de 
+			índice maior para um ponto crítico de índice menor.
+		\end{tiny}
+		
+		\pause
+		\begin{definicao}[Variedades instáveis/estáveis]
+			As variedades instável e estável de um ponto $p \in \pontoscriticos{f}$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
+		\end{definicao}
+		
+	\end{frame}
+	
+	\begin{frame}
+		
+		\begin{teorema}[Teorema da variedade instável/estável]
+			Sejam $f \in \funcoesmorse{M}$ e $p \in \pontoscriticos{f}$. Então temos a decomposição $\espacotangentevariedade=\espacotangentevariedadeinstavel\oplus\espacotangentevariedadeestavel$. Além disso, existem mergulhos suaves e sobrejetores $\espacotangentevariedadeinstavel \hookrightarrow \variedadeinstavel{p} \subseteq M$ e $\espacotangentevariedadeestavel \hookrightarrow \variedadeestavel{p} \subseteq M$. Com isso, $\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são subvariedades sem bordo com dimensão $\lambda_{p}$ e $n-\lambda_{p}$, respectivamente.
+		\end{teorema}
+	
+		\begin{observacao}
+			$\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são homotopicamente equivalentes a discos.
+		\end{observacao}
+		
+		\begin{tiny}
+			Com isso, são orientáveis e podemos definir o número de intersecção.
+		\end{tiny}
+	\end{frame}
+	
+	\begin{frame}
+		
+		\begin{definicao}[Variedade Conectante e o Espaço Moduli]
+			A variedade conectante de $p$ e $q$ é $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Tomando $c \in (f(a), f(p)) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
+		\end{definicao}
+		
+		\begin{figure}
+			\centering
+			\textbf{}\par
+			\includegraphics[width=4cm,height=2.25cm]{../imagem/pontos_cristicos_morse_smale}
+		\end{figure}
+		
+		\begin{definicao}[Funções de Morse-Smale]
+			Dizemos que o gradiente de $f \in \funcoesmorse{M}$ satisfazem a condição de Morse-Smale se $\variedadeinstavel{p}\pitchfork \variedadeestavel{q}$ para todos $p,q \in \pontoscriticos{f}$. O conjuntos dessas funções é denotado por $\funcoesmorsesmale{M}$.
+		\end{definicao}
+	
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		\begin{proposicao}
+			Sejam $f \in \funcoesmorsesmale{M}$ e $p,q \in \pontoscriticos{f}$.
+			\begin{itemize}
+				\item Se $\lambda_{p}<\lambda_{q}$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+				
+				\item $\variedadeconectantepontos{p}{p} = \{p\}$
+				
+				\item Se $\lambda_{p} = \lambda_{q}$ e $p\neq q$, então $\variedadeconectantepontos{p}{q} = \emptyset$,
+				
+				\item Se $p \neq q$ tal que $\variedadeconectantepontos{p}{q} \neq \emptyset$, então $\lambda_{p}>\lambda_{q}$.
+			\end{itemize}
+		\end{proposicao}
+		
+		Com isso, as óbitas não-singulares do fluxo do gradiente negativo dessa função sempre partem de um ponto crítico para um outro ponto crítico de índice inferior.
+
+		\begin{tiny}
+			Como as variedades instáveis/estáveis são homotópicas a discos, então são contráteis, logo orientáveis.
+		\end{tiny}		
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		
+		As variedades instável/estável dos pontos críticos são contráteis, logo são orientáveis.
+		
+		\begin{definicao}[Número de intersecção]
+			Dado $x \in \espacomoduli{p}{q}$ tal que $\lambda_{p}-\lambda_{q} = 1$
+			
+			\begin{enumerate}
+				\item $o(\orbitaponto{x})_{ind} = n_{x}o(\phi(x))$, $n_{x}$ é o sinal característico da órbita de $x$.
+				
+				\item $n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}$ é o número de intersecçao de $p$ e $q$.
+			\end{enumerate}
+			
+		\end{definicao}
+		\begin{figure}
+			\centering
+			\textbf{}\par
+			\includegraphics[width=4cm,height=2.25cm]{../imagem/pontos_cristicos_morse_smale}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{O complexo de Morse-Smale-Witten}
+		\begin{definicao}[Complexo de Morse-Smale-Witten]
+			$C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ 
+			\\~\\
+			$\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido em cada gerador p de $C_{k}$
+			$$
+			\partial_{k}\gerador{p}=\sum_{q \in Cr_{k-1}(f)}n(p,q)\gerador{q}
+			$$
+			\\~\\
+			O par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
+		\end{definicao}
+		
+		
+		\begin{teorema}[Homologia de Morse]
+			 A homologia $H_{*}((C_{*}(f), \partial_{*})) $ é isomorfa a homologia singular $H_{*}(M, \inteiros)$.
+		\end{teorema}
+	\end{frame}
+	
+	
+	
+	\begin{frame}
+		
+		\frametitle{Exemplo Complexo Morse-Witten}
+		
+		\begin{minipage}[t]{0.5\linewidth}
+			
+			\begin{itemize}
+				\item Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Temos que $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
+				
+				\item $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$, $\espacomoduli{r}{p} = \{ x_{3}\}$, $\espacomoduli{s}{p} = \{x_{4} \}$.
+				
+				\item Pela orientação escolhida para a variedade instável $\variedadeinstavel{p}$, temos $n_{x_{1}}=1$, $n_{x_{2}} = -1$. E a orientação escolhida para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$ nos dá $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
+				$$
+				n(p,q) = n_{x_{1}}+n_{x_{2}} = 0,\; n(r,p) = n(s,p)=n_{x_{3}}= 1. 
+				$$			
+			\end{itemize}
+		\end{minipage}
+		\hfill%
+			\begin{minipage}[t]{0.4\linewidth}
+				\begin{figure}
+					\centering
+					\textbf{}\par
+					\includegraphics[width=5cm,height=4cm]{../imagem/pontos_cristicos_morse_smale}
+				\end{figure}
+				
+			\end{minipage}
+	
+	\end{frame}
+	
+	\begin{frame}
+		
+		\begin{minipage}[t]{0.5\linewidth}
+			\begin{itemize}
+				\item As $k$-cadeias do complexo são
+				$$
+				\begin{aligned}
+				C_{0}(f) &= \inteiros\gerador{q}, 
+				\\
+				C_{1}(f) &= \inteiros\gerador{p},
+				\\
+				C_{2}(f) &= \inteiros\gerador{r}\oplus\inteiros\gerador{s}.
+				\end{aligned}
+				$$
+				
+				\item Os $k$-operadores bordo são
+				$$
+				\begin{aligned}
+				\bordo{0}\gerador{q} &=0, 
+				\\
+				\bordo{1}\gerador{p} &=n(p,q)\gerador{q} = 0,
+				\\
+				\bordo{2}\gerador{r}&=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
+				\end{aligned}
+				$$
+				
+			\end{itemize}
+		\end{minipage}
+		\hfill%
+		\begin{minipage}[t]{0.4\linewidth}
+			\begin{figure}
+				\centering
+				\textbf{}\par
+				\includegraphics[width=5cm,height=4cm]{../imagem/pontos_cristicos_morse_smale}
+			\end{figure}
+			
+		\end{minipage}
+		
+	\end{frame}
+	
+
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		\frametitle{Espaço Vetorial Simplético}
+		\begin{definicao}[Espaço vetorial simplético]
+			Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
+		\end{definicao}
+		\begin{definicao}[Base simplética]
+			Seja $(V, \omega)$ um 2n-espaço vetorial simplético, então uma base simplética é uma base $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
+			$$
+			\omega(e_{i}, e_{j}) = \omega(f_{i}, f_{j}) = 0, \; \omega(e_{i}, f_{j}) = \delta_{ij}.
+			$$
+		\end{definicao}
+		
+	\end{frame}
+	
+	\begin{frame}
+		
+		\begin{teorema}[Existência de base simplética]
+			Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
+		\end{teorema}
+		
+		\begin{observacao}
+			Na base simplética a representação matricial de $\omega$ é $\left(
+			\begin{array}{cc}
+			0 & -Id
+			\\
+			Id & 0
+			\end{array}
+			\right) $.
+		\end{observacao}
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+	\begin{exemplo}
+			\begin{enumerate}
+				\item $V = \real{2}$, $\{e_{x}, e_{y}\}$ uma base de $V$ e $\omega=dx \wedge dy$. Então 
+				$$
+				\begin{aligned}
+					\omega(e_{x}, e_{y}) &=dx(e_{x}) dy(e_{y}) - dx(e_{y}) dy(e_{x}) = 1-0= 1 \; e\; 
+					\\
+					\omega(e_{x}, e_{x}) &= \omega(e_{y}, e_{y}) = 0	
+				\end{aligned}
+				$$ 
+				
+				\item Dado $v \in V$ tal que $\formaSimpletica{v}{u}=0 \;\;\forall u \in V$, temos que 
+				$$
+				\begin{aligned}
+					\omega(v, u) &= \omega(v_{x}e_{x}+v_{y}e_{y}, u_{x}e_{x}+u_{y}e_{y})
+					\\
+					&=
+					v_{x}u_{y}\omega(e_{x}, e_{y}) +v_{y}u_{x}\omega(e_{y}, e_{x})
+					\\
+					&= v_{x}u_{y} -v_{y}u_{x} = 0
+				\end{aligned}
+				$$
+				
+				$u_{x} = 1$ e $u_{y} = 0 \Rightarrow v_{y} = 0$ e $u_{x} = 0$ e $u_{y} = 1 \Rightarrow v_{x} = 0$, logo $v=0$.
+				
+			\end{enumerate}			
+		\end{exemplo}
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		\frametitle{Estruturas complexas}
+		
+		\begin{definicao}[Estrutura Complexa]
+			\begin{itemize}
+				\item $J: V \to V$ é um endomorfismo tal que $J^{2} = -Id$. 
+				
+				\item $J$ é $\omega$-compatível se $g(u,v):=\omega(u, Jv)$ é um produto interno. 
+				
+				\item $\estruturascomplexaspadrao$ o conjunto de todas as estruturas complexas $\omega$-compatíveis.
+				
+			\end{itemize}
+		\end{definicao}
+		Fixaremos a notação
+			$
+			\estruturacomplexa=
+			\left(
+			\begin{array}{cc}
+			0 & -Id
+			\\
+			Id & 0
+			\end{array}
+			\right) \in \estruturascomplexaspadrao .
+			$
+	\end{frame}
+	
+	\begin{frame}
+		
+		\begin{definicao}
+			$\produtosinternos{V}$ é o conjunto de todos os produtos internos positivos-definidos em $V$.
+		\end{definicao}
+		
+		
+		\begin{proposicao}
+			Se $V$ é um n-espaço vetorial real, então $\produtosinternos{V}$ é contrátil.
+		\end{proposicao}
+		
+		\begin{proposicao}
+			$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
+		\end{proposicao}
+	\end{frame}
+	
+	%-------------------------------------------------
+	% FRAME
+	%-------------------------------------------------
+	\begin{frame}
+		\frametitle{Grupo Simplético}
+		
+		\begin{definicao}[Transformação simplética]
+			Seja $(V, \omega)$ um 2n-espaço vetorial simplético sobre $\reta$. Um operador linear $T: V \to V$ é uma transformação simplética se 
+			$$
+			\formaSimpletica{Tu}{Tv} = \formaSimpletica{u}{v}
+			$$ para todo $u,v\in V$.
+		\end{definicao}
+		
+		\begin{definicao}[Grupo simplético]
+			O grupo simplético $\gruposimpletico{2n} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
+		\end{definicao}	
+		
+	\end{frame}
+	
+	\begin{frame}
+		\begin{proposicao}
+			$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
+		\end{proposicao}
+		
+		\begin{lema}[Caracterização de $Sp(2n)$]
+			 Considere $V = \real{2n}$ e $\estruturacomplexa \in \estruturascomplexaspadrao$. Então $A\in Sp(2n)$ se, e somente se, $A^{t}\estruturacomplexa A = \estruturacomplexa$.
+		\end{lema}
+	\end{frame}
+	
+	\begin{frame}
+		Realizando a identificação
+		$$
+		\generalgroupcomplexo{n}\leftrightarrow \generalgroupreal{2n}
+		$$
+		$$
+		B+iC \leftrightarrow
+		\left(
+		\begin{array}{cc}
+		B & -C
+		\\
+		C & B
+		\end{array}
+		\right)
+		$$  
+		\begin{lema}
+			$F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
+		\end{lema}
+	\end{frame}
+		
+	\begin{frame}
+		\frametitle{A topologia do grupo simplético}
+		
+		\begin{enumerate}
+			\item $\matrizSimpleticaOrtogonal$ é conexo
+			
+			\item $\gruposimpletico{2n}$ é conexo
+			
+			\item $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
+			
+			\item $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \inteiros$.
+			
+		\end{enumerate}
+		
+		\begin{teorema}
+			$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
+			
+		\end{teorema}
+	\end{frame}
+	
+	\begin{frame}
+		Definamos os conjuntos $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$, $\gruposimpleticonaodegenerado{+} = \{ A \in \gruposimpletico{2n}: det(Id-A)> 0 \}$ e  $\gruposimpleticonaodegenerado{-} = \{ A \in \gruposimpletico{2n}: det(Id-A)< 0 \}$.
+		
+		\begin{lema}
+			$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
+		\end{lema}
+		
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Aplicação $\rho$}
+		
+		O primeiro passo é construir uma aplicação contínua $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$ e que satisfaz as seguintes propriedades:
+		
+			\begin{enumerate}
+				\item \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
+				$$
+				\rho(TAT^{-1}) = \rho(A)
+				$$
+				para toda $A\in \gruposimpletico{V_{1}}$.
+				
+				\item \textbf{Produto:} Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$, então
+				$$
+				\rho(A) = \rho(A_{1})\rho(A_{2})
+				$$
+				para $A\in \gruposimpletico{V}$ definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{i} \in \gruposimpletico{V_{i}}$.
+				
+			
+			\end{enumerate}
+		
+	\end{frame}
+	
+	\begin{frame}
+		\begin{enumerate}
+			
+			\item \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
+			$$
+			\rho(A) = det(X+iY), \text{onde} \;	
+			A=\left(
+			\begin{array}{cc}
+			X & -Y					\\
+			Y & X
+			\end{array}
+			\right).
+			$$
+			Além disso, a aplicação indizida $\rho_{*}: \grupofundamental{\gruposimpletico{2n}} \to \grupofundamental{\circulo} \cong \inteiros$ é um isomorfismo.
+			
+			\item \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
+		\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Índice de Maslov}
+		\begin{definicao}
+			Sejam $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
+			$$
+			\xymatrix{
+				& & \real{}\ar[d]\ar[d]^{\text{exp}}
+				\\
+				[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
+			}
+			$$	
+			Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
+			Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por $\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A})$.
+			
+		\end{definicao}
+		
+	\end{frame}
+	
+	\begin{frame}
+			\frametitle{Índice de Maslov - Exemplo}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=10cm,height=3.5cm]{../imagem/caminhos_especiais_em_Sp2n.pdf}
+			\end{figure}
+	\end{frame}
+	
+	\begin{frame}			
+		\frametitle{Índice de Maslov - Propriedades}
+		\begin{teorema}
+			Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
+			\begin{enumerate}
+				\item $\mu(\psi) \in \inteiros$.
+				
+				\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
+				
+				\item \textbf{(Homotopia)} \label{item_homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \dominioMaslov $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotópicos se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
+				
+				\item \textbf{(Nulidade)} se $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $\mu(\psi) = 0$.
+				
+					\item \textbf{(Produto)} Se $n=p+q$, então  $\mu:\caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}} \to \inteiros$ é dado por $\mu((\psi_{p}, \psi_{q})) = \mu(\psi_{p})+\mu(\psi_{q})$.
+			\end{enumerate}
+		\end{teorema}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Índice de Maslov - Propriedades}
+			\begin{teorema}\label{teorema_indice_maslov}
+				Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
+				\begin{enumerate}
+				\item \textbf{(Determinante)} O sinal de $ \det(\psi(1)-Id)$ é $(-1)^{\mu(\psi)-n}$.
+					
+					\item \textbf{(Assinatura)}\label{item_assinatura_maslov} Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+					$$
+					\mu(\psi) = Ind(S) - n,
+					$$
+					onde $Ind(S)$ é o número de auto-valores negativos de $S$ contatos com multiplicidade.
+					
+					\item \textbf{(Inversa)} $\mu(\psi^{-1}) = -\mu(\psi)$.
+					
+				\end{enumerate}
+			\end{teorema}
+	\end{frame}
+	
+	\begin{frame}
+		
+		\frametitle{Índice de Conley-Zehnder}
+		\begin{enumerate}
+			\item $A_{x}:\intervalo \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$
+			
+			\item $A_{x}(0) =Id$ e $\det(D_{x(0)}\psi_{1}-Id) \neq 0 \Rightarrow A_{x}(1)\in \gruposimpleticonaodegenerado{*}$ 
+		\end{enumerate}
+		
+		O índice de Conley-Zehnder $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$ é dado por 
+			$$
+			\iconley{x} = \mu(A_{x}).
+			$$
+		
+		
+		\begin{corolario}
+			Sejam $(M,\omega)$ uma 2n-variedade simplética, $H:M\to \reta$ uma função Hamiltoniana autônoma e $x \in \pontoscriticos{H}$. Se $\norma{\hessianaponto{x}{H}}<2\pi$ (assumindo a $\cktopologia{2}$), então o índice de Conley-Zender $\iconley{x}$ de $x$ como uma solução periódica do sistema Hamiltoniano e seu índice $\ind(x)$ como ponto crítico da função $H$ são relacionados por
+			$$
+			\iconley{x} = \ind(x)-n.
+			$$
+		\end{corolario}
+	\end{frame}
+	
+	
+	\begin{frame}
+		\frametitle{Funcional de Ação}
+		\begin{definicao}
+			
+			Uma estrutura simplética em uma 2n-variedade diferenciável $M$ é uma 2-forma não-degenerada $\omega\in \Omega^{2}(M)$ tal que $d\omega=0$. O par $(M, \omega)$ é uma 2n-variedade simplética.
+		\end{definicao}
+		
+		O conjunto das aplicações $x:\circulo \to M$ de classe $C^{\infty}$ e contráteis é denotado por $\lacocontrateis$.
+		
+		\begin{definicao}
+			O funcional de ação é a aplicação $\funcionalH: \lacocontrateis\to \reta$ definida por
+			$$
+			\funcionalHponto{x} = -\int_{D^{2}}u^{*}\omega + \int_{0}^{1}H(x(t), t)dt,
+			$$
+			onde $D^{2} \subset \mathbb{C}$ é o disco fechado e $u:D^{2}\to M$ é tal que $u(e^{i2\pi t})=x(t)$, ou seja, $u$ é uma extensão de $x$ para o disco.
+			
+		\end{definicao}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Condição de Aesfericidade}
+			\begin{enumerate}
+				
+				\item (Condição de Aesfericidade) Seja $u:S^{2} \to M$ uma aplicação suave, então a condição de aesfericidade é dada por 
+				$$
+				\int_{S^{2}} u^{*}\omega = 0.
+				$$
+				
+				\item (Condição de Trivialização) 
+				Para cada aplicação $w:S^{2}\to M$ de classe $C^{\infty}$ existe uma trivialização simplética do fibrado $\pullbackfibradotangenteM{w}$.
+				
+			\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Diferencial do Funcional de Ação}
+			$$
+			\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t),t)dt.
+			$$
+				\begin{figure}[!h]
+					\centering
+					\includegraphics[width=4cm,height=3cm]{../imagem/extensao_solucao.pdf}
+					\caption{As aplicações $x$ e $u$ e suas variações $\tilde{x}$ e $\tilde{u}$.}
+					\label{figura_extensao_solucao}
+				\end{figure}
+		\begin{proposicao}[Diferencial do funcional de ação]
+			$$
+		D_{x}\funcionalH(Y) = \int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev, Y)dt.
+		$$
+		\end{proposicao}
+		
+	\end{frame}
+	
+	\begin{frame}
+				\frametitle{Diferencial do Funcional de Ação}
+		\begin{enumerate}
+			\item 	Se $x \in \pontoscriticos{\funcionalH}$, então
+			$$
+			D_{x}\funcionalH(Y) = 0 \Rightarrow \omega(\dot{x} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{x}{\lacocontrateis}
+			$$
+			$$
+			\dot{x}(t) =\campohamiltonianoabrev(x(t), t).
+			$$
+			Portanto, $x \in \pontoscriticos{\funcionalH}$ se, e somente se, $x$ é solução 1-periódica do sistema Hamiltoniano. 
+			
+			\item Seja o produto interno $ \produtointerno{X}{Y}_{x} = \int_{0}^{1}g_{x(t)}(X, Y)dt$. 
+			
+			O gradiente do funcional de ação é 
+			$$
+			D_{x}\funcionalH(Y) = \produtointerno{\gradientefuncional(x)}{Y}_{x}
+			$$
+			para todo $x \in \lacocontrateis$ e $Y \in \espacotangenteponto{x}{\lacocontrateis}$.
+		\end{enumerate}
+		
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Gradiente do Funcional de Ação}
+		\begin{footnotesize}
+		$$
+		\begin{aligned}
+		\int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev, Y)dt&=
+		D_{x}\funcionalH(Y)
+		\\ 
+		&= \iprod{\gradientefuncional}{Y}_{x}
+		\\
+		&= \int_{[0,1]}g_{x(t)}(\gradientefuncional, Y)dt
+		\\
+		&=\int_{[0,1]} \omega_{x(t)}(\gradientefuncional, JY)dt
+		\\
+		&=\int_{[0,1]} \omega_{x(t)}(-J\gradientefuncional, Y)dt.
+		\end{aligned}
+		$$
+				
+			
+		Logo
+		$$
+		\int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev + J\gradientefuncional, Y)dt = 0.
+		$$
+		\begin{block}{O gradiente do funcional é dado por:}
+			$$
+			\gradientefuncional(x(t))= J_{x(t)}\dot{x}(t)-J_{x(t)}\campohamiltoniano{x(t), t}.
+			$$
+		\end{block}
+		\end{footnotesize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Equação de Floer}
+		\begin{footnotesize}
+	Suponha que $u :\reta\to \lacocontrateis$ seja uma solução do sistema 
+	$$
+	\derivada{}{s}u(s)|_{s=0} = -\gradientefuncional(x) \;\;\text{e}\;\;u(0)=x.
+	$$
+	Tais soluções são as trajetórias em $\lacocontrateis$ do campo gradiente negativo $-\gradientefuncional$. Tais soluções ser vistas como aplicações $u:\retacartesianocirculo \to M$ de classe $C^{1}$.
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=4.5cm,height=2.5cm]{../imagem/caminho_espaco_laco.pdf}
+	\end{figure} 
+		
+		Com isso, tem-se a
+		\begin{block}{Equação de Floer}
+			$$
+			\operadorFloerDefParametros{u}=0.
+			$$
+		\end{block}
+		\end{footnotesize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Funcional Energia}
+		
+		Seja $\cilindrosLM$ o conjunto dos caminhos de classe $C^{1}$ em $\lacocontrateis$. O funcional energia é a aplicação $E: \cilindrosLM \to \reta$ definida por $E(u)
+		=-\frac{1}{2}\int_{\reta}u^{*}d\funcionalH$.
+		$$
+		\begin{aligned}
+			E(u) &= -\frac{1}{2}\int_{\reta}-\norma{\gradientefuncional(u(s))}^{2}
+			\\
+			&= \frac{1}{2}\int_{\reta}\bigparenteses{ \int_{\circulo} \bigparenteses{\normagrande{\derivadaparcial{u}{s}(s,t)}^{2} + \normagrande{\derivadaparcial{u}{t}(s,t) - \campohamiltoniano{u(s,t)}}^{2}} dt }ds
+		\end{aligned}
+		$$
+		
+		\begin{enumerate}
+			\item $E(u)\geq0$
+			
+			\item Se $u$ é uma solução da equação de Floer, então
+			$$
+			E(u)=\int_{\retacartesianocirculo}\normagrande{\derivadaparcial{u}{s}(s,t)}^{2} =0 \Leftrightarrow u \in \pontoscriticos{\funcionalH}.
+			$$
+			
+			\item Se $\lim_{s\to \pm\infty}u(s)=x^{\pm}$, então $E(u)=\funcionalH(x^{-}) - \funcionalH(x^{+})<\infty$.
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Espaço de trajetórias}
+		O conjunto das soluções contráteis e de energia finita da equações de Floer é denotado por $\energiafinitaM$.
+		
+		\begin{teorema}\label{teorema_limite_solucoes_energia_finita}
+			Suponha que todas as trajetórias 1-periódicas do campo Hamiltoniano $\campohamiltonianoabrev$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ tais que
+			$$
+			\lim_{s\to -\infty}u(s)=x^{-},\; \lim_{s\to \infty}u(s)=x^{+}\;\;
+			$$
+			em $C^{\infty}(\circulo;M)$. Além disso, 
+			$$
+			\lim_{s\to \pm \infty}\derivadaparcial{u}{s}(s,t) = 0,
+			$$
+			converge uniformemente em $t\in \circulo$.
+		\end{teorema}
+		
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Espaço de trajetórias}		
+	Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O conjunto dos caminhos $u \in \energiafinitaM$ tais $\lim\limits_{s\to \pm \infty}u(s) = x^{\pm}$ é denotado por $\energiafinitaMconectante$.
+			
+			\begin{observacao}\label{observacao_uniao_orbitas_conectantes}
+				Uma consequência imediata do teorema anterior é que 
+				$$
+				\energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.
+				$$
+			\end{observacao}
+			
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{ESpaço de Trajetórias - Propriedades}
+		\begin{itemize}
+			\item $\energiafinitaMconectante$ é uma variedade de Banach
+			
+			\item $\dim(\energiafinitaMconectante)=\iconley{x^{-}}-\iconley{x^{+}}$
+			
+			
+		\end{itemize}
+		Fixe $\alpha \in \reta$ e defina $\tilde{u} = u*\alpha$ por $\tilde{u}(s,t) = u(s+\alpha,t)$.  Defina o quociente
+		$$
+		\energiafinitaM(x^{-},x^{+}, H, J)/\reta=\{u*\reta: u\in \energiafinitaM(x^{-},x^{+}, H, J)\},
+		$$
+		onde $u*\reta = \{u*\alpha:\alpha \in \reta\}$.
+		
+		
+		Denote 
+		$$
+		\quocientetrajetorias = \energiafinitaM(x^{-},x^{+}, H, J)/\reta.
+		$$ 
+		\begin{proposicao}
+		O conjunto $\quocientetrajetorias$ é finito.
+		\end{proposicao}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Complexo de Floer}
+		\begin{footnotesize}
+				
+			\begin{itemize}
+				\item Seja $
+				\pontoscriticosordem{k}{\funcionalH} = \{ y \in \pontoscriticos{\funcionalH}: \iconley{y} \ =	 k\}$
+				
+				\item Considere $C^{F}_{k}(M, \inteiros_{2}; H,J)$ o espaço vetorial sobre o corpo $\inteiros_{2}$, cujos elementos são gerados por $x \in \pontoscriticosordem{k}{\funcionalH} $.
+				
+				\item Denote $C^{F}_{k}(M, \inteiros_{2}; H,J)$  por $C^{F}_{k}(H,J)$.
+				
+				\item O número de elementos de $\quocientetrajetorias$ módulo 2 é denotado por $n(x^{-},x^{+})$.
+				
+				\item 
+				Considere o homomorfismo $\bordo{k}^{F}: C^{F}_{k}(H,J)\to C^{F}_{k-1}(H,J)$ de grau -1 definido em cada gerador por
+				$$
+				\bordo{k}^{F}(\gerador{x}) = \sum_{\iconley{y}=k-1}n(x,y)\gerador{y}
+				$$
+				e estendido por linearidade. 
+				
+				\item Tem-se que $\bordo{k-1}^{F}\circ\bordo{k}^{F} = 0$ e o par $(C^{F}_{*}(H,J), \partial^{F})$ é um complexo de cadeias.
+			\end{itemize}
+		
+		\end{footnotesize}
+		
+	\end{frame}
+\end{document}
