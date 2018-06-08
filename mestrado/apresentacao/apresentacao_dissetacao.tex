@@ -940,4 +940,71 @@
 		\end{footnotesize}
 		
 	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Homologia de Floer}
+		\begin{footnotesize}
+			A Homologia de Floer da 2n-variedade simplética $(M,\omega)$ é definida por 
+			$$
+			H^{F}_{*}(M;H,J)=\bigoplus_{k=0}^{2n}H^{F}_{k}(C^{F}_{*}(H,J), \partial^{F}),
+			$$
+			
+			\begin{teorema}
+				Sejam $(H,J)$ e $(H',J')$ dois pares regulares. Então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
+				$$
+				H^{F}_{*}(C^{F}_{*}(H,J)) \cong H^{F}_{*}(M; H',J'). 
+				$$
+			\end{teorema}
+			
+			\begin{teorema}\label{teorema_isomorfismo_homologia_floer}
+				Se $(H,J)$ é um par regular, então 
+				existe um isomorfismo natural entre a homologia de Floer e a homologia singular de $M$
+				$$
+				H^{F}_{*}(M;H,J) \cong H_{*}(M;\inteiros_{2}). 
+				$$
+				
+			\end{teorema}
+		\end{footnotesize}	
+			
+	\end{frame}
+	
+	
+	\begin{frame}
+		\frametitle{Conjectura de Arnold}
+		\begin{footnotesize}
+			
+			\begin{teorema}
+				(Conjectura de Arnold) Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina $H:M\times \real{} \to \reta$ uma função Hamiltoniana 1-periódica e suponha que as soluções 1-periódicas do sistema Hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema é limitado inferiormente pela soma dos números de Betti de M, isto é:
+				$$
+				\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
+				$$
+				onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.
+			\end{teorema}
+		\end{footnotesize}
+	\end{frame}
+	
+	
+	\begin{frame}
+		\frametitle{Prova da Conjectura de Arnold}
+		\begin{footnotesize}
+			
+			\begin{prova}
+				\begin{itemize}
+					\item Como $\pontoscriticos{\funcionalH}$ é um conjunto finito, então $\pontoscriticosordem{k}{\funcionalH} \subset \pontoscriticos{\funcionalH}$ é finito.
+					
+					\item Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso $\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j}$ é o total de elementos de $\pontoscriticos{\funcionalH}$.
+					
+					\item  Como $C^{F}_{k}(H,J)$ é gerado por todos os pontos críticos de ordem $k$, então $\mathcal{N}_{k}\geq \dim(	H^{F}_{k}(C^{F}_{*}(H,J)))$. 
+					
+					\item $\dim(	H^{F}_{k}(C^{F}_{*}(H,J)))  = \dim(	H_{k}(M;\inteiros_{2}) = \beta_{k}(M).$
+				\end{itemize} 
+				$$
+				\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j} \geq \sum_{j=0}^{2n} \beta_{j}(M).
+				$$
+				
+			\end{prova}
+			
+		\end{footnotesize}
+	\end{frame}
+	
 \end{document}
