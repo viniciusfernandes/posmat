@@ -10,7 +10,6 @@
 
 \usepackage[portuguese]{babel}
 \usepackage[utf8]{inputenc}
-
 \usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage[all]{xy}
@@ -138,11 +137,24 @@
 	\begin{frame}
 	
 	\frametitle{Teoria de Morse}
-			\begin{itemize}
-				\item $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ o conjunto de nível $a$. 
+		
+			
+			\begin{minipage}[t]{0.5\linewidth}
+				\begin{itemize}
+					\item $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ o conjunto de nível $a$. 
+					
+					\item Dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+				\end{itemize}
+			\end{minipage}
+			\hfill%
+			\begin{minipage}[t]{0.48\linewidth}
+				\begin{figure}
+					\centering
+					\textbf{}\par
+					\includegraphics[height=4.5cm]{../imagem/conjunto_nivel}
+				\end{figure}
 				
-				\item Dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
-			\end{itemize}
+			\end{minipage}
 			
 			\begin{teorema}
 				Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
@@ -158,11 +170,11 @@
 		O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, se $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro.
 		
 		\begin{teorema}
-			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = c$. Suponhamos que $f^{-1}([c-\epsilon,c+\epsilon])$ seja compacto e $f^{-1}([c-\epsilon,c+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{c+\epsilon}$ tem o mesmo tipo de homotopia de $M^{c+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
+			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = b$. Suponhamos que $f^{-1}([b-\epsilon,b+\epsilon])$ seja compacto e $f^{-1}([b-\epsilon,b+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{b+\epsilon}$ tem o mesmo tipo de homotopia de $M^{b+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
 		\end{teorema}
 		
 		\begin{observacao}
-			O teorema anterior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([c-\epsilon,c+\epsilon])$. No caso em que $f^{-1}([c-\epsilon,c+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$, teremos $M^{c+\epsilon} \simeq M^{c-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$.
+			O teorema anterior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([b-\epsilon,b+\epsilon])$. No caso em que $f^{-1}([b-\epsilon,b+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$, teremos $M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$.
 		\end{observacao}
 	\end{frame}
 	
@@ -172,9 +184,6 @@
 	\begin{frame}
 		
 		\frametitle{Fluxos Gradiente e Variedades de Conexão}
-		\begin{tiny}
-			Para construirmos o operador bordo vamos olhar com os pontos críticos estão conectados.
-		\end{tiny}
 		
 		\begin{definicao}[Gradiente negativo]
 				$$
@@ -182,16 +191,23 @@
 				$$
 		\end{definicao}
 		
-		$$
-		\derivada{}{t}(f \circ \gamma)(t) = g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
-		=-\norma{\gradiente(\gamma(t))}^{2}
-		\leq 0.
-		$$
-		\begin{tiny}
-			Isso mostra que o fluxo sai de um ponto crítico de 
-			índice maior para um ponto crítico de índice menor.
-		\end{tiny}
-		
+		\begin{minipage}[t]{0.67\linewidth}
+		\begin{itemize}
+			\item $\derivada{}{t}(f \circ \gamma)(t) = g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
+			=-\norma{\gradiente(\gamma(t))}^{2}
+			\leq 0$.
+			
+			\item O fluxo do gradiente negativo $\phi:M\times \reta
+			\to M$ definido por $\phi(p,.) =\gamma$, onde $\gamma(0) = p$, e a família de difeomorfismos $\phi_{t}:M\to M$ definida por $\phi_{t}(p) = \phi(p,t)$.
+		\end{itemize}	
+		\end{minipage}
+		\hfill%
+		\begin{minipage}[t]{0.30\linewidth}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[height=3cm]{../imagem/variedade_instavel.pdf}
+			\end{figure}
+		\end{minipage}
 		\begin{definicao}[Variedades instáveis/estáveis]
 			As variedades instável e estável de um ponto $p \in \pontoscriticos{f}$ são os conjutos $\variedadeinstavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to -\infty\}$ e $\variedadeestavel{p} = \{q\in M: \phi_{t}(q) \to p,\; t\to \infty\}$.
 		\end{definicao}
@@ -250,9 +266,7 @@
 		
 		Com isso, as óbitas não-singulares do fluxo do gradiente negativo dessa função sempre partem de um ponto crítico para um outro ponto crítico de índice inferior.
 
-		\begin{tiny}
-			Como as variedades instáveis/estáveis são homotópicas a discos, então são contráteis, logo orientáveis.
-		\end{tiny}		
+				
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -468,7 +482,7 @@
 	\end{frame}
 	
 	\begin{frame}
-		
+		\frametitle{Topologia de $\estruturascomplexaspadrao$}
 		\begin{definicao}
 			$\produtosinternos{V}$ é o conjunto de todos os produtos internos positivos-definidos em $V$.
 		\end{definicao}
@@ -541,7 +555,9 @@
 			
 			\item $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
 			
-			\item $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \inteiros$.
+			\item  $\grupofundamental{\matrizunitaria{n}} \cong \inteiros$
+			
+			\item $\matrizunitaria{n} \cong \matrizSimpleticaOrtogonal \Rightarrow \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 			
 		\end{enumerate}
 		
@@ -550,9 +566,8 @@
 			
 		\end{teorema}
 		
-		Sejam os conjuntos $\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}$ e 
-		$$
-		\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}.
+		Sejam os conjuntos $$\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \},
+		\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}. 
 		$$
 		
 		\begin{lema}
@@ -567,6 +582,7 @@
 		
 		O primeiro passo é construir uma aplicação contínua $\rho: \gruposimpletico{2n}\to \circulo$ que será a extenção contínua da aplicação determinante $det:\matrizSimpleticaOrtogonal\to \circulo$ em $\matrizSimpleticaOrtogonal$ e que satisfaz as seguintes propriedades:
 		
+		\begin{scriptsize}
 			\begin{enumerate}
 				\item \textbf{Naturalidade:}  Se $T:V_{1} \to V_{2}$ é um isomorfismo simplético, isto é, $T^{*}\omega_{2} = \omega_{1}, $então 
 				$$
@@ -595,26 +611,48 @@
 			
 			\item \textbf{Normalização:} Se $A \in \gruposimpletico{2n}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
 			
+			
+			\item  \textbf{Inversa:} Para todo $A \in \gruposimpletico{2n}$ tem-se que $\rho(A^{-1})=(\rho(A))^{-1}$. 
+			
 			\end{enumerate}
-		
+		\end{scriptsize}
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Índice de Maslov}
-		\begin{definicao}
-			Sejam $W^{\pm} \in Sp(2n)^{\pm}$ duas matrizes fixas. Para cada curva $\gamma:[0,1] \to Sp(2n)$ escolhamos o levantamento $\alpha:[0,1] \to \real{}$ de $\rho\circ \gamma$ tal que o diagrama abaixo comute
-			$$
-			\xymatrix{
-				& & \real{}\ar[d]\ar[d]^{\text{exp}}
-				\\
-				[0,1 ]\ar[urr]^{\alpha} \ar[r]_{\gamma} & Sp(2n) \ar[r]_{\rho} & S^{1}
-			}
-			$$	
-			Definamos $\varDelta(\gamma) = (\alpha(0) - \alpha(1))/\pi$. Dada $A \in Sp(2n)^{*}$ e uma determinada $\gamma_{A}:[0,1] \to Sp(2n)^{*}$ com $\gamma_{A}(0) = A$ e $\gamma_{A}(1) = W^{\pm}$, o número $\varDelta(\gamma_{A}) \in \real{}$ fixo.
-			Seja $\psi:[0,1] \to Sp(2n)$ com $\psi(0)=Id$ e $\psi(1)=A$, então o índice de Maslov da curva $\psi$ é dado por $\mu(\psi) = \varDelta(\psi) - \varDelta(\gamma_{A})$.
-			
-		\end{definicao}
+		\begin{scriptsize}
+				
+			\begin{itemize}
+				\item $W(a) = diag\{a,-1,\dots,-1, a^{-1},-1,\dots,-1\}$
+				
+				\item $W^{+}=W(-1) \in  \gruposimpleticonaodegenerado{+}$ e $W^{-} = W(2)\in \gruposimpleticonaodegenerado{-}$.
+				
+			\end{itemize}
+		\end{scriptsize}
 		
+	
+	\begin{definicao}Seja 
+		$
+		\dominioMaslov=\{ \psi \in \caminhos(\gruposimpletico{2n}): \psi(0)=Id \;\; \text{e}\;\; \psi(1)\in \gruposimpleticonaodegenerado{*}\}.
+		$
+		Para um dado caminho $\psi \in \dominioMaslov$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \dominioMaslov$. Seja $\alpha_{\Psi}: \intervalo \to \reta$ o levantamento do caminho $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha_{\Psi}} \ar[r]_{\Psi} & \gruposimpleticonaodegenerado{*} \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		Então o grau de $\rho_{\Psi}$ é dado por $\deg(\rho_{\Psi}) = (\alpha_{\Psi}(1)-\alpha_{\Psi}(0))/2\pi$. 
+		
+		O índice de Maslov de $\psi$ é definido por
+		$$
+		\mu(\psi)= 2\deg(\rho_{\Psi}) = 2\deg(\rho_{\psi}) + 2\deg(\rho_{\gamma}).
+		$$
+		
+		
+	\end{definicao}
+	
 	\end{frame}
 	
 	\begin{frame}
@@ -627,10 +665,11 @@
 	
 	\begin{frame}			
 		\frametitle{Índice de Maslov - Propriedades}
+		
 		\begin{teorema}
 			Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
 			\begin{enumerate}
-				\item $\mu(\psi) \in \inteiros$.
+				\item $\mu(\psi):\dominioMaslov \to \inteiros$.
 				
 				\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
 				
@@ -645,7 +684,7 @@
 	
 	\begin{frame}
 		\frametitle{Índice de Maslov - Propriedades}
-			\begin{teorema}\label{teorema_indice_maslov}
+			\begin{teorema}
 				Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
 				\begin{enumerate}
 				\item \textbf{(Determinante)} O sinal de $ \det(\psi(1)-Id)$ é $(-1)^{\mu(\psi)-n}$.
