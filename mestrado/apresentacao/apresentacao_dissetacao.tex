@@ -43,66 +43,6 @@
 			$$
 			onde $\beta_{i}(M)$ é a dimensão do i-ésimo grupo de homologia singular de $M$.}
 	\end{frame}
-	
-	\begin{frame}
-	
-		\frametitle{CW-Complexo}
-		\begin{definicao}[Colagem de célula]
-			Sejam $X$ um espaço topológico, $D^{k}$ o n-disco e $f_{\partial}:\partial D^{k} \to X$ contínua. Denotaremos a colagem da $k$-célula por $X\cup_{f_{\partial}}D^{k}$.
-		\end{definicao}
-		
-		\begin{definicao}[CW-complexo]
-			Dizemos que um espaço topológico $X$ tem uma CW-estrutura se existem uma sequência de espaços
-			$$
-			\skeleton{0} \subseteq \skeleton{1} \subseteq \dots \subseteq X = \bigcup \limits_{n\in \mathbb{N}} \skeleton{n}
-			$$ 
-			tais que:
-			\begin{itemize}
-				\item $\skeleton{0}$ é um conjunto discreto de pontos.
-				
-				\item $\skeleton{n+1}$ é obtido anexando $(n+1)-$células a $\skeleton{n}$.
-				
-				\item $X$ tem uma topologia fraca, ou seja, um dado $A \subseteq X$ é dito um aberto se, e somente se, $A \cap \skeleton{n}$ for um aberto em $\skeleton{n}$ para todo $n \in \mathbb{N}$.
-			\end{itemize}
-		\end{definicao}
-	\end{frame}
-	
-	\begin{frame}
-		
-		\frametitle{Homologia Celular}
-		\begin{lema}[Homologia celular]
-			$\mathcal{C}_{k}(X)$ é um $A-$módulo livre e finitamente gerado pelas $k-$células de $X$ tal que 
-			$$
-			\mathcal{C}_{k}(X) \cong 
-			\homologiarelskelesimpl{k}{k} \cong \somadir{\sigma} A.
-			$$
-		\end{lema}
-		
-		\begin{definicao}[Grau homológico]
-			Sejam $f: S^{n} \to S^{n}$ é contínua e $[S^{n}] \in \homologia{n}{S^{n}}$ o gerador, então $f_{*}[S^{n}] = deg(f)[S^{n}]$, onde $deg(f) \in A$.
-		\end{definicao}
-		
-		\begin{teorema}[CW-bordo]
-			É o homomorfismo $\partial_{k}:\mathcal{C}_{k}(X)\to \mathcal{C}_{k-1}(X)$ definido por
-			$$
-			\partial_{k}(\sigma) = \sum_{\beta}[\beta:\sigma]\beta,
-			$$
-			onde $[\beta:\sigma]$ é o grau homológico da aplicação $p_{\beta} \circ f_{\partial\sigma}:\celulabordo{n}{\sigma} \to S^{n-1}_{\sigma}$.
-		\end{teorema}
-		
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Homologia Celular}
-		\begin{teorema}[CW-homologia]
-			Seja $X$ um CW-complexo, então existe uma identificação natural entre a CW-homologia $\mathcal{C}_{*}(X)$ e a homologia singular $\homologia{*}{X}$, isto é 
-			$$
-			\homologia{k}{X} \cong \homologia{k}{\mathcal{C}_{*}(X)}\; \forall k \in \inteiros.
-			$$
-		\end{teorema}
-		
-	\end{frame}
-
 	%-------------------------------------------------
 	% FRAME
 	%-------------------------------------------------
@@ -141,9 +81,18 @@
 			
 			\begin{minipage}[t]{0.5\linewidth}
 				\begin{itemize}
-					\item $M^{a}= f^{-1}((-\infty, a]) = \{p \in M: f(p)\leq a\}$ o conjunto de nível $a$. 
+					\item O conjunto de nível $a$ é definido por
+					$$
+					\begin{aligned}
+					M^{a}&= f^{-1}((-\infty, a]) 
+					\\
+					&= \{p \in M: f(p)\leq a\}
+					\end{aligned}
+					$$
 					
 					\item Dados $a\leq b \in \reta$, então $M^{a} \subseteq M^{b}$.
+					
+					\item $M^{a,b} = f^{-1}([a,b])$.
 				\end{itemize}
 			\end{minipage}
 			\hfill%
@@ -157,7 +106,7 @@
 			\end{minipage}
 			
 			\begin{teorema}
-				Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $f^{-1}([a,b])\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
+				Sejam $f \in \funcoesmorse{M}$ e $a<b \in \reta$ tais que $M^{a,b}\subset M$ é um compacto e não contém pontos críticos de $f$. Então $M^{a}$ é difeomorfo a $M^{b}$. Além disso, $M^{a}$ é um retrato de deformação de $M^{b}$, de modo que a inclusão  $M^{a} \hookrightarrow M^{b}$ é uma equivalência homotópica.
 			\end{teorema}
 			
 	\end{frame}
@@ -167,15 +116,31 @@
 	%-------------------------------------------------
 	\begin{frame}
 		\frametitle{Teoria de Morse}
-		O seguinte teorema afirma que, fixando $a \in \reta$ e variando $t \in \reta$, se $f^{-1}([a,t]) \cap \pontoscriticos{f} \neq \emptyset$, os conjuntos de nível $M^{a}$ e $M^{t}$ não podem ser deformados um no outro.
+	
 		
 		\begin{teorema}
-			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = b$. Suponhamos que $f^{-1}([b-\epsilon,b+\epsilon])$ seja compacto e $f^{-1}([b-\epsilon,b+\epsilon])\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{b+\epsilon}$ tem o mesmo tipo de homotopia de $M^{b+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
+			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = b$. Suponhamos que $M^{b-\epsilon,b+\epsilon}$ seja compacto e $M^{b-\epsilon,b+\epsilon}\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{b+\epsilon}$ tem o mesmo tipo de homotopia de $M^{b+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
 		\end{teorema}
 		
-		\begin{observacao}
-			O teorema anterior tem como hipótese a exitência de apenas um ponto crítico em $f^{-1}([b-\epsilon,b+\epsilon])$. No caso em que $f^{-1}([b-\epsilon,b+\epsilon]) \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$, teremos $M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}$.
-		\end{observacao}
+		\begin{minipage}[t]{0.5\linewidth}
+			\begin{itemize}
+				\item Caso $M^{b-\epsilon,b+\epsilon} \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$, tem-se 
+				$$
+				M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}.
+				$$
+			\end{itemize}
+			
+		\end{minipage}
+		\hfil
+		\begin{minipage}[t]{0.3\linewidth}
+			\begin{figure}
+				\centering
+				\textbf{}\par
+				\includegraphics[height=4.5cm]{../imagem/conjunto_nivel_zoom}
+			\end{figure}
+			
+		\end{minipage}
+		
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -221,7 +186,7 @@
 		\end{teorema}
 	
 		\begin{observacao}
-			$\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são homotopicamente equivalentes a discos.
+			$\variedadeinstavel{p}$ e $\variedadeestavel{p}$ são homotopicamente equivalentes a discos abertos.
 		\end{observacao}
 		
 		\begin{tiny}
@@ -280,7 +245,7 @@
 			Dado $x \in \espacomoduli{p}{q}$ tal que $\lambda_{p}-\lambda_{q} = 1$
 			
 			\begin{enumerate}
-				\item $o(\orbitaponto{x})_{ind} = n_{x}o(\phi(x))$, $n_{x}$ é o sinal característico da órbita de $x$.
+				\item $o(W^{u}(p)) = n_{x}o(\phi(x))$, $n_{x}$ é o sinal característico da órbita de $x$.
 				
 				\item $n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}$ é o número de intersecçao de $p$ e $q$.
 			\end{enumerate}
@@ -296,13 +261,17 @@
 	\begin{frame}
 		\frametitle{O complexo de Morse-Smale-Witten}
 		\begin{definicao}[Complexo de Morse-Smale-Witten]
-			$C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ 
-			\\~\\
-			$\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido em cada gerador p de $C_{k}$
-			$$
-			\partial_{k}\gerador{p}=\sum_{q \in Cr_{k-1}(f)}n(p,q)\gerador{q}
-			$$
-			\\~\\
+			\begin{itemize}
+				\item $C_{k}(f)$ o grupo abeliano livremente gerado pelos pontos críticos de índice $k$ 
+				
+				\item 
+				$\partial_{k}: C_{k}(f)\to C_{k-1}(f)$ definido em cada gerador p de $C_{k}$
+				$$
+				\partial_{k}\gerador{p}=\sum_{q \in Cr_{k-1}(f)}n(p,q)\gerador{q}
+				$$
+				
+				\item $\partial_{k-1}\circ \partial_{k}  =0$
+			\end{itemize}
 			O par $(C_{*}(f), \partial_{*})$ é o complexo de cadeias de Morse-Smale-Witten  da função $f$.
 		\end{definicao}
 		
@@ -392,31 +361,30 @@
 		\begin{definicao}[Espaço vetorial simplético]
 			Sejam $V$ um 2n-espaço vetorial real e uma forma bilinear anti-simétrica $\omega$ em $\Lambda^{2}(V, \real{})$ tal que $\omega(u,v) = 0 \; \forall v \in V \Rightarrow u=0$. Então dizemos que $\omega$ é não-degenerada e o par $(V, \omega)$ é chamado de 2n-espaço vetorial simplético.
 		\end{definicao}
+	
 		\begin{definicao}[Base simplética]
 			Seja $(V, \omega)$ um 2n-espaço vetorial simplético, então uma base simplética é uma base $\{ e_{1},\dots, e_{n},f_{1},\dots f_{n}\}$ de $V$ tal que valem as relações:
 			$$
 			\omega(e_{i}, e_{j}) = \omega(f_{i}, f_{j}) = 0, \; \omega(e_{i}, f_{j}) = \delta_{ij}.
 			$$
 		\end{definicao}
-		
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Espaço Vetorial Simplético}
-		\begin{teorema}[Existência de base simplética]
-			Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
-		\end{teorema}
-		
-		\begin{observacao}
-			Na base simplética a representação matricial de $\omega$ é $\left(
+		\begin{itemize}
+			\item 	Na base simplética a representação matricial de $\omega$ é $\left(
 			\begin{array}{cc}
 			0 & -Id
 			\\
 			Id & 0
 			\end{array}
 			\right) $.
-		\end{observacao}
+		\end{itemize}
+		
+			\begin{teorema}[Existência de base simplética]
+				Todo espaço vetorial simplético de dimensão finita possui uma base simplética.
+			\end{teorema}
+	
 	\end{frame}
+	
+
 	
 	%-------------------------------------------------
 	% FRAME
@@ -559,6 +527,8 @@
 			
 			\item $\matrizunitaria{n} \cong \matrizSimpleticaOrtogonal \Rightarrow \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 			
+			\item $\grupofundamental{\gruposimpletico{2n}} \cong \grupofundamental{\matrizSimpleticaOrtogonal}$
+			
 		\end{enumerate}
 		
 		\begin{teorema}
@@ -566,9 +536,12 @@
 			
 		\end{teorema}
 		
-		Sejam os conjuntos $$\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \},
-		\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}. 
-		$$
+		\begin{itemize}
+			\item  $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$
+			\item $
+			\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}. 
+			$
+		\end{itemize}
 		
 		\begin{lema}
 			$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
@@ -618,50 +591,63 @@
 		\end{scriptsize}
 	\end{frame}
 	
-	\begin{frame}
-		\frametitle{Índice de Maslov}
-		\begin{scriptsize}
+		\begin{frame}
+			\frametitle{Índice de Maslov}
+			\begin{scriptsize}
 				
-			\begin{itemize}
-				\item $W(a) = diag\{a,-1,\dots,-1, a^{-1},-1,\dots,-1\}$
+				\begin{minipage}[t]{0.5\linewidth}
+					\begin{itemize}
+						\item $W(a) = diag\{a,-1,\dots,-1, a^{-1},-1,\dots,-1\}$
+						
+					\end{itemize}
+				\end{minipage}
+				\begin{minipage}[t]{0.4\linewidth}
+					\begin{itemize}
+						\item $W^{+}=W(-1) \in  \gruposimpleticonaodegenerado{+}$ e $W^{-} = W(2)\in \gruposimpleticonaodegenerado{-}$.
+						
+					\end{itemize}
+				\end{minipage}
 				
-				\item $W^{+}=W(-1) \in  \gruposimpleticonaodegenerado{+}$ e $W^{-} = W(2)\in \gruposimpleticonaodegenerado{-}$.
+			\begin{minipage}[t]{0.5\linewidth}
+				\begin{figure}[!h]
+					\centering
+					\includegraphics[height=2.0cm]{../imagem/caminhos_especiais_em_Sp2n.pdf}
+				\end{figure}
+			\end{minipage}
+			\hfill%
+			\begin{minipage}[t]{0.3\linewidth}
 				
-			\end{itemize}
+				\xymatrix{
+					& & \real{}\ar[d]\ar[d]^{\text{exp}}
+					\\
+					[0,1 ]\ar[urr]^{\alpha_{\Psi}} \ar[r]_{\Psi} & \gruposimpleticonaodegenerado{*} \ar[r]_{\rho} & S^{1}
+				}
+				
+			\end{minipage}
+			
+			\begin{definicao}[Índice de Maslov]
+				
+				\begin{itemize}
+					\item $
+					\dominioMaslov$ é o conjunto dos caminhos contínuos $ \psi : \intervalo \to \gruposimpletico{2n}$ tais que $\psi(0)=Id \;\; \text{e}\;\; \psi(1)\in \gruposimpleticonaodegenerado{*}.
+					$
+					
+					\item Fixe $\gamma :\intervalo \to \gruposimpleticonaodegenerado{*}$, $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. 
+					
+					\item Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \dominioMaslov$ 
+					
+					\item $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$.
+					
+					\item $\deg(\rho_{\Psi}) = (\alpha_{\Psi}(1)-\alpha_{\Psi}(0))/2\pi$. 
+					
+					\item 	O índice de Maslov de $\psi$ é definido por
+					$\mu(\psi)= 2\deg(\rho_{\Psi})$.
+				\end{itemize}
+			\end{definicao}
 		\end{scriptsize}
 		
+		\end{frame}
 	
-	\begin{definicao}Seja 
-		$
-		\dominioMaslov=\{ \psi \in \caminhos(\gruposimpletico{2n}): \psi(0)=Id \;\; \text{e}\;\; \psi(1)\in \gruposimpleticonaodegenerado{*}\}.
-		$
-		Para um dado caminho $\psi \in \dominioMaslov$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \dominioMaslov$. Seja $\alpha_{\Psi}: \intervalo \to \reta$ o levantamento do caminho $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
-		$$
-		\xymatrix{
-			& & \real{}\ar[d]\ar[d]^{\text{exp}}
-			\\
-			[0,1 ]\ar[urr]^{\alpha_{\Psi}} \ar[r]_{\Psi} & \gruposimpleticonaodegenerado{*} \ar[r]_{\rho} & S^{1}
-		}
-		$$	
-		Então o grau de $\rho_{\Psi}$ é dado por $\deg(\rho_{\Psi}) = (\alpha_{\Psi}(1)-\alpha_{\Psi}(0))/2\pi$. 
-		
-		O índice de Maslov de $\psi$ é definido por
-		$$
-		\mu(\psi)= 2\deg(\rho_{\Psi}) = 2\deg(\rho_{\psi}) + 2\deg(\rho_{\gamma}).
-		$$
-		
-		
-	\end{definicao}
-	
-	\end{frame}
-	
-	\begin{frame}
-			\frametitle{Índice de Maslov - Exemplo}
-			\begin{figure}[!h]
-				\centering
-				\includegraphics[width=10cm]{../imagem/caminhos_especiais_em_Sp2n.pdf}
-			\end{figure}
-	\end{frame}
 	
 	\begin{frame}			
 		\frametitle{Índice de Maslov - Propriedades}
@@ -669,7 +655,7 @@
 		\begin{teorema}
 			Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
 			\begin{enumerate}
-				\item $\mu(\psi):\dominioMaslov \to \inteiros$.
+				\item $\mu:\dominioMaslov \to \inteiros$.
 				
 				\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
 				
@@ -711,18 +697,21 @@
 				\begin{itemize}
 					
 					\begin{scriptsize}
-						\item $W(a) = \{a,-1,\dots,-1, a^{-1},-1,\dots,-1\}$,$W^{+}=W(-1) $ e $W^{-}=W(2) $.
+						\item $W^{+}=W(-1) $ e $W^{-}=W(2) $.
 						
-						\item $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$ e $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})$
+						\item $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$
 						
-						\item $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1} \Rightarrow \rho(W^{\pm}) \in \{ -1,1\}$. 
+						\item $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})  \in \{ -1,1\}$
 						
-						\item $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$. 
-						\item $t=0\Rightarrow \alpha_{\Psi}(0)=0$ e $t=1\Rightarrow \rho(W^{\pm}) = \pm 1$. 
+						\item $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$.
+						 
+						\item $\exp(i\alpha_{\Psi}(0))=1 \Rightarrow \alpha_{\Psi}(0)=0$ 
 						
-						\item $\alpha_{\Psi}(1) = k\pi$, para algum $k\in \inteiros$ 
+						\item $\exp(i\alpha_{\Psi}(1)) = \pm 1 \Rightarrow \alpha_{\Psi}(1) = k\pi$, para algum $k\in \inteiros$. 
+						
 						$$
-						\mu(\psi) = 2\deg(\rho_{\Psi}) = (k\pi-0)/\pi \in \inteiros.$$
+						\mu(\psi) = 2\deg(\rho_{\Psi}) = \frac{2
+							(k\pi-0)}{2\pi}\in \inteiros.$$
 						
 					\end{scriptsize}
 				\end{itemize}
@@ -735,9 +724,9 @@
 						\item Sejam $\Psi_{1}, \Psi_{2}$ prolongamentos de $\psi_{1}, \psi_{2} \in \caminhosespeciais{\gruposimpletico{2n}}$. 
 						\item $\Psi_{1}\sim \Psi_{2} \Leftrightarrow\psi_{1}\sim \psi_{2}$. 
 						
-						\item $(\Rightarrow) \psi_{1}\sim \psi_{2}$, então $\mu(\psi_{1}) = 2\deg(\rho_{\Psi_{1}}) = 2\deg(\rho_{\Psi_{2}}) = \mu(\psi_{2})$. 
+						\item $(\Rightarrow) \;\;\psi_{1}\sim \psi_{2}$, então $\mu(\psi_{1}) = 2\deg(\rho_{\Psi_{1}}) = 2\deg(\rho_{\Psi_{2}}) = \mu(\psi_{2})$. 
 						
-						\item $(\Leftarrow) \mu(\psi_{1}) = \mu(\psi_{2})$ implica imediatamente que $\Psi_{1}\sim \Psi_{2}$, logo $\psi_{1}\sim \psi_{2}$.
+						\item $(\Leftarrow) \;\;\mu(\psi_{1}) = \mu(\psi_{2})$ implica imediatamente que $\Psi_{1}\sim \Psi_{2}$ e $\psi_{1}\sim \psi_{2}$.
 						
 					\end{scriptsize}
 				\end{itemize}	
@@ -757,7 +746,9 @@
 		\begin{itemize}
 			\item Sejam $(M1, \omega_{1})$ e $(M1, \omega_{1})$ variedades simpléticas. Um difeomorfismo $\varphi: M_1\to M_2$ é um simplectomorfismo se $\varphi^{*}\omega_{2}=\omega_{1}$.
 			
-			\item Uma estrutura complexa $J:TM\to TM$ é $\omega$-compatível se $g_{x}(X,Y) = \omega(X, J_{x}Y)$ define uma métrica Riemanniana.
+			\item Uma estrutura complexa $J:TM\to TM$ definida por $(x, v)\mapsto (x, J_{x}v)$.
+			
+			\item $J$ é $\omega$-compatível se $g_{x}(X,Y) = \omega_{x}(X, J_{x}Y)$ define uma métrica Riemanniana.
 		\end{itemize}
 		
 	\end{frame}
@@ -780,20 +771,31 @@
 			para todo $x\in M$ e todo $Y \in \espacotangenteponto{x}{M}$.
 		\end{definicao}
 		
+		
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Soluções do Sistema Hamiltoniano}
+		
 		\begin{itemize}
-			\item 	Seja $x\in M$. Então, $x\in \pontoscriticos{H}$ se, e somente se, $\campohamiltoniano{x}=0$.
+			\item As soluções do sistema Hamiltoniano $\dot{x}(t)=X_{H}(x(t), t)$ definem uma família de simplectomorfismos $\psi_{t}:M\to M$ tal que
+			$$
+			\dot{\psi_{t}}(x) = \campohamiltoniano{\psi_{t}(x), t}\; \text{e} \; \psi_{0}=Id\;\;\text{e}\;\; \psi_{t}(x(0)) = x(t).
+			$$
+			
+			\item $\psi :M\times \reta \to M$ é o fluxo do campo Hamiltoniano.
 		\end{itemize}
 		
 		\begin{definicao}[Soluções $1$-periódicas não-degeneradas]
-			Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se $\det(D_{x(0)}\psi_{1} - Id)\neq 0$, onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(1)}M$.
+			Uma solução $1$-periódica de um sistema Hamiltoniano $x: \reta\to M$ é não-degenerada se 
+			$$
+			\det(D_{x(0)}\psi_{1} - Id)\neq 0,
+			$$
+			onde $D_{x(0)}\psi_{1}:T_{x(0)}M \to T_{x(1)}M$.
 		\end{definicao}
 		
 		\begin{proposicao}
-			Seja $H:M\times\circulo\to \reta$ uma função Hamiltoniana. Suponha que todas as soluções $1-$periódicas do sistema Hamiltoniano são não-degeneradas. Então o conjunto dessas soluções é finito.
+			Seja $H:M\times\reta\to \reta$ uma função Hamiltoniana dependente do tempo. Suponha que todas as soluções $1-$periódicas do sistema Hamiltoniano são não-degeneradas. Então o conjunto dessas soluções é finito.
 		\end{proposicao}
 	\end{frame}
 
@@ -807,7 +809,7 @@
 				$$
 				
 				\item (Condição de Trivialização) 
-				Para cada aplicação $w:S^{2}\to M$ de classe $C^{\infty}$ existe uma trivialização simplética do fibrado $\pullbackfibradotangenteM{w}$.
+				Para cada aplicação $u:S^{2}\to M$ de classe $C^{\infty}$ existe uma trivialização simplética do fibrado $\pullbackfibradotangenteM{u}$.
 				
 			\end{enumerate}
 	\end{frame}
@@ -829,14 +831,33 @@
 	
 	\begin{frame}
 		\frametitle{Diferencial do Funcional de Ação}
-			$$
-			\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t),t)dt.
-			$$
-				\begin{figure}[!h]
-					\centering
-					\includegraphics[height=3cm]{../imagem/extensao_solucao.pdf}
-					
-				\end{figure}
+		\begin{minipage}[t]{0.55\linewidth}
+			Tome extensão 
+			$
+			\tilde{x}:(-\epsilon, \epsilon)\times\circulo \to M
+			$ do laço $x$.
+			\begin{itemize}
+				\item $
+				\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t),t)dt
+				$.
+				
+				\item $\funcionalHponto{\tilde{x}}:(-\epsilon, \epsilon)\to \reta$.
+				
+				\item  $\derivada{}{s}\funcionalHponto{\tilde{x}}|_{s=0} = D_{x}\funcionalH(Y) $.
+				
+			\end{itemize}
+			
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.4\linewidth}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[height=4cm]{../imagem/extensao_solucao.pdf}
+				
+			\end{figure}
+		\end{minipage}
+			
+				
 		\begin{proposicao}[Diferencial do funcional de ação]
 			$$
 		D_{x}\funcionalH(Y) = \int_{[0,1]} \omega(\dot{x} - \campohamiltonianoabrev, Y)dt.
@@ -847,8 +868,11 @@
 	
 	\begin{frame}
 				\frametitle{Diferencial do Funcional de Ação}
-		\begin{enumerate}
-			\item 	Se $x \in \pontoscriticos{\funcionalH}$, então
+		\begin{proposicao}
+			$x \in \pontoscriticos{\funcionalH}$ se, e somente se, $x$ é solução do sistema Hamiltoniano.
+		\end{proposicao}
+		\begin{prova}
+			Se $x \in \pontoscriticos{\funcionalH}$, então
 			$$
 			D_{x}\funcionalH(Y) = 0 \Rightarrow \omega(\dot{x} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{x}{\lacocontrateis}
 			$$
@@ -856,16 +880,21 @@
 			\dot{x}(t) =\campohamiltonianoabrev(x(t), t).
 			$$
 			Portanto, $x \in \pontoscriticos{\funcionalH}$ se, e somente se, $x$ é solução 1-periódica do sistema Hamiltoniano. 
+		\end{prova}
+		\begin{itemize}
+			\item 
+			Seja o produto interno $ \produtointerno{X}{Y}_{x} = \int_{0}^{1}g_{x(t)}(X, Y)dt$, 
 			
-			\item Seja o produto interno $ \produtointerno{X}{Y}_{x} = \int_{0}^{1}g_{x(t)}(X, Y)dt$. 
+			onde $g_{x(t)}(X,Y) = \omega_{x(t)}(X,J_{x(t)}Y)$.
 			
-			O gradiente do funcional de ação é 
+			\item O gradiente do funcional de ação é 
 			$$
 			D_{x}\funcionalH(Y) = \produtointerno{\gradientefuncional(x)}{Y}_{x}
 			$$
 			para todo $x \in \lacocontrateis$ e $Y \in \espacotangenteponto{x}{\lacocontrateis}$.
-		\end{enumerate}
-		
+			
+			
+		\end{itemize}	
 	\end{frame}
 	
 	\begin{frame}
@@ -966,6 +995,8 @@
 		
 		\frametitle{Índice de Conley-Zehnder}
 		\begin{enumerate}
+			\item $x\in \pontoscriticos{\funcionalH}$.
+			
 			\item $A_{x}:\intervalo \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$
 			
 			\item $A_{x}(0) =Id$ e $\det(D_{x(0)}\psi_{1}-Id) \neq 0 \Rightarrow A_{x}(1)\in \gruposimpleticonaodegenerado{*}$ 
@@ -990,7 +1021,7 @@
 	Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O conjunto dos caminhos $u \in \energiafinitaM$ tais $\lim\limits_{s\to \pm \infty}u(s) = x^{\pm}$ é denotado por $\energiafinitaMconectante$.
 			
 			\begin{observacao}\label{observacao_uniao_orbitas_conectantes}
-				Uma consequência imediata do teorema anterior é que 
+				Pode-se mostrar que 
 				$$
 				\energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.
 				$$
@@ -1003,7 +1034,7 @@
 		\begin{definition}
 			O operador de Floer $\operadorFloer:\aplicaoessuaves{M\times \circulo}{\reta}\to \aplicaoessuaves{M\times \circulo}{\reta}$ definido por 
 			$$
-			\operadorFloerDefinicao{u}.
+			\operadorFloer(u)=\operadorFloerDefinicao{u}.
 			$$
 		\end{definition}
 		\begin{itemize}
@@ -1016,29 +1047,31 @@
 			
 			\item Pode-se mostrar que, se $u\in \energiafinitaMconectante$, então
 			$$
-			\ind{(\diferencialfloerponto{u})} = \dim(\ker(\diferencialfloerponto{u})) -\dim(\text{coker}(\diferencialfloerponto{u}))
-			 = \iconley{x^{-}}-\iconley{x^{+}}.
-			$$ 
+			\begin{aligned}
+				\ind{(\diferencialfloerponto{u})} &= \dim(\ker(\diferencialfloerponto{u})) -\dim(\text{coker}(\diferencialfloerponto{u}))
+				\\
+				&= \iconley{x^{-}}-\iconley{x^{+}}.
+			\end{aligned}
+			$$
 			
-			\item A condição de transversalidade de $\operadorFloer$ está associada a sobrejetividade de $\diferencialfloerponto{u}$ para todo $u$.
 		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Espaço de Trajetórias - Propriedades}
 		\begin{itemize}
+			\item A condição de transversalidade de $\operadorFloer$ está associada a sobrejetividade de $\diferencialfloerponto{u}$ para todo $u$.
 			
-			\item Um par $(H, J)$ é chamado de regular se satisfaz a condição de transversalidade, e o conjunto das funções $h:M\times \circulo \to \reta$ tais que $(H+h,J)$ é um par regular é denotado por $\hamiltonianasRegulares$.
+			\item Um par $(H, J)$ é chamado de regular se satisfaz a condição de transversalidade, e o conjunto das funções $h:M\times \circulo \to \reta$ tais que $(H+h,J)$ é um par regular é denotado por $\hamiltonianasRegulares$, onde $h$ é a perturbação Hamiltoniana.
 		\end{itemize}
 		
 		\begin{teorema}
 			Para cada $h \in \hamiltonianasRegulares$ e para todas as soluções $x^{-}$ e $x^{+}$ contráteis 1-periódicas de $H$, $\energiafinitaM(x^{-}, x^{+}, H+h)$ é uma variedade de dimensão $\iconley{x^{-}}-\iconley{x^{+}}$.
 		\end{teorema}
 		
-			
-			\begin{teorema}{Teorema da Compacidade de Gromov}
-				Supondo a Condição de Aesfericidade, então $\energiafinitaM$ é compacto em $C^{\infty}_{loc}(\retacartesianocirculo; M)$.
-			\end{teorema}
+		\begin{observacao}
+			$	\ind{(\diferencialfloerponto{u})} = \iconley{x^{-}}-\iconley{x^{+}} =\dim(\energiafinitaM(x^{-}, x^{+}, H+h)),\;\;\forall u \in \energiafinitaM(x^{-}, x^{+})$.
+		\end{observacao}
 	\end{frame}
 	
 	\begin{frame}
@@ -1049,7 +1082,7 @@
 		$$ 
 		onde $u*\reta = \{u*\alpha:\alpha \in \reta\}$.
 		
-		\begin{teorema}
+		\begin{teorema}[Compacidade do Espaço Moduli]
 			O conjunto $\quocientetrajetorias$ é finito.
 		\end{teorema}
 	\end{frame}
@@ -1066,7 +1099,7 @@
 				\item O número de elementos de $\quocientetrajetorias$ módulo 2 é denotado por $n(x^{-},x^{+})$.
 				
 				\item 
-				Considere o homomorfismo $\bordo{k}^{F}: C^{F}_{k}(M;H,J)\to C^{F}_{k-1}(M;H,J)$ de grau -1 definido em cada gerador por
+				Considere o homomorfismo $\bordo{k}^{F}: C^{F}_{k}(M;H,J)\to C^{F}_{k-1}(M;H,J)$ definido em cada gerador por
 				$$
 				\bordo{k}^{F}(\gerador{x}) = \sum_{\iconley{y}=k-1}n(x,y)\gerador{y}
 				$$
@@ -1075,7 +1108,7 @@
 			\end{itemize}
 		
 		\begin{teorema}
-			 $\bordo{k-1}^{F}\circ\bordo{k}^{F} = 0$ e o par $(C^{F}_{*}(M;H,J), \partial^{F})$ é um complexo de cadeias.
+			 $\bordo{k-1}^{F}\circ\bordo{k}^{F} = 0$ e o par $(C^{F}_{*}(M;H,J), \partial^{F})$ é um complexo de cadeias, chamado complexo de Floer.
 		\end{teorema}
 	\end{frame}
 	
@@ -1089,7 +1122,7 @@
 			\begin{teorema}
 				Sejam $(H,J)$ e $(H',J')$ dois pares regulares. Então existe um homomorfismo de cadeias induzindo um isomorfismo nas homologias de Floer
 				$$
-				H^{F}_{*}(C^{F}_{*}(M;H,J)) \cong H^{F}_{*}(M; H',J'). 
+				H^{F}_{*}(M;H,J) \cong 	H^{F}_{*}(M;H',J'). 
 				$$
 			\end{teorema}
 			
