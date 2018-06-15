@@ -34,10 +34,8 @@
 	\begin{frame}
 		\frametitle{
 			A motivação.}
-		\textbf{Conjectura de Arnold (V1):} \textit{Seja $\phi$ uma aplicação Hamiltoniana em uma 2n-variedade compacta simplética $(M, \omega)$. Então, o número de pontos fixos de $\phi$ é, no mínimo, o número de pontos críticos de uma função Hamiltoniana em $M$.}
-		\\~\\
 		
-		\textbf{Conjectura de Arnold (V2):} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina  $H:M\times \real{} \to \reta$  uma função hamiltonia 1-periódica e suponha que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
+		\textbf{Conjectura de Arnold:} \textit	{Seja $(M,\omega)$ uma 2n-variedade compacta e simplética. Defina  $H:M\times \real{} \to \reta$  uma função hamiltonia 1-periódica e suponha que as soluções 1-periódicas do sistema hamiltoniano sejam não-degeneradas. Então o número de soluções $\mathcal{N}$ desse sistema será limitado interiormente pela soma dos números de Betti de M, isto é:
 			$$
 			\mathcal{N}\geq \sum_{i=0}^{2n}\beta_{i}(M),
 			$$
@@ -162,8 +160,8 @@
 			=-\norma{\gradiente(\gamma(t))}^{2}
 			\leq 0$.
 			
-			\item O fluxo do gradiente negativo $\phi:M\times \reta
-			\to M$ definido por $\phi(p,.) =\gamma$, onde $\gamma(0) = p$, e a família de difeomorfismos $\phi_{t}:M\to M$ definida por $\phi_{t}(p) = \phi(p,t)$.
+			\item O fluxo gradiente $\phi:M\times \reta
+			\to M$, $\phi(p,t) =\gamma(t)$, onde $\gamma(0) = p$, define uma família de difeomorfismos $\phi_{t}:M\to M$, $\phi_{t}(p) = \phi(p,t)$.
 		\end{itemize}	
 		\end{minipage}
 		\hfill%
@@ -436,7 +434,8 @@
 				
 			\end{itemize}
 		\end{definicao}
-		Fixaremos a notação
+		\begin{itemize}
+			\item Fixaremos a notação
 			$
 			\estruturacomplexa=
 			\left(
@@ -447,22 +446,15 @@
 			\end{array}
 			\right) \in \estruturascomplexaspadrao .
 			$
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Topologia de $\estruturascomplexaspadrao$}
-		\begin{definicao}
-			$\produtosinternos{V}$ é o conjunto de todos os produtos internos positivos-definidos em $V$.
-		\end{definicao}
+		\end{itemize}
 		
-		
-		\begin{proposicao}
-			Se $V$ é um n-espaço vetorial real, então $\produtosinternos{V}$ é contrátil.
-		\end{proposicao}
-		
-		\begin{teorema}
-			$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
-		\end{teorema}
+			\begin{proposicao}
+				Se $V$ é um n-espaço vetorial real, então o conjunto de todos os produtos internos positivos-definidos $\produtosinternos{V}$ em $V$ é contrátil.
+			\end{proposicao}
+			
+			\begin{teorema}
+				$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
+			\end{teorema}
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -509,42 +501,38 @@
 		\right)
 		$$  
 		\begin{lema}
-			$F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um isomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
+			$F|_{\matrizunitaria{n}}: \matrizunitaria{n} \to \matrizSimpleticaOrtogonal $, onde $\matrizSimpleticaOrtogonal  = \gruposimpletico{2n}\cap \matrizortogonal{2n}$ é um homeomorfismo. Além disso, dado $A \in \matrizSimpleticaOrtogonal $ temos $A\estruturacomplexa=\estruturacomplexa A$.
 		\end{lema}
 	\end{frame}
 		
 	\begin{frame}
 		\frametitle{A topologia do grupo simplético}
-		
-		\begin{enumerate}
-			\item $\matrizSimpleticaOrtogonal$ é conexo
-			
-			\item $\gruposimpletico{2n}$ é conexo
-			
-			\item $\gruposimpletico{2n}/\matrizSimpleticaOrtogonal$ é contrátil.
-			
-			\item  $\grupofundamental{\matrizunitaria{n}} \cong \inteiros$
-			
-			\item $\matrizunitaria{n} \cong \matrizSimpleticaOrtogonal \Rightarrow \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
-			
-			\item $\grupofundamental{\gruposimpletico{2n}} \cong \grupofundamental{\matrizSimpleticaOrtogonal}$
-			
-		\end{enumerate}
+		\begin{teorema}
+			$\gruposimpletico{2n}$ é conexo.
+		\end{teorema}
+		\begin{prova}
+			Segue do fato que $\matrizSimpleticaOrtogonal$ é conexo.
+		\end{prova}
 		
 		\begin{teorema}
 			$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 			
 		\end{teorema}
+		\begin{prova}
+			\begin{itemize}
+				\item $\matrizunitaria{n} \simeq \matrizSimpleticaOrtogonal \Rightarrow \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
+				
+				\item $\matrizSimpleticaOrtogonal$ é retrato de deformação de $\gruposimpletico{2n} \Rightarrow \grupofundamental{\gruposimpletico{2n}} \cong \grupofundamental{\matrizSimpleticaOrtogonal}\cong \inteiros$
+				
+			\end{itemize}
+		\end{prova}
+	
 		
-		\begin{itemize}
-			\item  $\gruposimpleticonaodegenerado{*} = \{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$
-			\item $
-			\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}. 
-			$
-		\end{itemize}
 		
 		\begin{lema}
-			$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos, portanto conexas.
+			$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos e definidas por $
+			\gruposimpleticonaodegenerado{\pm} = \{ A \in \gruposimpletico{2n}: \pm det(Id-A)> 0 \}
+			$.
 		\end{lema}
 		
 		
@@ -595,15 +583,17 @@
 			\frametitle{Índice de Maslov}
 			\begin{scriptsize}
 				
-				\begin{minipage}[t]{0.5\linewidth}
+				\begin{minipage}[t]{0.6\linewidth}
 					\begin{itemize}
 						\item $W(a) = diag\{a,-1,\dots,-1, a^{-1},-1,\dots,-1\}$
 						
 					\end{itemize}
 				\end{minipage}
-				\begin{minipage}[t]{0.4\linewidth}
+				\begin{minipage}[t]{0.35\linewidth}
 					\begin{itemize}
-						\item $W^{+}=W(-1) \in  \gruposimpleticonaodegenerado{+}$ e $W^{-} = W(2)\in \gruposimpleticonaodegenerado{-}$.
+						\item $W^{+}=W(-1) \in  \gruposimpleticonaodegenerado{+}$
+						\\~\\
+						 $W^{-} = W(2)\in \gruposimpleticonaodegenerado{-}$.
 						
 					\end{itemize}
 				\end{minipage}
@@ -632,7 +622,7 @@
 					\dominioMaslov$ é o conjunto dos caminhos contínuos $ \psi : \intervalo \to \gruposimpletico{2n}$ tais que $\psi(0)=Id \;\; \text{e}\;\; \psi(1)\in \gruposimpleticonaodegenerado{*}.
 					$
 					
-					\item Fixe $\gamma :\intervalo \to \gruposimpleticonaodegenerado{*}$, $\psi(1)=\gamma(0)$ e $\gamma(1)=W^{\pm}$. 
+					\item Fixe $\gamma :\intervalo \to \gruposimpleticonaodegenerado{*}$, $\gamma(0)=\psi(1)$ e $\gamma(1)=W^{\pm}$. 
 					
 					\item Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \dominioMaslov$ 
 					
@@ -654,7 +644,7 @@
 		
 		\begin{teorema}
 			Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
-			\begin{enumerate}
+			\begin{itemize}
 				\item $\mu:\dominioMaslov \to \inteiros$.
 				
 				\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
@@ -664,7 +654,7 @@
 				\item \textbf{(Nulidade)} se $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $\mu(\psi) = 0$.
 				
 					\item \textbf{(Produto)} Se $n=p+q$, então  $\mu:\caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}} \to \inteiros$ é dado por $\mu((\psi_{p}, \psi_{q})) = \mu(\psi_{p})+\mu(\psi_{q})$.
-			\end{enumerate}
+			\end{itemize}
 		\end{teorema}
 	\end{frame}
 	
@@ -672,7 +662,7 @@
 		\frametitle{Índice de Maslov - Propriedades}
 			\begin{teorema}
 				Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
-				\begin{enumerate}
+				\begin{itemize}
 				\item \textbf{(Determinante)} O sinal de $ \det(\psi(1)-Id)$ é $(-1)^{\mu(\psi)-n}$.
 					
 					\item \textbf{(Assinatura)}\label{item_assinatura_maslov} Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
@@ -683,7 +673,7 @@
 					
 					\item \textbf{(Inversa)} $\mu(\psi^{-1}) = -\mu(\psi)$.
 					
-				\end{enumerate}
+				\end{itemize}
 			\end{teorema}
 	\end{frame}
 	
@@ -691,7 +681,7 @@
 	\begin{frame}
 		\frametitle{Índice de Maslov - Demonstração}
 		\begin{prova}
-			\begin{enumerate}
+			\begin{itemize}
 				\item  O índice de Maslov é um inteiro
 				
 				\begin{itemize}
@@ -730,7 +720,7 @@
 						
 					\end{scriptsize}
 				\end{itemize}	
-			\end{enumerate}
+			\end{itemize}
 			
 		\end{prova}
 	\end{frame}
@@ -740,7 +730,7 @@
 		\frametitle{Variedade Simplética}
 		\begin{definicao}
 			
-			Uma estrutura simplética em uma 2n-variedade diferenciável $M$ é uma 2-forma não-degenerada $\omega\in \Omega^{2}(M)$ tal que $d\omega=0$. O par $(M, \omega)$ é uma 2n-variedade simplética.
+			Uma estrutura simplética em uma 2n-variedade diferenciável $M$ é uma 2-forma anti-simétrica não-degenerada $\omega\in \Omega^{2}(M)$ tal que $d\omega=0$. O par $(M, \omega)$ é uma 2n-variedade simplética.
 		\end{definicao}
 		
 		\begin{itemize}
@@ -841,8 +831,6 @@
 				\funcionalHponto{\tilde{x}} = -\int_{D^{2}}\tilde{u}^{*}\omega + \int_{0}^{1}H(\tilde{x}(s,t),t)dt
 				$.
 				
-				\item $\funcionalHponto{\tilde{x}}:(-\epsilon, \epsilon)\to \reta$.
-				
 				\item  $\derivada{}{s}\funcionalHponto{\tilde{x}}|_{s=0} = D_{x}\funcionalH(Y) $.
 				
 			\end{itemize}
@@ -872,10 +860,10 @@
 			$x \in \pontoscriticos{\funcionalH}$ se, e somente se, $x$ é solução do sistema Hamiltoniano.
 		\end{proposicao}
 		\begin{prova}
-			Se $x \in \pontoscriticos{\funcionalH}$, então
-			$$
-			D_{x}\funcionalH(Y) = 0 \Rightarrow \omega(\dot{x} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{x}{\lacocontrateis}
-			$$
+			$x \in \pontoscriticos{\funcionalH} \Leftrightarrow
+			D_{x}\funcionalH(Y) = 0 \Leftrightarrow \omega(\dot{x} - \campohamiltonianoabrev, Y)=0,\; \forall Y \in \espacotangenteponto{x}{\lacocontrateis}
+			$
+			
 			$$
 			\dot{x}(t) =\campohamiltonianoabrev(x(t), t).
 			$$
@@ -1015,52 +1003,29 @@
 			$$
 		\end{corolario}
 	\end{frame}
-	
-	\begin{frame}
-	\frametitle{Espaço de trajetórias}		
-	Sejam $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. O conjunto dos caminhos $u \in \energiafinitaM$ tais $\lim\limits_{s\to \pm \infty}u(s) = x^{\pm}$ é denotado por $\energiafinitaMconectante$.
+		\begin{frame}\frametitle{Espaço de Trajetórias e Operador de Floer}
 			
-			\begin{observacao}\label{observacao_uniao_orbitas_conectantes}
-				Pode-se mostrar que 
-				$$
-				\energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.
-				$$
-			\end{observacao}
+		 \begin{itemize} 	
+		 	
+		 	%\item O diferencial de $\operadorFloer$ é dado por  	$$ 	\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y). 	$$ 
+		 	
+		 	\item   $\energiafinitaMconectante =\{u \in \energiafinitaM: \lim\limits_{s\to \pm \infty}u(s) = x^{\pm}\}$, onde  $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. \item $ \energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.$ 	
+		 	
+		 	%\item Se $u\in \energiafinitaMconectante $, então 	$$ \begin{aligned} \ind{(\diferencialfloerponto{u})} &= \dim(\ker(\diferencialfloerponto{u})) -\dim(\text{coker}(\diferencialfloerponto{u})) \\ 	&= \end{aligned} 	$$ 	
+		 \end{itemize} 		
 			
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Operador de Floer}
-		\begin{definition}
-			O operador de Floer $\operadorFloer:\aplicaoessuaves{M\times \circulo}{\reta}\to \aplicaoessuaves{M\times \circulo}{\reta}$ definido por 
-			$$
-			\operadorFloer(u)=\operadorFloerDefinicao{u}.
-			$$
-		\end{definition}
-		\begin{itemize}
-			
+		\begin{definition} O operador de Floer $\operadorFloer:\aplicaoessuaves{M\times \circulo}{\reta}\to \aplicaoessuaves{M\times \circulo}{\reta}$ definido por  $$ \operadorFloer(u)=\operadorFloerDefinicao{u}. 	$$ \end{definition}
 		
-			\item O diferencial de $\operadorFloer$ é dado por 
-			$$
-			\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y).
-			$$
-			
-			\item Pode-se mostrar que, se $u\in \energiafinitaMconectante$, então
-			$$
-			\begin{aligned}
-				\ind{(\diferencialfloerponto{u})} &= \dim(\ker(\diferencialfloerponto{u})) -\dim(\text{coker}(\diferencialfloerponto{u}))
-				\\
-				&= \iconley{x^{-}}-\iconley{x^{+}}.
-			\end{aligned}
-			$$
-			
-		\end{itemize}
-	\end{frame}
+		\end{frame}
+	
+			%\begin{frame}\frametitle{Operador de Floer e Espaço de Trajetórias} \begin{definition} O operador de Floer $\operadorFloer:\aplicaoessuaves{M\times \circulo}{\reta}\to \aplicaoessuaves{M\times \circulo}{\reta}$ definido por  $$ \operadorFloer(u)=\operadorFloerDefinicao{u}. 	$$ \end{definition} \begin{itemize} 	\item O diferencial de $\operadorFloer$ é dado por  	$$ 	\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y). 	$$ \item   $\energiafinitaMconectante =\{u \in \energiafinitaM: \lim\limits_{s\to \pm \infty}u(s) = x^{\pm}\}$, onde  $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. \item $ \energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.$ 	\item Se $u\in \energiafinitaMconectante $, então 	$$ \begin{aligned} \ind{(\diferencialfloerponto{u})} &= \dim(\ker(\diferencialfloerponto{u})) -\dim(\text{coker}(\diferencialfloerponto{u})) \\ 	&= \end{aligned} 	$$ 	\end{itemize} 	\end{frame}
+
 	
 	\begin{frame}
-		\frametitle{Espaço de Trajetórias - Propriedades}
+		\frametitle{Espaço de Trajetórias }
 		\begin{itemize}
-			\item A condição de transversalidade de $\operadorFloer$ está associada a sobrejetividade de $\diferencialfloerponto{u}$ para todo $u$.
+			
+			\item A condição de transversalidade está associada a sobrejetividade de $\diferencialfloerponto{u}$ para todo $u$.
 			
 			\item Um par $(H, J)$ é chamado de regular se satisfaz a condição de transversalidade, e o conjunto das funções $h:M\times \circulo \to \reta$ tais que $(H+h,J)$ é um par regular é denotado por $\hamiltonianasRegulares$, onde $h$ é a perturbação Hamiltoniana.
 		\end{itemize}
@@ -1068,10 +1033,6 @@
 		\begin{teorema}
 			Para cada $h \in \hamiltonianasRegulares$ e para todas as soluções $x^{-}$ e $x^{+}$ contráteis 1-periódicas de $H$, $\energiafinitaM(x^{-}, x^{+}, H+h)$ é uma variedade de dimensão $\iconley{x^{-}}-\iconley{x^{+}}$.
 		\end{teorema}
-		
-		\begin{observacao}
-			$	\ind{(\diferencialfloerponto{u})} = \iconley{x^{-}}-\iconley{x^{+}} =\dim(\energiafinitaM(x^{-}, x^{+}, H+h)),\;\;\forall u \in \energiafinitaM(x^{-}, x^{+})$.
-		\end{observacao}
 	\end{frame}
 	
 	\begin{frame}
@@ -1157,7 +1118,7 @@
 				\begin{itemize}
 					\item Como $\pontoscriticos{\funcionalH}$ é um conjunto finito, então $\pontoscriticosordem{k}{\funcionalH} \subset \pontoscriticos{\funcionalH}$ é finito.
 					
-					\item Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso $\mathcal{N} =\sum_{j=0}^{2n} \mathcal{N}_{j}$ é o número de elementos de $\pontoscriticos{\funcionalH}$.
+					\item Denote a cardinalidade de $\pontoscriticosordem{k}{\funcionalH}$ por $\mathcal{N}_{k}$. Com isso $\mathcal{N} =\sum_{k=0}^{2n} \mathcal{N}_{k}$ é o número de elementos de $\pontoscriticos{\funcionalH}$.
 					
 					\item  Como $C^{F}_{k}(M;H,J)$ é gerado por todos os pontos críticos de ordem $k$, então $\mathcal{N}_{k}\geq \dim(	H^{F}_{k}(C^{F}_{*}(M;H,J)))$. 
 					
