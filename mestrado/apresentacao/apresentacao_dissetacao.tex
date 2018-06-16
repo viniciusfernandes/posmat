@@ -117,15 +117,15 @@
 	
 		
 		\begin{teorema}
-			Sejam $f\in \funcoesmorse{M}$ e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) = b$. Suponhamos que $M^{b-\epsilon,b+\epsilon}$ seja compacto e $M^{b-\epsilon,b+\epsilon}\cap \pontoscriticos{f} = \{p\}$ para algum $\epsilon>0$. Então o conjunto de nível $M^{b+\epsilon}$ tem o mesmo tipo de homotopia de $M^{b+\epsilon}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial}} D^{\lambda_{p}}$.
+			Sejam $f\in \funcoesmorse{M}$, $a\leq b$ dois números reais e $p\in \pontoscriticos{f}$ com índice $\lambda_{p}$ tal que $f(p) \in [a,b]$. Suponhamos que $M^{a,b}$ seja compacto e $M^{a,b}\cap \pontoscriticos{f} = \{p\}$. Então o conjunto de nível $M^{b}$ tem o mesmo tipo de homotopia de $M^{a}$ com uma $\lambda_{p}$-célula colada, isto é, $M^{b} \simeq M^{a}\cup_{f_{\partial}} D^{\lambda_{p}}$.
 		\end{teorema}
 		
 		\begin{minipage}[t]{0.5\linewidth}
 			\begin{itemize}
-				\item Caso $M^{b-\epsilon,b+\epsilon} \cap \pontoscriticos{f} = \{p_{j}\}_{j=1}^{r}$, tem-se 
-				$$
-				M^{b+\epsilon} \simeq M^{b-\epsilon}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}.
-				$$
+				\item 
+				$
+				M \simeq \{p\}\cup_{f_{\partial_{1}}} D^{\lambda_{1}}\dots  \cup_{f_{\partial_{r}}} D^{\lambda_{r}}.
+				$
 			\end{itemize}
 			
 		\end{minipage}
@@ -134,7 +134,7 @@
 			\begin{figure}
 				\centering
 				\textbf{}\par
-				\includegraphics[height=4.5cm]{../imagem/conjunto_nivel_zoom}
+				\includegraphics[height=2.5cm]{../imagem/conjunto_nivel_zoom_2}
 			\end{figure}
 			
 		\end{minipage}
@@ -148,17 +148,12 @@
 		
 		\frametitle{Fluxos Gradiente e Variedades de Conexão}
 		
-		\begin{definicao}[Gradiente negativo]
-				$$
-				\derivada{\gamma(t)}{t} = -\gradiente(\gamma(t)), \; \gamma(0) = p.
-				$$
-		\end{definicao}
-		
+	
 		\begin{minipage}[t]{0.67\linewidth}
 		\begin{itemize}
-			\item $\derivada{}{t}(f \circ \gamma)(t) = g(\gradiente(\gamma(t)), \dot{\gamma}(t)) 
-			=-\norma{\gradiente(\gamma(t))}^{2}
-			\leq 0$.
+			\item 	$
+			\derivada{\gamma}{t}(t) = -\gradiente(\gamma(t)), \; \gamma(0) = p.
+			$
 			
 			\item O fluxo gradiente $\phi:M\times \reta
 			\to M$, $\phi(p,t) =\gamma(t)$, onde $\gamma(0) = p$, define uma família de difeomorfismos $\phi_{t}:M\to M$, $\phi_{t}(p) = \phi(p,t)$.
@@ -198,11 +193,27 @@
 			A variedade conectante de $p$ e $q$ é $\variedadeconectantepontos{p}{q} = \variedadeinstavel{p}\cap \variedadeestavel{q}$. Tomando $c \in (f(a), f(p)) \subset \reta$ um valor regular de $f$, o espaço moduli de $p$ e $q$ é $\espacomoduli{p}{q} = \variedadeconectantepontos{p}{q}\cap f^{-1}(c)$.
 		\end{definicao}
 		
-		\begin{figure}
-			\centering
-			\textbf{}\par
-			\includegraphics[height=4cm]{../imagem/pontos_cristicos_morse_smale}
-		\end{figure}
+		\begin{minipage}[t]{0.55\linewidth}
+			
+			\begin{itemize}
+				\item Seja $F:\real{3} \to \reta$ definida por 
+				$$
+				F(x, y, z) = z.
+				$$
+				Então $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
+				
+				\item $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$, $\espacomoduli{r}{p} = \{ x_{3}\}$, $\espacomoduli{s}{p} = \{x_{4} \}$.
+			\end{itemize}
+		\end{minipage}
+		\hfill%
+		\begin{minipage}[t]{0.4\linewidth}
+			\begin{figure}
+				\centering
+				\textbf{}\par
+				\includegraphics[height=4cm]{../imagem/pontos_cristicos_morse_smale}
+			\end{figure}
+			
+		\end{minipage}
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -232,30 +243,6 @@
 				
 	\end{frame}
 	
-	%-------------------------------------------------
-	% FRAME
-	%-------------------------------------------------
-	\begin{frame}
-		\frametitle{Número de intersecção}
-		As variedades instável/estável dos pontos críticos são contráteis, logo são orientáveis.
-		
-		\begin{definicao}[Número de intersecção]
-			Dado $x \in \espacomoduli{p}{q}$ tal que $\lambda_{p}-\lambda_{q} = 1$
-			
-			\begin{enumerate}
-				\item $o(W^{u}(p)) = n_{x}o(\phi(x))$, $n_{x}$ é o sinal característico da órbita de $x$.
-				
-				\item $n(p,q) = \sum_{x \in \espacomoduli{p}{q} }n_{x}$ é o número de intersecçao de $p$ e $q$.
-			\end{enumerate}
-			
-		\end{definicao}
-		\begin{figure}
-			\centering
-			\textbf{}\par
-			\includegraphics[height=4cm]{../imagem/pontos_cristicos_morse_smale}
-		\end{figure}
-	\end{frame}
-	
 	\begin{frame}
 		\frametitle{O complexo de Morse-Smale-Witten}
 		\begin{definicao}[Complexo de Morse-Smale-Witten]
@@ -279,81 +266,6 @@
 		\end{teorema}
 	\end{frame}
 	
-	
-	
-	\begin{frame}
-		
-		\frametitle{Exemplo Complexo Morse-Witten}
-		
-		\begin{minipage}[t]{0.5\linewidth}
-			
-			\begin{itemize}
-				\item Seja $F:\real{3} \to \reta$ definida por $F(x, y, z) = z$. Temos que $\pontoscriticos{f} = \{p,q,r,s\}$ e $\lambda_{q} = 0$, $\lambda_{p} = 1$ e $\lambda_{r}=\lambda_{s} = 2$. 
-				
-				\item $\espacomoduli{p}{q}=\{x_{1}, x_{2}\}$, $\espacomoduli{r}{p} = \{ x_{3}\}$, $\espacomoduli{s}{p} = \{x_{4} \}$.
-				
-				\item Pela orientação escolhida para a variedade instável $\variedadeinstavel{p}$, temos $n_{x_{1}}=1$, $n_{x_{2}} = -1$. E a orientação escolhida para $\variedadeinstavel{r}$ e $\variedadeinstavel{s}$ nos dá $n_{x_{3}} =n_{x_{4}}= 1$. Portanto 
-				$$
-				n(p,q) = n_{x_{1}}+n_{x_{2}} = 0,\; n(r,p) = n(s,p)=n_{x_{3}}= 1. 
-				$$			
-			\end{itemize}
-		\end{minipage}
-		\hfill%
-			\begin{minipage}[t]{0.4\linewidth}
-				\begin{figure}
-					\centering
-					\textbf{}\par
-					\includegraphics[height=4cm]{../imagem/pontos_cristicos_morse_smale}
-				\end{figure}
-				
-			\end{minipage}
-	
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Exemplo Complexo Morse-Witten}
-		\begin{minipage}[t]{0.5\linewidth}
-			\begin{itemize}
-				\item As $k$-cadeias do complexo são
-				$$
-				\begin{aligned}
-				C_{0}(f) &= \inteiros\gerador{q}, 
-				\\
-				C_{1}(f) &= \inteiros\gerador{p},
-				\\
-				C_{2}(f) &= \inteiros\gerador{r}\oplus\inteiros\gerador{s}.
-				\end{aligned}
-				$$
-				
-				\item Os $k$-operadores bordo são
-				$$
-				\begin{aligned}
-				\bordo{0}\gerador{q} &=0, 
-				\\
-				\bordo{1}\gerador{p} &=n(p,q)\gerador{q} = 0,
-				\\
-				\bordo{2}\gerador{r}&=\bordo{2}\gerador{s} = n(r,p)\gerador{p} = \gerador{p}.
-				\end{aligned}
-				$$
-				
-			\end{itemize}
-		\end{minipage}
-		\hfill%
-		\begin{minipage}[t]{0.4\linewidth}
-			\begin{figure}
-				\centering
-				\textbf{}\par
-				\includegraphics[height=4cm]{../imagem/pontos_cristicos_morse_smale}
-			\end{figure}
-			
-		\end{minipage}
-		
-	\end{frame}
-	
-
-	%-------------------------------------------------
-	% FRAME
-	%-------------------------------------------------
 	\begin{frame}
 		\frametitle{Espaço Vetorial Simplético}
 		\begin{definicao}[Espaço vetorial simplético]
@@ -369,9 +281,9 @@
 		\begin{itemize}
 			\item 	Na base simplética a representação matricial de $\omega$ é $\left(
 			\begin{array}{cc}
-			0 & -Id
+			0 & Id
 			\\
-			Id & 0
+			-Id & 0
 			\end{array}
 			\right) $.
 		\end{itemize}
@@ -434,27 +346,13 @@
 				
 			\end{itemize}
 		\end{definicao}
-		\begin{itemize}
-			\item Fixaremos a notação
-			$
-			\estruturacomplexa=
-			\left(
-			\begin{array}{cc}
-			0 & -Id
-			\\
-			Id & 0
-			\end{array}
-			\right) \in \estruturascomplexaspadrao .
-			$
-		\end{itemize}
-		
-			\begin{proposicao}
-				Se $V$ é um n-espaço vetorial real, então o conjunto de todos os produtos internos positivos-definidos $\produtosinternos{V}$ em $V$ é contrátil.
-			\end{proposicao}
-			
-			\begin{teorema}
-				$\estruturascomplexaspadrao$ é homeomorfo a $\produtosinternos{V}$, logo é contrátil.
+	
+		\begin{teorema}
+				$\estruturascomplexaspadrao$ é contrátil.
 			\end{teorema}
+			\begin{prova}
+				$\produtosinternos{V}$ é contrátil e $\estruturascomplexaspadrao \simeq \produtosinternos{V}$, logo $\estruturascomplexaspadrao $ é contrátil.
+			\end{prova}
 	\end{frame}
 	
 	%-------------------------------------------------
@@ -474,13 +372,29 @@
 			O grupo simplético $\gruposimpletico{2n} \subset \generalgroupreal{2n}$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
 		\end{definicao}	
 		
+		\begin{proposicao}
+			$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
+		\end{proposicao}
+		
+		
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Caracterização do Grupo Simplético}
-		\begin{proposicao}
-			$\gruposimpletico{2n}$ é um grupo com a operação de multiplicação de matrizes.
-		\end{proposicao}
+	
+			\begin{itemize}
+				\item Fixaremos a notação
+				$
+				\estruturacomplexa=
+				\left(
+				\begin{array}{cc}
+				0 & -Id
+				\\
+				Id & 0
+				\end{array}
+				\right) \in \estruturascomplexaspadrao .
+				$
+			\end{itemize}
 		
 		\begin{lema}[Caracterização de $Sp(2n)$]
 			 Considere $V = \real{2n}$ e $\estruturacomplexa \in \estruturascomplexaspadrao$. Então $A\in Sp(2n)$ se, e somente se, $A^{t}\estruturacomplexa A = \estruturacomplexa$.
@@ -518,8 +432,7 @@
 			$\grupofundamental{\gruposimpletico{2n}} \cong \inteiros$.
 			
 		\end{teorema}
-		\begin{prova}
-			\begin{itemize}
+		\begin{prova}\begin{itemize}
 				\item $\matrizunitaria{n} \simeq \matrizSimpleticaOrtogonal \Rightarrow \grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$.
 				
 				\item $\matrizSimpleticaOrtogonal$ é retrato de deformação de $\gruposimpletico{2n} \Rightarrow \grupofundamental{\gruposimpletico{2n}} \cong \grupofundamental{\matrizSimpleticaOrtogonal}\cong \inteiros$
@@ -527,7 +440,9 @@
 			\end{itemize}
 		\end{prova}
 	
-		
+		\begin{itemize}
+			\item $\gruposimpleticonaodegenerado{*}=\{ A \in \gruposimpletico{2n}: det(Id-A)\neq 0 \}$.
+		\end{itemize}
 		
 		\begin{lema}
 			$\gruposimpleticonaodegenerado{*} = \gruposimpleticonaodegenerado{+}\cup \gruposimpleticonaodegenerado{-}$, onde $\gruposimpleticonaodegenerado{\pm}$ são as duas componentes conexas por caminhos e definidas por $
@@ -560,7 +475,7 @@
 			
 			\item \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal$, então 
 			$$
-			\rho(A) = det(X+iY), \text{onde} \;	
+			\rho(A) = det_{\complexo{}}(X+iY), \text{onde} \;	
 			A=\left(
 			\begin{array}{cc}
 			X & -Y					\\
@@ -581,23 +496,6 @@
 	
 		\begin{frame}
 			\frametitle{Índice de Maslov}
-			\begin{scriptsize}
-				
-				\begin{minipage}[t]{0.6\linewidth}
-					\begin{itemize}
-						\item $W(a) = diag\{a,-1,\dots,-1, a^{-1},-1,\dots,-1\}$
-						
-					\end{itemize}
-				\end{minipage}
-				\begin{minipage}[t]{0.35\linewidth}
-					\begin{itemize}
-						\item $W^{+}=W(-1) \in  \gruposimpleticonaodegenerado{+}$
-						\\~\\
-						 $W^{-} = W(2)\in \gruposimpleticonaodegenerado{-}$.
-						
-					\end{itemize}
-				\end{minipage}
-				
 			\begin{minipage}[t]{0.5\linewidth}
 				\begin{figure}[!h]
 					\centering
@@ -615,6 +513,16 @@
 				
 			\end{minipage}
 			
+			\begin{scriptsize}
+				\begin{itemize}
+					\item $W(a) = diag\{a,-1,\dots,-1, a^{-1},-1,\dots,-1\}$
+					\item $W^{+}=W(-1) \in  \gruposimpleticonaodegenerado{+}$
+					e 
+					$W^{-} = W(2)\in \gruposimpleticonaodegenerado{-}$.
+				\end{itemize}
+				
+			
+				
 			\begin{definicao}[Índice de Maslov]
 				
 				\begin{itemize}
@@ -647,7 +555,8 @@
 			\begin{itemize}
 				\item $\mu:\dominioMaslov \to \inteiros$.
 				
-				\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{2n}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
+				\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi:\intervalo
+				\to\gruposimpletico{2n}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{2n}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{2n}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
 				
 				\item \textbf{(Homotopia)} \label{item_homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \dominioMaslov $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotópicos se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
 				
@@ -687,11 +596,11 @@
 				\begin{itemize}
 					
 					\begin{scriptsize}
-						\item $W^{+}=W(-1) $ e $W^{-}=W(2) $.
+						\item $W^{+}=diag\{-1,-1,\dots,-1, -1,-1,\dots,-1\} $ 
 						
-						\item $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$
+						\item $W^{-}=diag\{2,-1,\dots,-1, 1/2,-1,\dots,-1\}$.
 						
-						\item $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})  \in \{ -1,1\}$
+						\item $\rho_{\Psi}(0) = 1$ e $\rho_{\Psi}(1) = \rho(W^{\pm})  \in \{ -1,1\}$
 						
 						\item $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$.
 						 
@@ -716,7 +625,7 @@
 						
 						\item $(\Rightarrow) \;\;\psi_{1}\sim \psi_{2}$, então $\mu(\psi_{1}) = 2\deg(\rho_{\Psi_{1}}) = 2\deg(\rho_{\Psi_{2}}) = \mu(\psi_{2})$. 
 						
-						\item $(\Leftarrow) \;\;\mu(\psi_{1}) = \mu(\psi_{2})$ implica imediatamente que $\Psi_{1}\sim \Psi_{2}$ e $\psi_{1}\sim \psi_{2}$.
+						\item $(\Leftarrow) \;\;\mu(\psi_{1}) = \mu(\psi_{2}) \Rightarrow \deg(\rho_{\Psi_{1}}) = \deg(\rho_{\Psi_{2}}) \Rightarrow \Psi_{1}\sim \Psi_{2}$ e $\psi_{1}\sim \psi_{2}$.
 						
 					\end{scriptsize}
 				\end{itemize}	
@@ -734,9 +643,9 @@
 		\end{definicao}
 		
 		\begin{itemize}
-			\item Sejam $(M1, \omega_{1})$ e $(M1, \omega_{1})$ variedades simpléticas. Um difeomorfismo $\varphi: M_1\to M_2$ é um simplectomorfismo se $\varphi^{*}\omega_{2}=\omega_{1}$.
+			\item Sejam $(M_{1}, \omega_{1})$ e $(M_{2}, \omega_{2})$ variedades simpléticas. Um difeomorfismo $\varphi: M_1\to M_2$ é um simplectomorfismo se $\varphi^{*}\omega_{2}=\omega_{1}$.
 			
-			\item Uma estrutura complexa $J:TM\to TM$ definida por $(x, v)\mapsto (x, J_{x}v)$.
+			\item Uma estrutura complexa $J:TM\to TM$ é $(x,v)\mapsto (x,J_{x}v)$, onde $J_{x}\in \mathcal{J}(T_{x}M)$.
 			
 			\item $J$ é $\omega$-compatível se $g_{x}(X,Y) = \omega_{x}(X, J_{x}Y)$ define uma métrica Riemanniana.
 		\end{itemize}
@@ -967,13 +876,8 @@
 		\begin{teorema}\label{teorema_limite_solucoes_energia_finita}
 			Suponha que todas as trajetórias 1-periódicas do campo Hamiltoniano $\campohamiltonianoabrev$ sejam não-degeneradas. Então para cada $u \in \energiafinitaM$ existem dois pontos $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$ tais que
 			$$
-			\lim_{s\to -\infty}u(s)=x^{-},\; \lim_{s\to \infty}u(s)=x^{+}\;\;
+			\lim_{s\to -\infty}u(s)=x^{-},\; \lim_{s\to \infty}u(s)=x^{+}.
 			$$
-			em $C^{\infty}(\circulo;M)$. Além disso, 
-			$$
-			\lim_{s\to \pm \infty}\derivadaparcial{u}{s}(s,t) = 0,
-			$$
-			converge uniformemente em $t\in \circulo$.
 		\end{teorema}
 		
 	\end{frame}
@@ -987,7 +891,7 @@
 			
 			\item $A_{x}:\intervalo \to \gruposimpletico{2n}$ definida por $A_{x}(t) = D_{x(0)}\psi_{t}$
 			
-			\item $A_{x}(0) =Id$ e $\det(D_{x(0)}\psi_{1}-Id) \neq 0 \Rightarrow A_{x}(1)\in \gruposimpleticonaodegenerado{*}$ 
+			\item $A_{x}(0) =Id$ e $\det(A_{x}(1)-Id) \neq 0 \Rightarrow A_{x}(1)\in \gruposimpleticonaodegenerado{*}$ 
 		\end{enumerate}
 		
 		O índice de Conley-Zehnder $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$ é dado por 
@@ -1009,7 +913,9 @@
 		 	
 		 	%\item O diferencial de $\operadorFloer$ é dado por  	$$ 	\diferencialfloerponto{u}(Y)= \Big( \derivadaparcial{}{s} + J_{u}\derivadaparcial {}{t}\Big)(Y)+ \Big(dJ_{u}(.)\bigparenteses{\derivadaparcial{u}{t} - X_{H}(u)} - J_{u} \diferencialhamiltoniano{u}\Big)(Y). 	$$ 
 		 	
-		 	\item   $\energiafinitaMconectante =\{u \in \energiafinitaM: \lim\limits_{s\to \pm \infty}u(s) = x^{\pm}\}$, onde  $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. \item $ \energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.$ 	
+		 	\item   $\energiafinitaMconectante =\{u \in \energiafinitaM: \lim\limits_{s\to \pm \infty}u(s) = x^{\pm}\}$, onde  $x^{-}, x^{+}\in \pontoscriticos{\funcionalH}$. 
+		 	
+		 	\item $ \energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.$ 	
 		 	
 		 	%\item Se $u\in \energiafinitaMconectante $, então 	$$ \begin{aligned} \ind{(\diferencialfloerponto{u})} &= \dim(\ker(\diferencialfloerponto{u})) -\dim(\text{coker}(\diferencialfloerponto{u})) \\ 	&= \end{aligned} 	$$ 	
 		 \end{itemize} 		
