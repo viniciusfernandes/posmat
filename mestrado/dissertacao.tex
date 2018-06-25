@@ -2411,6 +2411,805 @@
 	\end{observacao}
 	
 	
+	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}\label{capitulo_indice_maslov}
+	\section{Motivação}
+	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ à qual é associado o campo vetorial Hamiltoniano $X_{H} \in \campossuaves{M}$, que é o único campo vetorial que satisfaz a equação $\omega_{x}(\campohamiltoniano{x}, Y) = -dH(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$. 
+	
+	As soluções do sistema Hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$ satisfazendo as condições de periodicidade $x(t+1) = x(t)$ para todo $t\in \reta$, ou seja, as soluções 1-periódicas das equações de Hamilton, determinam uma família de simplectomorfismos $\psi_{t}:M \to M$ (difeomorfismos que preservam a forma simplética) que satisfazem a relação 
+	$$
+	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
+	$$
+	Contudo, as soluções de interesse são aquelas 1-periódicas contráteis e não-degeneradas, pois elas são os pontos críticos do funcional de ação $\funcionalH$, onde uma solução não-degenerada é aquela em que 
+	$$
+	\det(D_{x(0)}\psi_{t} -Id)\neq 0.
+	$$
+	
+	
+	Nesse novo contexto, será feito o análogo ao que foi feito para o caso Morse. A aplicação $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$, chamada índice de Conley-Zehnder, atribui um índice a cada um desses pontos críticos. Tal aplicação é definida a partir do índice de Maslov $\mu:\caminhosespeciais{\gruposimpletico{\real{2n}}} \to \inteiros$, onde $\caminhosespeciais{\gruposimpletico{\real{2n}}}$ é o conjunto dos caminhos contínuos $\psi:\intervalo \to \gruposimpletico{\real{2n}}$ tais que 
+	$$
+	\psi(0)=Id\;\;\text{e}\;\det(\psi(1)-Id)\neq 0.
+	$$
+	
+	Para cada solução não-degenerada $x \in \pontoscriticos{\funcionalH}$ tem-se que o caminho $A_{x}:\intervalo \to \gruposimpletico{\real{2n}}$, definido por $A_{x}(t) = D_{x(0)}\psi_{t} $, é um elemento de $\caminhosespeciais{\gruposimpletico{\real{2n}}}$. Ao caminho $A_{x}$ pode-se associar o índice de Maslov $\mu(A_{x})$ e este, por sua vez será o índice de Conley-Zehnder $\iconley{x}$ da solução $x$.
+	
+	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{\real{2n}} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
+	
+	
+	\section{Construção de $\rho: \gruposimpletico{\real{2n}} \to \circulo$}
+	
+	\correcaobanca{colocar referências.}
+	
+	Para a construção do índice de Maslov, serão adotadas as complexificações $(\complexificado{V}, \Omega) $ e $\gruposimpletico{\complexo{2n}}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético $\gruposimpletico{\real{2n}}$, respectivamente. Os detalhes da complexificação podem ser encontrados no Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$. 
+	
+	O primeiro passo é a construção de uma aplicação contínua $\rho: \gruposimpletico{\real{2n}}\to \circulo$, que é uma extenção contínua do determinante complexo e induz o isomorfismo entre os grupos fundamentais, além de satisfazer propriedades que serão herdadas pelo índice de Maslov.
+	
+	\correcaobanca{a banca disse que está confuso e não conseguem saber quando estamos tratando o caso real ou complexo.}
+	
+	\begin{teorema}\label{teorema_aplicacao_rho}
+		Para todo $n\ \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:\gruposimpletico{\real{2n}} \to S^{1}$ \alerta{(o Salamon define para o caso real, mas isso não está claro no Michele)} satisfazendo as seguintes propriedades:
+		\begin{enumerate}
+			\item \label{item_naturalidade_rho} \textbf{Naturalidade:}  Se $T\in \gruposimpletico{\real{2n}}$, então 
+			$$
+			\rho(TAT^{-1}) = \rho(A)
+			$$
+			para todo $A\in \gruposimpletico{\real{2n}}$.
+			
+			\item \label{item_produto_rho} \textbf{Produto:} Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ espaços vetoriais simpléticos com dimensão $n$ e $m$, respectivamente. Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$. Então para todo $A \in \gruposimpletico{V_{1}}\oplus\gruposimpletico{V_{2}} \subset \gruposimpletico{V}$,  definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{1} \in \gruposimpletico{V_{1}}$ e $A_{2} \in \gruposimpletico{V_{2}}$, tem-se que
+			$$
+			\rho(A) = \rho 
+			\left(
+			\begin{array}{cc}
+			A_{1} & 0
+			\\
+			0 & A_{2}
+			\end{array} 
+			\right)
+			= \rho|_{V_{1}}(A_{1})\rho|_{V_{2}}(A_{2}).
+			$$
+			
+			\item \label{item_determinante_rho} \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal= \gruposimpletico{\real{2n}}\cap \matrizortogonal{2n}$ (veja o Capítulo \ref{capitulo_grupo_simpletico}), então 
+			$$
+			\rho(A) = det_{\complexo{}}(X+iY), \text{onde} \;	
+			A=\left(
+			\begin{array}{cc}
+			X & -Y					\\
+			Y & X
+			\end{array}
+			\right).
+			$$
+			Logo, a aplicação induzida $\rho_{*}: \grupofundamental{\gruposimpletico{\real{2n}}} \to \grupofundamental{\circulo}$ é um isomorfismo.
+			
+			\item \label{item_normalizacao_rho} \textbf{Normalização:} Se $A \in \gruposimpletico{\real{2n}}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
+			
+			\item \label{item_inversa_rho} \textbf{Inversa:} Para todo $A \in \gruposimpletico{\real{2n}}$ tem-se que $\rho(A^{-1})=(\rho(A))^{-1}$. 
+		\end{enumerate}
+	\end{teorema}
+	
+	Os seguintes resultados serão utilizados na definição da aplicação $\rho$. Considere agora a complexificação $(\complexificado{V}, \Omega)$ de $(V, \omega)$. 
+	
+	\begin{lema}\label{lema_forma_simetrica_B}
+		A aplicação $B:\complexificado{V}\times \complexificado{V} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
+		$$
+		B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
+		$$
+	\end{lema}
+	\begin{prova} 
+		A $\reta$-bilinearidade de $B$ é dada imediatamente pela bilinearidade de $\Omega$. Pelo Corolário \ref{corolario_simetria_forma_simpletica} tem-se que $\formaSimpleticaExtendida{\bar{v}}{u} = -\overline{\formaSimpleticaExtendida{\bar{u}}{v}}$ o que implica em $\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u} } = \parteImaginaria{\formaSimpleticaExtendida{\overline{u}}{v} }$ e $B(v,u) = B(u,v)$. Portanto $B$ é simétrica.
+		
+		Suponha que $B$ seja degenerada, isto é, existe $v \in \complexificado{V}$ com $v\neq 0$ tal que $B(v, u ) = 0$ para todo $u \in \complexificado{V}$. Então
+		
+		$$
+		\begin{aligned}
+		\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
+		\\
+		&= \parteImaginaria{-i\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}
+		\\
+		&= \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{-iu}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}}_{=0}
+		\\
+		&=0,
+		\end{aligned}
+		$$
+		o que implica que a forma simplética $\Omega$ é degenerada, contradizendo a hipótese. Portanto $B$ é não-degenerada.
+		
+		Por fim, tem-se as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
+	\end{prova}
+	
+	\begin{proposicao}\label{proposicao_forma_quadratica_Q}
+		Sejam  $Q: \complexificado{V} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$ e $A \in \gruposimpletico{\real{2n}}$. Se $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$, então   $\autoespaco{\lambda} = \autoespaco{\lambda}^{+}\oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{\pm}$ são os maiores subespaços do auto-espaço generalizado $\autoespaco{\lambda}$ tais que $Q$ é positiva (negativa) definida.
+	\end{proposicao}
+	\begin{prova}
+		É imediato que $\autoespaco{\lambda}^{+} \cap \autoespaco{\lambda}^{-} = \emptyset$. Além disso, $\autoespaco{\lambda}^{\pm} \subset \autoespaco{\lambda}$ são subespaços vetoriais pois, dados $\beta\in \complexo{}$, $v, u\in \autoespaco{\lambda}^{+}$ tem-se que 
+		$$
+		\begin{aligned}
+		Q(\beta v +u) &= \parteImaginaria{\overline{\beta}\beta\formaSimpleticaExtendida{\overline{v}}{v}+ \overline{\beta}\formaSimpleticaExtendida{\overline{v}}{u}+ \beta\formaSimpleticaExtendida{\overline{u}}{v}+ \formaSimpleticaExtendida{\overline{u}}{u}}
+		\\
+		&=\parteImaginaria{\overline{\beta}\beta\formaSimpleticaExtendida{\overline{v}}{v}+ \formaSimpleticaExtendida{\overline{u}}{u}}
+		\\
+		&=|\beta|^{2}Q(v)+Q(u)
+		\\
+		&\geq0,
+		\end{aligned}
+		$$
+		onde usou-se o fato de que $\beta\formaSimpleticaExtendida{\overline{u}}{v}=-\overline{\beta}\formaSimpleticaExtendida{\overline{v}}{u}$. Portanto $\beta v +u \in \autoespaco{\lambda}^{+}$. Com um argumento análogo mostra-se que $\autoespaco{\lambda}^{-}$ é subespaço vetorial de $\autoespaco{\lambda}$. Note que, $\formaSimpleticaExtendida{\overline{v}}{v}=\formaSimpleticaExtendida{\overline{Av}}{Av} =|\lambda|^{2}\formaSimpleticaExtendida{\overline{v}}{v}$. Se $\lambda \notin \complementar{\circulo}{\{\pm 1 \} }$, então $\Omega|_{\autoespaco{\lambda}\times \autoespaco{\lambda}} = 0$.
+	\end{prova}
+	
+	\correcaobanca{a banca comentou que está confuso. Eunão entendi o problema desse corolário.}
+	
+	\begin{corolario}\label{corolario_nao_degeneracidade_Q}
+		Se $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$, então a forma quadrática $Q$ é não-degenerada e $Q(v)>0$ ou $Q(v)<0$ para todo $v \in \autoespaco{\lambda}$.
+	\end{corolario}
+	\begin{prova}
+		Pelo Lema \ref{lema_forma_simetrica_B} segue que $Q$ é não-degenerada. Seja $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$. Pela Proposição \ref{proposicao_forma_quadratica_Q} tem-se que $Q(v)>0$ ou $Q(v)<0$, para todo $v\in \autoespaco{\lambda}$. 
+	\end{prova}
+	
+	Note que, do item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho}, a aplicação $\rho$ deve estender continuamente o determinante. Para construir essa aplicação, será introduzida uma ordenação nos auto-valores de $A$. Sabe-se que um dado $\lambda \in \espectrooperador{A}$ assume um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, se $\lambda \in \espectrooperador{A}$, então $\overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1} \in \espectrooperador{A}$. Com isso, basta analisar os casos em que $|\lambda| \leq 1$, o que implica que $|\overline{\lambda}|\leq 1$, $|\lambda^{-1}|\geq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
+	
+	Um auto-valor $\lambda \in \espectrooperador{A}$ é um auto-valor de primeiro tipo se satisfaz as seguintes propriedades: 
+	\begin{enumerate}
+		\item Se $\lambda \in \circulo\backslash\{-1,1\}$, então $0\neq Q(v)\in \reta$. Além disso, o sinal de $Q(v)$ é independente do auto-vetor $v$ associado a $\lambda$ (veja a Corolário \ref{corolario_nao_degeneracidade_Q}). Nesse caso, $\lambda$ é um auto-valor de primeiro tipo se $Q(v)>0$.
+		
+		\item Se $\lambda\notin \circulo$, então $\lambda$ é um auto-valor de primeiro tipo se $|\lambda|<1$.
+	\end{enumerate}
+	
+	O conjunto dos auto-valores de primeiro tipo de $A$ é denotado por $\autovalorprimeirotipo{A}$. Tome $\lambda_{1}\in \sigma(A)$ tal que $|\lambda_{1}|<1$ e o escreva como $\lambda_{1} = |\lambda_{1}|\exp(i\theta_{\lambda_{1}})$, para algum $\theta_{\lambda_{1}} \in [0,2\pi]$. Tome um outro auto-valor $\lambda_{2}$ tal que $|\lambda_{2}|<1$. Se $|\lambda_{1}| < |\lambda_{2}|$ ou  $|\lambda_{1}|= |\lambda_{2}|$ e $\theta_{\lambda} \leq \theta_{\beta}$, será dito que $\lambda_{1} \prec \lambda_{2}$. Repetindo esse procedimento n-vezes tem-se a sequência $\lambda_{1} \prec \dots \prec \lambda_{n} \prec  \lambda_{n}^{-1} \prec \dots \prec \lambda_{1}^{-1}$. Essa ordenação será chamada de ordem de primeiro tipo. Com isso, segue que $\autovalorprimeirotipo{A} = \{\lambda_{1} ,\dots, \lambda_{n} \}$.
+	
+	Sejam $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$  e $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{\real{2n}} : m(\lambda) = 1,\;\forall \lambda\in \espectrooperador{A} \}$ o conjunto das matrizes simpléticas cujos auto-valores têm multiplicidade igual a 1.
+	
+	Considere a aplicação $\hat{\rho}:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
+	$$
+	\hat{\rho}(A) = \prod_{\lambda\in \autovalorprimeirotipo{A}}\frac{\lambda}{|\lambda|}.
+	$$
+	
+	Denote $\dim_\complexo{}{}(\autoespaco{\lambda}^{\pm})$ por $m_{\pm}(\lambda)$, respectivamente. Então $m(\lambda)=m_{+}(\lambda)+m_{-}(\lambda)$. Seja $\rho: \gruposimpletico{\real{2n}}\to \complexo{}$ definida por
+	$$
+	\rho(A) = 	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A)\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)},
+	$$
+	onde $m_{0}$ denota o número de pares $(\lambda, \lambda^{-1})$ reais negativos contados com multiplicidade.
+	
+	Pode-se afirmar que a restrição $\rho|_{\gruposimpleticoespecial{2n}}$ coincide com a aplicação $\hat{\rho}$ anteriormente definida. De fato, tomando $A \in \gruposimpleticoespecial{2n}$ tem-se que $m(\lambda)=1$ e portanto $m_{+}(\lambda) \in \{0,1\}$ para todo $\lambda\in \espectrooperador{A}$. Suponha uma ordem de primeiro tipo para os auto-valores de $A$. Sem perda de generalidade, pode-se supor que $\lambda_{j} \in \reta$ e $\lambda_{j}\in \complexo{}$ para $r+1 \leq  j\leq n$. Se $\lambda_i\in \real{+}$ então $\lambda_i/|\lambda_i|=1$. Se $\lambda_i\in \real{-}$ então $\lambda_i/|\lambda_i|=-1$. Além disso, $m_{+}(\lambda)=m_{-}(\bar{\lambda})$ e $m_{-}(\lambda)=m_{+}(\bar{\lambda})$, logo $m_{+}(\lambda)=1$ se, e somente se, $m_{+}(\bar{\lambda})=0$. Então  
+	$$
+	\begin{aligned}
+	\hat{\rho}(A) 
+	&=
+	\frac{\lambda_{1}}{|\lambda_{1}|}\dots \frac{\lambda_{n}}{|\lambda_{n}|}
+	\\
+	&= (-1)^{m_{0}}\frac{\lambda_{r+1}}{|\lambda_{r+1}|}^{m_{+}(\lambda_{r+1})} \dots \frac{\lambda_{n}}{|\lambda_{n}|}^{m_{+}(\lambda_{n})}
+	\\
+	&=(-1)^{m_{0}}\prod_{\lambda\in \espectrooperador{A}\cap\complementar{\circulo}{\reta}}\lambda^{m_{+}(\lambda)}
+	\\
+	&= \rho(A).
+	\end{aligned}
+	$$
+	
+	A continuidade da aplicação $\rho$ é uma propriedade necessária para a construção do Índice de Maslov. Contudo, sua demonstração é bastante longa e técnica e por isso será omitida neste trabalho. Para os detalhes da demonstração, veja \cite{audi_floer_homology}.
+	
+	
+	\begin{proposicao}\label{proposicao_continuidade_rho}
+		A aplicação $\rho: \gruposimpletico{\real{2n}}\to \circulo$ é contínua e $\rho|_{\gruposimpleticoespecial{2n}} = \hat{\rho}$.
+	\end{proposicao}
+	
+	\subsection*{Demonstração das propriedades de $\rho$}
+	
+	A construção da aplicação $\rho$ depende intrinsecamente do espaço vetorial simplético $(\complexificado{V}, \Omega)$ adotado. Caso se tenha dois espaços vetoriais simpléticos $(\complexificado{V}_{j}, \Omega_{j})$ para $j\in \{1,2\}$, tem-se as aplicações $\rho_{j}:\gruposimpletico{\complexificado{V}_{j}} \to \circulo$. Com um abuso de notação, será identificado $\rho_{j}$ com $\rho$, onde sua definição dependerá do contexto.
+	
+	\begin{prova}
+		
+		\begin{enumerate}
+			\item \textbf{\textit{Naturalidade:}} Fixe $T \in \gruposimpletico{\complexo{2n}}$.  Tem-se que $\det(TAT^{-1}) = \det(A)$, para todo $A \in \gruposimpletico{\complexo{2n}}$. Logo $\espectrooperador{TAT^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}^{TAT^{-1}}$ e $\autoespaco{\lambda}^{A}$ os auto-espaços generalizados de $TAT^{-1}$ e $A$, respectivamente. Pode-se afirmar que $\autoespaco{\lambda}^{TAT^{-1}} = T(\autoespaco{\lambda}^{A})$. De fato, tomando $v \in \autoespaco{\lambda}^{TAT^{-1}}$, então $TAT^{-1}v = \lambda v$ \correcaobanca{auto-espaço=auto-espaço generalizado, pois $A$ é normal, logo é diagonalizável sobre os complexos. Eu não entendi essa codição sobre $A$}, o que implica que $AT^{-1}v = \lambda T^{-1}v$, logo $T^{-1}v \in \autoespaco{\lambda}^{A}$ e $T^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq \autoespaco{\lambda}^{A}$. \alerta{Como $T$ é um isomorfismo, então $\autoespaco{\lambda}^{TAT^{-1}} = TT^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq T(\autoespaco{\lambda}^{A})$. Por outro lado, suponha que $v\in \autoespaco{\lambda}^{A}$. Como $T$ é um isomorfimo, então existe $u \in \complexificado{V}$ tal que $v=T^{-1}u$. Com isso, $AT^{-1}u = \lambda T^{-1}u$ e $ TAT^{-1}u =\lambda u$. Logo $Tv=u \in \autoespaco{\lambda}^{TAT^{-1}}$ e $T(\autoespaco{\lambda}^{A}) \subseteq \autoespaco{\lambda}^{TAT^{-1}}$. Portanto, $\autoespaco{\lambda}^{TAT^{-1}}=T(\autoespaco{\lambda}^{A}) $ e $dim(\autoespaco{\lambda}^{TAT^{-1}})=dim(T(\autoespaco{\lambda}^{A}) )=dim(\autoespaco{\lambda}^{A})$ (A banca disse que está errado, mas eu não entendi.).} 
+			
+			Por fim, como $A,T\in \gruposimpletico{\complexo{2n}}$, então $TAT^{-1}\in \gruposimpletico{\complexo{2n}}$, e pode-se afirmar que $Q(TAT^{-1}v) = Q(v)$ para todo $v \in \complexificado{V}$. Logo  $m^{TAT^{-1}}_{\pm}(\lambda)=m^{A}_{\pm}(\lambda)$, $m_{0}^{TAT^{-1}}=m_{0}^{A}$, e com isso, $\rho(TAT^{-1})=\rho(A)$.
+			
+			\item \textbf{\textit{Produto:}} Sejam $(\complexificado{V}, \Omega) = (\complexificado{V}_{1}\times \complexificado{V}_{2}, \Omega_{1}\times \Omega_{2})$ um $2k$-espaço vetorial simplético, onde $\complexificado{V}_{1}, \complexificado{V}_{2}$ são $2n$ e $2m$-espaços vetoriais simpléticos, respectivamente, e $k=n+m$. Dado $A \in \gruposimpleticocomplexo{2k}$ tem-se que $Av = (A_{1}v_{1}, A_{2}v_{2})$, onde $v=(v_{1}, v_{2}) \in \complexificado{V}$, $A_{1}\in \gruposimpletico{\complexo{2n}}$ e $A_{2}\in \gruposimpleticocomplexo{2m}$. Escrevendo $E_\lambda=0$ ($E_\lambda^i=0$) se $\lambda$ não é um autovalor de A ($A_i$), um auto-espaço generalizado $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda}^{1}\times E_{\lambda}^{2}$, onde $E_{\lambda}^{1}$, $E_{\lambda}^{2}$ são auto-espaços generalizados associados a $\lambda$ de $A_{1}$ e $A_{2}$, respectivamente. Desse modo, a aplicação $\rho: \gruposimpleticocomplexo{2k} \to \circulo$ satisfaz $\rho(A) = \rho(A_{1})\rho(A_{2})$.
+			
+			\item \textbf{\textit{Determinante:}} Sejam $A \in \mathcal{U}$ e $U \in \matrizunitaria{n}$ identificados pelo isomorfismo descrito no Capítulo \ref{capitulo_grupo_simpletico} dado por
+			$$
+			\begin{aligned}
+			\real{2n} \ni (v_{(1)},v_{(2)}) &\mapsto v_{(1)}+iv_{(2)} \in \complexo{n},
+			\\
+			\mathcal{U} \ni 
+			\left(
+			\begin{array}{cc}
+			\text{B} & -\text{C}
+			\\
+			\text{C} & \text{B}
+			\end{array}
+			\right) 
+			& \mapsto \text{B}+i\text{C} \in \matrizunitaria{n}.
+			\end{aligned}
+			$$
+			Se $(v_{(1)},v_{(2)}) \in \real{2n}$ é um auto-vetor de $A$ com auto-valor $\lambda$ em $\complexo{}$, então tem-se que $A(v_{(1)},v_{(2)})=\lambda (v_{(1)},v_{(2)}) $ implica $U(v_{(1)}+iv_{(2)}) = \lambda(v_{(1)}+iv_{(2)})$. Logo $\espectrooperador{A} \subseteq \espectrooperador{U}$. Por outro lado, se $U(v(1)+iv(2))=\lambda(v(1)+iv(2))$, então $A(v(1)+iv(2), -iv(1)+v(2))=\lambda (v(1)+iv(2), -iv(1)+v(2))$, logo $\espectrooperador{U} \subseteq\espectrooperador{A}$. Portanto $\espectrooperador{A} =\espectrooperador{U}$ em $\complexo{}$.
+			
+			Sabe-se que $\estruturacomplexa: \real{2n} \to \real{2n}$ é um endomorfismo, que $A\estruturacomplexa = \estruturacomplexa A$ e que ambos $A$ e $\estruturacomplexa$ são diagonalizáveis (matrizes normais são diagonalizáveis, veja o Lema \ref{lema_caracterizacao_matriz_normal}), logo seus auto-espaços generalizados são os auto-espaços usuais. Além disso, $\espectrooperador{\estruturacomplexa} = \{i,-i\}$, $\autoespaco{i}^{\estruturacomplexa} = \{u\textbf{e} +iu\textbf{f}: u \in \complexo{n}\}$, $\autoespaco{ -i}^{\estruturacomplexa} = \{u\textbf{e} -iu\textbf{f}: u \in \complexo{n}\}$ e $dim(\autoespaco{i}^{\estruturacomplexa} )=dim(\autoespaco{-i}^{\estruturacomplexa} )=n$, portanto $\complexificado{V} = \autoespaco{i}^{\estruturacomplexa}\oplus \autoespaco{-i}^{\estruturacomplexa}$. 
+			Tomando $v \in \autoespaco{i}^{\estruturacomplexa}$ e usando a Proposição \ref{proposicao_forma_simpletica_vetor_conjugado}, tem-se que 
+			$$
+			\begin{aligned}
+			\formaSimpleticaExtendida{\overline{v}}{v} 
+			&= 2i\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}
+			\\
+			&= 2i\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{iv_{(1)}}}
+			\\
+			&=-2\parteImaginaria{\norma{v_{(1)}}^{2}}
+			\\
+			&=-2\norma{v_{(1)}}^{2} \leq 0.
+			\end{aligned}
+			$$
+			
+			Portanto a restrição da forma quadrática $Q$, dada pela Definição \ref{proposicao_forma_quadratica_Q}, ao auto-espaço $\autoespaco{ i}^{\estruturacomplexa}$, é negativa definida. Analogamente pode-se verificar que a restrição de $Q$ ao auto-espaço $\autoespaco{ -i}^{\estruturacomplexa}$ é positiva definida. Com isso, pode-se decompor o auto-espaço $\autoespaco{\lambda} = \autoespaco{\lambda}^{+} \oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{+} = \autoespaco{\lambda}\cap \autoespaco{- i}^{\estruturacomplexa} $ e $\autoespaco{\lambda}^{-} = \autoespaco{\lambda}\cap \autoespaco{ i}^{\estruturacomplexa} $. Pela identificação anterior tem-se
+			$$
+			\autoespaco{\lambda}^{+}=\{v_{(1)}\textbf{e}-iv_{(1)}\textbf{f}\in \autoespaco{\lambda}\} = \{v_{(1)} \in \complexo{n} : Uv_{(1)}=\lambda v_{(1)} \} = \autoespaco{\lambda}^{U}.
+			$$
+			
+			Logo $m_{+}(\lambda) = m^{U}(\lambda)$.
+			
+			Para o caso $\lambda=-1$, pode-se verificar que $u\textbf{e}+v\textbf{f} \in \autoespaco{-1}\cap \real{2n}$ se, e somente se, $u+iv \in \autoespaco{-1}^{U}$. Logo, os auto-espaços $\autoespaco{-1}$ e $\autoespaco{-1}^{U}$ são isomorfos. Além disso, 
+			$$
+			m^{*}(-1) = \dim_{\reta}(\autoespaco{-1}\cap \real{2n}) = \dim_{\reta}(\autoespaco{-1}^{U}) = 2\dim_{\complexo{}}(\autoespaco{-1}^{U}) =2m^{U}(-1).
+			$$
+			
+			A aplicação $\rho|_{\mathcal{U}}: \mathcal{U} \to \circulo$ quando avaliada em $A\in \mathcal{U}$ é dada em termos do produto dos auto-valores $\lambda \in \espectrooperador{A}$ e suas multiplicidades $m^{*}_{+}(\lambda)$ e $m_{0}$. Como $\espectrooperador{A} = \espectrooperador{U}$ e $m^{*}_{+}(\lambda)  = m_{\lambda}^{U}$, então as multiplicidades dos auto-valores são as mesmas e $\rho(A)=\det_{\complexo{}}(U)$.
+			
+			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{\real{2n}}$ com $\sigma(A)\cap \circulo = \emptyset$. Então pela própria definição a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
+			
+			\item \textbf{\textit{Inversa:}} Pela Proposição  \ref{proposicao_caracterizacao_espectro_semelhante}, tem-se que $\espectrooperador{A^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}$ e $F_{\lambda^{-1}}$ auto-espaços generalizados de $A$ e $A^{-1}$, associados aos auto-valores $\lambda$ e $\lambda^{-1}$, respectivamente. É imediato que $\autoespaco{\lambda} = F_{\lambda^{-1}}$, o que implica que $\autoespaco{\lambda}^{+} = F_{\lambda^{-1}}^{+}$ e que $m^{A}_{+}(\lambda) = m^{A^{-1}}_{+}(\lambda^{-1})$ e $m_0^{A^{-1}}=m_0^A$. Então
+			$$
+			\begin{aligned}
+			\rho(A^{-1})
+			&= (-1)^{m_0^{A^{-1}}}\prod (\lambda^{-1})^{m_{+}^{A^{-1}}(\lambda^{-1})}
+			\\
+			&=(-1)^{-m_0^{A}}\prod \lambda^{-m_{+}^{A}(\lambda)}
+			\\
+			&=\bigparenteses{(-1)^{m_{0}^{A}}\prod \lambda^{m_{+}^{A}(\lambda)}}^{-1}
+			\\
+			&=(\rho(A)) ^{-1}.
+			\end{aligned}
+			$$
+		\end{enumerate}
+	\end{prova}
+	
+	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}
+	
+	Foi visto na Seção \ref{secao_funcional_hamiltoniano} que as transformações simpléticas de interesse em construções posteriores a esse capítulo são aquelas correspondentes aos elementos de $\gruposimpletico{\real{2n}}$ que não possuem auto-valores iguais a 1. Considere então $\gruposimpleticonaodegenerado{*}= \{ A \in \gruposimpletico{\real{2n}}: \det(A-Id)\neq 0 \}$ o conjunto dessas transformações. Além disso, defina os conjuntos $\gruposimpleticonaodegenerado{+}= \{ A \in \gruposimpletico{\real{2n}}: \det(A-Id)> 0 \}$ e $\gruposimpleticonaodegenerado{-}= \{ A \in \gruposimpletico{\real{2n}}: \det(A-Id)<0 \}$. É imediato da definição que $\gruposimpleticonaodegenerado{*}= \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-} $.
+	
+	Será demonstrado agora que $\gruposimpleticonaodegenerado{+}$ e  $\gruposimpleticonaodegenerado{-}$ são as duas componentes conexas de $\gruposimpleticonaodegenerado{*}$. Para isso, será utilizado o lema técnico a seguir, cuja demonstração pode ser encontrada em  $\cite{audi_floer_homology}$.
+	
+	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
+		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos e satisfazem apenas uma das seguintes condições: 
+		
+		1) Se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos.
+		
+		2) Se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
+	\end{lema}
+	
+	\begin{proposicao}\label{proposicao_desconexidade_grupo_simpletico_nao_degenerado}
+		$ \gruposimpleticonaodegenerado{+}$ e $\gruposimpleticonaodegenerado{-}$ são conexos por caminhos, logo são conexos. Além disso, esse conjuntos são as componentes conexas de $\gruposimpleticonaodegenerado{*} $.
+	\end{proposicao}
+	\begin{prova}
+		Sejam $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético e $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$. Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupcomplexo{2n}$ por
+		$$
+		W(a) = diag\{\underbrace{a, -1, \dots, -1}_{n}, \underbrace{a^{-1}, -1, \dots , -1}_{n}\}.
+		$$
+		
+		Pode-se mostrar que $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$. De fato, 
+		$$
+		\det(W(a)- Id) = (a-1)(a^{-1}-1)(-2)^{2n-2} \neq 0,
+		$$
+		pois $a\neq 1$. Tomando $v,u \in \complexificado{V}$ tais que $v=v_{(1)}\textbf{e}+ v_{(2)}\textbf{f}$ e $u=u_{(1)}\textbf{e}+ u_{(2)}\textbf{f}$, tem-se 
+		$$
+		\begin{aligned}	
+		W(a)v &= (av_{1}, -v_{2}, \dots, -v_{n}, a^{-1}v_{n+1}, -v_{n+2}, \dots, -v_{2n})
+		\\
+		&= av_{1}e_{1}  -\sum_{j=2}^{n} v_{j}e_{j} + a^{-1}v_{n+1}f_{1} -\sum_{j=2}^{n} v_{n+j}f_{j},
+		\\
+		\formaSimpleticaExtendida{W(a)v}{W(a)u} 
+		&=v_{1}u_{n+1}\formaSimpleticaExtendida{e_{1}}{f_{1}} + \sum_{j=2}^{n}v_{j}u_{n+j}\formaSimpleticaExtendida{e_{j}}{f_{j}}
+		\\
+		&+v_{n+1}u_{1}\formaSimpleticaExtendida{f_{1}}{e_{1}} + \sum_{j=2}^{n} v_{n+j}u_{j}\formaSimpleticaExtendida{f_{j}}{e_{j}}
+		\\
+		&=\sum_{j=1}^{n}\bigparenteses{v_{j}u_{n+j} - 	v_{n+j}u_{j}}
+		\\
+		&= \produtointerno{v_{(1)}}{u_{(2)}} - \produtointerno{v_{(2)}}{u_{(1)}}
+		\\
+		&= \formaSimpleticaExtendida{v}{u}.
+		\end{aligned}
+		$$ 
+		
+		Portanto, $W(a) \in \gruposimpletico{\real{2n}}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
+		
+		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Tem-se que $\det(W^{+} - Id) = 4^{n}>0$  e $\det(W^{-} - Id) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
+		
+		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$.
+		
+		Para cada $\lambda \in \complementar{\espectrooperador{B}}{\real{+}}$ considere um caminho contínuo $\gamma:[0,1]\to \reta$ tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ tal que $1 \notin \gamma([0,1])$. Seja $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ o caminho contínuo definido por
+		$$
+		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
+		$$
+		com $\Gamma(0) = B$, onde $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base de auto-valores de $B$. 
+		
+		Para os auto-valores $\overline{\lambda}$ e $1/\lambda$ tome os caminhos $\overline{\gamma}$ e $1/\gamma$, respectivamente. É imediato da definição que $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. De fato, supondo $\lambda,\lambda' \in \complementar{\sigma(B)}{\real{+}}$ tais que $\lambda\lambda' \neq 1$ tem-se que $\formaSimpleticaExtendida{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaExtendida{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\Omega$-ortoganalidade (veja a Proposição \ref{proposicao_auto_espaco_grupo_simpletico}). No caso em que $\lambda\lambda'=1$ se tem  $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\Omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \Omega(v_{\lambda},v_{\lambda'})$ e $\Gamma(s) \in \gruposimpletico{\real{2n}}$. Como $1 \notin \gamma(\intervalo)$, então $\det(\Gamma(s)- Id)\neq 0 $ e $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
+		
+		Seja $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo conectando $A$ a $B$, cuja existência é garantida pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$.
+		Pela definição de $\gruposimpleticonaodegenerado{*}$ tem-se que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, portanto $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, caso $A \in \gruposimpleticonaodegenerado{+}$, ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, caso $A\in \gruposimpleticonaodegenerado{-}$.
+		
+		\begin{enumerate}
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Logo $\Gamma(0) = B$ e $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. A justaposição $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
+			é um caminho contínuo conectando $A$ a $W^{+}$. Tome $A' \in \gruposimpleticonaodegenerado{+}$ tal que $A'\neq A$. Então com uma construção análoga a anterior, conecta-se $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Tem-se caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente. Logo conecta-se $A$ a $A'$ através de um caminho contínuo. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
+			
+			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda > 0$, então $\lambda^{-1} > 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Reordene a base de auto-valores de $B$ tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores positivos. Assim, tem-se que $\Gamma(0) = B$ e $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\}$. Seja $\Gamma': \intervalo \to \gruposimpleticonaodegenerado{-}$ o caminho definido por $\Gamma'(t)=diag\{ \theta(t), -1,\dots, -1, 1/\theta(t) ,-1,\dots, -1\}$,
+			onde $\theta(t)=(2- \lambda)t + \lambda$. Note que $\Gamma'$ é um caminho contínuo que conecta $\Gamma(1)$ a $W^{-}$. Com isso, a justaposição $\Gamma'*\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a justaposição $\alpha * \Gamma'*\Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior pode-se concluir que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
+		\end{enumerate}
+		
+		Pode-se mostrar que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{\real{2n}}\to \reta$ por $g(A) = \det(A-Id)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e pode-se afirmar que existe um intervalo $(a,b) \subset \real{+}$ onde $g(A)\in (a,b)$. Pode-se mostrar que $g^{-1}((a,b))\subset \gruposimpleticonaodegenerado{+}$.  De fato, supondo que $g^{-1}((a,b)) \varsubsetneq \gruposimpleticonaodegenerado{+}$, então existe $A' \in g^{-1}((a,b))$ tal que $g(A')\leq 0$, o que contradiz o fato de que $(a,b) \subset \real{+}$. Portanto $g^{-1}((a,b)) \subset \gruposimpleticonaodegenerado{+}$ e $A$ é um ponto interno de $\gruposimpleticonaodegenerado{+}$, logo esse conjunto é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
+	\end{prova}
+	
+	Finalmente, a Proposição \ref{proposicao_desconexidade_grupo_simpletico_nao_degenerado} será usada para mostrar que as inclusões $\gruposimpleticonaodegenerado{\pm} \hookrightarrow \gruposimpletico{\real{2n}}$ induzem homomorfismos triviais nos grupos fundamentais. Para isso, será utilizado o seguinte lema, o qual está demonstrado em \cite{audi_floer_homology}.
+	
+	\begin{lema}\label{lema_levantamento_rho}
+		Existem duas aplicações contínuas $\alpha^{\pm}_{\rho}: \gruposimpleticonaodegenerado{\pm}\to \reta$ que tornam o seguinte diagrama comutativo.
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			\gruposimpleticonaodegenerado{\pm}\ar[urr]^{\alpha^{\pm}_{\rho}} \ar[r]_{i^{\pm}} & \gruposimpletico{\real{2n}} \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		
+	\end{lema}
+	
+	\begin{proposicao}\label{proposicao_homomorfismo_trivial_grupos_simpletico}
+		As inclusões $\gruposimpleticonaodegenerado{+} \hookrightarrow \gruposimpletico{\real{2n}}$ e $\gruposimpleticonaodegenerado{-} \hookrightarrow \gruposimpletico{\real{2n}}$ induzem os homomorfismos triviais entre os grupos fundamentais.
+	\end{proposicao}
+	\begin{prova}
+		Pelo Lema \ref{lema_levantamento_rho} pode-se afirmar que $\rho\circ i^{+} = \exp\circ \alpha^{+}_{\rho}$. Logo $\rho_{*}\circ i^{+}_{*} = \exp_{*}\circ (\alpha^{+}_{\rho})_{*}$. Usando o fato de que $\grupofundamental{\reta}=\{\classe{0}\}$ e tomando $\classe{\gamma}\in \grupofundamental{\gruposimpleticonaodegenerado{+}}$ verifica-se que 
+		$$
+		(\rho_{*}\circ i^{+}_{*})(\classe{\gamma}) = (\exp_{*}\circ (\alpha^{+}_{\rho})_{*})(\classe{\gamma}) = \exp_{*}(\classe{0})=\classe{0}.
+		$$
+		
+		Do item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que sua induzida $\rho_{*}$ é um isomorfismo. Logo, $	i^{+}_{*}(\classe{\gamma})=\classe{0}$. Como $\classe{\gamma}\in \gruposimpleticonaodegenerado{+}$ é arbitrário, então $i^{+}_{*} = 0$.
+		
+		Com um argumento análogo pode-se mostrar que a inclusão $\gruposimpleticonaodegenerado{-}\hookrightarrow \gruposimpletico{\real{2n}}$ induz o homomorfismo trivial no grupo fundamental.
+	\end{prova}
+	
+	
+	\section{Índice de Maslov $\mu : \dominioMaslov \to \inteiros$}\label{secao_indice_maslov}
+	
+	Fixe as matrizes diagonal $W^{+}\in \gruposimpleticomais{\real{2n}}$ e $W^{-}\in \gruposimpleticomenos{\real{2n}}$, definidas por
+	$$
+	W^{+}=\diag\{\underbrace{-1,\dots, -1}_{2n} \} \;\; \text{e}\;\;W^{+}=\diag\{\underbrace{2,\dots, -1}_{n},\underbrace{-2^{-1},\dots, -1}_{n} \} .
+	$$
+	
+	\begin{definicao}
+		(Índice de Maslov) 
+		Seja 
+		$$
+		\dominioMaslov=\{ \psi \in \caminhos(\gruposimpletico{\real{2n}}): \psi(0)=Id \;\; \text{e}\;\; \psi(1)\in \gruposimpleticonaodegenerado{*}\}.
+		$$
+		Para um dado caminho $\psi \in \dominioMaslov$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que 
+		$$
+		\psi(1)=\gamma(0)\;\;\text{e}\;\gamma(1)=W^{\pm}.
+		$$
+		Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \dominioMaslov$. Seja $\alpha_{\Psi}: \intervalo \to \reta$ o levantamento do caminho $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
+		$$
+		\xymatrix{
+			& & \real{}\ar[d]\ar[d]^{\text{exp}}
+			\\
+			[0,1 ]\ar[urr]^{\alpha_{\Psi}} \ar[r]_{\Psi} & \gruposimpleticonaodegenerado{*} \ar[r]_{\rho} & S^{1}
+		}
+		$$	
+		Então o grau de $\rho_{\Psi}$ é dado por $\deg(\rho_{\Psi}) = (\alpha_{\Psi}(1)-\alpha_{\Psi}(0))/2\pi$. 
+		
+		O índice de Maslov de $\psi$ é definido por
+		$$
+		\mu(\psi)= 2\deg(\rho_{\Psi}) = 2\deg(\rho_{\psi}) + 2\deg(\rho_{\gamma}).
+		$$
+		\correcaobanca{rever o tamnanho das figuras. Elas estão muito grandes.}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[height=4cm]{imagem/caminhos_especiais_em_Sp2n.pdf}
+			\caption{Um caminho $\psi$ em $\caminhosespeciais{\gruposimpletico{\real{2n}}}$ e seu prolongamento $\Psi$.}
+		\end{figure}
+	\end{definicao}
+	
+	\begin{observacao}
+		Sejam $\psi^{+}, \psi^{-} \in  \caminhosespeciais{\gruposimpletico{\real{2n}}}$ caminhos tais que $\psi^{+}(1)=W^{+}$ e $\psi^{-}(1)=W^{-}$. Com isso, tem-se que $\rho_{\psi^{+}}(1) =\rho(W^{+}) = (-1)^{n}$ e $\rho_{\psi^{-}}(1) =\rho(W^{-}) = (-1)^{n-1}$, o que implica em $\alpha_{\psi^{+}}(1)-\alpha_{\psi^{+}}(0) = k^{+}\pi$ e $\alpha_{\psi^{-}}(1)-\alpha_{\psi^{-}}(0) = k^{-}\pi$, para algum $k^{+}, k^{-}\in \inteiros$.
+	\end{observacao}
+	
+	Os dois próximos resultados são importantes propriedades do índice de Maslov que serão úteis no Teorema \ref{teorema_indice_maslov}, o qual  que caracterizam o índice de Maslov.
+	
+	\begin{lema}\label{lema_independencia_prolongamento}
+		Sejam $\psi,\psi' \in  \dominioMaslov$. Então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$, onde $\Psi$ e $\Psi'$ são prolongamentos de $\psi$ e $\psi'$, respectivamente. Além disso, o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$.
+	\end{lema}
+	\begin{prova}
+		Suponha que $\psi \sim \psi'$. Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, tem-se que $\gamma\sim \gamma'$. Portanto, $\Psi = \psi*\gamma \sim \psi'*\gamma' = \Psi'$, o que é demonstrado no Lema \ref{lema_compatibilidade_produto_caminhos}. 
+		
+		Por outro lado, suponha que $H: \intervalo \times \intervalo \to \gruposimpletico{\real{2n}}$ seja uma homotopia entre $\Psi $ e $\Psi'$ tal que $H(t,0) = \Psi(t)$ e $H(t,1) = \Psi'(t)$. Logo $\Psi(t) = \psi(2t)$ e $\Psi'(t) = \psi'(2t)$ para $0 \leq t \leq 1/2$. Seja $h: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ definida por $h(t,s) = H(t/2, s)$. Então  $h(t,0) = H(t/2, 0) =  \psi(2t)$ e $h(t,1)=H(t/2,1) = \psi'(2t)$. Portanto $h$ é uma homotopia entre $\psi$ e $\psi'$.
+		
+		Sejam $\Psi=\psi*\gamma$ e $\Psi''=\psi*\gamma''$ dois prolangamentos de $\psi$, onde $\gamma, \gamma''\in \caminhos(\gruposimpleticonaodegenerado{\pm})$. A Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico} permite afirmar que $\gamma\sim \gamma''$. Com isso, $\Psi\sim \Psi''$ e $2\deg(\rho_{\Psi})=2\deg(\rho_{\Psi'})=\mu(\psi)$. Logo, $\mu(\psi)$ não depende do prolongamento escolhido.
+	\end{prova}
+	
+	\begin{observacao}
+		O lema anterior mostra que o índice de Maslov de um caminho $\psi\in \dominioMaslov$ está bem definido.
+	\end{observacao}
+	
+	Dado $\psi\in \caminhos(\gruposimpletico{\real{2n}})$, seja $\psi^{-1}$ tal que $\psi^{-1}(t) = (\psi(t))^{-1}$ para todo $t\in \reta$. Como a inversa de uma transformação simplética é uma transformação simplética, então $\psi^{-1}$ está bem definido e $\psi^{-1} \in \caminhos(\gruposimpletico{\real{2n}})$ .
+	
+	\begin{lema}\label{lema_inversa_caminho_especial}
+		Se $\psi \in   \dominioMaslov$, então $\psi^{-1} \in  \dominioMaslov$. Além disso, $\rho(\psi^{-1}(t)) = (\rho(\psi(t)))^{-1}$.
+	\end{lema}
+	\begin{prova}
+		Como $\psi(0) = Id$, então $\psi^{-1}(0) = (\psi(0))^{-1} = Id$. Sabe-se que, se $\lambda\in \espectrooperador{\psi(1)}$, então $1/\lambda\in \espectrooperador{\psi^{-1}(1)}$. Logo, $1\notin \espectrooperador{\psi^{-1}(1)}$ pois $1\notin \espectrooperador{\psi(1)}$. Pelo item \ref{item_inversa_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\psi^{-1}(t))= (\rho(\psi(t)))^{-1}$ para todo $t\in \intervalo$.
+	\end{prova}
+	
+	
+	\begin{teorema}\label{teorema_indice_maslov}
+		Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
+		\begin{enumerate}
+			\item $\mu(\psi) \in \inteiros$.
+			
+			\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{\real{2n}}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{\real{2n}}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{\real{2n}}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
+			
+			\item \textbf{(Homotopia)} \label{item_homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \dominioMaslov $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotópicos se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
+			
+			\item \textbf{(Nulidade)} Se $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $\mu(\psi) = 0$.
+			
+			\item \textbf{(Produto)} Se $n=p+q$, então identifica-se $\gruposimpletico{2p}\times \gruposimpletico{2q}$ com um subgrupo de $\gruposimpletico{\real{2n}}$ e $\mu:\caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}} \to \inteiros$ é dado por $\mu((\psi_{p}, \psi_{q})) = \mu(\psi_{p})+\mu(\psi_{q})$.
+			
+			\item \textbf{(Determinante)} O sinal de $ \det(\psi(1)-Id)$ é $(-1)^{\mu(\psi)-n}$.
+			
+			\item \textbf{(Assinatura)}\label{item_assinatura_maslov} Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
+			$$
+			\mu(\psi) = Ind(S) - n,
+			$$
+			onde $Ind(S)$ é o número de auto-valores negativos de $S$ contatos com multiplicidade.
+			
+			\item \textbf{(Inversa)} $\mu(\psi^{-1}) = -\mu(\psi)$.
+			
+		\end{enumerate}
+	\end{teorema}
+	\begin{prova}
+		
+		Considere $\psi \in \caminhos{(\gruposimpleticonaodegenerado{*})}$ e $\Psi=\psi * \gamma$ um prologamento de $\psi$.
+		\begin{enumerate}
+			\item Tem-se que $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$ e $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})$, onde $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1}$, o que implica em $\rho(W^{\pm}) \in \{ -1,1\}$. Sabe-se que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$. Pode-se afirmar que $\alpha_{\Psi}(0)=0$ e $\alpha_{\Psi}(1)=k\pi$. De fato, para $t=0$ é imediato que $\alpha_{\Psi}(0)=0$. Para $t=1$ tem-se que $\rho(W^{\pm}) = \pm 1$, o que implica que $\alpha_{\Psi}(1) = k\pi$, para algum $k\in \inteiros$. Logo $\mu(\psi) = 2\deg(\rho_{\Psi}) = (k\pi-0)/\pi \in \inteiros$.
+			
+			\item \textbf{(Naturalidade)}
+			Como $\phi\psi\phi^{-1}$ é o produto de aplicações contínuas, então é uma aplicação contínua. Veja que $(\phi\psi\phi^{-1})(0) = \phi(0)\psi(0)\phi^{-1}(0) = \phi(0)(\phi(0))^{-1} = Id$. Defina $\psi'=\phi\psi\phi^{-1}$. Como $1\notin \espectrooperador{\psi(1)}$ e $\psi'(1)$ é uma matriz semelhante a $\psi(1)$, então $\espectrooperador{\psi'(1)}=\espectrooperador{\psi(1)}$. Logo $1\notin \espectrooperador{\psi'(1)}$ e $\psi'\in \caminhosespeciais{\gruposimpletico{\real{2n}}}$.
+			
+			Seja $\phi'\in \caminhos(\gruposimpletico{\real{2n}})$ tal que $\phi'(0) = \phi(1)$ e $\phi'(1) = Id$, e defina $\gamma'=\phi'\gamma\phi'^{-1}$. Pode-se afirmar que $\Psi'=\psi'*\gamma'$ é um prolongamento de $\psi'$. De fato, 
+			$$
+			\gamma'(0)=\phi'(0)\gamma(0)\phi'^{-1}(0) = \phi(1)\psi(1)\phi^{-1}(1) = \psi'(1)
+			$$ 
+			e 
+			$$
+			\gamma'(1)=\phi'(1)\gamma(1)\phi'^{-1}(1) = Id\gamma(1)Id = W^{\pm}.
+			$$
+			
+			Pelo item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Com isso, tem-se que 
+			$$
+			\begin{aligned}
+			\mu(\phi\psi\phi^{-1})
+			&=\mu(\psi')
+			\\
+			&= 2\deg(\rho_{\Psi'})
+			\\
+			&= 2\deg(\rho_{\psi'}) + 2\deg(\rho_{\gamma'})
+			\\
+			&=2\deg(\rho_{\phi\psi\phi^{-1}}) + 2\deg(\rho_{\phi'\gamma\phi'^{-1}})
+			\\
+			&=2\deg(\rho_{\psi}) + 2\deg(\rho_{\gamma})
+			\\
+			&=2\deg(\rho_{\Psi})
+			\\
+			&= \mu(\psi).			
+			\end{aligned}
+			$$
+			
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[height=4cm]{imagem/caminho_naturalidade.pdf}
+				\caption{Os prolongamentos $\Psi=\psi*\gamma$ de $\psi$ e $\Psi'  = \psi'*\gamma'$ de $\psi'$.}
+			\end{figure}
+			
+			\item \textbf{(Homotopia)} Sejam $\Psi_{1}, \Psi_{2}$ prolongamentos de $\psi_{1}, \psi_{2} \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$. No Lema \ref{lema_independencia_prolongamento} é demonstrado que $\Psi_{1}\sim \Psi_{2}$ se, e somente se, $\psi_{1}\sim \psi_{2}$. Supondo que $\psi_{1}\sim \psi_{2}$, então $\mu(\psi_{1}) = 2\deg(\rho_{\Psi_{1}}) = 2\deg(\rho_{\Psi_{2}}) = \mu(\psi_{2})$. A recíproca $\mu(\psi_{1}) = \mu(\psi_{2})$ implica imediatamente que $\Psi_{1}\sim \Psi_{2}$, logo $\psi_{1}\sim \psi_{2}$.
+			
+			\item \textbf{(Nulidade)} Por definição tem-se que 
+			$$
+			\rho(\psi(t)) = (-1)^{m_{0}} \prod_{\lambda \in \sigma(\psi(t))\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)}.
+			$$
+			
+			Como  $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $	\rho(\psi(t))=\pm 1$. Resta avaliar os seguintes casos: $\espectrooperador{\psi(0)}\cap \circulo = \emptyset$ e $\espectrooperador{\psi(0)}\cap \circulo \neq \emptyset$. No primeiro caso tem-se que $	\rho(\psi(0))=\pm 1$, logo o caminho  $\rho\circ\psi$ não é sobrejetor, o que implica em $\deg(\rho_{\Psi}) = 0$ e $\mu(\psi) = 0$. No segundo caso tem-se que $	\rho(\psi(0))=e^{i\theta}$, para alguma constante $\theta \in \reta$ e, analogamente ao caso anterior, o caminho $\rho\circ\psi$ não é sobrejetor. Logo $\mu(\psi)=0$. 
+			
+			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{\real{2n}} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Sejam $\psi=(\psi_{p}, \psi_{q}) \in \caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}}$, $\Psi=(\Psi_{p}, \Psi_{q})$ os respectivos prolongamentos de $\psi, \psi_{p}$ e $\psi_{q}$. Então pelo item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\Psi(t))=\rho(\Psi_{p}(t))\rho(\Psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\Psi_{p}(t))=\exp(i\alpha_{\Psi_{p}}(t))$ e $\rho(\Psi_{q}(t))=\exp(i\alpha_{\Psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\Psi_{p}}+\alpha_{\Psi_{q}})(t))$. Com isso, tem-se que 
+			
+			$$
+			\begin{aligned}
+			\mu(\psi) &= 2\deg(\rho_{\Psi}) 
+			\\
+			&= \frac{1}{2}\big(\alpha_{\Psi_{p}}(1)+\alpha_{\Psi_{q}}(1) -\alpha_{\Psi_{p}}(0)-\alpha_{\Psi_{q}}(0) \big) 
+			\\
+			&= 2\deg(\rho_{\Psi_{p}}) +2\deg(\rho_{\Psi_{p}}) 
+			\\
+			&=\mu(\psi_{p})+\mu(\psi_{q}).
+			\end{aligned}
+			$$
+			
+			\item \textbf{(Determinante)} Suponha que  $\det(\psi(1)- Id)>0$. Por definição $\Psi(1)=W^{+}$ e $\rho_{\Psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho_{\Psi}(1) =1$, então $n\in 2\inteiros$. Sabendo que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$, e dos fatos $\rho_{\Psi}(1) = 1$ e $\alpha_{\Psi}(0) = 0$, pode-se concluir que $\alpha_{\Psi}(1)=k\pi$ para algum $k \in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$ e $\mu(\psi)-n \in 2\inteiros$. Se $\rho_{\Psi}(1) =-1$, então $n\in 2\inteiros+1$. Com argumentos análogos ao caso anterior, tem-se que $\alpha_{\Psi}(1) = k\pi$ para algum $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$ e $\mu(\psi)-n \in 2\inteiros$. Com argumentos análogos pode-se mostrar que, para $\det(\psi(1)- Id)<0$, tem-se  $\rho_{\Psi}(1) = \rho(W^{-}) = (-1)^{n-1}$ e portanto $\mu(\psi)-n \in 2\inteiros +1$.
+			
+			\item \textbf{(Assinatura)} Pode-se afirmar que, $\exp(\estruturacomplexa S) \in\gruposimpletico{\real{2n}}$. De fato, para isso é suficiente mostrar que $(\exp(\estruturacomplexa S))^{t}\estruturacomplexa \exp(\estruturacomplexa S)= \estruturacomplexa$. Note que $(\estruturacomplexa S)^{t} 
+			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ tem-se a identidade 
+			$$
+			\begin{aligned}
+			\estruturacomplexa (\estruturacomplexa S)^{k} 
+			&= \estruturacomplexa\underbrace{\estruturacomplexa  S\dots \estruturacomplexa S}_{k-vezes} 
+			\\
+			&= \estruturacomplexa^{2}  S\estruturacomplexa \dots \estruturacomplexa S \underbrace{(-\estruturacomplexa^{2})}_{Id} 
+			\\
+			&=\underbrace{ S\estruturacomplexa \dots  S \estruturacomplexa }_{k-vezes}\estruturacomplexa 
+			\\
+			&= (S\estruturacomplexa)^{k}\estruturacomplexa.
+			\end{aligned}
+			$$
+			
+			Além disso, note que $((\estruturacomplexa S)^{k})^{t} = (\estruturacomplexa S)^{t}\dots (\estruturacomplexa S)^{t} = (S^{t}\estruturacomplexa^{t} )^{k} = (-S\estruturacomplexa)^{k}$, e com isso
+			$$
+			\begin{aligned}
+			\big(\exp(\estruturacomplexa S)\big)^{t}\estruturacomplexa\exp(\estruturacomplexa S)
+			&=\Big(\sum_{j=0}^{\infty}\frac{ (\estruturacomplexa S)^{j}}{j!}\Big)^{t} \estruturacomplexa \sum_{k=0}^{\infty}\frac{(\estruturacomplexa S)^{k}}{k!}
+			\\
+			&=\sum_{j=0}^{\infty}\frac{\big( (\estruturacomplexa S)^{j}\big)^{t}}{j!}\estruturacomplexa \sum_{k=0}^{\infty}\frac{(\estruturacomplexa S)^{k}}{k!}
+			\\
+			&=\sum_{j=0}^{\infty}\frac{(-S\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{\estruturacomplexa(\estruturacomplexa S)^{k}}{k!}
+			\\
+			&=\sum_{j=0}^{\infty}\frac{(-S\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{(S\estruturacomplexa)^{k}}{k!}\estruturacomplexa
+			\\
+			&=\exp(-S\estruturacomplexa)\exp(S\estruturacomplexa)\estruturacomplexa
+			\\
+			&=\estruturacomplexa.
+			\end{aligned}
+			$$
+			Portanto, $\exp(S\estruturacomplexa) \in \gruposimpletico{\real{2n}}$. 
+			
+			Sejam $A \in \generalgroupcomplexo{2n}$ e $\epsilon>0$ tal que $\norma{A}<\epsilon$. Suponha $u$ um auto-vetor não-nulo de $A$ associado ao auto-valor $\lambda\in \espectrooperador{A}$. Então 
+			$$
+			|\lambda|=\normagrande{A\bigparenteses{\frac{u}{\norma{u}}} }\leq \sup_{\norma{v}=1 } \norma{Av} = \norma{A}<\epsilon.
+			$$
+			
+			
+			Seja $v$ um auto-vetor de $\estruturacomplexa S$ associado ao auto-valor $\lambda \in \espectrooperador{\estruturacomplexa S}$. Então 
+			$$
+			\exp(\estruturacomplexa S)v = e^{\lambda}v.
+			$$
+			
+			Além disso, note que $\norma{\estruturacomplexa S}\leq \norma{\estruturacomplexa}\norma{S} = \norma{S} <2\pi$, o que implica em $|\lambda|<2\pi$, conforme mostrado anteriormente.
+			
+			Pode-se afirmar que $1\notin \espectrooperador{\exp(S\estruturacomplexa)}$. De fato, escreva $\lambda = a+ib\in \complexo{}$. Supondo $e^{\lambda} = 1$, tem-se que $a=0$ e $b \in 2\pi k$ para algum $k\in \inteiros$, o que contradiz o fato de que $|\lambda| <2\pi$. Portanto, $1\notin\espectrooperador{\exp(\estruturacomplexa S)}$ e $\exp(\estruturacomplexa S)\in \gruposimpleticonaodegenerado{*}$.
+			
+			Como $S$ é simétrica, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP=\diag(a_{1},\dots,a_{2n})$ (tais resultados podem ser encontrados em \cite{hoffman_kunze}). Sejam $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = P$ e $\mathcal{P}(1)=Id$. 
+			Então o caminho contínuo $\mathcal{P}^{t}S\mathcal{P}:\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $(\mathcal{P}^{t}S\mathcal{P})(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$, conecta a matriz diagonal $P^{t}SP$ a $S$. Como $ ((\mathcal{P}^{t}S\mathcal{P})(s))^{t} =(\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S\mathcal{P}(s) =(\mathcal{P}^{t}S\mathcal{P})(s)$, então $(\mathcal{P}^{t}S\mathcal{P})(s)$ é simétrica para todo $s\in \intervalo$, e com os argumentos análogos aos anteriores, pode-se afirmar que $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s)) \in \gruposimpleticonaodegenerado{*}$. Como $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ é contínuo e não contém auto-valores iguais a 1, então $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ está na mesma componente conexa de $\gruposimpleticonaodegenerado{*}$ que a matriz $\exp(\estruturacomplexa S)$ para todo $s\in \intervalo$.
+			
+			Note que, o índice da matriz simétrica $(\mathcal{P}^{t}S\mathcal{P})(s)$ independe de s. De fato, 
+			$$
+			\det(Id-(\mathcal{P}^{t}S\mathcal{P})(s)) = 			\det(\mathcal{P}^{t}(Id-S)\mathcal{P}) = \det(S).
+			$$ 
+			Portanto, $\ind((\mathcal{P}^{t}S\mathcal{P})(s)) = \ind(S)$ para todo $s \in \reta$. Além disso pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, pode-se assumir, pela invariância homotópica do índice de Maslov, que $S$ é a matriz diagonal $\diag(a_{1},\dots,a_{2n})$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{1}a_{n+1}\dots a_{n}a_{2n}$ por $a_{(1)}.a_{(2)}$, tem-se que
+			$$
+			\begin{aligned}
+			(\estruturacomplexa S)^{2j} &=(-a_{(1)}.a_{(2)})^{j} Id
+			\\
+			(\estruturacomplexa S)^{2j+1} 
+			&= (-a_{(1)}.a_{(2)})^{j} 
+			\left(
+			\begin{array}{cc}
+			0 & a_{(2)}Id
+			\\
+			-a_{(1)}Id & 0  
+			\end{array}
+			\right),
+			\end{aligned}
+			$$
+			onde $a_{(1)}Id=diag\{a_{1}, \dots, a_{n}\}$. O análogo vale para $a_{(2)}Id$ . Com isso, tem-se a exponencial
+			$$
+			\begin{aligned}
+			\exp(\estruturacomplexa S) &= \sum_{j=0}^{\infty}\frac{(\estruturacomplexa S)^{2j}}{(2j)!} + \sum_{j=0}^{\infty} \frac{(\estruturacomplexa S)^{2j+1}}{(2j+1)!}
+			\\
+			&= \sum_{j=0}^{\infty}\frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j)!}Id + \sum_{j=0}^{\infty} \frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j+1)!}	\left(
+			\begin{array}{cc}
+			0 & a_{(2)}Id
+			\\
+			-a_{(1)}Id & 0  
+			\end{array}
+			\right)
+			\\
+			&= \cos\big((a_{(1)}.a_{(2)})^{1/2}\big)Id +\sen\big((a_{(1)}.a_{(2)})^{1/2}\big)
+			\left(
+			\begin{array}{cc}
+			0 & a_{(2)}Id
+			\\
+			-a_{(1)}Id & 0  
+			\end{array}
+			\right).
+			\end{aligned}
+			$$
+			
+			
+			Como $\norma{S}<2\pi$, então $0<|a_{j}|<2\pi$. Tomando uma aplicação contínua $f_{j}:\intervalo \to [0,\pi]$ tal que $f_{j}(0) = a_{j}$ e $f_{j}(1) = \pi$ para cada $1\leq j \leq 2n$ e definindo $D_{\pi} = \diag\{\pi, \dots, \pi\}$, pode-se afirmar que os caminhos $t\mapsto \exp(t\estruturacomplexa S)$ e $t\mapsto \exp(t\estruturacomplexa D_{\pi})$ são homotopicamente equivalentes, e portanto possuem o mesmo índice de Maslov. Esse fato  permite reduzir a análise a condição em que $|a_{j}|=\pi$ para $1\leq j\leq 2n$. Assim, tem-se os seguintes casos:
+			
+			\begin{enumerate}
+				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (\pi,\dots,\pi)$:}
+				$$
+				\exp(t\estruturacomplexa S) 
+				= 
+				\cos(t\pi)Id+ \sen(t\pi)\estruturacomplexa.
+				$$
+				
+				Decompondo o espaço $\real{2n}$ no produto de n espaços $\real{2}$, a exponencial de $t\estruturacomplexa S$ é representada por n blocos diagonais de matrizes $2\times 2$.
+				
+				$$
+				\begin{aligned}
+				\exp(t\estruturacomplexa S) 
+				&=
+				\left(
+				\begin{array}{ccccccc}
+				\cos(t\pi) & \sen(t\pi) & 0 & 0 & 0 & \dots & 0
+				\\
+				-\sen(t\pi) & \cos(t\pi) & 0 & 0 & 0 & \dots & 0  
+				\\
+				0 & 0 & \cos(t\pi) & \sen(t\pi) & 0 & \dots & 0
+				\\
+				0 & 0 & -\sen(t\pi) & \cos(t\pi) & 0 & \dots & 0
+				\\
+				\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots
+				\\
+				0 & 0 & 0 & 0 & 0 & \cos(t\pi) & \sen(t\pi)
+				\\
+				0 & 0 & 0 & 0 & 0 & -\sen(t\pi) & \cos(t\pi)
+				\end{array}
+				\right)
+				\\
+				&=
+				\left(
+				\begin{array}{ccccc}
+				r(-t\pi) & 0 &\dots & 0 
+				\\
+				0 & r(-t\pi) &\dots & 0 
+				\\
+				\vdots & \vdots & \ddots & \vdots 
+				\\
+				0 & 0 & \dots & r(-t\pi)
+				\end{array}
+				\right),
+				\end{aligned}
+				$$
+				onde $r(-t\pi)$ é a matriz de rotação no plano $\real{2}$ por um ângulo $-t\pi \in \reta$. Note que, $r(-t\pi) \in \gruposimpletico{2}$ é uma matriz otogonal, logo pode ser identificada com uma matriz unitária em $e^{-i\pi}\in U(1)$ (veja o Proposição \ref{proposicao_isomorfismo_U}). Pela propriedade do determinante de $\rho$ descrita no item \ref{item_determinante_rho} e pela propriedade produto de $\rho$ descrita no item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que 
+				$$
+				\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\pi)))^{n} = e^{-itn\pi}.
+				$$ 
+				
+				Defina $\psi \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Com isso, 
+				$$
+				\mu(\psi) = 2\deg(\rho_{\psi}) = \frac{2(-n\pi +0)}{2\pi}=-n.
+				$$
+				
+				Como o número de auto-valores negativos de $\ind(S)$ é zero, então  
+				$$
+				\ind(S)-n=\mu(\psi).
+				$$
+				
+				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (-\pi,\dots,-\pi)$:} tem-se que
+				$$
+				\exp(t\estruturacomplexa S) = \cos(t\pi)Id- \sen(t\pi)\estruturacomplexa.
+				$$
+				
+				Analogamente ao item anterior, 	decomponha o espaço $\real{2n}$ no produto de n espaços $\real{2}$. Então a exponencial de $t\estruturacomplexa S$ é representada por n blocos diagonais de matrizes $2\times 2$
+				
+				$$
+				\exp(t\estruturacomplexa S) =
+				\left(
+				\begin{array}{ccccc}
+				r(t\pi) & 0 &\dots & 0 
+				\\
+				0 & r(t\pi) &\dots & 0 
+				\\
+				\vdots & \vdots & \ddots & \vdots 
+				\\
+				0 & 0 & \dots & r(t\pi)
+				\end{array}
+				\right),
+				$$
+				onde $r(t\pi)$ é uma rotação no plano $\real{2}$ de um ângulo $t\pi\in \reta$.
+				
+				Com isso, identificando $r(t\pi)$ com a matriz $e^{i\pi }\in U(1)$, aplicando a propriedade do determinante e a propriedade do produto da aplicação $\rho$, tem-se que 
+				$$
+				\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\pi)))^{n} = e^{itn\pi}.
+				$$
+				
+				
+				Defina $\psi \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Com isso, $\mu(\psi) = n $, e como $\ind(S) = 2n$, então 
+				$$ 
+				\ind(S)-n = n = \mu(\psi).
+				$$
+				
+				\item \textbf{Caso $a_{(1)}.a_{(2)}<0$ e $a_{(1)}=(\pi,\dots,\pi), \; a_{(2)} = -a_{(1)}$:} usando o fato que $\sen(it\epsilon)=\senh(t\epsilon)$ e $\cos(it\epsilon)=\cosh(t\epsilon)$, tem-se que
+				$$
+				\begin{aligned}
+				\exp(t\estruturacomplexa S) 
+				&= \cosh(t\pi)Id- \senh(t\pi)\left(
+				\begin{array}{cc}
+				0 & Id
+				\\
+				Id & 0  
+				\end{array}
+				\right)
+				\\
+				&=	
+				\left(
+				\begin{array}{ccccc}
+				h(t\pi) & 0 &\dots & 0 
+				\\
+				0 & h(t\pi) &\dots & 0 
+				\\
+				\vdots & \vdots & \ddots & \vdots 
+				\\
+				0 & 0 & \dots & h(t\pi)
+				\end{array}
+				\right),
+				\end{aligned}
+				$$
+				onde foi usado o fato que 
+				$$
+				h(t\pi) = 
+				\left(
+				\begin{array}{cc}
+				\cosh(t\pi) & -\senh(t\pi)
+				\\
+				-\senh(t\pi) & \cosh(t\pi)
+				\end{array}
+				\right).
+				$$
+				
+				Defina $\psi \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Note que, $\espectrooperador{\psi}= \espectrooperador{h(t\pi)} $, onde $\espectrooperador{h(t\pi)} = \{e^{t\pi} , e^{-t\pi}\}$. Como os auto-valores $\lambda(t)$ de $\psi(t)$ são números reais positivos, então $\lambda(t)$ estão no primeiro quadrante do plano complexo. Com isso, caminho $\rho_{\psi}:\intervalo\to \circulo$ não é sobrejetor em $\circulo$, e portanto $\deg(\rho_{\psi}) = 0$. Logo, $\mu(\psi) = 0$. Como $\ind(S) = n$, então
+				$$
+				\ind(S) - n = 0 =\mu(\psi).
+				$$
+				
+			\end{enumerate}
+			
+			\item \textbf{(Inverso)} Pelo Lema \ref{lema_inversa_caminho_especial}, tem-se que $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$. Pode-se afirmar que $\Psi^{-1}= \psi^{-1}*\gamma^{-1} \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$. De fato, se $\lambda(t)$ é um auto-valor de $\gamma(t)$, então $1/\lambda(t)$ é um auto-valor de $\gamma^{-1}(t)$. Como $1 \notin\espectrooperador{\gamma(t)}$, então $1 \notin\espectrooperador{\gamma^{-1}(t)}$
+			para todo $t\in \intervalo$. Logo $\gamma^{-1}(\intervalo)\subset\caminhos(\gruposimpleticonaodegenerado{*})$. 
+			
+			Note que $\Psi(t)\Psi^{-1}(t) = \psi(t)\psi^{-1}(t) = Id$ para $t \in [0,1/2]$ e $\Psi(t)\Psi^{-1}(t) = \gamma(t)\gamma^{-1}(t) = Id$ para $t \in [1/2,1]$. Logo $\Psi(t)\Psi^{-1}(t) = Id$, para todo $t \in \intervalo$, e $\Psi\Psi^{-1} = Id$.
+			
+			Nem sempre pode-se afirmar que $\Psi^{-1}$ é um prolongamento de $\psi^{-1}$ pois $\Psi^{-1}(1)$ não necessariamente está em $\{W^{+},W^{-}\}$ para certas condições. No caso em que $\gamma(1)=W^{-}$, tem-se que $\Psi^{-1}(1) = (W^{-})^{-1}=W^{-}$. Logo $\Psi^{-1}$ é um prolongamento de $\psi^{-1}$. Contudo, o caso em que $\gamma(1)=W^{+}$ implica em $\psi^{-1}(1)= (\gamma(1))^{-1}=(W^{+})^{-1} \neq W^{+}$. Por isso é necessário prolongar $\Psi^{-1}$ até a matriz $W^{+}$.
+			
+			Seja $\gamma'\in \caminhos(\gruposimpleticonaodegenerado{+})$ tal que $\gamma'(0) = \gamma^{-1}(1)$ e $\gamma'(1)=W^{+}$. Então o caminho $\Psi'=\Psi^{-1}*\gamma'$ é um prolongamento de $\Psi^{-1}$. Note que $\Psi' = (\psi^{-1}*\gamma^{-1})*\gamma'$ é homotopicamente equivalente a $\Psi'' = \psi^{-1}*\gamma''$, para algum $\gamma''\in \caminhos(\gruposimpleticonaodegenerado{+})$, como ilustrado na Figura	 \ref{figura_prolongamento_homotopico}. Logo, $\Psi''$ é um prolongamento de $\psi^{-1}$ .  
+			
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[height=5.5cm]{imagem/prolongamento_homotopico.pdf}
+				\caption{O prolongamento $\Psi'$ e seu equivalente homotópico $\Psi''$.}
+				\label{figura_prolongamento_homotopico}
+			\end{figure}
+			
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[height=5cm]{imagem/prolongamento_homotopico_2.pdf}
+				\caption{O prolongamento $\Psi''$ e seu equivalente homotópico $\Psi^{-1}$.}
+				\label{figura_prolongamento_homotopico_2}
+			\end{figure}
+			
+			
+			
+			Note que $\Psi'\sim \Psi''$ e $\Psi''\sim \Psi^{-1}$ (veja a Figura \ref{figura_prolongamento_homotopico_2}). Pelo item \ref{item_inversa_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho_{\Psi^{-1}}(t) = (\rho_{\Psi}(t))^{-1}$. Escrevendo $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$, então $\rho_{\Psi^{-1}}(t) =(\exp(i\alpha_{\Psi}(t)))^{-1}= \exp(-i\alpha_{\Psi}(t))$. Logo 
+			$$
+			\deg(\rho_{\Psi^{-1}})=\frac{1}{2\pi}(-\alpha_{\Psi}(1)+\alpha_{\Psi}(0)) =  -\deg(\rho_{\Psi}).
+			$$
+			
+			Usando o fato de que $\Psi''$ e $\Psi^{-1}$ possuem o mesmo grau pois são caminhos homotópicos, então
+			$$
+			\mu(\psi^{-1})=2\deg(\rho_{\Psi''}) = 2\deg(\rho_{\Psi^{-1}}) = -2\deg(\rho_{\Psi})= -\mu(\psi).
+			$$
+		\end{enumerate}
+	\end{prova}
+
 	\chapter{O Funcional de Ação $\funcionalH$ e a Equação de Floer}
 	\correcaobanca{Inverter a ordem de apresentação desse capítulo com o cap. índice de Maslov.}
 	\correcaobanca{introdução e referências}
@@ -3069,809 +3868,8 @@
 		\energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.
 		$$
 	\end{observacao}
-
-	\correcaobanca{Importante mencionar que toda solução de classe C1 da eq floer e suave}
-	
-	\correcaobanca{Fazer referência que no Cap 7 a questão da compacidade de $\energiafinitaM$ será tratada.}
-	
-	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}\label{capitulo_indice_maslov}
-	\section{Motivação}
-	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ à qual é associado o campo vetorial Hamiltoniano $X_{H} \in \campossuaves{M}$, que é o único campo vetorial que satisfaz a equação $\omega_{x}(\campohamiltoniano{x}, Y) = -dH(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$. 
-	
-	As soluções do sistema Hamiltoniano $\dot{x}(t) = X_{H}(x(t), t)$ satisfazendo as condições de periodicidade $x(t+1) = x(t)$ para todo $t\in \reta$, ou seja, as soluções 1-periódicas das equações de Hamilton, determinam uma família de simplectomorfismos $\psi_{t}:M \to M$ (difeomorfismos que preservam a forma simplética) que satisfazem a relação 
-	$$
-	\derivada{\psi_{t}}{t}=\campohamiltonianoabrev\circ\psi_{t} \;\;, \;\; \psi_{0}=Id \;\;\text{e}\;\;  \psi_{t}(x(0)) = x(t).
-	$$
-	Contudo, as soluções de interesse são aquelas 1-periódicas contráteis e não-degeneradas, pois elas são os pontos críticos do funcional de ação $\funcionalH$, onde uma solução não-degenerada é aquela em que 
-	$$
-	\det(D_{x(0)}\psi_{t} -Id)\neq 0.
-	$$
 	
 	
-	Nesse novo contexto, será feito o análogo ao que foi feito para o caso Morse. A aplicação $\iconleyabrev:\pontoscriticos{\funcionalH} \to \inteiros$, chamada índice de Conley-Zehnder, atribui um índice a cada um desses pontos críticos. Tal aplicação é definida a partir do índice de Maslov $\mu:\caminhosespeciais{\gruposimpletico{\real{2n}}} \to \inteiros$, onde $\caminhosespeciais{\gruposimpletico{\real{2n}}}$ é o conjunto dos caminhos contínuos $\psi:\intervalo \to \gruposimpletico{\real{2n}}$ tais que 
-	$$
-	\psi(0)=Id\;\;\text{e}\;\det(\psi(1)-Id)\neq 0.
-	$$
-	
-	Para cada solução não-degenerada $x \in \pontoscriticos{\funcionalH}$ tem-se que o caminho $A_{x}:\intervalo \to \gruposimpletico{\real{2n}}$, definido por $A_{x}(t) = D_{x(0)}\psi_{t} $, é um elemento de $\caminhosespeciais{\gruposimpletico{\real{2n}}}$. Ao caminho $A_{x}$ pode-se associar o índice de Maslov $\mu(A_{x})$ e este, por sua vez será o índice de Conley-Zehnder $\iconley{x}$ da solução $x$.
-	
-	Originalmente, o índice de Maslov foi definido para associar um caminho fechado em $\gruposimpletico{\real{2n}} $ a um número inteiro. Contudo, existe uma pluralidade de definições equivalentes desse mesmo objeto, e por equivalente entende-se aquelas definições que satistazem a mesma axiomatização. Em $\cite{cappell_maslov_index_equivalencia}$ pode-se encontrar quatro definições distintas e a demonstração de suas equivalências.
-	
-	
-	\section{Construção de $\rho: \gruposimpletico{\real{2n}} \to \circulo$}
-	
-	\correcaobanca{colocar referências.}
-	
-	Para a construção do índice de Maslov, serão adotadas as complexificações $(\complexificado{V}, \Omega) $ e $\gruposimpletico{\complexo{2n}}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético $\gruposimpletico{\real{2n}}$, respectivamente. Os detalhes da complexificação podem ser encontrados no Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$. 
-	
-	O primeiro passo é a construção de uma aplicação contínua $\rho: \gruposimpletico{\real{2n}}\to \circulo$, que é uma extenção contínua do determinante complexo e induz o isomorfismo entre os grupos fundamentais, além de satisfazer propriedades que serão herdadas pelo índice de Maslov.
-	
-	\correcaobanca{a banca disse que está confuso e não conseguem saber quando estamos tratando o caso real ou complexo.}
-	
-	\begin{teorema}\label{teorema_aplicacao_rho}
-		Para todo $n\ \in \mathbb{N}^{*}$ existe uma aplicação contínua $\rho:\gruposimpletico{\real{2n}} \to S^{1}$ \alerta{(o Salamon define para o caso real, mas isso não está claro no Michele)} satisfazendo as seguintes propriedades:
-		\begin{enumerate}
-			\item \label{item_naturalidade_rho} \textbf{Naturalidade:}  Se $T\in \gruposimpletico{\real{2n}}$, então 
-			$$
-			\rho(TAT^{-1}) = \rho(A)
-			$$
-			para todo $A\in \gruposimpletico{\real{2n}}$.
-			
-			\item \label{item_produto_rho} \textbf{Produto:} Sejam $(V_{1}, \omega_{1})$ e $(V_{2}, \omega_{2})$ espaços vetoriais simpléticos com dimensão $n$ e $m$, respectivamente. Se $(V,\omega) = (V_{1}\times V_{2},\omega_{1}\times \omega_{2})$. Então para todo $A \in \gruposimpletico{V_{1}}\oplus\gruposimpletico{V_{2}} \subset \gruposimpletico{V}$,  definida por $A(v_{1}, v_{2})=(A_{1}v_{1}, A_{2}v_{2})$, onde $A_{1} \in \gruposimpletico{V_{1}}$ e $A_{2} \in \gruposimpletico{V_{2}}$, tem-se que
-			$$
-			\rho(A) = \rho 
-			\left(
-				\begin{array}{cc}
-				A_{1} & 0
-				\\
-				0 & A_{2}
-				\end{array} 
-			\right)
-			= \rho|_{V_{1}}(A_{1})\rho|_{V_{2}}(A_{2}).
-			$$
-			
-			\item \label{item_determinante_rho} \textbf{Deteminante:} Se $A\in \matrizSimpleticaOrtogonal= \gruposimpletico{\real{2n}}\cap \matrizortogonal{2n}$ (veja o Capítulo \ref{capitulo_grupo_simpletico}), então 
-			$$
-			\rho(A) = det_{\complexo{}}(X+iY), \text{onde} \;	
-			A=\left(
-			\begin{array}{cc}
-			X & -Y					\\
-			Y & X
-			\end{array}
-			\right).
-			$$
-			Logo, a aplicação induzida $\rho_{*}: \grupofundamental{\gruposimpletico{\real{2n}}} \to \grupofundamental{\circulo}$ é um isomorfismo.
-			
-			\item \label{item_normalizacao_rho} \textbf{Normalização:} Se $A \in \gruposimpletico{\real{2n}}$ com $\sigma(A)\cap \circulo = \emptyset$, então $\rho(A) = \pm 1$.
-			
-			\item \label{item_inversa_rho} \textbf{Inversa:} Para todo $A \in \gruposimpletico{\real{2n}}$ tem-se que $\rho(A^{-1})=(\rho(A))^{-1}$. 
-		\end{enumerate}
-	\end{teorema}
-	
-	Os seguintes resultados serão utilizados na definição da aplicação $\rho$. Considere agora a complexificação $(\complexificado{V}, \Omega)$ de $(V, \omega)$. 
-	
-	\begin{lema}\label{lema_forma_simetrica_B}
-		A aplicação $B:\complexificado{V}\times \complexificado{V} \to \reta$ definida por $B(v, u ) = \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}$ é uma forma $\reta$-bilinear simétrica e não-degenerada. Além disso
-		$$
-		B(iv,iu) = B(v,u)\;\text{e }\;B(\overline{v},\overline{u})=-B(v,u).
-		$$
-	\end{lema}
-	\begin{prova} 
-		A $\reta$-bilinearidade de $B$ é dada imediatamente pela bilinearidade de $\Omega$. Pelo Corolário \ref{corolario_simetria_forma_simpletica} tem-se que $\formaSimpleticaExtendida{\bar{v}}{u} = -\overline{\formaSimpleticaExtendida{\bar{u}}{v}}$ o que implica em $\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u} } = \parteImaginaria{\formaSimpleticaExtendida{\overline{u}}{v} }$ e $B(v,u) = B(u,v)$. Portanto $B$ é simétrica.
-		
-		Suponha que $B$ seja degenerada, isto é, existe $v \in \complexificado{V}$ com $v\neq 0$ tal que $B(v, u ) = 0$ para todo $u \in \complexificado{V}$. Então
-		
-		$$
-		\begin{aligned}
-		\formaSimpleticaExtendida{\overline{v}}{u} &=\parteReal{\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}} 
-		\\
-		&= \parteImaginaria{-i\formaSimpleticaExtendida{\overline{v}}{u}} +i \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}
-		\\
-		&= \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{-iu}}}_{=0} +i \underbrace{\parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}}_{=0}
-		\\
-		&=0,
-		\end{aligned}
-		$$
-		o que implica que a forma simplética $\Omega$ é degenerada, contradizendo a hipótese. Portanto $B$ é não-degenerada.
-		
-		Por fim, tem-se as identidades $B(iv,iu) = \parteImaginaria{\formaSimpleticaExtendida{-i\overline{v}}{iu}}= \parteImaginaria{\formaSimpleticaExtendida{\overline{v}}{u}}=B(v,u)$ e $B(\overline{v},\overline{u})  = \parteImaginaria{\formaSimpleticaExtendida{v}{\overline{u}}} = \parteImaginaria{-\formaSimpleticaExtendida{\overline{u}}{v}} = -B(u,v) = -B(v,u)$
-	\end{prova}
-	
-	\begin{proposicao}\label{proposicao_forma_quadratica_Q}
-		Sejam  $Q: \complexificado{V} \to \reta$ a forma quadrática definida por $Q(v) = B(v,v)$ e $A \in \gruposimpletico{\real{2n}}$. Se $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$, então   $\autoespaco{\lambda} = \autoespaco{\lambda}^{+}\oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{\pm}$ são os maiores subespaços do auto-espaço generalizado $\autoespaco{\lambda}$ tais que $Q$ é positiva (negativa) definida.
-	\end{proposicao}
-	\begin{prova}
-		É imediato que $\autoespaco{\lambda}^{+} \cap \autoespaco{\lambda}^{-} = \emptyset$. Além disso, $\autoespaco{\lambda}^{\pm} \subset \autoespaco{\lambda}$ são subespaços vetoriais pois, dados $\beta\in \complexo{}$, $v, u\in \autoespaco{\lambda}^{+}$ tem-se que 
-		$$
-		\begin{aligned}
-		Q(\beta v +u) &= \parteImaginaria{\overline{\beta}\beta\formaSimpleticaExtendida{\overline{v}}{v}+ \overline{\beta}\formaSimpleticaExtendida{\overline{v}}{u}+ \beta\formaSimpleticaExtendida{\overline{u}}{v}+ \formaSimpleticaExtendida{\overline{u}}{u}}
-		\\
-		&=\parteImaginaria{\overline{\beta}\beta\formaSimpleticaExtendida{\overline{v}}{v}+ \formaSimpleticaExtendida{\overline{u}}{u}}
-		\\
-		&=|\beta|^{2}Q(v)+Q(u)
-		\\
-		&\geq0,
-		\end{aligned}
-		$$
-		onde usou-se o fato de que $\beta\formaSimpleticaExtendida{\overline{u}}{v}=-\overline{\beta}\formaSimpleticaExtendida{\overline{v}}{u}$. Portanto $\beta v +u \in \autoespaco{\lambda}^{+}$. Com um argumento análogo mostra-se que $\autoespaco{\lambda}^{-}$ é subespaço vetorial de $\autoespaco{\lambda}$. Note que, $\formaSimpleticaExtendida{\overline{v}}{v}=\formaSimpleticaExtendida{\overline{Av}}{Av} =|\lambda|^{2}\formaSimpleticaExtendida{\overline{v}}{v}$. Se $\lambda \notin \complementar{\circulo}{\{\pm 1 \} }$, então $\Omega|_{\autoespaco{\lambda}\times \autoespaco{\lambda}} = 0$.
-	\end{prova}
-	
-	\correcaobanca{a banca comentou que está confuso. Eunão entendi o problema desse corolário.}
-	
-	\begin{corolario}\label{corolario_nao_degeneracidade_Q}
-		Se $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$, então a forma quadrática $Q$ é não-degenerada e $Q(v)>0$ ou $Q(v)<0$ para todo $v \in \autoespaco{\lambda}$.
-	\end{corolario}
-	\begin{prova}
-		Pelo Lema \ref{lema_forma_simetrica_B} segue que $Q$ é não-degenerada. Seja $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$. Pela Proposição \ref{proposicao_forma_quadratica_Q} tem-se que $Q(v)>0$ ou $Q(v)<0$, para todo $v\in \autoespaco{\lambda}$. 
-	\end{prova}
-	
-	Note que, do item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho}, a aplicação $\rho$ deve estender continuamente o determinante. Para construir essa aplicação, será introduzida uma ordenação nos auto-valores de $A$. Sabe-se que um dado $\lambda \in \espectrooperador{A}$ assume um dos valores $|\lambda|\leq 1$ ou $|\lambda|>1$. Além disso, se $\lambda \in \espectrooperador{A}$, então $\overline{\lambda}, \lambda^{-1}, \overline{\lambda}^{-1} \in \espectrooperador{A}$. Com isso, basta analisar os casos em que $|\lambda| \leq 1$, o que implica que $|\overline{\lambda}|\leq 1$, $|\lambda^{-1}|\geq 1$ e $|\overline{\lambda}^{-1}|\geq 1$.
-	
-	Um auto-valor $\lambda \in \espectrooperador{A}$ é um auto-valor de primeiro tipo se satisfaz as seguintes propriedades: 
-	\begin{enumerate}
-		\item Se $\lambda \in \circulo\backslash\{-1,1\}$, então $0\neq Q(v)\in \reta$. Além disso, o sinal de $Q(v)$ é independente do auto-vetor $v$ associado a $\lambda$ (veja a Corolário \ref{corolario_nao_degeneracidade_Q}). Nesse caso, $\lambda$ é um auto-valor de primeiro tipo se $Q(v)>0$.
-		
-		\item Se $\lambda\notin \circulo$, então $\lambda$ é um auto-valor de primeiro tipo se $|\lambda|<1$.
-	\end{enumerate}
-	
-	O conjunto dos auto-valores de primeiro tipo de $A$ é denotado por $\autovalorprimeirotipo{A}$. Tome $\lambda_{1}\in \sigma(A)$ tal que $|\lambda_{1}|<1$ e o escreva como $\lambda_{1} = |\lambda_{1}|\exp(i\theta_{\lambda_{1}})$, para algum $\theta_{\lambda_{1}} \in [0,2\pi]$. Tome um outro auto-valor $\lambda_{2}$ tal que $|\lambda_{2}|<1$. Se $|\lambda_{1}| < |\lambda_{2}|$ ou  $|\lambda_{1}|= |\lambda_{2}|$ e $\theta_{\lambda} \leq \theta_{\beta}$, será dito que $\lambda_{1} \prec \lambda_{2}$. Repetindo esse procedimento n-vezes tem-se a sequência $\lambda_{1} \prec \dots \prec \lambda_{n} \prec  \lambda_{n}^{-1} \prec \dots \prec \lambda_{1}^{-1}$. Essa ordenação será chamada de ordem de primeiro tipo. Com isso, segue que $\autovalorprimeirotipo{A} = \{\lambda_{1} ,\dots, \lambda_{n} \}$.
-	
-	Sejam $m(\lambda)$ a multiplicidade do auto-valor $\lambda \in \espectrooperador{A}$  e $\gruposimpleticoespecial{2n} =\{A\in \gruposimpletico{\real{2n}} : m(\lambda) = 1,\;\forall \lambda\in \espectrooperador{A} \}$ o conjunto das matrizes simpléticas cujos auto-valores têm multiplicidade igual a 1.
-	
-	Considere a aplicação $\hat{\rho}:\gruposimpleticoespecial{2n} \to \circulo$ definida por 
-	$$
-	\hat{\rho}(A) = \prod_{\lambda\in \autovalorprimeirotipo{A}}\frac{\lambda}{|\lambda|}.
-	$$
-	
-	Denote $\dim_\complexo{}{}(\autoespaco{\lambda}^{\pm})$ por $m_{\pm}(\lambda)$, respectivamente. Então $m(\lambda)=m_{+}(\lambda)+m_{-}(\lambda)$. Seja $\rho: \gruposimpletico{\real{2n}}\to \complexo{}$ definida por
-	$$
-	\rho(A) = 	(-1)^{m_{0}} \prod_{\lambda \in \sigma(A)\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)},
-	$$
-	onde $m_{0}$ denota o número de pares $(\lambda, \lambda^{-1})$ reais negativos contados com multiplicidade.
-
-	Pode-se afirmar que a restrição $\rho|_{\gruposimpleticoespecial{2n}}$ coincide com a aplicação $\hat{\rho}$ anteriormente definida. De fato, tomando $A \in \gruposimpleticoespecial{2n}$ tem-se que $m(\lambda)=1$ e portanto $m_{+}(\lambda) \in \{0,1\}$ para todo $\lambda\in \espectrooperador{A}$. Suponha uma ordem de primeiro tipo para os auto-valores de $A$. Sem perda de generalidade, pode-se supor que $\lambda_{j} \in \reta$ e $\lambda_{j}\in \complexo{}$ para $r+1 \leq  j\leq n$. Se $\lambda_i\in \real{+}$ então $\lambda_i/|\lambda_i|=1$. Se $\lambda_i\in \real{-}$ então $\lambda_i/|\lambda_i|=-1$. Além disso, $m_{+}(\lambda)=m_{-}(\bar{\lambda})$ e $m_{-}(\lambda)=m_{+}(\bar{\lambda})$, logo $m_{+}(\lambda)=1$ se, e somente se, $m_{+}(\bar{\lambda})=0$. Então  
-	$$
-	\begin{aligned}
-	\hat{\rho}(A) 
-	&=
-	\frac{\lambda_{1}}{|\lambda_{1}|}\dots \frac{\lambda_{n}}{|\lambda_{n}|}
-	\\
-	&= (-1)^{m_{0}}\frac{\lambda_{r+1}}{|\lambda_{r+1}|}^{m_{+}(\lambda_{r+1})} \dots \frac{\lambda_{n}}{|\lambda_{n}|}^{m_{+}(\lambda_{n})}
-	\\
-	&=(-1)^{m_{0}}\prod_{\lambda\in \espectrooperador{A}\cap\complementar{\circulo}{\reta}}\lambda^{m_{+}(\lambda)}
-	\\
-	&= \rho(A).
-	\end{aligned}
-	$$
-
-	A continuidade da aplicação $\rho$ é uma propriedade necessária para a construção do Índice de Maslov. Contudo, sua demonstração é bastante longa e técnica e por isso será omitida neste trabalho. Para os detalhes da demonstração, veja \cite{audi_floer_homology}.
-	
-	
-	\begin{proposicao}\label{proposicao_continuidade_rho}
-		A aplicação $\rho: \gruposimpletico{\real{2n}}\to \circulo$ é contínua e $\rho|_{\gruposimpleticoespecial{2n}} = \hat{\rho}$.
-	\end{proposicao}
-	
-	\subsection*{Demonstração das propriedades de $\rho$}
-	
-	A construção da aplicação $\rho$ depende intrinsecamente do espaço vetorial simplético $(\complexificado{V}, \Omega)$ adotado. Caso se tenha dois espaços vetoriais simpléticos $(\complexificado{V}_{j}, \Omega_{j})$ para $j\in \{1,2\}$, tem-se as aplicações $\rho_{j}:\gruposimpletico{\complexificado{V}_{j}} \to \circulo$. Com um abuso de notação, será identificado $\rho_{j}$ com $\rho$, onde sua definição dependerá do contexto.
-	
-	\begin{prova}
-		
-		\begin{enumerate}
-			\item \textbf{\textit{Naturalidade:}} Fixe $T \in \gruposimpletico{\complexo{2n}}$.  Tem-se que $\det(TAT^{-1}) = \det(A)$, para todo $A \in \gruposimpletico{\complexo{2n}}$. Logo $\espectrooperador{TAT^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}^{TAT^{-1}}$ e $\autoespaco{\lambda}^{A}$ os auto-espaços generalizados de $TAT^{-1}$ e $A$, respectivamente. Pode-se afirmar que $\autoespaco{\lambda}^{TAT^{-1}} = T(\autoespaco{\lambda}^{A})$. De fato, tomando $v \in \autoespaco{\lambda}^{TAT^{-1}}$, então $TAT^{-1}v = \lambda v$ \correcaobanca{auto-espaço=auto-espaço generalizado, pois $A$ é normal, logo é diagonalizável sobre os complexos. Eu não entendi essa codição sobre $A$}, o que implica que $AT^{-1}v = \lambda T^{-1}v$, logo $T^{-1}v \in \autoespaco{\lambda}^{A}$ e $T^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq \autoespaco{\lambda}^{A}$. \alerta{Como $T$ é um isomorfismo, então $\autoespaco{\lambda}^{TAT^{-1}} = TT^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq T(\autoespaco{\lambda}^{A})$. Por outro lado, suponha que $v\in \autoespaco{\lambda}^{A}$. Como $T$ é um isomorfimo, então existe $u \in \complexificado{V}$ tal que $v=T^{-1}u$. Com isso, $AT^{-1}u = \lambda T^{-1}u$ e $ TAT^{-1}u =\lambda u$. Logo $Tv=u \in \autoespaco{\lambda}^{TAT^{-1}}$ e $T(\autoespaco{\lambda}^{A}) \subseteq \autoespaco{\lambda}^{TAT^{-1}}$. Portanto, $\autoespaco{\lambda}^{TAT^{-1}}=T(\autoespaco{\lambda}^{A}) $ e $dim(\autoespaco{\lambda}^{TAT^{-1}})=dim(T(\autoespaco{\lambda}^{A}) )=dim(\autoespaco{\lambda}^{A})$ (A banca disse que está errado, mas eu não entendi.).} 
-			
-			Por fim, como $A,T\in \gruposimpletico{\complexo{2n}}$, então $TAT^{-1}\in \gruposimpletico{\complexo{2n}}$, e pode-se afirmar que $Q(TAT^{-1}v) = Q(v)$ para todo $v \in \complexificado{V}$. Logo  $m^{TAT^{-1}}_{\pm}(\lambda)=m^{A}_{\pm}(\lambda)$, $m_{0}^{TAT^{-1}}=m_{0}^{A}$, e com isso, $\rho(TAT^{-1})=\rho(A)$.
-			
-			\item \textbf{\textit{Produto:}} Sejam $(\complexificado{V}, \Omega) = (\complexificado{V}_{1}\times \complexificado{V}_{2}, \Omega_{1}\times \Omega_{2})$ um $2k$-espaço vetorial simplético, onde $\complexificado{V}_{1}, \complexificado{V}_{2}$ são $2n$ e $2m$-espaços vetoriais simpléticos, respectivamente, e $k=n+m$. Dado $A \in \gruposimpleticocomplexo{2k}$ tem-se que $Av = (A_{1}v_{1}, A_{2}v_{2})$, onde $v=(v_{1}, v_{2}) \in \complexificado{V}$, $A_{1}\in \gruposimpletico{\complexo{2n}}$ e $A_{2}\in \gruposimpleticocomplexo{2m}$. Escrevendo $E_\lambda=0$ ($E_\lambda^i=0$) se $\lambda$ não é um autovalor de A ($A_i$), um auto-espaço generalizado $E_{\lambda}$ de $A$ pode ser escrito como $E_{\lambda} = E_{\lambda}^{1}\times E_{\lambda}^{2}$, onde $E_{\lambda}^{1}$, $E_{\lambda}^{2}$ são auto-espaços generalizados associados a $\lambda$ de $A_{1}$ e $A_{2}$, respectivamente. Desse modo, a aplicação $\rho: \gruposimpleticocomplexo{2k} \to \circulo$ satisfaz $\rho(A) = \rho(A_{1})\rho(A_{2})$.
-			
-			\item \textbf{\textit{Determinante:}} Sejam $A \in \mathcal{U}$ e $U \in \matrizunitaria{n}$ identificados pelo isomorfismo descrito no Capítulo \ref{capitulo_grupo_simpletico} dado por
-			$$
-			\begin{aligned}
-				\real{2n} \ni (v_{(1)},v_{(2)}) &\mapsto v_{(1)}+iv_{(2)} \in \complexo{n},
-				\\
-				\mathcal{U} \ni 
-				\left(
-					\begin{array}{cc}
-					\text{B} & -\text{C}
-					\\
-					\text{C} & \text{B}
-					\end{array}
-				\right) 
-				& \mapsto \text{B}+i\text{C} \in \matrizunitaria{n}.
-			\end{aligned}
-			$$
-			Se $(v_{(1)},v_{(2)}) \in \real{2n}$ é um auto-vetor de $A$ com auto-valor $\lambda$ em $\complexo{}$, então tem-se que $A(v_{(1)},v_{(2)})=\lambda (v_{(1)},v_{(2)}) $ implica $U(v_{(1)}+iv_{(2)}) = \lambda(v_{(1)}+iv_{(2)})$. Logo $\espectrooperador{A} \subseteq \espectrooperador{U}$. Por outro lado, se $U(v(1)+iv(2))=\lambda(v(1)+iv(2))$, então $A(v(1)+iv(2), -iv(1)+v(2))=\lambda (v(1)+iv(2), -iv(1)+v(2))$, logo $\espectrooperador{U} \subseteq\espectrooperador{A}$. Portanto $\espectrooperador{A} =\espectrooperador{U}$ em $\complexo{}$.
-			
-			Sabe-se que $\estruturacomplexa: \real{2n} \to \real{2n}$ é um endomorfismo, que $A\estruturacomplexa = \estruturacomplexa A$ e que ambos $A$ e $\estruturacomplexa$ são diagonalizáveis (matrizes normais são diagonalizáveis, veja o Lema \ref{lema_caracterizacao_matriz_normal}), logo seus auto-espaços generalizados são os auto-espaços usuais. Além disso, $\espectrooperador{\estruturacomplexa} = \{i,-i\}$, $\autoespaco{i}^{\estruturacomplexa} = \{u\textbf{e} +iu\textbf{f}: u \in \complexo{n}\}$, $\autoespaco{ -i}^{\estruturacomplexa} = \{u\textbf{e} -iu\textbf{f}: u \in \complexo{n}\}$ e $dim(\autoespaco{i}^{\estruturacomplexa} )=dim(\autoespaco{-i}^{\estruturacomplexa} )=n$, portanto $\complexificado{V} = \autoespaco{i}^{\estruturacomplexa}\oplus \autoespaco{-i}^{\estruturacomplexa}$. 
-			Tomando $v \in \autoespaco{i}^{\estruturacomplexa}$ e usando a Proposição \ref{proposicao_forma_simpletica_vetor_conjugado}, tem-se que 
-			$$
-			\begin{aligned}
-				\formaSimpleticaExtendida{\overline{v}}{v} 
-				&= 2i\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{v_{(2)}}}
-				\\
-				&= 2i\parteImaginaria{\produtointerno{\overline{v}_{(1)}}{iv_{(1)}}}
-				\\
-				&=-2\parteImaginaria{\norma{v_{(1)}}^{2}}
-				\\
-				&=-2\norma{v_{(1)}}^{2} \leq 0.
-			\end{aligned}
-			$$
-			
-			Portanto a restrição da forma quadrática $Q$, dada pela Definição \ref{proposicao_forma_quadratica_Q}, ao auto-espaço $\autoespaco{ i}^{\estruturacomplexa}$, é negativa definida. Analogamente pode-se verificar que a restrição de $Q$ ao auto-espaço $\autoespaco{ -i}^{\estruturacomplexa}$ é positiva definida. Com isso, pode-se decompor o auto-espaço $\autoespaco{\lambda} = \autoespaco{\lambda}^{+} \oplus \autoespaco{\lambda}^{-}$, onde $\autoespaco{\lambda}^{+} = \autoespaco{\lambda}\cap \autoespaco{- i}^{\estruturacomplexa} $ e $\autoespaco{\lambda}^{-} = \autoespaco{\lambda}\cap \autoespaco{ i}^{\estruturacomplexa} $. Pela identificação anterior tem-se
-			$$
-			\autoespaco{\lambda}^{+}=\{v_{(1)}\textbf{e}-iv_{(1)}\textbf{f}\in \autoespaco{\lambda}\} = \{v_{(1)} \in \complexo{n} : Uv_{(1)}=\lambda v_{(1)} \} = \autoespaco{\lambda}^{U}.
-			$$
-			
-			Logo $m_{+}(\lambda) = m^{U}(\lambda)$.
-			
-			Para o caso $\lambda=-1$, pode-se verificar que $u\textbf{e}+v\textbf{f} \in \autoespaco{-1}\cap \real{2n}$ se, e somente se, $u+iv \in \autoespaco{-1}^{U}$. Logo, os auto-espaços $\autoespaco{-1}$ e $\autoespaco{-1}^{U}$ são isomorfos. Além disso, 
-			$$
-			m^{*}(-1) = \dim_{\reta}(\autoespaco{-1}\cap \real{2n}) = \dim_{\reta}(\autoespaco{-1}^{U}) = 2\dim_{\complexo{}}(\autoespaco{-1}^{U}) =2m^{U}(-1).
-			$$
-			
-			A aplicação $\rho|_{\mathcal{U}}: \mathcal{U} \to \circulo$ quando avaliada em $A\in \mathcal{U}$ é dada em termos do produto dos auto-valores $\lambda \in \espectrooperador{A}$ e suas multiplicidades $m^{*}_{+}(\lambda)$ e $m_{0}$. Como $\espectrooperador{A} = \espectrooperador{U}$ e $m^{*}_{+}(\lambda)  = m_{\lambda}^{U}$, então as multiplicidades dos auto-valores são as mesmas e $\rho(A)=\det_{\complexo{}}(U)$.
-
-			\item \textbf{\textit{Normalização:}} Seja $A\in \gruposimpletico{\real{2n}}$ com $\sigma(A)\cap \circulo = \emptyset$. Então pela própria definição a aplicação $\rho$ não terá produto dos auto-valores, portanto $\rho(A) = (-1)^{m_{0}} = \pm 1$. 
-			
-			\item \textbf{\textit{Inversa:}} Pela Proposição  \ref{proposicao_caracterizacao_espectro_semelhante}, tem-se que $\espectrooperador{A^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}$ e $F_{\lambda^{-1}}$ auto-espaços generalizados de $A$ e $A^{-1}$, associados aos auto-valores $\lambda$ e $\lambda^{-1}$, respectivamente. É imediato que $\autoespaco{\lambda} = F_{\lambda^{-1}}$, o que implica que $\autoespaco{\lambda}^{+} = F_{\lambda^{-1}}^{+}$ e que $m^{A}_{+}(\lambda) = m^{A^{-1}}_{+}(\lambda^{-1})$ e $m_0^{A^{-1}}=m_0^A$. Então
-			$$
-			\begin{aligned}
-			\rho(A^{-1})
-			&= (-1)^{m_0^{A^{-1}}}\prod (\lambda^{-1})^{m_{+}^{A^{-1}}(\lambda^{-1})}
-			\\
-			&=(-1)^{-m_0^{A}}\prod \lambda^{-m_{+}^{A}(\lambda)}
-			\\
-			&=\bigparenteses{(-1)^{m_{0}^{A}}\prod \lambda^{m_{+}^{A}(\lambda)}}^{-1}
-			\\
-			&=(\rho(A)) ^{-1}.
-			\end{aligned}
-			$$
-		\end{enumerate}
-	\end{prova}
-	
-	\section{$\gruposimpleticonaodegenerado{*}$ e sua topologia}
-	
-	Foi visto na Seção \ref{secao_funcional_hamiltoniano} que as transformações simpléticas de interesse em construções posteriores a esse capítulo são aquelas correspondentes aos elementos de $\gruposimpletico{\real{2n}}$ que não possuem auto-valores iguais a 1. Considere então $\gruposimpleticonaodegenerado{*}= \{ A \in \gruposimpletico{\real{2n}}: \det(A-Id)\neq 0 \}$ o conjunto dessas transformações. Além disso, defina os conjuntos $\gruposimpleticonaodegenerado{+}= \{ A \in \gruposimpletico{\real{2n}}: \det(A-Id)> 0 \}$ e $\gruposimpleticonaodegenerado{-}= \{ A \in \gruposimpletico{\real{2n}}: \det(A-Id)<0 \}$. É imediato da definição que $\gruposimpleticonaodegenerado{*}= \gruposimpleticonaodegenerado{+} \cup \gruposimpleticonaodegenerado{-} $.
-	
-	Será demonstrado agora que $\gruposimpleticonaodegenerado{+}$ e  $\gruposimpleticonaodegenerado{-}$ são as duas componentes conexas de $\gruposimpleticonaodegenerado{*}$. Para isso, será utilizado o lema técnico a seguir, cuja demonstração pode ser encontrada em  $\cite{audi_floer_homology}$.
-	
-	\begin{lema}\label{lema_conectividade_grupo_simlpetico_nao_degenerado}
-		Seja $A\in \gruposimpleticonaodegenerado{*}$. Então existe um caminho contínuo em $\gruposimpleticonaodegenerado{*}$ conectando $A$ a uma matriz $B \in \gruposimpleticonaodegenerado{*}$ cujos  auto-valores são todos distintos e satisfazem apenas uma das seguintes condições: 
-		
-		1) Se $A\in \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos.
-		
-		2) Se $A\in \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores reais positivos.
-	\end{lema}
-	
-	\begin{proposicao}\label{proposicao_desconexidade_grupo_simpletico_nao_degenerado}
-		$ \gruposimpleticonaodegenerado{+}$ e $\gruposimpleticonaodegenerado{-}$ são conexos por caminhos, logo são conexos. Além disso, esse conjuntos são as componentes conexas de $\gruposimpleticonaodegenerado{*} $.
-	\end{proposicao}
-	\begin{prova}
-		Sejam $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético e $\{\textbf{e}, \textbf{f}\}$ a base simplética de $\complexificado{V}$. Defina $W: \complementar{\reta}{\{0,1\}} \to \generalgroupcomplexo{2n}$ por
-		$$
-		W(a) = diag\{\underbrace{a, -1, \dots, -1}_{n}, \underbrace{a^{-1}, -1, \dots , -1}_{n}\}.
-		$$
-		
-		Pode-se mostrar que $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$. De fato, 
-		$$
-		\det(W(a)- Id) = (a-1)(a^{-1}-1)(-2)^{2n-2} \neq 0,
-		$$
-		pois $a\neq 1$. Tomando $v,u \in \complexificado{V}$ tais que $v=v_{(1)}\textbf{e}+ v_{(2)}\textbf{f}$ e $u=u_{(1)}\textbf{e}+ u_{(2)}\textbf{f}$, tem-se 
-		$$
-		\begin{aligned}	
-		W(a)v &= (av_{1}, -v_{2}, \dots, -v_{n}, a^{-1}v_{n+1}, -v_{n+2}, \dots, -v_{2n})
-		\\
-		&= av_{1}e_{1}  -\sum_{j=2}^{n} v_{j}e_{j} + a^{-1}v_{n+1}f_{1} -\sum_{j=2}^{n} v_{n+j}f_{j},
-		\\
-		\formaSimpleticaExtendida{W(a)v}{W(a)u} 
-		&=v_{1}u_{n+1}\formaSimpleticaExtendida{e_{1}}{f_{1}} + \sum_{j=2}^{n}v_{j}u_{n+j}\formaSimpleticaExtendida{e_{j}}{f_{j}}
-		\\
-		&+v_{n+1}u_{1}\formaSimpleticaExtendida{f_{1}}{e_{1}} + \sum_{j=2}^{n} v_{n+j}u_{j}\formaSimpleticaExtendida{f_{j}}{e_{j}}
-		\\
-		&=\sum_{j=1}^{n}\bigparenteses{v_{j}u_{n+j} - 	v_{n+j}u_{j}}
-		\\
-		&= \produtointerno{v_{(1)}}{u_{(2)}} - \produtointerno{v_{(2)}}{u_{(1)}}
-		\\
-		&= \formaSimpleticaExtendida{v}{u}.
-		\end{aligned}
-		$$ 
-		
-		Portanto, $W(a) \in \gruposimpletico{\real{2n}}$ e $W(\complementar{\reta}{\{0,1\}}) \subset \gruposimpleticonaodegenerado{*}$.
-		
-		Defina $W^{+} = W(-1)$ e $W^{-} = W(2)$. Tem-se que $\det(W^{+} - Id) = 4^{n}>0$  e $\det(W^{-} - Id) = -4^{n-1}/2 <0$, logo $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$. 
-		
-		Seja $A \in \gruposimpleticonaodegenerado{*}$. Pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$ existe $B \in \gruposimpleticonaodegenerado{*}$ com todos os seus auto-valores distintos  e um caminho contínuo $\alpha:[0,1] \to \gruposimpleticonaodegenerado{*}$ tal que $\alpha(0)=A$ e $\alpha(1) = B$.
-		
-		Para cada $\lambda \in \complementar{\espectrooperador{B}}{\real{+}}$ considere um caminho contínuo $\gamma:[0,1]\to \reta$ tal que $\gamma(0) = \lambda$ e $\gamma(1) = -1$ tal que $1 \notin \gamma([0,1])$. Seja $\Gamma:[0,1 ]\to \gruposimpleticonaodegenerado{*}$ o caminho contínuo definido por
-		$$
-		\funcaocond{\Gamma(s)v_{\lambda}}{\gamma(s)v_{\lambda}}{\lambda \notin \real{+}}{\lambda v_{\lambda} }{\lambda \in \real{+}}
-		$$
-		com $\Gamma(0) = B$, onde $\{v_{\lambda_{1}}, \dots , v_{\lambda_{2n}} \}$ uma base de auto-valores de $B$. 
-		
-		Para os auto-valores $\overline{\lambda}$ e $1/\lambda$ tome os caminhos $\overline{\gamma}$ e $1/\gamma$, respectivamente. É imediato da definição que $\Gamma(s)(E_{\lambda}) = E_{\lambda}$. Afirmo que $\Gamma(s) \in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$. De fato, supondo $\lambda,\lambda' \in \complementar{\sigma(B)}{\real{+}}$ tais que $\lambda\lambda' \neq 1$ tem-se que $\formaSimpleticaExtendida{\Gamma(s)v_{\lambda}}{\Gamma(s)v_{\lambda'}}= \gamma(s)\gamma'(s)\formaSimpleticaExtendida{v_{\lambda}}{v_{\lambda'}} = 0$, pela $\Omega$-ortoganalidade (veja a Proposição \ref{proposicao_auto_espaco_grupo_simpletico}). No caso em que $\lambda\lambda'=1$ se tem  $\lambda'=\lambda^{-1}$, o que implica em $\gamma'(s) = 1/\gamma(s)$, logo $\Omega(\Gamma(s)v_{\lambda},\Gamma(s)v_{\lambda'}) = \Omega(v_{\lambda},v_{\lambda'})$ e $\Gamma(s) \in \gruposimpletico{\real{2n}}$. Como $1 \notin \gamma(\intervalo)$, então $\det(\Gamma(s)- Id)\neq 0 $ e $\Gamma(s)\in \gruposimpleticonaodegenerado{*}$ para todo $s\in \intervalo$.
-		
-		Seja $\alpha:\intervalo\to \gruposimpleticonaodegenerado{*}$ um caminho contínuo conectando $A$ a $B$, cuja existência é garantida pelo Lema $\ref{lema_conectividade_grupo_simlpetico_nao_degenerado}$.
-		Pela definição de $\gruposimpleticonaodegenerado{*}$ tem-se que $\gruposimpleticonaodegenerado{+} \cap \gruposimpleticonaodegenerado{-}=\emptyset$, portanto $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, caso $A \in \gruposimpleticonaodegenerado{+}$, ou $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, caso $A\in \gruposimpleticonaodegenerado{-}$.
-		
-		\begin{enumerate}
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{+}$, então $B$ não possui auto-valores reais positivos. Logo $\Gamma(0) = B$ e $\Gamma(1) = diag \{-1, \dots, -1\} = W^{+}$. Portanto, $\Gamma$ é um caminho contínuo que conecta $B$ a $W^{+}$. A justaposição $\alpha * \Gamma:\intervalo \to \gruposimpleticonaodegenerado{+}$
-			é um caminho contínuo conectando $A$ a $W^{+}$. Tome $A' \in \gruposimpleticonaodegenerado{+}$ tal que $A'\neq A$. Então com uma construção análoga a anterior, conecta-se $A'$ a $W^{+}$ por um caminho contínuo em $\gruposimpleticonaodegenerado{+}$. Tem-se caminhos conectado $A$ a $W^{+}$ e $A'$ a $W^{+}$, respectivamente. Logo conecta-se $A$ a $A'$ através de um caminho contínuo. Portanto $\gruposimpleticonaodegenerado{+}$ é conexo por caminhos, logo é conexo.
-			
-			\item Se $\alpha([0,1]) \subset \gruposimpleticonaodegenerado{-}$, então $B$ possui apenas 2 auto-valores positivos. Supondo que $\lambda \in \sigma(A)$ tal que $\lambda > 0$, então $\lambda^{-1} > 0$, pois os auto-valores de $A$ são determinados aos pares $\lambda, \lambda^{-1}$. Reordene a base de auto-valores de $B$ tal que $\lambda_{1}=\lambda$ e $\lambda_{n+1}=\lambda^{-1}$ sejam esses auto-valores positivos. Assim, tem-se que $\Gamma(0) = B$ e $\Gamma(1) = diag\{\lambda, -1, \dots, -1, \lambda^{-1}, -1, \dots, -1\}$. Seja $\Gamma': \intervalo \to \gruposimpleticonaodegenerado{-}$ o caminho definido por $\Gamma'(t)=diag\{ \theta(t), -1,\dots, -1, 1/\theta(t) ,-1,\dots, -1\}$,
-			onde $\theta(t)=(2- \lambda)t + \lambda$. Note que $\Gamma'$ é um caminho contínuo que conecta $\Gamma(1)$ a $W^{-}$. Com isso, a justaposição $\Gamma'*\Gamma$ é um caminho conectando $B$ a $W^{-}$ e a justaposição $\alpha * \Gamma'*\Gamma: \intervalo \to \gruposimpleticonaodegenerado{-}$ é um caminho contínuo conectando $A$ a $W^{-}$. Com uma construção análoga a do item anterior pode-se concluir que qualquer $A' \in \gruposimpleticonaodegenerado{-}$ pode ser conectado a $A$ por um caminho contínuo que passa por $W^{-}$. Portanto, $\gruposimpleticonaodegenerado{-}$ é conexo por caminhos, logo é conexo.
-		\end{enumerate}
-		
-		Pode-se mostrar que $\gruposimpleticonaodegenerado{\pm}$ são abertos. De fato, defina $g:\gruposimpletico{\real{2n}}\to \reta$ por $g(A) = \det(A-Id)$. Como o determinante é uma função contínua, então $g$ é contínua. Suponha que $A \in \gruposimpleticonaodegenerado{+}$. Então $g(A)>0$ e pode-se afirmar que existe um intervalo $(a,b) \subset \real{+}$ onde $g(A)\in (a,b)$. Pode-se mostrar que $g^{-1}((a,b))\subset \gruposimpleticonaodegenerado{+}$.  De fato, supondo que $g^{-1}((a,b)) \varsubsetneq \gruposimpleticonaodegenerado{+}$, então existe $A' \in g^{-1}((a,b))$ tal que $g(A')\leq 0$, o que contradiz o fato de que $(a,b) \subset \real{+}$. Portanto $g^{-1}((a,b)) \subset \gruposimpleticonaodegenerado{+}$ e $A$ é um ponto interno de $\gruposimpleticonaodegenerado{+}$, logo esse conjunto é um aberto. Um argumento análogo mostra que $\gruposimpleticonaodegenerado{-}$ é aberto.
-	\end{prova}
-	
-	Finalmente, a Proposição \ref{proposicao_desconexidade_grupo_simpletico_nao_degenerado} será usada para mostrar que as inclusões $\gruposimpleticonaodegenerado{\pm} \hookrightarrow \gruposimpletico{\real{2n}}$ induzem homomorfismos triviais nos grupos fundamentais. Para isso, será utilizado o seguinte lema, o qual está demonstrado em \cite{audi_floer_homology}.
-	
-	\begin{lema}\label{lema_levantamento_rho}
-		Existem duas aplicações contínuas $\alpha^{\pm}_{\rho}: \gruposimpleticonaodegenerado{\pm}\to \reta$ que tornam o seguinte diagrama comutativo.
-		$$
-		\xymatrix{
-			& & \real{}\ar[d]\ar[d]^{\text{exp}}
-			\\
-			\gruposimpleticonaodegenerado{\pm}\ar[urr]^{\alpha^{\pm}_{\rho}} \ar[r]_{i^{\pm}} & \gruposimpletico{\real{2n}} \ar[r]_{\rho} & S^{1}
-		}
-		$$	
-		
-	\end{lema}
-	
-	\begin{proposicao}\label{proposicao_homomorfismo_trivial_grupos_simpletico}
-		As inclusões $\gruposimpleticonaodegenerado{+} \hookrightarrow \gruposimpletico{\real{2n}}$ e $\gruposimpleticonaodegenerado{-} \hookrightarrow \gruposimpletico{\real{2n}}$ induzem os homomorfismos triviais entre os grupos fundamentais.
-	\end{proposicao}
-	\begin{prova}
-		Pelo Lema \ref{lema_levantamento_rho} pode-se afirmar que $\rho\circ i^{+} = \exp\circ \alpha^{+}_{\rho}$. Logo $\rho_{*}\circ i^{+}_{*} = \exp_{*}\circ (\alpha^{+}_{\rho})_{*}$. Usando o fato de que $\grupofundamental{\reta}=\{\classe{0}\}$ e tomando $\classe{\gamma}\in \grupofundamental{\gruposimpleticonaodegenerado{+}}$ verifica-se que 
-		$$
-		(\rho_{*}\circ i^{+}_{*})(\classe{\gamma}) = (\exp_{*}\circ (\alpha^{+}_{\rho})_{*})(\classe{\gamma}) = \exp_{*}(\classe{0})=\classe{0}.
-		$$
-		
-		Do item \ref{item_determinante_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que sua induzida $\rho_{*}$ é um isomorfismo. Logo, $	i^{+}_{*}(\classe{\gamma})=\classe{0}$. Como $\classe{\gamma}\in \gruposimpleticonaodegenerado{+}$ é arbitrário, então $i^{+}_{*} = 0$.
-		
-		Com um argumento análogo pode-se mostrar que a inclusão $\gruposimpleticonaodegenerado{-}\hookrightarrow \gruposimpletico{\real{2n}}$ induz o homomorfismo trivial no grupo fundamental.
-	\end{prova}
-		
-	
-	\section{Índice de Maslov $\mu : \dominioMaslov \to \inteiros$}\label{secao_indice_maslov}
-	
-	Fixe as matrizes diagonal $W^{+}\in \gruposimpleticomais{\real{2n}}$ e $W^{-}\in \gruposimpleticomenos{\real{2n}}$, definidas por
-	$$
-	W^{+}=\diag\{\underbrace{-1,\dots, -1}_{2n} \} \;\; \text{e}\;\;W^{+}=\diag\{\underbrace{2,\dots, -1}_{n},\underbrace{-2^{-1},\dots, -1}_{n} \} .
-	$$
-	
-	\begin{definicao}
-		(Índice de Maslov) 
-		Seja 
-		$$
-		\dominioMaslov=\{ \psi \in \caminhos(\gruposimpletico{\real{2n}}): \psi(0)=Id \;\; \text{e}\;\; \psi(1)\in \gruposimpleticonaodegenerado{*}\}.
-		$$
-		Para um dado caminho $\psi \in \dominioMaslov$ fixe um caminho $\gamma \in \caminhos(\gruposimpleticonaodegenerado{*})$ tal que 
-		$$
-		\psi(1)=\gamma(0)\;\;\text{e}\;\gamma(1)=W^{\pm}.
-		$$
-		Defina o prolongamento de $\psi$ por $\Psi = \psi*\gamma \in   \dominioMaslov$. Seja $\alpha_{\Psi}: \intervalo \to \reta$ o levantamento do caminho $\rho_{\Psi} = \rho \circ \Psi:\intervalo\to \circulo$ que faz o diagrama abaixo comutar
-		$$
-		\xymatrix{
-			& & \real{}\ar[d]\ar[d]^{\text{exp}}
-			\\
-			[0,1 ]\ar[urr]^{\alpha_{\Psi}} \ar[r]_{\Psi} & \gruposimpleticonaodegenerado{*} \ar[r]_{\rho} & S^{1}
-		}
-		$$	
-		Então o grau de $\rho_{\Psi}$ é dado por $\deg(\rho_{\Psi}) = (\alpha_{\Psi}(1)-\alpha_{\Psi}(0))/2\pi$. 
-		
-		O índice de Maslov de $\psi$ é definido por
-		$$
-		\mu(\psi)= 2\deg(\rho_{\Psi}) = 2\deg(\rho_{\psi}) + 2\deg(\rho_{\gamma}).
-		$$
-		\correcaobanca{rever o tamnanho das figuras. Elas estão muito grandes.}
-		\begin{figure}[!h]
-			\centering
-			\includegraphics[height=4cm]{imagem/caminhos_especiais_em_Sp2n.pdf}
-			\caption{Um caminho $\psi$ em $\caminhosespeciais{\gruposimpletico{\real{2n}}}$ e seu prolongamento $\Psi$.}
-		\end{figure}
-	\end{definicao}
-	
-	\begin{observacao}
-		Sejam $\psi^{+}, \psi^{-} \in  \caminhosespeciais{\gruposimpletico{\real{2n}}}$ caminhos tais que $\psi^{+}(1)=W^{+}$ e $\psi^{-}(1)=W^{-}$. Com isso, tem-se que $\rho_{\psi^{+}}(1) =\rho(W^{+}) = (-1)^{n}$ e $\rho_{\psi^{-}}(1) =\rho(W^{-}) = (-1)^{n-1}$, o que implica em $\alpha_{\psi^{+}}(1)-\alpha_{\psi^{+}}(0) = k^{+}\pi$ e $\alpha_{\psi^{-}}(1)-\alpha_{\psi^{-}}(0) = k^{-}\pi$, para algum $k^{+}, k^{-}\in \inteiros$.
-	\end{observacao}
-	
-	Os dois próximos resultados são importantes propriedades do índice de Maslov que serão úteis no Teorema \ref{teorema_indice_maslov}, o qual  que caracterizam o índice de Maslov.
-
-	\begin{lema}\label{lema_independencia_prolongamento}
-		Sejam $\psi,\psi' \in  \dominioMaslov$. Então $\psi \sim \psi'$ se, e somente se, $\Psi \sim \Psi'$, onde $\Psi$ e $\Psi'$ são prolongamentos de $\psi$ e $\psi'$, respectivamente. Além disso, o índice de Maslov de $\psi$ não depende da escolha do prolongamento $\Psi$.
-	\end{lema}
-	\begin{prova}
-		Suponha que $\psi \sim \psi'$. Pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, tem-se que $\gamma\sim \gamma'$. Portanto, $\Psi = \psi*\gamma \sim \psi'*\gamma' = \Psi'$, o que é demonstrado no Lema \ref{lema_compatibilidade_produto_caminhos}. 
-		
-		Por outro lado, suponha que $H: \intervalo \times \intervalo \to \gruposimpletico{\real{2n}}$ seja uma homotopia entre $\Psi $ e $\Psi'$ tal que $H(t,0) = \Psi(t)$ e $H(t,1) = \Psi'(t)$. Logo $\Psi(t) = \psi(2t)$ e $\Psi'(t) = \psi'(2t)$ para $0 \leq t \leq 1/2$. Seja $h: \intervalo \times \intervalo \to \gruposimpleticonaodegenerado{*}$ definida por $h(t,s) = H(t/2, s)$. Então  $h(t,0) = H(t/2, 0) =  \psi(2t)$ e $h(t,1)=H(t/2,1) = \psi'(2t)$. Portanto $h$ é uma homotopia entre $\psi$ e $\psi'$.
-		
-		Sejam $\Psi=\psi*\gamma$ e $\Psi''=\psi*\gamma''$ dois prolangamentos de $\psi$, onde $\gamma, \gamma''\in \caminhos(\gruposimpleticonaodegenerado{\pm})$. A Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico} permite afirmar que $\gamma\sim \gamma''$. Com isso, $\Psi\sim \Psi''$ e $2\deg(\rho_{\Psi})=2\deg(\rho_{\Psi'})=\mu(\psi)$. Logo, $\mu(\psi)$ não depende do prolongamento escolhido.
-	\end{prova}
-	
-	\begin{observacao}
-		O lema anterior mostra que o índice de Maslov de um caminho $\psi\in \dominioMaslov$ está bem definido.
-	\end{observacao}
-	
-	Dado $\psi\in \caminhos(\gruposimpletico{\real{2n}})$, seja $\psi^{-1}$ tal que $\psi^{-1}(t) = (\psi(t))^{-1}$ para todo $t\in \reta$. Como a inversa de uma transformação simplética é uma transformação simplética, então $\psi^{-1}$ está bem definido e $\psi^{-1} \in \caminhos(\gruposimpletico{\real{2n}})$ .
-	
-	\begin{lema}\label{lema_inversa_caminho_especial}
-		Se $\psi \in   \dominioMaslov$, então $\psi^{-1} \in  \dominioMaslov$. Além disso, $\rho(\psi^{-1}(t)) = (\rho(\psi(t)))^{-1}$.
-	\end{lema}
-	\begin{prova}
-		Como $\psi(0) = Id$, então $\psi^{-1}(0) = (\psi(0))^{-1} = Id$. Sabe-se que, se $\lambda\in \espectrooperador{\psi(1)}$, então $1/\lambda\in \espectrooperador{\psi^{-1}(1)}$. Logo, $1\notin \espectrooperador{\psi^{-1}(1)}$ pois $1\notin \espectrooperador{\psi(1)}$. Pelo item \ref{item_inversa_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\psi^{-1}(t))= (\rho(\psi(t)))^{-1}$ para todo $t\in \intervalo$.
-	\end{prova}
-	
-	
-	\begin{teorema}\label{teorema_indice_maslov}
-		Se $\psi \in \dominioMaslov$, então o índice de Maslov satisfaz as seguintes propriedades:
-		\begin{enumerate}
-			\item $\mu(\psi) \in \inteiros$.
-			
-			\item \textbf{(Naturalidade)}\label{item_naturalidade_maslov} Se $\phi\in \caminhossempontobase{\gruposimpletico{\real{2n}}}$, então o caminho $\phi\psi\phi^{-1}: \intervalo \to \gruposimpletico{\real{2n}}$ definido por $(\phi\psi\phi^{-1})(t) = \phi(t)\psi(t)\phi^{-1}(t)$ é um elemento de $\caminhosespeciais{\gruposimpletico{\real{2n}}}$ e $\mu(\phi\psi\phi^{-1}) = \mu(\psi)$.
-			
-			\item \textbf{(Homotopia)} \label{item_homotopia_caminhos_teorema_indice_maslov} Dois caminhos $\psi_{1}, \psi_{2}\in \dominioMaslov $ com $\psi_{1}(0) = \psi_{2}(0)$ e $\psi_{1}(1) = \psi_{2}(1)$ são homotópicos se, e somente se, $\mu(\psi_{1}) = \mu(\psi_{2})$.
-			
-			\item \textbf{(Nulidade)} Se $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $\mu(\psi) = 0$.
-			
-			\item \textbf{(Produto)} Se $n=p+q$, então identifica-se $\gruposimpletico{2p}\times \gruposimpletico{2q}$ com um subgrupo de $\gruposimpletico{\real{2n}}$ e $\mu:\caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}} \to \inteiros$ é dado por $\mu((\psi_{p}, \psi_{q})) = \mu(\psi_{p})+\mu(\psi_{q})$.
-			
-			\item \textbf{(Determinante)} O sinal de $ \det(\psi(1)-Id)$ é $(-1)^{\mu(\psi)-n}$.
-			
-			\item \textbf{(Assinatura)}\label{item_assinatura_maslov} Se $S \in GL(2n)$ é uma matriz simétrica com a norma $||S|| < 2\pi$ e se $\psi(t) = exp(t\estruturacomplexa S)$, então 
-			$$
-			\mu(\psi) = Ind(S) - n,
-			$$
-			onde $Ind(S)$ é o número de auto-valores negativos de $S$ contatos com multiplicidade.
-			
-			\item \textbf{(Inversa)} $\mu(\psi^{-1}) = -\mu(\psi)$.
-			
-		\end{enumerate}
-	\end{teorema}
-	\begin{prova}
-		
-		Considere $\psi \in \caminhos{(\gruposimpleticonaodegenerado{*})}$ e $\Psi=\psi * \gamma$ um prologamento de $\psi$.
-		\begin{enumerate}
-			\item Tem-se que $\rho_{\Psi}(0) = \rho(\Psi(0)) = 1$ e $\rho_{\Psi}(1) = \rho(\Psi(1)) = \rho(W^{\pm})$, onde $\rho(W^{+})=(-1)^{n}$ e $\rho(W^{-})=(-1)^{n-1}$, o que implica em $\rho(W^{\pm}) \in \{ -1,1\}$. Sabe-se que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$. Pode-se afirmar que $\alpha_{\Psi}(0)=0$ e $\alpha_{\Psi}(1)=k\pi$. De fato, para $t=0$ é imediato que $\alpha_{\Psi}(0)=0$. Para $t=1$ tem-se que $\rho(W^{\pm}) = \pm 1$, o que implica que $\alpha_{\Psi}(1) = k\pi$, para algum $k\in \inteiros$. Logo $\mu(\psi) = 2\deg(\rho_{\Psi}) = (k\pi-0)/\pi \in \inteiros$.
-			
-			\item \textbf{(Naturalidade)}
-			Como $\phi\psi\phi^{-1}$ é o produto de aplicações contínuas, então é uma aplicação contínua. Veja que $(\phi\psi\phi^{-1})(0) = \phi(0)\psi(0)\phi^{-1}(0) = \phi(0)(\phi(0))^{-1} = Id$. Defina $\psi'=\phi\psi\phi^{-1}$. Como $1\notin \espectrooperador{\psi(1)}$ e $\psi'(1)$ é uma matriz semelhante a $\psi(1)$, então $\espectrooperador{\psi'(1)}=\espectrooperador{\psi(1)}$. Logo $1\notin \espectrooperador{\psi'(1)}$ e $\psi'\in \caminhosespeciais{\gruposimpletico{\real{2n}}}$.
-			
-			Seja $\phi'\in \caminhos(\gruposimpletico{\real{2n}})$ tal que $\phi'(0) = \phi(1)$ e $\phi'(1) = Id$, e defina $\gamma'=\phi'\gamma\phi'^{-1}$. Pode-se afirmar que $\Psi'=\psi'*\gamma'$ é um prolongamento de $\psi'$. De fato, 
-			$$
-			\gamma'(0)=\phi'(0)\gamma(0)\phi'^{-1}(0) = \phi(1)\psi(1)\phi^{-1}(1) = \psi'(1)
-			$$ 
-			e 
-			$$
-			\gamma'(1)=\phi'(1)\gamma(1)\phi'^{-1}(1) = Id\gamma(1)Id = W^{\pm}.
-			$$
-			
-			Pelo item \ref{item_naturalidade_rho} do Teorema \ref{teorema_aplicacao_rho} tem-se que  $\rho(\phi(t)\psi(t)\phi^{-1}(t)) = \rho(\psi(t))$ para todo $t\in \intervalo$, logo $\rho_{\phi\psi\phi^{-1}} = \rho_{\psi}$. Com isso, tem-se que 
-			$$
-			\begin{aligned}
-			\mu(\phi\psi\phi^{-1})
-			&=\mu(\psi')
-			\\
-			&= 2\deg(\rho_{\Psi'})
-			\\
-			&= 2\deg(\rho_{\psi'}) + 2\deg(\rho_{\gamma'})
-			\\
-			&=2\deg(\rho_{\phi\psi\phi^{-1}}) + 2\deg(\rho_{\phi'\gamma\phi'^{-1}})
-			\\
-			&=2\deg(\rho_{\psi}) + 2\deg(\rho_{\gamma})
-			\\
-			&=2\deg(\rho_{\Psi})
-			\\
-			&= \mu(\psi).			
-			\end{aligned}
-			$$
-			
-			\begin{figure}[!h]
-				\centering
-				\includegraphics[height=4cm]{imagem/caminho_naturalidade.pdf}
-				\caption{Os prolongamentos $\Psi=\psi*\gamma$ de $\psi$ e $\Psi'  = \psi'*\gamma'$ de $\psi'$.}
-			\end{figure}
-			
-			\item \textbf{(Homotopia)} Sejam $\Psi_{1}, \Psi_{2}$ prolongamentos de $\psi_{1}, \psi_{2} \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$. No Lema \ref{lema_independencia_prolongamento} é demonstrado que $\Psi_{1}\sim \Psi_{2}$ se, e somente se, $\psi_{1}\sim \psi_{2}$. Supondo que $\psi_{1}\sim \psi_{2}$, então $\mu(\psi_{1}) = 2\deg(\rho_{\Psi_{1}}) = 2\deg(\rho_{\Psi_{2}}) = \mu(\psi_{2})$. A recíproca $\mu(\psi_{1}) = \mu(\psi_{2})$ implica imediatamente que $\Psi_{1}\sim \Psi_{2}$, logo $\psi_{1}\sim \psi_{2}$.
-			
-			\item \textbf{(Nulidade)} Por definição tem-se que 
-			$$
-			\rho(\psi(t)) = (-1)^{m_{0}} \prod_{\lambda \in \sigma(\psi(t))\cap \complementar{\circulo}{\{\pm 1 \}  }}\lambda^{m_{+}(\lambda)}.
-			$$
-			
-			Como  $\espectrooperador{\psi(t)}\cap \circulo = \emptyset$ para todo $t\neq 0$, então $	\rho(\psi(t))=\pm 1$. Resta avaliar os seguintes casos: $\espectrooperador{\psi(0)}\cap \circulo = \emptyset$ e $\espectrooperador{\psi(0)}\cap \circulo \neq \emptyset$. No primeiro caso tem-se que $	\rho(\psi(0))=\pm 1$, logo o caminho  $\rho\circ\psi$ não é sobrejetor, o que implica em $\deg(\rho_{\Psi}) = 0$ e $\mu(\psi) = 0$. No segundo caso tem-se que $	\rho(\psi(0))=e^{i\theta}$, para alguma constante $\theta \in \reta$ e, analogamente ao caso anterior, o caminho $\rho\circ\psi$ não é sobrejetor. Logo $\mu(\psi)=0$. 
-			
-			\item \textbf{(Produto)} Sabe-se que a identificação $\real{2n} \mapsto \real{2p}\times \real{2q}$ é um isomorfismo, o que induz o isomorfismo $\gruposimpletico{\real{2n}} \ni A \mapsto (A_{p}, A_{q}) \in \gruposimpletico{2p} \times \gruposimpletico{2q}$. Sejam $\psi=(\psi_{p}, \psi_{q}) \in \caminhosespeciais{\gruposimpletico{2p}\times \gruposimpletico{2q}}$, $\Psi=(\Psi_{p}, \Psi_{q})$ os respectivos prolongamentos de $\psi, \psi_{p}$ e $\psi_{q}$. Então pelo item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho(\Psi(t))=\rho(\Psi_{p}(t))\rho(\Psi_{q}(t))$ para todo $t\in \intervalo$. Supondo que $\rho(\Psi_{p}(t))=\exp(i\alpha_{\Psi_{p}}(t))$ e $\rho(\Psi_{q}(t))=\exp(i\alpha_{\Psi_{q}}(t))$, então $\rho(\Psi(t)) = \exp(i(\alpha_{\Psi_{p}}+\alpha_{\Psi_{q}})(t))$. Com isso, tem-se que 
-			
-			$$
-			\begin{aligned}
-			\mu(\psi) &= 2\deg(\rho_{\Psi}) 
-			\\
-			&= \frac{1}{2}\big(\alpha_{\Psi_{p}}(1)+\alpha_{\Psi_{q}}(1) -\alpha_{\Psi_{p}}(0)-\alpha_{\Psi_{q}}(0) \big) 
-			\\
-			&= 2\deg(\rho_{\Psi_{p}}) +2\deg(\rho_{\Psi_{p}}) 
-			\\
-			&=\mu(\psi_{p})+\mu(\psi_{q}).
-			\end{aligned}
-			$$
-			
-			\item \textbf{(Determinante)} Suponha que  $\det(\psi(1)- Id)>0$. Por definição $\Psi(1)=W^{+}$ e $\rho_{\Psi}(1) = \rho(W^{+}) = (-1)^{n}$. Se $\rho_{\Psi}(1) =1$, então $n\in 2\inteiros$. Sabendo que $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$, e dos fatos $\rho_{\Psi}(1) = 1$ e $\alpha_{\Psi}(0) = 0$, pode-se concluir que $\alpha_{\Psi}(1)=k\pi$ para algum $k \in 2\inteiros$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros$ e $\mu(\psi)-n \in 2\inteiros$. Se $\rho_{\Psi}(1) =-1$, então $n\in 2\inteiros+1$. Com argumentos análogos ao caso anterior, tem-se que $\alpha_{\Psi}(1) = k\pi$ para algum $k\in 2\inteiros+1$. Logo $\mu(\psi) = (k\pi-0)/\pi \in 2\inteiros+1$ e $\mu(\psi)-n \in 2\inteiros$. Com argumentos análogos pode-se mostrar que, para $\det(\psi(1)- Id)<0$, tem-se  $\rho_{\Psi}(1) = \rho(W^{-}) = (-1)^{n-1}$ e portanto $\mu(\psi)-n \in 2\inteiros +1$.
-			
-			\item \textbf{(Assinatura)} Pode-se afirmar que, $\exp(\estruturacomplexa S) \in\gruposimpletico{\real{2n}}$. De fato, para isso é suficiente mostrar que $(\exp(\estruturacomplexa S))^{t}\estruturacomplexa \exp(\estruturacomplexa S)= \estruturacomplexa$. Note que $(\estruturacomplexa S)^{t} 
-			= S^{t}\estruturacomplexa^{t} = -S\estruturacomplexa$. Com isso, dado um inteiro $k\geq 0$ tem-se a identidade 
-			$$
-			\begin{aligned}
-			\estruturacomplexa (\estruturacomplexa S)^{k} 
-			&= \estruturacomplexa\underbrace{\estruturacomplexa  S\dots \estruturacomplexa S}_{k-vezes} 
-			\\
-			&= \estruturacomplexa^{2}  S\estruturacomplexa \dots \estruturacomplexa S \underbrace{(-\estruturacomplexa^{2})}_{Id} 
-			\\
-			&=\underbrace{ S\estruturacomplexa \dots  S \estruturacomplexa }_{k-vezes}\estruturacomplexa 
-			\\
-			&= (S\estruturacomplexa)^{k}\estruturacomplexa.
-			\end{aligned}
-			$$
-			
-			Além disso, note que $((\estruturacomplexa S)^{k})^{t} = (\estruturacomplexa S)^{t}\dots (\estruturacomplexa S)^{t} = (S^{t}\estruturacomplexa^{t} )^{k} = (-S\estruturacomplexa)^{k}$, e com isso
-			$$
-			\begin{aligned}
-			\big(\exp(\estruturacomplexa S)\big)^{t}\estruturacomplexa\exp(\estruturacomplexa S)
-			&=\Big(\sum_{j=0}^{\infty}\frac{ (\estruturacomplexa S)^{j}}{j!}\Big)^{t} \estruturacomplexa \sum_{k=0}^{\infty}\frac{(\estruturacomplexa S)^{k}}{k!}
-			\\
-			&=\sum_{j=0}^{\infty}\frac{\big( (\estruturacomplexa S)^{j}\big)^{t}}{j!}\estruturacomplexa \sum_{k=0}^{\infty}\frac{(\estruturacomplexa S)^{k}}{k!}
-			\\
-			&=\sum_{j=0}^{\infty}\frac{(-S\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{\estruturacomplexa(\estruturacomplexa S)^{k}}{k!}
-			\\
-			&=\sum_{j=0}^{\infty}\frac{(-S\estruturacomplexa)^{j}}{j!} \sum_{k=0}^{\infty}\frac{(S\estruturacomplexa)^{k}}{k!}\estruturacomplexa
-			\\
-			&=\exp(-S\estruturacomplexa)\exp(S\estruturacomplexa)\estruturacomplexa
-			\\
-			&=\estruturacomplexa.
-			\end{aligned}
-			$$
-			Portanto, $\exp(S\estruturacomplexa) \in \gruposimpletico{\real{2n}}$. 
-			
-			Sejam $A \in \generalgroupcomplexo{2n}$ e $\epsilon>0$ tal que $\norma{A}<\epsilon$. Suponha $u$ um auto-vetor não-nulo de $A$ associado ao auto-valor $\lambda\in \espectrooperador{A}$. Então 
-			$$
-				|\lambda|=\normagrande{A\bigparenteses{\frac{u}{\norma{u}}} }\leq \sup_{\norma{v}=1 } \norma{Av} = \norma{A}<\epsilon.
-			$$
-				
-			
-			Seja $v$ um auto-vetor de $\estruturacomplexa S$ associado ao auto-valor $\lambda \in \espectrooperador{\estruturacomplexa S}$. Então 
-			$$
-			\exp(\estruturacomplexa S)v = e^{\lambda}v.
-			$$
-			
-			Além disso, note que $\norma{\estruturacomplexa S}\leq \norma{\estruturacomplexa}\norma{S} = \norma{S} <2\pi$, o que implica em $|\lambda|<2\pi$, conforme mostrado anteriormente.
-			
-			Pode-se afirmar que $1\notin \espectrooperador{\exp(S\estruturacomplexa)}$. De fato, escreva $\lambda = a+ib\in \complexo{}$. Supondo $e^{\lambda} = 1$, tem-se que $a=0$ e $b \in 2\pi k$ para algum $k\in \inteiros$, o que contradiz o fato de que $|\lambda| <2\pi$. Portanto, $1\notin\espectrooperador{\exp(\estruturacomplexa S)}$ e $\exp(\estruturacomplexa S)\in \gruposimpleticonaodegenerado{*}$.
-			
-			Como $S$ é simétrica, existe uma matriz ortogonal $P \in \matrizortogonal{2n}$ tal que $P^{t}SP=\diag(a_{1},\dots,a_{2n})$ (tais resultados podem ser encontrados em \cite{hoffman_kunze}). Sejam $\mathcal{P}:[0,1]\to \matrizortogonal{2n}$ um caminho contínuo tal que $\mathcal{P}(0) = P$ e $\mathcal{P}(1)=Id$. 
-			Então o caminho contínuo $\mathcal{P}^{t}S\mathcal{P}:\intervalo\to \gruposimpleticonaodegenerado{*}$, definido por $(\mathcal{P}^{t}S\mathcal{P})(s)=\mathcal{P}^{t}(s)S\mathcal{P}(s)$, conecta a matriz diagonal $P^{t}SP$ a $S$. Como $ ((\mathcal{P}^{t}S\mathcal{P})(s))^{t} =(\mathcal{P}^{t}(s)S\mathcal{P}(s))^{t} = \mathcal{P}^{t}(s)S\mathcal{P}(s) =(\mathcal{P}^{t}S\mathcal{P})(s)$, então $(\mathcal{P}^{t}S\mathcal{P})(s)$ é simétrica para todo $s\in \intervalo$, e com os argumentos análogos aos anteriores, pode-se afirmar que $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s)) \in \gruposimpleticonaodegenerado{*}$. Como $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ é contínuo e não contém auto-valores iguais a 1, então $\exp(\estruturacomplexa(\mathcal{P}^{t}S\mathcal{P})(s))$ está na mesma componente conexa de $\gruposimpleticonaodegenerado{*}$ que a matriz $\exp(\estruturacomplexa S)$ para todo $s\in \intervalo$.
-			
-			Note que, o índice da matriz simétrica $(\mathcal{P}^{t}S\mathcal{P})(s)$ independe de s. De fato, 
-			$$
-			\det(Id-(\mathcal{P}^{t}S\mathcal{P})(s)) = 			\det(\mathcal{P}^{t}(Id-S)\mathcal{P}) = \det(S).
-			$$ 
-			Portanto, $\ind((\mathcal{P}^{t}S\mathcal{P})(s)) = \ind(S)$ para todo $s \in \reta$. Além disso pela Proposição \ref{proposicao_homomorfismo_trivial_grupos_simpletico}, pode-se assumir, pela invariância homotópica do índice de Maslov, que $S$ é a matriz diagonal $\diag(a_{1},\dots,a_{2n})$. Denotando as n-duplas $(a_{1}, \dots, a_{n})$ e $(a_{n+1}, \dots, a_{2n})$ por $a_{(1)}$ e $a_{(2)}$, respectivamente, e $a_{1}a_{n+1}\dots a_{n}a_{2n}$ por $a_{(1)}.a_{(2)}$, tem-se que
-			$$
-			\begin{aligned}
-			(\estruturacomplexa S)^{2j} &=(-a_{(1)}.a_{(2)})^{j} Id
-			\\
-			(\estruturacomplexa S)^{2j+1} 
-			&= (-a_{(1)}.a_{(2)})^{j} 
-			\left(
-			\begin{array}{cc}
-			0 & a_{(2)}Id
-			\\
-			-a_{(1)}Id & 0  
-			\end{array}
-			\right),
-			\end{aligned}
-			$$
-			onde $a_{(1)}Id=diag\{a_{1}, \dots, a_{n}\}$. O análogo vale para $a_{(2)}Id$ . Com isso, tem-se a exponencial
-			$$
-			\begin{aligned}
-			\exp(\estruturacomplexa S) &= \sum_{j=0}^{\infty}\frac{(\estruturacomplexa S)^{2j}}{(2j)!} + \sum_{j=0}^{\infty} \frac{(\estruturacomplexa S)^{2j+1}}{(2j+1)!}
-			\\
-			&= \sum_{j=0}^{\infty}\frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j)!}Id + \sum_{j=0}^{\infty} \frac{(-1)^{j}(a_{(1)}.a_{(2)})^{j}}{(2j+1)!}	\left(
-			\begin{array}{cc}
-			0 & a_{(2)}Id
-			\\
-			-a_{(1)}Id & 0  
-			\end{array}
-			\right)
-			\\
-			&= \cos\big((a_{(1)}.a_{(2)})^{1/2}\big)Id +\sen\big((a_{(1)}.a_{(2)})^{1/2}\big)
-			\left(
-			\begin{array}{cc}
-			0 & a_{(2)}Id
-			\\
-			-a_{(1)}Id & 0  
-			\end{array}
-			\right).
-			\end{aligned}
-			$$
-
-
-			Como $\norma{S}<2\pi$, então $0<|a_{j}|<2\pi$. Tomando uma aplicação contínua $f_{j}:\intervalo \to [0,\pi]$ tal que $f_{j}(0) = a_{j}$ e $f_{j}(1) = \pi$ para cada $1\leq j \leq 2n$ e definindo $D_{\pi} = \diag\{\pi, \dots, \pi\}$, pode-se afirmar que os caminhos $t\mapsto \exp(t\estruturacomplexa S)$ e $t\mapsto \exp(t\estruturacomplexa D_{\pi})$ são homotopicamente equivalentes, e portanto possuem o mesmo índice de Maslov. Esse fato  permite reduzir a análise a condição em que $|a_{j}|=\pi$ para $1\leq j\leq 2n$. Assim, tem-se os seguintes casos:
-			
-			\begin{enumerate}
-				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (\pi,\dots,\pi)$:}
-				$$
-				\exp(t\estruturacomplexa S) 
-				= 
-				\cos(t\pi)Id+ \sen(t\pi)\estruturacomplexa.
-				$$
-				
-				Decompondo o espaço $\real{2n}$ no produto de n espaços $\real{2}$, a exponencial de $t\estruturacomplexa S$ é representada por n blocos diagonais de matrizes $2\times 2$.
-				
-				$$
-				\begin{aligned}
-					\exp(t\estruturacomplexa S) 
-					&=
-					\left(
-					\begin{array}{ccccccc}
-					\cos(t\pi) & \sen(t\pi) & 0 & 0 & 0 & \dots & 0
-					\\
-					-\sen(t\pi) & \cos(t\pi) & 0 & 0 & 0 & \dots & 0  
-					\\
-					0 & 0 & \cos(t\pi) & \sen(t\pi) & 0 & \dots & 0
-					\\
-					0 & 0 & -\sen(t\pi) & \cos(t\pi) & 0 & \dots & 0
-					\\
-					\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots
-					\\
-					0 & 0 & 0 & 0 & 0 & \cos(t\pi) & \sen(t\pi)
-					\\
-					0 & 0 & 0 & 0 & 0 & -\sen(t\pi) & \cos(t\pi)
-					\end{array}
-					\right)
-					\\
-					&=
-					\left(
-					\begin{array}{ccccc}
-					r(-t\pi) & 0 &\dots & 0 
-					\\
-					0 & r(-t\pi) &\dots & 0 
-					\\
-					\vdots & \vdots & \ddots & \vdots 
-					\\
-					0 & 0 & \dots & r(-t\pi)
-					\end{array}
-					\right),
-				\end{aligned}
-				$$
-				onde $r(-t\pi)$ é a matriz de rotação no plano $\real{2}$ por um ângulo $-t\pi \in \reta$. Note que, $r(-t\pi) \in \gruposimpletico{2}$ é uma matriz otogonal, logo pode ser identificada com uma matriz unitária em $e^{-i\pi}\in U(1)$ (veja o Proposição \ref{proposicao_isomorfismo_U}). Pela propriedade do determinante de $\rho$ descrita no item \ref{item_determinante_rho} e pela propriedade produto de $\rho$ descrita no item \ref{item_produto_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que 
-				$$
-				\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\pi)))^{n} = e^{-itn\pi}.
-				$$ 
-				
-				Defina $\psi \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Com isso, 
-				$$
-				\mu(\psi) = 2\deg(\rho_{\psi}) = \frac{2(-n\pi +0)}{2\pi}=-n.
-				$$
-				
-				Como o número de auto-valores negativos de $\ind(S)$ é zero, então  
-				$$
-				\ind(S)-n=\mu(\psi).
-				$$
-				
-				\item \textbf{Caso $a_{(1)}.a_{(2)}>0$ e $a_{(1)} = a_{(2)} = (-\pi,\dots,-\pi)$:} tem-se que
-				$$
-				\exp(t\estruturacomplexa S) = \cos(t\pi)Id- \sen(t\pi)\estruturacomplexa.
-				$$
-				
-				Analogamente ao item anterior, 	decomponha o espaço $\real{2n}$ no produto de n espaços $\real{2}$. Então a exponencial de $t\estruturacomplexa S$ é representada por n blocos diagonais de matrizes $2\times 2$
-				
-				$$
-				\exp(t\estruturacomplexa S) =
-				\left(
-				\begin{array}{ccccc}
-				r(t\pi) & 0 &\dots & 0 
-				\\
-				0 & r(t\pi) &\dots & 0 
-				\\
-				\vdots & \vdots & \ddots & \vdots 
-				\\
-				0 & 0 & \dots & r(t\pi)
-				\end{array}
-				\right),
-				$$
-				onde $r(t\pi)$ é uma rotação no plano $\real{2}$ de um ângulo $t\pi\in \reta$.
-				
-				Com isso, identificando $r(t\pi)$ com a matriz $e^{i\pi }\in U(1)$, aplicando a propriedade do determinante e a propriedade do produto da aplicação $\rho$, tem-se que 
-				$$
-				\rho(\exp(t\estruturacomplexa S)) = (\rho(r(t\pi)))^{n} = e^{itn\pi}.
-				$$
-				
-				
-				Defina $\psi \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Com isso, $\mu(\psi) = n $, e como $\ind(S) = 2n$, então 
-				$$ 
-				\ind(S)-n = n = \mu(\psi).
-				$$
-				
-				\item \textbf{Caso $a_{(1)}.a_{(2)}<0$ e $a_{(1)}=(\pi,\dots,\pi), \; a_{(2)} = -a_{(1)}$:} usando o fato que $\sen(it\epsilon)=\senh(t\epsilon)$ e $\cos(it\epsilon)=\cosh(t\epsilon)$, tem-se que
-				$$
-				\begin{aligned}
-					\exp(t\estruturacomplexa S) 
-					&= \cosh(t\pi)Id- \senh(t\pi)\left(
-					\begin{array}{cc}
-					0 & Id
-					\\
-					Id & 0  
-					\end{array}
-					\right)
-					\\
-					&=	
-					\left(
-					\begin{array}{ccccc}
-					h(t\pi) & 0 &\dots & 0 
-					\\
-					0 & h(t\pi) &\dots & 0 
-					\\
-					\vdots & \vdots & \ddots & \vdots 
-					\\
-					0 & 0 & \dots & h(t\pi)
-					\end{array}
-					\right),
-				\end{aligned}
-				$$
-				onde foi usado o fato que 
-				$$
-				h(t\pi) = 
-				\left(
-				\begin{array}{cc}
-				\cosh(t\pi) & -\senh(t\pi)
-				\\
-				-\senh(t\pi) & \cosh(t\pi)
-				\end{array}
-				\right).
-				$$
-				
-				Defina $\psi \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$ por $\psi(t) = \exp(t\estruturacomplexa S)$. Note que, $\espectrooperador{\psi}= \espectrooperador{h(t\pi)} $, onde $\espectrooperador{h(t\pi)} = \{e^{t\pi} , e^{-t\pi}\}$. Como os auto-valores $\lambda(t)$ de $\psi(t)$ são números reais positivos, então $\lambda(t)$ estão no primeiro quadrante do plano complexo. Com isso, caminho $\rho_{\psi}:\intervalo\to \circulo$ não é sobrejetor em $\circulo$, e portanto $\deg(\rho_{\psi}) = 0$. Logo, $\mu(\psi) = 0$. Como $\ind(S) = n$, então
-				$$
-				\ind(S) - n = 0 =\mu(\psi).
-				$$
-			
-			\end{enumerate}
-	
-			\item \textbf{(Inverso)} Pelo Lema \ref{lema_inversa_caminho_especial}, tem-se que $\psi^{-1} \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$. Pode-se afirmar que $\Psi^{-1}= \psi^{-1}*\gamma^{-1} \in \caminhosespeciais{\gruposimpletico{\real{2n}}}$. De fato, se $\lambda(t)$ é um auto-valor de $\gamma(t)$, então $1/\lambda(t)$ é um auto-valor de $\gamma^{-1}(t)$. Como $1 \notin\espectrooperador{\gamma(t)}$, então $1 \notin\espectrooperador{\gamma^{-1}(t)}$
-			para todo $t\in \intervalo$. Logo $\gamma^{-1}(\intervalo)\subset\caminhos(\gruposimpleticonaodegenerado{*})$. 
-			
-			Note que $\Psi(t)\Psi^{-1}(t) = \psi(t)\psi^{-1}(t) = Id$ para $t \in [0,1/2]$ e $\Psi(t)\Psi^{-1}(t) = \gamma(t)\gamma^{-1}(t) = Id$ para $t \in [1/2,1]$. Logo $\Psi(t)\Psi^{-1}(t) = Id$, para todo $t \in \intervalo$, e $\Psi\Psi^{-1} = Id$.
-			
-			Nem sempre pode-se afirmar que $\Psi^{-1}$ é um prolongamento de $\psi^{-1}$ pois $\Psi^{-1}(1)$ não necessariamente está em $\{W^{+},W^{-}\}$ para certas condições. No caso em que $\gamma(1)=W^{-}$, tem-se que $\Psi^{-1}(1) = (W^{-})^{-1}=W^{-}$. Logo $\Psi^{-1}$ é um prolongamento de $\psi^{-1}$. Contudo, o caso em que $\gamma(1)=W^{+}$ implica em $\psi^{-1}(1)= (\gamma(1))^{-1}=(W^{+})^{-1} \neq W^{+}$. Por isso é necessário prolongar $\Psi^{-1}$ até a matriz $W^{+}$.
-			
-			Seja $\gamma'\in \caminhos(\gruposimpleticonaodegenerado{+})$ tal que $\gamma'(0) = \gamma^{-1}(1)$ e $\gamma'(1)=W^{+}$. Então o caminho $\Psi'=\Psi^{-1}*\gamma'$ é um prolongamento de $\Psi^{-1}$. Note que $\Psi' = (\psi^{-1}*\gamma^{-1})*\gamma'$ é homotopicamente equivalente a $\Psi'' = \psi^{-1}*\gamma''$, para algum $\gamma''\in \caminhos(\gruposimpleticonaodegenerado{+})$, como ilustrado na Figura	 \ref{figura_prolongamento_homotopico}. Logo, $\Psi''$ é um prolongamento de $\psi^{-1}$ .  
-			
-			\begin{figure}[!h]
-				\centering
-				\includegraphics[height=5.5cm]{imagem/prolongamento_homotopico.pdf}
-				\caption{O prolongamento $\Psi'$ e seu equivalente homotópico $\Psi''$.}
-				\label{figura_prolongamento_homotopico}
-			\end{figure}
-			
-			\begin{figure}[!h]
-				\centering
-				\includegraphics[height=5cm]{imagem/prolongamento_homotopico_2.pdf}
-				\caption{O prolongamento $\Psi''$ e seu equivalente homotópico $\Psi^{-1}$.}
-				\label{figura_prolongamento_homotopico_2}
-			\end{figure}
-			
-		
-			
-			Note que $\Psi'\sim \Psi''$ e $\Psi''\sim \Psi^{-1}$ (veja a Figura \ref{figura_prolongamento_homotopico_2}). Pelo item \ref{item_inversa_rho} do Teorema \ref{teorema_aplicacao_rho}, tem-se que $\rho_{\Psi^{-1}}(t) = (\rho_{\Psi}(t))^{-1}$. Escrevendo $\rho_{\Psi}(t) = \exp(i\alpha_{\Psi}(t))$, então $\rho_{\Psi^{-1}}(t) =(\exp(i\alpha_{\Psi}(t)))^{-1}= \exp(-i\alpha_{\Psi}(t))$. Logo 
-			$$
-			\deg(\rho_{\Psi^{-1}})=\frac{1}{2\pi}(-\alpha_{\Psi}(1)+\alpha_{\Psi}(0)) =  -\deg(\rho_{\Psi}).
-			$$
-			
-			Usando o fato de que $\Psi''$ e $\Psi^{-1}$ possuem o mesmo grau pois são caminhos homotópicos, então
-			$$
-			\mu(\psi^{-1})=2\deg(\rho_{\Psi''}) = 2\deg(\rho_{\Psi^{-1}}) = -2\deg(\rho_{\Psi})= -\mu(\psi).
-			$$
-		\end{enumerate}
-	\end{prova}
 	
 	\section{Índice de Conley-Zehnder $\iconleyabrev: \pontoscriticos{\funcionalH}\to \inteiros$}\label{secao_indice_conley}
 	
@@ -3895,7 +3893,7 @@
 	$$
 	\mu(A_{x}) = \mu(A'_{x}) = \mu(A''_{x}).
 	$$
-
+	
 	Com isso, a aplicação $A: \pontoscriticos{\funcionalH} \to \caminhosespeciais{\gruposimpletico{\real{2n}}}$ dada por $A(x)(t) =A_{x}(t)= D_{x(0)}\psi_{t}$, onde $t \in \reta$, está bem definida.
 	
 	\begin{definicao}
@@ -3929,6 +3927,11 @@
 		\iconley{x} = \ind(S)-n = \ind(x)-n.
 		$$
 	\end{prova}
+	
+
+	\correcaobanca{Importante mencionar que toda solução de classe C1 da eq floer e suave}
+	
+	\correcaobanca{Fazer referência que no Cap 7 a questão da compacidade de $\energiafinitaM$ será tratada.}
 	
 	\chapter{Aplicações: Homologia de Floer e a Conjectura de Arnold}\label{capitulo_aplicacoes}
 	
