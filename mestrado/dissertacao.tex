@@ -5101,10 +5101,13 @@
 		(Variedade Riemanniana) Seja $M$ uma n-variedade diferenciável. Uma métrica Riemanniana é uma 2-forma simétrica $g \in \Omega^{2}(M)$ tal que $g_{p}:T_{p}M \times T_{p}M \to \real{}$ é um produto interno positivo-definido para todo $p \in M$. O par $(M, g)$ é chamado n-variedade Riemanniana.
 	\end{definicao}
 	
-	O conceito de conexão afim está intimamente relacionado com a forma de comparar um campo vetorial avaliado em pontos distintos da variedade. Uma das estratégias de se efetuar essa comparação é chamada de transporte paralelo e uma boa discussão pode ser encontrada em \cite{nakahara}. Além disso, pode-se mostrar que a conexão afim é uma generalização do conceito de diferenciação usual.
+	O conceito de conexão afim está intimamente relacionado com a forma de comparar um campo vetorial $Y$ avaliado em pontos distintos da variedade $M$. Uma dessas estratégias é se comparar o campo $Y$ ao longo de um dado caminho $\gamma:\intervalo \to M$. Esse procedimento é chamado transporte paralelo de $Y$ ao longo de $\gamma$, e uma boa discussão pode ser encontrada em \cite{nakahara}. Uma generalização dessa definição é a análise do comportamento do campo $Y$ na direção de um outro campo vetorial $Y$, chamada conexão afim, denotada por $\nabla_{X}Y$. Além disso, pode-se mostrar que a conexão afim é uma generalização do conceito de diferenciação usual.
+
+
+	Seja $\campossuaves{M}$ o conjunto dos campos suaves definidos na variedade $M$. Esse conjunto pode ser visto como um módulo sobre o sobre o anel $\funcoessuaves{M}$.
 	
 	\begin{definicao}\label{definicao_conexao_afim}
-		(Conexão afim) Uma conexão afim $\nabla$ definida em uma n-variedade diferenciável é a aplicação $\nabla: \campossuaves{M} \times \campossuaves{M} \to \campossuaves{M}$ tal que, dadas $f,h \in \funcoessuaves{M}$ e $X,Y,Z \in \campossuaves{M}$:
+		(Conexão afim) Uma conexão afim $\nabla$ definida em uma n-variedade diferenciável é uma aplicação $\nabla: \campossuaves{M} \times \campossuaves{M} \to \campossuaves{M}$ definida por $(X,Y)$ denotada por $(X,Y)\mapsto \nabla_{X}Y$, tal que, dadas $f,h \in \funcoessuaves{M}$ e $X,Y,Z \in \campossuaves{M}$ satisfaz as seguintes propriedades:
 		\begin{enumerate}
 			\item $\nabla_{fX+hY}Z = f\nabla_{X}Z+h\nabla_{Y}Z$
 			\item $\nabla_{X}(Y+Z) = \nabla_{X}Y+ \nabla_{X}Z$
@@ -5113,7 +5116,12 @@
 	\end{definicao}
 	
 	\begin{observacao}\label{observacao_conexao_afim}
-		Sejam $(U, \phi)$ uma carta local em $p\in M$, onde $(x_{1}(q), \dots, x_{n}(q))$ é a parametrização local, e $\{\partial_{1}, \dots, \partial_{n}\}$ referencial ortonormal local, onde $\partial_{j} = \partial/\partial x_{j}$. Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in \campossuaves{M}$, tem-se que
+		Sejam $(U, \phi)$ uma carta local em $p\in M$, onde $(x_{1}(q), \dots, x_{n}(q))$ é a parametrização local, e $\{\partial_{1}, \dots, \partial_{n}\}$ referencial ortonormal local, onde $\partial_{j} = \partial/\partial x_{j}$. Os símbolos de Christoffel $\Gamma^{k}_{ij}$ são definidos por
+		$$
+		\nabla_{\derivadaparcialabrev{i}}\derivadaparcialabrev{j} = \sum_{k=1}^{n}\Gamma^{k}_{ij}\derivadaparcialabrev{k}.
+		$$
+		
+		Pode-se mostrar que, dados $X=\sum X_{j}\partial_{j}, Y=\sum Y_{j}\partial_{j} \in \campossuaves{M}$, tem-se que
 		$$
 		\begin{aligned}
 		\nabla_{X}Y &= 
@@ -5136,7 +5144,7 @@
 		$$
 	\end{observacao}
 	
-	Sejam um $\gamma:I\subset\reta\to M$ caminho suave definido no intervalo $I$ e $v=\derivada{\gamma}{t}\in \campossuaves{M}$ seu campo de velocidades. Um campo $X \in \campossuaves{M}$ é dito paralelamente transportado ao longo de $\gamma$ se $\nabla_{v}X=0$. Além disso, o caminho $\gamma$ é chamado geodésica em $t_{0} \in \reta$ se o seu campo de velocidades é paralelamente transportado ao logo dele mesmo no ponto $t=t_{0}$, isto é, $\nabla_{v}v=0$. Se $\gamma$ é uma geodésica em todo $t\in \reta$, então diz-se que $\gamma$ é uma geodésica. Pode-se mostrar que se $\gamma$ é uma geodésica, então $\norma{v(t)} = \sqrt{g_{\gamma(t)}(v(t), v(t))}$ é constante.
+	Sejam um $\gamma:I\subset\reta\to M$ caminho suave definido no intervalo $I$ e $v=\derivada{\gamma}{t}$ seu campo de velocidades. Um campo $X \in \campossuaves{M}$ é dito paralelamente transportado ao longo de $\gamma$ se $\nabla_{v}X=0$. Além disso, o caminho $\gamma$ é chamado geodésica em $t_{0} \in \reta$ se o seu campo de velocidades é paralelamente transportado ao logo dele mesmo no ponto $t=t_{0}$, isto é, $\nabla_{v}v=0$. Se $\gamma$ é uma geodésica em todo $t\in I$, então diz-se que $\gamma$ é uma geodésica. Pode-se mostrar que se $\gamma$ é uma geodésica, então $\norma{v(t)} = \sqrt{g_{\gamma(t)}(v(t), v(t))}$ é constante.
 	Mais detalhes sobre podem ser encontrados em \cite{manfredo_riemannian_geo} e \cite{nakahara}.
 	
 	O comprimento de arco de um caminho suave $\gamma:\intervalo\to M$ é definido por 
@@ -5148,13 +5156,13 @@
 	A seguinte proposição é necessária para a definição da aplicação exponencial que será apresentada a seguir e pode ser encontrada em \cite{manfredo_riemannian_geo}.
 	
 	\begin{proposicao}\label{proposicao_existencia_geodesica}
-		Dado $p\in M$, existem uma vizinhança $V$ de $p$ em $M$, um número $\epsilon>0$, $U=\{(q, v) \in TM: q\in V,\;v\in \espacotangenteponto{q}{Y}\;\text{e}\;\norma{v}<\epsilon \}$ e uma aplicação suave $\gamma:(-2,2)\times U \to M$ tal que $t\mapsto \gamma(t, q, v)$, é a única geodésica de $M$ onde $\gamma(0, q, v)=q$, $v=\derivada{}{t}\gamma(0,q,v)$ para todo $q\in V$ e todo $v\in \espacotangenteponto{q}{M}$ com $\norma{v}<\epsilon$.
+		Dado $p\in M$, existem uma vizinhança $V$ de $p$ em $M$, um número $\epsilon>0$, $U=\{(q, v) \in TM: q\in V,\;v\in \espacotangenteponto{q}{M}\;\text{e}\;\norma{v}<\epsilon \}$ e uma aplicação suave $\gamma:(-2,2)\times U \to M$ tal que $t\mapsto \gamma(t, q, v)$, é a única geodésica de $M$ onde $\gamma(0, q, v)=q$, $v=\derivada{}{t}\gamma(0,q,v)$ para todo $q\in V$ e todo $v\in \espacotangenteponto{q}{M}$ com $\norma{v}<\epsilon$.
 	\end{proposicao}
 	
 	\begin{definicao}\label{definicao_aplicacao_exponencial}
-		(Aplicação exponencial) Seja $U$ um aberto de $TM$ conforme a Proposição \ref{proposicao_existencia_geodesica}. A aplicação $\exp:U \to M$ definida por
+		(Aplicação exponencial) Seja $U$ um aberto do fibrado tangente $TM$, conforme a Proposição \ref{proposicao_existencia_geodesica}. A aplicação $\exp:U \to M$ definida por
 		$$
-		\exp(p,v) = \gamma(1, p,v)=\gamma(\norma{v}, p,\frac{v}{\norma{v}})
+		\exp(p,v) = \gamma(1, p,v)=\gamma\big(\norma{v}, p,v/\norma{v}\big)
 		$$
 		é chamada aplicação exponencial em $U$.
 	\end{definicao}
@@ -5171,11 +5179,11 @@
 	\end{proposicao}
 	
 	\begin{definicao}\label{definicao_gradiente_hessiana}
-		(Campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente(p), v)$ para todo $p\in M$ e todo $v \in T_{p}M$. A Hessiana de $f$ é a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
+		(Campo gradiente e a Hessiana) Sejam $M$ uma n-variedade diferenciável Riemanniana e $f\in \funcoessuaves{M}$. Então o gradiente de $f$ é definido como sendo o campo vetorial $\gradiente \in \campossuaves{M}$ tal que $D_{p}f(v) = g_{p}(\gradiente(p), v)$ para todo $p\in M$ e todo $v \in T_{p}M$. A Hessiana de $f$ em $p$ é a aplicação bilinear $H_{p}(f): T_{p}M\times T_{p}M \to \reta$ dada pelo diferencial do gradiente de $f$, isto é, $H_{p}(f) = D_{p}\gradiente$.
 	\end{definicao}
 	
 	\begin{definicao}\label{definicao_mergulho_variedades}
-			(Mergulho de variedades) Sejam $M, N$ m,n-variedade s diferenciávei, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Diz-se que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
+			(Mergulho de variedades) Sejam $M, N$ m,n-variedades diferenciáveis, respectivamente. Uma aplicação diferenciável $\psi:M\to N$ é uma imersão se $D\psi_{p}:T_{p}M\to T_{\psi(p)}N$ é injetora para todo $p \in M$. Diz-se que $\psi$ é um mergulho se for uma imersão e um homeomorfismo sobre $\psi(M) \subseteq N$, na topologia induzida por $N$. 
 	\end{definicao}
 	
 	O seguinte teorema permite tratar uma variedade diferenciável como um subconjunto de algum espaço euclidiano de dimensão suficientemente grande. Sua demonstração pode ser encontrada em \cite{guillemin_differential_topology}.
@@ -5193,7 +5201,7 @@
 	$$
 	onde $E:\real{3} \to \real{3} $ é o campo elétrico, $\nabla.E$ é o divergente de $E$ e $\rho:\real{3}\to \reta$ é a densidade de carga, ambas aplicações de classe $C^{\infty}$. Sejam $q:\overline{B_{\epsilon}(x_{0})} \subset \real{3}\to \reta$ a função carga elétrica definida na bola fechada de raio $\epsilon>0$ centrada em $x_{0}\in \real{3}$, tal que $q|_{\partial B} = 0$, onde $\partial B$ é a fronteira de $B=\overline{B_{\epsilon}(x_{0})}$. A função de distribuição da carga é definida por $\rho(x)=q(x)/V(\epsilon)$, onde $V(\epsilon)=\int_{B}dx$ é o volume de $B$.
 	
-	O problema surge em modelos físicos em que se toma o limite $\lim\limits_{\epsilon\to 0}V(\epsilon)=0$, para descrever uma densidade de carga puntual. Para modelar esse sistema foi introduzido o símbolo $\delta$ que satisfaz as seguintes propriedades:
+	O problema surge em modelos físicos em que se toma o limite $\lim\limits_{\epsilon\to 0}V(\epsilon)=0$, para descrever uma densidade de carga pontual. Para modelar esse sistema foi introduzido o símbolo $\delta$ que satisfaz as seguintes propriedades:
 	$$
 	\int_{\real{3}}\delta(x-x_{0}) = 1\;\;\text{e}\;\; 	f(x_{0})=\int_{\real{3}}f(x)\delta(x-x_{0})
 	$$
@@ -5214,12 +5222,12 @@
 	cujas soluções podem não existir no sentido usual, mas podem ser determinadas usando o formalismo de distribuições, como será mostrado a seguir.
 	
 
-	Nessa seção serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definir os espaços de Sobolev.
+	Nesse capítulo serão apresentadas apenas algumas definições desse formalismo com o objetivo principal de definir os espaços de Sobolev.
 	
 	Sejam $f:\Omega\to \reta$ uma função e $\Omega \subseteq \real{n}$ um aberto. O suporte de $f$ é o definido por $supp(f) = \overline{\{ x\in \Omega: f(x)\neq 0 \}}$. O conjunto $\funcoesteste \subset \funcoesdiferenciaveis{k}{\Omega}$ das funções de classe $C^{k}$ e com suporte compacto em $\Omega$ é chamado de espaço de funções teste.
 	
 	\begin{observacao}
-		É possível se mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja em $\cite{friedlander}$.
+		É possível mostrar que o espaço das funções de teste $\funcoesteste$ forma um espaço vetorial real, veja $\cite{friedlander}$.
 	\end{observacao}
 	
 	Seja $l^{p}(\Omega)$ o conjunto das funções Riemann integráveis em $\Omega$ tais que 
@@ -5237,7 +5245,7 @@
 	$$
 	\normaLp{f}=\normaLpdefinicao{|f(x)|}{\Omega},
 	$$
-	forma um espaço de Banach para $1\leq p\leq \infty$ (veja em \cite{breazis_sobolev_spaces}). 
+	forma um espaço de Banach para $1\leq p\leq \infty$, veja \cite{breazis_sobolev_spaces}. 
 	
 	\begin{observacao}
 		No caso em que $p=2$ tem-se que $\espacoLdois{\Omega}$ é um espaço de Hilbert, o que está demonstrado em $\cite{kreyszig_analise_funcional}$, ou seja, é um espaço vetorial munido de um produto interno positivo-definido e completo na métrica gerada por esse produto interno.
@@ -5250,7 +5258,7 @@
 	onde $|\alpha|\leq k$.
 	
 	\begin{definicao}
-		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. O espaço das distribuições $\distribuicoesgeral{\Omega}$ é o espaço dual de $\funcoesteste$. Mais precisamente, é o conjunto dos funcionais lineares $f:\funcoesteste \to \reta$ que são contínuos no sentido que, 	para todo compacto $K\subset \Omega$ existe um inteiro $p$ e uma constante $C$ tal que, para todo $\phi\in \funcoesteste$ com suporte em $K$, tem-se que
+		(Espaço das distribuições) Seja $\Omega \subseteq \real{n}$ um aberto. O espaço das distribuições $\distribuicoesgeral{\Omega}$ é o espaço dual de $\funcoesteste$. Mais precisamente, é o conjunto dos funcionais lineares $f:\funcoesteste \to \reta$ que são contínuos no sentido de que, para todo compacto $K\subset \Omega$ existe um inteiro $p$ e uma constante $C$ tal que, para todo $\phi\in \funcoesteste$ com suporte em $K$, tem-se que
 		$$
 		|f(\phi)| \leq C \sup\limits_{x\in K, |\alpha|\leq p}|\partial^{\alpha}\phi(x)|.
 		$$
@@ -5300,7 +5308,7 @@
 		$$
 		é chamada  função de Heaviside.
 		
-		Afirmo que $\partial\theta = \delta \in \distribuicoes$. De fato, é imediato que $\theta$ é localmente integrável, logo $\theta \in \distribuicoesgeral{\reta}$. Dado $\phi \in \funcoestestegeral{\reta}$ e definindo $K=supp(\phi)$, tem-se que 
+		Pode-se mostrar que $\partial\theta = \delta \in \distribuicoes$. De fato, é imediato que $\theta$ é localmente integrável, logo $\theta \in \distribuicoesgeral{\reta}$. Dado $\phi \in \funcoestestegeral{\reta}$ e definindo $K=supp(\phi)$, tem-se que 
 		
 		$$
 		\begin{aligned}
@@ -5460,7 +5468,7 @@
 	\end{definicao}
 	
 	\begin{teorema}\label{teorema_hahn_banach}
-		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
+		(Teorema de Hahn-Banach) Seja $f:B \to \reta$ um funcional sublinear definido no espaço vetorial $B$. Suponha que $g:Z \subset B \to \reta$ seja um funcional linear tal que $g(x)\leq f(x)$ para todo $x \in Z$. Então $g$ tem uma única extensão linear $g': B \to \reta$ tal que $g'(x)\leq f(x)$ para todo $x \in B$ e $g=g'|_{Z}$.
 	\end{teorema}
 	
 	Sejam $E$ e $F$ espaços de Banach e $E^{*}$ e $F^{*}$ seus respectivos espaços duais. Suponha que $A: D(A)\subset E\to F$ com o domínio $D(A)$ denso em $E$. Defina o conjunto 
@@ -5480,7 +5488,7 @@
 	$$
 	
 	\begin{teorema}\label{teorema_representacao_reiz}
-		(Teorema da representação de Reisz) Seja $f \in \espacoLpdual$ um funcional linear e $1<p<\infty$. Então existe uma única aplicação $Y \in \espacoLpadjuntoretacirculo$ tal que
+		(Teorema da representação de Riesz) Seja $f \in \espacoLpdual$ um funcional linear e $1<p<\infty$. Então existe uma única aplicação $Y \in \espacoLpadjuntoretacirculo$ tal que
 		$$
 		f(X) = \int_{\retacartesianocirculo}\produtointerno{Y(s,t)}{X(s,t)},
 		$$
@@ -5520,12 +5528,12 @@
 		
 		\bibitem{cappell_maslov_index_equivalencia}
 		Cappell, Sylvain E.; Lee, Ronnie; Miller, Edward Y.
-		\emph{On Maslov Index}, Communication on Pure and Applied Mathematics, Vol. XLVII, 121-186 (1994).
+		\emph{On Maslov Index}, Communication on Pure and Applied Mathematics, Vol. XLVII, 121-186, 1994.
 		
 		\bibitem{chang_morse_infinito}
 		Chang, Kung-Ching.
 		\emph{Infinite Dimensional Morse Theory and Multiple Solutions Problems}, Birkhauser, Progress in nonlinear differential equations and
-		their applications, vol.6 (1993).
+		their applications, vol.6, 1993.
 		
 		\bibitem{manfredo_riemannian_geo}
 		Do Carmo, Manfredo P.
@@ -5564,7 +5572,7 @@
 		\bibitem{husemoller_fibrados}
 		Husemoller, Dale.
 		\emph{Fibre Bundles},
-		Springer-Verlag, third edition
+		Springer-Verlag, third edition,
 		1993.
 		
 		\bibitem{kostrikin}
@@ -5587,7 +5595,7 @@
 		\bibitem{elon_homologia}
 		Lima, Elon Lages.
 		\emph{Homologia Básica},
-		IMPA, 2012, segunda edição.
+		IMPA, segunda edição, 2012.
 		
 		\bibitem{massey}
 		Massey, William S.
@@ -5644,19 +5652,19 @@
 		\bibitem{salamon_conley_index}
 		Salamon, Dietmar.
 		\emph{Morse Theory, the Conley Index and Floer Homology},
-		LMS 22, 113-140
+		LMS 22, 113-140,
 		1990.
 
 		\bibitem{salamon_zehnder}
 		Salamon, Dietmar; Zehnder Eduard.
 		\emph{Morse Theory for Periodic Solutions of Hamiltonian Systems and Maslov Index},
-		Communications on Pure and Applied Mathematics, Vol. XLV, 1303-1360
+		Communications on Pure and Applied Mathematics, Vol. XLV, 1303-1360,
 		1992.
 		
 		\bibitem{matthias_morse_homology}
 		Schwarz, Matthias.
 		\emph{Morse Homology},
-		Birkhauser, Boston
+		Birkhauser, Boston,
 		1993.
 		
 		\bibitem{steenrod_fibre_bundles}
@@ -5666,14 +5674,14 @@
 		1960.
 		
 		\bibitem{vick_homology}
-		Vick, James W..
+		Vick, James W.
 		\emph{Homology Theory - An Introduction to Algebraic Topology},
 		Academic Press, 1973.
 		
 		\bibitem{warner_manifolds}
 		Warner, Frank W.
 		\emph{Foundations of Differentiable Manifolds and Lie Groups},
-		Scott, Foresman and Company.
+		Scott, Foresman and Company, 2010.
 			
 		\bibitem{witten_supersymmetry_morse}
 		Witten, Edward.
