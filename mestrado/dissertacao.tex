@@ -390,7 +390,9 @@
 	\chapter{Preliminares de Topologia Algébrica}
 	A topologia algébrica é o ramo da matemática que utiliza ferramentas algébricas para analisar a topologia de um conjunto (um espaço topológico) associando a ele invariantes topológicos que são estruturas algébricas.
 	
-	Neste capítulo, são apresentados dois destes invariantes: o grupo fundamental e os grupos de homologia.
+	Esse capítulo é dividido em duas partes: a primeira é dedicada ao grupo fundamental, à definição da aplicação grau e demonstração de suas propriedades. Esses objetos são utilizados no estudo da topologia do grupo simplético, abordado no Capítulo \ref{capitulo_grupo_simpletico}. A segunda parte é dedicada à Homologia Singular e Homologia Celular. Esses objetos são utilizados na investigação da topologia de variedades e aparecem nos Capítulos \ref{capitulo_teoria_morse} e \ref{capitulo_aplicacoes}.
+	
+	A primeira parte do capítulo tem como sua referência principal \cite{elon_grupo_fundamental} e \cite{massey}. Os detalhes da segunda parte podem ser encontrados em \cite{banyaga_morse_homology}, \cite{elon_homologia} e \cite{vick_homology}.
 		
 	\section{Grupo Fundamental e a Aplicação Grau}\label{capitulo_grupo_fundamental}
 	Nessa seção será abordada um caso específico de estrutura algébrica associada a um espaço topológico $X$, chamada grupo fundamental de $X$. Mais detalhes dos resultados aqui enunciados podem ser encontrados em \cite{elon_grupo_fundamental} e \cite{massey}.
@@ -1174,7 +1176,7 @@
 	\chapter{Teoria de Morse}\label{capitulo_teoria_morse}
 	Na investigação da topologia de variedades o principal objetivo é a determinação de seus invariantes topológicos, ou seja, características das variedades que são invariantes por homeomorfismos. Algumas abordagens são algébricas, tais como: a determinação de seus grupos de homotopia, seus grupos de homologia e cohomologia. Outras são diferenciais, tais como: teoremas de mergulho, transversalidade, teorema de Sard, etc. A Teoria de Morse faz uma conexão entre as duas metodologias. Através de uma função suave definida na variedade, determina-se seus pontos críticos, e através deles se constrói um $CW$-complexo cuja homologia coincide com a homologia singular da variedade, o que pode ser encontrado na Seção $\ref{secao_cw_complexo}$. O que torna a Teoria de Morse uma das construções matemáticas mais bonitas do século XX é justamente essa conexão entre as diferentes descrições.
 	
-	O propósito desse capítulo é uma rápida apresentação de alguns dos principais resultados em Teoria de Morse para que se possa, com isso, definir o complexo de Morse-Smale-Witten, sua homologia e a relação desta com a Homologia Singular da variedade. Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{banyaga_morse_homology}$ e $\cite{milnor}$ .
+	O propósito desse capítulo é uma rápida apresentação de alguns dos principais resultados em Teoria de Morse para que se possa, com isso, definir o complexo de Morse-Smale-Witten, sua homologia e a relação desta com a Homologia Singular da variedade. Os detalhes das demonstrações e técnicas utilizadas podem ser encontrados em $\cite{banyaga_morse_homology}$ e $\cite{milnor}$.
 	
 	\begin{definicao}\label{definicao_variedade_fechada}
 		(Variedade fechada) Seja $M$ uma n-variedade diferencial. Diz-se que $M$ é fechada se é compacta e sem bordo.
@@ -1580,6 +1582,9 @@
 	
 	\chapter{Espaços Vetoriais Simpléticos}\label{capitulo_espacos_vetoriais_simpleticos}
 	\correcaobanca{colocar introdução e referências ao longo do capítulo.}
+	
+	Os espaços vetoriais simpléticos têm sua origem na sistematização do formalismo Hamiltoniano, o qual é uma descrição alternativa à formlução Newtoniana de sistemas físicos. Esse capítulo contém algumas definições e propriedades dos espaços simpléticos, das formas simpléticas e das estruturas complexas. Definições estas que serão estendidas às variedades diferenciáveis, no Capítulo \ref{capitulo_equacao_floer}. Mais detalhes sobre Geometria Simplética podem ser encontrados em \cite{berndt}, \cite{bursztyn_macarini} e \cite{cannas_anna}. 
+	
 	\section{Origem na Física}
 	\correcaobanca{referência}
 	
@@ -2007,9 +2012,8 @@
 	\end{prova}
 	
 	\chapter{O Grupo Simplético $\gruposimpletico{\real{2n}}$}\label{capitulo_grupo_simpletico}
-	\correcaobanca{referências}
 	
-	Neste capítulo o grupo simplético será introduzido e será apresentado um estudo aprofundado das suas propriedades. O grupo simplético e suas características topológicas exercem papel central na construção do índice de Maslov, demonstrado no Capítulo \ref{capitulo_indice_maslov}. A seguir será demonstrado que o grupo fundamental de $\gruposimpletico{\real{2n}}$ é isomorfo a $\inteiros$.
+	Neste capítulo o grupo simplético será introduzido e será apresentado um estudo aprofundado das características dos auto-valores de seus elementos, e por fim, o cálculo de seu grupo fundamental. O grupo simplético e suas características topológicas exercem papel central na construção do índice de Maslov, demonstrado no Capítulo \ref{capitulo_indice_maslov}. A seguir será demonstrado que o grupo fundamental de $\gruposimpletico{\real{2n}}$ é isomorfo a $\inteiros$. Mais detalhes sobre o grupo simplético podem ser encontrados em \cite{audi_floer_homology}, \cite{gonsson} e \cite{mcduff_salamon}.
 
 	\begin{definicao}\label{definicao_grupo_simpletico}
 		(Grupo simplético) seja $(V, \omega)$ um $2n$-espaço vetorial simplético sobre um corpo $\mathbb{F}$. O grupo simplético $\gruposimpletico{V} \subset GL(2n, \mathbb{F})$ de $V$ é o conjunto das matrizes associadas as transformações simpléticas definidas em $V$.
@@ -2403,7 +2407,7 @@
 		$\grupofundamental{\gruposimpletico{\real{2n}}} \cong \inteiros$.
 	\end{teorema}
 	\begin{prova}
-		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{\real{2n}}$, então $\grupofundamental{\gruposimpletico{\real{2n}}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. Da Proposição $\ref{proposicao_isomorfismo_U}$ segue que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, e como o determinante complexo $\det_{\complexo{}}: \matrizunitaria{n} \to \circulo$ induz um isomorfismo entre os grupos fundamentais, então $\grupofundamental{\matrizunitaria{n}}\cong \inteiros$ (para mais detalhes sobre o isomorfismo induzido pela fibração $\det_{\complexo{}}$, veja \cite{hatcher} e \cite{dusa}). Portanto $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{\real{2n}}} \cong \inteiros$.
+		Como $\matrizSimpleticaOrtogonal$ é um retrato de deformação de $\gruposimpletico{\real{2n}}$, então $\grupofundamental{\gruposimpletico{\real{2n}}}$ e $\grupofundamental{\matrizSimpleticaOrtogonal}$ são isomorfos. Da Proposição $\ref{proposicao_isomorfismo_U}$ segue que $\matrizSimpleticaOrtogonal\cong \matrizunitaria{n}$, e como o determinante complexo $\det_{\complexo{}}: \matrizunitaria{n} \to \circulo$ induz um isomorfismo entre os grupos fundamentais, então $\grupofundamental{\matrizunitaria{n}}\cong \inteiros$ (para mais detalhes sobre o isomorfismo induzido pela fibração $\det_{\complexo{}}$, veja \cite{hatcher} e \cite{mcduff_salamon}). Portanto $\grupofundamental{\matrizSimpleticaOrtogonal} \cong \grupofundamental{\matrizunitaria{n}} \cong \inteiros$ e $\grupofundamental{\gruposimpletico{\real{2n}}} \cong \inteiros$.
 	\end{prova}
 	
 	\begin{observacao}
@@ -2411,7 +2415,14 @@
 	\end{observacao}
 	
 	
-	\chapter{Índice de Maslov e o Índice de Conley-Zehnder}\label{capitulo_indice_maslov}
+	\chapter{Índice de Maslov}\label{capitulo_indice_maslov}
+	
+	O ponto central de todo o trabalho é a construção do Índice de Maslov e a demonstração de suas propriedades, o que está feito em detalhes nesse capítulo. Esse índice tem sua importância destacada no Capítulo \ref{capitulo_equacao_floer}, mais precisamente, na definição do índice de Conley-Zehnder, o qual é empregado na graduação do complexo de Floer, construído nas aplicações do Capítulo \ref{capitulo_aplicacoes}.
+	
+	Os resultados aqui feitos estão organizados da seguinte forma: na primeira parte é definida uma aplicação contínua $\rho:\gruposimpletico{\real{2n}} \to \circulo$ satisfazendo algumas propriedades. Em seguida, é definido o Índice de Maslov $\mu$ a partir dessa aplicação e, por fim, é demonstrado que as propriedades de $\mu$ são herdadas das propriedades de $\rho$.
+	
+	As principais referências bibliograficas são \cite{audi_floer_homology}, \cite{salamon_conley_index} e \cite{salamon_zehnder} .
+	
 	\section{Motivação}
 	Considere a função Hamiltoniana dependente do tempo $H:M\times \reta\to \reta$ à qual é associado o campo vetorial Hamiltoniano $X_{H} \in \campossuaves{M}$, que é o único campo vetorial que satisfaz a equação $\omega_{x}(\campohamiltoniano{x}, Y) = -dH(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$. 
 	
@@ -3210,9 +3221,13 @@
 		\end{enumerate}
 	\end{prova}
 
-	\chapter{O Funcional de Ação $\funcionalH$ e a Equação de Floer}
-	\correcaobanca{Inverter a ordem de apresentação desse capítulo com o cap. índice de Maslov.}
-	\correcaobanca{introdução e referências}
+	\chapter{A Equação de Floer e o Índice de Conley-Zehnder}\label{capitulo_equacao_floer}
+	
+	Um dos objetivos do trabalho é o estudo da topologia de variedades simpléticas. Nesse capítulo, os primeiros passos nessa direção são dados investigando como as soluções 1-periódcas de um sistema Hamiltoniano definido em uma variedade simplética compacta $M$ são conectadas pelas linhas do fluxo gradiente de um funcional de ação. Para isso, os resultados estão organizados na seguinte ordem: a primeira parte é dedicada às variedades simpléticas, funções Hamiltonianas, sistemas e campos Hamiltonianos, bem como suas propriedades. A segunda parte é reservada à definição do funcional de ação, seu campo gradiente e à construção da equação de Floer. A terceira e ultima parte é dedicada à definição do Índice de Conley-Zehnder, que é uma generalização do índice de Morse para dimenões infinitas. Mais detalhes podem ser encontrados em \cite{audi_floer_homology} e \cite{salamon_zehnder}.
+	
+	
+	
+	
 	\section{Variedades Simpléticas}\label{secao_variedade_simpletica}
 	
 	Nessa seção parte dos conceitos introduzidos no Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} sobre espaços vetoriais simpléticos serão estendidos para variedades diferenciáveis.
@@ -3935,8 +3950,6 @@
 	
 	\chapter{Aplicações: Homologia de Floer e a Conjectura de Arnold}\label{capitulo_aplicacoes}
 	
-	\correcaobanca{trocar a ordem das subseções.}
-
 	Esse capítulo é constituído de duas partes: a primeira é dedicada a construção espaço das trajetórias e a apresentação de algumas de suas propriedades necessárias para a definição do complexo de Floer e seu operador bordo. A segunda parte é dedicada a construção desse complexo e a demonstração da conjectura de Arnold como aplicação direta da homologia de Floer. 
 	
 	Serão apresentados os principais resultados e o roteiro para as construções e demonstrações mais importantes. Para detalhes sobre os temas desse capítulo de aplicações, veja \cite{audi_floer_homology}, \cite{salamon_lecture},  \cite{salamon_conley_index} e \cite{salamon_zehnder}.
@@ -5522,12 +5535,26 @@
 		\emph{Lectures on Morse Homology},
 		Springer Science + Business Media, first edition,
 		2004.
+
+		\bibitem{berndt}
+		Berndt, Rolf; Hurtubise, David
+		\emph{An Introduction to Symplectic Geometry},
+		American Mathematical Society, 2001.
 		
 		\bibitem{breazis_sobolev_spaces}
 		Brezis, Haim.
 		\emph{Functional Analysis, Sobolev Spaces and Partial Differential Equantions},
 		Springer, first edition,
 		2011.
+		
+		\bibitem{bursztyn_macarini}
+		Bursztyn, Henrique; Macarini, Leonardo.
+		\emph{Introdução à Geometria Simplética}, 2006.
+		
+		
+		\bibitem{cannas_anna}
+		Cannas da Silva, Ana.
+		\emph{Lectures on Symplectic Geometry}, Springer, second edition, 2008.
 		
 		\bibitem{cappell_maslov_index_equivalencia}
 		Cappell, Sylvain E.; Lee, Ronnie; Miller, Edward Y.
@@ -5555,6 +5582,11 @@
 		\emph{Introduction to Theory of Distributions},
 		Cambridge University Press, 2nd edition
 		1998.
+		
+		\bibitem{gonsson}
+		Gonsson, Maurice A. de.
+		\emph{Symplectic Methods in Harmonic Analysis and in Mathematical Physics},
+		Birkhauser, 2010.	
 		
 		\bibitem{guillemin_differential_topology}
 		Guillemin, Victor; Pollack, Alan.
@@ -5606,7 +5638,7 @@
 		Springer-Verlag, first edition,
 		1991.
 	
-		\bibitem{dusa}
+		\bibitem{mcduff_salamon}
 		McDuff, Dusa; Salamon, Dietmar.
 		\emph{Introduction to Symplectic Topology},
 		Clarendon Press, Oxford, 1988.
