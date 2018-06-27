@@ -339,7 +339,13 @@
 	
 	
 	\chapter*{Resumo}
-	Nesse trabalho são apresentadas uma construção do Índice de Maslov e uma aplicação desse índice na demonstração da conjectura de Arnold, que dá um limitante inferior para o número de soluções 1-períodicas de um sistema  Hamiltoniano dependente do tempo em uma variedade simplética compacta M. A estratégia para a demonstração, semelhante a demonstração das desigualdades de Morse, é construir um complexo de cadeias, chamado complexo de Floer, cuja homologia recupera a homologia singular da variedade. O complexo de Floer é gerado pelos pontos críticos de um funcional de ação definido no espaço dos laços em M e graduado pelo índice de Maslov. O operador bordo conta as soluções da Equação de Floer que conectam pontos críticos de índice de Maslov consecutivos.
+	A topologia simplética é o ramo da matemática que trata das questões topológicas das variedades simpléticas, e é a esse ramo que pertence esse texto. Nesse trabalho é apresentada uma detalhada construção do índice de Maslov, bem como as demonstrações de suas propriedades. Além disso, é demonstrado que ele é uma generalização do índice de Morse para dimensões infinitas.
+	
+	Utilizando uma abordagem variacional, é estudada a forma com que as soluções 1-periódicas de um sistema Hamiltoniano definido em uma variedade compacta, são conectadas pelas linhas do fluxo gradiente do funcional de ação $\funcionalH$. Também é demonstrada uma relação entre seus pontos críticos de $\funcionalH$ e as soluções 1-periódicas do sistema Hamiltoniano, e como a equação de Floer é obtida da definição do campo gradiente negativo do funcional de ação $-\gradientefuncional$.
+	
+	Algumas aplicações do índice de Maslov são feitas, sendo elas: a primeira está na definição do índice Conley-Zehnder $\iconleyabrev$. A segunda é feita quando é demonstrado que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\funcionalH$ é uma variedade de dimensão dada pela diferença dos índices de Conley-Zehnder $\iconleyabrev$ de seus pontos críticos associados. A terceira está na definição do complexo de Floer, cuja graduação é dada pelo índice de Conley-Zehnder. 
+	
+	Por fim, é apresentada a Homologia de Floer e sua relação com a Homologia Singular da variedade simplética. Esse resultado é utilizado na demonstração da Conjectura de Arnold, encerrando o trabalho.
 	\\
 	\\	
 	\textbf{Palavras-chave:} Conjectura de Arnold, Equação de Floer, Espaços Vetoriais Simpléticos, Grupo Simplético, Homologia de Floer, Índice de Maslov, Índice de Conley-Zehnder, Sistemas Hamiltonianos, Teoria de Morse-Witten, Topologia Simplética, Variedade Simplética.
@@ -1581,8 +1587,7 @@
 	
 	
 	\chapter{Espaços Vetoriais Simpléticos}\label{capitulo_espacos_vetoriais_simpleticos}
-	\correcaobanca{colocar introdução e referências ao longo do capítulo.}
-	
+
 	Os espaços vetoriais simpléticos têm sua origem na sistematização do formalismo Hamiltoniano, o qual é uma descrição alternativa à formlução Newtoniana de sistemas físicos. Esse capítulo contém algumas definições e propriedades dos espaços simpléticos, das formas simpléticas e das estruturas complexas. Definições estas que serão estendidas às variedades diferenciáveis, no Capítulo \ref{capitulo_equacao_floer}. Mais detalhes sobre Geometria Simplética podem ser encontrados em \cite{berndt}, \cite{bursztyn_macarini} e \cite{cannas_anna}. 
 	
 	\section{Origem na Física}
@@ -3225,9 +3230,6 @@
 	
 	Um dos objetivos do trabalho é o estudo da topologia de variedades simpléticas. Nesse capítulo, os primeiros passos nessa direção são dados investigando como as soluções 1-periódcas de um sistema Hamiltoniano definido em uma variedade simplética compacta $M$ são conectadas pelas linhas do fluxo gradiente de um funcional de ação. Para isso, os resultados estão organizados na seguinte ordem: a primeira parte é dedicada às variedades simpléticas, funções Hamiltonianas, sistemas e campos Hamiltonianos, bem como suas propriedades. A segunda parte é reservada à definição do funcional de ação, seu campo gradiente e à construção da equação de Floer. A terceira e ultima parte é dedicada à definição do Índice de Conley-Zehnder, que é uma generalização do índice de Morse para dimenões infinitas. Mais detalhes podem ser encontrados em \cite{audi_floer_homology} e \cite{salamon_zehnder}.
 	
-	
-	
-	
 	\section{Variedades Simpléticas}\label{secao_variedade_simpletica}
 	
 	Nessa seção parte dos conceitos introduzidos no Capítulo \ref{capitulo_espacos_vetoriais_simpleticos} sobre espaços vetoriais simpléticos serão estendidos para variedades diferenciáveis.
@@ -4356,7 +4358,7 @@
 		$$
 	\end{teorema}
 	
-	\subsection{A Transversalidade do Operador $\operadorFloer$ e a Compacidade de $\energiafinitaMconectante$}\label{secao_transversalidade_compacidade_M}
+	\subsection{A Transversalidade do Operador $\operadorFloer$ e a Compacidade de $\quocientetrajetorias$}\label{secao_transversalidade_compacidade_M}
 	
 	A propriedade da transversalidade do operador de Floer é utilizada na demonstração de que o espaço das soluções da equação de Floer que conectam esse dois pontos $\energiafinitaMconectante$ é uma variedade com dimensão igual a $\iconley{x^{-}}-\iconley{x^{+}}$.
 	
@@ -4458,7 +4460,7 @@
 	\begin{teorema}\label{teorema_variedade_espaco_trajetoria}
 		Para cada $h \in \hamiltonianasRegulares$ e para todas as soluções $x^{-}$ e $x^{+}$ contráteis 1-periódicas de $H$, $\energiafinitaM(x^{-}, x^{+}, H+h)$ é uma variedade de dimensão $\iconley{x^{-}}-\iconley{x^{+}}$.
 	\end{teorema}
-	\begin{prova} Tome $h \in \perturbacaoHamiltoniana{H}$. Pelo teorema da pré-imagem de valores regulares, tem-se que $\pi^{-1}(h)$ é uma variedade e sua dimensão é dada por
+	\begin{prova} Tome $h \in \perturbacaoHamiltoniana{H}$. Pelo teorema da pré-imagem de valores regulares, tem-se que $\pi^{-1}(h)$ é uma variedade e sua dimensão é dada por \alerta{(incluir o argumento q justifica que a codimensão é zero.)}
 			$$
 			\begin{aligned}
 			\dim(\ker(D_{(u, H+h)}\pi)) &= \dim(\ker(\diferencialfloerponto{u}))
