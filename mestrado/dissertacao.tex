@@ -67,6 +67,7 @@
 \DeclareMathOperator{\sen}{sen}
 \DeclareMathOperator{\senh}{senh}
 \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\coker}{coker}
 % AQUI ESTAO AS DECLARACOES DAS FUNCOES %
 
 
@@ -746,11 +747,11 @@
 	\end{teorema}
 	
 	\begin{definicao}
-		Uma tripla $\xymatrix{C\ar[r]^{f} & D\ar[r]^{g} & E }$ de módulos e homomorfismos é chamada exata se $Im(f) = Ker(g)$. Uma sequência de módulos e homomorfismos
+		Uma tripla $\xymatrix{C\ar[r]^{f} & D\ar[r]^{g} & E }$ de módulos e homomorfismos é chamada exata se $\imagem{f} = \ker(g)$. Uma sequência de módulos e homomorfismos
 		$$
 		\xymatrix{\dots \ar[r]& G_{1}\ar[r]^{f_{1}} & G_{2}\ar[r]^{f_{2}} & G_{3}\ar[r]^{f_{3}} & \dots \ar[r]\ar[r]^{f_{k-1}} & G_{k}\ar[r]^{f_{k}} &\dots}
 		$$
-		é chamada de sequência exata longa se cada tripla é exata, isto é, $Im(f_{k}) = Ker(f_{k+1})$ para todo $k\in \inteiros$.
+		é chamada de sequência exata longa se cada tripla é exata, isto é, $\imagem{f_{k}} = \ker(f_{k+1})$ para todo $k\in \inteiros$.
 	\end{definicao}
 	
 	Uma sequência exata do tipo $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é chamada sequência exata curta. Nesse caso, $f$ é um monomorfismo e $g$ é um epimorfismo. Sejam $C, D, E$ complexos de cadeias. Uma sequência exata curta de complexos de cadeias é uma coleção de sequências exatas
@@ -771,7 +772,7 @@
 		 & \vdots & \vdots  & \vdots & 
 	}
 	$$
-	Como $g$ é epimorfismo, dado $e \in \kernelbordoabrev{k}{E}$ existe $d \in D_{k}$ tal que $g_{k}(d) = e$. Pela comutatividade do diagrama, tem-se que $g_{k-1}(\bordo{k}'(d)) = \bordo{k}''(g_{k}(d)) = \bordo{k}''(e) = 0$. Portanto, $\bordo{k}'(d) \in Ker(g_{k-1}) = Im(f_{k-1})$, pela exatidão. Com isso, pode-se tomar $c \in C_{k-1}$ tal que $f_{k-1}(c)=\bordo{k}'(d)$. Então $f_{k-2}(\bordo{k-1}(c)) = \bordo{k-1}'(f_{k-1}(c)) = \bordo{k-1}'(\bordo{k}'(d)) = 0$. Como $f$ é monomorfismo, então $c\in \kernelbordoabrev{k-1}{C}$. Logo, tem-se uma correpondência $\kernelbordoabrev{k}{E} \ni e \mapsto c \in \kernelbordoabrev{k-1 }{C}$, a qual é denotada por $\delta_{k}(e) = c$. Portanto a aplicação correspondente induzido em homologia $\delta_{*}:H_{*}(E) \to H_{*}(C)$ está bem definida e é chamada homomorfismo de conexão.
+	Como $g$ é epimorfismo, dado $e \in \kernelbordoabrev{k}{E}$ existe $d \in D_{k}$ tal que $g_{k}(d) = e$. Pela comutatividade do diagrama, tem-se que $g_{k-1}(\bordo{k}'(d)) = \bordo{k}''(g_{k}(d)) = \bordo{k}''(e) = 0$. Portanto, $\bordo{k}'(d) \in \ker(g_{k-1}) = \imagem{f_{k-1}}$, pela exatidão. Com isso, pode-se tomar $c \in C_{k-1}$ tal que $f_{k-1}(c)=\bordo{k}'(d)$. Então $f_{k-2}(\bordo{k-1}(c)) = \bordo{k-1}'(f_{k-1}(c)) = \bordo{k-1}'(\bordo{k}'(d)) = 0$. Como $f$ é monomorfismo, então $c\in \kernelbordoabrev{k-1}{C}$. Logo, tem-se uma correpondência $\kernelbordoabrev{k}{E} \ni e \mapsto c \in \kernelbordoabrev{k-1 }{C}$, a qual é denotada por $\delta_{k}(e) = c$. Portanto a aplicação correspondente induzido em homologia $\delta_{*}:H_{*}(E) \to H_{*}(C)$ está bem definida e é chamada homomorfismo de conexão.
 	
 	\begin{teorema}\label{teorema_homomorfismo_conectante}
 		(Homomorfismo conectante) Se $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta de complexos de cadeias, então a sequência longa 
@@ -1068,7 +1069,7 @@
 			& \homologiaabrev{n-1}{\skeleton{n-1}}\ar[u]^{j_{*}}
 		}
 		$$
-		Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical tem-se $Im(j_{*}) = Ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, tem-se a composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois \alerta{$\Psi_{n-1} \circ \Phi_{n-1}=1$} \correcaobanca{, pois $\delta_{*} = 0$}.
+		Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical tem-se $\imagem{j_{*}} = \ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, tem-se a composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois \alerta{$\Psi_{n-1} \circ \Phi_{n-1}=1$} \correcaobanca{, pois $\delta_{*} = 0$}.
 		
 		Por definição $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim tem-se o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, tem-se o homomorfismo 
 		$$
@@ -1116,9 +1117,9 @@
 			\mathcal{C}_{k+1}(X) \ar[r]^{\partial_{k+1}} & \mathcal{C}_{k}(X) \ar[r]^{\partial_{k}\hspace{3mm}} & \mathcal{C}_{k-1}(X).
 		}
 		$$
-		Por definição, tem-se $\homologia{k}{\mathcal{C}_{*}(X)} = Ker(\partial_{k})/Im(\partial_{k+1})$, e com isso será provado que 
+		Por definição, tem-se $\homologia{k}{\mathcal{C}_{*}(X)} = \ker(\partial_{k})/\imagem{\partial_{k+1}}$, e com isso será provado que 
 		$$
-		Ker(\partial_{k})/Im(\partial_{k+1}) \cong \homologia{k}{X}.
+		\ker(\partial_{k})/\imagem{\partial_{k+1}} \cong \homologia{k}{X}.
 		$$ 
 		Então, pode-se concluir a equivalência entre a CW-homologia e a homologia singular do espaço topológico $X$.
 		
@@ -1136,11 +1137,11 @@
 		$$
 		onde $i_{*}, \; j_{*}$ e $\delta_{*}$ são as inclusões induzidas e o homomorfismo conectante, respectivamente. Seja $\classe{\alpha} \in \homologiarelskelesimpl{k}{k}$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha}$.
 		
-		Será caracterizado conjunto $Ker(\delta_{2*})$. Dado $[\alpha] \in Ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
+		Será caracterizado conjunto $\ker(\delta_{2*})$. Dado $[\alpha] \in \ker(\delta_{2*})$, então $\delta_{3*}\circ i_{*}\classe{\alpha} = \delta_{2*}\classe{\alpha} = 0$. Como $i_{*}$ é um epimorfismo e $j_{*}$ é monomorfismo, então existe um único $\classe{\beta} \in \homologiarelskele{k}{k+1}{k-2}$ tal que $i_{*} \classe{\alpha} = j_{*} \classe{\beta}$. 
 		
-		Pode-se afirmar que $\phi: Ker(\delta_{2*}) \to \homologiarelskele{k}{k+1}{k-2}$, dado por $\phi(\classe{\alpha}) = \classe{\beta}$, é um epimorfismo. De fato, seja $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, então existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$. Com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0$, pois $Im(j_{*}) = Ker(\delta_{3*})$, logo $\classe{\alpha'} \in Ker(\delta_{2*})$ e $\phi$ é epimorfismo.
+		Pode-se afirmar que $\phi: \ker(\delta_{2*}) \to \homologiarelskele{k}{k+1}{k-2}$, dado por $\phi(\classe{\alpha}) = \classe{\beta}$, é um epimorfismo. De fato, seja $\classe{\beta'} \in \homologiarelskele{k}{k+1}{k-2}$, então existe um $\classe{\alpha'} \in \homologiarelskele{k}{k}{k-1}$ tal que $i_{*} \classe{\alpha'} = j_{*} \classe{\beta'}$. Com isso $\delta_{2*}\classe{\alpha'} = \delta_{3*}\circ i_{*}\classe{\alpha'} = \delta_{3*}\circ j_{*}\classe{\beta'} = 0$, pois $\imagem{j_{*}} = \ker(\delta_{3*})$, logo $\classe{\alpha'} \in \ker(\delta_{2*})$ e $\phi$ é epimorfismo.
 		
-		Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in Ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$. Pela comutatividade do diagrama tem-se que $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in Ker(i_{*})$ e, pela exatidão, tem-se $Ker(i_{*})=Im(\delta_{1*})$, logo $\classe{\alpha} \in Im(\delta_{1*})$. Com isso, conclui-se que $Ker(\phi) = Im(\delta_{1*})$. Pelo teorema fundamental do isomorfismo de grupos, tem-se que $Ker(\delta_{2*})/Ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $Ker(\delta_{2*})/Im(\delta_{1*}) \cong \homologiarelskele{k}{k+1}{k-2}$.
+		Como $\phi$ é sobrejetor, existe $\classe{\alpha} \in \ker(\delta_{2*})$ tal que $\phi(\classe{\alpha}) = 0$. Pela comutatividade do diagrama tem-se que $i_{*}{\classe{\alpha}} = j_{*}\classe{0} = 0$, pois $j_{*}$ é monomorfismo, portanto $\classe{\alpha} \in \ker(i_{*})$ e, pela exatidão, tem-se $\ker(i_{*})=\imagem{\delta_{1*}}$, logo $\classe{\alpha} \in \imagem{\delta_{1*}}$. Com isso, conclui-se que $\ker(\phi) = \imagem{\delta_{1*}}$. Pelo teorema fundamental do isomorfismo de grupos, tem-se que $\ker(\delta_{2*})/\ker(\phi) \cong \homologiarelskele{k}{k+1}{k-2}$, ou seja, $\ker(\delta_{2*})/\imagem{\delta_{1*}} \cong \homologiarelskele{k}{k+1}{k-2}$.
 		
 		Sem perda de generalidade, assumi-se que $X$ seja um CW-complexo de ordem $n$, isto é, $X= \skeleton{n}$. Fixe um $0 \leq j \leq n$ e tome o $j$-ésimo esqueleto $\skeleton{j}$ e defina $\skeleton{-1}$. Com isso, é possível escrever a sequência de homomorfismos de inclusão de pares:
 		$$
@@ -2333,10 +2334,10 @@
 	Sabe-se que todo espaço vetorial sobre $\complexo{}$ pode ser decomposto na soma direta de auto-espaços associados a algum operador linear definido nele (veja o Teorema \ref{teorema_espectral_jordan}). Para utilizar essa propriedade dos espaços complexos no estudo dos auto-valores de $A\in \gruposimpletico{V}$ serão realizadas as complexificações $\complexificado{V}$ de $V$ e a extensão  $\complexificado{A}$ de $A$. Além disso, como todo 2n-espaço vetorial complexo $(\complexificado{V}, \Omega)$ é simplectomorfo a $(\complexo{2n}, \Omega_{0})$, então é suficiente estudar o grupo simplético $\gruposimpletico{\complexo{2n}}$.
 	
 	\begin{proposicao}\label{proposicao_auto_espaco_grupo_simpletico}
-		(Auto-espaços de $\gruposimpletico{\complexo{2n}}$) Sejam $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético complexo, $A \in \alerta{\gruposimpletico{\complexo{2n}}}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=Ker(A-\lambda Id)^{r}$ e  $E_{\mu}=Ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
+		(Auto-espaços de $\gruposimpletico{\complexo{2n}}$) Sejam $(\complexificado{V}, \Omega)$ um 2n-espaço vetorial simplético complexo, $A \in \alerta{\gruposimpletico{\complexo{2n}}}$ e $r,s \in \inteiros$ tais que $r\geq 1$ e $s\geq 1$. Se $\lambda, \mu \in \sigma(A)$ tais que $\lambda\mu \neq 1$, então seus auto-espaços generalizados $E_{\lambda}=\ker(A-\lambda Id)^{r}$ e  $E_{\mu}=\ker(A-\mu Id)^{s}$ são $\omega$-ortogonais, isto é, $\omega(E_{\lambda}, E_{\mu}) = 0$.
 	\end{proposicao}
 	\begin{prova}
-		Denote por $P(r,s)$ a propriedade que se quer mostrar. Note que $P(1,1)$ é verdadeira. De fato, dados $v\in E_{\lambda}$ e $u\in E_{\mu}$ tem-se que $\formaSimpletica{v}{u} = \formaSimpletica{Av}{Au} = \lambda\mu\formaSimpletica{v}{u}$, o que implica que $\formaSimpletica{v}{u} = 0$, pois $\lambda\mu\neq 1$. Por indução será mostrado que $P(r,s)$ é verdadeira para quaisquer $r,s$. Para aplicar a hipótese de indução no índice $s$, assuma que $P(1,s)$ é verdadeira e que $u \in Ker(A-\mu Id)^{s+1}$. Com isso, $0=(A-\mu Id)^{s+1}u = (A-\mu Id)^{s}(A-\mu Id)u $, logo $(A-\mu Id)u \in Ker(A-\mu Id)^{s}$, o que implica em
+		Denote por $P(r,s)$ a propriedade que se quer mostrar. Note que $P(1,1)$ é verdadeira. De fato, dados $v\in E_{\lambda}$ e $u\in E_{\mu}$ tem-se que $\formaSimpletica{v}{u} = \formaSimpletica{Av}{Au} = \lambda\mu\formaSimpletica{v}{u}$, o que implica que $\formaSimpletica{v}{u} = 0$, pois $\lambda\mu\neq 1$. Por indução será mostrado que $P(r,s)$ é verdadeira para quaisquer $r,s$. Para aplicar a hipótese de indução no índice $s$, assuma que $P(1,s)$ é verdadeira e que $u \in \ker(A-\mu Id)^{s+1}$. Com isso, $0=(A-\mu Id)^{s+1}u = (A-\mu Id)^{s}(A-\mu Id)u $, logo $(A-\mu Id)u \in \ker(A-\mu Id)^{s}$, o que implica em
 		$$
 		\begin{aligned}
 		\formaSimpletica{v}{u}
@@ -4369,10 +4370,10 @@
 	
 	A regularidade elíptica não linear é usada para se mostrar que as soluções da equação de Floer de $\caminhosexponenciaisconectantespadrao$ são de classe $C^{\infty}$ e que em $\energiafinitaM$ as topologias $C^{0}_{loc}$, $C^{1}_{loc}$ e $C^{\infty}_{loc}$ coincidem. Uma consequência desse resultado é que as topologias induzidas por $\caminhosexponenciaisconectantespadrao$ e por $\energiafinitaM$ no espaço das soluções coincidem e são ambas iguais a topologia $C^{\infty}_{loc}$.
 	
-	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Suponha que $T$ seja limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus Ker(T)$ e $B=W\oplus T(A)$. Então $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $Ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
+	Seja $T:A\to B$ um operador linear entre espaços vetoriais. Suponha que $T$ seja limitado e que existam subespaços fechados $V \subset A$ e $W \subset B$ tais que $A=V\oplus \ker(T)$ e $B=W\oplus T(A)$. Então $B/T(A) \cong W$ e $T:V \to T(A)$ é um isomorfismo (veja $\cite{abramovich}$). Nesse sentido, fica claro que as dimensões dos espaços $\ker(T)$ e $W$ são indicadores de quanto o operador se distancia de um isomorfismo. Com essa motivação define-se os operadores de Fredholm.
 	
 	\begin{definicao}\label{definicao_operador_fredholm}
-		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $Coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada), $k(T) = dim(Ker(T)) < \infty$ e $c(T)=dim(Coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $\ind(T) = k(T) - c(T)$. 
+		(Operador de Fredholm) Sejam $A, B$ espaços de Banach e $T: A\to B$ um operador linear limitado. O cokernel de $T$ é o quociente $\coker(T)=B/T(A)$. O operador $T$ é chamado de operador de Fredholm se $T(A)=\overline{T(A)}$ (imagem fechada), $k(T) = dim(\ker(T)) < \infty$ e $c(T)=dim(\coker(T)) < \infty$. O índice do operador $T$ é o número inteiro $\ind(T) = k(T) - c(T)$. 
 	\end{definicao}
 	
 	\begin{definicao}
@@ -4498,7 +4499,7 @@
 	\begin{prova} Tome $h \in \perturbacaoHamiltoniana{H}$. Pelo teorema da pré-imagem de valores regulares, tem-se que $\pi^{-1}(h)$ é uma variedade e sua dimensão é dada por \alerta{(incluir o argumento q justifica que a codimensão é zero.)}
 			$$
 			\begin{aligned}
-			\dim(\ker(D_{(u, H+h)}\pi)) &= \dim(\ker(\diferencialfloerponto{u}))
+			\dim(\ker(D_{(u, H+h)}\pi)) &= \dim(\ker(\diferencialfloerponto{u}))-\dim(\coker(\diferencialfloerponto{u}))
 			\\
 			&=\ind{(\diferencialfloerponto{u})}
 			\\
@@ -4507,8 +4508,8 @@
 			$$
 		onde foi usado o fato de que, como  $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}} \to \espacoLp{\pullbackfibradotangenteM{u}}$  é sobrejetor, então 
 		$$
-		Coker(\diferencialfloerponto{u}) = \espacoLp{\pullbackfibradotangenteM{u}}/\diferencialfloerponto{u}( \espacosobolev{\pullbackfibradotangenteM{u}})=\{\classe{0}\}.$$
-		Logo, $\dim(Coker(\diferencialfloerponto{u})) = 0$.
+		\coker(\diferencialfloerponto{u}) = \espacoLp{\pullbackfibradotangenteM{u}}/\diferencialfloerponto{u}( \espacosobolev{\pullbackfibradotangenteM{u}})=\{\classe{0}\}.$$
+		Logo, $\dim(\coker(\diferencialfloerponto{u})) = 0$.
 		
 		Note que, os elementos de $\pi^{-1}$ são as soluções em $\caminhosexponenciaisconectantespadrao$ da equação de Floer para o par $(H+h, J)$. Pela Proposição \ref{proposicao_cadeia_caminhos_conectantes}, pode-se afirmar que 
 			$$
@@ -5043,11 +5044,11 @@
 		$$
 		V = E_{1}\oplus \dots \oplus E_{k}.
 		$$
-		Além disso, $dim(E_{j}) = n_{j}$,  o polinômio de $T|_{E_{j}}$ é $m_{j}(\lambda) = (\lambda - \lambda_{j})^{m_{j}}$ e $E_{j} = Ker(T-\lambda_{j})^{m_{j}}$, em que $1\leq m_{j}\leq n_{j}$ é a ordem da matriz que representa $T|_{E_{j}}$.
+		Além disso, $dim(E_{j}) = n_{j}$,  o polinômio de $T|_{E_{j}}$ é $m_{j}(\lambda) = (\lambda - \lambda_{j})^{m_{j}}$ e $E_{j} = \ker(T-\lambda_{j})^{m_{j}}$, em que $1\leq m_{j}\leq n_{j}$ é a ordem da matriz que representa $T|_{E_{j}}$.
 	\end{teorema}
 	
 	\begin{definicao}\label{definicao_autoespaco_generalizado}
-		(Auto-espaços generalizados) Sejam $A$ como no teorema anterior e $\lambda \in \sigma(A)$. O $\lambda$-auto-espaço generalizado de $A$ é o conjunto $E_{\lambda} = \bigcup_{r \in \mathbb{N}} Ker(A - \lambda)^{r}$.
+		(Auto-espaços generalizados) Sejam $A$ como no teorema anterior e $\lambda \in \sigma(A)$. O $\lambda$-auto-espaço generalizado de $A$ é o conjunto $E_{\lambda} = \bigcup_{r \in \mathbb{N}} \ker(A - \lambda)^{r}$.
 	\end{definicao}
 	
 	\chapter{Fibrados Vetoriais}\label{apendice_fibrados}
