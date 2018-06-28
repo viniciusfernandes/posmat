@@ -342,17 +342,24 @@
 	\chapter*{Resumo}
 	A topologia simplética é o ramo da matemática que trata das questões topológicas das variedades simpléticas, e é a esse ramo que pertence esse texto. Nesse trabalho é apresentada uma detalhada construção do índice de Maslov, bem como as demonstrações de suas propriedades. Além disso, é demonstrado que ele é uma generalização do índice de Morse para dimensões infinitas.
 	
-	Utilizando uma abordagem variacional, é estudada a forma com que as soluções 1-periódicas de um sistema Hamiltoniano definido em uma variedade compacta, são conectadas pelas linhas do fluxo gradiente do funcional de ação $\funcionalH$. Também é demonstrada uma relação entre seus pontos críticos de $\funcionalH$ e as soluções 1-periódicas do sistema Hamiltoniano, e como a equação de Floer é obtida da definição do campo gradiente negativo do funcional de ação $-\gradientefuncional$.
+	Utilizando uma abordagem funcional, é estudada a forma com que as soluções 1-periódicas de um sistema Hamiltoniano, definido em uma variedade compacta, são conectadas pelas linhas do fluxo gradiente do funcional de ação $\funcionalH$. Também é demonstrada uma relação entre seus pontos críticos de $\funcionalH$ e as soluções 1-periódicas do sistema Hamiltoniano, e como a equação de Floer é obtida da definição do campo gradiente negativo do funcional de ação $-\gradientefuncional$.
 	
-	Algumas aplicações do índice de Maslov são feitas, sendo elas: a primeira está na definição do índice Conley-Zehnder $\iconleyabrev$. A segunda é feita quando é demonstrado que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\funcionalH$ é uma variedade de dimensão dada pela diferença dos índices de Conley-Zehnder $\iconleyabrev$ de seus pontos críticos associados. A terceira está na definição do complexo de Floer, cuja graduação é dada pelo índice de Conley-Zehnder. 
+	Algumas aplicações do índice de Maslov são feitas, sendo elas: a primeira aplicação está na definição do índice Conley-Zehnder $\iconleyabrev$. A segunda é está na demonstração de que o espaço das soluções da equação de Floer que conectam dois pontos críticos do funcional de ação $\funcionalH$ é uma variedade de dimensão dada pela diferença dos índices de Conley-Zehnder $\iconleyabrev$ de seus pontos críticos associados. A terceira está na definição do complexo de Floer, cuja graduação é dada pelo índice de Conley-Zehnder. 
 	
-	Por fim, é apresentada a Homologia de Floer e sua relação com a Homologia Singular da variedade simplética. Esse resultado é utilizado na demonstração da Conjectura de Arnold, encerrando o trabalho.
+	Por fim, a Homologia de Floer e sua relação com a Homologia Singular da variedade simplética são apresentadas. Esse resultado é utilizado na demonstração da Conjectura de Arnold, encerrando o trabalho.
 	\\
 	\\	
 	\textbf{Palavras-chave:} Conjectura de Arnold, Equação de Floer, Espaços Vetoriais Simpléticos, Grupo Simplético, Homologia de Floer, Índice de Maslov, Índice de Conley-Zehnder, Sistemas Hamiltonianos, Teoria de Morse-Witten, Topologia Simplética, Variedade Simplética.
 	
 	\chapter*{Abstract}
-	\alerta{TRADUZIR O QUE ESTÁ EM PORTUGUÊS.}
+	
+	Symplectic Topology is a branch of mathematics concerning about topological information of manifolds, and this is which the text belongs to. In this work, we present a detailed construction of the Maslov Index and its properties as well. Furthermore, we demonstrate this object is a generalization of Morse Index to infinite-dimensional spaces.
+	
+	By a functional strategy, we investigate how that 1-periodic solutions of Hamiltonian systems, defined on compact manifolds, are connected by the lines of the gradient flow of the action functional $\funcionalH$. Also, we demonstrate a relation between critical points of the action funcional $\funcionalH$ and 1-periodic solutions of Hamiltonian systems, and how the Floer Equation can be derived from negative gradient field of action functional $-\gradientefuncional$.
+	
+	Here, some Maslov Index application has been done, they are: the first one was done in the Conley-Zehnder Index $\iconleyabrev$ definition. The second was done in the demonstration that all solutions of Floer Equation connecting a couple of critical points of the action functional define a finite-dimensional manifold, and his dimension is the subtraction of Conley-Zehnder indexes of both critical points. And the last one, was done in the Floer Complex definition, which is graduated by the Conley-Zehnder index.
+
+	Finally, the Floer Homology and his relation between Singular Homology of the symplectic manifolds are presented. This result is applyied in the Arnold Conjecture's demonstration, and doing that, we complete this text. 
 	\\
 	\\
 	\textbf{Keywords:}  Arnold Conjecture, Floer Equation, Symplectic Vector Spaces, Symplectic Group, Floer Homology, Maslov Index, Conley-Zehnder Index, Hamiltonian Systems, Morse-Witten Theory, Symplectic Topology, Symplectic  Manifold.
@@ -3920,9 +3927,12 @@
 		$$
 		\energiafinitaM = \bigcup_{x^{-}, x^{+} \in \pontoscriticos{\funcionalH}} \energiafinitaMconectante.
 		$$
+		Além disso, segue do Teorema $\ref{teorema_compacidade_gromov}$ que $\energiafinitaM$ é um conjunto compacto.
 	\end{observacao}
-	
-	
+
+	\begin{observacao}
+		Em \cite{audi_floer_homology} está demonstrado que, se $u:\reta\times \circulo\to M$ é uma solução de classe $C^{1}$ da equação de Floer, então $u$ é de classe $C^{\infty}$. Além disso, em $\energiafinitaM$, as topologias $C^{0}_{\text{loc}}$, $C^{1}_{\text{loc}}$ e $C^{\infty}_{\text{loc}}$ coincidem.
+	\end{observacao}
 	
 	\section{Índice de Conley-Zehnder $\iconleyabrev: \pontoscriticos{\funcionalH}\to \inteiros$}\label{secao_indice_conley}
 	
@@ -3969,7 +3979,7 @@
 	
 	
 	\begin{corolario}
-		Sejam $(M,\omega)$ uma 2n-variedade simplética, $H:M\to \reta$ uma função Hamiltoniana autônoma e $x \in \pontoscriticos{H}$. Se $\norma{\hessianaponto{x}{H}}<2\pi$ (assumindo a $\cktopologia{2}$), então o índice de Conley-Zender $\iconley{x}$ de $x$ como uma solução periódica do sistema Hamiltoniano e seu índice $\ind(x)$ como ponto crítico da função $H$ são relacionados por
+		Sejam $(M,\omega)$ uma 2n-variedade simplética, $H:M\to \reta$ uma função Hamiltoniana autônoma e $x \in \pontoscriticos{H}$. Se $\norma{\hessianaponto{x}{H}}<2\pi$ (assumindo a $\cktopologia{2}$), então o índice de Conley-Zehnder $\iconley{x}$ de $x$ como uma solução periódica do sistema Hamiltoniano e seu índice $\ind(x)$ como ponto crítico da função $H$ são relacionados por
 		$$
 		\iconley{x} = \ind(x)-n.
 		$$
@@ -3980,11 +3990,6 @@
 		\iconley{x} = \ind(S)-n = \ind(x)-n.
 		$$
 	\end{prova}
-	
-
-	\correcaobanca{Importante mencionar que toda solução de classe C1 da eq floer e suave}
-	
-	\correcaobanca{Fazer referência que no Cap 7 a questão da compacidade de $\energiafinitaM$ será tratada.}
 	
 	\chapter{Aplicações: Homologia de Floer e a Conjectura de Arnold}\label{capitulo_aplicacoes}
 	
@@ -4496,7 +4501,7 @@
 	\begin{teorema}\label{teorema_variedade_espaco_trajetoria}
 		Para cada $h \in \hamiltonianasRegulares$ e para todas as soluções $x^{-}$ e $x^{+}$ contráteis 1-periódicas de $H$, $\energiafinitaM(x^{-}, x^{+}, H+h)$ é uma variedade de dimensão $\iconley{x^{-}}-\iconley{x^{+}}$.
 	\end{teorema}
-	\begin{prova} Tome $h \in \perturbacaoHamiltoniana{H}$. Pelo teorema da pré-imagem de valores regulares, tem-se que $\pi^{-1}(h)$ é uma variedade e sua dimensão é dada por \alerta{(incluir o argumento q justifica que a codimensão é zero.)}
+	\begin{prova} Tome $h \in \perturbacaoHamiltoniana{H}$. Pelo teorema da pré-imagem de valores regulares, tem-se que $\pi^{-1}(h)$ é uma variedade e sua dimensão é dada por 
 			$$
 			\begin{aligned}
 			\dim(\ker(D_{(u, H+h)}\pi)) &= \dim(\ker(\diferencialfloerponto{u}))-\underbrace{\dim(\coker(\diferencialfloerponto{u}))}_{=0}
@@ -4506,7 +4511,7 @@
 			&=\mu(x^{-})-\mu(x^{+}),
 			\end{aligned}
 			$$
-		onde foi usado o fato de que, como  $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}} \to \espacoLp{\pullbackfibradotangenteM{u}}$  é sobrejetor, então 
+		onde foi usado o fato que $\diferencialfloerponto{u}: \espacosobolev{\pullbackfibradotangenteM{u}} \to \espacoLp{\pullbackfibradotangenteM{u}}$  é sobrejetor, o que implica em
 		$$
 		\coker(\diferencialfloerponto{u}) = \espacoLp{\pullbackfibradotangenteM{u}}/\diferencialfloerponto{u}( \espacosobolev{\pullbackfibradotangenteM{u}})=\{\classe{0}\}.$$
 		Logo, $\dim(\coker(\diferencialfloerponto{u})) = 0$.
@@ -4621,9 +4626,7 @@
 	
 	\chapter{Complexificação de Espaços Vetoriais}\label{apendice_complexificacao_espacos_vetoriais}
 
-	\correcaobanca{referências.}
-	
-	Seja $V$ um n-espaço vetorial real. Deseja-se construir um espaço vetorial complexo a partir de $V$ e uma forma de realizar essa construção é tomando $v \in V $ e $a+ib \in \complexo{}$ e efetuando a multiplicação $(a+ib)v = av+ibv$. Porém, a multiplicação por $i$ não tem sentido nesse contexto, já que trata-se de um espaço vetorial real. Pode-se contornar essa dificuldade tratando a multiplicação formal $(a+ib)v = av+ibv$ como o par ordenado $(av, bv)$, resultando na seguinte definição de complexificação:
+	Seja $V$ um n-espaço vetorial real. Deseja-se construir um espaço vetorial complexo a partir de $V$ e uma forma de realizar essa construção é tomando $v \in V $ e $a+ib \in \complexo{}$ e efetuando a multiplicação $(a+ib)v = av+ibv$. Porém, a multiplicação por $i$ não tem sentido nesse contexto, já que trata-se de um espaço vetorial real. Pode-se contornar essa dificuldade tratando a multiplicação formal $(a+ib)v = av+ibv$ como o par ordenado $(av, bv)$, resultando na definição de complexificação. Uma outra abordagem pode ser encontrada em \cite{halmos} e \cite{kostrikin}.
 	
 	\begin{definicao}
 		(Complexificação do n-espaço vetorial real V) A complexificação do n-espaço vetorial real $V$ é o n-espaço vetorial complexo $\complexificacao{V}=V\oplus V$ munido da multiplicação por escalares $(a+ib)(v_{1}, v_{2}) = (av_{1}-bv_{2}, bv_{1}+ av_{2})$, onde $a+ib \in \complexo{}$ e $(v_{1}, v_{2})\in \complexificacao{V}$.
@@ -4929,9 +4932,7 @@
 	
 	\chapter{Preliminares de Álgebra}
 	
-	\correcaobanca{referências}
-	
-	Nesse Capítulo serão apresentados alguns resultados preliminares necessários para o estudo da topologia de $\gruposimpletico{\real{2n}}$ e do conjunto das estruturas complexas $\estruturascomplexas{V}{\omega}$.
+	Nesse capítulo serão apresentados alguns resultados preliminares necessários para o estudo da topologia de $\gruposimpletico{\real{2n}}$ e do conjunto das estruturas complexas $\estruturascomplexas{V}{\omega}$. As principais referências o conteúdo aqui desenvolvidos são \cite{halmos} e \cite{hoffman_kunze}.
 	
 	
 	Sejam $V$ um n-espaço vetorial real, $B= \{e_{j}\}_{j=1}^{n}$ uma base ordenada e $f:V\times V\to \reta$ uma aplicação bilinear. Definindo $A$ como a matriz de $f$ na base $B$, isto é, $A_{ij} = f(e_{i}, e_{j})$, pode-se mostrar que $f$ é positiva-definida se, e somente se, a função $g_{A}: M_{n\times 1}(\reta)\times M_{n\times 1}(\reta) \to \reta$, definida por $
@@ -5632,7 +5633,12 @@
 		Guillemin, Victor; Pollack, Alan.
 		\emph{Differential Topolgy},
 		Prentice-Hall,
-		1974.	
+		1974.
+		
+		\bibitem{halmos}
+		Halmos, Paul R.
+		\emph{Finite-Dimensional Vector Spaces},
+		Springer, 1987.
 		
 		\bibitem{hatcher}
 		Hatcher, Allen.
@@ -5651,7 +5657,7 @@
 		1993.
 		
 		\bibitem{kostrikin}
-		kostrikin, Alexei I.; Manin, Yu I.
+		Kostrikin, Alexei I.; Manin, Yu I.
 		\emph{Linear Algebra and Geometry},
 		Gordon and Breach Science Publishers, 1997.
 		
