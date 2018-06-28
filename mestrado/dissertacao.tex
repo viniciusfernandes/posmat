@@ -387,15 +387,13 @@
 	O princípio variacional aplicado no funcional de ação resulta em um sistema de equações diferenciais parciais de primeira ordem, cujas soluções são as curvas integrais que conectam os pontos críticos do funcional de ação, situação análoga a determinação das linhas de fluxo do gradiente negativo de uma função de Morse. A esse sistema de equações diferenciais é associado o operador $\operadorFloer$, chamado operador de Floer. O operador $\operadorFloer$ é um operador linear e limitado 
 	definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional de ação. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso de interesse, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui uma generalização da Homologia de Morse-Witten.
 	
-	Essa abordagem é uma consequência da definição do complexo de Floer e sua homologia. Analogamente ao complexo de Morse-Witten, as k-cadeias do complexo de Floer são geradas pelos pontos críticos do funcional de ação $\funcionalH$ de índice $k \in \inteiros_{+}$. A graduação do grupo gerado pelos pontos críticos do funcional de ação é dada pelo índice de Maslov $\mu$.
-	
-	\correcaobanca{acrescentar parágrafo dizendo o que tem em cada capítulo}
+	Essa abordagem é uma consequência da definição do complexo de Floer e sua homologia. Analogamente ao complexo de Morse-Witten, as k-cadeias do complexo de Floer são geradas pelos pontos críticos do funcional de ação $\funcionalH$ de índice $k \in \inteiros_{+}$. A graduação do grupo gerado pelos pontos críticos do funcional de ação é dada pelo índice de Maslov.
 	
 	O conteúdo desse texto está organizado da seguinte forma:
 	\begin{itemize}
 		\item[] \textbf{Capítulo 1:} expõe o conteúdo prelimiar sobre topologia algébrica necessário para o entendimento dos capítulos posteriores. Esse capítulo está segmentado em duas seções: a primeira seção é dedicada à definição do grupo fundamental, da aplicação grau e demonstração de algumas de suas propriedades. São feitos alguns exemplos de cálculo dos grupos fundamentais para alguns espaços topológicos utilizando a aplicação grau. A segunda seção é dedicada a álgebra homológica. Mais espeficicamente, à Homologia Singular e Homologia Celular. Exemplos e figuras ilustrando a estrutura celular de espaços topológicos dão ênfase a Homologia celular.
 		
-		\item[] \textbf{Capítulo 2:} a primeira seção expõe rapidamente os principais conceitos da Teoria de Morse Clássica, tais como as propriedades de uma função de Morse, os teorema de deformação de associam um CW-complexo a uma função de Morse e as Desigualdades de Morse. A segunda seção é reservada para a Teoria de Morse-Smale-Witten e para a definição do complexo de Morse-Smale-Witten e sua homologia. Exemplos e figuras complementam o capítulo.
+		\item[] \textbf{Capítulo 2:} a primeira seção expõe rapidamente os principais conceitos da Teoria de Morse Clássica, tais como as propriedades de uma função de Morse, o teorema de deformação, o qual associa um CW-complexo a uma função de Morse, e as Desigualdades de Morse. A segunda seção é reservada para a Teoria de Morse-Smale-Witten e para a definição do complexo de Morse-Smale-Witten e sua homologia. Exemplos e figuras complementam o capítulo.
 		
 		\item[] \textbf{Capítulo 3:} aqui são expostos os principais conceitos sobre espaços vetoriais simpleticos e simplectomorfismos, bem como suas propriedades, tais como: a caracterização da forma simlética e dos subespaços simpléticos, lagrangianos e isotrópicos. Por fim, é demonstrado que todo espaço vetorial simplético pode ser munido com uma base simplética.
 		
@@ -778,26 +776,24 @@
 	\begin{teorema}\label{teorema_homomorfismo_conectante}
 		(Homomorfismo conectante) Se $ \xymatrix{0 \ar[r] & C\ar[r]^{f} & D\ar[r]^{g} & E \ar[r]& 0}$ é uma sequência exata curta de complexos de cadeias, então a sequência longa 
 		$$
-		\xymatrix{\dots \ar[r]^{f_{*}} & \homologiaabrev{k}{D}\ar[r]^{g_{*}} & \homologiaabrev{k}{E}\ar[r]^{\delta_{k}}& \homologiaabrev{k-1}{C}\ar[r]^{f_{*}} & \homologiaabrev{k-1}{D} \ar[r]^{g_{*}}& \dots} 
+		\xymatrix{\dots \ar[r]^{f_{*}\hspace{3mm}} & \homologiaabrev{k}{D}\ar[r]^{g_{*}} & \homologiaabrev{k}{E}\ar[r]^{\delta_{k}\hspace{3mm}}& \homologiaabrev{k-1}{C}\ar[r]^{f_{*}} & \homologiaabrev{k-1}{D} \ar[r]^{\hspace{5mm} g_{*}}& \dots} 
 		$$
-		\correcaobanca{ajustar os espaçamentos dos homomorfismos.}
 		é exata.
 	\end{teorema}
 	
 	Como consequência do Teorema $\ref{teorema_homomorfismo_conectante}$, obtêm-se um importante método de cálculo da homologia de espaços topológicos. Dados $U, V$ subconjuntos abertos de um espaço topológico $X$ tal que $X = U\cup V$, considere a sequência exata curta de complexos de cadeias
 	$$ 
-	\xymatrix{0 \ar[r] & C_{k}(U\cap V)\ar[r]^{f} & C_{k}(U)\oplus C_{k}(V)\ar[r]^{g} & C_{k}(X) \ar[r]& 0},
+	\xymatrix{0 \ar[r] & C_{k}(U\cap V)\ar[r]^{f\hspace{3mm}} & C_{k}(U)\oplus C_{k}(V)\ar[r]^{\hspace{8mm}g} & C_{k}(X) \ar[r]& 0},
 	$$
-		\correcaobanca{ajustar os espaçamentos dos homomorfismos.}
 	onde $f(x) = (x,-x)$ e $g(x) = x+y$.
 	
 	A sequência exata longa induzida como no Teorema $\ref{teorema_homomorfismo_conectante}$ é chamada sequência de Mayer-Vietoris.
 	
 	\begin{teorema}
 		(Sequência de Mayer-Vietoris) Sejam $U, V$ subcojuntos do espaço topológico $X$ tais que $X = \dot{U }\cup \dot{V}$, onde $\dot{U}, \dot{V}$ são os interioes de $U$ e $V$, respectivamente. Então existe uma sequência exata longa 
-			\correcaobanca{ajustar os espaçamentos dos homomorfismos.}
+			
 		\[
-		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U\cap V}\ar[r]^{f_{*}} & \homologiaabrev{k}{U}\oplus \homologiaabrev{k}{V}\ar[r]^{g_{*}}& \homologiaabrev{k}{X}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U \cap V} \ar[r]^{f_{*}}& \dots} 
+		\xymatrix{\dots \ar[r]^{\delta_{k+1}\hspace{8mm}} & \homologiaabrev{k}{U\cap V}\ar[r]^{f_{*}\hspace{3mm}} & \homologiaabrev{k}{U}\oplus \homologiaabrev{k}{V}\ar[r]^{\hspace{10mm}g_{*}}& \homologiaabrev{k}{X}\ar[r]^{\delta_{k}\hspace{5mm}} & \homologiaabrev{k-1}{U \cap V} \ar[r]^{\hspace{10mm}f_{*}}& \dots} 
 		\]
 		
 	\end{teorema}
@@ -826,7 +822,7 @@
 	\begin{teorema}
 		(Sequência longa exata do par) Seja $(X, U)$ um par topológico. Então a sequência longa exata desse par é a sequência
 		$$
-		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U}\ar[r]^{i_{*}} & \homologiaabrev{k}{X}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U} \ar[r]^{i_{*}}& \dots},
+		\xymatrix{\dots \ar[r]^{\delta_{k+1}\hspace{3mm}} & \homologiaabrev{k}{U}\ar[r]^{i_{*}} & \homologiaabrev{k}{X}\ar[r]^{\pi_{*}\hspace{5mm}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U} \ar[r]^{\hspace{8mm}i_{*}}& \dots},
 		$$
 		onde $\delta_{k}$ é o homomorfismo conectante para $k \in \inteirospos$.
 	\end{teorema}
@@ -844,7 +840,7 @@
 	\begin{teorema}
 		(Sequência longa exata da tripla) Seja $(X, U, U')$ uma tripla topológica. Então a sequência longa exata da tripla é a sequência
 		$$
-		\xymatrix{\dots \ar[r]^{\delta_{k+1}} & \homologiaabrev{k}{U, U'}\ar[r]^{i_{*}} & \homologiaabrev{k}{X, U'}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}} & \homologiaabrev{k-1}{U, U'} \ar[r]^{i_{*}}& \dots},
+		\xymatrix{\dots \ar[r]^{\delta_{k+1}\hspace{8mm}} & \homologiaabrev{k}{U, U'}\ar[r]^{i_{*}} & \homologiaabrev{k}{X, U'}\ar[r]^{\pi_{*}}& \homologiaabrev{k}{X, U}\ar[r]^{\delta_{k}\hspace{3mm}} & \homologiaabrev{k-1}{U, U'} \ar[r]^{\hspace{8mm}i_{*}}& \dots},
 		$$
 		onde $\delta_{k}$ é o homomorfismo conectante para $k \in \inteirospos$.
 	\end{teorema}
@@ -972,7 +968,7 @@
 			\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[r]^{id_{*}} \ar[d]^{\somadir{\sigma}f_{\sigma*}} & 
 			\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[d]^{\somadir{\sigma}f_{\sigma*}} 
 			\\
-			\homologiarel{k}{\skeleton{n} - U}{Y- U} \ar[r]^{\cong} & \homologiarel{k}{\skeleton{n}}{Y} \ar[r]^{\cong} & 
+			\homologiarel{k}{\skeleton{n} - U}{Y- U} \ar[r]^{\hspace{5mm}\cong} & \homologiarel{k}{\skeleton{n}}{Y} \ar[r]^{\cong\hspace{5mm}} & 
 			\homologiarelskelesimpl{k}{n}.
 		}
 		\]
@@ -1042,8 +1038,8 @@
 		\[
 		\xymatrix{
 			\mathcal{C}_{n}(X) \ar[r]^{\Psi_{n}\qquad} &
-			\homologiarelskelesimpl{n}{n} \ar[r]^{\delta_{*}} & 
-			\homologiarelskele{n-1}{n-1}{n-2} \ar[r]^{\qquad \Phi_{n-1}}&
+			\homologiarelskelesimpl{n}{n} \ar[r]^{\delta_{*}\hspace{3mm}} & 
+			\homologiarelskele{n-1}{n-1}{n-2} \ar[r]^{\hspace{10mm}\Phi_{n-1}}&
 			\mathcal{C}_{n-1}(X)
 		}
 		\]
@@ -1065,7 +1061,7 @@
 		\xymatrix{
 			& \homologiaabrev{n-2}{\skeleton{n-2}}\ar[rd]^{j_{*}}
 			\\
-			\homologiarelskele{n}{n}{n-1} \ar[r]^{\delta_{*} \qquad}\ar[rd]_{\delta_{n}} &
+			\homologiarelskele{n}{n}{n-1} \ar[r]^{\hspace{5mm}\delta_{*} \qquad}\ar[rd]_{\delta_{n}} &
 			\homologiarelskele{n-1}{n-1}{n-2} \ar[u]^{\delta_{n-1}} \ar[r]^{ \delta_{*}}&
 			\homologiarelskele{n-2}{n-2}{n-3}
 			\\
@@ -1117,7 +1113,7 @@
 		Para a demonstração desse resultado será considerada a sequência 
 		$$
 		\xymatrix{
-			\mathcal{C}_{k+1}(X) \ar[r]^{\partial_{k+1}} & \mathcal{C}_{k}(X) \ar[r]^{\partial_{k}} & \mathcal{C}_{k-1}(X).
+			\mathcal{C}_{k+1}(X) \ar[r]^{\partial_{k+1}} & \mathcal{C}_{k}(X) \ar[r]^{\partial_{k}\hspace{3mm}} & \mathcal{C}_{k-1}(X).
 		}
 		$$
 		Por definição, tem-se $\homologia{k}{\mathcal{C}_{*}(X)} = Ker(\partial_{k})/Im(\partial_{k+1})$, e com isso será provado que 
