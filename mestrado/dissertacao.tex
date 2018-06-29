@@ -365,7 +365,7 @@
 	\textbf{Keywords:}  Arnold Conjecture, Floer Equation, Symplectic Vector Spaces, Symplectic Group, Floer Homology, Maslov Index, Conley-Zehnder Index, Hamiltonian Systems, Morse-Witten Theory, Symplectic Topology, Symplectic  Manifold.
 	
 	\chapter*{Introdução}\label{capitulo_introducao}
-	\correcaobanca{Voltado apenas para cap. 5 e 7 que não é o centro do trabalho.}
+	
 	Como muitas das construções desenvolvidas na matemática, a Homologia de Floer teve como motivação um problema de origem na Física, mais especificamente, no estudo de sistemas Hamiltonianos. A descrição Newtoniana da mecânica clássica tem como um de seus equivalentes a descrição Hamiltoniana. Nesse contexto, grande parte dos sistemas dinâmicos Hamiltonianos podem ser desenvolvidos em uma 2n-variedade diferenciável $M$ munida de uma 2-forma fechada e não degenerada $\omega$. O sistema dinâmico é modelado por uma função Hamiltoniana dependente do tempo $H: M\times \reta\to \reta$ satisfazendo a equação geométrica $\omega_{x}(\campohamiltonianoabrev(x,t), Y) = d_{x}H(Y)$ para todo $Y \in \espacotangenteponto{x}{M}$ e todo $x \in M$, onde o campo vetorial $\campohamiltonianoabrev \in \campossuaves{M}$ é chamado de campo Hamiltoniano associado a $H$. O sistema de equações diferenciais $\dot{x} = \campohamiltoniano{(x,t)}$ é chamado sistema Hamiltoniano e suas soluções dão origem a uma família de simplectomorfismos $\psi_{t}:M\to M$, onde $t\in \reta$, que satisfazem a equação diferencial
 	$$
 	\dot{\psi}_{t}(x) = \campohamiltoniano{\psi_{t}(x),t}.
@@ -393,9 +393,11 @@
 	É tentador enveredar-se na demonstração da conjectura de Arnold via a construção de Witten. Contudo, dificuldades técnicas fizeram com que uma abordagem diferente fosse realizada por Floer. Em vez de estudar o gradiente de uma função Hamiltoniana definida na variedade $M$ a estratégia foi analisar o comportamento do funcional $\funcionalH$, chamado funcional de ação, definido no espaço de curvas 1-periódicas e contráteis em $M$. Aplicando o princípio variacional clássico, mostra-se que as soluções 1-periódicas e contráteis do sistema Hamiltoniano são os pontos críticos do funcional de ação $\pontoscriticos{\funcionalH}$. Essa técnica é conhecido como abdordagem variacional. Uma das grandes dificuldades nesse cenário é que o conjunto de curvas 1-periódicas e contráteis forma uma variedade de dimensão infinita, com isso, encontrar um invariante análogo ao índice de Morse para os pontos críticos do funcional é uma tarefa árdua.
 	
 	O princípio variacional aplicado no funcional de ação resulta em um sistema de equações diferenciais parciais de primeira ordem, cujas soluções são as curvas integrais que conectam os pontos críticos do funcional de ação, situação análoga a determinação das linhas de fluxo do gradiente negativo de uma função de Morse. A esse sistema de equações diferenciais é associado o operador $\operadorFloer$, chamado operador de Floer. O operador $\operadorFloer$ é um operador linear e limitado 
-	definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional de ação. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso de interesse, coincide com a diferença dos índices de Maslov de cada um dos pontos críticos. Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui uma generalização da Homologia de Morse-Witten.
+	definido no espaço de todas as curvas que conectam um par de pontos críticos do funcional de ação. Mostra-se que esse espaço é uma variedade de dimensão infinita (uma variedade de Banach) e que o diferencial de tal operador é um operador de Fredholm. A todo operador de Fredholm associa-se um número inteiro, chamado índice de Fredholm, que no caso de interesse, coincide com a diferença dos índices de Conley-Zehnder de cada um dos pontos críticos. 
 	
-	Essa abordagem é uma consequência da definição do complexo de Floer e sua homologia. Analogamente ao complexo de Morse-Witten, as k-cadeias do complexo de Floer são geradas pelos pontos críticos do funcional de ação $\funcionalH$ de índice $k \in \inteiros_{+}$. A graduação do grupo gerado pelos pontos críticos do funcional de ação é dada pelo índice de Maslov.
+	Feito isso, pode-se mostrar que, no caso de uma função Hamiltoniana independente do tempo e cuja Hessiana é limitada, tal índice coincide com o índice de Morse, a menos de uma constante. Tem-se aqui uma generalização da Homologia de Morse-Witten. Essa abordagem é uma consequência da definição do complexo de Floer e sua homologia. Analogamente ao complexo de Morse-Witten, as k-cadeias do complexo de Floer são geradas pelos pontos críticos do funcional de ação $\funcionalH$ de índice $k \in \inteiros_{+}$. A graduação do grupo gerado pelos pontos críticos do funcional de ação é dada pelo índice de Conley-Zehnder $\iconleyabrev$.
+	
+	Por essas razões, o ponto central do trabalho está na construção detalhada do Índice de Maslov $\mu$ e nas demonstrações de suas propriedades. Feito isso, define-se o Índice de Conley-Zehnder $\iconleyabrev$ via o índice de Maslov e demonstra-se que esse objeto é o índice de Morse a menos de uma constante. Com isso, mostra-se que o índice de de Maslov é uma generalização do índice de Morse para dimensões infinitas.
 	
 	O conteúdo desse texto está organizado da seguinte forma:
 	\begin{itemize}
@@ -407,7 +409,7 @@
 		
 		\item[] \textbf{Capítulo 4:} é definido o grupo das transformações simpléticas, chamado grupo simplético. É demonstrada uma de suas caracterizações e que as transformações simpléticas ortogonais e as matrizes unitárias são homeomorfas. Visando estudar alguns aspectos topológicos do grupo simplético, é realizada uma investigação dos auto-valores das transformações simpléticas via complexificação dos espaços vetoriais simpléticos. Por fim, um cálculo do grupo fundamental do grupo simpletico é realizado.
 		
-		\item[] \textbf{Capítulo 5:} esse é o ponto central do trabalho. Utilizando os resultados obtidos nos capítulos anteriores, tais como, as propriedades das transformações simpléticas e a topologia do grupo simplético, propriedades da aplicação grau e a definição do grupo fundamental, é definido o Índice de Maslov e suas propriedades, as quais são demonstradas em detalhes. Figuras ilustram as definições desse capítulo, o que facilita a compreensão dos conceitos.
+		\item[] \textbf{Capítulo 5:} esse é o capítulo de maior relevância do trabalho. Utilizando os resultados obtidos nos capítulos anteriores, tais como, as propriedades das transformações simpléticas e a topologia do grupo simplético, propriedades da aplicação grau e a definição do grupo fundamental, é definido o Índice de Maslov e suas propriedades, as quais são demonstradas em detalhes. Figuras ilustram as definições desse capítulo, o que facilita a compreensão dos conceitos.
 		
 		\item[] \textbf{Capítulo 6:} esse é o capítulo mais extenso do trabalho por conta do volume de álgebra e análise nas demonstrações dos resutlados. Na primeira parte são apresentadas a definição e propriedades das variedades simpléticas, os sistemas Hamiltonianos e algumas características do conjunto de suas soluções. Na segunda parte, é definido o funcional de ação, é demonstrada uma caracterização de seus pontos críticos e é determinada a expressão de seu campo gradiente. Em seguida, é demonstrado que as linhas de fluxo gradiente desse funcional são as soluções de energia finita da Equação de Floer. Na terceira e ultima parte, é definido o Índice de Conley-Zehnder de uma solução periódica do sistema Hamiltonia.
 		
@@ -966,10 +968,8 @@
 		$$
 		denota o isomorfismo descrito.
 	\end{lema}
-	\correcaobanca{verifica e reescrever como no Banyaga}
-	
 	\begin{prova}
-		Por definição, tem-se \alerta{ $\skeleton{n} = \skeleton{n-1}\bigcup_{f_{\partial \sigma} } \celula{n}{\sigma}$ } \correcaobanca{não necessariamente. Entendi que devo escrever a união de todos os $\sigma$} e também $\celula{n}{\sigma} \subset \skeleton{n}$, onde $f_{\sigma}:\celula{n}{\sigma} \to \skeleton{n}$ é a aplicação característica. Sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, contendo o hemisfério norte de $f_{\sigma}(\celula{n}{\sigma})$. Definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ se tem \alerta{$\overline{N_{\sigma}} \subset M_{\sigma}$ } \correcaobanca{a baca circulou em vermelho esses termos}, e considerando $U = \skeleton{n} - \bigcup C_{\sigma}$, $Y = \skeleton{n} - \bigcup A_{\sigma}$ se tem $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato de deformação de $Y$, logo, pela invariância homotópica tem-se $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Como $\skeleton{n} - U = \bigcup C_{\sigma}$ e $Y - U $ é homotópico a $\bigcup S^{n-1}_{\sigma}$, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$. Portanto $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \alerta{\homologiarel{k}{\dot{\bigcup }C_{\sigma}}{\dot{\bigcup }S^{n-1}_{\sigma}} \cong \homologia{k}{\dot{\bigcup }(\celula{n}{\sigma}}, \celulabordo{n}{\sigma})} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$ \correcaobanca{é união disjunta}, pois $C_{\sigma} \approx \celula{n}{\sigma}$ e $S^{n-1}_{\sigma} = \celulabordo{n}{\sigma}$. Enfim, tem-se o diagrama comutativo:
+		Por definição, tem-se $\skeleton{n} = \skeleton{n-1}\dot{\bigcup}_{\sigma}(\bigcup_{f_{\partial \sigma} } \celula{n}{\sigma})$ e também $\celula{n}{\sigma} \subset \skeleton{n}$, onde $f_{\sigma}:\celula{n}{\sigma} \to \skeleton{n}$ é a aplicação característica. Sejam $C_{\sigma}$ e $A_{\sigma}$ discos fechado e abertos, respectivamente, contendo o hemisfério norte de $f_{\sigma}(\celula{n}{\sigma})$. Definindo $N_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - C_{\sigma}$, $M_{\sigma} = f_{\sigma}(\celula{n}{\sigma}) - A_{\sigma}$ se tem $\overline{N_{\sigma}} \subset M_{\sigma}$, e considerando $U = \skeleton{n} - \bigcup_{\sigma} C_{\sigma}$, $Y = \skeleton{n} - \bigcup_{\sigma} A_{\sigma}$ se tem $U \subseteq Y$. Note que $\skeleton{n-1}$ é um retrato de deformação de $Y$, logo, pela invariância homotópica tem-se $\homologiarel{k}{\skeleton{n}}{\skeleton{n-1}} \cong  \homologiarel{k}{\skeleton{n}}{Y}$. Como $\skeleton{n} - U = \bigcup_{\sigma} C_{\sigma}$ e $Y - U $ é homotópico a $\bigcup S^{n-1}_{\sigma}$, pelo teorema da excisão $\homologiarel{k}{\skeleton{n} - U}{Y- U} \cong \homologiarel{k}{\skeleton{n}}{Y}$. Portanto $\homologiarel{k}{\skeleton{n} - U}{Y- U} = \homologiarel{k}{\dot{\bigcup }_{\sigma}C_{\sigma}}{\dot{\bigcup }_{\sigma}S^{n-1}_{\sigma}} \cong \homologiarel{k}{\dot{\bigcup}_{\sigma} \celula{n}{\sigma} }{\dot{\bigcup}_{\sigma} \celulabordo{n}{\sigma}} \cong \somadir{\sigma} \homologiarelcel{k}{n}{\sigma}$, pois $C_{\sigma} \approx \celula{n}{\sigma}$ e $S^{n-1}_{\sigma} = \celulabordo{n}{\sigma}$. Enfim, tem-se o diagrama comutativo:
 		\[
 		\xymatrix{
 			\somadir{\sigma} \homologiarelcel{k}{n}{\sigma} \ar[r]^{id_{*}} \ar[d]^{\cong} & 
@@ -1042,7 +1042,6 @@
 	
 	\begin{definicao}
 		(Aplicação CW-bordo) Tome a tripla $(\skeleton{n}, \skeleton{n-1}, \skeleton{n-2})$ e a composição abaixo
-		\correcaobanca{alinhar as aplicações do diagrama}
 		\[
 		\xymatrix{
 			\mathcal{C}_{n}(X) \ar[r]^{\Psi_{n}\qquad} &
@@ -1076,7 +1075,7 @@
 			& \homologiaabrev{n-1}{\skeleton{n-1}}\ar[u]^{j_{*}}
 		}
 		$$
-		Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical tem-se $\imagem{j_{*}} = \ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, tem-se a composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois \alerta{$\Psi_{n-1} \circ \Phi_{n-1}=1$} \correcaobanca{, pois $\delta_{*} = 0$}.
+		Note que $\delta_{*} \circ \delta_{*} = j_{*} \circ \delta_{n-1} \circ j_{*} \circ \delta_{n}$. Pela exatidão da sequência vertical tem-se $\imagem{j_{*}} = \ker(\delta_{n-1})$, logo $\delta_{*}^{2}=0$. Com isso, tem-se a composição do CW-bordo $\partial_{n-1}\circ \partial_{n} = \Phi_{n-2} \circ \delta_{*} \circ \Psi_{n-1} \circ \Phi_{n-1} \circ \delta_{*} \circ \Psi_{n} = \Phi_{n-2} \circ \delta_{*}^{2} \circ \Psi_{n} =0$, pois $\Psi_{n-1} \circ \Phi_{n-1}=1$ e $\delta_{*} = 0$.
 		
 		Por definição $f_{\partial\sigma}: \celulabordo{n}{\sigma} \to \skeleton{n-1}$, assim tem-se o homomorfismo induzido $f_{\partial\sigma*}: \homologia{n-1}{\celulabordo{n}{\sigma} }\to \homologia{n-1}{\skeleton{n-1}}$. Analogamente, tem-se o homomorfismo 
 		$$
@@ -1403,7 +1402,7 @@
 	
 	
 	\section{Homologia de Morse-Witten}
-	\correcaobanca{???. A banca colocou os sinais de interrogação, mas eu não entendi.}
+	
 	\subsection{Fluxos Gradiente e Variedades de Conexão}\label{secao_fluxo_gradiente}
 	Sejam $X \in \campossuaves{M}$ um campo vetorial suave em $M$ e $p \in M$. Sabe-se que existe uma curva $\gamma: \reta\to M$ que é solução do sistema de equações diferenciais 
 	$$
@@ -1459,7 +1458,11 @@
 		Em termos de pontos limite, é possível reescrever as variedades instável e estável de $p \in \pontoscriticos{f}$ como sendo $\variedadeinstavel{p} = \{q\in M: \alpha(q)=p\}$ e $\variedadeestavel{p} = \{q\in M: \omega(q)=p\}$.
 	\end{observacao}
 	
-	Da observação anterior, afirma-se que ambas as variedades instável e estável dos pontos críticos são contráteis. De fato, defina $Id: M\to M$ como sendo a aplicação identidade e $c:M\to M$ como sendo a aplicação constante $c(M) =\{p\} $, onde $p \in \pontoscriticos{f}$. Então $h:\intervalo\times \variedadeinstavel{p} \to \variedadeinstavel{p}$ tal que \alerta{$h(t,q) = \phi(t/(1-t), q)$} \correcaobanca{não está bem definida.} é uma homotopia entre $Id$ e $c$, pois é contínua e $h(0, q) = Id(q)$ e $\lim_{t \to 1}h(t, q) = c(q)$, logo a variedade instável é contrátil. Com uma argumento análogo mostra-se que $\variedadeestavel{p}$ é contrátil.
+	Da observação anterior, afirma-se que ambas as variedades instável e estável dos pontos críticos são contráteis. De fato, defina $Id: M\to M$ como sendo a aplicação identidade e $c:M\to M$ como sendo a aplicação constante $c(M) =\{p\} $, onde $p \in \pontoscriticos{f}$. Então $h:\intervalo\times \variedadeinstavel{p} \to \variedadeinstavel{p}$ definida por 
+	$$
+	\funcaocond{h(t,q)}{\phi(t/(1-t), q)}{t\neq 1}{c(q)}{t=1},
+	$$ 
+	é uma homotopia entre $Id$ e $c$, pois é contínua e $h(0, q) = Id(q)$ e $\lim_{t \to 1}h(t, q) = c(q)$, logo a variedade instável é contrátil. Com uma argumento análogo mostra-se que $\variedadeestavel{p}$ é contrátil.
 	
 	Foi definido o espaço tangente instável como sendo o subespaço $\espacotangentevariedadeinstavel\subset \espacotangentevariedade$ tal que a restrição da Hessiana $\hessianaponto{p}{f}$ a $\espacotangentevariedadeinstavel$ é negativa-definida. Analogamente se tem o espaço tangente estável $\espacotangentevariedadeestavel \subset \espacotangentevariedade$, onde a Hessiana é positiva-definida. Com isso, segue o teorema da variedade estável, cuja demonstração pode ser encontrada em $\cite{banyaga_morse_homology}$.
 	
@@ -1633,10 +1636,9 @@
 	
 	\chapter{Espaços Vetoriais Simpléticos}\label{capitulo_espacos_vetoriais_simpleticos}
 
-	Os espaços vetoriais simpléticos têm sua origem na sistematização do formalismo Hamiltoniano, o qual é uma descrição alternativa à formlução Newtoniana de sistemas físicos. Esse capítulo contém algumas definições e propriedades dos espaços simpléticos, das formas simpléticas e das estruturas complexas. Definições estas que serão estendidas às variedades diferenciáveis, no Capítulo \ref{capitulo_equacao_floer}. Mais detalhes sobre Geometria Simplética podem ser encontrados em \cite{berndt}, \cite{bursztyn_macarini} e \cite{cannas_anna}. 
+	Os espaços vetoriais simpléticos têm sua origem na sistematização do formalismo Hamiltoniano, o qual é uma descrição alternativa à formlução Newtoniana de sistemas físicos. Esse capítulo contém algumas definições e propriedades dos espaços simpléticos, das formas simpléticas e das estruturas complexas. Definições estas que serão estendidas às variedades diferenciáveis, no Capítulo \ref{capitulo_equacao_floer}. Mais detalhes sobre Geometria Simplética podem ser encontrados em \cite{berndt}, \cite{bursztyn_macarini} e \cite{cannas_anna}.
 	
 	\section{Origem na Física}
-	\correcaobanca{referência}
 	
 	A mecânica clássica visa o estudo da dinâmica de sistemas físicos, conservativos ou não. Diz-se que um campo vetorial $F:\real{3} \to \real{3}$ é conservativo quando, dados dois caminhos $\gamma,\beta:[0,1] \to \real{3}$ de classe $C^{2}$ tais que $\gamma(0)=\beta(0)$ e $\gamma(1)=\beta(1)$ (com extremos fixos), tem-se
 	$$
@@ -1668,10 +1670,11 @@
 	
 	Note que a função $H$ definida acima satisfaz as equações de Hamilton, logo é uma função Hamiltoniana e, por estar associada a energia total do sistema, é amplamente aplicada em modelos dinâmicos físicos.
 	
-	As equações de Hamilton nos dizem que, dada uma função Hamiltoniana, é possível recuperar as equações de Newton. Portanto, tem-se uma compatibilidade entre ambas as descrições de um problema físico.
+	As equações de Hamilton nos dizem que, dada uma função Hamiltoniana, é possível recuperar as equações de Newton. Portanto, tem-se uma compatibilidade entre ambas as descrições de um problema físico. 
+	
+	Mais detalhes sobre o formalismo matemático da mecânica clássica podem ser encontrados em \cite{arnold} e \cite{artur_lopes}.
 	
 	\section{Geometrização}
-	\correcaobanca{referência}
 	
 	A geometrização de problemas em física permite que os modelos da mecânica Newtoniana sejam estudados sob outro ponto de vista, e com isso, generalizar e analisar novos aspectos. Essa nova descrição é chamada formalismo Hamiltoniano. Nesse capítulo as equações de Hamilton serão abordadas em um contexto geométrico, o que permitirá a apresentação dos sistemas hamiltonianos em variedades diferenciáveis.
 	
@@ -1761,11 +1764,13 @@
 	\\
 	&= \Big(\sum_{j} \derivadaparcial{H}{q_{j}}dq_{j} +\derivadaparcial{H}{p_{j}}dp_{j} \Big)(v)
 	\\
-	&= \alerta{dH(v), \text{(acho que aqui tem um sinal negativo)}}.
+	&= dH(v).
 	\end{aligned}
 	$$
 	
-	Com isso, o par $(\real{2n}, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético. A seção seguinte é dedicada ao estudo de espaços vetoriais simpléticos reais.
+	Com isso, o par $(\real{2n}, \formaSimpleticaabrev)$ é chamado 2n-espaço vetorial simplético. 
+	
+	Mais detalhes sobre a geometrizalção da mecânica clássica podem ser encontrados em \cite{arnold} e \cite{artur_lopes}.
 	
 	\section{Espaços Vetoriais Simpléticos}\label{secao_espacos_vetoriais_simpleticos}
 	\begin{definicao}
@@ -2498,8 +2503,6 @@
 	
 	\section{Construção de $\rho: \gruposimpletico{\real{2n}} \to \circulo$}
 	
-	\correcaobanca{colocar referências.}
-	
 	Para a construção do índice de Maslov, serão adotadas as complexificações $(\complexificado{V}, \Omega) $ e $\gruposimpletico{\complexo{2n}}$ do 2n-espaço vetorial simplético $(V, \omega)$ e do grupo simplético $\gruposimpletico{\real{2n}}$, respectivamente. Os detalhes da complexificação podem ser encontrados no Apêndice $\ref{apendice_complexificacao_espacos_vetoriais}$. 
 	
 	O primeiro passo é a construção de uma aplicação contínua $\rho: \gruposimpletico{\real{2n}}\to \circulo$, que é uma extenção contínua do determinante complexo e induz o isomorfismo entre os grupos fundamentais, além de satisfazer propriedades que serão herdadas pelo índice de Maslov.
@@ -2594,12 +2597,11 @@
 		onde usou-se o fato de que $\beta\formaSimpleticaExtendida{\overline{u}}{v}=-\overline{\beta}\formaSimpleticaExtendida{\overline{v}}{u}$. Portanto $\beta v +u \in \autoespaco{\lambda}^{+}$. Com um argumento análogo mostra-se que $\autoespaco{\lambda}^{-}$ é subespaço vetorial de $\autoespaco{\lambda}$. Note que, $\formaSimpleticaExtendida{\overline{v}}{v}=\formaSimpleticaExtendida{\overline{Av}}{Av} =|\lambda|^{2}\formaSimpleticaExtendida{\overline{v}}{v}$. Se $\lambda \notin \complementar{\circulo}{\{\pm 1 \} }$, então $\Omega|_{\autoespaco{\lambda}\times \autoespaco{\lambda}} = 0$.
 	\end{prova}
 	
-	\correcaobanca{a banca comentou que está confuso. Eunão entendi o problema desse corolário.}
-	
 	\begin{corolario}\label{corolario_nao_degeneracidade_Q}
 		Se $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$, então a forma quadrática $Q$ é não-degenerada e $Q(v)>0$ ou $Q(v)<0$ para todo $v \in \autoespaco{\lambda}$.
 	\end{corolario}
-	\begin{prova}
+	\begin{prova}\correcaobanca{a banca comentou que está confuso. Eunão entendi o problema desse corolário.}
+		
 		Pelo Lema \ref{lema_forma_simetrica_B} segue que $Q$ é não-degenerada. Seja $\lambda\in \espectrooperador{A} \cap \complementar{\circulo}{\{\pm 1 \} }$. Pela Proposição \ref{proposicao_forma_quadratica_Q} tem-se que $Q(v)>0$ ou $Q(v)<0$, para todo $v\in \autoespaco{\lambda}$. 
 	\end{prova}
 	
@@ -2656,7 +2658,9 @@
 	\begin{prova}
 		
 		\begin{enumerate}
-			\item \textbf{\textit{Naturalidade:}} Fixe $T \in \gruposimpletico{\complexo{2n}}$.  Tem-se que $\det(TAT^{-1}) = \det(A)$, para todo $A \in \gruposimpletico{\complexo{2n}}$. Logo $\espectrooperador{TAT^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}^{TAT^{-1}}$ e $\autoespaco{\lambda}^{A}$ os auto-espaços generalizados de $TAT^{-1}$ e $A$, respectivamente. Pode-se afirmar que $\autoespaco{\lambda}^{TAT^{-1}} = T(\autoespaco{\lambda}^{A})$. De fato, tomando $v \in \autoespaco{\lambda}^{TAT^{-1}}$, então $TAT^{-1}v = \lambda v$ \correcaobanca{auto-espaço=auto-espaço generalizado, pois $A$ é normal, logo é diagonalizável sobre os complexos. Eu não entendi essa codição sobre $A$}, o que implica que $AT^{-1}v = \lambda T^{-1}v$, logo $T^{-1}v \in \autoespaco{\lambda}^{A}$ e $T^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq \autoespaco{\lambda}^{A}$. \alerta{Como $T$ é um isomorfismo, então $\autoespaco{\lambda}^{TAT^{-1}} = TT^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq T(\autoespaco{\lambda}^{A})$. Por outro lado, suponha que $v\in \autoespaco{\lambda}^{A}$. Como $T$ é um isomorfimo, então existe $u \in \complexificado{V}$ tal que $v=T^{-1}u$. Com isso, $AT^{-1}u = \lambda T^{-1}u$ e $ TAT^{-1}u =\lambda u$. Logo $Tv=u \in \autoespaco{\lambda}^{TAT^{-1}}$ e $T(\autoespaco{\lambda}^{A}) \subseteq \autoespaco{\lambda}^{TAT^{-1}}$. Portanto, $\autoespaco{\lambda}^{TAT^{-1}}=T(\autoespaco{\lambda}^{A}) $ e $dim(\autoespaco{\lambda}^{TAT^{-1}})=dim(T(\autoespaco{\lambda}^{A}) )=dim(\autoespaco{\lambda}^{A})$ (A banca disse que está errado, mas eu não entendi.).} 
+			\item \textbf{\textit{Naturalidade:}} Fixe $T \in \gruposimpletico{\complexo{2n}}$.  Tem-se que $\det(TAT^{-1}) = \det(A)$, para todo $A \in \gruposimpletico{\complexo{2n}}$. Logo $\espectrooperador{TAT^{-1}} = \espectrooperador{A}$. Sejam $\autoespaco{\lambda}^{TAT^{-1}}$ e $\autoespaco{\lambda}^{A}$ os auto-espaços generalizados de $TAT^{-1}$ e $A$, respectivamente. Pode-se afirmar que $\autoespaco{\lambda}^{TAT^{-1}} = T(\autoespaco{\lambda}^{A})$. De fato, tomando $v \in \autoespaco{\lambda}^{TAT^{-1}}$, então $TAT^{-1}v = \lambda v$ \correcaobanca{auto-espaço=auto-espaço generalizado, pois $A$ é normal, logo é diagonalizável sobre os complexos. Eu não entendi essa codição sobre $A$}, o que implica que $AT^{-1}v = \lambda T^{-1}v$, logo $T^{-1}v \in \autoespaco{\lambda}^{A}$ e $T^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq \autoespaco{\lambda}^{A}$. \alerta{Como $T$ é um isomorfismo, então $\autoespaco{\lambda}^{TAT^{-1}} = TT^{-1}(\autoespaco{\lambda}^{TAT^{-1}}) \subseteq T(\autoespaco{\lambda}^{A})$. Por outro lado, suponha que $v\in \autoespaco{\lambda}^{A}$. Como $T$ é um isomorfimo, então existe $u \in \complexificado{V}$ tal que $v=T^{-1}u$. Com isso, $AT^{-1}u = \lambda T^{-1}u$ e $ TAT^{-1}u =\lambda u$. Logo $Tv=u \in \autoespaco{\lambda}^{TAT^{-1}}$ e $T(\autoespaco{\lambda}^{A}) \subseteq \autoespaco{\lambda}^{TAT^{-1}}$. Portanto, $\autoespaco{\lambda}^{TAT^{-1}}=T(\autoespaco{\lambda}^{A}) $ e $dim(\autoespaco{\lambda}^{TAT^{-1}})=dim(T(\autoespaco{\lambda}^{A}) )=dim(\autoespaco{\lambda}^{A})$.}
+			
+			\alerta{(A banca disse que está errado, mas eu não entendi.)} 
 			
 			Por fim, como $A,T\in \gruposimpletico{\complexo{2n}}$, então $TAT^{-1}\in \gruposimpletico{\complexo{2n}}$, e pode-se afirmar que $Q(TAT^{-1}v) = Q(v)$ para todo $v \in \complexificado{V}$. Logo  $m^{TAT^{-1}}_{\pm}(\lambda)=m^{A}_{\pm}(\lambda)$, $m_{0}^{TAT^{-1}}=m_{0}^{A}$, e com isso, $\rho(TAT^{-1})=\rho(A)$.
 			
@@ -3369,7 +3373,6 @@
 		para todo $Y\in T_{x}M$. Logo, pela não-degeneracidade da forma simplética, tem-se que $\campohamiltoniano{x} =0$. Por outro lado, se $\campohamiltoniano{x} =0$, então $\omega_{x}(\campohamiltonianoabrev(x), Y)=0$ para todo $Y\in T_{x}M$. Logo $dH_{x}=0$ e $x\in \pontoscriticos{H}$.
 	\end{prova}
 	
-	\correcaobanca{M é fechada???}
 	O sistema de equações diferenciais
 	$$
 		\dot{x}(t)=\campohamiltoniano{x(t)},
@@ -5565,6 +5568,11 @@
 		Texts and Reading in Mathematics 34,
 		2005.
 		
+		\bibitem{arnold}
+		Arnold, Vladmir.
+		\emph{Mathematical Methods of Classical Mechanics},
+		Springer, second edition, 1989.
+		
 		\bibitem{audi_floer_homology}
 		Audi, Michèlle; Damian, Mihai.
 		\emph{Morse Theory and Floer Homology},
@@ -5677,6 +5685,11 @@
 		Lima, Elon Lages.
 		\emph{Homologia Básica},
 		IMPA, segunda edição, 2012.
+		
+		\bibitem{artur_lopes}
+		Lopes, Artur.
+		\emph{Introdução à Mecânica Clássica},
+		Edusp, Coleção Acadêmica, 2013.
 		
 		\bibitem{massey}
 		Massey, William S.
