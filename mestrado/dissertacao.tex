@@ -7,8 +7,11 @@
 \usepackage{enumitem}
 \usepackage{color}
 \usepackage[fleqn]{amsmath}
-\usepackage[a4paper, margin=1.0in]{geometry}
+\usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{verbatim}
+\usepackage{pdfpages}
+
+\linespread{1.3}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -26,7 +29,7 @@
 \usepackage{hyperref}
 \usepackage[dvipsnames]{xcolor}
 \newcommand\myshade{85}
-\colorlet{mylinkcolor}{violet}
+\colorlet{mylinkcolor}{black}
 
 \hypersetup{
 	linkcolor  = mylinkcolor!\myshade!black,
@@ -48,289 +51,25 @@
 \usepackage[all,cmtip]{xy}
 % PACOTES PARA DIAGRAMAS %
 
-% QUALIFICADORES DOS RESULTADOS: TEOREMAS, LEMAS, COROLARIOS E PROVA %
-\newtheorem{teorema}{Teorema}[section]
-\newtheorem{corolario}[teorema]{Corolário}
-\newtheorem{convensao}[teorema]{Convensão}
-\newtheorem{lema}[teorema]{Lema}
-\newtheorem{definicao}[teorema]{Definição}
-\newtheorem{exemplo}[teorema]{Exemplo}
-\newtheorem{suposicao}[teorema]{Suposição}
-\newtheorem{observacao}[teorema]{Observação}
-\newtheorem{proposicao}[teorema]{Proposição}
-\newenvironment{prova}[1]{$\square$ #1}{\hfill$\blacksquare$}
-% QUALIFICADORES DOS RESULTADOS: TEOREMAS, LEMAS, COROLARIOS E PROVA %
-
-
-% AQUI ESTAO AS DECLARACOES DAS FUNCOES %
-\DeclareMathOperator{\Ima}{Im}
-\DeclareMathOperator{\sen}{sen}
-\DeclareMathOperator{\senh}{senh}
-\DeclareMathOperator{\re}{Re}
-\DeclareMathOperator{\coker}{coker}
-% AQUI ESTAO AS DECLARACOES DAS FUNCOES %
-
-
-% AQUI ESTAO OS COMANDOS %
-\newcommand{\aplicacaoexponencial}[2]{\exp_{#1}(#2)}
-\newcommand{\aplicacaoexponencialgeral}[1]{exp_{#1}}
-\newcommand{\aplicaoessuaves}[2]{C^{\infty}(#1, #2)}
-\newcommand{\aplicaoessuavesloc}[2]{C^{\infty}_{\text{loc}}(#1, #2)}
-\newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo; M)}
-\newcommand{\autoespaco}[1]{E_{#1}}
-\newcommand{\autovalorprimeirotipo}[1]{\sigma^{1}(#1)}
-\newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
-\newcommand{\bigparenteses}[1]{\Big( #1 \Big) }
-\newcommand{\bordo}[1]{\partial_{#1}}
-\newcommand{\bordorel}[1]{\overline{\partial}_{#1}}
-\newcommand{\cadeia}[2]{C_{#1}(#2; A)}
-\newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
-\newcommand{\caminhosfechadospontobase}[2]{\mathcal{L}^{o}_{#1}(#2)}
-\newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{\real{2n}})}
-\newcommand{\caminhosespeciais}[1]{\mathcal{L}^{*}(#1)}
-\newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
-\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
-\newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}(x^{-},x^{+})}
-\newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
-\newcommand{\caminhosexponenciaisSobolev}{\mathcal{L}^{1,p}M}
-\newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
-\newcommand{\caminhos}{\mathcal{L}}
-\newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
-\newcommand{\caminhoslagrangianos}[3]{\caminhos_{#3}(#1,#2)}
-\newcommand{\caminhoslagrangianosV}[2]{\caminhoslagrangianos{#1}{#2}{V}}
-\newcommand{\caminhospontobase}[1]{\caminhos_{#1}}
-\newcommand{\caminhossempontobase}[1]{\caminhos(#1)}
-\newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{\real{2n}})}
-\newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
-\newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
-\newcommand{\caminhossubespacoslagrangianos}[2]{L[#1,#2]}
-\newcommand{\campogradiente}{\mathcal{X}}
-\newcommand{\campogradientefuncional}{\mathcal{X}_{\mathcal{A}}}
-\newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
-\newcommand{\campohamiltonianoabrev}{X_{H}}
-\newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
-\newcommand{\celula}[2]{D^{#1}_{#2}}
-\newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
-\newcommand{\circulo}{S^{1}}
-\newcommand{\circulovariedade}{\circulo\times M}
-\newcommand{\cktopologia}[1]{\mathcal{C}^{#1}\text{-topologia}}
-\newcommand{\classe}[1]{[#1]}
-\newcommand{\cohomologia}[2]{H^{#1}(#2)}
-\newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
-\newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
-\newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
-\newcommand{\colecao}[1]{\{#1_{k} \}_{k\in \inteiros}}
-\newcommand{\colecaoabrev}[1]{\{#1 \}_{k\in \inteiros}}
-\newcommand{\colecaofinita}[2]{\{#1_{j} \}_{j=1}^{#2}}
-\newcommand{\colecaofinitaabrev}[2]{\{#1 \}_{j=1}^{#2}}
-\newcommand{\complementar}[2]{#1 \backslash #2}
-\newcommand{\complexificacao}[1]{#1_{\complexo{}}}
-\newcommand{\complexificacaotensorial}[1]{\complexo{}\otimes_{\reta} #1}
-\newcommand{\complexificado}[1]{\mathcal{#1}}
-\newcommand{\complexificacaoelemento}[2]{#1\otimes_{\reta} #2}
-\newcommand{\complexo}[1]{\mathbb{C}^{#1}}
-\newcommand{\coordenada}[2]{#1_{(#2)}}
-\newcommand{\diferencialfloer}{D\operadorFloer}
-\newcommand{\diferencialfloeradj}{\diferencialfloer^{*}}
-\newcommand{\diferencialfloerponto}[1]{D_{#1}\operadorFloer}
-\newcommand{\diferencialfloeradjponto}[1]{D_{#1}\operadorFloer^{*}}
-\newcommand{\diferencialfloerabrev}{\mathcal{D}}
-\newcommand{\derivada}[2]{\frac{d #1}{d #2}}
-\newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\derivadaparcialdois}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
-\newcommand{\derivadaparcialdoisdois}[3]{\frac{\partial^{2} #1}{\partial #2 \partial#3}}
-\newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
-\newcommand{\diag}{\text{diag}}
-\newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
-\newcommand{\distribuicoes}{\distribuicoesgeral{\Omega}}
-\newcommand{\distribuicoesgeral}[1]{\mathcal{D'}(#1)}
-\newcommand{\dominioMaslov}{\caminhos^{*}(\gruposimpletico{\real{2n}})}
-\newcommand{\energiafinitaM}{\mathcal{M}}
-\newcommand{\energiafinitaMHamiltoniana}[1]{\energiafinitaM(#1, J)}
-\newcommand{\energiafinitaMconectante}{\energiafinitaM(x^{-}, x^{+})}
-\newcommand{\energiafinitaMconectanteHamiltoniana}{\energiafinitaM(x^{-}, x^{+},H+h,J)}
-\newcommand{\espacoLdois}[1]{L^{2}(#1)}
-\newcommand{\espacoLdoiscontradom}[2]{L^{2}(#1, #2)}
-\newcommand{\espacoLp}[1]{L^{p}(#1)}
-\newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
-\newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
-\newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
-\newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
-\newcommand{\espacoLpadjuntoretacirculo}{L^{q}(\retacartesianocirculo;\real{m})}
-\newcommand{\espacoLpdual}{(L^{p})^{*}(\retacartesianocirculo;\real{m})}
-\newcommand{\espacoLpdualdois}{(L^{2})^{*}(\retacartesianocirculo;\real{m})}
-\newcommand{\espacomoduli}[2]{\mathcal{M}_{#1#2}}
-\newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
-\newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
-\newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
-\newcommand{\espacosobolevadjuntoretacirculo}{W^{1,q}(\retacartesianocirculo;\real{2n})}
-\newcommand{\espacosobolevdual}{(W^{1,p})^{*}(\retacartesianocirculo;\real{2n})}
-\newcommand{\espacosobolevgeneralizadocontra}[2]{W^{k,p}(#1; #2)}
-\newcommand{\espacosobolevgeneralizado}[1]{W^{k,p}(#1)}
-\newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
-\newcommand{\espacosobolevdois}[2]{\espacosobolevgeral{2}{#1, #2}}
-\newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
-\newcommand{\espacotangente}[1]{\espacotangenteponto{p}{#1}}
-\newcommand{\espacotangentevariedadeestavel}{T^{s}_{p}M}
-\newcommand{\espacotangentevariedadeinstavel}{T^{u}_{p}M}
-\newcommand{\espacotangenteponto}[2]{T_{#1}#2}
-\newcommand{\espacotangentevariedade}{\espacotangenteponto{p}{M}}
-\newcommand{\espectrooperador}[1]{\sigma(#1)}
-\newcommand{\estruturacomplexa}{J_{0}}
-\newcommand{\estruturascomplexas}[2]{\mathcal{J}(#1, #2)}
-\newcommand{\estruturascomplexasM}{\estruturascomplexas{M}{\omega}}
-\newcommand{\estruturascomplexaspadrao}{\mathcal{J}(V, \omega)}
-\newcommand{\Exp}{\text{Exp}}
-\newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-}, x^{+})}
-\newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
-\newcommand{\formaSimpletica}[2]{\omega(#1, #2)}
-\newcommand{\formaSimpleticaabrev}{\omega_{0}}
-\newcommand{\formaSimpleticaExtendida}[2]{\Omega(#1, #2)}
-\newcommand{\formaSimpleticaPadrao}[2]{\omega_{0}(#1, #2)}
-\newcommand{\funcaocond}[5]{
-	#1 = 
-	\left\{
-	\begin{array}{cc}
-		#2, & #3\\
-		#4, & #5\\
-	\end{array}
-	\right.
-}
-\newcommand{\funcionalH}{\mathcal{A}_{H}}
-\newcommand{\funcionalHponto}[1]{\mathcal{A}_{H}(#1)}
-\newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
-\newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
-\newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
-\newcommand{\funcoesmorsesmale}[1]{\mathcal{M}^{S}_{o}(#1)}
-\newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
-\newcommand{\funcoessupcompact}[1]{C^{\infty}_{c}(#1)}
-\newcommand{\funcoessupcompactcontradom}[2]{C^{\infty}_{c}(#1, #2)}
-\newcommand{\funcoesteste}{\funcoestestegeral{\Omega}}
-\newcommand{\funcoestestegeral}[1]{\mathcal{D}(#1)}
-\newcommand{\generalgroup}[2]{GL(#1, #2)}
-\newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
-\newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
-\newcommand{\gerador}[1]{\langle #1\rangle}
-\newcommand{\gradiente}{\nabla f}
-\newcommand{\gradientefuncional}{\nabla \funcionalH}
-\newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
-\newcommand{\grupofundamentalpontobase}[2]{\pi_{1}(#1; #2)}
-\newcommand{\gruposimpletico}[1]{Sp(#1)}
-\newcommand{\gruposimpleticocomplexo}[1]{Sp(#1; \complexo{})}
-\newcommand{\gruposimpleticoreal}[1]{Sp(#1;\reta)}
-\newcommand{\gruposimpleticoespecial}[1]{Sp^{1}(#1)}
-\newcommand{\gruposimpleticonaodegenerado}[1]{Sp^{#1}(2n)}
-\newcommand{\gruposimpleticomais}[1]{Sp^{+}(#1)}
-\newcommand{\gruposimpleticomenos}[1]{Sp^{-}(#1)}
-\newcommand{\gruposimpleticopositivo}[1]{Sp_{+}(#1)}
-\newcommand{\hamiltonianasRegulares}{\mathcal{H}_{reg}}
-\newcommand{\hessianaponto}[2]{\text{Hess}_{#1}(#2)}
-\newcommand{\homologia}[2]{H_{#1}(#2;A)}
-\newcommand{\homologiaabrev}[2]{H_{#1}(#2)}
-\newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
-\newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
-\newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
-\newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
-\newcommand{\iconley}[1]{\iconleyabrev(#1)}
-\newcommand{\iconleyabrev}{\mu_{CZ}}
-\newcommand{\imagem}[1]{\Ima(#1)}
-\newcommand{\imagembordo}[2]{B_{#1}(#2;A)}
-\newcommand{\imagembordoabrev}[2]{B_{#1}(#2)}
-\newcommand{\ind}{\text{Ind}}
-\newcommand{\induzida}[1]{#1_{\#}}
-\newcommand{\inteiros}{\mathbb{Z}}
-\newcommand{\inteirospos}{\inteiros_{+}}
-\newcommand{\iprod}[2]{\langle #1, #2 \rangle}
-\newcommand{\intervalo}{[0,1]}
-\newcommand{\intervalofechado}[1]{[-#1,#1]}
-\newcommand{\kernelbordo}[2]{Z_{#1}(#2;A)}
-\newcommand{\kernelbordoabrev}[2]{Z_{#1}(#2)}
-\newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
-\newcommand{\operadoreslimitadosauto}[1]{\mathcal{B}(#1)}
-\newcommand{\operadorFloer}{\mathcal{F}}
-\newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{#1}{s} + J_{#1}\derivadaparcial{#1}{t} - J_{#1}X_{H}(#1)}
-\newcommand{\operadorFloerDefParametros}[1]{\derivadaparcial{#1}{s}(s,t) + J_{#1}\derivadaparcial{#1}{t}(s,t) - J_{#1}X_{H}(#1(s,t))}
-\newcommand{\operadorFloerParametro}[1]{\mathcal{F}(#1)}
-\newcommand{\operadorFloerPadrao}{\operadorFloerParametro{u}}
-\newcommand{\matrizantisimetrica}[1]{Asym(#1)}
-\newcommand{\matrizortogonal}[1]{O(#1)}
-\newcommand{\matrizquadcomplexa}[1]{M_{#1 \times #1}(\complexo{})}
-\newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
-\newcommand{\matrizsimetrica}[1]{Sym(#1)}
-\newcommand{\matrizSimpleticaOrtogonal}{\mathcal{U}}
-\newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
-\newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
-\newcommand{\matrizunitaria}[1]{U(#1)}
-\newcommand{\norma}[1]{||#1||}
-\newcommand{\normagrande}[1]{\Big|\Big|#1\Big|\Big|}
-\newcommand{\normaLdois}[1]{||#1||_{L^{2}}}
-\newcommand{\normaLp}[1]{||#1||_{L^{p}}}
-\newcommand{\normaLpdefinicao}[2]{ \Big(\int_{#2}#1^{p}\Big)^{1/p}}
-\newcommand{\normaLpDominio}[2]{||#1||_{L^{p}(#2)}}
-\newcommand{\normaLgGeral}[3]{\norma{#1}_{\espacoLpGeral{#2}{#3}}}
-\newcommand{\normapequenaLpdefinicao}[2]{ \normaLpdefinicao{\norma{#1}}{#2}}
-\newcommand{\normagrandeLpdefinicao}[2]{ \normaLpdefinicao{\normagrande{#1}}{#2}}
-\newcommand{\normasubscrito}[2]{\norma{#1}_{#2}}
-\newcommand{\normaWdois}[1]{||#1||_{W^{1,2}}}
-\newcommand{\normaWp}[1]{||#1||_{W^{1,p}}}
-\newcommand{\normaWpgeneralizado}[1]{||#1||_{W^{k,p}}}
-\newcommand{\normaWpgeral}[2]{||#1||_{W^{1,#2}}}
-\newcommand{\normaWpGeralDominio}[3]{\norma{#1}_{W^{1,#2}(#3)}}
-\newcommand{\normaWpDominio}[2]{||#1||_{W^{1,p}(#2)}}
-\newcommand{\operadorcauchyabrev}[1]{\overline{\partial}_{#1}}
-\newcommand{\operadoresfredholm}[2]{\mathcal{F}r(#1, #2)}
-\newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
-\newcommand{\orbitaponto}[1]{\mathcal{O}(#1)}
-\newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
-\newcommand{\orbitasConectantesZ}{\mathcal{Z}(x^{-}, x^{+},H, J)}
-\newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
-\newcommand{\paresregulares}{\mathcal{H}_{reg}}
-\newcommand{\parteImaginaria}[1]{\Ima{(#1)}}
-\newcommand{\parteReal}[1]{\re (#1)}
-\newcommand{\perturbacaoHamiltoniana}[1]{C^{\infty}_{\epsilon}(#1)}
-\newcommand{\pontoscriticos}[1]{\textit{Cr}(#1)}
-\newcommand{\pontoscriticosordem}[2]{\textit{Cr}^{(#1)}(#2)}
-\newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
-\newcommand{\produtointernoLdois}[2]{\langle #1, #2 \rangle_{L^{2}}}
-\newcommand{\produtointernoWdois}[2]{\langle #1, #2 \rangle_{W^{1,2}}}
-\newcommand{\produtointernoabrev}{\langle ., .\rangle}
-\newcommand{\produtosinternos}[1]{Riem(#1)}
-\newcommand{\produtotensorial}[2]{ #1_{1} \otimes_{\mathbb{K}} \dots \otimes_{\mathbb{K}} #1_{#2}}
-\newcommand{\produtotensorialabrev}[2]{#1\otimes #2}
-\newcommand{\produtotensorialdual}{\produtotensorialabrev{\complexificado{V}^{*}}{\complexificado{V}^{*}}}
-\newcommand{\produtotensorialreal}[2]{\bigotimes_{j=1}^{#1} #2_{j}}
-\newcommand{\pullbackfibradotangente}[2]{#1^{*}T#2}
-\newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
-\newcommand{\pullbackfibradotangenteMpadrao}{\pullbackfibradotangente{u}{M}}
-\newcommand{\quocientetrajetorias}{\widehat{\energiafinitaM}(x^{-}, x^{+}, H, J)}
-\newcommand{\retacartesianocirculo}{\real{} \times \circulo}
-\newcommand{\retacartesianovariedade}{\real{} \times M}
-\newcommand{\real}[1]{\mathbb{R}^{#1}}
-\newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
-\newcommand{\reta}{\real{}}
-\newcommand{\subespacoslagrangianos}{L(V)}
-\newcommand{\lacocontrateis}{\mathcal{L}^{o}M}
-\newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
-\newcommand{\cilindrosLM}{\mathcal{C}M}
-\newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
-\newcommand{\skeleton}[1]{X^{(#1)}}
-\newcommand{\variedadeconectante}{\variedadeconectantepontos{p}{q}}
-\newcommand{\variedadeconectantepontos}[2]{W_{#1#2}}
-\newcommand{\variedadeestavel}[1]{W^{s}(#1)}
-\newcommand{\variedadeinstavel}[1]{W^{u}(#1)}
-\newcommand{\aviso}[1]{{\color{violet}(#1)}}
-\newcommand{\alerta}[1]{{\color{red}#1}}
-\newcommand{\correcaobanca}[1]{\alerta{(Correção Banca: #1)}}
-% AQUI ESTAO OS COMANDOS %
+\input{qualificadores}
+\input{comandos}
+\input{configuracoes}
 
 \begin{document}
 	
-	\title{O Índice de Maslov e suas Aplicações em Topologia Simplética: a homologia de Floer e a Conjectura de Arnold.}
+	\input{capa}  % Não edite esse arquivo.
+	\thispagestyle{empty}\newpage\mbox{}\thispagestyle{empty}\newpage\thispagestyle{empty} % Pagina em branco.
+
 	
-	\author{Vinicius Fernandes}
+	\input{folha-de-rosto}
 	
-	\maketitle
 	
+	
+	%%  A ficha catalográfica deve estar no verso da folha de rosto.
+	%  O arquivo ficha-catalografica.pdf deve ser sobrescrito com uma cópia
+	% do arquivo pdf que a biblioteca lhe enviar.
+	\includepdf{ficha-catalografica}
+		
 	\tableofcontents
 	\chapter*{Agradecimentos}
 	Seja $\mathcal{A}$ o conjunto dos objetos passíveis de meus agradecimentos. Um \textit{agradecimento direto por esse trabalho} é uma sequência $(a_{n})$ em $\mathcal{A}$ tal que
@@ -362,7 +101,7 @@
 	Finally, the Floer Homology and his relation between Singular Homology of the symplectic manifolds are presented. This result is applyied in the Arnold Conjecture's demonstration, and doing that, we complete this text. 
 	\\
 	\\
-	\textbf{Keywords:}  Arnold Conjecture, Floer Equation, Symplectic Vector Spaces, Symplectic Group, Floer Homology, Maslov Index, Conley-Zehnder Index, Hamiltonian Systems, Morse-Witten Theory, Symplectic Topology, Symplectic  Manifold.
+	\textbf{Keywords:} Arnold Conjecture, Floer Equation, Symplectic Vector Spaces, Symplectic Group, Floer Homology, Maslov Index, Conley-Zehnder Index, Hamiltonian Systems, Morse-Witten Theory, Symplectic Topology, Symplectic  Manifold.
 	
 	\chapter*{Introdução}\label{capitulo_introducao}
 	
@@ -2383,10 +2122,10 @@
 	Considere $\matrizsimetricapositiva{2n} \subset \matrizquadreal{2n}$ como sendo o conjunto de todas as matrizes positivas-definidas (veja a Definição $\ref{definicao_matriz_positiva_definida}$).
 	
 	\begin{proposicao}\label{proposicao_potenciacao_grupo_simpletico}
-		(Potênciação em $\gruposimpletico{\real{2n}}$) Seja $\gruposimpleticopositivo{2n} = \gruposimpletico{\real{2n}} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositivo{2n}$, então $A^{\alpha} \in \gruposimpletico{\real{2n}}$ para qualquer $\alpha \in \real{}$.
+		(Potênciação em $\gruposimpletico{\real{2n}}$) Seja $\gruposimpleticopositdef = \gruposimpletico{\real{2n}} \cap \matrizsimetricapositiva{2n}$ o conjunto das matrizes simpléticas simétricas e positivas-definidas. Dado $A \in \gruposimpleticopositdef$, então $A^{\alpha} \in \gruposimpletico{\real{2n}}$ para qualquer $\alpha \in \real{}$.
 	\end{proposicao}
 	\begin{prova}
-		Se $A \in \gruposimpleticopositivo{2n}$, então $A$ é simétrica, logo é normal, e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável. Além disso, pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Pode-se decompor $V$ na soma direta de seus auto-espaços $E_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Se $u \in E_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então
+		Se $A \in \gruposimpleticopositdef$, então $A$ é simétrica, logo é normal, e pelo Lema $\ref{lema_caracterizacao_matriz_normal}$ é diagonalizável. Além disso, pela Observação $\ref{observacao_matriz_positiva_definida}$ seus auto-valores são todos positivos. Pode-se decompor $V$ na soma direta de seus auto-espaços $E_{\lambda}$, onde $\lambda \in \espectrooperador{A}$. Se $u \in E_{\lambda_{u}}$ e $v \in V_{\lambda_{v}}$, então
 		$$
 		\omega(A^{\alpha}u,A^{\alpha}v) = 		(\lambda_{u}\lambda_{v})^{\alpha}\omega(u,v).
 		$$
@@ -2406,14 +2145,14 @@
 	\end{prova}
 	
 	\begin{proposicao}
-		$\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
+		$\gruposimpleticopositdef$ é conexo por caminhos, logo é conexo.
 	\end{proposicao}
 	\begin{prova}
-		Seja a aplicação contínua $\gamma:\gruposimpleticopositivo{2n}\times [0,1] \to \gruposimpletico{\real{2n}}$ tal que $\gamma(A,\lambda) = A^{\lambda}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, a aplicação $\gamma$ está bem-definida e é contínua. Fixando $A \in \gruposimpleticopositivo{2n}$, 	a curva $\gamma_{A}:[0,1]\to \gruposimpletico{\real{2n}}$ tal que $\gamma_{A}(0) = Id$ e $\gamma_{A}(1) = A$, é um caminho contínuo que conecta a identidade a matriz $A$. Como $A=A^{t}$, segue da Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ que $\gamma_{A}(\lambda)^{t} = (A^{\lambda})^{t} = (A^{t})^{\lambda} = (A)^{\lambda} = \gamma_{A}(\lambda)$. Além disso, os k-subdeterminantes $det_{k}(\gamma_{A}(\lambda)) = det_{k}(A^{\lambda}) > 0$ para $1\leq k \leq 2n$. Pelo fato de que $\gamma_{A}(\lambda)$ é simétrica e pelo Teorema $\ref{teorema_matriz_positiva_definida}$ tem-se que $\gamma_{A}(\lambda)$ é positiva-definida, logo $\gamma_{A}([0,1]) \subset \gruposimpleticopositivo{2n}$. Como $A \in \gruposimpleticopositivo{2n}$ é arbitrária, então a construção anterior vale para quaisquer elementos de $\gruposimpleticopositivo{2n}$. Com isso, dados $A, B \in \gruposimpleticopositivo{2n}$, é possível conectar $A$ a $B$ por uma curva contínua que passa pela identidade, portanto $\gruposimpleticopositivo{2n}$ é conexo por caminhos, logo é conexo.
+		Seja a aplicação contínua $\gamma:\gruposimpleticopositdef\times [0,1] \to \gruposimpletico{\real{2n}}$ tal que $\gamma(A,\lambda) = A^{\lambda}$. Pela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, a aplicação $\gamma$ está bem-definida e é contínua. Fixando $A \in \gruposimpleticopositdef$, 	a curva $\gamma_{A}:[0,1]\to \gruposimpletico{\real{2n}}$ tal que $\gamma_{A}(0) = Id$ e $\gamma_{A}(1) = A$, é um caminho contínuo que conecta a identidade a matriz $A$. Como $A=A^{t}$, segue da Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$ que $\gamma_{A}(\lambda)^{t} = (A^{\lambda})^{t} = (A^{t})^{\lambda} = (A)^{\lambda} = \gamma_{A}(\lambda)$. Além disso, os k-subdeterminantes $det_{k}(\gamma_{A}(\lambda)) = det_{k}(A^{\lambda}) > 0$ para $1\leq k \leq 2n$. Pelo fato de que $\gamma_{A}(\lambda)$ é simétrica e pelo Teorema $\ref{teorema_matriz_positiva_definida}$ tem-se que $\gamma_{A}(\lambda)$ é positiva-definida, logo $\gamma_{A}([0,1]) \subset \gruposimpleticopositdef$. Como $A \in \gruposimpleticopositdef$ é arbitrária, então a construção anterior vale para quaisquer elementos de $\gruposimpleticopositdef$. Com isso, dados $A, B \in \gruposimpleticopositdef$, é possível conectar $A$ a $B$ por uma curva contínua que passa pela identidade, portanto $\gruposimpleticopositdef$ é conexo por caminhos, logo é conexo.
 	\end{prova}	
 	
 	\begin{lema}\label{lema_decomposicao_grupo_simpletico_positivo}
-		Se $A \in \gruposimpletico{\real{2n}}$, então existem únicas $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$ tais que $A=PO$.
+		Se $A \in \gruposimpletico{\real{2n}}$, então existem únicas $P \in \gruposimpleticopositdef$ e $O \in \matrizSimpleticaOrtogonal$ tais que $A=PO$.
 	\end{lema}
 	\begin{prova}
 		Segue do Teorema $\ref{teorema_decomposicao_polar}$ que $A=PO$, onde $P=AA^t$ é positiva definida e O é uma matriz ortogonal. Como $A$ e $A^{t} $ são matrizes simpléticas, então $P=AA^{t}\in \gruposimpletico{\real{2n}}$. 
@@ -2424,15 +2163,15 @@
 		$\gruposimpletico{\real{2n}}$ é conexo por caminhos, logo é conexo.
 	\end{teorema}
 	\begin{prova}
-		Se $A \in \gruposimpletico{\real{2n}}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ é possível escrever $A=PO$ onde $P \in \gruposimpleticopositivo{2n}$ e $O\in \matrizSimpleticaOrtogonal$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{\real{2n}} \to \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$ tem-se $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pela Proposição $\ref{proposicao_caracterizacao_Sp2n}$, tem-se $PO \in \gruposimpletico{\real{2n}}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{\real{2n}}$ tem-se que $G(A) = (P,O)$. Portanto $G$ é bijetora. 
+		Se $A \in \gruposimpletico{\real{2n}}$, então pelo Lema $\ref{lema_decomposicao_grupo_simpletico_positivo}$ é possível escrever $A=PO$ onde $P \in \gruposimpleticopositdef$ e $O\in \matrizSimpleticaOrtogonal$ são únicas. Pela unicidade da decomposição anterior a aplicação $G: \gruposimpletico{\real{2n}} \to \gruposimpleticopositdef \times \matrizSimpleticaOrtogonal$ definida por $G(A) = (P,O)$ é injetora. Por outro lado, dado $(P,O) \in \gruposimpleticopositdef \times \matrizSimpleticaOrtogonal$ tem-se $(PO)^{t}\estruturacomplexa PO = O^{t}P^{t}\estruturacomplexa PO = O^{t}\estruturacomplexa O = \estruturacomplexa$, logo pela Proposição $\ref{proposicao_caracterizacao_Sp2n}$, tem-se $PO \in \gruposimpletico{\real{2n}}$ e $G$ é sobrejetora. De fato, definindo $A=PO \in \gruposimpletico{\real{2n}}$ tem-se que $G(A) = (P,O)$. Portanto $G$ é bijetora. 
 		
-		Denotando por $G^{-1}:\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal\to \gruposimpletico{\real{2n}}$ a inversa de $G$, tem-se que $G^{-1}(P,O) = PO$, o que implica que $G^{-1}$ é contínua, pois o produto de matrizes é uma operação contínua.
+		Denotando por $G^{-1}:\gruposimpleticopositdef \times \matrizSimpleticaOrtogonal\to \gruposimpletico{\real{2n}}$ a inversa de $G$, tem-se que $G^{-1}(P,O) = PO$, o que implica que $G^{-1}$ é contínua, pois o produto de matrizes é uma operação contínua.
 		
-		Afirmo que $\gruposimpleticopositivo{2n}\times \matrizSimpleticaOrtogonal$ é conexo por caminhos, pois é o produto cartesianos de espaços topológicos conexos por caminhos. Além disso, como a conexidade é preservada por aplicações contínuas, então $\gruposimpletico{\real{2n}}$ é conexo por caminhos, logo é conexo.
+		Afirmo que $\gruposimpleticopositdef\times \matrizSimpleticaOrtogonal$ é conexo por caminhos, pois é o produto cartesianos de espaços topológicos conexos por caminhos. Além disso, como a conexidade é preservada por aplicações contínuas, então $\gruposimpletico{\real{2n}}$ é conexo por caminhos, logo é conexo.
 	\end{prova}
 	
 	\begin{observacao}\label{observacao_decomposicao_Sp2n}
-		No teorema anterior, foi exibida uma bijeção entre $\gruposimpletico{\real{2n}} $ e o produto cartesiano $\gruposimpleticopositivo{2n} \times \matrizSimpleticaOrtogonal$, isto é, toda $A \in \gruposimpletico{\real{2n}}$ pode ser decomposta unicamente como $A=PO$, onde $P\in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Essa afirmação será utilizada na demonstração de alguns resultados adiante.
+		No teorema anterior, foi exibida uma bijeção entre $\gruposimpletico{\real{2n}} $ e o produto cartesiano $\gruposimpleticopositdef \times \matrizSimpleticaOrtogonal$, isto é, toda $A \in \gruposimpletico{\real{2n}}$ pode ser decomposta unicamente como $A=PO$, onde $P\in \gruposimpleticopositdef$ e $O \in \matrizSimpleticaOrtogonal$. Essa afirmação será utilizada na demonstração de alguns resultados adiante.
 	\end{observacao}
 	
 	\begin{observacao}\label{observacao_conexidade_grupo_simpletico}
@@ -2443,7 +2182,7 @@
 		O quociente $\gruposimpletico{\real{2n}}/\matrizSimpleticaOrtogonal$ é contrátil.
 	\end{teorema}
 	\begin{prova}
-		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{\real{2n}}$ então $A=PO$, onde $P \in \gruposimpleticopositivo{2n}$ e $O \in \matrizSimpleticaOrtogonal$. Com isso tem-se $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$, e ela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, é possível afirmar que $P^{\alpha} \in \gruposimpletico{\real{2n}}$ para todo $\alpha \in \real{}$. Considere a aplicação $r:\gruposimpletico{\real{2n}}\times [0,1] \to \gruposimpletico{\real{2n}}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$. Note que é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{\real{2n}}$. Além disso, $r$ é um retrato de deformação de $\gruposimpletico{\real{2n}}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, tomando $B \in \matrizSimpleticaOrtogonal$, $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
+		Na Observação $\ref{observacao_decomposicao_Sp2n}$ foi mostrado que se $A \in \gruposimpletico{\real{2n}}$ então $A=PO$, onde $P \in \gruposimpleticopositdef$ e $O \in \matrizSimpleticaOrtogonal$. Com isso tem-se $AA^{t} = POO^{t}P^{t} = PP^{t}=P^{2}$, e ela Proposição $\ref{proposicao_potenciacao_grupo_simpletico}$, é possível afirmar que $P^{\alpha} \in \gruposimpletico{\real{2n}}$ para todo $\alpha \in \real{}$. Considere a aplicação $r:\gruposimpletico{\real{2n}}\times [0,1] \to \gruposimpletico{\real{2n}}$ tal que $r(A, \alpha) = (AA^{t})^{-\alpha/2}A$. Note que é contínua pois é o produto de matrizes, que é uma operação contínua em $\gruposimpletico{\real{2n}}$. Além disso, $r$ é um retrato de deformação de $\gruposimpletico{\real{2n}}$ sobre $\matrizSimpleticaOrtogonal$ pois $r(A, 0) = A$, $r(A, 1) = (AA^{t})^{-1/2}A = P^{-1}A = O \in \matrizSimpleticaOrtogonal$ e, tomando $B \in \matrizSimpleticaOrtogonal$, $r(B, 1) = (BB^{t})^{-1/2}B = B$, pois $BB^{t} = Id$.
 		
 		Para simplificar a notação $ \gruposimpletico{\real{2n}}/\matrizSimpleticaOrtogonal$ será denotado por $\mathcal{S}$. Definindo a aplicação $R:\mathcal{S} \times [0,1] \to \mathcal{S}$ por $R([A], \lambda) = [r(A, \lambda)] = [(AA^{t})^{-\lambda/2}A]$, tem-se que $R$ é uma contração. De fato, a imagem de $R$ é a classe de equivalência da imagem de $r$, que é contínua, portanto $R$ é contínua. Além disso, $R([A], 0) = [A]$, $R([A], 1) = [(AA^{t})^{-1/2}A] = [P^{-1}A] = [O] = [Id]$, pois $O \in \matrizSimpleticaOrtogonal$, isto é, $R(., 0) = Id_{\mathcal{S}}(.)$ é a identidade e $R(., 1) = [Id]$ é a aplicação constante, logo é uma contração e $\mathcal{S}$ é contrátil.
 	\end{prova}
@@ -2826,7 +2565,7 @@
 	
 	\section{Índice de Maslov $\mu : \dominioMaslov \to \inteiros$}\label{secao_indice_maslov}
 	
-	Fixe as matrizes diagonal $W^{+}\in \gruposimpleticomais{\real{2n}}$ e $W^{-}\in \gruposimpleticomenos{\real{2n}}$, definidas por
+	Fixe as matrizes diagonal $W^{+}\in \gruposimpleticonaodegenerado{+}$ e $W^{-}\in \gruposimpleticonaodegenerado{-}$, definidas por
 	$$
 	W^{+}=\diag\{\underbrace{-1,\dots, -1}_{2n} \} \;\; \text{e}\;\;W^{+}=\diag\{\underbrace{2,\dots, -1}_{n},\underbrace{-2^{-1},\dots, -1}_{n} \} .
 	$$
@@ -4391,7 +4130,7 @@
 		$$
 	\end{teorema}
 	
-	\subsection{A Transversalidade do Operador $\operadorFloer$ e a Compacidade de $\quocientetrajetorias$}\label{secao_transversalidade_compacidade_M}
+	\subsection{A Transversalidade do Operador $\operadorFloer$ e a Compacidade do Espaço Moduli $\quocientetrajetorias$}\label{secao_transversalidade_compacidade_M}
 	
 	A propriedade da transversalidade do operador de Floer é utilizada na demonstração de que o espaço das soluções da equação de Floer que conectam esse dois pontos $\energiafinitaMconectante$ é uma variedade com dimensão igual a $\iconley{x^{-}}-\iconley{x^{+}}$.
 	

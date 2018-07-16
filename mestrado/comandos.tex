@@ -1,0 +1,259 @@
+
+% AQUI ESTAO AS DECLARACOES DAS FUNCOES %
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\senh}{senh}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\coker}{coker}
+% AQUI ESTAO AS DECLARACOES DAS FUNCOES %
+
+
+% AQUI ESTAO OS COMANDOS %
+\newcommand{\aplicacaoexponencial}[2]{\exp_{#1}(#2)}
+\newcommand{\aplicacaoexponencialgeral}[1]{exp_{#1}}
+\newcommand{\aplicaoessuaves}[2]{C^{\infty}(#1, #2)}
+\newcommand{\aplicaoessuavesloc}[2]{C^{\infty}_{\text{loc}}(#1, #2)}
+\newcommand{\aplicaoessuavesreatacirculo}{C^{\infty}(\retacartesianocirculo; M)}
+\newcommand{\autoespaco}[1]{E_{#1}}
+\newcommand{\autovalorprimeirotipo}[1]{\sigma^{1}(#1)}
+\newcommand{\bigmodulo}[1]{\Bigm\lvert #1 \Bigm\lvert }
+\newcommand{\bigparenteses}[1]{\Big( #1 \Big) }
+\newcommand{\bordo}[1]{\partial_{#1}}
+\newcommand{\bordorel}[1]{\overline{\partial}_{#1}}
+\newcommand{\cadeia}[2]{C_{#1}(#2; A)}
+\newcommand{\caminhosfechadoscirculo}[2]{L([#1,#2], S^{1})}
+\newcommand{\caminhosfechadospontobase}[2]{\mathcal{L}^{o}_{#1}(#2)}
+\newcommand{\caminhosfechadosSp}[2]{L([#1,#2], \gruposimpletico{\real{2n}})}
+\newcommand{\caminhosespeciais}[1]{\mathcal{L}^{*}(#1)}
+\newcommand{\caminhosdecaimentoexponencial}[2]{C^{\infty}_{\searrow}(#1, #2)}
+\newcommand{\caminhosdecaimentoexponencialpadrao}{\caminhosdecaimentoexponencial{x^{-}}{x^{+}}}
+\newcommand{\caminhosexponenciaisconectantesabrev}{\mathcal{P}(x^{-},x^{+})}
+\newcommand{\caminhosexponenciaisconectantes}[2]{\mathcal{P}^{1,p}(#1, #2)}
+\newcommand{\caminhosexponenciaisSobolev}{\mathcal{L}^{1,p}M}
+\newcommand{\caminhosexponenciaisconectantespadrao}{\caminhosexponenciaisconectantes{x^{-}}{x^{+}}}
+\newcommand{\caminhos}{\mathcal{L}}
+\newcommand{\caminhosfechados}[1]{\caminhos^{o}(#1)}
+\newcommand{\caminhoslagrangianos}[3]{\caminhos_{#3}(#1,#2)}
+\newcommand{\caminhoslagrangianosV}[2]{\caminhoslagrangianos{#1}{#2}{V}}
+\newcommand{\caminhospontobase}[1]{\caminhos_{#1}}
+\newcommand{\caminhossempontobase}[1]{\caminhos(#1)}
+\newcommand{\caminhosNaoDegeneradosSp}{\caminhos^{*}(\gruposimpletico{\real{2n}})}
+\newcommand{\caminhospontobasegeral}[2]{\caminhos_{#1}(#2)}
+\newcommand{\caminhossuavesconectantes}[2]{\caminhos(#1, #2)}
+\newcommand{\caminhossubespacoslagrangianos}[2]{L[#1,#2]}
+\newcommand{\campogradiente}{\mathcal{X}}
+\newcommand{\campogradientefuncional}{\mathcal{X}_{\mathcal{A}}}
+\newcommand{\campohamiltoniano}[1]{X_{H}(#1)}
+\newcommand{\campohamiltonianoabrev}{X_{H}}
+\newcommand{\campossuaves}[1]{\mathfrak{X}(#1)}
+\newcommand{\celula}[2]{D^{#1}_{#2}}
+\newcommand{\celulabordo}[2]{\partial D^{#1}_{#2}}
+\newcommand{\circulo}{S^{1}}
+\newcommand{\circulovariedade}{\circulo\times M}
+\newcommand{\cktopologia}[1]{\mathcal{C}^{#1}\text{-topologia}}
+\newcommand{\classe}[1]{[#1]}
+\newcommand{\cohomologia}[2]{H^{#1}(#2)}
+\newcommand{\cohomologiadual}[2]{H^{#1}(#2)^{*}}
+\newcommand{\cohomologiacompac}[2]{H^{#1}_{c}(#2)}
+\newcommand{\cohomologiacompacdual}[2]{H^{#1}_{c}(#2)^{*}}
+\newcommand{\colecao}[1]{\{#1_{k} \}_{k\in \inteiros}}
+\newcommand{\colecaoabrev}[1]{\{#1 \}_{k\in \inteiros}}
+\newcommand{\colecaofinita}[2]{\{#1_{j} \}_{j=1}^{#2}}
+\newcommand{\colecaofinitaabrev}[2]{\{#1 \}_{j=1}^{#2}}
+\newcommand{\complementar}[2]{#1 \backslash #2}
+\newcommand{\complexificacao}[1]{#1_{\complexo{}}}
+\newcommand{\complexificacaotensorial}[1]{\complexo{}\otimes_{\reta} #1}
+\newcommand{\complexificado}[1]{\mathcal{#1}}
+\newcommand{\complexificacaoelemento}[2]{#1\otimes_{\reta} #2}
+\newcommand{\complexo}[1]{\mathbb{C}^{#1}}
+\newcommand{\coordenada}[2]{#1_{(#2)}}
+\newcommand{\diferencialfloer}{D\operadorFloer}
+\newcommand{\diferencialfloeradj}{\diferencialfloer^{*}}
+\newcommand{\diferencialfloerponto}[1]{D_{#1}\operadorFloer}
+\newcommand{\diferencialfloeradjponto}[1]{D_{#1}\operadorFloer^{*}}
+\newcommand{\diferencialfloerabrev}{\mathcal{D}}
+\newcommand{\derivada}[2]{\frac{d #1}{d #2}}
+\newcommand{\derivadaparcial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\derivadaparcialdois}[2]{\frac{\partial^{2} #1}{\partial #2^{2}}}
+\newcommand{\derivadaparcialdoisdois}[3]{\frac{\partial^{2} #1}{\partial #2 \partial#3}}
+\newcommand{\derivadaparcialabrev}[1]{\partial_{#1}}
+\newcommand{\diag}{\text{diag}}
+\newcommand{\diferencialhamiltoniano}[1]{(dX_{H})_{#1}}
+\newcommand{\distribuicoes}{\distribuicoesgeral{\Omega}}
+\newcommand{\distribuicoesgeral}[1]{\mathcal{D'}(#1)}
+\newcommand{\dominioMaslov}{\caminhos^{*}(\gruposimpletico{\real{2n}})}
+\newcommand{\energiafinitaM}{\mathcal{M}}
+\newcommand{\energiafinitaMHamiltoniana}[1]{\energiafinitaM(#1, J)}
+\newcommand{\energiafinitaMconectante}{\energiafinitaM(x^{-}, x^{+})}
+\newcommand{\energiafinitaMconectanteHamiltoniana}{\energiafinitaM(x^{-}, x^{+},H+h,J)}
+\newcommand{\espacoLdois}[1]{L^{2}(#1)}
+\newcommand{\espacoLdoiscontradom}[2]{L^{2}(#1, #2)}
+\newcommand{\espacoLp}[1]{L^{p}(#1)}
+\newcommand{\espacoLpcomp}[1]{L^{p}_{loc}(#1)}
+\newcommand{\espacoLpcontradominio}[2]{L^{p}(#1;#2)}
+\newcommand{\espacoLpGeral}[2]{L^{#1}(#2)}
+\newcommand{\espacoLpretacirculo}{\espacoLpcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacoLpadjuntoretacirculo}{L^{q}(\retacartesianocirculo;\real{m})}
+\newcommand{\espacoLpdual}{(L^{p})^{*}(\retacartesianocirculo;\real{m})}
+\newcommand{\espacoLpdualdois}{(L^{2})^{*}(\retacartesianocirculo;\real{m})}
+\newcommand{\espacomoduli}[2]{\mathcal{M}_{#1#2}}
+\newcommand{\espacoSimpleticoOrtogonal}[1]{#1^{\omega}}
+\newcommand{\espacosobolev}[1]{W^{1,p}(#1)}
+\newcommand{\espacosobolevcontradominio}[2]{W^{1,p}(#1;#2)}
+\newcommand{\espacosobolevadjuntoretacirculo}{W^{1,q}(\retacartesianocirculo;\real{2n})}
+\newcommand{\espacosobolevdual}{(W^{1,p})^{*}(\retacartesianocirculo;\real{2n})}
+\newcommand{\espacosobolevgeneralizadocontra}[2]{W^{k,p}(#1; #2)}
+\newcommand{\espacosobolevgeneralizado}[1]{W^{k,p}(#1)}
+\newcommand{\espacosobolevretacirculo}{\espacosobolevcontradominio{\retacartesianocirculo}{\real{2n}}}
+\newcommand{\espacosobolevdois}[2]{\espacosobolevgeral{2}{#1, #2}}
+\newcommand{\espacosobolevgeral}[2]{W^{1,#1}(#2)}
+\newcommand{\espacotangente}[1]{\espacotangenteponto{p}{#1}}
+\newcommand{\espacotangentevariedadeestavel}{T^{s}_{p}M}
+\newcommand{\espacotangentevariedadeinstavel}{T^{u}_{p}M}
+\newcommand{\espacotangenteponto}[2]{T_{#1}#2}
+\newcommand{\espacotangentevariedade}{\espacotangenteponto{p}{M}}
+\newcommand{\espectrooperador}[1]{\sigma(#1)}
+\newcommand{\estruturacomplexa}{J_{0}}
+\newcommand{\estruturascomplexas}[2]{\mathcal{J}(#1, #2)}
+\newcommand{\estruturascomplexasM}{\estruturascomplexas{M}{\omega}}
+\newcommand{\estruturascomplexaspadrao}{\mathcal{J}(V, \omega)}
+\newcommand{\Exp}{\text{Exp}}
+\newcommand{\fibradocaminhosexponenciais}{\mathcal{E}(x^{-}, x^{+})}
+\newcommand{\fibradocaminhosexponenciaisabrev}{\mathcal{E}}
+\newcommand{\formaSimpletica}[2]{\omega(#1, #2)}
+\newcommand{\formaSimpleticaabrev}{\omega_{0}}
+\newcommand{\formaSimpleticaExtendida}[2]{\Omega(#1, #2)}
+\newcommand{\formaSimpleticaPadrao}[2]{\omega_{0}(#1, #2)}
+\newcommand{\funcaocond}[5]{
+	#1 = 
+	\left\{
+	\begin{array}{cc}
+		#2, & #3\\
+		#4, & #5\\
+	\end{array}
+	\right.
+}
+\newcommand{\funcionalH}{\mathcal{A}_{H}}
+\newcommand{\funcionalHponto}[1]{\mathcal{A}_{H}(#1)}
+\newcommand{\funcoesdiferenciaveis}[2]{C^{#1}(#2)}
+\newcommand{\funcoesdiferenciaveissupp}[2]{C^{#1}_{c}(#2)}
+\newcommand{\funcoesmorse}[1]{\mathcal{M}_{o}(#1)}
+\newcommand{\funcoesmorsesmale}[1]{\mathcal{M}^{S}_{o}(#1)}
+\newcommand{\funcoessuaves}[1]{C^{\infty}(#1, \real{})}
+\newcommand{\funcoessupcompact}[1]{C^{\infty}_{c}(#1)}
+\newcommand{\funcoessupcompactcontradom}[2]{C^{\infty}_{c}(#1, #2)}
+\newcommand{\funcoesteste}{\funcoestestegeral{\Omega}}
+\newcommand{\funcoestestegeral}[1]{\mathcal{D}(#1)}
+\newcommand{\generalgroup}[2]{GL(#1, #2)}
+\newcommand{\generalgroupreal}[1]{\generalgroup{#1}{\real{}}}
+\newcommand{\generalgroupcomplexo}[1]{\generalgroup{#1}{\complexo{}}}
+\newcommand{\gerador}[1]{\langle #1\rangle}
+\newcommand{\gradiente}{\nabla f}
+\newcommand{\gradientefuncional}{\nabla \funcionalH}
+\newcommand{\grupofundamental}[1]{\pi_{1}(#1)}
+\newcommand{\grupofundamentalpontobase}[2]{\pi_{1}(#1; #2)}
+\newcommand{\gruposimpletico}[1]{Sp(#1)}
+\newcommand{\gruposimpleticocomplexo}[1]{Sp(#1; \complexo{})}
+\newcommand{\gruposimpleticoreal}[1]{Sp(#1;\reta)}
+\newcommand{\gruposimpleticoespecial}[1]{Sp^{1}(#1)}
+\newcommand{\gruposimpleticonaodegenerado}[1]{Sp^{#1}(\real{2n})}
+\newcommand{\gruposimpleticopositdef}{Sp_{+}(\real{2n})}
+\newcommand{\hamiltonianasRegulares}{\mathcal{H}_{reg}}
+\newcommand{\hessianaponto}[2]{\text{Hess}_{#1}(#2)}
+\newcommand{\homologia}[2]{H_{#1}(#2;A)}
+\newcommand{\homologiaabrev}[2]{H_{#1}(#2)}
+\newcommand{\homologiarel}[3]{H_{#1}(#2,#3)}
+\newcommand{\homologiarelcel}[3]{H_{#1}(D^{#2}_{#3}, \partial D^{#2}_{#3})}
+\newcommand{\homologiarelskele}[3]{H_{#1}(X^{(#2)}, X^{(#3)})}
+\newcommand{\homologiarelskelesimpl}[2]{H_{#1}(X^{(#2)}, X^{(#2-1)})}
+\newcommand{\iconley}[1]{\iconleyabrev(#1)}
+\newcommand{\iconleyabrev}{\mu_{CZ}}
+\newcommand{\imagem}[1]{\Ima(#1)}
+\newcommand{\imagembordo}[2]{B_{#1}(#2;A)}
+\newcommand{\imagembordoabrev}[2]{B_{#1}(#2)}
+\newcommand{\ind}{\text{Ind}}
+\newcommand{\induzida}[1]{#1_{\#}}
+\newcommand{\inteiros}{\mathbb{Z}}
+\newcommand{\inteirospos}{\inteiros_{+}}
+\newcommand{\iprod}[2]{\langle #1, #2 \rangle}
+\newcommand{\intervalo}{[0,1]}
+\newcommand{\intervalofechado}[1]{[-#1,#1]}
+\newcommand{\kernelbordo}[2]{Z_{#1}(#2;A)}
+\newcommand{\kernelbordoabrev}[2]{Z_{#1}(#2)}
+\newcommand{\liederivada}[1]{\mathcal{L}_{#1}}
+\newcommand{\operadoreslimitadosauto}[1]{\mathcal{B}(#1)}
+\newcommand{\operadorFloer}{\mathcal{F}}
+\newcommand{\operadorFloerDefinicao}[1]{\derivadaparcial{#1}{s} + J_{#1}\derivadaparcial{#1}{t} - J_{#1}X_{H}(#1)}
+\newcommand{\operadorFloerDefParametros}[1]{\derivadaparcial{#1}{s}(s,t) + J_{#1}\derivadaparcial{#1}{t}(s,t) - J_{#1}X_{H}(#1(s,t))}
+\newcommand{\operadorFloerParametro}[1]{\mathcal{F}(#1)}
+\newcommand{\operadorFloerPadrao}{\operadorFloerParametro{u}}
+\newcommand{\matrizantisimetrica}[1]{Asym(#1)}
+\newcommand{\matrizortogonal}[1]{O(#1)}
+\newcommand{\matrizquadcomplexa}[1]{M_{#1 \times #1}(\complexo{})}
+\newcommand{\matrizquadreal}[1]{M_{#1 \times #1}(\real{})}
+\newcommand{\matrizsimetrica}[1]{Sym(#1)}
+\newcommand{\matrizSimpleticaOrtogonal}{\mathcal{U}}
+\newcommand{\matrizsimetricapositiva}[1]{Sym_{+}(#1)}
+\newcommand{\matrizsimpleticapositiva}[1]{Sp_{+}(#1)}
+\newcommand{\matrizunitaria}[1]{U(#1)}
+\newcommand{\norma}[1]{||#1||}
+\newcommand{\normagrande}[1]{\Big|\Big|#1\Big|\Big|}
+\newcommand{\normaLdois}[1]{||#1||_{L^{2}}}
+\newcommand{\normaLp}[1]{||#1||_{L^{p}}}
+\newcommand{\normaLpdefinicao}[2]{ \Big(\int_{#2}#1^{p}\Big)^{1/p}}
+\newcommand{\normaLpDominio}[2]{||#1||_{L^{p}(#2)}}
+\newcommand{\normaLgGeral}[3]{\norma{#1}_{\espacoLpGeral{#2}{#3}}}
+\newcommand{\normapequenaLpdefinicao}[2]{ \normaLpdefinicao{\norma{#1}}{#2}}
+\newcommand{\normagrandeLpdefinicao}[2]{ \normaLpdefinicao{\normagrande{#1}}{#2}}
+\newcommand{\normasubscrito}[2]{\norma{#1}_{#2}}
+\newcommand{\normaWdois}[1]{||#1||_{W^{1,2}}}
+\newcommand{\normaWp}[1]{||#1||_{W^{1,p}}}
+\newcommand{\normaWpgeneralizado}[1]{||#1||_{W^{k,p}}}
+\newcommand{\normaWpgeral}[2]{||#1||_{W^{1,#2}}}
+\newcommand{\normaWpGeralDominio}[3]{\norma{#1}_{W^{1,#2}(#3)}}
+\newcommand{\normaWpDominio}[2]{||#1||_{W^{1,p}(#2)}}
+\newcommand{\operadorcauchyabrev}[1]{\overline{\partial}_{#1}}
+\newcommand{\operadoresfredholm}[2]{\mathcal{F}r(#1, #2)}
+\newcommand{\operadoreslimitados}[2]{\mathcal{B}(#1, #2)}
+\newcommand{\orbitaponto}[1]{\mathcal{O}(#1)}
+\newcommand{\orbitasconectantes}[2]{\mathcal{M}(#1, #2)}
+\newcommand{\orbitasConectantesZ}{\mathcal{Z}(x^{-}, x^{+},H, J)}
+\newcommand{\orbitasconectantespadrao}{\mathcal{M}(x^{-}, x^{+})}
+\newcommand{\paresregulares}{\mathcal{H}_{reg}}
+\newcommand{\parteImaginaria}[1]{\Ima{(#1)}}
+\newcommand{\parteReal}[1]{\re (#1)}
+\newcommand{\perturbacaoHamiltoniana}[1]{C^{\infty}_{\epsilon}(#1)}
+\newcommand{\pontoscriticos}[1]{\textit{Cr}(#1)}
+\newcommand{\pontoscriticosordem}[2]{\textit{Cr}^{(#1)}(#2)}
+\newcommand{\produtointerno}[2]{\langle #1, #2 \rangle}
+\newcommand{\produtointernoLdois}[2]{\langle #1, #2 \rangle_{L^{2}}}
+\newcommand{\produtointernoWdois}[2]{\langle #1, #2 \rangle_{W^{1,2}}}
+\newcommand{\produtointernoabrev}{\langle ., .\rangle}
+\newcommand{\produtosinternos}[1]{Riem(#1)}
+\newcommand{\produtotensorial}[2]{ #1_{1} \otimes_{\mathbb{K}} \dots \otimes_{\mathbb{K}} #1_{#2}}
+\newcommand{\produtotensorialabrev}[2]{#1\otimes #2}
+\newcommand{\produtotensorialdual}{\produtotensorialabrev{\complexificado{V}^{*}}{\complexificado{V}^{*}}}
+\newcommand{\produtotensorialreal}[2]{\bigotimes_{j=1}^{#1} #2_{j}}
+\newcommand{\pullbackfibradotangente}[2]{#1^{*}T#2}
+\newcommand{\pullbackfibradotangenteM}[1]{\pullbackfibradotangente{#1}{M}}
+\newcommand{\pullbackfibradotangenteMpadrao}{\pullbackfibradotangente{u}{M}}
+\newcommand{\quocientetrajetorias}{\widehat{\energiafinitaM}(x^{-}, x^{+}, H, J)}
+\newcommand{\retacartesianocirculo}{\real{} \times \circulo}
+\newcommand{\retacartesianovariedade}{\real{} \times M}
+\newcommand{\real}[1]{\mathbb{R}^{#1}}
+\newcommand{\realprojetivo}[1]{\mathbb{R}P^{#1}}
+\newcommand{\reta}{\real{}}
+\newcommand{\subespacoslagrangianos}{L(V)}
+\newcommand{\lacocontrateis}{\mathcal{L}^{o}M}
+\newcommand{\somadir}[1]{\bigoplus \limits_{#1}}
+\newcommand{\cilindrosLM}{\mathcal{C}M}
+\newcommand{\morsefunc}[1]{\mathcal{M}o(#1)}
+\newcommand{\skeleton}[1]{X^{(#1)}}
+\newcommand{\variedadeconectante}{\variedadeconectantepontos{p}{q}}
+\newcommand{\variedadeconectantepontos}[2]{W_{#1#2}}
+\newcommand{\variedadeestavel}[1]{W^{s}(#1)}
+\newcommand{\variedadeinstavel}[1]{W^{u}(#1)}
+\newcommand{\aviso}[1]{{\color{violet}(#1)}}
+\newcommand{\alerta}[1]{{\color{red}#1}}
+\newcommand{\correcaobanca}[1]{\alerta{(Correção Banca: #1)}}
+% AQUI ESTAO OS COMANDOS %
